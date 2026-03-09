@@ -1,0 +1,77 @@
+{
+  "id": "3",
+  "name": "Fathom: List Recordings",
+  "nodes": [
+    {
+      "id": "c1000000-0000-4000-8000-000000000001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 300],
+      "parameters": {}
+    },
+    {
+      "id": "c1000000-0000-4000-8000-000000000002",
+      "name": "Code: Set Date Parameter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "parameters": {
+        "jsCode": "// ╔══════════════════════════════════════════╗\n// ║  CHANGE THIS DATE BEFORE RUNNING         ║\n// ╚══════════════════════════════════════════╝\nconst targetDate = '2025-09-02';\n\nreturn {\n  json: {\n    targetDate,\n    createdAfter: `${targetDate}T00:00:00Z`,\n    createdBefore: `${targetDate}T23:59:59Z`\n  }\n};"
+      }
+    },
+    {
+      "id": "c1000000-0000-4000-8000-000000000003",
+      "name": "HTTP Request: List Meetings by Date",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [500, 300],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.fathom.ai/external/v1/meetings",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "created_after", "value": "={{ $json.createdAfter }}" },
+            { "name": "created_before", "value": "={{ $json.createdBefore }}" }
+          ]
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "PLACEHOLDER",
+          "name": "Fathom API Key"
+        }
+      }
+    },
+    {
+      "id": "c1000000-0000-4000-8000-000000000004",
+      "name": "Code: Format Recording List",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 300],
+      "parameters": {
+        "jsCode": "const items = $json.items || [];\nif (items.length === 0) {\n  return { json: { message: 'No recordings found for this date.' } };\n}\n\nreturn items.map(meeting => {\n  const start = new Date(meeting.recording_start_time);\n  const end = new Date(meeting.recording_end_time);\n  const durationMin = Math.round((end - start) / 60000);\n\n  return {\n    json: {\n      recording_id: meeting.recording_id,\n      title: meeting.title || meeting.meeting_title || 'Untitled',\n      start_time: meeting.recording_start_time,\n      duration_minutes: durationMin,\n      url: meeting.share_url || meeting.url\n    }\n  };\n});"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "Code: Set Date Parameter", "type": "main", "index": 0 }]]
+    },
+    "Code: Set Date Parameter": {
+      "main": [[{ "node": "HTTP Request: List Meetings by Date", "type": "main", "index": 0 }]]
+    },
+    "HTTP Request: List Meetings by Date": {
+      "main": [[{ "node": "Code: Format Recording List", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": []
+}

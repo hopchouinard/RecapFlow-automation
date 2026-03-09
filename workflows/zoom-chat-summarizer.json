@@ -1,0 +1,323 @@
+{
+  "id": "1",
+  "name": "Zoom Chat Summarizer",
+  "nodes": [
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000001",
+      "name": "Local File Trigger",
+      "type": "n8n-nodes-base.localFileTrigger",
+      "typeVersion": 1,
+      "position": [0, 300],
+      "parameters": {
+        "triggerOn": "folder",
+        "path": "/home/node/watch",
+        "events": ["add"],
+        "options": {
+          "usePolling": true,
+          "awaitWriteFinish": true,
+          "depth": 0,
+          "ignoreInitial": true
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000002",
+      "name": "Code: Read and Validate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\n\nconst filePath = $json.path;\nconst filename = path.basename(filePath);\n\n// Validate: must be .txt and start with YYYY-MM-DD\nif (!filename.endsWith('.txt') || !/^\\d{4}-\\d{2}-\\d{2}/.test(filename)) {\n  return [];\n}\n\nconst datePrefix = filename.match(/^\\d{4}-\\d{2}-\\d{2}/)[0];\nconst chatText = fs.readFileSync(filePath, 'utf8');\n\nreturn {\n  json: {\n    filename,\n    filePath,\n    chatText,\n    datePrefix\n  }\n};"
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000005",
+      "name": "Code: Create Output Folder",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst datePrefix = $json.datePrefix;\nconst outputDir = `/home/node/output/${datePrefix}`;\nif (!fs.existsSync(outputDir)) {\n  fs.mkdirSync(outputDir, { recursive: true });\n}\nreturn {\n  json: {\n    ...$json,\n    outputDir\n  }\n};"
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000006",
+      "name": "LLM: Extract Signal",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [750, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are analyzing the raw Zoom chat of a weekly AI community call.\n\nYour job is to extract only the information that would still be useful to a community member reading it one week later.\n\nFocus especially on:\n- links and shared resources\n- useful question-and-answer pairs\n- practical insights and recommendations\n- tools, platforms, frameworks, and concepts mentioned\n- open questions or follow-ups worth revisiting\n\nReturn your analysis in the following structure:\n\n# Extracted Chat Signal\n\n## Shared Resources\nFor each useful link or resource, provide:\n- Title\n- URL if present\n- Why it matters\n\n## Key Q&A\nFor each useful question-and-answer pair, provide:\n- Question\n- Answer\n- Short synthesis if multiple people contributed\n\n## Key Insights\nList the most useful ideas, recommendations, warnings, practical tips, or mental models shared in the chat.\n\n## Tools and Concepts Mentioned\nList important tools, frameworks, products, or concepts mentioned, with a short explanation of why they mattered.\n\n## Follow-Ups Worth Revisiting\nList unresolved questions, open threads, or topics that would be worth revisiting in a future call.\n\nRules:\n- Ignore greetings, jokes, reactions, filler, emojis, and casual banter\n- Ignore duplicate content unless repetition adds meaning\n- Do not invent missing context\n- Do not force content into a section if nothing valuable is present\n- Keep only high-value signal\n- Rewrite messy chat language into clear professional language without changing meaning\n\nNow analyze the following Zoom chat log:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000007",
+      "name": "OpenRouter Chat Model 1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [750, 500],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000008",
+      "name": "Code: Save extracted-signal.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.text;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir } };"
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000009",
+      "name": "LLM: Community Post",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [1250, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.signalText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are preparing a polished community post based on extracted Zoom chat insights from a weekly AI community call.\n\nYour audience is community members who may not have attended live but want the most useful value from the chat.\n\nTurn the extracted material below into a concise, polished, community-friendly post that complements:\n- the meeting video\n- the transcript summary\n- the Fathom recap\n\nUse the following structure:\n\n# Community Chat Highlights\n\n## Shared Resources\nPresent the most useful links and resources in a clean, easy-to-scan way.\n\n## Key Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n## Key Insights\nSummarize the strongest practical or strategic takeaways.\n\n## Tools and Concepts Mentioned\nList important tools, frameworks, and concepts with short explanations.\n\n## Follow-Ups Worth Exploring\nList open questions or topics worth revisiting if relevant.\n\n## Summary\nWrite one short paragraph summarizing the overall value and themes of the chat discussion.\n\nRules:\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to post with minimal editing\n\nHere is the extracted chat analysis:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000010",
+      "name": "OpenRouter Chat Model 2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [1250, 500],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000011",
+      "name": "Code: Save community-post.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1500, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst communityPostText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post.md`, communityPostText, 'utf8');\nreturn { json: { communityPostText, outputDir } };"
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000012",
+      "name": "LLM: Compress Post",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [1750, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.communityPostText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000013",
+      "name": "OpenRouter Chat Model 3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [1750, 500],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-1111-4000-8000-000000000014",
+      "name": "Code: Save community-post-compressed.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2000, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst compressedText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post-compressed.md`, compressedText, 'utf8');\nreturn { json: { compressedText, outputDir } };"
+      }
+    }
+  ],
+  "connections": {
+    "Local File Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code: Read and Validate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Read and Validate": {
+      "main": [
+        [
+          {
+            "node": "Code: Create Output Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Create Output Folder": {
+      "main": [
+        [
+          {
+            "node": "LLM: Extract Signal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Extract Signal": {
+      "main": [
+        [
+          {
+            "node": "Code: Save extracted-signal.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Extract Signal",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save extracted-signal.md": {
+      "main": [
+        [
+          {
+            "node": "LLM: Community Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Community Post": {
+      "main": [
+        [
+          {
+            "node": "Code: Save community-post.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Community Post",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save community-post.md": {
+      "main": [
+        [
+          {
+            "node": "LLM: Compress Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Compress Post": {
+      "main": [
+        [
+          {
+            "node": "Code: Save community-post-compressed.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Compress Post",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": []
+}

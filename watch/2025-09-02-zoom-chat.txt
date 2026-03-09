@@ -1,0 +1,385 @@
+2025-09-02 17:54:31 From Patrick's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2025-09-02 17:58:06 From Chase's VA to Everyone:
+	Hi! Chase's virtual assistant here. I am taking notes on this meeting to ensure nothing is missed and next steps are taken.
+	
+2025-09-02 18:02:23 From Hemal Shah to Everyone:
+	Any recommendation on which LLM model \ approach to use to compare  excel spreadsheet \ CSV  to reconciliation some data used for back office processing ?
+	
+2025-09-02 18:02:26 From Brandon Hancock to Everyone:
+	Screenshot 2025-09-02 at 6.02.18 PM.png
+	
+2025-09-02 18:02:34 From Paul Miller to Everyone:
+	Question - How should we update the Shipkit as you update?
+	
+2025-09-02 18:04:06 From shakur to Everyone:
+	Question - Have you used T3 Chat? What’s the major selling point?
+	
+2025-09-02 18:08:12 From alexrojas to Everyone:
+	Just wanted to ask regarding this link: https://shipkit.io/  I friend of mine almost registered into this one… but this is not yours right, @Brandon Hancock ?
+	
+2025-09-02 18:09:13 From Paul Miller to Everyone:
+	T3Chat great but you miss out on the Master 2nd Brain benefits
+	
+2025-09-02 18:09:57 From Brandon Hancock to Everyone:
+	Replying to "Any recommendation on which LLM model \ approach t...":
+	I’ll respond to this next!
+	
+2025-09-02 18:10:59 From Paul Miller to Everyone:
+	https://www.youtube.com/watch?v=_K_F_icxtrI
+	
+2025-09-02 18:12:03 From Andrew Nanton to Everyone:
+	Yup, all Claude all the time over here. Max plan, Claude Code.
+	sam:💯
+	
+2025-09-02 18:12:07 From alexrojas to Everyone:
+	Also, just wanted to make sure it is a green light on buying shipkit, right, I wasn’t on the last call hehe
+	
+2025-09-02 18:12:18 From Paul Miller to Everyone:
+	Yep hook line and sinker
+	sam:😂
+	
+2025-09-02 18:12:20 From alexrojas to Everyone:
+	Awesome… thanks
+	
+2025-09-02 18:14:54 From Brandon Hancock to Everyone:
+	https://youtu.be/vs8WQh2k-Ow?si=mlJsh-SePVSIMJ0g
+	
+2025-09-02 18:16:19 From Paul Miller to Everyone:
+	@Ty Wells can you give us background of what app is for again
+	
+2025-09-02 18:17:12 From Paul Miller to Everyone:
+	wow
+	
+2025-09-02 18:17:35 From Paul Miller to Everyone:
+	Brandon Nov conference Bahamas
+	Brandon Hancock, Alex Wilson:🤣
+	
+2025-09-02 18:19:18 From Paul Miller to Everyone:
+	Xero now has MCP services - https://developer.xero.com/ Might be a way to get benefit without rebuilding accounts part
+	
+2025-09-02 18:19:43 From alexrojas to Everyone:
+	This is great @Ty Wells well done, sir! Keep it up
+	
+2025-09-02 18:20:36 From Paul Miller to Everyone:
+	Replying to "Xero now has MCP services - https://developer.xero...":
+	https://developer.xero.com/ai
+	
+2025-09-02 18:26:08 From Juan Torres to Everyone:
+	Can you share the link for Clerk?
+	
+2025-09-02 18:26:28 From Brandon Hancock to Everyone:
+	https://clerk.com/
+	Juan Torres:🙏🏽
+	
+2025-09-02 18:27:04 From Andrew Nanton to Everyone:
+	Average beer consumption
+	Paul Miller:😂
+	
+2025-09-02 18:27:32 From Paul Miller to Everyone:
+	Replying to "Average beer consumption":
+	Beer, whiskey or wine
+	
+2025-09-02 18:27:58 From Paul Miller to Everyone:
+	Replying to "Average beer consumption":
+	Redbull multiplier
+	Brandon Hancock:🤣
+	
+2025-09-02 18:28:01 From Andrew Nanton to Everyone:
+	Replying to "Average beer consumption":
+	We’ll throw weed in there while we’re at it. I used to work in college health and I found these to be relevant factors.
+	Paul Miller:👍
+	Brandon Hancock:🤣
+	
+2025-09-02 18:28:02 From Patrick Chouinard to Everyone:
+	Replying to "Average beer consumption":
+	Nobody said a low number here would indicate graduation 😉
+	Andrew Nanton:👍
+	Brandon Hancock:🤣
+	
+2025-09-02 18:28:49 From alexrojas to Everyone:
+	Hey guys, need to roll, but it’s great to see you all. Cheers,
+	Brandon Hancock, Alex Wilson:👋
+	
+2025-09-02 18:29:19 From Alex Wilson to Everyone:
+	I would have most likely been an outlier on that app.
+	
+2025-09-02 18:31:47 From Andrew Nanton to Everyone:
+	You could try WSL or dual boot
+	sam, James Rennie:❤️
+	Juan Torres, Brandon Hancock:💡
+	
+2025-09-02 18:32:13 From sam to Everyone:
+	I rock wsl it works well
+	Alex Wilson:👍
+	
+2025-09-02 18:32:49 From Alex Wilson to Everyone:
+	I used wsl as well.
+	
+2025-09-02 18:33:04 From Morgan Cook to Everyone:
+	                                       I also use WSL
+	
+2025-09-02 18:33:09 From James Rennie to Everyone:
+	Me too
+	
+2025-09-02 18:33:13 From Andrew Nanton to Everyone:
+	WSL is fine but I was telling sam and Adam that I recently have been poking at Omarchy and now my Mac feels old and crusty. https://omarchy.org
+	
+2025-09-02 18:34:10 From James Rennie to Everyone:
+	Replying to "WSL is fine but I was telling sam and Adam that I ...":
+	Interesting never heard of this.
+	
+2025-09-02 18:34:13 From Paul Miller to Everyone:
+	Get the cheapy mac the mac mini
+	Andrew Nanton:👍
+	Juan Torres:💡
+	
+2025-09-02 18:34:41 From Alex Wilson to Everyone:
+	I just switched to a Mac as well.  It is a lot easier for programing.
+	Brandon Hancock:🔥
+	
+2025-09-02 18:34:46 From Paul Miller to Everyone:
+	USD1k
+	
+2025-09-02 18:35:20 From Andrew Nanton to Everyone:
+	Replying to "WSL is fine but I was telling sam and Adam that I ...":
+	I am admittedly excited about it being new and flashy, but it’s free to try it out on a pc. I was up and running with a pretty comprehensive dev environment very rapidly.
+	
+2025-09-02 18:38:09 From Brandon Hancock to Everyone:
+	https://a.co/d/0Jz6T7G
+	
+2025-09-02 18:40:15 From Paul Miller to Everyone:
+	Access the Custom GPT - GPT Tool
+	
+2025-09-02 18:40:25 From Paul Miller to Everyone:
+	Access the Template - Google Docs
+	
+2025-09-02 18:41:29 From Morgan Cook to Everyone:
+	Your speaking of a Telos File
+	
+2025-09-02 18:44:09 From Paul Miller to Everyone:
+	https://www.nvidia.com/en-us/startups/
+	Andrew Nanton, Adam:👍
+	
+2025-09-02 18:44:58 From Patrick Chouinard to Everyone:
+	Replying to "Your speaking of a Telos File":
+	https://github.com/danielmiessler/Telos
+	
+2025-09-02 18:46:39 From Fitz to Everyone:
+	@Paul Miller Has the business got to be a limited company?
+	
+2025-09-02 18:46:47 From Paul Miller to Everyone:
+	Replying to "@Paul Miller Has the business got to be a limited ...":
+	yes
+	Fitz:👍
+	
+2025-09-02 18:48:17 From Juan Torres to Everyone:
+	https://www.apple.com/shop/buy-mac/mac-mini
+	
+2025-09-02 18:49:45 From Andrew Nanton to Everyone:
+	https://computers.woot.com/offers/new-apple-macbook-pro-m2-13-3-laptop-24gb-ram-2022z-2?ref=w_gw_dd_3  MacBook Pro M2 with 24GB of RAM and 1TB of storage for $1150 USD - not bad. This is the older one with the Touch Bar, but still a good choice.
+	Juan Torres:🙏🏽
+	
+2025-09-02 18:51:11 From Adam to Everyone:
+	If you get free Google cloud credits, you can just develop there.
+	
+2025-09-02 18:53:40 From Andrew Nanton to Everyone:
+	https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-search-tool
+	
+2025-09-02 18:55:30 From Andrew Nanton to Everyone:
+	Replying to "https://www.apple.com/shop/buy-mac/mac-mini":
+	These are good, and I will also say I have ordered multiple refurb Macs (directly from Apple) - same warranty, and I have had zero issues.
+	
+2025-09-02 18:57:45 From Andrew Nanton to Everyone:
+	If you have a Claude Max plan, strongly recommend https://ccusage.com to track your usage, how much time you have left in your 5h block, and what you would be spending through the API.
+	sam:❤️
+	
+2025-09-02 18:59:28 From sam to Everyone:
+	Got to drop for another meeting
+	Brandon Hancock:👋
+	
+2025-09-02 18:59:38 From Paul Miller to Everyone:
+	Wow that is a win @Al Cole
+	
+2025-09-02 19:00:14 From Morgan Cook to Everyone:
+	Replying to "Your speaking of a Telos File":
+	thats it I really like his fabric prompts
+	
+2025-09-02 19:01:14 From Jake Maymar to Everyone:
+	@Al Cole Amazing work!
+	
+2025-09-02 19:06:51 From Al Cole to Everyone:
+	Replying to "@Al Cole Amazing work!":
+	Thanks!
+	
+2025-09-02 19:10:04 From Andrew Nanton to Everyone:
+	Interesting - I thought quantization generally made models faster and with lower memory consumption but less accurate?
+	
+	Here’s a good post about loading only part of the model onto the GPU, and offloading the “expert” layers into system RAM: https://old.reddit.com/r/LocalLLaMA/comments/1mke7ef/120b_runs_awesome_on_just_8gb_vram/
+	Juan Torres:🙏🏽
+	
+2025-09-02 19:10:10 From Patrick Chouinard to Everyone:
+	Gpt-oss, Gemma3 and Qwen3 are awesome at tool calling
+	Brandon Hancock:🔥
+	
+2025-09-02 19:11:00 From David Stamper to Everyone:
+	Do you have a course covering rpa? Or will that be included in shipkit?
+	
+2025-09-02 19:11:48 From James Rennie to Everyone:
+	I was using open source models.  Issues with JSON response and tool calling.  As a Beta tester at https://venice.ai/ .
+	
+2025-09-02 19:14:07 From James Rennie to Everyone:
+	Replying to "Gpt-oss, Gemma3 and Qwen3 are awesome at tool call...":
+	Interesting I'll have to try Gemma3 with open router and see how that goes.
+	
+2025-09-02 19:15:18 From Patrick Chouinard to Everyone:
+	Replying to "Gpt-oss, Gemma3 and Qwen3 are awesome at tool call...":
+	Actually I tried it locally (Gemma3 14B) and it worked very well for tool call. If you want to test without token cost
+	Juan Torres:🙏🏽
+	
+2025-09-02 19:16:10 From James Rennie to Everyone:
+	What embedding model are you using?
+	
+2025-09-02 19:16:18 From Patrick Chouinard to Everyone:
+	Replying to "Gpt-oss, Gemma3 and Qwen3 are awesome at tool call...":
+	LMStudio actually allow you to call MCP servers (tool call) with local models
+	
+2025-09-02 19:17:45 From David Stamper to Everyone:
+	Yup still here
+	
+2025-09-02 19:17:47 From Paul Miller to Everyone:
+	Getting a mac base (desktop) one to go for - https://www.apple.com/us/shop/buy-mac/mac-mini/apple-m4-chip-with-10-core-cpu-and-10-core-gpu-16gb-memory-256gb (as long as you are comfortable upgrading SSD or getting someone to do it for you else use external drive if not comfortable)
+	
+2025-09-02 19:18:41 From Paul Miller to Everyone:
+	Replying to "Getting a mac base (desktop) one to go for - https...":
+	with 24GB + memory minimum, total USD$800. Pay for more memory if you can afford
+	Juan Torres:🙏🏽
+	
+2025-09-02 19:19:04 From Juan Torres to Everyone:
+	Replying to "Interesting - I thought quantization generally mad...":
+	Right, but it has a task of accuracy, Its having to go slower
+	
+2025-09-02 19:20:29 From Juan Torres to Everyone:
+	Replying to "What embedding model are you using?":
+	Have not picked one yet, but I have been relying on OpenAI embedding models for API based models
+	
+2025-09-02 19:21:40 From Brandon Hancock to Everyone:
+	https://youtu.be/hPzjkQFV5yI?si=pgCuUWt3lvHpFfj4 
+	
+	ADK Browser
+	
+2025-09-02 19:21:46 From Paul Miller to Everyone:
+	Fun at pub. No the guy did not have a ZZ Top beard in real life or lime green jackets or drinking wine they all had beer.
+	
+2025-09-02 19:21:48 From Paul Miller to Everyone:
+	F68AABEB-F86D-4E78-A483-4CE1152CE9B9_1_102_o.jpeg
+	Andrew Nanton:👍
+	Brandon Hancock, Juan Torres:🤣
+	
+2025-09-02 19:22:26 From Brandon Hancock to Everyone:
+	Nerds being nerds! Love it!!
+	
+2025-09-02 19:22:55 From Paul Miller to Everyone:
+	Replying to "Nerds being nerds! Love it!!":
+	Yes tragic stuff. Can’t even have a drink without AI
+	
+2025-09-02 19:23:18 From Al Cole to Everyone:
+	Got to drop - thanks everyone for another great session!
+	Brandon Hancock:👋
+	
+2025-09-02 19:23:28 From Ola Oyo to Everyone:
+	@Patrick Chouinard for the business analysist have you tried https://www.anthropic.com/news/claude-for-financial-services
+	
+2025-09-02 19:24:56 From Andrew Nanton to Everyone:
+	Replying to "Getting a mac base (desktop) one to go for - https...":
+	Upgrading M-series Mac internal SSD requires surface-mount soldering - go external for sure
+	Paul Miller:👍
+	
+2025-09-02 19:25:16 From David Stamper to Everyone:
+	Building this business out is my full time job right now,  but I want to learn so I can continue to build after this business is up and running,  I got lots of ideas lol
+	Brandon Hancock:🔥
+	
+2025-09-02 19:25:26 From Andrew Nanton to Everyone:
+	Thanks everyone, gotta go. Hope to be back next week.
+	Brandon Hancock:👋
+	
+2025-09-02 19:26:04 From Alex Wilson to Everyone:
+	Just having AI do the documentation would be a game changer.  When I was at the bank, they didn’t “trust” AI….  >.<
+	
+2025-09-02 19:26:08 From Brandon Hancock to Everyone:
+	Replying to "Building this business out is my full time job rig...":
+	Love the energy!!
+	
+2025-09-02 19:26:20 From David Stamper to Everyone:
+	@Patrick Chouinard nice beard brother! 
+	Patrick Chouinard:👍
+	
+2025-09-02 19:26:31 From Paul Miller to Everyone:
+	Replying to "Getting a mac base (desktop) one to go for - https...":
+	@Andrew Nanton no solder see - https://www.ifixit.com/Guide/How+to+Replace+the+SSD+in+your+Mac+mini+(2024)/180199
+	
+2025-09-02 19:27:16 From Paul Miller to Everyone:
+	Replying to "Getting a mac base (desktop) one to go for - https...":
+	plug in but carefully
+	
+2025-09-02 19:29:05 From Paul Miller to Everyone:
+	@Patrick Chouinard you are a brave man
+	Patrick Chouinard:🤣
+	
+2025-09-02 19:29:51 From Lijohn Reddy to Everyone:
+	https://github.com/jackwotherspoon/adk-samples/tree/main/agents/brand-search-optimization
+	
+2025-09-02 19:30:57 From Patrick Chouinard to Everyone:
+	Replying to "@Patrick Chouinard for the business analysist have...":
+	Not yet but today my manager asked me to start looking into it.
+	
+2025-09-02 19:40:45 From David Stamper to Everyone:
+	Am I correct in thinking using pub/sub is the right way to ensure my agent doesn't miss any webhooks if it's busy already? 
+	
+2025-09-02 19:43:05 From Chase's VA to Everyone:
+	You have a few minutes left for this meeting, as per your calendar. Learn more about what I can do at https://go.meetgeek.ai/learn
+	
+2025-09-02 19:44:41 From Adam to Everyone:
+	Replying to "Am I correct in thinking using pub/sub is the righ...":
+	You might not even need a web agent for this. I suspect if you POST to the correct address with valid cookies, the web server will return the QR code with other stiff.
+	
+2025-09-02 19:46:38 From Juan Torres to Everyone:
+	https://www.langchain.com/langsmith
+	
+2025-09-02 19:47:03 From Juan Torres to Everyone:
+	It works with CrewAI too, not sure with ADK
+	
+2025-09-02 19:47:58 From Patrick Chouinard to Everyone:
+	@Brandon Hancock just bought Magnet and yes very useful thank you
+	
+2025-09-02 19:48:50 From David Stamper to Everyone:
+	Ok thank you
+	
+2025-09-02 19:51:26 From Patrick Chouinard to Everyone:
+	I use Karabiner-Element to re-map my Ctrl+C+V+A+Z
+	
+2025-09-02 19:52:19 From Patrick Chouinard to Everyone:
+	Replying to "I use Karabiner-Element to re-map my Ctrl+C+V+A+Z":
+	@Alex Wilson
+	
+2025-09-02 19:52:50 From Paul Miller to Everyone:
+	https://wisprflow.ai/
+	
+2025-09-02 19:54:04 From Paul Miller to Everyone:
+	Get the free Pro version on Lenny’s list
+	
+2025-09-02 19:54:38 From Brandon Hancock to Everyone:
+	https://wisprflow.ai/r?BRANDON4879
+	
+2025-09-02 19:55:11 From Ty Wells to Everyone:
+	love it too
+	
+2025-09-02 19:55:44 From Paul Miller to Everyone:
+	https://www.lennysnewsletter.com/p/productpass
+	
+2025-09-02 19:56:59 From David Stamper to Everyone:
+	I've got to go for now, thanks everyone @Brandon Hancock much appreciated! 
+	

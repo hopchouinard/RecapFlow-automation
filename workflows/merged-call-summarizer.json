@@ -1,0 +1,469 @@
+{
+  "id": "5",
+  "name": "Merged Call Summarizer",
+  "nodes": [
+    {
+      "id": "e1000000-0000-4000-8000-000000000001",
+      "name": "Local File Trigger",
+      "type": "n8n-nodes-base.localFileTrigger",
+      "typeVersion": 1,
+      "position": [0, 300],
+      "parameters": {
+        "triggerOn": "folder",
+        "path": "/home/node/watch",
+        "events": ["add"],
+        "options": {
+          "usePolling": true,
+          "awaitWriteFinish": true,
+          "depth": 0,
+          "ignoreInitial": true
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000002",
+      "name": "Code: Validate and Check Partner",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\n\nconst filePath = $json.path;\nconst filename = path.basename(filePath);\n\n// Must be .txt and match expected patterns\nif (!filename.endsWith('.txt')) return [];\n\nconst dateMatch = filename.match(/^(\\d{4}-\\d{2}-\\d{2})/);\nif (!dateMatch) return [];\n\nconst datePrefix = dateMatch[1];\nconst watchDir = '/home/node/watch';\n\n// Determine what type of file arrived and check for partner\nlet fileType;\nlet partnerFile;\nif (filename.includes('-zoom-chat')) {\n  fileType = 'chat';\n  partnerFile = `${watchDir}/${datePrefix}-transcript.txt`;\n} else if (filename.includes('-transcript')) {\n  fileType = 'transcript';\n  partnerFile = `${watchDir}/${datePrefix}-zoom-chat.txt`;\n} else {\n  return []; // Unknown file type\n}\n\nconst bothPresent = fs.existsSync(partnerFile);\n\nif (!bothPresent) {\n  // Partner not here yet — stop and wait\n  return [];\n}\n\n// Both files present — read them\nconst chatFile = fileType === 'chat' ? filePath : `${watchDir}/${datePrefix}-zoom-chat.txt`;\nconst transcriptFile = fileType === 'transcript' ? filePath : `${watchDir}/${datePrefix}-transcript.txt`;\n\nconst chatText = fs.readFileSync(chatFile, 'utf8');\nconst transcriptText = fs.readFileSync(transcriptFile, 'utf8');\n\nreturn {\n  json: {\n    datePrefix,\n    chatText,\n    transcriptText,\n    chatFile,\n    transcriptFile\n  }\n};"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000003",
+      "name": "Code: Merge Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 300],
+      "parameters": {
+        "jsCode": "const mergedText = `# MEETING TRANSCRIPT\\n\\n${$json.transcriptText}\\n\\n# ZOOM CHAT LOG\\n\\n${$json.chatText}`;\n\nreturn {\n  json: {\n    ...$json,\n    mergedText\n  }\n};"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000004",
+      "name": "Code: Create Output Folder",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst datePrefix = $json.datePrefix;\nconst outputDir = `/home/node/output/${datePrefix}`;\nif (!fs.existsSync(outputDir)) {\n  fs.mkdirSync(outputDir, { recursive: true });\n}\nreturn { json: { ...$json, outputDir } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000005",
+      "name": "Code: Save transcript.txt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir;\nfs.writeFileSync(`${outputDir}/transcript.txt`, $json.transcriptText, 'utf8');\nreturn { json: { ...$json } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000006",
+      "name": "LLM: Extract Signal",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [1250, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.mergedText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are analyzing the transcript and Zoom chat log of a weekly AI community call.\n\nYour job is to extract only the information that would still be useful to a community member reading it one week later.\n\nFocus especially on:\n- links and shared resources\n- useful question-and-answer pairs\n- practical insights and recommendations\n- tools, platforms, frameworks, and concepts mentioned\n- open questions or follow-ups worth revisiting\n\nReturn your analysis in the following structure:\n\n# Extracted Chat Signal\n\n## Shared Resources\nFor each useful link or resource, provide:\n- Title\n- URL if present\n- Why it matters\n\n## Key Q&A\nFor each useful question-and-answer pair, provide:\n- Question\n- Answer\n- Short synthesis if multiple people contributed\n\n## Key Insights\nList the most useful ideas, recommendations, warnings, practical tips, or mental models shared in the chat.\n\n## Tools and Concepts Mentioned\nList important tools, frameworks, products, or concepts mentioned, with a short explanation of why they mattered.\n\n## Follow-Ups Worth Revisiting\nList unresolved questions, open threads, or topics that would be worth revisiting in a future call.\n\nRules:\n- Ignore greetings, jokes, reactions, filler, emojis, and casual banter\n- Ignore duplicate content unless repetition adds meaning\n- Do not invent missing context\n- Do not force content into a section if nothing valuable is present\n- Keep only high-value signal\n- Rewrite messy chat language into clear professional language without changing meaning\n\nNow analyze the following meeting transcript and chat log:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000007",
+      "name": "OpenRouter Chat Model 1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [1250, 500],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000008",
+      "name": "Code: Save extracted-signal.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1500, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.text;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000009",
+      "name": "LLM: Community Post",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [1750, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.signalText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nUse the following structure:\n\n📎 SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n❓ KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n💡 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n🛠️ TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n🔄 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\n📝 SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\nRules:\n- Output PLAIN TEXT only — no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000010",
+      "name": "OpenRouter Chat Model 2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [1750, 500],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000011",
+      "name": "Code: Save community-post.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2000, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst communityPostText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post.md`, communityPostText, 'utf8');\nreturn { json: { communityPostText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000012",
+      "name": "LLM: Compress Post",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [2250, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.communityPostText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000013",
+      "name": "OpenRouter Chat Model 3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [2250, 500],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000014",
+      "name": "Code: Save community-post-compressed.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2500, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst compressedText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post-compressed.md`, compressedText, 'utf8');\nreturn { json: { compressedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000015",
+      "name": "Code: Calculate Next Tuesday",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2750, 300],
+      "parameters": {
+        "jsCode": "const datePrefix = $json.datePrefix;\nconst callDate = new Date(datePrefix + 'T12:00:00Z');\nconst dayOfWeek = callDate.getDay();\nconst daysUntilTuesday = (2 - dayOfWeek + 7) % 7 || 7;\nconst nextTuesday = new Date(callDate);\nnextTuesday.setDate(callDate.getDate() + daysUntilTuesday);\n\nconst months = ['January','February','March','April','May','June','July','August','September','October','November','December'];\nconst day = nextTuesday.getUTCDate();\nconst suffix = day === 1 || day === 21 || day === 31 ? 'st' : day === 2 || day === 22 ? 'nd' : day === 3 || day === 23 ? 'rd' : 'th';\nconst formattedDate = `${months[nextTuesday.getUTCMonth()]} ${day}${suffix}`;\nconst inviteDate = `${nextTuesday.getUTCFullYear()}-${String(nextTuesday.getUTCMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;\n\nreturn {\n  json: {\n    compressedText: $json.compressedText,\n    outputDir: $json.outputDir,\n    formattedDate,\n    inviteDate,\n    datePrefix\n  }\n};"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000016",
+      "name": "LLM: Weekly Invite",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [3000, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ 'Next call date: Tuesday ' + $json.formattedDate + ' at 6PM ET\\n\\nHere is last week\\'s community post:\\n\\n' + $json.compressedText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) — A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section — Copy EXACTLY as written below, including the emoji:\n\n\ud83d\udcde HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n\ud83d\udc49 Reply to this post with your questions before the call\n\ud83d\udc49 If you submit a question and you're on the call, you go first\n\ud83d\udc49 We work through questions in the order they came in\n\ud83d\udc49 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) — Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section — Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n\ud83d\udd17 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n\ud83d\udcc5 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic — like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read — not a wall of text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000017",
+      "name": "OpenRouter Chat Model 4",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [3000, 500],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000018",
+      "name": "Code: Save weekly-invite.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3250, 300],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir || $('Code: Create Output Folder').item.json.outputDir;\nconst inviteDate = $('Code: Calculate Next Tuesday').item.json.inviteDate;\nconst inviteText = $json.text;\nfs.writeFileSync(`${outputDir}/${inviteDate}-weekly-invite.md`, inviteText, 'utf8');\nreturn { json: { inviteText, outputDir, inviteDate } };"
+      }
+    }
+  ],
+  "connections": {
+    "Local File Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code: Validate and Check Partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Validate and Check Partner": {
+      "main": [
+        [
+          {
+            "node": "Code: Merge Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Merge Content": {
+      "main": [
+        [
+          {
+            "node": "Code: Create Output Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Create Output Folder": {
+      "main": [
+        [
+          {
+            "node": "Code: Save transcript.txt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save transcript.txt": {
+      "main": [
+        [
+          {
+            "node": "LLM: Extract Signal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Extract Signal": {
+      "main": [
+        [
+          {
+            "node": "Code: Save extracted-signal.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save extracted-signal.md": {
+      "main": [
+        [
+          {
+            "node": "LLM: Community Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Community Post": {
+      "main": [
+        [
+          {
+            "node": "Code: Save community-post.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save community-post.md": {
+      "main": [
+        [
+          {
+            "node": "LLM: Compress Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Compress Post": {
+      "main": [
+        [
+          {
+            "node": "Code: Save community-post-compressed.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save community-post-compressed.md": {
+      "main": [
+        [
+          {
+            "node": "Code: Calculate Next Tuesday",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Calculate Next Tuesday": {
+      "main": [
+        [
+          {
+            "node": "LLM: Weekly Invite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Weekly Invite": {
+      "main": [
+        [
+          {
+            "node": "Code: Save weekly-invite.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Extract Signal",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Community Post",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Compress Post",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Weekly Invite",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": []
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.patchoutech.sync-zoom-chats</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/pchouinard/scripts/sync-zoom-chats.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+        <string>/Users/pchouinard/zoom-chats</string>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/Users/pchouinard/.zoom-chat-sync.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/pchouinard/.zoom-chat-sync.log</string>
+</dict>
+</plist>
