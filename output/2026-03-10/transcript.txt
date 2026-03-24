@@ -1,0 +1,1583 @@
+[00:00:21] Marc Juretus: Good evening, Patrick.
+[00:00:23] Patrick Chouinard: How's it going?
+[00:00:25] Marc Juretus: Pretty good.
+[00:00:27] Marc Juretus: You?
+[00:00:28] Patrick Chouinard: Not too bad.
+[00:00:30] Patrick Chouinard: We're spending a little bit more time home this week because of an upcoming high storm.
+[00:00:38] Marc Juretus: Yeah, we don't have that problem down here.
+[00:00:40] Marc Juretus: We're oddly above 70 this week.
+[00:00:44] Patrick Chouinard: Tomorrow we're talking about, I think it was two inches of, one and a half, two inches of ice rain.
+[00:00:52] Patrick Chouinard: So, yeah.
+[00:00:55] Marc Juretus: Wow.
+[00:00:56] Marc Juretus: Yeah, that's a bad idea going on then.
+[00:00:59] Patrick Chouinard: on left.
+[00:00:59] Patrick Chouinard: We're He's
+[00:01:00] Patrick Chouinard: That's why I'm not.
+[00:01:07] David Stamper: How's it going, guys?
+[00:01:09] Patrick Chouinard: Good, good.
+[00:01:11] Marc Juretus: Good.
+[00:01:13] David Stamper: Didn't help.
+[00:01:14] David Stamper: I was trying to get rid of the black side of my face, but it's just too dark on this side.
+[00:01:20] David Stamper: I can't do anything about it.
+[00:01:23] Patrick Chouinard: Don't worry.
+[00:01:24] Patrick Chouinard: Don't worry.
+[00:01:27] David Stamper: Apologies.
+[00:01:31] Patrick Chouinard: Hi, Paul.
+[00:01:34] Paul Miller: I'm just logging back in again.
+[00:01:36] Patrick Chouinard: Sorry.
+[00:01:36] Patrick Chouinard: No problem.
+[00:01:37] Patrick Chouinard: Take your time.
+[00:02:03] Patrick Chouinard: Hey, Morgan.
+[00:02:06] Morgan Cook: How's it going, guys?
+[00:02:08] Morgan Cook: Good.
+[00:02:14] Patrick Chouinard: From what I can see, we have a couple of demos tonight.
+[00:02:17] Patrick Chouinard: It's going to be fun.
+[00:02:18] Morgan Cook: Oh, yeah.
+[00:02:23] Morgan Cook: I created a website with Astro and Cloud.
+[00:02:29] Morgan Cook: We talked about that a little bit last week.
+[00:02:31] Patrick Chouinard: Yep.
+[00:02:33] Morgan Cook: It went pretty smooth.
+[00:02:34] Morgan Cook: That was pretty clean.
+[00:02:37] Morgan Cook: Mostly static with a little bit of their D1 back end and R2 back end.
+[00:02:45] Patrick Chouinard: Yeah, love Astro as a static website platform.
+[00:02:52] Morgan Cook: Yeah.
+[00:02:55] Patrick Chouinard: Actually, it's going to be part of something I want to show tonight.
+[00:03:05] Ty Wells: How's it going?
+[00:03:06] Patrick Chouinard: Good, good.
+[00:03:07] Morgan Cook: Is that real, Ty?
+[00:03:08] Patrick Chouinard: Yeah.
+[00:03:09] Ty Wells: What's that?
+[00:03:10] Morgan Cook: Is that background real?
+[00:03:13] Ty Wells: Yeah.
+[00:03:15] Ty Wells: As real as it could get.
+[00:03:20] Patrick Chouinard: I'm envious.
+[00:03:22] Patrick Chouinard: We're waiting for an ice storm tomorrow.
+[00:03:24] Ty Wells: Are you?
+[00:03:25] Patrick Chouinard: I'm sorry.
+[00:03:26] Ty Wells: My apologies.
+[00:03:28] Ty Wells: You know, if the weather's not here, it's got to be someplace else.
+[00:03:32] Ty Wells: Somebody has to get it.
+[00:03:37] Marc Juretus: That's like somebody being hungry and he's sitting there eating a bag of chips, man.
+[00:03:41] Marc Juretus: That's crazy.
+[00:03:43] Ty Wells: Actually, I had some soybeans, some edamame, so does that count?
+[00:03:53] Marc Juretus: What kind of vehicle do you drive, Patrick?
+[00:03:55] Patrick Chouinard: Uh, Ford Edge, 2022.
+[00:04:01] Marc Juretus: Is that good or bad in that type of crazy weather?
+[00:04:05] Paul Miller: Yeah, good question.
+[00:04:07] Patrick Chouinard: Since I'm not expecting to drive tomorrow, it's going to be very, very good, but no, it's not that bad, actually.
+[00:04:15] Patrick Chouinard: It's all-wheel drive, so it's not a Jeep, but it's going to get me safely to most places in most circumstances.
+[00:04:24] David Stamper: My wife has a 2016 Edge Platinum.
+[00:04:28] David Stamper: Pretty nice little vehicle.
+[00:04:31] David Stamper: I mean, I live in Idaho, so we get increment weather pretty much year-round, and it does all right.
+[00:04:38] David Stamper: I drive a Raptor, bro, so I'm going wherever the hell I want.
+[00:04:46] Patrick Chouinard: Well, right now might be going a little bit less far away with the price of gas that just exploded.
+[00:04:56] David Stamper: I don't care.
+[00:04:57] David Stamper: I knew that when I bought it, I knew-
+[00:05:00] David Stamper: It was going to be a gas-guzzling hog, and I was prepared for it.
+[00:05:05] David Stamper: I mean, it's got a 6.2-liter V8, so it goes through gas a lot, but it sounds bad- when it does it.
+[00:05:16] Marc Juretus: So sometimes you have to use a second credit card at the pump, is what you're saying?
+[00:05:22] David Stamper: Only when you hit your daily max.
+[00:05:25] David Stamper: Yeah, if you've got to go out of town, I mean, you're not picking that up.
+[00:05:30] Paul Miller: Does it called a premium subscription pie for it?
+[00:05:34] David Stamper: Yeah, so those are expensive in themselves.
+[00:05:38] David Stamper: Like, I had to give Cursor up because it's just too expensive to try and do it on the Cursor plan.
+[00:05:43] David Stamper: So I ended up incorporating Claude into my Cursor IDE and building a multi-agent Claude setup to where every time I ask Claude to do it, it kind of just delegates it now to its sub-agents.
+[00:05:59] David Stamper: .
+[00:05:59] David Stamper: .
+[00:05:59] David Stamper: .
+[00:05:59] David Stamper: .
+[00:05:59] David Stamper: you.
+[00:06:05] David Stamper: Honestly, what I'm building, I didn't realize I was going to be building something this entailed when I started.
+[00:06:12] David Stamper: I think I quickly got scope creep and blew this  up.
+[00:06:19] Paul Miller: Join the club.
+[00:06:21] Paul Miller: Welcome to the family.
+[00:06:24] David Stamper: Yeah, but I'm glad I did, because what I've created, I'm pretty proud of.
+[00:06:29] David Stamper: And it's not done, obviously, but so far, I'm really happy with it.
+[00:06:35] Morgan Cook: Yeah, it's real easy to get out of hand when it's so easy to just execute code in the first place.
+[00:06:41] David Stamper: Yeah, having the ability to have somebody else write it or something else write it is definitely nice.
+[00:06:51] David Stamper: I also discovered, though, that it lies to you all the time.
+[00:06:56] David Stamper: And it tells you  is done and it is not done.
+[00:07:00] David Stamper: Like constant, um, you gotta, you really gotta just keep drilling at it to finally end up with, with an agent that does what you want it to do.
+[00:07:10] Ty Wells: And hallucination is a thing.
+[00:07:12] Ty Wells: It's a real thing.
+[00:07:14] David Stamper: Yeah.
+[00:07:15] David Stamper: So what do you guys do?
+[00:07:16] David Stamper: What do you guys have designed for your programs to prevent or cut down on the potential for hallucination and drift?
+[00:07:25] Patrick Chouinard: Uh, for me, it's a context, context, context.
+[00:07:29] Patrick Chouinard: Basically I build my specs, I build, I implement from specs and I update spec at the end of, uh, every feature.
+[00:07:39] Patrick Chouinard: Every time I finished something, I update the specs that, and I update the roadmap that is the map to the spec, meaning I put all the chance on my favor.
+[00:07:49] Patrick Chouinard: It's not like it's going to obliterate, uh, hallucination altogether, but the more context you have about what's done, what's not done, the least amount of chance you have it.
+[00:08:00] Patrick Chouinard: going to hallucinate on what it has completed yet.
+[00:08:03] David Stamper: I like that, but I also looked at hallucination and drift as an architecture problem more than just a context problem.
+[00:08:14] David Stamper: We're feeding these things tons of context, and about 90% of it is probably useless, honestly, right?
+[00:08:22] David Stamper: So to your point, better prompting, better context is very important.
+[00:08:28] David Stamper: But also, how do you train them on only what you want them to be trained on and cut out the rest of it so that you have one ultimately intelligent agent at the end of it?
+[00:08:41] David Stamper: And my solution was obviously the context, like you said, right?
+[00:08:47] David Stamper: But also to build in ephemeral spawns.
+[00:08:51] David Stamper: So by having a Golden Master and a training environment that I can go and train only what I want to train that Golden Master on...
+[00:08:59] David Stamper: ...
+[00:08:59] David Stamper: So
+[00:09:00] David Stamper: It has ephemeral spawns.
+[00:09:01] David Stamper: So every other interaction just goes away when it's done.
+[00:09:05] David Stamper: And I'm able to, with sentiment analysis, flag stuff in the real world that needs to be trained on the Golden Master.
+[00:09:16] David Stamper: Does that make sense?
+[00:09:19] Patrick Chouinard: It's memory management, ultimately.
+[00:09:23] David Stamper: Yeah, mean, it's preventing, honestly, most of the memory from getting saved and only saving the things that it's like, oh, we need more training in this area.
+[00:09:31] David Stamper: And that's based on the sentiment analysis.
+[00:09:35] Patrick Chouinard: Yeah, but that's the thing.
+[00:09:36] Patrick Chouinard: It's like good context is not equivalent to more context.
+[00:09:40] David Stamper: No.
+[00:09:41] Patrick Chouinard: can have very valuable context without having tons of it.
+[00:09:45] David Stamper: Right.
+[00:09:46] David Stamper: So that's what I'm trying to train the sentiment analysis on now.
+[00:09:50] David Stamper: It's not great at it yet, but it's getting it.
+[00:09:54] David Stamper: It's like, it's starting to understand that what I'm looking for is areas that I'm lacking.
+[00:10:00] David Stamper: That my AI is lacking in knowledge, and then it offers recommendations for training on that.
+[00:10:08] David Stamper: But yeah, I was curious if there was something similar architecture-wise that you guys had come up with that I might want to try and implement.
+[00:10:18] Ty Wells: David, I put a link in the chat there.
+[00:10:21] Ty Wells: That's a project that I'm working on just to solve that hallucination issue.
+[00:10:27] Ty Wells: Take a look at it and see.
+[00:10:31] Patrick Chouinard: Ty, are you sure there's not a typo?
+[00:10:34] Patrick Chouinard: Because mine says the site can't be reached.
+[00:10:41] Ty Wells: That's no bueno.
+[00:10:43] Paul Miller: Get your DevOps team onto it, Ty.
+[00:10:47] Ty Wells: You mean spin up another instance?
+[00:10:50] Paul Miller: Yeah, exactly.
+[00:10:53] Paul Miller: All right, guys.
+[00:10:55] Paul Miller: We have another week.
+[00:10:57] Paul Miller: I am the...
+[00:11:00] Paul Miller: Revolving host this week, so Patrick can enjoy the call and we can hear more about what he's doing.
+[00:11:09] Paul Miller: But I've put a list up there in terms of the speaking order.
+[00:11:18] Paul Miller: So, Patrick, did we have any questions freeloaded for this week?
+[00:11:23] Patrick Chouinard: Patrick Absolutely.
+[00:11:25] Patrick Chouinard: Well, we have one from David who asked to present us his project so we can have some feedback on it.
+[00:11:32] Patrick Chouinard: And we have some other, but, oh, we have one from Timothy afterward.
+[00:11:40] Patrick Chouinard: There's one more, but I don't see the person in the call yet.
+[00:11:44] Paul Miller: I'll tell you if I see.
+[00:11:44] Paul Miller: Patrick Chouinard,.D.: Well, should we start with you, David, then?
+[00:11:48] Paul Miller: And if you want to go through what you want to present, what you're looking for on the feedback side?
+[00:11:56] David Stamper: David Yeah.
+[00:11:56] David Stamper: So, as far as feedback...
+[00:11:59] David Stamper: Patrick
+[00:12:00] David Stamper: I'm going to just show you guys what I've created so far and give any explanations for any questions that you guys have.
+[00:12:06] David Stamper: But really the feedback that I'm looking at receiving hopefully from you guys is about potentially different engines to use than what I've chosen to do and potential design changes.
+[00:12:20] David Stamper: So I can explain the way that things work from start to finish, and then you guys let me know what you think is  so I can fix that.
+[00:12:32] David Stamper: Yeah?
+[00:12:34] David Stamper: All right.
+[00:12:35] David Stamper: Sweet.
+[00:12:36] David Stamper: I got to figure out how to share my screen.
+[00:12:38] David Stamper: So give me just a moment.
+[00:12:42] David Stamper: Oh, somebody's got to give me permission.
+[00:12:48] Paul Miller: Patrick, you've got the con.
+[00:12:53] Patrick Chouinard: Yeah, haven't seen the request coming up yet.
+[00:12:57] Paul Miller: Yeah.
+[00:12:58] Paul Miller: So just click on.
+[00:13:00] Paul Miller: Share and Scene Request, David?
+[00:13:03] David Stamper: I can't.
+[00:13:05] David Stamper: As soon as I click on Share Screen, it says Disabled Share, Host Disabled Attendee Screen Sharing.
+[00:13:12] Patrick Chouinard: Okay.
+[00:13:14] Patrick Chouinard: Check.
+[00:13:15] Patrick Chouinard: Ah, there we go.
+[00:13:18] Patrick Chouinard: Can you try it again?
+[00:13:20] David Stamper: No further.
+[00:13:23] David Stamper: Okay.
+[00:13:24] David Stamper: So, name in the program salesvelocity.ai, this is the website portion of it, essentially just goes through and explains what it is.
+[00:13:37] David Stamper: I have 54 AI agents under an orchestration right now, but essentially this program is built to help small businesses do everything from lead generation, and scraping to competitor analysis for S.
+[00:14:02] David Stamper: It will do everything from creating blogs to doing demographic research.
+[00:14:10] David Stamper: If you ask it to, you can say, hey, Jasper, research our demographic and find out what is a hot topic in social media amongst our demographic right now and create a video that addresses how salesvelocity.ai can complement that.
+[00:14:30] David Stamper: or improve that or whatever the situation may be.
+[00:14:33] David Stamper: It'll automatically go and do all that.
+[00:14:35] David Stamper: It'll do the research, it'll put it together, and it'll generate the video.
+[00:14:41] David Stamper: Up until I decided to change the video generation engine, it did that.
+[00:14:48] David Stamper: Right now, I'm not sure if it will, so we're going to find out.
+[00:14:53] David Stamper: But essentially, we're just going to copy a prompt that we want to give it for.
+[00:15:00] David Stamper: For a video, and I'm just going to paste it in here and tell it to go do its thing.
+[00:15:08] David Stamper: It is a little bit slow, so if you guys have recommendations on that, how to get my AI to speed up a little bit, that would be nice.
+[00:15:15] David Stamper: But it's a little bit slow, but I incorporated Hedra as the video generator, so it has all these different characters to choose from.
+[00:15:26] David Stamper: And these ones down here that have the gray are actually a way that I developed to create my own custom characters within Hedra, and then use them in my videos.
+[00:15:39] David Stamper: Not everybody's going to want to do that, but literally just takes a green screen of you doing a 360, and you can input it, and now you're a character in your videos, so you don't ever have to do your own acting or anything like that.
+[00:15:52] David Stamper: What it'll incorporate sits on its own CRM with a fully-adaptive...
+[00:16:00] David Stamper: So if you want to change the schemas, if you want to change for various different industries, for example, custom objects, drivers and vehicles might be one, for example, all of that has auto-adaption already built into it.
+[00:16:20] David Stamper: So when you make a change, it actually makes it in the database as well for you.
+[00:16:25] David Stamper: Sets it all up.
+[00:16:28] David Stamper: The outreach, email campaigns, an email studio, I don't know if you guys can see the email writer up at the top or not, because I'm not really sure what you're looking at, sorry.
+[00:16:43] David Stamper: But you can come in and design the email as far as just like how many people you're going to send it to and where, but you can also build by putting together like a advertisement email.
+[00:16:58] David Stamper: So your email campaign.
+[00:16:59] David Stamper: .
+[00:17:00] David Stamper: These are also automated.
+[00:17:01] David Stamper: All of it is orchestrated through Jasper, and it's not quite done yet, but it'll include voice AI agents, chatbots, and then the agents that actually go out and do the research, build the blogs, all that.
+[00:17:19] David Stamper: And when I'm done, it'll be a multi-tenant SaaS.
+[00:17:23] David Stamper: It's also capable of migrating your website just by providing the URL, which, again, is already started.
+[00:17:35] David Stamper: It's not beautiful yet, but it will be a drag and drop when it's done that's a lot more beautiful.
+[00:17:43] David Stamper: It works.
+[00:17:44] David Stamper: It's just ugly.
+[00:17:48] Paul Miller: Wow.
+[00:17:49] David Stamper: That's it.
+[00:17:50] Paul Miller: Pretty, so what particular feedback are you looking for, David?
+[00:17:55] David Stamper: So the engines that I've used, so, for example, with Hydra, do you guys know of
+[00:18:00] David Stamper: A better, more affordable video engine that provides, uh, comparable results.
+[00:18:12] Patrick Chouinard: Not on my end, um, with video generation, actually it's, uh, I would have loved to, for Mitch to be here, he's our resident expert with, uh, actually that's one person you might want to reach out to, uh, in the community.
+[00:18:29] Patrick Chouinard: Uh, he's, uh, like I said, our resident expert about the video generation.
+[00:18:35] Patrick Chouinard: It's, uh, Mitchell, uh, McCauley.
+[00:18:39] David Stamper: Okay.
+[00:18:41] David Stamper: Yeah.
+[00:18:42] Paul Miller: Yeah.
+[00:18:43] Paul Miller: If you, if you reach out, if you go into the, um, the school community and reach out directly to, to Mitch through his contact on there, he's, he's done a lot of this automated video generation.
+[00:18:57] Paul Miller: He's probably got the deepest knowledge in the,
+[00:19:01] Paul Miller: Yeah, he'd be the one to ask about that one.
+[00:19:04] David Stamper: You could really use that.
+[00:19:06] David Stamper: Other thoughts, like, when I was building this out, because I'm not as technical as you guys, most of this 's vibe-coded over repetition and just beat my head against the wall until I got it to work, right?
+[00:19:19] David Stamper: So, like, I can read and write basic code.
+[00:19:24] David Stamper: Basic code.
+[00:19:26] David Stamper: And this is all a little bit over my head.
+[00:19:30] David Stamper: So I've tried to build this for people like me.
+[00:19:35] David Stamper: I'm a small business owner who doesn't want to have to learn everything there is about AI in order to use it, right?
+[00:19:43] David Stamper: So my onboarding for this program is essentially it's guided by the AI.
+[00:19:53] David Stamper: Everything is made to where the user comes on to my website, clicks.
+[00:20:00] David Stamper: It's free trial, and the way that all this stuff is preloaded for them and tailored to what they're going to need and it's not overwhelming is that they select what I call an industry template.
+[00:20:14] David Stamper: The industry template has all of the different personas for every one of the agents dialed into that industry and what that agent would do for that industry versus a different industry.
+[00:20:27] Juan Torres: Hey, David, why did you decide to use Hydra in the first place as your diffusion model?
+[00:20:36] David Stamper: My Hydra as the video generator?
+[00:20:41] David Stamper: Honestly, because for what I asked it to do, gave me the best results the first time.
+[00:20:49] David Stamper: So I took a picture of myself and I said, I want you to create a character from this image.
+[00:21:00] David Stamper: As an anime character.
+[00:21:03] David Stamper: And I did this whole like, video of, or not video, but several videos of me being a superhero and Pipe Drive being a villain.
+[00:21:20] David Stamper: Because Pipe Drive sucks .
+[00:21:23] David Stamper: And I wanted to, you know, exemplify that as much as I could in my video.
+[00:21:27] David Stamper: And I told her I wanted to Pipe Drive to have like, special abilities, like, you know, that's one out of like, 30 clips that it made for that video.
+[00:21:44] David Stamper: But like, it just did a really good job.
+[00:21:49] Juan Torres: Yeah, there's a website called OpenAI.
+[00:21:53] Juan Torres: It allows you to use several diffusion models for beta generation.
+[00:21:58] Juan Torres: Um, you may want to.
+[00:22:00] Juan Torres: To replicate the same prompt on the same video for that one.
+[00:22:04] Juan Torres: But I don't know.
+[00:22:05] Juan Torres: I am not very knowledgeable.
+[00:22:08] Juan Torres: What was that?
+[00:22:08] David Stamper: You mean like ensemble?
+[00:22:10] David Stamper: So giving one prompt to multiple different generators and seeing what they each come up with?
+[00:22:16] Juan Torres: Yeah.
+[00:22:17] Juan Torres: In open art, there's actually a story mode.
+[00:22:20] Juan Torres: So you can create several slices of like a particular, you give it a picture, right?
+[00:22:26] Juan Torres: You can upload several pictures.
+[00:22:27] Juan Torres: It inputs, you know, several prompts and then click generate on each one of them.
+[00:22:33] Juan Torres: And then you can see how well it does.
+[00:22:37] Juan Torres: It's not specialized for comparing contrast.
+[00:22:40] Juan Torres: It's more like a storyboard in order to generate a story.
+[00:22:43] Juan Torres: But for your case, I think since, I mean, it has several models.
+[00:22:47] Juan Torres: has Flux.
+[00:22:48] Juan Torres: It has C-Dream.
+[00:22:49] Juan Torres: It has Heliux.
+[00:22:50] Juan Torres: It has Flux.
+[00:22:53] Juan Torres: Stable Diffusion.
+[00:22:55] Juan Torres: So I recommend, I put the link on the, on the, on the, on the chat.
+[00:22:59] Juan Torres: Okay.
+[00:23:00] Juan Torres: But I think for you, it could be helpful.
+[00:23:03] David Stamper: Yeah, I mean, I am open to all that.
+[00:23:07] David Stamper: So I'm going to be, if you guys can leave this up for minute.
+[00:23:10] Juan Torres: it gives you a couple of credits for free if you sign up, I think.
+[00:23:14] David Stamper: Okay.
+[00:23:16] Paul Miller: So really comprehensive, David.
+[00:23:18] Paul Miller: And wow, it's really cool.
+[00:23:23] Paul Miller: What's the thinking in terms of onboarding someone?
+[00:23:27] Paul Miller: Would they go for a plan that has all functionality or is there a light entry point?
+[00:23:33] Paul Miller: Because someone might want to join and say, oh, I really like this function.
+[00:23:37] Paul Miller: I want to start with that.
+[00:23:39] David Stamper: And then you kind of bring them into it.
+[00:23:44] David Stamper: I don't feature gate.
+[00:23:47] David Stamper: Every single feature is going to be available from day one.
+[00:23:51] David Stamper: But I don't want it to be overwhelming.
+[00:23:53] Paul Miller: That's a lot of  for somebody.
+[00:23:55] David Stamper: Yeah, it's a lot.
+[00:23:57] Paul Miller: It's a lot.
+[00:23:57] David Stamper: Gotcha.
+[00:23:58] David Stamper: So here's the.
+[00:24:00] David Stamper: I there's a lot of things that are built into this, for example, e-commerce, right?
+[00:24:07] David Stamper: I'm not going to use e-commerce because I'm going to be a SaaS.
+[00:24:11] David Stamper: So it doesn't make any sense.
+[00:24:12] David Stamper: So during the onboarding, you're going to indicate what your plans are, what you need.
+[00:24:18] David Stamper: And then all this is going to be grayed out.
+[00:24:21] Paul Miller: It's never going to be fired up.
+[00:24:23] David Stamper: And if you go in the settings, there's actually a page in here where you can go and turn off all your features, all your individual features.
+[00:24:31] David Stamper: So it'll gray them out over here, or it'll just completely hide them from the nav menu.
+[00:24:38] David Stamper: But really, it's just a grayed out feature that you're not using.
+[00:24:41] David Stamper: Then if you ever decide that you want to come back in and turn it on, you can't.
+[00:24:45] David Stamper: But yeah, I don't know exactly what page.
+[00:24:48] David Stamper: So one thing about this that you guys might be able to help me with, too, is, is there a tool to help with navigation?
+[00:24:58] David Stamper: Like there are.
+[00:25:00] David Stamper: There's so many things built into this that the navigation, I forget where the hell I'm going all the time, I have to ask Jasper to navigate me there, which is cool that it'll do that, but, you know, it's also, like.
+[00:25:16] Ty Wells: I think, David, that tells you there's context overload if you can't figure out where to go, and it's happened to me, don't get me wrong, you just keep building and building and building and hope they come.
+[00:25:30] Ty Wells: And really, it should be the reverse, right?
+[00:25:33] Ty Wells: What is the, what is the need, what are they willing to pay for?
+[00:25:36] Ty Wells: Obviously, those are the features you focus on first, but yes, if you're getting lost, yeah, we got to scale down.
+[00:25:45] David Stamper: And so what I've been doing.
+[00:25:46] David Stamper: Oh I'm not going to do that, I've already built it, so now it's a navigation issue.
+[00:25:51] Ty Wells: Sorry, yeah, that's so, so that's what I was going to tell you.
+[00:25:53] Ty Wells: What I do is when I'm onboarding in an application, now I have a, like a wizard.
+[00:26:00] Ty Wells: And that's the basic, and you could always switch between the two, because you have the advance, you have every feature.
+[00:26:06] Ty Wells: So just to make the context, what's being displayed in the UI, just easier, right?
+[00:26:14] Ty Wells: You go into, you know, sales, you go into sales, and you just have a couple of buttons, a couple of things you can do.
+[00:26:19] Ty Wells: You can only do one thing at a time.
+[00:26:21] Ty Wells: So seeing a bunch of things will overwhelm you, right?
+[00:26:25] Ty Wells: And sort of, that's how I've been approaching it lately, in terms of trying to lower the amount of context that I'm putting out there.
+[00:26:32] David Stamper: Yeah, I'm completely overwhelmed by my own menu.
+[00:26:36] David Stamper: I'm not gonna lie.
+[00:26:37] David Stamper: It's just, look, this is only with a couple of them open, it's already maxed out.
+[00:26:42] David Stamper: Now it's scrollable.
+[00:26:44] David Stamper: And I'm still opening Windows.
+[00:26:48] Patrick Chouinard: And that's probably something that's going to tell you that although it's noble not to want to feature gate, the other side of the coin is if you offer every feature.
+[00:27:00] Patrick Chouinard: To everyone all the time, even though they don't use them, you still have to support the infrastructure to serve that.
+[00:27:06] Patrick Chouinard: So there's a cost to not FeatureGate because honestly, as a customer, if I know that the price I pay is actually financing tons of tools I never use, it's not an incentive on my end either.
+[00:27:21] Patrick Chouinard: So you have to be careful about, yeah, it's fun to say everybody has access to everything.
+[00:27:26] Patrick Chouinard: There's a cost to do that.
+[00:27:28] David Stamper: Yeah, I agree.
+[00:27:29] David Stamper: I think that was the point of making it to where during the onboarding, if, if you're not using that tool, it gets grayed out is because I was getting overwhelmed and I wanted it to gray out, especially the e-commerce crap, because I was like, I'm really not worried about e-commerce right now.
+[00:27:47] David Stamper: But yeah, it's definitely a thing of where I'm getting overwhelmed by too, too much, because it is a huge system, but I've been working on it now for what, eight months now?
+[00:27:59] David Stamper: to go.
+[00:28:00] David Stamper: It didn't start out as this system.
+[00:28:04] David Stamper: You guys are going to laugh, but this is like half the system.
+[00:28:09] David Stamper: This is just the CRM and marketing end of a transportation compliance agency that I still plan on fully automating.
+[00:28:19] David Stamper: So it will be done.
+[00:28:22] David Stamper: But in the meantime, I wanted to get this done first.
+[00:28:27] Paul Miller: So, David, before I, Tom's got a suggestion as well, but before I pass you to Tom, one thing you might want to think about is in Claude or whatever your preferred AI is, build some custom user kind of personas and say, well, look, I'm this persona based on my deep research of the market.
+[00:28:55] Paul Miller: That persona wants to see that mixture of potential.
+[00:29:03] Paul Miller: And then make those sort of pop up.
+[00:29:07] Paul Miller: It's like that wizard kind of thing with Ty, but do a bit of pre-research in terms of what people want to see.
+[00:29:16] Paul Miller: I've just had a comprehensive tool that I've built because I kind of wanted to have all the features available for that tool to the users, but the users were just so overwhelmed.
+[00:29:26] Paul Miller: And this was a person that was a specialist in that area, and they were overwhelmed.
+[00:29:32] Paul Miller: So I got the AI to limit down what needs to be in the navigator requirements based on, well, where's the starting point as they go on the journey with getting familiar with the app?
+[00:29:44] Paul Miller: So rather than having it grayed out, it's even dynamically not there, but they can add it when they're at that stage.
+[00:29:52] Paul Miller: So maybe take them to a, you're a newbie with the platform, and then you go to.
+[00:29:59] Paul Miller: Yeah.
+[00:30:00] Paul Miller: Next level, once you've graduated past that and look at it that way, but get the AI to help you with that.
+[00:30:06] Paul Miller: Tom?
+[00:30:09] Tom Welsh: Yeah, I was just going to say, I mean, instead of having grayed out, if you're going to gray out, don't display it.
+[00:30:15] Tom Welsh: It shouldn't be there.
+[00:30:16] Tom Welsh: It's going to clutter your interface.
+[00:30:18] Tom Welsh: The last thing a user wants to see is just stuff sitting there that's redundant that they don't use anyway.
+[00:30:23] Tom Welsh: Just put up what they're using.
+[00:30:25] Tom Welsh: Like you say, once they enable a module, it's shown in the menu.
+[00:30:29] Tom Welsh: When it's not enabled, it's not shown in the menu.
+[00:30:32] David Stamper: Okay.
+[00:30:33] Paul Miller: That makes sense.
+[00:30:39] Morgan Cook: So in my system, I have several contexts, right?
+[00:30:44] Morgan Cook: So at the bottom of my menu where you would see a logout button or something like that, I actually have a context switch where I can switch from, you know, I'm looking at the system as an administrator.
+[00:30:56] Morgan Cook: And so I want to see those menu items or I'm looking.
+[00:31:00] Morgan Cook: I'm at them as a low-level staff who has less rights, so I'm looking at from those levels, right?
+[00:31:07] Morgan Cook: And it switches the actual entire menu system so that your menu is only showing what's relative to the context in which you're working in at that time.
+[00:31:16] David Stamper: I have that for staff level right now, and actually the way that I plan on making it a multi-tenant is almost exactly the way that you're describing.
+[00:31:25] David Stamper: I want to do role-based.
+[00:31:27] David Stamper: Like, if you're not a part of this organization, you don't see all of the platform tools.
+[00:31:33] David Stamper: But if you are a part of it, you do see them.
+[00:31:36] David Stamper: And then everybody else is based on their position within their company.
+[00:31:41] Morgan Cook: Right, and so on mine, that's exactly what it is.
+[00:31:44] Morgan Cook: It's multiple tenants plus the platform administrator, right?
+[00:31:48] David Stamper: Nice.
+[00:31:49] Morgan Cook: But it's a single login.
+[00:31:51] Morgan Cook: So my one login has multiple roles, and then based on my role, I can see three or four different contexts.
+[00:31:57] Morgan Cook: And then I can switch those contexts to put me in the .
+[00:32:00] David Stamper: The view of that work that needs to be done, right?
+[00:32:03] David Stamper: That way you, even though you're yourself, you can view it as if you were a client or an employee or whatever.
+[00:32:11] Morgan Cook: Okay.
+[00:32:11] Morgan Cook: Yes.
+[00:32:13] Morgan Cook: So you think about, you think about, you know, what Paul had mentioned about creating a persona, what features does this persona need?
+[00:32:22] Morgan Cook: That's what you build into your context so that you, when you switch context, you're looking at the system from that point of view, the entire system, not just a, you know, a small section, but if my concern and my context is just email marketing, that's all I want to see.
+[00:32:37] Morgan Cook: I don't want to see any of the rest of that stuff.
+[00:32:39] Morgan Cook: But then when I'm done with that and I'm going to switch to do some platform administration stuff, switch me over.
+[00:32:46] Morgan Cook: Let's look at the platform stuff and ignore all the email context.
+[00:32:52] David Stamper: Okay.
+[00:32:52] David Stamper: Yeah, I can see that.
+[00:32:53] David Stamper: So it's role-based, but you're just giving yourself a different role, even though you're still the same person with
+[00:33:01] Morgan Cook: Exactly.
+[00:33:02] Morgan Cook: I'm just giving myself a different view.
+[00:33:05] Morgan Cook: Like I'm viewing it from this role for this purpose right now.
+[00:33:09] Morgan Cook: And then I can switch that.
+[00:33:10] Morgan Cook: So at the bottom of my menu or yeah, the menu itself, the top half changes based on context.
+[00:33:16] Morgan Cook: The bottom half controls the context.
+[00:33:18] David Stamper: Awesome.
+[00:33:19] Morgan Cook: Just as an idea, you know, like where would you click your user profile and log out or whatever, I can click and say switch context.
+[00:33:25] David Stamper: I like that.
+[00:33:26] David Stamper: Yeah.
+[00:33:27] David Stamper: Um, is there a term for it so that I can look it up and talk to Claude about it?
+[00:33:32] David Stamper: Because that is also another big challenge that I have is like, I was years ago, but I don't even know the terminology anymore.
+[00:33:42] Morgan Cook: Well, and it's changed too.
+[00:33:44] Morgan Cook: So the term for, for what I've been using to build that was just the exactly that user context and user role.
+[00:33:52] David Stamper: Okay.
+[00:33:55] David Stamper: Awesome.
+[00:33:57] Paul Miller: Cool.
+[00:33:58] Paul Miller: Well, thanks, David.
+[00:33:59] Paul Miller: That's it.
+[00:34:00] Paul Miller: That's an amazing project.
+[00:34:01] Paul Miller: Looking forward to getting updates as you go further with that.
+[00:34:05] Paul Miller: It's bold.
+[00:34:07] David Stamper: Yeah, I had it as a multi-tenant before, and Morgan probably ran into a similar experience, but originally when I was building this out, I didn't really think about the admin versus client role, and I built it out not understanding dogfooding well enough.
+[00:34:28] David Stamper: And because of that, I had to either sign in as a client or as an admin, so I had to have two accounts, right?
+[00:34:37] David Stamper: I had to have the admin account, which just had the admin tools, and then I had to have a client account so that I could access these tools, which meant that I didn't have a unified dashboard.
+[00:34:49] David Stamper: So I completely destroyed this project two months ago and started over.
+[00:34:55] Morgan Cook: For my multi-tenant, what I have is the user...
+[00:35:00] Morgan Cook: There's then the tenants are separate, and every user can belong to multiple tenants if they're invited.
+[00:35:06] Morgan Cook: So there's a multi-join table that maps the two together.
+[00:35:12] Morgan Cook: And then at the user level, I have a specific flag for whether or not that user is a platform administrator as well.
+[00:35:21] Paul Miller: The only other consideration you might want to have, David, with those multi-user levels is where a user is sandboxing their idea that there may be a person in the organization that approves it, because otherwise there might be conflictions between the idea and the version control of the idea or what they're iterating to that the boss person might not be in agreement with, or they've got to go through a committee process to approve it, so think about that functionality as well.
+[00:35:56] David Stamper: That is important.
+[00:35:58] David Stamper: Like, I know that...
+[00:36:00] David Stamper: I get tunnel vision in that I see things from my perspective a lot.
+[00:36:05] David Stamper: You know what mean?
+[00:36:06] David Stamper: Like instead of trying to be on the outside looking in, and that's really easy to go, oh, well, this makes sense for me.
+[00:36:14] David Stamper: And then the next person comes along and it just doesn't jive with what they would expect, right?
+[00:36:19] David Stamper: And so that was one of the things that I was asking about with the, like, is there a tool that can help with the menu?
+[00:36:27] David Stamper: Because I know that the way it is makes sense to me.
+[00:36:33] David Stamper: But I also know if I were to put somebody else in here, and just let them fool around with it for a little bit, and then ask them to do something that they're going to be completely lost.
+[00:36:43] Paul Miller: Well, kind of, you want that description starting with getting the, getting an AI to think about that for you.
+[00:36:51] Paul Miller: So give, give Claude project the context that you, you are going to help define how
+[00:37:00] Paul Miller: How those user functions work.
+[00:37:01] Paul Miller: Here's the context of how the app works, but here's the personas of the users where they're individuals or an individual that's part of a company where there's a group of individuals versus a company signing up and how they would each interact with each of the functionality and get it to come up with scenarios of all of those.
+[00:37:23] Paul Miller: And then compare that with your deep research about the client base and what people are looking to buy with competing products and how they have interactions with those.
+[00:37:36] David Stamper: I'm not going to lie.
+[00:37:39] David Stamper: Like there's been a lot of stumbling blocks, right?
+[00:37:42] David Stamper: Like just stumbling and learning.
+[00:37:45] David Stamper: And part of it was me trying to do this with like the reason why I'm asking you guys about is because I've already attempted this, right?
+[00:37:51] David Stamper: Like multiple times.
+[00:37:54] David Stamper: And like, sometimes I'm like, Oh yeah, quad did a bad- job because now it's like so streamlined and so efficient.
+[00:37:59] David Stamper: in profession I've
+[00:38:00] David Stamper: And then I find out that it's because there's no navigation to 30 or 40% of the pages anymore.
+[00:38:07] David Stamper: I could just remove them.
+[00:38:10] David Stamper: And so I've been trying to, like, consolidate different pages into one via tabs on the page instead, things like that.
+[00:38:18] David Stamper: So it's not so overwhelming.
+[00:38:20] David Stamper: But, yeah, it's a lot.
+[00:38:22] David Stamper: It's a big- program.
+[00:38:23] David Stamper: And Tom knows, Tom knows, like, I started this a while ago, and I know you guys are probably going to think this is crazy, but I have all the agents that file applications for federal regulations and everything else already pre-built.
+[00:38:39] David Stamper: They're already, they work.
+[00:38:40] David Stamper: It's going to get added onto the top of this when it's all done, right?
+[00:38:43] David Stamper: It's going to be an automated business from start to finish, and all you've got to do is be one person to approve it.
+[00:38:51] David Stamper: That's the goal.
+[00:38:53] Tom Welsh: I would say, sorry, Dave, I would say that the trucking part, I would say, is a different product.
+[00:39:00] Tom Welsh: It goes to a different marketplace than this one would, I would say.
+[00:39:03] David Stamper: Oh, yeah.
+[00:39:04] David Stamper: Yeah, they're two different ones, but the trucking has to have this in order, like, this is just one half of the trucking one, right?
+[00:39:11] David Stamper: But it can stand alone as a product for small businesses.
+[00:39:15] David Stamper: So, and if anybody is interested, this is the other thing.
+[00:39:18] David Stamper: If anybody's interested in working on projects like this, I'm not rich, but I do have some money.
+[00:39:25] David Stamper: If you guys want to, if you guys are looking for work and you're decent at this stuff, hit me up, because so far this has been me, all 100% me, and I know that you guys have more experience and a different perspective, and that's what I need.
+[00:39:45] David Stamper: So, if you guys are interested, if anybody's looked for work, hit me up after the meeting.
+[00:39:51] Paul Miller: Thanks, David.
+[00:39:54] Paul Miller: All right, so let's, so I updated the call list.
+[00:40:01] Paul Miller: Patrick is first on the list.
+[00:40:05] Paul Miller: So, Patrick, what have you been up to?
+[00:40:08] Paul Miller: What's the latest thing in Patrick's world?
+[00:40:10] Patrick Chouinard: Before I get to that, there was two other questions we had on the community call, so I want to be careful about those.
+[00:40:20] Patrick Chouinard: The first was Elena, who had some additional question about funding, I believe, but Elena, if you want to tell us a little bit more.
+[00:40:29] Elena: Yeah, it's me again.
+[00:40:31] Elena: Yeah, I had some questions about, basically, how did you solve this task when you have a project, what is the first, what is the next, basically, and did anyone have any experience fundraising?
+[00:40:46] Elena: How did you do that, if you can share?
+[00:40:49] Elena: sure.
+[00:40:50] Elena: So, I have a project also, the protection for the ideas.
+[00:40:56] Elena: right, I heard somewhere that about provisional pattern.
+[00:40:59] Elena: Okay.
+[00:40:59] Elena: I'm to other.
+[00:41:01] Elena: How do you feel?
+[00:41:02] Elena: Some people say, don't worry, there's millions of ideas everywhere.
+[00:41:06] Elena: It's a question about who will implement it better.
+[00:41:08] Elena: But at same time, still.
+[00:41:11] Elena: So just wanted to hear your opinion about all of this.
+[00:41:16] Paul Miller: Should we start with the funding?
+[00:41:20] Paul Miller: So specifically with the funding, what kind of funding are you looking for?
+[00:41:30] Paul Miller: Is it seed funding or what's the context?
+[00:41:34] Elena: it's going to seed funding.
+[00:41:35] Elena: think like, yeah, so basically the initial funding.
+[00:41:38] Elena: I started to watch some Y Combinator's Founder Scrolls videos.
+[00:41:44] Elena: I kind of trying to get used to this terminology.
+[00:41:48] Elena: So but yeah, basically, like the project I have in mind, it feels like kind of not.
+[00:41:55] Elena: So basically, I will probably need some kind of funding and the team.
+[00:41:59] Elena: from.
+[00:42:00] Elena: Because I can create POC, I can create probably some kind of heavy path, but to make it fast and to make it successful, I feel like, and accelerate it, it certainly needs some teamwork, right?
+[00:42:15] Elena: So that was kind of, so basically, what funding does, like it helps, it helps to build faster, right?
+[00:42:23] Elena: Like with the right school set.
+[00:42:26] Elena: And it's essential, especially, essential, I would say competitor advantage, competitive advantage, I'm so sorry.
+[00:42:35] David Stamper: Is it just, it might just be me, but I'm having a little bit of difficulty hearing her.
+[00:42:39] Paul Miller: What is the funding for?
+[00:42:40] Paul Miller: So basically, think so, there are initial ones.
+[00:42:47] Paul Miller: So, so, so, I think in the age of rapid AI development, your ability to get the POC going really quick.
+[00:43:01] Paul Miller: It makes it so much more attractive from an investor, a seed investor perspective, but it also puts more pressure on you because of the easy cost of potential startup.
+[00:43:17] Paul Miller: What would stop you from getting an early test, an early customer on board as well, because while there are many people out there that are doing seed funding, what they're looking for is an ideal pre-packaged, you've kind of got an app, you've tested it with actual people, in your target market, you know the total addressable market and how valuable it is.
+[00:43:52] Paul Miller: It's pretty much doing everything to make their job easy to give you money.
+[00:44:00] Paul Miller: How much for this application have you have you tested with your potential market or potentially getting someone on board to be an early advocate to make it easier to get to talk to a funder?
+[00:44:16] Elena: No, not yet.
+[00:44:17] Elena: So yeah, I was trying to basically understand where to start and how to go.
+[00:44:22] Elena: So basically, I also heard that they are saying like, you need to find the first customer.
+[00:44:27] Elena: And I wonder like, should I just like, I don't know, mock the customer and like create some kind of example, how it can work?
+[00:44:35] Paul Miller: Well, I think, look, you've got to, you've got to build that POC.
+[00:44:40] Paul Miller: That's a given now.
+[00:44:41] Paul Miller: You've ideally got to have a launch customer.
+[00:44:45] Paul Miller: And we've kind of talked about where do you start with customers.
+[00:44:51] Paul Miller: And often, I think the feedback from the group is, if you give something away for free, they're not going to put their heart and soul in it.
+[00:44:59] Paul Miller: forget get.
+[00:45:00] Paul Miller: But you might give something away as a discount to someone and say, look, hey, I've got this thing.
+[00:45:08] Paul Miller: I want to work with you to give you a saving or make you more efficient or whatever you're trying to do with the app and really get them on board.
+[00:45:17] Paul Miller: So when you go to the investor, you show, well, look, I've got this company with this credibility.
+[00:45:23] Paul Miller: They're already on board.
+[00:45:24] Paul Miller: I've got this POC.
+[00:45:26] Paul Miller: The end outcome, and look, I've been with the old, I've done this with the old way where you have to spend lots of money up front, build the application, and then you go around looking for seed money and you've used all your own money to do it.
+[00:45:43] Paul Miller: They love it that you use your own money because you've proven it's so important that you're willing to put your money on the line before you ask for someone else's money.
+[00:45:52] Paul Miller: So that's important.
+[00:45:53] Paul Miller: But only after you go through all of those hoops that you prove it to other people.
+[00:46:00] Paul Miller: People that you can you can get any more money out of it.
+[00:46:04] Paul Miller: So it's it's it's hard going, but you kind of need to do that first.
+[00:46:12] Paul Miller: And you'll find getting the seed capital is so much easier once you've once you've done that.
+[00:46:18] Paul Miller: The Y Combinator is really good.
+[00:46:20] Paul Miller: Um, my suggestion would be, uh, get, um, get all the YouTubes from the Y Combinator on raising capital, stick it in a notebook LM and get it to coach you on the first steps.
+[00:46:35] Paul Miller: There's some golden examples in there of what to do.
+[00:46:40] Paul Miller: Uh, the only issue with some of those Y Combinator videos is that they're from, um, that they're a bit from, uh, pre, you could do everything in AI in terms of your coding.
+[00:46:53] Elena: So, um, you, you just need to, yeah, basically they're assuming that you need to build a team right away.
+[00:46:59] Paul Miller: .
+[00:46:59] Paul Miller: .
+[00:46:59] Paul Miller: .
+[00:46:59] Paul Miller: .
+[00:47:00] Elena: Yeah, right now it's much different.
+[00:47:02] Elena: So basically, if you're watching two years ago videos, it's kind of agile.
+[00:47:07] Elena: Like, basically, right now it's...
+[00:47:09] Paul Miller: Yeah, so take the bit from the Y Combinator that are the questions they would ask.
+[00:47:17] Paul Miller: That's the bit that's really important.
+[00:47:20] Paul Miller: But your proof of concept, if you can validate it against an existing customer, and just show, yep, it's tangible, someone in the industry wants it, how big is that industry?
+[00:47:32] Paul Miller: What's the total addressable market?
+[00:47:34] Paul Miller: Who are the competitors?
+[00:47:35] Paul Miller: Why is your product better than the competitor?
+[00:47:37] Paul Miller: All of this is standard Y Combinator questions.
+[00:47:40] Paul Miller: I had to go through a hundred pitches before I got funding for my current sort of day job business.
+[00:47:48] Elena: It is frustrating as hell if you can...
+[00:47:51] Elena: You got it from Y Combinator.
+[00:47:54] Paul Miller: Oh no, no, I didn't...
+[00:47:55] Paul Miller: Yeah, I didn't go through Y Combinator.
+[00:47:57] Paul Miller: I went to friends, families, and fools.
+[00:47:59] Paul Miller: no,
+[00:48:01] Paul Miller: And all my new businesses, because you can code so easily, what are you going to use the money for, is the questions that they...
+[00:48:12] Elena: For marketing, for scaling, for infrastructure.
+[00:48:15] Elena: I heard that AWS also giving in, GCP gives us some credits for startups.
+[00:48:20] Paul Miller: Yeah.
+[00:48:22] Paul Miller: GCP, you'll find, if you go to the NVIDIA funding program, if you're looking for any cloud stuff, they'll go up to a quarter of a million now.
+[00:48:32] Paul Miller: They probably provide the biggest initial injection, if you're looking for the tech stack.
+[00:48:39] Paul Miller: AWS and Azure will do some, but no one's as generous as NVIDIA with Google.
+[00:48:46] Elena: criteria are there to give like everyone's.
+[00:48:48] Paul Miller: No, no, just fill out the form.
+[00:48:51] Paul Miller: I'll post it on the school forum, the form that you need to fill out.
+[00:48:55] Paul Miller: Just fill it out comprehensively and you'll get up to...
+[00:49:00] Paul Miller: A quarter of a million over the next two years.
+[00:49:02] Elena: On NVIDIA.
+[00:49:04] Paul Miller: Yeah, yeah.
+[00:49:05] Paul Miller: And NVIDIA gives you access then to the Google Cloud.
+[00:49:10] Paul Miller: So if you've signed up with NVIDIA, then Google will give you the $250,000 credit.
+[00:49:16] Paul Miller: And depending on what kind of AI services you want, then there's other partners you can use.
+[00:49:24] Paul Miller: David, have you got something to add?
+[00:49:29] David Stamper: I was just going to say, when it comes to trying to get your proof of concept in front of people so that you might get investors, what I've chosen to do, and I don't know if this will work for you or not, but there's a lot of local networking groups in the city over from where I live, right?
+[00:49:49] David Stamper: And a lot of them are online now, like meetups and stuff like that, of entrepreneurs who are all trying to share ways to help one another to be better and more successful.
+[00:50:00] David Stamper: Honestly, they're mostly scams, right?
+[00:50:03] David Stamper: But these are small business people who are looking for solutions.
+[00:50:07] David Stamper: So if you have a business solution to offer to people, that might be a great place to take it.
+[00:50:15] David Stamper: Just don't expect a lot of paying customers from those places or go prepared and have a coupon for a certain amount of time for them so that they feel rewarded for helping you out, right?
+[00:50:28] David Stamper: But they're not doing it for free, because they're not wrong.
+[00:50:32] David Stamper: If you give people things for free, they expect things for free.
+[00:50:37] Elena: But for some time, basically, they can explore it, and they can test it, and they can provide some feedback.
+[00:50:42] David Stamper: Yeah, that was just my thoughts.
+[00:50:43] David Stamper: Something like that.
+[00:50:44] Elena: Great idea.
+[00:50:45] Elena: Thank you.
+[00:50:47] Paul Miller: Juan, you put a YouTube video on there.
+[00:50:50] Juan Torres: What was that one about?
+[00:50:52] Juan Torres: Yeah, it's just the AI engineering channel.
+[00:50:56] Juan Torres: I mean, I thought that that would be the most updated equivalent equivalent to Y.
+[00:51:00] Juan Torres: Combinator, since they're actually using agentic systems to solve a lot of issues.
+[00:51:04] Juan Torres: And it's up to date.
+[00:51:06] Paul Miller: Thank you.
+[00:51:07] Elena: Appreciate it.
+[00:51:09] Elena: So what about protection?
+[00:51:10] Elena: Yeah, yeah.
+[00:51:12] Paul Miller: Funding was the first question, Elena.
+[00:51:14] Elena: The second one?
+[00:51:15] Elena: Second one was about idea protections.
+[00:51:18] Elena: heard that somebody is filing a provisional patent, right?
+[00:51:23] Paul Miller: Yeah.
+[00:51:24] Elena: Is it necessary?
+[00:51:25] Elena: How the biggest risk?
+[00:51:27] Elena: And I mean, what is it protecting from?
+[00:51:30] Elena: So if anyone has like real experience doing that, and you believe it's necessary.
+[00:51:36] Tom Welsh: I could jump in.
+[00:51:38] Paul Miller: I looked at it, and I was with a lot of other startup guys that looked at it.
+[00:51:44] Paul Miller: You've got, your only real protection is agility.
+[00:51:49] Paul Miller: You can go down the path if you're doing something really unique that you can patent.
+[00:51:54] Paul Miller: But those guys, they're just after money, legal fees, and point of ended Thank
+[00:52:00] Paul Miller: But yeah, I'd be skeptical about going down the path.
+[00:52:04] Paul Miller: It's agility and it's industry vertical protection.
+[00:52:08] Paul Miller: So if you've got a wonderful, if your solution's based on an industry vertical in which you really understand, you can partner up, you've got credibility in that industry vertical, you can move much faster than people that don't have credibility in the vertical.
+[00:52:24] Paul Miller: But Tom, what would you add?
+[00:52:26] Tom Welsh: I was going to say, back in the 90s, I invented a coin operating machine and it suddenly became Sony PlayStation Network because I couldn't get it patented because it wasn't a unique idea.
+[00:52:42] Tom Welsh: cobbled together hardware, which is exactly what Sony did.
+[00:52:47] Tom Welsh: We just did that.
+[00:52:49] Tom Welsh: All saying about patents is correct.
+[00:52:52] Tom Welsh: Also, you've got to bear in mind that you've got to do that for every market, every country.
+[00:52:56] Tom Welsh: If you want proper protection.
+[00:52:58] Tom Welsh: Get a comprehensive
+[00:53:00] Tom Welsh: Software agreement.
+[00:53:00] Tom Welsh: That's all you really need.
+[00:53:02] Tom Welsh: I'd be prepared to be ripped off by unscrupulous people if we just want to take your software from parts of Asia or wherever.
+[00:53:12] Elena: Thank you.
+[00:53:14] Tom Welsh: Thank you so much.
+[00:53:18] Paul Miller: Well, good luck, Elena.
+[00:53:21] Paul Miller: Check back in and yeah, it's not easy, but start with it.
+[00:53:27] Paul Miller: Y Combinator is gold.
+[00:53:29] Paul Miller: Those guys do so many pitches all the time now.
+[00:53:34] Paul Miller: It's yeah, way to go.
+[00:53:37] Elena: I'll start with POC and Parallel offline probably.
+[00:53:41] Paul Miller: Yeah.
+[00:53:42] Paul Miller: Yeah.
+[00:53:42] Paul Miller: Good.
+[00:53:43] Paul Miller: Good luck.
+[00:53:44] Paul Miller: Now, Patrick, there was, you said there was one other person had questions.
+[00:53:49] Patrick Chouinard: Timothy was the other one.
+[00:53:52] Patrick Chouinard: So, Timothy, I don't want, I don't know if you want to ask your question.
+[00:53:58] Patrick Chouinard: You're you're on mute.
+[00:54:02] Timothy: We are using AI to create code, right?
+[00:54:05] Timothy: And if you do something personal or more like video, if you have bugs, it's not really a big deal.
+[00:54:14] Timothy: But you create SaaS, what you have to do with financial integration.
+[00:54:19] Timothy: Any bugs will be...
+[00:54:21] Paul Miller: Sorry, we missed you at the start of your question.
+[00:54:24] Paul Miller: Do you want to decide at the beginning?
+[00:54:26] Timothy: Yeah, so we are using AI for coding.
+[00:54:30] Timothy: And if you create apps like creating video, if you have a bug, that's not really a big deal.
+[00:54:37] Timothy: You fix it, the customer will be okay.
+[00:54:39] Timothy: But if you're creating some kind of SaaS where there's a financial integration, then bugs become a big problem because money is involved or transaction is screwed up.
+[00:54:50] Timothy: So how do we make sure that UI coding is not bug-free?
+[00:54:56] Timothy: Definitely it's not.
+[00:54:58] Timothy: So how do we make sure that...
+[00:55:00] Timothy: You know, it's much less bulk, and then as your, what's that, your application increase, the design, you know, the maintenance, all that stuff is still kept.
+[00:55:12] Timothy: So you need a process to make sure that this follow, to increase the, you know, the, the, how to call that, the quality.
+[00:55:21] Timothy: So that if there is a.
+[00:55:23] David Stamper: And operating procedure.
+[00:55:24] Timothy: Well, it's more than that, right?
+[00:55:26] Timothy: Because you need more than, yes, at the end it is.
+[00:55:29] Timothy: But it is more, it's not just a procedure, it's actually, there's a detail matters, it's not just, you have something, right?
+[00:55:35] Timothy: You have a standard procedure of 80%, then you still get 80%, but you keep on 80%, good, you do that for a long time, well, you get 64% now.
+[00:55:47] Timothy: So.
+[00:55:49] Paul Miller: Probably just a starting point, in terms of your unit testing.
+[00:55:53] Paul Miller: So you're talking about an application that's sort of, based on financial, um, stuff, so you.
+[00:55:59] Paul Miller: You.
+[00:55:59] Paul Miller: we're
+[00:56:00] Paul Miller: You should, your starting point should be what does good look like?
+[00:56:04] Paul Miller: What are the core, what's the core numbers and calculations that show that the process is correct?
+[00:56:13] Paul Miller: So you always need to be grounded by a ground truth, factual calculations that make up your base unit testing and be very, very prescriptive in your prompting and say that the testing must involve the following checks in, in these 20 or 30 areas and get the AI to help you define what those areas must be.
+[00:56:41] Timothy: Yeah, I have, I have more than 40 tests, unit tests and end-to-end tests, you still have bugs, you still have bugs.
+[00:56:50] Paul Miller: What's the, what, yeah, yeah, the, the problem is you can't completely avoid the bug process while we can code a a lot quicker.
+[00:56:58] Paul Miller: know, when and easy,oplIP is true, but big Oh yeah!
+[00:56:59] Paul Miller: Right
+[00:57:00] Paul Miller: With the guardrails, you start with good guardrails, start with good context, start with an evolving testing methodology, start with making sure that you're testing at the back end as well as the front end.
+[00:57:17] Paul Miller: So, because often what I tend to find is that you'll build wonderful testing methodology that works well with your API, but then it deploys and that front end stack is so complex to get the UI right that it gets lost in that side.
+[00:57:35] Paul Miller: So, so building something that's going to do browser based user testing as well, but unfortunately, you can't completely escape the user, the user testing and the dev testing, but Juan, do you have anything to add?
+[00:57:51] Juan Torres: You had some suggestions on that?
+[00:57:54] Juan Torres: Yeah, no, I was just going to say what you just said, especially because I was working with with, uh,
+[00:58:00] Juan Torres: I'm still working with an accounting firm that actually is using Agentex systems in order to get a level of accuracy and qualitative data.
+[00:58:08] Juan Torres: And one of the things that was not said from the beginning from a project management perspective was the setting of what's the level of the margin of error that he or she wanted to get at.
+[00:58:21] Juan Torres: But at the same time, I would say that, like, with experienced data engineers and software engineers, you're still going to get, you know, bugs.
+[00:58:30] Juan Torres: There's just no way to go around about it.
+[00:58:32] Juan Torres: Right.
+[00:58:32] Juan Torres: And in fact, in this project that I was working in, thanks to utilization of Agentex AI coding, I was able to use advanced tools in order to find mistakes made by the most experienced data engineer working in the project.
+[00:58:47] Juan Torres: So it's not the fact that I was working, I was, like, more experienced than him or was more knowledgeable on financial transactions, but I was just using more advanced tools in order to find the issues, the bugs that were creating rounding.
+[00:59:00] Juan Torres: He had to, I don't think he had to re-edify the whole database, but as a result of having that rounding issue on accounting transactions, he had to go back and, you know, carry out the migrations again.
+[00:59:14] Juan Torres: So I would say that having, you know, agentic AI coding, it's in a way more beneficial to the whole process that you're trying to solve.
+[00:59:26] Paul Miller: No, I think, I think too, with the CICD processes, and even yesterday, Claude came up with their own, as you integrate your, your branch, and you pull it into the main project, that it does this crazy high level of testing against your core base, not just about the changes, but about how those changes will impact your base.
+[00:59:53] Paul Miller: And environment.
+[00:59:55] Paul Miller: But if you're, if you're going with good CICD,
+[01:00:01] Paul Miller: There's great tools that can look at things that are getting pulled back into your main project space.
+[01:00:08] Paul Miller: I don't know how much you've used those tools.
+[01:00:11] Timothy: I have used, basically, I used to review process, and then after functionality is done, I use mostly QR code, and then I use codecs to review again.
+[01:00:24] Timothy: So basically, like 50% of the time I'm using, I'm basically reviewing.
+[01:00:27] Timothy: So basically, functionality is easy to build, to rewrite, take 20%, and then rewrite 20% of the redesign, and 30% is review.
+[01:00:37] Timothy: So 50% is not doing the actual site.
+[01:00:42] Paul Miller: Yeah, yeah.
+[01:00:43] Paul Miller: So did you see the QR code review that was released yesterday?
+[01:00:49] Paul Miller: Because, yeah, it's not cheap because the context that it's looking at is everything, basically, of the project.
+[01:00:56] Timothy: I'm already using Gemini in, what's that thing?
+[01:01:00] Timothy: Gemini already come out, I mean, they already have it in the GitHub, so it's already doing that already, so I'm doing three reviews every time, it's still every one of them catch errors.
+[01:01:11] Patrick Chouinard: Yeah, but be careful, what Claude Code used to do in GitHub, yes, it was good, but it's not what Paul is talking about, it's a complete other level, what they're talking about is something that they're estimating the cost around 15 bucks per review.
+[01:01:29] Patrick Chouinard: So it is a very, very comprehensive review, like, many times over what you might have tried with the GitHub implementation of Claude Code doing code review.
+[01:01:42] Patrick Chouinard: So we're talking about two completely different things, yeah, exactly.
+[01:01:46] Timothy: I'll give it a try, yes, I've seen it, I'm going to give it a try.
+[01:01:50] Timothy: The things that this one only catch, especially, you know, you have to very religiously do PR, right?
+[01:01:58] Timothy: So, yeah, so, and then...
+[01:01:59] Timothy: then...
+[01:02:00] Timothy: And if your design is not good, you only depend on the PR, and you only look at the PR, not articles, so you have be very religiously doing that, and hopefully you catch a holistic issue, but, yeah.
+[01:02:14] Paul Miller: Yeah, well, that's what Claude Code Review doesn't just look at the PR.
+[01:02:20] Paul Miller: looks at the whole lot, and that's the difference.
+[01:02:24] Paul Miller: Elena, did you have something to add?
+[01:02:28] Elena: Oh, I was, like, I didn't know about this release.
+[01:02:30] Elena: It's amazing.
+[01:02:31] Elena: I'm eager to check out.
+[01:02:33] Elena: I was thinking, like, also about penetration testing, and I don't know if it's been announced, like, I think in the reInvent last time that AWS has a security agent.
+[01:02:43] Elena: I didn't try it yet.
+[01:02:45] Elena: But basically, a penetration testing agent, basically, can do some autonomous penetration testing review, because for finance, I think it's very essential.
+[01:02:56] Paul Miller: Yeah, add that to the look.
+[01:02:59] Elena: Cool.
+[01:02:59] Elena: Cool.
+[01:03:00] Paul Miller: It's like your list isn't long enough, Timothy.
+[01:03:03] Ty Wells: We break code.
+[01:03:05] Elena: didn't try it, though, yet.
+[01:03:08] Paul Miller: David?
+[01:03:11] David Stamper: Yeah, I was just going to say, I actually hadn't heard about the cloud code review thing yet, and I was hoping since I think all the questions were done, right?
+[01:03:21] David Stamper: Yeah.
+[01:03:21] David Stamper: So I was going to see if maybe you guys could tell me, spend a few minutes talking about that.
+[01:03:27] Paul Miller: Yeah, look, it's just come out.
+[01:03:31] Paul Miller: Look, it's not a low-cost way to do the checking.
+[01:03:34] Paul Miller: It's available for Teams and Enterprise Cloud Plan, where it looks at all the pools.
+[01:03:41] Paul Miller: So if you set up a branch with all of your changes, as you pull that branch back into main, it sits on GitHub, and then it looks at all of the changes, it looks at the context of what those changes will do to the whole.
+[01:04:00] Paul Miller: It's whole holistic project, and it throws significant resources in.
+[01:04:05] Paul Miller: It starts from about $3 minimum per run, but it could go up depending on the size and how big the base is, but apparently it brings up lots of agents.
+[01:04:22] Paul Miller: Is what you'd recommend for my project?
+[01:04:26] Paul Miller: I mean, it's pretty early, it's pretty early on, you might, what my suggestion, and what I tend to do with anything to do with, with development review, is wait until a few of the other YouTubers that know what they're talking about, give it a good play, and give you the feedback.
+[01:04:48] Paul Miller: So I'd give it a week, David, and then it would have done the circus, and then have a look how good it is, but Claude's on fire in terms of what they're putting out of
+[01:05:00] Paul Miller: But look, it sounds wonderful, and we all hate having to do that stuff, but yeah, look, if it's any good, then that'd be great.
+[01:05:09] Paul Miller: Patrick, would you have anything to add to that?
+[01:05:11] Patrick Chouinard: Yeah, actually, from what I've read so far, that Cloud Code review process that they've put out, it's basically their internal process.
+[01:05:21] Patrick Chouinard: It's what Entropic is using to do code review with Cloud while it's developing Cloud Code itself.
+[01:05:30] Patrick Chouinard: So honestly, I would tend to give it a good review on that front.
+[01:05:37] Timothy: mean, if it's good enough for them, I'd be surprised if it's not good enough for us.
+[01:05:41] Timothy: Or anyway, at that point, I don't think there's much more that can be done.
+[01:05:45] Paul Miller: Yeah, yeah, yeah, they don't tend to deliver many duds, the guys at Entropic.
+[01:05:53] Paul Miller: So yeah, yeah, but I'd give it a week.
+[01:05:56] Paul Miller: Yeah.
+[01:05:58] Paul Miller: All right.
+[01:06:00] Paul Miller: So, look, we'll move on, Patrick.
+[01:06:05] Paul Miller: What's been happening in the world of Patrick?
+[01:06:08] Patrick Chouinard: I just want to know, Elena, you still have your hand raised.
+[01:06:10] Patrick Chouinard: Did you add something else?
+[01:06:16] Patrick Chouinard: I'm going to take that as a no.
+[01:06:20] Elena: I just forgot.
+[01:06:24] Patrick Chouinard: So, I don't know if some of you saw the post I made in the community this week, but last week I was, I came out with the idea that, oh, God, there was some stuff in the chat last week that I've missed, and now I was like, okay, somebody posted that, I couldn't remember it.
+[01:06:44] Patrick Chouinard: So, I went on a treasure hunt of finding how can I automate and force Zoom to actually save that chat every day, every time, because I always forget to save it before we close the call.
+[01:06:58] Patrick Chouinard: Found that, and
+[01:07:00] Patrick Chouinard: As you might have known from me now, I can't stop at the first step.
+[01:07:04] Patrick Chouinard: So I started to chat with ChatGPT.
+[01:07:09] Patrick Chouinard: Then I realized, you know what?
+[01:07:11] Patrick Chouinard: Wait a minute.
+[01:07:11] Patrick Chouinard: If I only analyze the chat log, I'm missing half of the stuff.
+[01:07:16] Patrick Chouinard: So, okay, how do I get now the transcript?
+[01:07:19] Patrick Chouinard: Because we already recorded through Fathom.
+[01:07:23] Patrick Chouinard: So I found out that there's an API for Fathom that can be managed that will trigger an event whenever there's a new posting.
+[01:07:32] Patrick Chouinard: So you can download the raw transcript, not the one processed by Fathom.
+[01:07:38] Patrick Chouinard: So I've pulled all of that into, or sorry, Claude Code created an N8N workflow for me out of an N8N container I have running.
+[01:07:49] Patrick Chouinard: And it merges both the chat log and the Fathom transcript to create a...
+[01:07:59] Patrick Chouinard: we And I'll will am I'll couple All
+[01:08:00] Patrick Chouinard: Review at the end of the meeting that will include everything that's been talked about and everything that's been chatted about.
+[01:08:07] Patrick Chouinard: Also have a complete list of all the links that have been posted, all of the insight that got created, and all of the Q&A that got created.
+[01:08:18] Patrick Chouinard: Then I was like, okay, that's cool, but now I always need to create an invite for the next week call.
+[01:08:27] Patrick Chouinard: And it's always a copy of the same message every week.
+[01:08:30] Patrick Chouinard: What if we could spice it up with the information we just got there?
+[01:08:35] Patrick Chouinard: So I added another step, and at the end, it actually creates the invite for the next week, based on what was discussed the week before and the unanswered question, in order to give a little bit more to think about in the invite itself.
+[01:08:50] Patrick Chouinard: And that way, I'm sure we have something every single time.
+[01:08:55] Patrick Chouinard: And that's going to be the part that ties to the like, is...
+[01:08:59] Paul Miller: True.
+[01:08:59] Patrick Chouinard: True.
+[01:09:00] Patrick Chouinard: After I did that, it's like, that took me like two hours.
+[01:09:02] Patrick Chouinard: It's like, yeah, you know what?
+[01:09:04] Patrick Chouinard: That's a cool project.
+[01:09:06] Patrick Chouinard: Claude, can you document everything that you just did and everything we went through?
+[01:09:11] Patrick Chouinard: And by the way, use my OpenClaw documentation site as an example of the type of documentation I want you to create.
+[01:09:19] Patrick Chouinard: Then I gave all of those 12 markdown document into another folder.
+[01:09:23] Patrick Chouinard: Plus, I used my OpenClaw site as an example of, or a reference word.
+[01:09:30] Patrick Chouinard: Then I asked Claude, look at that site, do the, implement the exact same thing, but use those markdown file as the source.
+[01:09:40] Patrick Chouinard: And in one prompt, it created a new site.
+[01:09:43] Patrick Chouinard: It even saw that in my other site, I was uploading to Cloudflare.
+[01:09:48] Patrick Chouinard: So it actually did the full upload to Cloudflare and just left me with one task.
+[01:09:53] Patrick Chouinard: I said, the only thing I can do is do the DNS update in the old stinger.
+[01:09:57] Patrick Chouinard: So you have to do that part.
+[01:10:00] Patrick Chouinard: Brilliant.
+[01:10:01] Patrick Chouinard: So, yeah, that was my weekend.
+[01:10:04] Ty Wells: That's a rabbit hole right there.
+[01:10:05] Ty Wells: That's what I like about you, Patrick.
+[01:10:07] Ty Wells: You know how to go down those holes.
+[01:10:09] Ty Wells: And you find your way back.
+[01:10:10] Ty Wells: Every Tuesday, you're here.
+[01:10:13] Paul Miller: Yeah, Andy Stein.
+[01:10:18] Patrick Chouinard: There you go.
+[01:10:19] Patrick Chouinard: The link I gave you, that's the documentation site that Claude created out of the job it did to automate the workflow that will give us the recap of this week and the invite for next week.
+[01:10:32] Paul Miller: Wow.
+[01:10:33] Paul Miller: Brilliant.
+[01:10:35] Paul Miller: Brilliant.
+[01:10:36] Patrick Chouinard: So, basically, we are discussing the birth of the system that will document itself at the end of this conversation.
+[01:10:44] Juan Torres: The world needs your YouTube channel, Patrick.
+[01:10:48] Paul Miller: I can't insist enough.
+[01:10:50] Paul Miller: Exactly, exactly.
+[01:10:54] Ty Wells: Yeah, that's good stuff.
+[01:10:55] Paul Miller: Yeah, That's stuff.
+[01:10:57] Patrick Chouinard: Yep.
+[01:10:59] Patrick Chouinard: I can't really demo.
+[01:11:00] Patrick Chouinard: Demonstrate the thing, because it hasn't run for the first time on, I just did test with previous meetings, but basically you're going to see the demo at the end of the call, if you look at the community site.
+[01:11:14] Ty Wells: Are you posting the link for the call itself?
+[01:11:17] Ty Wells: Have you automated that?
+[01:11:19] Patrick Chouinard: We can't automate that for now, because school doesn't have an API, and they're pretty strict about the fact that they don't want automation posted.
+[01:11:28] Patrick Chouinard: The only thing I do is I create the post, and ready to copy and paste into school.
+[01:11:34] Ty Wells: Oh, I guess I might have to cancel my skill then.
+[01:11:38] Ty Wells: I've got a skill that doesn't know it can be done.
+[01:11:41] Ty Wells: Right, okay, they don't want you to do it.
+[01:11:42] Patrick Chouinard: Exactly.
+[01:11:43] Paul Miller: All the spam we get is obviously some kind of automation that someone's done.
+[01:11:49] Patrick Chouinard: No, it is doable, it's just not supposed to be done, and honestly, since the community is not mine, I don't want to start doing things that are outside.
+[01:12:00] Juan Torres: Yeah, makes sense.
+[01:12:02] Juan Torres: This is great.
+[01:12:03] Juan Torres: I can imagine so many byproducts out of this, especially if it starts analyzing the whole logs, the whole transcripts, there can be suggestions for, you know, the direction of where the calls can go, starts framing how the conversations go.
+[01:12:21] Patrick Chouinard: Oh, don't worry.
+[01:12:23] Patrick Chouinard: I've already talked about with ChatGPT how I could add QDrant in there in order to create, for N8M to create its own vector database in order to accumulate the knowledge from week to week and start to provide insight out of the evolution of the discussions.
+[01:12:43] Juan Torres: That's great.
+[01:12:47] Juan Torres: You're playing like 4D chess, I can't even.
+[01:12:51] Morgan Cook: I didn't miss now, that's all I gotta say.
+[01:12:54] Paul Miller: Yeah, I'm sure he'll watch the video.
+[01:12:57] Patrick Chouinard: And now he's gonna have better Here.
+[01:13:01] Paul Miller: Yeah.
+[01:13:03] Paul Miller: Yeah.
+[01:13:04] Juan Torres: Yeah.
+[01:13:04] Juan Torres: It's a win-win for everyone.
+[01:13:06] Ty Wells: Better and complete summaries.
+[01:13:10] Paul Miller: Thanks.
+[01:13:11] Paul Miller: Thanks, Patrick.
+[01:13:14] Paul Miller: Hang on.
+[01:13:14] Paul Miller: One question before Patrick goes on.
+[01:13:16] Paul Miller: Sorry, Paul.
+[01:13:17] Ty Wells: Patrick, can you analyze how our facial micro-expressions are during the call so you can tell at what level we were engaged?
+[01:13:27] Patrick Chouinard: I guess if I had the token budget high enough, maybe.
+[01:13:38] Paul Miller: Brilliant, Patrick.
+[01:13:39] Paul Miller: Thanks for that.
+[01:13:40] Paul Miller: Juan, you're next.
+[01:13:42] Juan Torres: Hey, nothing much.
+[01:13:45] Juan Torres: Still working with this client, working on some extra stuff, helping the other engineers.
+[01:13:50] Juan Torres: Other than that, I've been working on this, you know, solar project.
+[01:13:56] Juan Torres: And what I've had the chance, again, I can emphasize enough.
+[01:13:59] Juan Torres: Yeah?
+[01:13:59] Juan Torres: Yeah.
+[01:14:00] Juan Torres: So this Agentec DevOps thing is just fascinating, my workflow, instead of having to interact with the AWS confusing nonsense UI or having to interact with the shell script, I'm just using either Kero CLI or just using Cloud Code with AWS CLI in order to carry out my stuff.
+[01:14:22] Juan Torres: I have my PRD, I have all my documents, I actually use either Kero CLI or Cloud Code slash AWS CLI in order to get the specs of my VPC, of the EC2 instance, of my database cluster, and putting it there in order to have that ready in case I need to do vertical scaling, horizontal scaling.
+[01:14:45] Juan Torres: So I can't recommend it enough to try to use either of those, to me, right now I'm tilting toward, you know, Cloud Code with AWS CLI in order to carry out the test just because...
+[01:15:00] Juan Torres: It seems to have a better interface.
+[01:15:02] Juan Torres: It has to be, you can give it.
+[01:15:03] Juan Torres: I mean, Kero CLI can generate documents as well.
+[01:15:07] Juan Torres: I tried to create MD documents from extracting information from my resources in AWS.
+[01:15:17] Juan Torres: And in fact, I would say that Kero CLI is faster at doing so, but Cloud Code just has more general tools and you can just centralize your attention in one one interface.
+[01:15:31] Juan Torres: So that's, that's what I've been working on.
+[01:15:35] Paul Miller: Cool.
+[01:15:37] Paul Miller: Brilliant.
+[01:15:38] Paul Miller: So, um, we've got, uh, so next on the list was, um, so I'm looking at people that have got their video turned on.
+[01:15:50] Paul Miller: So, uh, Jake, uh, you were next on the list.
+[01:15:57] Jake Maymar: Hey guys.
+[01:15:58] Jake Maymar: Uh,
+[01:16:00] Jake Maymar: Yeah, just kind of buried in bugs right now, just trying to get all these things done.
+[01:16:05] Jake Maymar: It's crazy.
+[01:16:06] Jake Maymar: Yeah, I'll have to check, look into the Anthropic code review.
+[01:16:12] Jake Maymar: I think that's really interesting.
+[01:16:17] Jake Maymar: Yeah, I think the thing is, it's so interesting, is all this agentic flow, you get a little overwhelmed.
+[01:16:26] Jake Maymar: I saw, I actually, I was kind of curious, I missed the beginning of this meeting.
+[01:16:32] Jake Maymar: Are people still using OpenClaw?
+[01:16:35] Jake Maymar: Or is that, is there like, kind of an evolution from that?
+[01:16:41] Ty Wells: There's some, there's some versions out there.
+[01:16:43] Ty Wells: I'm running my own secure clause, you know, just started with the framework and then built in the stuff as I need it.
+[01:16:51] Ty Wells: And then I turned all of my projects, my, you know, my personal projects into CLIs.
+[01:16:58] Ty Wells: So now everything is CLIs.
+[01:17:02] Jake Maymar: Yeah, that makes a lot of sense.
+[01:17:06] Jake Maymar: Yeah.
+[01:17:06] Jake Maymar: Um, I was just blown away with what some people are doing with it.
+[01:17:11] Jake Maymar: Um, it just, it's kind of funny.
+[01:17:15] Jake Maymar: It just feels, um, I don't know.
+[01:17:22] Jake Maymar: I, you kind of get a glimpse of what this thing could do.
+[01:17:25] Jake Maymar: You know, it's, it's really, really interesting to kind of see.
+[01:17:30] Jake Maymar: You know, um, so one of my friends basically was having a conversation, talked to the phone.
+[01:17:37] Jake Maymar: And then when we came back, he had scraped all of the videos of all of that particular subject, like that person, transcribed them, uh, done sentiment analysis, done, um, uh, identifying speaker, speakerization, all those different things.
+[01:17:59] Jake Maymar: It's basically entire.
+[01:18:00] Jake Maymar: The thing, as well as like, ordered them, I mean, just everything.
+[01:18:04] Jake Maymar: And so at the end, it was just done.
+[01:18:07] Jake Maymar: And then on top of that, he created a persona based on that one person.
+[01:18:13] Jake Maymar: And it was crazy spot on.
+[01:18:16] Jake Maymar: It was wild.
+[01:18:19] Jake Maymar: But yeah, no, I guess, you know, I'm just working on kind of the same old things.
+[01:18:28] Jake Maymar: Just trying to understand.
+[01:18:31] Jake Maymar: How to get.
+[01:18:33] Jake Maymar: Actually, was kind of curious, are y'all noticing that Claude seems slower?
+[01:18:39] Jake Maymar: It feels a lot slower, like a lot slower.
+[01:18:44] Ty Wells: Right now, they have a fast mode now that they can charge you more money for.
+[01:18:48] Jake Maymar: Ah, there it is.
+[01:18:52] Jake Maymar: Yeah, there it is.
+[01:18:53] Jake Maymar: That makes perfect sense.
+[01:18:55] Paul Miller: They're on the revenue drive now.
+[01:18:58] Jake Maymar: Yeah.
+[01:18:58] Jake Maymar: Yeah, that makes a lot of sense.
+[01:19:00] Jake Maymar: Yeah, because it just seems so slow.
+[01:19:02] David Stamper: doesn't seem as good.
+[01:19:03] David Stamper: anything in my entire life.
+[01:19:05] Jake Maymar: Sorry, Susan, David?
+[01:19:07] David Stamper: I said it's taught me patience beyond anything else in my entire life.
+[01:19:11] Jake Maymar: Yeah.
+[01:19:13] David Stamper: I noticed that it said you can now do things in fast mode.
+[01:19:16] David Stamper: And then, like, two days later, everything went slow.
+[01:19:21] David Stamper: Oh, yeah, it costs more to go in fast mode.
+[01:19:24] David Stamper: That's why.
+[01:19:25] David Stamper: It's literally they have lowered the speeds to make more money.
+[01:19:30] Timothy: See, I have used, especially, I have outsourced, you know, like, hire a programmer to do website.
+[01:19:37] Timothy: So I know they're expensive.
+[01:19:39] Timothy: And, you know, I'm using the $200 once.
+[01:19:42] Timothy: I can work whole day.
+[01:19:44] Timothy: So even if they double that, I'll pay it.
+[01:19:47] Timothy: It's like, there's no question.
+[01:19:49] Timothy: Like, even $50 an hour to hire a good developer, that's only eight hours one day.
+[01:19:55] Jake Maymar: it's true.
+[01:19:56] Timothy: It's true.
+[01:19:57] Timothy: I'll pay it.
+[01:19:57] Timothy: I'll just pay it.
+[01:19:58] Timothy: It's smart, even double, triple.
+[01:20:00] Timothy: I'll pay it too, because I can work full day right now, 200.
+[01:20:04] Timothy: I know they subsidize, the one of the mode is the credit.
+[01:20:09] Timothy: You buy, you use their, you know, the CLI and then use their subscription.
+[01:20:14] Timothy: It's so cheap.
+[01:20:18] David Stamper: I can't afford that.
+[01:20:19] David Stamper: So I will work 20 hours straight instead of paying the extra.
+[01:20:23] David Stamper: Screw that.
+[01:20:24] Timothy: Yeah, but that's the thing is that I'll pay three times more to work full time on this.
+[01:20:30] Morgan Cook: I just open up four different windows.
+[01:20:32] Timothy: Yeah.
+[01:20:33] Timothy: Yeah.
+[01:20:34] Timothy: I work, I work two, three app at the same time.
+[01:20:37] Timothy: We're waiting.
+[01:20:38] Ty Wells: Quinn 3.5, nine, nine gigabyte model right now.
+[01:20:43] Ty Wells: That's what I will be using for my, because yeah, it's, it's getting crazy.
+[01:20:49] Jake Maymar: That's interesting.
+[01:20:50] Jake Maymar: So do you like the Quinn over the GLM?
+[01:20:54] Ty Wells: I haven't used either, but I have to do something.
+[01:20:56] Ty Wells: So I, I, I did research and, and Quinn was.
+[01:21:00] Ty Wells: sort of new, and it can run on my laptop, so I'm training it on my laptop right now, and so hopefully that's, that'll be the test.
+[01:21:08] David Stamper: Are you guys developing on VCs then?
+[01:21:12] Timothy: Hmm?
+[01:21:13] Jake Maymar: Virtual computers?
+[01:21:14] David Stamper: Yeah, are you guys using virtual computers for your programming?
+[01:21:18] Jake Maymar: I think some people are.
+[01:21:20] Jake Maymar: It just depends.
+[01:21:23] Ty Wells: I'm on my MacBook.
+[01:21:25] Jake Maymar: Yeah, Mac Mini.
+[01:21:28] David Stamper: I've thought about it, but I just thought it would be super expensive.
+[01:21:32] Juan Torres: Have any of you, I've asked the question, KimiCode as a supplement to ClaudeCode?
+[01:21:40] Patrick Chouinard: Honestly, all of those models that could replace Claude in ClaudeCode, the only danger, I've tried it, not KimiCode per se, but I've tried Gwen, I've tried a lot of them.
+[01:21:52] Patrick Chouinard: The problem is they, that Entropic also supply a bunch of scaffolding on.
+[01:21:59] Patrick Chouinard: big
+[01:22:02] Patrick Chouinard: So there's a bunch of things that the Claude model will do that is not the model, it's other tool that runs on the Entropic servers that you get for free, when you're using Claude or Entropic as your supplier, and, or AWS Bedrock.
+[01:22:21] Patrick Chouinard: But if you go to other models, yeah, you're going to have a lot of the agentic stuff, and it's going to do code very well, but there's a lot of the tools that you're They're going to lose because they're supplied by, uh, Entropic.
+[01:22:33] Patrick Chouinard: And in terms of the speed itself, uh, yes, I tried it because they, uh, Entropic sent me a 70 bucks, uh, uh, of credit to try it out.
+[01:22:44] Patrick Chouinard: And it's faster, but, uh, nothing compared to, uh, Codex Spark.
+[01:22:52] Jake Maymar: Oh, really?
+[01:22:53] Patrick Chouinard: That's planetary, another solar system.
+[01:22:57] Patrick Chouinard: I mean, they're, they're running that on their new, uh,
+[01:23:00] Patrick Chouinard: Cerberus chips, it's insane.
+[01:23:03] Jake Maymar: What's the cost, if you don't mind, like just general?
+[01:23:09] Patrick Chouinard: The $70 that they gave me, I've used in about an hour.
+[01:23:15] Patrick Chouinard: Wow.
+[01:23:16] Patrick Chouinard: And Sparks is part, you have to have a $200 a month subscription already, and it's charged on top of.
+[01:23:27] Patrick Chouinard: That one was not on my account that I tried it.
+[01:23:29] Jake Maymar: Wow, all right.
+[01:23:31] Patrick Chouinard: So yeah, speed is extremely expensive.
+[01:23:36] Jake Maymar: Yeah, and I heard really good things about the newest Codex, too.
+[01:23:39] Jake Maymar: Is anyone using Codex 5.3, right?.4.
+[01:23:43] Jake Maymar: 5.4, wow.
+[01:23:45] Jake Maymar: And it moves fast.
+[01:23:49] Patrick Chouinard: There you go, Bastien said it.
+[01:23:51] Patrick Chouinard: Spark consumed twice the credit, and yeah, it's included in the $200, but it's going to turn through your, actually not go there.
+[01:23:59] Patrick Chouinard: going $300.
+[01:23:59] Patrick Chouinard: Uh,
+[01:24:00] Patrick Chouinard: Credit twice as fast.
+[01:24:01] Jake Maymar: That's interesting.
+[01:24:02] Jake Maymar: You know what's so interesting is a lot of my friends have actually canceled OpenAI.
+[01:24:08] Jake Maymar: I'm kind of curious if you guys are thinking the same way because I think, Patrick, you were saying you're still using OpenAI.
+[01:24:16] Jake Maymar: Are you using 5.4?
+[01:24:18] Patrick Chouinard: Yeah, but not for coding as well.
+[01:24:22] Patrick Chouinard: Actually, since it's the only one that allows you to use their OAuth with something else than their coding model.
+[01:24:30] Patrick Chouinard: It's the backing for my OpenClaw, and at the same time, ChatGPD stays the best conversation list verbally right now.
+[01:24:42] Patrick Chouinard: And since that's, I do 90% of my design sitting in my car in traffic, I'm not going to get rid of OpenAI.
+[01:24:50] Jake Maymar: That makes sense.
+[01:24:50] Jake Maymar: Yeah, that definitely makes sense.
+[01:24:52] Jake Maymar: Yeah, I know a couple of people use it only for like conversations.
+[01:24:56] Jake Maymar: The real-time voice is supposed to be really, really good.
+[01:25:00] Jake Maymar: Oh, that's interesting.
+[01:25:02] Jake Maymar: Yeah, not much to share, just kind of just buried right now in lots of bugs and trying to figure things out.
+[01:25:13] Paul Miller: Cool.
+[01:25:14] Paul Miller: Thanks, Jake.
+[01:25:15] Paul Miller: Is Marc still on the call or has he dropped off?
+[01:25:19] Paul Miller: I think it looks like he might have dropped off.
+[01:25:21] Patrick Chouinard: Yep.
+[01:25:23] Paul Miller: So let's switch over to Morgan.
+[01:25:26] Paul Miller: How's it going, Morgan?
+[01:25:32] Morgan Cook: My mic was off.
+[01:25:34] Morgan Cook: It's going good.
+[01:25:36] Morgan Cook: So last week I spoke about and inquired about using Astro and Cloudflare as a static site because that's what Patrick had mentioned in a previous meeting.
+[01:25:49] Morgan Cook: And so I gave it a shot this last week and threw together a website for a client and, I mean, it turned out great.
+[01:25:57] Morgan Cook: It's all on their free tier and
+[01:26:00] Morgan Cook: You know, there's no real, I mean, it's even got some dynamic stuff in it, but it's for the most part a static site, right?
+[01:26:09] Morgan Cook: It's amazing what you call static and then how much actual variation you can get out of that static site.
+[01:26:17] Paul Miller: Exactly.
+[01:26:18] Morgan Cook: With the Cloudflare's back end with their database and their R2 large file storage.
+[01:26:25] Morgan Cook: So they give you up to 10 gigabytes and, you know, she, as this site was for a, was for a little, a guy that does some, some, he calls them catios or they're patios for, for cats.
+[01:26:42] Morgan Cook: It's an enclosure so your cat can go outside.
+[01:26:45] Paul Miller: Yes.
+[01:26:45] Morgan Cook: And, and so he had, he just wanted like a little gallery site to demonstrate his work and, you know, kind of get a little bit of recognition out there.
+[01:26:55] Morgan Cook: But that's it, right?
+[01:26:56] Paul Miller: So he didn't want like a whole, uh, work.
+[01:27:00] Morgan Cook: He didn't want a bunch of contacts and all that.
+[01:27:03] Morgan Cook: was just a simple site for a place where his customers could go post a testimonial and look at the gallery.
+[01:27:10] Morgan Cook: And so it turned out pretty good.
+[01:27:13] Paul Miller: What did you write it in?
+[01:27:15] Paul Miller: What framework did you use to write it?
+[01:27:19] Morgan Cook: Yeah, that was in Astro.
+[01:27:21] Morgan Cook: Astro, And that deploys with Wrangler to Cloudflare.
+[01:27:27] Morgan Cook: And the deployment was pretty simple.
+[01:27:29] Morgan Cook: I didn't run it through Git.
+[01:27:30] Morgan Cook: I just ran the deploy right out of the dev box straight to Cloudflare.
+[01:27:35] Paul Miller: Brilliant.
+[01:27:37] Paul Miller: Cool.
+[01:27:38] Morgan Cook: Really nice stack for doing static sites and stuff.
+[01:27:47] Paul Miller: Right.
+[01:27:47] Morgan Cook: That was part of my week.
+[01:27:50] Morgan Cook: The rest of it, I've been spent on my heritage plot, the cemetery platform.
+[01:27:55] Morgan Cook: And that's coming along quite well.
+[01:27:57] Paul Miller: Yeah.
+[01:27:58] Morgan Cook: I'm.
+[01:27:58] Morgan Cook: I liked, uh, uh, uh, uh, uh.
+[01:27:59] Morgan Cook: next time.
+[01:28:00] Morgan Cook: Ty, what you had shared about having a static frame for the main window and just scrolling the bits and pieces inside instead of scrolling the whole frame.
+[01:28:11] Morgan Cook: So I've been working a little bit on getting that changed over.
+[01:28:14] Morgan Cook: still have a few issues to deal with there.
+[01:28:16] Morgan Cook: And then I worked on my tenant.
+[01:28:18] Morgan Cook: My tenant was too complicated, the tenant layer.
+[01:28:22] Morgan Cook: Because I had a, first I had multi-tenant and then each multi-tenant could have its own set of sub cemeteries.
+[01:28:33] Morgan Cook: Then I added the user roles and the user roles.
+[01:28:37] Morgan Cook: Once a user could then be assigned to any cemetery, then that top tier layer didn't make any sense anymore.
+[01:28:44] Morgan Cook: So I pulled that out so that the multi-tenant is just straight to the cemetery and then any user could be assigned to multiple, multiple tenant objects of a cemetery.
+[01:28:58] Morgan Cook: Right.
+[01:28:59] Paul Miller: And then.
+[01:29:00] Morgan Cook: That cleaned it up a lot, and that's when I added the context switching for the menus so that, you know, when I'm looking at one cemetery, I might be looking at that as a grounds worker versus when I'm working on another cemetery, I might be the staff worker inside dealing with the data versus an admin.
+[01:29:22] Morgan Cook: So there's various different views that show up based on your role, and that role is set when you specify your context.
+[01:29:30] Morgan Cook: So the context layer of that for the user context loads all that in when you log in, because the login is one login, and so I know that I'm a member of these three or four different cemeteries at different role levels, and so the context menu can easily switch with that, and then the database does a second validation when you do a switch to make sure that your login is still valid in that cemetery, or that context, whatever context you take.
+[01:29:58] Morgan Cook: second graphic.
+[01:29:59] Morgan Cook: snap
+[01:30:00] Morgan Cook: So that's come along pretty good.
+[01:30:03] Morgan Cook: I'm going to probably have it ready.
+[01:30:05] Morgan Cook: I'll get enough of it ready, and I'll do a little demo next week with where I'm at with it.
+[01:30:12] Morgan Cook: I think it'll be pretty good by then.
+[01:30:14] Morgan Cook: I've been working with the client as well, and I'm kind of frustrated because I had a really good meeting with him, and I thought Fathom was recording, but it wasn't recording.
+[01:30:23] Morgan Cook: And so I lost some really good notes and screenshots and things like that.
+[01:30:29] Morgan Cook: was like, oh, I'm frustrated after that.
+[01:30:32] Paul Miller: The world of having Fathom and other meeting recorders and being able to just listen and enjoy meeting, I just can't imagine going back to that pre-world.
+[01:30:44] Morgan Cook: It's, oh, how frustrating.
+[01:30:46] Morgan Cook: I still, I still find myself though, writing notes down.
+[01:30:50] Morgan Cook: like, why am I writing the notes down?
+[01:30:52] Morgan Cook: I'm not paying attention anymore.
+[01:30:53] Paul Miller: Yeah, instinct.
+[01:30:55] Paul Miller: Yeah, no, I, I always end up doing a Zoom recording.
+[01:31:00] Paul Miller: As well as the Fathom or a team's recording simultaneously, because sometimes the note taker doesn't get the right, might miss some of the context and I'll get it to mash up.
+[01:31:12] Paul Miller: And then I've got the little necklace thing I'm wearing as well, limitless.
+[01:31:16] Paul Miller: And then I tie them all together and nothing, nothing's ever missed.
+[01:31:23] Morgan Cook: Anyway, so that's where I'm at right now.
+[01:31:25] Paul Miller: Projects are going good.
+[01:31:26] Morgan Cook: have two others that are on the back burner, but keep rotating in a little bit to have a little bit of work done on them.
+[01:31:33] Morgan Cook: So things are going okay right now.
+[01:31:36] Morgan Cook: I'm feeling a little bit overwhelmed this week, but it's starting to, things are starting to be accomplished.
+[01:31:42] Morgan Cook: So I'm starting to feel better about where I'm at with everything.
+[01:31:47] Paul Miller: Brilliant, brilliant.
+[01:31:50] Paul Miller: Um, thank you, Morgan.
+[01:31:53] Paul Miller: Uh, Ty, what's happening in your world now?
+[01:31:57] Ty Wells: Oh, God, what's not happening?
+[01:32:00] Ty Wells: Um, I am transforming one of my businesses to a new model that I've come up with, not an AI, not an LLM, but a business model called the Contributor Model.
+[01:32:15] Ty Wells: And in essence, um, let me share my screen.
+[01:32:22] Ty Wells: And in essence, what it is, um, let's move this out of way.
+[01:32:30] Ty Wells: What it is, is a means for, I'm just explaining to the employees that I don't need them for digital work.
+[01:32:39] Ty Wells: I really don't.
+[01:32:41] Ty Wells: And we've sort of talked a little bit about this.
+[01:32:43] Ty Wells: And so I have these three buckets, digital, judgment, contributor, and, um, everything they do fits into one of these buckets, right?
+[01:32:57] Ty Wells: So this digital bucket.
+[01:33:00] Ty Wells: It allows them to, it's showing exactly what things that they can and cannot do, what the system can do, right, basically, so they don't have to transpose from one system, from email into the platform, and then out of there, you know, basically that vicious queue.
+[01:33:19] Ty Wells: But the things that are basically human in the loop, still need them for that, right, those cognitive things, those reasoning skills, those are still needed.
+[01:33:31] Ty Wells: So that's the judgment queue, that's where they would come in and just have, okay, make a decision on this or that or whatever the case may be.
+[01:33:39] Ty Wells: But really, what I need them to do is come up with ideas to help grow and sort of build the organization, right, and so that's the model that I'm introducing to two of my companies that are here, and basically, I'm telling them, I'm...
+[01:34:00] Ty Wells: I'm not to pay you exactly what you're currently getting paid, but I'm going to do between 50% to 70% to 80% of your work, your digital work.
+[01:34:09] Ty Wells: So that frees up all of this time to then become a contributor.
+[01:34:13] Ty Wells: And, and so I had a management meeting today, I talked with the staff, I'm working this from the bottom up.
+[01:34:21] Ty Wells: So I spoke with the staff last week, this week, I talking to the managers today, I talked with them about their role in the process.
+[01:34:31] Ty Wells: And basically, they're, they're more facilitators than managers.
+[01:34:35] Ty Wells: So everybody's job description is, is changing, and they're going to have a single line on their job description that says, I contribute to GTS, I is global tech systems, that's it, nothing else.
+[01:34:48] Ty Wells: So that is what I'm doing.
+[01:34:50] Ty Wells: So in order to do that, and this is just the slideshow that I sort of built into the app to show them.
+[01:34:57] Ty Wells: So this is what their day would look up.
+[01:35:00] Ty Wells: An 8 a.m.
+[01:35:01] Ty Wells: stand up, and then check their digital work, check their queue, see if there's anything they need to do, and then the rest of the day, they contribute to the company.
+[01:35:13] Ty Wells: Now, not everybody, obviously, labor intensive groups that, you know, they can't do much with them, but you can do some things with them.
+[01:35:21] Ty Wells: They can still be contributors, and they'll be contributing in a different way through their labor skills.
+[01:35:26] Ty Wells: So we have security guards and service technicians and that sort of stuff.
+[01:35:32] Ty Wells: So, so what I built for them is a way to then digitize their processes, so they can come in and add their process.
+[01:35:41] Ty Wells: Well, I've already pulled all of their processes out of our current existing system, based on their roles, based on what they're doing.
+[01:35:49] Ty Wells: I've already separated everything, right?
+[01:35:52] Ty Wells: And so I have, and so now they're coming in to put in their own processes.
+[01:35:56] Ty Wells: So they'll go in and name whatever this process is, and they
+[01:36:00] Ty Wells: can just do it in voice.
+[01:36:01] Ty Wells: They record it, so let's say, up to onboard, oh, onboard a new customer.
+[01:36:12] Ty Wells: I don't know if this will work because I'm using the mic.
+[01:36:14] Ty Wells: That's not going to work.
+[01:36:15] Ty Wells: So they can just go in this process here in voice and say exactly what the process is.
+[01:36:20] Ty Wells: Once the process has been done, it will give them a summary of the process and it will give them a visual diagram of the process.
+[01:36:27] Ty Wells: So if we look at, so here's a cue here, like I did one here, new customer sign-up promotions.
+[01:36:34] Ty Wells: They would talk to it.
+[01:36:35] Ty Wells: It would give them the summary and also a workflow to ensure that that is the process that they use.
+[01:36:42] Ty Wells: So we're moving from the cognitive stage, know, thinking stage and putting those into the digital stage.
+[01:36:48] Ty Wells: So now then we'll automate this process all the way through and we'll repeat, rinse and repeat.
+[01:36:55] Ty Wells: So that's the project that I'm working on today.
+[01:36:58] Ty Wells: day.
+[01:37:00] Ty Wells: Any questions?
+[01:37:03] Paul Miller: Brilliant.
+[01:37:04] Paul Miller: Oh, goodness.
+[01:37:05] Paul Miller: Are they scared when you start talking through?
+[01:37:09] Ty Wells: They are scared.
+[01:37:10] Ty Wells: I mean, I tell them, I'll show you this slide again.
+[01:37:14] Ty Wells: This is my leading slide here.
+[01:37:16] Ty Wells: Where is it?
+[01:37:21] Ty Wells: Right here.
+[01:37:22] Ty Wells: This is the new way.
+[01:37:24] Ty Wells: Read the bottom quote in there.
+[01:37:27] Ty Wells: Okay.
+[01:37:28] Ty Wells: That's really what I'm telling them out loud.
+[01:37:31] Ty Wells: And I'm saying the words, you know, I don't need them for the digital work, but I want them for their brains.
+[01:37:40] Ty Wells: Right.
+[01:37:40] Ty Wells: And so they're now empowered to do build new products.
+[01:37:46] Ty Wells: I'm going to have them use the tools.
+[01:37:48] Ty Wells: I'm going to build all of that into this tool so that they can iterate back and forth to hash things out, use AI to help them get to a point to see if they can contribute something.
+[01:37:58] Ty Wells: And then we have.
+[01:38:00] Ty Wells: A team of champions that basically sort of runs things and sort of oversees and so forth, but it's a clear, transparent dashboard of things that people are working on, like who's contributing.
+[01:38:16] Ty Wells: So you can see.
+[01:38:17] Ty Wells: So if you're not contributing, you know what that means, right?
+[01:38:22] Ty Wells: That's not going to end well for somebody.
+[01:38:24] Ty Wells: But if I'm doing all of your other work, you've got to contribute.
+[01:38:28] Ty Wells: So you will find your way out naturally, organically, or you will contribute.
+[01:38:34] Ty Wells: And the contribution does allow the ability for monetization, for compensation.
+[01:38:40] Paul Miller: I was just going to ask that, because there's nothing like, yeah, you can, you can get the dashboard, you can get the leaderboard.
+[01:38:49] Paul Miller: But if people are not incentivized, then ultimately, it's not, is that going to drive the behavior change?
+[01:38:56] Ty Wells: Yeah, but it's a win-win for me, right?
+[01:38:58] Paul Miller: Yeah, of course.
+[01:38:59] Paul Miller: Well.
+[01:38:59] Ty Wells: So, again.
+[01:39:00] Ty Wells: Because if I've got all the digitization done, and that person who was doing that role leaves, that means I've got their salary, and I still get the work done.
+[01:39:13] Ty Wells: And if I bring somebody on, I'm bringing them to as a contributor, I'm not bringing them to be an accounts payable clerk, I'm bringing them to be a contributor.
+[01:39:22] Ty Wells: So they're starting off in the right frame of mind.
+[01:39:25] Ty Wells: Don't worry about that work.
+[01:39:26] Ty Wells: This is where I need you for if I bring somebody on.
+[01:39:29] Ty Wells: So that is the the methodology that I've, I've searched, there's nothing like it, unless you guys know of anything, there's some variations of it, there's nothing like what I'm doing.
+[01:39:40] Ty Wells: And the reason like a lot of things that we do doesn't exist, because really, up until a year and a half ago, it really didn't have the true power to combine these different things together, like, like Patrick does, and, you know, just keep going deeper and deeper and deeper, you know, keep the meta going.
+[01:39:57] Ty Wells: So, that's...
+[01:39:59] Ty Wells: that's...
+[01:40:00] Morgan Cook: Because if I've got all the digitization done, and that person who was doing that role leaves, that means I've got their salary, and I still get the work done.
+[01:40:13] Morgan Cook: And if I bring somebody on, I'm bringing them to as a contributor, I'm not bringing them to be an accounts payable clerk, I'm bringing them to be a contributor.
+[01:40:22] Morgan Cook: So they're starting off in the right frame of mind.
+[01:40:25] Morgan Cook: Don't worry about that work.
+[01:40:26] Morgan Cook: This is where I need you for if I bring somebody on.
+[01:40:29] Morgan Cook: So that is the the methodology that I've, I've searched, there's nothing like it, unless you guys know of anything, there's some variations of it, there's nothing like what I'm doing.
+[01:40:40] Morgan Cook: And the reason like a lot of things that we do doesn't exist, because really, up until a year and a half ago, it really didn't have the true power to combine these different things together, like, like Patrick does, and, you know, just keep going deeper and deeper and deeper, you know, keep the meta going.
+[01:40:57] Morgan Cook: So, that's...
+[01:40:59] Ty Wells: that's...
+[01:41:00] Ty Wells: So that's basically what's going on with my project.
+[01:41:05] Ty Wells: Wow.
+[01:41:06] Ty Wells: So Ty, it reminds me of a system concept that was in place and never really implemented just because of what you just said, you know, we didn't have the right power to do it, but it was called Petri Nets and Petri Nets dealt with your entire first two buckets, but it didn't deal with the contributor one.
+[01:41:28] Paul Miller: Well, it kind of did, as you could add noise into the Petri dishes as they went, but the concept of a Petri Net was, you you had an object that did something and it had some outputs, and then those outputs went into some input to some other Petri structure and same thing, right?
+[01:41:49] Paul Miller: So everything had inputs and outputs.
+[01:41:51] Paul Miller: Right.
+[01:41:52] Paul Miller: And the main point of the user was that you were the contributor to the inputs.
+[01:41:56] Paul Miller: Right.
+[01:41:57] Paul Miller: And so now, right.
+[01:41:59] Paul Miller: Right.
+[01:42:00] Paul Miller: Exactly, because now it's all digital.
+[01:42:02] Paul Miller: So I don't need them.
+[01:42:04] Paul Miller: We didn't have the capacity to do it.
+[01:42:06] Paul Miller: So now you can do it.
+[01:42:08] Paul Miller: If you can, if you can think about it, you can do it.
+[01:42:10] Paul Miller: I don't need you to do that part.
+[01:42:12] Ty Wells: I need you to now use your, your cognitive abilities to help grow the company.
+[01:42:19] Paul Miller: So that's today's project, at least this couple of weeks project.
+[01:42:26] Paul Miller: Wow.
+[01:42:27] Paul Miller: It's, it's, it's really interesting, Ty.
+[01:42:33] Paul Miller: I'm, I'm dealing with a few clients, where they, they're wanting to sell their businesses.
+[01:42:42] Paul Miller: And they, they're at the point of retirement, they just want to go out fishing and, and get the money back from their business and sell it on.
+[01:42:52] Paul Miller: But they've got a lot of their mindset, still investing They're in the business, their expertise on doing certain key functions.
+[01:43:00] Paul Miller: In the business, and it's very hard, of course, to sell a project or sell a business where the owner of the business is like half the brains of the functionality of the business.
+[01:43:11] Ty Wells: That's not an owner, that's just an employee.
+[01:43:15] Ty Wells: Yeah, yeah.
+[01:43:16] Ty Wells: Well, it's kind of like the super employee.
+[01:43:18] Ty Wells: No, they go in, they make all those key commercial judgments, and then you're thinking about someone that's going to buy the business.
+[01:43:25] Ty Wells: They're saying, well, hold on a moment, old school, I would have put golden handcuffs on that person for until they handed over and they did the training on that.
+[01:43:38] Ty Wells: Is there an opportunity for you to have a look at what you're doing and say, well, look, if someone's buying a business and they're wanting the business that they're buying or the business that the person's selling, they're saying, I want to take that business, I want to make it more portable so I can retire or...
+[01:43:59] Ty Wells: ...
+[01:44:00] Ty Wells: Maybe they might not want to sell the business, but they want, they just don't want to have to be there all the time doing that role in the business.
+[01:44:08] Ty Wells: Yeah.
+[01:44:08] Paul Miller: Yeah.
+[01:44:09] Paul Miller: So, I mean, this would fold into that because that's what we're doing, trying to separate all of the noise and focus on that.
+[01:44:19] Paul Miller: And then really the key decisions that you have to think about for a new product or new line or whatever, new service, you know, reducing internal costs, whatever.
+[01:44:29] Ty Wells: It may be.
+[01:44:30] Ty Wells: You have a lot of time to do it.
+[01:44:32] Ty Wells: We literally, in that management meeting, we solve four problems.
+[01:44:36] Ty Wells: I told them there's 99 problems on the wall because every business has problems, right?
+[01:44:40] Ty Wells: I mean, that was the song, but we went through, I got an issue from each one of them.
+[01:44:45] Ty Wells: We asked that the, the, a digital solution for all four.
+[01:44:49] Ty Wells: And those were just, you know, ad hoc in the meeting.
+[01:44:52] Paul Miller: And so now if they actually put time and focus into, you know, the little things that, that, that.
+[01:44:59] Paul Miller: Right.
+[01:44:59] Paul Miller: Thank
+[01:45:00] Paul Miller: Earn you every day.
+[01:45:01] Ty Wells: Now, now we're getting separate.
+[01:45:03] Paul Miller: Now we can focus more on the things that that will help us grow together.
+[01:45:09] Paul Miller: Brilliant.
+[01:45:10] Ty Wells: Cool.
+[01:45:14] Ty Wells: Always pushing, pushing change and changing mindset.
+[01:45:20] Ty Wells: Always impressive what you're doing, Ty.
+[01:45:22] Ty Wells: is cool stuff.
+[01:45:23] Ty Wells: Well, you know, I'm in a unique position because I have three businesses that I can use as use cases to prove, you know, that that's, that's a little bit different.
+[01:45:34] Ty Wells: I have existing customers that I can use to sell products to.
+[01:45:38] Ty Wells: So it's a little bit different than starting up.
+[01:45:42] Ty Wells: Two other things I want to talk about real quick, the auto researcher.
+[01:45:45] Ty Wells: Did you guys, for Andre Kaparthi, put that out?
+[01:45:50] Ty Wells: It's like the beginning of the ability to start generating your own model.
+[01:45:56] Ty Wells: I don't know if anybody knows.
+[01:45:57] Paul Miller: Oh, I read that.
+[01:45:58] Ty Wells: I read that.
+[01:45:59] Ty Wells: Did you?
+[01:45:59] Ty Wells: next
+[01:46:00] Ty Wells: Did you do anything with it, Ty, or Patrick?
+[01:46:02] Ty Wells: No, if I'm mentioning it, I've got to.
+[01:46:05] Paul Miller: Of course, of course.
+[01:46:07] Paul Miller: That looked really cool.
+[01:46:09] Patrick Chouinard: Yeah, that's why I'm trying to use my, say, project, the Lucid project I've shared with you guys to see if I can produce a better model on that nine gigabyte model that I'm running lower training on right now.
+[01:46:24] Patrick Chouinard: Actually, let me see where we.
+[01:46:27] Paul Miller: Yeah, I'm running.
+[01:46:28] Paul Miller: That's still running right now.
+[01:46:30] Paul Miller: But in essence, you know, the issue that came up with Claude Code and, you know, the cost and I'm burning through tokens.
+[01:46:38] Patrick Chouinard: So you could imagine.
+[01:46:38] Paul Miller: Right.
+[01:46:38] Paul Miller: I mean, everybody's I got to $200 subscriptions and then sometimes they hit that extra charge and I want to finish up before I switch over to the other, you know, subscription.
+[01:46:50] Patrick Chouinard: So I've got that extra charge going.
+[01:46:52] Patrick Chouinard: Then I'm using my appropriate key to running my.
+[01:46:55] Patrick Chouinard: Oh, my goodness.
+[01:46:56] Patrick Chouinard: So, yeah, yeah, that's that's.
+[01:47:00] Patrick Chouinard: I definitely have to do something about that, so we're going to see what I can get out of the Quinn model.
+[01:47:05] Patrick Chouinard: Thanks, Ty.
+[01:47:08] Paul Miller: That's brilliant.
+[01:47:10] Paul Miller: Patrick, have you been, did you try Andre's model?
+[01:47:14] Paul Miller: Not yet.
+[01:47:15] Paul Miller: I've read about it, and I plan to try it, but I haven't had the time to, yeah, there, no matter how much more productive we get, there's still so many hours in a day.
+[01:47:30] Rag Ch: There's so many hours that your brain just can do AI stuff, too.
+[01:47:34] Rag Ch: Then you just have to watch Netflix, eat or sleep.
+[01:47:39] Rag Ch: Actually, it's often ChatGPT reminds me of that because I tend to go too far.
+[01:47:47] Rag Ch: Very clever ways to preserve part of their data set of GPUs.
+[01:47:52] Rag Ch: Seriously, now that it knows the hour it is, not only the date, it will actually tell me, it's like, you really have to talk.
+[01:48:00] Rag Ch: Can to me about that at midnight on a Tuesday?
+[01:48:03] Rag Ch: Okay.
+[01:48:03] Rag Ch: Might be time for me to go to sleep now.
+[01:48:07] Rag Ch: Brilliant.
+[01:48:11] Rag Ch: Cool.
+[01:48:12] Rag Ch: Thanks, Ty.
+[01:48:13] Rag Ch: Always a pleasure.
+[01:48:15] Rag Ch: Now, we've got Rag Raj.
+[01:48:19] Rag Ch: Is that Raj?
+[01:48:20] Rag Ch: Is that the way you pronounce your name?
+[01:48:22] Rag Ch: Sorry?
+[01:48:23] Rag Ch: Yes.
+[01:48:23] Rag Ch: It's Raga.
+[01:48:25] Rag Ch: Raga.
+[01:48:26] Rag Ch: Yep.
+[01:48:27] Rag Ch: How can we help?
+[01:48:30] Rag Ch: Yeah.
+[01:48:30] Rag Ch: So I'm kind of a beginner in AI and cloud.
+[01:48:35] Rag Ch: Welcome.
+[01:48:36] Rag Ch: So I developed an app.
+[01:48:38] Rag Ch: I thought I will just show that.
+[01:48:42] Rag Ch: Can I share my screen?
+[01:48:43] Rag Ch: Yeah, yeah.
+[01:48:44] Rag Ch: Go for it.
+[01:48:46] Rag Ch: Okay.
+[01:48:47] Rag Ch: It's a B2C app.
+[01:48:52] Rag Ch: Can you guys see my screen?
+[01:48:54] Rag Ch: Yes.
+[01:48:54] Rag Ch: Yep.
+[01:48:56] Rag Ch: So yeah, basically what it does is it.
+[01:49:00] Rag Ch: Scans all those receipts, it's a B2C, what people can do is they can scan whatever they purchase, they just scan the groceries receipts.
+[01:49:09] Rag Ch: And also they have warranties and returns and all that which they keep missing.
+[01:49:14] Rag Ch: And on the grocery receipts, this is a problem that I had, like I wanted to see like in last one month, how much gas did I burn?
+[01:49:23] Rag Ch: What amount of gas?
+[01:49:25] Rag Ch: So I didn't, I had to go through the bank receipts and all that.
+[01:49:28] Rag Ch: So I thought I will make it a little bit easier.
+[01:49:32] Rag Ch: And this kind of, it's a learning as well as a building.
+[01:49:37] Rag Ch: So yeah, this is right now, it is mobile first, basically.
+[01:49:44] Rag Ch: So these are all the, it has certain predefined categories and the user, when they scan, they can set the category, they can edit all the stuff.
+[01:49:56] Rag Ch: And so basically.
+[01:49:58] Rag Ch: basically.
+[01:49:59] Rag Ch: So
+[01:50:00] Rag Ch: You scan this, because this is desktop, it's going to ask for uploading, actually my, I don't know whether I still have the data, my laptop got messed up yesterday, and the whole thing, luckily I committed to Git, so yeah, it's there.
+[01:50:22] Rag Ch: So let's say gas, no, let's say electronics, because it will ask for, let's say gas, let see, so it's scanning that, and then before scanning, it will ask whether it's okay or not, it's not clear, it will, we can retake that, and then it will just check, and reading the whole thing using Gemini model, and also, yeah, so basically whatever it found, for some reason it was not able to, couldn't read properly, yeah, so I think
+[01:51:00] Rag Ch: There is some problem with the API, but I will take a look at that.
+[01:51:03] Rag Ch: Basically, it will read that and then gives the option to the customer to enter or modify any fields.
+[01:51:10] Rag Ch: At the same time, it would also give, if there is any warranty information, because the receipt has some warranty information and all that, it will ask if yes, then it will just say give some more information like product name, what is the due date, return period, and all that stuff.
+[01:51:24] Rag Ch: So basically, this is the information and it remembers everything and the warranties, so these are all the expired warranties and these are some of the active warranties and all that, and also it sends reminders before, like, one week or two days before that kind of reminders.
+[01:51:44] Rag Ch: And, yeah, and it can also, the user can invite their household members, like four, and they can also back this up to their Google Drive or Box, wherever.
+[01:52:00] Rag Ch: The best, the most useful thing that I thought is it has a chat interface where it can ask the details of the expenses like this, like, for example, most recent gas receipt, like whatever.
+[01:52:15] Rag Ch: Are there any warranties expiring soon?
+[01:52:18] Rag Ch: It just said that there is one that is coming up in 27.
+[01:52:22] Paul Miller: So this is the app, which I'm trying to see, because this will be my first ever app releasing to the world.
+[01:52:34] Paul Miller: So just wanted to run by you guys and see, I mean, how does the idea itself sound like?
+[01:52:41] Paul Miller: Is it, and this is a kind of problem that I had, and I just wrote it for this, and then you see any, you have any suggestions, any caveats, anything useful features that it can have.
+[01:52:54] Paul Miller: And by the way, there's one more feature for this, because not all the expenses come.
+[01:53:00] Paul Miller: With the receipts, physical receipts, they go to email, so they can just send an email, I'm yet to set this up, but they can just send that email, whatever the receipt, to this particular day, every user gets an email of their own, they can, this one can receive that email, and then the moment it receives, it just scans that email, and captures the data out of it.
+[01:53:26] Paul Miller: Cool.
+[01:53:27] Paul Miller: Oh, no, it's great stuff.
+[01:53:30] Rag Ch: One quick suggestion I'd have, because, look, I'm a typical geek, I'm always buying some new appliance, I've got, my wife is very unimpressed with how many kitchen appliances that I've bought, and that are sitting, gathering dust, in a cupboard that we've got downstairs, and it's good to be able to have all the receipts and things.
+[01:53:56] Paul Miller: Did you think about that?
+[01:54:00] Rag Ch: an integration with a calendar, so it could have the dates where warranties are automatically expiring, so it could send a reminder that warranties about to expire or extended warranty options are available.
+[01:54:16] Rag Ch: Yes, so we have the warranty page here.
+[01:54:21] Paul Miller: It clearly shows the status of that here.
+[01:54:24] Rag Ch: I'll say it's tracking the dates, but do you have integration back into calendars where someone can put a reminder into their personal calendar, or the system generates an email to remind them automatically, proactively?
+[01:54:38] Rag Ch: Yes.
+[01:54:40] Rag Ch: Let me...
+[01:54:42] Rag Ch: Yeah, there is this notification, right?
+[01:54:45] Paul Miller: Like the notification, there is an in-app notification.
+[01:54:52] Paul Miller: At the same time, it also sends an email, like...
+[01:54:56] Paul Miller: Oh, fantastic.
+[01:54:57] Paul Miller: Cool.
+[01:54:58] Paul Miller: ...a week before.
+[01:55:03] Paul Miller: Yeah, so I thought, I mean, I will price it around between like $5 and $10 per month.
+[01:55:11] Paul Miller: I don't know how, I mean, cost-wise, how it makes sense, I really don't know.
+[01:55:19] Paul Miller: Any suggestions on that, how I can?
+[01:55:23] Paul Miller: Well, what kind of research have you done on the market?
+[01:55:28] Rag Ch: Yeah, some other people doing similar things.
+[01:55:31] Rag Ch: Have you done some deep research?
+[01:55:33] Rag Ch: Yeah, expense trackers are there, and there are like fitness trackers.
+[01:55:39] Rag Ch: But I have not seen anything like this.
+[01:55:43] Rag Ch: And yeah, to be honest, like I said, this is a problem that I myself faced and quite a few times, not just once.
+[01:55:49] Rag Ch: Have you also thought about proactively looking at issues that people may be getting with the products that they've registered?
+[01:55:59] Rag Ch: We're are
+[01:56:00] Rag Ch: So you might have bought some appliance, and then the manufacturer of that appliance is saying, well, you need to do the following thing, or there's an update add-on, and you're looking out constantly for updates connected to those products, because it could be an OS upgrade or something that's related to it that might be useful.
+[01:56:30] Rag Ch: Yeah, all that information, they'll be able to, whatever the app captures, it will capture.
+[01:56:36] Rag Ch: Yeah.
+[01:56:38] Rag Ch: And anything that is not captured, or if something is not captured properly, the user has an option to update that.
+[01:56:50] Ty Wells: So, for example, here, a specific receipt, so this is the information.
+[01:56:54] Rag Ch: Yeah.
+[01:56:56] Ty Wells: Yeah, because you've got the model, you've got the model number there of the.
+[01:57:00] Ty Wells: Right.
+[01:57:01] Ty Wells: The potential to add a sort of dynamic check on that product.
+[01:57:07] Ty Wells: Yes.
+[01:57:09] Ty Wells: And it also captures the line items and the costs.
+[01:57:14] Ty Wells: So the idea here is to capture, for example, how much of, say, for example, if they want to avoid certain food, like flour or something, flour or meat or something, they can just see, okay, how much of meat or how much did they spend on the meat last six months?
+[01:57:39] Ty Wells: And it's a kind of an option for them.
+[01:57:44] Ty Wells: So that's the whole idea going forward.
+[01:57:48] Ty Wells: Raj, can give you some feedback?
+[01:57:52] Ty Wells: Sorry?
+[01:57:53] Ty Wells: Can I give you some feedback?
+[01:57:54] Ty Wells: Yeah, sure.
+[01:57:56] Ty Wells: And I give this from a perspective of...
+[01:58:00] Ty Wells: What would add value for me, right, I have, everybody's got this issue, right, but these receipts, the friction would be that I don't want to have to go and open an app or whatever, I take receipt, I take the picture of my receipt, because I knew, I know I'm going to lose it right away.
+[01:58:20] Ty Wells: I always take a picture before I even leave wherever I'm going, if I need that receipt, I'm going to take a picture right there, because I know it's in my camera roll.
+[01:58:28] Ty Wells: What I would like to do is to take that picture and share that with whatever app, and then it goes where it goes, and it does what it does.
+[01:58:39] Ty Wells: But if I've got to go and open up an app, and then go, you know, I just want to do that in the normal course of what I'm doing, that would add value for me.
+[01:58:50] Ty Wells: I get an email in, that, by the way, I use Co-Work to do this today, it's crazy, all these AI subscriptions that I have, I use Co-Work today to go read my email.
+[01:58:59] Ty Wells: listening.
+[01:59:00] Ty Wells: Find out what it is.
+[01:59:00] Ty Wells: Tell me which one is canceled.
+[01:59:01] Ty Wells: Give me the complete directions, where to go cancel it.
+[01:59:04] Ty Wells: And I did it.
+[01:59:06] Ty Wells: My point is I want it as frictionless as possible, but I need, so at the end of the day, you know, if you run a business, you need receipts so that you can, you know, when you're doing your taxes, which is, you know, I need to get on that, but I hate doing it.
+[01:59:21] Rag Ch: But if I'm consistent in, I can just take a picture and send it off, right?
+[01:59:26] Rag Ch: And it does what your app does, categorizes it, puts it wherever, that's what would add value for me that I would be willing to pay for.
+[01:59:34] Rag Ch: Now, how would I be willing to pay for that?
+[01:59:37] Rag Ch: On a per usage basis.
+[01:59:39] Rag Ch: If you're telling me that's how I cancel subscriptions today, because I may have used it once or twice, but I don't use it consistently.
+[01:59:47] Ty Wells: But I want it in my toolkit and I want to be able to use it, but only on a usage base, not as a, you know, monthly subscription.
+[01:59:55] Ty Wells: I, I cancel like 17 subscriptions.
+[01:59:58] Ty Wells: I don't even know what they are.
+[02:00:00] Ty Wells: Some of them.
+[02:00:00] Ty Wells: I mean, just because I wanted the tool at the time.
+[02:00:03] Ty Wells: So my point is, that's how I would use it if I was going to pay money for it as a customer.
+[02:00:09] Ty Wells: Least amount of friction to actually get what I need done.
+[02:00:13] Ty Wells: the end of the day, when I have to turn my receipts into the accountant, it's all there.
+[02:00:18] Ty Wells: I can just shoot it off to them.
+[02:00:20] Ty Wells: Easy peasy.
+[02:00:21] Ty Wells: Right.
+[02:00:23] Ty Wells: Yes, it requires the customer to scan the receipt each time.
+[02:00:29] Rag Ch: That's one thing.
+[02:00:30] Paul Miller: But if they're using it, like sometimes like on per usage, then I don't think it will be of much value for them.
+[02:00:38] Patrick Chouinard: Because they need to do this consistently.
+[02:00:42] Patrick Chouinard: On day to day basis, like it's a B2C more than a B2B.
+[02:00:46] Patrick Chouinard: I haven't thought about how it can help businesses, but No, no, this, this will work for consumers as well.
+[02:00:54] Patrick Chouinard: Same thing for consumer.
+[02:00:55] Patrick Chouinard: I'm just saying I want to send it off.
+[02:00:57] Patrick Chouinard: You have to use it.
+[02:00:59] Patrick Chouinard: Yes.
+[02:00:59] Patrick Chouinard: But every time
+[02:01:00] Patrick Chouinard: I might take a picture, I know that it's going to get categorized.
+[02:01:03] Patrick Chouinard: And I don't have to worry about that.
+[02:01:05] Patrick Chouinard: Where did I leave that receipt?
+[02:01:06] Patrick Chouinard: Because I know I send it to a place where I can go and summarize that data when I need it or refer back to it.
+[02:01:12] Rag Ch: I don't actually have to search my photos anymore.
+[02:01:14] Rag Ch: I can go because I know where the receipt is, right?
+[02:01:17] Rag Ch: So that's the habit that would grow business or consumer, right?
+[02:01:23] Rag Ch: You still need, you still need, T&E is still going to be there.
+[02:01:32] Rag Ch: Thanks, Ty.
+[02:01:33] Patrick Chouinard: Any other suggestions from everyone?
+[02:01:36] Patrick Chouinard: Yeah, actually, if I had to put something on it for myself, it would be if I could tag receipt in there and export them as an expense account or of any kind, like even a CSV file.
+[02:01:53] Patrick Chouinard: If I could create an expense for a month out of this automatically, you would make...
+[02:02:00] Patrick Chouinard: So many business users love you with no business integration, only the ability to export those into an expense format would be awesome.
+[02:02:13] Rag Ch: Okay.
+[02:02:14] Rag Ch: Yeah, there is an export functionality also here.
+[02:02:20] Rag Ch: Actually, some of these ideas was given by Claude to me.
+[02:02:24] Rag Ch: That was, like, pretty good.
+[02:02:27] Rag Ch: Good.
+[02:02:29] Rag Ch: Yeah, I think I have that somewhere.
+[02:02:32] Patrick Chouinard: I just have to search for it.
+[02:02:35] Patrick Chouinard: Okay.
+[02:02:35] Patrick Chouinard: But just think about it in the form of a corporate expense account, meaning it's going to be month by month, and you have to be able to select which receipt you want to put in that expense, because you probably, if I bought myself a TV in the month, I don't want that to go.
+[02:02:50] Patrick Chouinard: Well, I would love that to go on my expense account, but it's not going to qualify.
+[02:02:55] Patrick Chouinard: Oh, no, but you're plugging it into your work computer, though.
+[02:02:59] Rag Ch: Yeah.
+[02:02:59] Rag Ch: don't know.
+[02:03:01] Rag Ch: But, yeah, basically, I just want to be able to select whichever receipt goes into my expense account export, but if that's possible, that would be awesome.
+[02:03:11] Rag Ch: Sure, yeah.
+[02:03:12] Rag Ch: I think that should be pretty straightforward, right?
+[02:03:15] Rag Ch: Like, I'm sure Cloud can help me with the structure also.
+[02:03:20] Rag Ch: Yeah, and then there is this just an admin page.
+[02:03:25] Rag Ch: Basically, I should be able to track, like, households and how many members they have, how many documents, and all this stuff.
+[02:03:33] Rag Ch: Yep.
+[02:03:34] Rag Ch: And if you have a monthly expense that you have a receipt for every month, you could even tag them as a expendable invoice.
+[02:03:47] Ty Wells: So, it's in your expense account every single month when you export.
+[02:03:51] Rag Ch: There's a lot of things to make the life of people who have to fill expense account easier throughout that application.
+[02:03:59] Paul Miller: Okay, yeah.
+[02:04:00] Paul Miller: I will explore that also.
+[02:04:02] Rag Ch: Thanks, Patrick.
+[02:04:04] Ty Wells: That's a very good idea.
+[02:04:06] Paul Miller: And yeah, there are like month by month separations in this.
+[02:04:13] Rag Ch: But the only thing is, I mean, some of these receipts were from like 2025, 2025, 2012.
+[02:04:20] Rag Ch: I took it from the internet.
+[02:04:22] Rag Ch: So it is categorized by upload dates rather than actual receipt dates.
+[02:04:29] Mitch: But yeah, I can, I can definitely take a look at that.
+[02:04:38] Mitch: Oh, good stuff, Raga.
+[02:04:40] Mitch: Yeah.
+[02:04:40] Mitch: Thank you.
+[02:04:41] Mitch: Thank you very much for all the inputs and feedback.
+[02:04:44] Mitch: Thanks, guys.
+[02:04:45] Mitch: I'm learning a lot here.
+[02:04:46] Mitch: This is great.
+[02:04:47] Mitch: Thank you very much.
+[02:04:49] Mitch: It looks like you live in Colorado.
+[02:04:52] Mitch: What's that?
+[02:04:53] Mitch: Do you live in Colorado?
+[02:04:55] Mitch: No, I live in Sacramento, California.
+[02:04:59] Mitch: I'll bet you got rid
+[02:05:00] Mitch: The seats from all over.
+[02:05:01] Mitch: Well, this is all from your life.
+[02:05:05] Mitch: I can see what you buy, what you eat, where you pick up your gas.
+[02:05:11] Mitch: Yeah, these are all from the internet.
+[02:05:15] Mitch: Yeah, I just wanted to try out two different ones.
+[02:05:22] Mitch: Okay, thanks.
+[02:05:23] Mitch: Thanks, guys.
+[02:05:24] Mitch: So Mitch.
+[02:05:26] Mitch: Hello, Mitch.
+[02:05:26] Mitch: How are you going?
+[02:05:28] Mitch: It's going good.
+[02:05:29] Mitch: It's going good.
+[02:05:30] Paul Miller: I just, I just had to stop in near the end and share with the class.
+[02:05:35] Paul Miller: CMUX, not TMUX.
+[02:05:37] Paul Miller: CMUX.
+[02:05:38] Mitch: CMUX.
+[02:05:39] Mitch: That is my favorite terminal.
+[02:05:41] Mitch: Yeah.
+[02:05:42] Mitch: Of course, wonders.
+[02:05:43] Mitch: Yeah, just open up cloud code, have it scrape the CMUX docs.
+[02:05:49] Mitch: So it knows how to use your terminal.
+[02:05:53] Mitch: And, oh man, I, I just been working, you know, kind of back from my two weeks of vacay.
+[02:05:59] Mitch: And I've been working.
+[02:06:01] Mitch: And just giving this skill to Cloud Code has really allowed it to just do so many different things for me that I would typically do like manually or opening up another terminal to do it.
+[02:06:11] Mitch: And now I can just leverage all my skill files and say, hey, spawn this skill across 10 different terminals and handle it for these 10 different products.
+[02:06:20] Paul Miller: It just does it.
+[02:06:21] Paul Miller: I'm like, oh, yes, no custom script building.
+[02:06:25] Mitch: Yeah, it's just awesome.
+[02:06:27] Mitch: Yeah, I really like it.
+[02:06:28] Mitch: Yeah, that's it.
+[02:06:29] Mitch: Yeah.
+[02:06:30] Paul Miller: Yeah, it's awesome.
+[02:06:32] Mitch: So what does it do uniquely?
+[02:06:37] Mitch: Why use it?
+[02:06:39] Mitch: So it's a pretty nice visually looking terminal, but it gives Cloud Code the CLI of your terminal, so to speak.
+[02:06:49] Mitch: And so it can read things from your terminal.
+[02:06:51] Mitch: can type in things into your terminal.
+[02:06:54] Mitch: It can, like imagine giving Cloud Code access to Gemini CLI.
+[02:06:59] Mitch: Right.
+[02:06:59] Mitch: But instead like instead of having.
+[02:07:00] Mitch: If to do like headless versions of it, it can just start to type into it and like manage it, open up 10 different windows and manage them all, you know.
+[02:07:10] Mitch: Yeah, yeah, it's really nice.
+[02:07:12] Mitch: Definitely recommend everyone using it.
+[02:07:15] Mitch: Here goes my next weekend.
+[02:07:18] Mitch: Oh, that's down on the list.
+[02:07:22] Mitch: And it can also control Chrome or like any web browser too.
+[02:07:26] Mitch: So in the same CLI front, so I have like a main skill.
+[02:07:30] Mitch: Wow.
+[02:07:31] Mitch: And then it has some sub skills in there.
+[02:07:32] Mitch: Yeah, definitely.
+[02:07:34] Mitch: Yeah, it's awesome.
+[02:07:35] Mitch: And then as far as personal stuff, I don't have too much to share as far as a lot of it would be boring.
+[02:07:45] Mitch: But one of the things with like contact engineering that I've been kind of dealing with here is, how do I say, so basically after I have an idea, I have to.
+[02:07:58] Mitch: ...
+[02:07:59] Mitch: ...
+[02:08:00] Mitch: Give, basically create the narrative of the back and forth of the two different characters and a bunch of different visuals and stuff.
+[02:08:08] Mitch: And the short and sweet of it is basically when I have an idea, I have like three different agents that think about how to best execute that idea.
+[02:08:16] Paul Miller: And then that summary of all three of those go to one agent to combine that into an output.
+[02:08:23] Paul Miller: But basically they're still missing, like two of the three did a really good job as far as editing it back in.
+[02:08:29] Paul Miller: And then one of the three, it just couldn't edit it in like well, uh, as far as the scoring and the simplest solution was just to run another cycle at the very end and just, uh, forget the other two agents that, you know, already have done a good job of executing what they did as far as the revisor and just, um, only giving it that feedback from that one agent.
+[02:08:50] Patrick Chouinard: I didn't have to manage three things at once.
+[02:08:51] Patrick Chouinard: And then my performance scores, like went back to like an all time high.
+[02:08:54] Mitch: So, um, it was really simple, prompting engineering tool, um, you know, as a
+[02:09:00] Mitch: little bit token heavy, but basically if you're ever running into an issue, it's like you were solving it at one point and now you're trying to do more things at once and it messes up.
+[02:09:07] Mitch: You can just kind of wait for everything else to finish, keep those things true, and then just add it in a little bit later.
+[02:09:13] Paul Miller: So really simple.
+[02:09:14] Paul Miller: But yeah, that's what I have.
+[02:09:17] Patrick Chouinard: Sure.
+[02:09:19] Mitch: Always helpful.
+[02:09:19] Paul Miller: We had someone on earlier, David, who was, maybe if you, when Patrick releases his new expanded meeting notes and video, if you could reach out to David, he was trying to look at some video stuff.
+[02:09:38] Patrick Chouinard: He was looking for some advice on doing AI video creation, but have a look at the start of the video.
+[02:09:47] Patrick Chouinard: Okay.
+[02:09:47] Paul Miller: Sounds good.
+[02:09:48] Paul Miller: Thank you, Paul.
+[02:09:48] Patrick Chouinard: Yeah, he might actually reach out to you.
+[02:09:51] Ty Wells: We ended up naming you as our resident expert on video generation.
+[02:09:57] Ty Wells: Oh, okay.
+[02:09:58] Ty Wells: Okay.
+[02:09:59] Ty Wells: That's what's up.
+[02:09:59] Ty Wells: That's what's
+[02:10:00] Ty Wells: So while I'm looking forward to it, yeah, we're going to take over the game, maybe with these meeting notes, we can summarize them, convert them into AI videos, maybe like have Brandon as a clone, you know, do some funny stuff, we can do some funny stuff.
+[02:10:12] Ty Wells: There we go, Patrick.
+[02:10:14] Patrick Chouinard: That's the following weekend.
+[02:10:19] Patrick Chouinard: After Steve Mucks.
+[02:10:21] Paul Miller: If I take every single example you gave me, I'm not going to have a weekend until I go.
+[02:10:28] Paul Miller: Oh, just give out the day job, Bob.
+[02:10:31] Patrick Chouinard: Do it all the time.
+[02:10:32] Paul Miller: We'll just go on vacation, but then it's not really vacation, yeah.
+[02:10:36] Paul Miller: Yeah, I already did that.
+[02:10:38] Paul Miller: That's how I spent my entire Christmas vacation, so.
+[02:10:42] Paul Miller: And since then, I have a Claude Max subscription I can't get rid of.
+[02:10:53] Paul Miller: They're not giving you any reason to get rid of it either.
+[02:10:56] Paul Miller: My goodness.
+[02:10:57] Paul Miller: They just keep pushing that stuff.
+[02:10:59] Paul Miller: Yeah.
+[02:11:00] Paul Miller: It's, it's like a, it's like a, a dopamine.
+[02:11:04] Paul Miller: They just, after their portion is really, that should be, you know, a series one or drug or whatever it's called.
+[02:11:14] Paul Miller: Honestly, I, I thought I was buying myself a Christmas present for one month.
+[02:11:21] Paul Miller: Yeah.
+[02:11:21] Paul Miller: Right.
+[02:11:21] Paul Miller: That's what you said.
+[02:11:22] Paul Miller: You did say that.
+[02:11:25] Paul Miller: Not just Christmas.
+[02:11:27] Paul Miller: Well, Merry Christmas to you and cheers.
+[02:11:34] Paul Miller: Right.
+[02:11:36] Paul Miller: Bill, thank you, Mitch.
+[02:11:38] Patrick Chouinard: Uh, would anyone else like to, like to take the mic?
+[02:11:43] Patrick Chouinard: Anyone, any, any other updates?
+[02:11:50] Paul Miller: No, we'll, we'll take that as a wrap.
+[02:11:54] Ty Wells: Uh, thank you everyone, uh, for putting up with my hosting process.
+[02:11:59] Ty Wells: Um, Um,
+[02:12:00] Paul Miller: It was fascinating, some amazing updates in this crazy world.
+[02:12:07] Ty Wells: We're all addicted to even more tokens.

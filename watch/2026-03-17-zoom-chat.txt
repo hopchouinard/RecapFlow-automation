@@ -1,0 +1,141 @@
+2026-03-17 18:02:05 From Patrick Chouinard to Everyone:
+	Screenshot2026_03_17_180149.jpg
+	
+2026-03-17 18:02:53 From Paul Miller to Everyone:
+	Stagehand by Browserbase is what I use for AI browsing @Morgan Cook  it is really good
+	
+2026-03-17 18:06:16 From Paul Miller to Everyone:
+	@Patrick Chouinard will we be able to access this on the web?
+	
+2026-03-17 18:09:01 From Mitch to Everyone:
+	🔥🔥🔥🔥🔥
+	
+2026-03-17 18:14:10 From Patrick Chouinard to Everyone:
+	🔗 Links from my demo:
+	
+	Plugin Marketplace: https://github.com/hopchouinard/patchoutech-plugins
+	CC-StatusLine: https://github.com/hopchouinard/CC-StatusLine
+	cmux-plugin: https://github.com/hopchouinard/cmux-plugin
+	cmux terminal: https://cmux.dev
+	
+	Quick install:
+	/plugin marketplace add hopchouinard/patchoutech-plugins
+	/plugin install cc-statusline@patchoutech-plugins
+	/plugin install cmux@patchoutech-plugins
+	
+	🧠 Bootstrapping a Cowork workspace:
+	Create a folder, select it in Cowork, and ask Claude
+	to set up this structure:
+	
+	CLAUDE.md — working memory (you, your stack, your projects)
+	memory/glossary.md — terms, acronyms, internal language
+	memory/people/ — profiles of people you work with
+	memory/projects/ — one file per project (status, stack, decisions)
+	memory/context/ — anything else Claude should remember
+	
+	Docs: https://support.claude.com/en/articles/13345190-get-started-with-cowork
+	
+2026-03-17 18:17:29 From Juan Torres to Everyone:
+	What's the link?
+	
+2026-03-17 18:20:34 From Mitch to Everyone:
+	Stagehand by Browserbase is what I use for AI browsing
+	
+2026-03-17 18:25:55 From Paul Miller to Everyone:
+	@Mitch option 2 is Playwright CLI
+	
+2026-03-17 18:34:15 From Paul Miller to Everyone:
+	Paul getting roasted by Theo https://vimeo.com/1174263912/5f3e603b06?fl=pl&fe=sh
+	
+2026-03-17 18:37:40 From Juan Torres to Everyone:
+	Phylogenetic maps!
+	
+2026-03-17 18:38:41 From Biggi Fraley to Everyone:
+	I had no idea "stacking" was a thing. OMG.
+	
+2026-03-17 18:38:49 From Patrick Chouinard to Everyone:
+	Very nice @Morgan Cook , this answer a question we had last week actually about testing UX patterns for complexes systems
+	
+2026-03-17 18:38:55 From Ty Wells to Patrick Chouinard (direct message):
+	Plugin is not installing, is there any pre reqs for cmux setup?
+	
+2026-03-17 18:47:19 From Paul Miller to Everyone:
+	Nice stuff @Morgan Cook Are they paying for this project or is this just a free-be you are doing?
+	
+2026-03-17 18:47:39 From Paul Miller to Everyone:
+	Replying to "Nice stuff @Morgan Cook Are they paying for this p...":
+	UX is very good
+	
+2026-03-17 18:53:34 From Paul Miller to Everyone:
+	Sorry what are we talking about?
+	
+2026-03-17 18:54:34 From Paul Miller to Everyone:
+	@Patrick Chouinard can you put in website?
+	
+2026-03-17 18:55:30 From Paul Miller to Everyone:
+	this one? https://www.fieldy.ai/blog/introducing-offline-storage-record-without-your-phone
+	
+2026-03-17 18:55:53 From Morgan Cook to Everyone:
+	https://github.com/onecli/onecli
+	
+2026-03-17 18:56:30 From Juan Torres to Everyone:
+	Like AWS Secrets Manager?
+	
+2026-03-17 18:56:53 From Ana P to Everyone:
+	I saw it too :)
+	
+2026-03-17 18:57:05 From Patrick Chouinard to Ty Wells (direct message):
+	The only pre-requisite should be cmux itself
+	
+2026-03-17 18:59:29 From Ty Wells to Patrick Chouinard (direct message):
+	My bad, not focused
+	
+2026-03-17 18:59:51 From Patrick Chouinard to Ty Wells (direct message):
+	Feel free to send any error messages in Skool chat, I had very limited user base to do UAT 😛
+	
+2026-03-17 19:02:15 From Elena to Everyone:
+	soon)))
+	
+2026-03-17 19:03:46 From Biggi Fraley to Everyone:
+	Only watched some YT vids on it.
+	
+2026-03-17 19:03:50 From Ana P to Everyone:
+	:OOO
+	
+2026-03-17 19:04:07 From Juan Torres to Everyone:
+	https://pincel.dev/
+	
+2026-03-17 19:04:49 From Elena to Everyone:
+	how to connect Claude code? via mcp?
+	
+2026-03-17 19:08:06 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/watch?v=_vpNQ6IwP9w&t=2s
+	
+2026-03-17 19:12:42 From Bastian Venegas Arevalo to Everyone:
+	See what you did there
+	
+2026-03-17 19:14:12 From Ana P to Everyone:
+	Its definitely the person, not the school
+	
+2026-03-17 19:14:28 From Juan Torres to Everyone:
+	Problem solving has been my best and sternest teacher
+	
+2026-03-17 19:18:31 From Ana P to Everyone:
+	Thanks!
+	
+2026-03-17 19:19:23 From Ana P to Everyone:
+	Thanks! Yeah you’ve mentioned this before :)
+	
+2026-03-17 19:19:43 From Juan Torres to Everyone:
+	Gotta go folks....great chat :)
+	Biggi Fraley, Patrick Chouinard:👋
+	
+2026-03-17 19:20:50 From Winner Konou to Everyone:
+	https://github.com/vectara/awesome-agent-failures
+	
+2026-03-17 19:20:58 From Ana P to Everyone:
+	Thanks!
+	
+2026-03-17 19:21:27 From Ana P to Everyone:
+	Sorry the dumb question and thanks for that pov
+	

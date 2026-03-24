@@ -1,0 +1,346 @@
+2026-03-10 17:51:02 From Patrick's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-03-10 18:00:20 From Ty Wells to Everyone:
+	@David Stamper   Check out  https://trtyassay.ai
+	
+2026-03-10 18:01:03 From Paul Miller to Everyone:
+	talk list
+	Screenshot2026_03_11_110059.jpg
+	
+2026-03-10 18:01:40 From Biggi Fraley to Everyone:
+	Replying to "@David Stamper   Check out  https://trtyassay.ai":
+	correct link: https://tryassay.ai/
+	Patrick Chouinard:👍
+	
+2026-03-10 18:02:30 From Ty Wells to Everyone:
+	https://tryassay.ai
+	
+2026-03-10 18:02:42 From Tom Welsh to Everyone:
+	Can you post the list again. Not showing in my chat
+	
+2026-03-10 18:02:46 From Ty Wells to Everyone:
+	I just checked it,
+	
+2026-03-10 18:03:32 From Paul Miller to Everyone:
+	the list
+	Screenshot2026_03_11_110325.jpg
+	
+2026-03-10 18:03:42 From Tom Welsh to Everyone:
+	chairs
+	
+2026-03-10 18:03:46 From Paul Miller to Everyone:
+	@Tom Welsh
+	
+2026-03-10 18:05:35 From Patrick Chouinard to Paul Miller (direct message):
+	After David we have a question from : Elena Romanova
+	
+	Thank you Patrick! I watched previous meeting - I still like to maybe discuss fundraising little more - especially if Brandon will be joining. Also wanted to ask about patenting the idea and protection - if anyone can give some input on it would be great! Thank you so much!!!
+	
+2026-03-10 18:05:48 From Paul Miller to Everyone:
+	@David Stamper wow!!
+	
+2026-03-10 18:05:53 From Paul Miller to Everyone:
+	wow!!
+	
+2026-03-10 18:06:05 From Patrick Chouinard to Paul Miller (direct message):
+	After we have : Timothy Tt
+	
+	How to you make your app production ready? What is a solid process to work through a feature in an app with good coding standard and sold design and very little bugs?
+	
+2026-03-10 18:12:59 From Juan Torres to Everyone:
+	https://openart.ai/suite/home
+	
+2026-03-10 18:13:34 From Paul Miller to Everyone:
+	Talk list updated
+	Screenshot2026_03_11_111320.jpg
+	
+2026-03-10 18:16:36 From Juan Torres to Everyone:
+	UX/UI design experts
+	
+2026-03-10 18:17:56 From Juan Torres to Everyone:
+	Make it obvious, make it easy, make it satisfying, make it attractive
+	Jake Maymar, Biggi Fraley, Patrick Chouinard:👍
+	
+2026-03-10 18:18:06 From Juan Torres to Everyone:
+	the Four Laws of Behavioral Change
+	Tom Welsh:👍
+	
+2026-03-10 18:19:58 From Juan Torres to Everyone:
+	If I can automate ordering Subways sandwiches, I can pass away happily
+	Patrick Chouinard:😂
+	
+2026-03-10 18:22:23 From Paul Miller to Patrick Chouinard (direct message):
+	I’ll get you to do you presenting next then juan
+	
+2026-03-10 18:22:53 From Patrick Chouinard to Everyone:
+	It is a very impressive system but you are basically created an AI assisted online ERP system, the success of this type of system is not going to be feature bound, it will be usability bound.
+	Juan Torres:🔥
+	
+2026-03-10 18:23:30 From Tom Welsh to Everyone:
+	Replying to "If I can automate ordering Subways sandwiches, I c...":
+	Send me that app
+	
+2026-03-10 18:24:18 From Juan Torres to Everyone:
+	Replying to "If I can automate ordering Subways sandwiches, I c...":
+	Giphy [ID:nLt2xKYi1ghXy]
+	
+2026-03-10 18:27:21 From Tom Welsh to Everyone:
+	Replying to "If I can automate ordering Subways sandwiches, I c...":
+	Getting out of corporate is great, no more decisions by commitee
+	
+2026-03-10 18:27:53 From Tom Welsh to Everyone:
+	Getting out of corporate is great, no more decisions by commitee
+	Patrick Chouinard:💯
+	
+2026-03-10 18:28:12 From Elena to Everyone:
+	Great project! We can sign up to it to promote our projects too ❤️
+	
+2026-03-10 18:28:45 From Juan Torres to Everyone:
+	Replying to "Getting out of corporate is great, no more decisio...":
+	remove all strategic decisions from the executive team, and give them to the AI
+	
+2026-03-10 18:31:44 From David Stamper to Everyone:
+	Replying to "If I can automate ordering Subways sandwiches, I c...":
+	I know a guy that can make that happen
+	Juan Torres:🔥
+	
+2026-03-10 18:33:15 From David Stamper to Everyone:
+	I need to get funding to get salesvelocity.ai off the ground, I have been boot strapping this but want to get it converted  back to a multi-tenant and get it to market asap
+	
+2026-03-10 18:35:08 From David Stamper to Everyone:
+	I have joined a local entreprenuer networking group, I have done this so that I can bring my program to them for free testing
+	
+2026-03-10 18:38:47 From Juan Torres to Everyone:
+	https://www.youtube.com/@aiDotEngineer
+	
+2026-03-10 18:47:10 From Ty Wells to Everyone:
+	CI/CD
+	Patrick Chouinard, Paul Miller:❤️
+	
+2026-03-10 18:47:12 From Ty Wells to Everyone:
+	Pipeline
+	
+2026-03-10 18:51:33 From David Stamper to Everyone:
+	It also depends on how you are defining a bug, you can debug all day, but if you haven't coded the UI correctly it wont work, its not really a bug its just code that doesnt function cause it's incomplete, bad path etc.
+	
+2026-03-10 18:52:31 From Patrick Chouinard to Everyone:
+	Claude Code Review are announcing prices around 15$ per review though so you have to make sure it is worth it
+	
+2026-03-10 18:56:16 From Juan Torres to Everyone:
+	I'll wait for the Brandon & Patrick review
+	Biggi Fraley:💯
+	Patrick Chouinard, David Stamper:😂
+	
+2026-03-10 18:57:41 From Tom Welsh to Everyone:
+	Might hVW
+	
+2026-03-10 18:57:46 From Timothy to Everyone:
+	The Claude Code Review is only for Team and Enterprise, which requires 5+ users…
+	
+2026-03-10 19:01:17 From Tom Welsh to Everyone:
+	HOSTINGER HAS AN API 😛
+	
+2026-03-10 19:01:22 From Patrick Chouinard to Everyone:
+	https://recapflow.patchoutech.com/
+	Bastian Venegas Arevalo:❤️
+	
+2026-03-10 19:01:23 From Juan Torres to Everyone:
+	Wow
+	
+2026-03-10 19:05:32 From Tom Welsh to Everyone:
+	All, I have to dropo. Ate clients site and I should really do some work. Patrick, I look forward to the summary later. Bye all
+	Biggi Fraley:👋
+	Paul Miller, David Stamper:👍
+	
+2026-03-10 19:06:21 From Patrick Chouinard to Everyone:
+	Replying to "The Claude Code Review is only for Team and Enterp...":
+	If you wait a bit, those type of features start in the Teams and Enterprise licences but end up in the pro/max account eventually
+	
+2026-03-10 19:06:25 From Bastian Venegas Arevalo to Everyone:
+	Jokes aside, someone claimed they created a skill to analyze facial expressions from meetings using Claude code, and it worked. I believe it was on Matt Berman’s YouTube channel.
+	
+	This might be the video https://www.youtube.com/watch?v=cHgCbDWejIs
+	
+2026-03-10 19:06:35 From Jake Maymar to Everyone:
+	have to drop as well - looking forward to seeing it @Patrick Chouinard - thanks all!
+	
+2026-03-10 19:07:03 From Patrick Chouinard to Everyone:
+	Replying to "HOSTINGER HAS AN API 😛":
+	Yes and I use it for publishing but I have not seen anything to edit the DNS records through the API.
+	
+2026-03-10 19:08:13 From Juan Torres to Everyone:
+	Have you all tried Kimi Code?
+	https://www.kimi.com/code/en
+	
+2026-03-10 19:08:50 From Juan Torres to Everyone:
+	It could order my subways 🥲
+	
+2026-03-10 19:09:07 From David Stamper to Everyone:
+	Replying to "Have you all tried Kimi Code? https://www.kimi.com...":
+	honestly i try things based on need at the moment, so cursor and claude have been about it for me
+	
+2026-03-10 19:09:07 From Patrick Chouinard to Everyone:
+	Replying to "Have you all tried Kimi Code? https://www.kimi.com...":
+	Not yet, I’m still trying T3 Code, So many tools 😛
+	
+2026-03-10 19:09:51 From Bastian Venegas Arevalo to Everyone:
+	I don’t think it makes sense to code with Claude Code and review using the same model. It shares the same biases as its creator. 
+	
+	Not that it can’t work. It probably has a different suite of pre-defined tools. But I wouldn’t pay extra for it. I’ve had decent results with Code Rabbit for months
+	Paul Miller, Juan Torres:👍
+	
+2026-03-10 19:10:22 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Have you all tried Kimi Code? https://www.kimi.com...":
+	I just got a PR approved for a bug fix there 😄
+	
+2026-03-10 19:10:44 From Juan Torres to Everyone:
+	Replying to "Have you all tried Kimi Code? https://www.kimi.com...":
+	Cool, then I need to try it
+	Bastian Venegas Arevalo:🔥
+	
+2026-03-10 19:11:30 From Juan Torres to Everyone:
+	Replying to "I don’t think it makes sense to code with Claude C...":
+	Claude Code and review with Kimi Code?
+	
+2026-03-10 19:12:09 From Elena to Everyone:
+	I hope that Claude will not apply same logic to Claude Review as to fast mode.... 🧐
+	
+2026-03-10 19:13:04 From Bastian Venegas Arevalo to Everyone:
+	Replying to "I don’t think it makes sense to code with Claude C...":
+	Worth trying. But chinese companies distill knowledge from them
+	
+2026-03-10 19:14:41 From Bastian Venegas Arevalo to Everyone:
+	Spark consumes twice the credits but its included in $200
+	
+2026-03-10 19:14:50 From Bastian Venegas Arevalo to Everyone:
+	5.4
+	
+2026-03-10 19:15:09 From Bastian Venegas Arevalo to Everyone:
+	5.4 = GPT + Codex in the same model. It replaces the other ones
+	
+2026-03-10 19:16:19 From Biggi Fraley to Everyone:
+	Nate Jones just published an awesome YT on what you really need to consider when choosing coding models: https://www.youtube.com/watch?v=09sFAO7pklo
+	Elena, Patrick Chouinard, Juan Torres:👍
+	
+2026-03-10 19:17:05 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Have you all tried Kimi Code? https://www.kimi.com...":
+	You need a chatgpt subscription but any tier will work if you wanna try!
+	
+2026-03-10 19:22:30 From Biggi Fraley to Everyone:
+	I have to type and see my notes, as I cannot remember anything I only heard.
+	
+2026-03-10 19:22:44 From Patrick Chouinard to Everyone:
+	I wear a Fieldy to make sur I do not miss anything https://www.fieldy.ai/
+	Paul Miller:👍
+	
+2026-03-10 19:23:23 From Biggi Fraley to Everyone:
+	Replying to "I wear a Fieldy to make sur I do not miss anything...":
+	And what does Fieldy say when you ask it later what you missed? (How does it know what you missed?)
+	
+2026-03-10 19:25:05 From Patrick Chouinard to Everyone:
+	Replying to "I wear a Fieldy to make sur I do not miss anything...":
+	It will not tell me what I miss but if I say what I remember (high level) it could help my find what I missed. Fieldy give you a chatbot to question your notes, so it’s a bit more than just a transcript
+	
+2026-03-10 19:25:48 From Patrick Chouinard to Everyone:
+	Replying to "I wear a Fieldy to make sur I do not miss anything...":
+	And they are providing a web hook to attach workflow to (like n8n) if you want to process the transcript even more
+	Biggi Fraley:👍
+	
+2026-03-10 19:27:19 From David Stamper to Everyone:
+	sorry gentlemen i gotta go, have a great night
+	Biggi Fraley, Patrick Chouinard:👋
+	
+2026-03-10 19:28:32 From Bastian Venegas Arevalo to Everyone:
+	Yeah you do sound scary, Ty!
+	Biggi Fraley:😂
+	
+2026-03-10 19:29:27 From Jake Maymar to Everyone:
+	this is great - and also scary 🙂 @Ty Wells
+	
+2026-03-10 19:29:38 From Jake Maymar to Everyone:
+	have to jump - great call!
+	Biggi Fraley:👋
+	
+2026-03-10 19:30:07 From Juan Torres to Everyone:
+	Ty will contribute to the global unemployment rate
+	Patrick Chouinard:🤣
+	
+2026-03-10 19:31:59 From Bastian Venegas Arevalo to Everyone:
+	You might want to check out Lenny’s Podcast on YouTube. His guests discuss some interesting ways they’ve organized their companies in the age of AI. You might find some extra inspiration there.
+	
+2026-03-10 19:32:11 From Bastian Venegas Arevalo to Everyone:
+	Replying to "You might want to check out Lenny’s Podcast on You...":
+	Former AirBNB PM
+	
+2026-03-10 19:32:47 From Patrick Chouinard to Everyone:
+	Replying to "You might want to check out Lenny’s Podcast on You...":
+	https://www.youtube.com/@LennysPodcast
+	Bastian Venegas Arevalo, Biggi Fraley:❤️
+	
+2026-03-10 19:36:01 From Bastian Venegas Arevalo to Everyone:
+	Alright, everyone. Choose an issue from the wall, and ensure you have some commits to show by the end of the day. Rinse and repeat. 😂
+	
+2026-03-10 19:37:13 From Bastian Venegas Arevalo to Everyone:
+	Are you fine-tuning with LoRA, then? What do you want it to specialize in?
+	
+2026-03-10 19:38:23 From Bastian Venegas Arevalo to Everyone:
+	https://x.com/karpathy/status/2031135152349524125?s=20 
+	
+	This post right?
+	Patrick Chouinard:❤️
+	
+2026-03-10 19:40:00 From Kelly Southall to Everyone:
+	Gotta drop but as always, thanks everyone. always a helpful conversation for me. Getting ready to share in the next week or two.
+	Biggi Fraley:👋
+	Paul Miller, Patrick Chouinard:👍
+	
+2026-03-10 19:40:25 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Are you fine-tuning with LoRA, then? What do you w...":
+	@Ty Wells there’s a great video on fine-tuning modalities by an openai employee on ai.engineer’s channel: https://youtu.be/JfaLQqfXqPA?si=7-dSakV1q98LNsvf 
+	
+	10/10
+	Biggi Fraley:👍
+	
+2026-03-10 19:43:46 From Bastian Venegas Arevalo to Everyone:
+	It’s a great idea. It’s a very common need. I believe Box and Dropbox have some functionality related to this that you could explore for inspiration.
+	Rag Ch:👍
+	
+2026-03-10 19:45:30 From Mitch to Everyone:
+	This reminds me of tom’s app
+	
+2026-03-10 19:46:24 From Mitch to Everyone:
+	recalls
+	
+2026-03-10 19:48:01 From Elena to Everyone:
+	I like it!
+	Rag Ch:👍
+	
+2026-03-10 19:50:36 From Bastian Venegas Arevalo to Everyone:
+	For iPhone users, you can create a simple Apple Shortcut and share the picture with the app. Just use the Share function, and the shortcut will appear.
+	
+	Photo->Share->Select shortcut->To App’s API->Done.
+	
+2026-03-10 19:56:28 From Patrick Chouinard to Everyone:
+	https://www.cmux.dev/
+	
+2026-03-10 19:57:56 From Bastian Venegas Arevalo to Everyone:
+	The render engine it’s based on is very good (Ghostty), so it should perform quite well.
+	
+2026-03-10 20:00:41 From Biggi Fraley to Everyone:
+	That would help with my Brandon withdrawal symptoms. LOL
+	
+2026-03-10 20:00:52 From Bastian Venegas Arevalo to Everyone:
+	Here’s another way to coordinate multiple agents. Symphony (OpenAI) uses Linear as their main view, and the agent can record video of what it has worked on. 
+	
+	https://github.com/openai/symphony 
+	
+	
+	I’ve used it a couple of times. 
+	
+	“””
+	In this demo video, Symphony monitors a Linear board for work and spawns agents to handle the tasks. The agents complete the tasks and provide proof of work: CI status, PR review feedback, complexity analysis, and walkthrough videos. When accepted, the agents land the PR safely. Engineers do not need to supervise Codex; they can manage the work at a higher level.
+	“””
+	

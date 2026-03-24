@@ -1,0 +1,1100 @@
+[00:00:01] Patrick Chouinard: Hey, Mitch.
+[00:00:05] Mitch: Hello?
+[00:00:12] Mitch: Hello, hello.
+[00:00:14] Patrick Chouinard: Good.
+[00:00:16] Mitch: How's it going?
+[00:00:17] Patrick Chouinard: Good, good.
+[00:00:19] Mitch: Yeah, mean, it's pretty crazy like you've been out in space and taking this call.
+[00:00:25] Mitch: Yeah, man.
+[00:00:26] Mitch: I'm just stuck in my room.
+[00:00:27] Mitch: don't have anything like that, man.
+[00:00:30] Patrick Chouinard: Oh, honestly, if you look at the weather here today, outer space is not that far.
+[00:00:36] Mitch: Yeah.
+[00:00:38] Mitch: What is it like there?
+[00:00:39] Patrick Chouinard: Oh, we're having a couple of days of ice rain.
+[00:00:43] Mitch: Oh, wow.
+[00:00:45] Mitch: Yeah.
+[00:00:45] Mitch: It's funny here in Idaho because it's like in the morning, it's like, you know, freezing.
+[00:00:51] Mitch: And then like later in the afternoon, it's like, you know, like 21 degrees Celsius.
+[00:00:55] Mitch: You know, so it's like I wake up in the morning, I put like on the hoodie and all.
+[00:00:59] Mitch: And then later in the day, I'm like, take it off.
+[00:01:03] Patrick Chouinard: Oh, don't worry.
+[00:01:04] Patrick Chouinard: Yesterday was like 68.
+[00:01:06] Mitch: Oh, yeah.
+[00:01:07] Mitch: Oh, yeah.
+[00:01:07] Mitch: Okay, cool.
+[00:01:08] Patrick Chouinard: Yeah, yeah, yeah.
+[00:01:10] Patrick Chouinard: Yeah.
+[00:01:13] Patrick Chouinard: That's the joy of Quebec.
+[00:01:16] Mitch: Oh, yeah.
+[00:01:17] Mitch: Yeah.
+[00:01:18] Mitch: I haven't looked at it on the maps.
+[00:01:20] Patrick Chouinard: March in Quebec, we can start the week on a snowmobile and end it on a jet ski.
+[00:01:28] Patrick Chouinard: Dang.
+[00:01:34] Mitch: Oh, wow.
+[00:01:35] Mitch: Yeah, yeah, yeah.
+[00:01:35] Mitch: I have the owners of the company that I work at, they're out in Maine, so yeah.
+[00:01:43] Patrick Chouinard: Yeah, pretty much the same thing.
+[00:01:45] Mitch: Yeah.
+[00:01:47] Mitch: Yeah, yeah.
+[00:01:49] Mitch: How is your project going?
+[00:01:52] Patrick Chouinard: Pretty good.
+[00:01:53] Patrick Chouinard: I don't know if you saw the little post I made this week.
+[00:01:57] Mitch: Yeah, yeah, I reacted to it.
+[00:01:58] Mitch: Yeah, like we're...
+[00:02:00] Mitch: You're, the thing selfishly plugs itself first.
+[00:02:02] Mitch: That was funny.
+[00:02:04] Patrick Chouinard: Oh, no, that, that was last week's project.
+[00:02:08] Mitch: Oh, that last week's project.
+[00:02:09] Mitch: Oh, oh yeah.
+[00:02:10] Mitch: I know.
+[00:02:10] Mitch: I, maybe I did miss it.
+[00:02:11] Mitch: Yeah.
+[00:02:12] Mitch: What was your most recent one?
+[00:02:13] Patrick Chouinard: Sorry.
+[00:02:14] Patrick Chouinard: Oh, I'm getting into with the plugin ecosystem for Cloud Code.
+[00:02:21] Mitch: Oh, oh, okay.
+[00:02:24] Mitch: Yeah.
+[00:02:24] Ty Wells: Cause I saw the recap flow.
+[00:02:26] Mitch: Hey, Ty.
+[00:02:29] Patrick Chouinard: Yeah, recap flow that was last, well, it's now an ongoing project because it basically serves as infrastructure for the call.
+[00:02:37] Patrick Chouinard: But, uh, yeah, that was, uh, last week.
+[00:02:42] Ty Wells: I know you got something good this week.
+[00:02:45] Mitch: Yeah.
+[00:02:45] Patrick Chouinard: Yeah.
+[00:02:46] Patrick Chouinard: Like I said, I'm, uh, working on, uh, a, uh, uh, Cloud Code plugin ecosystem.
+[00:02:52] Ty Wells: Hmm.
+[00:02:53] Ty Wells: Okay.
+[00:02:53] Ty Wells: Nice.
+[00:02:54] Patrick Chouinard: Yeah.
+[00:02:55] Patrick Chouinard: I two plugins in, I created my marketplace.
+[00:02:58] Ty Wells: So.
+[00:03:00] Mitch: Nice.
+[00:03:01] Mitch: What do they do?
+[00:03:03] Patrick Chouinard: Oh, it's very simple.
+[00:03:04] Patrick Chouinard: I just wanted to test the – that's what I'm going to present later on.
+[00:03:09] Patrick Chouinard: I have a status line one for logcode, and the other one is a plug-in to wrap CMUX integration with logcode.
+[00:03:22] Mitch: Is that out yet?
+[00:03:23] Mitch: Because, you know, I was the person who brought CMUX into the group, you know?
+[00:03:28] Mitch: Yeah.
+[00:03:29] Mitch: I was before Theo.
+[00:03:30] Mitch: When Theo released it, I was like, yeah, I was there first, you know, for the group, you know?
+[00:03:35] Patrick Chouinard: Exactly, but I liked it so much I decided to create a plug-in to wrap it so logcode can use it transparently.
+[00:03:43] Mitch: Yeah, that'd be – sign me up, man.
+[00:03:46] Patrick Chouinard: Where do I sign up?
+[00:03:47] Mitch: Where do I sign up?
+[00:03:48] Patrick Chouinard: Oh, no worries.
+[00:03:49] Patrick Chouinard: You're going to have all the links.
+[00:03:51] Mitch: Okay, cool.
+[00:03:54] Mitch: I'd love to sign up, like, immediately.
+[00:03:56] Mitch: Absolutely.
+[00:03:58] Mitch: I've been loving CMUX.
+[00:03:59] Mitch: The Brad's
+[00:03:59] Mitch: Fathom integration has been my favorite there, that's the only thing that I don't like too much.
+[00:04:06] Patrick Chouinard: Oh, I love everything about CMUX.
+[00:04:09] Mitch: Oh, yeah?
+[00:04:11] Mitch: Yeah, I'm just not the type of guy for the browser stuff, but everything else I love.
+[00:04:17] Patrick Chouinard: I love the browser stuff, but I love everything else, like everything that you can do within CMUX, I'm a fan of right now.
+[00:04:24] Mitch: For sure.
+[00:04:25] Mitch: For sure, for sure.
+[00:04:28] Ty Wells: CMUX is a version of T-MUX, or what is it?
+[00:04:32] Patrick Chouinard: No, actually, it's built on Ghosty, but it's inspired by the idea of T-MUX, but on a Ghosty background.
+[00:04:44] Ty Wells: Okay, because I just installed Warp today.
+[00:04:48] Ty Wells: Well, at least on my Mac, I had it before, but I was trying to do something I probably shouldn't have been trying to do.
+[00:04:55] Patrick Chouinard: But yeah, any, any thoughts on Warp?
+[00:04:57] Patrick Chouinard: Oh, I love Warp.
+[00:04:58] Patrick Chouinard: I, I,
+[00:05:00] Patrick Chouinard: It's just, as a host for Claude Code, it's heavy for no reason, basically.
+[00:05:07] Ty Wells: Yeah, and that's why I wasn't using anything, because go to the source, right?
+[00:05:11] Ty Wells: And so, but just my arrangement of my windows and, you know, I got like 12, 15 terminal sessions.
+[00:05:19] Ty Wells: This meeting is being recorded.
+[00:05:21] Patrick Chouinard: Yeah, but that's why I was saying, like, I love C-Mux for that, because it's a very good multiplexer light C-Mux, but built on a modern architecture, the modern architecture of Ghosties.
+[00:05:35] Ty Wells: Okay, I'm going to look into it.
+[00:05:36] Mitch: I was talking to Brandon about it.
+[00:05:38] Mitch: Actually, he's switching from warp to C-Mux as well, so yeah.
+[00:05:43] Patrick Chouinard: I'm still using warp for something else, but...
+[00:05:47] Mitch: But the credits.
+[00:05:54] Ty Wells: Can I still give people a couple of minutes?
+[00:05:56] Ty Wells: Is it me, or Claude's been down most of the afternoon?
+[00:06:01] Ty Wells: OPUS 4.6 was down, but Sonnet works well.
+[00:06:06] Ty Wells: Okay.
+[00:06:07] Morgan Cook: I switched to Sonnet as well this morning.
+[00:06:11] Patrick Chouinard: Sonnet, high effort.
+[00:06:16] Patrick Chouinard: Unless you're doing something very specific, there's almost no difference.
+[00:06:21] Patrick Chouinard: The only thing is Sonnet 1 million token is still an over expense where OPUS 1 million token is built in.
+[00:06:35] Morgan Cook: That was an interesting change.
+[00:06:37] Morgan Cook: My status line used to sit around 2 and crank up to 60% real quick.
+[00:06:43] Morgan Cook: And then when OPUS, when the 1 million context came out, was like, my status isn't changing.
+[00:06:51] Morgan Cook: I didn't they had upgraded it to 1 million tokens.
+[00:06:55] Ty Wells: You know, my checkpoints, I knew they were like 50% of them.
+[00:07:00] Ty Wells: Just around there on a checkpoint, and I started to see when one terminal I saw, somehow that one terminal, I saw one million, I was like, oh, , it's on.
+[00:07:11] Ty Wells: So to shut everything down and start up with one million, now I get like 88, never seen context window, but I never take it past 60, because I, you know, I'm sure it's flawed in the middle.
+[00:07:23] Paul Miller: That's where the SAG always is.
+[00:07:25] Paul Miller: Yeah.
+[00:07:31] Patrick Chouinard: Well, that's one reason why I actually built my little status line plug-in, just so I can keep a better eyes on those stats.
+[00:07:49] Patrick Chouinard: Still going to give people a minute or two to join in before we actually start the call.
+[00:08:14] Patrick Chouinard: So while we wait for people to join in, how did you like the little summary from last week?
+[00:08:22] Morgan Cook: It was good, except for it misgendered me.
+[00:08:27] Paul Miller: I saw that.
+[00:08:28] Patrick Chouinard: I did correct it, and I did scold Claude for that one.
+[00:08:37] Patrick Chouinard: But that was the invite for this week, actually, but if you look at the summary, I think it did a decent job of mixing.
+[00:08:47] Ty Wells: It did.
+[00:08:47] Ty Wells: It was really good.
+[00:08:48] Patrick Chouinard: Yeah.
+[00:08:49] Patrick Chouinard: Yeah.
+[00:08:50] Patrick Chouinard: Mixing the transcript and the chat, so.
+[00:08:52] Ty Wells: Yeah.
+[00:08:53] Ty Wells: It saved me a lot of time.
+[00:08:55] Ty Wells: I just, you know, I could scan, although I was on the call, but if I'm not on the call, I can easily.
+[00:08:59] Ty Wells: That's why we now sorry.
+[00:09:01] Patrick Chouinard: Yeah, but what I like is really the fact that it saves all the links that we put in the chat because that's value we kept on losing every week.
+[00:09:12] Morgan Cook: Right.
+[00:09:13] Morgan Cook: No, that was nice too.
+[00:09:15] Morgan Cook: Has anybody played around with LightPanda headless browser for AI?
+[00:09:22] Patrick Chouinard: Nope.
+[00:09:23] Paul Miller: Nope.
+[00:09:24] Paul Miller: Any good?
+[00:09:25] Morgan Cook: I don't know.
+[00:09:27] Ty Wells: I've stumbled on it and haven't had a chance to test it out and see what it does, but it's being marketed as the browser built for AI, not the browser built for humans.
+[00:09:40] Morgan Cook: And it's headless.
+[00:09:46] Ty Wells: Well, headless is going to miss some things on the UI side in terms of, you know, rendering React or whatever you're using.
+[00:09:55] Ty Wells: It's going to miss some of those things.
+[00:09:57] Ty Wells: It's only headless then?
+[00:09:58] Morgan Cook: I don't know.
+[00:10:00] Morgan Cook: No, I haven't looked at it at all.
+[00:10:03] Morgan Cook: I was just curious if somebody else had stumbled on it as well.
+[00:10:17] Juan Torres: Patrick?
+[00:10:18] Patrick Chouinard: Yep.
+[00:10:19] Juan Torres: The summary was great.
+[00:10:21] Juan Torres: I really liked it.
+[00:10:23] Juan Torres: Maybe just one constructive criticism from my part.
+[00:10:29] Juan Torres: And I would think it would be maybe the summary or a key takeaway sections at the top would be, right from the get-go, more resourceful.
+[00:10:43] Juan Torres: That's my opinion.
+[00:10:44] Juan Torres: Maybe people find the links more resourceful.
+[00:10:47] Juan Torres: But giving maybe context to the links is also useful.
+[00:10:52] Juan Torres: I mean, it has the summary or the one sentence there.
+[00:10:56] Juan Torres: And also what you can do for reports.
+[00:10:59] Juan Torres: I've done this with about twenty-nine, Um, You
+[00:11:00] Juan Torres: Some news reporting is that in the summary, the key takeaway section, or in the body paragraph, you can create hyperlinks that then go to each one of the links that has been shared.
+[00:11:12] Juan Torres: So, you know, maybe some of that could make it even more juicy than what it is right now.
+[00:11:20] Patrick Chouinard: Yep.
+[00:11:20] Patrick Chouinard: And you see, the nice thing is your comment is going to be in a task that's going to be in the recap for this week.
+[00:11:27] Patrick Chouinard: So, I'm going to have my to-do list for next week.
+[00:11:32] Patrick Chouinard: Okay.
+[00:11:36] Patrick Chouinard: So, I've posted the order, but if you're okay, I would like to show what I worked on this week.
+[00:11:48] Patrick Chouinard: And, because there is no, there hasn't been any question posted on the, on the school community.
+[00:11:56] Patrick Chouinard: So, we're just basically doing a round table.
+[00:11:59] Patrick Chouinard: So, you you
+[00:12:00] Patrick Chouinard: If everybody is okay, I prep a little bit.
+[00:12:04] Mitch: I want to see it.
+[00:12:05] Mitch: I want to see it, Patrick.
+[00:12:08] Patrick Chouinard: Good.
+[00:12:19] Patrick Chouinard: Basically, I've started working with Cowork also this week, and I'm addicted to the thing.
+[00:12:27] Paul Miller: Cool.
+[00:12:29] Patrick Chouinard: Basically, I've worked with Cowork for basically the whole week, and now it does, honestly, a better job than OpenClaw with security pretty much already built in.
+[00:12:45] Patrick Chouinard: Only artifact is I realized that the sessions are stored locally, and if they get corrupted because you have a power outage in the middle of a session, then so I am.
+[00:13:00] Patrick Chouinard: I'm now working with it to create a backup system for those.
+[00:13:03] Patrick Chouinard: But basically, this is something it created.
+[00:13:07] Patrick Chouinard: I actually told Cowork that I would like to present what we've done together this week for the call, and I've asked it if it could give me some presentation material, and that's what it built.
+[00:13:22] Patrick Chouinard: So I created my workspace.
+[00:13:24] Patrick Chouinard: You might have seen a couple of YouTube channels describing this methodology.
+[00:13:29] Patrick Chouinard: It's building a workspace for Claude Cowork.
+[00:13:33] Patrick Chouinard: Instead of pointing Cowork to multiple directory as project like we would do with Claude Code, you create a top-level directory for Cowork, and you work everything inside that directory, and it builds its own context on top of it.
+[00:13:50] Patrick Chouinard: So the Claude.md is basically there as a pointer.
+[00:13:55] Patrick Chouinard: So it's just saying, oh, your memory about people is in...
+[00:13:59] Patrick Chouinard: are name?
+[00:13:59] Patrick Chouinard: What name?
+[00:13:59] Patrick Chouinard: name?
+[00:13:59] Patrick Chouinard: Thank you.
+[00:14:00] Patrick Chouinard: This file, your memory about context is here, your memory about project is here, your memory about whatever you need.
+[00:14:07] Patrick Chouinard: It just points the memory to where it needs to go to find the information it needs.
+[00:14:14] Patrick Chouinard: I'm working on an actual skill for cowork that does the interview part, asking you all the questions it needs to build the context it requires.
+[00:14:27] Patrick Chouinard: I've actually tested it at work this week, and it's working pretty well.
+[00:14:32] Patrick Chouinard: I'll eventually kind of publish it, but it's a bootstrapper for the context that you use in cowork.
+[00:14:40] Patrick Chouinard: And I've realized that cowork, it's not to build software, but to act as a PM.
+[00:14:46] Patrick Chouinard: It's absolutely insane.
+[00:14:49] Patrick Chouinard: It's really, really good to work it as a PM.
+[00:14:53] Patrick Chouinard: Will it be able to access this?
+[00:14:56] Patrick Chouinard: Oh, this page?
+[00:14:58] Patrick Chouinard: No, sadly, uh, it's...
+[00:15:00] Patrick Chouinard: It's not accessible on the web.
+[00:15:01] Patrick Chouinard: It's just a local page that I have.
+[00:15:03] Patrick Chouinard: I just wanted to show you a little bit of what I worked on in a funnier environment than just showing the, because it's mostly text that I created.
+[00:15:16] Patrick Chouinard: But one of the projects I worked on for this is what I call CC Status Line.
+[00:15:22] Patrick Chouinard: This is my first plugin for Claude Code.
+[00:15:26] Patrick Chouinard: So basically what it is, it's a status line plugin that will show you the version of Claude Code, your work you're using, the model you're using, the token, the number of skills, MCP and hooks that you have activated within this project, the usage of your context going on.
+[00:15:49] Patrick Chouinard: Use, right now it's, it goes to LLM Arena for, it basically uses CC usage.
+[00:15:56] Patrick Chouinard: I would love to have the five hour reset window.
+[00:16:00] Patrick Chouinard: So in there, but it's not published by Entropic yet, so when it will, I'll put it there.
+[00:16:05] Patrick Chouinard: And then you have some basic Git information about the current project you're working on.
+[00:16:11] Patrick Chouinard: The second one is my CMUX plugin.
+[00:16:14] Patrick Chouinard: So basically, CMUX is a new terminal environment based on Ghosty that does multiplexing a little bit as TMUX was doing before.
+[00:16:27] Patrick Chouinard: And it has its own CLI, so I wrapped it in a plugin so CloudCode is aware that it's running within it.
+[00:16:39] Patrick Chouinard: And if you run CloudCode outside of it, it's going to ignore all of the, everything that's in the plugin.
+[00:16:46] Patrick Chouinard: If you are in CMUX, then it will take it into consideration.
+[00:16:49] Patrick Chouinard: So it does a live progress bar, completion notification, browser split, because you can see that a little bit later.
+[00:16:58] Patrick Chouinard: And.
+[00:16:59] Patrick Chouinard: And.
+[00:17:00] Patrick Chouinard: finally, all of those, I needed a way to publish them, so I created myself a Marketplace.
+[00:17:07] Patrick Chouinard: So it's something you can add in CloudCo directly with PluginMarketplaceAd with the name of the Marketplace, and as I create more plugins, they're going to appear in there.
+[00:17:20] Patrick Chouinard: And yep, everything is public, and everything is shipped right now.
+[00:17:27] Patrick Chouinard: So, just to show you a little bit of what it looks like.
+[00:17:32] Ty Wells: Amazing stuff, Patrick.
+[00:17:34] Patrick Chouinard: Thank you.
+[00:17:39] Patrick Chouinard: So this is CMUX, and you see I have multiple workspaces.
+[00:17:46] Patrick Chouinard: Basically, right now, my IDE is a viewer for markdown documents.
+[00:17:51] Patrick Chouinard: I know I no longer use, I don't care if it's cursor, VS code, whatever, I don't work in.
+[00:18:00] Patrick Chouinard: In the IDE anymore, I simply use them as a viewer for Markdown and for the file that gets created.
+[00:18:06] Patrick Chouinard: Everything happens within CMUX.
+[00:18:09] Patrick Chouinard: Here I can have as many window as I want, so I can have split view or multiple instances of the browser, I guess you can see here, or it can be split any way I want.
+[00:18:28] Patrick Chouinard: So I can have as many terminal as I want, but all wrapped within one workspace.
+[00:18:35] Ty Wells: Is that workspace tied to one Cloud subscription?
+[00:18:40] Patrick Chouinard: It's, there's no tied into the Cloud subscription.
+[00:18:43] Patrick Chouinard: It's that Cloud code that's running here.
+[00:18:46] Patrick Chouinard: It, for me, it's, I'm using my Cloud subscription.
+[00:18:48] Patrick Chouinard: Yes, but I could be using API calls.
+[00:18:51] Patrick Chouinard: It doesn't matter.
+[00:18:52] Patrick Chouinard: The idea is Cloud itself is aware that it's running in here.
+[00:18:56] Patrick Chouinard: That's why you see the, uh, workspace.
+[00:18:59] Patrick Chouinard: That's That's
+[00:19:00] Patrick Chouinard: It gets renamed by the name of the GitHub project it's working on because there's a hook in the plugin that reads the name of the project and renames the workspace.
+[00:19:12] Patrick Chouinard: It will highlight the workspace when Claude has finished, so it will manage notification.
+[00:19:17] Patrick Chouinard: And I could, if I were working in a team, for example, I could even have the name of the PR I'm working on, or the issue I'm working on in here, or the branch I'm working on documented in the workspace.
+[00:19:30] Patrick Chouinard: All of that is available to the plugin within CMUX.
+[00:19:38] Patrick Chouinard: Same thing, have the project for the CMUX plugin here, you see at the bottom the status line plugin that I told you about.
+[00:19:48] Patrick Chouinard: So you see that I'm running quad code 2.1.77, this one's running on Sonnet because Opus is sick today.
+[00:19:57] Patrick Chouinard: I have my context.
+[00:19:59] Patrick Chouinard: have my context.
+[00:20:00] Patrick Chouinard: The bar, the usage, and like I said, the Git information.
+[00:20:05] Patrick Chouinard: And finally, I wanted to show you the marketplace.
+[00:20:08] Patrick Chouinard: You see here the split.
+[00:20:09] Patrick Chouinard: I have a browser here, and this is something I can call upon within my project itself.
+[00:20:19] Patrick Chouinard: So I can open a browser pane at that address.
+[00:20:23] Patrick Chouinard: Cloud Code will spawn a new terminal window, but as a browser session, and it is able to see it.
+[00:20:32] Patrick Chouinard: So it can interact with it.
+[00:20:34] Patrick Chouinard: So for testing, that's going to be extremely useful.
+[00:20:39] Patrick Chouinard: So as you can see, there.
+[00:20:48] Ty Wells: Where were you today, Patrick?
+[00:20:50] Ty Wells: I needed this today.
+[00:20:52] Ty Wells: I kept switching back and forth.
+[00:20:56] Morgan Cook: I think Patrick's frozen.
+[00:20:57] Mitch: I think he's frozen in time, yeah.
+[00:20:59] Ty Wells: When you asked him.
+[00:21:02] Ty Wells: It wasn't me, guys.
+[00:21:04] Ty Wells: It wasn't me.
+[00:21:05] Ty Wells: I promise it wasn't me.
+[00:21:07] Ty Wells: This is amazing.
+[00:21:08] Ty Wells: This is exactly what I need.
+[00:21:10] Paul Miller: mean, from a developing standpoint.
+[00:21:14] Ty Wells: He's hosting the meeting so we may get all bumped out.
+[00:21:18] Morgan Cook: You may not know that he's frozen yet.
+[00:21:24] Ty Wells: I think he's just faking us out.
+[00:21:27] Juan Torres: He's still there.
+[00:21:27] Juan Torres: Get more tokens, guys.
+[00:21:28] Ty Wells: He's listening to the feed.
+[00:21:30] Morgan Cook: Come on, feed the token machine.
+[00:21:33] Mitch: Maybe Claude was upset that he said that it was sick, and so Claude was like, yeah, no, I had enough of you.
+[00:21:38] Paul Miller: Yeah, you don't mess with Claude.
+[00:21:41] Ty Wells: He left his note-taking here, so he'll hear our comments.
+[00:21:45] Morgan Cook: He's back.
+[00:21:47] Paul Miller: We love talk to you there, Patrick.
+[00:21:50] Patrick Chouinard: I'm back.
+[00:21:51] Patrick Chouinard: I'm back.
+[00:21:51] Patrick Chouinard: Sorry about that.
+[00:21:52] Patrick Chouinard: We had a lot of freezing rain, and the network has been a bit unstable today.
+[00:21:58] Patrick Chouinard: day.
+[00:22:00] Ty Wells: That's what Claude said.
+[00:22:03] Patrick Chouinard: But what I wanted to do for you guys is, if you're interested in any of the things I've shown, there we go.
+[00:22:19] Patrick Chouinard: Eventually, okay, I didn't thought that that would be too big.
+[00:22:36] Patrick Chouinard: And just clean a bit of the documentation.
+[00:22:39] Patrick Chouinard: I didn't thought that I would go beyond the limit for one post.
+[00:22:42] Patrick Chouinard: There we go.
+[00:22:44] Patrick Chouinard: So there you have all the links to all of the projects and you have all the quick install for the plugins themselves.
+[00:22:56] Ty Wells: Great stuff, Patrick.
+[00:22:57] Ty Wells: Really appreciate it.
+[00:22:58] Ty Wells: was telling you.
+[00:23:00] Ty Wells: Good stuff.
+[00:23:01] Ty Wells: Good stuff.
+[00:23:01] Ty Wells: I was asking you before you froze in time.
+[00:23:05] Ty Wells: I could have used you earlier today with this interface.
+[00:23:11] Ty Wells: Good stuff, man.
+[00:23:13] Ty Wells: Good stuff.
+[00:23:14] Ty Wells: That was basically my Saturday afternoon.
+[00:23:19] Ty Wells: Wonderful.
+[00:23:22] Patrick Chouinard: So, Paul, you would be next.
+[00:23:26] Paul Miller: Thanks, Patrick.
+[00:23:28] Paul Miller: Great stuff as usual.
+[00:23:30] Paul Miller: So, look, I've got a few projects on at the moment and just sort of delivering things for the customer, which is great.
+[00:23:41] Paul Miller: But I had fun with Theo from T3Chat.
+[00:23:47] Paul Miller: I got burned by him on his live standup yesterday.
+[00:23:52] Paul Miller: Let me share the link.
+[00:23:55] Paul Miller: You don't have to watch all four hours.
+[00:23:57] Paul Miller: But I...
+[00:24:00] Paul Miller: I asked him, because I was having a bit of a disagreement on what the, he's pushing the Convex tool, and Convex, rather than using Superbase, is really great for a live kind of user interactive type of backend.
+[00:24:24] Paul Miller: And he made this sort of big move to it and push to it a year or so ago.
+[00:24:31] Paul Miller: And it's one of his sponsors as well.
+[00:24:33] Paul Miller: So he's quite invested in it.
+[00:24:36] Paul Miller: But I sort of suggested that a number of his fanboys are so, rely so much on what he says, that they don't listen to the context of what he says, which is really important, and it's important to him.
+[00:24:49] Paul Miller: And so I suggested that he, he have a video and talk about where not to use some of those tools.
+[00:24:57] Paul Miller: And his response was, .
+[00:24:59] Paul Miller: .
+[00:25:00] Paul Miller: Well, who would want to watch a video where it's not about the tools that he wants?
+[00:25:07] Paul Miller: That would get no ratings, and he would be demonetized.
+[00:25:11] Paul Miller: So he slammed me pretty loud on that, but I'll put the link in the chat there.
+[00:25:17] Paul Miller: Morgan, yeah, I use the Stagehand by BrowserBase.
+[00:25:27] Paul Miller: So BrowserBase have got a paid AI browser control, but Stagehand is their open source one.
+[00:25:37] Paul Miller: So if you guys are looking for kind of the next level AI controlled browser interaction, I swear by the using of Stagehand, it's really, really good.
+[00:25:51] Paul Miller: I've built a website that captures data from another website.
+[00:26:00] Paul Miller: That's quite important, logs in, authenticates, pulls some back-end data from the live website, so that automatically refreshes to another website, and within about an hour in my weekend, it's not something I can demonstrate like Patrick's cool stuff, but it worked really seamlessly.
+[00:26:25] Paul Miller: So if you're looking to do some quite complex browser-based interaction, where you might want to pull some things from other websites, capture some data, so what I was specifically doing was capturing a JSON response from one of the interactions I had with a live website, where it grabs the cookie that the session opens, uses that cookie, makes a call.
+[00:26:54] Paul Miller: to the actual website, and then it just pulls back the response and pulls it into
+[00:27:02] Paul Miller: So it's pretty cool stuff, actually.
+[00:27:06] Paul Miller: In the past, I would have used Postman and created a sort of a pretend authentication and then spent like weeks trying to hack into a site and extract the useful data out of it.
+[00:27:21] Paul Miller: But if you're looking to get live data from a website, stagehands is the way to go at the moment.
+[00:27:29] Ty Wells: So it sounds like a man in the middle attack.
+[00:27:33] Ty Wells: Grabbing a cookie and then readdressing the session, recreating the session.
+[00:27:39] Ty Wells: I'm not saying that you're doing that.
+[00:27:40] Ty Wells: I'm saying that's what a man in the middle attack would be.
+[00:27:44] Paul Miller: Oh, yeah.
+[00:27:45] Ty Wells: Yeah.
+[00:27:45] Paul Miller: Yeah.
+[00:27:47] Ty Wells: But yeah.
+[00:27:48] Paul Miller: Okay.
+[00:27:49] Paul Miller: Yeah.
+[00:27:50] Paul Miller: And look, it's the customer that I'm doing it for, they're paying for the service, but there's this huge company that runs the website and they just don't.
+[00:27:59] Paul Miller: to as you week.
+[00:28:00] Paul Miller: They the right data in the right format, and they don't want to have to navigate through 15 menus and copy and paste from the screen the contents, so it's quite handy to be able to do that.
+[00:28:15] Paul Miller: But I also had a go at the – I don't know if anyone's had a go with the Google Workspace CLI with using that to create documents and spreadsheets and stuff out of the Google side and reading Gmail and stuff like that, but I'm pretty excited about that because not having to create and do all of those things would be pretty powerful.
+[00:28:42] Patrick Chouinard: Yeah, that's my next plug-in wrapper project.
+[00:28:48] Paul Miller: Brilliant.
+[00:28:50] Juan Torres: What's the name of the website, the web scraper?
+[00:28:57] Paul Miller: It's called StageHand.
+[00:28:59] Paul Miller: It's It's from more
+[00:29:00] Paul Miller: From BrowserBase.
+[00:29:01] Paul Miller: So BrowserBase have got a paid service, which is very good, but I'm using the StageHand, which is their free public source one, which you can download that.
+[00:29:13] Juan Torres: Awesome.
+[00:29:14] Patrick Chouinard: Paul, just one thing.
+[00:29:15] Patrick Chouinard: If you recreate pattern that can look like a man-in-the-middle attack, just be careful not to be tracked by security scanners.
+[00:29:26] Patrick Chouinard: Because whenever you repeat a pattern that is similar to, then whatever software you created that into might get flagged, and it might be problematic, especially if you're working with a larger company.
+[00:29:41] Paul Miller: Yeah, no, I'm using a proxy service as well, so just to not destroy my IP reputation.
+[00:29:50] Juan Torres: Yeah.
+[00:29:52] Patrick Chouinard: But like I said, just be careful, because I know you are not doing a man-in-the-middle attack, but if you're a pattern...
+[00:30:00] Ty Wells: Yeah, that was the first thing that came, I mean, I'm obviously in the space, but I was like, wait a minute, is Paul actually conducting a man in the middle attack in the middle in a live session?
+[00:30:14] Ty Wells: Yeah, you might want to look into that, Paul.
+[00:30:17] Paul Miller: Yeah, yeah.
+[00:30:19] Paul Miller: Thanks.
+[00:30:22] Patrick Chouinard: Good.
+[00:30:24] Patrick Chouinard: Next would be Mitch.
+[00:30:27] Patrick Chouinard: What do you have for us this week?
+[00:30:30] Mitch: A lot of the stuff that I did, I just, I unfortunately can't talk about for NDA reasons, but I can say this, which is, I created a system which was basically like fine tuning itself through like looking at YouTube ideas and thumbnails and predicting their successes and fine tuning the prompts in the overall system as we went along.
+[00:30:55] Mitch: And that was very successful.
+[00:30:57] Mitch: And We have a really interesting way of
+[00:31:00] Mitch: Looking at things for like how to do that and like what I can say is like genetics, how genetics adapts over time and we kind of apply that same formula to YouTube and content creation.
+[00:31:16] Mitch: And what's funny is actually I was wanting to do something similar to Paul, but it was more so just like controlling my browser to make automated actions.
+[00:31:24] Mitch: So the Sora API that I was using was like fairly unreliable.
+[00:31:30] Mitch: So I was like, oh, gosh, I might have to get like a virtual PC or like, you know, use my Mac Mini.
+[00:31:37] Mitch: That's not too great.
+[00:31:38] Mitch: But to like control that, I control my browser and like make requests because the API that I was using is like is way cheaper.
+[00:31:46] Mitch: But now the API is back up and running.
+[00:31:48] Mitch: So I have this like Mac Mini where I need to use anyways.
+[00:31:52] Mitch: So I'm probably going to build like a simple automation of like web browser control.
+[00:31:58] Mitch: So I was curious.
+[00:31:59] Mitch: So if.
+[00:32:00] Mitch: If anyone had any opinions of like giving Codex, because basically the TLDR is I got the ChatGPT, what do you call it, Pro or Plus.
+[00:32:10] Mitch: And so I had like the $200 subscription and I want to use Codex to create a bunch of web requests for Sora.
+[00:32:20] Mitch: So like they're paying me, but I'm just using all that money to use their compute.
+[00:32:25] Mitch: So kind of hilarious, but curious if anyone has any recommendations for browser control.
+[00:32:35] Patrick Chouinard: Actually, I think the CMUX would work because that, and honestly, Codex has improved tremendously in the last couple of weeks, especially with 4.5, 4.4, 5.4.
+[00:32:51] Patrick Chouinard: I mean, it's, uh, pretty neck and neck and, uh, I think they just released new sub-agent, uh, functionality.
+[00:32:59] Patrick Chouinard: And
+[00:33:02] Mitch: So it can control the browser within CMUX?
+[00:33:05] Patrick Chouinard: I haven't played around with the browser stuff.
+[00:33:06] Mitch: I've only done the terminal stuff.
+[00:33:07] Mitch: Oh, okay.
+[00:33:08] Patrick Chouinard: That's the thing.
+[00:33:09] Ty Wells: That's one of the advantages.
+[00:33:11] Ty Wells: I was going to say, that's exactly what I could have used earlier today.
+[00:33:16] Ty Wells: I will use it tomorrow.
+[00:33:20] Patrick Chouinard: Yeah, it's just, you can't do all of that just in the terminal, in CMUX terminal.
+[00:33:25] Patrick Chouinard: It's just that since there is a CLI for it, your agent, whatever it is, no matter if it's open code, cloud code, or codex, will have access to it through the CLI.
+[00:33:38] Mitch: Cool.
+[00:33:38] Mitch: I'm sorry.
+[00:33:40] Mitch: No, you.
+[00:33:41] Juan Torres: I just wanted to know, is there an equivalent for Windows that is CMUX?
+[00:33:47] Patrick Chouinard: Not that I've seen, sadly.
+[00:33:49] Juan Torres: No.
+[00:33:50] Juan Torres: Okay.
+[00:33:50] Juan Torres: Or for Ubuntu Linux based operating systems.
+[00:33:55] Patrick Chouinard: I guess the, for, for at the moment, the closest would be CMUX.
+[00:34:03] Patrick Chouinard: It's just that the fun part is you have the whole GPU accelerated terminal from Ghosty on which it's built, but it has the multiplexer functionality of Tmux.
+[00:34:17] Patrick Chouinard: But if you want just the multiplexer, well, Tmux should do the trick.
+[00:34:22] Juan Torres: So I could have WSL installed in my Windows and operate Tmux?
+[00:34:26] Juan Torres: Yeah.
+[00:34:27] Juan Torres: Okay.
+[00:34:31] Patrick Chouinard: Yeah.
+[00:34:32] Patrick Chouinard: The whole Windows support is the one thing that took me the most amount of time with the status line plugin.
+[00:34:41] Patrick Chouinard: It worked pretty well on the Mac, but it was L to make it work on Windows, but it does now.
+[00:34:49] Mitch: Well, cool.
+[00:34:50] Mitch: That's all I had.
+[00:34:51] Patrick Chouinard: Good.
+[00:34:52] Patrick Chouinard: Thank you.
+[00:34:53] Patrick Chouinard: Next would be Ty.
+[00:34:54] Patrick Chouinard: Bye.
+[00:35:00] Ty Wells: Hey, yeah, I was trying to find the window because I was on CMUX's page.
+[00:35:07] Ty Wells: Okay, what do we have this week?
+[00:35:10] Ty Wells: I think at the end of last week, I spoke a little bit about my Three Buckets project, did I not?
+[00:35:17] Morgan Cook: Yes.
+[00:35:19] Ty Wells: so, in the process of implementing that, obviously, two of both of my companies, so that's going well.
+[00:35:29] Ty Wells: I updated just the web page.
+[00:35:33] Ty Wells: Let me see if I can share.
+[00:35:41] Ty Wells: Got a request to share.
+[00:35:46] Patrick Chouinard: Already allowed.
+[00:35:47] Ty Wells: All right, perfect.
+[00:35:53] Ty Wells: So, it's still, I've got everything here, but really what I was trying to get across to people is the difference.
+[00:36:00] Ty Wells: There places that you can implement the concept itself, that framework.
+[00:36:05] Ty Wells: So I updated some stuff on here.
+[00:36:08] Ty Wells: I added an option to run a quick audit, voice audit, to see what things that can go into a digital bucket.
+[00:36:20] Ty Wells: I don't know if all of this was here when I showed you guys last week, the 90-day rollout plan.
+[00:36:27] Ty Wells: But, I mean, you can look at it.
+[00:36:29] Ty Wells: I'll just drop the link there, but just a couple other things I added in there.
+[00:36:32] Ty Wells: And then the presentations.
+[00:36:33] Ty Wells: I think that may have been in there, the actual presentations that I gave for each team member or whomever.
+[00:36:43] Ty Wells: And, yeah, that's what I've been doing all week.
+[00:36:47] Patrick Chouinard: Yeah, that was impressive, by the way.
+[00:36:49] Ty Wells: Thank you.
+[00:36:50] Ty Wells: Thank you.
+[00:36:51] Ty Wells: Yeah, it's going over pretty good.
+[00:36:53] Ty Wells: But, of course, I'm the boss.
+[00:36:54] Ty Wells: I don't know.
+[00:36:58] Patrick Chouinard: Well, you've got all of my...
+[00:37:00] Patrick Chouinard: You comment this week on school.
+[00:37:02] Ty Wells: Yes, I did.
+[00:37:03] Ty Wells: Yes.
+[00:37:03] Ty Wells: Thank you.
+[00:37:03] Ty Wells: I appreciate that.
+[00:37:06] Patrick Chouinard: Good.
+[00:37:07] Patrick Chouinard: Thank you very much, Ty.
+[00:37:09] Patrick Chouinard: Our next participant would be Morgan.
+[00:37:12] Patrick Chouinard: What have you cooked up this weekend?
+[00:37:15] Patrick Chouinard: How is your million dollar idea growing?
+[00:37:18] Morgan Cook: It's growing, but it's not complete yet.
+[00:37:21] Morgan Cook: So I have too many projects in the burners right now and I've been rotating through them over the week.
+[00:37:27] Morgan Cook: So I actually didn't get any time to work on Heritage Plot until this morning.
+[00:37:32] Morgan Cook: And then Opus was down.
+[00:37:33] Morgan Cook: So I switched to Sonnet and tried to do a few things, but I have some pretty large chunks to get through.
+[00:37:41] Morgan Cook: I can show you guys the context switching from the user profile and role if you guys would like to see that.
+[00:37:50] Morgan Cook: Other than that, it's not changed much since last week.
+[00:37:59] Morgan Cook: when It's You
+[00:38:02] Morgan Cook: Let me share this one window and see if that.
+[00:38:09] Patrick Chouinard: Yep.
+[00:38:10] Morgan Cook: You guys see it?
+[00:38:12] Patrick Chouinard: Totally.
+[00:38:13] Morgan Cook: So this is the main public site, right?
+[00:38:16] Morgan Cook: The way the database is split is by tenant for a cemetery and then also by public and tenant.
+[00:38:27] Morgan Cook: So the public can access a couple of tables which covers all of the cemeteries.
+[00:38:32] Morgan Cook: And those are basically kind of like a report copy-out process that occurs on a scheduled base.
+[00:38:41] Morgan Cook: So anytime they search in here for anything, for somebody's name or something, I'll just do this one to give an example.
+[00:38:51] Morgan Cook: Then it just pulls each of them.
+[00:38:54] Morgan Cook: And you can see the cemetery that this person's located at.
+[00:38:58] Morgan Cook: you I veryistor in publisher.
+[00:38:59] Morgan Cook: Google Right.
+[00:39:00] Morgan Cook: They're at different cemeteries, and if you click on them, then you get the detail.
+[00:39:05] Morgan Cook: And this is the page that would show up for the memorial of the individual and, you know, community tributes to that person, their photos and stories or whatever, and they can add it right here as well.
+[00:39:20] Morgan Cook: So after they add a tribute or something, it goes to a queue, and there's a moderator that would at least review it before it's published out, back out to the web.
+[00:39:31] Morgan Cook: So that's pretty much this piece.
+[00:39:33] Morgan Cook: There will be another added to this for the map and location at the actual cemetery.
+[00:39:38] Morgan Cook: Right now it just has the plot, but when they view all records from the cemetery, it would take them to a, well, that one's for all records, there'll be another button here for the actual map location.
+[00:39:51] Morgan Cook: How do I, how do I find that specific grave site?
+[00:39:56] Morgan Cook: We have a question from Juan.
+[00:39:59] Morgan Cook: Yeah, Juan.
+[00:40:00] Morgan Cook: ahead.
+[00:40:00] Juan Torres: Oh, yeah, I didn't want to call you off, but how are you getting your data?
+[00:40:05] Morgan Cook: Oh, this is all fake data.
+[00:40:07] Morgan Cook: Oh, I had it build a seed script, which takes like 50 different, an array of 50 first names, an array of 50 last names, and then it populates like 10 different database tables based on that information and builds the entire structure of the cemetery hierarchy for section, lot, row, plot, So all that stuff gets built with the seed process.
+[00:40:33] Morgan Cook: It takes about 10 minutes to add a thousand records or something.
+[00:40:39] Morgan Cook: This is all just fake data at this point.
+[00:40:42] Morgan Cook: Okay.
+[00:40:43] Juan Torres: Are you planning to get municipal, federal, state data?
+[00:40:48] Morgan Cook: Yes.
+[00:40:49] Morgan Cook: Okay.
+[00:40:49] Morgan Cook: So they're working on that now, and that's actually one of the things that kind of held up the development was, I don't know what the exact structure is of their database at this point.
+[00:41:00] Morgan Cook: And they may have some additional fields that I need to make some accommodations for.
+[00:41:06] Morgan Cook: And I was thinking about that.
+[00:41:08] Morgan Cook: I might want to keep my structure clean for my own purpose and add a structure for doing ad hoc fields to accommodate for the differences between all the different cemeteries.
+[00:41:21] Juan Torres: Yeah.
+[00:41:22] Morgan Cook: So I haven't made that decision yet, but that's kind of where I'm leaning just to make it make all my base code for my application run clean with this static structure and then, you know, have a mechanism to deal with user defined fields and that kind of thing at the cemetery level.
+[00:41:41] Juan Torres: Yeah, because the organizations that I've worked with, it's very data centric.
+[00:41:46] Juan Torres: So most, most of that, uh, of, uh, the, a priority structure of, of the app is basically the data.
+[00:41:55] Morgan Cook: The data basically shapes how the app develops.
+[00:41:57] Morgan Cook: Exactly.
+[00:41:58] Morgan Cook: And I got stuck there because I.
+[00:42:00] Morgan Cook: I couldn't get a hold of a copy of their data to see what it was.
+[00:42:03] Morgan Cook: I did a WebEx with them to get a look at some of the screens of their ancient system and get an idea of the fields.
+[00:42:14] Morgan Cook: And I thought my Fathom was recording, but it was not.
+[00:42:17] Morgan Cook: So I didn't take the notes that I should have manually.
+[00:42:20] Morgan Cook: I was planning on just using the transcripts, and I just dropped the ball right there on my check.
+[00:42:27] Morgan Cook: So I've to do that again with them.
+[00:42:30] Morgan Cook: But they have a bunch of fields that I had not previously thought of, and so I need to make sure I accommodate for those.
+[00:42:39] Morgan Cook: And then also to get a script that I can do an import process from.
+[00:42:44] Morgan Cook: Their old system is in an AccessDB, so it's just a, you know, it's not a huge data set by any means.
+[00:42:54] Morgan Cook: The part that's huge is all of their documents that go along with each record.
+[00:42:59] Morgan Cook: So each record.
+[00:43:00] Morgan Cook: The has at least three or four PDFs or scan documents or certificates that have been, you know, the actual death certificate from the county coroner, all that kind of stuff is in there as a image file.
+[00:43:15] Juan Torres: I see.
+[00:43:16] Morgan Cook: And those are the records that all pertain to this Freedom of Information Act and the GRAMMA request.
+[00:43:23] Morgan Cook: So they don't have a way right now in their existing system to flag, you know, one file that might just be a picture of the gravestone as publicly accessible, and another file that might be the, you know, the grave plot record owner who owns the actual plot, you know, because the plot may have multiple placements in it.
+[00:43:46] Morgan Cook: That information is not publicly accessible, and that would require some kind of a GRAMMA request to get the information, and there's different levels in that GRAMMA request that could, it's public, a familiar.
+[00:44:00] Morgan Cook: You know, you're part of the family kind of request and government, police, under investigation, whatever.
+[00:44:07] Morgan Cook: There's all kinds of pieces to that.
+[00:44:10] Juan Torres: Yeah, I was talking to a data engineer who used to work for an organization that was the precursor to the people who generalize the information requests on criminal records.
+[00:44:24] Juan Torres: And he told me that essentially they were the people who got acquired by Equifax, and basically, they basically got all the information in order to make assessments on the, you know, score, the credit score of people.
+[00:44:37] Juan Torres: So if you can crack this out, you know, maybe credits companies are going to be interested in this or some other entity.
+[00:44:45] Morgan Cook: Well, credit companies, also the Ancestry.com and all those other genealogical sites are interested in this stuff as well.
+[00:44:54] Morgan Cook: All right, so on to the admin side, this is the main thing that switches.
+[00:45:00] Morgan Cook: The menu over here on the left is based on the current role, but your role you can change.
+[00:45:07] Morgan Cook: So right now I'm in, oh, it doesn't say it right there, but I'm in, oh, up here, I'm in my admin setting.
+[00:45:16] Morgan Cook: So this is the user I'm logged in.
+[00:45:18] Morgan Cook: I'm a platform admin at this point up here in the top right.
+[00:45:23] Morgan Cook: And I can switch from that to any of the other contexts.
+[00:45:27] Morgan Cook: So with the still logged in, not changing my login, not logging out, not logging back in to another user, I can just switch and now I'm viewing the site as a cemetery owner.
+[00:45:39] Morgan Cook: So right now this is a cemetery owner for the Morgan City North Cemetery.
+[00:45:46] Morgan Cook: And then if you, all the plot data for the cemetery.
+[00:45:58] Morgan Cook: Sorry, it's fresh, fresh.
+[00:46:00] Morgan Cook: Run.
+[00:46:00] Morgan Cook: I haven't loaded anything yet.
+[00:46:02] Morgan Cook: So the cemetery, in this specific cemetery, I have sections.
+[00:46:07] Morgan Cook: So each section.
+[00:46:08] Morgan Cook: And as you click these, it builds the path out all the way down to a specific lot and plot.
+[00:46:15] Morgan Cook: Over here on the right is the detail for whichever item you have selected.
+[00:46:19] Morgan Cook: So we have a lot selected.
+[00:46:21] Morgan Cook: Right here, we could add another plot to this selection.
+[00:46:24] Morgan Cook: If we go back to the row, the row of selection, we could add another lot in there.
+[00:46:31] Morgan Cook: The individual plots show the data for each of the plot locations.
+[00:46:38] Morgan Cook: The individuals that are actually buried there.
+[00:46:41] Morgan Cook: And they're, how they're buried in the plot.
+[00:46:45] Morgan Cook: So at this cemetery, the plots are stacked.
+[00:46:48] Morgan Cook: They have two caskets in each plot.
+[00:46:51] Morgan Cook: So they can stack up.
+[00:46:52] Morgan Cook: So 2D.
+[00:46:54] Morgan Cook: If I switch to, well, let me look at these other ones.
+[00:46:58] Morgan Cook: So up here at the top, we have different.
+[00:47:00] Morgan Cook: Ways to view the data, right?
+[00:47:01] Morgan Cook: So this is a simple split tree.
+[00:47:04] Morgan Cook: This is an indented tree.
+[00:47:06] Morgan Cook: And we keep the main, the same piece selected.
+[00:47:09] Morgan Cook: It's just the entire path to it.
+[00:47:12] Morgan Cook: This is called CirclePax.
+[00:47:13] Morgan Cook: And this is all from that D3 library.
+[00:47:17] Morgan Cook: So this is all the way down to the individual plot.
+[00:47:21] Morgan Cook: This is the lot.
+[00:47:22] Morgan Cook: And if we back out of this, you can see the content of each one of these.
+[00:47:30] Morgan Cook: All the way back out to the.
+[00:47:39] Morgan Cook: Maybe.
+[00:47:44] Morgan Cook: So this is the entire.
+[00:47:47] Morgan Cook: Cemetery.
+[00:47:52] Morgan Cook: It's got a zooming issue right there, I guess.
+[00:48:00] Morgan Cook: And one more is the radial tree, so we can go into each of these sections.
+[00:48:07] Morgan Cook: As you select a section, it pops to the center and shows his children and grandchildren all the way down to the lot, or to the plot, rather.
+[00:48:22] Morgan Cook: If I go to the other cemetery, it's got a different structure for this one.
+[00:48:34] Morgan Cook: It's got a different structure for the placements.
+[00:48:47] Morgan Cook: The cemetery, the content, because of the way it's structured, is a little bit thick on some of those rounds.
+[00:48:56] Morgan Cook: So here the placements are.
+[00:49:00] Morgan Cook: The top four are actual cremations, and this one is a casket.
+[00:49:08] Morgan Cook: So it's got a casket on the bottom layer, and then above it are four cremations that are placard.
+[00:49:15] Morgan Cook: And these are the people that are occupying that space.
+[00:49:22] Morgan Cook: So the map is in place, but I just don't have any of the GIS information for each of the plot locations.
+[00:49:29] Morgan Cook: So I can't display anything yet.
+[00:49:32] Morgan Cook: So this would actually do the grounds map and make all of the components clickable, just like the circle.
+[00:49:39] Morgan Cook: So it's a modified version of this, where it allows you to select out.
+[00:49:57] Morgan Cook: Records.
+[00:49:59] Morgan Cook: want do if just use
+[00:50:07] Morgan Cook: So the records are the actual burial records or cremation records and for each of the individual.
+[00:50:14] Morgan Cook: Right now, the searching is kind of limited.
+[00:50:16] Morgan Cook: It's not as robust as I want it to be, but I've got some work to do on that.
+[00:50:33] Morgan Cook: But part of the seed data populated all this content, the birth date, death date, each of these sections break down to further detail that wasn't part of my, actually the military piece was, some of them are veterans, some of them are not.
+[00:50:50] Morgan Cook: And then notes.
+[00:50:52] Morgan Cook: And then the actual interment record itself is where is this person.
+[00:50:58] Morgan Cook: you.
+[00:50:58] Morgan Cook: Thank you.
+[00:51:00] Morgan Cook: Currently buried.
+[00:51:01] Morgan Cook: And there may be multiple interment records.
+[00:51:05] Morgan Cook: So if somebody's buried and then exhumed and then reburied or relocated, then we need to keep the history of all of that information.
+[00:51:12] Morgan Cook: So that's why there's multiple record, the potential for multiple records in here.
+[00:51:17] Morgan Cook: Most, most records probably only have one, but.
+[00:51:20] Patrick Chouinard: And can you track back to the plot from there?
+[00:51:25] Morgan Cook: Say that again.
+[00:51:26] Patrick Chouinard: Can you track back to the plot?
+[00:51:28] Morgan Cook: Basically, you see that he's in plot six, but can you go back to where that plot is?
+[00:51:35] Morgan Cook: none of the cross-linking is tied together, but all of it will be tied together so that from any page, you should be able to get to the other component of whatever links that in, right?
+[00:51:46] Morgan Cook: So plots here.
+[00:51:46] Morgan Cook: If we go back to the record itself.
+[00:51:53] Morgan Cook: Where was the other piece?
+[00:52:00] Morgan Cook: Oh, the actual searching.
+[00:52:04] Morgan Cook: So in searching, you should be able to say, want to look at block two, 14, plot two, right?
+[00:52:14] Morgan Cook: And it should pop up an actual plot there and tell you who's in that specific plot, which should be three or four people if it's full.
+[00:52:25] Morgan Cook: So the searching, I want to make sure is available for anything.
+[00:52:28] Morgan Cook: want to be able to search any content from any search field.
+[00:52:32] Morgan Cook: So I may be on the Senate records, but if I look for something that may be in documents or whatever, I want that to show up in the list as well.
+[00:52:42] Morgan Cook: So it's kind of like a full site search, not just an individual record type in the list below.
+[00:52:51] Morgan Cook: It's all different types of records in the list below.
+[00:52:56] Morgan Cook: Focusing on whatever, focus on whatever pane you're on.
+[00:53:00] Morgan Cook: In records, then those should be at the top, but all the other stuff should show up underneath it as, you know, potentially, maybe you're looking for this.
+[00:53:10] Morgan Cook: Settings, each of the cemeteries have different kind of structure for their placements inside the plot.
+[00:53:18] Morgan Cook: And I don't have a UI for that yet.
+[00:53:25] Morgan Cook: Seems like a simple fix, but when you've got a whole bunch of simple fixes, they all take time.
+[00:53:33] Morgan Cook: So this is where you can define the hierarchy of how the cemetery is laid out.
+[00:53:44] Morgan Cook: It's always going to have, like, bookend pieces of cemetery and plot, and then in between, you can define whatever levels of hierarchy you need.
+[00:53:53] Morgan Cook: So most of them have, like, three or four levels total, usually a section, a row.
+[00:54:00] Morgan Cook: A lot and a plot, but this specific cemetery only uses blocks, lot, and plot, which is why their diagrams look a little bit crowded, because they haven't broken the layers out enough.
+[00:54:11] Morgan Cook: But, you know, you're looking at old data and old structures that have been in place for, you know, 80 plus years, maybe longer.
+[00:54:24] Morgan Cook: I don't know how long that cemetery has actually been there.
+[00:54:28] Patrick Chouinard: Oh, don't worry.
+[00:54:29] Patrick Chouinard: I know very well what you're saying.
+[00:54:31] Patrick Chouinard: mean, trying to do that in Southern Quebec, you'd have fun because most of the database are still paper-based, so.
+[00:54:38] Morgan Cook: Yeah.
+[00:54:42] Patrick Chouinard: But very impressive.
+[00:54:46] Morgan Cook: See if that one, oh, that's not what it's called.
+[00:54:50] Morgan Cook: I can't remember where that's at.
+[00:54:51] Morgan Cook: But placements has the same kind of structure that you see inside a plot record.
+[00:55:07] Morgan Cook: So this placement structure right here, there's a default one for the cemetery, but I can modify this one specifically, I can edit this lot and make it however I need to, you know, maybe it has two caskets instead of a casket and cremations, or maybe it has six panels of cremation.
+[00:55:27] Morgan Cook: And these are all in, all defined in like a layer, row, and column structure so you can lay it out.
+[00:55:35] Morgan Cook: And then it displays on the screen based on how you've defined that for that specific plot.
+[00:55:44] Morgan Cook: We edit the slots, this is the, you can create and edit that, what type it is, you know, it's a vault, cremation or casket, and I don't know, there might be some other types in here as well.
+[00:55:56] Morgan Cook: go.
+[00:56:04] Morgan Cook: That's about it.
+[00:56:04] Morgan Cook: But the main piece with the switching of the context without logging out, these are all under one login that have multiple roles.
+[00:56:13] Morgan Cook: The other thing I was going to do that I've used previously is for users from a platform administration point of view and being able to work with the user and see exactly what the user is.
+[00:56:30] Morgan Cook: I wanted to have a login as this user kind of thing, emulate the user basically so that it takes me to what the user sees when they're viewing the site based on whatever their cemetery settings are and whatever their individual user settings are so that when they're describing something to me, I can actually look at it from their user login point of view and see what they're seeing because I might have too many options available for my own.
+[00:57:00] Morgan Cook: Profile and not be able to see, you know, I don't see that button.
+[00:57:04] Morgan Cook: It's right there for you, not for me.
+[00:57:08] Morgan Cook: Anyway, so there's a way to really clean way to do that where you, it puts a flag in the user context and then loads up the other profile, makes a log entry, and allows the, allows an administrator.
+[00:57:28] Morgan Cook: You can always look at somebody who has less, less role rights than you do, but not elevate.
+[00:57:37] Morgan Cook: You can elevate above your role rights, so.
+[00:57:42] Patrick Chouinard: Well, if there's one thing I can say, you nailed the UX.
+[00:57:47] Morgan Cook: Well, it's come along.
+[00:57:48] Morgan Cook: I like, Ty, this is a, you know, fixed frame, kind of like what you had suggested you like to use for yours.
+[00:57:55] Ty Wells: Yeah.
+[00:57:56] Morgan Cook: And I like that idea for this type of app that's supposed to be.
+[00:57:59] Morgan Cook: Yeah.
+[00:58:00] Morgan Cook: Desktop, it does have, you know, it's responsive to tablet and mobile.
+[00:58:12] Morgan Cook: Let's see if I can pop that on.
+[00:58:16] Morgan Cook: So it drops to this structure right here for all that with an Amiga menu, same kind of thing.
+[00:58:23] Morgan Cook: My context then switches from the title bar to the actual menu so I can switch my desktop.
+[00:58:30] Morgan Cook: Context right here and then on the phone.
+[00:58:34] Morgan Cook: And all those graphs are pretty good on here as well on the mobile devices.
+[00:58:40] Juan Torres: Are you using the Flask?
+[00:58:44] Morgan Cook: No.
+[00:58:45] Morgan Cook: I'm using for what part?
+[00:58:48] Juan Torres: The UI.
+[00:58:50] Morgan Cook: It's just ShadCN, most of it.
+[00:58:56] Morgan Cook: ShadCN controls and Next.js.
+[00:59:00] Morgan Cook: Content.
+[00:59:01] Morgan Cook: For the mobile, mean?
+[00:59:05] Juan Torres: Well, this looks like the Python, Flask web app framework.
+[00:59:12] Morgan Cook: No, this is all Next.js.
+[00:59:15] Juan Torres: Gotcha.
+[00:59:16] Morgan Cook: And chat CN for the UI.
+[00:59:26] Morgan Cook: So that's pretty much where I'm at with that project.
+[00:59:29] Morgan Cook: And then this last week, I spent a lot of time trying to finish up a project for just a simple website, but the one that was on Cloudflare, you know, static, it's not even static, but it seems kind of, they, the free, free site on Cloudflare and.
+[00:59:50] Patrick Chouinard: Cloudflare pages.
+[00:59:51] Morgan Cook: Yeah, yeah.
+[00:59:52] Morgan Cook: And it works pretty good.
+[00:59:53] Morgan Cook: It's, it's with Astro.
+[00:59:56] Morgan Cook: And so that one went really well.
+[00:59:58] Morgan Cook: Um, probably.
+[00:59:59] Morgan Cook: Probably.
+[01:00:00] Morgan Cook: She published it out there, and she's adding content to it.
+[01:00:03] Morgan Cook: So that's going good.
+[01:00:08] Morgan Cook: And then I did give me a Feldy.
+[01:00:17] Patrick Chouinard: Oh, did you get the new one?
+[01:00:20] Morgan Cook: The new one, yeah.
+[01:00:22] Morgan Cook: Oh, nice.
+[01:00:23] Morgan Cook: The onboarding was the most unpleasant experience I think I've had in a while.
+[01:00:30] Morgan Cook: It was so frustrating.
+[01:00:31] Patrick Chouinard: Okay.
+[01:00:32] Morgan Cook: It's like you go to their pricing page and they list all the pricing out, but there's nowhere to buy the subscription there.
+[01:00:40] Morgan Cook: It's like you have to go to a whole separate page to pay for the subscription.
+[01:00:48] Morgan Cook: And if you do it through the app, though, you can only use the, it's only tied to Apple, your Apple account.
+[01:00:57] Morgan Cook: And I didn't want to tie it to my Apple account.
+[01:00:59] Morgan Cook: I just want.
+[01:01:00] Morgan Cook: If to have it on a specific credit card, when you do it on the website, after you find the right location, you can only buy the one, the unlimited version of it.
+[01:01:13] Morgan Cook: So on the website, there's, they have a plus, plus version and an unlimited version.
+[01:01:21] Morgan Cook: So it was kind of interesting.
+[01:01:24] Patrick Chouinard: But to be honest, the unlimited is pretty much the only one that's worth paying for because 1,400 minutes will disappear like that.
+[01:01:33] Morgan Cook: Yeah.
+[01:01:36] Patrick Chouinard: But how do you find the Field E3?
+[01:01:40] Patrick Chouinard: I've ordered mine, but I haven't received it yet.
+[01:01:44] Morgan Cook: They had, I had two weeks ago, somebody had mentioned it in the meeting.
+[01:01:48] Morgan Cook: Maybe it was Ty, I'm not sure who, about, or maybe, maybe Phil, I don't remember.
+[01:01:57] Morgan Cook: But it was a.
+[01:02:00] Morgan Cook: So I went and signed up on their website, and then they sent me a little link to get on the watch list for the up and coming one, or they sent me a text.
+[01:02:09] Morgan Cook: don't remember which.
+[01:02:11] Morgan Cook: And it's, so I just went and bought it as soon as it came out.
+[01:02:16] Morgan Cook: And got it yesterday.
+[01:02:19] Patrick Chouinard: Wow, lucky you, because I did it the day it came out, and it's not even shipped yet.
+[01:02:25] Morgan Cook: Oh, really?
+[01:02:26] Morgan Cook: Yeah.
+[01:02:28] Morgan Cook: It is, it's tiny.
+[01:02:30] Morgan Cook: It's a pretty unobtrusive device, which is perfect.
+[01:02:36] Patrick Chouinard: I still have the old one, but.
+[01:02:39] Ty Wells: Yeah, I've looked into it.
+[01:02:41] Ty Wells: How's that API stuff?
+[01:02:42] Ty Wells: I still, still using my limitless I've got until September before things change.
+[01:02:48] Patrick Chouinard: Well, they don't have an API, but they have a webhook.
+[01:02:51] Patrick Chouinard: So if you want to tie it into anything that can connect to a webhook, it, it works, but they're developing a very.
+[01:02:59] Patrick Chouinard: it's
+[01:03:00] Patrick Chouinard: Quickly, there's a new version of the desktop application almost every single week, and they create new stuff for developer as well.
+[01:03:09] Patrick Chouinard: They have a full developer site now, and they're pumping new functionality pretty much every week.
+[01:03:16] Ty Wells: Okay.
+[01:03:17] Ty Wells: Yeah, Paul, it's a recording, an AI recording device like my Limitless I have on.
+[01:03:23] Ty Wells: Fieldly, is it?
+[01:03:24] Ty Wells: F-E-L-D-Y?
+[01:03:26] Patrick Chouinard: Yep.
+[01:03:26] Morgan Cook: F-E-L-D-L-Y.
+[01:03:28] Ty Wells: L-Y.
+[01:03:29] Morgan Cook: Yeah.
+[01:03:30] Morgan Cook: Fieldly.
+[01:03:31] Ty Wells: Fieldly.
+[01:03:32] Patrick Chouinard: That's the old version here.
+[01:03:35] Patrick Chouinard: Waiting for the new one.
+[01:03:40] Ty Wells: I heard Apple was going to have something similar.
+[01:03:45] Ty Wells: They were working on something.
+[01:03:50] Ty Wells: An AI recording device.
+[01:03:52] Ty Wells: Not that they're not recording on these devices in front of me right now, but something that's official.
+[01:03:58] Ty Wells: just teleported I definitely you're for this�ers.
+[01:04:00] Ty Wells: both together, they can say, yeah, you had it off, but I got it on your phone.
+[01:04:06] Morgan Cook: So one other thing, I'll paste a little link in there in the chat, is going to be one of the tools I found.
+[01:04:14] Morgan Cook: I'm not sure if this is useful for you, Patrick, but it's a way to, it's called 1CLI.
+[01:04:20] Morgan Cook: Okay.
+[01:04:21] Morgan Cook: It's from the same guys that do ChartDB, and what it is, is it puts in a gateway between all of your agents and your external APIs so that none of your agents have your keys.
+[01:04:37] Morgan Cook: They make a request with a placeholder, and then the gateway replaces the placeholder as it goes out.
+[01:04:43] Morgan Cook: So you have one CLI layer that acts as a gateway to process, so that way you only have one place to update your access keys and that kind of thing.
+[01:04:55] Morgan Cook: So it might be useful for somebody.
+[01:04:58] Patrick Chouinard: I'm not sure if you have.
+[01:05:00] Patrick Chouinard: Link, just pop it in the chat.
+[01:05:01] Morgan Cook: It's in the chat, think.
+[01:05:05] Morgan Cook: Yes, the GitHub one CLI.
+[01:05:09] Patrick Chouinard: Excellent.
+[01:05:11] Patrick Chouinard: Yeah, I've seen also anything CLI.
+[01:05:14] Patrick Chouinard: don't know if you saw that.
+[01:05:15] Patrick Chouinard: It's a different reason to be, but basically transform any open source project into a CLI.
+[01:05:26] Ty Wells: Yeah, but I don't know, you have to pay for that one?
+[01:05:31] Patrick Chouinard: Anything CLI?
+[01:05:32] Ty Wells: Yeah.
+[01:05:33] Patrick Chouinard: No.
+[01:05:33] Ty Wells: No, it's free.
+[01:05:35] Patrick Chouinard: Free open source.
+[01:05:36] Ty Wells: Okay.
+[01:05:40] Patrick Chouinard: But that's a nice thing.
+[01:05:41] Patrick Chouinard: It's basically if you have any software that you built yourself or you're using an open source application of some kind that has an API but no CLI, just point at it, then you're going to build a CLI for it, and then you can hook it up to...
+[01:06:00] Patrick Chouinard: Any agent that you might use.
+[01:06:02] Ty Wells: Well, that's what I did with all my projects.
+[01:06:04] Ty Wells: I just turned them all into CLI and I created a library.
+[01:06:08] Ty Wells: And so it has a shared memory.
+[01:06:10] Ty Wells: And so go see which tool can use best of all the hundreds of projects I have.
+[01:06:16] Morgan Cook: Is that a concept that we're all heading towards the end of MCP?
+[01:06:23] Ty Wells: I would say the end of, but definitely a new layer.
+[01:06:28] Patrick Chouinard: There are still reasons to have MCP for certain things, but not for everything anymore.
+[01:06:37] Patrick Chouinard: That could be a very long discussion.
+[01:06:41] Morgan Cook: All right, guys.
+[01:06:42] Morgan Cook: That's all I have.
+[01:06:43] Morgan Cook: If you guys have feedback, I welcome it, by all means.
+[01:06:47] Patrick Chouinard: Thank you very much, sir.
+[01:06:51] Patrick Chouinard: Next would be, is Marc still with us?
+[01:06:55] Patrick Chouinard: No, I think he left.
+[01:06:59] Patrick Chouinard: Then.
+[01:07:00] Patrick Chouinard: And it would be, Juan, what have you done this week?
+[01:07:06] Juan Torres: I'm working on a project.
+[01:07:09] Juan Torres: I don't want to say too much because it's a business idea per se, but this project, and this is the thing that I've been working on using Agentec DevOps, just creating resources, documenting how standard operating procedures for executing the development of resources inside VPCs and without VPCs, which can emphasize, like, guys, you should try it.
+[01:07:40] Juan Torres: If you're using Google One, I think they have their Agentec CLI, but cloud code, if you give it the CLI that they're supposed to use in your cloud technology in order to create resources, do so, you just have to give it a user with the right policies, and bam, you can just...
+[01:08:00] Juan Torres: Straight resources back and forth, manipulate it, read it, right?
+[01:08:04] Juan Torres: It just streamslides everything because I've done DevOps, but, you know, in the usual way of using the website interface or the Cloud Shell interface, right?
+[01:08:16] Juan Torres: But nevertheless, now I'm at the point in which I have all the infrastructure ready to go.
+[01:08:20] Juan Torres: I'm going to carry the migrations to create the data model, to create the tables, S3 Bucket, in order to organize all the data, which are going to be pictures, so what I'm thinking of using is, or creating is an AI pipeline, an AI diffusion pipeline that transforms images into, you know, specific, with specific lauras, right?
+[01:08:48] Juan Torres: So I got to work on that.
+[01:08:50] Juan Torres: I'm thinking of the point in the Gentech systems in order to be able to read, to use the vision models, to read the image, and generate
+[01:09:00] Juan Torres: to prompt a wheel that is going to be able to generate the image-to-image transformation according to what I needed to be transformed.
+[01:09:11] Juan Torres: I'm thinking of maybe looking at Brandon's video about how he uses his agentic systems in order to carry out this AI pipeline.
+[01:09:24] Juan Torres: I don't think, yeah, the data engineering should be a problem.
+[01:09:28] Juan Torres: It's classical data engineering.
+[01:09:31] Juan Torres: The AI pipeline is going to be the main thing, the more innovative thing.
+[01:09:40] Juan Torres: And I think that's it, yeah.
+[01:09:42] Juan Torres: And I think Patrick, is that me or Patrick froze again?
+[01:09:51] Ty Wells: He froze.
+[01:09:53] Juan Torres: Yeah.
+[01:09:54] Paul Miller: He's thinking, he's thinking very quickly.
+[01:09:56] Ty Wells: He's vigorously.
+[01:09:58] Juan Torres: Oh, Ponder.
+[01:09:58] Juan Torres: And he's out of space.
+[01:09:59] Ty Wells: Ponder.
+[01:10:00] Juan Torres: Intranet is not very good in space.
+[01:10:02] Ty Wells: You did say he had some ice, an ice storm or something.
+[01:10:16] Morgan Cook: There he is.
+[01:10:17] Paul Miller: He's back.
+[01:10:19] Morgan Cook: Muted again.
+[01:10:21] Patrick Chouinard: Sorry about that, guys.
+[01:10:24] Patrick Chouinard: It's the fun part of being in the north.
+[01:10:32] Juan Torres: You could use SAI to, you know, compete with Starlink and generate your own intranet, you know, service.
+[01:10:41] Patrick Chouinard: Yeah, I'm not there yet.
+[01:10:42] Patrick Chouinard: I don't mind doing the toolbox for Cloud Code, but I'm not going to start doing the telecom infrastructure for it.
+[01:10:54] Patrick Chouinard: So, uh, were you, I've missed the last, uh, bit from you, uh, one.
+[01:10:59] Patrick Chouinard: and
+[01:11:00] Patrick Chouinard: Did you have anything else you wanted to talk about?
+[01:11:03] Juan Torres: No, no, I think that's it.
+[01:11:05] Juan Torres: I guess I'll reach out even to, I don't know if, what's his name?
+[01:11:10] Juan Torres: I don't think he's here anymore, but he was commenting, what's his name?
+[01:11:19] Juan Torres: Oh, Mitch.
+[01:11:20] Juan Torres: Mitch, I know he has dealt with some diffusion model transformations.
+[01:11:24] Juan Torres: So I think the diffusion model industry is just starting to get off, you know?
+[01:11:30] Juan Torres: So people that get into it early on are going to be able to be in a good position, you know?
+[01:11:35] Juan Torres: Even if this business idea doesn't work out, just having the ability to create a diffusion pipeline, AI pipeline, is going to be really, really helpful in the future.
+[01:11:48] Patrick Chouinard: Definitely.
+[01:11:52] Patrick Chouinard: Thank you very much, sir.
+[01:11:54] Patrick Chouinard: By the way, I wanted to ask, did anyone actually take a look at pencil.com?
+[01:12:00] Patrick Chouinard: Pencil.dev yet, or basically a Figma challenger, if you want, but that ties in directly to CloudCode, and the MCP for Pencil.dev is quite impressive.
+[01:12:17] Patrick Chouinard: You can actually see CloudCode building the interface in real time as it's creating it in Pencil.dev, you see the interface gets created.
+[01:12:32] Ty Wells: It's honestly...
+[01:12:33] Ty Wells: Where is this?
+[01:12:34] Ty Wells: Sorry, I had to step away.
+[01:12:36] Patrick Chouinard: What are we talking about?
+[01:12:38] Patrick Chouinard: Pencil.dev.
+[01:12:40] Ty Wells: Well, there's two.
+[01:12:41] Patrick Chouinard: There's Pencil and there's Paper.dev.
+[01:12:44] Patrick Chouinard: We are naming convention, but yeah, they basically do the same thing.
+[01:12:48] Patrick Chouinard: They have...
+[01:12:49] Patrick Chouinard: And this is where MCP server actually makes sense, because this is direct interaction between CloudCode and or Codex or whatever agent you want.
+[01:13:00] Patrick Chouinard: And with the API back and forth, and it actually designed the UI for your application, and it's basically a competitor to Figma, but Figma first is brutally expensive compared to Pencil, which is free for now, and even Paper is not that expensive, so.
+[01:13:21] Ty Wells: Okay, I will check it out.
+[01:13:25] Ty Wells: Can you add a plugin for that?
+[01:13:28] Elena: I'll have to connect it.
+[01:13:31] Patrick Chouinard: Actually, it's connecting to a MCP server, so a plugin itself would not necessarily be useful in that case, but yeah.
+[01:13:50] Ty Wells: He did it again.
+[01:13:55] Morgan Cook: Oh, he's really testing his network.
+[01:13:57] Ty Wells: IHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHe heHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHeHe
+[01:14:00] Ty Wells: It's doing a load test.
+[01:14:05] Morgan Cook: He's probably frustrated now.
+[01:14:08] Ty Wells: Yeah.
+[01:14:14] Ty Wells: Who else has to go?
+[01:14:16] Ty Wells: Who else is on the – are we missing anyone?
+[01:14:19] Morgan Cook: From our list, it was – I wanted to just finish, so.
+[01:14:38] Morgan Cook: Maybe Biggi or – I don't know who Samsung SM-T220 is.
+[01:14:50] Ty Wells: Well, his note taker is still in here, so we won't miss anything.
+[01:14:56] Ty Wells: So, if we want to continue on – oh, here he comes.
+[01:14:58] Ty Wells: where fluorescence are.
+[01:15:00] Morgan Cook: And remember, you're new.
+[01:15:06] Patrick Chouinard: I'm sorry about that, guys.
+[01:15:09] Ty Wells: No, no, we just realized we're going to create a skill.
+[01:15:12] Ty Wells: It's called the Patrick Disappearing Skill.
+[01:15:17] Patrick Chouinard: Yeah.
+[01:15:19] Juan Torres: We should create an AI avatar for Patrick when he goes off.
+[01:15:27] Patrick Chouinard: Well, I'm not far from doing that with the work I'm doing with Cowork right now.
+[01:15:33] Patrick Chouinard: So it has enough history on me to basically do a part of duplicating myself.
+[01:15:42] Ty Wells: Yeah, I used it for the first time the other day.
+[01:15:45] Ty Wells: I wanted to run my taxes through it.
+[01:15:47] Ty Wells: It's too good.
+[01:15:48] Ty Wells: I think I'm going to stick with my accountant.
+[01:15:52] Ty Wells: It was really, really, really, really powerful.
+[01:15:54] Morgan Cook: I was impressed.
+[01:15:56] Morgan Cook: Your accountant makes errors in your favor?
+[01:15:59] Ty Wells: Um...
+[01:16:00] Ty Wells: Yeah, it's creative accounting, you know.
+[01:16:07] Morgan Cook: To the best of my ability and beliefs, this is accurate.
+[01:16:12] Ty Wells: I'm here.
+[01:16:17] Patrick Chouinard: But seriously, if you compare it to other AI agent, it's very impressive.
+[01:16:23] Patrick Chouinard: And if you couple that, I don't know if I might actually add that link.
+[01:16:31] Patrick Chouinard: I don't know if you guys saw the latest video from IndieDevDan about the library of Metaskill.
+[01:16:43] Patrick Chouinard: If you implement that with Cowork, that is pretty insane.
+[01:16:49] Patrick Chouinard: That might be my next project to see how I can expand on the idea of the library.
+[01:16:57] Ty Wells: There's a problem I think you and I...
+[01:17:00] Ty Wells: Both of Patrick is there is no end to meta.
+[01:17:03] Ty Wells: That's the problem.
+[01:17:05] Morgan Cook: I'm serious.
+[01:17:06] Ty Wells: That is the problem.
+[01:17:08] Ty Wells: Every time I think I'm at the peak, I can meta that and go further.
+[01:17:13] Ty Wells: It's just it's unending.
+[01:17:17] Morgan Cook: Self-recursive.
+[01:17:19] Ty Wells: Yes.
+[01:17:20] Ty Wells: To a fault, though.
+[01:17:23] Patrick Chouinard: No, there will be a layer at the top.
+[01:17:27] Patrick Chouinard: It's where we will be the limit.
+[01:17:30] Patrick Chouinard: Because yes, the agent could be meta and recursive up to a thousand level if you want.
+[01:17:37] Patrick Chouinard: It's just you're not going to be able to follow up at that point.
+[01:17:43] Patrick Chouinard: But yeah, this library, because this is my next friction point.
+[01:17:48] Patrick Chouinard: It's basically now I created the plugin marketplace.
+[01:17:52] Patrick Chouinard: It's fun for the plugin.
+[01:17:53] Patrick Chouinard: But if I have just a bare skills prompt, I'm thinking also of including.
+[01:18:00] Patrick Chouinard: I a snippet for Claude.md because Claude.md, yes, you build it per project, but you also have it at your account level and there's bits and pieces that you want to carry over to multiple project and or multiple profile.
+[01:18:18] Patrick Chouinard: And I started to think about how do you assemble all of those pieces into individual profile at the machine level, at the user level.
+[01:18:25] Patrick Chouinard: If you have Claude code that you install as operator on VMs, what skills do you want them to have?
+[01:18:34] Patrick Chouinard: Basically, I'm starting to think of something like Kubernetes for Claude code skills and components.
+[01:18:44] Ty Wells: Yeah, that makes sense.
+[01:18:46] Juan Torres: Damn, that's insane.
+[01:18:49] Patrick Chouinard: Claudebernetties.
+[01:18:52] Ty Wells: Claudebernetties.
+[01:18:54] Ty Wells: Claudebernetties.
+[01:18:55] Juan Torres: Damn.
+[01:18:56] Juan Torres: Let's do a coining it.
+[01:18:57] Juan Torres: We're going to put it out of the Claudebernetties.
+[01:18:59] Patrick Chouinard: Claudebernetties.
+[01:19:00] Patrick Chouinard: Yeah.
+[01:19:00] Juan Torres: Tell extra property right away.
+[01:19:03] Ty Wells: Yeah.
+[01:19:04] Ty Wells: See how long that lasts until tomorrow.
+[01:19:06] Patrick Chouinard: I feel I'm going to have some, uh, judiciary, uh, difficulty with that name, but yeah, that's basically what it is.
+[01:19:17] Patrick Chouinard: It's how do you, uh, aggregate all of those into profile per user, per machine, per scenario and replicate it because now I don't have one cloud code.
+[01:19:29] Patrick Chouinard: I have 60 of them running all over the place and I have one for my job.
+[01:19:34] Patrick Chouinard: I have one, I have many for my home lab.
+[01:19:37] Ty Wells: so.
+[01:19:38] Ty Wells: Yeah.
+[01:19:39] Ty Wells: Systems thinking, man, that's the way to go.
+[01:19:41] Ty Wells: I just, once you're there in that orbit, then you're, you're operating a little differently.
+[01:19:46] Ty Wells: And that's, that's, that's the way you need to be thinking about things from my perspective.
+[01:19:51] Juan Torres: Yeah.
+[01:19:52] Patrick Chouinard: And that's why I love co-work so much because it does at the project level, what cloud code.
+[01:19:59] Patrick Chouinard: great.
+[01:19:59] Patrick Chouinard: great.
+[01:19:59] Patrick Chouinard: but
+[01:20:00] Patrick Chouinard: who does at the coding level for me.
+[01:20:03] Patrick Chouinard: So basically I build everything conceptual with a cowork, and then I use that as seed to develop a project with a cloud code afterward.
+[01:20:18] Patrick Chouinard: Since it knows everything I worked with, it basically grows with me.
+[01:20:23] Patrick Chouinard: So I have less and less to tell it every single new iteration.
+[01:20:31] Juan Torres: Hey, Patrick, have you done any, like Ty was saying, any system thinking, theoretization, or are you just really good at systems thinking out of your years of experience in software engineering?
+[01:20:45] Patrick Chouinard: Let's just put it this way.
+[01:20:47] Patrick Chouinard: My educational background is a high school degree.
+[01:20:52] Juan Torres: You're not inhibited by rules and principles that are outdated.
+[01:20:57] Juan Torres: It's pass A, per se.
+[01:20:59] Ty Wells: What?
+[01:21:00] Ty Wells: Let's put it this way.
+[01:21:01] Ty Wells: Nobody ever told me what could not be done.
+[01:21:04] Ty Wells: Ah, there you go.
+[01:21:05] Ty Wells: So it's limitless.
+[01:21:07] Elena: Limitless.
+[01:21:08] Juan Torres: Oh, it is truly limitless.
+[01:21:12] Patrick Chouinard: Elena, said something?
+[01:21:16] Patrick Chouinard: Elena, you said something?
+[01:21:18] Elena: I was just saying it's advantageous.
+[01:21:21] Juan Torres: Yeah, the Prussian education system just cuts your imagination.
+[01:21:26] Juan Torres: And that's what every educational system is based on.
+[01:21:31] Patrick Chouinard: Well, not necessarily.
+[01:21:33] Patrick Chouinard: What I always tell the new joiner in my team is if you went up to university and you have a great degree, it's nothing good or bad.
+[01:21:46] Patrick Chouinard: It's just you learn how to learn.
+[01:21:48] Patrick Chouinard: When you get out of school, you know nothing.
+[01:21:50] Patrick Chouinard: You just have the ability to learn more than someone else because you went to school for longer.
+[01:21:57] Patrick Chouinard: It's a good thing.
+[01:21:58] Patrick Chouinard: It's just you have to take
+[01:22:00] Patrick Chouinard: into consideration that the first day you get into real life, you have no knowledge.
+[01:22:04] Patrick Chouinard: You have the ability to acquire knowledge that is greater and easier if you went to school than if you didn't.
+[01:22:13] Ty Wells: Yeah, and even the knowledge you get in school, I mean, that's not applicable.
+[01:22:19] Ty Wells: Real life, you know, hits you.
+[01:22:21] Ty Wells: It doesn't work like the textbook says.
+[01:22:23] Patrick Chouinard: Oh, for one very simple reason.
+[01:22:26] Patrick Chouinard: In school, there is always an answer to every question.
+[01:22:30] Ty Wells: And that's not real life, so.
+[01:22:32] Elena: No, no, no.
+[01:22:34] Ty Wells: Some people still survive.
+[01:22:37] Ty Wells: So we need those kindergartners to start off forming, going, getting an IPO by fifth grade and, you know, we need to get them.
+[01:22:46] Ty Wells: No, seriously.
+[01:22:47] Ty Wells: Yeah.
+[01:22:47] Ty Wells: Thinking and systems from the beginning, right?
+[01:22:50] Patrick Chouinard: Thinking and system, yes.
+[01:22:52] Patrick Chouinard: Do I want the five-year-old doing an IPO?
+[01:22:55] Patrick Chouinard: Maybe a bit early.
+[01:22:57] Ty Wells: Okay.
+[01:22:57] Ty Wells: Okay.
+[01:22:58] Ty Wells: At least 12, 12.
+[01:23:03] Patrick Chouinard: But, yeah, that's why.
+[01:23:06] Patrick Chouinard: And I have to say I was lucky enough to get into the field when there was no diploma for what I was doing.
+[01:23:17] Patrick Chouinard: I started in web design and, honestly, web design in 1995, there was no courses for it.
+[01:23:23] Patrick Chouinard: So you had the ability to get into the field without any education simply because there was no education.
+[01:23:31] Patrick Chouinard: Today, I completely understand that kids who are getting in the field don't have that opportunity anymore because the training does exist.
+[01:23:43] Patrick Chouinard: I get with the time.
+[01:23:47] Patrick Chouinard: Good.
+[01:23:50] Patrick Chouinard: Oh, I see, Ryan, you just joined us.
+[01:23:54] Patrick Chouinard: Was there anything you wanted to talk about this week?
+[01:24:03] Patrick Chouinard: I will take that as a no.
+[01:24:08] Patrick Chouinard: Good.
+[01:24:09] Patrick Chouinard: So it was a little bit of a shorter one this week, but anyone has any other subject they would like to open, raise, or question they might want to have answered?
+[01:24:25] Ana P: Julie, think I might.
+[01:24:27] Patrick Chouinard: Go ahead, Ana.
+[01:24:30] Ana P: One second.
+[01:24:42] Patrick Chouinard: Yeah.
+[01:24:43] Patrick Chouinard: By the way, I reassure everyone I'm not frozen yet, so we're good.
+[01:24:49] Ana P: What would you consider, like, if you had to do, like, trick list of things, readmult we us.
+[01:24:58] Ana P: it's you.
+[01:24:58] Ana P: some your ANN awesome champion.
+[01:24:59] Ana P: We expect all more,
+[01:25:03] Ana P: I'm considering evaluations and I'm considering monitoring and guardrails as the main ones, but am I missing anything?
+[01:25:13] Patrick Chouinard: Could you repeat that because I had difficulty hearing what you were saying, Ana?
+[01:25:20] Ana P: So, um, if you have to define like a checklist for an agent about like an agent solution production ready, uh, I already have down evaluation, monitoring, but I'm missing any significant component.
+[01:25:43] Patrick Chouinard: So you're, you're, if I understood correctly, you're looking for a checklist to make an agentic solution production ready.
+[01:25:50] Patrick Chouinard: Is that what you were asking?
+[01:25:54] Ana P: Yeah, I'm going to write it in the message letter.
+[01:25:58] Patrick Chouinard: Honestly, if I had.
+[01:26:00] Patrick Chouinard: To give my opinion, this agentic software is exactly like any other software, the same layer that apply to the traditional SDLC applies here.
+[01:26:12] Patrick Chouinard: The fact that it's agentic makes it a little bit more complex sometimes, but what you have to take care of, security, access rights, roles, the process itself, the pipeline you're going to use, the transition, the message bus inside of your agent.
+[01:26:34] Patrick Chouinard: It's the same pieces that have always existed.
+[01:26:38] Patrick Chouinard: It's nothing new.
+[01:26:40] Patrick Chouinard: It's just because the interface or the UX is different because you're interacting with it and the fact that it can do a lot more.
+[01:26:48] Patrick Chouinard: But honestly, if you look at it as any other software, it's just that here the agent is almost a user entity within the software.
+[01:27:00] Patrick Chouinard: But other than that, the steps are pretty much the same, and I'm more than happy if anyone else has any opinion on that.
+[01:27:10] Ty Wells: Yeah, the only thing I would add is, you know, it is absolutely 100% true what you said.
+[01:27:15] Ty Wells: Just put that in chat, GPT.
+[01:27:17] Ty Wells: Listen, I want to do regular software security lockdown for production readiness, and it'll tell you, it'll build you a checklist, tell you want a checklist of those things, because it's still software.
+[01:27:28] Ty Wells: Yeah, nothing's changed there.
+[01:27:30] Ty Wells: You could throw many words before it, after it, give it a doctorate, whatever.
+[01:27:34] Ty Wells: It's still software at the end of the day.
+[01:27:37] Patrick Chouinard: Exactly.
+[01:27:39] Patrick Chouinard: A lot of time we think a little bit too hard about some of those problems, and we don't realize that it's just re-implementing the exact same functionality we had for years.
+[01:27:51] Ty Wells: Yep.
+[01:27:55] Patrick Chouinard: Does that answer your question, Ana?
+[01:27:58] Patrick Chouinard: Okay, perfect.
+[01:27:59] Patrick Chouinard: Okay.
+[01:27:59] Patrick Chouinard: Okay.
+[01:27:59] Patrick Chouinard: right
+[01:28:01] Winner Konou: Yeah.
+[01:28:03] Patrick Chouinard: Yes.
+[01:28:04] Winner Konou: So, uh, to also add something to that is, uh, the complexity here is the non-determinism nature of those agentic systems.
+[01:28:17] Winner Konou: You know, it's because they are driven by LLMs, which, uh, you know, unpredictable.
+[01:28:24] Winner Konou: Um, adding to all the SDLC and those, uh, you know, the way the traditional will reduce software, we need to also to consider the, the non-determinism factor.
+[01:28:37] Winner Konou: So, uh, and on the internet, for example, you can see failures of retries and duplications that are due to that factor, you know, and as some developer forums have, uh, documented it, uh, is because the LLMs are intentionally stateless.
+[01:28:58] Winner Konou: Yes.
+[01:28:58] Winner Konou: So, uh...
+[01:29:00] Winner Konou: Without that, there are, there is a, a repository that I can put in the, in the chat by Vectera, which records some, a created list of agent, agent failures, it's called some agent failures that she can check with us.
+[01:29:25] Winner Konou: Thank you very much for that.
+[01:29:26] Winner Konou: yeah, you're welcome.
+[01:29:29] Patrick Chouinard: But that's what I was saying when I said, consider your agent like an actor within your own system, because we've dealt with a non-deterministic agent in software engineering before.
+[01:29:44] Patrick Chouinard: That's called users.
+[01:29:47] Ty Wells: No, Dick, no doubt.
+[01:29:49] Ty Wells: And users having a picnic for sure.
+[01:29:52] Morgan Cook: Very non-deterministic.
+[01:29:55] Patrick Chouinard: Exactly.
+[01:29:55] Patrick Chouinard: Exactly.
+[01:29:55] Patrick Chouinard: So if you consider the agent a non-deterministic actor...
+[01:29:59] Patrick Chouinard: actor...
+[01:30:00] Patrick Chouinard: So, a user of the system itself, you should be on track for a good architecture.
+[01:30:11] Ty Wells: Yeah, because we can do some crazy stuff.
+[01:30:14] Patrick Chouinard: Yeah.
+[01:30:16] Patrick Chouinard: Again, same thing I was saying.
+[01:30:19] Patrick Chouinard: There's a limited number of patterns in the world.
+[01:30:22] Patrick Chouinard: We're just reusing and reassembling them in a novel way, but we're not finding brand new pattern that never existed before.
+[01:30:30] Ty Wells: Yeah.
+[01:30:33] Patrick Chouinard: It's just hard sometimes to assign a user pattern to a piece of software, but that's where we are.
+[01:30:41] Ty Wells: Mm-hmm.
+[01:30:44] Patrick Chouinard: Any other comment, question, insults?
+[01:30:52] Ty Wells: No, let me get on my CMUX.
+[01:30:54] Ty Wells: I'll see you guys next week.
+[01:30:56] Patrick Chouinard: Good.
+[01:30:57] Patrick Chouinard: Thank you very much, everyone.
+[01:30:59] Patrick Chouinard: Thank you.
+[01:31:00] Patrick Chouinard: Next week, we should be, I believe it's the return of Brendan.
+[01:31:06] Patrick Chouinard: Am I right, Paul?
+[01:31:07] Patrick Chouinard: I think it is.
+[01:31:08] Paul Miller: Yeah, I think so.
+[01:31:09] Paul Miller: It's his turn.
+[01:31:12] Patrick Chouinard: Good.
+[01:31:14] Ty Wells: Sounds good.
+[01:31:15] Patrick Chouinard: Thank you very much, everyone.
+[01:31:17] Ty Wells: Thanks, guys.
+[01:31:18] Paul Miller: Have a great week, guys.
+[01:31:19] Paul Miller: Thanks.
+[01:31:20] Morgan Cook: Bye.
