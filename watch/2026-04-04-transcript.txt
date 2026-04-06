@@ -1,0 +1,942 @@
+[00:00:09] Hemal Shah: Can you hear me, Patrick?
+[00:00:12] Hemal Shah: Okay, one minute.
+[00:00:30] Patrick Chouinard: YAML editor, phase one.
+[00:00:31] Patrick Chouinard: start talking.
+[00:00:31] Patrick Chouinard: It's just been Claude is finishing one task, so...
+[00:00:34] Hemal Shah: ...finishing a development branch skill.
+[00:00:36] Patrick Chouinard: He can progress, press, press, Okay, there we go.
+[00:00:41] Patrick Chouinard: Sorry, I had my Claude speak working in the background, and it just finished as the meeting was starting.
+[00:00:48] Hemal Shah: Okay.
+[00:00:50] Hemal Shah: Thank you for having me, Thank you, thank you, thank you, thank you, thank you, thank you, you, thank thank you, you, thank you, thank you,
+[00:01:00] Hemal Shah: It was me.
+[00:01:02] Hemal Shah: Okay.
+[00:01:03] Patrick Chouinard: No problem.
+[00:01:08] Hemal Shah: Thank you, Patrick, for taking time to meet with me.
+[00:01:18] Hemal Shah: I joined from another one and I hope that...
+[00:01:23] Hemal Shah: Okay.
+[00:01:24] Hemal Shah: All right.
+[00:01:25] Hemal Shah: Okay.
+[00:01:27] Hemal Shah: All right, Patrick.
+[00:01:28] Hemal Shah: So first of all, thank you very much for meeting me personally over the last...
+[00:01:36] Hemal Shah: I think I've been part of this community for more than six, seven months now, maybe.
+[00:01:41] Hemal Shah: And it's amazing to the best part I feel is there's so much going on and there are so much noise in our AI space every single day.
+[00:01:51] Hemal Shah: But this meeting, our calls, helped me to just figure out what is more important.
+[00:01:56] Hemal Shah: I don't have to chase a thousand different things.
+[00:02:00] Hemal Shah: That's been very valuable.
+[00:02:03] Hemal Shah: And recently, Patrick, I have a couple of projects.
+[00:02:08] Hemal Shah: I'm going to partner with one of the company to help them transform their AI transformation journey.
+[00:02:19] Hemal Shah: And one of the key responsibilities of mine is going to be actually not one of anything in the AI space.
+[00:02:29] Hemal Shah: So whether it is onboarding the whole team, processes, optimizing operational efficiencies, workflows, training, creating AI-based product, kind of everything.
+[00:02:40] Hemal Shah: And so I have started brainstorming it, putting the plan, something like that.
+[00:02:44] Hemal Shah: But then I thought, you know what, let me just check with you and pick your brain.
+[00:02:49] Hemal Shah: have been into the wits and I hear so amazing things from you.
+[00:02:53] Hemal Shah: So that's where I felt to get your input, insights, how to.
+[00:03:00] Hemal Shah: Get started.
+[00:03:00] Hemal Shah: I mean, I don't have a specific agenda and I'm not sure.
+[00:03:04] Hemal Shah: know.
+[00:03:05] Hemal Shah: First thing you need to define is that you said anything AI.
+[00:03:08] Patrick Chouinard: So does that mean as much knowledge work as AI assisted development or is there a preference on one end or the other?
+[00:03:16] Patrick Chouinard: Did they choose an AI platform already?
+[00:03:19] Hemal Shah: So it is everything actually.
+[00:03:25] Hemal Shah: I will be deciding what company should work on first.
+[00:03:29] Hemal Shah: So I'm partnered with this company.
+[00:03:32] Hemal Shah: I have kind of equity into that company as well.
+[00:03:36] Hemal Shah: So it is as much as my company, but still, I'm, you know, there are multiple partners and they are looking up to me.
+[00:03:45] Hemal Shah: You tell us, you know, what we need to do here.
+[00:03:50] Hemal Shah: And there are three pillars in my mind when I was talking with them.
+[00:03:54] Hemal Shah: One is obviously AI first organization mindset.
+[00:03:59] Hemal Shah: We have to transform from the ground up.
+[00:04:03] Hemal Shah: Each and every engineer needs to think AI-first mindset.
+[00:04:06] Hemal Shah: That's one I expect.
+[00:04:07] Hemal Shah: Second one is creating intelligent AI-based products.
+[00:04:11] Hemal Shah: It's a SaaS-based platform.
+[00:04:15] Hemal Shah: We don't want to sprinkle AI on the top and put a chatbot and be done with it.
+[00:04:20] Hemal Shah: We want to really, really get the benefit out of it.
+[00:04:22] Hemal Shah: So product development, AI-first transformation, plus then automation of all the back office processing and what all different areas we can do, operational efficiencies and things like that.
+[00:04:35] Hemal Shah: So it's everything, but it's up to me.
+[00:04:38] Hemal Shah: I don't want to face it out, come up with a plan.
+[00:04:43] Hemal Shah: But what I'm hearing, it's mostly development work.
+[00:04:46] Hemal Shah: So besides development work, besides development work, you mean training is also a little bit responsible for making sure everybody is aware about what are the new AI tools?
+[00:04:59] Hemal Shah: How
+[00:04:59] Hemal Shah: to use new AI tools, how to think about it, know, spec-driven development or any processes around that.
+[00:05:06] Hemal Shah: Let's take a step back first.
+[00:05:08] Patrick Chouinard: How many users are we talking about?
+[00:05:10] Patrick Chouinard: Is it a 10-people company, a hundred people, 2,000 people?
+[00:05:14] Patrick Chouinard: 50.
+[00:05:15] Hemal Shah: 50.
+[00:05:15] Hemal Shah: Okay.
+[00:05:16] Patrick Chouinard: Okay.
+[00:05:16] Patrick Chouinard: So it's a pretty small team, so it can be done in classes.
+[00:05:22] Patrick Chouinard: When you do training, you could probably do that in three classes, increment, and cover pretty much everyone.
+[00:05:30] Patrick Chouinard: Are they only engineers, developer, or do you have, I don't know, assistant, secretary, HR?
+[00:05:41] Patrick Chouinard: So 20 people, actually, I should take a step back.
+[00:05:45] Hemal Shah: 20 are engineers.
+[00:05:47] Hemal Shah: Company have maybe 70, 80, maybe strength, and the idea is every aspect of the company.
+[00:05:58] Hemal Shah: So engineering is usually
+[00:06:01] Hemal Shah: I mean, I'm close to it, but it is the whole gig, sales, marketing, support, how they can use And that's why I asked, because a lot of times the thing that we tend to do is address our own public and go like engineer, engineer, engineer.
+[00:06:18] Patrick Chouinard: But you have to think about HR, you have to think about purchasing, you have to think about sales as well, and their needs are completely different.
+[00:06:26] Patrick Chouinard: And you can talk to them about Claude Cod, and they're just going to look at you, what the hell are you talking about?
+[00:06:35] Patrick Chouinard: And it's not just the tool.
+[00:06:37] Patrick Chouinard: Remember, you've been living in this world for months now.
+[00:06:42] Hemal Shah: It's second nature.
+[00:06:43] Patrick Chouinard: Yes.
+[00:06:44] Patrick Chouinard: There's people in there, probably in again, HR, legal, whatever, that like, what's a prompt?
+[00:06:51] Hemal Shah: You need to address those people as well.
+[00:06:53] Patrick Chouinard: You need to help them.
+[00:06:55] Hemal Shah: Yeah.
+[00:06:56] Patrick Chouinard: If you address only the engineers, you're just creating it.
+[00:07:00] Patrick Chouinard: A bigger gap, and the more you go, the harder it's going to be, and those are the people that are going to be the hardest to onboard because they start from the furthest away, but once they're in, they're going to use you as a reference, okay?
+[00:07:17] Patrick Chouinard: They'll come back because they're the one that needs the most training.
+[00:07:22] Patrick Chouinard: The engineers, you give them one or two hints, and they're going to run with it.
+[00:07:27] Patrick Chouinard: Yeah.
+[00:07:27] Patrick Chouinard: So I know that normally we think about, oh, I need to teach the guys how to develop.
+[00:07:35] Patrick Chouinard: Those are the easiest ones to train, and you have to spend your time with the one that, I need to figure out what's a prompt.
+[00:07:42] Patrick Chouinard: Yeah.
+[00:07:43] Hemal Shah: I don't use it like Google.
+[00:07:46] Patrick Chouinard: No, you don't use it, you know, you really have to start from the beginning.
+[00:07:52] Hemal Shah: Yeah.
+[00:07:53] Hemal Shah: Good point, so I need to keep that in mind, non-tech people.
+[00:07:57] Hemal Shah: that mind, people, or engineers, Google, not just like
+[00:08:00] Hemal Shah: Yeah.
+[00:08:01] Patrick Chouinard: Non-tech people are the first one you want to address because they're the one that's going to take the most of your time to get to the level where the engineers are today.
+[00:08:13] Patrick Chouinard: So if you want everybody to move up in the same way, you have to spend the early effort on them because they just start from so much back.
+[00:08:26] Patrick Chouinard: And the other thing, you also have to make sure that you do training on the security aspect of AI.
+[00:08:35] Patrick Chouinard: Engineers understand that, general population have no clue, and you cannot explain it in a tech way and say, oh, you can exfiltrate information because what you're going to say might end up in the training data.
+[00:08:49] Patrick Chouinard: You would be talking Chinese with the same impact.
+[00:08:56] Patrick Chouinard: One trick I can give you is the training I try to give.
+[00:08:59] Patrick Chouinard: give you Matthew D
+[00:09:00] Patrick Chouinard: to my users is we have an AI provider that is recognized at the company I work at, okay?
+[00:09:08] Patrick Chouinard: They bought Copilot and we are implementing Claude as we speak, but for now it's Copilot.
+[00:09:16] Patrick Chouinard: That's secure.
+[00:09:18] Patrick Chouinard: I'm guessing that the client you're working with, the company you're working with, also selected a platform that they're paying for, that they have a tenant and things of that nature.
+[00:09:28] Patrick Chouinard: So, yeah.
+[00:09:30] Hemal Shah: And again, it will be up to me to decide the tools.
+[00:09:33] Hemal Shah: You're talking about the tools, AI tools?
+[00:09:35] Patrick Chouinard: I'm talking about AI provider for day-to-day interaction, meaning you're going to have an enterprise account of some kind.
+[00:09:45] Patrick Chouinard: It'd be either ChatGPT or Microsoft Copilot or whatever, but you're going to have an enterprise agreement or at the very least a team agreement.
+[00:09:55] Hemal Shah: Yeah.
+[00:09:56] Hemal Shah: And that's where it's all over the place.
+[00:09:58] Hemal Shah: A few people are using I'll again Take it
+[00:10:00] Patrick Chouinard: And that's the security goal, the security hole, because if they do that, because that's how I train a knowledge worker on the AI security, it says, whenever, whatever you say to a chatbot anywhere on the internet, okay, ask yourself one question, am I okay for whatever I'm uploading and saying to that chatbot to appear in the first page of the newspaper tomorrow morning?
+[00:10:30] Patrick Chouinard: Yeah.
+[00:10:31] Patrick Chouinard: If the answer is no, don't say it to that chatbot.
+[00:10:34] Patrick Chouinard: Ask the company which one is supported by the company, and this is the one that's going to secure your data.
+[00:10:42] Hemal Shah: Okay.
+[00:10:42] Patrick Chouinard: Anything accessible to the grand public, imagine that whatever you say or upload there might end up in the paper tomorrow morning.
+[00:10:53] Patrick Chouinard: That's, I know it's dramatic, but for a non-technical user, it's very easy to...
+[00:11:02] Patrick Chouinard: Yes, I could go into much more detail and know it's not going to appear in the net.
+[00:11:08] Patrick Chouinard: It's not going to publish automatically.
+[00:11:10] Patrick Chouinard: And it's just part of the training data and it might surface and it's way too complex.
+[00:11:16] Patrick Chouinard: They don't understand it and they're going to end up ignoring it.
+[00:11:19] Patrick Chouinard: So I'm dumbing it down to the closest thing that is easily detected.
+[00:11:27] Hemal Shah: Okay.
+[00:11:28] Patrick Chouinard: And do that with everything.
+[00:11:30] Patrick Chouinard: Every lesson, always think, I know nothing.
+[00:11:33] Patrick Chouinard: What can I tell them in order for them to understand what they need to do?
+[00:11:38] Hemal Shah: Yeah.
+[00:11:38] Hemal Shah: Give me one second.
+[00:11:39] Hemal Shah: Let me quickly add my note taker to this.
+[00:11:41] Hemal Shah: I just forgot about it.
+[00:11:45] Hemal Shah: It has not joined.
+[00:11:47] Hemal Shah: Sorry, Patrick.
+[00:11:48] Hemal Shah: Okay.
+[00:11:48] Hemal Shah: No, no problem.
+[00:11:51] Hemal Shah: Mine's there anyway.
+[00:11:53] Patrick Chouinard: So I'm going to be able to send you the...
+[00:11:55] Hemal Shah: Okay.
+[00:11:56] Hemal Shah: Okay.
+[00:11:56] Hemal Shah: Perfect.
+[00:11:57] Hemal Shah: Then, then, okay.
+[00:11:58] Hemal Shah: Then, then I think then I don't need to...
+[00:11:59] Hemal Shah: Okay.
+[00:11:59] Hemal Shah: Thank
+[00:12:00] Hemal Shah: Okay.
+[00:12:02] Hemal Shah: All right.
+[00:12:03] Hemal Shah: then, yeah, security, security.
+[00:12:07] Hemal Shah: And typically, I was thinking, Patrick, that locking down one tool versus maybe you could have JetGPT and Cloud or...
+[00:12:22] Patrick Chouinard: It's not about locking tool.
+[00:12:24] Patrick Chouinard: It's about whenever they deal with company data, you want it to go to a provider that you have an enterprise agreement with.
+[00:12:35] Patrick Chouinard: I don't care if it's 1, 2, 5, 20.
+[00:12:37] Patrick Chouinard: Just make sure that when they send company data, you have an enterprise agreement so your data is secure.
+[00:12:43] Hemal Shah: And to do that, so typically we have Cloud team plan or Cursors team plan.
+[00:12:50] Patrick Chouinard: That's okay.
+[00:12:51] Hemal Shah: your thing is, that's good enough, right?
+[00:12:54] Hemal Shah: That's agreement.
+[00:12:55] Hemal Shah: That's considered an agreement.
+[00:12:56] Patrick Chouinard: It's...
+[00:12:57] Patrick Chouinard: Okay.
+[00:12:57] Patrick Chouinard: The only thing you cannot do is do the...
+[00:13:00] Patrick Chouinard: The pro or the public accounts, because those, yeah, you can say, don't train on my data, but you have no agreement with the company.
+[00:13:08] Patrick Chouinard: In a team contract or an enterprise agreement, you have an agreement that they will not, this is your own private tenant information.
+[00:13:18] Patrick Chouinard: Perfect.
+[00:13:18] Hemal Shah: Okay.
+[00:13:19] Hemal Shah: All right.
+[00:13:19] Hemal Shah: So as long as we are using their paid feature teams or enterprise, it always has some agreement tied with it.
+[00:13:27] Hemal Shah: Well, you should probably take a look at the agreement that comes with it, because I know it's a TOS, nobody reads it.
+[00:13:34] Patrick Chouinard: Worst case scenario, feed it back into another AI and ask it to review it.
+[00:13:41] Patrick Chouinard: As long as it is not just a public account.
+[00:13:45] Patrick Chouinard: It's not because you pay that it is safe.
+[00:13:48] Patrick Chouinard: If I have a paid plus account on ChatGPT, I'm not protected.
+[00:13:54] Patrick Chouinard: It's still a plus account.
+[00:13:55] Patrick Chouinard: But if I have an enterprise account or if I have a team account on clock.
+[00:14:07] Patrick Chouinard: And again, it's not as much to forbid people to use anything else, but it's always, if you deal with company data, here are the provider that we have an agreement with, that it is secure to share data with.
+[00:14:24] Hemal Shah: Okay.
+[00:14:27] Hemal Shah: Makes sense.
+[00:14:27] Hemal Shah: Each and every, and that goes beyond AI tools as well, right?
+[00:14:31] Hemal Shah: Anything that we are using, we need to make sure that we have agreement on all those tools.
+[00:14:37] Patrick Chouinard: And whatever service is free, you are the product.
+[00:14:41] Patrick Chouinard: Yeah, yeah.
+[00:14:43] Hemal Shah: And there is, we were talking about actually security, you know, Open Claw and all those things, people.
+[00:14:52] Hemal Shah: So I talked to security IT head and say, make sure you.
+[00:15:00] Hemal Shah: You have awareness emails going out on not to install anything on your corporate laptop or maybe at least block things, but sometimes I feel, again, that this is a huge topic of security, just security by itself on how do you lock down everything and all, maybe I'll, I'll, I'll, I'll, I'll it, it's going to take up with all the time, but okay, I think training, training wise, those are the good things.
+[00:15:25] Hemal Shah: No, I think I was thinking of the way around, but thanks for that insight.
+[00:15:29] Hemal Shah: I was thinking maybe let me go for the low hanging fruit to make a mark right away with the engineers who are familiar with this thing and, and get the training going.
+[00:15:39] Hemal Shah: But I think you had a good point.
+[00:15:41] Hemal Shah: You have a good point that the other people is what I need to spend more time and energy on.
+[00:15:46] Patrick Chouinard: Well, it depends also.
+[00:15:48] Patrick Chouinard: I don't know what the company's business is.
+[00:15:52] Patrick Chouinard: So it's a kitchen industry, creating all the SaaS based platform products for designing cabinets.
+[00:15:59] Hemal Shah: So going to a
+[00:16:03] Hemal Shah: So it's e-commerce.
+[00:16:05] Hemal Shah: It provides multiple services.
+[00:16:08] Hemal Shah: One being designing your kitchen layouts and everything.
+[00:16:12] Hemal Shah: Second is selling cabinets, custom cabinets, ready to order from my custom.
+[00:16:18] Hemal Shah: And so a couple of those, but it's in the kitchen industry space.
+[00:16:22] Patrick Chouinard: Well, I'm just asking because you also want to address your profit center early because that's going to be the best return on investment.
+[00:16:31] Patrick Chouinard: I'm just saying, if your profit centers are all in engineering, you're going to need to spend a whole lot less time with them than you're going to need for the rest of the business.
+[00:16:43] Patrick Chouinard: And if you accelerate them too fast, you're just going to create a chasm between the one who use AI and the one who don't.
+[00:16:51] Patrick Chouinard: And that's when fear comes into play.
+[00:16:55] Patrick Chouinard: The fear that, oh, AI will take my job because I look at those guys going.
+[00:16:59] Patrick Chouinard: going going to keep I'm
+[00:17:00] Patrick Chouinard: And I'm not able to do that.
+[00:17:01] Patrick Chouinard: And you have to put into training also, it's like, no, AI is not there to take your place.
+[00:17:09] Patrick Chouinard: People who accept to learn AI are.
+[00:17:12] Hemal Shah: Very true.
+[00:17:13] Hemal Shah: So then probably I need to do two takeaways.
+[00:17:18] Hemal Shah: Prioritize the right projects or right teams.
+[00:17:23] Hemal Shah: And one of the criteria of prioritization is the profit setting.
+[00:17:26] Hemal Shah: And one of the criteria, okay, profit, I mean, where do we get most bang for buck?
+[00:17:32] Hemal Shah: Not the only one.
+[00:17:33] Hemal Shah: And there could be a few more that need to think about and then take it from there.
+[00:17:38] Hemal Shah: Okay.
+[00:17:38] Hemal Shah: You have to check, like, who's your profit center and who's going to require the most amount of time.
+[00:17:44] Hemal Shah: Yeah.
+[00:17:45] Hemal Shah: Okay.
+[00:17:46] Patrick Chouinard: But the most amount of time, there still needs to be a value prop.
+[00:17:51] Patrick Chouinard: So it's not because, I mean, the guy who cleans up the floor would probably require the most amount of time to train on AI, but you're not going to have any return on.
+[00:18:00] Patrick Chouinard: So it's not necessarily needed, but your HR person or your legal person, they would still require a lot of time, but you might have a way bigger return on investment on training those people.
+[00:18:15] Hemal Shah: Yeah.
+[00:18:16] Hemal Shah: Makes sense.
+[00:18:16] Hemal Shah: And so value proposition of where we put our effort in.
+[00:18:22] Hemal Shah: Okay.
+[00:18:23] Hemal Shah: Makes sense.
+[00:18:23] Patrick Chouinard: What value can they get from learning AI compared to the amount of time that they will need to learn AI?
+[00:18:32] Hemal Shah: Yeah.
+[00:18:33] Hemal Shah: Okay.
+[00:18:34] Patrick Chouinard: Anything that do content creation, it could be the people who put out the press release or internal documentation, technical writer.
+[00:18:47] Patrick Chouinard: Those are going to see an increase in value of 20 fold what they're able to do without AI.
+[00:18:55] Patrick Chouinard: So yeah, those are going to be things I would address really, really quickly.
+[00:18:59] Patrick Chouinard: that sure
+[00:19:01] Patrick Chouinard: Because there are also going to be people who are going to fear for their job the most because they think that AI can do their job.
+[00:19:07] Patrick Chouinard: And in a sense, it can, but it needs to be guided.
+[00:19:10] Patrick Chouinard: So basically, their value becomes the knowledge they've acquired prior to learning about AI.
+[00:19:16] Patrick Chouinard: And if you take someone that is a true SME and give them AI on top for those positions, you take someone that can replace that whole department by itself.
+[00:19:27] Hemal Shah: So in that aspect, now we're talking about the people aspect of it.
+[00:19:34] Hemal Shah: So identifying SMEs, that is definitely one.
+[00:19:37] Hemal Shah: So I was speaking with a CEO of the company that I will lead a list of all the org structure, teams, people, skills, strength, role, responsibility, some sort of the whole manifest on that.
+[00:19:53] Hemal Shah: So SMEs would be, that will, that should be able to help me with that.
+[00:19:58] Hemal Shah: Now, the one thing that is really
+[00:20:00] Hemal Shah: just mentioned about people who are kind of a little bit scared or feel a lot of insecurity because of the AI thing, what's the best way to lower their guard?
+[00:20:12] Hemal Shah: mean, I'm definitely going to work on building a relationship with them just to, you know, the relationship always helps.
+[00:20:17] Hemal Shah: But anything that you have experienced that worked well to lower their guard and make them comfortable with AI, because I've already seen people who are already objecting to AI if I want to learn.
+[00:20:30] Hemal Shah: So there are two things, two goals, Patrick.
+[00:20:34] Hemal Shah: One is, of course, they adopting AI will help them in doing their job better and internally help the company.
+[00:20:40] Hemal Shah: But the second one is sometimes in order to improve operational efficiencies where AI can help, I need to learn or whoever is working on it need to learn their current process.
+[00:20:54] Hemal Shah: And they are scared to shape their current process because they might think that, okay, AI is going to come in.
+[00:21:00] Patrick Chouinard: And then they will become redundant.
+[00:21:01] Patrick Chouinard: So any thought, any suggestions on how to navigate this?
+[00:21:05] Patrick Chouinard: Well, with those people, it always depends the level they are in the hierarchy.
+[00:21:11] Patrick Chouinard: Because I'm going to have different strategy for a VP that is a member of the CA versus an assistant.
+[00:21:23] Patrick Chouinard: But with the assistant, it's going to be more of I'm going to explain by history.
+[00:21:33] Patrick Chouinard: Meaning, I'm going to tell them like, this is the new way the job or your type of position are being managed.
+[00:21:42] Patrick Chouinard: And it's just going to be increasing.
+[00:21:44] Hemal Shah: Put yourself back a generation.
+[00:21:47] Patrick Chouinard: Imagine the people doing your job when the internet came into play in the 90s.
+[00:21:54] Patrick Chouinard: Okay?
+[00:21:55] Patrick Chouinard: No matter how much those people would try to
+[00:22:00] Patrick Chouinard: Stop the usage of computers in their day-to-day life.
+[00:22:03] Patrick Chouinard: Look at what's happening today.
+[00:22:05] Patrick Chouinard: Which one succeeded?
+[00:22:07] Patrick Chouinard: The one who stopped the change or the one who got in the change?
+[00:22:12] Patrick Chouinard: I'm offering you a place on the train right now, so you are part of the people who learn how to do those things in your field.
+[00:22:22] Patrick Chouinard: So do you want to stay on the platform and see the train going away?
+[00:22:29] Patrick Chouinard: Normally, that will get most of the people.
+[00:22:31] Patrick Chouinard: And the people who resist even that, at some point, they're going to be the one that are going to be part of the column, or, oh, we made that much money by saving the cost of that position.
+[00:22:46] Hemal Shah: It's sad.
+[00:22:47] Patrick Chouinard: There's going to be people that are going to be cut, and those are probably the ones that are going to be cut.
+[00:22:52] Hemal Shah: That is, Patrick, that was, that is another side of me that had questioned this.
+[00:23:00] Hemal Shah: So many times, do I really want to do this?
+[00:23:02] Hemal Shah: Because in this role, there are, there is going to be huge impact.
+[00:23:07] Patrick Chouinard: But that's thing, they don't have to be.
+[00:23:10] Patrick Chouinard: If they are, it's a decision that they take.
+[00:23:13] Patrick Chouinard: If they don't want to get on board with the train, it's okay.
+[00:23:17] Patrick Chouinard: We're not there to force anyone, but the train is going.
+[00:23:22] Patrick Chouinard: So you either stay on the platform or get on the train.
+[00:23:24] Patrick Chouinard: If you decide to stay on the platform, you're going to be cut, but because of your own decision, not because of the, and that's the other thing for the management.
+[00:23:35] Patrick Chouinard: Okay.
+[00:23:35] Patrick Chouinard: A lot of managers says, oh, now I'm going to have people that are going to be able to do the job of three.
+[00:23:40] Patrick Chouinard: So I'm going to be able to cut to position.
+[00:23:43] Patrick Chouinard: No, no, no, no, no.
+[00:23:44] Patrick Chouinard: Company who cut position right now because of AI are going to be the company that are going to have the greatest amount of problems two years from now.
+[00:23:54] Patrick Chouinard: Yes, that's because what they, the people they release today are.
+[00:24:00] Patrick Chouinard: Our institutional knowledge that they are going to have to re-hire in two years at twice the price, because the AI gain is not, I can do what I do today with less people, is that the real value is, with the people I have, I can do three times as much work, because there are use cases that we do not address today, because without AI, it's not valuable enough to do them.
+[00:24:33] Patrick Chouinard: But with AI, the unit of work cost has got down so much that now I can address those, and those are valuable, but I need all my people in order to do them.
+[00:24:46] Hemal Shah: Yeah.
+[00:24:46] Patrick Chouinard: So that's also a very important message that reassures the worker and train the management on to what to do when people
+[00:25:00] Patrick Chouinard: People get more productive.
+[00:25:02] Hemal Shah: Yeah.
+[00:25:03] Patrick Chouinard: It's not, don't save money by paying less people.
+[00:25:07] Patrick Chouinard: Make more money by making them do things they couldn't before.
+[00:25:12] Hemal Shah: So focus on growth and generating revenue versus, you know, saving cost and just operational efficiency.
+[00:25:19] Patrick Chouinard: Yeah.
+[00:25:19] Patrick Chouinard: Exactly.
+[00:25:21] Patrick Chouinard: Exactly.
+[00:25:22] Patrick Chouinard: And that way people don't hate you as the bringer of transformation because they say, oh, he's saving jobs.
+[00:25:29] Patrick Chouinard: So he's a good guy.
+[00:25:30] Patrick Chouinard: We're going to listen to him.
+[00:25:32] Hemal Shah: I really like that.
+[00:25:36] Hemal Shah: It's more about enabling you, saving you opportunities, partnering with the team is going to be.
+[00:25:45] Hemal Shah: Yeah.
+[00:25:46] Hemal Shah: I think that's a nice way of putting it.
+[00:25:48] Hemal Shah: I like it.
+[00:25:50] Patrick Chouinard: The only people that leave is people who resist change, which it's their choice at that point.
+[00:25:58] Patrick Chouinard: So you're just.
+[00:26:00] Patrick Chouinard: And that's when you really gain efficiency, not by cutting, by trimming people who are slowing the train down.
+[00:26:08] Hemal Shah: Yeah.
+[00:26:10] Hemal Shah: Great.
+[00:26:11] Hemal Shah: Okay.
+[00:26:12] Hemal Shah: I think this, that is very reassuring.
+[00:26:15] Hemal Shah: It's good.
+[00:26:17] Hemal Shah: That was my internal moral dilemma.
+[00:26:21] Hemal Shah: Sometimes that, you know, this is going to, up until now, I was just focusing more on as an architect.
+[00:26:28] Hemal Shah: I was not that much responsible for people.
+[00:26:32] Hemal Shah: I'm sure it, AI is not, is the not one doing it in our industry.
+[00:26:38] Hemal Shah: This is always been the case.
+[00:26:40] Hemal Shah: People get laid off because of different reasons.
+[00:26:44] Hemal Shah: AI is going to make it a little bit more prominent maybe for some time, but that helps.
+[00:26:51] Patrick Chouinard: But it actually puts people back on the market that smart AI company will be able to pick up for cheap right now.
+[00:26:59] Hemal Shah: that.
+[00:27:00] Patrick Chouinard: That are going to cost a fortune two years from now when the bigger company that cut half of their personnel realized like, oh crap, now I need more people and they're all re-hired somewhere else.
+[00:27:11] Patrick Chouinard: So now I need to pay twice what they cost me earlier to re-hire them.
+[00:27:16] Hemal Shah: Yeah, yeah, very true.
+[00:27:19] Hemal Shah: Okay.
+[00:27:19] Hemal Shah: So for assistant role, get it, your approach that you explained.
+[00:27:24] Hemal Shah: And there are VPs who are kind of in this for eight years, 10 years, and these VPs are doing the initial analysis and everything.
+[00:27:36] Hemal Shah: They are not engineering VPs, they are other department, and there is a lot of opportunity there that we can see.
+[00:27:44] Hemal Shah: So what's your approach there?
+[00:27:46] Patrick Chouinard: For them, I'm not trying to teach them to use AI daily like a knowledge worker would, because if we're realistic, they never were a knowledge worker before.
+[00:28:01] Patrick Chouinard: So what I need to train them on is how to consume AI-generated content from the worker they have in their team, because it's two different things, like getting stuff done by your secretary that prepared something for you is one thing, but knowing that the material being created is AI-generated, understand the platforms themselves, because the delivery method will change.
+[00:28:31] Patrick Chouinard: Sometimes you want also for them to understand that, hey, if we still use the old communication platform, you're actually asking your subordinate to do more work to convert whatever they created in the AI platform back into your communication stream, instead of using the AI platform natural environment, would be a lot better, it would be a lot more efficient.
+[00:28:58] Patrick Chouinard: So, health...
+[00:29:00] Patrick Chouinard: Help us make your team efficient by using the tool that your team work on to consume the information you need.
+[00:29:10] Hemal Shah: And sometimes they feel, they also feel insecure.
+[00:29:18] Hemal Shah: So I think that is the same, I need to probably, what we explained earlier, it's saying show them value proposition and maybe a little bit of history, but they being consumer, so we need to high stress on the point of how it will help them to expedite things using all this information.
+[00:29:42] Patrick Chouinard: Then again, it depends on the layer, because even in management, you have layers and the top layer of management, they're there, they're not going to move and they're necessary because they are the one taking the major decision and they're the one guiding the ship basically.
+[00:30:00] Patrick Chouinard: So they're just guiding AI-assisted worker instead of traditional worker.
+[00:30:06] Hemal Shah: The one that truly needs the fear for their position right now are middle management.
+[00:30:12] Patrick Chouinard: People whose job it is to simply guide other people, basically their business value is dropping dramatically because people don't need that management anymore.
+[00:30:29] Hemal Shah: You're guiding AI systems.
+[00:30:31] Patrick Chouinard: So if you're able to guide AI system, you are a middle manager of AI.
+[00:30:38] Patrick Chouinard: If your focus is just seeing how many people can transfer BTU from their  to their chair, you don't have any value anymore.
+[00:30:48] Hemal Shah: Yeah, yeah.
+[00:30:51] Hemal Shah: And I think that is a good observation, Patrick, because what we are seeing is that in everything
+[00:31:00] Hemal Shah: What are saying is confidential.
+[00:31:01] Hemal Shah: I mean, I may not speak all these things in our Tuesday's calls, air accelerator calls.
+[00:31:07] Hemal Shah: for anything, I'll email you if there is any follow up or anything like that.
+[00:31:11] Hemal Shah: But that is what is exactly happening.
+[00:31:13] Hemal Shah: Oh, you called out correctly, the senior most VPs.
+[00:31:21] Hemal Shah: We need, I company needs them because they have been in this and company cannot take hard stance on them.
+[00:31:28] Hemal Shah: And they have to just work with them to just convince them, do something about it because there are other repercussions if drastic steps are taken.
+[00:31:37] Hemal Shah: So keeping them happy and then working with their organization still to take advantage of AI, that is going to be interesting.
+[00:31:47] Hemal Shah: Okay.
+[00:31:48] Hemal Shah: Yeah.
+[00:31:48] Hemal Shah: Yeah.
+[00:31:49] Patrick Chouinard: And for the upper management, I don't know if you have a lot of resistance on that layer or not.
+[00:31:55] Patrick Chouinard: I've seen the whole gamut of there.
+[00:31:59] Patrick Chouinard: I've
+[00:32:00] Patrick Chouinard: I've a higher manager that wants to put AI in everything to the point where we have to slow them down because it's like, no, I cannot put AI in the trash can.
+[00:32:09] Patrick Chouinard: That's not going to help.
+[00:32:12] Hemal Shah: And then you have the, oh, I've never needed AI before.
+[00:32:15] Patrick Chouinard: You're not going to force it on me.
+[00:32:17] Patrick Chouinard: So do you have a bit, I'm guessing you have also both extreme or?
+[00:32:23] Hemal Shah: I think from, we are talking mostly about non-tech.
+[00:32:29] Hemal Shah: For the technical part, it's very easy.
+[00:32:32] Hemal Shah: mean, kind of, I'm going to lead technical part very soon if things go well.
+[00:32:37] Hemal Shah: Maybe I might move into CTO role with combined AI and that whole thing.
+[00:32:43] Hemal Shah: So that should be okay.
+[00:32:46] Hemal Shah: But the non-technical part, especially sales.
+[00:32:48] Hemal Shah: So if I give you an example, sales, sales and, yeah, sales, sales and marketing department, what's happening is they don't, they don't.
+[00:33:00] Hemal Shah: We see that AI can come and help them in any way.
+[00:33:05] Hemal Shah: Marketing can basically be replaced by AI at this point.
+[00:33:09] Hemal Shah: So what we are doing, Patrick, is lead analysis engine, let's say.
+[00:33:14] Hemal Shah: last week, I worked on, so for sales team, there are so many leads, they were lost, opportunities were lost.
+[00:33:22] Hemal Shah: So we went to the CRM and generated a report with, you know, how many, where that breakdown happened.
+[00:33:30] Hemal Shah: And with AI, we can quickly generate all those things, right?
+[00:33:34] Hemal Shah: And now we are going to present it to them very nicely that look, just the leaders that would this help, like trying to show them the value, like if you have this type of report, which shows you all the lost opportunity, what were the reasons, what we can do, do you think this could help, like something like this can add a value.
+[00:34:00] Hemal Shah: So that, like showing them a value is one where we are trying to navigate it.
+[00:34:05] Hemal Shah: What are your thoughts on what?
+[00:34:07] Hemal Shah: You're thinking like an engineer.
+[00:34:09] Patrick Chouinard: Okay.
+[00:34:10] Hemal Shah: Like a marketing manager.
+[00:34:12] Patrick Chouinard: Okay.
+[00:34:13] Hemal Shah: Okay.
+[00:34:15] Patrick Chouinard: Have that chat with Claude at length, brainstorm completely.
+[00:34:20] Patrick Chouinard: Okay.
+[00:34:20] Patrick Chouinard: And then say like, I need a presentation, a marketing presentation to market to the marketing manager, the value that AI brings in his field.
+[00:34:32] Hemal Shah: Okay.
+[00:34:33] Patrick Chouinard: Basically make a marketing presentation for AI, for the marketing department.
+[00:34:39] Hemal Shah: Okay.
+[00:34:39] Patrick Chouinard: That is the best thing you can do to a marketing, because you basically said, like, look, I created a marketing campaign to market AI to you using AI.
+[00:34:51] Patrick Chouinard: Very good.
+[00:34:52] Hemal Shah: Very nicely said.
+[00:34:53] Patrick Chouinard: So that way is like, you can't say that it doesn't work.
+[00:34:56] Patrick Chouinard: I proved it by showing you.
+[00:34:59] Patrick Chouinard: For.
+[00:35:00] Patrick Chouinard: To market to you, one of the hardest market I could market for because you don't want my product.
+[00:35:07] Hemal Shah: Yeah, yeah.
+[00:35:09] Patrick Chouinard: So if that is convincing, how can you now tell me that it's not going to help you on a day-to-day basis?
+[00:35:16] Hemal Shah: Okay, good.
+[00:35:19] Patrick Chouinard: You have to play it on their field.
+[00:35:21] Patrick Chouinard: Yeah.
+[00:35:22] Hemal Shah: And do you think it could help to show them one or two working models?
+[00:35:30] Hemal Shah: Like, look, this is a report that could help.
+[00:35:33] Hemal Shah: Campaign is one thing, that these are the different benefits, but then supplementing it with one or two actual specific use cases that these are the one or two examples.
+[00:35:43] Hemal Shah: Could it backfire, or...?
+[00:35:46] Patrick Chouinard: That's the thing.
+[00:35:48] Patrick Chouinard: Get the hook.
+[00:35:49] Patrick Chouinard: Get them hooked with the campaign.
+[00:35:51] Patrick Chouinard: Okay.
+[00:35:52] Patrick Chouinard: Then they're going to tell you like, oh, okay, that's awesome.
+[00:35:55] Patrick Chouinard: Awesome.
+[00:35:56] Patrick Chouinard: Are you able also to do X?
+[00:35:58] Patrick Chouinard: And this is the...
+[00:36:00] Patrick Chouinard: Use case you're going to pick up and implement, because if you decide today to implement a use case, I can guarantee you that whichever use case you select is not the one they're going to have in their mind after you give them the marketing presentation.
+[00:36:16] Hemal Shah: Okay.
+[00:36:18] Hemal Shah: Okay.
+[00:36:19] Hemal Shah: That's it.
+[00:36:20] Patrick Chouinard: Because again, we think like engineers, so the most logical would be this one.
+[00:36:26] Patrick Chouinard: And again, the example I gave is the wife that goes to the store to buy a fridge, and you have the husband that's there.
+[00:36:37] Patrick Chouinard: Oh, we need to have one that has the freezer at the bottom is going to be easier, and then it needs to be eco efficient in that way.
+[00:36:45] Patrick Chouinard: And she's like, yeah, but I want a black one.
+[00:36:51] Patrick Chouinard: Yeah, that's your marketing manager.
+[00:36:53] Patrick Chouinard: I mean, you're going to think about 20,000 things of how we could improve his job and he's going to go completely.
+[00:36:59] Patrick Chouinard: We'd?
+[00:37:00] Patrick Chouinard: If you prove him whatever he asked for, then he's hooked.
+[00:37:06] Patrick Chouinard: Then you've proven that he can campaign efficiently.
+[00:37:10] Patrick Chouinard: You prove to him that he can do what he requires to do.
+[00:37:15] Patrick Chouinard: After that, all of the pipeline of work that you think about that has value is going to be far more open to those once you've gone through that first step.
+[00:37:26] Patrick Chouinard: Okay.
+[00:37:29] Hemal Shah: It's psychology as much as it is technical work, honestly.
+[00:37:33] Hemal Shah: Yeah.
+[00:37:34] Hemal Shah: And, you know, it's easier to deal with computers and programs because they do what we tell them to do.
+[00:37:43] Hemal Shah: People don't.
+[00:37:46] Hemal Shah: Well, you can have a certain degree of certainty.
+[00:37:48] Hemal Shah: People will always do what you don't think they're going to do.
+[00:37:50] Patrick Chouinard: That is true.
+[00:37:54] Hemal Shah: Only thing constant is change.
+[00:37:56] Hemal Shah: Yeah.
+[00:37:58] Patrick Chouinard: Yep, exactly.
+[00:37:59] Patrick Chouinard: Yeah,
+[00:38:00] Patrick Chouinard: I mean, I've done that for 30 years, so I'm more than used for people, and people are still surprising me to this day, so.
+[00:38:10] Hemal Shah: Don't tell me you've been doing this for 30 years.
+[00:38:12] Hemal Shah: I feel like you look like you are in your 30s, man.
+[00:38:16] Patrick Chouinard: Oh boy, my 30s are far way back.
+[00:38:21] Patrick Chouinard: I'm 48.
+[00:38:22] Patrick Chouinard: Oh, wow.
+[00:38:24] Hemal Shah: Okay, you don't have a man.
+[00:38:28] Hemal Shah: Not look like that at all.
+[00:38:30] Hemal Shah: You have aged well.
+[00:38:33] Hemal Shah: Thank you, sir.
+[00:38:34] Patrick Chouinard: But, yep, seriously, Ed, I've started in 96, so.
+[00:38:41] Hemal Shah: Wow, wow.
+[00:38:42] Hemal Shah: I am 44.
+[00:38:45] Hemal Shah: Interesting.
+[00:38:48] Hemal Shah: I look at you like decades younger than me.
+[00:38:53] Hemal Shah: Well, wisdom way more than me, for sure.
+[00:38:58] Patrick Chouinard: Well, just...
+[00:39:00] Patrick Chouinard: I mean, I've been doing that and I've been a consultant all my life, meaning that I've jumped from contract to contract.
+[00:39:06] Patrick Chouinard: So I've experienced a lot of work environment from the small little local ISP in 96 to Microsoft headquarters in Redmond to Corning Glass, the one that makes the Gorilla Glass for the phones.
+[00:39:26] Patrick Chouinard: So I'm now in the financial industry today.
+[00:39:33] Patrick Chouinard: It's very interesting.
+[00:39:39] Hemal Shah: So right now, are you doing full-time consulting?
+[00:39:42] Hemal Shah: I'm just switching gears a little bit just to understand a little bit more about you.
+[00:39:46] Hemal Shah: I've been with the same consulting company for 17 years now.
+[00:39:50] Hemal Shah: Okay.
+[00:39:50] Hemal Shah: Yeah.
+[00:39:51] Hemal Shah: wow.
+[00:39:51] Hemal Shah: Okay.
+[00:39:53] Patrick Chouinard: Yeah.
+[00:39:53] Patrick Chouinard: When I joined them, we were, I think, six in Montreal and about a hundred.
+[00:39:59] Patrick Chouinard: surrendering obenarelist there.
+[00:39:59] Patrick Chouinard: Thank you.
+[00:40:02] Patrick Chouinard: Now we're 700 in Montreal and around 5,000 worldwide.
+[00:40:10] Patrick Chouinard: Wow.
+[00:40:11] Hemal Shah: And then I mentioned my cousin's sister, she's in Montreal.
+[00:40:15] Hemal Shah: So I was about to visit Montreal two years ago.
+[00:40:18] Hemal Shah: Maybe I need to plan a trip then again.
+[00:40:20] Hemal Shah: Let me know if you do.
+[00:40:24] Patrick Chouinard: I've been at my current client for five years now.
+[00:40:27] Patrick Chouinard: Okay.
+[00:40:29] Hemal Shah: So from your consulting company, consulting company gets you, I mean, through consulting company, you work with the clients.
+[00:40:35] Patrick Chouinard: I'm always with the same consulting company.
+[00:40:37] Patrick Chouinard: They're the one paying my paycheck, basically.
+[00:40:39] Patrick Chouinard: It's just the contract I'm doing for them has been with the same client since the beginning of the pandemic.
+[00:40:46] Patrick Chouinard: So all your work you take from consulting company only, or you sometimes might...
+[00:40:51] Patrick Chouinard: No, I'm full-time.
+[00:40:54] Hemal Shah: Yeah.
+[00:40:55] Hemal Shah: I was looking at your calendar that you shared, and you have so many...
+[00:41:00] Hemal Shah: It's lots over on the weekends.
+[00:41:01] Hemal Shah: feel like, man, you enjoy working this much?
+[00:41:07] Hemal Shah: No, this is a calendar that is just especially for what we were doing right now.
+[00:41:12] Patrick Chouinard: It's like whenever someone is telling me like, oh, I would like to like poke your brain for an hour or so, that's the calendar.
+[00:41:20] Patrick Chouinard: But I don't expose that calendar on the website for consulting needs or anything.
+[00:41:25] Patrick Chouinard: It's just whenever people ask me like, give me dates, we can set up something, I send them that calendar.
+[00:41:31] Patrick Chouinard: It's basically every time outside of business hours that I have available.
+[00:41:37] Patrick Chouinard: And the fact that I don't have availability on Tuesday, Wednesday, and Thursday.
+[00:41:43] Patrick Chouinard: Well, Tuesday, you know why I don't have availability at night.
+[00:41:47] Patrick Chouinard: And the other two is because those are the days I have to go to the office.
+[00:41:52] Patrick Chouinard: So it's a bit too crazy to try to start to.
+[00:41:57] Patrick Chouinard: When you go to office.
+[00:41:59] Hemal Shah: So there is another.
+[00:41:59] Hemal Shah: see got the second
+[00:42:00] Hemal Shah: The I'm having with my managers, you know, it's two days, three days, four days, things like that.
+[00:42:09] Hemal Shah: And there's a building relationship if you are in office versus you are remote and all those sort of stuff.
+[00:42:15] Hemal Shah: And we'll figure it out.
+[00:42:17] Hemal Shah: But do you find going to office productive for real work or is it only for relationship building?
+[00:42:25] Patrick Chouinard: Neither.
+[00:42:28] Patrick Chouinard: Honestly, I'm the kind of guy who was insanely happy during the pandemic.
+[00:42:35] Hemal Shah: I mean, the best Christmas party I ever had is the one that we did on Teams.
+[00:42:40] Hemal Shah: That's awesome.
+[00:42:43] Patrick Chouinard: But no, I can understand that there might be value for some people because of the work they do.
+[00:42:50] Patrick Chouinard: The problem I have is whenever a company starts to say, oh, you have to be in the office X number of days per week or these specific days in the week.
+[00:42:59] Patrick Chouinard: you.
+[00:43:01] Patrick Chouinard: Why?
+[00:43:03] Patrick Chouinard: Tell me that I need to go to the office when it's necessary.
+[00:43:06] Patrick Chouinard: And if a week, it means five days, I'll go five days.
+[00:43:10] Patrick Chouinard: If the week after it means one day, I'll go one day.
+[00:43:13] Patrick Chouinard: The only thing I hate is company that forced me to go in the office.
+[00:43:18] Patrick Chouinard: And then I spend the whole day isolated in an office.
+[00:43:22] Patrick Chouinard: Because if I'm on the floor, I make too much noise because I talked to my computer or I have to have a meeting.
+[00:43:28] Patrick Chouinard: And so you're getting me to waste two hours of my day in traffic, pay for parking, pay for a lunch, all of that to isolate myself in an office and not talk to anybody the whole day.
+[00:43:44] Patrick Chouinard: That is another thing.
+[00:43:47] Hemal Shah: I'm having the discussions that, you know, I was I'm asking for two days, like maybe I'll come two days.
+[00:43:55] Hemal Shah: And then the team is asking, CEO is asking.
+[00:44:00] Hemal Shah: For four days in office and the reasons, you know, and reason of why doing it, a few reasons are, well, it's hard if I give you, there are a few roles where you have to kind of stay in office so you can, you know, lead by role.
+[00:44:25] Hemal Shah: And there are people who are misusing it.
+[00:44:27] Hemal Shah: I mean, I understand some of their concerns where some people might have misused it and that have left a scar in their thing that, if you're in office, then you're productive.
+[00:44:36] Hemal Shah: That's not true in each and every role.
+[00:44:38] Hemal Shah: There might be certain roles where, or whatnot, right?
+[00:44:40] Patrick Chouinard: It's not true in any role because you can't, if you need to keep an eye on me physically in order for me to be productive, then I'm not productive because I require the time of a manager to watch me in order to do some job.
+[00:44:57] Patrick Chouinard: Imagine how much that job would be.
+[00:45:00] Patrick Chouinard: If you got rid of that time waster, get someone who actually does the job.
+[00:45:04] Patrick Chouinard: It doesn't need to be surveilled all day long in order to be productive.
+[00:45:09] Hemal Shah: Yeah.
+[00:45:10] Hemal Shah: And that's where it should be KPI driven, right?
+[00:45:12] Hemal Shah: You just measure the work.
+[00:45:14] Hemal Shah: mean, you can come into office and waste your time completely.
+[00:45:18] Hemal Shah: mean, just being in office doesn't mean that you are productive, right?
+[00:45:22] Patrick Chouinard: It just means you're exchanging BTU with your chair.
+[00:45:26] Patrick Chouinard: Yes.
+[00:45:28] Hemal Shah: That's it.
+[00:45:29] Hemal Shah: Good.
+[00:45:29] Patrick Chouinard: Maybe I'll just...
+[00:45:32] Hemal Shah: This is a...
+[00:45:35] Hemal Shah: This is the problem of middle management.
+[00:45:38] Patrick Chouinard: This is the fear of middle management, because if they are no longer...
+[00:45:42] Patrick Chouinard: If there's no people to manage physically, they don't see their value.
+[00:45:49] Patrick Chouinard: And they're right.
+[00:45:50] Patrick Chouinard: They don't bring value, sadly.
+[00:45:51] Hemal Shah: They did before.
+[00:45:53] Hemal Shah: They're not necessary now.
+[00:45:55] Hemal Shah: Yeah.
+[00:45:57] Hemal Shah: Yeah.
+[00:45:58] Patrick Chouinard: So it's like, oh, yeah, but people can...
+[00:46:02] Patrick Chouinard: Why do I care if the person goes and do shopping in the middle of the day?
+[00:46:07] Patrick Chouinard: Is the work I assigned done?
+[00:46:11] Hemal Shah: Yes.
+[00:46:14] Patrick Chouinard: I mean, do it on the beach, doing on the rooftop.
+[00:46:16] Patrick Chouinard: I don't care.
+[00:46:18] Patrick Chouinard: I gave you work and the work is done and it's done up to the standard of quality I asked for?
+[00:46:24] Patrick Chouinard: Oh, I'm not paying for your time.
+[00:46:28] Patrick Chouinard: I'm paying for your brain.
+[00:46:29] Patrick Chouinard: As long as I get the value out of it, I won.
+[00:46:34] Hemal Shah: Wow.
+[00:46:35] Hemal Shah: That's very true.
+[00:46:36] Hemal Shah: Yeah.
+[00:46:37] Patrick Chouinard: And that doesn't mean eliminate the office because there are people that will work better in an office environment.
+[00:46:46] Patrick Chouinard: But imagine if you could cut the floor space in half how much money you're saving by not renting a bunch of desks for people that you...
+[00:47:00] Patrick Chouinard: You were dropped their productivity in forcing them to occupy a space you pay for.
+[00:47:05] Hemal Shah: Yeah, yeah, yeah, yeah, I'm, I'm, I'm, I'm thinking Patrick to, so I'm thinking to kind of work with them in terms of a trial period that, okay, let's see a few months and let's revisit it.
+[00:47:27] Hemal Shah: So, and, and once you get to see me working and all those things, and, and, and I see you working in everything, then we can decide or we can part ways if, if, if just the small, I mean, micromanagement, I hate micromanagement, like we can bring so much value, just, just give us our, our space and, and tell us what you need and we'll, take care of it.
+[00:47:51] Hemal Shah: Exactly.
+[00:47:53] Hemal Shah: Exactly.
+[00:47:54] Patrick Chouinard: Like, give me goals to hit.
+[00:47:57] Patrick Chouinard: If I, if I hit them.
+[00:47:59] Patrick Chouinard: Okay.
+[00:47:59] Patrick Chouinard: Okay.
+[00:48:00] Patrick Chouinard: Good, if I don't, get rid of me.
+[00:48:01] Hemal Shah: That's it.
+[00:48:02] Patrick Chouinard: Yeah.
+[00:48:03] Hemal Shah: Yeah.
+[00:48:05] Hemal Shah: Makes sense.
+[00:48:08] Hemal Shah: All right.
+[00:48:09] Hemal Shah: So Patrick, I know we have 10 minutes left.
+[00:48:17] Hemal Shah: So as a next step for this whole AI-first transformation, I'm just thinking a bigger picture now.
+[00:48:23] Hemal Shah: we talked, thanks for those pointers and insights.
+[00:48:28] Hemal Shah: But at a very high level, if I want to transform the organization, AI-first transformation, the whole org, step-by-step guidance, I'm going to brainstorm with Claude and ChairGPT to come up with a plan and everything, where to tackle costs and things like that.
+[00:48:44] Hemal Shah: But if you have any pointers, any playbook that have worked well or anything on that sort, I would love to hear your thoughts in just the first starting position.
+[00:48:54] Hemal Shah: Training is just one piece of the puzzle, right?
+[00:48:56] Hemal Shah: But there is a lot more in this whole thing.
+[00:48:59] Patrick Chouinard: And...
+[00:48:59] Patrick Chouinard: …
+[00:49:00] Patrick Chouinard: Yeah.
+[00:49:00] Patrick Chouinard: Well, first you have to work on what you want to do because you're right.
+[00:49:05] Patrick Chouinard: The training is the, is just one aspect, but you're, you're going to do, you're going to have to do the analysis we talked about earlier, like which position in the organization will benefit most compared to the time I need to invest in order to get them to that place.
+[00:49:22] Patrick Chouinard: This is going to be your, uh, investment analysis in time.
+[00:49:28] Patrick Chouinard: And honestly, this is where I love co-work in Claude.
+[00:49:32] Patrick Chouinard: Okay.
+[00:49:34] Patrick Chouinard: Because you, you can make that whole thing as a plan, as a, a project and, uh, co-work will start to add documentation.
+[00:49:43] Patrick Chouinard: Like whenever you're mentioning someone, you can, uh, document it in a contact file.
+[00:49:49] Patrick Chouinard: Whenever you're mentioning a plan, a department, anything.
+[00:49:52] Patrick Chouinard: You document those in department, department file, you're building the memory of co-work of your.
+[00:50:00] Patrick Chouinard: So the more you work, the more context it has in order to know how to help you.
+[00:50:07] Hemal Shah: So I could have an AI-first transformation project in co-work, a folder.
+[00:50:15] Hemal Shah: And then I have a series of folders like people, by processes, and value.
+[00:50:22] Hemal Shah: I start with a folder as if I was working in cloud code.
+[00:50:26] Patrick Chouinard: But instead of being a code project, it's a co-work project.
+[00:50:30] Patrick Chouinard: In there, I have a cloud.md that I try to keep below 100 lines.
+[00:50:36] Patrick Chouinard: It's just a dispatcher.
+[00:50:39] Patrick Chouinard: The only thing it says is, oh, you're looking for contact?
+[00:50:41] Patrick Chouinard: It's in the contact.md file.
+[00:50:43] Patrick Chouinard: You're looking for project?
+[00:50:44] Patrick Chouinard: It's in the project.md file.
+[00:50:46] Patrick Chouinard: That's it.
+[00:50:48] Patrick Chouinard: And always work from the same top project folder.
+[00:50:53] Patrick Chouinard: And also start a project in cloud co-work.
+[00:50:56] Patrick Chouinard: Basically, that gives short-term memory.
+[00:51:00] Patrick Chouinard: It has a memory file that it manages automatically.
+[00:51:04] Patrick Chouinard: A little bit like OpenClaw does.
+[00:51:07] Patrick Chouinard: They included that.
+[00:51:09] Patrick Chouinard: And then you have your long-term memory.
+[00:51:11] Patrick Chouinard: Those are your contact, your project file, all of those.
+[00:51:14] Patrick Chouinard: And then whenever you say, oh, now we're working on a new aspect of project one, two, three with contact X.
+[00:51:23] Patrick Chouinard: Well, co-work already has all the background, like who that contact is, what its involvement in the project, where you are, what tasks are left to be done.
+[00:51:34] Patrick Chouinard: So as you work, you build your context and it can create all the artifact you need.
+[00:51:40] Patrick Chouinard: You can say, oh, you know, tomorrow I have a presentation to that person to talk about this subject.
+[00:51:47] Patrick Chouinard: Can you create me an interactive HTML document presenting all of the steps that we're going to be covering in the presentation, for example?
+[00:51:57] Patrick Chouinard: Like I don't create PowerPoints anymore.
+[00:51:59] Patrick Chouinard: In Come
+[00:52:00] Patrick Chouinard: Or I create HTML interactive presentation.
+[00:52:04] Patrick Chouinard: Oh, nice.
+[00:52:05] Hemal Shah: So you just say create HTML presentation, and then you click through it or whatever.
+[00:52:10] Patrick Chouinard: Exactly.
+[00:52:11] Patrick Chouinard: Like design it as a click through presentation, as if it was a PowerPoint, but do it in an interactive HTML document.
+[00:52:18] Patrick Chouinard: It's visually a lot more interesting, a lot more interactive than a static PowerPoint.
+[00:52:26] Patrick Chouinard: And it's packaged in a single HTML file.
+[00:52:29] Patrick Chouinard: So you can give it to the people at the end and say, just open it.
+[00:52:32] Patrick Chouinard: That's it.
+[00:52:33] Patrick Chouinard: Don't.
+[00:52:33] Patrick Chouinard: Instead of opening it in PowerPoint, it's going to open in your browser, but you're going to have the full presentation.
+[00:52:39] Hemal Shah: Interesting.
+[00:52:40] Hemal Shah: And how do you host it?
+[00:52:43] Hemal Shah: Do you host it locally, locally only when you're doing presentation or?
+[00:52:47] Hemal Shah: It depends.
+[00:52:48] Hemal Shah: I can do it live on Teams.
+[00:52:50] Patrick Chouinard: I can do it in person if I'm in the office.
+[00:52:55] Hemal Shah: Sorry, by hosting, I meant you run that HTML.
+[00:52:59] Hemal Shah: Thank
+[00:53:01] Patrick Chouinard: You could always publish it, but honestly, I treat those specifically as if it was a PowerPoint presentation that I can send by email.
+[00:53:13] Patrick Chouinard: It's just that when the people click on it, instead of opening PowerPoint, it opens a browser.
+[00:53:18] Hemal Shah: But then when you send HTML, so if, say, let's say you showed me that HTML presentation and it's interactive, very nice.
+[00:53:26] Hemal Shah: that's the best part.
+[00:53:27] Hemal Shah: It's where you can make it very interactive with some animations and everything.
+[00:53:31] Hemal Shah: And it's great.
+[00:53:32] Hemal Shah: Can you send me that?
+[00:53:33] Hemal Shah: Sometimes people will ask you, share the PPT or PDF.
+[00:53:35] Hemal Shah: So you just zip it up, share it, and then they can just unzip and just click it.
+[00:53:40] Hemal Shah: Or zip or not zip.
+[00:53:42] Patrick Chouinard: You don't need to zip it.
+[00:53:43] Patrick Chouinard: It's an HTML file.
+[00:53:44] Patrick Chouinard: You open it up in browser.
+[00:53:46] Hemal Shah: Double click and it's going to open in their browser with all the interactivity.
+[00:53:50] Patrick Chouinard: Nice.
+[00:53:51] Patrick Chouinard: Okay.
+[00:53:51] Hemal Shah: And for that co-work, I'm seeing a lot of folder structure recommendation that makes you...
+[00:54:00] Hemal Shah: Within Cowork, you have these five different folders, one for this, one for that, and natural hierarchies and everything.
+[00:54:07] Hemal Shah: Anything that works best for you, like hierarchies structure?
+[00:54:13] Hemal Shah: It depends on what you do.
+[00:54:15] Patrick Chouinard: I have a context folder that contains all of my markdown files.
+[00:54:21] Patrick Chouinard: Like I said, the project file, the personality, all of those are there.
+[00:54:27] Patrick Chouinard: But after that, it depends on what you do.
+[00:54:29] Patrick Chouinard: And I let Cowork decide with me the directory structure it needs to do whatever job we're working on.
+[00:54:38] Patrick Chouinard: The thing that I find is most important is your claw.md and your context folder with all of the context file that you're building.
+[00:54:49] Patrick Chouinard: Actually, I'm working on a Cowork onboarding skill that would generate that base structure.
+[00:54:57] Patrick Chouinard: There you go.
+[00:54:58] Hemal Shah: Not done yet.
+[00:55:00] Patrick Chouinard: But, yeah, because there's a skill I created, or not a skill, but an instruction that I've dropped in my Claude.md that I find does marvel for the work I do.
+[00:55:13] Patrick Chouinard: It's every time I tell Claude, like, every time we complete a session with co-work, because when you're in a co-work project, the other advantage is you can have multiple discussion within that project.
+[00:55:28] Patrick Chouinard: Not only the project on file, but the project in the co-work UI, and it can go and have memory, or not memory, but query what happened in the past conversation.
+[00:55:46] Patrick Chouinard: So, whenever we complete the conversation, we went through a session to the end, said, the last thing you have to do before we go out is look at the entire conversation we just had and tell me if you
+[00:56:00] Patrick Chouinard: You find there is a possibility to create one or multiple skills out of the discussion we just had.
+[00:56:07] Hemal Shah: Wow.
+[00:56:09] Hemal Shah: And once you are done with your conversation and when you want to invoke that skill to see, are there any other extra skills we can, additional skills we can create based on this conversation?
+[00:56:22] Patrick Chouinard: That's the thing.
+[00:56:23] Patrick Chouinard: I don't ask it.
+[00:56:24] Patrick Chouinard: It's in the Claude.md that it has to take a look at the conversation when I say, okay, this conversation is done.
+[00:56:30] Patrick Chouinard: It's basically the trigger for it to go and reanalyze the entire conversation and say, hey, out of what we've done here, you might want to create a skill to do that and the skill to do this.
+[00:56:40] Patrick Chouinard: Do you want to create them?
+[00:56:41] Patrick Chouinard: Yes.
+[00:56:42] Patrick Chouinard: Go ahead.
+[00:56:43] Patrick Chouinard: So you don't even have to remind it.
+[00:56:45] Hemal Shah: It is kind of automated.
+[00:56:46] Hemal Shah: So when you close that conversation, that's when it triggers?
+[00:56:49] Hemal Shah: when I say in the conversation, okay, I think we're done here.
+[00:56:54] Hemal Shah: Okay, so that's it.
+[00:56:56] Hemal Shah: Okay.
+[00:56:56] Hemal Shah: It's basically the trigger for it to go and reanalyze everything.
+[00:57:00] Hemal Shah: Because there's no hooks in CloudCode work like you have in CloudCode, I basically faked a hook with trigger work.
+[00:57:10] Patrick Chouinard: That menu thing.
+[00:57:12] Hemal Shah: Beautiful.
+[00:57:12] Hemal Shah: Amazing.
+[00:57:13] Hemal Shah: With CloudCode, what I'm struggling with is it keeps on asking.
+[00:57:18] Hemal Shah: In Cursor, you have allowed list.
+[00:57:20] Hemal Shah: Here, every now and then, unless I do that skip, allow dangerously skip something.
+[00:57:26] Hemal Shah: It waits for me.
+[00:57:28] Hemal Shah: Yes, no, yes, no.
+[00:57:29] Hemal Shah: I know AutoMode is still not available in the individual plan.
+[00:57:35] Hemal Shah: That's the thing.
+[00:57:36] Hemal Shah: I don't have an individual plan, so I have allowed AutoMode and it's totally awesome.
+[00:57:42] Patrick Chouinard: Yeah, yeah.
+[00:57:43] Hemal Shah: Okay, so that's...
+[00:57:45] Hemal Shah: But again, again, you know, they call it dangerously skip permission, and I understand why they do that.
+[00:57:52] Patrick Chouinard: But if you're in the type of project that you've done 20,000 times, and you have never said deny...
+[00:57:59] Patrick Chouinard: Then ...
+[00:57:59] Patrick Chouinard: Oh!
+[00:57:59] Patrick Chouinard: ...
+[00:58:00] Patrick Chouinard: On anything in that kind of project, skipping permission is not that unsafe.
+[00:58:06] Patrick Chouinard: mean, it's when you do a new type of project where you don't know what it's going to ask and you don't know its behavior, that's when you absolutely want it to ask.
+[00:58:16] Patrick Chouinard: But if you've done the project 30,000 times and you've never denied it anything, you know how it's going to behave in that type of project, then the permission's going to And when you, and I know we are up against our meaning.
+[00:58:30] Hemal Shah: No worries, no worries.
+[00:58:31] Patrick Chouinard: I'm not a taxi driver.
+[00:58:33] Patrick Chouinard: don't have a counter going on.
+[00:58:36] Hemal Shah: Yeah.
+[00:58:36] Hemal Shah: I just wanted to mindful of the time, but I love this and the discussions.
+[00:58:40] Hemal Shah: One, another thing is, so I moved from cursor to Claude and, and yes, Claude has, I, I really enjoy it.
+[00:58:48] Hemal Shah: And now I'm big CLI guy.
+[00:58:50] Hemal Shah: I cannot use UI to do things.
+[00:58:54] Hemal Shah: I like CLI more space and CMUX is also, I'm, I'm loving CMUX as well.
+[00:58:59] Hemal Shah: I know.
+[00:58:59] Hemal Shah: And
+[00:59:00] Hemal Shah: One thing I'm missing is when I want to view things, or MD file, markdown file, mermaid chart, I need ID for those type of things.
+[00:59:10] Hemal Shah: And I have to go back to Cursor, just as a GUI editor or viewer, not editor, but viewer when I want to view things.
+[00:59:17] Hemal Shah: How do you do that?
+[00:59:19] Patrick Chouinard: Not sure, sir.
+[00:59:20] Patrick Chouinard: For markdown edition, plain VS code is 20 times better because I keep my GitHub co-pilot subscription going.
+[00:59:35] Patrick Chouinard: It's 10 bucks a month.
+[00:59:37] Patrick Chouinard: It's not that expensive.
+[00:59:38] Patrick Chouinard: And for specifically for markdown.
+[00:59:42] Patrick Chouinard: Okay.
+[00:59:43] Hemal Shah: Okay.
+[00:59:44] Patrick Chouinard: Because it's the only one that does markdown auto-complete with AI.
+[00:59:49] Patrick Chouinard: Cursor doesn't do that.
+[00:59:51] Patrick Chouinard: Okay.
+[00:59:52] Hemal Shah: Antigravity doesn't do that.
+[00:59:54] Hemal Shah: Okay.
+[00:59:55] Hemal Shah: doesn't suggest a modification.
+[00:59:58] Patrick Chouinard: Okay.
+[00:59:58] Patrick Chouinard: doesn't do auto-complete in markdown.
+[01:00:01] Patrick Chouinard: So that's why I've completely canceled my cursor.
+[01:00:06] Patrick Chouinard: Yeah, I'm not using it anymore.
+[01:00:08] Patrick Chouinard: Yeah.
+[01:00:09] Hemal Shah: So I also canceled it.
+[01:00:10] Hemal Shah: I was just using the free version just to view things, but VS Code is a good idea.
+[01:00:14] Hemal Shah: I mean, it's based off of VS Code, so I can just use that.
+[01:00:17] Hemal Shah: And it's more about if I need any change, I still go back to Claude.
+[01:00:22] Hemal Shah: But just to view and visualize and, you know, digesting, because sometimes CLI is not that great.
+[01:00:31] Hemal Shah: Or with all the charts and diagrams and those type of things.
+[01:00:37] Patrick Chouinard: No, but again, that's why I always have VS Code open on the side.
+[01:00:43] Patrick Chouinard: Okay.
+[01:00:44] Hemal Shah: It's just a viewer now.
+[01:00:46] Patrick Chouinard: I don't do work in there.
+[01:00:48] Patrick Chouinard: It's just a viewer and a question answering machine.
+[01:00:56] Patrick Chouinard: Yeah.
+[01:00:57] Patrick Chouinard: you know sometimes Claude gives you like a bunch of questions like
+[01:01:00] Patrick Chouinard: Like, oh, what about this?
+[01:01:01] Patrick Chouinard: What do we want to do?
+[01:01:01] Patrick Chouinard: This, this, this, this, this, and that.
+[01:01:04] Patrick Chouinard: Well, instead of typing in that little bar at the bottom of Claude, I just copy the whole thing, drop it in a scratch file in VS Code, and always the same scratch file for a project.
+[01:01:18] Hemal Shah: Okay.
+[01:01:20] Patrick Chouinard: Meaning that scratch file contains the entire context of all the question and all the answer I gave.
+[01:01:26] Patrick Chouinard: So when I'm at my 30th answer, I write half a sentence and it writes the entire answer for me because, okay, that's what, that's what he's working.
+[01:01:36] Patrick Chouinard: That's where GitHub Copilot becomes an insane cheat.
+[01:01:41] Hemal Shah: Beautiful.
+[01:01:42] Hemal Shah: Because it basically answered Claude's question for you based on your previous answer.
+[01:01:48] Hemal Shah: Nice, nice.
+[01:01:51] Hemal Shah: Amazing, Patrick.
+[01:01:52] Hemal Shah: I mean, I, I want to keep going at the, much insights, but I want to be respectful of your time.
+[01:01:59] Hemal Shah: Um.
+[01:02:00] Hemal Shah: How would you, I mean, if I follow up, what would be the best mode of future follow-ups if I still have some questions, any like email or would you be open to a few more calls?
+[01:02:12] Hemal Shah: Like, do you charge for calls?
+[01:02:15] Hemal Shah: Like, how do you operate?
+[01:02:16] Patrick Chouinard: That's one thing I've learned and I've learned in IT in general.
+[01:02:22] Patrick Chouinard: Whenever you start charging, you have to understand that you become a dependency of the work getting done.
+[01:02:29] Patrick Chouinard: And I sadly don't have enough free time to become an dependency because whenever I do something for free, I can always say that, you know, I don't have time this week and no one can say anything because I'm not charging for it.
+[01:02:43] Patrick Chouinard: And honestly, I have a very, very tight schedule.
+[01:02:48] Patrick Chouinard: Today, it's okay.
+[01:02:49] Patrick Chouinard: At first, it's Easter, so it's a long weekend, so I'm a little bit less charged.
+[01:02:54] Patrick Chouinard: But no, just send me emails and if we see that there's too much material.
+[01:03:00] Patrick Chouinard: At some point, we'll see if we can reschedule something.
+[01:03:03] Patrick Chouinard: But honestly, that's also why the Tuesday call is there.
+[01:03:10] Patrick Chouinard: So I understand that there's things that needs to be done outside the call because there's confidentiality and things of that nature.
+[01:03:17] Patrick Chouinard: But for general question, I love doing it in the call because it brings value to a lot more people at once.
+[01:03:25] Patrick Chouinard: And it is a schedule I've already carved out every week.
+[01:03:29] Patrick Chouinard: 100% agreed, yep.
+[01:03:30] Hemal Shah: Only for those other things.
+[01:03:35] Hemal Shah: So understood, Tuesday calls is our first go-to-place, but if something cannot be discussed there, is email okay?
+[01:03:43] Hemal Shah: Just if I have quick questions, we just shoot email.
+[01:03:45] Hemal Shah: And again, none of this is going to be time critical.
+[01:03:48] Hemal Shah: It's more of a strategic, you know, understanding how best to go about Oh, don't worry, I already do that with Scott.
+[01:03:54] Patrick Chouinard: And basically, at this point, it's my AI assistant talking with his AI assistant.
+[01:03:59] Hemal Shah: Yeah.
+[01:03:59] Hemal Shah: Yeah.
+[01:03:59] Hemal Shah: Yeah.
+[01:03:59] Hemal Shah: Yeah.
+[01:03:59] Hemal Shah: Yeah.
+[01:04:02] Hemal Shah: You have AI assistant for email, or, sorry, but when he sends a question, so when you say you both are communicating on which channel, through emails, and co-work is tied to email, or?
+[01:04:18] Patrick Chouinard: Well, co-work is part of Claude, and Claude has a connection to my Gmail account, so I just tell co-work, oh, Scott, send us an email, go take a look, and like, okay.
+[01:04:28] Patrick Chouinard: Then craft an answer, and that's it.
+[01:04:32] Hemal Shah: Man.
+[01:04:33] Hemal Shah: So are you, and this is another, OpenClaw versus Claude, dispatch, and channels, and everything, so seems like Claude is almost there, right?
+[01:04:42] Hemal Shah: No need to go into OpenClaw bandwagon, or what are your...?
+[01:04:46] Patrick Chouinard: I'm still using my OpenClaw instance, but yeah, I do a lot with co-work these days, honestly.
+[01:04:54] Patrick Chouinard: It's just OpenClaw, the nice thing is, it is embedded in my...
+[01:05:01] Hemal Shah: Okay.
+[01:05:02] Patrick Chouinard: So it has visibility on things that Coorg just don't have connector for today.
+[01:05:07] Patrick Chouinard: Those things.
+[01:05:08] Hemal Shah: I wanted to buy Mac mini, but it's out of stock and I'm right now running on cloud, one of the GCP VM, OpenFlow instance.
+[01:05:20] Hemal Shah: Those have been replaced by Coorg.
+[01:05:22] Patrick Chouinard: Honestly, anything you can do on a VPS, you can do with Coorg.
+[01:05:28] Hemal Shah: Coorg.
+[01:05:30] Hemal Shah: Mine, it's a VM that resides on a Proxmox server in my infrastructure.
+[01:05:37] Hemal Shah: And Proxmox server, sorry, pardon my ignorance, is a physical hardware machine?
+[01:05:42] Hemal Shah: What is Proxmox server?
+[01:05:43] Patrick Chouinard: Proxmox, it's a virtualization platform.
+[01:05:46] Patrick Chouinard: So basically I have two older computers that lives under my desk.
+[01:05:51] Patrick Chouinard: Okay.
+[01:05:52] Patrick Chouinard: They're like seven and eight years old and they're far from being current, but they have a decent amount of RAM.
+[01:05:59] Patrick Chouinard: So.
+[01:05:59] Patrick Chouinard: So.
+[01:06:00] Patrick Chouinard: I've installed Proxmox on them, and that means it's a virtualization platform.
+[01:06:06] Patrick Chouinard: So from there, I can spawn Linux VM, the equivalent of a VPS, basically, but locally on my own machine.
+[01:06:14] Patrick Chouinard: And one of those VPS is my OpenClaw server.
+[01:06:19] Hemal Shah: Okay.
+[01:06:21] Patrick Chouinard: And since it is inside my own network, it has access to certain things, but nothing from the outside can access it.
+[01:06:31] Hemal Shah: Okay.
+[01:06:32] Patrick Chouinard: It's only window to the outside is a private Discord server that I'm the only one with access to.
+[01:06:41] Patrick Chouinard: So from the outside, I'll talk to it through Discord.
+[01:06:43] Patrick Chouinard: And I love Discord instead of Telegram because of the fact that I can create channels in Discord.
+[01:06:50] Patrick Chouinard: This means I'm separating its memory context.
+[01:06:55] Patrick Chouinard: The problem with OpenClaw is if you talk in a single conversation, it's a huge...
+[01:07:06] Patrick Chouinard: So in Discord, if you split your subject by channel, then all of the context window are a little bit more, a lot more specific, precise, and they don't cost half as much token.
+[01:07:20] Hemal Shah: Makes sense, makes sense.
+[01:07:22] Hemal Shah: Okay.
+[01:07:22] Hemal Shah: And internally, it can SSH to other servers.
+[01:07:25] Patrick Chouinard: So it's basically my network operator.
+[01:07:29] Hemal Shah: Okay.
+[01:07:30] Hemal Shah: Good.
+[01:07:32] Hemal Shah: And last question, Patrick, your training, so your consulting company provides training or do you provide trainings if we want to officially engage, if there is that much interest?
+[01:07:46] Patrick Chouinard: Right now, I'm an internal trainer at the company I have a contract with.
+[01:07:51] Patrick Chouinard: So yeah, I'm a trainer inside my consulting company, but I haven't done training for them directly for like five years.
+[01:08:01] Hemal Shah: All of my time is at my client.
+[01:08:05] Hemal Shah: So you said you are an internal trainer for a consulting company or for your client?
+[01:08:12] Patrick Chouinard: Well, technically I'm on the list of internal trainer at my company, at the consulting company I work for, but I haven't done the training in five years because I'm full time with my clients.
+[01:08:25] Hemal Shah: So in other words, let's say if I want to go out and come up with a training plan or any consulting company, any recommendation or that is my question, like anything jumps out that, okay, maybe consult your company itself or there are a few other open source things that you can try out if you're to organize some trainings once I know what topics I want to cover.
+[01:08:46] Patrick Chouinard: To be quite honest, that's why I work for the same consulting company for 17 years.
+[01:08:51] Patrick Chouinard: They take care of all the administration.
+[01:08:54] Hemal Shah: Okay, understood.
+[01:08:55] Hemal Shah: Okay.
+[01:08:56] Patrick Chouinard: A lot of people are asking me like, why don't you do consulting?
+[01:09:00] Patrick Chouinard: Like on your own account, like why are you still an employee?
+[01:09:04] Patrick Chouinard: Well, if I was on my own account, I would have to find a lawyer, would have to find an accountant, I would have to find, like right now, the cut that they take on my salary is paying for those services.
+[01:09:16] Patrick Chouinard: So it's just, let's see, let's see it this way.
+[01:09:20] Patrick Chouinard: Instead of paying for individual services, I bought a subscription, it's called an employer.
+[01:09:30] Hemal Shah: So yeah, all of those things, like all the accounting, all of the client management, all of the scheduling, that's what they do.
+[01:09:39] Patrick Chouinard: Makes sense.
+[01:09:41] Hemal Shah: Okay, let me put it this way.
+[01:09:44] Hemal Shah: If I, again, just a thought that if I want my leadership panel, okay, these guys, just to have the panel discussion with you, one call, not, I mean, just to see, you know what, what, what.
+[01:10:00] Hemal Shah: Or expert opinion on this AI space?
+[01:10:03] Hemal Shah: Something on that front?
+[01:10:04] Hemal Shah: Is there something doable?
+[01:10:08] Hemal Shah: Or what are your thoughts on that?
+[01:10:11] Patrick Chouinard: It's really about the availability.
+[01:10:15] Patrick Chouinard: As you've seen, my schedule is pretty tight.
+[01:10:20] Patrick Chouinard: Normally, I would say just contact my company and they'll schedule something and no issue.
+[01:10:28] Patrick Chouinard: If it's just an hour, it's always potentially doable.
+[01:10:33] Patrick Chouinard: Got it.
+[01:10:34] Hemal Shah: Makes sense.
+[01:10:35] Hemal Shah: Fair.
+[01:10:35] Patrick Chouinard: But obviously, if it's two, three days in a week, I can't.
+[01:10:38] Patrick Chouinard: I'm already technically full time.
+[01:10:41] Hemal Shah: I was more thinking about maybe if it's just an hour or something, but I get you.
+[01:10:50] Hemal Shah: I'm just thinking.
+[01:10:52] Hemal Shah: But honestly, that's the thing.
+[01:10:54] Patrick Chouinard: If it's an hour, I can always talk with my client and take an hour off or something.
+[01:10:59] Patrick Chouinard: Thank you.
+[01:11:00] Patrick Chouinard: But all of the contract stuff has to go through my consulting company.
+[01:11:06] Patrick Chouinard: Makes sense.
+[01:11:07] Patrick Chouinard: Makes sense.
+[01:11:08] Hemal Shah: Thank you very much, Patrick.
+[01:11:09] Hemal Shah: This was a very eye-opener discussion.
+[01:11:13] Hemal Shah: Thank you.
+[01:11:14] Hemal Shah: I really appreciate it.
+[01:11:15] Hemal Shah: No problem.
+[01:11:16] Patrick Chouinard: And as I said, if you need contact info, I can send them your way.
+[01:11:21] Patrick Chouinard: Honestly, I wouldn't mind my company seeing me bringing contract from outside.
+[01:11:27] Patrick Chouinard: It might be a good excuse to keep me working from home a little bit longer.
+[01:11:32] Hemal Shah: Yeah, definitely.
+[01:11:33] Patrick Chouinard: Do share it, Patrick, and then I will talk to my guys and then we'll see how things Actually, I'll check with them on Tuesday when I go back to work, because honestly, it's been so long, I'm not even sure which person in sales is taking care of my mandates.
+[01:11:52] Hemal Shah: But I think the account manager that takes care of me has changed three times since.
+[01:12:04] Hemal Shah: I like to see what possibilities, you know, how that operates the company and we'll see if there is any opportunity there and I'll talk to my company as well so that will be good, Patrick.
+[01:12:23] Hemal Shah: All right then, please do send the notes that Fathom is good.
+[01:12:30] Hemal Shah: I'm going to buy a paid subscription as well.
+[01:12:33] Hemal Shah: Fireflies and Fathom, there are so many other things.
+[01:12:36] Hemal Shah: So Fathom, you are happy with Fathom?
+[01:12:38] Patrick Chouinard: Yeah, and I have a paid subscription and it works perfect.
+[01:12:42] Patrick Chouinard: And the fact is I love their APIs.
+[01:12:46] Hemal Shah: Okay, so then you can tap into their APIs and...
+[01:12:48] Hemal Shah: Well, have you seen the, on the AI Cooper Accelerator recap flow?
+[01:12:55] Patrick Chouinard: Yeah, yeah, yeah, yeah.
+[01:12:57] Hemal Shah: It's changed from what Brendan used to post.
+[01:12:59] Hemal Shah: I noticed that.
+[01:13:00] Hemal Shah: Well, there's two things.
+[01:13:01] Patrick Chouinard: There's the actual video.
+[01:13:03] Patrick Chouinard: That's exactly what Brendan used to do.
+[01:13:06] Patrick Chouinard: But the one that's called Recap Flow, this is basically a workflow I have running on N8N.
+[01:13:12] Patrick Chouinard: As soon as the call is over, it actually pulls Fathom to get the transcript, and it also pulls the local saved version of the chat from the Zoom meeting.
+[01:13:29] Patrick Chouinard: And in N8N, it actually use AI to merge both and create a recap that analyzes the transcript and the chat, because oftentimes we write something in the chat and we talk about it, or we ask a question and someone pastes the link about it.
+[01:13:47] Patrick Chouinard: So it does that reconciliation to create the recap you see.
+[01:13:51] Hemal Shah: Nice.
+[01:13:52] Hemal Shah: Yeah.
+[01:13:53] Hemal Shah: All right.
+[01:13:54] Hemal Shah: I was using Fireflies for my company, for AI Nordtaker, but but
+[01:14:00] Hemal Shah: Maybe I think for personal, I'm going to...
+[01:14:02] Patrick Chouinard: I haven't tried Firefly, so I don't know their API, but the one from Fathom works extremely well.
+[01:14:09] Hemal Shah: Okay, that's good.
+[01:14:12] Hemal Shah: Thank you very much, Patrick, again.
+[01:14:14] Hemal Shah: I really appreciate your time and insights.
+[01:14:17] Hemal Shah: No problem.
+[01:14:18] Hemal Shah: Always happy to help.
+[01:14:19] Hemal Shah: Yeah.
+[01:14:20] Hemal Shah: Have a good one, rest of your day.
+[01:14:21] Hemal Shah: Have a good day.
+[01:14:22] Hemal Shah: Bye.

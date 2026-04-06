@@ -1,0 +1,356 @@
+2026-03-24 17:42:13 From Patrick's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-03-24 18:01:17 From Patrick Chouinard to Everyone:
+	Hey @Brandon Hancock 🙂
+	
+2026-03-24 18:02:00 From Fireflies.ai Notetaker Don to Everyone:
+	Don invited Fireflies.ai here to record & take notes.  By continuing, you agree to https://fireflies.ai/privacy.
+	
+	Type:
+	'/ff pause' - pause recording
+	'/ff leave' - to stop recording
+	
+	View Realtime notes here: https://app.fireflies.ai/live/01KMGQA3PNVTW0HYDDC1VRBF93?ref=live_chat
+	
+2026-03-24 18:02:32 From Patrick Chouinard to Brandon Hancock (direct message):
+	Here is the question we got from the community this week from Don Davis : What does everyone do when implementing Stripe to make it easy? I always seem to get lost in keys the dev key then the live key then the keys for monthly and the keys for annual OMG. Looking for tips to make it easier to implement and test.
+	Brandon Hancock:❤️
+	
+2026-03-24 18:03:27 From Prem to Everyone:
+	https://www.linkedin.com/in/coleal/
+	
+2026-03-24 18:03:29 From Juan Torres to Everyone:
+	Every one has a plan until they punched in the face
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:😂
+	
+2026-03-24 18:08:56 From Juan Torres to Everyone:
+	Systems Thinking on Steroids
+	Ty Wells:👍
+	
+2026-03-24 18:13:57 From Elijah Stambaugh to Everyone:
+	https://learn.microsoft.com/en-us/azure/databricks/lakehouse/medallion
+	
+2026-03-24 18:19:01 From Patrick Chouinard to Everyone:
+	@Don Davis  Use Stripe CLI, I fell in love with it when it is controlled by Claude Code (or Codex)
+	Ty Wells, Prem:👍
+	Jake Maymar:🔥
+	
+2026-03-24 18:22:35 From David Stamper to Everyone:
+	good stripe alternatives?
+	
+2026-03-24 18:22:47 From Brandon Hancock to Everyone:
+	Replying to "good stripe alternatives?":
+	Lemon squeeze
+	
+2026-03-24 18:22:53 From Brandon Hancock to Everyone:
+	Replying to "good stripe alternatives?":
+	They take more but I’ve heard good things
+	
+2026-03-24 18:23:14 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Paypal donations is by far the best
+	
+2026-03-24 18:23:17 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	used a few bits
+	Brandon Hancock:👍
+	
+2026-03-24 18:23:34 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	and thats the best, most features and best supported
+	David Stamper:👍
+	
+2026-03-24 18:26:05 From Hemal Shah to Patrick Chouinard (direct message):
+	Hey Patrick,
+	
+	I’m planning to work on initiative to transform my department into an AI-first organization, including training and coaching team members on various AI tools and practices. I’d really value your perspective and guidance on how best to approach this.
+	
+	Would you be open to a short call sometime in the coming days or weeks to discuss?
+	
+2026-03-24 18:26:15 From Juan Torres to Everyone:
+	It got "creative"
+	
+2026-03-24 18:27:04 From David Stamper to Everyone:
+	Replying to "and thats the best, most features and best support...":
+	will look into it, thanks
+	
+2026-03-24 18:27:08 From Ty Wells to Everyone:
+	https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773274827%2FClaude+Certified+Architect+–+Foundations+Certification+Exam+Guide.pdf
+	
+2026-03-24 18:27:22 From David Stamper to Everyone:
+	Replying to "good stripe alternatives?":
+	thanks
+	
+2026-03-24 18:27:27 From Patrick Chouinard to Hemal Shah (direct message):
+	Sure just email me at chouinpa@gmail.com and we’ll setup something
+	
+2026-03-24 18:27:51 From Brandon Hancock to Everyone:
+	https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773274827%2FClaude+Certified+Architect+%E2%80%93+Foundations+Certification+Exam+Guide.pdf
+	
+2026-03-24 18:27:58 From Ty Wells to Everyone:
+	https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773274827%2FClaude+Certified+Architect+–+Foundations+Certification+Exam+Guide.pdf
+	
+2026-03-24 18:28:49 From Hemal Shah to Patrick Chouinard (direct message):
+	Many thanks.
+	Patrick Chouinard:👍
+	
+2026-03-24 18:30:39 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	part of the problem is we can't use our plans for agentic work as much now haha.  depends on the context.
+	
+2026-03-24 18:30:59 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	api is becoming more of a conversation even outside of apps
+	
+2026-03-24 18:32:00 From Ty Wells to Everyone:
+	https://anthropic-claude-architect.vercel.app/
+	Biggi Fraley:❤️
+	Jake Maymar, Prem, Don Davis:👍
+	
+2026-03-24 18:33:18 From Hemal Shah to Everyone:
+	Is this right link to register for the exam https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request  ?
+	
+2026-03-24 18:42:10 From Juan Torres to Everyone:
+	Facts
+	
+2026-03-24 18:44:09 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	mysterious
+	
+2026-03-24 18:44:55 From Tom Welsh to Everyone:
+	Mysterons
+	
+2026-03-24 18:49:47 From Patrick Chouinard to Everyone:
+	@Juan Torres and Claude Code knows Terraform very well
+	Juan Torres:🔥
+	
+2026-03-24 18:51:23 From Brandon Hancock to Everyone:
+	Screenshot 2026-03-24 at 6.51.18 PM.png
+	
+2026-03-24 18:55:44 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	hahaha brilliant lol
+	
+2026-03-24 18:56:06 From Patrick Chouinard to Everyone:
+	https://github.com/hopchouinard/ai-personality
+	
+2026-03-24 18:58:29 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	btw @Brandon Hancock i think that screenshot grabbed who had their cam on at the time.  i'm not on there.
+	
+2026-03-24 18:58:51 From Brandon Hancock to Everyone:
+	Replying to "btw @Brandon Hancock i think that screenshot grabb...":
+	Gotcha! I think you’re right after Morgan!
+	
+2026-03-24 19:02:24 From Juan Torres to Everyone:
+	When Brandon becomes a millionaire he will invite us to his yacht
+	Giphy [ID:xTiTnqUxyWbsAXq7Ju]
+	Patrick Chouinard, Jake Maymar, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:😂
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:🤣
+	
+2026-03-24 19:02:45 From Prem to Everyone:
+	can you provide link for cmucks ?? (running multiple claude code)
+	
+2026-03-24 19:02:57 From Brandon Hancock to Everyone:
+	https://cmux.com/
+	Prem:👍
+	
+2026-03-24 19:03:30 From Prem to Everyone:
+	why would all the tools available only for Mac 🙁
+	
+2026-03-24 19:03:48 From Patrick Chouinard to Everyone:
+	@Brandon Hancock if you like I create a Claude Code Plugin for cmux : https://github.com/hopchouinard/patchoutech-plugins
+	
+2026-03-24 19:04:10 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "@Brandon Hancock if you like I create a Claude Cod...":
+	of course you did lol
+	
+2026-03-24 19:04:22 From Tom Welsh to Everyone:
+	Good to see you Brandon, You need to get out more. Maybe get a haircut :P
+	Brandon Hancock, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com, Jake Maymar, Juan Torres:😂
+	
+2026-03-24 19:04:40 From Brandon Hancock to Everyone:
+	Replying to "Good to see you Brandon, You need to get out more....":
+	I’m growing out the flow!!!
+	
+2026-03-24 19:04:52 From Tom Welsh to Everyone:
+	Replying to "Good to see you Brandon, You need to get out more....":
+	lol
+	
+2026-03-24 19:05:08 From Juan Torres to Everyone:
+	Replying to "Good to see you Brandon, You need to get out more....":
+	We need to call Fashion Police
+	Brandon Hancock:😂
+	
+2026-03-24 19:06:00 From Brandon Hancock to Everyone:
+	Replying to "Good to see you Brandon, You need to get out more....":
+	My hair cut lady wanted to try something different so I’m letting her do her thing! 
+	
+	Who knows! Next time I might have a mohawk lol
+	Juan Torres:😂
+	
+2026-03-24 19:06:10 From Patrick Chouinard to Everyone:
+	https://github.com/hopchouinard/ai-personality
+	Biggi Fraley:👍
+	
+2026-03-24 19:06:13 From Tom Welsh to Everyone:
+	sorry. I have to drop. good to see everyone
+	Brandon Hancock, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com, Juan Torres, Biggi Fraley:❤️
+	
+2026-03-24 19:11:32 From Juan Torres to Everyone:
+	Better than a DUI
+	Brandon Hancock:❤️
+	Brandon Hancock, Jake Maymar, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:😂
+	
+2026-03-24 19:12:01 From Juan Torres to Everyone:
+	DUAI
+	Brandon Hancock:➕
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:🤣
+	
+2026-03-24 19:19:43 From Hemal Shah to Patrick Chouinard (direct message):
+	Do you use Cowork on main MacBook or Mac mini ?
+	
+2026-03-24 19:21:18 From Brandon Hancock to Everyone:
+	https://a.co/d/0c9ni2OH
+	
+2026-03-24 19:21:24 From Brandon Hancock to Everyone:
+	Accelerando
+	
+2026-03-24 19:21:54 From Jake Maymar to Everyone:
+	https://sessionbuddy.com/
+	
+2026-03-24 19:22:44 From Elena to Everyone:
+	is it happy ending?
+	
+2026-03-24 19:23:12 From Biggi Fraley to Everyone:
+	Replying to "https://sessionbuddy.com/":
+	I am sure I hold the world record in open tabs. 31 Windows, 2719 tabs. That was last year in May. 😂
+	Juan Torres, Brandon Hancock, Elena, Jake Maymar:😂
+	
+2026-03-24 19:23:27 From Juan Torres to Everyone:
+	Replying to "https://sessionbuddy.com/":
+	That's insane
+	
+2026-03-24 19:23:59 From Biggi Fraley to Everyone:
+	Replying to "https://sessionbuddy.com/":
+	Hey, as long as it doesn't mean I am insane. He he.
+	
+2026-03-24 19:24:12 From Ty Wells to Everyone:
+	I don’t go below 70%
+	Patrick Chouinard:❤️
+	Jake Maymar:👍
+	
+2026-03-24 19:24:33 From Biggi Fraley to Everyone:
+	Replying to "https://sessionbuddy.com/":
+	Oh, and did I mention my Gmail record? Over 2 million unread emails.
+	
+2026-03-24 19:24:51 From Biggi Fraley to Everyone:
+	Replying to "https://sessionbuddy.com/":
+	Maybe I am the digital version of a hoarder???
+	
+2026-03-24 19:26:33 From Patrick Chouinard to Everyone:
+	@Morgan Cook Trying to get some life out of cemetery employees is a tall task. 😉
+	Juan Torres, Biggi Fraley, Prem, Jake Maymar:😂
+	
+2026-03-24 19:28:09 From Patrick Chouinard to Everyone:
+	They are not used to deal with people as lively as you Morgan.
+	Jake Maymar:😂
+	
+2026-03-24 19:29:41 From Biggi Fraley to Everyone:
+	What happens to the bodies when a Cemetery is forced out of business due to lawsuits?
+	
+2026-03-24 19:30:44 From Patrick Chouinard to Everyone:
+	Replying to "What happens to the bodies when a Cemetery is forc...":
+	They get sued into the ground.
+	Biggi Fraley:😂
+	
+2026-03-24 19:31:51 From Biggi Fraley to Everyone:
+	Replying to "What happens to the bodies when a Cemetery is forc...":
+	Hey wait, are you using your AI personality, Patrick?
+	
+2026-03-24 19:32:41 From Patrick Chouinard to Everyone:
+	Replying to "What happens to the bodies when a Cemetery is forc...":
+	Yes, but not right now
+	
+2026-03-24 19:34:32 From Patrick Chouinard to Hemal Shah (direct message):
+	I do not have a MacBook, just a M4 Mac mini and yes I use Cowork on it.
+	Hemal Shah:👍
+	
+2026-03-24 19:37:18 From Prem to Everyone:
+	does plaud work standalone or does it come with monthly subscription ?
+	
+2026-03-24 19:47:13 From Patrick Chouinard to Everyone:
+	https://opclwsec.patchoutech.com/
+	Juan Torres:🔥
+	
+2026-03-24 19:50:33 From Patrick Chouinard to Everyone:
+	Another one of the secure one https://github.com/NVIDIA/NemoClaw.git
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:❤️
+	
+2026-03-24 19:53:50 From Prem to Everyone:
+	I have to drop.  Good to see everyone. Great session as usual.
+	Biggi Fraley, Patrick Chouinard:👋
+	
+2026-03-24 19:55:05 From Juan Torres to Everyone:
+	add me! juan@staticaflux.ai
+	
+2026-03-24 19:55:21 From Jake Maymar to Everyone:
+	add me @Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com     jakemaymar@gmail.com
+	
+2026-03-24 19:55:22 From Morgan Cook to Everyone:
+	add me too! mdcatc@gmail.com
+	
+2026-03-24 19:55:28 From Hemal Shah to Everyone:
+	Please add me - techslearner@gmail.com
+	
+2026-03-24 19:58:33 From Ty Wells to Everyone:
+	Patrick-Orchestration is a real thing
+	Juan Torres, Patrick Chouinard, Elijah Stambaugh:😂
+	
+2026-03-24 19:59:41 From Juan Torres to Everyone:
+	Replying to "Patrick-Orchestration is a real thing":
+	Patrick-2.5
+	Patrick Chouinard, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:😂
+	
+2026-03-24 19:59:56 From Elijah Stambaugh to Everyone:
+	Please add me elijah4j@gmail.com
+	
+2026-03-24 20:00:17 From Juan Torres to Everyone:
+	Gotta go folks!
+	
+2026-03-24 20:00:38 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "add me @Scott Rippey | @scottmichaelmedia | scottm...":
+	added!
+	
+2026-03-24 20:00:58 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "add me! juan@staticaflux.ai":
+	added!
+	
+2026-03-24 20:01:24 From Jake Maymar to Everyone:
+	great call - got jump!
+	Patrick Chouinard:👋
+	
+2026-03-24 20:01:26 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "add me too! mdcatc@gmail.com":
+	added!
+	
+2026-03-24 20:01:52 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "Please add me - techslearner@gmail.com":
+	Added!
+	Hemal Shah:👍
+	
+2026-03-24 20:02:01 From Ty Wells to Everyone:
+	3buckets.ai
+	Patrick Chouinard:❤️
+	
+2026-03-24 20:02:24 From Ty Wells to Everyone:
+	That is how to bring them into the fold
+	
+2026-03-24 20:02:27 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "Please add me elijah4j@gmail.com":
+	added!
+	
+2026-03-24 20:02:44 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	if anyone doesn't get it that asked, hit me up at scott@poweryourprocess.ai
+	
+2026-03-24 20:05:27 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	@Brandon Hancock what email do you want me to add to the news app
+	
+2026-03-24 20:15:20 From Biggi Fraley to Everyone:
+	Always great seeing you, Brandon! Thank you.
+	

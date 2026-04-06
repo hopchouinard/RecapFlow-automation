@@ -4,20 +4,11 @@
   "nodes": [
     {
       "id": "b1000000-0000-4000-8000-000000000001",
-      "name": "Schedule Trigger",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
       "position": [0, 300],
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "minutes",
-              "minutesInterval": 15
-            }
-          ]
-        }
-      }
+      "parameters": {}
     },
     {
       "id": "b1000000-0000-4000-8000-000000000002",
@@ -131,7 +122,7 @@
       "typeVersion": 1.2,
       "position": [1750, 200],
       "parameters": {
-        "source": "parameter",
+        "source": "database",
         "workflowId": "5",
         "options": {}
       }
@@ -148,7 +139,7 @@
     }
   ],
   "connections": {
-    "Schedule Trigger": {
+    "Manual Trigger": {
       "main": [
         [
           {

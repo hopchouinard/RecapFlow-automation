@@ -4,21 +4,11 @@
   "nodes": [
     {
       "id": "e1000000-0000-4000-8000-000000000001",
-      "name": "Local File Trigger",
-      "type": "n8n-nodes-base.localFileTrigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [0, 300],
-      "parameters": {
-        "triggerOn": "folder",
-        "path": "/home/node/watch",
-        "events": ["add"],
-        "options": {
-          "usePolling": true,
-          "awaitWriteFinish": true,
-          "depth": 0,
-          "ignoreInitial": true
-        }
-      }
+      "parameters": {}
     },
     {
       "id": "e1000000-0000-4000-8000-000000000002",
@@ -27,7 +17,7 @@
       "typeVersion": 2,
       "position": [250, 300],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst path = require('path');\n\nconst filePath = $json.path;\nconst filename = path.basename(filePath);\n\n// Must be .txt and match expected patterns\nif (!filename.endsWith('.txt')) return [];\n\nconst dateMatch = filename.match(/^(\\d{4}-\\d{2}-\\d{2})/);\nif (!dateMatch) return [];\n\nconst datePrefix = dateMatch[1];\nconst watchDir = '/home/node/watch';\n\n// Determine what type of file arrived and check for partner\nlet fileType;\nlet partnerFile;\nif (filename.includes('-zoom-chat')) {\n  fileType = 'chat';\n  partnerFile = `${watchDir}/${datePrefix}-transcript.txt`;\n} else if (filename.includes('-transcript')) {\n  fileType = 'transcript';\n  partnerFile = `${watchDir}/${datePrefix}-zoom-chat.txt`;\n} else {\n  return []; // Unknown file type\n}\n\nconst bothPresent = fs.existsSync(partnerFile);\n\nif (!bothPresent) {\n  // Partner not here yet — stop and wait\n  return [];\n}\n\n// Both files present — read them\nconst chatFile = fileType === 'chat' ? filePath : `${watchDir}/${datePrefix}-zoom-chat.txt`;\nconst transcriptFile = fileType === 'transcript' ? filePath : `${watchDir}/${datePrefix}-transcript.txt`;\n\nconst chatText = fs.readFileSync(chatFile, 'utf8');\nconst transcriptText = fs.readFileSync(transcriptFile, 'utf8');\n\nreturn {\n  json: {\n    datePrefix,\n    chatText,\n    transcriptText,\n    chatFile,\n    transcriptFile\n  }\n};"
+        "jsCode": "const fs = require('fs');\nconst watchDir = '/home/node/watch';\n\n// Find all date prefixes that have both a chat and transcript file\nconst files = fs.readdirSync(watchDir);\nconst dateMap = {};\nfor (const f of files) {\n  const m = f.match(/^(\\d{4}-\\d{2}-\\d{2})/);\n  if (!m) continue;\n  const date = m[1];\n  if (!dateMap[date]) dateMap[date] = {};\n  if (f.includes('-zoom-chat') && f.endsWith('.txt')) dateMap[date].chat = f;\n  if (f.includes('-transcript') && f.endsWith('.txt')) dateMap[date].transcript = f;\n}\n\n// Pick the most recent date that has both files\nconst complete = Object.entries(dateMap)\n  .filter(([, v]) => v.chat && v.transcript)\n  .sort(([a], [b]) => b.localeCompare(a));\n\nif (complete.length === 0) {\n  throw new Error('No complete file pairs found in watch directory (need both YYYY-MM-DD-zoom-chat.txt and YYYY-MM-DD-transcript.txt)');\n}\n\nconst [datePrefix, { chat, transcript }] = complete[0];\nconst chatFile = `${watchDir}/${chat}`;\nconst transcriptFile = `${watchDir}/${transcript}`;\n\nconst chatText = fs.readFileSync(chatFile, 'utf8');\nconst transcriptText = fs.readFileSync(transcriptFile, 'utf8');\n\nreturn {\n  json: {\n    datePrefix,\n    chatText,\n    transcriptText,\n    chatFile,\n    transcriptFile\n  }\n};"
       }
     },
     {
@@ -124,7 +114,7 @@
           "messageValues": [
             {
               "type": "SystemMessagePromptTemplate",
-              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nUse the following structure:\n\n📝 SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n💡 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n❓ KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n🛠️ TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n📎 SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n🔄 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\nRules:\n- Output PLAIN TEXT only — no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
+              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nCRITICAL: You MUST output sections in EXACTLY this order — do not rearrange them:\n\n1. 📝 SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n2. 💡 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n3. ❓ KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n5. 📎 SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\nRules:\n- Output PLAIN TEXT only — no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Output sections in the numbered order above — never reorder them\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
             }
           ]
         }
@@ -174,7 +164,7 @@
           "messageValues": [
             {
               "type": "SystemMessagePromptTemplate",
-              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
+              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nCRITICAL: You MUST preserve the section order EXACTLY as it appears in the input — do not rearrange sections:\n1. 📝 SUMMARY\n2. 💡 KEY INSIGHTS\n3. ❓ KEY Q&A\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\n5. 📎 SHARED RESOURCES\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n- preserve the section order listed above\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
             }
           ]
         }
@@ -272,7 +262,7 @@
     }
   ],
   "connections": {
-    "Local File Trigger": {
+    "Manual Trigger": {
       "main": [
         [
           {
