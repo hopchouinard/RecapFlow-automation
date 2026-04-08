@@ -1,0 +1,86 @@
+2026-04-07 17:48:49 From Patrick's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-04-07 18:00:04 From Dudley's Notetaker (Otter.ai) to Patrick Chouinard (direct message):
+	Hey Patrick Chouinard, want to skip having to click 'allow recording' for every meeting? Connect Zoom to your Otter account: https://zoom.us/oauth/authorize?client_id=ULKDU8_8TLySSz8ZMyO9WQ&redirect_uri=https%3A%2F%2Fotter.ai%2Fsetting%2Fconnected_apps%3Fsource%3Dzoom&response_type=code&state=dXRtX3NvdXJjZT16b29tX2hvc3RfdXNlcg==
+	
+2026-04-07 18:00:10 From Dudley's MeetGeek Notetaker to Everyone:
+	I’m recording this meeting with MeetGeek.ai for note taking purposes.
+	
+2026-04-07 18:00:12 From Dudley's Loom Notetaker to Everyone:
+	This meeting is being recorded by Dudley Peacock using Loom AI. Loom will transcribe and store this meeting recording and send a meeting recap to all invitees.
+	
+	Use chat commands /stop, /pause, or /resume to manage the meeting recording, and /icebreaker or /lastrecap to kickstart your meeting.
+	Try /actions to see all available commands.
+	
+2026-04-07 18:02:00 From Fireflies.ai Notetaker Georget to Everyone:
+	Georgeta invited Fireflies.ai here to record & take notes.  By continuing, you agree to https://fireflies.ai/privacy.
+	
+	Type:
+	'/ff pause' - pause recording
+	'/ff leave' - to stop recording
+	
+	View Realtime notes here: https://app.fireflies.ai/live/01KNJ7A55H4J0871NAJ6GYPK1T?ref=live_chat
+	
+2026-04-07 18:03:36 From Patrick Chouinard to Paul Miller (direct message):
+	We have Eric Li who is present who asked for time to show his SQL AI App in the comment section of this week Skool invite.
+	
+2026-04-07 18:05:07 From Paul Miller to Everyone:
+	Screenshot2026_04_08_100502.jpg
+	
+2026-04-07 18:22:24 From Elijah Stambaugh's Sembly Agent to Everyone:
+	Hi, this is Elijah Stambaugh's Sembly Agent. This meeting is being recorded.
+	
+2026-04-07 18:30:33 From Elena to Everyone:
+	https://www.f6s.com/
+	
+2026-04-07 18:31:03 From Elena to Everyone:
+	funding and cloud discounts available ^^^
+	Biggi Fraley, Juan Torres:❤️
+	
+2026-04-07 18:42:20 From Patrick Chouinard to Everyone:
+	https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+	Biggi Fraley:👍
+	
+2026-04-07 18:48:16 From Patrick Chouinard to Everyone:
+	https://lab.patchoutech.com/
+	Ryan C (One Stop Creative Agency - UK):🙂
+	
+2026-04-07 18:49:04 From Patrick Chouinard to Everyone:
+	https://onestopcreativeagency.co.uk/
+	Ryan C (One Stop Creative Agency - UK):🥰
+	
+2026-04-07 18:59:19 From Elena to Everyone:
+	this one? 
+	https://github.com/Gitlawb/openclaude
+	Patrick Chouinard, Biggi Fraley:👍
+	
+2026-04-07 19:00:06 From Patrick Chouinard to Everyone:
+	Replying to "this one?  https://github.com/Gitlawb/openclaude":
+	Not sure let me check
+	Elena:🙌
+	
+2026-04-07 19:01:49 From Patrick Chouinard to Everyone:
+	Replying to "this one?  https://github.com/Gitlawb/openclaude":
+	My mistake the one I was taking about was claw-code https://github.com/ultraworkers/claw-code
+	Jake Maymar:🔥
+	Elena:🙌
+	
+2026-04-07 19:07:30 From Paul Miller to Everyone:
+	Replying to "this one?  https://github.com/Gitlawb/openclaude":
+	https://youtu.be/VFYnD1WREdU?si=F51POhFXfXlYeqiR
+	Elena:🙌
+	
+2026-04-07 19:08:21 From Paul Miller to Everyone:
+	Replying to "this one?  https://github.com/Gitlawb/openclaude":
+	Screenshot2026_04_08_110817.jpg
+	
+2026-04-07 19:17:21 From Patrick Chouinard to Everyone:
+	https://github.com/openai/codex-plugin-cc
+	
+2026-04-07 19:30:15 From Elena to Everyone:
+	certanly we need to revise collaboration too - great idea!
+	Paul Miller:👍
+	
