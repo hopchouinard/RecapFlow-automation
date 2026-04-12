@@ -1,4 +1,4 @@
-Last week Patrick dropped a number that made everyone do a double-take: $5,000/month in API value from a $120/month setup. If you missed the breakdown — or you're still thinking about it — you're not alone.
+Last week Patrick dropped a number that made everyone do a double-take: $5,000/month in API value from a $200/month setup. If you missed the breakdown — or you're still thinking about it — you're not alone.
 
 📞 HOW THE CALLS WORK
 The calls can run 2+ hours.
