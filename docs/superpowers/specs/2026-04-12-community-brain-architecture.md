@@ -1,9 +1,12 @@
-# Community Brain — Implementation Design Spec
+# Community Brain — Master Architecture Document
 
 **Date:** 2026-04-12
 **Status:** Approved
 **Approach:** Python-First (Approach A)
 **License:** MIT
+
+> This is the master architecture document covering overall vision, structure, and decisions.
+> Each sub-project has its own detailed spec in this directory.
 
 ---
 
