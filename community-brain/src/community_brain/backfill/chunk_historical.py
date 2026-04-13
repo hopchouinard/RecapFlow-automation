@@ -1,0 +1,225 @@
+"""Chunk historical Fathom transcripts into distribution-ready formats.
+
+Usage:
+    python -m community_brain.backfill.chunk_historical
+    python -m community_brain.backfill.chunk_historical --date 2024-03-15
+    python -m community_brain.backfill.chunk_historical --dry-run
+"""
+
+from __future__ import annotations
+
+import json
+import logging
+import re
+from datetime import date
+from pathlib import Path
+
+import click
+from tqdm import tqdm
+
+from community_brain.chunk_utils import (
+    chunk_transcript,
+    chunks_to_jsonl,
+    chunks_to_markdown,
+    normalize_speaker,
+    parse_transcript,
+)
+
+logger = logging.getLogger(__name__)
+
+TIER_1_CUTOFF = "2026-03-10"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+
+
+def _load_aliases(config_dir: Path) -> dict[str, str]:
+    """Load speaker aliases from config."""
+    aliases_path = config_dir / "speaker-aliases.json"
+    if aliases_path.exists():
+        return json.loads(aliases_path.read_text())
+    return {}
+
+
+def _extract_date(filename: str) -> str | None:
+    """Extract YYYY-MM-DD from a filename."""
+    match = re.match(r"(\d{4}-\d{2}-\d{2})", filename)
+    return match.group(1) if match else None
+
+
+def _extract_title(filename: str) -> str:
+    """Extract title from filename like 2024-03-15-weekly-coaching-call.txt."""
+    name = Path(filename).stem
+    title_slug = re.sub(r"^\d{4}-\d{2}-\d{2}-?", "", name)
+    if not title_slug:
+        return "Coaching Call"
+    return title_slug.replace("-", " ").title()
+
+
+def chunk_single_session(
+    transcript_path: Path,
+    chunks_dir: Path,
+    raw_chunks_path: Path,
+    aliases: dict[str, str] | None = None,
+    force: bool = False,
+) -> dict | None:
+    """Chunk a single transcript file. Returns session metadata or None if skipped."""
+    session_date = _extract_date(transcript_path.name)
+    if not session_date:
+        logger.warning("Cannot extract date from %s, skipping", transcript_path.name)
+        return None
+
+    session_title = _extract_title(transcript_path.name)
+
+    output_file = chunks_dir / f"session-{session_date}.md"
+    if output_file.exists() and not force:
+        logger.info("Skipped %s — already exists", session_date)
+        return None
+
+    text = transcript_path.read_text(encoding="utf-8")
+    turns = parse_transcript(text)
+    if not turns:
+        logger.warning("No parseable turns in %s, skipping", transcript_path.name)
+        return None
+
+    if aliases:
+        for turn in turns:
+            turn.speaker = normalize_speaker(turn.speaker, aliases)
+
+    chunks = chunk_transcript(
+        turns,
+        session_date=session_date,
+        session_title=session_title,
+        content_tier="historical",
+        source="fathom_transcript",
+    )
+
+    if not chunks:
+        logger.warning("No chunks produced for %s", session_date)
+        return None
+
+    chunks_dir.mkdir(parents=True, exist_ok=True)
+    md_content = chunks_to_markdown(chunks, session_date, session_title)
+    output_file.write_text(md_content, encoding="utf-8")
+
+    raw_chunks_path.parent.mkdir(parents=True, exist_ok=True)
+    jsonl_content = chunks_to_jsonl(chunks)
+    with open(raw_chunks_path, "a", encoding="utf-8") as f:
+        f.write(jsonl_content)
+
+    all_speakers = sorted(set(
+        speaker
+        for chunk in chunks
+        for speaker in chunk.speakers_in_chunk
+    ))
+
+    return {
+        "date": session_date,
+        "title": session_title,
+        "content_tier": "historical",
+        "chunk_count": len(chunks),
+        "speakers": all_speakers,
+        "duration_minutes": None,
+    }
+
+
+def generate_manifest(sessions: list[dict], manifest_path: Path) -> None:
+    """Generate manifest.json from a list of session metadata dicts."""
+    sessions_sorted = sorted(sessions, key=lambda s: s["date"])
+    total_chunks = sum(s["chunk_count"] for s in sessions_sorted)
+
+    manifest = {
+        "version": "1.0.0",
+        "last_updated": date.today().isoformat(),
+        "total_sessions": len(sessions_sorted),
+        "total_chunks": total_chunks,
+        "tier_1_cutoff": TIER_1_CUTOFF,
+        "sessions": sessions_sorted,
+    }
+
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
+@click.command()
+@click.option("--date", "target_date", default=None, help="Chunk a specific session (YYYY-MM-DD)")
+@click.option("--dry-run", is_flag=True, help="Show chunk counts without writing files")
+@click.option("--force", is_flag=True, help="Re-chunk even if output already exists")
+def main(target_date: str | None, dry_run: bool, force: bool) -> None:
+    """Chunk historical transcripts into markdown and JSONL."""
+    raw_dir = PROJECT_ROOT / "raw-transcripts"
+    chunks_dir = PROJECT_ROOT / "chunks" / "historical"
+    raw_chunks_path = PROJECT_ROOT / "raw-chunks" / "all-chunks.jsonl"
+    manifest_path = PROJECT_ROOT / "chunks" / "manifest.json"
+    config_dir = PROJECT_ROOT / "config"
+
+    if not raw_dir.exists():
+        raise click.ClickException(f"No raw-transcripts directory found at {raw_dir}")
+
+    aliases = _load_aliases(config_dir)
+
+    transcript_files = sorted(raw_dir.glob("*.txt"))
+    if target_date:
+        transcript_files = [f for f in transcript_files if f.name.startswith(target_date)]
+
+    tier1_files = []
+    for f in transcript_files:
+        file_date = _extract_date(f.name)
+        if file_date and file_date < TIER_1_CUTOFF:
+            tier1_files.append(f)
+
+    if not tier1_files:
+        click.echo("No Tier 1 transcripts found.")
+        return
+
+    if dry_run:
+        click.echo(f"Found {len(tier1_files)} Tier 1 transcripts:")
+        for f in tier1_files:
+            text = f.read_text(encoding="utf-8")
+            turns = parse_transcript(text)
+            click.echo(f"  {f.name}: {len(turns)} turns")
+        return
+
+    if force and raw_chunks_path.exists():
+        raw_chunks_path.unlink()
+
+    sessions = []
+    for f in tqdm(tier1_files, desc="Chunking transcripts"):
+        result = chunk_single_session(
+            transcript_path=f,
+            chunks_dir=chunks_dir,
+            raw_chunks_path=raw_chunks_path,
+            aliases=aliases,
+            force=force,
+        )
+        if result:
+            sessions.append(result)
+
+    all_sessions = list(sessions)
+    for md_file in sorted(chunks_dir.glob("session-*.md")):
+        file_date = _extract_date(md_file.name.replace("session-", ""))
+        if file_date and not any(s["date"] == file_date for s in all_sessions):
+            content = md_file.read_text(encoding="utf-8")
+            chunk_count = content.count("### Chunk ")
+            all_sessions.append({
+                "date": file_date,
+                "title": "Coaching Call",
+                "content_tier": "historical",
+                "chunk_count": chunk_count,
+                "speakers": [],
+                "duration_minutes": None,
+            })
+
+    generate_manifest(all_sessions, manifest_path)
+
+    click.echo(
+        f"\nDone. Chunked {len(sessions)} sessions → "
+        f"{sum(s['chunk_count'] for s in sessions)} chunks. "
+        f"Manifest updated with {len(all_sessions)} total sessions."
+    )
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    main()
