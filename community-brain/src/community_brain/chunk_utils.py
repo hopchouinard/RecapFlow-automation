@@ -10,6 +10,8 @@ import logging
 import re
 from dataclasses import dataclass
 
+import tiktoken
+
 logger = logging.getLogger(__name__)
 
 TRANSCRIPT_LINE_RE = re.compile(
@@ -56,3 +58,11 @@ def normalize_speaker(
     if aliases and name in aliases:
         return aliases[name]
     return name
+
+
+_ENCODING = tiktoken.get_encoding("cl100k_base")
+
+
+def count_tokens(text: str) -> int:
+    """Count tokens using cl100k_base encoding (standard for modern embedding models)."""
+    return len(_ENCODING.encode(text))

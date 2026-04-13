@@ -64,3 +64,27 @@ class TestNormalizeSpeaker:
     def test_no_match_returns_original(self):
         aliases = {"Patchou": "Patrick Chouinard"}
         assert normalize_speaker("Alice Chen", aliases) == "Alice Chen"
+
+
+from community_brain.chunk_utils import count_tokens
+
+
+class TestCountTokens:
+    def test_nonempty(self):
+        count = count_tokens("Hello, world!")
+        assert count > 0
+
+    def test_empty(self):
+        assert count_tokens("") == 0
+
+    def test_reasonable_range(self):
+        # "The quick brown fox jumps over the lazy dog" is ~9-10 tokens
+        text = "The quick brown fox jumps over the lazy dog"
+        count = count_tokens(text)
+        assert 8 <= count <= 12
+
+    def test_longer_text(self):
+        # ~500 token text should count in that range
+        text = "This is a test sentence. " * 50  # ~350-400 tokens
+        count = count_tokens(text)
+        assert 200 <= count <= 500
