@@ -201,12 +201,52 @@ def chunks_to_jsonl(chunks: list[Chunk]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def chunk_to_markdown(chunk: Chunk) -> str:
+    """Produce a self-contained markdown file for a single chunk.
+
+    Each chunk becomes its own file so Open WebUI embeds it as a single unit,
+    preserving topic boundaries and summaries.
+    """
+    speakers_yaml = json.dumps(chunk.speakers_in_chunk)
+    frontmatter = (
+        f"---\n"
+        f'session_date: "{chunk.session_date}"\n'
+        f'session_title: "{chunk.session_title}"\n'
+        f'content_tier: "{chunk.content_tier}"\n'
+        f'topic: "{chunk.topic}"\n'
+        f"speakers: {speakers_yaml}\n"
+        f"chunk_id: \"{chunk.chunk_id}\"\n"
+        f"---\n"
+    )
+
+    # Strip the session header from chunk text (it's redundant with frontmatter)
+    text = chunk.text
+    header_prefix = f"## Session: {chunk.session_title} | Date: {chunk.session_date}\n\n"
+    if text.startswith(header_prefix):
+        text = text[len(header_prefix):]
+
+    # Build header
+    if chunk.topic:
+        header = f"# {chunk.topic}"
+    else:
+        header = f"# Chunk {chunk.chunk_position}"
+
+    header += f"\n\n**Session:** {chunk.session_title} | **Date:** {chunk.session_date}"
+
+    summary_line = f"\n\n**Summary:** {chunk.summary}" if chunk.summary else ""
+
+    return f"{frontmatter}\n{header}{summary_line}\n\n{text}\n"
+
+
 def chunks_to_markdown(
     chunks: list[Chunk],
     session_date: str,
     session_title: str,
 ) -> str:
-    """Produce a markdown file with YAML frontmatter and chunks separated by ---."""
+    """Produce a single markdown file with all chunks (legacy format).
+
+    For Open WebUI, prefer chunk_to_markdown() which produces one file per chunk.
+    """
     if not chunks:
         return ""
 
@@ -231,16 +271,13 @@ def chunks_to_markdown(
     sections = []
     total = len(chunks)
     for chunk in chunks:
-        # Strip the session header from chunk text
         text_without_header = chunk.text
         header_prefix = f"## Session: {session_title} | Date: {session_date}\n\n"
         if text_without_header.startswith(header_prefix):
             text_without_header = text_without_header[len(header_prefix):]
 
-        # Build section header with topic and summary if present
         if chunk.topic:
             section_header = f"### Topic: {chunk.topic}"
-            # Add sub-chunk indicator if this topic was split
             sub_chunks_for_topic = [c for c in chunks if c.topic == chunk.topic]
             if len(sub_chunks_for_topic) > 1:
                 idx = sub_chunks_for_topic.index(chunk) + 1

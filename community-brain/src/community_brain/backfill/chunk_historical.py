@@ -19,6 +19,7 @@ from tqdm import tqdm
 
 from community_brain.chunk_utils import (
     _format_turn,
+    chunk_to_markdown,
     chunk_transcript,
     chunks_to_jsonl,
     chunks_to_markdown,
@@ -80,8 +81,8 @@ def chunk_single_session(
 
     session_title = _extract_title(transcript_path.name)
 
-    output_file = chunks_dir / f"session-{session_date}.md"
-    if output_file.exists() and not force:
+    session_chunk_dir = chunks_dir / session_date
+    if session_chunk_dir.exists() and not force:
         logger.info("Skipped %s — already exists", session_date)
         return None
 
@@ -126,9 +127,15 @@ def chunk_single_session(
         logger.warning("No chunks produced for %s", session_date)
         return None
 
-    chunks_dir.mkdir(parents=True, exist_ok=True)
-    md_content = chunks_to_markdown(chunks, session_date, session_title)
-    output_file.write_text(md_content, encoding="utf-8")
+    # Write individual markdown files (one per chunk) for Open WebUI
+    session_chunk_dir = chunks_dir / session_date
+    session_chunk_dir.mkdir(parents=True, exist_ok=True)
+    for chunk in chunks:
+        # Slugify topic for filename
+        topic_slug = re.sub(r"[^a-z0-9]+", "-", chunk.topic.lower()).strip("-") if chunk.topic else "chunk"
+        filename = f"{chunk.chunk_id}-{topic_slug}.md"
+        md_content = chunk_to_markdown(chunk)
+        (session_chunk_dir / filename).write_text(md_content, encoding="utf-8")
 
     raw_chunks_path.parent.mkdir(parents=True, exist_ok=True)
     jsonl_content = chunks_to_jsonl(chunks)
@@ -212,8 +219,17 @@ def main(target_date: str | None, dry_run: bool, force: bool, no_llm: bool) -> N
             click.echo(f"  {f.name}: {len(turns)} turns")
         return
 
-    if force and raw_chunks_path.exists():
-        raw_chunks_path.unlink()
+    if force:
+        if raw_chunks_path.exists():
+            raw_chunks_path.unlink()
+        # Clean up old session directories
+        import shutil
+        for session_dir in chunks_dir.iterdir():
+            if session_dir.is_dir() and _extract_date(session_dir.name):
+                shutil.rmtree(session_dir)
+        # Clean up old single-file format
+        for old_file in chunks_dir.glob("session-*.md"):
+            old_file.unlink()
 
     sessions = []
     for f in tqdm(tier1_files, desc="Chunking transcripts"):
@@ -229,19 +245,20 @@ def main(target_date: str | None, dry_run: bool, force: bool, no_llm: bool) -> N
             sessions.append(result)
 
     all_sessions = list(sessions)
-    for md_file in sorted(chunks_dir.glob("session-*.md")):
-        file_date = _extract_date(md_file.name.replace("session-", ""))
-        if file_date and not any(s["date"] == file_date for s in all_sessions):
-            content = md_file.read_text(encoding="utf-8")
-            chunk_count = content.count("### Chunk ")
-            all_sessions.append({
-                "date": file_date,
-                "title": "Coaching Call",
-                "content_tier": "historical",
-                "chunk_count": chunk_count,
-                "speakers": [],
-                "duration_minutes": None,
-            })
+    # Scan for existing session directories from previous runs
+    for session_dir in sorted(chunks_dir.iterdir()):
+        if session_dir.is_dir() and _extract_date(session_dir.name):
+            file_date = session_dir.name
+            if not any(s["date"] == file_date for s in all_sessions):
+                chunk_count = len(list(session_dir.glob("*.md")))
+                all_sessions.append({
+                    "date": file_date,
+                    "title": "Coaching Call",
+                    "content_tier": "historical",
+                    "chunk_count": chunk_count,
+                    "speakers": [],
+                    "duration_minutes": None,
+                })
 
     generate_manifest(all_sessions, manifest_path)
 

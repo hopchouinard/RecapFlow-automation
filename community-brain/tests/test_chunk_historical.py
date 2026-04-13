@@ -38,9 +38,12 @@ class TestChunkHistorical:
         assert result["chunk_count"] > 0
         assert len(result["speakers"]) > 0
 
-        md_file = chunks_dir / "session-2025-01-15.md"
-        assert md_file.exists()
-        content = md_file.read_text()
+        # Check individual chunk files
+        session_dir = chunks_dir / "2025-01-15"
+        assert session_dir.exists()
+        md_files = list(session_dir.glob("*.md"))
+        assert len(md_files) == result["chunk_count"]
+        content = md_files[0].read_text()
         assert "---" in content
         assert "session_date:" in content
 
@@ -97,10 +100,16 @@ class TestChunkHistorical:
         assert result["date"] == "2025-01-15"
         assert result["chunk_count"] >= 3
 
-        md_file = chunks_dir / "session-2025-01-15.md"
-        assert md_file.exists()
-        content = md_file.read_text()
-        assert "### Topic: Vector Store Comparison" in content
+        # Check individual chunk files
+        session_dir = chunks_dir / "2025-01-15"
+        assert session_dir.exists()
+        md_files = list(session_dir.glob("*.md"))
+        assert len(md_files) >= 3
+        # Find a file with "vector-store" in the name
+        vector_files = [f for f in md_files if "vector-store" in f.name]
+        assert len(vector_files) > 0, f"No vector-store chunk found in {[f.name for f in md_files]}"
+        content = vector_files[0].read_text()
+        assert "Vector Store Comparison" in content
         assert "**Summary:**" in content
 
         jsonl_file = raw_chunks_dir / "all-chunks.jsonl"
@@ -115,7 +124,8 @@ class TestChunkHistorical:
         raw_chunks_dir = tmp_path / "raw-chunks"
         raw_chunks_dir.mkdir()
 
-        (chunks_dir / "session-2025-01-15.md").write_text("already exists")
+        # Create existing session directory
+        (chunks_dir / "2025-01-15").mkdir(parents=True)
 
         transcript_file = tmp_path / "raw-transcripts" / "2025-01-15-test.txt"
         transcript_file.parent.mkdir(parents=True)
