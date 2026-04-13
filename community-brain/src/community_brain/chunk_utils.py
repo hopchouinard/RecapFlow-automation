@@ -81,6 +81,8 @@ class Chunk:
     content_tier: str
     content_type: str
     source: str
+    topic: str
+    summary: str
     text: str
 
 
@@ -130,6 +132,8 @@ def chunk_transcript(
             content_tier=content_tier,
             content_type=content_type,
             source=source,
+            topic="",
+            summary="",
             text=text,
         ))
 
@@ -227,12 +231,26 @@ def chunks_to_markdown(
     sections = []
     total = len(chunks)
     for chunk in chunks:
+        # Strip the session header from chunk text
         text_without_header = chunk.text
         header_prefix = f"## Session: {session_title} | Date: {session_date}\n\n"
         if text_without_header.startswith(header_prefix):
             text_without_header = text_without_header[len(header_prefix):]
 
-        section = f"### Chunk {chunk.chunk_position} of {total}\n\n{text_without_header}"
+        # Build section header with topic and summary if present
+        if chunk.topic:
+            section_header = f"### Topic: {chunk.topic}"
+            # Add sub-chunk indicator if this topic was split
+            sub_chunks_for_topic = [c for c in chunks if c.topic == chunk.topic]
+            if len(sub_chunks_for_topic) > 1:
+                idx = sub_chunks_for_topic.index(chunk) + 1
+                section_header += f" ({idx} of {len(sub_chunks_for_topic)})"
+        else:
+            section_header = f"### Chunk {chunk.chunk_position} of {total}"
+
+        summary_line = f"\n\n**Summary:** {chunk.summary}" if chunk.summary else ""
+
+        section = f"{section_header}{summary_line}\n\n{text_without_header}"
         sections.append(section)
 
     body = f"\n## Session: {session_title} | Date: {session_date}\n\n"
