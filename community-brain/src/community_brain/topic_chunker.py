@@ -65,10 +65,13 @@ def parse_segmentation_response(response: list[dict]) -> list[Topic]:
     """Parse the LLM's JSON response into Topic objects."""
     topics = []
     for item in response:
+        # Strip brackets from timestamps — LLMs sometimes return [HH:MM:SS] instead of HH:MM:SS
+        start_ts = item.get("start_timestamp", "").strip("[]")
+        end_ts = item.get("end_timestamp", "").strip("[]")
         topics.append(Topic(
             topic_title=item.get("topic_title", "Untitled"),
-            start_timestamp=item.get("start_timestamp", ""),
-            end_timestamp=item.get("end_timestamp", ""),
+            start_timestamp=start_ts,
+            end_timestamp=end_ts,
             summary=item.get("summary", ""),
         ))
     return topics
