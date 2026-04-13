@@ -11,6 +11,11 @@ dependencies = [
     "python-dotenv>=1.0",
     "click>=8.1",
     "tqdm>=4.66",
+    "lancedb>=0.15",
+    "ollama>=0.4",
+    "openai>=1.50",
+    "fastapi>=0.115",
+    "uvicorn>=0.32",
 ]
 
 [project.optional-dependencies]
