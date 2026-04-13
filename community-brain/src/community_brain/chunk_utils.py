@@ -6,6 +6,7 @@ speaker-aware chunking, and output formatting (JSONL + markdown).
 
 from __future__ import annotations
 
+import json
 import logging
 import re
 from dataclasses import dataclass, asdict
@@ -185,3 +186,56 @@ def chunk_transcript(
         chunk.chunk_id = f"{session_date}-chunk-{i + 1:03d}"
 
     return chunks
+
+
+def chunks_to_jsonl(chunks: list[Chunk]) -> str:
+    """Serialize chunks to JSONL format (one JSON object per line)."""
+    lines = []
+    for chunk in chunks:
+        obj = asdict(chunk)
+        lines.append(json.dumps(obj, ensure_ascii=False))
+    return "\n".join(lines) + "\n"
+
+
+def chunks_to_markdown(
+    chunks: list[Chunk],
+    session_date: str,
+    session_title: str,
+) -> str:
+    """Produce a markdown file with YAML frontmatter and chunks separated by ---."""
+    if not chunks:
+        return ""
+
+    all_speakers = sorted(set(
+        speaker
+        for chunk in chunks
+        for speaker in chunk.speakers_in_chunk
+    ))
+    content_tier = chunks[0].content_tier
+
+    speakers_yaml = json.dumps(all_speakers)
+    frontmatter = (
+        f"---\n"
+        f'session_date: "{session_date}"\n'
+        f'session_title: "{session_title}"\n'
+        f'content_tier: "{content_tier}"\n'
+        f"speakers: {speakers_yaml}\n"
+        f"chunk_count: {len(chunks)}\n"
+        f"---\n"
+    )
+
+    sections = []
+    total = len(chunks)
+    for chunk in chunks:
+        text_without_header = chunk.text
+        header_prefix = f"## Session: {session_title} | Date: {session_date}\n\n"
+        if text_without_header.startswith(header_prefix):
+            text_without_header = text_without_header[len(header_prefix):]
+
+        section = f"### Chunk {chunk.chunk_position} of {total}\n\n{text_without_header}"
+        sections.append(section)
+
+    body = f"\n## Session: {session_title} | Date: {session_date}\n\n"
+    body += "\n\n---\n\n".join(sections)
+
+    return frontmatter + body + "\n"

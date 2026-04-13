@@ -7,6 +7,8 @@ from community_brain.chunk_utils import (
     count_tokens,
     Chunk,
     chunk_transcript,
+    chunks_to_jsonl,
+    chunks_to_markdown,
 )
 
 
@@ -189,3 +191,69 @@ class TestChunkTranscript:
             all_speakers.update(chunk.speakers_in_chunk)
         assert "Patrick Chouinard" in all_speakers
         assert "Alice Chen" in all_speakers
+
+
+class TestChunksToJsonl:
+    def test_valid_jsonl(self):
+        turns = [
+            SpeakerTurn("00:01:00", "Alice", "Hello everyone."),
+            SpeakerTurn("00:02:00", "Bob", "Hi Alice, great to be here."),
+        ]
+        chunks = chunk_transcript(turns, "2024-03-15", "Test", target_tokens=5000)
+        jsonl = chunks_to_jsonl(chunks)
+        lines = [l for l in jsonl.strip().split("\n") if l.strip()]
+        assert len(lines) == len(chunks)
+        for line in lines:
+            obj = json.loads(line)
+            assert "chunk_id" in obj
+            assert "session_date" in obj
+            assert "text" in obj
+            assert "speakers_in_chunk" in obj
+
+    def test_roundtrip_metadata(self):
+        turns = [
+            SpeakerTurn("00:01:00", "Alice", "Hello."),
+            SpeakerTurn("00:02:00", "Bob", "Hi."),
+        ]
+        chunks = chunk_transcript(turns, "2024-03-15", "Test Session", target_tokens=5000)
+        jsonl = chunks_to_jsonl(chunks)
+        obj = json.loads(jsonl.strip().split("\n")[0])
+        assert obj["session_date"] == "2024-03-15"
+        assert obj["session_title"] == "Test Session"
+        assert obj["content_tier"] == "historical"
+        assert obj["chunk_position"] == 1
+
+
+class TestChunksToMarkdown:
+    def test_has_frontmatter(self):
+        turns = [
+            SpeakerTurn("00:01:00", "Alice", "Hello."),
+            SpeakerTurn("00:02:00", "Bob", "Hi."),
+        ]
+        chunks = chunk_transcript(turns, "2024-03-15", "Test Session", target_tokens=5000)
+        md = chunks_to_markdown(chunks, "2024-03-15", "Test Session")
+        assert md.startswith("---\n")
+        assert 'session_date: "2024-03-15"' in md
+        assert 'session_title: "Test Session"' in md
+        assert "content_tier: " in md
+        assert "chunk_count: " in md
+
+    def test_chunk_separators(self):
+        turns = [SpeakerTurn(f"00:{i:02d}:00", "Alice", "word " * 60) for i in range(10)]
+        chunks = chunk_transcript(turns, "2024-03-15", "Test", target_tokens=500)
+        md = chunks_to_markdown(chunks, "2024-03-15", "Test")
+        assert "### Chunk 1 of " in md
+        if len(chunks) > 1:
+            assert "### Chunk 2 of " in md
+        assert "\n---\n" in md
+
+    def test_speakers_in_frontmatter(self):
+        turns = [
+            SpeakerTurn("00:01:00", "Alice", "Hello."),
+            SpeakerTurn("00:02:00", "Bob", "Hi."),
+            SpeakerTurn("00:03:00", "Alice", "Bye."),
+        ]
+        chunks = chunk_transcript(turns, "2024-03-15", "Test", target_tokens=5000)
+        md = chunks_to_markdown(chunks, "2024-03-15", "Test")
+        assert "Alice" in md.split("---")[1]
+        assert "Bob" in md.split("---")[1]
