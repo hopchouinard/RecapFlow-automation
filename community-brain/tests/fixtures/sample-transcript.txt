@@ -1,0 +1,37 @@
+[00:00:04] Patrick Chouinard: Hey everyone, welcome to this week's call. We've got a packed agenda today. We're going to talk about vector databases and then get into some hands-on RAG pipeline work.
+
+[00:00:28] Alice Chen: Hi Patrick! Looking forward to it. I've been experimenting with Pinecone this week and have some interesting findings to share.
+
+[00:00:45] Bob Martinez: Hey all. Quick question before we start — has anyone tried the new Weaviate release? They added some hybrid search features that look promising.
+
+[00:01:15] Patrick Chouinard: I haven't tried it yet, Bob, but it's on my list. Let's make sure we cover that today. Alice, why don't you kick things off with your Pinecone findings?
+
+[00:01:38] Alice Chen: Sure. So I set up a test with about fifty thousand document chunks. The indexing was fast, maybe ten minutes total. Query latency averaged around forty milliseconds. The real surprise was the metadata filtering. You can filter by date range, speaker, content type, all at query time without re-indexing.
+
+[00:02:30] Bob Martinez: That's impressive. How does the cost compare to running something locally like FAISS or LanceDB?
+
+[00:02:50] Alice Chen: That's the trade-off. Pinecone's free tier gives you one index with up to a hundred thousand vectors. Beyond that, it's about seventy dollars a month for the standard plan. For a community project where you want zero cost for end users, a local solution like LanceDB makes more sense.
+
+[00:03:25] Patrick Chouinard: Exactly. And that aligns with our philosophy here. We want the community to be able to run everything locally without any API costs. LanceDB plus Ollama gives us that completely free stack.
+
+[00:03:55] Carol Singh: I want to add something about the embedding model choice. I ran a comparison between nomic-embed-text and OpenAI's text-embedding-3-large on our transcript data. For conversational content like ours, the difference in retrieval quality is minimal. Maybe a two to three percent difference in recall at ten.
+
+[00:04:30] Patrick Chouinard: That's really useful data, Carol. So the local model is basically as good as the paid one for our use case.
+
+[00:04:45] Carol Singh: Exactly. The structure of conversational text is different from technical documentation. The vocabulary is more natural, the sentences are simpler, and the semantic relationships are more straightforward. Local embedding models handle that just fine.
+
+[00:05:15] Bob Martinez: Makes sense. What about chunking strategy? I've been reading about different approaches and I'm not sure what works best for transcripts.
+
+[00:05:40] Patrick Chouinard: Great question. For transcripts, I think speaker-aware chunking is the way to go. You never want to split in the middle of someone's statement. The natural boundaries are speaker transitions. You accumulate turns until you hit roughly five hundred tokens, then break at the nearest speaker change.
+
+[00:06:15] Alice Chen: What about overlap? Do you include any content from the previous chunk in the next one?
+
+[00:06:30] Patrick Chouinard: Yes, about fifty tokens of overlap. That way if someone asks a question at the end of one chunk and the answer starts at the beginning of the next, the retrieval system can still find the full context. The overlap turns are whole speaker turns though, not arbitrary token cuts.
+
+[00:07:00] Bob Martinez: That makes a lot of sense. So the atomic unit is always a complete speaker turn.
+
+[00:07:15] Patrick Chouinard: Right. A speaker turn is the smallest unit we work with. Never split mid-turn. If a single turn happens to be very long, say over a thousand tokens, it just becomes its own chunk. That's rare in conversational content though.
+
+[00:07:45] Carol Singh: One more thing about metadata. Each chunk should carry its session date, speakers present, and position within the session. That way you can do filtered queries like show me everything Alice said about embeddings or find discussions from March twenty twenty six.
+
+[00:08:20] Patrick Chouinard: Absolutely. The metadata is as important as the content for retrieval quality. Alright, let's shift to hands-on. Everyone open up your notebooks and let's build a chunker together.
