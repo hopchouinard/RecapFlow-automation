@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-04-13",
+  "total_sessions": 3,
+  "total_chunks": 303,
+  "tier_1_cutoff": "2026-03-10",
+  "sessions": [
+    {
+      "date": "2025-09-02",
+      "title": "Weekly Coaching Call",
+      "content_tier": "historical",
+      "chunk_count": 100,
+      "speakers": [
+        "Adam",
+        "Al Cole",
+        "Alex Wilson",
+        "Brandon Hancock",
+        "David Stamper",
+        "Fitz",
+        "Hemal Shah",
+        "Jake Maymar",
+        "James Rennie",
+        "Juan Torres",
+        "Morgan Cook",
+        "Ola Oyo",
+        "Patrick Chouinard",
+        "Paul Miller",
+        "Ty Wells",
+        "alexrojas",
+        "sam",
+        "shakur"
+      ],
+      "duration_minutes": null
+    },
+    {
+      "date": "2025-09-16",
+      "title": "Weekly Coaching Call",
+      "content_tier": "historical",
+      "chunk_count": 104,
+      "speakers": [
+        "Adam",
+        "Alex Wilson",
+        "Andrew Nanton",
+        "Brandon Hancock",
+        "Elijah",
+        "Hemal Shah",
+        "Jake Maymar",
+        "Juan Torres",
+        "Kris Larson",
+        "Marc Juretus",
+        "Mitch",
+        "Morgan Cook",
+        "Ola Oyo",
+        "Patrick Chouinard",
+        "Paul Miller",
+        "Ty Wells"
+      ],
+      "duration_minutes": null
+    },
+    {
+      "date": "2025-09-23",
+      "title": "Weekly Coaching Call",
+      "content_tier": "historical",
+      "chunk_count": 99,
+      "speakers": [
+        "Al Cole",
+        "Alex Wilson",
+        "AlexH",
+        "Bastian",
+        "Brandon Hancock",
+        "Dave Far",
+        "David Stamper",
+        "Elijah",
+        "Jahangir Jadi",
+        "Jake Maymar",
+        "Juan Torres",
+        "Marc Juretus",
+        "Mitch",
+        "Morgan Cook",
+        "Patrick Chouinard",
+        "Paul Miller",
+        "Tom Welsh",
+        "Ty Wells"
+      ],
+      "duration_minutes": null
+    }
+  ]
+}
