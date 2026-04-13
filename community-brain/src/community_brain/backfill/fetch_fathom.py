@@ -150,7 +150,11 @@ def fetch_transcript(
 ) -> list[dict]:
     """Fetch transcript entries for a specific recording."""
     response = _api_get(client, f"{base_url}/recordings/{recording_id}/transcript")
-    return response.json()
+    data = response.json()
+    # API returns {"transcript": [...]} — extract the inner list
+    if isinstance(data, dict) and "transcript" in data:
+        return data["transcript"]
+    return data
 
 
 @click.command()
@@ -171,7 +175,7 @@ def main(after: str | None, before: str | None, dry_run: bool) -> None:
     existing = _existing_dates(RAW_TRANSCRIPTS_DIR)
 
     client = httpx.Client(
-        headers={"Authorization": f"Bearer {api_key}"},
+        headers={"X-Api-Key": api_key},
         timeout=30.0,
     )
 
