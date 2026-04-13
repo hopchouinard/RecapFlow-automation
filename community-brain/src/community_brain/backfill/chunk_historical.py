@@ -18,6 +18,7 @@ import click
 from tqdm import tqdm
 
 from community_brain.chunk_utils import (
+    _format_turn,
     chunk_transcript,
     chunks_to_jsonl,
     chunks_to_markdown,
@@ -60,8 +61,18 @@ def chunk_single_session(
     raw_chunks_path: Path,
     aliases: dict[str, str] | None = None,
     force: bool = False,
+    use_llm: bool = True,
 ) -> dict | None:
-    """Chunk a single transcript file. Returns session metadata or None if skipped."""
+    """Chunk a single transcript file.
+
+    When use_llm=True (default), uses the two-pass LLM pipeline:
+      Pass 1: Topic segmentation via LLM
+      Pass 2: Chunk by topic boundaries with summaries
+
+    When use_llm=False, falls back to v1 sliding-window chunker.
+
+    Returns session metadata dict or None if skipped.
+    """
     session_date = _extract_date(transcript_path.name)
     if not session_date:
         logger.warning("Cannot extract date from %s, skipping", transcript_path.name)
@@ -84,13 +95,32 @@ def chunk_single_session(
         for turn in turns:
             turn.speaker = normalize_speaker(turn.speaker, aliases)
 
-    chunks = chunk_transcript(
-        turns,
-        session_date=session_date,
-        session_title=session_title,
-        content_tier="historical",
-        source="fathom_transcript",
-    )
+    if use_llm:
+        from community_brain.topic_chunker import chunk_by_topics, segment_transcript
+
+        # Format full transcript for LLM
+        full_transcript = "\n".join(_format_turn(t) for t in turns)
+        logger.info("Segmenting %s (%d turns)...", session_date, len(turns))
+        topics = segment_transcript(full_transcript)
+        logger.info("Found %d topics for %s", len(topics), session_date)
+
+        # Chunk by topics
+        chunks = chunk_by_topics(
+            turns=turns,
+            topics=topics,
+            session_date=session_date,
+            session_title=session_title,
+            content_tier="historical",
+            source="fathom_transcript",
+        )
+    else:
+        chunks = chunk_transcript(
+            turns,
+            session_date=session_date,
+            session_title=session_title,
+            content_tier="historical",
+            source="fathom_transcript",
+        )
 
     if not chunks:
         logger.warning("No chunks produced for %s", session_date)
@@ -146,7 +176,8 @@ def generate_manifest(sessions: list[dict], manifest_path: Path) -> None:
 @click.option("--date", "target_date", default=None, help="Chunk a specific session (YYYY-MM-DD)")
 @click.option("--dry-run", is_flag=True, help="Show chunk counts without writing files")
 @click.option("--force", is_flag=True, help="Re-chunk even if output already exists")
-def main(target_date: str | None, dry_run: bool, force: bool) -> None:
+@click.option("--no-llm", is_flag=True, help="Use v1 sliding-window chunker instead of LLM pipeline")
+def main(target_date: str | None, dry_run: bool, force: bool, no_llm: bool) -> None:
     """Chunk historical transcripts into markdown and JSONL."""
     raw_dir = PROJECT_ROOT / "raw-transcripts"
     chunks_dir = PROJECT_ROOT / "chunks" / "historical"
@@ -192,6 +223,7 @@ def main(target_date: str | None, dry_run: bool, force: bool) -> None:
             raw_chunks_path=raw_chunks_path,
             aliases=aliases,
             force=force,
+            use_llm=not no_llm,
         )
         if result:
             sessions.append(result)

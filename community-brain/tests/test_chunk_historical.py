@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from unittest.mock import patch
 from community_brain.backfill.chunk_historical import (
     chunk_single_session,
     generate_manifest,
@@ -13,7 +14,8 @@ class TestChunkHistorical:
     def test_tier1_cutoff(self):
         assert TIER_1_CUTOFF == "2026-03-10"
 
-    def test_chunk_single_session(self, tmp_path):
+    def test_chunk_single_session_no_llm(self, tmp_path):
+        """Test v1 fallback mode (no LLM calls)."""
         chunks_dir = tmp_path / "chunks" / "historical"
         chunks_dir.mkdir(parents=True)
         raw_chunks_dir = tmp_path / "raw-chunks"
@@ -28,6 +30,7 @@ class TestChunkHistorical:
             transcript_path=transcript_file,
             chunks_dir=chunks_dir,
             raw_chunks_path=raw_chunks_dir / "all-chunks.jsonl",
+            use_llm=False,
         )
 
         assert result is not None
@@ -48,6 +51,63 @@ class TestChunkHistorical:
         obj = json.loads(lines[0])
         assert obj["session_date"] == "2025-01-15"
         assert obj["content_tier"] == "historical"
+
+    def test_chunk_single_session_with_llm(self, tmp_path):
+        """Test v2 LLM pipeline with mocked LLM calls."""
+        chunks_dir = tmp_path / "chunks" / "historical"
+        chunks_dir.mkdir(parents=True)
+        raw_chunks_dir = tmp_path / "raw-chunks"
+        raw_chunks_dir.mkdir()
+
+        transcript_text = (FIXTURES / "sample-transcript.txt").read_text()
+        transcript_file = tmp_path / "raw-transcripts" / "2025-01-15-test-session.txt"
+        transcript_file.parent.mkdir(parents=True)
+        transcript_file.write_text(transcript_text)
+
+        mock_topics = [
+            {
+                "topic_title": "Vector Store Comparison",
+                "start_timestamp": "00:00:04",
+                "end_timestamp": "00:03:25",
+                "summary": "Group compares Pinecone, FAISS, and LanceDB for vector storage.",
+            },
+            {
+                "topic_title": "Embedding Model Selection",
+                "start_timestamp": "00:03:55",
+                "end_timestamp": "00:05:15",
+                "summary": "Carol compares nomic-embed-text vs OpenAI embeddings for transcripts.",
+            },
+            {
+                "topic_title": "Chunking Strategies for Transcripts",
+                "start_timestamp": "00:05:15",
+                "end_timestamp": "00:08:20",
+                "summary": "Patrick proposes speaker-aware chunking with 500-token targets.",
+            },
+        ]
+
+        with patch("community_brain.topic_chunker.call_llm_json", return_value=mock_topics):
+            result = chunk_single_session(
+                transcript_path=transcript_file,
+                chunks_dir=chunks_dir,
+                raw_chunks_path=raw_chunks_dir / "all-chunks.jsonl",
+                use_llm=True,
+            )
+
+        assert result is not None
+        assert result["date"] == "2025-01-15"
+        assert result["chunk_count"] >= 3
+
+        md_file = chunks_dir / "session-2025-01-15.md"
+        assert md_file.exists()
+        content = md_file.read_text()
+        assert "### Topic: Vector Store Comparison" in content
+        assert "**Summary:**" in content
+
+        jsonl_file = raw_chunks_dir / "all-chunks.jsonl"
+        lines = [l for l in jsonl_file.read_text().strip().split("\n") if l]
+        obj = json.loads(lines[0])
+        assert obj["topic"] != ""
+        assert obj["summary"] != ""
 
     def test_skip_existing(self, tmp_path):
         chunks_dir = tmp_path / "chunks" / "historical"
