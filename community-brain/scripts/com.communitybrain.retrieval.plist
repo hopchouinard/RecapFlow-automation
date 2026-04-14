@@ -26,11 +26,5 @@
 
     <key>KeepAlive</key>
     <true/>
-
-    <key>StandardOutPath</key>
-    <string>/Users/pchouinard/Library/Logs/CommunityBrain/retrieval-server.log</string>
-
-    <key>StandardErrorPath</key>
-    <string>/Users/pchouinard/Library/Logs/CommunityBrain/retrieval-server.err</string>
 </dict>
 </plist>
