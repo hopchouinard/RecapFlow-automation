@@ -1005,13 +1005,13 @@ git commit -m "feat(sp3): add FastAPI retrieval server
 
 ---
 
-### Task 5: OpenAI Embedding + Query Scripts
+### Task 5: OpenAI Embedding + Query Scripts ✅
 
 **Files:**
 - Create: `community-brain/src/community_brain/embed/embed_openai.py`
 - Create: `community-brain/src/community_brain/query/query_openai.py`
 
-- [ ] **Step 1: Create embed_openai.py**
+- [x] **Step 1: Create embed_openai.py**
 
 Create `community-brain/src/community_brain/embed/embed_openai.py`:
 
@@ -1172,7 +1172,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 2: Create query_openai.py**
+- [x] **Step 2: Create query_openai.py**
 
 Create `community-brain/src/community_brain/query/query_openai.py`:
 
@@ -1297,7 +1297,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 3: Run full test suite**
+- [x] **Step 3: Run full test suite**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain && source .venv/bin/activate
@@ -1306,7 +1306,7 @@ pytest tests/ -v
 
 Expected: All tests PASS.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 cd /home/pchouinard/n8n
