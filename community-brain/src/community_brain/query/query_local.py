@@ -17,6 +17,8 @@ import lancedb
 import ollama
 from dotenv import load_dotenv
 
+from community_brain.query import build_filter_expression
+
 logger = logging.getLogger(__name__)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
@@ -53,11 +55,10 @@ def search_chunks(
 
     query = table.search(query_vector).limit(top_k)
 
-    # Apply filters
-    if filter_date:
-        query = query.where(f"session_date = '{filter_date}'")
-    if filter_speaker:
-        query = query.where(f"speakers_in_chunk LIKE '%{filter_speaker}%'")
+    # Apply filters (safely escaped)
+    filter_expr = build_filter_expression(filter_date, filter_speaker)
+    if filter_expr:
+        query = query.where(filter_expr)
 
     results = query.to_arrow()
     # Convert Arrow table to list of dicts

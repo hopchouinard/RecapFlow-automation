@@ -1,3 +1,4 @@
+import os
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
 
@@ -80,3 +81,47 @@ class TestQueryEndpoint:
         mock_search.assert_called_once()
         call_kwargs = mock_search.call_args
         assert call_kwargs[1]["filter_date"] == "2025-09-02" or call_kwargs[0][0] == "test"
+
+
+class TestApiKeyAuth:
+    @patch("community_brain.query.retrieval_server.search_chunks")
+    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", "test-secret-key")
+    def test_rejects_missing_api_key(self, mock_search):
+        mock_search.return_value = []
+        response = client.post(
+            "/query",
+            json={"question": "test", "top_k": 5},
+        )
+        assert response.status_code == 403
+
+    @patch("community_brain.query.retrieval_server.search_chunks")
+    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", "test-secret-key")
+    def test_rejects_wrong_api_key(self, mock_search):
+        mock_search.return_value = []
+        response = client.post(
+            "/query",
+            json={"question": "test", "top_k": 5},
+            headers={"X-API-Key": "wrong-key"},
+        )
+        assert response.status_code == 403
+
+    @patch("community_brain.query.retrieval_server.search_chunks")
+    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", "test-secret-key")
+    def test_accepts_correct_api_key(self, mock_search):
+        mock_search.return_value = []
+        response = client.post(
+            "/query",
+            json={"question": "test", "top_k": 5},
+            headers={"X-API-Key": "test-secret-key"},
+        )
+        assert response.status_code == 200
+
+    @patch("community_brain.query.retrieval_server.search_chunks")
+    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", None)
+    def test_allows_without_key_when_not_configured(self, mock_search):
+        mock_search.return_value = []
+        response = client.post(
+            "/query",
+            json={"question": "test", "top_k": 5},
+        )
+        assert response.status_code == 200

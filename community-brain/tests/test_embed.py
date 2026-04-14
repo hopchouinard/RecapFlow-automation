@@ -119,6 +119,33 @@ class TestEmbedAndStore:
         assert len(embedded_inputs) == 1
         assert embedded_inputs[0] == no_summary_chunk["text"]
 
+    def test_deduplicates_input_chunks(self, tmp_path):
+        """Duplicate chunk_ids in the same input batch should not produce duplicate rows."""
+        embed_call_count = []
+
+        def mock_ollama_embed(model, input):
+            embed_call_count.append(len(input) if isinstance(input, list) else 1)
+            mock_embedding = [0.1] * NOMIC_DIMS
+            if isinstance(input, list):
+                return {"embeddings": [mock_embedding for _ in input]}
+            return {"embeddings": [mock_embedding]}
+
+        duplicate_chunks = [SAMPLE_CHUNK, SAMPLE_CHUNK, SAMPLE_CHUNK]
+
+        with patch("community_brain.embed.embed_nomic.ollama.embed", side_effect=mock_ollama_embed):
+            db_path = tmp_path / "test_lance"
+            count = embed_and_store(
+                chunks=duplicate_chunks,
+                db_path=str(db_path),
+                table_name="transcripts",
+            )
+
+        assert count == 1  # only one unique chunk embedded
+        import lancedb
+        db = lancedb.connect(str(db_path))
+        table = db.open_table("transcripts")
+        assert table.count_rows() == 1
+
     def test_skips_existing_chunks(self, tmp_path):
         mock_embedding = [0.1] * NOMIC_DIMS
 

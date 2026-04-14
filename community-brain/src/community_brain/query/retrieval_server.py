@@ -5,7 +5,7 @@ No LLM inference — the caller handles answer generation.
 
 Usage:
     python -m community_brain.query.retrieval_server
-    uvicorn community_brain.query.retrieval_server:app --host 0.0.0.0 --port 8999
+    RETRIEVAL_API_KEY=secret uvicorn community_brain.query.retrieval_server:app --port 8999
 """
 
 from __future__ import annotations
@@ -16,7 +16,8 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException, Security
+from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 
 from community_brain.query.query_local import search_chunks
@@ -28,6 +29,22 @@ CONFIG_DIR = PROJECT_ROOT / "config"
 load_dotenv(CONFIG_DIR / ".env")
 
 DEFAULT_DB_PATH = str(PROJECT_ROOT / "lancedb" / "nomic-v1")
+
+# API key auth: set RETRIEVAL_API_KEY env var to require authentication.
+# When set, all /query requests must include X-API-Key header.
+_api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
+RETRIEVAL_API_KEY = os.environ.get("RETRIEVAL_API_KEY")
+
+
+def _verify_api_key(api_key: str | None = Security(_api_key_header)) -> str | None:
+    """Verify API key if RETRIEVAL_API_KEY is configured."""
+    if RETRIEVAL_API_KEY is None:
+        # No key configured; allow (localhost-only deployment)
+        return None
+    if api_key != RETRIEVAL_API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid or missing API key")
+    return api_key
+
 
 app = FastAPI(
     title="Community Brain Retrieval API",
@@ -63,7 +80,7 @@ def health():
 
 
 @app.post("/query", response_model=QueryResponse)
-def query(request: QueryRequest):
+def query(request: QueryRequest, _key: str | None = Depends(_verify_api_key)):
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
     ollama_base_url = os.environ.get("OLLAMA_BASE_URL")
 
@@ -103,4 +120,5 @@ def query(request: QueryRequest):
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("RETRIEVAL_PORT", "8999"))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    host = os.environ.get("RETRIEVAL_HOST", "127.0.0.1")
+    uvicorn.run(app, host=host, port=port)

@@ -90,6 +90,13 @@ def embed_and_store(
     db = lancedb.connect(db_path)
     records = build_lancedb_records(chunks)
 
+    # Deduplicate input records by chunk_id (keep first occurrence)
+    seen_input: dict[str, dict] = {}
+    for r in records:
+        if r["chunk_id"] not in seen_input:
+            seen_input[r["chunk_id"]] = r
+    records = list(seen_input.values())
+
     # Check for existing chunks to skip
     try:
         table = db.open_table(table_name)
@@ -104,10 +111,15 @@ def embed_and_store(
         existing_ids = set()
         table = None
 
+    # Track committed IDs across batches for idempotency
+    committed_ids: set[str] = set()
+
     # Embed in batches
     embedded_count = 0
     for i in tqdm(range(0, len(records), BATCH_SIZE), desc="Embedding"):
-        batch = records[i : i + BATCH_SIZE]
+        batch = [r for r in records[i : i + BATCH_SIZE] if r["chunk_id"] not in committed_ids]
+        if not batch:
+            continue
         summaries = [r["summary"] or r["text"] for r in batch]
 
         # Get embeddings
@@ -123,6 +135,7 @@ def embed_and_store(
         else:
             table.add(batch)
 
+        committed_ids.update(r["chunk_id"] for r in batch)
         embedded_count += len(batch)
 
     logger.info("Embedded %d new chunks", embedded_count)

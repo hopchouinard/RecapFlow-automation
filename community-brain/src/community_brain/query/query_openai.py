@@ -16,6 +16,7 @@ import lancedb
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from community_brain.query import build_filter_expression
 from community_brain.query.query_local import format_results, build_answer_prompt
 
 logger = logging.getLogger(__name__)
@@ -48,10 +49,10 @@ def search_chunks(
     table = db.open_table(table_name)
     query = table.search(query_vector).limit(top_k)
 
-    if filter_date:
-        query = query.where(f"session_date = '{filter_date}'")
-    if filter_speaker:
-        query = query.where(f"speakers_in_chunk LIKE '%{filter_speaker}%'")
+    # Apply filters (safely escaped)
+    filter_expr = build_filter_expression(filter_date, filter_speaker)
+    if filter_expr:
+        query = query.where(filter_expr)
 
     results = query.to_arrow()
     return [
