@@ -98,13 +98,13 @@ New packages: embed/ and query/ for SP3 retrieval pipeline."
 
 ---
 
-### Task 2: Nomic Embedding Script (TDD)
+### Task 2: Nomic Embedding Script (TDD) ✅
 
 **Files:**
 - Create: `community-brain/tests/test_embed.py`
 - Create: `community-brain/src/community_brain/embed/embed_nomic.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Create `community-brain/tests/test_embed.py`:
 
@@ -235,7 +235,7 @@ class TestEmbedAndStore:
         assert table.count_rows() == 1  # not duplicated
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain && source .venv/bin/activate
@@ -244,7 +244,7 @@ pytest tests/test_embed.py -v
 
 Expected: FAIL — `ModuleNotFoundError`.
 
-- [ ] **Step 3: Implement embed_nomic.py**
+- [x] **Step 3: Implement embed_nomic.py**
 
 Create `community-brain/src/community_brain/embed/embed_nomic.py`:
 
@@ -427,7 +427,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain && source .venv/bin/activate
@@ -436,7 +436,7 @@ pytest tests/test_embed.py -v
 
 Expected: All 6 tests PASS.
 
-- [ ] **Step 5: Run full test suite**
+- [x] **Step 5: Run full test suite**
 
 ```bash
 pytest tests/ -v
