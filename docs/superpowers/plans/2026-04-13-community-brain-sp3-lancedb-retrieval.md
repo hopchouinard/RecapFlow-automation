@@ -1320,11 +1320,11 @@ Reuses format_results and build_answer_prompt from query_local."
 
 ---
 
-### Task 6: Integration Test — Embed + Query Sample Sessions
+### Task 6: Integration Test — Embed + Query Sample Sessions ✅
 
 This task requires real API calls to Ollama on the Mac Mini.
 
-- [ ] **Step 1: Embed the 3 sample sessions**
+- [x] **Step 1: Embed the 3 sample sessions**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain
@@ -1357,7 +1357,7 @@ print(f'Vector dims: {len(df.iloc[0][\"vector\"])}')
 
 Expected: 314 rows, 768-dim vectors, topics present.
 
-- [ ] **Step 2: Test the Codex query**
+- [x] **Step 2: Test the Codex query**
 
 ```bash
 python -m community_brain.query.query_local "What was discussed about Codex?" --verbose
@@ -1365,7 +1365,7 @@ python -m community_brain.query.query_local "What was discussed about Codex?" --
 
 Expected: The top result should be `2025-09-02-chunk-001` with topic "AI Tools and New Tech Adoption" and summary mentioning Codex.
 
-- [ ] **Step 3: Test additional queries**
+- [x] **Step 3: Test additional queries**
 
 ```bash
 python -m community_brain.query.query_local "What tools for vector storage?" --verbose
@@ -1375,7 +1375,7 @@ python -m community_brain.query.query_local "GPU benchmarks" --filter-date 2025-
 
 Verify relevant chunks are returned for each query.
 
-- [ ] **Step 4: Test the FastAPI server**
+- [x] **Step 4: Test the FastAPI server**
 
 Start the server:
 
@@ -1399,7 +1399,7 @@ Stop the server:
 kill %1
 ```
 
-- [ ] **Step 5: Commit LanceDB data**
+- [x] **Step 5: Commit LanceDB data**
 
 ```bash
 cd /home/pchouinard/n8n
@@ -1410,7 +1410,7 @@ git commit -m "data(sp3): embed 314 sample chunks into LanceDB nomic-v1
 embedding validated: Codex query returns correct topic chunk."
 ```
 
-- [ ] **Step 6: Push**
+- [ ] **Step 6: Push** (user will do manually)
 
 ```bash
 git push
