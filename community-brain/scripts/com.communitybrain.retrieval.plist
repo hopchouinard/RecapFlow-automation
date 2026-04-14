@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.communitybrain.retrieval</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/community-brain/scripts/start-retrieval-server.sh</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>RETRIEVAL_HOST</key>
+        <string>0.0.0.0</string>
+        <key>RETRIEVAL_PORT</key>
+        <string>8999</string>
+        <key>RETRIEVAL_API_KEY</key>
+        <string>CHANGE_ME_BEFORE_LOADING</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/pchouinard/Library/Logs/CommunityBrain/retrieval-server.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/pchouinard/Library/Logs/CommunityBrain/retrieval-server.err</string>
+</dict>
+</plist>
