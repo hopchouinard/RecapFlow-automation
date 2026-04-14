@@ -757,13 +757,13 @@ answer with source citations. Supports --top-k, --verbose, --filter-date,
 
 ---
 
-### Task 4: FastAPI Retrieval Server (TDD)
+### Task 4: FastAPI Retrieval Server (TDD) ✅
 
 **Files:**
 - Create: `community-brain/tests/test_retrieval_server.py`
 - Create: `community-brain/src/community_brain/query/retrieval_server.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Create `community-brain/tests/test_retrieval_server.py`:
 
@@ -852,7 +852,7 @@ class TestQueryEndpoint:
         assert call_kwargs[1]["filter_date"] == "2025-09-02" or call_kwargs[0][0] == "test"
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain && source .venv/bin/activate
@@ -861,7 +861,7 @@ pytest tests/test_retrieval_server.py -v
 
 Expected: FAIL — `ModuleNotFoundError`.
 
-- [ ] **Step 3: Implement retrieval_server.py**
+- [x] **Step 3: Implement retrieval_server.py**
 
 Create `community-brain/src/community_brain/query/retrieval_server.py`:
 
@@ -974,7 +974,7 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=port)
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain && source .venv/bin/activate
@@ -983,7 +983,7 @@ pytest tests/test_retrieval_server.py -v
 
 Expected: All 4 tests PASS.
 
-- [ ] **Step 5: Run full test suite**
+- [x] **Step 5: Run full test suite**
 
 ```bash
 pytest tests/ -v
@@ -991,7 +991,7 @@ pytest tests/ -v
 
 Expected: All tests PASS (~71 total).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 cd /home/pchouinard/n8n
