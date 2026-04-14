@@ -5,6 +5,7 @@
 
 # n8n persistent data
 data/
+raw-transcripts/
 
 # Docker
 docker-compose.override.yml
