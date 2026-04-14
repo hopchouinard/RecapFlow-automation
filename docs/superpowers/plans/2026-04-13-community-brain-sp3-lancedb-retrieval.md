@@ -459,13 +459,13 @@ batch processing, CLI with --date and --dry-run flags.
 
 ---
 
-### Task 3: Local Query CLI Tool (TDD)
+### Task 3: Local Query CLI Tool (TDD) ✅
 
 **Files:**
 - Create: `community-brain/tests/test_query.py`
 - Create: `community-brain/src/community_brain/query/query_local.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Create `community-brain/tests/test_query.py`:
 
@@ -545,7 +545,7 @@ class TestBuildPrompt:
         assert "[Source 2]" in prompt
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain && source .venv/bin/activate
@@ -554,7 +554,7 @@ pytest tests/test_query.py -v
 
 Expected: FAIL — `ModuleNotFoundError`.
 
-- [ ] **Step 3: Implement query_local.py**
+- [x] **Step 3: Implement query_local.py**
 
 Create `community-brain/src/community_brain/query/query_local.py`:
 
@@ -734,7 +734,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 ```bash
 cd /home/pchouinard/n8n/community-brain && source .venv/bin/activate
@@ -743,7 +743,7 @@ pytest tests/test_query.py -v
 
 Expected: All 5 tests PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 cd /home/pchouinard/n8n
