@@ -12,6 +12,7 @@ mkdir -p "${LOG_DIR}"
 
 export RETRIEVAL_HOST="${RETRIEVAL_HOST:-0.0.0.0}"
 export RETRIEVAL_PORT="${RETRIEVAL_PORT:-8999}"
+export OLLAMA_BASE_URL="${OLLAMA_BASE_URL:-http://localhost:11434}"
 # RETRIEVAL_API_KEY must be set in the launchd plist or environment
 
 cd "${PROJECT_DIR}"
