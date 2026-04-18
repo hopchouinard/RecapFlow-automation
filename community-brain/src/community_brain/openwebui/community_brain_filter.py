@@ -10,7 +10,6 @@ Install: Copy this file's content into Open WebUI → Functions → Create Filte
 from __future__ import annotations
 
 import logging
-from pathlib import Path as _Path
 from typing import Optional
 
 import httpx
@@ -20,25 +19,37 @@ logger = logging.getLogger(__name__)
 
 CONTEXT_TAG = "[COMMUNITY_BRAIN_CONTEXT]"
 
+# Inference guidelines are embedded as a module-level constant (NOT loaded
+# from disk) because Open WebUI installs this filter as a single Python file
+# in its own sandbox, with no repo filesystem layout. The source of truth is
+# docs/inference-guidelines.md in the repo; when that file changes, update
+# the string below in the same commit. A CI check could later enforce parity.
+_INFERENCE_GUIDELINES = """# Community Brain — Inference Guidelines
 
-def _load_inference_guidelines() -> str:
-    """Load the trust-contract doc that downstream LLMs must follow.
+This document defines the contract between the Community Brain retrieval server and downstream LLM consumers (Open WebUI filter, query scripts, custom agents). It MUST be prepended to any system prompt that reasons over retrieved chunks.
 
-    Falls back silently to empty string if the file is missing; the filter
-    still works, just without the explicit trust-hierarchy prefix.
-    """
-    try:
-        # Resolve from repo root. The filter is at community-brain/src/...
-        # so four parents up is the repo root where docs/ lives.
-        docs_path = _Path(__file__).resolve().parents[4] / "docs" / "inference-guidelines.md"
-        if docs_path.exists():
-            return docs_path.read_text(encoding="utf-8")
-    except Exception:
-        pass
-    return ""
+## Trust hierarchy
 
+- **`ground_truth.full_text` is authoritative.** All direct quotes must come from here.
+- **`derived_metadata` fields** (stance, speech_acts, chunk_local_markers, decisions, action_items, entities, topic_label, etc.) are LLM-extracted approximations. Use them to orient your retrieval and frame your response, but verify against `full_text` before citing as fact.
+- **`provenance`** tells you which extraction prompt version produced the derived fields. Treat older extractions with appropriate skepticism.
 
-_INFERENCE_GUIDELINES = _load_inference_guidelines()
+## Rules when generating responses
+
+1. Direct quotes must cite a specific `chunk_id` and be locatable in that chunk's `full_text`.
+2. When summarizing what someone said, check `speakers_spoke` against `full_text` attribution — the former is LLM-inferred, the latter shows actual speaker labels.
+3. Claims about decisions, outcomes, or action items: verify against `full_text` before stating. The `decisions` and `action_items` fields are hints, not records.
+4. When `derived_metadata` fields are null (e.g., on older chunks), reason from `full_text` alone. Do NOT infer "no decisions" from "decisions field is null" — absence means the chunk predates that extraction.
+5. If `full_text` contradicts a `derived_metadata` value, state the source-of-truth reading and flag the discrepancy.
+
+## Tolerating mixed generations
+
+Corpus chunks may be from different `schema_version` or `extraction_prompt_version` eras. Missing fields are normal. Field richness varies. Reason from what's present; don't speculate about what's absent.
+
+## Enforcement boundary
+
+The reference compliant consumer is the `community_brain_filter` Open WebUI function. Consumers that bypass these guidelines — direct LanceDB access, custom API clients that ignore the `ground_truth` vs `derived_metadata` distinction, LLM prompts that don't prepend this fragment — are considered **unsupported**. The system's correctness guarantees apply only within the enforcement boundary.
+"""
 
 
 class Filter:
