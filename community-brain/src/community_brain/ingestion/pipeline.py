@@ -6,18 +6,31 @@ Stages (per spec §5):
   C. Chunk-level LLM extraction -> entities, speech_acts, stance, etc.
      (N calls, per-chunk failures don't abort the session).
   D. Embedding (one batched call via nomic-embed-text).
+     Only chunks with extraction_status='success' receive embeddings;
+     failed chunks are persisted with an empty embedding vector so they
+     are excluded from vector search by design.
   E. Atomic commit to LanceDB (delete-then-append for UPSERT semantics).
 
 Idempotency: chunks whose (chunk_id, extraction_prompt_version) already exist
 in the table with extraction_status='success' are skipped unless
 force_reextract=true. The chunker uses segment-indexed IDs so sub-chunking
 changes don't ripple across the whole session's chunk_ids.
+
+force_reextract=True additionally performs a full-session rewrite: ALL existing
+rows for the session_id are deleted before the new chunks are added. This cleans
+orphan rows left by prior prompt versions that produced more chunks than the
+current version.  Use force_reextract=True as the explicit "clean up orphans"
+trigger when the prompt template or chunking logic changes.
+
+TODO(v2): wire RetryConfig into Stage B/C LLM calls to honor configured
+retry_attempts and retry_backoff_seconds.
 """
 
 from __future__ import annotations
 
 import datetime as dt
 import logging
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -53,10 +66,39 @@ logger = logging.getLogger(__name__)
 
 TABLE_NAME = "chunks"
 
+# Session IDs and chunk IDs are used in LanceDB WHERE clauses. Strict charset
+# avoids any quote/escape ambiguity without needing parameterized queries.
+_SAFE_ID_RE = re.compile(r"^[0-9A-Za-z_\-:.]+$")
+
+
+class CommitError(RuntimeError):
+    """Raised when LanceDB commit leaves the table in a torn state."""
+
+
+def _validate_session_id(session_id: str) -> None:
+    if not _SAFE_ID_RE.match(session_id):
+        raise ValueError(
+            f"session_id must match {_SAFE_ID_RE.pattern!r}, got {session_id!r}"
+        )
+
+
+def _validate_chunk_id(chunk_id: str) -> None:
+    if not _SAFE_ID_RE.match(chunk_id):
+        raise ValueError(
+            f"chunk_id must match {_SAFE_ID_RE.pattern!r}, got {chunk_id!r}"
+        )
+
 
 @dataclass
 class IngestRequest:
-    """One session's worth of artifact paths + config overrides."""
+    """One session's worth of artifact paths + config overrides.
+
+    force_reextract: When True, skips idempotency checks and re-extracts all
+        chunks. Also performs a full-session rewrite in LanceDB, deleting ALL
+        existing rows for this session_id before adding new chunks. Use this
+        when the prompt template or chunking logic has changed and orphan rows
+        from prior runs (chunks no longer produced) must be removed.
+    """
     session_id: str
     session_date: str
     session_title: str | None
@@ -88,6 +130,13 @@ def ingest_session(
 ) -> IngestResult:
     """Run the full ingestion pipeline for one session. See module docstring."""
     config_dir = Path(config_dir)
+
+    # Validate session_id before any work — must be safe for WHERE clauses.
+    _validate_session_id(request.session_id)
+
+    # Note: RetryConfig from chunking.yaml is loaded for schema compatibility
+    # but NOT yet wired into Stage B/C calls in v1. Retries use call_llm's
+    # built-in 3-attempt policy. Plumbing is planned for v2.
     chunking_cfg, _retry_cfg = load_chunking_config(config_dir / "chunking.yaml")
     extraction_cfg = load_extraction_config(config_dir / "extraction-config.yaml")
     speaker_reg = load_speaker_registry(config_dir / "speaker-aliases.yaml")
@@ -233,8 +282,11 @@ def ingest_session(
         chunk.extraction_status = "success"
         chunk.extraction_error = None
         chunk.entities = res.entities
+        # Only canonical speakers go into speakers_mentioned.
+        # new_speakers_seen is raw, unresolved — it goes to the pending queue
+        # but NOT into the chunk's persisted metadata.
         spoken = chunk.speakers_spoke or []
-        chunk.speakers_mentioned = sorted(set(spoken + res.new_speakers_seen))
+        chunk.speakers_mentioned = sorted(set(spoken))
         chunk.speech_acts = res.speech_acts
         chunk.stance = res.stance  # type: ignore[assignment]
         chunk.certainty = res.certainty  # type: ignore[assignment]
@@ -247,23 +299,45 @@ def ingest_session(
         unknown_speakers.update(res.new_speakers_seen)
 
     # --- Stage D: embeddings (one batched call) ---
+    # Only embed chunks with successful extraction. Failed chunks persist with
+    # extraction_status="failed" and an empty embedding so they're excluded from
+    # vector search by design (reindex via force_reextract=True to include them).
+    chunks_to_embed = [c for c in all_chunks if c.extraction_status == "success"]
     embeddings = embed_texts(
-        [c.embed_text for c in all_chunks],
+        [c.embed_text for c in chunks_to_embed],
         ollama_base_url=ollama_base_url,
     )
-    for chunk, emb in zip(all_chunks, embeddings, strict=True):
+    for chunk, emb in zip(chunks_to_embed, embeddings, strict=True):
         chunk.embedding = emb
 
-    # --- Stage E: atomic commit to LanceDB ---
-    _commit_chunks(db_path, all_chunks)
+    # --- Flush registry pending updates BEFORE commit ---
+    # Unknown entities/speakers are worth preserving even if the LanceDB commit
+    # fails. Flush early so operator review queue stays current.
+    try:
+        if unknown_entities:
+            entity_reg.append_pending(sorted(unknown_entities))
+            entity_reg.flush(config_dir / "entity-registry.yaml")
+    except Exception as exc:
+        logger.warning("Failed to flush entity-registry pending updates: %s", exc)
 
-    # --- Registry pending flushes ---
-    if unknown_entities:
-        entity_reg.append_pending(sorted(unknown_entities))
-        entity_reg.flush(config_dir / "entity-registry.yaml")
-    if unknown_speakers:
-        speaker_reg.append_pending(sorted(unknown_speakers))
-        speaker_reg.flush(config_dir / "speaker-aliases.yaml")
+    try:
+        if unknown_speakers:
+            speaker_reg.append_pending(sorted(unknown_speakers))
+            speaker_reg.flush(config_dir / "speaker-aliases.yaml")
+    except Exception as exc:
+        logger.warning("Failed to flush speaker-aliases pending updates: %s", exc)
+
+    # --- Stage E: commit to LanceDB ---
+    # full_session_rewrite=True (force_reextract) deletes ALL existing rows for
+    # this session_id to clean orphan chunks from prior prompt versions.
+    # Otherwise, only rows matching the new chunk_ids are replaced (preserves
+    # any skipped-by-idempotency rows not in this commit set).
+    _commit_chunks(
+        db_path,
+        request.session_id,
+        all_chunks,
+        full_session_rewrite=request.force_reextract,
+    )
 
     # Tally chunks_written by content type
     by_type: dict[str, int] = {}
@@ -292,7 +366,7 @@ def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, st
     """
     try:
         db = lancedb.connect(db_path)
-        if TABLE_NAME not in db.table_names():  # type: ignore[attr-defined]
+        if TABLE_NAME not in db.list_tables().tables:
             return {}
         table = db.open_table(TABLE_NAME)
     except Exception:
@@ -311,24 +385,57 @@ def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, st
     return {r["chunk_id"]: r["extraction_prompt_version"] for r in rows}
 
 
-def _commit_chunks(db_path: str, chunks: list[Chunk]) -> None:
-    """Write chunks to LanceDB in one transaction (delete-then-append by chunk_id).
+def _commit_chunks(
+    db_path: str,
+    session_id: str,
+    chunks: list[Chunk],
+    full_session_rewrite: bool,
+) -> None:
+    """Write chunks with UPSERT semantics.
 
-    If the table doesn't exist, create it from the first batch. If it does,
-    delete any existing rows with matching chunk_ids and append new records.
-    Net effect: upsert-by-chunk_id semantics on a single session's commit.
+    If full_session_rewrite=True, deletes ALL rows for the session_id before
+    adding new chunks (cleans orphans from prior prompt versions that produced
+    more chunks than the current version produces). Triggered by force_reextract.
+
+    If full_session_rewrite=False, deletes only rows matching the new chunk_ids
+    and appends. Used when idempotency has already kept some existing rows that
+    must be preserved.
+
+    NOT fully atomic: if add() fails after delete() succeeded, raises CommitError
+    so the caller knows the table is in a torn state (old rows removed, new rows
+    not written). Operators can recover by re-running ingest with
+    force_reextract=True.
     """
     if not chunks:
         return
 
+    _validate_session_id(session_id)
+    for c in chunks:
+        _validate_chunk_id(c.chunk_id)
+
     records = [c.to_arrow_dict() for c in chunks]
 
     db = lancedb.connect(db_path)
-    if TABLE_NAME not in db.table_names():
+    if TABLE_NAME not in db.list_tables().tables:
         db.create_table(TABLE_NAME, data=records)
         return
 
     table = db.open_table(TABLE_NAME)
-    id_list = ", ".join(f"'{c.chunk_id}'" for c in chunks)
-    table.delete(f"chunk_id IN ({id_list})")
-    table.add(records)
+    try:
+        if full_session_rewrite:
+            table.delete(f"session_id = '{session_id}'")
+        else:
+            id_list = ", ".join(f"'{c.chunk_id}'" for c in chunks)
+            table.delete(f"chunk_id IN ({id_list})")
+    except Exception as exc:
+        raise CommitError(
+            f"failed to delete before re-add for session {session_id}: {exc}"
+        ) from exc
+
+    try:
+        table.add(records)
+    except Exception as exc:
+        raise CommitError(
+            f"CRITICAL: deleted rows for session {session_id} but add() failed: {exc}. "
+            f"Re-run with force_reextract=True to recover."
+        ) from exc
