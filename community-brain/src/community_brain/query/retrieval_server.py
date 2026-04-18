@@ -355,6 +355,98 @@ def get_session(session_id: str, _key: str | None = Depends(_verify_api_key)):
     return agg[session_id]
 
 
+# --- /reindex endpoint (v1 minimal: dry-run + operation matching) ---
+
+SUPPORTED_REINDEX_OPS = frozenset({"re-extract", "re-embed", "delete"})
+
+
+class ReindexRequest(BaseModel):
+    filter: dict = {}
+    operation: str
+    dry_run: bool = True
+    priority_order: str = "newest_first"
+
+
+class ReindexResponse(BaseModel):
+    operation: str
+    dry_run: bool
+    matched_chunk_ids: list[str]
+    note: str
+
+
+def _reindex_select_chunk_ids(filter_clause: dict) -> list[str]:
+    """Return chunk_ids matching the filter. Used by /reindex dry-run and future v2 mutations.
+
+    Supported filter keys in v1:
+      - extraction_prompt_version (exact match)
+      - extraction_status (exact match)
+      - session_date_range ([start, end])
+    """
+    import lancedb
+
+    db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
+    try:
+        db = lancedb.connect(db_path)
+        if "chunks" not in db.list_tables().tables:
+            return []
+        table = db.open_table("chunks")
+    except Exception:
+        return []
+
+    clauses: list[str] = []
+    for key in ("extraction_prompt_version", "extraction_status"):
+        if filter_clause.get(key):
+            clauses.append(f"{key} = '{filter_clause[key]}'")
+    dr = filter_clause.get("session_date_range")
+    if dr and len(dr) == 2:
+        clauses.append(f"session_date >= '{dr[0]}' AND session_date <= '{dr[1]}'")
+
+    query = table.search().select(["chunk_id"])
+    if clauses:
+        query = query.where(" AND ".join(clauses))
+    arr = query.limit(100_000).to_arrow()
+    return [arr["chunk_id"][i].as_py() for i in range(arr.num_rows)]
+
+
+@app.post("/reindex", response_model=ReindexResponse)
+def reindex(req: ReindexRequest, _key: str | None = Depends(_verify_api_key)):
+    """Match chunks against a filter and (in v2) apply re-extract/re-embed/delete.
+
+    V1 scope: validates the operation, runs the filter, returns matched chunk_ids.
+    Mutations are NOT performed in v1 — callers use POST /ingest with
+    force_reextract=true on a per-session basis to rebuild chunks under a new
+    extraction prompt version. V2 will add in-place re-extract, re-embed after
+    an embedding model swap, and retraction-style delete; SSE progress
+    streaming is planned for long-running operations.
+    """
+    if req.operation not in SUPPORTED_REINDEX_OPS:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"unsupported operation: {req.operation!r}. "
+                f"Allowed: {sorted(SUPPORTED_REINDEX_OPS)}"
+            ),
+        )
+
+    matched = _reindex_select_chunk_ids(req.filter)
+
+    if req.dry_run:
+        note = "dry run: no mutations applied"
+    else:
+        note = (
+            f"{req.operation} against {len(matched)} chunks is not implemented in v1. "
+            f"Use POST /ingest with force_reextract=true on a per-session basis "
+            f"to re-extract under a new prompt version."
+        )
+
+    return ReindexResponse(
+        operation=req.operation,
+        dry_run=req.dry_run,
+        matched_chunk_ids=matched,
+        note=note,
+    )
+
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("RETRIEVAL_PORT", "8999"))
