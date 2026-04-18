@@ -172,6 +172,18 @@ def test_lancedb_table_schema_describes_37_fields() -> None:
     assert len(schema) == 37
 
 
+def test_chunk_dataclass_matches_lancedb_schema_fields() -> None:
+    """Lock step: if someone adds a field to Chunk, lancedb_table_schema must update too."""
+    from dataclasses import fields
+    from community_brain.ingestion.schema import Chunk, lancedb_table_schema
+    chunk_fields = {f.name for f in fields(Chunk)}
+    schema_fields = set(lancedb_table_schema().keys())
+    assert chunk_fields == schema_fields, (
+        f"Drift: in Chunk only {chunk_fields - schema_fields}; "
+        f"in schema only {schema_fields - chunk_fields}"
+    )
+
+
 def _minimal_chunk(**overrides) -> "Chunk":
     """Helper: build a minimal valid Chunk with overridable fields."""
     defaults = dict(

@@ -30,7 +30,7 @@ SCHEMA_VERSION = "1.0"
 ContentType = Literal["prepared_transcript", "extracted_signal", "community_post"]
 Stance = Literal["positive", "negative", "neutral", "mixed"]
 Certainty = Literal["asserted", "hedged", "speculative"]
-ExtractionStatus = Literal["success", "failed"]
+ExtractionStatus = Literal["success", "failed", "pending"]
 
 #: List-valued fields that should serialize as `[]` (not None) in LanceDB/Arrow.
 #: Null lists are poorly supported in the Arrow type system; normalizing on write
@@ -101,7 +101,7 @@ class Chunk:
     extraction_prompt_version: str
     extraction_status: ExtractionStatus
     extraction_error: str | None
-    extracted_at: dt.datetime
+    extracted_at: dt.datetime | None
 
     # --- Content & embedding (3) ---
     embed_text: str
@@ -122,7 +122,8 @@ class Chunk:
                 d[field_name] = []
         if d["corpus_markers_computed_at"] is not None:
             d["corpus_markers_computed_at"] = d["corpus_markers_computed_at"].isoformat()
-        d["extracted_at"] = d["extracted_at"].isoformat()
+        if d["extracted_at"] is not None:
+            d["extracted_at"] = d["extracted_at"].isoformat()
         return d
 
 
@@ -166,7 +167,7 @@ def lancedb_table_schema() -> dict[str, str]:
         "extraction_prompt_version": "string",
         "extraction_status": "string",
         "extraction_error": "string|null",
-        "extracted_at": "string",
+        "extracted_at": "string|null",
         "embed_text": "string",
         "full_text": "string",
         "embedding": "list[float]",
