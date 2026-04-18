@@ -79,7 +79,6 @@ def test_chunk_prepared_transcript_flags_qa_and_insight() -> None:
 
 def test_chunk_prepared_transcript_flags_unresolved_question() -> None:
     """If a segment has <Q> but no matching <A>, has_unresolved_question is True."""
-    import re
     from community_brain.ingestion.parser import TranscriptSegment
     seg = TranscriptSegment(
         topic="t",
