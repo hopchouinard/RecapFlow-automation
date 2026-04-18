@@ -1,0 +1,898 @@
+[00:00:30] Patrick Chouinard: Hey Marc!
+[00:00:30] Marc Juretus: Good to see you there, Patrick.
+[00:00:34] Patrick Chouinard: How's it going?
+[00:00:36] Marc Juretus: It's going okay, you?
+[00:00:39] Patrick Chouinard: Good, good.
+[00:00:42] Patrick Chouinard: The sky is falling around here.
+[00:00:44] Patrick Chouinard: It's raining like mad, but April in Quebec.
+[00:00:50] Marc Juretus: Oh, that's where you're in.
+[00:00:50] Marc Juretus: That's where you're in Quebec.
+[00:00:52] Marc Juretus: It's about 80.
+[00:00:53] Marc Juretus: Kind of humid, but it's at least warm.
+[00:00:58] Patrick Chouinard: Yeah, I thought it was not too bad.
+[00:00:59] Patrick Chouinard: It was like 60, 65, getting warmer.
+[00:01:23] Marc Juretus: Anything I had to miss last week, talk about anything, I was going to say something interesting, everything we talked about is interesting, anything particular, let's put it that way.
+[00:01:32] Patrick Chouinard: To be really honest, I now rely so much on recap flow that I don't remember it by heart.
+[00:01:40] Patrick Chouinard: If you look at the school community, there's now a full detail recap with everything.
+[00:01:47] Marc Juretus: Cool.
+[00:01:52] Patrick Chouinard: Let me take a look.
+[00:02:00] Patrick Chouinard: Oh yeah, we had a couple of demo that were interesting last week.
+[00:02:04] Patrick Chouinard: Someone showed us a text-to-SQL platform that integrated with Slack that was kind of interesting.
+[00:02:14] Patrick Chouinard: How to rebuild the SEO-optimized agency site.
+[00:02:20] Patrick Chouinard: Cloud plus Codex, so developing with both systems together.
+[00:02:26] Marc Juretus: We tried that, yeah, let's check that out.
+[00:02:29] Patrick Chouinard: Yeah, so there was a, oh, obviously the lightweight rag from Andre Carpatty in using Cloud Code in Obsidian.
+[00:02:41] Marc Juretus: What's Obsidian?
+[00:02:43] Marc Juretus: Why am I drawing a blank on that?
+[00:02:44] Patrick Chouinard: Note-taking application.
+[00:02:46] Patrick Chouinard: It's a free note-taker.
+[00:02:47] Patrick Chouinard: just takes note in Markdown, so it allows Cloud Code, Codex, all of those to basically write all the notes themselves directly.
+[00:03:00] Patrick Chouinard: Andre Carpatty created a very, very, very optimized prompt where you could digest or ingest pretty much any type of content and store it and document it inside of an Obsidian Vault.
+[00:03:16] Patrick Chouinard: So pretty interesting.
+[00:03:17] Marc Juretus: I'll say this, as far as, like, conversational flow that you're going to maintain a conversation over days, I I've used ChatGBT to a point, and I think Claude excels way above everybody when it comes to code, but, like, Gemini, because since I had that Google cert, I was starting to, like, use it a little more because I knew a little bit more about it, and just conversation from day to day and leaving off where you left off and just some of the stuff it does.
+[00:03:45] Marc Juretus: Plus, it's pretty seamless to YouTube because it's a part of their product, but I've been using their gems where, you know, I see, like, it's basically a prompt, I'll pass it, like, stock symbol, and it'll give me, like, detailed analysis.
+[00:03:58] Marc Juretus: I'm sure you could do it in Claude.
+[00:04:00] Marc Juretus: I don't know.
+[00:04:01] Marc Juretus: I kind of like the conversation day-to-day with that.
+[00:04:06] Patrick Chouinard: The way I converse is always vocally, and for that right now, nothing comes close to ChatGPT, sadly.
+[00:04:13] Marc Juretus: I don't know if I agree with that, but we can beg to differ.
+[00:04:16] Marc Juretus: use it all the time, dude.
+[00:04:19] Marc Juretus: I talk all day to it.
+[00:04:21] Marc Juretus: I mean, my open-claw agent is actually pretty good, too, but I don't know, man.
+[00:04:25] Marc Juretus: I just, like, for my 20 hours a month, I never run out, and it's just, I don't know.
+[00:04:31] Marc Juretus: It's pretty slick, man.
+[00:04:32] Marc Juretus: I don't know.
+[00:04:33] Marc Juretus: I'm a fan.
+[00:04:34] Marc Juretus: Let's just put it that way.
+[00:04:35] Marc Juretus: I really wasn't using it before I went trying to take that test.
+[00:04:39] Patrick Chouinard: Mind you, there might be the thing that I've tweaked their system prompt to hell, and that makes all the difference in the world.
+[00:04:49] Ty Wells: Hey, guys.
+[00:04:51] Ty Wells: I'm presenting the golf course today, so that is my presentation.
+[00:04:57] Ty Wells: So my presentation is done.
+[00:05:01] Ty Wells: I'll be listening in.
+[00:05:03] Ty Wells: That's about it.
+[00:05:04] Patrick Chouinard: Okay.
+[00:05:05] Marc Juretus: This guy, hackathons and golf courses.
+[00:05:08] Ty Wells: Man, you lived a lifetime.
+[00:05:09] Marc Juretus: Is that what it is?
+[00:05:11] Ty Wells: Oh, wait a minute.
+[00:05:12] Ty Wells: We're taking shots.
+[00:05:13] Marc Juretus: Hang on a second, guys.
+[00:05:14] Marc Juretus: I can share that moment, too.
+[00:05:17] Ty Wells: This is our tradition, though.
+[00:05:19] Ty Wells: We have certain holes we have to take shots on.
+[00:05:22] Ty Wells: The guys are getting it together.
+[00:05:28] Ty Wells: Still haven't washed it.
+[00:05:30] Ty Wells: All right, you guys.
+[00:05:36] Ty Wells: And remember, I got to fill mine up just in we need it.
+[00:05:39] Ty Wells: Cheers, guys.
+[00:05:40] Ty Wells: Cheers, guys.
+[00:05:43] Paul Miller: Okay.
+[00:05:44] Ty Wells: That was my presentation.
+[00:05:46] Ty Wells: I'm going to go off video now.
+[00:05:48] Andrew Nanton: Cheers to you.
+[00:05:51] Patrick Chouinard: Enjoy.
+[00:05:52] Ty Wells: All right.
+[00:05:53] Marc Juretus: Thanks.
+[00:05:53] Marc Juretus: Bye.
+[00:06:01] Paul Miller: Hey, Patrick.
+[00:06:02] Paul Miller: Hey, Hey, Andrew.
+[00:06:05] Marc Juretus: What's up, Paul?
+[00:06:06] Andrew Nanton: Hello, hello.
+[00:06:08] Paul Miller: I'm over in our Western Isle of New Zealand, the landmass that they call Australia.
+[00:06:17] Marc Juretus: Man, I feel like I stepped into the late 90s and we're gaming with those big headphones on you two guys tonight.
+[00:06:24] Marc Juretus: Where's the big mic that looks like an ash?
+[00:06:27] Andrew Nanton: Right?
+[00:06:28] Andrew Nanton: No.
+[00:06:28] Andrew Nanton: Yeah, yeah.
+[00:06:32] Paul Miller: And now it's a podcast.
+[00:06:36] Paul Miller: This meeting is being recorded.
+[00:06:42] Patrick Chouinard: Good.
+[00:06:44] Patrick Chouinard: I'm let a couple of minutes for people to keep joining.
+[00:07:58] Patrick Chouinard: Oh, that's a good one, Andrew.
+[00:08:00] Patrick Chouinard: And I do see the need for Codex price per token, they are massively in front of Entropic right now.
+[00:08:10] Patrick Chouinard: And not every task require Peaks Intelligence.
+[00:08:14] Patrick Chouinard: There's a lot of cleanup work that is perfectly able to run in Codex at way cheaper prices.
+[00:08:28] Patrick Chouinard: Honestly, I think that's where we're going.
+[00:08:30] Patrick Chouinard: We're going to have a layered tier of model working together to get something done without costing an arm and leg.
+[00:08:46] Ty Wells: I'm working on my local LLM that I'm going to push a lot of data to that same gaming PC I have.
+[00:08:55] Ty Wells: I haven't started yet, but Patrick, I'm probably going to reach out to you now that I'm back.
+[00:09:00] Ty Wells: to set that up.
+[00:09:03] Patrick Chouinard: No problem.
+[00:09:04] Patrick Chouinard: Yeah, I seem to have triggered a bunch of Proxmox installations or something.
+[00:09:11] Ty Wells: Do you have a guide or do you, I mean, just best practices or?
+[00:09:16] Ty Wells: If you have something you can send to me, otherwise I'll just like Claude.
+[00:09:22] Patrick Chouinard: I don't have anything per se, I've just learned by myself.
+[00:09:27] Patrick Chouinard: Honestly, Claude is doing most of my configuration these days.
+[00:09:32] Ty Wells: Yeah.
+[00:09:32] Ty Wells: Okay.
+[00:09:33] Ty Wells: Yeah.
+[00:09:33] Ty Wells: No, that's what I was going to do.
+[00:09:34] Ty Wells: I just can actually get to that box, check the memory on it, wipe it, and then start for a show.
+[00:09:44] Patrick Chouinard: Okay.
+[00:09:44] Patrick Chouinard: Okay.
+[00:09:46] Patrick Chouinard: Oh, there's a...
+[00:09:59] Patrick Chouinard: I don't have...
+[00:10:00] Patrick Chouinard: I a notebook.lm yet about config.
+[00:10:02] Patrick Chouinard: I could actually create one easily, but.
+[00:10:06] Patrick Chouinard: you, did you take it down?
+[00:10:07] Andrew Nanton: I thought you had one that you prepared about OpenClaw.
+[00:10:12] Andrew Nanton: For OpenClaw, yes, yes.
+[00:10:13] Patrick Chouinard: yeah.
+[00:10:15] Patrick Chouinard: Right now, what he's talking about is setting up a full infrastructure for Proxmox to have local AI intelligence.
+[00:10:25] Patrick Chouinard: Yes, it could be OpenClaw, but it's not just for that.
+[00:10:29] Patrick Chouinard: It's local models and, yeah, basically.
+[00:10:33] Andrew Nanton: Well, I'll just say, I appreciated your security-minded approaches to some of the boundaries that in your notebook.lm.
+[00:10:43] Patrick Chouinard: Yeah, absolutely.
+[00:10:45] Patrick Chouinard: That's still there.
+[00:10:46] Patrick Chouinard: That, I'm not taking that down, but yeah, that was, and actually it would be worth revisiting now with ARMYs and all of the new system that, that came out.
+[00:10:59] Patrick Chouinard: questions!
+[00:10:59] Patrick Chouinard: I
+[00:11:00] Patrick Chouinard: So, uh, well, we're gonna get started and see if people join in.
+[00:11:07] Patrick Chouinard: Uh, what's it?
+[00:11:13] Patrick Chouinard: Ah, okay.
+[00:11:17] Patrick Chouinard: Is that any better for mic volume?
+[00:11:22] Patrick Chouinard: Yep.
+[00:11:23] Patrick Chouinard: Okay.
+[00:11:23] Patrick Chouinard: Perfect.
+[00:11:26] Patrick Chouinard: Good.
+[00:11:28] Patrick Chouinard: Uh, actually, I don't think I even need to take a picture.
+[00:11:32] Patrick Chouinard: There's three of you that are sharing their cameras right now.
+[00:11:36] Patrick Chouinard: So, uh, it would be, uh, Marc, Andrew, and Paul.
+[00:11:41] Patrick Chouinard: So, Marc, did you have, uh, anything you wanted to share or any question you wanted to ask?
+[00:11:47] Marc Juretus: Yeah, what I probably would want to ask is, seems like my, my place of business hospital, they are starting to try to get some chat agents, you know, that are going to connect to like a, like a Salesforce, not Salesforce.
+[00:12:00] Marc Juretus: What am I saying?
+[00:12:01] Marc Juretus: Service manager, SharePoint, you know, maybe submitting tickets and stuff like that.
+[00:12:06] Marc Juretus: So my question is, not enough people on the call maybe, but has anybody did a deployment at work where they had an agent of that nature that's like, you know, an employee assistant agent, where they actually either leverage co-pilot, like a co-pilot, co-pilot studio, or even deployed something from Foundry because, you know, we're an Azure shop and we're looking in that direction.
+[00:12:30] Marc Juretus: So the one problem is we have like a proprietary CMS and coming over and maintaining your login credentials into the actual chat bot is becoming the rub, but you know, outside of that, is anybody you use that at work and have any thoughts on that?
+[00:12:48] Patrick Chouinard: We haven't implemented anything yet, but we are in the same case where we're a Microsoft shop as well.
+[00:12:55] Patrick Chouinard: And, and, and, uh, I agree.
+[00:12:57] Patrick Chouinard: It was like that until...
+[00:13:00] Patrick Chouinard: a couple of weeks ago, but now that Microsoft has actually made a partnership with Entropic, and now Claude is pervasive inside of Copilot, it got a massive intelligence update, so I'm anxious to see what happens in the agent world, because that's going to change a whole lot of things here, because the way they were doing agents in Copilot Studio, was, it's the Power Automate way.
+[00:13:30] Patrick Chouinard: It's the drag and drop shape, and try to build things, so now that they have that partnership with Entropic, I am hoping that they're going to take on some of the managed agent stuff that Entropic is pushing, and see if, because they decided to implement Co-Work pretty much as is, so I'm guessing there's a chance that they're going to take more than just the model from Entropic, so we're going to have to see, but right now, I would not recommend investing any kind of, any any kind of.
+[00:14:00] Patrick Chouinard: The build agent with Copilot Studio as it stands.
+[00:14:04] Patrick Chouinard: Will it change in the near future?
+[00:14:06] Marc Juretus: I think it will, but be careful right now, because every time we try to build agents in there, it's not really the best of experience.
+[00:14:16] Marc Juretus: We have something up running now, and I'll be perfectly frank, it was a lot better than I thought it would be, because when they first said that, I was like, look, we're going do something in Microsoft Foundry.
+[00:14:26] Marc Juretus: That's my recommendation, but at this point, we actually have it connecting to service manager for the knowledge base, as well as SharePoint sites, and you're able to have sub-agents in route.
+[00:14:38] Marc Juretus: So it's actually, it's better than I thought it would be, and it may be the solution, but where I believe my boss wants to go, you're going to need to go to Foundry, because there's more models.
+[00:14:48] Marc Juretus: They have that, what is that called, the Red Hat agents that'll go in there and scan for vulnerabilities, and this and that.
+[00:14:55] Marc Juretus: Like, there's just so much to offer up there, but I will say I was impressed with what...
+[00:15:00] Marc Juretus: But it was able to do, because I thought this is a waste of time, but it may be okay for version one.
+[00:15:06] Patrick Chouinard: We'll put it that way, Patrick.
+[00:15:08] Patrick Chouinard: Yeah.
+[00:15:09] Patrick Chouinard: And I would agree with that.
+[00:15:11] Marc Juretus: I'll say that much.
+[00:15:12] Patrick Chouinard: The one thing I will raise though, in the enterprise, Andrew, I recognize that if you can move everything, it's easy.
+[00:15:21] Patrick Chouinard: In the enterprise, it's not that easy to move to a completely different framework.
+[00:15:25] Patrick Chouinard: So for us, for example, moving anything to Google would be like a year worth of vetting of a new hyperscaler, and it would be pure hell.
+[00:15:37] Patrick Chouinard: Sometimes you have to live with the infrastructure you have.
+[00:15:42] Andrew Nanton: Totally.
+[00:15:42] Andrew Nanton: And I guess I would throw out there that Microsoft has all the pieces, right?
+[00:15:48] Marc Juretus: It's just putting them together.
+[00:15:49] Marc Juretus: And it's like allowing.
+[00:15:52] Andrew Nanton: So, I mean, what I've been struggling with is I would like to have a single project have a tag across Google Drive.
+[00:16:00] Andrew Nanton: Google Calendar, you know, email, just everything.
+[00:16:04] Andrew Nanton: And even in Google, where that it's a little more uniform than Microsoft, it is still heterogeneous.
+[00:16:13] Andrew Nanton: And if Microsoft could, you know, get that act together and allow a single, like, SQL-like query to reference a single patient or topic or thing, they would be way ahead of the game.
+[00:16:30] Andrew Nanton: I mean, these, and that's where I think Anthropic is behind the eight ball, is that they don't have email, documents, calendar, like people are tied into those things.
+[00:16:44] Marc Juretus: That's very powerful.
+[00:16:46] Patrick Chouinard: Yeah, but be careful there, because now they just changed their SharePoint connector to an M365 connector.
+[00:16:54] Patrick Chouinard: It is now connected to email, calendar, Teams, SharePoint, everything.
+[00:16:59] Andrew Nanton: Well, yeah.
+[00:17:01] Andrew Nanton: Right, no, then there you go.
+[00:17:02] Andrew Nanton: mean, just, it has to, but it has to be able to see, it needs, so the GWS CLI is super powerful.
+[00:17:13] Andrew Nanton: And yeah, I'll just throw out there that like, that's been a, that's been a big unlock for the stuff I'm doing.
+[00:17:19] Patrick Chouinard: But are you using Google Pro or Google Enterprise?
+[00:17:24] Patrick Chouinard: Because if you tried Gemini Enterprise, you're going to see why I would not go there right now.
+[00:17:31] Patrick Chouinard: Google Pro, awesome.
+[00:17:32] Patrick Chouinard: Like the Gemini Pro model, incredible.
+[00:17:35] Patrick Chouinard: Notebook LM in the wild, incredible.
+[00:17:38] Patrick Chouinard: All of them.
+[00:17:39] Patrick Chouinard: Move to Google Enterprise, pure hell.
+[00:17:45] Patrick Chouinard: Absolutely unusable.
+[00:17:46] Patrick Chouinard: They not pair parity in terms of feature, a bunch of limitation.
+[00:17:52] Patrick Chouinard: Notebook LM Enterprise is kneecapped completely in terms of functionality.
+[00:17:58] Patrick Chouinard: We've tried to evaluate.
+[00:18:00] Patrick Chouinard: We couldn't even evaluate.
+[00:18:01] Patrick Chouinard: We can't create a Word document with Gemini.
+[00:18:08] Patrick Chouinard: And I'm not talking about Microsoft Word document.
+[00:18:12] Patrick Chouinard: I'm talking just even a Google Doc document.
+[00:18:16] Patrick Chouinard: It gives it to us in Markdown and gives us the script to create the Google.
+[00:18:23] Patrick Chouinard: It's insane.
+[00:18:24] Patrick Chouinard: The disparity of functionality between Pro and Enterprise right now.
+[00:18:29] Paul Miller: Is the question, Marc, just sort of starting with getting access in the appropriate Microsoft way to the Azure APIs, starting with Graph, getting authentication with there, and sort of exposing the APIs, and being able to run everything neatly within the Microsoft environment, but in the way That's cool.
+[00:19:08] Marc Juretus: I don't believe that's what we're trying to do.
+[00:19:11] Marc Juretus: We're basically building a chat where the worker can ask a series of questions and it'll either get routed to, like I said, like a service manager type of agent where there are questions, it'll go to SharePoint for other stuff for maybe general knowledge, and there may be a clinical base.
+[00:19:29] Marc Juretus: And it is working for the most part.
+[00:19:31] Marc Juretus: I was actually surprised.
+[00:19:33] Marc Juretus: The only rub we have right now is we have a CMS and just maintaining your authentication into the agent is the problem that we're working through right now.
+[00:19:43] Marc Juretus: But at any rate, I just wanted to see if anyone else had any experience or was using it in some suggestions.
+[00:19:50] Marc Juretus: But I think eventually we will be in Foundry and then doing a bunch of other things because there's just so much more to offer.
+[00:19:57] Marc Juretus: But I will say at a limited level, like...
+[00:20:00] Marc Juretus: I was surprised at the number of connectors it had from Workday to Salesforce and to SharePoint.
+[00:20:05] Marc Juretus: Indexing is really fast, so I was somewhat surprised, but I could see, I think Patrick had said, doing some stuff with Power Automate to accomplish some tasks.
+[00:20:16] Patrick Chouinard: Yeah, that's the thing.
+[00:20:17] Patrick Chouinard: If you stay in Foundry, yeah, you have some power there.
+[00:20:22] Patrick Chouinard: But Copilot Studio and Power Automate are low-code variants that are basically, they worked well five years ago, but it's, I don't think it's the paradigm that's going to move forward.
+[00:20:39] Patrick Chouinard: Foundry?
+[00:20:40] Patrick Chouinard: Yes.
+[00:20:40] Patrick Chouinard: If you stay in Foundry and build on top of Foundry, you might have stuff that has some kind of a future in the development, but I don't see Microsoft invest in a whole lot in Power Automate, because right now you have models where you can just tell them to build those things up.
+[00:21:00] Patrick Chouinard: So why do you need low-code when you have no-code solutions?
+[00:21:06] Marc Juretus: Yeah.
+[00:21:06] Marc Juretus: Like I said, I think we will evolve to Foundry, just maybe version one, just to show, I think we're in that stage of, hey, are we utilizing AI?
+[00:21:15] Marc Juretus: Okay, it does this, but it needs to do more.
+[00:21:18] Patrick Chouinard: Yeah.
+[00:21:19] Patrick Chouinard: But honestly, watch what Entropic is doing, because if they bring their managed agent in the Microsoft ecosystem that they seem to be doing right now, that's going to be your big, big unlock.
+[00:21:36] Marc Juretus: Well, that is what, you're probably talking about more, but that is what the agent that we're using for the LLM is, Claude.
+[00:21:43] Marc Juretus: So.
+[00:21:44] Marc Juretus: Yeah, the model is The is, the model is Claude, but I know you're saying more, but it's, I was surprised that was even offered, to be honest with you.
+[00:21:52] Marc Juretus: thought it was like, you know what mean?
+[00:21:54] Marc Juretus: But now it's pretty much everywhere.
+[00:21:57] Patrick Chouinard: You have Claude in Co-Pilot.
+[00:21:59] Patrick Chouinard: gaude with .
+[00:22:00] Patrick Chouinard: The application, the desktop application, you have Claude in Copilot in Excel, PowerPoint, Word, and now they're launching CoWork, basically the same functionality that's in Claude desktop, but inside of Copilot desktop as well.
+[00:22:18] Patrick Chouinard: So yeah, they've basically integrated the entire Claude ecosystem inside of Copilot.
+[00:22:26] Marc Juretus: I do like what Google offers.
+[00:22:27] Marc Juretus: I'm sorry, go ahead, Paul.
+[00:22:29] Paul Miller: Yeah, sorry.
+[00:22:30] Paul Miller: Yeah, Microsoft have invested a whole lot of money into Claude as well, a lot more recent money than anyone else.
+[00:22:40] Paul Miller: So I think it's a sign of things to come, which is great for us, but then you can just pick and choose between a ChatGPT 5.4 and Claude for running stuff.
+[00:22:55] Paul Miller: Maybe use Claude for the Argentic stuff.
+[00:22:58] Ty Wells: a job.
+[00:22:58] Ty Wells: I
+[00:23:00] Ty Wells: Open source.
+[00:23:01] Ty Wells: I think that's where you need to grow because that's not going to stop setting up your own model.
+[00:23:08] Ty Wells: You're going to need that and it's going to actually help you and save money because, yes, you'll get like a mythos or something better.
+[00:23:15] Ty Wells: The problem with that is you're going to pay the price, and I think now is the time to prepare your environment for that kind of, you know, handing off even what Opus is doing right now, handing it off.
+[00:23:30] Ty Wells: Your LLM, your open source, your local model, because that's what it's capable.
+[00:23:35] Ty Wells: And then you use mythos or something else for truly, you know, those complex tasks.
+[00:23:41] Ty Wells: Okay, I got a hit.
+[00:23:43] Marc Juretus: Is mythos anywhere near being released to the general public?
+[00:23:46] Marc Juretus: I haven't looked and I, yeah, I saw all the stuff that was finding and like, we got to get, are we are going to get in that zone where we're going to wish we uninvented something for the havoc that was created that I just, you always say I follow a bunch of
+[00:24:00] Marc Juretus: The financial influencers, they're investing in data centers.
+[00:24:02] Marc Juretus: But anyways, they always say, I hope we don't blow ourselves up with all this technology is always like their premise.
+[00:24:09] Marc Juretus: Like, you know, you got a guy in his bedroom that has no nothing about code, but he writes this impressive virus that takes things out.
+[00:24:15] Marc Juretus: Like, very powerful.
+[00:24:17] Marc Juretus: So, my two cents.
+[00:24:20] Paul Miller: What they've said on Mythos at the moment is that they're going to start unlocking just sub-parts of it in the next two to three months.
+[00:24:31] Marc Juretus: Okay.
+[00:24:33] Paul Miller: Not the full model, but it sounds like they're giving the full model to certain corporates.
+[00:24:42] Paul Miller: Yeah.
+[00:24:42] Paul Miller: Which I don't know if that's a great thing either.
+[00:24:46] Paul Miller: Yeah.
+[00:24:48] Patrick Chouinard: But yeah, honestly, I take some, I give some in there.
+[00:24:54] Patrick Chouinard: Because we've heard that those models...
+[00:25:00] Patrick Chouinard: Would revolutionize the world and destroy cyber security since GPT-2, so...
+[00:25:09] Marc Juretus: Yeah, but would you admit that you, do you think, did you think if you went out to where we are now, we'd be as far as we are?
+[00:25:17] Marc Juretus: I didn't.
+[00:25:18] Marc Juretus: Absolutely did not, at all, so...
+[00:25:21] Patrick Chouinard: We're moving way faster than we've expected, but the big, scary, this model will destroy, destroy civilization.
+[00:25:31] Patrick Chouinard: We've heard that since GPT-2, GPT-3.
+[00:25:35] Patrick Chouinard: So, yeah, it is a massive improvement, but the human race has a way to absorb those things and dampen their ability very, very quickly.
+[00:25:48] Marc Juretus: The thing I'm keeping an eye on now is, like, I'm best around with crypto, but one of the things you're saying about there is, will quant computing get to the point in three to five years that it can hack Bitcoin?
+[00:25:59] Marc Juretus: Now, there's a bunch...
+[00:26:00] Marc Juretus: There of companies that are starting to try to build stuff to protect that, but that is something I will actually be keeping an eye on to see where that goes.
+[00:26:09] Patrick Chouinard: Yeah, we'll see.
+[00:26:10] Patrick Chouinard: We'll see.
+[00:26:11] Patrick Chouinard: But again, I'm not too worried about the future of humanity based on Mythos.
+[00:26:17] Patrick Chouinard: And honestly, seeing that OpenAI is ramping up their equivalent, the potato model called Spud, I'm not too terrified either.
+[00:26:28] Marc Juretus: There is irony in that, though, where the name is Mythos, where it's the one, no sonnet, no haiku, know, no opus, don't sound like no villain.
+[00:26:36] Marc Juretus: Mythos does.
+[00:26:39] Patrick Chouinard: This one is a myth.
+[00:26:41] Marc Juretus: Mythos took us out.
+[00:26:44] Patrick Chouinard: Yeah, but that's the thing.
+[00:26:45] Patrick Chouinard: This one is a myth.
+[00:26:46] Patrick Chouinard: Its opponent is a potato.
+[00:26:48] Patrick Chouinard: Like, okay.
+[00:26:49] Patrick Chouinard: I don't know who chooses name at OpenAI, but...
+[00:26:54] Patrick Chouinard: Spud was not their best freak, let's say.
+[00:26:56] Marc Juretus: That is bad.
+[00:26:58] Marc Juretus: Like, that is bad.
+[00:27:00] Paul Miller: They'll just rename it Codex.
+[00:27:05] Paul Miller: It's the only name they use.
+[00:27:07] Patrick Chouinard: Most probably.
+[00:27:11] Patrick Chouinard: good.
+[00:27:14] Patrick Chouinard: Oh, Bastian, you're saying that they've changed the name?
+[00:27:18] Patrick Chouinard: Okay.
+[00:27:19] Patrick Chouinard: We're gonna see.
+[00:27:20] Patrick Chouinard: Ohm.
+[00:27:21] Patrick Chouinard: Okay.
+[00:27:22] Bastian: Anxious to see what that No, I meant that when they change the order of magnitude of the parameter size, they put a new name.
+[00:27:30] Patrick Chouinard: Okay.
+[00:27:32] Patrick Chouinard: Okay.
+[00:27:32] Patrick Chouinard: Okay.
+[00:27:32] Patrick Chouinard: Oh, okay.
+[00:27:33] Patrick Chouinard: Okay.
+[00:27:33] Patrick Chouinard: Sorry.
+[00:27:34] Patrick Chouinard: Yeah.
+[00:27:36] Patrick Chouinard: Yeah.
+[00:27:36] Patrick Chouinard: A new name is good.
+[00:27:38] Patrick Chouinard: Naming it after a vegetable might not have the nicest idea, but we'll see what it...
+[00:27:45] Patrick Chouinard: We'll judge the moral when it's come out.
+[00:27:48] Bastian: We'll see if that vegetable has its own constitution as well.
+[00:27:53] Patrick Chouinard: Well, the other one has a soul, so might as well.
+[00:27:58] Patrick Chouinard: Fair point.
+[00:28:00] Patrick Chouinard: Paul, you have anything you wanted to share, ask?
+[00:28:08] Paul Miller: No, look, just some news from my side.
+[00:28:13] Paul Miller: Bastian, you'll be interested to know this.
+[00:28:16] Paul Miller: We had our CTO return back from a big holiday in South America.
+[00:28:25] Paul Miller: I told him that when he got back, I needed him to move to agentic coding straightaway, that we have to defend our moat, we have to leverage all the cool stuff that I'd been doing.
+[00:28:44] Paul Miller: So he agreed, and we had a big Claude Code Getting Started session, and we're talking about building PRDs in an automated way, mapping...
+[00:29:00] Paul Miller: Our existing environment, so he's right into it, so I don't know, is there some kind of, Bastian you might be able to answer this, he apparently, there's some kind of drink you drink in Peru that kind of gets you high in the mountains or something like that, what's that, we're not talking about Cain here, yeah, something like that, apparently he tried and said, it was very bitter, but the interesting thing is, that occurred after I was asking him about making this change and he was pushing back, and now he seems very compliant around it, maybe he saw something in this magical liquid in the Peruvian mountains that has aligned him to agentic coating, so I think you need to export that, Bastian, we need to get that out to all the other normies.
+[00:30:03] Patrick Chouinard: Honestly, if agentic coating was hiding in some kind of a drink, Quebec would be the central of agentic coating for the world.
+[00:30:15] Paul Miller: Okay, seems to be quite a concentration there.
+[00:30:18] Paul Miller: Obviously, your local water supply, Patrick, is heavily polluted in some way.
+[00:30:29] Patrick Chouinard: Okay, good.
+[00:30:30] Patrick Chouinard: Anything you're working on besides that?
+[00:30:33] Paul Miller: Oh, just doing stuff that gets the bills paid.
+[00:30:40] Paul Miller: But I'm working on my second brain, trying to link.
+[00:30:45] Paul Miller: I've got lots of individual little clawed code projects that are running on Markdown together, but I'm trying to link them all together, they have a master one that understands there's all these separate ones and merge in what the Kapathi
+[00:31:01] Paul Miller: So use some of the skills from that, tie into Agent SDK, and link it all together.
+[00:31:09] Paul Miller: That's kind of the little play thing I've got today.
+[00:31:12] Paul Miller: So that's where I'm at.
+[00:31:16] Patrick Chouinard: Good.
+[00:31:17] Ty Wells: Can I jump in?
+[00:31:19] Patrick Chouinard: Sure, absolutely.
+[00:31:21] Ty Wells: I think I shared with you guys my user-driven development framework today.
+[00:31:26] Patrick Chouinard: Mm-hmm.
+[00:31:28] Ty Wells: Oh, so I enhanced that, of course, because, you know, what else do we do?
+[00:31:33] Ty Wells: So, for those that don't know, the way that workflow works is you, I have a feedback widget on my application.
+[00:31:42] Ty Wells: The user, before, you'd fill out a form, is this the bug, a feature, whatever.
+[00:31:46] Ty Wells: Right now, it just has record.
+[00:31:49] Ty Wells: And start recording.
+[00:31:50] Ty Wells: So they actually, it starts recording, and they narrate the issue they're having.
+[00:31:56] Ty Wells: I want to move this button.
+[00:31:57] Ty Wells: I want to do this.
+[00:31:58] Ty Wells: I want to do whatever.
+[00:31:59] Ty Wells: Or this is...
+[00:32:00] Ty Wells: The error comes up.
+[00:32:01] Ty Wells: It then gives them a list of choices, like an ask user format, like you do in chat in Claude.
+[00:32:10] Ty Wells: So it gives them buttons that they can just click on.
+[00:32:12] Ty Wells: And obviously every response has other.
+[00:32:15] Ty Wells: And it keeps going until they're up 85%, like a mini chat window, just a floating widget.
+[00:32:20] Ty Wells: Once that's done, and it gets 85, it tells them, thank you, sends it off to my feedback hub.
+[00:32:28] Ty Wells: I look at it.
+[00:32:30] Ty Wells: get an email.
+[00:32:30] Ty Wells: I can decide to, you know, actually initiate that.
+[00:32:34] Ty Wells: That sends off.
+[00:32:36] Ty Wells: It has a plan in there.
+[00:32:37] Ty Wells: It builds out the plan.
+[00:32:39] Ty Wells: I look at the plan.
+[00:32:40] Ty Wells: The plan looks good.
+[00:32:41] Ty Wells: So then I can initiate that right from my phone, telegram, accept that, and sends that off, creates the PR.
+[00:32:48] Ty Wells: And then I review the PR right from my phone again.
+[00:32:51] Ty Wells: And then I'm able to merge that in if I want to.
+[00:32:54] Ty Wells: So it's a full loop now, but the recording was the key.
+[00:32:59] Ty Wells: Getting the.
+[00:33:00] Ty Wells: The recording going and it takes a, it has a button there to capture the console logs in case there was something on that app.
+[00:33:06] Ty Wells: So, okay.
+[00:33:06] Ty Wells: I got a hit, but I just wanted to share that.
+[00:33:09] Patrick Chouinard: Good.
+[00:33:10] Patrick Chouinard: Thank you very much.
+[00:33:12] Patrick Chouinard: We never had the golf and share before.
+[00:33:20] Patrick Chouinard: Next one would be Alex.
+[00:33:23] Patrick Chouinard: Did you want to share something with us this week?
+[00:33:26] alexrojas: Yeah, I had a question for Paul right now.
+[00:33:29] alexrojas: So, Paul, are you using the Cloud Agents or OpenClaw?
+[00:33:36] Paul Miller: Cloud Agents was the path I was going to go down.
+[00:33:39] Paul Miller: I kind of wanted it quite controlled.
+[00:33:42] Paul Miller: OpenClaw, I just feel a bit uncomfortable on the security side.
+[00:33:46] Paul Miller: thought, well, I want to be very specific around how this works.
+[00:33:50] Paul Miller: Okay.
+[00:33:51] Paul Miller: So, yeah.
+[00:33:53] Paul Miller: Cloud Agent SDK.
+[00:33:56] alexrojas: Okay.
+[00:33:57] alexrojas: Sounds good.
+[00:33:58] alexrojas: Because, like, I have one over...
+[00:34:00] alexrojas: I OpenClaw agent running in my computer, but I wonder if I want to run more than one instance of OpenClaw, I do need Docker, right?
+[00:34:10] alexrojas: I don't know if you guys know, because I have a VPN, that's where I do other agents, but I have not had two agents running in my machine, exactly for that reason.
+[00:34:22] Patrick Chouinard: why do you have two agents?
+[00:34:24] alexrojas: Yeah, I was just thinking out, you know?
+[00:34:28] Patrick Chouinard: No, because if you want to split their processing or their context, again, instead of using Telegram, which it's doable with Telegram, but I find it a little bit more complex for no reason, go to Discord, and then you just split by channels, so we have a context memory specific to that channel.
+[00:34:51] Patrick Chouinard: So it's the same agent, engine behind it, but you have completely different contexts that you can address, and you can define...
+[00:34:59] Patrick Chouinard: Uh...
+[00:35:00] Patrick Chouinard: Shared memory, so they share an agent.md file, but they have context memory within the individual conversation, so they act as many agents, basically.
+[00:35:12] alexrojas: Okay, yeah, the thing was that it was for a client, so they needed, you know, they had a Mac Mini, and they needed, like, individualized agents, you know, not to get, like, across each other.
+[00:35:28] alexrojas: There was, like, agendas and stuff, and that's why I just saw this Docker container idea, because, yeah.
+[00:35:37] Patrick Chouinard: you do that, then I would say, yes, go Docker on Linux VMs.
+[00:35:41] alexrojas: Okay.
+[00:35:42] Patrick Chouinard: You can do the VPS, but I'm not a fan of hosting all of those things on someone else's hardware, especially that it doesn't take that much to host it yourself.
+[00:35:52] Patrick Chouinard: I mean, if you have an old laptop running somewhere, you can drop Proxmox on there and run your, uh, Linux.
+[00:36:06] alexrojas: Yeah, yeah.
+[00:36:08] alexrojas: Cool, cool.
+[00:36:09] alexrojas: Other than that, I'm exploring a lot of the agents.
+[00:36:15] alexrojas: Like I told you guys, I've been doing a lot of workshops for other companies, and now these last weeks, I am landing a bit of all these uses into one specific case.
+[00:36:31] alexrojas: And currently I'm exploring this agent that scrapes government, I don't know how to say it in English, but it's like, you know, government requirements that they publish, and they say like, hey, we need these X amount of shoes, X amount of these for different projects, and trying to get like, you know, as fast as possible, who leads to get like quotes and see where that
+[00:37:01] Paul Miller: Tenders, or RFPs, is what they call them.
+[00:37:06] alexrojas: Sorry?
+[00:37:07] Paul Miller: RFPs?
+[00:37:09] Paul Miller: A request for proposal, or a tender, is what they tend to call in Australia, New Zealand, or the UK.
+[00:37:16] Paul Miller: I'm not sure in North America, in the United States, or Canada, it's, yeah.
+[00:37:23] alexrojas: Okay.
+[00:37:24] alexrojas: Yeah, the only problem is, okay, I would have the tech part, but the reality in Mexico, a lot of these things work a lot through connections, you know, getting to know the right people, the office.
+[00:37:39] alexrojas: So, you know, I think this could take you, like, 20%, 30% the road, and then, like, maybe exploring a personal side, you know?
+[00:37:49] Patrick Chouinard: Yeah.
+[00:37:51] Paul Miller: Alex, I had a similar customer requirement for that with, in New Zealand, and one of the
+[00:38:00] Paul Miller: One of the sources of data for these types of opportunities is, while they might not be publicly offering the contract and you kind of have to talk to the person and need to know what they're doing, if you can get notes of the council meetings, so a lot of the council or regional government meetings are minuters, and if you can get notes that there was a discussion around doing something, and then process those notes and say, hey, they were talking about a new water treatment plant, or they were talking about a new highway eroding project, and then you're constantly looking out for those opportunities.
+[00:38:43] Paul Miller: That's kind of the line that I was taking at my end, because a lot of the insights around those tender projects are hidden within meeting notes.
+[00:38:53] Paul Miller: So they might not talk about the actual proposal, but they talk about the project leading up to it, or of the...
+[00:39:00] Paul Miller: Debating getting the budget together or doing a sort of discovery or doing something on that.
+[00:39:06] alexrojas: So it might be somewhere where you might want to start.
+[00:39:09] alexrojas: Oh, yeah.
+[00:39:10] alexrojas: That's amazing.
+[00:39:10] alexrojas: You're getting ahead of time, you know?
+[00:39:13] Paul Miller: I know.
+[00:39:14] alexrojas: Yeah, yeah.
+[00:39:15] Patrick Chouinard: But for those, when you start to touch RFPs and things that have legal consequences, I should say, I would be very careful with the open claw and Hermes of the world.
+[00:39:29] Patrick Chouinard: Actually, Entropic, I've posted the link earlier in the chat, but they've posted something called Clawed Manage Agents.
+[00:39:39] Patrick Chouinard: So basically, their answer to open claw for corporate entities, I would probably look far more through that type of system than self-hosted open claw installation.
+[00:39:54] Patrick Chouinard: No matter, their open claw, Iron Claw, Nemo Claw, everything that's...
+[00:40:00] Patrick Chouinard: That type of system for stuff that has legalese attached to it, I'd be very careful in the corporate environment.
+[00:40:08] Patrick Chouinard: They're fun to explore, to try things.
+[00:40:12] Patrick Chouinard: I have many running myself, but I would not recommend installing them at a client site in production, dealing with something that has legal implication today.
+[00:40:24] alexrojas: Yeah, yeah.
+[00:40:25] alexrojas: Yeah, I'm trying to stay in the cloud, you know, to match my plan as well.
+[00:40:33] Patrick Chouinard: As long as you're not in the enterprise world, you're good because you still have plans.
+[00:40:39] Patrick Chouinard: We've just migrated to an enterprise account and it's token-based all the way.
+[00:40:44] alexrojas: Oh, I don't know.
+[00:40:48] alexrojas: Yeah, there's no such thing as subscription in the enterprise world.
+[00:40:51] alexrojas: Oh, that's bad, man.
+[00:40:54] alexrojas: Go local.
+[00:40:57] alexrojas: Yeah, thank you very much.
+[00:41:00] alexrojas: Thanks, Paul, for the insight, and I'll take a look at the Cloud Managed Agents.
+[00:41:04] alexrojas: Patrick, thanks, man.
+[00:41:06] Patrick Chouinard: Yep.
+[00:41:07] alexrojas: Yeah.
+[00:41:08] Patrick Chouinard: Good.
+[00:41:09] alexrojas: I'll keep you posted on how that goes, you know, if I can get ahead of things.
+[00:41:16] Patrick Chouinard: Absolutely.
+[00:41:17] Patrick Chouinard: Absolutely.
+[00:41:18] Patrick Chouinard: Especially if you deal with Managed Agent, I would love to hear about those.
+[00:41:23] alexrojas: Oh, yeah.
+[00:41:24] Patrick Chouinard: Again, there's too many things I need to try and not enough hours in a week to do so.
+[00:41:31] alexrojas: Happened to it.
+[00:41:34] Patrick Chouinard: Okay.
+[00:41:36] Patrick Chouinard: On my side, this week, I don't have a demo, but there's a reason why.
+[00:41:42] Patrick Chouinard: I've been working on a little project that, let me put it this way, it's going to be for the community, but right now it's in Patchutex Conkwork.
+[00:41:55] Patrick Chouinard: I stumbled onto a pattern that I want...
+[00:41:59] Patrick Chouinard: something.
+[00:42:00] Patrick Chouinard: That I want to build, and if it works, and I think it will, basically I'm going to be more than happy to show all of you guys in the upcoming weeks, probably a week or two, but it's already starting to pay off, but basically building the intelligence of the community, not, I'm not talking about the individual human intelligence, I'm talking about the digital intelligence we've been creating.
+[00:42:27] Patrick Chouinard: So let's see if I manage to pull it off, and if I can, it's obviously going to be an open source GitHub repo for everyone.
+[00:42:37] Patrick Chouinard: But yeah, I've been spending way too much time on it this weekend.
+[00:42:46] Paul Miller: We're going to see that.
+[00:42:47] Patrick Chouinard: Cool.
+[00:42:47] Patrick Chouinard: Sorry?
+[00:42:48] Paul Miller: Cool.
+[00:42:49] Patrick Chouinard: Yeah.
+[00:42:51] Patrick Chouinard: Other than that, I mean, I've been working a lot to integrate Claude in the enterprise in the last week.
+[00:43:01] Patrick Chouinard: I had fun teaching some higher upper management about cloud code, even, to a C-suite level manager.
+[00:43:14] Patrick Chouinard: I did not expect that.
+[00:43:17] Patrick Chouinard: Now we have somebody in the C-suite of a multi-billion dollar company that requested a local installation of Python and NPMs and nodes.
+[00:43:27] Patrick Chouinard: So we're going to see where that goes.
+[00:43:31] Paul Miller: You must be nervous about that, surely?
+[00:43:34] Paul Miller: You really want those C-suite guys fiddling around with that?
+[00:43:39] Marc Juretus: Yeah, so we kind of got going on in my place, Patrick.
+[00:43:42] Marc Juretus: Very similar.
+[00:43:43] Marc Juretus: That's who started this whole thing, and he has it.
+[00:43:46] Marc Juretus: The $200 model.
+[00:43:49] Marc Juretus: Yep.
+[00:43:50] Patrick Chouinard: Again, here, they don't even have $200 or $100.
+[00:43:54] Patrick Chouinard: There's no subscription.
+[00:43:55] Patrick Chouinard: In Enterprises, you pay by the tokens, but...
+[00:43:58] Patrick Chouinard: And we...
+[00:44:00] Patrick Chouinard: We've looked at his consumption, he already topped off three grand last month, so yeah, it's going to be fun, but it's just a single training escalated into, oh, now I need you every week for the next six months, and I want something every week, like on co-work, on whatever, like next week I'm actually showing him how to instantiate co-work as a full agent with personality, with memories, with contacts, with projects, with all of this, so yeah, it really exploded, and I didn't anticipate that, but that's going to be very fun, because this is, those are the best advocate.
+[00:44:44] Patrick Chouinard: When you can have somebody at that level, every other door gets opened really, really easily.
+[00:44:54] Patrick Chouinard: No, actually, that's the thing, it's, yeah, it's, he's C-Suite today, but he, he,
+[00:45:00] Patrick Chouinard: He to have a technical background, so he's not.
+[00:45:02] Patrick Chouinard: His technical background is, let's say, a couple of decades old, but still he has a technical background, so he's not starting from nothing.
+[00:45:13] Patrick Chouinard: We have those kind of things every week where we don't expect it.
+[00:45:17] Patrick Chouinard: We have somebody shows up in training and it ends up discovering brand new use cases that we didn't even thought about.
+[00:45:27] Patrick Chouinard: So, it's a really exciting time because of that.
+[00:45:31] Patrick Chouinard: We're working on things we didn't even know was possible.
+[00:45:35] Patrick Chouinard: mean, today I had ClaudeCode use Cowork to create a ClaudeCode training material based on a project that we did in order to monitor the usage of ClaudeCode.
+[00:45:52] Patrick Chouinard: So, I have to have my little top on my desk.
+[00:46:01] alexrojas: Patrick.D.: Recursiveness of that.
+[00:46:09] Patrick Chouinard: Exactly.
+[00:46:11] Patrick Chouinard: And now, actually, that one is really funny.
+[00:46:14] Patrick Chouinard: I need to tell you about that.
+[00:46:16] Patrick Chouinard: Last week, we had a bug in the software we're developing with Cloud Code, and we each have our own context, if you want.
+[00:46:26] Patrick Chouinard: I have all of my memories, and all the other developers in my team have their own memories.
+[00:46:29] Patrick Chouinard: Patrick the guy had issues trying to figure out what the bug was.
+[00:46:35] Patrick Chouinard: So he sent me a message that is Cloud Code told him, through themes.
+[00:46:41] Patrick Chouinard: I copied it, pasted it into my instance of Cloud Code in the same project.
+[00:46:47] Patrick Chouinard: Patrick My Cloud Code actually found that I had the context required to solve the issue, and then he actually responded, saying, like, tell that to the other Cloud Code.
+[00:46:57] Patrick Chouinard: Chouinard, So basically, you have now a middleware between- Chouinard
+[00:47:00] Patrick Chouinard: Different Claude instances.
+[00:47:02] Patrick Chouinard: So we were just copy and pasting Claude message through themes in order to solve and debug the issue.
+[00:47:10] Patrick Chouinard: So after that, yeah, we just said, that's like, we're basically USB stick, me-based B-stick now.
+[00:47:21] Paul Miller: Like they used to call it sneaker net, where you'd go around the office with USBs and stuff.
+[00:47:28] Patrick Chouinard: We're back to doing the same thing.
+[00:47:31] Patrick Chouinard: It's, yeah, it's humbling when you step on those scenario for the first time, let's say.
+[00:47:38] Patrick Chouinard: And it's completely different, like, doing AI-assisted coding in the enterprise is completely different from the Vibe coding I do at home.
+[00:47:51] Patrick Chouinard: I mean, we're looking at almost reinventing the SDLC because the steps in the SDLC are...
+[00:48:00] Patrick Chouinard: We completely different.
+[00:48:02] Patrick Chouinard: I know I've said it a lot, but we are becoming markdown developers, so.
+[00:48:11] Paul Miller: Do you think, Patrick, and I know we've talked about this in this group over the last month or so, but the repurposing of what we do in the software space where we're no longer about writing the code, we're about managing where we should be going from a direction, purpose, where our value add is, how we coordinate our strategy to leverage sort of best practice with, you know, where does information come from, where does value come from, where does staff add true value?
+[00:48:57] Paul Miller: Um, it's...
+[00:48:59] Paul Miller: It's...
+[00:49:00] Paul Miller: I think there's been quite a lot of interesting discussion.
+[00:49:05] Paul Miller: I'll post it on the, I can't remember the guy's channel, I think it's someone, Nate, does some interesting YouTube updates where he's giving commentary as to the death of SaaS businesses and how you kind of reinvent yourself in terms of, well, people get trust with having other people they can go to or strangle if everything goes wrong.
+[00:49:30] Paul Miller: If all the code's being done, you kind of, by AI, you still need to be able to rely on some people to save you when you go down the wrong path if you're a C-level executive.
+[00:49:43] Paul Miller: Just like your guy, he wants you to come and see him and talk you through all the other bits as you go on, but he gets a bit carried away with clawed code.
+[00:49:53] Paul Miller: As it makes something, goes and puts himself into a difficult position, he's still needing YouTube.
+[00:50:00] Paul Miller: To come to the rescue when he does that, I would imagine, but is that where we're moving to now?
+[00:50:08] Patrick Chouinard: Are you talking about, and thank you, Biggi, Nate B.
+[00:50:13] Paul Miller: Jones?
+[00:50:15] Paul Miller: Yeah, yeah.
+[00:50:16] Patrick Chouinard: Okay, so here's the...
+[00:50:23] alexrojas: Patrick, I watched one of him where he says that the AI is reducing the arbitrage space.
+[00:50:33] alexrojas: So it's like the added value of AI now is that you can do things, find those inefficiencies in the market, and close the gap like this.
+[00:50:48] Patrick Chouinard: Yep, definitely, definitely.
+[00:50:50] Patrick Chouinard: But yeah, we're discovering on a daily basis.
+[00:50:54] Patrick Chouinard: So if ever I stumble upon the new way to do SDLC and...
+[00:51:00] Patrick Chouinard: In AI world, I'm going to be more than happy to share, but we'll see.
+[00:51:08] Patrick Chouinard: I saw, David, you mentioned that you're building an automated RFQ creation and sending automated, if selected, negotiation, no claw involved, but it starts...
+[00:51:22] Patrick Chouinard: Okay, do you want to talk a little bit about what you've described here?
+[00:51:27] Patrick Chouinard: Thank you, Patrick.
+[00:51:31] David’s iPhone: I didn't really have a lot to add other than I am working on something that does touch on some of the things that one of the other members was talking about doing, but he's using open claw, I think.
+[00:51:45] David’s iPhone: And just logged in at the very end when you were talking about it, so I'm not exactly sure exactly what he's doing, but I'd be happy to share any details if that gentleman has any questions.
+[00:51:57] Patrick Chouinard: Okay, Ed, but can you describe a bit what your...
+[00:52:00] David’s iPhone: Sure.
+[00:52:04] David’s iPhone: Absolutely.
+[00:52:05] David’s iPhone: Sorry.
+[00:52:06] David’s iPhone: Basically, what it is, it serves two main groups.
+[00:52:11] David’s iPhone: It serves event planners, which could just be a host that's hosting a large party, like a big wedding or something, or a real event manager.
+[00:52:19] David’s iPhone: Or my main client right now is actually an event rental company.
+[00:52:24] David’s iPhone: And I'm kind of building this for them, although they don't even know it because I built a different system for them about five years ago that they're still using.
+[00:52:30] David’s iPhone: I'm trying to replace it with a more advanced web-based system that is really focused on streamlining all the hard work that goes into event planning and management.
+[00:52:41] David’s iPhone: It's quite deep, but from a first user perspective, when you first log into the platform, my idea is that you can really quickly just say, hey, here's the party I'm doing.
+[00:52:53] David’s iPhone: You can use AI and chat with AI, but one of the first steps is going to show you this beautiful cloud.
+[00:53:00] David’s iPhone: So of different types of vendors in your area based on your event details that you entered via the chat or if there's a form for people that may not want to chat, and then you click each vendor card to select those vendors, and then you basically just click go, and it just starts sending out RFQs, negotiating with it.
+[00:53:24] David’s iPhone: Now, I haven't gotten to the point where it's physically sending out the RFQs yet, but it's building them and it's ready to negotiate, and that's just the very front end of the system for the average user to come in if they want to pay.
+[00:53:40] David’s iPhone: There's also a way to use it for free for smaller parties, and it does a lot of other, other, other stuff as well, including it manages your guests over SMS and your staff.
+[00:53:54] David’s iPhone: They don't need to log in anywhere, it's all done over SMS, they can swap shifts, they can
+[00:54:00] David’s iPhone: Say they're late.
+[00:54:00] David’s iPhone: They can report someone else late.
+[00:54:02] David’s iPhone: It all goes to payroll.
+[00:54:03] David’s iPhone: syncs with gusto.
+[00:54:05] David’s iPhone: That, I already did for them in the past, so I've been doing this web run.
+[00:54:11] David’s iPhone: Anyway, it's kind of fun and exciting, and I'm happy to answer any questions if you guys have any.
+[00:54:17] Patrick Chouinard: Actually, maybe not this week.
+[00:54:19] Patrick Chouinard: I don't know if you're ready to do that or not, but if you wanted to demo that application, I think everybody would be really interested in looking at that.
+[00:54:28] David’s iPhone: That's great.
+[00:54:30] David’s iPhone: I haven't been able to attend any of these meetings because I know I physically work pretty much every afternoon right at this time, like it's near San Francisco, Pacific Standard.
+[00:54:43] David’s iPhone: So I work from like 2 to 5 every weekday, but they just gave me a couple of Tuesdays off for some reason.
+[00:54:54] David’s iPhone: They're training someone else, so I was able to hop in.
+[00:54:57] David’s iPhone: So I think next week might work.
+[00:54:59] David’s iPhone: And
+[00:55:00] David’s iPhone: I know I need to sign up.
+[00:55:01] David’s iPhone: I follow you guys pretty close on the emails and I occasionally log into school.
+[00:55:05] David’s iPhone: I'm not that active on the community.
+[00:55:06] David’s iPhone: I apologize.
+[00:55:07] David’s iPhone: But you guys, there's so much value to be learned from this group.
+[00:55:10] David’s iPhone: It's really exciting to be a part of it.
+[00:55:12] David’s iPhone: I'm actually a pretty low-level coder.
+[00:55:14] David’s iPhone: I consider myself closer to the no-code end of code knowledge than most of the people I see on these meetings.
+[00:55:23] David’s iPhone: I've done a lot of deep work with FileMaker Pro and specifically integrating it with other SQL databases and reporting platforms, various web platforms.
+[00:55:37] David’s iPhone: But I never was able to learn JavaScript or Python or any of those really cool languages.
+[00:55:42] David’s iPhone: And now with AI, I'm finally able to start to craft things that I feel are more enterprise-worthy.
+[00:55:51] Patrick Chouinard: If you want to showcase your system next week, you're going to be more than welcome to do so.
+[00:55:59] David’s iPhone: Awesome.
+[00:55:59] David’s iPhone: Thank you so
+[00:56:00] David’s iPhone: Thank Patrick.
+[00:56:00] David’s iPhone: I appreciate it.
+[00:56:01] David’s iPhone: And again, I appreciate everyone in the community.
+[00:56:05] Patrick Chouinard: And honestly, we have every single variant of from no-code to ultra-code in this community.
+[00:56:14] Patrick Chouinard: Cool.
+[00:56:14] Patrick Chouinard: Cool.
+[00:56:14] Patrick Chouinard: honestly, there's a lot of no-code people that have really interesting systems.
+[00:56:21] David’s iPhone: Yeah, I never learned a computer language like a Pro, which is really just, it's not true code.
+[00:56:30] David’s iPhone: And although, when I was in college years ago, I learned Fortran.
+[00:56:34] David’s iPhone: Does anyone remember Fortran?
+[00:56:37] Patrick Chouinard: Sadly, yeah.
+[00:56:39] David’s iPhone: Useless.
+[00:56:41] David’s iPhone: It's used widely for controlling large, you know, machines, you know, and labs and stuff, but never took to it.
+[00:56:53] David’s iPhone: And now with AI, I just, I feel so liberated.
+[00:56:57] David’s iPhone: But my biggest problem, guys...
+[00:57:00] David’s iPhone: Honestly, is what to do.
+[00:57:03] David’s iPhone: I have so many ways and so many directions that it pulls me in, and AI is so helpful, and it's always so encouraging, right?
+[00:57:10] David’s iPhone: It's hard not to get drugs that sound fun and are, but aren't really going to make any money.
+[00:57:19] Patrick Chouinard: Actually, let me try to get you the link, but, or if someone can find the link to Andre Karpatti gist about LLM Wiki, if you are overwhelmed with IDEA, this thing will help you, because basically, just talk with whichever AI you prefer, be it Gemini, ChatGPT, Cloud, whatever, take all of the conversation, okay?
+[00:57:47] Patrick Chouinard: Drop them into an obsidian vault.
+[00:57:52] Patrick Chouinard: This is just a, oh, thank you, Morgan.
+[00:57:55] David’s iPhone: I've seen mention of it, yeah.
+[00:57:58] Patrick Chouinard: And have this prompt.
+[00:58:00] Patrick Chouinard: Look at it.
+[00:58:01] Patrick Chouinard: There's tons of video about it on YouTube.
+[00:58:04] Patrick Chouinard: This will dissect all of the material you give it and restructure it in the form of a navigable wiki.
+[00:58:11] Patrick Chouinard: So then you can just ask, based on everything you have, you ask CloudCode, find me an idea that is doable, that I can actually create, that has market value, anything you want to decide which one is going to be your first one.
+[00:58:25] Patrick Chouinard: But this is going to be the game changer for selecting among a sea of ideas.
+[00:58:32] David’s iPhone: Okay.
+[00:58:32] David’s iPhone: I like it.
+[00:58:33] David’s iPhone: That's a great idea.
+[00:58:34] David’s iPhone: Thank you so much, Patrick.
+[00:58:35] David’s iPhone: I'm going to do that.
+[00:58:36] David’s iPhone: I went from one repo in the last 10 years in GitHub, I'm up to 77.
+[00:58:44] Patrick Chouinard: Welcome to my world.
+[00:58:46] Patrick Chouinard: I went from none to 83 in the past year.
+[00:58:52] David’s iPhone: I still say that I'm not a developer, although I'm rethinking the SDLC at the company I work at.
+[00:58:59] David’s iPhone: So...
+[00:59:01] David’s iPhone: They labeled me as lead developer in the last job I had, but honestly, I feel like now I'm actually a developer and before I was kind of just kind of playing in sandbox.
+[00:59:12] Patrick Chouinard: Yep, definitely.
+[00:59:14] Patrick Chouinard: Completely understand.
+[00:59:16] David’s iPhone: Yeah.
+[00:59:17] David’s iPhone: All right.
+[00:59:17] David’s iPhone: Thanks, Patrick.
+[00:59:18] David’s iPhone: We'll see you next week, hopefully.
+[00:59:20] Patrick Chouinard: Yep, absolutely.
+[00:59:21] David’s iPhone: All right.
+[00:59:23] Patrick Chouinard: Yep.
+[00:59:24] Patrick Chouinard: That's the other thing I've been playing with that very gist, because I know he's doing it without...
+[00:59:30] Patrick Chouinard: ...using vectors or vector database, but I'm trying to play with the idea of using it as a preprocessor before chunking, before I put it in a rag database.
+[00:59:46] Patrick Chouinard: Basically, I'm thinking about using, not as is, but a modified version of CarPaddy's prompt in order to do my preprocessor.
+[01:00:00] Patrick Chouinard: Processing and metadata enrichment of whatever I want to put in my RAG database, and so far it's yielding pretty nice results.
+[01:00:11] Patrick Chouinard: I'm anxious to see where I can push that thing, especially I never build a RAG database in my life, so let's learn from the best.
+[01:00:21] Patrick Chouinard: Hey, hi Morgan.
+[01:00:23] Patrick Chouinard: Do you have anything you want to share with us this week?
+[01:00:28] Morgan Cook: It's tax week.
+[01:00:29] Patrick Chouinard: Oh!
+[01:00:30] Morgan Cook: In the U.S.
+[01:00:34] Morgan Cook: So I've been busy with that.
+[01:00:36] Morgan Cook: I haven't...
+[01:00:36] Morgan Cook: I did finish a project that I released, it's the one that's under the NDA, so I'm gonna clear that up and then I'll share that with you guys probably next week.
+[01:00:49] Morgan Cook: Well, the NDA is...
+[01:00:51] Morgan Cook: What's that?
+[01:00:52] Patrick Chouinard: The two things that are inevitable is death and taxes, so basically now you have your cemetery project and taxes.
+[01:01:01] Morgan Cook: Exactly.
+[01:01:02] Patrick Chouinard: That's perfect.
+[01:01:02] Patrick Chouinard: Yeah.
+[01:01:04] Morgan Cook: Yeah.
+[01:01:05] Morgan Cook: So there's some movement on the cemetery front.
+[01:01:07] Morgan Cook: did get a map of their layout so I can at least manually create the GIS info.
+[01:01:18] Morgan Cook: And that'll be a good start there.
+[01:01:22] Morgan Cook: They're still struggling because they're there.
+[01:01:24] Morgan Cook: The problem is their IT guy is working on migrating their billing and payment processing stuff, which is There's a government system under, I it's called Tyler or something like that.
+[01:01:39] Morgan Cook: And it's hosted on AWS in the government hosting that AWS provides, which is not simplistic by any means.
+[01:01:53] Morgan Cook: So he's struggling with that a lot and having some difficulties getting that all applied.
+[01:01:59] Morgan Cook: Yeah.
+[01:02:00] Morgan Cook: So he's busy, to say the least.
+[01:02:05] Morgan Cook: As soon as he's a little bit more freed up, then I might be able to use more of his resources to accomplish some of the tasks that I need from them, but we're still moving ahead a little bit, you know, one step at a time each week.
+[01:02:18] Morgan Cook: Something new occurs, so that's good.
+[01:02:20] Morgan Cook: It's still moving.
+[01:02:23] Patrick Chouinard: Well, at the very least, it's not a customer that risks disappearing.
+[01:02:28] Morgan Cook: Exactly.
+[01:02:29] Morgan Cook: And there's 680 of them that are sitting there waiting, so if they can't get a little bit quicker on the movement, I might reach out and see if I can't pull a couple more on board as the, you know, pre-beta users give us feedback, what do you need kind of thing, you know.
+[01:02:48] Morgan Cook: I might move that step a little closer than what I hadn't planned.
+[01:02:52] Morgan Cook: Well, you really found a niche customer base that are basically unattended by everyone else.
+[01:03:00] Morgan Cook: So yeah, that's the that's the one key thing that I really trying to hold on to there.
+[01:03:06] Morgan Cook: But it's still not easy dealing with government never will be.
+[01:03:16] Morgan Cook: So that's where I'm at with those the the carpool app is being worked on, but I haven't I just spent money on the database for it and some hosting stuff.
+[01:03:30] Morgan Cook: So I got to actually get that up and running as well.
+[01:03:33] Morgan Cook: So I'm not wasting too much money.
+[01:03:37] Patrick Chouinard: Yep, understood.
+[01:03:40] Morgan Cook: Going through my taxes, I looked back and saw all the expenses for services that I've been paying for.
+[01:03:46] Morgan Cook: It's like, oh, geez, what can we cut out?
+[01:03:48] Patrick Chouinard: Yeah, I don't want to see that.
+[01:03:52] Patrick Chouinard: That's going to give me a heart attack if I look at how much I spent on the A.I.
+[01:03:57] Patrick Chouinard: for the last year.
+[01:03:58] Morgan Cook: So you were looking.
+[01:04:00] Morgan Cook: One thing I saw, there's a, it's called Ghost.
+[01:04:09] Morgan Cook: It's a free Postgres database for your agents.
+[01:04:12] Patrick Chouinard: Okay.
+[01:04:13] Morgan Cook: It's completely CLI based.
+[01:04:15] Morgan Cook: And you were just talking about, you know, you're building your RAG database and everything, but this is a Postgres database which has no GUI.
+[01:04:24] Morgan Cook: It's completely CLI built for the agent so that your agent can fire up the database, create the schema, load it and do stuff with it and destroy it.
+[01:04:35] Morgan Cook: However many times it needs to, right?
+[01:04:38] Morgan Cook: And that might be useful for you, but it's called Ghost.
+[01:04:42] Morgan Cook: You know, the normal Ghost.
+[01:04:47] Morgan Cook: Yeah.
+[01:04:48] Morgan Cook: I haven't done much research other than I watched a quick little video, but I thought the concept was something that fits well into some of the stuff that we've been working on.
+[01:04:59] Morgan Cook: Thank
+[01:05:00] Morgan Cook: In this group, so I thought maybe that might be useful for you guys.
+[01:05:03] Patrick Chouinard: Are you talking about this?
+[01:05:06] Morgan Cook: Yeah.
+[01:05:07] Patrick Chouinard: Okay.
+[01:05:08] Morgan Cook: Yep.
+[01:05:10] Morgan Cook: It's got a simple curl FSL install.
+[01:05:15] Patrick Chouinard: Yeah, that's what I said.
+[01:05:17] Patrick Chouinard: The website is pretty straightforward, but perfect to be used by an engine, so.
+[01:05:23] Morgan Cook: Yeah, you know, like I said, it's just something I came across and made note of because it was interesting to me.
+[01:05:32] Morgan Cook: Based on the, you know, background task and CLI agents and.
+[01:05:38] Patrick Chouinard: No, that's definitely, that could definitely be interesting for agents, uh, specifically.
+[01:05:43] Patrick Chouinard: But you know, for my RAG database, I'm looking at something that's more portable that, uh, what, what I would look, what I'm looking for is something that could be vectorized and package within a single application and travel with the application.
+[01:05:59] Patrick Chouinard: Right.
+[01:05:59] Morgan Cook: Not something you.
+[01:06:00] Patrick Chouinard: We to install a back-end server for.
+[01:06:03] Morgan Cook: Right, so something more local and vector-based.
+[01:06:08] Patrick Chouinard: Exactly.
+[01:06:10] Morgan Cook: All right.
+[01:06:11] Patrick Chouinard: I have a couple of ideas.
+[01:06:13] Patrick Chouinard: I started playing with LensDB right now, and so far it's serving me well.
+[01:06:19] Patrick Chouinard: And it doesn't need to be installed or deployed or it's just packaged in.
+[01:06:25] Morgan Cook: We got a light-gathering today.
+[01:06:28] Morgan Cook: guess a lot of other people are filing their taxes too?
+[01:06:31] Patrick Chouinard: I'm guessing it has something to do with that, yeah.
+[01:06:34] alexrojas: I'm playing golf.
+[01:06:36] Morgan Cook: Oh.
+[01:06:37] Morgan Cook: Well, what are you doing inside?
+[01:06:38] Morgan Cook: Get back outside on the golf course.
+[01:06:40] alexrojas: Yeah, that's Ty.
+[01:06:41] Patrick Chouinard: That was Ty.
+[01:06:43] Patrick Chouinard: Ty is currently on the golf course, literally.
+[01:06:47] alexrojas: Yeah, yeah.
+[01:06:47] Patrick Chouinard: It's not because between shots.
+[01:06:49] Ty Wells: I'm not on the golf course.
+[01:06:50] Patrick Chouinard: I'm on a particular hole.
+[01:06:55] Patrick Chouinard: Fantastic.
+[01:06:57] Paul Miller: The 19th.
+[01:07:02] Patrick Chouinard: Good.
+[01:07:03] Morgan Cook: All right.
+[01:07:04] Morgan Cook: That's all I have for this week, basically.
+[01:07:07] Patrick Chouinard: Thank you, Morgan.
+[01:07:09] alexrojas: Morgan, I just had a question.
+[01:07:10] alexrojas: Is this Ghost build, it's like the Mila Djokovic repo, the Memo?
+[01:07:18] Patrick Chouinard: No, that's something else, the Memo Palace.
+[01:07:25] Morgan Cook: Well, you broke up a little bit there at the end, but Memo Palace is not the same as Ghost, no.
+[01:07:32] alexrojas: Oh, no?
+[01:07:33] alexrojas: Okay.
+[01:07:35] alexrojas: I'll take a look at it then.
+[01:07:36] Patrick Chouinard: Yep.
+[01:07:39] Morgan Cook: I don't so.
+[01:07:43] alexrojas: Oh, yeah.
+[01:07:43] Patrick Chouinard: Yeah.
+[01:07:44] Patrick Chouinard: Yeah.
+[01:07:45] alexrojas: Yeah.
+[01:07:45] Patrick Chouinard: That's it.
+[01:07:45] Patrick Chouinard: Memory Palace.
+[01:07:47] Morgan Cook: Yeah.
+[01:07:48] Morgan Cook: Yes.
+[01:07:48] Patrick Chouinard: Yes.
+[01:07:49] Patrick Chouinard: Palace.
+[01:07:49] Patrick Chouinard: That's it.
+[01:07:52] alexrojas: Okay.
+[01:07:52] alexrojas: Yeah.
+[01:07:52] alexrojas: I'll take a look at Ghost.
+[01:07:53] Morgan Cook: Thanks for sharing.
+[01:07:55] Morgan Cook: Memory Palace is more of a visual organizational thing.
+[01:08:00] Morgan Cook: of, you know, putting things in specific rooms of the palace, relational-wise, so that was more of a mental concept that they applied to the database directly, so a way of automatically remembering where things are, you know, there's that whole concept of, well, it's in the dining room by the fireplace kind of thing.
+[01:08:24] alexrojas: Yeah, yeah, yeah.
+[01:08:25] Patrick Chouinard: It's an interesting idea, but honestly, it overlaps a lot with what Andre Carpatti does, and if I'm going to take one model for...
+[01:08:36] Patrick Chouinard: ...AI model memory, I might tend to go more towards the Carpatti platform.
+[01:08:43] Morgan Cook: I like that Carpatti didn't provide anything.
+[01:08:46] Morgan Cook: He said, this is the concept, now tell your AI to build it.
+[01:08:49] Patrick Chouinard: Yeah, exactly.
+[01:08:51] Patrick Chouinard: Copy and paste, drop it and claw it, it works.
+[01:08:55] Ty Wells: He's a teaser, isn't he?
+[01:08:57] Ty Wells: I mean, he can't give the full path.
+[01:08:59] Morgan Cook: No.
+[01:09:01] Ty Wells: One thing I would share with you guys, this ERP system that I know I've demoed to you guys before, that shows, you know, it's an ERP, so, you know, counts and so forth, but one of the problems I ran into was we needed a signature pad, and I didn't want to do that, right, because that's hardware, and I got to take it and put it in the, you know, connect it to a physical PC and all, so I built this system called It's called, Jesus Christ, we're drinking out here, so I don't remember what it's called, but, the thing is, what I do is I use tablets to pass off the session during this checkout process, like when somebody's putting in a, an account on, a charge on account, so it's like a front facing display, a customer front facing display, you can do the same thing for a kitchen display, so you can use it as a signature pad, just
+[01:10:00] Ty Wells: This is a front display, as an inventory counter, it's just a tablet, so I'm using like a Fire tablet, 10-inch tablet, that takes over the session, at least when it's needed, and runs, so I don't need any additional hardware, I'm not tied in to anybody, it's really just running that part of the application on that device, so I think that could add value to you guys that need anything that's peripheral, where you need an interface, and it obviously can be richer.
+[01:10:30] Ty Wells: Because I display the full invoice and everything when they're checking out, so they can sign for it, we have a, we do locksmithing, so we have like a, I use it also as a, as a check-in terminal, so when they go into a store, to the store, they put in their phone number, and you know, if they're on the account, they'll pull it up, but that's how they get their, their receipts, because we do only SMS or email receipts now, so it's a, I think it's a great use case for that, so you don't have to really
+[01:11:00] Ty Wells: He tied down to any particular vendor.
+[01:11:02] Patrick Chouinard: Okay, I got a putt.
+[01:11:07] Patrick Chouinard: I love the energy of that chair.
+[01:11:15] Patrick Chouinard: Cool.
+[01:11:16] Patrick Chouinard: I see a couple of the other regular that have not turned on their camera.
+[01:11:20] Patrick Chouinard: not gonna call you out by name, but anyone wants to jump in, share something, ask a question.
+[01:11:31] Patrick Chouinard: I'll share a couple of things and ask some questions.
+[01:11:34] Patrick Chouinard: Go right ahead.
+[01:11:36] Elijah Stambaugh: So a couple of things.
+[01:11:38] Elijah Stambaugh: One is that I just want to let you know that my son and I won the presidential AI challenge.
+[01:11:47] Elijah Stambaugh: So President Trump signed an executive order to put AI in education last year in May.
+[01:11:53] Elijah Stambaugh: And then in July, they announced the presidential AI challenge.
+[01:11:58] Elijah Stambaugh: And you
+[01:12:00] Elijah Stambaugh: We won the state of Ohio, and then yesterday at four o'clock we pitched for the, we pitched, there he is right there, I'll give you guys a quick shot of him, that's my son, he's a junior in high school, but yeah, so we pitched yesterday with five judges, we built an automation, an N8N automation with Google Gemini, 2.5 flash that takes a lesson plan and a, interest inventory from the student, and we combined that to create a personalized recording has stopped.
+[01:12:40] Elijah Stambaugh: So, yeah, so, so yeah, so it's a, yeah, pretty, it was, it wasn't super, super technically deep, but it was a, it was a decent amount of work, and my son, they explained RAG, the concepts of RAG, we didn't do RAG actually, but concepts.
+[01:12:59] Elijah Stambaugh: different the use Thank
+[01:13:00] Elijah Stambaugh: So rag, embedding, semantic search, all that stuff.
+[01:13:03] Elijah Stambaugh: So there was one of the guys that was on the call was a high up at OpenAI.
+[01:13:11] Elijah Stambaugh: So he asked about training models.
+[01:13:15] Elijah Stambaugh: And we didn't do that.
+[01:13:16] Elijah Stambaugh: And I really didn't get into that with the kids.
+[01:13:18] Elijah Stambaugh: And so I don't know how we did.
+[01:13:21] Elijah Stambaugh: The kids did amazing.
+[01:13:22] Elijah Stambaugh: But at the same time, I felt like the questions were like, like, didn't you read our paper?
+[01:13:29] Elijah Stambaugh: Like, did you watch our video?
+[01:13:31] Elijah Stambaugh: I swear they didn't even know what we did.
+[01:13:33] Elijah Stambaugh: So we were like, right on the call.
+[01:13:35] Elijah Stambaugh: I'm like, you got to do some background, you know?
+[01:13:38] Elijah Stambaugh: But yeah, give the paper to ChatGPT.
+[01:13:44] Elijah Stambaugh: Yeah, get a little bit of understanding.
+[01:13:48] Elijah Stambaugh: So thank you.
+[01:13:51] Elijah Stambaugh: Thank you.
+[01:13:51] Elijah Stambaugh: appreciate that.
+[01:13:53] Elijah Stambaugh: Other than that, I know, I think Ty might still be there dropped off, but his, he sent that three buckets.
+[01:14:00] Elijah Stambaugh: So I've been thinking through that.
+[01:14:02] Elijah Stambaugh: I've been working with several different prospects now trying to figure out how to build more kind of a business in a box, if you will.
+[01:14:16] Elijah Stambaugh: So trying to get certain processes documented and identified so that we can implement AI into their business.
+[01:14:26] Elijah Stambaugh: And probably won't go too deep into it right now, just for the sake of time.
+[01:14:31] Elijah Stambaugh: But that's what I've been thinking through.
+[01:14:33] Elijah Stambaugh: I've been struggling a little bit.
+[01:14:35] Elijah Stambaugh: I've got a friend of mine is coming on board with me, who is a database guy.
+[01:14:41] Elijah Stambaugh: I'm hoping he's going to join the call next week.
+[01:14:43] Elijah Stambaugh: He bought ShipKit today.
+[01:14:44] Elijah Stambaugh: He's a programmer, like, so, you know, yeah, whatever you want to say about his level of technical skill.
+[01:14:53] Elijah Stambaugh: But he has been a software developer for years.
+[01:14:59] Elijah Stambaugh: Thanks, sir.
+[01:15:00] Elijah Stambaugh: So Shipkid, I wanted him to learn that because that's what I know, and so he's willing to do it, but we have been working with some businesses trying to engage them, and I'm getting a lot of airtime.
+[01:15:12] Elijah Stambaugh: The only problem is, is it just like a consulting contract that we go on a regular basis, or do we spike on scope of work for certain projects in the business?
+[01:15:29] Elijah Stambaugh: So I'm trying to productize what we're doing, but as we engage with these businesses, and they start to learn about what AI can do, it's like they just don't have any ideas.
+[01:15:40] Elijah Stambaugh: They wanted to do everything, but then they really just get to something that it's like, well, can it just do this one thing?
+[01:15:49] Elijah Stambaugh: So that's what I've been working through.
+[01:15:52] Elijah Stambaugh: So sort of technical, but more business question.
+[01:15:57] Patrick Chouinard: Yeah, and honestly, fine.
+[01:16:00] Patrick Chouinard: I finding the right use case or the right business is probably the hardest part of the work, honestly, because these days, once you have the context of whatever use case you need to resolve, I feel like it became extremely, not easy, but almost, mean, once you know what problem you need to solve, if you know how to interact with a good model, with a good infrastructure, you can pretty much resolve anything you put yourself to.
+[01:16:32] Patrick Chouinard: But finding that use case that is valuable to the business is the hardest part of the work right now.
+[01:16:41] Patrick Chouinard: And sometimes it's the people, when you when you approach them, they'll tell you something that occupied their own mental context, if I can say it that way.
+[01:16:54] Patrick Chouinard: Basically, whatever was complicated, that's very recent in their mind.
+[01:17:00] Patrick Chouinard: And that's often not the use case you want to work on.
+[01:17:04] Patrick Chouinard: Often I will go and poke at them and say, no, tell me where you lose the most amount of time every week.
+[01:17:14] Patrick Chouinard: Like, tell me what is painful, what tasks that you have to do that you cannot avoid, but you would love to avoid because you consider it a waste of your time.
+[01:17:27] Patrick Chouinard: And often it's not high on their radar as something that they could do with AI, but you're removing the worst pain point of their week.
+[01:17:39] Patrick Chouinard: After that, everything's going to flow.
+[01:17:43] Elijah Stambaugh: Yeah, and I don't know if you saw the three buckets that Ty had shared.
+[01:17:48] Elijah Stambaugh: So like, conceptually, I like that idea.
+[01:17:51] Elijah Stambaugh: I wish there was a way for it to happen more naturally, right?
+[01:17:59] Elijah Stambaugh: Yeah.
+[01:17:59] Elijah Stambaugh: Bye.
+[01:18:00] Elijah Stambaugh: You know, like, observing the business somehow, transcribing the work.
+[01:18:05] Elijah Stambaugh: We know that we can do all that stuff.
+[01:18:08] Elijah Stambaugh: So it's just a matter of like, how do we get to a place where we get that answer quickly?
+[01:18:18] Elijah Stambaugh: Because I'm going to burn too much time up trying to figure it out, you know?
+[01:18:23] Elijah Stambaugh: So I got to sit in the business somehow.
+[01:18:26] Elijah Stambaugh: I'm thinking about some tools that might help with that.
+[01:18:30] Patrick Chouinard: Yeah, but with government, the sitting down and monitoring everything might be the difficult part, recording everything.
+[01:18:39] Patrick Chouinard: So this, I know in corporate world, it is a challenge.
+[01:18:44] Patrick Chouinard: So I'm guessing in the government side of thing, it will be just as complicated, let's say.
+[01:18:52] Patrick Chouinard: They have retention policy, they have a budget policy around recording everything.
+[01:18:57] Patrick Chouinard: I mean, I can't even...
+[01:19:00] Patrick Chouinard: Bring the Limitless type, the little recording pendant.
+[01:19:05] Patrick Chouinard: I can't bring that into work at all, although I would love to, but it's simply not allowed.
+[01:19:12] Patrick Chouinard: So be careful with the recording part of everything.
+[01:19:19] Elijah Stambaugh: Yeah.
+[01:19:20] Patrick Chouinard: But yeah, transcript are a goldmine.
+[01:19:23] Patrick Chouinard: That I can tell you.
+[01:19:25] Patrick Chouinard: If you can put your hand on transcript, you're golden.
+[01:19:29] Patrick Chouinard: Because then you can extract anything you need from the business.
+[01:19:33] Patrick Chouinard: Any intent, any challenge, any needs, any unaddressed issue can surface in meeting transcripts.
+[01:19:45] Patrick Chouinard: Good?
+[01:19:46] Elijah Stambaugh: Yep.
+[01:19:47] Elijah Stambaugh: Thank you.
+[01:19:48] Elijah Stambaugh: Yep.
+[01:19:48] Elijah Stambaugh: So that's what I've been up to.
+[01:19:51] Elijah Stambaugh: Thank you very much.
+[01:19:52] Patrick Chouinard: And congratulations again to you and your son.
+[01:19:54] Elijah Stambaugh: Thank you.
+[01:19:55] Elijah Stambaugh: Appreciate that.
+[01:19:56] Elijah Stambaugh: We find out Thursday at 2, if we do win the region.
+[01:20:00] Elijah Stambaugh: We get to go to the White House June 7-10.
+[01:20:04] Elijah Stambaugh: And if we win that, we each win $10,000 and the school wins $10,000.
+[01:20:09] Elijah Stambaugh: So we'll see.
+[01:20:11] Elijah Stambaugh: I mean, after how things went yesterday, I mean, I have no idea because I don't know if we really connected with these folks.
+[01:20:18] Elijah Stambaugh: But who knows?
+[01:20:20] Elijah Stambaugh: We'll see.
+[01:20:21] Elijah Stambaugh: I'll keep you posted.
+[01:20:23] Patrick Chouinard: Wish you the best of luck.
+[01:20:25] Elijah Stambaugh: Thanks.
+[01:20:27] Patrick Chouinard: Anyone else who wants to share something, ask a question, anything of that nature?
+[01:20:40] Patrick Chouinard: Well, we had a short one this week, so we'll let everybody go back to finishing their taxes.
+[01:20:47] Patrick Chouinard: And hopefully next week, we're going to be everyone in a better mood after tax season.
+[01:20:55] Paul Miller: We should have Brandon on next week.
+[01:20:58] Paul Miller: happens.
+[01:20:59] Paul Miller: Yeah.
+[01:20:59] Paul Miller: if
+[01:21:00] Paul Miller: If he's available, I would say, Patrick?
+[01:21:04] Patrick Chouinard: Well, I'm not sure.
+[01:21:06] Patrick Chouinard: I'm supposed to talk to him this week, so we'll see if he's there next week.
+[01:21:10] Patrick Chouinard: But it's either next week or the week after.
+[01:21:16] Patrick Chouinard: But don't worry, I'll keep everybody posted on the community site.
+[01:21:23] Patrick Chouinard: Whenever there is an appearance of Brendan, I make sure it is in the invite of the meeting.
+[01:21:31] Paul Miller: Good?
+[01:21:32] Patrick Chouinard: Thank you very much, everyone.
+[01:21:33] Patrick Chouinard: Patrick.
+[01:21:34] Patrick Chouinard: All right, guys.
+[01:21:35] Patrick Chouinard: Thank you.
+[01:21:36] Patrick Chouinard: Bye.
+[01:21:37] Patrick Chouinard: Bye-bye.
+[01:21:38] Patrick Chouinard: Have a great week.

@@ -1,0 +1,210 @@
+2026-04-07 18:49:04 From Patrick Chouinard to Everyone:
+	https://onestopcreativeagency.co.uk/
+	
+2026-04-07 18:59:19 From Elena to Everyone:
+	this one? 
+	https://github.com/Gitlawb/openclaude
+	
+2026-04-07 19:01:49 From Patrick Chouinard to Everyone:
+	Replying to "this one?  https://github.com/Gitlawb/openclaude":
+	My mistake the one I was taking about was claw-code https://github.com/ultraworkers/claw-code
+	
+2026-04-07 19:07:30 From Paul Miller to Everyone:
+	Replying to "this one?  https://github.com/Gitlawb/openclaude":
+	https://youtu.be/VFYnD1WREdU?si=F51POhFXfXlYeqiR
+	
+2026-04-07 19:08:21 From Paul Miller to Everyone:
+	Replying to "this one?  https://github.com/Gitlawb/openclaude":
+	Screenshot2026_04_08_110817.jpg
+	
+2026-04-07 19:17:21 From Patrick Chouinard to Everyone:
+	https://github.com/openai/codex-plugin-cc
+	
+2026-04-07 19:30:15 From Elena to Everyone:
+	certanly we need to revise collaboration too - great idea!
+	
+2026-04-07 19:34:22 From Elena to Everyone:
+	Thank you!
+	
+2026-04-07 19:34:27 From Jake Maymar to Everyone:
+	great call - have to jump too!  thanks!
+	
+2026-04-14 17:52:39 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-04-14 17:59:47 From read.ai meeting notes to Everyone:
+	Kevin added read.ai meeting notes to the meeting.
+	
+	Read provides AI generated meeting summaries to make meetings more effective and efficient. View our Privacy Policy at https://www.read.ai/pp
+	
+	Type "read stop" to disable, or "opt out" to delete meeting data.
+	
+2026-04-14 18:00:21 From Andrew Nanton to Everyone:
+	While we wait: Now that Claude has 1M token context, I don’t see much need for Codex.
+	
+2026-04-14 18:01:01 From Dudley's MeetGeek Notetaker to Everyone:
+	I’m recording this meeting with MeetGeek.ai for note taking purposes.
+	
+2026-04-14 18:01:13 From Andrew Nanton to Everyone:
+	I look forward to hearing more
+	
+2026-04-14 18:01:16 From Andrew Nanton to Everyone:
+	I agreee
+	
+2026-04-14 18:01:22 From Andrew Nanton to Everyone:
+	Including local
+	
+2026-04-14 18:01:32 From Andrew Nanton to Everyone:
+	In the next 2-3 years
+	
+2026-04-14 18:02:26 From Andrew Nanton to Everyone:
+	@Patrick Chouinard  You have your Notebook LM about config!
+	
+2026-04-14 18:03:42 From Biggi Fraley to Everyone:
+	Patrick, can you please have a look at your mic volume setting. You are significantly quieter than everyone else.
+	
+2026-04-14 18:04:03 From Biggi Fraley to Everyone:
+	a little
+	
+2026-04-14 18:04:13 From Ryan - One Stop Creative Agency to Everyone:
+	sound fine on my end
+	
+2026-04-14 18:04:17 From Biggi Fraley to Everyone:
+	Thanks, Patrick!
+	
+2026-04-14 18:05:07 From Andrew Nanton to Everyone:
+	@Marc Juretus  I am a doctor at a hospital. Copilot is trash, and has tanked confidence.
+	
+2026-04-14 18:05:55 From Andrew Nanton to Everyone:
+	Glad to hear it!
+	
+2026-04-14 18:07:35 From Andrew Nanton to Everyone:
+	I have moved my project over to Google, and I think the real unlock for AI is getting all the right information into the context. This is still not great on Google, because we don’t have tags/metadata across drive, email, calendar, etc.
+	
+2026-04-14 18:11:18 From Andrew Nanton to Everyone:
+	This is a big problem - people want to lure users into ai, but the free offerings are so kneecapped that they immediately turn people off.
+	
+2026-04-14 18:13:31 From Andrew Nanton to Everyone:
+	The larger context windows opens up so much with regard to MCPs, etc. You can get to so much stuff so quickly without overwhelming the context window.
+	
+2026-04-14 18:15:46 From Patrick Chouinard to Everyone:
+	https://platform.claude.com/docs/en/managed-agents/overview
+	
+2026-04-14 18:16:39 From Andrew Nanton to Everyone:
+	That’s great to hear! I moved from MS to Google based on sponsorship, but I agree with @Ty Wells that local/open models are the future. The hardware crunch will slow this down, but once we hit “good enough” it’s over.
+	
+2026-04-14 18:16:54 From Bastian to Everyone:
+	No, they’ll have a new Sonnet / Opus model
+	Patrick Chouinard:👍
+	
+2026-04-14 18:17:26 From Andrew Nanton to Everyone:
+	The huge datacenter will always be better and better, but “good enough” is a real bar. Just like the early PC days.
+	
+2026-04-14 18:18:40 From Andrew Nanton to Everyone:
+	Ahhh - gotta run. Good to see everyone, even if briefly!
+	Patrick Chouinard:👍
+	
+2026-04-14 18:19:48 From Bastian to Everyone:
+	Well they change names when the OOM for parameter size changes. They went 10x
+	
+2026-04-14 18:21:41 From Bastian to Everyone:
+	that’s cool news!
+	
+2026-04-14 18:22:43 From alexrojas to Everyone:
+	Jajaja the medicine
+	
+2026-04-14 18:22:43 From Bastian to Everyone:
+	It’s heavily hallucinatory so he may have seen anything! haha
+	
+2026-04-14 18:24:34 From alexrojas to Everyone:
+	Paul are you using Claude sdk agents or open claw agents?
+	
+2026-04-14 18:27:12 From Bastian to Everyone:
+	You can have 2 folders for the same agent
+	
+2026-04-14 18:27:21 From Bastian to Everyone:
+	and you just switch
+	
+2026-04-14 18:28:22 From Bastian to Everyone:
+	Replying to "and you just switch":
+	Yeah exactly as Patrick explained. Different folder. Or different thread. 
+	
+	If you want 2 different processes, yes docker
+	
+2026-04-14 18:34:35 From David’s iPhone to Everyone:
+	I’m building automated RFQ creation and sending and automated (if selected) negotiations- no ‘claws’ involved. But it starts by simply selecting beautiful Cards from Cloud - each card represents a specific Google Business Profile in your selected area(zip codes), it’s for selecting/working with Vendors for Events
+	
+2026-04-14 18:36:58 From Bastian to Everyone:
+	Maybe try Caveman for Enterprise @Patrick Chouinard
+	
+2026-04-14 18:37:00 From Bastian to Everyone:
+	haha
+	
+2026-04-14 18:37:25 From David’s iPhone to Everyone:
+	AI Whisperer!
+	
+2026-04-14 18:40:11 From David’s iPhone to Everyone:
+	Meat-sneakers
+	
+2026-04-14 18:41:54 From Biggi Fraley to Everyone:
+	Nate B. Jones
+	Paul Miller:👍
+	
+2026-04-14 18:42:16 From David’s iPhone to Everyone:
+	knowing what path to choose is invaluable.
+	
+2026-04-14 18:43:07 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@NateBJones
+	
+2026-04-14 18:45:30 From alexrojas to Everyone:
+	https://www.youtube.com/watch?v=BiqG3it0gY0&t=357s    This one is the one that talks about the way AI is closing the arbitrage gap, it is a good one
+	Patrick Chouinard, Biggi Fraley:👍
+	
+2026-04-14 18:47:47 From alexrojas to Everyone:
+	Sounds, great David
+	
+2026-04-14 18:49:16 From Biggi Fraley to Everyone:
+	y
+	
+2026-04-14 18:50:29 From Morgan Cook to Everyone:
+	https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+	Biggi Fraley:👍
+	
+2026-04-14 18:57:42 From Patrick Chouinard to Everyone:
+	https://ghost.build/
+	
+2026-04-14 19:00:03 From Biggi Fraley to Everyone:
+	memory palace
+	
+2026-04-14 19:00:37 From Biggi Fraley to Everyone:
+	Replying to "memory palace":
+	I heard the benchmarks were all fake.
+	
+2026-04-14 19:02:57 From Patrick Chouinard to Everyone:
+	Replying to "memory palace":
+	It did seem like a name drop attempt for attention
+	Biggi Fraley:💯
+	
+2026-04-14 19:04:44 From alexrojas to Everyone:
+	Congrats Elijah
+	Biggi Fraley:👆
+	
+2026-04-14 19:05:12 From David’s iPhone to Everyone:
+	Yo! My son is junior in HS too. Congrats!!!
+	
+2026-04-14 19:07:20 From Morgan Cook to Everyone:
+	Free Perplexity Workflow to identify Business Ideas https://www.youtube.com/watch?v=7gtw-6eOmnY
+	Biggi Fraley:👍
+	
+2026-04-14 19:07:49 From Morgan Cook to Everyone:
+	Replying to "Free Perplexity Workflow to identify Business Idea...":
+	@David’s iPhone to narrow down your search.
+	
+2026-04-14 19:13:42 From Biggi Fraley to Everyone:
+	Thanks, Patrick! 🤗
+	
+2026-04-14 19:14:01 From alexrojas to Everyone:
+	Thanks a lot Patrick! Cheers to all
+	
