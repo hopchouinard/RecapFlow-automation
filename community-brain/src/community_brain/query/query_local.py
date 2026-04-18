@@ -20,11 +20,32 @@ from community_brain.query import build_filter_expression
 
 logger = logging.getLogger(__name__)
 
+__all__ = [
+    "search_chunks",
+    "search_chunks_v2",
+    "build_filter_expression_v2",
+    "sql_quote",
+]
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 CONFIG_DIR = PROJECT_ROOT / "config"
 DEFAULT_DB_PATH = PROJECT_ROOT / "lancedb" / "nomic-v1"
 EMBED_MODEL = "nomic-embed-text"
 DEFAULT_LLM_MODEL = "gemma4:e4b"
+
+
+def sql_quote(value: str) -> str:
+    """Escape a string for SQL single-quoted literal context.
+
+    Doubles embedded single quotes per SQL-standard escaping.
+    LanceDB's DataFusion parser accepts this.
+
+    Note: this is ONLY safe for simple string values. For complex filter
+    scenarios (e.g., structured JSON values), parameterized queries would
+    be needed. All v1 filter values are simple string scalars, so this is
+    sufficient.
+    """
+    return value.replace("'", "''")
 
 
 def search_chunks(
@@ -81,9 +102,8 @@ def build_filter_expression_v2(filters: dict | None) -> str | None:
 
     Returns None if no filter clauses apply.
 
-    Known limitation (v1): filter values are interpolated directly into the
-    WHERE clause string. A single quote in a value will break the query.
-    Values containing special characters are not supported in v1.
+    All string values are escaped via sql_quote to handle apostrophes and other
+    special characters safely (SQL-standard double-quote escaping).
     """
     if not filters:
         return None
@@ -92,11 +112,13 @@ def build_filter_expression_v2(filters: dict | None) -> str | None:
 
     dr = filters.get("session_date_range")
     if dr and len(dr) == 2:
-        clauses.append(f"session_date >= '{dr[0]}' AND session_date <= '{dr[1]}'")
+        clauses.append(
+            f"session_date >= '{sql_quote(dr[0])}' AND session_date <= '{sql_quote(dr[1])}'"
+        )
 
     content_types = filters.get("content_type")
     if content_types:
-        quoted = ", ".join(f"'{v}'" for v in content_types)
+        quoted = ", ".join(f"'{sql_quote(v)}'" for v in content_types)
         clauses.append(f"content_type IN ({quoted})")
 
     for field_name in ("speakers_spoke", "speakers_mentioned", "entities", "keywords"):
@@ -104,7 +126,7 @@ def build_filter_expression_v2(filters: dict | None) -> str | None:
         if not vals:
             continue
         match = filters.get(f"{field_name}_match", "any")
-        parts = [f"array_has({field_name}, '{v}')" for v in vals]
+        parts = [f"array_has({field_name}, '{sql_quote(v)}')" for v in vals]
         joiner = " AND " if match == "all" else " OR "
         clauses.append("(" + joiner.join(parts) + ")")
 
@@ -114,7 +136,7 @@ def build_filter_expression_v2(filters: dict | None) -> str | None:
     ):
         vals = filters.get(key)
         if vals:
-            parts = [f"array_has({marker_field}, '{v}')" for v in vals]
+            parts = [f"array_has({marker_field}, '{sql_quote(v)}')" for v in vals]
             clauses.append("(" + " AND ".join(parts) + ")")
 
     for marker_field, key in (
@@ -123,7 +145,7 @@ def build_filter_expression_v2(filters: dict | None) -> str | None:
     ):
         vals = filters.get(key)
         if vals:
-            parts = [f"NOT array_has({marker_field}, '{v}')" for v in vals]
+            parts = [f"NOT array_has({marker_field}, '{sql_quote(v)}')" for v in vals]
             clauses.append("(" + " AND ".join(parts) + ")")
 
     for bool_field in (
@@ -136,7 +158,7 @@ def build_filter_expression_v2(filters: dict | None) -> str | None:
 
     ver_min = filters.get("schema_version_min")
     if ver_min:
-        clauses.append(f"schema_version >= '{ver_min}'")
+        clauses.append(f"schema_version >= '{sql_quote(ver_min)}'")
 
     if not clauses:
         return None
@@ -158,10 +180,16 @@ def search_chunks_v2(
     question. Per spec §7.1: filtering precedes ranking; ranking uses vector
     similarity alone in v1.
 
+    Returns empty list if the table doesn't exist yet (fresh deployment).
+
     Returns raw LanceDB row dicts (including `_distance`). The retrieval server
     translates these into the structured ground_truth/derived_metadata/provenance
     response shape.
     """
+    db = lancedb.connect(db_path)
+    if table_name not in db.list_tables().tables:
+        return []
+
     if ollama_base_url:
         client = ollama.Client(host=ollama_base_url)
         response = client.embed(model=EMBED_MODEL, input=[question])
@@ -169,7 +197,6 @@ def search_chunks_v2(
         response = ollama.embed(model=EMBED_MODEL, input=[question])
     query_vector = response["embeddings"][0]
 
-    db = lancedb.connect(db_path)
     table = db.open_table(table_name)
     query = table.search(query_vector).limit(top_k)
 

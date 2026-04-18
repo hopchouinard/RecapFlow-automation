@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from community_brain.query.query_local import build_filter_expression_v2
+from community_brain.query.query_local import build_filter_expression_v2, sql_quote
 
 
 def test_build_filter_expression_v2_empty_returns_none() -> None:
@@ -104,3 +104,24 @@ def test_build_filter_expression_v2_combines_with_and() -> None:
     })
     assert expr is not None
     assert " AND " in expr
+
+
+def test_sql_quote_doubles_single_quotes() -> None:
+    """sql_quote must escape embedded single quotes by doubling them."""
+    assert sql_quote("O'Brien") == "O''Brien"
+    assert sql_quote("no apostrophe") == "no apostrophe"
+    assert sql_quote("it's it's") == "it''s it''s"
+    assert sql_quote("") == ""
+
+
+def test_build_filter_expression_v2_escapes_apostrophes_in_entity_names() -> None:
+    """Speakers/entities with apostrophes must not break the generated WHERE clause."""
+    expr = build_filter_expression_v2({"speakers_spoke": ["O'Brien"]})
+    assert expr is not None
+    assert "O''Brien" in expr
+
+
+def test_build_filter_expression_v2_escapes_apostrophes_in_content_type() -> None:
+    expr = build_filter_expression_v2({"content_type": ["it's_weird"]})
+    assert expr is not None
+    assert "it''s_weird" in expr

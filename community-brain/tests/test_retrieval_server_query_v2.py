@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from unittest.mock import patch
 
 from fastapi.testclient import TestClient
@@ -184,3 +185,30 @@ def test_post_query_total_matched_reflects_returned_chunks(monkeypatch) -> None:
     data = resp.json()
     assert data["total_matched"] == 1
     assert data["query"] == "x"
+
+
+def test_post_query_returns_empty_on_fresh_deployment(tmp_path: Path, monkeypatch) -> None:
+    """Fresh deployment with no ingested sessions should return empty chunks, not 500."""
+    monkeypatch.setenv("LANCEDB_PATH", str(tmp_path / "empty-lancedb"))
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+
+    client = TestClient(server_mod.app)
+
+    def _fake_embed(model, input):
+        return {"embeddings": [[0.0] * 768 for _ in input]}
+
+    with patch("community_brain.query.query_local.ollama.embed", side_effect=_fake_embed):
+        resp = client.post("/query", json={"question": "x"})
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["total_matched"] == 0
+    assert data["chunks"] == []
+
+
+def test_post_query_rejects_unknown_response_shape(monkeypatch) -> None:
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    client = TestClient(server_mod.app)
+
+    resp = client.post("/query", json={"question": "x", "response_shape": "flat"})
+    assert resp.status_code == 422
