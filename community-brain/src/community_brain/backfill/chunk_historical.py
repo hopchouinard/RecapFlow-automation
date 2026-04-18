@@ -23,7 +23,6 @@ from community_brain.chunk_utils import (
     chunk_to_markdown,
     chunk_transcript,
     chunks_to_jsonl,
-    chunks_to_markdown,
     normalize_speaker,
     parse_transcript,
 )

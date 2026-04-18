@@ -143,12 +143,16 @@ class EntityRegistry:
                 existing.add(name)
 
     def add_entity(self, canonical: str, record: EntityRecord) -> None:
-        """Add a single entity at runtime. Rebuilds the canonicalize lookup.
-
-        Use this instead of mutating self.entities directly so the lookup table
-        stays consistent.
-        """
-        self.entities[canonical] = dict(record)  # defensive copy
+        """Add a single entity at runtime. Rebuilds the canonicalize lookup."""
+        # Defensive copy that preserves the EntityRecord type.
+        copied: EntityRecord = {}
+        if "type" in record:
+            copied["type"] = record["type"]
+        if "category" in record:
+            copied["category"] = record["category"]
+        if "aliases" in record:
+            copied["aliases"] = list(record["aliases"])
+        self.entities[canonical] = copied
         self._rebuild_lookup()
 
     def flush(self, path: Path) -> None:
