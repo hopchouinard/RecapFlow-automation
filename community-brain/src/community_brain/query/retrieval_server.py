@@ -236,17 +236,17 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
 def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
     """Ingest a session's artifacts into LanceDB.
 
-    Returns 400 for invalid input (empty artifact_paths, invalid session_id).
+    Artifact paths must be inside COMMUNITY_BRAIN_ARTIFACT_ROOT if that env
+    var is set (required in Docker deployment; optional on VM-direct deployment).
+    Paths outside the root raise 400.
+
+    Returns 400 for invalid input (empty artifact_paths, invalid session_id,
+    or artifact path outside COMMUNITY_BRAIN_ARTIFACT_ROOT).
     Returns 422 for Pydantic validation failures (unknown artifact keys).
     Returns 500 for LanceDB commit failures (torn-state recoverable via reindex).
     Returns 200 with IngestResult JSON on success, even when some chunks failed
     extraction (check `chunks_failed` in the response).
     """
-    # TODO(Task 23): constrain artifact_paths to COMMUNITY_BRAIN_ARTIFACT_ROOT.
-    # Currently any authenticated caller can ingest files the server process can
-    # read. For VM deployment behind an API key this is acceptable; for Docker
-    # with shared mounts, artifact paths should be validated against a known
-    # root directory.
     if not req.artifact_paths:
         raise HTTPException(status_code=400, detail="no artifact_paths provided")
 

@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -69,6 +70,37 @@ TABLE_NAME = "chunks"
 # Session IDs and chunk IDs are used in LanceDB WHERE clauses. Strict charset
 # avoids any quote/escape ambiguity without needing parameterized queries.
 _SAFE_ID_RE = re.compile(r"^[0-9A-Za-z_\-:.]+$")
+
+
+def _resolve_artifact_root() -> Path | None:
+    """Read COMMUNITY_BRAIN_ARTIFACT_ROOT env var. Returns None if unset.
+
+    When set, all artifact_paths passed to ingest_session MUST be inside this
+    directory. Unset = no constraint (development / VM deployment without
+    a filesystem sandbox).
+    """
+    raw = os.environ.get("COMMUNITY_BRAIN_ARTIFACT_ROOT")
+    if not raw:
+        return None
+    return Path(raw).resolve()
+
+
+def _validate_artifact_path(path_str: str, root: Path) -> Path:
+    """Resolve `path_str` and verify it lives inside `root`.
+
+    Uses Path.resolve() so symlinks can't escape the root. Raises ValueError
+    with a clear message if the path escapes or doesn't exist.
+    """
+    candidate = Path(path_str).resolve()
+    try:
+        candidate.relative_to(root)
+    except ValueError as exc:
+        raise ValueError(
+            f"artifact path {path_str!r} escapes COMMUNITY_BRAIN_ARTIFACT_ROOT={root}"
+        ) from exc
+    if not candidate.is_file():
+        raise ValueError(f"artifact path does not exist or is not a file: {path_str!r}")
+    return candidate
 
 
 class CommitError(RuntimeError):
@@ -133,6 +165,12 @@ def ingest_session(
 
     # Validate session_id before any work — must be safe for WHERE clauses.
     _validate_session_id(request.session_id)
+
+    # Constrain artifact paths to COMMUNITY_BRAIN_ARTIFACT_ROOT if set.
+    artifact_root = _resolve_artifact_root()
+    if artifact_root is not None:
+        for key, path_str in request.artifact_paths.items():
+            _validate_artifact_path(path_str, artifact_root)
 
     # Note: RetryConfig from chunking.yaml is loaded for schema compatibility
     # but NOT yet wired into Stage B/C calls in v1. Retries use call_llm's

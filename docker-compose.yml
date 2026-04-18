@@ -38,5 +38,29 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  retrieval-server:
+    build:
+      context: ./community-brain
+      dockerfile: Dockerfile
+    container_name: community_brain_retrieval
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8999:8999"
+    environment:
+      - RETRIEVAL_HOST=0.0.0.0
+      - RETRIEVAL_PORT=8999
+      - LANCEDB_PATH=/data/lancedb/nomic-v1
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      - COMMUNITY_BRAIN_CONFIG_DIR=/app/config
+      - COMMUNITY_BRAIN_ARTIFACT_ROOT=/data/output
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - RETRIEVAL_API_KEY=${RETRIEVAL_API_KEY:-}
+    volumes:
+      - ./community-brain/config:/app/config
+      - ./community-brain/lancedb:/data/lancedb
+      - ./output:/data/output:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
 volumes:
   db_data:

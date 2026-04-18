@@ -392,3 +392,77 @@ def test_ingest_session_empty_artifacts_returns_warning(
     result = ingest_session(request, config_dir, str(db_path), None)
     assert result.chunks_written == 0
     assert any("no artifacts" in w.lower() for w in result.warnings)
+
+
+def test_ingest_session_rejects_artifact_path_outside_root(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """When COMMUNITY_BRAIN_ARTIFACT_ROOT is set, paths outside it are rejected."""
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    # Set the root to a different tmp subdir, then pass a path outside it.
+    allowed_root = tmp_path / "allowed"
+    allowed_root.mkdir()
+    monkeypatch.setenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", str(allowed_root))
+
+    # FIXTURES is in tests/fixtures/, not under allowed_root
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="t",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    with pytest.raises(ValueError, match="escapes COMMUNITY_BRAIN_ARTIFACT_ROOT"):
+        ingest_session(request, config_dir, str(db_path), None)
+
+
+def test_ingest_session_accepts_artifact_path_inside_root(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Paths inside COMMUNITY_BRAIN_ARTIFACT_ROOT proceed normally."""
+    import shutil
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    allowed_root = tmp_path / "allowed"
+    allowed_root.mkdir()
+    # Copy the fixture into the allowed root
+    copied = allowed_root / "prepared-transcript-sample.md"
+    shutil.copy(FIXTURES / "prepared-transcript-sample.md", copied)
+    monkeypatch.setenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", str(allowed_root))
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="t",
+        artifact_paths={"prepared_transcript": str(copied)},
+        force_reextract=False,
+    )
+    result = ingest_session(request, config_dir, str(db_path), None)
+    assert result.chunks_written > 0
+
+
+def test_ingest_session_no_constraint_when_root_unset(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """When COMMUNITY_BRAIN_ARTIFACT_ROOT is NOT set, any readable path is accepted."""
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="t",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+    result = ingest_session(request, config_dir, str(db_path), None)
+    assert result.chunks_written > 0
