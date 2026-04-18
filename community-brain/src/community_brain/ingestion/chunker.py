@@ -17,19 +17,18 @@ pipeline orchestrator (Task 18) fills them.
 
 from __future__ import annotations
 
-import datetime as dt
 import logging
 import re
 
 from community_brain.chunk_utils import count_tokens
-
-logger = logging.getLogger(__name__)
 from community_brain.ingestion.parser import (
     CommunityPost,
     SignalSection,
     TranscriptSegment,
 )
 from community_brain.ingestion.schema import Chunk, SCHEMA_VERSION
+
+logger = logging.getLogger(__name__)
 
 
 _TRANSCRIPT_LINE_RE = re.compile(
