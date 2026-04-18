@@ -1,7 +1,7 @@
 import json
 import httpx
 import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from community_brain.llm import call_llm, call_llm_json, LLMError
 
 
