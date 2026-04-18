@@ -10,8 +10,10 @@ chunk_extraction:
   prompt_file: chunk-extraction-v1.md
   model: google/gemini-3.1-flash-lite-preview
 
-# extract_signal and prep_prompt are produced by n8n but tracked here for
-# version coordination across the pipeline.
+# NOTE: extract_signal and prep_prompt are NOT loaded by ExtractionConfig.
+# They are tracked here purely for version coordination with the n8n pipeline
+# that produces these artifacts. Changing these values has no effect on the
+# retrieval server's Python code.
 extract_signal:
   prompt_file: extract-signal-v1.md
 

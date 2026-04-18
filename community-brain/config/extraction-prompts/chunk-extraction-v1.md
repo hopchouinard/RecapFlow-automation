@@ -35,7 +35,7 @@ You will receive:
 
 3. **new_speakers_seen** — Speaker attributions in CHUNK_TEXT (e.g., after `[HH:MM:SS]`) that don't match any canonical name or alias in SPEAKER_ALIASES. Empty list if all speakers are known.
 
-4. **speech_acts** — List all that apply. A chunk may contain multiple (e.g., a question AND an answer). Use null NOT empty-list ONLY if the chunk is pure exposition without any of the listed act types.
+4. **speech_acts** — List all that apply. A chunk may contain multiple (e.g., a question AND an answer). If the chunk is pure exposition with none of the listed act types, return an empty list `[]`. Do NOT return `null`.
 
 5. **stance** — Positive/negative/neutral about the chunk's main topic or entity. Use "mixed" when the speaker explicitly weighs pros and cons. Use null when stance isn't applicable (pure factual exposition, questions-only chunks).
 
@@ -56,6 +56,6 @@ You will receive:
 ## Rules
 
 - Output ONLY the JSON object. No prose before or after.
-- Every field must be present. Use `null` or `[]` when the field doesn't apply — never omit.
+- Every field must be present. Use `null` for scalar fields (like `stance`) when not applicable; use `[]` for list fields (like `speech_acts`, `entities`, `decisions`) when empty. Never omit a field.
 - Do not invent content. Only extract what's explicitly present.
 - When in doubt, prefer null / empty list over guessing.
