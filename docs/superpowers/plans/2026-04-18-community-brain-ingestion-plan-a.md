@@ -213,6 +213,10 @@ chunk_extraction:
 
 # extract_signal and prep_prompt are produced by n8n but tracked here for
 # version coordination across the pipeline.
+# NOTE: The ExtractionConfig dataclass deliberately does NOT load these two entries.
+# They are not consumed by the retrieval-server's Python code — n8n produces these
+# artifacts and the version filename is the source of truth. They live here solely
+# so the full prompt inventory is visible in one place for version coordination.
 extract_signal:
   prompt_file: extract-signal-v1.md
 
@@ -630,6 +634,10 @@ git commit -m "deps(community-brain): add pyyaml for config loading"
 
 ### Task 9: Config loader module
 
+> **NOTE (added 2026-04-18):** During implementation, this task was refactored based on code review feedback. `ChunkingConfig` was split into two dataclasses: `ChunkingConfig` (chunking tunables only) and `RetryConfig` (retry/backoff/delay). The `load_chunking_config` function now returns `tuple[ChunkingConfig, RetryConfig]`. The code snippet below shows the original plan; refer to the actual implementation at `community-brain/src/community_brain/ingestion/config_loader.py` for the current shape. Tasks 18 and any other tasks that consume this loader have been updated to match.
+
+> **Validation behavior (added post-Task 9 hardening):** Both `load_chunking_config` and `load_extraction_config` now perform strict YAML validation and raise `ValueError` (with the file name and missing key in the message) on malformed input. The error contract is documented in `community-brain/src/community_brain/ingestion/__init__.py`.
+
 **Files:**
 - Create: `community-brain/src/community_brain/ingestion/__init__.py`
 - Create: `community-brain/src/community_brain/ingestion/config_loader.py`
@@ -815,6 +823,8 @@ git commit -m "feat(ingestion): add YAML config loader with typed configs"
 ---
 
 ### Task 10: Speaker and entity registries with atomic writes
+
+> **Validation behavior (added post-Task 10 hardening):** The registry loaders now perform strict YAML validation and raise `ValueError` (with file name and key in the message) on malformed input, consistent with the config loader. A foundation hardening pass also introduced per-path locks and UUID-based temp filenames (replacing the simple `.tmp` suffix) for safer concurrent writes. See the error contract in `community-brain/src/community_brain/ingestion/__init__.py`.
 
 **Files:**
 - Create: `community-brain/src/community_brain/ingestion/registries.py`
@@ -3067,6 +3077,7 @@ from community_brain.ingestion.chunker import (
 from community_brain.ingestion.config_loader import (
     load_chunking_config,
     load_extraction_config,
+    RetryConfig,  # noqa: F401 — imported for type annotation; load_chunking_config returns tuple[ChunkingConfig, RetryConfig]
 )
 from community_brain.ingestion.embedding import embed_texts
 from community_brain.ingestion.extractor import extract_chunk_metadata
@@ -3122,7 +3133,7 @@ def ingest_session(
 ) -> IngestResult:
     """Orchestrate the full ingestion of one session. See module docstring."""
     config_dir = Path(config_dir)
-    chunking_cfg = load_chunking_config(config_dir / "chunking.yaml")
+    chunking_cfg, retry_cfg = load_chunking_config(config_dir / "chunking.yaml")  # returns tuple[ChunkingConfig, RetryConfig]
     extraction_cfg = load_extraction_config(config_dir / "extraction-config.yaml")
     speaker_reg = load_speaker_registry(config_dir / "speaker-aliases.yaml")
     entity_reg = load_entity_registry(config_dir / "entity-registry.yaml")
@@ -4621,6 +4632,17 @@ Expected: all tests PASS.
 git add community-brain/tests/test_end_to_end.py
 git commit -m "test(community-brain): end-to-end smoke test for ingest→query→sessions round-trip"
 ```
+
+---
+
+## Post-Implementation Notes (added 2026-04-18)
+
+**Foundation hardening (post-Task 11):** A code review pass after Tasks 1-11 surfaced foundation issues. Three fixes landed before Task 12:
+- Concurrency-safe atomic writes in `registries.py` (per-path locks + UUID temp filenames + parent-dir fsync)
+- Strict YAML validation across loaders (both `config_loader.py` and `registries.py` now raise `ValueError` with file name + key on malformed input)
+- Migration of legacy `speaker-aliases.json` to YAML; `chunk_historical.py` updated to consume `SpeakerRegistry`
+
+See commits between `9255cfa` and the start of Task 12 for details.
 
 ---
 
