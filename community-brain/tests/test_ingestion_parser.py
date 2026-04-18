@@ -8,7 +8,6 @@ import pytest
 
 from community_brain.ingestion.parser import (
     TranscriptSegment,
-    SignalSection,
     CommunityPost,
     parse_prepared_transcript,
     parse_extracted_signal,
