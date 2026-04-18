@@ -20,3 +20,10 @@ Every schema version bump or extraction-breaking change is recorded here.
 - Migration: N/A — greenfield deployment.
 - Affected chunks: None (empty corpus at release).
 - Rollback: N/A for initial release.
+
+## v1.0 known limitations
+
+- `speakers_mentioned` is not populated in v1 (always None). The field is
+  reserved for a future Stage C extractor update that distinguishes
+  "spoke in this chunk" from "was referenced/mentioned without speaking."
+  v1 consumers should read `speakers_spoke` only.

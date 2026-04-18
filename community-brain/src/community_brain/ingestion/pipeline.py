@@ -320,11 +320,13 @@ def ingest_session(
         chunk.extraction_status = "success"
         chunk.extraction_error = None
         chunk.entities = res.entities
-        # Only canonical speakers go into speakers_mentioned.
-        # new_speakers_seen is raw, unresolved — it goes to the pending queue
-        # but NOT into the chunk's persisted metadata.
-        spoken = chunk.speakers_spoke or []
-        chunk.speakers_mentioned = sorted(set(spoken))
+        # speakers_mentioned is a derived field representing people REFERENCED in
+        # the chunk (spoken + mentioned-but-not-spoken). The current Stage C prompt
+        # doesn't emit this distinctly, so v1 leaves it as None. Task: wire a
+        # dedicated "mentioned_people" field into chunk-extraction-v2.md and
+        # populate here from res.mentioned_people. Consumers MUST handle None per
+        # docs/inference-guidelines.md (absence = chunk predates this extraction).
+        chunk.speakers_mentioned = None
         chunk.speech_acts = res.speech_acts
         chunk.stance = res.stance  # type: ignore[assignment]
         chunk.certainty = res.certainty  # type: ignore[assignment]

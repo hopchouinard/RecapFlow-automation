@@ -7,13 +7,16 @@ Authoritative field-by-field definition:
 ## Trust partitions (see docs/inference-guidelines.md)
 
 - **Ground truth**: chunk_id, session_id, session_date, session_title, source_file,
-  full_text. Authoritative. Quotes must resolve to these.
+  full_text, chunk_index, total_chunks_in_source. Authoritative. Quotes must resolve
+  to these. chunk_index and total_chunks_in_source are positional/deterministic (set
+  by the chunker, not derived by LLM).
 - **Derived metadata**: entities, speech_acts, stance, certainty, chunk_local_markers,
   decisions, action_items, external_refs, references_prior, session_themes, topic_label,
   speakers_spoke, speakers_mentioned, keywords, corpus_derived_markers,
   corpus_markers_computed_at, has_question, has_answer, has_unresolved_question,
-  has_insight, chunk_index, total_chunks_in_source, content_type. LLM-interpreted
-  or derived; probabilistic; re-derivable from full_text.
+  has_insight, content_type. LLM-interpreted or derived; probabilistic; re-derivable
+  from full_text. NOTE: speakers_mentioned is not populated in v1 (always None);
+  reserved for a future Stage C extractor update — consumers should read speakers_spoke.
 - **Provenance**: schema_version, extraction_model, extraction_prompt_version,
   extraction_status, extraction_error, extracted_at. Tracks WHAT generated the
   data and WHETHER it succeeded.
