@@ -5,6 +5,20 @@ from unittest.mock import patch, MagicMock
 from community_brain.llm import call_llm, call_llm_json, LLMError
 
 
+@pytest.fixture(autouse=True)
+def _mock_api_key(request):
+    """Provide a fake OPENROUTER_API_KEY for all tests by default.
+
+    Tests that specifically test the missing-key behavior can override this
+    by patching _get_api_key to return None within their test body.
+    """
+    if "no_mock_api_key" in request.keywords:
+        yield
+        return
+    with patch("community_brain.llm._get_api_key", return_value="fake-key-for-tests"):
+        yield
+
+
 class TestCallLlm:
     def test_returns_content_string(self):
         mock_response = httpx.Response(
@@ -19,6 +33,7 @@ class TestCallLlm:
             result = call_llm("Say hello")
         assert result == "Hello from LLM"
 
+    @pytest.mark.no_mock_api_key
     def test_raises_on_missing_api_key(self):
         with patch("community_brain.llm._get_api_key", return_value=None):
             with pytest.raises(LLMError, match="OPENROUTER_API_KEY"):

@@ -33,3 +33,8 @@ build-backend = "setuptools.build_meta"
 dev = [
     "pytest>=9.0.3",
 ]
+
+[tool.pytest.ini_options]
+markers = [
+    "no_mock_api_key: skip auto-mocking OPENROUTER_API_KEY for a test",
+]
