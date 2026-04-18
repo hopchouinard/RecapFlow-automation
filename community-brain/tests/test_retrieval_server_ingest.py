@@ -134,6 +134,9 @@ def test_post_ingest_empty_artifact_paths_returns_400(tmp_path: Path, monkeypatc
             "force_reextract": False,
         },
     )
+    # Endpoint-level check raises 400; Pydantic validator only rejects unknown
+    # keys (422), not empty dicts. The explicit `if not req.artifact_paths`
+    # guard in the handler returns 400 for empty.
     assert resp.status_code == 400
 
 
@@ -231,3 +234,67 @@ def test_post_ingest_response_shape_contains_expected_fields(tmp_path: Path, mon
         "warnings", "unknown_entities_flagged", "unknown_speakers_flagged",
     ]:
         assert field in data, f"missing field {field} in response"
+
+
+def test_post_ingest_unknown_artifact_key_returns_422(tmp_path: Path, monkeypatch) -> None:
+    """Unknown artifact_paths keys must be rejected with 422 (Pydantic validation)."""
+    cfg_dir = _write_configs(tmp_path)
+    db_path = tmp_path / "lancedb"
+    monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
+    monkeypatch.setenv("LANCEDB_PATH", str(db_path))
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+
+    client = TestClient(server_mod.app)
+    resp = client.post(
+        "/ingest",
+        json={
+            "session_id": "2026-03-10",
+            "session_date": "2026-03-10",
+            "session_title": "t",
+            "artifact_paths": {"weird_key": "/tmp/x.md"},
+            "force_reextract": False,
+        },
+    )
+    assert resp.status_code == 422
+    body = str(resp.json()).lower()
+    assert "weird_key" in body or "unknown" in body
+
+
+def test_post_ingest_commit_error_returns_structured_detail(tmp_path: Path, monkeypatch) -> None:
+    """On CommitError, response body should contain structured recovery info."""
+    cfg_dir = _write_configs(tmp_path)
+    db_path = tmp_path / "lancedb"
+    monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
+    monkeypatch.setenv("LANCEDB_PATH", str(db_path))
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+
+    client = TestClient(server_mod.app)
+
+    from community_brain.ingestion.pipeline import CommitError
+
+    def _raise_commit_error(*a, **kw):
+        raise CommitError("simulated torn state")
+
+    with patch(
+        "community_brain.query.retrieval_server.ingest_session",
+        side_effect=_raise_commit_error,
+    ):
+        resp = client.post(
+            "/ingest",
+            json={
+                "session_id": "2026-03-10",
+                "session_date": "2026-03-10",
+                "session_title": "t",
+                "artifact_paths": {
+                    "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+                },
+                "force_reextract": False,
+            },
+        )
+
+    assert resp.status_code == 500
+    detail = resp.json()["detail"]
+    assert isinstance(detail, dict)
+    assert detail["error"] == "commit_torn_state"
+    assert "force_reextract" in detail["recovery"]
+    assert "2026-03-10" in detail["recovery"]

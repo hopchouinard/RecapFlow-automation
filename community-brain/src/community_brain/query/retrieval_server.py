@@ -13,17 +13,19 @@ from __future__ import annotations
 import logging
 import os
 from pathlib import Path
+from typing import Literal
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException, Security
 from fastapi.security import APIKeyHeader
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 from community_brain.ingestion.pipeline import (
     CommitError,
     IngestRequest,
     ingest_session,
 )
+from community_brain.query.query_local import sql_quote
 
 logger = logging.getLogger(__name__)
 
@@ -75,12 +77,25 @@ app = FastAPI(
 )
 
 
+VALID_ARTIFACT_KEYS = frozenset({"prepared_transcript", "extracted_signal", "community_post"})
+
+
 class IngestHTTPRequest(BaseModel):
     session_id: str
     session_date: str
     session_title: str | None = None
     artifact_paths: dict[str, str]
     force_reextract: bool = False
+
+    @field_validator("artifact_paths")
+    @classmethod
+    def _validate_artifact_keys(cls, v: dict[str, str]) -> dict[str, str]:
+        unknown = set(v.keys()) - VALID_ARTIFACT_KEYS
+        if unknown:
+            raise ValueError(
+                f"unknown artifact keys {sorted(unknown)}; allowed: {sorted(VALID_ARTIFACT_KEYS)}"
+            )
+        return v
 
 
 class IngestHTTPResponse(BaseModel):
@@ -130,9 +145,10 @@ class QueryRequestV2(BaseModel):
     question: str
     top_k: int = 10
     filters: QueryFilters | None = None
-    # response_shape accepted per spec §7.1 but unused in v1 (only "structured"
-    # shape is implemented; a future "flat" shape is documented in the spec).
-    response_shape: str = "structured"
+    # v1 only supports "structured". "flat" is reserved for a future release
+    # that returns flattened chunks without the ground_truth/derived_metadata
+    # partitioning.
+    response_shape: Literal["structured"] = "structured"
 
 
 class QueryChunkResult(BaseModel):
@@ -221,10 +237,16 @@ def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
     """Ingest a session's artifacts into LanceDB.
 
     Returns 400 for invalid input (empty artifact_paths, invalid session_id).
+    Returns 422 for Pydantic validation failures (unknown artifact keys).
     Returns 500 for LanceDB commit failures (torn-state recoverable via reindex).
     Returns 200 with IngestResult JSON on success, even when some chunks failed
     extraction (check `chunks_failed` in the response).
     """
+    # TODO(Task 23): constrain artifact_paths to COMMUNITY_BRAIN_ARTIFACT_ROOT.
+    # Currently any authenticated caller can ingest files the server process can
+    # read. For VM deployment behind an API key this is acceptable; for Docker
+    # with shared mounts, artifact paths should be validated against a known
+    # root directory.
     if not req.artifact_paths:
         raise HTTPException(status_code=400, detail="no artifact_paths provided")
 
@@ -251,7 +273,17 @@ def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
         raise HTTPException(status_code=400, detail=str(exc))
     except CommitError as exc:
         # LanceDB torn-state; operator can recover via /reindex or force_reextract
-        raise HTTPException(status_code=500, detail=str(exc))
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "commit_torn_state",
+                "message": str(exc),
+                "recovery": (
+                    f"Re-run POST /ingest with force_reextract=true for "
+                    f"session_id '{req.session_id}' to recover."
+                ),
+            },
+        )
 
     if result.warnings and result.chunks_written == 0 and "no artifacts to ingest" in (result.warnings[0] if result.warnings else ""):
         raise HTTPException(status_code=400, detail=result.warnings[0])
@@ -285,10 +317,16 @@ def _load_all_session_rows() -> list[dict]:
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
     try:
         db = lancedb.connect(db_path)
+    except Exception as exc:
+        logger.warning("Failed to connect to LanceDB at %s: %s", db_path, exc)
+        return []
+
+    try:
         if "chunks" not in db.list_tables().tables:
             return []
         table = db.open_table("chunks")
-    except Exception:
+    except Exception as exc:
+        logger.warning("Failed to open chunks table: %s", exc)
         return []
 
     cols = [
@@ -299,7 +337,12 @@ def _load_all_session_rows() -> list[dict]:
         "has_unresolved_question",
         "session_themes",
     ]
-    arr = table.search().select(cols).limit(100_000).to_arrow()
+    try:
+        arr = table.search().select(cols).limit(100_000).to_arrow()
+    except Exception as exc:
+        logger.warning("Failed to read session rows from chunks table: %s", exc)
+        return []
+
     return [
         {col: arr[col][i].as_py() for col in arr.column_names}
         for i in range(arr.num_rows)
@@ -387,24 +430,37 @@ def _reindex_select_chunk_ids(filter_clause: dict) -> list[str]:
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
     try:
         db = lancedb.connect(db_path)
+    except Exception as exc:
+        logger.warning("Failed to connect to LanceDB at %s: %s", db_path, exc)
+        return []
+
+    try:
         if "chunks" not in db.list_tables().tables:
             return []
         table = db.open_table("chunks")
-    except Exception:
+    except Exception as exc:
+        logger.warning("Failed to open chunks table for reindex: %s", exc)
         return []
 
     clauses: list[str] = []
     for key in ("extraction_prompt_version", "extraction_status"):
-        if filter_clause.get(key):
-            clauses.append(f"{key} = '{filter_clause[key]}'")
+        val = filter_clause.get(key)
+        if val:
+            clauses.append(f"{key} = '{sql_quote(val)}'")
     dr = filter_clause.get("session_date_range")
     if dr and len(dr) == 2:
-        clauses.append(f"session_date >= '{dr[0]}' AND session_date <= '{dr[1]}'")
+        clauses.append(
+            f"session_date >= '{sql_quote(dr[0])}' AND session_date <= '{sql_quote(dr[1])}'"
+        )
 
     query = table.search().select(["chunk_id"])
     if clauses:
         query = query.where(" AND ".join(clauses))
-    arr = query.limit(100_000).to_arrow()
+    try:
+        arr = query.limit(100_000).to_arrow()
+    except Exception as exc:
+        logger.warning("Failed to read chunk_ids for reindex filter: %s", exc)
+        return []
     return [arr["chunk_id"][i].as_py() for i in range(arr.num_rows)]
 
 
