@@ -234,3 +234,75 @@ def test_concurrent_flushes_to_same_path_serialize(tmp_path: Path) -> None:
     assert data["aliases"]["Sam"] == ["sam"]
     # No leftover temp files
     assert list(tmp_path.glob("*.tmp.*")) == []
+
+
+def test_concurrent_flushes_preserve_all_pending(tmp_path: Path) -> None:
+    """10 threads each append a unique pending name; all 10 must survive."""
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(path, {"Sam": ["sam"]}, [])
+
+    errors: list[Exception] = []
+    barrier = threading.Barrier(10)
+
+    def worker(name: str) -> None:
+        try:
+            barrier.wait()
+            reg = load_speaker_registry(path)
+            reg.append_pending([name])
+            reg.flush(path)
+        except Exception as exc:
+            errors.append(exc)
+
+    threads = [threading.Thread(target=worker, args=(f"Person{i}",)) for i in range(10)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert errors == [], errors
+
+    with path.open(encoding="utf-8") as fh:
+        data = yaml.safe_load(fh)
+    pending = data["pending"]
+    expected_names = {f"Person{i}" for i in range(10)}
+    assert set(pending) == expected_names, f"lost updates; expected {expected_names}, got {pending}"
+
+
+def test_flush_merges_with_on_disk_pending(tmp_path: Path) -> None:
+    """A registry loaded with empty pending should merge any entries written
+    to disk between load and flush, not overwrite them."""
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(path, {"Sam": ["sam"]}, [])
+
+    reg = load_speaker_registry(path)
+    reg.append_pending(["AddedInMemory"])
+
+    # Simulate another process writing to the file between our load and flush
+    _write_speaker_yaml(path, {"Sam": ["sam"]}, ["WrittenOnDisk"])
+
+    reg.flush(path)
+
+    with path.open(encoding="utf-8") as fh:
+        data = yaml.safe_load(fh)
+    assert set(data["pending"]) == {"WrittenOnDisk", "AddedInMemory"}
+
+
+def test_load_speaker_registry_rejects_empty_file(tmp_path: Path) -> None:
+    path = tmp_path / "speaker-aliases.yaml"
+    path.write_text("", encoding="utf-8")
+    with pytest.raises(ValueError, match="empty"):
+        load_speaker_registry(path)
+
+
+def test_load_speaker_registry_rejects_null_aliases(tmp_path: Path) -> None:
+    path = tmp_path / "speaker-aliases.yaml"
+    path.write_text('version: "x"\naliases: null\npending: []\n', encoding="utf-8")
+    with pytest.raises(ValueError, match="null"):
+        load_speaker_registry(path)
+
+
+def test_load_entity_registry_rejects_empty_file(tmp_path: Path) -> None:
+    path = tmp_path / "entity-registry.yaml"
+    path.write_text("", encoding="utf-8")
+    with pytest.raises(ValueError, match="empty"):
+        load_entity_registry(path)

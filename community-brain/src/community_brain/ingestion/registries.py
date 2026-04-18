@@ -13,7 +13,7 @@ from typing import TypedDict
 
 import yaml
 
-from community_brain.ingestion._io import atomic_write_yaml
+from community_brain.ingestion._io import merge_and_atomic_write_yaml
 
 
 class EntityRecord(TypedDict, total=False):
@@ -85,16 +85,17 @@ class SpeakerRegistry:
     def flush(self, path: Path) -> None:
         """Atomically write the registry to disk.
 
-        Writes to a uniquely-named temp file in the same directory, fsyncs,
-        then renames. Concurrent flushes to the same path are serialized via
-        a per-path threading.Lock in atomic_write_yaml.
+        Merges in-memory pending with any pending entries currently on disk
+        before writing, so concurrent flushes from different processes or
+        sessions cannot lose updates (TOCTOU-safe). The per-path lock in
+        merge_and_atomic_write_yaml serializes the read-merge-write cycle.
         """
         payload = {
             "version": self.version,
             "aliases": self.aliases,
             "pending": self.pending,
         }
-        atomic_write_yaml(path, payload)
+        merge_and_atomic_write_yaml(path, payload, merge_list_keys=("pending",))
 
 
 @dataclass
@@ -125,10 +126,12 @@ class EntityRegistry:
     def canonicalize(self, raw: str) -> str | None:
         """Return the canonical entity name for a raw mention, or None.
 
-        Entity lookups are CASE-INSENSITIVE because tool/product mentions are
-        noisy in community text: "langchain", "LangChain", and "Langchain" all
-        refer to the same entity. The lookup first tries the exact string, then
-        its lowercased form.
+        CASE-INSENSITIVE via str.lower() (ASCII-oriented). Does NOT apply Unicode
+        casefold() or NFKC normalization — adequate for ASCII tool/product names
+        (Codex, LangChain) but may miss non-ASCII variants. If multilingual entity
+        names become relevant in v2, upgrade to casefold + NFKC.
+
+        The lookup first tries the exact string, then its lowercased form.
         """
         if raw in self._lookup:
             return self._lookup[raw]
@@ -143,31 +146,32 @@ class EntityRegistry:
                 existing.add(name)
 
     def add_entity(self, canonical: str, record: EntityRecord) -> None:
-        """Add a single entity at runtime. Rebuilds the canonicalize lookup."""
-        # Defensive copy that preserves the EntityRecord type.
-        copied: EntityRecord = {}
-        if "type" in record:
-            copied["type"] = record["type"]
-        if "category" in record:
-            copied["category"] = record["category"]
-        if "aliases" in record:
-            copied["aliases"] = list(record["aliases"])
-        self.entities[canonical] = copied
+        """Add a single entity at runtime. Rebuilds the canonicalize lookup.
+
+        Preserves all fields from the TypedDict (including any future additions)
+        via dict unpacking, with a defensive list copy for the aliases field so
+        external mutation can't leak in.
+        """
+        copied: dict = dict(record)
+        if "aliases" in copied and copied["aliases"] is not None:
+            copied["aliases"] = list(copied["aliases"])
+        self.entities[canonical] = copied  # type: ignore[assignment]
         self._rebuild_lookup()
 
     def flush(self, path: Path) -> None:
         """Atomically write the registry to disk.
 
-        Writes to a uniquely-named temp file in the same directory, fsyncs,
-        then renames. Concurrent flushes to the same path are serialized via
-        a per-path threading.Lock in atomic_write_yaml.
+        Merges in-memory pending with any pending entries currently on disk
+        before writing, so concurrent flushes from different processes or
+        sessions cannot lose updates (TOCTOU-safe). The per-path lock in
+        merge_and_atomic_write_yaml serializes the read-merge-write cycle.
         """
         payload = {
             "version": self.version,
             "entities": self.entities,
             "pending": self.pending,
         }
-        atomic_write_yaml(path, payload)
+        merge_and_atomic_write_yaml(path, payload, merge_list_keys=("pending",))
 
 
 def load_speaker_registry(path: Path) -> SpeakerRegistry:
@@ -182,14 +186,20 @@ def load_speaker_registry(path: Path) -> SpeakerRegistry:
         data = yaml.safe_load(fh)
 
     if data is None:
-        data = {}
+        raise ValueError(
+            f"{path.name}: file is empty; expected YAML mapping"
+        )
     if not isinstance(data, dict):
         raise ValueError(
             f"speaker-aliases.yaml must be a YAML mapping at top level, "
             f"got {type(data).__name__}"
         )
 
-    raw_aliases = data.get("aliases") or {}
+    raw_aliases = data.get("aliases", {})
+    if "aliases" in data and raw_aliases is None:
+        raise ValueError(
+            f"{path.name}: 'aliases' is null; use an empty mapping {{}} for no aliases"
+        )
     if not isinstance(raw_aliases, dict):
         raise ValueError(
             f"speaker-aliases.yaml: 'aliases' must be a mapping, "
@@ -234,14 +244,20 @@ def load_entity_registry(path: Path) -> EntityRegistry:
         data = yaml.safe_load(fh)
 
     if data is None:
-        data = {}
+        raise ValueError(
+            f"{path.name}: file is empty; expected YAML mapping"
+        )
     if not isinstance(data, dict):
         raise ValueError(
             f"entity-registry.yaml must be a YAML mapping at top level, "
             f"got {type(data).__name__}"
         )
 
-    raw_entities = data.get("entities") or {}
+    raw_entities = data.get("entities", {})
+    if "entities" in data and raw_entities is None:
+        raise ValueError(
+            f"{path.name}: 'entities' is null; use an empty mapping {{}} for no entities"
+        )
     if not isinstance(raw_entities, dict):
         raise ValueError(
             f"entity-registry.yaml: 'entities' must be a mapping, "
