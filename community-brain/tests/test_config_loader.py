@@ -7,9 +7,7 @@ from pathlib import Path
 import pytest
 
 from community_brain.ingestion.config_loader import (
-    ChunkingConfig,
     ExtractionConfig,
-    RetryConfig,
     load_chunking_config,
     load_extraction_config,
 )
