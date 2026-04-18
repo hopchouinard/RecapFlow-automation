@@ -156,3 +156,75 @@ def test_parse_community_post_empty() -> None:
     post = parse_community_post("")
     assert post.body == ""
     assert post.token_count == 0
+
+
+# --- Issue I4: CRLF normalization ---
+
+
+def test_parse_prepared_transcript_normalizes_crlf() -> None:
+    text = (
+        "<!--SEGMENT\r\n"
+        "topic: crlf test\r\n"
+        "speakers: A\r\n"
+        "keywords: k\r\n"
+        "summary: s\r\n"
+        "-->\r\n"
+        "[00:00:00] A: line one\r\n\r\n[00:01:00] A: line two\r\n"
+    )
+    segments = parse_prepared_transcript(text)
+    assert len(segments) == 1
+    assert "\r" not in segments[0].body
+    assert "line one" in segments[0].body
+    assert "line two" in segments[0].body
+
+
+def test_parse_community_post_normalizes_crlf() -> None:
+    text = "line one\r\n\r\nline two"
+    post = parse_community_post(text)
+    assert "\r" not in post.body
+
+
+# --- Issue B1: empty segment skipping ---
+
+
+def test_parse_prepared_transcript_skips_empty_segments() -> None:
+    text = """<!--SEGMENT
+topic: empty
+speakers: A
+keywords: k
+summary: s
+-->
+<!--SEGMENT
+topic: non-empty
+speakers: A
+keywords: k
+summary: s
+-->
+[00:00:00] A: actual content
+"""
+    segments = parse_prepared_transcript(text)
+    assert len(segments) == 1
+    assert segments[0].topic == "non-empty"
+
+
+# --- Issue B1 (fenced code): ---
+
+
+def test_parse_extracted_signal_ignores_fenced_code_hash() -> None:
+    text = """## tools
+
+- LangGraph
+
+```
+## qa
+not a real section
+```
+
+## insights
+
+- Y
+"""
+    sections = parse_extracted_signal(text)
+    slugs = [s.slug for s in sections]
+    # "qa" inside the fence should NOT create a section
+    assert slugs == ["tools", "insights"]

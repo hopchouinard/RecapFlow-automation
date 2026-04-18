@@ -9,10 +9,13 @@ Downstream chunker consumes these records and composes Chunk instances.
 
 from __future__ import annotations
 
+import logging
 import re
 from dataclasses import dataclass
 
 from community_brain.chunk_utils import count_tokens
+
+logger = logging.getLogger(__name__)
 
 #: Canonical heading slugs allowed in extracted-signal.md. Any non-canonical
 #: heading causes parse_extracted_signal to raise ValueError, so prompt drift
@@ -46,6 +49,24 @@ class CommunityPost:
     token_count: int
 
 
+_FENCED_CODE_RE = re.compile(r"```.*?```", re.DOTALL)
+
+
+def _normalize_line_endings(text: str) -> str:
+    """Normalize CRLF and lone CR to LF for consistent downstream parsing."""
+    return text.replace("\r\n", "\n").replace("\r", "\n")
+
+
+def _strip_fenced_code(text: str) -> str:
+    """Remove fenced code blocks before structural parsing.
+
+    The signal prompt doesn't emit fenced code in practice, but if the LLM
+    ever drifts into that, a `## qa` line inside a fence would be mis-parsed
+    as a new section. Strip fences first so section detection is robust.
+    """
+    return _FENCED_CODE_RE.sub("", text)
+
+
 _SEGMENT_HEADER_RE = re.compile(
     r"<!--SEGMENT\s*\n"
     r"topic:\s*(?P<topic>.*?)\n"
@@ -67,6 +88,7 @@ def parse_prepared_transcript(text: str) -> list[TranscriptSegment]:
     `=== UNRESOLVED SPEAKERS ===` block (if present) is stripped from the
     final segment's body.
     """
+    text = _normalize_line_endings(text)
     if not text.strip():
         return []
 
@@ -84,12 +106,20 @@ def parse_prepared_transcript(text: str) -> list[TranscriptSegment]:
         if unresolved_pos != -1:
             body = body[:unresolved_pos]
 
+        body = body.strip()
+        if not body:
+            logger.warning(
+                "Skipping empty segment '%s' (no body content between markers)",
+                match.group("topic").strip(),
+            )
+            continue
+
         segments.append(TranscriptSegment(
             topic=match.group("topic").strip(),
             speakers=_split_csv(match.group("speakers")),
             keywords=_split_csv(match.group("keywords")),
             summary=match.group("summary").strip(),
-            body=body.strip(),
+            body=body,
         ))
 
     return segments
@@ -101,12 +131,15 @@ def parse_extracted_signal(text: str) -> list[SignalSection]:
     Raises ValueError if a non-canonical heading is encountered, so prompt
     drift surfaces at ingestion time rather than producing unqueryable chunks.
     """
+    text = _normalize_line_endings(text)
     if not text.strip():
         return []
 
     # Split on `## ` at start of line. First element is preamble before any
-    # heading -- ignore it (typically empty).
-    parts = re.split(r"(?m)^##\s+", text)
+    # heading -- ignore it (typically empty). Strip fenced code blocks first
+    # so `## heading` inside a ``` fence is not mis-parsed as a section.
+    cleaned = _strip_fenced_code(text)
+    parts = re.split(r"(?m)^##\s+", cleaned)
     sections: list[SignalSection] = []
     for part in parts[1:]:
         lines = part.splitlines()
@@ -127,6 +160,7 @@ def parse_extracted_signal(text: str) -> list[SignalSection]:
 
 def parse_community_post(text: str) -> CommunityPost:
     """Parse community-post.md into a single whole-document record."""
+    text = _normalize_line_endings(text)
     return CommunityPost(body=text, token_count=count_tokens(text) if text else 0)
 
 
