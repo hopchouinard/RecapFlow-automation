@@ -271,6 +271,90 @@ def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
     )
 
 
+# --- /sessions inventory endpoints ---
+
+def _load_all_session_rows() -> list[dict]:
+    """Load minimum session-level columns for aggregation.
+
+    Returns empty list if the chunks table does not exist yet. Pulls only the
+    columns needed by the sessions aggregation (not full_text or embeddings)
+    so this stays cheap even on large corpuses.
+    """
+    import lancedb
+
+    db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
+    try:
+        db = lancedb.connect(db_path)
+        if "chunks" not in db.list_tables().tables:
+            return []
+        table = db.open_table("chunks")
+    except Exception:
+        return []
+
+    cols = [
+        "session_id",
+        "session_date",
+        "session_title",
+        "content_type",
+        "has_unresolved_question",
+        "session_themes",
+    ]
+    arr = table.search().select(cols).limit(100_000).to_arrow()
+    return [
+        {col: arr[col][i].as_py() for col in arr.column_names}
+        for i in range(arr.num_rows)
+    ]
+
+
+def _aggregate_sessions(rows: list[dict]) -> dict[str, dict]:
+    """Aggregate per-chunk rows into per-session dicts.
+
+    Each session's chunk_counts is a breakdown by content_type.
+    unresolved_question_count tallies rows where has_unresolved_question is true.
+    session_themes is taken from the first-seen row (all chunks in a session
+    share the same denormalized themes).
+    """
+    agg: dict[str, dict] = {}
+    for row in rows:
+        sid = row["session_id"]
+        if sid not in agg:
+            agg[sid] = {
+                "session_id": sid,
+                "session_date": row["session_date"],
+                "session_title": row.get("session_title"),
+                "chunk_counts": {},
+                "unresolved_question_count": 0,
+                "session_themes": list(row.get("session_themes") or []),
+            }
+        ctype = row["content_type"]
+        agg[sid]["chunk_counts"][ctype] = agg[sid]["chunk_counts"].get(ctype, 0) + 1
+        if row.get("has_unresolved_question"):
+            agg[sid]["unresolved_question_count"] += 1
+    return agg
+
+
+@app.get("/sessions")
+def list_sessions(_key: str | None = Depends(_verify_api_key)):
+    """List all sessions in the corpus with aggregated metadata.
+
+    Sorted by session_date descending (newest first).
+    """
+    rows = _load_all_session_rows()
+    agg = _aggregate_sessions(rows)
+    sessions = sorted(agg.values(), key=lambda s: s["session_date"], reverse=True)
+    return {"total": len(sessions), "sessions": sessions}
+
+
+@app.get("/sessions/{session_id}")
+def get_session(session_id: str, _key: str | None = Depends(_verify_api_key)):
+    """Get one session's aggregated metadata. 404 if the session is not in the corpus."""
+    rows = _load_all_session_rows()
+    agg = _aggregate_sessions(rows)
+    if session_id not in agg:
+        raise HTTPException(status_code=404, detail=f"session not found: {session_id}")
+    return agg[session_id]
+
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("RETRIEVAL_PORT", "8999"))
