@@ -9,6 +9,7 @@ import pytest
 from community_brain.ingestion.config_loader import (
     ChunkingConfig,
     ExtractionConfig,
+    RetryConfig,
     load_chunking_config,
     load_extraction_config,
 )
@@ -31,16 +32,16 @@ extraction:
         encoding="utf-8",
     )
 
-    config = load_chunking_config(config_file)
+    chunking, retry = load_chunking_config(config_file)
 
-    assert isinstance(config, ChunkingConfig)
-    assert config.schema_version == "1.0"
-    assert config.transcript_segment_max_tokens == 1500
-    assert config.post_max_tokens == 2500
-    assert config.session_themes_input_max_tokens == 3000
-    assert config.retry_attempts == 3
-    assert config.retry_backoff_seconds == [2, 8, 32]
-    assert config.inter_session_delay_seconds == 30
+    assert chunking.schema_version == "1.0"
+    assert chunking.transcript_segment_max_tokens == 1500
+    assert chunking.post_max_tokens == 2500
+    assert chunking.session_themes_input_max_tokens == 3000
+
+    assert retry.retry_attempts == 3
+    assert retry.retry_backoff_seconds == [2, 8, 32]
+    assert retry.inter_session_delay_seconds == 30
 
 
 def test_load_extraction_config_from_yaml(tmp_path: Path) -> None:
@@ -69,3 +70,28 @@ chunk_extraction:
 def test_load_chunking_config_missing_file_raises(tmp_path: Path) -> None:
     with pytest.raises(FileNotFoundError):
         load_chunking_config(tmp_path / "does-not-exist.yaml")
+
+
+def test_load_extraction_config_missing_file_raises(tmp_path: Path) -> None:
+    with pytest.raises(FileNotFoundError):
+        load_extraction_config(tmp_path / "does-not-exist.yaml")
+
+
+def test_load_chunking_config_missing_required_key_raises(tmp_path: Path) -> None:
+    config_file = tmp_path / "chunking.yaml"
+    config_file.write_text(
+        """
+schema_version: "1.0"
+chunking:
+  transcript_segment_max_tokens: 1500
+  # post_max_tokens missing on purpose
+  session_themes_input_max_tokens: 3000
+extraction:
+  retry_attempts: 3
+  retry_backoff_seconds: [2, 8, 32]
+  inter_session_delay_seconds: 30
+        """,
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="post_max_tokens"):
+        load_chunking_config(config_file)
