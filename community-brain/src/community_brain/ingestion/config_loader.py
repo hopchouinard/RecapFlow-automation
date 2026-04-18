@@ -34,6 +34,26 @@ class ExtractionConfig:
     chunk_extraction_model: str
 
 
+def _require_int(d: dict, key: str, filename: str) -> int:
+    """Return d[key] as int, raising ValueError if missing or wrong type."""
+    val = d[key]
+    if not isinstance(val, int) or isinstance(val, bool):
+        raise ValueError(
+            f"{filename}: '{key}' must be an int, got {type(val).__name__}"
+        )
+    return val
+
+
+def _require_str(d: dict, key: str, filename: str) -> str:
+    """Return d[key] as str, raising ValueError if missing or wrong type."""
+    val = d[key]
+    if not isinstance(val, str):
+        raise ValueError(
+            f"{filename}: '{key}' must be a string, got {type(val).__name__}"
+        )
+    return val
+
+
 def load_chunking_config(path: Path) -> tuple[ChunkingConfig, RetryConfig]:
     """Load chunking.yaml and return (ChunkingConfig, RetryConfig).
 
@@ -80,15 +100,15 @@ def load_chunking_config(path: Path) -> tuple[ChunkingConfig, RetryConfig]:
             )
 
         chunking_config = ChunkingConfig(
-            schema_version=data["schema_version"],
-            transcript_segment_max_tokens=chunking["transcript_segment_max_tokens"],
-            post_max_tokens=chunking["post_max_tokens"],
-            session_themes_input_max_tokens=chunking["session_themes_input_max_tokens"],
+            schema_version=_require_str(data, "schema_version", path.name),
+            transcript_segment_max_tokens=_require_int(chunking, "transcript_segment_max_tokens", path.name),
+            post_max_tokens=_require_int(chunking, "post_max_tokens", path.name),
+            session_themes_input_max_tokens=_require_int(chunking, "session_themes_input_max_tokens", path.name),
         )
         retry_config = RetryConfig(
             retry_attempts=retry_attempts,
             retry_backoff_seconds=list(backoff),
-            inter_session_delay_seconds=extraction["inter_session_delay_seconds"],
+            inter_session_delay_seconds=_require_int(extraction, "inter_session_delay_seconds", path.name),
         )
     except (KeyError, TypeError) as exc:
         raise ValueError(
@@ -117,10 +137,10 @@ def load_extraction_config(path: Path) -> ExtractionConfig:
         )
     try:
         return ExtractionConfig(
-            session_themes_prompt_file=data["session_themes"]["prompt_file"],
-            session_themes_model=data["session_themes"]["model"],
-            chunk_extraction_prompt_file=data["chunk_extraction"]["prompt_file"],
-            chunk_extraction_model=data["chunk_extraction"]["model"],
+            session_themes_prompt_file=_require_str(data["session_themes"], "prompt_file", path.name),
+            session_themes_model=_require_str(data["session_themes"], "model", path.name),
+            chunk_extraction_prompt_file=_require_str(data["chunk_extraction"], "prompt_file", path.name),
+            chunk_extraction_model=_require_str(data["chunk_extraction"], "model", path.name),
         )
     except (KeyError, TypeError) as exc:
         raise ValueError(
