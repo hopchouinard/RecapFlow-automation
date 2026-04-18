@@ -15,17 +15,18 @@ from __future__ import annotations
 
 import json
 import logging
-import re
 from dataclasses import dataclass
 from typing import Literal
 
+from community_brain.ingestion._llm_parse import strip_code_fence
 from community_brain.llm import call_llm
 
 logger = logging.getLogger(__name__)
 
 _ExtractionStatus = Literal["success", "failed"]
 
-_FENCE_RE = re.compile(r"^```(?:json)?\s*\n(.*?)\n```\s*$", re.DOTALL)
+_VALID_STANCES = {"positive", "negative", "neutral", "mixed"}
+_VALID_CERTAINTIES = {"asserted", "hedged", "speculative"}
 
 
 @dataclass
@@ -87,7 +88,7 @@ def extract_chunk_metadata(
         logger.warning("LLM call failed: %s", exc)
         return _failure(f"{type(exc).__name__}: {exc}")
 
-    cleaned = _strip_code_fence(raw)
+    cleaned = strip_code_fence(raw)
 
     try:
         data = json.loads(cleaned)
@@ -104,8 +105,8 @@ def extract_chunk_metadata(
         new_entities_seen=_as_str_list(data.get("new_entities_seen")),
         new_speakers_seen=_as_str_list(data.get("new_speakers_seen")),
         speech_acts=_as_str_list(data.get("speech_acts")),
-        stance=data.get("stance") if isinstance(data.get("stance"), str) else None,
-        certainty=str(data.get("certainty") or "asserted"),
+        stance=_coerce_stance(data.get("stance")),
+        certainty=_coerce_certainty(data.get("certainty")),
         chunk_local_markers=_as_str_list(data.get("chunk_local_markers")),
         decisions=_as_str_list(data.get("decisions")),
         action_items=_as_str_list(data.get("action_items")),
@@ -115,16 +116,28 @@ def extract_chunk_metadata(
     )
 
 
-def _strip_code_fence(raw: str) -> str:
-    """Remove a leading/trailing ```json ... ``` fence if present.
+def _coerce_stance(value) -> str | None:
+    """Validate stance against known Literal values; fall back to None with a warning."""
+    if value is None:
+        return None
+    if isinstance(value, str) and value in _VALID_STANCES:
+        return value
+    logger.warning(
+        "LLM returned invalid stance %r; defaulting to None (allowed: %s)",
+        value, sorted(_VALID_STANCES),
+    )
+    return None
 
-    Some LLMs wrap JSON responses in fences despite explicit instructions not to.
-    Strip once, not recursively.
-    """
-    match = _FENCE_RE.match(raw.strip())
-    if match:
-        return match.group(1)
-    return raw
+
+def _coerce_certainty(value) -> str:
+    """Validate certainty against known Literal values; fall back to 'asserted' with a warning."""
+    if isinstance(value, str) and value in _VALID_CERTAINTIES:
+        return value
+    logger.warning(
+        "LLM returned invalid certainty %r; defaulting to 'asserted' (allowed: %s)",
+        value, sorted(_VALID_CERTAINTIES),
+    )
+    return "asserted"
 
 
 def _as_str_list(value) -> list[str]:

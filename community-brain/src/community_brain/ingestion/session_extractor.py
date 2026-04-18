@@ -19,10 +19,10 @@ from __future__ import annotations
 
 import json
 import logging
-import re
 from dataclasses import dataclass
 from typing import Literal
 
+from community_brain.ingestion._llm_parse import strip_code_fence
 from community_brain.ingestion.parser import (
     CommunityPost,
     SignalSection,
@@ -34,8 +34,6 @@ logger = logging.getLogger(__name__)
 
 InputSource = Literal["community_post", "transcript_headers", "signal"]
 _Status = Literal["success", "failed", "skipped"]
-
-_FENCE_RE = re.compile(r"^```(?:json)?\s*\n(.*?)\n```\s*$", re.DOTALL)
 
 
 @dataclass
@@ -110,7 +108,7 @@ def extract_session_themes(
             themes=[], status="failed", error=f"{type(exc).__name__}: {exc}"
         )
 
-    cleaned = _strip_code_fence(raw)
+    cleaned = strip_code_fence(raw)
 
     try:
         data = json.loads(cleaned)
@@ -134,9 +132,3 @@ def extract_session_themes(
     return SessionThemesResult(themes=themes, status="success", error=None)
 
 
-def _strip_code_fence(raw: str) -> str:
-    """Remove a leading/trailing ```json ... ``` fence if present."""
-    match = _FENCE_RE.match(raw.strip())
-    if match:
-        return match.group(1)
-    return raw

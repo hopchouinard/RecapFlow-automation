@@ -261,6 +261,119 @@ def test_ingest_session_populates_session_themes_on_every_chunk(
         assert row["session_themes"] == ["agent frameworks", "embeddings"]
 
 
+def test_ingest_session_rejects_sql_injection_in_session_id(
+    tmp_path: Path, mocked_pipeline_env
+) -> None:
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="x' OR '1'='1",
+        session_date="2026-03-10",
+        session_title="t",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+    with pytest.raises(ValueError, match="session_id"):
+        ingest_session(request, config_dir, str(db_path), None)
+
+
+def test_ingest_session_failed_chunks_have_empty_embedding(
+    tmp_path: Path,
+) -> None:
+    """Chunks whose LLM extraction failed are persisted but not embedded."""
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    def _broken_chunk_extract(model, prompt):
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["x"]})
+        return "not json"  # malformed chunk extraction
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="t",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_broken_chunk_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_broken_chunk_extract,
+    ):
+        ingest_session(request, config_dir, str(db_path), None)
+
+    import lancedb as _lancedb
+
+    db = _lancedb.connect(str(db_path))
+    table = db.open_table("chunks")
+    rows = list(table.search().to_list())
+
+    # All chunks should have failed extraction in this scenario
+    failed_rows = [r for r in rows if r["extraction_status"] == "failed"]
+    assert len(failed_rows) > 0
+    # Failed rows must have an error message populated
+    for row in failed_rows:
+        assert row["extraction_error"] is not None
+
+
+def test_ingest_session_force_reextract_removes_orphan_chunks(
+    tmp_path: Path, mocked_pipeline_env
+) -> None:
+    """When force_reextract=True and new parse produces fewer chunks,
+    orphan chunks from prior run get cleaned up."""
+    import lancedb as _lancedb
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    # First run: full artifact set (transcript + signal + post)
+    full_request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="t",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+    ingest_session(full_request, config_dir, str(db_path), None)
+
+    before_count = len(list(_lancedb.connect(str(db_path)).open_table("chunks").search().to_list()))
+    assert before_count > 1  # multiple chunks exist from all three artifact types
+
+    # Second run: only prepared_transcript with force_reextract=True
+    # signal and community_post orphan chunks should be wiped
+    partial_request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="t",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=True,
+    )
+    ingest_session(partial_request, config_dir, str(db_path), None)
+
+    # Re-open the connection to avoid stale cache
+    rows = list(_lancedb.connect(str(db_path)).open_table("chunks").search().to_list())
+    content_types = {r["content_type"] for r in rows}
+    assert content_types == {"prepared_transcript"}
+
+
 def test_ingest_session_empty_artifacts_returns_warning(
     tmp_path: Path, mocked_pipeline_env
 ) -> None:

@@ -168,6 +168,64 @@ def test_extract_chunk_metadata_prompt_includes_context() -> None:
     assert "Alex Rojas" in captured["prompt"]
 
 
+def test_extract_chunk_metadata_invalid_stance_defaults_to_none() -> None:
+    payload = {
+        "entities": [],
+        "new_entities_seen": [],
+        "new_speakers_seen": [],
+        "speech_acts": [],
+        "stance": "feral",  # not a valid Literal value
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="x",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="m",
+            prompt_template="p",
+        )
+    assert result.status == "success"
+    assert result.stance is None
+
+
+def test_extract_chunk_metadata_invalid_certainty_defaults_to_asserted() -> None:
+    payload = {
+        "entities": [],
+        "new_entities_seen": [],
+        "new_speakers_seen": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "dubious",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="x",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="m",
+            prompt_template="p",
+        )
+    assert result.status == "success"
+    assert result.certainty == "asserted"
+
+
 def test_extract_chunk_metadata_empty_chunk_text() -> None:
     """Empty chunk_text should still be parseable — edge case that can happen
     if the chunker changes in the future or a malformed artifact slips through."""
