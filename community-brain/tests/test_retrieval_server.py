@@ -85,7 +85,7 @@ class TestQueryEndpoint:
 
 class TestApiKeyAuth:
     @patch("community_brain.query.retrieval_server.search_chunks")
-    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", "test-secret-key")
+    @patch.dict(os.environ, {"RETRIEVAL_API_KEY": "test-secret-key"})
     def test_rejects_missing_api_key(self, mock_search):
         mock_search.return_value = []
         response = client.post(
@@ -95,7 +95,7 @@ class TestApiKeyAuth:
         assert response.status_code == 403
 
     @patch("community_brain.query.retrieval_server.search_chunks")
-    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", "test-secret-key")
+    @patch.dict(os.environ, {"RETRIEVAL_API_KEY": "test-secret-key"})
     def test_rejects_wrong_api_key(self, mock_search):
         mock_search.return_value = []
         response = client.post(
@@ -106,7 +106,7 @@ class TestApiKeyAuth:
         assert response.status_code == 403
 
     @patch("community_brain.query.retrieval_server.search_chunks")
-    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", "test-secret-key")
+    @patch.dict(os.environ, {"RETRIEVAL_API_KEY": "test-secret-key"})
     def test_accepts_correct_api_key(self, mock_search):
         mock_search.return_value = []
         response = client.post(
@@ -117,9 +117,11 @@ class TestApiKeyAuth:
         assert response.status_code == 200
 
     @patch("community_brain.query.retrieval_server.search_chunks")
-    @patch("community_brain.query.retrieval_server.RETRIEVAL_API_KEY", None)
+    @patch.dict(os.environ, {}, clear=False)
     def test_allows_without_key_when_not_configured(self, mock_search):
         mock_search.return_value = []
+        # Ensure RETRIEVAL_API_KEY is absent for this test
+        os.environ.pop("RETRIEVAL_API_KEY", None)
         response = client.post(
             "/query",
             json={"question": "test", "top_k": 5},
