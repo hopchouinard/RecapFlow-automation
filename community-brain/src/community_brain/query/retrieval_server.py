@@ -10,7 +10,6 @@ Usage:
 
 from __future__ import annotations
 
-import json
 import logging
 import os
 from pathlib import Path
@@ -25,7 +24,6 @@ from community_brain.ingestion.pipeline import (
     IngestRequest,
     ingest_session,
 )
-from community_brain.query.query_local import search_chunks
 
 logger = logging.getLogger(__name__)
 
@@ -99,25 +97,77 @@ class IngestHTTPResponse(BaseModel):
     unknown_speakers_flagged: list[str]
 
 
-class QueryRequest(BaseModel):
+class QueryFilters(BaseModel):
+    session_date_range: list[str] | None = None
+    content_type: list[str] | None = None
+
+    speakers_spoke: list[str] | None = None
+    speakers_spoke_match: str = "any"
+    speakers_mentioned: list[str] | None = None
+    speakers_mentioned_match: str = "any"
+
+    entities: list[str] | None = None
+    entities_match: str = "any"
+
+    keywords: list[str] | None = None
+    keywords_match: str = "any"
+
+    schema_version_min: str | None = None
+
+    require_chunk_markers: list[str] | None = None
+    exclude_chunk_markers: list[str] | None = None
+    require_corpus_markers: list[str] | None = None
+    exclude_corpus_markers: list[str] | None = None
+
+    has_question: bool | None = None
+    has_answer: bool | None = None
+    has_unresolved_question: bool | None = None
+    has_insight: bool | None = None
+    references_prior: bool | None = None
+
+
+class QueryRequestV2(BaseModel):
     question: str
-    top_k: int = 5
-    filter_date: str | None = None
-    filter_speaker: str | None = None
+    top_k: int = 10
+    filters: QueryFilters | None = None
+    # response_shape accepted per spec §7.1 but unused in v1 (only "structured"
+    # shape is implemented; a future "flat" shape is documented in the spec).
+    response_shape: str = "structured"
 
 
-class ChunkResult(BaseModel):
-    chunk_id: str
-    session_date: str
-    topic: str
-    summary: str
-    text: str
-    speakers: list[str]
-    score: float
+class QueryChunkResult(BaseModel):
+    ground_truth: dict
+    derived_metadata: dict
+    provenance: dict
+    similarity: float
 
 
-class QueryResponse(BaseModel):
-    chunks: list[ChunkResult]
+class QueryResponseV2(BaseModel):
+    query: str
+    chunks: list[QueryChunkResult]
+    total_matched: int
+    filters_applied: dict
+
+
+GROUND_TRUTH_FIELDS = (
+    "chunk_id", "session_id", "session_date", "session_title",
+    "source_file", "full_text",
+)
+
+PROVENANCE_FIELDS = (
+    "schema_version", "extraction_model", "extraction_prompt_version",
+    "extraction_status", "extraction_error", "extracted_at",
+)
+
+DERIVED_FIELDS = (
+    "content_type", "chunk_index", "total_chunks_in_source",
+    "speakers_spoke", "speakers_mentioned", "entities", "keywords",
+    "topic_label", "session_themes",
+    "speech_acts", "stance", "certainty",
+    "chunk_local_markers", "corpus_derived_markers", "corpus_markers_computed_at",
+    "has_question", "has_answer", "has_unresolved_question", "has_insight",
+    "decisions", "action_items", "external_refs", "references_prior",
+)
 
 
 @app.get("/health")
@@ -125,42 +175,45 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/query", response_model=QueryResponse)
-def query(request: QueryRequest, _key: str | None = Depends(_verify_api_key)):
+@app.post("/query", response_model=QueryResponseV2)
+def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
+    from community_brain.query.query_local import search_chunks_v2
+
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
     ollama_base_url = os.environ.get("OLLAMA_BASE_URL")
 
-    results = search_chunks(
-        question=request.question,
+    # Use an empty QueryFilters to get spec-default values (e.g. *_match = "any")
+    # even when the caller omits the filters field entirely.
+    effective_filters = req.filters if req.filters is not None else QueryFilters()
+    filters_dict = effective_filters.model_dump(exclude_none=False)
+
+    raw = search_chunks_v2(
+        question=req.question,
         db_path=db_path,
-        top_k=request.top_k,
-        filter_date=request.filter_date,
-        filter_speaker=request.filter_speaker,
+        top_k=req.top_k,
+        filters=filters_dict,
         ollama_base_url=ollama_base_url,
     )
 
-    chunks = []
-    for r in results:
-        speakers_raw = r.get("speakers_in_chunk", "[]")
-        if isinstance(speakers_raw, str):
-            try:
-                speakers = json.loads(speakers_raw)
-            except json.JSONDecodeError:
-                speakers = [speakers_raw]
-        else:
-            speakers = speakers_raw
-
-        chunks.append(ChunkResult(
-            chunk_id=r["chunk_id"],
-            session_date=r["session_date"],
-            topic=r.get("topic", ""),
-            summary=r.get("summary", ""),
-            text=r["text"],
-            speakers=speakers,
-            score=round(1 - r.get("_distance", 0), 4),
+    chunks: list[QueryChunkResult] = []
+    for row in raw:
+        ground = {k: row.get(k) for k in GROUND_TRUTH_FIELDS}
+        derived = {k: row.get(k) for k in DERIVED_FIELDS}
+        provenance = {k: row.get(k) for k in PROVENANCE_FIELDS}
+        similarity = round(1 - row.get("_distance", 0), 4)
+        chunks.append(QueryChunkResult(
+            ground_truth=ground,
+            derived_metadata=derived,
+            provenance=provenance,
+            similarity=similarity,
         ))
 
-    return QueryResponse(chunks=chunks)
+    return QueryResponseV2(
+        query=req.question,
+        chunks=chunks,
+        total_matched=len(chunks),
+        filters_applied=filters_dict,
+    )
 
 
 @app.post("/ingest", response_model=IngestHTTPResponse)
