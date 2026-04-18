@@ -7,8 +7,6 @@ from pathlib import Path
 import yaml
 
 from community_brain.ingestion.registries import (
-    SpeakerRegistry,
-    EntityRegistry,
     load_speaker_registry,
     load_entity_registry,
 )
