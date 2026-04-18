@@ -459,3 +459,74 @@ class TestInferenceGuidelinesEmbedded:
         assert "ground_truth" in msg or "Trust hierarchy" in msg, (
             "Inference guidelines not prepended to sources message"
         )
+
+
+class TestChunkIdCitation:
+    def test_sources_message_exposes_chunk_id_for_citation(self):
+        """Inference guidelines require chunk_id citations.
+
+        The sources message MUST include each chunk's chunk_id in a form the
+        downstream LLM can quote back. Without this, the guidelines' rule
+        'Direct quotes must cite a specific chunk_id' is unenforceable because
+        the LLM has no chunk_id to cite.
+        """
+        from community_brain.openwebui.community_brain_filter import Filter
+
+        f = Filter()
+        chunks = [
+            {
+                "ground_truth": {
+                    "chunk_id": "2026-03-10:transcript:042",
+                    "session_date": "2026-03-10",
+                    "full_text": "Example transcript content.",
+                },
+                "derived_metadata": {
+                    "topic_label": "agents",
+                    "speakers_spoke": ["Alex Rojas"],
+                    "session_themes": [],
+                },
+                "provenance": {},
+                "similarity": 0.9,
+            },
+            {
+                "ground_truth": {
+                    "chunk_id": "2026-03-10:signal:tools",
+                    "session_date": "2026-03-10",
+                    "full_text": "Other content.",
+                },
+                "derived_metadata": {
+                    "topic_label": "tools",
+                    "speakers_spoke": None,
+                    "session_themes": [],
+                },
+                "provenance": {},
+                "similarity": 0.8,
+            },
+        ]
+        msg = f._build_sources_message(chunks)
+
+        assert "2026-03-10:transcript:042" in msg
+        assert "2026-03-10:signal:tools" in msg
+
+    def test_sources_message_tells_llm_to_cite_chunk_id(self):
+        """The prompt must explicitly instruct the LLM to cite chunk_id values,
+        not the bracket number shorthand."""
+        from community_brain.openwebui.community_brain_filter import Filter
+
+        f = Filter()
+        chunks = [
+            {
+                "ground_truth": {
+                    "chunk_id": "2026-03-10:transcript:001",
+                    "session_date": "2026-03-10",
+                    "full_text": "x",
+                },
+                "derived_metadata": {},
+                "provenance": {},
+                "similarity": 0.9,
+            }
+        ]
+        msg = f._build_sources_message(chunks)
+
+        # The prompt should name chunk_id as the citation mechanism
+        assert "chunk_id" in msg.lower()
