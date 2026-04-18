@@ -169,7 +169,7 @@ def ingest_session(
     # Constrain artifact paths to COMMUNITY_BRAIN_ARTIFACT_ROOT if set.
     artifact_root = _resolve_artifact_root()
     if artifact_root is not None:
-        for key, path_str in request.artifact_paths.items():
+        for path_str in request.artifact_paths.values():
             _validate_artifact_path(path_str, artifact_root)
 
     # Note: RetryConfig from chunking.yaml is loaded for schema compatibility
