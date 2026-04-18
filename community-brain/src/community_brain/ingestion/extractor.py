@@ -99,6 +99,34 @@ def extract_chunk_metadata(
     if not isinstance(data, dict):
         return _failure(f"expected JSON object, got {type(data).__name__}")
 
+    # Validate critical field types before coercion. An invalid TYPE (not just
+    # missing) indicates the LLM misunderstood the schema — better to mark
+    # failed and let reindex retry than persist garbage as "success".
+    type_errors: list[str] = []
+    for field, expected_type in (
+        ("entities", list),
+        ("new_entities_seen", list),
+        ("new_speakers_seen", list),
+        ("speech_acts", list),
+        ("chunk_local_markers", list),
+        ("decisions", list),
+        ("action_items", list),
+        ("external_refs", list),
+    ):
+        val = data.get(field)
+        if val is not None and not isinstance(val, expected_type):
+            type_errors.append(
+                f"{field} expected {expected_type.__name__}, got {type(val).__name__}"
+            )
+
+    if "references_prior" in data and not isinstance(data["references_prior"], bool):
+        type_errors.append(
+            f"references_prior expected bool, got {type(data['references_prior']).__name__}"
+        )
+
+    if type_errors:
+        return _failure(f"invalid field types: {'; '.join(type_errors)}")
+
     return ExtractionResult(
         status="success",
         entities=_as_str_list(data.get("entities")),

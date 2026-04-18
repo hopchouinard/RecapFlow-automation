@@ -185,3 +185,18 @@ def test_extract_session_themes_prompt_includes_input() -> None:
 
     assert "PROMPT TEMPLATE" in captured["prompt"]
     assert "distinctive input marker" in captured["prompt"]
+
+
+def test_extract_session_themes_rejects_non_list_themes() -> None:
+    """themes field must be a list; a string value must be rejected with status=failed."""
+    with patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        return_value='{"themes": "not a list"}',
+    ):
+        result = extract_session_themes(
+            input_text="some input",
+            model="m",
+            prompt_template="p",
+        )
+    assert result.status == "failed"
+    assert "themes" in (result.error or "").lower()

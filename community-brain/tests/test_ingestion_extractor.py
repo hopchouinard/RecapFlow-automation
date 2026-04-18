@@ -251,3 +251,63 @@ def test_extract_chunk_metadata_empty_chunk_text() -> None:
             prompt_template="p",
         )
     assert result.status == "success"
+
+
+def test_extract_chunk_metadata_rejects_non_list_entities() -> None:
+    payload = {
+        "entities": "not a list",  # wrong type
+        "new_entities_seen": [],
+        "new_speakers_seen": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="x",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="m",
+            prompt_template="p",
+        )
+    assert result.status == "failed"
+    assert "entities" in (result.error or "").lower()
+
+
+def test_extract_chunk_metadata_rejects_string_references_prior() -> None:
+    """The LLM must return a real bool, not a string like 'false' which
+    would truthy-convert to True."""
+    payload = {
+        "entities": [],
+        "new_entities_seen": [],
+        "new_speakers_seen": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": "false",  # string, not bool
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="x",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="m",
+            prompt_template="p",
+        )
+    assert result.status == "failed"
+    assert "references_prior" in (result.error or "")

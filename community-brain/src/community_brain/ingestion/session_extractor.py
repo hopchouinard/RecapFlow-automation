@@ -125,9 +125,12 @@ def extract_session_themes(
         )
 
     raw_themes = data.get("themes")
-    themes: list[str] = []
-    if isinstance(raw_themes, list):
-        themes = [str(t) for t in raw_themes if isinstance(t, (str, int, float))]
+    if raw_themes is not None and not isinstance(raw_themes, list):
+        return SessionThemesResult(
+            themes=[], status="failed",
+            error=f"themes expected list, got {type(raw_themes).__name__}",
+        )
+    themes = [str(t) for t in (raw_themes or []) if isinstance(t, (str, int, float))]
 
     return SessionThemesResult(themes=themes, status="success", error=None)
 
