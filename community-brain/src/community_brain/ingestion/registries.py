@@ -36,6 +36,14 @@ class SpeakerRegistry:
         """Return the canonical name for a raw speaker mention, or None if unknown."""
         return self._lookup.get(raw)
 
+    def as_flat_map(self) -> dict[str, str]:
+        """Return a flat ``{raw: canonical, canonical: canonical}`` mapping.
+
+        Suitable as a drop-in replacement for the legacy ``speaker-aliases.json``
+        shape consumed by ``normalize_speaker(speaker, aliases)``.
+        """
+        return dict(self._lookup)
+
     def append_pending(self, raw_names: list[str]) -> None:
         """Buffer unknown raw names into the pending queue (deduped in memory)."""
         existing = set(self.pending)

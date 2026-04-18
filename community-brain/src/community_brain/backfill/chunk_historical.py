@@ -17,6 +17,7 @@ from pathlib import Path
 import click
 from tqdm import tqdm
 
+from community_brain.ingestion.registries import load_speaker_registry
 from community_brain.chunk_utils import (
     _format_turn,
     chunk_to_markdown,
@@ -35,9 +36,9 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 
 def _load_aliases(config_dir: Path) -> dict[str, str]:
     """Load speaker aliases from config."""
-    aliases_path = config_dir / "speaker-aliases.json"
+    aliases_path = config_dir / "speaker-aliases.yaml"
     if aliases_path.exists():
-        return json.loads(aliases_path.read_text())
+        return load_speaker_registry(aliases_path).as_flat_map()
     return {}
 
 
