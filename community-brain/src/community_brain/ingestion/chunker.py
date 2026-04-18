@@ -18,9 +18,12 @@ pipeline orchestrator (Task 18) fills them.
 from __future__ import annotations
 
 import datetime as dt
+import logging
 import re
 
 from community_brain.chunk_utils import count_tokens
+
+logger = logging.getLogger(__name__)
 from community_brain.ingestion.parser import (
     CommunityPost,
     SignalSection,
@@ -29,7 +32,24 @@ from community_brain.ingestion.parser import (
 from community_brain.ingestion.schema import Chunk, SCHEMA_VERSION
 
 
-_TRANSCRIPT_LINE_RE = re.compile(r"\[\d{2}:\d{2}:\d{2}\]\s+(.+?):\s+")
+_TRANSCRIPT_LINE_RE = re.compile(
+    r"^(?:<[QA]>)?\[\d{2}:\d{2}:\d{2}\]\s+(.+?):\s+",
+    re.MULTILINE,
+)
+
+_Q_OPEN_RE = re.compile(r"<Q>")
+_Q_PAIR_RE = re.compile(r"<Q>.*?</Q>\s*<A>.*?</A>", re.DOTALL)
+
+
+def _has_unresolved_question(full_text: str) -> bool:
+    """True if any <Q>...</Q> block lacks a following <A>...</A>.
+
+    Heuristic: count <Q> tags vs completed Q+A pair regex. Any extra
+    <Q> opens beyond matched pairs are treated as unresolved.
+    """
+    q_count = len(_Q_OPEN_RE.findall(full_text))
+    paired = len(_Q_PAIR_RE.findall(full_text))
+    return q_count > paired
 
 
 def chunk_prepared_transcript(
@@ -50,21 +70,28 @@ def chunk_prepared_transcript(
     # First pass: decide how each segment splits so we can compute total_chunks.
     plans: list[tuple[TranscriptSegment, list[str]]] = []
     for segment in segments:
-        body_tokens = count_tokens(segment.body)
+        body = segment.body.replace("\r\n", "\n").replace("\r", "\n")
+        body_tokens = count_tokens(body)
         if body_tokens <= segment_max_tokens:
-            plans.append((segment, [segment.body]))
+            plans.append((segment, [body]))
         else:
-            plans.append((segment, _slide_window_split(segment.body, segment_max_tokens)))
+            plans.append((segment, _slide_window_split(body, segment_max_tokens)))
 
     total_chunks = sum(len(bodies) for _, bodies in plans)
 
     chunks: list[Chunk] = []
-    position = 0
-    for segment, bodies in plans:
+    global_position = 0
+    for segment_idx, (segment, bodies) in enumerate(plans, start=1):
         embed_text = _segment_embed_text(segment)
-        for body in bodies:
-            position += 1
-            chunk_id = f"{session_id}:transcript:{position:03d}"
+        for sub_idx, body in enumerate(bodies, start=1):
+            global_position += 1
+            # Segment-index-based ID keeps upsert stable even if sub-chunking changes.
+            # Format: {session}:transcript:{segment:03d}  (single-chunk segment)
+            #         {session}:transcript:{segment:03d}.{sub:02d}  (sub-chunks)
+            if len(bodies) == 1:
+                chunk_id = f"{session_id}:transcript:{segment_idx:03d}"
+            else:
+                chunk_id = f"{session_id}:transcript:{segment_idx:03d}.{sub_idx:02d}"
             chunks.append(_base_chunk(
                 session_id=session_id,
                 session_date=session_date,
@@ -72,7 +99,7 @@ def chunk_prepared_transcript(
                 source_file=source_file,
                 content_type="prepared_transcript",
                 chunk_id=chunk_id,
-                chunk_index=position,
+                chunk_index=global_position,
                 total_chunks_in_source=total_chunks,
                 embed_text=embed_text,
                 full_text=body,
@@ -209,7 +236,7 @@ def _base_chunk(
         corpus_markers_computed_at=None,
         has_question="<Q>" in full_text,
         has_answer="<A>" in full_text,
-        has_unresolved_question=full_text.count("<Q>") > full_text.count("<A>"),
+        has_unresolved_question=_has_unresolved_question(full_text),
         has_insight="\u25b6" in full_text,
         decisions=None,
         action_items=None,
@@ -217,9 +244,9 @@ def _base_chunk(
         references_prior=False,
         extraction_model="",
         extraction_prompt_version="",
-        extraction_status="success",
+        extraction_status="pending",
         extraction_error=None,
-        extracted_at=dt.datetime.now(dt.timezone.utc),
+        extracted_at=None,
         embed_text=embed_text,
         full_text=full_text,
         embedding=[],
@@ -251,6 +278,7 @@ def _slide_window_split(text: str, max_tokens: int, overlap_tokens: int = 50) ->
     (logged implicitly via chunk-size monitoring). A small overlap of whole
     trailing paragraphs is preserved when it fits within overlap_tokens.
     """
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
     paragraphs = [p for p in text.split("\n\n") if p.strip()]
     if not paragraphs:
         return [text]
@@ -260,6 +288,11 @@ def _slide_window_split(text: str, max_tokens: int, overlap_tokens: int = 50) ->
     current_tokens = 0
     for para in paragraphs:
         t = count_tokens(para)
+        if t > max_tokens:
+            logger.warning(
+                "Paragraph of %d tokens exceeds max_tokens=%d; emitting as oversize chunk",
+                t, max_tokens,
+            )
         if current_tokens + t > max_tokens and current:
             out.append("\n\n".join(current))
             if current and count_tokens(current[-1]) <= overlap_tokens:

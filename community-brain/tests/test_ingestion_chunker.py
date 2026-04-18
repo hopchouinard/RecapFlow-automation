@@ -115,9 +115,9 @@ def test_chunk_prepared_transcript_sub_chunks_large_segment() -> None:
     # All share the same segment header as embed_text
     embed_texts = {c.embed_text for c in chunks}
     assert len(embed_texts) == 1
-    # Chunk IDs are sequential
-    assert chunks[0].chunk_id == "2026-03-10:transcript:001"
-    assert chunks[1].chunk_id == "2026-03-10:transcript:002"
+    # Chunk IDs use segment-indexed format with sub-chunk suffix
+    assert chunks[0].chunk_id == "2026-03-10:transcript:001.01"
+    assert chunks[1].chunk_id == "2026-03-10:transcript:001.02"
     # total_chunks_in_source reflects the post-split count
     assert all(c.total_chunks_in_source == len(chunks) for c in chunks)
 
@@ -230,6 +230,114 @@ def test_chunk_prepared_transcript_schema_version_and_defaults() -> None:
     # Provenance fields are placeholders — pipeline fills later
     assert c.extraction_model == ""
     assert c.extraction_prompt_version == ""
-    assert c.extraction_status == "success"
+    assert c.extraction_status == "pending"
+    assert c.extracted_at is None
     # embedding is empty until the embedding stage
     assert c.embedding == []
+
+
+# --- Issue I1: Q/A pairing tests ---
+
+
+def test_chunk_prepared_transcript_answered_then_asked_is_resolved() -> None:
+    """Q1 answered, then Q2 answered too = no unresolved, even though both Qs appear."""
+    from community_brain.ingestion.parser import TranscriptSegment
+    seg = TranscriptSegment(
+        topic="t",
+        speakers=["A"],
+        keywords=["k"],
+        summary="s",
+        body="<Q>q1</Q>\n<A>a1</A>\n<Q>q2</Q>\n<A>a2</A>",
+    )
+    chunks = chunk_prepared_transcript([seg], "d", "d", "t", "t", 1500)
+    assert chunks[0].has_question is True
+    assert chunks[0].has_answer is True
+    assert chunks[0].has_unresolved_question is False
+
+
+def test_chunk_prepared_transcript_first_q_answered_second_q_open() -> None:
+    """<Q>q1</Q><A>a1</A><Q>q2</Q> -> flagged unresolved (q2 has no A)."""
+    from community_brain.ingestion.parser import TranscriptSegment
+    seg = TranscriptSegment(
+        topic="t",
+        speakers=["A"],
+        keywords=["k"],
+        summary="s",
+        body="<Q>q1</Q>\n<A>a1</A>\n<Q>q2</Q>",
+    )
+    chunks = chunk_prepared_transcript([seg], "d", "d", "t", "t", 1500)
+    assert chunks[0].has_unresolved_question is True
+
+
+# --- Issue I4: CRLF (chunker side) ---
+
+
+def test_chunk_prepared_transcript_crlf_body_no_carriage_return() -> None:
+    """CRLF in segment body should not produce \\r in chunk full_text."""
+    from community_brain.ingestion.parser import TranscriptSegment
+    seg = TranscriptSegment(
+        topic="t",
+        speakers=["A"],
+        keywords=["k"],
+        summary="s",
+        body="[00:00:00] A: line one\r\n\r\n[00:01:00] A: line two\r\n",
+    )
+    chunks = chunk_prepared_transcript([seg], "d", "d", "t", "t", 1500)
+    assert "\r" not in chunks[0].full_text
+
+
+# --- Issue 7: segment-index-based ID stability ---
+
+
+def test_chunk_prepared_transcript_ids_stable_across_runs() -> None:
+    """Running the chunker twice on the same input produces identical IDs.
+
+    Critical for UPSERT-by-chunk_id semantics at ingestion.
+    """
+    text = (FIXTURES / "prepared-transcript-sample.md").read_text(encoding="utf-8")
+    segments = parse_prepared_transcript(text)
+
+    first = chunk_prepared_transcript(segments, "sess", "2026-03-10", "t", "t", 1500)
+    second = chunk_prepared_transcript(segments, "sess", "2026-03-10", "t", "t", 1500)
+
+    first_ids = [c.chunk_id for c in first]
+    second_ids = [c.chunk_id for c in second]
+    assert first_ids == second_ids
+
+
+# --- Issue I9: speaker extraction anchoring ---
+
+
+def test_chunk_prepared_transcript_ignores_mid_line_timestamps() -> None:
+    """Timestamps appearing mid-sentence should not be treated as speaker lines."""
+    from community_brain.ingestion.parser import TranscriptSegment
+    seg = TranscriptSegment(
+        topic="t",
+        speakers=["Alex"],
+        keywords=["k"],
+        summary="s",
+        body="[00:00:00] Alex: At [00:12:34] it was clear that we needed to act.",
+    )
+    chunks = chunk_prepared_transcript([seg], "d", "d", "t", "t", 1500)
+    # Only 'Alex' should be extracted, not the phrase after the mid-line timestamp
+    assert chunks[0].speakers_spoke == ["Alex"]
+
+
+def test_chunk_prepared_transcript_handles_q_a_prefixed_speakers() -> None:
+    """<Q>[HH:MM:SS] Speaker: ... tag prefix should still yield the speaker."""
+    from community_brain.ingestion.parser import TranscriptSegment
+    seg = TranscriptSegment(
+        topic="t",
+        speakers=["Sam", "Alex"],
+        keywords=["k"],
+        summary="s",
+        body=(
+            "[00:00:00] Alex: statement\n"
+            "<Q>[00:00:30] Sam: a question?</Q>\n"
+            "<A>[00:00:40] Alex: an answer</A>"
+        ),
+    )
+    chunks = chunk_prepared_transcript([seg], "d", "d", "t", "t", 1500)
+    speakers = chunks[0].speakers_spoke or []
+    assert "Alex" in speakers
+    assert "Sam" in speakers
