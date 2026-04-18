@@ -298,3 +298,18 @@ def test_post_ingest_commit_error_returns_structured_detail(tmp_path: Path, monk
     assert detail["error"] == "commit_torn_state"
     assert "force_reextract" in detail["recovery"]
     assert "2026-03-10" in detail["recovery"]
+
+
+def test_empty_retrieval_api_key_env_disables_auth(tmp_path: Path, monkeypatch) -> None:
+    """Blank RETRIEVAL_API_KEY (e.g. from `:-` shell default) must not block requests."""
+    cfg_dir = _write_configs(tmp_path)
+    db_path = tmp_path / "lancedb"
+    monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
+    monkeypatch.setenv("LANCEDB_PATH", str(db_path))
+    monkeypatch.setenv("RETRIEVAL_API_KEY", "")  # empty string, not unset
+
+    client = TestClient(server_mod.app)
+
+    # Just hitting /health is enough — if auth is wrongly enabled, it'd 403
+    resp = client.get("/health")
+    assert resp.status_code == 200

@@ -60,12 +60,16 @@ def _verify_api_key(api_key: str | None = Security(_api_key_header)) -> str | No
 
     Reads from os.environ at call time so that test fixtures that set/unset
     the env var between requests are honoured without a module reload.
+
+    An empty string is treated the same as None (auth disabled) so that
+    docker-compose shell-expansion defaults like `${RETRIEVAL_API_KEY:-}`
+    don't accidentally enable auth with an unmatchable key.
     """
-    configured_key = os.environ.get("RETRIEVAL_API_KEY")
-    if configured_key is None:
+    expected = os.environ.get("RETRIEVAL_API_KEY") or None  # "" -> None
+    if expected is None:
         # No key configured; allow (localhost-only deployment)
         return None
-    if api_key != configured_key:
+    if api_key != expected:
         raise HTTPException(status_code=403, detail="Invalid or missing API key")
     return api_key
 
@@ -168,6 +172,7 @@ class QueryResponseV2(BaseModel):
 GROUND_TRUTH_FIELDS = (
     "chunk_id", "session_id", "session_date", "session_title",
     "source_file", "full_text",
+    "chunk_index", "total_chunks_in_source",  # positional, deterministic
 )
 
 PROVENANCE_FIELDS = (
@@ -176,7 +181,7 @@ PROVENANCE_FIELDS = (
 )
 
 DERIVED_FIELDS = (
-    "content_type", "chunk_index", "total_chunks_in_source",
+    "content_type",
     "speakers_spoke", "speakers_mentioned", "entities", "keywords",
     "topic_label", "session_themes",
     "speech_acts", "stance", "certainty",
