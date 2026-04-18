@@ -7,11 +7,9 @@ Usage:
 
 from __future__ import annotations
 
-import json
 import logging
 import os
 from pathlib import Path
-from typing import Any
 
 import click
 import lancedb
@@ -69,7 +67,7 @@ def search_chunks(
     ]
 
 
-def build_filter_expression_v2(filters: dict[str, Any] | None) -> str | None:
+def build_filter_expression_v2(filters: dict | None) -> str | None:
     """Build a LanceDB WHERE clause from the v2 filter dict.
 
     Semantics (per spec §7.1):
