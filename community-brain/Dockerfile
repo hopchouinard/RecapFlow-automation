@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY pyproject.toml ./
 COPY src ./src
+# Bundle default config. Compose volume mount overrides this for local edits.
+COPY config ./config
 
 RUN pip install --no-cache-dir -e "."
 
