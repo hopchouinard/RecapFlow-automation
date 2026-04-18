@@ -265,10 +265,13 @@ Priority, evaluated in order:
 2. ELSE concatenation of all prepared-transcript segment headers
    (topic + summary + keywords fields only; segment bodies excluded)
 3. ELSE extracted_signal.md
-4. ELSE fail with clear error: "no valid Stage B input for session"
+4. ELSE skip Stage B: log a warning, set session_themes = [] on all chunks,
+        continue ingestion. Session is still ingested successfully.
 ```
 
-The chosen input is logged with the extraction for auditability. Same session under same config produces the same `session_themes` output on re-extraction.
+The chosen input (or the skip decision) is logged with the extraction for auditability. Same session under same config produces the same `session_themes` output on re-extraction.
+
+**Rationale for soft-fail:** a missing-input case should not block ingestion of a session whose raw content is otherwise valid. `session_themes` is an enrichment; absence degrades retrieval quality for that session but doesn't corrupt it. Consistent with the "tolerate missing fields" principle applied elsewhere.
 
 ### 5.4 LLM Model Selection
 
@@ -343,6 +346,8 @@ When Stage C extraction encounters mentions that don't match the registry:
 - Promotion from `pending` to canonical is manual; once promoted, a targeted `/reindex` on affected chunks can be triggered
 
 **Concurrency constraint:** registry updates are single-writer in v1. The retrieval server serializes all pending-entry appends through an in-process async lock. Multiple concurrent `/ingest` requests can run chunk-writing in parallel; only the registry append section is serialized. Multi-writer registry updates are out of scope for v1.
+
+**Write atomicity:** registry updates are buffered in memory during a session's ingestion and flushed atomically to disk at the end of the session's commit. The write-to-disk pattern is: (1) serialize the updated YAML to a temporary file in the same directory, (2) `fsync`, (3) atomic `rename` over the target file. A crash mid-ingestion leaves either the pre-ingestion YAML or the post-ingestion YAML — never a partially-written file.
 
 ### 5.9 Prompt Versioning
 
@@ -426,7 +431,7 @@ references_prior:            bool
 -- Provenance
 extraction_model:            string
 extraction_prompt_version:   string
-extraction_status:           enum                       -- "success" | "failed" | "partial"
+extraction_status:           enum                       -- "success" | "failed"
 extraction_error:            string | null
 extracted_at:                datetime
 
@@ -450,7 +455,7 @@ The schema distinguishes three categories of fields:
 
 Format: `{session_id}:{content_type_short}:{suffix}`
 
-- `session_id`: typically the session date (`YYYY-MM-DD`). If multiple sessions occur on the same date, a disambiguating suffix is appended to `session_id` at ingestion time.
+- `session_id`: default format `YYYY-MM-DD`. If multiple sessions occur on the same date, the second and subsequent sessions receive an incremental suffix: `YYYY-MM-DD-2`, `YYYY-MM-DD-3`, etc. The first session of a date keeps the bare date form (no suffix) for backward compatibility. Collision detection happens at ingestion time: before writing, the server checks for existing sessions matching the prospective `session_id` and increments until unique.
 - `content_type_short`: one of `transcript`, `signal`, `post`
 - `suffix`:
   - For `transcript`: zero-padded numeric index (e.g., `042`)
@@ -507,6 +512,15 @@ All filters are optional. Defaults:
 - `schema_version_min: null` — all generations included (per §8 migration policy)
 - All `*_match` fields default to `"any"`
 - Boolean filters default to `null` (no filtering on that field)
+
+**Filter semantics:**
+- A filter field set to `null` or omitted is ignored; it does not constrain results.
+- A filter field set to an empty list (`[]`) is also ignored (treated same as null).
+- List-valued filters (`entities`, `speakers_spoke`, `speakers_mentioned`, `keywords`) match chunks according to their `_match` companion field. `"any"` requires at least one overlap; `"all"` requires every filter value to be present in the chunk's list.
+- **Absent-value rule for list fields:** if a chunk's field is null or empty, it does NOT match any list-valued filter constraint. Absence is treated as non-matching, not as a wildcard. This applies to `keywords`, `entities`, `speakers_spoke`, `speakers_mentioned` equally.
+
+**Execution order:**
+Filtering is applied first against the chunk metadata; ranking is then performed on the filtered set using vector similarity alone (v1). If filters eliminate all chunks, the response returns an empty `chunks` array with a populated `filters_applied` block so the caller can see what was filtered.
 
 **Response (structured shape, default):**
 
@@ -607,10 +621,12 @@ All filters are optional. Defaults:
 }
 ```
 
+**Transactional boundary:** ingestion is atomic per session. Either all chunks for the session are written to LanceDB successfully, or none are. The retrieval server stages chunks in memory (or a temporary table) during Stage C extraction and commits in a single LanceDB transaction at the end. Per-chunk extraction failures do not abort the session — they produce chunks with `extraction_status: "failed"` that still get written as part of the atomic commit.
+
 **Error semantics:**
-- Per-chunk extraction failure: chunk written with `extraction_status: "failed"`, `extraction_error` populated, `extraction_prompt_version` still reflects WHICH prompt was attempted. Ingestion continues.
-- All required artifacts missing: HTTP 400, no partial write.
-- LanceDB write failure: HTTP 500, transaction rolled back for the session.
+- Per-chunk extraction failure: chunk staged with `extraction_status: "failed"`, `extraction_error` populated, `extraction_prompt_version` still reflects WHICH prompt was attempted. Session commit proceeds.
+- All required artifacts missing: HTTP 400, nothing written.
+- LanceDB commit failure: HTTP 500, transaction rolled back, no partial session state in the corpus.
 
 ### 7.3 POST /reindex
 
@@ -911,9 +927,9 @@ Phases 3 and 4 run in parallel after Phase 2 validates.
 - Phase 3: 0.5 day
 - Phase 4: 1 day
 - Phase 5: 1-2 days wall clock (automated + review)
-- Phase 6: 1 day
+- Phase 6: 2-4 days (depending on prompt iteration cycles and query validation)
 
-Total: ~8-12 working days for clean execution.
+Total: ~9-15 working days for clean execution. Phase 6 is the most variable — prompt and retrieval tuning against the five success criteria typically requires several iteration cycles before all criteria are met.
 
 ## 11. Open Questions (Deferred to Implementation Time)
 
