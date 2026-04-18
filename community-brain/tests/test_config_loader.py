@@ -93,3 +93,57 @@ extraction:
     )
     with pytest.raises(ValueError, match="post_max_tokens"):
         load_chunking_config(config_file)
+
+
+def test_load_chunking_config_rejects_empty_yaml(tmp_path: Path) -> None:
+    path = tmp_path / "chunking.yaml"
+    path.write_text("", encoding="utf-8")
+    with pytest.raises(ValueError, match="mapping"):
+        load_chunking_config(path)
+
+
+def test_load_chunking_config_rejects_non_dict_top_level(tmp_path: Path) -> None:
+    path = tmp_path / "chunking.yaml"
+    path.write_text("- just a list\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="mapping"):
+        load_chunking_config(path)
+
+
+def test_load_chunking_config_rejects_non_list_backoff(tmp_path: Path) -> None:
+    path = tmp_path / "chunking.yaml"
+    path.write_text(
+        """
+schema_version: "1.0"
+chunking:
+  transcript_segment_max_tokens: 1500
+  post_max_tokens: 2500
+  session_themes_input_max_tokens: 3000
+extraction:
+  retry_attempts: 3
+  retry_backoff_seconds: "oops"
+  inter_session_delay_seconds: 30
+        """,
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="retry_backoff_seconds"):
+        load_chunking_config(path)
+
+
+def test_load_chunking_config_rejects_backoff_shorter_than_attempts(tmp_path: Path) -> None:
+    path = tmp_path / "chunking.yaml"
+    path.write_text(
+        """
+schema_version: "1.0"
+chunking:
+  transcript_segment_max_tokens: 1500
+  post_max_tokens: 2500
+  session_themes_input_max_tokens: 3000
+extraction:
+  retry_attempts: 5
+  retry_backoff_seconds: [2, 8]
+  inter_session_delay_seconds: 30
+        """,
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="retry_backoff_seconds"):
+        load_chunking_config(path)

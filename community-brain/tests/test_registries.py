@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+import threading
 from pathlib import Path
 
+import pytest
 import yaml
 
 from community_brain.ingestion.registries import (
-    load_speaker_registry,
     load_entity_registry,
+    load_speaker_registry,
 )
 
 
@@ -127,3 +129,108 @@ def test_registry_flush_uses_atomic_rename(tmp_path: Path) -> None:
 
     tmp_files = list(tmp_path.glob("*.tmp"))
     assert tmp_files == []
+
+
+def test_registry_flush_preserves_original_on_replace_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """If os.replace fails (e.g. crash), the original YAML must be intact."""
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(path, {"Sam": ["sam"]}, [])
+    original_bytes = path.read_bytes()
+
+    reg = load_speaker_registry(path)
+    reg.append_pending(["WouldBeAdded"])
+
+    def boom(*_a, **_kw):
+        raise OSError("simulated power loss")
+
+    monkeypatch.setattr("community_brain.ingestion._io.os.replace", boom)
+
+    with pytest.raises(OSError, match="simulated power loss"):
+        reg.flush(path)
+
+    # Original file content unchanged
+    assert path.read_bytes() == original_bytes
+    # Temp file cleaned up
+    tmp_files = list(tmp_path.glob("*.tmp.*"))
+    assert tmp_files == []
+
+
+def test_load_speaker_registry_rejects_non_list_aliases(tmp_path: Path) -> None:
+    path = tmp_path / "speaker-aliases.yaml"
+    path.write_text(
+        'version: "x"\naliases:\n  Sam: sam\npending: []\n',  # scalar instead of list
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="Sam"):
+        load_speaker_registry(path)
+
+
+def test_load_speaker_registry_rejects_non_dict_top_level(tmp_path: Path) -> None:
+    path = tmp_path / "speaker-aliases.yaml"
+    path.write_text("- just\n- a\n- list\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="mapping"):
+        load_speaker_registry(path)
+
+
+def test_load_entity_registry_rejects_non_dict_entity_meta(tmp_path: Path) -> None:
+    path = tmp_path / "entity-registry.yaml"
+    path.write_text(
+        'version: "x"\nentities:\n  LangChain: "nope"\npending: []\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="LangChain"):
+        load_entity_registry(path)
+
+
+def test_speaker_registry_add_alias_keeps_lookup_consistent(tmp_path: Path) -> None:
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(path, {"Sam": ["sam"]}, [])
+    reg = load_speaker_registry(path)
+
+    reg.add_alias("Sam", "samC")
+
+    assert reg.canonicalize("samC") == "Sam"
+
+
+def test_entity_registry_add_entity_keeps_lookup_consistent(tmp_path: Path) -> None:
+    path = tmp_path / "entity-registry.yaml"
+    _write_entity_yaml(path, {}, [])
+    reg = load_entity_registry(path)
+
+    reg.add_entity("Codex", {"type": "tool", "aliases": ["codex"]})
+
+    assert reg.canonicalize("codex") == "Codex"
+
+
+def test_concurrent_flushes_to_same_path_serialize(tmp_path: Path) -> None:
+    """Two threads flushing the same registry path should not produce a corrupted file."""
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(path, {"Sam": ["sam"]}, [])
+
+    errors: list[Exception] = []
+
+    def worker(name: str) -> None:
+        try:
+            reg = load_speaker_registry(path)
+            reg.append_pending([name])
+            reg.flush(path)
+        except Exception as exc:
+            errors.append(exc)
+
+    threads = [threading.Thread(target=worker, args=(f"Person{i}",)) for i in range(10)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert errors == [], errors
+
+    # File must still parse as valid YAML and have the original Sam entry
+    with path.open(encoding="utf-8") as fh:
+        data = yaml.safe_load(fh)
+    assert data is not None
+    assert data["aliases"]["Sam"] == ["sam"]
+    # No leftover temp files
+    assert list(tmp_path.glob("*.tmp.*")) == []
