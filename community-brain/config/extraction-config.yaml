@@ -1,6 +1,12 @@
 # Active extraction prompt versions per stage.
 # Bump this file when swapping in a new prompt version.
 # Bumping does NOT re-extract existing chunks; that requires a POST /reindex call.
+#
+# Values here are overridable at deployment time via env vars:
+#   COMMUNITY_BRAIN_{SESSION_THEMES,CHUNK_EXTRACTION}_{MODEL,PROMPT}
+#   COMMUNITY_BRAIN_EMBED_MODEL
+# See community-brain/config/.env.example for the full list.
+# Precedence: env var > values in this file.
 
 session_themes:
   prompt_file: session-themes-v1.md

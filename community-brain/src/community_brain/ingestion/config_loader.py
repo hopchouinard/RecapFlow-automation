@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -121,6 +122,15 @@ def load_chunking_config(path: Path) -> tuple[ChunkingConfig, RetryConfig]:
 def load_extraction_config(path: Path) -> ExtractionConfig:
     """Load extraction-config.yaml and return a typed config object.
 
+    Env-var overrides (applied AFTER YAML parse; empty/unset = use YAML):
+      - COMMUNITY_BRAIN_SESSION_THEMES_MODEL
+      - COMMUNITY_BRAIN_SESSION_THEMES_PROMPT (prompt file name, e.g. session-themes-v2.md)
+      - COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL
+      - COMMUNITY_BRAIN_CHUNK_EXTRACTION_PROMPT (prompt file name)
+
+    Precedence: env var > YAML value. See docs/migrations/CHANGELOG.md for the
+    trade-off around changing models mid-corpus without bumping prompt version.
+
     Raises:
         FileNotFoundError: if the file does not exist.
         ValueError: if the YAML is missing required keys, has the wrong
@@ -136,14 +146,25 @@ def load_extraction_config(path: Path) -> ExtractionConfig:
             f"got {type(data).__name__}"
         )
     try:
-        return ExtractionConfig(
-            session_themes_prompt_file=_require_str(data["session_themes"], "prompt_file", path.name),
-            session_themes_model=_require_str(data["session_themes"], "model", path.name),
-            chunk_extraction_prompt_file=_require_str(data["chunk_extraction"], "prompt_file", path.name),
-            chunk_extraction_model=_require_str(data["chunk_extraction"], "model", path.name),
-        )
+        session_themes_prompt = _require_str(data["session_themes"], "prompt_file", path.name)
+        session_themes_model = _require_str(data["session_themes"], "model", path.name)
+        chunk_extraction_prompt = _require_str(data["chunk_extraction"], "prompt_file", path.name)
+        chunk_extraction_model = _require_str(data["chunk_extraction"], "model", path.name)
     except (KeyError, TypeError) as exc:
         raise ValueError(
             f"missing or malformed key in {path.name}: "
             f"{exc.args[0] if exc.args else exc}"
         ) from exc
+
+    # Env-var overrides. Empty string = unset = use YAML.
+    session_themes_model = os.environ.get("COMMUNITY_BRAIN_SESSION_THEMES_MODEL") or session_themes_model
+    session_themes_prompt = os.environ.get("COMMUNITY_BRAIN_SESSION_THEMES_PROMPT") or session_themes_prompt
+    chunk_extraction_model = os.environ.get("COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL") or chunk_extraction_model
+    chunk_extraction_prompt = os.environ.get("COMMUNITY_BRAIN_CHUNK_EXTRACTION_PROMPT") or chunk_extraction_prompt
+
+    return ExtractionConfig(
+        session_themes_prompt_file=session_themes_prompt,
+        session_themes_model=session_themes_model,
+        chunk_extraction_prompt_file=chunk_extraction_prompt,
+        chunk_extraction_model=chunk_extraction_model,
+    )

@@ -58,3 +58,31 @@ def test_embed_texts_preserves_input_order() -> None:
     assert result[0][0] == 1.0
     assert result[1][0] == 2.0
     assert result[2][0] == 3.0
+
+
+def test_embed_texts_uses_env_override_model(monkeypatch) -> None:
+    """COMMUNITY_BRAIN_EMBED_MODEL overrides the default nomic-embed-text."""
+    monkeypatch.setenv("COMMUNITY_BRAIN_EMBED_MODEL", "mxbai-embed-large")
+
+    mock_response = {"embeddings": [[0.1] * 1024]}
+    mock_client = MagicMock()
+    mock_client.embed.return_value = mock_response
+
+    with patch("community_brain.ingestion.embedding.ollama.Client", return_value=mock_client):
+        embed_texts(["hello"], ollama_base_url="http://localhost:11434")
+
+    mock_client.embed.assert_called_once_with(model="mxbai-embed-large", input=["hello"])
+
+
+def test_embed_texts_empty_env_falls_through_to_default(monkeypatch) -> None:
+    """Empty env var falls through to nomic-embed-text default."""
+    monkeypatch.setenv("COMMUNITY_BRAIN_EMBED_MODEL", "")
+
+    mock_response = {"embeddings": [[0.1] * 768]}
+    mock_client = MagicMock()
+    mock_client.embed.return_value = mock_response
+
+    with patch("community_brain.ingestion.embedding.ollama.Client", return_value=mock_client):
+        embed_texts(["hello"], ollama_base_url="http://localhost:11434")
+
+    mock_client.embed.assert_called_once_with(model="nomic-embed-text", input=["hello"])

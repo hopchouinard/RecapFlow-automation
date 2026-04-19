@@ -55,6 +55,13 @@ services:
       - COMMUNITY_BRAIN_ARTIFACT_ROOT=/data/output
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
       - RETRIEVAL_API_KEY=${RETRIEVAL_API_KEY:-}
+      # Model/prompt overrides. Empty = use the committed YAML values.
+      # See community-brain/config/.env.example for options.
+      - COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL=${COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL:-}
+      - COMMUNITY_BRAIN_SESSION_THEMES_MODEL=${COMMUNITY_BRAIN_SESSION_THEMES_MODEL:-}
+      - COMMUNITY_BRAIN_CHUNK_EXTRACTION_PROMPT=${COMMUNITY_BRAIN_CHUNK_EXTRACTION_PROMPT:-}
+      - COMMUNITY_BRAIN_SESSION_THEMES_PROMPT=${COMMUNITY_BRAIN_SESSION_THEMES_PROMPT:-}
+      - COMMUNITY_BRAIN_EMBED_MODEL=${COMMUNITY_BRAIN_EMBED_MODEL:-}
     volumes:
       - ./community-brain/config:/app/config
       - ./community-brain/lancedb:/data/lancedb

@@ -7,11 +7,26 @@ embedding model + host configuration lives in one place.
 
 from __future__ import annotations
 
+import os
+
 import ollama
 
-#: Pinned embedding model. v1.0 corpus is embedded with this; changing it
-#: requires re-embedding (not just re-extraction). See docs/migrations/CHANGELOG.md.
-EMBED_MODEL = "nomic-embed-text"
+#: Default embedding model. Override per-deployment via COMMUNITY_BRAIN_EMBED_MODEL.
+#: Changing this after a corpus is embedded requires full re-embedding (vectors
+#: from different models are incompatible). See docs/migrations/CHANGELOG.md §8.4.
+DEFAULT_EMBED_MODEL = "nomic-embed-text"
+
+# Backwards-compat alias for any existing code that imported EMBED_MODEL.
+EMBED_MODEL = DEFAULT_EMBED_MODEL
+
+
+def _active_embed_model() -> str:
+    """Resolve the embedding model name with env override.
+
+    Env: COMMUNITY_BRAIN_EMBED_MODEL. Empty/unset falls through to the
+    default (nomic-embed-text).
+    """
+    return os.environ.get("COMMUNITY_BRAIN_EMBED_MODEL") or DEFAULT_EMBED_MODEL
 
 
 def embed_texts(texts: list[str], ollama_base_url: str | None) -> list[list[float]]:
@@ -33,10 +48,11 @@ def embed_texts(texts: list[str], ollama_base_url: str | None) -> list[list[floa
     if not texts:
         return []
 
+    model = _active_embed_model()
     if ollama_base_url:
         client = ollama.Client(host=ollama_base_url)
-        response = client.embed(model=EMBED_MODEL, input=texts)
+        response = client.embed(model=model, input=texts)
     else:
-        response = ollama.embed(model=EMBED_MODEL, input=texts)
+        response = ollama.embed(model=model, input=texts)
 
     return list(response["embeddings"])

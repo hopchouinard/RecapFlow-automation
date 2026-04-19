@@ -21,6 +21,20 @@ Every schema version bump or extraction-breaking change is recorded here.
 - Affected chunks: None (empty corpus at release).
 - Rollback: N/A for initial release.
 
+## 2026-04-18 (addendum) — Env-var model and prompt overrides
+
+- Added: `COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL`, `COMMUNITY_BRAIN_SESSION_THEMES_MODEL`,
+  `COMMUNITY_BRAIN_CHUNK_EXTRACTION_PROMPT`, `COMMUNITY_BRAIN_SESSION_THEMES_PROMPT`,
+  `COMMUNITY_BRAIN_EMBED_MODEL` as deployment-time overrides for
+  extraction-config.yaml and embedding.py defaults.
+- Precedence: env var > YAML > built-in default. Empty env = use YAML.
+- No schema change. No migration required for existing chunks.
+- Known trade-off: switching `CHUNK_EXTRACTION_MODEL` or `SESSION_THEMES_MODEL`
+  does not bump `extraction_prompt_version`. Re-ingesting existing sessions
+  under a new model requires `force_reextract: true` on POST /ingest. This is
+  intentional — the prompt file is the versioning anchor; model swaps with
+  the same prompt produce broadly comparable output.
+
 ## v1.0 known limitations
 
 - `speakers_mentioned` is not populated in v1 (always None). The field is
