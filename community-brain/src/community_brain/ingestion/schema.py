@@ -28,6 +28,8 @@ import datetime as dt
 from dataclasses import dataclass, asdict
 from typing import Literal
 
+import pyarrow as pa
+
 SCHEMA_VERSION = "1.0"
 
 ContentType = Literal["prepared_transcript", "extracted_signal", "community_post"]
@@ -130,11 +132,63 @@ class Chunk:
         return d
 
 
+def pyarrow_table_schema() -> pa.Schema:
+    """Explicit pyarrow schema for the chunks table.
+
+    Used at `create_table` time so list-column element types are declared
+    rather than inferred from the first batch. Inference would otherwise
+    produce `List(Null)` for list columns that happen to be all-empty in the
+    first write (e.g. speakers_spoke when the first ingested session is
+    community_post-only or extracted_signal-only), poisoning the column and
+    making any future write with real values fail with a Utf8-to-Null cast
+    error. Field order mirrors the Chunk dataclass.
+    """
+    return pa.schema([
+        ("schema_version", pa.string()),
+        ("chunk_id", pa.string()),
+        ("session_id", pa.string()),
+        ("session_date", pa.string()),
+        ("session_title", pa.string()),
+        ("content_type", pa.string()),
+        ("source_file", pa.string()),
+        ("chunk_index", pa.int64()),
+        ("total_chunks_in_source", pa.int64()),
+        ("speakers_spoke", pa.list_(pa.string())),
+        ("speakers_mentioned", pa.list_(pa.string())),
+        ("entities", pa.list_(pa.string())),
+        ("keywords", pa.list_(pa.string())),
+        ("topic_label", pa.string()),
+        ("session_themes", pa.list_(pa.string())),
+        ("speech_acts", pa.list_(pa.string())),
+        ("stance", pa.string()),
+        ("certainty", pa.string()),
+        ("chunk_local_markers", pa.list_(pa.string())),
+        ("corpus_derived_markers", pa.list_(pa.string())),
+        ("corpus_markers_computed_at", pa.string()),
+        ("has_question", pa.bool_()),
+        ("has_answer", pa.bool_()),
+        ("has_unresolved_question", pa.bool_()),
+        ("has_insight", pa.bool_()),
+        ("decisions", pa.list_(pa.string())),
+        ("action_items", pa.list_(pa.string())),
+        ("external_refs", pa.list_(pa.string())),
+        ("references_prior", pa.bool_()),
+        ("extraction_model", pa.string()),
+        ("extraction_prompt_version", pa.string()),
+        ("extraction_status", pa.string()),
+        ("extraction_error", pa.string()),
+        ("extracted_at", pa.string()),
+        ("embed_text", pa.string()),
+        ("full_text", pa.string()),
+        ("embedding", pa.list_(pa.float64())),
+    ])
+
+
 def lancedb_table_schema() -> dict[str, str]:
     """Return a human-readable description of the table shape.
 
     Used for documentation and validation. Actual LanceDB table creation uses
-    a pyarrow schema derived from this mapping in the pipeline orchestrator.
+    `pyarrow_table_schema()` above to declare explicit column types.
     """
     return {
         "schema_version": "string",

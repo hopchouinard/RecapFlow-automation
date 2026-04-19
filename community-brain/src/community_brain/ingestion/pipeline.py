@@ -57,7 +57,7 @@ from community_brain.ingestion.registries import (
     load_entity_registry,
     load_speaker_registry,
 )
-from community_brain.ingestion.schema import SCHEMA_VERSION, Chunk
+from community_brain.ingestion.schema import SCHEMA_VERSION, Chunk, pyarrow_table_schema
 from community_brain.ingestion.session_extractor import (
     extract_session_themes,
     select_session_input,
@@ -457,7 +457,7 @@ def _commit_chunks(
 
     db = lancedb.connect(db_path)
     if TABLE_NAME not in db.list_tables().tables:
-        db.create_table(TABLE_NAME, data=records)
+        db.create_table(TABLE_NAME, data=records, schema=pyarrow_table_schema())
         return
 
     table = db.open_table(TABLE_NAME)
@@ -477,5 +477,8 @@ def _commit_chunks(
     except Exception as exc:
         raise CommitError(
             f"CRITICAL: deleted rows for session {session_id} but add() failed: {exc}. "
-            f"Re-run with force_reextract=True to recover."
+            f"If this is a transient LLM/IO failure, re-run with force_reextract=True "
+            f"to recover. If it is a type/cast error, the table schema predates the "
+            f"explicit-schema fix and must be rebuilt from scratch (see "
+            f"community-brain/docs/DEPLOYMENT.md §5.4)."
         ) from exc

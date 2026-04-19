@@ -466,3 +466,86 @@ def test_ingest_session_no_constraint_when_root_unset(
     )
     result = ingest_session(request, config_dir, str(db_path), None)
     assert result.chunks_written > 0
+
+
+def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path: Path) -> None:
+    """Regression: a fresh table's schema must accept list[str] speakers_spoke.
+
+    Bug: _commit_chunks used to create the LanceDB table by letting pyarrow
+    infer the schema from the first batch. If the first write's chunks all
+    normalized speakers_spoke=None -> [] (community_post-only or
+    extracted_signal-only ingests), pyarrow inferred List(Null) for that
+    column. A subsequent write with speakers_spoke=["Alice"] then failed with
+    "cannot cast field 'speakers_spoke' from List(Utf8) to List(Null)" and
+    left the table torn -- force_reextract could not recover.
+
+    Fix: _commit_chunks now passes an explicit pyarrow schema to create_table
+    so list element types are declared, not inferred.
+    """
+    import datetime as dt
+
+    import lancedb
+
+    from community_brain.ingestion.pipeline import _commit_chunks
+    from community_brain.ingestion.schema import Chunk
+
+    def make_chunk(chunk_id: str, speakers: list[str] | None, content_type: str) -> Chunk:
+        return Chunk(
+            schema_version="1.0",
+            chunk_id=chunk_id,
+            session_id=chunk_id.split(":")[0],
+            session_date=chunk_id.split(":")[0],
+            session_title="t",
+            content_type=content_type,
+            source_file=f"output/{chunk_id.split(':')[0]}/x.md",
+            chunk_index=1,
+            total_chunks_in_source=1,
+            speakers_spoke=speakers,
+            speakers_mentioned=None,
+            entities=[],
+            keywords=None,
+            topic_label=None,
+            session_themes=[],
+            speech_acts=[],
+            stance=None,
+            certainty="asserted",
+            chunk_local_markers=[],
+            corpus_derived_markers=[],
+            corpus_markers_computed_at=None,
+            has_question=False,
+            has_answer=False,
+            has_unresolved_question=False,
+            has_insight=False,
+            decisions=None,
+            action_items=None,
+            external_refs=None,
+            references_prior=False,
+            extraction_model="m",
+            extraction_prompt_version="v",
+            extraction_status="success",
+            extraction_error=None,
+            extracted_at=dt.datetime(2026, 4, 18, tzinfo=dt.timezone.utc),
+            embed_text="x",
+            full_text="x",
+            embedding=[0.0] * 8,
+        )
+
+    db_path = tmp_path / "lancedb"
+
+    first = make_chunk("2026-04-18:post:001", speakers=None, content_type="community_post")
+    _commit_chunks(str(db_path), "2026-04-18", [first], full_session_rewrite=False)
+
+    second = make_chunk(
+        "2026-04-19:transcript:001", speakers=["Alice", "Bob"], content_type="prepared_transcript"
+    )
+    _commit_chunks(str(db_path), "2026-04-19", [second], full_session_rewrite=False)
+
+    rows = (
+        lancedb.connect(str(db_path))
+        .open_table("chunks")
+        .search()
+        .where("chunk_id = '2026-04-19:transcript:001'")
+        .to_list()
+    )
+    assert len(rows) == 1
+    assert rows[0]["speakers_spoke"] == ["Alice", "Bob"]
