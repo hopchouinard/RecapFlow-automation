@@ -69,17 +69,13 @@ def search_chunks(
         response = ollama.embed(model=_active_embed_model(), input=[question])
     query_vector = response["embeddings"][0]
 
-    # Search LanceDB
+    # Search LanceDB. This legacy helper defaults to the v0 `transcripts` table,
+    # which has no extraction_status column -- do NOT add the status filter here.
+    # The v1 `chunks` table filter lives in search_chunks_v2.
     db = lancedb.connect(db_path)
     table = db.open_table(table_name)
 
-    # Failed-extraction chunks carry a zero-vector embedding and are excluded
-    # from vector search by design (see schema.EMBEDDING_DIM and to_arrow_dict).
-    query = (
-        table.search(query_vector)
-        .where("extraction_status = 'success'")
-        .limit(top_k)
-    )
+    query = table.search(query_vector).limit(top_k)
 
     # Apply filters (safely escaped)
     filter_expr = build_filter_expression(filter_date, filter_speaker)

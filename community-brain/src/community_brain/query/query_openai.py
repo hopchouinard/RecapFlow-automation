@@ -47,13 +47,9 @@ def search_chunks(
 
     db = lancedb.connect(db_path)
     table = db.open_table(table_name)
-    # Failed-extraction chunks carry a zero-vector embedding and are excluded
-    # from vector search by design.
-    query = (
-        table.search(query_vector)
-        .where("extraction_status = 'success'")
-        .limit(top_k)
-    )
+    # Legacy helper: defaults to the v0 `transcripts` table which has no
+    # extraction_status column. Do NOT add the v1 status filter here.
+    query = table.search(query_vector).limit(top_k)
 
     # Apply filters (safely escaped)
     filter_expr = build_filter_expression(filter_date, filter_speaker)
