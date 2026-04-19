@@ -150,7 +150,7 @@ def test_chunk_to_arrow_dict_serializes_datetimes_iso() -> None:
         extracted_at=now,
         embed_text="t",
         full_text="t",
-        embedding=[0.0] * 4,
+        embedding=[0.0] * 768,
     )
     d = chunk.to_arrow_dict()
     assert d["extracted_at"] == "2026-03-10T14:22:11+00:00"
@@ -162,6 +162,34 @@ def test_chunk_to_arrow_dict_preserves_null_corpus_markers_computed_at() -> None
     chunk = _minimal_chunk(corpus_markers_computed_at=None)
     d = chunk.to_arrow_dict()
     assert d["corpus_markers_computed_at"] is None
+
+
+def test_chunk_to_arrow_dict_pads_empty_embedding_to_zero_vector() -> None:
+    """Failed-extraction chunks (empty embedding) get padded to EMBEDDING_DIM
+    zeros so they fit the FixedSizeList schema. Query-side filter keeps them
+    unsearchable."""
+    from community_brain.ingestion.schema import EMBEDDING_DIM
+
+    chunk = _minimal_chunk(
+        extraction_status="failed",
+        extraction_error="transient LLM error",
+        embedding=[],
+    )
+    d = chunk.to_arrow_dict()
+    assert d["embedding"] == [0.0] * EMBEDDING_DIM
+
+
+def test_chunk_to_arrow_dict_raises_on_embedding_dim_mismatch() -> None:
+    """A non-empty embedding whose length != EMBEDDING_DIM must raise, not be
+    silently padded/truncated. Otherwise a mid-corpus embed-model swap to a
+    different-dimension model would corrupt vectors without any signal."""
+    import pytest
+
+    from community_brain.ingestion.schema import EMBEDDING_DIM
+
+    chunk = _minimal_chunk(embedding=[0.1] * (EMBEDDING_DIM + 32))
+    with pytest.raises(ValueError, match="embedding length"):
+        chunk.to_arrow_dict()
 
 
 def test_lancedb_table_schema_describes_37_fields() -> None:
@@ -223,7 +251,7 @@ def _minimal_chunk(**overrides) -> "Chunk":
         extracted_at=dt.datetime(2026, 1, 1, tzinfo=dt.timezone.utc),
         embed_text="t",
         full_text="t",
-        embedding=[0.0] * 4,
+        embedding=[0.0] * 768,
     )
     defaults.update(overrides)
     return Chunk(**defaults)

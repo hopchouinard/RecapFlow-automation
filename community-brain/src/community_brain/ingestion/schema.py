@@ -126,9 +126,13 @@ class Chunk:
         - Null list-valued fields (e.g. speakers_spoke, keywords) become `[]`
           so Arrow doesn't need to infer nullable-list types.
         - Datetimes become ISO-8601 strings for portability across backends.
-        - Failed-chunk embeddings (empty list) are padded to a zero vector of
-          length EMBEDDING_DIM so they fit the FixedSizeList schema. Query-side
-          filtering on extraction_status='success' keeps them unsearchable.
+        - Empty embeddings (failed-extraction chunks) are padded to a zero
+          vector of length EMBEDDING_DIM so they fit the FixedSizeList schema.
+          Query-side filtering on extraction_status='success' keeps them
+          unsearchable. Non-empty embeddings whose length does NOT match
+          EMBEDDING_DIM raise -- that indicates the active embed model's
+          dimension has drifted from the compiled-in constant, which would
+          silently poison vector search if we tried to pad or truncate.
         """
         d = asdict(self)
         for field_name in _LIST_FIELDS_NORMALIZED_TO_EMPTY:
@@ -138,8 +142,16 @@ class Chunk:
             d["corpus_markers_computed_at"] = d["corpus_markers_computed_at"].isoformat()
         if d["extracted_at"] is not None:
             d["extracted_at"] = d["extracted_at"].isoformat()
-        if len(d["embedding"]) != EMBEDDING_DIM:
+        emb_len = len(d["embedding"])
+        if emb_len == 0:
             d["embedding"] = [0.0] * EMBEDDING_DIM
+        elif emb_len != EMBEDDING_DIM:
+            raise ValueError(
+                f"embedding length {emb_len} != EMBEDDING_DIM ({EMBEDDING_DIM}) "
+                f"for chunk {d['chunk_id']!r}. Embed model dimension drift: "
+                f"rebuild schema.EMBEDDING_DIM to match the active model and "
+                f"rebuild the LanceDB table."
+            )
         return d
 
 
