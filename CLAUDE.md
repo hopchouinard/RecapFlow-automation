@@ -150,3 +150,38 @@ Key files on Mac:
 - **NEVER** change `N8N_ENCRYPTION_KEY` after credentials have been saved in n8n
 - The `data/` directory must be preserved and backed up — it contains runtime state
 - `.env` contains plaintext secrets — do not commit to public repositories
+
+---
+
+## Project modules — more than just n8n
+
+This repo is a multi-module project. Everything above describes the n8n orchestration layer. There is also a separate Python service under `community-brain/` — a standalone vector-search retrieval server that consumes n8n's output:
+
+| Module | What | Where its docs live |
+|---|---|---|
+| n8n orchestration | Workflow engine running in Docker (covered above) | This file (root `CLAUDE.md`) |
+| `community-brain/` | Python retrieval server: ingests coaching-call artifacts, embeds to LanceDB, serves `/query` + `/ingest` + `/sessions` over FastAPI (port 8999) | `community-brain/CLAUDE.md` — load this when working inside that subfolder |
+
+**When someone says "deploy the retrieval server" or "deploy community-brain":** follow `community-brain/docs/DEPLOYMENT.md` end-to-end. It's a full SSH-driven runbook with a permission model (🟢 auto / 🟡 confirm / 🔴 gated) that Claude must respect when acting as operator. The sub-CLAUDE.md at `community-brain/CLAUDE.md` explains the architecture, trust model, testing conventions, and known v2 backlog.
+
+The two modules interact at the filesystem boundary: n8n writes artifacts to `./output/<YYYY-MM-DD>/`, and the retrieval-server container mounts that directory read-only as `/data/output/`. Plan B will wire n8n workflows to POST to the retrieval server's `/ingest` endpoint after producing artifacts.
+
+## Current status (as of 2026-04-18)
+
+**Plan A — COMPLETE.** The Python retrieval server and its Docker Compose service are built and merged to `main`:
+- 37-field LanceDB v1.0 schema with trust-partitioned `/query` response (ground_truth / derived_metadata / provenance)
+- `/ingest`, `/query`, `/sessions`, `/reindex` endpoints with strict input validation and API-key auth
+- Env-var overrides for extraction models, prompts, embedding model (per-deployment model switching without editing YAML)
+- Open WebUI filter updated for the new response shape; inference guidelines embedded
+- 260 passing tests; `.dockerignore` prevents secrets from being baked into the image
+
+**What's NOT yet done:**
+- Actual deployment to the VM — runbook exists at `community-brain/docs/DEPLOYMENT.md`; bring-up hasn't happened
+- **Plan B — n8n workflow extensions.** Two workflows to build: (1) extend the existing Merged Call Summarizer to add the prep-prompt step and POST to `/ingest`; (2) new Transcript-Only Summarizer for the historical backlog (no chat log required). Needs design via `superpowers:brainstorming` then `superpowers:writing-plans`.
+- **Plan C — Historical backfill + production validation.** Run the transcript-only workflow across ~130 historical sessions, then validate the 5 query types from the spec against the full corpus. Mostly operational.
+
+**Canonical references:**
+- Design spec: `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` (§10 has the rollout phases)
+- Plan A (reference): `docs/superpowers/plans/2026-04-18-community-brain-ingestion-plan-a.md`
+- Trust contract: `docs/inference-guidelines.md`
+- Schema evolution rules: `docs/migrations/CHANGELOG.md`
