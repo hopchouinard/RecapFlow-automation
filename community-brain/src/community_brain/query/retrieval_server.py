@@ -201,7 +201,10 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     from community_brain.query.query_local import search_chunks_v2
 
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
-    ollama_base_url = os.environ.get("OLLAMA_BASE_URL")
+    # Treat empty-string OLLAMA_BASE_URL (common side-effect of env_file
+    # uncommenting a blank entry) as unset so the ollama client falls back
+    # to its own default rather than passing an empty host string.
+    ollama_base_url = os.environ.get("OLLAMA_BASE_URL") or None
 
     # Use an empty QueryFilters to get spec-default values (e.g. *_match = "any")
     # even when the caller omits the filters field entirely.
@@ -255,7 +258,10 @@ def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
     if not req.artifact_paths:
         raise HTTPException(status_code=400, detail="no artifact_paths provided")
 
-    ollama_base_url = os.environ.get("OLLAMA_BASE_URL")
+    # Treat empty-string OLLAMA_BASE_URL (common side-effect of env_file
+    # uncommenting a blank entry) as unset so the ollama client falls back
+    # to its own default rather than passing an empty host string.
+    ollama_base_url = os.environ.get("OLLAMA_BASE_URL") or None
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
 
     pipeline_req = IngestRequest(

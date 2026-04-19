@@ -272,7 +272,9 @@ def main(
 ) -> None:
     """Query the Community Brain knowledge base using Ollama."""
     load_dotenv(CONFIG_DIR / ".env")
-    ollama_base_url = os.environ.get("OLLAMA_BASE_URL")
+    # Empty-string env value (common when env_file uncomments a blank line)
+    # is treated as unset so the ollama client falls back to its default.
+    ollama_base_url = os.environ.get("OLLAMA_BASE_URL") or None
 
     if db_path is None:
         db_path = str(DEFAULT_DB_PATH)
