@@ -16,6 +16,7 @@ import lancedb
 import ollama
 from dotenv import load_dotenv
 
+from community_brain.ingestion.embedding import _active_embed_model
 from community_brain.query import build_filter_expression
 
 logger = logging.getLogger(__name__)
@@ -30,7 +31,6 @@ __all__ = [
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 CONFIG_DIR = PROJECT_ROOT / "config"
 DEFAULT_DB_PATH = PROJECT_ROOT / "lancedb" / "nomic-v1"
-EMBED_MODEL = "nomic-embed-text"
 DEFAULT_LLM_MODEL = "gemma4:e4b"
 
 
@@ -64,9 +64,9 @@ def search_chunks(
     # Embed the question
     if ollama_base_url:
         client = ollama.Client(host=ollama_base_url)
-        response = client.embed(model=EMBED_MODEL, input=[question])
+        response = client.embed(model=_active_embed_model(), input=[question])
     else:
-        response = ollama.embed(model=EMBED_MODEL, input=[question])
+        response = ollama.embed(model=_active_embed_model(), input=[question])
     query_vector = response["embeddings"][0]
 
     # Search LanceDB
@@ -192,9 +192,9 @@ def search_chunks_v2(
 
     if ollama_base_url:
         client = ollama.Client(host=ollama_base_url)
-        response = client.embed(model=EMBED_MODEL, input=[question])
+        response = client.embed(model=_active_embed_model(), input=[question])
     else:
-        response = ollama.embed(model=EMBED_MODEL, input=[question])
+        response = ollama.embed(model=_active_embed_model(), input=[question])
     query_vector = response["embeddings"][0]
 
     table = db.open_table(table_name)

@@ -125,3 +125,13 @@ def test_build_filter_expression_v2_escapes_apostrophes_in_content_type() -> Non
     expr = build_filter_expression_v2({"content_type": ["it's_weird"]})
     assert expr is not None
     assert "it''s_weird" in expr
+
+
+def test_query_local_uses_shared_active_embed_model() -> None:
+    """query_local must delegate to ingestion.embedding._active_embed_model
+    so a single env var controls both ingest and query sides."""
+    import community_brain.query.query_local as ql
+    from community_brain.ingestion import embedding as emb
+
+    # The function object is the same — not redefined locally
+    assert ql._active_embed_model is emb._active_embed_model
