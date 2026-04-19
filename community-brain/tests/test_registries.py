@@ -306,3 +306,58 @@ def test_load_entity_registry_rejects_empty_file(tmp_path: Path) -> None:
     path.write_text("", encoding="utf-8")
     with pytest.raises(ValueError, match="empty"):
         load_entity_registry(path)
+
+
+def test_render_alias_block_empty_registry(tmp_path: Path) -> None:
+    from community_brain.ingestion.registries import render_alias_block
+
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(path, {}, [])
+    reg = load_speaker_registry(path)
+
+    block = render_alias_block(reg)
+
+    # Header is always emitted so the prompt's "if not in this list" clause
+    # remains syntactically anchored even with zero canonical entries.
+    assert block.startswith("## SPEAKER_ALIASES")
+    assert "pass the raw name through unchanged" in block
+    # No canonical entries -> no bullet lines
+    assert "\n- " not in block
+
+
+def test_render_alias_block_populated_registry(tmp_path: Path) -> None:
+    from community_brain.ingestion.registries import render_alias_block
+
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(
+        path,
+        {
+            "Alex Rojas": ["alexrojas", "Alex R"],
+            "Sam": ["sam", "Samantha"],
+        },
+        pending=["SomeNewPerson"],
+    )
+    reg = load_speaker_registry(path)
+
+    block = render_alias_block(reg)
+
+    # Canonical entries appear sorted alphabetically for determinism
+    assert block.index("- Alex Rojas") < block.index("- Sam")
+    # Each canonical name lists its aliases in yaml order
+    assert "- Alex Rojas — aliases: alexrojas, Alex R" in block
+    assert "- Sam — aliases: sam, Samantha" in block
+    # Pending entries MUST NOT leak into the rendered block
+    assert "SomeNewPerson" not in block
+
+
+def test_render_alias_block_canonical_with_no_aliases(tmp_path: Path) -> None:
+    """A canonical name with an empty alias list renders without the em-dash tail."""
+    from community_brain.ingestion.registries import render_alias_block
+
+    path = tmp_path / "speaker-aliases.yaml"
+    _write_speaker_yaml(path, {"Solo Speaker": []}, [])
+    reg = load_speaker_registry(path)
+
+    block = render_alias_block(reg)
+    assert "- Solo Speaker" in block
+    assert "— aliases:" not in block

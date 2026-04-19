@@ -232,6 +232,32 @@ def load_speaker_registry(path: Path) -> SpeakerRegistry:
     )
 
 
+_ALIAS_BLOCK_HEADER = """## SPEAKER_ALIASES
+
+The following canonical speaker names are known. When normalizing speakers
+in the transcript, map any of the listed raw variants to the canonical form.
+If a speaker is NOT in this list, pass the raw name through unchanged AND
+list them under "=== UNRESOLVED SPEAKERS ===" at the end of your output.
+"""
+
+
+def render_alias_block(registry: SpeakerRegistry) -> str:
+    """Render a SpeakerRegistry as a pre-rendered markdown block for
+    {{SPEAKER_ALIASES_BLOCK}} prompt-template substitution.
+
+    Pending entries are deliberately excluded: the prep-prompt must not
+    pretend unreviewed aliases are canonical.
+    """
+    lines = [_ALIAS_BLOCK_HEADER]
+    for canonical in sorted(registry.aliases.keys()):
+        raws = registry.aliases[canonical]
+        if raws:
+            lines.append(f"- {canonical} — aliases: {', '.join(raws)}")
+        else:
+            lines.append(f"- {canonical}")
+    return "\n".join(lines)
+
+
 def load_entity_registry(path: Path) -> EntityRegistry:
     """Load entity-registry.yaml into an EntityRegistry.
 
