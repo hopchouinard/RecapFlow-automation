@@ -7,7 +7,10 @@
       "name": "Manual Trigger",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
-      "position": [0, 300],
+      "position": [
+        0,
+        300
+      ],
       "parameters": {}
     },
     {
@@ -15,7 +18,10 @@
       "name": "Code: Validate and Check Partner",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [250, 300],
+      "position": [
+        250,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst watchDir = '/home/node/watch';\n\n// Find all date prefixes that have both a chat and transcript file\nconst files = fs.readdirSync(watchDir);\nconst dateMap = {};\nfor (const f of files) {\n  const m = f.match(/^(\\d{4}-\\d{2}-\\d{2})/);\n  if (!m) continue;\n  const date = m[1];\n  if (!dateMap[date]) dateMap[date] = {};\n  if (f.includes('-zoom-chat') && f.endsWith('.txt')) dateMap[date].chat = f;\n  if (f.includes('-transcript') && f.endsWith('.txt')) dateMap[date].transcript = f;\n}\n\n// Pick the most recent date that has both files\nconst complete = Object.entries(dateMap)\n  .filter(([, v]) => v.chat && v.transcript)\n  .sort(([a], [b]) => b.localeCompare(a));\n\nif (complete.length === 0) {\n  throw new Error('No complete file pairs found in watch directory (need both YYYY-MM-DD-zoom-chat.txt and YYYY-MM-DD-transcript.txt)');\n}\n\nconst [datePrefix, { chat, transcript }] = complete[0];\nconst chatFile = `${watchDir}/${chat}`;\nconst transcriptFile = `${watchDir}/${transcript}`;\n\nconst chatText = fs.readFileSync(chatFile, 'utf8');\nconst transcriptText = fs.readFileSync(transcriptFile, 'utf8');\n\nreturn {\n  json: {\n    datePrefix,\n    chatText,\n    transcriptText,\n    chatFile,\n    transcriptFile\n  }\n};"
       }
@@ -25,7 +31,10 @@
       "name": "Code: Merge Content",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [500, 300],
+      "position": [
+        500,
+        300
+      ],
       "parameters": {
         "jsCode": "const mergedText = `# MEETING TRANSCRIPT\\n\\n${$json.transcriptText}\\n\\n# ZOOM CHAT LOG\\n\\n${$json.chatText}`;\n\nreturn {\n  json: {\n    ...$json,\n    mergedText\n  }\n};"
       }
@@ -35,7 +44,10 @@
       "name": "Code: Create Output Folder",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [750, 300],
+      "position": [
+        750,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst datePrefix = $json.datePrefix;\nconst outputDir = `/home/node/output/${datePrefix}`;\nif (!fs.existsSync(outputDir)) {\n  fs.mkdirSync(outputDir, { recursive: true });\n}\nreturn { json: { ...$json, outputDir } };"
       }
@@ -45,7 +57,10 @@
       "name": "Code: Save transcript.txt",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1000, 300],
+      "position": [
+        1000,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir;\nfs.writeFileSync(`${outputDir}/transcript.txt`, $json.transcriptText, 'utf8');\nreturn { json: { ...$json } };"
       }
@@ -55,7 +70,10 @@
       "name": "LLM: Extract Signal",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
-      "position": [1250, 300],
+      "position": [
+        1250,
+        300
+      ],
       "parameters": {
         "promptType": "define",
         "text": "={{ $json.mergedText }}",
@@ -75,7 +93,10 @@
       "name": "OpenRouter Chat Model 1",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
-      "position": [1250, 500],
+      "position": [
+        1250,
+        500
+      ],
       "parameters": {
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
@@ -95,7 +116,10 @@
       "name": "Code: Save extracted-signal.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1500, 300],
+      "position": [
+        1500,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.text;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
@@ -105,7 +129,10 @@
       "name": "LLM: Community Post",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
-      "position": [1750, 300],
+      "position": [
+        1750,
+        300
+      ],
       "parameters": {
         "promptType": "define",
         "text": "={{ $json.signalText }}",
@@ -125,7 +152,10 @@
       "name": "OpenRouter Chat Model 2",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
-      "position": [1750, 500],
+      "position": [
+        1750,
+        500
+      ],
       "parameters": {
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
@@ -145,7 +175,10 @@
       "name": "Code: Save community-post.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2000, 300],
+      "position": [
+        2000,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst communityPostText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post.md`, communityPostText, 'utf8');\nreturn { json: { communityPostText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
@@ -155,7 +188,10 @@
       "name": "LLM: Compress Post",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
-      "position": [2250, 300],
+      "position": [
+        2250,
+        300
+      ],
       "parameters": {
         "promptType": "define",
         "text": "={{ $json.communityPostText }}",
@@ -175,7 +211,10 @@
       "name": "OpenRouter Chat Model 3",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
-      "position": [2250, 500],
+      "position": [
+        2250,
+        500
+      ],
       "parameters": {
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
@@ -195,7 +234,10 @@
       "name": "Code: Save community-post-compressed.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2500, 300],
+      "position": [
+        2500,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst compressedText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post-compressed.md`, compressedText, 'utf8');\nreturn { json: { compressedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
@@ -205,7 +247,10 @@
       "name": "Code: Calculate Next Tuesday",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2750, 300],
+      "position": [
+        2750,
+        300
+      ],
       "parameters": {
         "jsCode": "const datePrefix = $json.datePrefix;\nconst callDate = new Date(datePrefix + 'T12:00:00Z');\nconst dayOfWeek = callDate.getDay();\nconst daysUntilTuesday = (2 - dayOfWeek + 7) % 7 || 7;\nconst nextTuesday = new Date(callDate);\nnextTuesday.setDate(callDate.getDate() + daysUntilTuesday);\n\nconst months = ['January','February','March','April','May','June','July','August','September','October','November','December'];\nconst day = nextTuesday.getUTCDate();\nconst suffix = day === 1 || day === 21 || day === 31 ? 'st' : day === 2 || day === 22 ? 'nd' : day === 3 || day === 23 ? 'rd' : 'th';\nconst formattedDate = `${months[nextTuesday.getUTCMonth()]} ${day}${suffix}`;\nconst inviteDate = `${nextTuesday.getUTCFullYear()}-${String(nextTuesday.getUTCMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;\n\nreturn {\n  json: {\n    compressedText: $json.compressedText,\n    outputDir: $json.outputDir,\n    formattedDate,\n    inviteDate,\n    datePrefix\n  }\n};"
       }
@@ -215,7 +260,10 @@
       "name": "LLM: Weekly Invite",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
-      "position": [3000, 300],
+      "position": [
+        3000,
+        300
+      ],
       "parameters": {
         "promptType": "define",
         "text": "={{ 'Next call date: Tuesday ' + $json.formattedDate + ' at 6PM ET\\n\\nHere is last week\\'s community post:\\n\\n' + $json.compressedText }}",
@@ -224,7 +272,7 @@
           "messageValues": [
             {
               "type": "SystemMessagePromptTemplate",
-              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) — A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section — Copy EXACTLY as written below, including the emoji:\n\n\ud83d\udcde HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n\ud83d\udc49 Reply to this post with your questions before the call\n\ud83d\udc49 If you submit a question and you're on the call, you go first\n\ud83d\udc49 We work through questions in the order they came in\n\ud83d\udc49 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) — Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section — Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n\ud83d\udd17 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n\ud83d\udcc5 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic — like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read — not a wall of text"
+              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) — A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section — Copy EXACTLY as written below, including the emoji:\n\n📞 HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n👉 Reply to this post with your questions before the call\n👉 If you submit a question and you're on the call, you go first\n👉 We work through questions in the order they came in\n👉 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) — Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section — Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n🔗 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n📅 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic — like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read — not a wall of text"
             }
           ]
         }
@@ -235,7 +283,10 @@
       "name": "OpenRouter Chat Model 4",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
-      "position": [3000, 500],
+      "position": [
+        3000,
+        500
+      ],
       "parameters": {
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
@@ -255,9 +306,137 @@
       "name": "Code: Save weekly-invite.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [3250, 300],
+      "position": [
+        3250,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir || $('Code: Create Output Folder').item.json.outputDir;\nconst inviteDate = $('Code: Calculate Next Tuesday').item.json.inviteDate;\nconst inviteText = $json.text;\nfs.writeFileSync(`${outputDir}/${inviteDate}-weekly-invite.md`, inviteText, 'utf8');\nreturn { json: { inviteText, outputDir, inviteDate } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000019",
+      "name": "HTTP Request: Get Speaker Aliases",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3500,
+        300
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "http://retrieval-server:8999/speaker-aliases-block",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 10000
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000020",
+      "name": "LLM: Prep-Prompt",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        3750,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Code: Validate and Check Partner').item.json.transcriptText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are preparing a meeting transcript for embedding in a semantic knowledge base. Transform the raw transcript into an enriched, topic-segmented document that will produce high-quality, independently retrievable chunks when split.\n\n## Speaker Name Normalization\n\nApply the speaker alias map supplied in the `SPEAKER_ALIASES` context block below. If you encounter a speaker whose raw name is NOT in that map, do NOT guess a canonical form — pass the name through unchanged AND list it under \"=== UNRESOLVED SPEAKERS ===\" at the end of your output.\n\n{{ $('HTTP Request: Get Speaker Aliases').item.json.data }}\n\n## Pass 1 — Clean the transcript\n\n- Apply speaker normalization above\n- Fix obvious transcription artifacts: \"gpt four\" → \"GPT-4\", \"llm\" → \"LLM\", \"open a i\" → \"OpenAI\"\n- Remove pure filler (stutters, \"um\", \"uh\") only when they add no meaning\n- Preserve all timestamps and speaker attribution exactly\n\n## Pass 2 — Segment by topic\n\nDivide the transcript into coherent topic blocks. Start a new segment when the conversation meaningfully shifts subject. For each segment, prepend a structured header:\n\n<!--SEGMENT\ntopic: <2–5 word label>\nspeakers: <comma-separated list of speakers who contribute>\nkeywords: <8–12 terms: tools, models, concepts, companies, people explicitly mentioned>\nsummary: <2–3 sentence description of what this segment covers and why it matters>\n-->\n\nTarget 300–500 words per segment body. If a topic recurs later, open a new segment — do not merge non-contiguous discussion.\n\n## Pass 3 — Inline annotations\n\nWithin each segment body, mark key moments:\n\n- When a tool, service, model, or product is named: append `[tool:name]` after first mention\n- When someone asks a question: wrap with `<Q>` ... `</Q>`\n- When someone answers it: wrap with `<A>` ... `</A>`\n- When a URL or resource is shared: append `[link:url-or-description]`\n- When a sentence contains a concrete recommendation or takeaway: prefix with `▶`\n\n## Output format\n\nStart with a `=== SESSION ===` header block (date, duration_estimate, main_themes), then segments, then an optional `=== UNRESOLVED SPEAKERS ===` block if any speakers were not in the alias map.\n\n## Quality constraints\n\n- Do not invent or infer content not present in the source\n- Every segment must be independently understandable\n- Segment header `keywords` and `summary` are what get embedded — make them precise and information-dense\n- Prefer 8 focused segments over 4 sprawling ones"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000021",
+      "name": "OpenRouter Chat Model 5",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        3750,
+        500
+      ],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000022",
+      "name": "Code: Save prepared-transcript.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4000,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst preparedText = $json.text;\nif (!preparedText) {\n  throw new Error('Prep-prompt produced no content; refusing to write empty prepared-transcript.md');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, preparedText, 'utf8');\nreturn { json: { preparedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000023",
+      "name": "HTTP Request: POST /ingest",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4250,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://retrieval-server:8999/ingest",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  session_id: $('Code: Create Output Folder').item.json.datePrefix,\n  session_date: $('Code: Create Output Folder').item.json.datePrefix,\n  session_title: 'Weekly call ' + $('Code: Create Output Folder').item.json.datePrefix,\n  artifact_paths: {\n    prepared_transcript: '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/prepared-transcript.md',\n    extracted_signal:    '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/extracted-signal.md',\n    community_post:      '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/community-post.md'\n  },\n  force_reextract: false\n}) }}",
+        "options": {
+          "timeout": 600000,
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "retryOnFailure": {
+            "retryOnFailure": true,
+            "maxTries": 2,
+            "waitBetweenTries": 60000
+          }
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000024",
+      "name": "Code: Log Ingest Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst datePrefix = $('Code: Create Output Folder').item.json.datePrefix;\nconst body = $input.first().json;\n// When /ingest succeeds, body is the chunks-written response and error is absent.\nif (body && typeof body.chunks_written === 'number') {\n  return { json: { ...body, ingest_status: 'ok', datePrefix, outputDir } };\n}\n// Otherwise treat as failure. n8n puts errors on $input.first().error when\n// onError=continueRegularOutput; the shape varies by n8n version, so cover both.\nconst err = ($input.first().error) || { message: 'Non-success response', response: body };\nconst ts = new Date().toISOString();\nconst report = `[${ts}] /ingest failed after retry\\nstatus: ${err.httpCode || 'n/a'}\\nmessage: ${err.message || JSON.stringify(err)}\\nresponse: ${JSON.stringify(err.response || body || {}, null, 2)}\\n`;\nfs.writeFileSync(`${outputDir}/ingest-error.log`, report, 'utf8');\nreturn { json: { ingest_status: 'failed', ingest_error: err.message || 'unknown', datePrefix, outputDir } };"
       }
     }
   ],
@@ -443,6 +622,72 @@
         [
           {
             "node": "LLM: Weekly Invite",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save weekly-invite.md": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Get Speaker Aliases",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Get Speaker Aliases": {
+      "main": [
+        [
+          {
+            "node": "LLM: Prep-Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Prep-Prompt": {
+      "main": [
+        [
+          {
+            "node": "Code: Save prepared-transcript.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save prepared-transcript.md": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: POST /ingest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: POST /ingest": {
+      "main": [
+        [
+          {
+            "node": "Code: Log Ingest Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model 5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Prep-Prompt",
             "type": "ai_languageModel",
             "index": 0
           }
