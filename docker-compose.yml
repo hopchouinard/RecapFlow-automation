@@ -2,6 +2,7 @@ services:
   n8n:
     image: n8nio/n8n:latest
     container_name: n8n
+    restart: unless-stopped
     environment:
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=db
@@ -31,6 +32,7 @@ services:
   db:
     image: postgres:17
     container_name: n8n_db
+    restart: unless-stopped
     environment:
       - POSTGRES_DB=n8n
       - POSTGRES_USER=n8n
