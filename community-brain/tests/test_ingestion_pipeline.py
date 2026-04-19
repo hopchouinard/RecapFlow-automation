@@ -487,9 +487,9 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
     import lancedb
 
     from community_brain.ingestion.pipeline import _commit_chunks
-    from community_brain.ingestion.schema import Chunk
+    from community_brain.ingestion.schema import Chunk, ContentType
 
-    def make_chunk(chunk_id: str, speakers: list[str] | None, content_type: str) -> Chunk:
+    def make_chunk(chunk_id: str, speakers: list[str] | None, content_type: ContentType) -> Chunk:
         return Chunk(
             schema_version="1.0",
             chunk_id=chunk_id,
@@ -527,7 +527,7 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
             extracted_at=dt.datetime(2026, 4, 18, tzinfo=dt.timezone.utc),
             embed_text="x",
             full_text="x",
-            embedding=[0.0] * 8,
+            embedding=[0.0] * 768,
         )
 
     db_path = tmp_path / "lancedb"
@@ -549,3 +549,11 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
     )
     assert len(rows) == 1
     assert rows[0]["speakers_spoke"] == ["Alice", "Bob"]
+
+    # The embedding column must remain a vector column (FixedSizeList) so
+    # table.search(query_vector) works. Regression against the first fix
+    # attempt, which used variable-length list<double> and broke /query.
+    tbl = lancedb.connect(str(db_path)).open_table("chunks")
+    vec_rows = tbl.search([0.1] * 768).limit(2).to_list()
+    assert len(vec_rows) == 2
+    assert "_distance" in vec_rows[0]

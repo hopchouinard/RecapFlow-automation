@@ -37,6 +37,12 @@ Stance = Literal["positive", "negative", "neutral", "mixed"]
 Certainty = Literal["asserted", "hedged", "speculative"]
 ExtractionStatus = Literal["success", "failed", "pending"]
 
+#: Embedding vector dimension. Must match the active embed model.
+#: Swapping COMMUNITY_BRAIN_EMBED_MODEL to a model with a different dimension
+#: requires a full table rebuild; vectors from different models are
+#: incompatible anyway (see docs/migrations/CHANGELOG.md §8.4).
+EMBEDDING_DIM = 768  # nomic-embed-text
+
 #: List-valued fields that should serialize as `[]` (not None) in LanceDB/Arrow.
 #: Null lists are poorly supported in the Arrow type system; normalizing on write
 #: avoids downstream schema-inference surprises.
@@ -120,6 +126,9 @@ class Chunk:
         - Null list-valued fields (e.g. speakers_spoke, keywords) become `[]`
           so Arrow doesn't need to infer nullable-list types.
         - Datetimes become ISO-8601 strings for portability across backends.
+        - Failed-chunk embeddings (empty list) are padded to a zero vector of
+          length EMBEDDING_DIM so they fit the FixedSizeList schema. Query-side
+          filtering on extraction_status='success' keeps them unsearchable.
         """
         d = asdict(self)
         for field_name in _LIST_FIELDS_NORMALIZED_TO_EMPTY:
@@ -129,6 +138,8 @@ class Chunk:
             d["corpus_markers_computed_at"] = d["corpus_markers_computed_at"].isoformat()
         if d["extracted_at"] is not None:
             d["extracted_at"] = d["extracted_at"].isoformat()
+        if len(d["embedding"]) != EMBEDDING_DIM:
+            d["embedding"] = [0.0] * EMBEDDING_DIM
         return d
 
 
@@ -180,7 +191,7 @@ def pyarrow_table_schema() -> pa.Schema:
         ("extracted_at", pa.string()),
         ("embed_text", pa.string()),
         ("full_text", pa.string()),
-        ("embedding", pa.list_(pa.float64())),
+        ("embedding", pa.list_(pa.float32(), EMBEDDING_DIM)),
     ])
 
 

@@ -47,7 +47,13 @@ def search_chunks(
 
     db = lancedb.connect(db_path)
     table = db.open_table(table_name)
-    query = table.search(query_vector).limit(top_k)
+    # Failed-extraction chunks carry a zero-vector embedding and are excluded
+    # from vector search by design.
+    query = (
+        table.search(query_vector)
+        .where("extraction_status = 'success'")
+        .limit(top_k)
+    )
 
     # Apply filters (safely escaped)
     filter_expr = build_filter_expression(filter_date, filter_speaker)

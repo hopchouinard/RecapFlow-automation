@@ -73,7 +73,13 @@ def search_chunks(
     db = lancedb.connect(db_path)
     table = db.open_table(table_name)
 
-    query = table.search(query_vector).limit(top_k)
+    # Failed-extraction chunks carry a zero-vector embedding and are excluded
+    # from vector search by design (see schema.EMBEDDING_DIM and to_arrow_dict).
+    query = (
+        table.search(query_vector)
+        .where("extraction_status = 'success'")
+        .limit(top_k)
+    )
 
     # Apply filters (safely escaped)
     filter_expr = build_filter_expression(filter_date, filter_speaker)
@@ -200,9 +206,12 @@ def search_chunks_v2(
     table = db.open_table(table_name)
     query = table.search(query_vector).limit(top_k)
 
-    expr = build_filter_expression_v2(filters)
-    if expr:
-        query = query.where(expr)
+    # Failed-extraction chunks carry a zero-vector embedding and must be
+    # excluded from vector search. AND the user filter with the status guard.
+    user_expr = build_filter_expression_v2(filters)
+    status_guard = "extraction_status = 'success'"
+    expr = f"({user_expr}) AND {status_guard}" if user_expr else status_guard
+    query = query.where(expr)
 
     results = query.to_arrow()
     return [
