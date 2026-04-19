@@ -8,6 +8,23 @@ This document guides Claude Code (or any operator) through deploying the `retrie
 
 ---
 
+## Environment mapping — CRITICAL READ FIRST
+
+The same repository exists at two different absolute paths on two different hosts. **They must not be confused.**
+
+| Host | Repo root | When it's used |
+|---|---|---|
+| **Mac Mini** (dev / where Claude Code runs) | `/Volumes/NVMe_2TB_Work/Development/RecapFlow-automation` | Committing code, running local tests, editing the runbook itself |
+| **VM** (production / where retrieval-server runs) | `/home/pchouinard/n8n` (same as `~/n8n` for user `pchouinard`) | `git pull`, `docker compose build/up`, the deployed service |
+
+**What this means for `git pull` specifically:** the runbook's `git pull` commands run ON THE VM via SSH. They update `/home/pchouinard/n8n` from GitHub `origin/main`. They do NOT touch the Mac Mini checkout, and the Mac Mini checkout does NOT need to be in any particular state for a deploy to succeed — deploy reads from GitHub, not from the local Mac Mini repo.
+
+**What this means for artifact paths:** when `/ingest` receives paths like `/data/output/<date>/...`, those resolve inside the container to files that live on the VM at `/home/pchouinard/n8n/output/<date>/...` (via the Docker volume mount). Mac Mini-side `output/` is never consulted by the deployed service.
+
+Throughout the runbook, commands prefixed with `ssh n8n-automation ...` execute on the VM with its paths. Commands without `ssh n8n-automation` execute on the Mac Mini (used only for local shell variables like `$AUTH_HEADER` and temp files like `/tmp/cb-ingest-body.json`).
+
+---
+
 ## 0. Permission model (for Claude acting as operator)
 
 Every step below is tagged with a permission level. Claude MUST respect these.
@@ -685,11 +702,18 @@ When escalating: state (a) which step was in progress, (b) the unexpected observ
 
 ## Appendix: quick reference
 
-**Common paths on the VM (assumes `~/n8n` is the repo root):**
+**Repo path mapping (see "Environment mapping" at the top for full context):**
+
+| Host | Absolute path | Tilde form |
+|---|---|---|
+| Mac Mini | `/Volumes/NVMe_2TB_Work/Development/RecapFlow-automation` | (no tilde — not in user home) |
+| VM | `/home/pchouinard/n8n` | `~/n8n` (user `pchouinard`) |
+
+**Common paths on the VM:**
 
 | What | Path |
 |---|---|
-| Repo root | `~/n8n` |
+| Repo root | `/home/pchouinard/n8n` (aka `~/n8n`) |
 | compose file | `~/n8n/docker-compose.yml` |
 | retrieval-server source | `~/n8n/community-brain/src/community_brain/` |
 | env file | `~/n8n/community-brain/config/.env` |
@@ -698,6 +722,13 @@ When escalating: state (a) which step was in progress, (b) the unexpected observ
 | Artifact output (host) | `~/n8n/output/<YYYY-MM-DD>/` |
 | Artifact output (container) | `/data/output/<YYYY-MM-DD>/` |
 | LanceDB backups | `~/n8n/community-brain/lancedb-backups/` |
+
+**Common paths on the Mac Mini (used for local shell variables + temp files only, never the deployed service):**
+
+| What | Path |
+|---|---|
+| Repo root | `/Volumes/NVMe_2TB_Work/Development/RecapFlow-automation` |
+| Local temp (smoke-test bodies) | `/tmp/cb-*.json` |
 
 **Common endpoints:**
 
