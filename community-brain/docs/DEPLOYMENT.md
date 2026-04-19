@@ -523,20 +523,30 @@ cat /tmp/cb-reextract-body.json | \
 
 ### 6.5 — Corpus stats 🟢
 
-Use a readable Python heredoc on the VM (avoids nested-quote escape hell). Requires `$AUTH_HEADER` per §3.0:
+Fetch the sessions JSON to a local temp file, then run a Python script against it. Requires `$AUTH_HEADER` per §3.0.
+
+**Why two steps:** piping `curl | python3 <<'PY' … PY` doesn't work — the heredoc redirects Python's stdin to the script content, so the pipe is discarded and Python parses its own source as JSON (failing with `JSONDecodeError`). The tmp-file pattern avoids the stdin collision.
 
 ```bash
-ssh n8n-automation "curl -s ${AUTH_HEADER} http://127.0.0.1:8999/sessions" | \
-  python3 - <<'PY'
-import json, sys
-d = json.load(sys.stdin)
+ssh n8n-automation "curl -s ${AUTH_HEADER} http://127.0.0.1:8999/sessions" > /tmp/cb-sessions.json
+
+python3 <<'PY'
+import json
+with open("/tmp/cb-sessions.json") as fh:
+    d = json.load(fh)
 print(f"sessions: {d['total']}")
 total_chunks = sum(sum(s['chunk_counts'].values()) for s in d['sessions'])
 print(f"total chunks: {total_chunks}")
 PY
 ```
 
-Pipes the server's JSON response into a local Python script run from `stdin` (the `<<'PY' … PY` heredoc). No escape issues because the Python code never goes through a remote shell.
+**Expected output:**
+```
+sessions: 12
+total chunks: 187
+```
+
+**If the Python step fails with `JSONDecodeError`:** the curl probably returned an error (auth failure, server down). Check `cat /tmp/cb-sessions.json` — it'll contain the actual error body or be empty.
 
 ### 6.6 — Disk usage of LanceDB 🟢
 
