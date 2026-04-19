@@ -19,6 +19,7 @@ Distinct from the root repo's n8n workflows, which will call this service in Pla
 - Plan A (what's built): `docs/superpowers/plans/2026-04-18-community-brain-ingestion-plan-a.md`
 - Trust contract (for downstream LLMs): `docs/inference-guidelines.md`
 - Migration log: `docs/migrations/CHANGELOG.md`
+- **Deployment runbook** (SSH + Docker Compose on the VM): `community-brain/docs/DEPLOYMENT.md` — follow this end-to-end when deploying, updating, or operating the retrieval-server container. It encodes the permission model (🟢 auto / 🟡 confirm / 🔴 gated) that Claude must respect when acting as operator.
 
 ## Package layout
 
