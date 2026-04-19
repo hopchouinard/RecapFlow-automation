@@ -1,0 +1,16 @@
+# Canonical entity registry.
+# Maps raw entity mentions (tools, people, companies, concepts) to canonical names.
+# Ingestion pipeline reads this; unknowns get appended to `pending:`.
+#
+# Structure:
+#   entities:
+#     <CanonicalName>:
+#       type: tool | framework | company | person | concept | product
+#       category: <optional grouping string>
+#       aliases: [list of raw mentions that should resolve here]
+
+version: "2026-04-18"
+
+entities: {}
+
+pending: []

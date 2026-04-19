@@ -1,0 +1,24 @@
+# Chunking and extraction tunables for the ingestion pipeline.
+# Read at startup by community_brain.ingestion.config_loader.
+
+schema_version: "1.0"
+
+chunking:
+  # Prepared-transcript segments longer than this get sub-chunked (sliding window).
+  transcript_segment_max_tokens: 1500
+
+  # Community posts longer than this get sliding-window split (rare).
+  post_max_tokens: 2500
+
+  # Stage B input threshold: community_post used only if under this size.
+  session_themes_input_max_tokens: 3000
+
+extraction:
+  # Retries per LLM call before marking the chunk extraction_status = "failed".
+  retry_attempts: 3
+
+  # Exponential backoff in seconds between retry attempts.
+  retry_backoff_seconds: [2, 8, 32]
+
+  # Inter-session delay for batch (Workflow 2) ingestion.
+  inter_session_delay_seconds: 30

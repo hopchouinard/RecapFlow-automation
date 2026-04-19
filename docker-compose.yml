@@ -38,5 +38,30 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  retrieval-server:
+    build:
+      context: ./community-brain
+      dockerfile: Dockerfile
+    container_name: community_brain_retrieval
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8999:8999"
+    # env_file loads values directly into the container from the documented
+    # location (community-brain/config/.env, created by operator from .env.example).
+    # Defaults for container-internal paths and Ollama endpoint live in the
+    # Dockerfile as ENV directives — those are lowest-precedence, so anything
+    # operator sets in env_file (or shell, or this environment: block) wins.
+    # env_file is optional so the container starts cleanly before the operator
+    # has created it (useful for CI / first-time local bring-up).
+    env_file:
+      - path: ./community-brain/config/.env
+        required: false
+    volumes:
+      - ./community-brain/config:/app/config
+      - ./community-brain/lancedb:/data/lancedb
+      - ./output:/data/output:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
 volumes:
   db_data:

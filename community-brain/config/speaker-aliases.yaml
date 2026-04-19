@@ -1,0 +1,21 @@
+# Canonical speaker alias registry.
+# Maps raw names (as they appear in transcripts) to canonical full names.
+# Ingestion pipeline reads this at startup; unknown speakers get appended to `pending:`.
+
+version: "2026-04-18"
+
+aliases:
+  Alex Rojas:
+    - alexrojas
+    - "Alex R"
+    - arojas
+  Alex Wilson:
+    - AlexH
+    - "Alex H"
+  Sam:
+    - sam
+    - "Sam C"
+  Shakur:
+    - shakur
+
+pending: []

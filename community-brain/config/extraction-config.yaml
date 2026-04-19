@@ -1,0 +1,27 @@
+# Active extraction prompt versions per stage.
+# Bump this file when swapping in a new prompt version.
+# Bumping does NOT re-extract existing chunks; that requires a POST /reindex call.
+#
+# Values here are overridable at deployment time via env vars:
+#   COMMUNITY_BRAIN_{SESSION_THEMES,CHUNK_EXTRACTION}_{MODEL,PROMPT}
+#   COMMUNITY_BRAIN_EMBED_MODEL
+# See community-brain/config/.env.example for the full list.
+# Precedence: env var > values in this file.
+
+session_themes:
+  prompt_file: session-themes-v1.md
+  model: google/gemini-3.1-flash-lite-preview
+
+chunk_extraction:
+  prompt_file: chunk-extraction-v1.md
+  model: google/gemini-3.1-flash-lite-preview
+
+# NOTE: extract_signal and prep_prompt are NOT loaded by ExtractionConfig.
+# They are tracked here purely for version coordination with the n8n pipeline
+# that produces these artifacts. Changing these values has no effect on the
+# retrieval server's Python code.
+extract_signal:
+  prompt_file: extract-signal-v1.md
+
+prep_prompt:
+  prompt_file: prep-prompt-v1.md
