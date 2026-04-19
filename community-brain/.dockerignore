@@ -1,0 +1,43 @@
+# Secrets — must never be baked into the image. Runtime env_file / environment:
+# directives provide these values at container start.
+.env
+.env.*
+!.env.example
+config/.env
+config/.env.*
+!config/.env.example
+
+# Corpus data — mounted as a volume at runtime, not shipped in the image.
+lancedb/
+*.lance/
+
+# Ephemeral / state
+raw-transcripts/
+raw-chunks/
+chunks/
+
+# Python artifacts — don't bloat the build context or the image
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Tests don't need to be in the production image
+tests/
+
+# IDE / OS cruft
+.vscode/
+.idea/
+.DS_Store
+
+# Git metadata
+.git/
+.gitignore
