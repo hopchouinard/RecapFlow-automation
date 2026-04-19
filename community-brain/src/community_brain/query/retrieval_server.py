@@ -210,7 +210,22 @@ def speaker_aliases_block(_key: str | None = Depends(_verify_api_key)) -> str:
     edit the yaml and see changes on the next call without restarting the
     server.
     """
-    registry = load_speaker_registry(_config_dir() / "speaker-aliases.yaml")
+    yaml_path = _config_dir() / "speaker-aliases.yaml"
+    try:
+        registry = load_speaker_registry(yaml_path)
+    except FileNotFoundError:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                f"speaker-aliases.yaml not found at {yaml_path}; "
+                "deploy the registry config before calling this endpoint"
+            ),
+        )
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"speaker-aliases.yaml is malformed: {exc}",
+        )
     return render_alias_block(registry)
 
 

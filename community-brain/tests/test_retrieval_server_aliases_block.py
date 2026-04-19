@@ -71,3 +71,33 @@ def test_get_speaker_aliases_block_200_when_api_key_enabled_and_header_matches(
     response = client.get("/speaker-aliases-block", headers={"X-API-Key": "secret-test-key"})
 
     assert response.status_code == 200
+
+
+def test_get_speaker_aliases_block_503_when_yaml_missing(monkeypatch, tmp_path: Path) -> None:
+    """When speaker-aliases.yaml is absent, endpoint returns 503 with a
+    message naming the expected path (operator-recoverable)."""
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(tmp_path))
+    # Note: NO yaml file written to tmp_path.
+
+    client = TestClient(server_mod.app)
+    response = client.get("/speaker-aliases-block")
+
+    assert response.status_code == 503
+    assert "speaker-aliases.yaml" in response.json()["detail"]
+
+
+def test_get_speaker_aliases_block_500_when_yaml_malformed(monkeypatch, tmp_path: Path) -> None:
+    """When speaker-aliases.yaml is structurally invalid, endpoint returns
+    500 with a message mentioning malformed input."""
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(tmp_path))
+    # Write something yaml-parsable but NOT a dict (load_speaker_registry
+    # expects aliases: {canonical: [...]} structure)
+    (tmp_path / "speaker-aliases.yaml").write_text("just a plain string", encoding="utf-8")
+
+    client = TestClient(server_mod.app)
+    response = client.get("/speaker-aliases-block")
+
+    assert response.status_code == 500
+    assert "malformed" in response.json()["detail"].lower()
