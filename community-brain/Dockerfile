@@ -22,4 +22,12 @@ EXPOSE 8999
 ENV RETRIEVAL_HOST=0.0.0.0
 ENV RETRIEVAL_PORT=8999
 
+# Sensible container defaults. Overridable by both env_file (community-brain/
+# config/.env) AND the compose `environment:` block because Dockerfile ENV is
+# the lowest-precedence default — operator-supplied values always win.
+ENV OLLAMA_BASE_URL=http://host.docker.internal:11434
+ENV LANCEDB_PATH=/data/lancedb/nomic-v1
+ENV COMMUNITY_BRAIN_CONFIG_DIR=/app/config
+ENV COMMUNITY_BRAIN_ARTIFACT_ROOT=/data/output
+
 CMD ["uvicorn", "community_brain.query.retrieval_server:app", "--host", "0.0.0.0", "--port", "8999"]
