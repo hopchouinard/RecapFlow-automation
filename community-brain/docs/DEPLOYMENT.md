@@ -162,17 +162,47 @@ Common startup failures:
 
 ### 2.6 — Health check 🟢
 
+`/health` does NOT require authentication, so use plain curl with explicit status reporting:
+
 ```bash
-ssh n8n-automation 'curl -sf http://127.0.0.1:8999/health'
+ssh n8n-automation 'curl -s -w "\nHTTP %{http_code}\n" http://127.0.0.1:8999/health'
 ```
 
-**Expected:** `{"status":"ok"}`. If connection refused: container hasn't bound the port yet, wait 5s and retry. If persistently refused: container crashed; check logs.
+**Expected:** body `{"status":"ok"}` followed by `HTTP 200`. If `HTTP 000`: connection refused, container hasn't bound the port yet; wait 5s and retry. If persistently refused: container crashed; check logs.
 
 ---
 
 ## 3. Smoke test
 
 Run this immediately after §2 (first-time) and after every §4 (incremental update). Validates that the full ingest → query → sessions pipeline works end-to-end against real Ollama + real OpenRouter.
+
+### 3.0 — Resolve auth mode (ALWAYS FIRST) 🟢
+
+All endpoints except `GET /health` require the `X-API-Key` header **if and only if** `RETRIEVAL_API_KEY` is set to a non-empty value on the VM. Determine this WITHOUT reading the file's content (which would leak the secret into the transcript):
+
+```bash
+ssh n8n-automation 'grep -E "^RETRIEVAL_API_KEY=[^[:space:]]+$" ~/n8n/community-brain/config/.env >/dev/null && echo auth_enabled || echo auth_disabled'
+```
+
+**If `auth_disabled`:** set the local shell variable to empty:
+
+```bash
+AUTH_HEADER=""
+```
+
+**If `auth_enabled`:** ask the user for the key value. Claude MUST NOT read `.env` on the VM. Prompt the user:
+
+> "`RETRIEVAL_API_KEY` is set on the VM. Please paste the key value so I can include it in smoke-test requests. (The key won't be echoed back; I'll use it in subsequent curls only.)"
+
+Then bind it to a local shell variable (NOT logged):
+
+```bash
+# User supplies the value; store only in local shell
+read -r RETRIEVAL_KEY
+AUTH_HEADER="-H X-API-Key:${RETRIEVAL_KEY}"
+```
+
+Every authenticated curl below references `$AUTH_HEADER`. When it's empty, the `-H` argument collapses into nothing; when set, the header rides on each request.
 
 ### 3.1 — Pick a real artifact folder 🟢
 
@@ -198,26 +228,36 @@ ssh n8n-automation "ls -1 ~/n8n/output/$SESSION_DATE/"
 
 ### 3.3 — POST /ingest 🟢
 
-Build the request body. If `.env` on the VM set `RETRIEVAL_API_KEY`, include it; otherwise omit the header.
+Requires the auth header established in §3.0.
+
+Write the request body to a local temp file first (avoids escape hell across SSH):
 
 ```bash
-ssh n8n-automation "curl -sf -X POST http://127.0.0.1:8999/ingest \
-  -H 'Content-Type: application/json' \
-  -d '{
-    \"session_id\": \"$SESSION_DATE\",
-    \"session_date\": \"$SESSION_DATE\",
-    \"session_title\": \"Smoke test ingest\",
-    \"artifact_paths\": {
-      \"extracted_signal\": \"/data/output/$SESSION_DATE/extracted-signal.md\",
-      \"community_post\": \"/data/output/$SESSION_DATE/community-post.md\"
-    },
-    \"force_reextract\": false
-  }'"
+cat > /tmp/cb-ingest-body.json <<EOF
+{
+  "session_id": "${SESSION_DATE}",
+  "session_date": "${SESSION_DATE}",
+  "session_title": "Smoke test ingest",
+  "artifact_paths": {
+    "extracted_signal": "/data/output/${SESSION_DATE}/extracted-signal.md",
+    "community_post": "/data/output/${SESSION_DATE}/community-post.md"
+  },
+  "force_reextract": false
+}
+EOF
 ```
 
-**If `RETRIEVAL_API_KEY` is set on the VM**, add `-H 'X-API-Key: <value>'`. The user must provide the value — Claude should not read it from `.env`. Ask: "Is RETRIEVAL_API_KEY set on the VM? If yes, please provide it (or type 'no' if unset)."
+Then POST via SSH. The payload goes over stdin so we don't have to quote-escape JSON inside the remote shell:
 
-**Expected:** 200 response with JSON containing `"chunks_written": N` where N > 0, and `"chunks_failed": 0`. Response shape:
+```bash
+cat /tmp/cb-ingest-body.json | \
+  ssh n8n-automation "curl -s -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8999/ingest \
+    -H 'Content-Type: application/json' \
+    ${AUTH_HEADER} \
+    --data-binary @-"
+```
+
+**Expected:** response body with `"chunks_written": N` (N > 0), `"chunks_failed": 0`, followed by `HTTP 200`. Response shape:
 
 ```json
 {
@@ -249,20 +289,22 @@ Query for something known to be in that session. The user may need to suggest a 
 ```bash
 QUESTION="what was discussed about agent frameworks"  # adjust per session content
 
-ssh n8n-automation "curl -sf -X POST http://127.0.0.1:8999/query \
-  -H 'Content-Type: application/json' \
-  -d '{\"question\": \"$QUESTION\", \"top_k\": 5}'"
+printf '{"question":"%s","top_k":5}' "$QUESTION" | \
+  ssh n8n-automation "curl -s -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8999/query \
+    -H 'Content-Type: application/json' \
+    ${AUTH_HEADER} \
+    --data-binary @-"
 ```
 
-**Expected:** 200 with `"total_matched": N` where N > 0. Each chunk has `ground_truth`, `derived_metadata`, `provenance`, `similarity`. Verify the `session_id` in `ground_truth` matches `$SESSION_DATE` for at least one result.
+**Expected:** body with `"total_matched": N` (N > 0), each chunk has `ground_truth`/`derived_metadata`/`provenance`/`similarity`, followed by `HTTP 200`. Verify at least one result's `ground_truth.session_id` matches `$SESSION_DATE`.
 
 ### 3.5 — GET /sessions 🟢
 
 ```bash
-ssh n8n-automation 'curl -sf http://127.0.0.1:8999/sessions'
+ssh n8n-automation "curl -s -w '\nHTTP %{http_code}\n' ${AUTH_HEADER} http://127.0.0.1:8999/sessions"
 ```
 
-**Expected:** 200 with `"total": N` (at least 1). Response includes the session we just ingested in the `sessions` array.
+**Expected:** body with `"total": N` (at least 1) and our session in the `sessions` array, followed by `HTTP 200`.
 
 ### 3.6 — Report smoke test outcome 🟢
 
@@ -350,10 +392,10 @@ ssh n8n-automation 'cd ~/n8n && docker compose restart retrieval-server'
 ### 4.8 — Verify health post-deploy 🟢
 
 ```bash
-ssh n8n-automation 'curl -sf http://127.0.0.1:8999/health'
+ssh n8n-automation 'curl -s -w "\nHTTP %{http_code}\n" http://127.0.0.1:8999/health'
 ```
 
-**Expected:** `{"status":"ok"}`. Re-run the smoke test (§3).
+**Expected:** `{"status":"ok"}` followed by `HTTP 200`. Re-run the smoke test (§3) — note that §3.0's `AUTH_HEADER` resolution must be repeated (it's shell-local and doesn't persist across runbook invocations).
 
 ---
 
@@ -382,8 +424,10 @@ ssh n8n-automation 'cd ~/n8n && docker compose build retrieval-server && docker 
 ### 5.3 — Verify rolled-back service is healthy 🟢
 
 ```bash
-ssh n8n-automation 'curl -sf http://127.0.0.1:8999/health'
+ssh n8n-automation 'curl -s -w "\nHTTP %{http_code}\n" http://127.0.0.1:8999/health'
 ```
+
+**Expected:** `{"status":"ok"}` + `HTTP 200`.
 
 ### 5.4 — LanceDB restore (only if the rollback was triggered by corruption) 🔴
 
@@ -450,30 +494,49 @@ ssh n8n-automation 'grep "^COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL=" ~/n8n/commun
 
 ### 6.4 — Force re-extraction of a session 🟡
 
+Requires `$AUTH_HEADER` established per §3.0 (auth-enabled mode) or left empty (auth-disabled mode).
+
 ```bash
 SESSION_DATE=2026-04-14  # adjust
 
-ssh n8n-automation "curl -sf -X POST http://127.0.0.1:8999/ingest \
-  -H 'Content-Type: application/json' \
-  -d '{
-    \"session_id\": \"$SESSION_DATE\",
-    \"session_date\": \"$SESSION_DATE\",
-    \"session_title\": \"Re-extraction\",
-    \"artifact_paths\": {
-      \"extracted_signal\": \"/data/output/$SESSION_DATE/extracted-signal.md\",
-      \"community_post\": \"/data/output/$SESSION_DATE/community-post.md\"
-    },
-    \"force_reextract\": true
-  }'"
+cat > /tmp/cb-reextract-body.json <<EOF
+{
+  "session_id": "${SESSION_DATE}",
+  "session_date": "${SESSION_DATE}",
+  "session_title": "Re-extraction",
+  "artifact_paths": {
+    "extracted_signal": "/data/output/${SESSION_DATE}/extracted-signal.md",
+    "community_post": "/data/output/${SESSION_DATE}/community-post.md"
+  },
+  "force_reextract": true
+}
+EOF
+
+cat /tmp/cb-reextract-body.json | \
+  ssh n8n-automation "curl -s -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8999/ingest \
+    -H 'Content-Type: application/json' \
+    ${AUTH_HEADER} \
+    --data-binary @-"
 ```
 
 **Confirm with user** which session to re-extract and why.
 
 ### 6.5 — Corpus stats 🟢
 
+Use a readable Python heredoc on the VM (avoids nested-quote escape hell). Requires `$AUTH_HEADER` per §3.0:
+
 ```bash
-ssh n8n-automation 'curl -sf http://127.0.0.1:8999/sessions | python3 -c "import json,sys;d=json.load(sys.stdin);print(f\"sessions: {d[\\\"total\\\"]}\");t=sum(sum(s[\\\"chunk_counts\\\"].values()) for s in d[\\\"sessions\\\"]);print(f\"total chunks: {t}\")"'
+ssh n8n-automation "curl -s ${AUTH_HEADER} http://127.0.0.1:8999/sessions" | \
+  python3 - <<'PY'
+import json, sys
+d = json.load(sys.stdin)
+print(f"sessions: {d['total']}")
+total_chunks = sum(sum(s['chunk_counts'].values()) for s in d['sessions'])
+print(f"total chunks: {total_chunks}")
+PY
 ```
+
+Pipes the server's JSON response into a local Python script run from `stdin` (the `<<'PY' … PY` heredoc). No escape issues because the Python code never goes through a remote shell.
 
 ### 6.6 — Disk usage of LanceDB 🟢
 
