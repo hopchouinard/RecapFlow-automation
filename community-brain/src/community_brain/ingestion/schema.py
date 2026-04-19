@@ -126,13 +126,16 @@ class Chunk:
         - Null list-valued fields (e.g. speakers_spoke, keywords) become `[]`
           so Arrow doesn't need to infer nullable-list types.
         - Datetimes become ISO-8601 strings for portability across backends.
-        - Empty embeddings (failed-extraction chunks) are padded to a zero
-          vector of length EMBEDDING_DIM so they fit the FixedSizeList schema.
-          Query-side filtering on extraction_status='success' keeps them
-          unsearchable. Non-empty embeddings whose length does NOT match
-          EMBEDDING_DIM raise -- that indicates the active embed model's
-          dimension has drifted from the compiled-in constant, which would
-          silently poison vector search if we tried to pad or truncate.
+        - Embedding normalization depends on extraction_status:
+            * status == 'success': embedding MUST be exactly EMBEDDING_DIM long.
+              Any other length raises -- either the embed model dimension drifted
+              from the schema constant, or a success chunk is being committed
+              without actually being embedded. Both would silently poison vector
+              search if we padded; fail loud instead.
+            * status != 'success' (failed, pending): the embedding is not used
+              for search (query-side filter excludes non-success rows), but we
+              still need EMBEDDING_DIM values to fit the FixedSizeList schema.
+              Pad to zeros regardless of incoming length.
         """
         d = asdict(self)
         for field_name in _LIST_FIELDS_NORMALIZED_TO_EMPTY:
@@ -143,15 +146,18 @@ class Chunk:
         if d["extracted_at"] is not None:
             d["extracted_at"] = d["extracted_at"].isoformat()
         emb_len = len(d["embedding"])
-        if emb_len == 0:
-            d["embedding"] = [0.0] * EMBEDDING_DIM
+        if d["extraction_status"] == "success":
+            if emb_len != EMBEDDING_DIM:
+                raise ValueError(
+                    f"success chunk {d['chunk_id']!r} has embedding length "
+                    f"{emb_len}; expected {EMBEDDING_DIM}. Either the embed "
+                    f"model dimension drifted from schema.EMBEDDING_DIM, or "
+                    f"the chunk reached commit without being embedded. Refusing "
+                    f"to silently pad -- that would make the chunk searchable "
+                    f"but return zero-vector similarity."
+                )
         elif emb_len != EMBEDDING_DIM:
-            raise ValueError(
-                f"embedding length {emb_len} != EMBEDDING_DIM ({EMBEDDING_DIM}) "
-                f"for chunk {d['chunk_id']!r}. Embed model dimension drift: "
-                f"rebuild schema.EMBEDDING_DIM to match the active model and "
-                f"rebuild the LanceDB table."
-            )
+            d["embedding"] = [0.0] * EMBEDDING_DIM
         return d
 
 

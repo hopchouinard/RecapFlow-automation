@@ -179,16 +179,29 @@ def test_chunk_to_arrow_dict_pads_empty_embedding_to_zero_vector() -> None:
     assert d["embedding"] == [0.0] * EMBEDDING_DIM
 
 
-def test_chunk_to_arrow_dict_raises_on_embedding_dim_mismatch() -> None:
-    """A non-empty embedding whose length != EMBEDDING_DIM must raise, not be
+def test_chunk_to_arrow_dict_raises_on_embedding_dim_mismatch_for_success() -> None:
+    """A success chunk with embedding length != EMBEDDING_DIM must raise, not be
     silently padded/truncated. Otherwise a mid-corpus embed-model swap to a
-    different-dimension model would corrupt vectors without any signal."""
+    different-dimension model would corrupt vectors without any signal, and a
+    success chunk that somehow skipped the embedding step would become a
+    searchable zero vector."""
     import pytest
 
     from community_brain.ingestion.schema import EMBEDDING_DIM
 
     chunk = _minimal_chunk(embedding=[0.1] * (EMBEDDING_DIM + 32))
-    with pytest.raises(ValueError, match="embedding length"):
+    with pytest.raises(ValueError, match="success chunk"):
+        chunk.to_arrow_dict()
+
+
+def test_chunk_to_arrow_dict_raises_on_empty_embedding_for_success() -> None:
+    """A success chunk with an empty embedding is a bug (the chunk skipped
+    Stage D). Must raise rather than pad to zeros -- padding would make it
+    searchable with zero-vector similarity, polluting query results."""
+    import pytest
+
+    chunk = _minimal_chunk(extraction_status="success", embedding=[])
+    with pytest.raises(ValueError, match="success chunk"):
         chunk.to_arrow_dict()
 
 
