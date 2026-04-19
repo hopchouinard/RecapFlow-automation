@@ -26,6 +26,8 @@ services:
       - ./data:/home/node/.n8n
       - ./watch:/home/node/watch
       - ./output:/home/node/output
+      - ./historical:/home/node/historical:ro
+      - ./n8n-state:/home/node/n8n-state
     depends_on:
       - db
 

@@ -7,6 +7,9 @@
 data/
 raw-transcripts/
 
+# Workflow runtime state (not source)
+n8n-state/backfill-state.json
+
 # Docker
 docker-compose.override.yml
 .docker/
