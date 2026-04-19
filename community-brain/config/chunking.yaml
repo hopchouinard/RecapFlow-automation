@@ -7,8 +7,10 @@ chunking:
   # Prepared-transcript segments longer than this get sub-chunked (sliding window).
   transcript_segment_max_tokens: 1500
 
-  # Community posts longer than this get sliding-window split (rare).
-  post_max_tokens: 2500
+  # Community posts longer than this get sliding-window split. Kept below
+  # Ollama's default num_ctx=2048 for nomic-embed-text so single-chunk posts
+  # don't get rejected at embed time.
+  post_max_tokens: 1800
 
   # Stage B input threshold: community_post used only if under this size.
   session_themes_input_max_tokens: 3000
