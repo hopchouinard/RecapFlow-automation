@@ -17,6 +17,7 @@ from typing import Literal
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException, Security
+from fastapi.responses import PlainTextResponse
 from fastapi.security import APIKeyHeader
 from pydantic import BaseModel, field_validator
 
@@ -24,6 +25,10 @@ from community_brain.ingestion.pipeline import (
     CommitError,
     IngestRequest,
     ingest_session,
+)
+from community_brain.ingestion.registries import (
+    load_speaker_registry,
+    render_alias_block,
 )
 from community_brain.query.query_local import sql_quote
 
@@ -194,6 +199,19 @@ DERIVED_FIELDS = (
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+@app.get("/speaker-aliases-block", response_class=PlainTextResponse)
+def speaker_aliases_block(_key: str | None = Depends(_verify_api_key)) -> str:
+    """Return the current speaker-alias registry as a markdown block for
+    {{SPEAKER_ALIASES_BLOCK}} prompt-template substitution.
+
+    Reads config/speaker-aliases.yaml on every call (~1 ms) so operators can
+    edit the yaml and see changes on the next call without restarting the
+    server.
+    """
+    registry = load_speaker_registry(_config_dir() / "speaker-aliases.yaml")
+    return render_alias_block(registry)
 
 
 @app.post("/query", response_model=QueryResponseV2)
