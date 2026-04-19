@@ -46,6 +46,15 @@ services:
     restart: unless-stopped
     ports:
       - "127.0.0.1:8999:8999"
+    # env_file loads values directly into the container at the documented
+    # location (community-brain/config/.env, created by operator from .env.example).
+    # Shell-interpolated ${VAR:-default} values in `environment` still apply when
+    # env_file is unset AND the shell env is unset — so both mechanisms coexist.
+    # The env_file is marked optional so the container starts cleanly even before
+    # an operator has created it (useful for CI / first-time local bring-up).
+    env_file:
+      - path: ./community-brain/config/.env
+        required: false
     environment:
       - RETRIEVAL_HOST=0.0.0.0
       - RETRIEVAL_PORT=8999
@@ -53,15 +62,6 @@ services:
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       - COMMUNITY_BRAIN_CONFIG_DIR=/app/config
       - COMMUNITY_BRAIN_ARTIFACT_ROOT=/data/output
-      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
-      - RETRIEVAL_API_KEY=${RETRIEVAL_API_KEY:-}
-      # Model/prompt overrides. Empty = use the committed YAML values.
-      # See community-brain/config/.env.example for options.
-      - COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL=${COMMUNITY_BRAIN_CHUNK_EXTRACTION_MODEL:-}
-      - COMMUNITY_BRAIN_SESSION_THEMES_MODEL=${COMMUNITY_BRAIN_SESSION_THEMES_MODEL:-}
-      - COMMUNITY_BRAIN_CHUNK_EXTRACTION_PROMPT=${COMMUNITY_BRAIN_CHUNK_EXTRACTION_PROMPT:-}
-      - COMMUNITY_BRAIN_SESSION_THEMES_PROMPT=${COMMUNITY_BRAIN_SESSION_THEMES_PROMPT:-}
-      - COMMUNITY_BRAIN_EMBED_MODEL=${COMMUNITY_BRAIN_EMBED_MODEL:-}
     volumes:
       - ./community-brain/config:/app/config
       - ./community-brain/lancedb:/data/lancedb
