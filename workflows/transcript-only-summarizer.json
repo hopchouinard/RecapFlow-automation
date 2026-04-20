@@ -1,0 +1,579 @@
+{
+  "name": "Transcript-Only Summarizer",
+  "nodes": [
+    {
+      "id": "w2-0001-0000-0000-000000000000",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "w2-0002-0000-0000-000000000000",
+      "name": "Code: Load State File",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        250,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = '/home/node/n8n-state/backfill-state.json';\nlet state = { schema_version: '1', last_updated: null, completed: [], failed: [] };\nif (fs.existsSync(path)) {\n  try {\n    state = JSON.parse(fs.readFileSync(path, 'utf8'));\n  } catch (e) {\n    throw new Error(`Failed to parse ${path}: ${e.message}. Backup the file and restart.`);\n  }\n}\nconst completedIds = new Set((state.completed || []).map(s => s.session_id));\nreturn { json: { state, completedIds: Array.from(completedIds) } };"
+      }
+    },
+    {
+      "id": "w2-0003-0000-0000-000000000000",
+      "name": "Code: List Historical Folders",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\n\nconst historicalDir = '/home/node/historical';\nconst completedSet = new Set($json.completedIds);\n\nconst folders = fs.readdirSync(historicalDir, { withFileTypes: true })\n  .filter(d => d.isDirectory())\n  .map(d => d.name)\n  .filter(name => /^\\d{4}-\\d{2}-\\d{2}/.test(name));\n\nconst sessions = [];\nfor (const folder of folders) {\n  const folderPath = `${historicalDir}/${folder}`;\n  const transcriptPath = `${folderPath}/transcript.md`;\n  const metaPath = `${folderPath}/meta.json`;\n  if (!fs.existsSync(transcriptPath)) continue;\n\n  const datePrefix = folder.slice(0, 10);\n  let meta = {};\n  if (fs.existsSync(metaPath)) {\n    try { meta = JSON.parse(fs.readFileSync(metaPath, 'utf8')); } catch (e) {}\n  }\n  const recordingId = meta.recording_id ? String(meta.recording_id) : null;\n\n  let sessionId = datePrefix;\n  if (completedSet.has(sessionId) && recordingId) {\n    sessionId = `${datePrefix}-r${recordingId}`;\n  }\n\n  sessions.push({\n    session_id: sessionId,\n    session_date: datePrefix,\n    session_title: meta.meeting_title || meta.title || `Historical call ${datePrefix}`,\n    folder_path: folderPath,\n    transcript_path: transcriptPath,\n    recording_id: recordingId,\n  });\n}\n\nconst pending = sessions\n  .filter(s => !completedSet.has(s.session_id))\n  .sort((a, b) => a.session_date.localeCompare(b.session_date));\n\nreturn pending.map(s => ({ json: s }));"
+      }
+    },
+    {
+      "id": "w2-0004-0000-0000-000000000000",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        750,
+        300
+      ],
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      }
+    },
+    {
+      "id": "w2-0005-0000-0000-000000000000",
+      "name": "Code: Parse Session Meta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        300
+      ],
+      "parameters": {
+        "jsCode": "// Passthrough that surfaces the current item's fields for downstream cross-refs.\nreturn { json: { ...$json } };"
+      }
+    },
+    {
+      "id": "w2-0006-0000-0000-000000000000",
+      "name": "Code: Read Transcript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1250,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst transcriptText = fs.readFileSync($json.transcript_path, 'utf8');\nconst outputDir = `/home/node/output/${$json.session_id}`;\nfs.mkdirSync(outputDir, { recursive: true });\nreturn { json: { ...$json, transcriptText, outputDir } };"
+      }
+    },
+    {
+      "id": "w2-0007-0000-0000-000000000000",
+      "name": "HTTP Request: Get Speaker Aliases",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        300
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "http://retrieval-server:8999/speaker-aliases-block",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 10000
+        }
+      }
+    },
+    {
+      "id": "w2-0008-0000-0000-000000000000",
+      "name": "LLM: Prep-Prompt (W2)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1750,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Code: Read Transcript').item.json.transcriptText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are preparing a meeting transcript for embedding in a semantic knowledge base. Transform the raw transcript into an enriched, topic-segmented document that will produce high-quality, independently retrievable chunks when split.\n\n## Speaker Name Normalization\n\nApply the speaker alias map supplied in the `SPEAKER_ALIASES` context block below. If you encounter a speaker whose raw name is NOT in that map, do NOT guess a canonical form — pass the name through unchanged AND list it under \"=== UNRESOLVED SPEAKERS ===\" at the end of your output.\n\n{{ $('HTTP Request: Get Speaker Aliases').item.json.data }}\n\n## Pass 1 — Clean the transcript\n\n- Apply speaker normalization above\n- Fix obvious transcription artifacts: \"gpt four\" → \"GPT-4\", \"llm\" → \"LLM\", \"open a i\" → \"OpenAI\"\n- Remove pure filler (stutters, \"um\", \"uh\") only when they add no meaning\n- Preserve all timestamps and speaker attribution exactly\n\n## Pass 2 — Segment by topic\n\nDivide the transcript into coherent topic blocks. Start a new segment when the conversation meaningfully shifts subject. For each segment, prepend a structured header:\n\n<!--SEGMENT\ntopic: <2–5 word label>\nspeakers: <comma-separated list of speakers who contribute>\nkeywords: <8–12 terms: tools, models, concepts, companies, people explicitly mentioned>\nsummary: <2–3 sentence description of what this segment covers and why it matters>\n-->\n\nTarget 300–500 words per segment body. If a topic recurs later, open a new segment — do not merge non-contiguous discussion.\n\n## Pass 3 — Inline annotations\n\nWithin each segment body, mark key moments:\n\n- When a tool, service, model, or product is named: append `[tool:name]` after first mention\n- When someone asks a question: wrap with `<Q>` ... `</Q>`\n- When someone answers it: wrap with `<A>` ... `</A>`\n- When a URL or resource is shared: append `[link:url-or-description]`\n- When a sentence contains a concrete recommendation or takeaway: prefix with `▶`\n\n## Output format\n\nStart with a `=== SESSION ===` header block (date, duration_estimate, main_themes), then segments, then an optional `=== UNRESOLVED SPEAKERS ===` block if any speakers were not in the alias map.\n\n## Quality constraints\n\n- Do not invent or infer content not present in the source\n- Every segment must be independently understandable\n- Segment header `keywords` and `summary` are what get embedded — make them precise and information-dense\n- Prefer 8 focused segments over 4 sprawling ones"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "w2-0009-0000-0000-000000000000",
+      "name": "OpenRouter Chat Model — Prep",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1750,
+        500
+      ],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3,
+          "timeout": 600000
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "w2-0010-0000-0000-000000000000",
+      "name": "Code: Save prepared-transcript.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Read Transcript').item.json.outputDir;\nconst content = $json.text;\nif (!content) {\n  throw new Error('Prep-prompt produced no content; refusing to write empty prepared-transcript.md');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, content, 'utf8');\nreturn { json: { ...$('Code: Read Transcript').item.json, preparedTranscriptSaved: true } };"
+      }
+    },
+    {
+      "id": "w2-0011-0000-0000-000000000000",
+      "name": "LLM: Extract Signal (W2)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        2250,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Code: Read Transcript').item.json.transcriptText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are analysing a coaching-call transcript. Extract the signal — the information that would help a future reader understand what was discussed, who said what, and what artefacts or resources were referenced.\n\nEmit a markdown document with exactly six H2 sections, in the order listed below. Every heading must be the literal lowercase single-word slug shown. Do not invent new sections. Omit a section entirely if there is no content for it.\n\n## general\n\nA 2–4 paragraph narrative overview of what the session covered. Factual, not promotional. Capture the main throughline, which projects/topics came up, and who presented.\n\n## insights\n\nBullet points of the most valuable takeaways, patterns, or heuristics surfaced during the call. Each bullet is self-contained (understandable without the surrounding context). Attribute the speaker when it matters.\n\n## qa\n\nPairs of questions and answers. Format:\n**Q (Questioner):** ...\n**A (Answerer):** ...\n\nInclude only Q/A exchanges where both sides had real content — skip throwaway clarifying questions.\n\n## tools\n\nBullet list of tools, products, frameworks, platforms, or services that were mentioned or demonstrated. One line per tool. Include a 5–15 word note on the context in which it came up.\n\n## links\n\nBullet list of URLs, repositories, documents, or external resources shared during the call. One line per resource. Include a brief descriptor.\n\n## decisions\n\nBullet list of commitments, action items, or decisions made during the call — things someone said they would do, or that the group agreed on. Phrase each as an actor + action.\n\nCRITICAL: output the sections in EXACTLY this order: general, insights, qa, tools, links, decisions. Do not re-order, do not merge, do not rename. Use lowercase single-word slugs as shown."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "w2-0012-0000-0000-000000000000",
+      "name": "OpenRouter Chat Model — Signal",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2250,
+        500
+      ],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3,
+          "timeout": 600000
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "w2-0013-0000-0000-000000000000",
+      "name": "Code: Save extracted-signal.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Read Transcript').item.json.outputDir;\nconst content = $json.text;\nif (!content) {\n  throw new Error('Extract Signal produced no content');\n}\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, content, 'utf8');\nreturn { json: { ...$('Code: Read Transcript').item.json } };"
+      }
+    },
+    {
+      "id": "w2-0014-0000-0000-000000000000",
+      "name": "LLM: Community Post (W2)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        2750,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Code: Read Transcript').item.json.transcriptText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are preparing a polished community-post recap of a historical coaching call. Your only source material is the spoken transcript — there is no chat log for this session. Produce a post that a community member scanning the archive weeks or months later would find useful.\n\nIMPORTANT: This post is written for the community archive, which may render on platforms like Skool that do NOT support markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Use emoji for section headers and plain line breaks for visual structure. Write URLs as plain text.\n\nCRITICAL: You MUST output sections in EXACTLY this order — do not rearrange them:\n\n1. 📝 SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n2. 💡 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways from the discussion. Attribute speakers by canonical first name when it matters (e.g. \"Patrick argued...\", \"Alex noted...\").\n\n3. ❓ KEY Q&A\nPresent the most useful question-and-answer pairs from the call. Include only exchanges with real substance — skip throwaway clarifications.\n\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, platforms, products, or concepts introduced or discussed, with a short context note per item.\n\n5. 📎 SHARED RESOURCES\nPresent URLs, repositories, documents, or external resources that were referenced during the call. One per line, with a brief descriptor.\n\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\nList open questions, unresolved threads, or topics worth revisiting in a future call.\n\nRules:\n- Output PLAIN TEXT only — no markdown formatting whatsoever\n- Use emoji for section headers as shown above\n- Output sections in the numbered order above — never reorder them\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do NOT invent any information not present in the transcript\n- Do NOT reference chat-log banter, emoji reactions, or other cues that don't exist in a transcript-only source\n- Attribute specific insights or contributions to speakers by their canonical first name (from the transcript) when it adds value\n- Omit any section that has little or no useful content\n- Make the result feel ready to archive with minimal editing\n\nHere is the transcript:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "w2-0015-0000-0000-000000000000",
+      "name": "OpenRouter Chat Model — Post",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2750,
+        500
+      ],
+      "parameters": {
+        "model": "anthropic/claude-sonnet-4.6",
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.3,
+          "timeout": 600000
+        }
+      },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "id": "w2-0016-0000-0000-000000000000",
+      "name": "Code: Save community-post.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3000,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Read Transcript').item.json.outputDir;\nconst content = $json.text;\nif (!content) {\n  throw new Error('Community Post produced no content');\n}\nfs.writeFileSync(`${outputDir}/community-post.md`, content, 'utf8');\nreturn { json: { ...$('Code: Read Transcript').item.json } };"
+      }
+    },
+    {
+      "id": "w2-0017-0000-0000-000000000000",
+      "name": "HTTP Request: POST /ingest (W2)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3250,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://retrieval-server:8999/ingest",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  session_id: $('Code: Parse Session Meta').item.json.session_id,\n  session_date: $('Code: Parse Session Meta').item.json.session_date,\n  session_title: $('Code: Parse Session Meta').item.json.session_title,\n  artifact_paths: {\n    prepared_transcript: '/data/output/' + $('Code: Parse Session Meta').item.json.session_id + '/prepared-transcript.md',\n    extracted_signal:    '/data/output/' + $('Code: Parse Session Meta').item.json.session_id + '/extracted-signal.md',\n    community_post:      '/data/output/' + $('Code: Parse Session Meta').item.json.session_id + '/community-post.md'\n  },\n  force_reextract: false\n}) }}",
+        "options": {
+          "timeout": 600000,
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "retryOnFailure": {
+            "retryOnFailure": true,
+            "maxTries": 2,
+            "waitBetweenTries": 60000
+          }
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "w2-0018-0000-0000-000000000000",
+      "name": "Code: Update State File",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst statePath = '/home/node/n8n-state/backfill-state.json';\nconst tmpPath = `${statePath}.tmp`;\nconst sessionCtx = $('Code: Parse Session Meta').item.json;\nconst sessionId = sessionCtx.session_id;\nconst outputDir = $('Code: Read Transcript').item.json.outputDir;\nconst ts = new Date().toISOString();\n\n// Reload state (defensive: file may have been edited between load and now)\nlet state = { schema_version: '1', last_updated: null, completed: [], failed: [] };\nif (fs.existsSync(statePath)) {\n  try { state = JSON.parse(fs.readFileSync(statePath, 'utf8')); } catch (e) {}\n}\nstate.completed = state.completed || [];\nstate.failed = state.failed || [];\nstate.last_updated = ts;\n\nconst body = $input.first().json;\nconst err = $input.first().error;\n\nconst logPath = `${outputDir}/ingest-error.log`;\n\nfunction recordFailure(reason) {\n  const report = `[${ts}] /ingest failed for ${sessionId}\\nreason: ${reason}\\nbody: ${JSON.stringify(body || {}, null, 2)}\\n`;\n  try { fs.writeFileSync(logPath, report, 'utf8'); } catch (e) {}\n  state.failed = state.failed.filter(e => e.session_id !== sessionId);\n  state.failed.push({ session_id: sessionId, failed_at: ts, reason: reason });\n}\n\nfunction recordPartial(b) {\n  const warnings = b.warnings || [];\n  const warningsText = warnings.length ? ('\\n  - ' + warnings.join('\\n  - ')) : ' (none)';\n  const report = `[${ts}] /ingest partial failure for ${sessionId}\\nchunks_written:  ${b.chunks_written}\\nchunks_failed:   ${b.chunks_failed}\\nchunks_skipped:  ${b.chunks_skipped_idempotent}\\nchunks_by_type:  ${JSON.stringify(b.chunks_by_type || {})}\\nwarnings:${warningsText}\\n\\nRe-run with force_reextract=true once upstream rate-limit/API issue resolves.\\n`;\n  try { fs.writeFileSync(logPath, report, 'utf8'); } catch (e) {}\n  state.failed = state.failed.filter(e => e.session_id !== sessionId);\n  state.failed.push({ session_id: sessionId, failed_at: ts, reason: `partial: ${b.chunks_failed} failed of ${b.chunks_written + b.chunks_failed}` });\n}\n\nfunction recordSuccess(b) {\n  // Clear stale error log from prior failed/partial run\n  try { if (fs.existsSync(logPath)) fs.unlinkSync(logPath); } catch (e) {}\n  state.failed = state.failed.filter(e => e.session_id !== sessionId);\n  // Dedup: remove any prior completed entry for this session_id\n  state.completed = state.completed.filter(e => e.session_id !== sessionId);\n  state.completed.push({\n    session_id: sessionId,\n    completed_at: ts,\n    chunks_written: b.chunks_written\n  });\n}\n\nif (err) {\n  recordFailure(err.message || 'http error');\n} else if (!body || typeof body.chunks_written !== 'number') {\n  recordFailure('unexpected response shape');\n} else if ((body.chunks_failed || 0) > 0) {\n  recordPartial(body);\n} else {\n  recordSuccess(body);\n}\n\nfs.writeFileSync(tmpPath, JSON.stringify(state, null, 2), 'utf8');\nfs.renameSync(tmpPath, statePath);\n\nreturn { json: { session_id: sessionId, ingest_status: err ? 'failed' : ((body && body.chunks_failed > 0) ? 'partial' : 'ok') } };"
+      }
+    },
+    {
+      "id": "w2-0019-0000-0000-000000000000",
+      "name": "Wait: Inter-session Delay",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        3750,
+        300
+      ],
+      "parameters": {
+        "amount": 30,
+        "unit": "seconds"
+      }
+    },
+    {
+      "id": "w2-0020-0000-0000-000000000000",
+      "name": "Code: Summary Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        600
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = '/home/node/n8n-state/backfill-state.json';\nconst state = JSON.parse(fs.readFileSync(path, 'utf8'));\nconst totalCompleted = (state.completed || []).length;\nconst totalFailed = (state.failed || []).length;\nconst recentFailures = (state.failed || [])\n  .slice(-5)\n  .map(f => `  - ${f.session_id}: ${f.reason}`)\n  .join('\\n') || '  (none)';\n\nconst summary = `Backfill run complete.\n\nCompleted (cumulative): ${totalCompleted}\nFailed (cumulative):    ${totalFailed}\nLast-updated:           ${state.last_updated}\n\nRecent failures:\n${recentFailures}\n`;\nconsole.log(summary);\nreturn { json: { summary, totalCompleted, totalFailed } };"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code: Load State File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Load State File": {
+      "main": [
+        [
+          {
+            "node": "Code: List Historical Folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: List Historical Folders": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Code: Parse Session Meta",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code: Summary Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Parse Session Meta": {
+      "main": [
+        [
+          {
+            "node": "Code: Read Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Read Transcript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Get Speaker Aliases",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Get Speaker Aliases": {
+      "main": [
+        [
+          {
+            "node": "LLM: Prep-Prompt (W2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Prep-Prompt (W2)": {
+      "main": [
+        [
+          {
+            "node": "Code: Save prepared-transcript.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save prepared-transcript.md": {
+      "main": [
+        [
+          {
+            "node": "LLM: Extract Signal (W2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Extract Signal (W2)": {
+      "main": [
+        [
+          {
+            "node": "Code: Save extracted-signal.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save extracted-signal.md": {
+      "main": [
+        [
+          {
+            "node": "LLM: Community Post (W2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM: Community Post (W2)": {
+      "main": [
+        [
+          {
+            "node": "Code: Save community-post.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Save community-post.md": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: POST /ingest (W2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: POST /ingest (W2)": {
+      "main": [
+        [
+          {
+            "node": "Code: Update State File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Update State File": {
+      "main": [
+        [
+          {
+            "node": "Wait: Inter-session Delay",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait: Inter-session Delay": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model — Prep": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Prep-Prompt (W2)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model — Signal": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Extract Signal (W2)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model — Post": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM: Community Post (W2)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": []
+}
