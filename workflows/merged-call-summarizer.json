@@ -101,7 +101,8 @@
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
           "maxTokens": 8192,
-          "temperature": 0.3
+          "temperature": 0.3,
+          "timeout": 600000
         }
       },
       "credentials": {
@@ -160,7 +161,8 @@
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
           "maxTokens": 8192,
-          "temperature": 0.3
+          "temperature": 0.3,
+          "timeout": 600000
         }
       },
       "credentials": {
@@ -219,7 +221,8 @@
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
           "maxTokens": 8192,
-          "temperature": 0.3
+          "temperature": 0.3,
+          "timeout": 600000
         }
       },
       "credentials": {
@@ -291,7 +294,8 @@
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
           "maxTokens": 8192,
-          "temperature": 0.3
+          "temperature": 0.3,
+          "timeout": 600000
         }
       },
       "credentials": {
@@ -372,7 +376,8 @@
         "model": "anthropic/claude-sonnet-4.6",
         "options": {
           "maxTokens": 8192,
-          "temperature": 0.3
+          "temperature": 0.3,
+          "timeout": 600000
         }
       },
       "credentials": {
