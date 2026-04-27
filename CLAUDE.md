@@ -104,6 +104,14 @@ Local File Trigger → Validate & Check Partner → Merge Content → Create Out
 
 Each LLM step uses a **Basic LLM Chain** node connected to an **OpenRouter Chat Model** sub-node. Credentials (OpenRouter API key, Fathom API key) are configured in the n8n UI.
 
+**Plan B (2026-04-19) extension:** the workflow now has a sequential branch appended after the Weekly Invite step that fetches the speaker-aliases block from the retrieval server, runs a prep-prompt LLM call to produce `prepared-transcript.md`, and POSTs all three artifact paths (`prepared_transcript`, `extracted_signal`, `community_post`) to the retrieval server's `/ingest` endpoint. On `/ingest` failure the workflow logs to `./output/<date>/ingest-error.log` and still reports success — markdown artifacts always hit disk regardless of ingestion outcome.
+
+### Transcript-Only Summarizer (`workflows/transcript-only-summarizer.json`) — Backfill
+
+Manual trigger. Iterates `./historical/<folder>/` session directories, reads `transcript.md` + `meta.json` per session, runs 3 LLM calls (prep-prompt, Extract Signal with canonical headings, transcript-only Community Post), writes 3 artifacts to `./output/<session_id>/`, then POSTs to `/ingest` on the retrieval server. State tracked in `./n8n-state/backfill-state.json`: `completed` entries are skipped on re-trigger, `failed` entries retry on next run.
+
+Used for the one-time historical backfill (~3 min per session under Sonnet+Sonnet+Kimi prompt mix; 30s inter-session delay). Resume-safe — kill the run anytime, restart, picks up where it left off.
+
 ### Fathom Transcript Poller (`workflows/fathom-transcript-poller.json`)
 
 Polls the Fathom API every 15 minutes for new meeting recordings. Fetches transcripts, formats them as plain text, saves to `./watch/`. If a matching chat log already exists, triggers the Merged Call Summarizer via Execute Workflow node.
@@ -166,22 +174,29 @@ This repo is a multi-module project. Everything above describes the n8n orchestr
 
 The two modules interact at the filesystem boundary: n8n writes artifacts to `./output/<YYYY-MM-DD>/`, and the retrieval-server container mounts that directory read-only as `/data/output/`. Plan B will wire n8n workflows to POST to the retrieval server's `/ingest` endpoint after producing artifacts.
 
-## Current status (as of 2026-04-18)
+## Current status (as of 2026-04-27)
 
-**Plan A — COMPLETE.** The Python retrieval server and its Docker Compose service are built and merged to `main`:
-- 37-field LanceDB v1.0 schema with trust-partitioned `/query` response (ground_truth / derived_metadata / provenance)
-- `/ingest`, `/query`, `/sessions`, `/reindex` endpoints with strict input validation and API-key auth
-- Env-var overrides for extraction models, prompts, embedding model (per-deployment model switching without editing YAML)
-- Open WebUI filter updated for the new response shape; inference guidelines embedded
-- 260 passing tests; `.dockerignore` prevents secrets from being baked into the image
+**Plan A — COMPLETE and DEPLOYED.** Retrieval server live on the n8n VM at `http://10.1.30.10:8999` (LAN-reachable). 37-field LanceDB v1.0 schema, trust-partitioned `/query`, all 252+ tests green.
 
-**What's NOT yet done:**
-- Actual deployment to the VM — runbook exists at `community-brain/docs/DEPLOYMENT.md`; bring-up hasn't happened
-- **Plan B — n8n workflow extensions.** Two workflows to build: (1) extend the existing Merged Call Summarizer to add the prep-prompt step and POST to `/ingest`; (2) new Transcript-Only Summarizer for the historical backlog (no chat log required). Needs design via `superpowers:brainstorming` then `superpowers:writing-plans`.
-- **Plan C — Historical backfill + production validation.** Run the transcript-only workflow across ~130 historical sessions, then validate the 5 query types from the spec against the full corpus. Mostly operational.
+**Plan B — COMPLETE.** Both n8n workflows wired to the retrieval server:
+- Workflow 1 (Merged Call Summarizer, n8n id 5): live weekly with prep-prompt + `/ingest` POST appended
+- Workflow 2 (Transcript-Only Summarizer, n8n id 6): backfill workflow with state file + resume
+- 8 sessions in LanceDB (~167 chunks): 6 consecutive Feb 2025 + `2026-04-14` + `2026-04-21`
+
+**Phase 6 — PARTIAL VALIDATION COMPLETE.** 5 query types from spec §10 tested against the 8-session subset. 3 pass cleanly, 2 have documented retrieval-layer caveats (vector search misses entity-grounded queries and structured-metadata-tagged chunks). Findings drove the v2 scope below.
+
+**What's still open — three tracks:**
+- **Track A (trivial):** Plan B's Task 17 — small CLAUDE.md update (this section is part of it)
+- **Track B (operational):** Plan C — full backfill across remaining 59 of 65 historical sessions (~12 hr overnight run, ~$3 cost)
+- **Track C (substantial):** Hybrid Retrieval v2 — fix the two retrieval-layer limitations Phase 6 validation surfaced. Needs full design cycle (brainstorming → spec → plan → implementation).
+
+**👉 START HERE in any new session:** [`docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`](docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md) — 3-minute read, contains starter prompts you can paste verbatim into a fresh session for each track.
 
 **Canonical references:**
-- Design spec: `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` (§10 has the rollout phases)
-- Plan A (reference): `docs/superpowers/plans/2026-04-18-community-brain-ingestion-plan-a.md`
+- **Handoff doc (read first):** `docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`
+- Plan A spec: `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` (§10 Phase 6 has the validation findings catalog)
+- Plan A plan: `docs/superpowers/plans/2026-04-18-community-brain-ingestion-plan-a.md`
+- Plan B spec: `docs/superpowers/specs/2026-04-19-plan-b-n8n-ingestion-integration-design.md`
+- Plan B plan: `docs/superpowers/plans/2026-04-19-plan-b-n8n-ingestion-integration-plan.md`
 - Trust contract: `docs/inference-guidelines.md`
 - Schema evolution rules: `docs/migrations/CHANGELOG.md`
