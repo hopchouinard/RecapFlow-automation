@@ -49,7 +49,7 @@ services:
     container_name: community_brain_retrieval
     restart: unless-stopped
     ports:
-      - "127.0.0.1:8999:8999"
+      - "8999:8999"
     # env_file loads values directly into the container from the documented
     # location (community-brain/config/.env, created by operator from .env.example).
     # Defaults for container-internal paths and Ollama endpoint live in the
