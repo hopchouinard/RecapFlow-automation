@@ -20,6 +20,7 @@ services:
       - N8N_SECURE_COOKIE=false
       - NODES_EXCLUDE=[]
       - NODE_FUNCTION_ALLOW_BUILTIN=fs,path
+      - N8N_MIGRATE_FS_STORAGE_PATH=true
     ports:
       - "5678:5678"
     volumes:
