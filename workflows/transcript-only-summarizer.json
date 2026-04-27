@@ -138,7 +138,7 @@
         "options": {
           "maxTokens": 8192,
           "temperature": 0.3,
-          "timeout": 600000
+          "timeout": 1800000
         }
       },
       "credentials": {
@@ -198,7 +198,7 @@
         "options": {
           "maxTokens": 8192,
           "temperature": 0.3,
-          "timeout": 600000
+          "timeout": 1800000
         }
       },
       "credentials": {
@@ -258,7 +258,7 @@
         "options": {
           "maxTokens": 8192,
           "temperature": 0.3,
-          "timeout": 600000
+          "timeout": 1800000
         }
       },
       "credentials": {
