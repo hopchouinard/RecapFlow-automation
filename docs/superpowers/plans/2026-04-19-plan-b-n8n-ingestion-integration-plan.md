@@ -1485,37 +1485,106 @@ No commit — verification only.
 
 ---
 
-## Task 16: Validate Workflow 2 against the five spec query types (single-session reality check)
+## Task 16: Phase 6 partial validation — chain integrity + 5 query-type sanity check
 
-**Purpose:** sanity-check that the ingested historical chunks are actually queryable in the way the spec §10 Phase 6 query taxonomy expects. Full validation against all 5 query types across the 65-session corpus is Plan C; here we just prove one session produces reasonable retrieval behavior.
+**Purpose:** verify the end-to-end retrieval chain (Open WebUI → filter → retrieval server → LanceDB → Ollama embed → response → LLM generation) produces faithful, citation-grounded answers, and exercise each of the 5 spec query types against a representative subset of the corpus. Full validation against the 65-session corpus is Plan C; this task is a bounded sanity check that surfaced and fixed real chain bugs.
+
+**Reference:** [spec §10 Phase 6 Validation findings (2026-04-27)](../specs/2026-04-18-community-brain-ingestion-pipeline-design.md#phase-6--open-webui-integration-and-validation) captures the bugs found, retrieval limitations, model-comparison outcomes, and operational recipe. **Read that section before starting Task 16** — it lists footguns that took days to diagnose during the original validation pass.
 
 ### Steps
 
-- [ ] **Step 1: Pick one ingested historical session with known content**
+- [ ] **Step 1: Pre-flight chain check (the failure modes captured in the spec)**
 
-From the state file, pick a session id that you're familiar with enough to form a target query.
-
-- [ ] **Step 2: Run one query per type and spot-check**
+The validation pass on 2026-04-27 surfaced five chain-integrity bugs that all produced confidently-wrong answers before being diagnosed. Confirm each is in the known-good state before generating any answers:
 
 ```bash
-SESSION_ID=<your picked session id>
-for Q in \
-  "how did approaches evolve over time" \
-  "what tools were compared and what was said about each" \
-  "what were the open questions participants raised" \
-  "what did Brandon recommend about thumbnails" \
-  "what decisions were made and what follow-ups flagged"
-do
-  echo "=== $Q ==="
-  printf '{"question":"%s","top_k":3}' "$Q" | \
-    ssh n8n-automation "curl -s http://127.0.0.1:8999/query \
-      -H 'Content-Type: application/json' --data-binary @-" | \
-    python3 -c "import json,sys; d=json.load(sys.stdin); [print(c['ground_truth']['chunk_id'], c['similarity']) for c in d['chunks'][:3]]"
-  echo
-done
+# 1. retrieval server LAN-reachable (was 127.0.0.1-only originally)
+curl -sf -m 5 -w "\nHTTP %{http_code}\n" http://<VM_LAN_IP>:8999/health
+# Expected: {"status":"ok"} HTTP 200
+
+# 2. /query returns trust-partitioned chunks (not 500 from missing nomic-embed-text)
+curl -s -X POST http://<VM_LAN_IP>:8999/query \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"test","top_k":3}' | head -c 400
+# Expected: chunks with ground_truth/derived_metadata/provenance partitions.
+# 500 with "model nomic-embed-text not found" => Ollama lost the embedding model;
+# pull it back: `ollama pull nomic-embed-text`.
+
+# 3. nomic-embed-text installed in Ollama
+curl -s http://<OLLAMA_HOST>:11434/api/tags | python3 -c "
+import json, sys
+d = json.load(sys.stdin)
+names = [m['name'] for m in d['models']]
+print('nomic-embed-text installed:', any('nomic-embed-text' in n for n in names))
+"
+
+# 4. Open WebUI container (if applicable) can reach retrieval server
+docker exec <openwebui-container> curl -sf -m 5 http://<VM_LAN_IP>:8999/health
+# Expected: 200. Failure = Docker bridge / firewall problem, NOT a filter bug.
 ```
 
-Expected: each query returns 3 chunks, at least one of which should be from `$SESSION_ID` for a query specifically about that session's content. This is NOT a pass/fail gate for Plan B — it's a sanity check that ingestion didn't produce junk.
+- [ ] **Step 2: Confirm filter is the post-validation version with embedded inference guidelines**
+
+In Open WebUI → Workspace → Functions → community_brain_filter, verify:
+- `_INFERENCE_GUIDELINES` constant present (search for `## Trust hierarchy`)
+- `timeout_seconds` valve default is **30** (not 3.0)
+- `_build_unavailable_message` contains `"RETRIEVAL SYSTEM ERROR"` framing
+- `retrieval_url` valve set to the actual VM endpoint (not the default `host.docker.internal`)
+
+After ANY filter re-upload: re-set the `retrieval_url` valve. Open WebUI does not preserve valve overrides across function file replacements.
+
+- [ ] **Step 3: Pick a validated answering model**
+
+Per spec §10 Phase 6 findings, model choice matters more than parameter count for trust-partitioned retrieval. Use one of:
+- **GPT-oss 20B** (validated A-grade on the 5 query types)
+- **Qwen3-coder 30B** (B+ — minor numerical paraphrase drift, otherwise faithful)
+- A frontier cloud model (Claude Sonnet, GPT-4-class) via OpenRouter
+
+**Avoid Gemma family** (4B and 26B both failed RAG-discipline on abstract questions during validation — see spec for details).
+
+- [ ] **Step 4: Run one query per spec query type and spot-check the response**
+
+For each of the 5 spec query types, run a representative question through Open WebUI with the chosen answering model. Then verify the chain end-to-end:
+
+```bash
+# Direct /query call to inspect what retrieval surfaced (control)
+QUESTION="<your question>"
+curl -s -X POST http://<VM_LAN_IP>:8999/query \
+  -H 'Content-Type: application/json' \
+  -d "{\"question\":\"${QUESTION}\",\"top_k\":8}" | \
+  python3 -c "
+import json, sys
+d = json.load(sys.stdin)
+for c in d['chunks']:
+    g = c['ground_truth']
+    print(f'[{c[\"similarity\"]:.3f}] {g[\"chunk_id\"]}')
+"
+```
+
+Then ask the same question in Open WebUI and verify the model's answer:
+- Cites `chunk_id` (NOT bracket numbers like `[1]`)
+- Quotes resolve to the actual `full_text` of the cited chunk
+- Names attributed to actual contributors from those chunks
+- No fabricated dates, attendees, or events
+
+**Spec query type checklist** (success criteria from §10):
+
+| # | Query type | Success criterion | Known limitation |
+|---|---|---|---|
+| 1 | Evolution over time | Result spans ≥2 distinct temporal phases (≥6 months apart); inference articulates change | Validated A-grade with 8-session corpus + GPT-oss 20B |
+| 2 | Relationships between ideas | ≥2 distinct entities linked via topic overlap or explicit references | Works well with consecutive sessions in the corpus |
+| 3 | Contradictions / disagreements | ≥2 chunks with differing `stance` on same `topic_label` or entity | **Structurally weak in mentor-mentee corpora** — disagreements are mostly intra-session, not opposing positions across sessions. Lower the bar for this type or skip if the corpus doesn't naturally contain it. |
+| 4 | Outcomes or impacts | ≥1 chunk with non-null `decisions` or `action_items`, followed by ≥1 chunk with `references_prior: true` or matching `topic_label` | **Entity-grounded queries (e.g. "what did X commit to") may fail retrieval** — vector search under-weights rare proper-noun tokens. Workaround: rephrase with concrete content keywords until hybrid search ships in v2. |
+| 5 | Missing / unresolved questions | ≥1 chunk with `has_unresolved_question: true` | Easiest type to satisfy; corpus typically has many unresolved-tagged chunks |
+
+- [ ] **Step 5: Document any new findings inline in the spec**
+
+If the validation surfaces new bugs or limitations not already captured, append them to spec §10 Phase 6 Validation findings. Future operators will thank you.
+
+**Exit criterion for Task 16:**
+- All 5 query types produce answers that meet their success criteria (with the noted limitations on types 3 and 4 acceptable as documented)
+- No chain integrity bugs surfaced beyond those already captured in the spec
+- Operational recipe in the spec works end-to-end on a fresh validation run
 
 No commit — verification only.
 
