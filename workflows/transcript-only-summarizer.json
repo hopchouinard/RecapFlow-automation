@@ -134,7 +134,7 @@
         500
       ],
       "parameters": {
-        "model": "moonshotai/kimi-k2.5",
+        "model": "anthropic/claude-sonnet-4.6",
         "options": {
           "maxTokens": 32768,
           "temperature": 0.3,
