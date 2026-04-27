@@ -349,7 +349,7 @@
         600
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst path = '/home/node/n8n-state/backfill-state.json';\nconst state = JSON.parse(fs.readFileSync(path, 'utf8'));\nconst totalCompleted = (state.completed || []).length;\nconst totalFailed = (state.failed || []).length;\nconst recentFailures = (state.failed || [])\n  .slice(-5)\n  .map(f => `  - ${f.session_id}: ${f.reason}`)\n  .join('\\n') || '  (none)';\n\nconst summary = `Backfill run complete.\n\nCompleted (cumulative): ${totalCompleted}\nFailed (cumulative):    ${totalFailed}\nLast-updated:           ${state.last_updated}\n\nRecent failures:\n${recentFailures}\n`;\nconsole.log(summary);\nreturn { json: { summary, totalCompleted, totalFailed } };"
+        "jsCode": "const fs = require('fs');\nconst path = '/home/node/n8n-state/backfill-state.json';\n\nlet state = { schema_version: '1', last_updated: null, completed: [], failed: [] };\nlet existed = false;\nif (fs.existsSync(path)) {\n  existed = true;\n  try {\n    state = JSON.parse(fs.readFileSync(path, 'utf8'));\n  } catch (e) {\n    return { json: {\n      summary: `Backfill run complete. State file at ${path} was unparseable: ${e.message}`,\n      totalCompleted: 0, totalFailed: 0, error: e.message\n    } };\n  }\n}\n\nconst totalCompleted = (state.completed || []).length;\nconst totalFailed = (state.failed || []).length;\nconst recentFailures = (state.failed || [])\n  .slice(-5)\n  .map(f => `  - ${f.session_id}: ${f.reason}`)\n  .join('\\n') || '  (none)';\n\nconst fileNote = existed ? '' : '\\n(NOTE: state file did not exist -- workflow may not have processed any sessions)';\n\nconst summary = `Backfill run complete.${fileNote}\n\nCompleted (cumulative): ${totalCompleted}\nFailed (cumulative):    ${totalFailed}\nLast-updated:           ${state.last_updated}\n\nRecent failures:\n${recentFailures}\n`;\nconsole.log(summary);\nreturn { json: { summary, totalCompleted, totalFailed, stateFileExisted: existed } };"
       }
     }
   ],
@@ -391,14 +391,14 @@
       "main": [
         [
           {
-            "node": "Code: Parse Session Meta",
+            "node": "Code: Summary Report",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Code: Summary Report",
+            "node": "Code: Parse Session Meta",
             "type": "main",
             "index": 0
           }
