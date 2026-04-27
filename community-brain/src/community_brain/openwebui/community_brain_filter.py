@@ -69,8 +69,13 @@ class Filter:
             description="Number of transcript chunks to retrieve",
         )
         timeout_seconds: float = Field(
-            default=3.0,
-            description="HTTP timeout for retrieval calls (seconds)",
+            default=30.0,
+            description="HTTP timeout for retrieval calls (seconds). Generous on "
+                        "purpose: /query embeds the question via Ollama (remote HTTP) "
+                        "before LanceDB search, and Ollama can spike to several seconds "
+                        "under concurrent load or cold start. 3s was too tight and "
+                        "produced silent fallthrough to the 'unavailable' branch, which "
+                        "many models then ignored and answered from training priors.",
         )
         min_score: float = Field(
             default=0.2,
@@ -153,13 +158,32 @@ class Filter:
         )
 
     def _build_unavailable_message(self) -> str:
-        """Message when retrieval server is unreachable or errored."""
+        """Message when retrieval server is unreachable or errored.
+
+        IMPORTANT: This message must be unambiguous. Earlier wording said
+        "do not answer questions about coaching call content" — multiple
+        models (Gemma 4 4B, Gemma 4 26B, GPT-oss 20B) interpreted that
+        narrowly, decided the user's question wasn't strictly "about
+        coaching call content," and answered from training priors anyway,
+        producing fabricated dates and citations. The wording below is
+        deliberately blunt and leaves no interpretive wiggle room.
+        """
         return (
             f"{CONTEXT_TAG}\n"
-            "Community Brain retrieval is currently unavailable. Do not answer "
-            "questions about coaching call content. Instead, inform the user that "
-            "transcript search is temporarily unavailable and suggest they try "
-            "again shortly."
+            "RETRIEVAL SYSTEM ERROR: Community Brain retrieval is currently "
+            "unavailable. You MUST NOT answer the user's question using your "
+            "general/training knowledge — even if the question seems answerable "
+            "from background knowledge. The user is querying this assistant "
+            "specifically to retrieve information from a private corpus of "
+            "coaching call transcripts; an answer drawn from training data "
+            "would be factually misleading even when superficially correct.\n\n"
+            "Your ONLY allowed response is a brief notice such as:\n\n"
+            "  > I cannot answer right now — the Community Brain retrieval "
+            "service is temporarily unavailable. Please try again in a moment, "
+            "or contact the operator if the issue persists.\n\n"
+            "Do NOT add caveats, partial answers, summaries, or 'general "
+            "perspectives.' Do NOT speculate about what the corpus might say. "
+            "Return only the unavailable notice."
         )
 
     def _retrieve_chunks(self, question: str) -> tuple[str, list[dict]]:
