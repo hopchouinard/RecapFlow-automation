@@ -416,7 +416,7 @@
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  session_id: $('Code: Create Output Folder').item.json.datePrefix,\n  session_date: $('Code: Create Output Folder').item.json.datePrefix,\n  session_title: 'Weekly call ' + $('Code: Create Output Folder').item.json.datePrefix,\n  artifact_paths: {\n    prepared_transcript: '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/prepared-transcript.md',\n    extracted_signal:    '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/extracted-signal.md',\n    community_post:      '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/community-post.md'\n  },\n  force_reextract: false\n}) }}",
         "options": {
-          "timeout": 600000,
+          "timeout": 1800000,
           "response": {
             "response": {
               "responseFormat": "json"

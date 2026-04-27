@@ -297,7 +297,7 @@
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  session_id: $('Code: Parse Session Meta').item.json.session_id,\n  session_date: $('Code: Parse Session Meta').item.json.session_date,\n  session_title: $('Code: Parse Session Meta').item.json.session_title,\n  artifact_paths: {\n    prepared_transcript: '/data/output/' + $('Code: Parse Session Meta').item.json.session_id + '/prepared-transcript.md',\n    extracted_signal:    '/data/output/' + $('Code: Parse Session Meta').item.json.session_id + '/extracted-signal.md',\n    community_post:      '/data/output/' + $('Code: Parse Session Meta').item.json.session_id + '/community-post.md'\n  },\n  force_reextract: false\n}) }}",
         "options": {
-          "timeout": 600000,
+          "timeout": 1800000,
           "response": {
             "response": {
               "responseFormat": "json"
