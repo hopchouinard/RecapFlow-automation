@@ -911,6 +911,60 @@ Failure on any criterion → iterate on the extraction prompt, Inference Guideli
 
 **Exit criteria:** all five criteria met with representative queries.
 
+#### Validation findings (2026-04-27 — partial validation against 8-session subset)
+
+Initial validation pass against an 8-session corpus (six consecutive Feb 2025 sessions + two April 2026 sessions) surfaced the following lessons. Captured here so future operators don't re-discover them.
+
+##### Chain integrity bugs (all fixed)
+
+The end-to-end retrieval chain (Open WebUI → filter → retrieval server → LanceDB → Ollama embed → response → LLM generation) had several silent failure modes that produced confidently-wrong answers for days before being diagnosed:
+
+1. **Filter timeout too tight.** The `community_brain_filter`'s default `timeout_seconds=3.0` was insufficient — `/query` includes a remote Ollama embed call that can spike past 3s under concurrent load or cold start. Silent `httpx.TimeoutException` → `("error", [])` → "unavailable" system prompt → models then ignored the unavailable instruction and answered from training priors. Bumped default to **30s**.
+
+2. **"Unavailable" instruction too soft.** Original wording said *"Do not answer questions about coaching call content"* — multiple models (Gemma 4 4B, Gemma 4 26B, GPT-oss 20B in its visible thinking) interpreted "coaching call content" narrowly and decided abstract/strategic questions weren't strictly "about" coaching call content, then confabulated answers. Replaced with explicit `"RETRIEVAL SYSTEM ERROR ... You MUST NOT answer using general/training knowledge — even if the question seems answerable"` plus a quoted exact-response template.
+
+3. **Filter URL valve resets to default on re-upload.** Open WebUI does not persist filter valve overrides across function file replacements. Operators MUST re-set `retrieval_url` after every filter upload. The default `http://host.docker.internal:8999/query` resolves to the Open WebUI host (typically the operator's Mac), not the VM where the retrieval server actually runs.
+
+4. **Port binding was localhost-only.** Original `docker-compose.yml` bound the retrieval server to `127.0.0.1:8999` — LAN-unreachable. Cross-host Open WebUI deployments require `8999:8999` (all interfaces). Documented and changed in repo.
+
+5. **`nomic-embed-text` can be silently evicted from Ollama.** Operators who pull large LLMs (Gemma 26B, Qwen 30B, GPT-oss 20B, etc.) into the same Ollama instance can lose the small embedding model to disk pressure or manual cleanup. `/health`, `/sessions`, `/speaker-aliases-block` continue to work normally — only `/query` fails (with HTTP 500). Operators should **pin `nomic-embed-text`** and treat its presence as a deploy-time precondition.
+
+##### Retrieval limitations identified
+
+6. **Vector search under-weights rare entity tokens.** Pure-vector retrieval via `nomic-embed-text` favors thematic similarity ("commit", "outcomes", "decisions") over proper-noun matches ("Adam", "Gold Flamingo"). Entity-grounded queries (*"What did Adam from Gold Flamingo commit to?"*) failed to surface the entity's actual chunks even when those chunks ranked at 0.42+ similarity for keyword-rephrased versions of the same question. **v2 backlog item:** add hybrid search (BM25 reranking on top-K vector candidates) to the retrieval server, or expose a `keyword_filter` parameter to the `/query` body.
+
+##### Generation-layer findings (model comparison)
+
+Same chain, same retrieved chunks, four different answering models:
+
+| Model | RAG-discipline grade | Failure mode |
+|---|---|---|
+| Gemma 4 4B (`gemma4:e4b`) | F on abstract questions | Read chunks correctly in thinking step, then ignored them and answered from training-data marketing-school templates with zero `chunk_id` citations |
+| Gemma 4 26B | F (worse than 4B) | Confidently hallucinated fake dates (`2024-05-22`, `2/24/24`) that don't exist in the corpus, with structured-looking output that masked the fabrication |
+| Qwen3-coder 30B | B+ | Real chunk_id citations; faithful structural framing; numerical paraphrase drift on specific quantitative claims (e.g. "40,000 subscribers" → "$40K monthly") |
+| GPT-oss 20B | A | Real citations, verbatim quotes, honest acknowledgment when relevant chunks weren't retrieved (refused to fabricate Adam-follow-up content rather than confabulating) |
+
+**Key insight:** RAG-discipline is NOT primarily a parameter-count issue — Qwen3-coder 30B and GPT-oss 20B both outperformed Gemma 4 26B. It's a training/instruction-following profile concern. Gemma's prior on marketing/strategic topics overrides retrieved context. Recommended local-model defaults: GPT-oss 20B or Qwen3-coder 30B; avoid Gemma family for trust-partitioned retrieval workflows.
+
+##### Corpus-coverage limits per query type (revised)
+
+The five spec criteria above assume a corpus rich enough to satisfy them. Against the 8-session validation corpus:
+
+- **Evolution over time** — works with adequate temporal spread (Feb 2025 + April 2026 = ~14 months satisfies the ≥6-month criterion).
+- **Relationships between ideas** — works when the same entities recur across sessions; consecutive weekly sessions are stronger material than scattered samples for relationship surfacing.
+- **Contradictions / disagreements** — **structurally weak** for this kind of corpus. Coaching-call disagreements are mostly intra-session (one mentor advising on a topic, one mentee with initial assumptions); they're not opposing positions held across sessions. The spec criterion ("≥2 chunks with differing `stance` on same `topic_label`") is too strict for typical mentor-mentee content.
+- **Outcomes / impacts** — works when retrieval surfaces the entity's chunks. Vector search on entity-grounded queries (see finding 6) is the bottleneck — operator may need to rephrase questions with concrete content keywords until hybrid search lands in v2.
+- **Missing / unresolved questions** — corpus has rich material (e.g. 11 unresolved-tagged chunks in 2025-02-05, 7 in 2025-02-19); pending validation.
+
+##### Operational recipe (working configuration as of 2026-04-27)
+
+For a Phase 6 sign-off run, this configuration is known good:
+
+- Filter: post-Plan-A version with embedded `_INFERENCE_GUIDELINES` constant; `timeout_seconds=30`; URL pointing at the retrieval server's LAN-reachable address; tightened "unavailable" message.
+- Retrieval server: bound to `0.0.0.0:8999` for cross-host access; `nomic-embed-text` pinned in Ollama.
+- Answering model: GPT-oss 20B (validated) or Qwen3-coder 30B (validated with caveat on numerical drift). Avoid Gemma family.
+- Operator awareness: vector-search-on-names limitation means entity queries may need keyword rephrasing until hybrid search ships.
+
 ### Rollout dependencies
 
 ```
