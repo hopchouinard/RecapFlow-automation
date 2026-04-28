@@ -1,9 +1,6 @@
 """Query helpers for Community Brain (v1 chunks-table search path).
 
-Exposes the v2-suffixed search/filter helpers used by the retrieval server.
-Both `_v2` symbols here are pending rename to canonical names in a follow-up
-task; the suffix is intentionally retained for now to keep the rename diff
-isolated.
+Exposes the search/filter helpers used by the retrieval server.
 """
 
 from __future__ import annotations
@@ -19,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 __all__ = [
     "search_chunks_v2",
-    "build_filter_expression_v2",
+    "build_filter_expression",
     "sql_quote",
 ]
 
@@ -38,7 +35,7 @@ def sql_quote(value: str) -> str:
     return value.replace("'", "''")
 
 
-def build_filter_expression_v2(filters: dict | None) -> str | None:
+def build_filter_expression(filters: dict | None) -> str | None:
     """Build a LanceDB WHERE clause from the v2 filter dict.
 
     Semantics (per spec §7.1):
@@ -125,7 +122,7 @@ def search_chunks_v2(
 ) -> list[dict]:
     """Filter-then-rank v2 search against the new chunks table.
 
-    Applies `build_filter_expression_v2(filters)` as a LanceDB WHERE clause
+    Applies `build_filter_expression(filters)` as a LanceDB WHERE clause
     first, then ranks the filtered rows by vector similarity to the embedded
     question. Per spec §7.1: filtering precedes ranking; ranking uses vector
     similarity alone in v1.
@@ -152,7 +149,7 @@ def search_chunks_v2(
 
     # Failed-extraction chunks carry a zero-vector embedding and must be
     # excluded from vector search. AND the user filter with the status guard.
-    user_expr = build_filter_expression_v2(filters)
+    user_expr = build_filter_expression(filters)
     status_guard = "extraction_status = 'success'"
     expr = f"({user_expr}) AND {status_guard}" if user_expr else status_guard
     query = query.where(expr)
