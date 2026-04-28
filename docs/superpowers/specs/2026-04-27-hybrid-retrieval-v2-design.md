@@ -326,6 +326,27 @@ If validation surfaces a regression (some currently-good query degrades) and we 
 4. **Test corpus fixture location and size.** The golden test needs a real (not synthetic) chunk corpus to exercise lexical+vector ranking. Either commit a subset of 8-session output as a small fixture (~167 chunks of artifact text), or generate a synthetic one. Decide during implementation.
 5. **Rollback compatibility of the FTS index file.** §10.2 assumes a pre-v2 binary can open a post-v2 LanceDB directory (one that has an FTS index built) without failing. This is consistent with LanceDB's auxiliary-index design but worth verifying empirically before the operator-side validation cutover. If it turns out pre-v2 chokes on the index presence, rollback requires deleting the index directory before redeploying the prior image — still tractable, just a documented step.
 
+### 11.1 Resolution
+
+LanceDB FTS update-on-write behavior verified via `community-brain/scripts/spike_lancedb_fts.py` on 2026-04-28 (lancedb 0.30.2, the version pinned in `community-brain/.venv`):
+
+- **Observed behavior:** auto-update. New rows added via `table.add(...)` after `create_fts_index("full_text")` are visible to subsequent `query_type="fts"` searches with no explicit refresh call.
+- **Production hook:** `optimize_fts_index` is a no-op (returns immediately). Document the rationale inline so a future reader does not assume the function is dead code waiting to be removed; it exists as the seam where a future LanceDB version that drops auto-update can be patched without changing call sites in `pipeline.py` and the boot path.
+- **Cost on current corpus:** initial `create_fts_index` on a 170-row stand-in took ~3.6ms; post-index `table.add(1 row)` took ~1.1ms; a follow-up FTS search returning the freshly-added row took ~2.4ms. Expect comparable numbers on the 167-chunk live corpus and sub-second numbers even at 10× growth.
+- **Spike script output (relevant lines):**
+  ```
+  [ok] create_fts_index built
+  [ok] FTS query returned 1 rows: ['a']
+  [ok] hybrid query returned 2 rows: ['a', 'b']
+  [after add, no optimize] FTS query for 'Adam LinkedIn' returned 2 rows: ['c', 'a']
+  [ok] table.optimize() succeeded
+  [after optimize] FTS query for 'Adam LinkedIn' returned 2 rows: ['c', 'a']
+  [ok] create_fts_index(replace=True) succeeded
+  [after replace] FTS query for 'Adam LinkedIn' returned 2 rows: ['c', 'a']
+  ```
+  The `[after add, no optimize]` line returning chunk `c` (inserted *after* the FTS index was built) is the decisive evidence: no optimize/replace required.
+- **Side note for implementation (LanceDB 0.30.x):** the hybrid query API requires the explicit `table.search(query_type="hybrid").vector(...).text(...)` builder form. Passing the vector positionally to `search()` while also calling `.text(...)` raises `ValueError: You can either provide a string query in search() method or set vector() and text() explicitly for hybrid search. But not both.` Use the explicit-builder form in `pipeline.py` and the operator CLI, not the positional shortcut some older docs/snippets show.
+
 ## 12. Future work (v3 candidates)
 
 Not part of v2; capturing here so they don't get lost:
