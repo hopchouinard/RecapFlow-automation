@@ -1406,8 +1406,12 @@ def search_chunks(
 
     if _use_hybrid:
         try:
+            # LanceDB 0.30.x hybrid API: explicit builder form. Passing the
+            # vector positionally to .search() while also calling .text(...)
+            # raises ValueError. See spec §11.1 Resolution side note.
             query = (
-                table.search(query_vector, query_type="hybrid")
+                table.search(query_type="hybrid")
+                .vector(query_vector)
                 .text(question)
                 .where(where_expr)
                 .limit(candidate_count)
