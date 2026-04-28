@@ -80,7 +80,7 @@ chunks[].provenance          ← tracks what generated it (model, prompt_version
 
 ### Failed-extraction chunks are intentionally unsearchable
 - Chunks with `extraction_status="failed"` persist with empty `embedding: []`.
-- They're excluded from vector search by design — operators use `/reindex` (v2) or `force_reextract` to retry.
+- They're excluded from `/query` results by the `extraction_status='success'` WHERE-clause guard, which runs in both the hybrid path and the vector-only fallback path. Operators use `/reindex` (v2) or `force_reextract` to retry.
 - Do **not** "fix" this by backfilling embeddings for failed chunks.
 
 ### Security / injection

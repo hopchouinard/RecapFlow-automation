@@ -25,6 +25,30 @@ queries:
     min_match_count: 2
     expect_lift_over_vector_only: false
 
+  - id: f6-maria
+    question: "What did Maria from Beacon Analytics propose?"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-maria-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
+  - id: f6-blueocean
+    question: "Tell me about the BlueOcean Capital partnership"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-blueocean-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
+  - id: f6-tokyo
+    question: "What was discussed about Tokyo Labs Research Group?"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-tokyo-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
   # --- Finding 7 (metadata-tagged) ---
   - id: f7-unresolved
     question: "What unresolved questions came up across these calls?"

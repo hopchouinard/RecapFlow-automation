@@ -27,6 +27,28 @@ __all__ = [
 ]
 
 
+def _cosine_distance(a: list[float], b: list[float]) -> float:
+    """Cosine distance between two equal-length vectors. Range [0, 2].
+
+    Used to populate `_distance` on hybrid-query results — LanceDB's hybrid
+    mode returns `_relevance_score` (the RRF score) but no `_distance`.
+    Spec §7.2 requires the public `similarity` field (computed downstream
+    as `1 - _distance` in retrieval_server) to reflect vector cosine
+    similarity, not the internal RRF/cue-boost score.
+    """
+    import math
+    dot = 0.0
+    norm_a = 0.0
+    norm_b = 0.0
+    for x, y in zip(a, b):
+        dot += x * y
+        norm_a += x * x
+        norm_b += y * y
+    if norm_a == 0.0 or norm_b == 0.0:
+        return 1.0
+    return 1.0 - dot / (math.sqrt(norm_a) * math.sqrt(norm_b))
+
+
 def sql_quote(value: str) -> str:
     """Escape a string for SQL single-quoted literal context.
 
@@ -195,22 +217,29 @@ def search_chunks(
     candidates: list[dict] = []
     for i in range(results.num_rows):
         row = {col: results[col][i].as_py() for col in results.column_names}
-        # LanceDB hybrid mode emits _relevance_score; vector-only emits
-        # _distance. Normalize to a single _rrf_score key the cue boost
-        # layer reads. Also populate _distance for the hybrid path so the
-        # retrieval server's public `similarity` field stays meaningful
-        # (1 - _distance reflects boosted score post cue layer).
+        # LanceDB hybrid mode emits _relevance_score (RRF) but no _distance.
+        # Vector-only fallback emits _distance (cosine) but no _relevance_score.
+        # Normalize:
+        #   - _rrf_score: the internal ranking signal the cue-boost layer reads.
+        #   - _distance:  vector cosine distance, preserved per spec §7.2 so
+        #                 retrieval_server's `similarity = 1 - _distance` keeps
+        #                 the v1 numeric scale (~0.3–0.8 cosine similarity).
         if "_relevance_score" in row:
             row["_rrf_score"] = float(row["_relevance_score"])
-            row["_distance"] = 1.0 - row["_rrf_score"]
+            embedding = row.get("embedding")
+            if embedding:
+                row["_distance"] = _cosine_distance(query_vector, list(embedding))
+            else:
+                # No embedding column projected; let downstream similarity
+                # default to 1.0 (1 - 0). Better than fabricating a value.
+                row["_distance"] = 0.0
         else:
-            # vector-only fallback path: convert _distance → similarity-like score
+            # Vector-only fallback path: _distance is already present from LanceDB.
             row["_rrf_score"] = 1.0 - float(row.get("_distance", 0.0))
         candidates.append(row)
 
     boosted = apply_cue_boosts(question, candidates)
-    # Sync _distance back to boosted score so retrieval_server's
-    # `similarity = 1 - _distance` reflects post-cue-boost ranking.
-    for row in boosted:
-        row["_distance"] = 1.0 - row.get("_rrf_score", 0.0)
+    # IMPORTANT: do NOT re-sync _distance from _rrf_score here.
+    # _distance reflects vector cosine similarity (spec §7.2); cue boost
+    # only changes ranking via _rrf_score, not the surface similarity field.
     return boosted[:top_k]
