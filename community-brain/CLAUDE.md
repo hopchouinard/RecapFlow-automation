@@ -40,12 +40,14 @@ community-brain/
 │   │   └── pipeline.py     # Orchestrator (ingest_session)
 │   ├── query/
 │   │   ├── retrieval_server.py  # FastAPI app
-│   │   └── query_local.py       # CLI + search helpers
+│   │   ├── query_local.py       # search helpers (hybrid vector + BM25)
+│   │   ├── cue_rules.py         # v2 cue-boost rules + apply_cue_boosts
+│   │   └── fts_lifecycle.py     # ensure_fts_index / optimize_fts_index
 │   └── openwebui/
 │       └── community_brain_filter.py  # Open WebUI filter (ships as single file)
 ├── config/                 # YAMLs + extraction prompts (mounted into container)
 ├── lancedb/                # Vector store (persistent volume)
-└── tests/                  # pytest; 260+ tests
+└── tests/                  # pytest; 296+ tests
 ```
 
 ## Non-negotiables (architectural discipline)
@@ -83,7 +85,7 @@ chunks[].provenance          ← tracks what generated it (model, prompt_version
 
 ### Security / injection
 - `session_id` and `chunk_id` must match `_SAFE_ID_RE = ^[0-9A-Za-z_\-:.]+$`. Validated at `ingest_session` entry; trips a 400 at the HTTP boundary.
-- Filter values (entities, speakers, keywords) in `build_filter_expression_v2` go through `sql_quote` — SQL-standard `'` → `''` escaping. Simple string scalars only; anything structured would need parameterized queries.
+- Filter values (entities, speakers, keywords) in `build_filter_expression` go through `sql_quote` — SQL-standard `'` → `''` escaping. Simple string scalars only; anything structured would need parameterized queries.
 - Artifact paths constrained to `COMMUNITY_BRAIN_ARTIFACT_ROOT` when that env is set (required in Docker deployment; optional on VM-direct runs).
 
 ## Env-var precedence chain (Docker deployment)
@@ -194,6 +196,7 @@ Local dev reads `config/.env` via `python-dotenv`; Docker reads it via compose `
 - **Filter values are interpolated (sql_quote-escaped), not parameterized.** Safe for simple string scalars; would need real parameterization for structured or untrusted filter inputs.
 - **The Open WebUI filter embeds inference guidelines as a module constant**, not loaded from disk at runtime. Deployment-safe; requires manual parity sync with `docs/inference-guidelines.md` (test enforces).
 - **Empty-string env vars from env_file clobber Dockerfile ENV.** Worked around via commented `.env.example` entries + defensive `... or None` at read sites.
+- **`/query` ranking is hybrid (vector + BM25 RRF, k=60) with cue-driven metadata boosting.** Replaced pure-vector ranking in v2; see `docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md`. Pure-vector ranking is no longer available as an opt-in mode — vector-only path is reserved for internal graceful-degradation when the FTS index is unavailable. The cue-boost layer composes additive RRF-score deltas based on lexical cues in the question matching candidate-chunk metadata flags (see `community_brain.query.cue_rules`).
 
 ## Interaction with n8n (root workflows)
 
