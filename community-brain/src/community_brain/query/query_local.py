@@ -15,7 +15,7 @@ from community_brain.ingestion.embedding import _active_embed_model
 logger = logging.getLogger(__name__)
 
 __all__ = [
-    "search_chunks_v2",
+    "search_chunks",
     "build_filter_expression",
     "sql_quote",
 ]
@@ -112,7 +112,7 @@ def build_filter_expression(filters: dict | None) -> str | None:
     return " AND ".join(clauses)
 
 
-def search_chunks_v2(
+def search_chunks(
     question: str,
     db_path: str,
     top_k: int,

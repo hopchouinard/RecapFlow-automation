@@ -231,7 +231,7 @@ def speaker_aliases_block(_key: str | None = Depends(_verify_api_key)) -> str:
 
 @app.post("/query", response_model=QueryResponseV2)
 def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
-    from community_brain.query.query_local import search_chunks_v2
+    from community_brain.query.query_local import search_chunks
 
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
     # Treat empty-string OLLAMA_BASE_URL (common side-effect of env_file
@@ -244,7 +244,7 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     effective_filters = req.filters if req.filters is not None else QueryFilters()
     filters_dict = effective_filters.model_dump(exclude_none=False)
 
-    raw = search_chunks_v2(
+    raw = search_chunks(
         question=req.question,
         db_path=db_path,
         top_k=req.top_k,
