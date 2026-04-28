@@ -116,15 +116,21 @@ def chunks_db(tmp_path, monkeypatch):
 
 def test_hybrid_surfaces_adam_chunk_for_keyword_query(chunks_db):
     """The query vector is identical to chunks 'b', 'b2', 'b3' — pure-vector
-    ranks all three at distance 0 and would fill top_k=1 with one of them,
-    pushing 'a' (entity match in full_text but distant vector) out of the
-    top-K. Hybrid (vector + BM25 over 'Adam Gold Flamingo') must surface
-    'a' via the RRF fusion — proving the lexical leg pulls in entity-grounded
-    chunks the vector leg misses."""
+    ranks all three at distance 0 and would fill top_k with one or more of
+    them, pushing 'a' (entity match in full_text but distant vector) out
+    under pure-vector ranking. Hybrid (vector + BM25 over 'Adam Gold
+    Flamingo') must surface 'a' via the RRF fusion — proving the lexical
+    leg pulls in entity-grounded chunks the vector leg misses.
+
+    `top_k=2` here gives RRF a stable window: 'a' and 'b' tie on RRF score
+    (sample lift = `1/61` from each leg's #1 rank), so top-1 alone would
+    be brittle to sort-ties. Top-2 is enough to prove the lexical pull
+    without depending on tie-break order.
+    """
     results = search_chunks(
         question="Adam from Gold Flamingo",
         db_path=chunks_db,
-        top_k=1,
+        top_k=2,
         filters=None,
     )
     assert len(results) >= 1
@@ -168,3 +174,58 @@ def test_hybrid_excludes_failed_extraction_chunks(chunks_db):
     )
     ids = [r["chunk_id"] for r in results]
     assert "c-failed" not in ids
+
+
+def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
+    chunks_db,
+):
+    """When the question contains 'unresolved questions', a chunk tagged
+    has_unresolved_question=True must rank above an otherwise-equal chunk
+    without the tag — even when their RRF scores are very close.
+
+    Verifies the cue boost layer runs after RRF fusion and before top_k
+    truncation.
+    """
+    db = lancedb.connect(chunks_db)
+    table = db.open_table("chunks")
+    base = dict(table.to_arrow().to_pylist()[0])
+
+    # Add additional 'b'-clones so the b-cluster fully saturates top_k=3
+    # at zero vector distance. Without cue boost, 'u' (vector slightly
+    # offset from b's vector) sits one rank below and falls out of top-3.
+    extra_b_clones = []
+    for i, suffix in enumerate(("b4", "b5")):
+        clone = dict(base)
+        clone.update(
+            {
+                "chunk_id": suffix,
+                "full_text": f"additional thematic discussion variant {i}",
+                "has_unresolved_question": False,
+                "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
+            }
+        )
+        extra_b_clones.append(clone)
+    table.add(extra_b_clones)
+
+    flagged_row = dict(base)
+    flagged_row.update(
+        {
+            "chunk_id": "u",
+            "full_text": "general weekly community sync about onboarding and retention",
+            "has_unresolved_question": True,
+            "embedding": [0.95, 0.05] + [0.0] * (EMBEDDING_DIM - 2),
+        }
+    )
+    table.add([flagged_row])
+    optimize_fts_index(table, "full_text")
+
+    results = search_chunks(
+        question="what unresolved questions came up?",
+        db_path=chunks_db,
+        top_k=3,
+        filters=None,
+    )
+    ids = [r["chunk_id"] for r in results]
+    assert "u" in ids, (
+        f"cue boost failed to promote unresolved-question chunk; got {ids}"
+    )

@@ -11,6 +11,7 @@ import lancedb
 import ollama
 
 from community_brain.ingestion.embedding import _active_embed_model
+from community_brain.query.cue_rules import apply_cue_boosts
 
 logger = logging.getLogger(__name__)
 
@@ -191,7 +192,25 @@ def search_chunks(
         )
         results = query.to_arrow()
 
-    return [
-        {col: results[col][i].as_py() for col in results.column_names}
-        for i in range(results.num_rows)
-    ]
+    candidates: list[dict] = []
+    for i in range(results.num_rows):
+        row = {col: results[col][i].as_py() for col in results.column_names}
+        # LanceDB hybrid mode emits _relevance_score; vector-only emits
+        # _distance. Normalize to a single _rrf_score key the cue boost
+        # layer reads. Also populate _distance for the hybrid path so the
+        # retrieval server's public `similarity` field stays meaningful
+        # (1 - _distance reflects boosted score post cue layer).
+        if "_relevance_score" in row:
+            row["_rrf_score"] = float(row["_relevance_score"])
+            row["_distance"] = 1.0 - row["_rrf_score"]
+        else:
+            # vector-only fallback path: convert _distance → similarity-like score
+            row["_rrf_score"] = 1.0 - float(row.get("_distance", 0.0))
+        candidates.append(row)
+
+    boosted = apply_cue_boosts(question, candidates)
+    # Sync _distance back to boosted score so retrieval_server's
+    # `similarity = 1 - _distance` reflects post-cue-boost ranking.
+    for row in boosted:
+        row["_distance"] = 1.0 - row.get("_rrf_score", 0.0)
+    return boosted[:top_k]
