@@ -14,6 +14,11 @@ from community_brain.ingestion.embedding import _active_embed_model
 
 logger = logging.getLogger(__name__)
 
+# Hybrid retrieval oversampling factor (spec §3.1): the LanceDB hybrid query
+# returns top_k * OVERSAMPLE_FACTOR raw candidates so the downstream cue-boost
+# step (T10) has headroom to re-rank before truncating to top_k.
+OVERSAMPLE_FACTOR = 3
+
 __all__ = [
     "search_chunks",
     "build_filter_expression",
@@ -119,23 +124,27 @@ def search_chunks(
     filters: dict | None,
     ollama_base_url: str | None = None,
     table_name: str = "chunks",
+    _use_hybrid: bool = True,
 ) -> list[dict]:
-    """Filter-then-rank v2 search against the new chunks table.
+    """Hybrid (vector + BM25) search against the chunks table with optional
+    structured filters and the success-guard.
 
-    Applies `build_filter_expression(filters)` as a LanceDB WHERE clause
-    first, then ranks the filtered rows by vector similarity to the embedded
-    question. Per spec §7.1: filtering precedes ranking; ranking uses vector
-    similarity alone in v1.
+    Pipeline (spec §3.1):
+      1. Embed `question` via Ollama (nomic-embed-text).
+      2. LanceDB hybrid query: RRF(vector, BM25 on full_text), oversampled
+         by OVERSAMPLE_FACTOR.
+      3. WHERE clause: extraction_status = 'success' AND caller's filters.
+      4. Return top (top_k * OVERSAMPLE_FACTOR) raw rows; cue boost runs
+         downstream in the caller (T10 wires that in).
 
-    Returns empty list if the table doesn't exist yet (fresh deployment).
-
-    Returns raw LanceDB row dicts (including `_distance`). The retrieval server
-    translates these into the structured ground_truth/derived_metadata/provenance
-    response shape.
+    `_use_hybrid=False` is a test-only knob that drops the BM25 leg —
+    used by the lift-validation tests in the golden query suite to prove
+    the hybrid pathway is what surfaces the missing chunks.
     """
     db = lancedb.connect(db_path)
     if table_name not in db.list_tables().tables:
         return []
+    table = db.open_table(table_name)
 
     if ollama_base_url:
         client = ollama.Client(host=ollama_base_url)
@@ -144,17 +153,44 @@ def search_chunks(
         response = ollama.embed(model=_active_embed_model(), input=[question])
     query_vector = response["embeddings"][0]
 
-    table = db.open_table(table_name)
-    query = table.search(query_vector).limit(top_k)
-
-    # Failed-extraction chunks carry a zero-vector embedding and must be
-    # excluded from vector search. AND the user filter with the status guard.
     user_expr = build_filter_expression(filters)
     status_guard = "extraction_status = 'success'"
-    expr = f"({user_expr}) AND {status_guard}" if user_expr else status_guard
-    query = query.where(expr)
+    where_expr = f"({user_expr}) AND {status_guard}" if user_expr else status_guard
 
-    results = query.to_arrow()
+    candidate_count = top_k * OVERSAMPLE_FACTOR
+
+    if _use_hybrid:
+        try:
+            # LanceDB 0.30.x hybrid API: explicit builder form. Passing the
+            # vector positionally to .search() while also calling .text(...)
+            # raises ValueError. See spec §11.1 Resolution side note.
+            query = (
+                table.search(query_type="hybrid")
+                .vector(query_vector)
+                .text(question)
+                .where(where_expr)
+                .limit(candidate_count)
+            )
+            results = query.to_arrow()
+        except Exception as exc:
+            logger.warning(
+                "hybrid query failed (%r); falling back to vector-only ranking",
+                exc,
+            )
+            query = (
+                table.search(query_vector)
+                .where(where_expr)
+                .limit(candidate_count)
+            )
+            results = query.to_arrow()
+    else:
+        query = (
+            table.search(query_vector)
+            .where(where_expr)
+            .limit(candidate_count)
+        )
+        results = query.to_arrow()
+
     return [
         {col: results[col][i].as_py() for col in results.column_names}
         for i in range(results.num_rows)
