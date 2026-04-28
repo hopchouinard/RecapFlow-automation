@@ -55,22 +55,16 @@ def ensure_fts_index(table, column: str) -> None:
 
 
 def optimize_fts_index(table, column: str) -> None:
-    """Refresh the FTS index after new rows are added.
+    """LanceDB FTS auto-includes rows added after index creation (verified
+    by the spike, spec §11.1 Resolution: lancedb 0.30.x auto-update path).
+    No-op.
 
-    The exact mechanic was decided by the spike (Task 1, spec §11.1). Update
-    the body of this function according to the recorded resolution:
-      - auto-update: leave as no-op + debug log
-      - optimize required: call table.optimize()
-      - recreate required: call table.create_fts_index(column, replace=True)
-
-    Failures are caught and logged at WARNING; chunks are already committed
-    so a refresh failure is not fatal.
+    Kept as a callable function rather than removed because:
+      - call sites (pipeline.py post-commit, future operator hooks) treat
+        it as the canonical refresh API; the indirection lets us swap to
+        table.optimize() or create_fts_index(..., replace=True) in one
+        place if a future LanceDB version drops auto-update;
+      - explicit "we considered this and chose no-op" reads better than
+        the absence of any refresh hook would.
     """
-    # IMPLEMENTATION NOTE for the engineer running this task:
-    # Replace the body below with the path the spike (Task 1) verified.
-    # Default is a no-op + warning so missing this step shows up loudly.
-    logger.warning(
-        "optimize_fts_index is a no-op until Task 8 wires the spike outcome. "
-        "Spike resolution (spec §11.1): LanceDB 0.30.x auto-updates FTS on add; "
-        "T8 will replace this body with a clean no-op + rationale."
-    )
+    logger.debug("optimize_fts_index(%r): auto-update path; no-op", column)
