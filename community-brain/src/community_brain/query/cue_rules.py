@@ -10,8 +10,12 @@ enough that YAML config would be premature. See spec §5 for the full design.
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from typing import Callable
+
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -101,3 +105,53 @@ CUE_RULES: tuple[CueRule, ...] = (
         delta=0.003,
     ),
 )
+
+
+def cue_phrase_matches(question: str, phrases: tuple[str, ...]) -> bool:
+    """Case-insensitive substring match: returns True if any phrase appears
+    anywhere in `question` ignoring case.
+    """
+    q = question.lower()
+    return any(p in q for p in phrases)
+
+
+def apply_cue_boosts(
+    question: str,
+    candidates: list[dict],
+    rules: tuple[CueRule, ...] = CUE_RULES,
+) -> list[dict]:
+    """Apply cue-driven additive boosts to candidate RRF scores.
+
+    For each rule whose cue phrases match the question, scan the candidates;
+    for each candidate satisfying the rule's target_predicate, add the
+    rule's delta to the candidate's `_rrf_score`. Returns a new list of new
+    dicts, sorted by boosted score descending.
+
+    Rule exceptions are caught and logged at WARNING; the offending rule is
+    skipped, other rules continue.
+
+    Spec §5.4 (composition): multiple rules can fire on the same candidate;
+    deltas accumulate without cap.
+    """
+    boosted = [dict(c) for c in candidates]
+
+    for rule in rules:
+        if not cue_phrase_matches(question, rule.cue_phrases):
+            continue
+        for chunk in boosted:
+            try:
+                if rule.target_predicate(chunk):
+                    chunk["_rrf_score"] = chunk.get("_rrf_score", 0.0) + rule.delta
+            except Exception as exc:
+                logger.warning(
+                    "cue rule %r predicate raised on chunk %r: %s; skipping rule for remaining candidates",
+                    rule.name,
+                    chunk.get("chunk_id", "<no-id>"),
+                    exc,
+                )
+                # Don't continue applying this rule to other chunks once it
+                # has demonstrated it raises — the predicate is buggy.
+                break
+
+    boosted.sort(key=lambda c: c.get("_rrf_score", 0.0), reverse=True)
+    return boosted
