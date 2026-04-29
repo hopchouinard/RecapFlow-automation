@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import logging
+import os
 from pathlib import Path
 
 import lancedb
@@ -198,7 +199,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Populate corpus_derived_markers (recurrent) on chunks."
     )
-    parser.add_argument("--db", default="/data/lancedb/nomic-v1")
+    # CLI convenience: read env var as fallback default so operators don't need
+    # to pass --db explicitly when COMMUNITY_BRAIN_DB_PATH is set in the shell.
+    # This is the only place the env var is consulted; lint_corpus_chunks() itself
+    # treats its db_path parameter as authoritative and never reads the env var.
+    _default_db = os.environ.get("COMMUNITY_BRAIN_DB_PATH") or "/data/lancedb/nomic-v1"
+    parser.add_argument("--db", default=_default_db)
     parser.add_argument(
         "--rebuild",
         action="store_true",

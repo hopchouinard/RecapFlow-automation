@@ -1636,3 +1636,64 @@ def test_idempotent_retry_runs_lint_corpus(
         "corpus_markers_computed_at still None after idempotent retry — "
         "lint_corpus did NOT run on the all-skipped early-return path (round-4 finding)"
     )
+
+
+def test_post_commit_maintenance_lint_uses_explicit_db_path_not_env_var(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Regression: COMMUNITY_BRAIN_DB_PATH env var must NOT override the
+    db_path that ingest_session passes to _post_commit_maintenance.
+
+    If the env var could override the explicit path, lint would run on the
+    wrong corpus (db_b) while chunks were committed to the right one (db_a) —
+    a silent maintenance bypass introduced by deploy misconfiguration.
+
+    Setup:
+    - db_a = ingest target (used as db_path arg)
+    - db_b = bogus override target (set as COMMUNITY_BRAIN_DB_PATH)
+    - Run ingest_session with db_path=db_a
+    - Assert: chunks in db_a have corpus_markers_computed_at != None
+              (lint ran on db_a, the right corpus)
+    - Assert: db_b is untouched (env-var override was NOT followed)
+    """
+    import lancedb as _lancedb
+
+    db_a = tmp_path / "db_a"
+    db_b = tmp_path / "db_b"
+
+    # Set COMMUNITY_BRAIN_DB_PATH to db_b — the wrong target.
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(db_b))
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+
+    request = IngestRequest(
+        session_id="2026-02-12",
+        session_date="2026-02-12",
+        session_title="Env-var override regression test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Ingest into db_a explicitly.
+    ingest_session(request, config_dir, str(db_a), None)
+
+    # db_a: lint must have run — all rows should have corpus_markers_computed_at set.
+    db_a_conn = _lancedb.connect(str(db_a))
+    rows_a = db_a_conn.open_table("chunks").to_arrow().to_pylist()
+    assert len(rows_a) > 0, "no rows in db_a — ingest did not run"
+    assert all(r["corpus_markers_computed_at"] is not None for r in rows_a), (
+        "corpus_markers_computed_at is None in db_a — lint did not run on the "
+        "explicit db_path (round-5 regression: env-var override may have fired)"
+    )
+
+    # db_b: must not exist (or must be empty) — lint must NOT have touched it.
+    if db_b.exists():
+        db_b_conn = _lancedb.connect(str(db_b))
+        tables_b = db_b_conn.list_tables().tables
+        assert "chunks" not in tables_b, (
+            "db_b has a 'chunks' table — COMMUNITY_BRAIN_DB_PATH env var "
+            "overrode the explicit db_path in _post_commit_maintenance (round-5 regression)"
+        )

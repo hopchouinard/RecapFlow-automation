@@ -494,8 +494,11 @@ def _post_commit_maintenance(table, db_path: str | Path) -> None:
             f"Refusing to return success with /query degraded to vector-only."
         ) from exc
     try:
-        _lint_db_path = os.environ.get("COMMUNITY_BRAIN_DB_PATH") or db_path
-        lint_stats = lint_corpus_chunks(_lint_db_path)
+        # db_path is authoritative here — it's the same path ingest_session
+        # committed chunks to. COMMUNITY_BRAIN_DB_PATH is NOT consulted so that
+        # deploy misconfiguration (a leftover env var pointing elsewhere) cannot
+        # silently run lint against the wrong corpus.
+        lint_stats = lint_corpus_chunks(db_path)
         logger.info(
             "lint_corpus auto-trigger: scanned %d, recurrent %d",
             lint_stats["scanned"],
