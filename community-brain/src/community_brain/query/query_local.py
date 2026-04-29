@@ -13,6 +13,7 @@ import lancedb
 import ollama
 
 from community_brain.ingestion.embedding import _active_embed_model
+from community_brain.query.corpus_verify import CorpusInvalidError
 from community_brain.query.cue_rules import (
     CUE_RULES,  # legacy fallback reference; not used directly in the hot-reload path
     apply_cue_boosts,
@@ -237,21 +238,19 @@ def search_chunks(
             )
             results = query.to_arrow()
         except Exception as exc:
-            # Transient (gated by verify_corpus_v3_state in /query): the caller
-            # already confirmed the FTS index exists. This catch covers LanceDB
-            # internal query execution failures (e.g. memory pressure, transient
-            # file locking). Vector-only fallback is correct here — it's not a
-            # schema or index-existence issue.
-            logger.warning(
-                "hybrid query failed (%r); falling back to vector-only ranking",
-                exc,
-            )
-            query = (
-                table.search(query_vector)
-                .where(where_expr)
-                .limit(candidate_count)
-            )
-            results = query.to_arrow()
+            # Runtime hybrid-search failure after verify_corpus_v3_state passed
+            # at /query entry means the corpus is in an unexpected bad state
+            # (corrupt index, fts_columns incompatibility, persistent FTS
+            # execution error). Don't silently degrade to vector-only — fail
+            # loud per the convergent refactor's principle. Operator must
+            # investigate. If a narrowly-scoped transient failure mode is
+            # observed in production later, add it back with a typed exception
+            # check; do NOT revert to a catch-all.
+            raise CorpusInvalidError(
+                f"hybrid search failed at runtime despite passing corpus "
+                f"verification: {exc}. Corpus may have a corrupt FTS index or "
+                f"other state issue."
+            ) from exc
     else:
         query = (
             table.search(query_vector)

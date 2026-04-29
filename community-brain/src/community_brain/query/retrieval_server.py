@@ -328,10 +328,7 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     # Pre-search corpus validity gate: verify schema + FTS index before
     # running search. CorpusInvalidError means the corpus is structurally
     # broken for v3 (pre-v1.1 schema, or FTS index unbuildable) — return
-    # 503 so callers know retrieval is degraded, not just empty. This gates
-    # the FTS fallback: any FTS error INSIDE search_chunks after this check
-    # passes is genuinely transient (single-call fluke), and the vector-only
-    # fallback inside search_chunks remains correct for that case.
+    # 503 so callers know retrieval is degraded, not just empty.
     # No-op when the table doesn't exist yet (fresh deploy returns empty, not 503).
     try:
         db = lancedb.connect(db_path)
@@ -349,13 +346,22 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     effective_filters = req.filters if req.filters is not None else QueryFilters()
     filters_dict = effective_filters.model_dump(exclude_none=False)
 
-    result = search_chunks(
-        question=req.question,
-        db_path=db_path,
-        top_k=req.top_k,
-        filters=filters_dict,
-        ollama_base_url=ollama_base_url,
-    )
+    try:
+        result = search_chunks(
+            question=req.question,
+            db_path=db_path,
+            top_k=req.top_k,
+            filters=filters_dict,
+            ollama_base_url=ollama_base_url,
+        )
+    except CorpusInvalidError as exc:
+        # Runtime hybrid-search failure AFTER verify_corpus_v3_state passed
+        # (corrupt FTS index, fts_columns incompatibility, etc.). Return 503
+        # so the caller knows retrieval is degraded — never silently degrade.
+        raise HTTPException(
+            status_code=503,
+            detail=f"Hybrid search failed at runtime: {exc}",
+        )
     raw = result["chunks"]
     metadata_summary = result["metadata_summary"]
 

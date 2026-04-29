@@ -304,3 +304,36 @@ def test_score_breakdown_bm25_rank_is_nullable() -> None:
     j = sb.model_dump()
     assert j["bm25_rank"] is None
     assert j["vector_similarity"] == 0.42
+
+
+def test_query_returns_503_on_runtime_hybrid_failure(monkeypatch) -> None:
+    """Regression for round-9 finding: /query returns HTTP 503 (not silent 200
+    vector-only) when the hybrid search fails at runtime after
+    verify_corpus_v3_state has already passed at /query entry.
+    """
+    from community_brain.query.corpus_verify import CorpusInvalidError
+
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    client = TestClient(server_mod.app)
+
+    def _raise_corpus_invalid(question, db_path, top_k, filters, ollama_base_url=None):
+        raise CorpusInvalidError(
+            "hybrid search failed at runtime despite passing corpus verification: "
+            "simulated FTS execution error. Corpus may have a corrupt FTS index or "
+            "other state issue."
+        )
+
+    with patch(
+        "community_brain.query.query_local.search_chunks",
+        side_effect=_raise_corpus_invalid,
+    ):
+        # verify_corpus_v3_state must also be bypassed so it doesn't
+        # short-circuit before search_chunks is called.
+        with patch(
+            "community_brain.query.retrieval_server.verify_corpus_v3_state",
+        ):
+            resp = client.post("/query", json={"question": "anything", "top_k": 5})
+
+    assert resp.status_code == 503
+    detail = resp.json().get("detail", "")
+    assert "hybrid search failed" in detail.lower() or "runtime" in detail.lower()

@@ -11,6 +11,7 @@ import lancedb
 import pytest
 
 from community_brain.ingestion.schema import EMBEDDING_DIM, pyarrow_table_schema
+from community_brain.query.corpus_verify import CorpusInvalidError
 from community_brain.query.query_local import search_chunks
 from community_brain.query.fts_lifecycle import ensure_fts_index, optimize_fts_index
 
@@ -461,3 +462,102 @@ def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
     assert "u" in ids, (
         f"cue boost failed to promote unresolved-question chunk; got {ids}"
     )
+
+
+def test_search_chunks_raises_on_runtime_hybrid_failure_after_verify(
+    tmp_path, monkeypatch
+):
+    """Regression for round-9 finding: even after verify_corpus_v3_state passes
+    at /query entry, search_chunks can hit a runtime hybrid failure (corrupt
+    index, etc.). Must NOT silently fall back to vector-only — must raise
+    CorpusInvalidError so /query can return HTTP 503.
+    """
+    import ollama
+
+    db_path = tmp_path / "lancedb"
+    db = lancedb.connect(str(db_path))
+    schema = pyarrow_table_schema()
+    table = db.create_table("chunks", schema=schema)
+    table.add([
+        {
+            "schema_version": "1.0",
+            "chunk_id": "c1",
+            "chunk_index": 0,
+            "session_id": "2026-04-01",
+            "session_date": "2026-04-01",
+            "session_title": None,
+            "content_type": "prepared_transcript",
+            "source_file": "prepared-transcript.md",
+            "total_chunks_in_source": 1,
+            "embed_text": "...",
+            "full_text": "some text",
+            "bm25_text": "some text",
+            "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
+            "speakers_spoke": [],
+            "speakers_mentioned": [],
+            "entities": [],
+            "keywords": [],
+            "topic_label": None,
+            "session_themes": [],
+            "speech_acts": [],
+            "stance": None,
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "corpus_derived_markers": [],
+            "corpus_markers_computed_at": None,
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "extraction_model": "test",
+            "extraction_prompt_version": "test-v1",
+            "extraction_status": "success",
+            "extraction_error": None,
+            "extracted_at": "2026-04-01T00:00:00",
+        }
+    ])
+    ensure_fts_index(table, "bm25_text")
+
+    monkeypatch.setattr(ollama, "embed", lambda model, input: {
+        "embeddings": [[1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2)]
+    })
+
+    # Simulate a runtime FTS execution failure AFTER verify_corpus_v3_state
+    # has already passed (e.g. corrupt index data, fts_columns incompatibility).
+    # We inject the failure by patching the table's search method.
+    original_search = table.search
+
+    def _failing_search(query_type=None, fts_columns=None):
+        if query_type == "hybrid":
+            raise RuntimeError("simulated FTS execution error at runtime")
+        return original_search(query_type=query_type, fts_columns=fts_columns)
+
+    import lancedb as _lancedb
+
+    original_connect = _lancedb.connect
+
+    def _patched_connect(path, *args, **kwargs):
+        conn = original_connect(path, *args, **kwargs)
+        original_open = conn.open_table
+
+        def _patched_open(name):
+            t = original_open(name)
+            t.search = _failing_search
+            return t
+
+        conn.open_table = _patched_open
+        return conn
+
+    monkeypatch.setattr(_lancedb, "connect", _patched_connect)
+
+    with pytest.raises(CorpusInvalidError, match="hybrid search failed at runtime"):
+        search_chunks(
+            question="some text",
+            db_path=str(db_path),
+            top_k=5,
+            filters=None,
+        )
