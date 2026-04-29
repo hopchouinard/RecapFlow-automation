@@ -89,3 +89,52 @@ queries:
     expected_chunk_ids: [f7-prior-1]
     min_match_count: 1
     expect_lift_over_vector_only: false
+
+  # --- v3 assertions: entities, response shape, score_breakdown ---
+  #
+  # These queries verify v3 behavioral contracts:
+  #   - entities array populated by Stage C v2 extraction
+  #   - /query response carries metadata_summary (top-level aggregate counts)
+  #   - every chunk in top-K carries score_breakdown (5 fields)
+  #
+  # Strategy B (see T28 spec): v3-specific assertions live as dedicated test
+  # functions in test_golden_queries.py rather than inline `extra_assertions`.
+  # These entries anchor the queries used by those functions to the YAML so
+  # they survive future fixture shuffles.
+  #
+  # SKIPPED: v3_recurrent_marker — the seed corpus uses distinct per-chunk
+  # embedding vectors (0.01*idx per target, 0.5 for decoys). No two target
+  # chunks share a session and have cosine similarity >= 0.65 to each other
+  # across 2+ different sessions. Recurrent marker would require either a
+  # dedicated seed extension or running lint_corpus with a lowered threshold.
+  # Recurrent-marker correctness is covered by tests/test_lint_corpus.py.
+  #
+  # SKIPPED: v3_canonicalization_applied — the golden seed writes rows with
+  # entities already in canonical form (bypassing the ingestion pipeline).
+  # There is no alias-to-canonical mapping detectable at the storage layer post-
+  # ingestion. Canonicalization correctness is covered by
+  # tests/test_registries.py and tests/test_pipeline_canonicalization.py.
+
+  - id: v3-entities-populated
+    question: "What did Adam from Gold Flamingo commit to?"
+    target_finding: "v3-entities"
+    top_k: 10
+    expected_chunk_ids: [f6-adam-1, f6-adam-2]
+    min_match_count: 2
+    expect_lift_over_vector_only: false
+
+  - id: v3-metadata-summary-present
+    question: "What unresolved questions came up across these calls?"
+    target_finding: "v3-metadata-summary"
+    top_k: 10
+    expected_chunk_ids: [f7-unres-1, f7-unres-2]
+    min_match_count: 1
+    expect_lift_over_vector_only: false
+
+  - id: v3-score-breakdown-per-chunk
+    question: "What decisions were made?"
+    target_finding: "v3-score-breakdown"
+    top_k: 10
+    expected_chunk_ids: [f7-decision-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: false
