@@ -58,6 +58,7 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
 )
 from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
+from community_brain.ingestion.canonicalize import build_alias_map, canonicalize_names
 from community_brain.ingestion.embedding import build_transcript_embed_text
 from community_brain.ingestion.schema import SCHEMA_VERSION, Chunk, pyarrow_table_schema
 from community_brain.ingestion.session_extractor import (
@@ -297,6 +298,9 @@ def ingest_session(
     # --- Stage C: per-chunk LLM extraction ---
     entity_names = list(entity_reg.entities.keys())
     speaker_names = list(speaker_reg.aliases.keys())
+    # Build alias map once per session; cheap (dict construction over registry data).
+    # Wraps speaker_reg.aliases as {"aliases": ...} to match build_alias_map's expected shape.
+    speaker_alias_map = build_alias_map({"aliases": speaker_reg.aliases})
     unknown_entities: set[str] = set()
     unknown_speakers: set[str] = set()
     failed_count = 0
@@ -341,8 +345,24 @@ def ingest_session(
         chunk.action_items = res.action_items or None
         chunk.external_refs = res.external_refs or None
         chunk.references_prior = res.references_prior
-        unknown_entities.update(res.new_entities_seen)
-        unknown_speakers.update(res.new_speakers_seen)
+
+        # Apply canonicalization to person-bearing fields. Unknowns from the
+        # speakers_spoke and speakers_mentioned paths (always people) flow to the
+        # speaker-aliases pending queue. Entity-side unknowns are intentionally
+        # NOT tracked: no entity registry exists in v3, so they stay raw and
+        # surface via BM25 over bm25_text / full_text instead.
+        # res.new_speakers_seen / res.new_entities_seen are always [] since T6
+        # (extractor no longer emits them); canonicalization-derived unknowns
+        # replace them as the pending-queue feed source.
+        canon_spoke, unk_spoke = canonicalize_names(chunk.speakers_spoke, speaker_alias_map)
+        canon_mentioned, unk_mentioned = canonicalize_names(chunk.speakers_mentioned, speaker_alias_map)
+        canon_entities, _unk_entities = canonicalize_names(chunk.entities, speaker_alias_map)
+        chunk.speakers_spoke = canon_spoke or chunk.speakers_spoke
+        chunk.speakers_mentioned = canon_mentioned
+        chunk.entities = canon_entities
+        unknown_speakers.update(unk_spoke)
+        unknown_speakers.update(unk_mentioned)
+        # entity-side unknowns intentionally discarded (see comment above)
 
         # Re-synthesize bm25_text after Stage C mutated chunk.entities,
         # speakers_mentioned, etc. Construction-time synthesis used empty

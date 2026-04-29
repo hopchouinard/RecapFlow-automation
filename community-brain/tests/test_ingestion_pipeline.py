@@ -960,3 +960,290 @@ def test_commit_chunks_refuses_to_mutate_pre_v1_1_table(tmp_path: Path) -> None:
     )
     assert len(rows) == 1, f"expected 1 row (untouched), got {len(rows)}"
     assert rows[0]["chunk_id"] == "2026-01-01:post:001"
+
+
+# ---------------------------------------------------------------------------
+# T9: canonicalization applied at chunk write
+# ---------------------------------------------------------------------------
+
+def _write_min_configs_with_aliases(base: Path) -> Path:
+    """Like _write_min_configs but speaker-aliases.yaml includes Adam->Adam James."""
+    base.mkdir(parents=True, exist_ok=True)
+    (base / "chunking.yaml").write_text(
+        """
+schema_version: "1.0"
+chunking:
+  transcript_segment_max_tokens: 1500
+  post_max_tokens: 2500
+  session_themes_input_max_tokens: 3000
+extraction:
+  retry_attempts: 3
+  retry_backoff_seconds: [2, 8, 32]
+  inter_session_delay_seconds: 30
+        """,
+        encoding="utf-8",
+    )
+    (base / "extraction-config.yaml").write_text(
+        """
+session_themes:
+  prompt_file: session-themes-v1.md
+  model: test-model
+chunk_extraction:
+  prompt_file: chunk-extraction-v1.md
+  model: test-model
+        """,
+        encoding="utf-8",
+    )
+    # aliases: Adam James has raw alias "Adam"; Brandon Hancock has no aliases
+    (base / "speaker-aliases.yaml").write_text(
+        'version: "x"\naliases:\n  Adam James:\n    - Adam\n  Brandon Hancock: []\npending: []\n',
+        encoding="utf-8",
+    )
+    (base / "entity-registry.yaml").write_text(
+        (
+            'version: "x"\n'
+            'entities:\n'
+            '  LangGraph:\n'
+            '    type: framework\n'
+            '    aliases: [langgraph]\n'
+            'pending: []\n'
+        ),
+        encoding="utf-8",
+    )
+    prompts = base / "extraction-prompts"
+    prompts.mkdir(exist_ok=True)
+    (prompts / "session-themes-v1.md").write_text("session themes prompt", encoding="utf-8")
+    (prompts / "chunk-extraction-v1.md").write_text("chunk extraction prompt", encoding="utf-8")
+    return base
+
+
+def test_pipeline_canonicalizes_speakers_at_write(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """When the speaker-aliases registry has 'Adam' -> 'Adam James', Stage C output
+    containing the raw 'Adam' is committed with canonical 'Adam James' form in
+    speakers_mentioned and entities."""
+    import json
+    import lancedb
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    config_dir = _write_min_configs_with_aliases(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    # Stage C returns raw "Adam" in both entities and speakers_mentioned
+    def _alias_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["agent frameworks"]})
+        return json.dumps({
+            "entities": ["Adam"],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": ["discussion"],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Canonicalization test",
+            "speakers_mentioned": ["Adam"],
+            "keywords": ["canonicalization"],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_alias_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_alias_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-10",
+            session_date="2026-03-10",
+            session_title="Canonicalization test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        entities = row.get("entities") or []
+        speakers_mentioned = row.get("speakers_mentioned") or []
+        assert "Adam James" in entities, (
+            f"entities not canonicalized on {row['chunk_id']}: got {entities!r}"
+        )
+        assert "Adam" not in entities, (
+            f"raw 'Adam' still present in entities on {row['chunk_id']}: {entities!r}"
+        )
+        assert "Adam James" in speakers_mentioned, (
+            f"speakers_mentioned not canonicalized on {row['chunk_id']}: got {speakers_mentioned!r}"
+        )
+        assert "Adam" not in speakers_mentioned, (
+            f"raw 'Adam' still in speakers_mentioned on {row['chunk_id']}: {speakers_mentioned!r}"
+        )
+
+
+def test_pipeline_unknown_speakers_flow_to_pending(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """Names in Stage C speakers_mentioned that aren't in the alias map are
+    appended to speaker-aliases.yaml's pending list at session end."""
+    import json
+    import lancedb
+    import yaml
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    # Use base config with no aliases so Tony/Vlad are guaranteed unknowns
+    config_dir = _write_min_configs(tmp_path / "config")
+    # Overwrite with truly empty alias map
+    (config_dir / "speaker-aliases.yaml").write_text(
+        'version: "x"\naliases: {}\npending: []\n',
+        encoding="utf-8",
+    )
+    db_path = tmp_path / "lancedb"
+
+    def _unknown_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["topics"]})
+        return json.dumps({
+            "entities": [],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": [],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Unknown test",
+            "speakers_mentioned": ["Tony", "Vlad"],
+            "keywords": [],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_unknown_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_unknown_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-10",
+            session_date="2026-03-10",
+            session_title="Unknown test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    updated = yaml.safe_load((config_dir / "speaker-aliases.yaml").read_text())
+    pending = updated.get("pending") or []
+    assert "Tony" in pending, f"'Tony' not in pending: {pending!r}"
+    assert "Vlad" in pending, f"'Vlad' not in pending: {pending!r}"
+
+
+def test_pipeline_canonicalization_applied_before_resynthesis(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """bm25_text reflects canonical names, not raw aliases, confirming
+    canonicalization fires before the bm25_text re-synthesis block."""
+    import json
+    import lancedb
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    config_dir = _write_min_configs_with_aliases(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    def _canon_resync_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["resynthesis test"]})
+        return json.dumps({
+            "entities": ["Adam"],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": [],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Resynthesis test",
+            "speakers_mentioned": ["Adam"],
+            "keywords": [],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_canon_resync_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_canon_resync_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-10",
+            session_date="2026-03-10",
+            session_title="Resynthesis test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        bm25 = row.get("bm25_text") or ""
+        assert "Adam James" in bm25, (
+            f"'Adam James' not found in bm25_text of {row['chunk_id']}: {bm25!r}"
+        )
+        # bm25_text must not contain standalone raw "Adam" (i.e., without " James" following).
+        # "Adam James" obviously contains "Adam" as a substring, so check that
+        # the raw-only form (", Adam," or " Adam\n" etc.) is absent.
+        import re
+        # Match "Adam" that is NOT followed by " James"
+        raw_adam_pattern = re.compile(r'\bAdam\b(?! James)')
+        assert not raw_adam_pattern.search(bm25), (
+            f"Raw 'Adam' (without 'James') still in bm25_text of {row['chunk_id']}: {bm25!r}"
+        )
