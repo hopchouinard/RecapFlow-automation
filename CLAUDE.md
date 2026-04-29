@@ -185,12 +185,10 @@ The two modules interact at the filesystem boundary: n8n writes artifacts to `./
 
 **Phase 6 — PARTIAL VALIDATION COMPLETE.** 5 query types from spec §10 tested against the 8-session subset. 3 pass cleanly, 2 had retrieval-layer caveats (Findings 6 and 7) — both addressed in Hybrid Retrieval v2 below.
 
-**Hybrid Retrieval v2 — COMPLETE in code; LIVE-VM VALIDATION PENDING.** `/query` ranking is now hybrid (vector + BM25 RRF, k=60) with cue-driven metadata-aware boosting, oversampled 3×, vector-only graceful fallback. Legacy v0 helpers + `_v2` suffix archaeology removed. Server bumped to `0.2.0`. 302 tests passing on `feat/hybrid-retrieval-v2` (merged into `main` on 2026-04-28). Addresses Findings 6 (rare-token retrieval) and 7 (metadata-tagged retrieval) from the Phase 6 catalog.
+**Hybrid Retrieval v2 — COMPLETE and DEPLOYED.** `/query` ranking is now hybrid (vector + BM25 RRF, k=60) with cue-driven metadata-aware boosting, oversampled 3×, vector-only graceful fallback. Legacy v0 helpers + `_v2` suffix archaeology removed. Server bumped to `0.2.0`. 302 tests passing on main. Live-VM validation on 2026-04-28 confirmed Findings 6 and 7 empirically resolved (entity-grounded queries went from 0/10 → 6/10 Adam-containing chunks; metadata-tagged queries went from 1/10 → 6/10 `has_unresolved_question=True` chunks). Validation surfaced **Finding 8** — answering LLM under-utilizes Stage C metadata flags because the trust contract correctly tells it to re-derive — queued as a v3 candidate. See Plan A spec §10 for the full validation addendum.
 
-**What's still open — two tracks:**
-- **Track A (trivial):** Plan B's Task 17 — small CLAUDE.md update (this section is part of it)
-- **Track B (operational):** Plan C — full backfill across remaining 59 of 65 historical sessions (~12 hr overnight run, ~$3 cost)
-- **Track D (operational):** v2 Task 16 — deploy v2 container to the VM and run Phase 6 query types via Open WebUI to confirm Findings 6/7 are empirically resolved. Requires SSH to `10.1.30.10`. Runbook in `community-brain/docs/DEPLOYMENT.md`.
+**What's still open — one operational track:**
+- **Track B:** Plan C — full backfill across remaining ~57 of 65 historical sessions (~12 hr overnight run, ~$3 cost). Operator decision: hold until v3 retrieval design lands so the corpus isn't reprocessed twice.
 
 **👉 START HERE in any new session:** [`docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`](docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md).
 

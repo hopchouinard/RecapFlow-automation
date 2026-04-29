@@ -15,7 +15,7 @@ Canonical references:
 - Spec: [`docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md`](specs/2026-04-18-community-brain-ingestion-pipeline-design.md)
 - Plan: [`docs/superpowers/plans/2026-04-18-community-brain-ingestion-plan-a.md`](plans/2026-04-18-community-brain-ingestion-plan-a.md)
 
-### Plan B — n8n ingestion integration (DONE except Task 17)
+### Plan B — n8n ingestion integration (DONE)
 
 Two workflows wired into the retrieval server:
 - **Workflow 1** (Merged Call Summarizer, n8n id 5): live weekly with prep-prompt + `/ingest` POST appended.
@@ -37,60 +37,65 @@ Validated the 5 query types from Plan A spec §10 against the 8-session subset. 
 
 All findings are captured in [Plan A spec §10 Phase 6 Validation findings](specs/2026-04-18-community-brain-ingestion-pipeline-design.md#phase-6--open-webui-integration-and-validation). Findings 6 and 7 cross-reference the v2 spec.
 
-### Hybrid Retrieval v2 — DONE in code; live-VM validation pending
+### Hybrid Retrieval v2 — DONE and DEPLOYED
 
 Replaces pure-vector ranking with hybrid (vector + BM25 RRF, k=60) plus cue-driven metadata-aware boosting. Oversamples top_k by 3× internally; applies additive RRF-score deltas when question-side lexical cues align with chunks' structured-metadata flags. Public `similarity` field continues to expose vector cosine (spec-faithful). Vector-only path retained as internal graceful-degradation fallback only — no `mode` parameter, no parallel endpoint, legacy v0 helpers and `_v2` suffix archaeology removed.
 
-302 tests passing. Server bumped to `0.2.0`. Open WebUI filter and n8n workflows continue to work without change.
+302 tests passing. Server `0.2.0` deployed to live VM on 2026-04-28. Open WebUI filter and n8n workflows continue to work without change.
+
+Live-VM validation outcomes (full addendum in Plan A spec §10):
+- **Finding 6 (entity-grounded retrieval):** v1 0/10 → v2 6/10 chunks containing the target entity in `full_text`. PASS.
+- **Finding 7 (metadata-tagged retrieval):** v1 1/10 → v2 6/10 chunks tagged `has_unresolved_question=True`. PASS at retrieval layer.
+- **Finding 8 (NEW, surfaced by v2 validation):** Answering LLM under-utilizes Stage C metadata flags because the trust contract correctly tells it to re-derive. Pre-v2 invisible (retrieval was the bottleneck). v3 candidate; not a v2 regression.
 
 Canonical references:
 - Spec: [`docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md`](specs/2026-04-27-hybrid-retrieval-v2-design.md)
 - Plan: [`docs/superpowers/plans/2026-04-27-hybrid-retrieval-v2-plan.md`](plans/2026-04-27-hybrid-retrieval-v2-plan.md)
 - CHANGELOG entry: [`docs/migrations/CHANGELOG.md`](../../docs/migrations/CHANGELOG.md) (2026-04-28 — Hybrid Retrieval v2)
-
-Only outstanding piece: **v2 Task 16 — operator-side validation against the live VM.** Deploy the `0.2.0` container, re-run the Phase 6 query types via Open WebUI, append a §10.x addendum to the Plan A spec confirming Findings 6 and 7 are empirically resolved.
+- Validation addendum: Plan A spec §10, "v2 hybrid retrieval validation (2026-04-28 — against live VM)"
 
 ---
 
-## Three outstanding tracks
+## One outstanding track
 
-### Track A — Plan B Task 17 (CLAUDE.md doc update)
+### Track B — Plan C: Full historical backfill (operational, holding for v3)
 
-Last task in [Plan B's plan](plans/2026-04-19-plan-b-n8n-ingestion-integration-plan.md). 15-minute job. Status: not done.
+Run Workflow 2 across the remaining ~57 of 65 historical sessions. Total cost ~$3, total wall time ~12 hours.
 
-Self-contained scope. Either knock it out as the first task in your next session OR fold it into Track B's kickoff (since you'll be touching CLAUDE.md anyway when Plan C completes).
-
-### Track B — Plan C: Full historical backfill (operational, ~12 hr overnight run)
-
-Run Workflow 2 across the remaining 59 of 65 historical sessions. Total cost ~$3, total wall time ~12 hours.
+**Operator decision (2026-04-28):** holding this track until v3 retrieval design lands. Reasoning: backfilling 57 sessions through a retrieval pipeline that may be revised in v3 (to address Finding 8) means paying the cost twice — once to ingest under v2 prompts, again to re-extract if v3 changes the extraction contract or `extraction_prompt_version`. Better to wait until the retrieval layer is settled, then run the backfill once cleanly.
 
 **No formal plan document exists** because the operational steps already live in Plan B Tasks 11–15 (the workflow itself). Only thing missing is the "kick off the full run" trigger and post-run state cleanup.
 
-#### Starter prompt for Track B (paste into new session)
+#### Starter prompt for Track B (paste into new session, when ready to run)
 
 ```
-I'm continuing the Community Brain project. Plan A and Plan B are
-complete (retrieval server + n8n workflows deployed and validated).
+I'm continuing the Community Brain project. Plan A, Plan B, and
+Hybrid Retrieval v2 are all complete (retrieval server + n8n
+workflows deployed; v2 ranking validated 2026-04-28). Track B
+(Plan C full backfill) was held pending v3 retrieval design.
+
 Read /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md
 first for current status.
 
 The work for this session: execute Plan C — full historical backfill.
-The retrieval server is deployed at http://10.1.30.10:8999. 6 of 65
+The retrieval server is deployed at http://10.1.30.10:8999. 9 of 65
 historical sessions are already ingested (verify via /sessions). The
-remaining 59 are pre-staged at ~/n8n/historical/ on the VM. Workflow
-2 (n8n id 6) handles the per-session pipeline. State tracked in
-~/n8n/n8n-state/backfill-state.json.
+remaining ~56 are pre-staged at ~/n8n/historical/ on the VM.
+Workflow 2 (n8n id 6) handles the per-session pipeline. State
+tracked in ~/n8n/n8n-state/backfill-state.json.
+
+Before kicking off the backfill, confirm the retrieval pipeline
+is on the v2-or-later code you intend to ingest under (a re-run is
+expensive). Check git log + retrieval_server version 0.2.0 (or
+later if v3 has shipped).
 
 Steps:
-1. Pre-flight: verify retrieval server health, Ollama nomic-embed-text
-   is installed, Workflow 2 is in good state in n8n UI.
-2. Trigger Workflow 2 to run all remaining sessions (it will iterate
-   automatically; expected ~12 hr wall time).
-3. While it runs, optionally execute Plan B Task 17 (CLAUDE.md doc
-   update) since you'll touch that file at the end anyway.
-4. Post-run: review state file's failed[] entries, decide retry vs
-   accept, clean up any partial output dirs, update CLAUDE.md "Current
-   status" section to mark Plan C complete.
+1. Pre-flight: verify retrieval server health, Ollama
+   nomic-embed-text pinned, Workflow 2 in good state in n8n UI.
+2. Trigger Workflow 2 to run all remaining sessions (~12 hr wall).
+3. Post-run: review state file's failed[] entries, decide retry
+   vs accept, clean up any partial output dirs, update CLAUDE.md
+   "Current status" to mark Plan C complete.
 
 Reference docs (read in this order):
 - docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md (this handoff)
@@ -101,65 +106,20 @@ Don't introduce new spec or plan documents — Plan C is execution-only.
 ```
 
 **Notes:**
-- The backfill is not strictly required before Track C (v2 hybrid retrieval) — you can do them in parallel or in either order. Backfill increases the corpus from 8 → 65 sessions, which strengthens v2 design tests but isn't a blocker.
 - If 429 rate-limit cascades become a problem during the run, the workflow's per-session retry + state file design tolerates partial failure cleanly. Failed entries stay in `failed[]` and re-run on next invocation.
+- If v3 lands BEFORE this backfill runs, re-read the v3 spec for any changes to `extraction_prompt_version` or per-session behavior that might affect idempotency.
 
-### Track C — Hybrid Retrieval v2 (DONE; only T16 remains)
+### v3 design (when warranted)
 
-Designed, planned, implemented, and merged on 2026-04-28. 16 commits on `feat/hybrid-retrieval-v2` (now in `main`). 302 tests passing.
+Finding 8 (answering LLM under-utilizes Stage C metadata flags) is the leading v3 candidate. Three concrete fix paths captured in the Plan A spec §10 v2 validation addendum:
 
-Findings 6 (rare-token retrieval) and 7 (metadata-tagged retrieval) addressed by:
-1. **Hybrid LanceDB query** — RRF (k=60) over native FTS index on `chunks.full_text` + the existing vector column. Oversampled 3× internally before truncation to `top_k`.
-2. **Cue-driven metadata boost layer** — Python post-RRF pass that adds small additive deltas (0.003–0.010) to chunks whose structured flags align with question-side lexical cues. Six cue rules covering `has_unresolved_question`, non-empty `decisions`/`action_items`, `has_insight`, `references_prior`, `has_question`.
-3. **Filter-then-rank guards preserved** — `extraction_status='success'` and caller's `QueryFilters` continue to apply as a WHERE clause before retrieval.
-4. **Graceful degradation** — hybrid query exception → vector-only fallback with WARN log; cue rule exception → log and skip rule, others continue; FTS index missing on boot → log and continue.
-5. **No API contract change** — request/response shapes identical; the public `similarity` field continues to reflect vector cosine similarity (spec-faithful).
+1. Tighten `inference-guidelines.md` so models treat strong metadata flags (e.g. `has_unresolved_question=True`) as authoritative even when textual cues are subtle. Trade-off: weakens the "derived is probabilistic" partition.
+2. Filter-side: format chunks in the LLM prompt with metadata flags inline (e.g. `[FLAG: unresolved_question]`).
+3. Add a `metadata_summary` field to `/query` responses giving authoritative per-flag counts.
 
-The only remaining piece is **T16: operator-side validation against the live VM.** Deploy the `0.2.0` container, re-run Phase 6 query types via Open WebUI, append a §10.x addendum to the Plan A spec confirming Findings 6 and 7 are empirically resolved.
+Plus secondary v3 candidates from the v2 spec §12: LLM intent classifier, cross-encoder reranker, weighted-sum fusion, BM25 over a synthesized `topic_label + entities + full_text` field, cue rules in YAML config.
 
-#### Starter prompt for T16 (paste into new session)
-
-```
-I'm continuing the Community Brain project. Hybrid Retrieval v2 is
-implemented and merged to main on 2026-04-28; the only remaining
-piece is operator-side validation against the live VM.
-
-Read /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md
-first for current status, then community-brain/docs/DEPLOYMENT.md
-for the canonical SSH-driven deploy runbook (it encodes the
-permission model — 🟢 auto / 🟡 confirm / 🔴 gated — that you must
-respect when acting as operator).
-
-Steps:
-1. Pre-flight: confirm SSH access to n8n-automation (LAN IP
-   10.1.30.10), retrieval-server health, Ollama nomic-embed-text
-   pinned.
-2. Deploy: pull/rebuild the retrieval-server container from main;
-   confirm `INFO: FTS index on column 'full_text' built in N.NNs`
-   appears in startup logs.
-3. Validate via Open WebUI: re-run the five Phase 6 query types
-   from Plan A spec §10. Specifically retest the failing cases that
-   motivated v2:
-     - Finding 6: "What did Adam from Gold Flamingo commit to?"
-       (top-10 must contain ≥5 chunks with Adam in entities or
-       full_text)
-     - Finding 7: "What unresolved questions came up?"
-       (top-10 must contain ≥5 of 38 corpus chunks with
-       has_unresolved_question=True)
-4. Document outcomes: append a §10.x addendum to
-   docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md
-   capturing the validated/failing query results.
-5. If validation fails, tune cue rule deltas in
-   community_brain/query/cue_rules.py or OVERSAMPLE_FACTOR in
-   community_brain/query/query_local.py, then re-validate.
-
-Reference docs:
-- docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md
-  (especially §9 Validation plan)
-- docs/superpowers/plans/2026-04-27-hybrid-retrieval-v2-plan.md
-  (Task 16 has the operator runbook)
-- community-brain/docs/DEPLOYMENT.md (deploy steps + permission model)
-```
+When you're ready to design v3, fresh session + `superpowers:brainstorming` is the right starting point.
 
 ---
 
