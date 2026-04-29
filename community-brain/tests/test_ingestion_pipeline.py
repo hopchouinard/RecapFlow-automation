@@ -1424,3 +1424,132 @@ def test_commit_chunks_raises_when_fts_index_creation_fails(
 
     with pytest.raises(CommitError, match="FTS index build on bm25_text failed"):
         ingest_session(request, config_dir, str(db_path), None)
+
+
+def test_commit_chunks_rebuilds_fts_when_existing_table_lacks_it(
+    tmp_path: Path, mocked_pipeline_env
+) -> None:
+    """Regression: if the existing chunks table lacks the bm25_text FTS index
+    (simulating a half-initialized state from a prior failed fresh-table init),
+    _commit_chunks must rebuild the index before mutation so /query keeps both
+    retrieval legs.
+    """
+    import lancedb as _lancedb
+    import pyarrow as pa
+    from community_brain.ingestion.pipeline import TABLE_NAME, _commit_chunks
+    from community_brain.ingestion.schema import pyarrow_table_schema
+    from community_brain.query.fts_lifecycle import has_fts_index
+
+    db_path = str(tmp_path / "half_init_lancedb")
+    db = _lancedb.connect(db_path)
+
+    # Create the table with valid v1.1 schema but intentionally skip the FTS build
+    # (simulates: fresh-table init ran create_table + add but FTS build raised).
+    config_dir = _write_min_configs(tmp_path / "config")
+    request_first = IngestRequest(
+        session_id="2026-01-10",
+        session_date="2026-01-10",
+        session_title="Half-init session",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+    # Do the first ingest normally so the table+rows+FTS exist.
+    ingest_session(request_first, config_dir, db_path, None)
+
+    # Now simulate the half-init: drop the FTS index by rewriting the table
+    # without it (LanceDB doesn't expose a drop-index API, so we recreate).
+    tbl = db.open_table(TABLE_NAME)
+    rows = tbl.to_arrow()
+    db.drop_table(TABLE_NAME)
+    db.create_table(TABLE_NAME, data=rows, schema=pyarrow_table_schema())
+    tbl_no_fts = db.open_table(TABLE_NAME)
+    assert not has_fts_index(tbl_no_fts, "bm25_text"), "precondition: table lacks FTS index"
+
+    # Second ingest against same db — takes existing-table branch.
+    # Must rebuild the FTS index.
+    request_second = IngestRequest(
+        session_id="2026-01-17",
+        session_date="2026-01-17",
+        session_title="Retry after half-init",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+    result = ingest_session(request_second, config_dir, db_path, None)
+    assert result.chunks_written > 0, f"expected chunks written, got {result}"
+
+    tbl_after = db.open_table(TABLE_NAME)
+    assert has_fts_index(tbl_after, "bm25_text"), (
+        "FTS index was not rebuilt on the existing-table path; "
+        "/query would have silently fallen back to vector-only"
+    )
+
+
+def test_commit_chunks_after_fresh_table_fts_failure_rebuilds_on_retry(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """End-to-end regression for verification round-3 finding:
+    1. First /ingest creates fresh table; ensure_fts_index raises (simulated).
+       CommitError raised; table and rows persist.
+    2. Second /ingest with ensure_fts_index restored:
+       - Takes existing-table branch (column check passes).
+       - Must build the FTS index before returning success.
+    Without the fix, step 2 returns success with no FTS index.
+    """
+    import lancedb as _lancedb
+    from community_brain.ingestion.pipeline import CommitError, TABLE_NAME
+    from community_brain.query.fts_lifecycle import ensure_fts_index as _real_ensure_fts
+    from community_brain.query.fts_lifecycle import has_fts_index
+
+    call_count = {"n": 0}
+
+    def _fail_first(*args, **kwargs):
+        call_count["n"] += 1
+        if call_count["n"] == 1:
+            raise RuntimeError("simulated FTS failure on first call")
+        return _real_ensure_fts(*args, **kwargs)
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.ensure_fts_index",
+        _fail_first,
+    )
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = str(tmp_path / "retry_fts_lancedb")
+
+    request = IngestRequest(
+        session_id="2026-02-10",
+        session_date="2026-02-10",
+        session_title="Retry FTS regression",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Step 1: first ingest — fresh-table path — FTS build raises.
+    with pytest.raises(CommitError, match="FTS index build on bm25_text failed"):
+        ingest_session(request, config_dir, db_path, None)
+
+    # Table and rows must have been persisted (pre-fix bug left them behind).
+    db = _lancedb.connect(db_path)
+    assert TABLE_NAME in db.list_tables().tables, "table must persist after CommitError"
+    tbl_torn = db.open_table(TABLE_NAME)
+    assert not has_fts_index(tbl_torn, "bm25_text"), "precondition: no FTS index after failure"
+
+    # Step 2: retry — idempotency path: all chunks already present from the torn
+    # first ingest, so chunks_written=0 and chunks_skipped_idempotent>0.
+    # The FTS invariant must still be enforced on this path.
+    result = ingest_session(request, config_dir, db_path, None)
+    assert result.chunks_skipped_idempotent > 0, (
+        f"expected idempotency skip on retry, got {result}"
+    )
+
+    tbl_after = db.open_table(TABLE_NAME)
+    assert has_fts_index(tbl_after, "bm25_text"), (
+        "FTS index was not rebuilt on the all-skipped idempotency retry path; "
+        "round-3 finding NOT fixed"
+    )

@@ -265,6 +265,21 @@ def ingest_session(
             kept.append(chunk)
         all_chunks = kept
         if not all_chunks:
+            # All chunks already present; nothing to write. Still enforce the
+            # FTS-index invariant: if the table somehow lacks the bm25_text FTS
+            # index (e.g., a prior fresh-table init raised after persisting rows),
+            # rebuild it now so /query retains both retrieval legs.
+            db_early = lancedb.connect(db_path)
+            if TABLE_NAME in db_early.list_tables().tables:
+                _tbl_early = db_early.open_table(TABLE_NAME)
+                try:
+                    ensure_fts_index(_tbl_early, column="bm25_text")
+                except Exception as exc:
+                    raise CommitError(
+                        f"All-skipped path: bm25_text FTS index missing and rebuild "
+                        f"failed: {exc}. Investigate the LanceDB FTS error or drop "
+                        f"the table and re-ingest fresh."
+                    ) from exc
             return IngestResult(
                 session_id=request.session_id,
                 chunks_written=0,
@@ -577,6 +592,22 @@ def _commit_chunks(
             f"Refusing to mutate; drop the table and re-ingest under v1.1 "
             f"per docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md §17.1."
         )
+
+    # FTS-index invariant: ensure the bm25_text FTS index exists before mutation.
+    # Covers the retry-after-fresh-table-failure scenario: fresh-table path creates
+    # the table + rows then raises CommitError when FTS build fails, leaving a
+    # half-initialized table. Operator retry takes this existing-table branch;
+    # without this check the retry would return success with no FTS index and
+    # /query would silently fall back to vector-only.
+    # ensure_fts_index is idempotent: no-op when the index already exists.
+    try:
+        ensure_fts_index(table, column="bm25_text")
+    except Exception as exc:
+        raise CommitError(
+            f"Existing chunks table lacks bm25_text FTS index and rebuild failed: {exc}. "
+            f"Refusing to mutate; investigate the LanceDB FTS error or drop the table "
+            f"and re-ingest fresh."
+        ) from exc
 
     try:
         if full_session_rewrite:
