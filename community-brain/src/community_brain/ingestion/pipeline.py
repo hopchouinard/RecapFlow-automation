@@ -389,7 +389,7 @@ def ingest_session(
             db = lancedb.connect(db_path)
             if TABLE_NAME in db.list_tables().tables:
                 table = db.open_table(TABLE_NAME)
-                optimize_fts_index(table, "full_text")
+                optimize_fts_index(table, "bm25_text")
         except Exception as exc:
             # optimize_fts_index already catches and logs internally; this is
             # belt-and-suspenders against future changes that might propagate.

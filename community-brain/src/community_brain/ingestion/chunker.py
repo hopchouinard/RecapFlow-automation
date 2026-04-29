@@ -26,6 +26,7 @@ from community_brain.ingestion.parser import (
     SignalSection,
     TranscriptSegment,
 )
+from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
 from community_brain.ingestion.schema import Chunk, SCHEMA_VERSION
 
 logger = logging.getLogger(__name__)
@@ -248,6 +249,14 @@ def _base_chunk(
         extracted_at=None,
         embed_text=embed_text,
         full_text=full_text,
+        bm25_text=synthesize_bm25_text(
+            topic_label=topic_label,
+            entities=[],
+            speakers_spoke=speakers_spoke,
+            speakers_mentioned=None,
+            keywords=keywords,
+            full_text=full_text,
+        ),
         embedding=[],
     )
 

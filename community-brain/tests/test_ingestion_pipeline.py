@@ -133,7 +133,7 @@ def test_ingest_session_end_to_end(tmp_path: Path, mocked_pipeline_env) -> None:
     assert result.chunks_by_type["extracted_signal"] == 4
     assert result.chunks_by_type["community_post"] == 1
     assert result.extraction_prompt_version == "chunk-extraction-v1"
-    assert result.schema_version == "1.0"
+    assert result.schema_version == "1.1"
 
 
 def test_ingest_session_idempotent_reingest(tmp_path: Path, mocked_pipeline_env) -> None:
@@ -527,6 +527,7 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
             extracted_at=dt.datetime(2026, 4, 18, tzinfo=dt.timezone.utc),
             embed_text="x",
             full_text="x",
+            bm25_text="x",
             embedding=[0.0] * 768,
         )
 
@@ -597,6 +598,53 @@ def test_ingest_session_calls_optimize_fts_index_after_commit(
         ollama_base_url=None,
     )
 
-    assert optimize_calls == [("full_text",)], (
-        f"expected exactly one optimize call with column='full_text'; got {optimize_calls}"
+    assert optimize_calls == [("bm25_text",)], (
+        f"expected exactly one optimize call with column='bm25_text'; got {optimize_calls}"
     )
+
+
+def test_pipeline_populates_bm25_text_on_commit(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Chunks committed by ingest_session must have bm25_text containing
+    topic_label, entities, speakers_spoke, speakers_mentioned, keywords,
+    and full_text content concatenated.
+    """
+    import lancedb
+    from community_brain.ingestion.pipeline import ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Agent frameworks comparison",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        assert row["bm25_text"], f"empty bm25_text on {row['chunk_id']}"
+        # bm25_text must embed full_text content
+        assert row["full_text"][:50] in row["bm25_text"], (
+            f"full_text prefix missing from bm25_text on {row['chunk_id']}"
+        )
