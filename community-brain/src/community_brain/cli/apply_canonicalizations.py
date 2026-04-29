@@ -44,6 +44,11 @@ def _validate_proposals(
             existing_alias_to_canonical[alias] = canonical
 
     conflicts: list[str] = []
+    # Track aliases proposed within THIS YAML to catch intra-file duplicates.
+    # A stale or manually-edited proposals file could put the same alias under
+    # two canonicals, creating silent ambiguity in the registry.
+    proposed_alias_to_canonical: dict[str, str] = {}
+
     for prop in proposals.get("proposals") or []:
         canonical = prop["canonical"]
         for candidate in prop.get("candidate_aliases") or []:
@@ -60,6 +65,16 @@ def _validate_proposals(
                     f"candidate '{candidate}' is already an alias of '{existing_canonical}'; "
                     f"refusing to remap to '{canonical}'"
                 )
+            # Conflict 3: candidate appears under a DIFFERENT canonical in this
+            # same proposals file (intra-file duplicate).
+            prior = proposed_alias_to_canonical.get(candidate)
+            if prior is not None and prior != canonical:
+                conflicts.append(
+                    f"candidate '{candidate}' appears in this proposals file under "
+                    f"both '{prior}' and '{canonical}'; cannot apply both."
+                )
+            else:
+                proposed_alias_to_canonical[candidate] = canonical
             # Candidate not in pending — log but don't block (manually-curated registries
             # may have candidates already removed from pending; re-applying a known-good
             # proposal should still work).

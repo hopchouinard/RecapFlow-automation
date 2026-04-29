@@ -58,7 +58,11 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
 )
 from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
-from community_brain.ingestion.canonicalize import build_alias_map, canonicalize_names
+from community_brain.ingestion.canonicalize import (
+    build_alias_map,
+    canonicalize_chunk_fields,
+    canonicalize_names,
+)
 from community_brain.ingestion.embedding import build_transcript_embed_text
 from community_brain.ingestion.schema import SCHEMA_VERSION, Chunk, pyarrow_table_schema
 from community_brain.ingestion.session_extractor import (
@@ -66,6 +70,7 @@ from community_brain.ingestion.session_extractor import (
     select_session_input,
 )
 from community_brain.query.fts_lifecycle import ensure_fts_index
+from community_brain.query.corpus_verify import CorpusInvalidError, verify_corpus_v3_state
 from community_brain.cli.lint_corpus import lint_corpus_chunks
 
 logger = logging.getLogger(__name__)
@@ -355,25 +360,24 @@ def ingest_session(
         chunk.external_refs = res.external_refs or None
         chunk.references_prior = res.references_prior
 
-        # Apply canonicalization to person-bearing fields. Unknowns from the
-        # speakers_spoke and speakers_mentioned paths (always people) flow to the
-        # speaker-aliases pending queue. Entity-side unknowns are intentionally
-        # NOT tracked: no entity registry exists in v3, so they stay raw and
-        # surface via BM25 over bm25_text / full_text instead.
+        # Apply canonicalization to all three person-bearing fields and enforce
+        # the speakers_spoke / speakers_mentioned partition. canonicalize_chunk_fields
+        # is the single canonical implementation shared with recanonicalize.py —
+        # both call sites are identical so partition logic cannot drift.
+        # Entity-side unknowns are intentionally NOT tracked: no entity registry
+        # exists in v3, so they stay raw and surface via BM25 over bm25_text /
+        # full_text instead.
         # res.new_speakers_seen / res.new_entities_seen are always [] since T6
         # (extractor no longer emits them); canonicalization-derived unknowns
         # replace them as the pending-queue feed source.
-        canon_spoke, unk_spoke = canonicalize_names(chunk.speakers_spoke, speaker_alias_map)
-        canon_mentioned, unk_mentioned = canonicalize_names(chunk.speakers_mentioned, speaker_alias_map)
-        canon_entities, _unk_entities = canonicalize_names(chunk.entities, speaker_alias_map)
-        # Re-establish the speakers_spoke / speakers_mentioned partition.
-        # Stage C computed it against raw aliases; canonicalization can collapse
-        # different raw forms (e.g., "Adam" + "Adam - Gold Flamingo" both ->
-        # "Adam James"), putting the same person in BOTH lists. The contract is
-        # "speakers_mentioned excludes anyone in speakers_spoke for this chunk."
-        # Enforce it deterministically post-canonical.
-        spoke_set = set(canon_spoke or [])
-        canon_mentioned = [n for n in (canon_mentioned or []) if n not in spoke_set]
+        canon_spoke, canon_mentioned, canon_entities, unk_spoke, unk_mentioned = (
+            canonicalize_chunk_fields(
+                speakers_spoke=chunk.speakers_spoke,
+                speakers_mentioned=chunk.speakers_mentioned,
+                entities=chunk.entities,
+                alias_map=speaker_alias_map,
+            )
+        )
         chunk.speakers_spoke = canon_spoke or chunk.speakers_spoke
         chunk.speakers_mentioned = canon_mentioned
         chunk.entities = canon_entities
@@ -435,6 +439,9 @@ def ingest_session(
             entity_reg.append_pending(sorted(unknown_entities))
             entity_reg.flush(config_dir / "entity-registry.yaml")
     except Exception as exc:
+        # Transient: registry flush is best-effort pending-queue bookkeeping.
+        # Chunk ingestion proceeds regardless; the operator can flush manually.
+        # Not an invariant violation — corpus correctness doesn't depend on it.
         logger.warning("Failed to flush entity-registry pending updates: %s", exc)
 
     try:
@@ -442,6 +449,7 @@ def ingest_session(
             speaker_reg.append_pending(sorted(unknown_speakers))
             speaker_reg.flush(config_dir / "speaker-aliases.yaml")
     except Exception as exc:
+        # Transient: same rationale as entity-registry flush above.
         logger.warning("Failed to flush speaker-aliases pending updates: %s", exc)
 
     # --- Stage E: commit to LanceDB ---
@@ -485,22 +493,19 @@ def ingest_session(
 
 
 def _post_commit_maintenance(table, db_path: str | Path) -> None:
-    """Run the post-commit invariants: FTS index, corpus lint.
+    """Run the post-commit invariants: corpus validity check + lint.
 
-    FTS is invariant-enforcing: a missing index breaks /query silently.
-    Raises CommitError on FTS rebuild failure (the caller already either
-    committed chunks or is about to return success; failure must surface).
+    verify_corpus_v3_state is invariant-enforcing: it checks schema + FTS
+    index in one call and raises CorpusInvalidError if either is broken.
+    Translated to CommitError here so callers see consistent failure signal.
 
     Lint is best-effort: chunks are already committed. WARN-on-failure;
     operator can run lint_corpus manually to recover.
     """
     try:
-        ensure_fts_index(table, column="bm25_text")
-    except Exception as exc:
-        raise CommitError(
-            f"FTS index rebuild on bm25_text failed: {exc}. "
-            f"Refusing to return success with /query degraded to vector-only."
-        ) from exc
+        verify_corpus_v3_state(table)
+    except CorpusInvalidError as exc:
+        raise CommitError(f"Corpus invalid post-commit: {exc}") from exc
     try:
         # db_path is authoritative here — it's the same path ingest_session
         # committed chunks to. COMMUNITY_BRAIN_DB_PATH is NOT consulted so that
@@ -513,6 +518,9 @@ def _post_commit_maintenance(table, db_path: str | Path) -> None:
             lint_stats["recurrent"],
         )
     except Exception as exc:
+        # Transient: chunks are already committed; lint failure doesn't mean
+        # the corpus is invalid, just that recurrent-marker computation didn't
+        # complete. Operator can run lint_corpus manually to recover.
         logger.warning("lint_corpus auto-trigger failed: %s; chunks committed", exc)
 
 
@@ -528,6 +536,9 @@ def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, st
             return {}
         table = db.open_table(TABLE_NAME)
     except Exception:
+        # Transient: LanceDB connectivity or filesystem error reading idempotency
+        # state. Safe to return {} — ingest will re-extract all chunks, which is
+        # correct but not optimally idempotent. Not an invariant violation.
         return {}
 
     try:
@@ -538,6 +549,8 @@ def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, st
             .to_list()
         )
     except Exception:
+        # Transient: query failure reading idempotency rows (e.g. schema mismatch
+        # after a partial migration). Same recovery: full re-extract is correct.
         return {}
 
     return {r["chunk_id"]: r["extraction_prompt_version"] for r in rows}

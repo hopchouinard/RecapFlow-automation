@@ -23,7 +23,11 @@ import lancedb
 import yaml
 
 from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
-from community_brain.ingestion.canonicalize import build_alias_map, canonicalize_names
+from community_brain.ingestion.canonicalize import (
+    build_alias_map,
+    canonicalize_chunk_fields,
+    canonicalize_names,
+)
 from community_brain.ingestion.embedding import build_transcript_embed_text
 
 
@@ -64,18 +68,15 @@ def recanonicalize_chunks(
     updated = 0
     for row in rows:
         scanned += 1
-        new_spk, _ = canonicalize_names(row.get("speakers_spoke") or [], alias_map)
-        new_men, _ = canonicalize_names(row.get("speakers_mentioned") or [], alias_map)
-        new_ent, _ = canonicalize_names(row.get("entities") or [], alias_map)
-
-        # Re-establish the speakers_spoke / speakers_mentioned partition.
-        # Same fix as pipeline.py post-canonicalization (round 6, commit 4ade1ae):
-        # canonicalization can collapse different raw aliases into the same
-        # canonical name across both fields, putting the same person in BOTH
-        # lists. The contract is "speakers_mentioned excludes anyone in
-        # speakers_spoke for this chunk."
-        spoke_set = set(new_spk or [])
-        new_men = [n for n in (new_men or []) if n not in spoke_set]
+        # canonicalize_chunk_fields is the shared implementation used by both
+        # pipeline.py (ingest) and this recanonicalize path — identical call
+        # sites mean partition logic cannot drift between the two writers.
+        new_spk, new_men, new_ent, _, _ = canonicalize_chunk_fields(
+            speakers_spoke=row.get("speakers_spoke") or [],
+            speakers_mentioned=row.get("speakers_mentioned") or [],
+            entities=row.get("entities") or [],
+            alias_map=alias_map,
+        )
 
         spk_changed = _diff_lists(new_spk, row.get("speakers_spoke"))
         men_changed = _diff_lists(new_men, row.get("speakers_mentioned"))

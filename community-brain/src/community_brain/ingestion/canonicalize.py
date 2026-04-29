@@ -50,3 +50,34 @@ def canonicalize_names(
         if name not in alias_map:
             unknown.append(name)
     return canonical, unknown
+
+
+def canonicalize_chunk_fields(
+    *,
+    speakers_spoke: list[str] | None,
+    speakers_mentioned: list[str] | None,
+    entities: list[str] | None,
+    alias_map: dict[str, str],
+) -> tuple[list[str], list[str], list[str], list[str], list[str]]:
+    """Canonicalize all three person-bearing fields and enforce the
+    speakers_spoke / speakers_mentioned partition.
+
+    Returns:
+        (canon_speakers_spoke, canon_speakers_mentioned, canon_entities,
+         unknown_speakers_spoke, unknown_speakers_mentioned)
+
+    Partition enforcement: speakers_mentioned excludes any name in
+    speakers_spoke, applied AFTER canonicalization (so different raw
+    aliases that collapse to the same canonical can't put the same
+    person in both lists).
+
+    Used by both ingest pipeline (pipeline.py) and recanonicalize CLI
+    (recanonicalize.py) so the partition fix can't drift across call sites.
+    """
+    canon_spk, unk_spk = canonicalize_names(speakers_spoke, alias_map)
+    canon_men, unk_men = canonicalize_names(speakers_mentioned, alias_map)
+    canon_ent, _ = canonicalize_names(entities, alias_map)
+    # Partition: speakers_mentioned excludes anyone in speakers_spoke
+    spoke_set = set(canon_spk)
+    canon_men = [n for n in canon_men if n not in spoke_set]
+    return canon_spk, canon_men, canon_ent, unk_spk, unk_men

@@ -32,6 +32,7 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
     render_alias_block,
 )
+from community_brain.query.corpus_verify import CorpusInvalidError, verify_corpus_v3_state
 from community_brain.query.fts_lifecycle import (
     drop_full_text_index_if_present,
     ensure_fts_index,
@@ -87,11 +88,18 @@ def _verify_api_key(api_key: str | None = Security(_api_key_header)) -> str | No
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Server startup hook: ensure the FTS index on chunks.bm25_text exists.
+    """Server startup hook: validate v3 corpus state and ensure the FTS index.
+
+    FAIL CLOSED on invalid v3 state: if the chunks table exists but is
+    pre-v1.1 (no bm25_text column) or the FTS index cannot be ensured,
+    verify_corpus_v3_state raises CorpusInvalidError which propagates here
+    and prevents the server from starting. Silent degraded service is no
+    longer acceptable — operator must drop the table and re-ingest per
+    spec §17.1, or roll back to v2 server.
 
     No-ops if the chunks table doesn't exist yet (fresh deployment, no
     sessions ingested) — /ingest will create the table, and the next boot
-    will build the index.
+    will verify it.
 
     Also attempts best-effort cleanup of any legacy v2 FTS index on the
     full_text column. The drop is a no-op on fresh v3 tables.
@@ -101,10 +109,15 @@ async def lifespan(app: FastAPI):
         db = lancedb.connect(db_path)
         if "chunks" in db.list_tables().tables:
             table = db.open_table("chunks")
-            ensure_fts_index(table, column="bm25_text")
+            # FAIL CLOSED on invalid v3 state — was previously silent.
+            # CorpusInvalidError propagates to FastAPI lifespan → server
+            # refuses to start with a clear message.
+            verify_corpus_v3_state(table)
             try:
                 drop_full_text_index_if_present(table)
             except Exception as exc:
+                # Transient: legacy index cleanup is best-effort; missing
+                # drop_index API is not a correctness issue.
                 logger.debug("legacy full_text FTS index cleanup skipped: %s", exc)
         else:
             logger.info(
@@ -112,8 +125,13 @@ async def lifespan(app: FastAPI):
                 "will be built on first /ingest or next boot",
                 db_path,
             )
+    except CorpusInvalidError:
+        raise  # propagate to lifespan caller; server must not start
     except Exception as exc:
-        logger.warning("startup FTS index ensure raised %r; continuing", exc)
+        # Transient: LanceDB connectivity or filesystem issue at boot time.
+        # Log and continue; /query will surface the error on first call
+        # when it re-runs verify_corpus_v3_state.
+        logger.warning("startup corpus check raised %r; continuing", exc)
     yield
 
 
@@ -307,6 +325,25 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     # to its own default rather than passing an empty host string.
     ollama_base_url = os.environ.get("OLLAMA_BASE_URL") or None
 
+    # Pre-search corpus validity gate: verify schema + FTS index before
+    # running search. CorpusInvalidError means the corpus is structurally
+    # broken for v3 (pre-v1.1 schema, or FTS index unbuildable) — return
+    # 503 so callers know retrieval is degraded, not just empty. This gates
+    # the FTS fallback: any FTS error INSIDE search_chunks after this check
+    # passes is genuinely transient (single-call fluke), and the vector-only
+    # fallback inside search_chunks remains correct for that case.
+    # No-op when the table doesn't exist yet (fresh deploy returns empty, not 503).
+    try:
+        db = lancedb.connect(db_path)
+        if "chunks" in db.list_tables().tables:
+            _table = db.open_table("chunks")
+            verify_corpus_v3_state(_table)
+    except CorpusInvalidError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail=f"Corpus is not in a valid v3 state: {exc}",
+        )
+
     # Use an empty QueryFilters to get spec-default values (e.g. *_match = "any")
     # even when the caller omits the filters field entirely.
     effective_filters = req.filters if req.filters is not None else QueryFilters()
@@ -442,6 +479,8 @@ def _load_all_session_rows() -> list[dict]:
     try:
         db = lancedb.connect(db_path)
     except Exception as exc:
+        # Transient: LanceDB connectivity failure. /sessions returns empty list;
+        # no corpus-state invariant is involved.
         logger.warning("Failed to connect to LanceDB at %s: %s", db_path, exc)
         return []
 
@@ -450,6 +489,7 @@ def _load_all_session_rows() -> list[dict]:
             return []
         table = db.open_table("chunks")
     except Exception as exc:
+        # Transient: table open failure on a read-only inventory path.
         logger.warning("Failed to open chunks table: %s", exc)
         return []
 
@@ -464,6 +504,7 @@ def _load_all_session_rows() -> list[dict]:
     try:
         arr = table.search().select(cols).limit(100_000).to_arrow()
     except Exception as exc:
+        # Transient: read failure on the inventory query. /sessions returns empty.
         logger.warning("Failed to read session rows from chunks table: %s", exc)
         return []
 
@@ -555,6 +596,8 @@ def _reindex_select_chunk_ids(filter_clause: dict) -> list[str]:
     try:
         db = lancedb.connect(db_path)
     except Exception as exc:
+        # Transient: LanceDB connectivity failure on a read-only inventory path.
+        # /reindex dry-run returns empty match list; no corpus state is mutated.
         logger.warning("Failed to connect to LanceDB at %s: %s", db_path, exc)
         return []
 
@@ -563,6 +606,7 @@ def _reindex_select_chunk_ids(filter_clause: dict) -> list[str]:
             return []
         table = db.open_table("chunks")
     except Exception as exc:
+        # Transient: table open failure on /reindex (v1 dry-run only, no mutations).
         logger.warning("Failed to open chunks table for reindex: %s", exc)
         return []
 
@@ -583,6 +627,7 @@ def _reindex_select_chunk_ids(filter_clause: dict) -> list[str]:
     try:
         arr = query.limit(100_000).to_arrow()
     except Exception as exc:
+        # Transient: query execution failure on /reindex filter scan.
         logger.warning("Failed to read chunk_ids for reindex filter: %s", exc)
         return []
     return [arr["chunk_id"][i].as_py() for i in range(arr.num_rows)]

@@ -237,6 +237,11 @@ def search_chunks(
             )
             results = query.to_arrow()
         except Exception as exc:
+            # Transient (gated by verify_corpus_v3_state in /query): the caller
+            # already confirmed the FTS index exists. This catch covers LanceDB
+            # internal query execution failures (e.g. memory pressure, transient
+            # file locking). Vector-only fallback is correct here — it's not a
+            # schema or index-existence issue.
             logger.warning(
                 "hybrid query failed (%r); falling back to vector-only ranking",
                 exc,
@@ -306,6 +311,10 @@ def search_chunks(
             for idx, row in enumerate(bm25_results)
         }
     except Exception as exc:
+        # Transient: the BM25 rank query is a secondary scoring annotation, not
+        # the primary result set. Its failure means score_breakdown.bm25_rank will
+        # be None for all chunks, but ranking and retrieval remain correct via the
+        # hybrid query's RRF output. Not an invariant violation.
         logger.warning("BM25 rank query failed (%r); bm25_rank will be None for all chunks", exc)
         bm25_rank_by_id = {}
 
