@@ -11,7 +11,7 @@ from community_brain.query import retrieval_server as server_mod
 
 
 def _fake_search_results() -> list[dict]:
-    """Shape matching what search_chunks_v2 returns from LanceDB."""
+    """Shape matching what search_chunks returns from LanceDB."""
     return [
         {
             "chunk_id": "2026-03-10:transcript:001",
@@ -60,7 +60,7 @@ def test_post_query_returns_structured_shape(monkeypatch) -> None:
     client = TestClient(server_mod.app)
 
     with patch(
-        "community_brain.query.query_local.search_chunks_v2",
+        "community_brain.query.query_local.search_chunks",
         return_value=_fake_search_results(),
     ):
         resp = client.post("/query", json={"question": "what about agents?", "top_k": 5})
@@ -83,7 +83,7 @@ def test_post_query_returns_structured_shape(monkeypatch) -> None:
 
 
 def test_post_query_passes_filters_to_search(monkeypatch) -> None:
-    """Filter values from the HTTP body reach search_chunks_v2 correctly."""
+    """Filter values from the HTTP body reach search_chunks correctly."""
     monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
     client = TestClient(server_mod.app)
 
@@ -96,7 +96,7 @@ def test_post_query_passes_filters_to_search(monkeypatch) -> None:
         return _fake_search_results()
 
     with patch(
-        "community_brain.query.query_local.search_chunks_v2",
+        "community_brain.query.query_local.search_chunks",
         side_effect=_spy,
     ):
         resp = client.post(
@@ -134,7 +134,7 @@ def test_post_query_default_filters_match_spec(monkeypatch) -> None:
         return []
 
     with patch(
-        "community_brain.query.query_local.search_chunks_v2",
+        "community_brain.query.query_local.search_chunks",
         side_effect=_spy,
     ):
         resp = client.post("/query", json={"question": "x"})
@@ -153,7 +153,7 @@ def test_post_query_filters_applied_echoed_in_response(monkeypatch) -> None:
     client = TestClient(server_mod.app)
 
     with patch(
-        "community_brain.query.query_local.search_chunks_v2",
+        "community_brain.query.query_local.search_chunks",
         return_value=_fake_search_results(),
     ):
         resp = client.post(
@@ -176,7 +176,7 @@ def test_post_query_total_matched_reflects_returned_chunks(monkeypatch) -> None:
     client = TestClient(server_mod.app)
 
     with patch(
-        "community_brain.query.query_local.search_chunks_v2",
+        "community_brain.query.query_local.search_chunks",
         return_value=_fake_search_results(),
     ):
         resp = client.post("/query", json={"question": "x"})

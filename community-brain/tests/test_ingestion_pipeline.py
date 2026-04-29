@@ -557,3 +557,46 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
     vec_rows = tbl.search([0.1] * 768).limit(2).to_list()
     assert len(vec_rows) == 2
     assert "_distance" in vec_rows[0]
+
+
+def test_ingest_session_calls_optimize_fts_index_after_commit(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """After a successful chunk commit, ingest_session must call
+    optimize_fts_index so the new chunks become BM25-searchable on the
+    next /query."""
+    optimize_calls: list[tuple] = []
+
+    def _capture(table, column):
+        optimize_calls.append((column,))
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.optimize_fts_index",
+        _capture,
+    )
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Agent frameworks comparison",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    assert optimize_calls == [("full_text",)], (
+        f"expected exactly one optimize call with column='full_text'; got {optimize_calls}"
+    )

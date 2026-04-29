@@ -174,29 +174,33 @@ This repo is a multi-module project. Everything above describes the n8n orchestr
 
 The two modules interact at the filesystem boundary: n8n writes artifacts to `./output/<YYYY-MM-DD>/`, and the retrieval-server container mounts that directory read-only as `/data/output/`. Plan B will wire n8n workflows to POST to the retrieval server's `/ingest` endpoint after producing artifacts.
 
-## Current status (as of 2026-04-27)
+## Current status (as of 2026-04-28)
 
-**Plan A — COMPLETE and DEPLOYED.** Retrieval server live on the n8n VM at `http://10.1.30.10:8999` (LAN-reachable). 37-field LanceDB v1.0 schema, trust-partitioned `/query`, all 252+ tests green.
+**Plan A — COMPLETE and DEPLOYED.** Retrieval server live on the n8n VM at `http://10.1.30.10:8999` (LAN-reachable). 37-field LanceDB v1.0 schema, trust-partitioned `/query`.
 
 **Plan B — COMPLETE.** Both n8n workflows wired to the retrieval server:
 - Workflow 1 (Merged Call Summarizer, n8n id 5): live weekly with prep-prompt + `/ingest` POST appended
 - Workflow 2 (Transcript-Only Summarizer, n8n id 6): backfill workflow with state file + resume
 - 8 sessions in LanceDB (~167 chunks): 6 consecutive Feb 2025 + `2026-04-14` + `2026-04-21`
 
-**Phase 6 — PARTIAL VALIDATION COMPLETE.** 5 query types from spec §10 tested against the 8-session subset. 3 pass cleanly, 2 have documented retrieval-layer caveats (vector search misses entity-grounded queries and structured-metadata-tagged chunks). Findings drove the v2 scope below.
+**Phase 6 — PARTIAL VALIDATION COMPLETE.** 5 query types from spec §10 tested against the 8-session subset. 3 pass cleanly, 2 had retrieval-layer caveats (Findings 6 and 7) — both addressed in Hybrid Retrieval v2 below.
 
-**What's still open — three tracks:**
+**Hybrid Retrieval v2 — COMPLETE in code; LIVE-VM VALIDATION PENDING.** `/query` ranking is now hybrid (vector + BM25 RRF, k=60) with cue-driven metadata-aware boosting, oversampled 3×, vector-only graceful fallback. Legacy v0 helpers + `_v2` suffix archaeology removed. Server bumped to `0.2.0`. 302 tests passing on `feat/hybrid-retrieval-v2` (merged into `main` on 2026-04-28). Addresses Findings 6 (rare-token retrieval) and 7 (metadata-tagged retrieval) from the Phase 6 catalog.
+
+**What's still open — two tracks:**
 - **Track A (trivial):** Plan B's Task 17 — small CLAUDE.md update (this section is part of it)
 - **Track B (operational):** Plan C — full backfill across remaining 59 of 65 historical sessions (~12 hr overnight run, ~$3 cost)
-- **Track C (substantial):** Hybrid Retrieval v2 — fix the two retrieval-layer limitations Phase 6 validation surfaced. Needs full design cycle (brainstorming → spec → plan → implementation).
+- **Track D (operational):** v2 Task 16 — deploy v2 container to the VM and run Phase 6 query types via Open WebUI to confirm Findings 6/7 are empirically resolved. Requires SSH to `10.1.30.10`. Runbook in `community-brain/docs/DEPLOYMENT.md`.
 
-**👉 START HERE in any new session:** [`docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`](docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md) — 3-minute read, contains starter prompts you can paste verbatim into a fresh session for each track.
+**👉 START HERE in any new session:** [`docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`](docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md).
 
 **Canonical references:**
 - **Handoff doc (read first):** `docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`
-- Plan A spec: `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` (§10 Phase 6 has the validation findings catalog)
+- Plan A spec: `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` (§10 Phase 6 has the validation findings catalog; Findings 6 and 7 cross-reference v2)
 - Plan A plan: `docs/superpowers/plans/2026-04-18-community-brain-ingestion-plan-a.md`
 - Plan B spec: `docs/superpowers/specs/2026-04-19-plan-b-n8n-ingestion-integration-design.md`
 - Plan B plan: `docs/superpowers/plans/2026-04-19-plan-b-n8n-ingestion-integration-plan.md`
+- v2 spec: `docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md`
+- v2 plan: `docs/superpowers/plans/2026-04-27-hybrid-retrieval-v2-plan.md`
 - Trust contract: `docs/inference-guidelines.md`
 - Schema evolution rules: `docs/migrations/CHANGELOG.md`

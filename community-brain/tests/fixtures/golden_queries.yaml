@@ -1,0 +1,91 @@
+# Golden query suite for hybrid retrieval v2 validation.
+#
+# Each entry maps a free-form question to the chunk_ids it MUST surface in
+# top-K under hybrid retrieval. `min_match_count` is the floor — at least N
+# of `expected_chunk_ids` must be present.
+#
+# `expect_lift_over_vector_only`: when true, the vector-only baseline is
+# expected to fail this assertion (proves hybrid is responsible for the lift).
+
+queries:
+  # --- Finding 6 (entity-grounded) ---
+  - id: f6-adam-direct
+    question: "What did Adam from Gold Flamingo commit to?"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-adam-1, f6-adam-2]
+    min_match_count: 2
+    expect_lift_over_vector_only: true
+
+  - id: f6-adam-rephrased
+    question: "Adam Gold Flamingo law firms LinkedIn"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-adam-1, f6-adam-2]
+    min_match_count: 2
+    expect_lift_over_vector_only: false
+
+  - id: f6-maria
+    question: "What did Maria from Beacon Analytics propose?"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-maria-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
+  - id: f6-blueocean
+    question: "Tell me about the BlueOcean Capital partnership"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-blueocean-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
+  - id: f6-tokyo
+    question: "What was discussed about Tokyo Labs Research Group?"
+    target_finding: "6"
+    top_k: 10
+    expected_chunk_ids: [f6-tokyo-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
+  # --- Finding 7 (metadata-tagged) ---
+  - id: f7-unresolved
+    question: "What unresolved questions came up across these calls?"
+    target_finding: "7"
+    top_k: 10
+    expected_chunk_ids: [f7-unres-1, f7-unres-2]
+    min_match_count: 2
+    expect_lift_over_vector_only: true
+
+  - id: f7-decisions
+    question: "What decisions were made?"
+    target_finding: "7"
+    top_k: 10
+    expected_chunk_ids: [f7-decision-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
+  - id: f7-action-items
+    question: "What action items did we commit to?"
+    target_finding: "7"
+    top_k: 10
+    expected_chunk_ids: [f7-actions-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: true
+
+  - id: f7-insights
+    question: "What were the key takeaways?"
+    target_finding: "7"
+    top_k: 10
+    expected_chunk_ids: [f7-insight-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: false
+
+  - id: f7-references-prior
+    question: "What was referenced from prior calls?"
+    target_finding: "7"
+    top_k: 10
+    expected_chunk_ids: [f7-prior-1]
+    min_match_count: 1
+    expect_lift_over_vector_only: false

@@ -41,3 +41,63 @@ Every schema version bump or extraction-breaking change is recorded here.
   reserved for a future Stage C extractor update that distinguishes
   "spoke in this chunk" from "was referenced/mentioned without speaking."
   v1 consumers should read `speakers_spoke` only.
+
+## 2026-04-28 — Hybrid Retrieval v2 (no schema migration)
+
+- Type: Retrieval-layer change (additive index, no schema migration).
+- Scope: `community_brain.query` package, `community_brain.ingestion.pipeline`.
+  No change to chunks-table schema (still 37 fields, schema_version
+  unchanged at "1.0").
+
+What changed:
+
+- LanceDB FTS index added on `chunks.full_text` (Tantivy-based, native to
+  LanceDB 0.30.x).
+- `/query` ranker is now hybrid (vector + BM25, RRF k=60) with oversampling
+  3× and a Python cue-boost post-processing layer that promotes chunks
+  whose metadata flags align with question-side lexical cues. See
+  `docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md`.
+- Legacy v0 (`transcripts`-table) helpers removed:
+  `query.__init__.build_filter_expression`, `query_local.search_chunks`
+  (v0), `query_local.format_results`, `query_local.build_answer_prompt`,
+  `query_local`'s click CLI, and the entire `query_openai.py` (an
+  OpenAI-targeted CLI sibling, also dead).
+- `query_local.build_filter_expression_v2` renamed to
+  `build_filter_expression`. `query_local.search_chunks_v2` renamed to
+  `search_chunks`. Test file `tests/test_query_local_v2.py` renamed to
+  `tests/test_query_local.py`.
+- New modules: `community_brain.query.cue_rules` (CueRule dataclass,
+  6-rule initial set, `apply_cue_boosts` with graceful rule-failure
+  handling) and `community_brain.query.fts_lifecycle`
+  (`ensure_fts_index` idempotent boot helper, `optimize_fts_index`
+  no-op refresh seam).
+- FastAPI startup lifespan ensures the FTS index on boot.
+  `pipeline.ingest_session` calls `optimize_fts_index` after each
+  successful chunk commit (no-op under LanceDB 0.30.x auto-update path;
+  kept as a future-proofing seam).
+- `retrieval_server` version bumped from `0.1.0` to `0.2.0`.
+
+Operator action required:
+
+- None. First boot of the new container builds the FTS index automatically.
+- Open WebUI filter and n8n workflows continue to work without change.
+
+Rollback:
+
+- Redeploy prior container image. The on-disk FTS index is auxiliary
+  metadata that pre-v2 binaries ignore (consistent with LanceDB's
+  auxiliary-index design; spec §11.5 flagged for empirical verification
+  at operator-side cutover, T16).
+- If pre-v2 chokes on the index presence, recovery is to delete the FTS
+  index directory under the LanceDB store before redeploying. Tractable,
+  just a documented step.
+
+Validation:
+
+- 296 unit + integration tests pass on the feature branch.
+- Golden query suite (`tests/test_golden_queries.py`) covers Findings 6
+  (entity-grounded) and 7 (metadata-tagged) with lift-validation
+  assertions that prove the hybrid+cue layers — not corpus luck —
+  surface the target chunks.
+- Operator-side validation against the live VM (Phase 6 query types per
+  Plan A spec §10) is task T16 of the plan, post-merge.

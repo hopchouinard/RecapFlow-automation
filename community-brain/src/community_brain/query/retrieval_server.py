@@ -12,9 +12,11 @@ from __future__ import annotations
 
 import logging
 import os
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Literal
 
+import lancedb
 from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException, Security
 from fastapi.responses import PlainTextResponse
@@ -30,6 +32,7 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
     render_alias_block,
 )
+from community_brain.query.fts_lifecycle import ensure_fts_index
 from community_brain.query.query_local import sql_quote
 
 logger = logging.getLogger(__name__)
@@ -79,10 +82,36 @@ def _verify_api_key(api_key: str | None = Security(_api_key_header)) -> str | No
     return api_key
 
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Server startup hook: ensure the FTS index on chunks.full_text exists.
+
+    No-ops if the chunks table doesn't exist yet (fresh deployment, no
+    sessions ingested) — /ingest will create the table, and the next boot
+    will build the index.
+    """
+    db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
+    try:
+        db = lancedb.connect(db_path)
+        if "chunks" in db.list_tables().tables:
+            table = db.open_table("chunks")
+            ensure_fts_index(table, "full_text")
+        else:
+            logger.info(
+                "startup: chunks table does not exist yet at %s; FTS index "
+                "will be built on first /ingest or next boot",
+                db_path,
+            )
+    except Exception as exc:
+        logger.warning("startup FTS index ensure raised %r; continuing", exc)
+    yield
+
+
 app = FastAPI(
     title="Community Brain Retrieval API",
     description="Search coaching call transcripts by semantic similarity.",
-    version="0.1.0",
+    version="0.2.0",
+    lifespan=lifespan,
 )
 
 
@@ -231,7 +260,7 @@ def speaker_aliases_block(_key: str | None = Depends(_verify_api_key)) -> str:
 
 @app.post("/query", response_model=QueryResponseV2)
 def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
-    from community_brain.query.query_local import search_chunks_v2
+    from community_brain.query.query_local import search_chunks
 
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
     # Treat empty-string OLLAMA_BASE_URL (common side-effect of env_file
@@ -244,7 +273,7 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     effective_filters = req.filters if req.filters is not None else QueryFilters()
     filters_dict = effective_filters.model_dump(exclude_none=False)
 
-    raw = search_chunks_v2(
+    raw = search_chunks(
         question=req.question,
         db_path=db_path,
         top_k=req.top_k,

@@ -1,37 +1,52 @@
-"""CLI query tool using Ollama for embedding and inference.
+"""Query helpers for Community Brain (v1 chunks-table search path).
 
-Usage:
-    python -m community_brain.query.query_local "What was discussed about Codex?"
-    python -m community_brain.query.query_local "GPU benchmarks" --top-k 10 --verbose
+Exposes the search/filter helpers used by the retrieval server.
 """
 
 from __future__ import annotations
 
 import logging
-import os
-from pathlib import Path
 
-import click
 import lancedb
 import ollama
-from dotenv import load_dotenv
 
 from community_brain.ingestion.embedding import _active_embed_model
-from community_brain.query import build_filter_expression
+from community_brain.query.cue_rules import apply_cue_boosts
 
 logger = logging.getLogger(__name__)
 
+# Hybrid retrieval oversampling factor (spec §3.1): the LanceDB hybrid query
+# returns top_k * OVERSAMPLE_FACTOR raw candidates so the downstream cue-boost
+# step (T10) has headroom to re-rank before truncating to top_k.
+OVERSAMPLE_FACTOR = 3
+
 __all__ = [
     "search_chunks",
-    "search_chunks_v2",
-    "build_filter_expression_v2",
+    "build_filter_expression",
     "sql_quote",
 ]
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-CONFIG_DIR = PROJECT_ROOT / "config"
-DEFAULT_DB_PATH = PROJECT_ROOT / "lancedb" / "nomic-v1"
-DEFAULT_LLM_MODEL = "gemma4:e4b"
+
+def _cosine_distance(a: list[float], b: list[float]) -> float:
+    """Cosine distance between two equal-length vectors. Range [0, 2].
+
+    Used to populate `_distance` on hybrid-query results — LanceDB's hybrid
+    mode returns `_relevance_score` (the RRF score) but no `_distance`.
+    Spec §7.2 requires the public `similarity` field (computed downstream
+    as `1 - _distance` in retrieval_server) to reflect vector cosine
+    similarity, not the internal RRF/cue-boost score.
+    """
+    import math
+    dot = 0.0
+    norm_a = 0.0
+    norm_b = 0.0
+    for x, y in zip(a, b):
+        dot += x * y
+        norm_a += x * x
+        norm_b += y * y
+    if norm_a == 0.0 or norm_b == 0.0:
+        return 1.0
+    return 1.0 - dot / (math.sqrt(norm_a) * math.sqrt(norm_b))
 
 
 def sql_quote(value: str) -> str:
@@ -48,49 +63,7 @@ def sql_quote(value: str) -> str:
     return value.replace("'", "''")
 
 
-def search_chunks(
-    question: str,
-    db_path: str,
-    table_name: str = "transcripts",
-    top_k: int = 5,
-    filter_date: str | None = None,
-    filter_speaker: str | None = None,
-    ollama_base_url: str | None = None,
-) -> list[dict]:
-    """Embed the question and search LanceDB for similar chunks.
-
-    Returns list of result dicts with chunk metadata + _distance score.
-    """
-    # Embed the question
-    if ollama_base_url:
-        client = ollama.Client(host=ollama_base_url)
-        response = client.embed(model=_active_embed_model(), input=[question])
-    else:
-        response = ollama.embed(model=_active_embed_model(), input=[question])
-    query_vector = response["embeddings"][0]
-
-    # Search LanceDB. This legacy helper defaults to the v0 `transcripts` table,
-    # which has no extraction_status column -- do NOT add the status filter here.
-    # The v1 `chunks` table filter lives in search_chunks_v2.
-    db = lancedb.connect(db_path)
-    table = db.open_table(table_name)
-
-    query = table.search(query_vector).limit(top_k)
-
-    # Apply filters (safely escaped)
-    filter_expr = build_filter_expression(filter_date, filter_speaker)
-    if filter_expr:
-        query = query.where(filter_expr)
-
-    results = query.to_arrow()
-    # Convert Arrow table to list of dicts
-    return [
-        {col: results[col][i].as_py() for col in results.column_names}
-        for i in range(results.num_rows)
-    ]
-
-
-def build_filter_expression_v2(filters: dict | None) -> str | None:
+def build_filter_expression(filters: dict | None) -> str | None:
     """Build a LanceDB WHERE clause from the v2 filter dict.
 
     Semantics (per spec §7.1):
@@ -167,30 +140,34 @@ def build_filter_expression_v2(filters: dict | None) -> str | None:
     return " AND ".join(clauses)
 
 
-def search_chunks_v2(
+def search_chunks(
     question: str,
     db_path: str,
     top_k: int,
     filters: dict | None,
     ollama_base_url: str | None = None,
     table_name: str = "chunks",
+    _use_hybrid: bool = True,
 ) -> list[dict]:
-    """Filter-then-rank v2 search against the new chunks table.
+    """Hybrid (vector + BM25) search against the chunks table with optional
+    structured filters and the success-guard.
 
-    Applies `build_filter_expression_v2(filters)` as a LanceDB WHERE clause
-    first, then ranks the filtered rows by vector similarity to the embedded
-    question. Per spec §7.1: filtering precedes ranking; ranking uses vector
-    similarity alone in v1.
+    Pipeline (spec §3.1):
+      1. Embed `question` via Ollama (nomic-embed-text).
+      2. LanceDB hybrid query: RRF(vector, BM25 on full_text), oversampled
+         by OVERSAMPLE_FACTOR.
+      3. WHERE clause: extraction_status = 'success' AND caller's filters.
+      4. Return top (top_k * OVERSAMPLE_FACTOR) raw rows; cue boost runs
+         downstream in the caller (T10 wires that in).
 
-    Returns empty list if the table doesn't exist yet (fresh deployment).
-
-    Returns raw LanceDB row dicts (including `_distance`). The retrieval server
-    translates these into the structured ground_truth/derived_metadata/provenance
-    response shape.
+    `_use_hybrid=False` is a test-only knob that drops the BM25 leg —
+    used by the lift-validation tests in the golden query suite to prove
+    the hybrid pathway is what surfaces the missing chunks.
     """
     db = lancedb.connect(db_path)
     if table_name not in db.list_tables().tables:
         return []
+    table = db.open_table(table_name)
 
     if ollama_base_url:
         client = ollama.Client(host=ollama_base_url)
@@ -199,130 +176,70 @@ def search_chunks_v2(
         response = ollama.embed(model=_active_embed_model(), input=[question])
     query_vector = response["embeddings"][0]
 
-    table = db.open_table(table_name)
-    query = table.search(query_vector).limit(top_k)
-
-    # Failed-extraction chunks carry a zero-vector embedding and must be
-    # excluded from vector search. AND the user filter with the status guard.
-    user_expr = build_filter_expression_v2(filters)
+    user_expr = build_filter_expression(filters)
     status_guard = "extraction_status = 'success'"
-    expr = f"({user_expr}) AND {status_guard}" if user_expr else status_guard
-    query = query.where(expr)
+    where_expr = f"({user_expr}) AND {status_guard}" if user_expr else status_guard
 
-    results = query.to_arrow()
-    return [
-        {col: results[col][i].as_py() for col in results.column_names}
-        for i in range(results.num_rows)
-    ]
+    candidate_count = top_k * OVERSAMPLE_FACTOR
 
-
-def format_results(results: list[dict], verbose: bool = False) -> str:
-    """Format search results for display."""
-    if not results:
-        return "No results found."
-
-    lines = ["Sources:"]
-    for i, r in enumerate(results, 1):
-        score = 1 - r.get("_distance", 0)  # convert distance to similarity
-        lines.append(
-            f"  [{i}] {r['session_date']} — {r['topic']} "
-            f"({r['chunk_id']}) [similarity: {score:.2f}]"
-        )
-        if verbose:
-            lines.append(f"      Summary: {r['summary']}")
-            lines.append(f"      Text: {r['text'][:200]}...")
-            lines.append("")
-
-    return "\n".join(lines)
-
-
-def build_answer_prompt(question: str, results: list[dict]) -> str:
-    """Build the prompt for LLM answer generation with retrieved context."""
-    context_parts = []
-    for i, r in enumerate(results, 1):
-        context_parts.append(
-            f"[Source {i}] Session: {r['session_date']} | "
-            f"Topic: {r['topic']}\n"
-            f"Summary: {r['summary']}\n"
-            f"Transcript:\n{r['text']}\n"
-        )
-
-    context = "\n---\n".join(context_parts)
-
-    return (
-        "You are answering questions about AI community coaching call transcripts. "
-        "Use ONLY the provided sources to answer. Cite sources as [1], [2], etc.\n\n"
-        f"## Sources\n\n{context}\n\n"
-        f"## Question\n\n{question}\n\n"
-        "## Answer\n\n"
-    )
-
-
-@click.command()
-@click.argument("question")
-@click.option("--top-k", default=5, help="Number of chunks to retrieve")
-@click.option("--model", default=DEFAULT_LLM_MODEL, help="Ollama model for answer generation")
-@click.option("--verbose", is_flag=True, help="Show retrieved chunks before the answer")
-@click.option("--filter-date", default=None, help="Only search chunks from this date (YYYY-MM-DD)")
-@click.option("--filter-speaker", default=None, help="Only search chunks containing this speaker")
-@click.option("--db-path", default=None, help="Override LanceDB path")
-def main(
-    question: str,
-    top_k: int,
-    model: str,
-    verbose: bool,
-    filter_date: str | None,
-    filter_speaker: str | None,
-    db_path: str | None,
-) -> None:
-    """Query the Community Brain knowledge base using Ollama."""
-    load_dotenv(CONFIG_DIR / ".env")
-    # Empty-string env value (common when env_file uncomments a blank line)
-    # is treated as unset so the ollama client falls back to its default.
-    ollama_base_url = os.environ.get("OLLAMA_BASE_URL") or None
-
-    if db_path is None:
-        db_path = str(DEFAULT_DB_PATH)
-
-    # Search
-    click.echo(f"Searching for: {question}")
-    results = search_chunks(
-        question=question,
-        db_path=db_path,
-        top_k=top_k,
-        filter_date=filter_date,
-        filter_speaker=filter_speaker,
-        ollama_base_url=ollama_base_url,
-    )
-
-    if not results:
-        click.echo("No results found.")
-        return
-
-    if verbose:
-        click.echo(f"\n{format_results(results, verbose=True)}\n")
-
-    # Generate answer
-    prompt = build_answer_prompt(question, results)
-
-    click.echo("Generating answer...\n")
-    if ollama_base_url:
-        client = ollama.Client(host=ollama_base_url)
-        response = client.chat(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-        )
+    if _use_hybrid:
+        try:
+            # LanceDB 0.30.x hybrid API: explicit builder form. Passing the
+            # vector positionally to .search() while also calling .text(...)
+            # raises ValueError. See spec §11.1 Resolution side note.
+            query = (
+                table.search(query_type="hybrid")
+                .vector(query_vector)
+                .text(question)
+                .where(where_expr)
+                .limit(candidate_count)
+            )
+            results = query.to_arrow()
+        except Exception as exc:
+            logger.warning(
+                "hybrid query failed (%r); falling back to vector-only ranking",
+                exc,
+            )
+            query = (
+                table.search(query_vector)
+                .where(where_expr)
+                .limit(candidate_count)
+            )
+            results = query.to_arrow()
     else:
-        response = ollama.chat(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
+        query = (
+            table.search(query_vector)
+            .where(where_expr)
+            .limit(candidate_count)
         )
+        results = query.to_arrow()
 
-    answer = response["message"]["content"]
-    click.echo(f"Answer:\n{answer}")
-    click.echo(f"\n{format_results(results, verbose=False)}")
+    candidates: list[dict] = []
+    for i in range(results.num_rows):
+        row = {col: results[col][i].as_py() for col in results.column_names}
+        # LanceDB hybrid mode emits _relevance_score (RRF) but no _distance.
+        # Vector-only fallback emits _distance (cosine) but no _relevance_score.
+        # Normalize:
+        #   - _rrf_score: the internal ranking signal the cue-boost layer reads.
+        #   - _distance:  vector cosine distance, preserved per spec §7.2 so
+        #                 retrieval_server's `similarity = 1 - _distance` keeps
+        #                 the v1 numeric scale (~0.3–0.8 cosine similarity).
+        if "_relevance_score" in row:
+            row["_rrf_score"] = float(row["_relevance_score"])
+            embedding = row.get("embedding")
+            if embedding:
+                row["_distance"] = _cosine_distance(query_vector, list(embedding))
+            else:
+                # No embedding column projected; let downstream similarity
+                # default to 1.0 (1 - 0). Better than fabricating a value.
+                row["_distance"] = 0.0
+        else:
+            # Vector-only fallback path: _distance is already present from LanceDB.
+            row["_rrf_score"] = 1.0 - float(row.get("_distance", 0.0))
+        candidates.append(row)
 
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-    main()
+    boosted = apply_cue_boosts(question, candidates)
+    # IMPORTANT: do NOT re-sync _distance from _rrf_score here.
+    # _distance reflects vector cosine similarity (spec §7.2); cue boost
+    # only changes ranking via _rrf_score, not the surface similarity field.
+    return boosted[:top_k]

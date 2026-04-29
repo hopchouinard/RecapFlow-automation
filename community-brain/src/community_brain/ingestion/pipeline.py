@@ -62,6 +62,7 @@ from community_brain.ingestion.session_extractor import (
     extract_session_themes,
     select_session_input,
 )
+from community_brain.query.fts_lifecycle import optimize_fts_index
 
 logger = logging.getLogger(__name__)
 
@@ -378,6 +379,24 @@ def ingest_session(
         all_chunks,
         full_session_rewrite=request.force_reextract,
     )
+
+    # Refresh FTS index so the freshly-committed chunks become BM25-searchable
+    # on the next /query. Under LanceDB 0.30.x this is a no-op (auto-update
+    # path verified by spike, spec §11.1 Resolution); kept as the canonical
+    # refresh seam in case a future LanceDB version drops auto-update.
+    if all_chunks:
+        try:
+            db = lancedb.connect(db_path)
+            if TABLE_NAME in db.list_tables().tables:
+                table = db.open_table(TABLE_NAME)
+                optimize_fts_index(table, "full_text")
+        except Exception as exc:
+            # optimize_fts_index already catches and logs internally; this is
+            # belt-and-suspenders against future changes that might propagate.
+            logger.warning(
+                "optimize_fts_index after ingest raised %r; chunks committed but FTS "
+                "may lag until next refresh", exc
+            )
 
     # Tally chunks_written by content type
     by_type: dict[str, int] = {}
