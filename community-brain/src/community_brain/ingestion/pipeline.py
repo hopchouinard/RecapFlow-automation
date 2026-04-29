@@ -65,7 +65,7 @@ from community_brain.ingestion.session_extractor import (
     extract_session_themes,
     select_session_input,
 )
-from community_brain.query.fts_lifecycle import ensure_fts_index, optimize_fts_index
+from community_brain.query.fts_lifecycle import ensure_fts_index
 from community_brain.cli.lint_corpus import lint_corpus_chunks
 
 logger = logging.getLogger(__name__)
@@ -266,20 +266,13 @@ def ingest_session(
         all_chunks = kept
         if not all_chunks:
             # All chunks already present; nothing to write. Still enforce the
-            # FTS-index invariant: if the table somehow lacks the bm25_text FTS
-            # index (e.g., a prior fresh-table init raised after persisting rows),
-            # rebuild it now so /query retains both retrieval legs.
+            # same post-commit invariants as the normal commit path (FTS index,
+            # corpus lint) so a retry after a torn fresh-table init leaves the
+            # corpus in a fully consistent state before returning success.
             db_early = lancedb.connect(db_path)
             if TABLE_NAME in db_early.list_tables().tables:
                 _tbl_early = db_early.open_table(TABLE_NAME)
-                try:
-                    ensure_fts_index(_tbl_early, column="bm25_text")
-                except Exception as exc:
-                    raise CommitError(
-                        f"All-skipped path: bm25_text FTS index missing and rebuild "
-                        f"failed: {exc}. Investigate the LanceDB FTS error or drop "
-                        f"the table and re-ingest fresh."
-                    ) from exc
+                _post_commit_maintenance(_tbl_early, db_path)
             return IngestResult(
                 session_id=request.session_id,
                 chunks_written=0,
@@ -455,37 +448,14 @@ def ingest_session(
         full_session_rewrite=request.force_reextract,
     )
 
-    # Refresh FTS index so the freshly-committed chunks become BM25-searchable
-    # on the next /query. Under LanceDB 0.30.x this is a no-op (auto-update
-    # path verified by spike, spec §11.1 Resolution); kept as the canonical
-    # refresh seam in case a future LanceDB version drops auto-update.
-    if all_chunks:
-        try:
-            db = lancedb.connect(db_path)
-            if TABLE_NAME in db.list_tables().tables:
-                table = db.open_table(TABLE_NAME)
-                optimize_fts_index(table, "bm25_text")
-        except Exception as exc:
-            # optimize_fts_index already catches and logs internally; this is
-            # belt-and-suspenders against future changes that might propagate.
-            logger.warning(
-                "optimize_fts_index after ingest raised %r; chunks committed but FTS "
-                "may lag until next refresh", exc
-            )
-
-    # Auto-trigger corpus lint to refresh corpus_derived_markers across the
-    # (now-larger) corpus. WARN-on-failure: chunks are already committed; lint
-    # will retry on next ingest or a manual run.
-    try:
-        _lint_db_path = os.environ.get("COMMUNITY_BRAIN_DB_PATH") or db_path
-        lint_stats = lint_corpus_chunks(_lint_db_path)
-        logger.info(
-            "lint_corpus auto-trigger: scanned %d, recurrent %d",
-            lint_stats["scanned"],
-            lint_stats["recurrent"],
-        )
-    except Exception as exc:
-        logger.warning("lint_corpus auto-trigger failed: %s; chunks committed", exc)
+    # Run post-commit invariants (FTS index + corpus lint). Opens the table
+    # fresh so the newly-committed rows are visible to both ensure_fts_index
+    # and lint_corpus. This is the same helper called by the all-skipped
+    # idempotency path, ensuring both paths enforce identical post-commit state.
+    _post_commit_db = lancedb.connect(db_path)
+    if TABLE_NAME in _post_commit_db.list_tables().tables:
+        _post_commit_table = _post_commit_db.open_table(TABLE_NAME)
+        _post_commit_maintenance(_post_commit_table, db_path)
 
     # Tally chunks_written by content type
     by_type: dict[str, int] = {}
@@ -504,6 +474,35 @@ def ingest_session(
         unknown_entities_flagged=sorted(unknown_entities),
         unknown_speakers_flagged=sorted(unknown_speakers),
     )
+
+
+def _post_commit_maintenance(table, db_path: str | Path) -> None:
+    """Run the post-commit invariants: FTS index, corpus lint.
+
+    FTS is invariant-enforcing: a missing index breaks /query silently.
+    Raises CommitError on FTS rebuild failure (the caller already either
+    committed chunks or is about to return success; failure must surface).
+
+    Lint is best-effort: chunks are already committed. WARN-on-failure;
+    operator can run lint_corpus manually to recover.
+    """
+    try:
+        ensure_fts_index(table, column="bm25_text")
+    except Exception as exc:
+        raise CommitError(
+            f"FTS index rebuild on bm25_text failed: {exc}. "
+            f"Refusing to return success with /query degraded to vector-only."
+        ) from exc
+    try:
+        _lint_db_path = os.environ.get("COMMUNITY_BRAIN_DB_PATH") or db_path
+        lint_stats = lint_corpus_chunks(_lint_db_path)
+        logger.info(
+            "lint_corpus auto-trigger: scanned %d, recurrent %d",
+            lint_stats["scanned"],
+            lint_stats["recurrent"],
+        )
+    except Exception as exc:
+        logger.warning("lint_corpus auto-trigger failed: %s; chunks committed", exc)
 
 
 def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, str]:

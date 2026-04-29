@@ -568,19 +568,21 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
     assert "_distance" in vec_rows[0]
 
 
-def test_ingest_session_calls_optimize_fts_index_after_commit(
+def test_ingest_session_calls_ensure_fts_index_after_commit(
     tmp_path: Path, mocked_pipeline_env, monkeypatch
 ) -> None:
     """After a successful chunk commit, ingest_session must call
-    optimize_fts_index so the new chunks become BM25-searchable on the
-    next /query."""
-    optimize_calls: list[tuple] = []
+    ensure_fts_index (via _post_commit_maintenance) so the new chunks become
+    BM25-searchable on the next /query."""
+    ensure_calls: list[tuple] = []
+    from community_brain.query.fts_lifecycle import ensure_fts_index as _real_ensure
 
     def _capture(table, column):
-        optimize_calls.append((column,))
+        ensure_calls.append((column,))
+        return _real_ensure(table, column)
 
     monkeypatch.setattr(
-        "community_brain.ingestion.pipeline.optimize_fts_index",
+        "community_brain.ingestion.pipeline.ensure_fts_index",
         _capture,
     )
 
@@ -606,8 +608,13 @@ def test_ingest_session_calls_optimize_fts_index_after_commit(
         ollama_base_url=None,
     )
 
-    assert optimize_calls == [("bm25_text",)], (
-        f"expected exactly one optimize call with column='bm25_text'; got {optimize_calls}"
+    # ensure_fts_index is called at least once after commit (once in _commit_chunks
+    # for table creation, once in _post_commit_maintenance for post-commit invariant).
+    assert len(ensure_calls) >= 1, (
+        f"expected at least one ensure_fts_index call with column='bm25_text'; got {ensure_calls}"
+    )
+    assert all(col == "bm25_text" for (col,) in ensure_calls), (
+        f"all calls should target bm25_text; got {ensure_calls}"
     )
 
 
@@ -1552,4 +1559,80 @@ def test_commit_chunks_after_fresh_table_fts_failure_rebuilds_on_retry(
     assert has_fts_index(tbl_after, "bm25_text"), (
         "FTS index was not rebuilt on the all-skipped idempotency retry path; "
         "round-3 finding NOT fixed"
+    )
+
+
+def test_idempotent_retry_runs_lint_corpus(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Regression for round-4 finding: the idempotent all-skipped early-return
+    path must run lint_corpus auto-trigger (not just FTS). After a torn
+    fresh-table init + retry, corpus_markers_computed_at must be set on
+    restored chunks before /ingest returns.
+
+    Scenario:
+    1. First ingest: _commit_chunks succeeds, but ensure_fts_index raises
+       on the post-commit path (CommitError surfaced; rows persist).
+    2. Second ingest: idempotent all-skipped path (all chunks present).
+       _post_commit_maintenance must fire lint_corpus so
+       corpus_markers_computed_at is populated before returning success.
+    """
+    import lancedb as _lancedb
+    from community_brain.ingestion.pipeline import CommitError, TABLE_NAME
+    from community_brain.query.fts_lifecycle import ensure_fts_index as _real_ensure_fts
+
+    call_count = {"n": 0}
+
+    def _fail_first(*args, **kwargs):
+        call_count["n"] += 1
+        if call_count["n"] == 1:
+            raise RuntimeError("simulated FTS failure on first call")
+        return _real_ensure_fts(*args, **kwargs)
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.ensure_fts_index",
+        _fail_first,
+    )
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(tmp_path / "lint_retry_lancedb"))
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = str(tmp_path / "lint_retry_lancedb")
+
+    request = IngestRequest(
+        session_id="2026-02-11",
+        session_date="2026-02-11",
+        session_title="Lint idempotent retry regression",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Step 1: first ingest — FTS build raises on post-commit path.
+    with pytest.raises(CommitError):
+        ingest_session(request, config_dir, db_path, None)
+
+    # Precondition: rows are present but corpus_markers_computed_at is None
+    # (lint never ran because FTS failed first).
+    db = _lancedb.connect(db_path)
+    assert TABLE_NAME in db.list_tables().tables, "table must persist after CommitError"
+    rows_before = db.open_table(TABLE_NAME).to_arrow().to_pylist()
+    assert len(rows_before) > 0, "rows must persist after CommitError"
+    assert all(r["corpus_markers_computed_at"] is None for r in rows_before), (
+        "corpus_markers_computed_at should be None before retry — lint did not run"
+    )
+
+    # Step 2: retry — all chunks present, takes idempotent all-skipped path.
+    result = ingest_session(request, config_dir, db_path, None)
+    assert result.chunks_skipped_idempotent > 0, (
+        f"expected idempotency skip on retry, got {result}"
+    )
+    assert result.chunks_written == 0
+
+    # corpus_markers_computed_at must now be set — lint ran on the retry path.
+    rows_after = db.open_table(TABLE_NAME).to_arrow().to_pylist()
+    assert all(r["corpus_markers_computed_at"] is not None for r in rows_after), (
+        "corpus_markers_computed_at still None after idempotent retry — "
+        "lint_corpus did NOT run on the all-skipped early-return path (round-4 finding)"
     )
