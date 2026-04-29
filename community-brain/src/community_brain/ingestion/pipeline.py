@@ -493,6 +493,17 @@ def _commit_chunks(
         return
 
     table = db.open_table(TABLE_NAME)
+
+    # Schema compatibility preflight: refuse to mutate if the existing
+    # table predates v1.1 (no bm25_text column). Otherwise the delete-then-add
+    # pattern would lose rows when the v1.1 add() raises on schema mismatch.
+    if "bm25_text" not in table.schema.names:
+        raise CommitError(
+            f"chunks table schema is pre-v1.1 (no bm25_text column). "
+            f"Refusing to mutate; drop the table and re-ingest under v1.1 "
+            f"per docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md §17.1."
+        )
+
     try:
         if full_session_rewrite:
             table.delete(f"session_id = '{session_id}'")

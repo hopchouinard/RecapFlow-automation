@@ -654,3 +654,162 @@ def test_pipeline_populates_bm25_text_on_commit(
             f"Stage C entity 'LangGraph' missing from bm25_text on {row['chunk_id']}; "
             f"bm25_text was synthesized before Stage C populated entities"
         )
+
+
+def test_commit_chunks_refuses_to_mutate_pre_v1_1_table(tmp_path: Path) -> None:
+    """If the existing chunks table lacks bm25_text column (pre-v1.1),
+    _commit_chunks raises CommitError BEFORE deleting anything.
+
+    Regression test for the migration hazard surfaced in v3 Phase 1
+    adversarial review: delete-then-add against a v1.0 table would
+    delete rows then fail to add v1.1 records, causing data loss.
+    """
+    import datetime as dt
+
+    import lancedb
+    import pyarrow as pa
+
+    from community_brain.ingestion.pipeline import CommitError, _commit_chunks
+    from community_brain.ingestion.schema import EMBEDDING_DIM, Chunk, ContentType
+
+    # Build a v1.0-shape schema: full pyarrow_table_schema() minus bm25_text.
+    v1_0_schema = pa.schema([
+        ("schema_version", pa.string()),
+        ("chunk_id", pa.string()),
+        ("session_id", pa.string()),
+        ("session_date", pa.string()),
+        ("session_title", pa.string()),
+        ("content_type", pa.string()),
+        ("source_file", pa.string()),
+        ("chunk_index", pa.int64()),
+        ("total_chunks_in_source", pa.int64()),
+        ("speakers_spoke", pa.list_(pa.string())),
+        ("speakers_mentioned", pa.list_(pa.string())),
+        ("entities", pa.list_(pa.string())),
+        ("keywords", pa.list_(pa.string())),
+        ("topic_label", pa.string()),
+        ("session_themes", pa.list_(pa.string())),
+        ("speech_acts", pa.list_(pa.string())),
+        ("stance", pa.string()),
+        ("certainty", pa.string()),
+        ("chunk_local_markers", pa.list_(pa.string())),
+        ("corpus_derived_markers", pa.list_(pa.string())),
+        ("corpus_markers_computed_at", pa.string()),
+        ("has_question", pa.bool_()),
+        ("has_answer", pa.bool_()),
+        ("has_unresolved_question", pa.bool_()),
+        ("has_insight", pa.bool_()),
+        ("decisions", pa.list_(pa.string())),
+        ("action_items", pa.list_(pa.string())),
+        ("external_refs", pa.list_(pa.string())),
+        ("references_prior", pa.bool_()),
+        ("extraction_model", pa.string()),
+        ("extraction_prompt_version", pa.string()),
+        ("extraction_status", pa.string()),
+        ("extraction_error", pa.string()),
+        ("extracted_at", pa.string()),
+        ("embed_text", pa.string()),
+        ("full_text", pa.string()),
+        # bm25_text deliberately absent — this is the pre-v1.1 shape
+        ("embedding", pa.list_(pa.float32(), EMBEDDING_DIM)),
+    ])
+
+    # Seed the v1.0 table with one existing row so we can verify it survives.
+    db_path = tmp_path / "lancedb"
+    db = lancedb.connect(str(db_path))
+    existing_row = {
+        "schema_version": "1.0",
+        "chunk_id": "2026-01-01:post:001",
+        "session_id": "2026-01-01",
+        "session_date": "2026-01-01",
+        "session_title": "old session",
+        "content_type": "community_post",
+        "source_file": "output/2026-01-01/community-post.md",
+        "chunk_index": 1,
+        "total_chunks_in_source": 1,
+        "speakers_spoke": [],
+        "speakers_mentioned": [],
+        "entities": [],
+        "keywords": [],
+        "topic_label": None,
+        "session_themes": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "corpus_derived_markers": [],
+        "corpus_markers_computed_at": None,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "extraction_model": "m",
+        "extraction_prompt_version": "chunk-extraction-v1",
+        "extraction_status": "success",
+        "extraction_error": None,
+        "extracted_at": "2026-01-01T00:00:00+00:00",
+        "embed_text": "old embed",
+        "full_text": "old full text",
+        "embedding": [0.0] * EMBEDDING_DIM,
+    }
+    db.create_table("chunks", data=[existing_row], schema=v1_0_schema)
+
+    # Construct a v1.1 Chunk to attempt to ingest.
+    new_chunk = Chunk(
+        schema_version="1.1",
+        chunk_id="2026-01-01:post:002",
+        session_id="2026-01-01",
+        session_date="2026-01-01",
+        session_title="old session",
+        content_type="community_post",
+        source_file="output/2026-01-01/community-post.md",
+        chunk_index=2,
+        total_chunks_in_source=2,
+        speakers_spoke=None,
+        speakers_mentioned=None,
+        entities=[],
+        keywords=None,
+        topic_label=None,
+        session_themes=[],
+        speech_acts=[],
+        stance=None,
+        certainty="asserted",
+        chunk_local_markers=[],
+        corpus_derived_markers=[],
+        corpus_markers_computed_at=None,
+        has_question=False,
+        has_answer=False,
+        has_unresolved_question=False,
+        has_insight=False,
+        decisions=None,
+        action_items=None,
+        external_refs=None,
+        references_prior=False,
+        extraction_model="m",
+        extraction_prompt_version="chunk-extraction-v1",
+        extraction_status="success",
+        extraction_error=None,
+        extracted_at=dt.datetime(2026, 1, 1, tzinfo=dt.timezone.utc),
+        embed_text="new embed",
+        full_text="new full text",
+        bm25_text="new bm25",
+        embedding=[0.0] * EMBEDDING_DIM,
+    )
+
+    # _commit_chunks must raise CommitError without touching existing rows.
+    with pytest.raises(CommitError, match="pre-v1.1"):
+        _commit_chunks(str(db_path), "2026-01-01", [new_chunk], full_session_rewrite=True)
+
+    # The existing row must still be intact — no deletion occurred.
+    rows = (
+        lancedb.connect(str(db_path))
+        .open_table("chunks")
+        .search()
+        .to_list()
+    )
+    assert len(rows) == 1, f"expected 1 row (untouched), got {len(rows)}"
+    assert rows[0]["chunk_id"] == "2026-01-01:post:001"
