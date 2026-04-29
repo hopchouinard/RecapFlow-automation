@@ -1106,6 +1106,106 @@ def test_pipeline_canonicalizes_speakers_at_write(
         )
 
 
+def test_canonicalization_preserves_speaker_mention_partition(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """Regression for verification round 6 finding: when speakers_spoke and
+    speakers_mentioned use DIFFERENT raw aliases that canonicalize to the
+    SAME name, the canonical name must NOT end up in both lists.
+
+    Scenario:
+    - speakers_spoke (raw): ["Adam - Gold Flamingo"]  -> canonical "Adam James"
+    - Stage C emits speakers_mentioned (raw): ["Adam"] -> canonical "Adam James"
+    - Without the partition fix, "Adam James" would appear in BOTH lists.
+    - After the fix, "Adam James" must be ONLY in speakers_spoke.
+    """
+    import json
+    import lancedb
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    # Build a config where BOTH "Adam - Gold Flamingo" and "Adam" resolve to "Adam James".
+    config_dir = _write_min_configs_with_aliases(tmp_path / "config")
+    (config_dir / "speaker-aliases.yaml").write_text(
+        (
+            'version: "x"\n'
+            'aliases:\n'
+            '  Adam James:\n'
+            '    - Adam\n'
+            '    - Adam - Gold Flamingo\n'
+            '  Brandon Hancock: []\n'
+            'pending: []\n'
+        ),
+        encoding="utf-8",
+    )
+    db_path = tmp_path / "lancedb"
+
+    # Stage C sees raw SPEAKERS_SPOKE=["Adam - Gold Flamingo"] and returns
+    # speakers_mentioned=["Adam"] — realistic because Stage C doesn't resolve
+    # aliases; it just recognizes the bare name "Adam" from the transcript text.
+    def _partition_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["partition regression"]})
+        return json.dumps({
+            "entities": [],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": ["discussion"],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Partition regression test",
+            "speakers_mentioned": ["Adam"],
+            "keywords": ["partition"],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_partition_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_partition_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-11",
+            session_date="2026-03-11",
+            session_title="Partition regression test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        speakers_spoke = row.get("speakers_spoke") or []
+        speakers_mentioned = row.get("speakers_mentioned") or []
+        if "Adam James" in speakers_spoke:
+            assert "Adam James" not in speakers_mentioned, (
+                f"Partition broken on {row['chunk_id']}: 'Adam James' is in BOTH "
+                f"speakers_spoke={speakers_spoke!r} and speakers_mentioned={speakers_mentioned!r}. "
+                "Post-canonicalization subtraction of speakers_spoke from speakers_mentioned "
+                "did not fire."
+            )
+
+
 def test_pipeline_unknown_speakers_flow_to_pending(
     tmp_path: Path, monkeypatch
 ) -> None:

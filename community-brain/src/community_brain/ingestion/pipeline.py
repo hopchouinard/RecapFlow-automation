@@ -366,6 +366,14 @@ def ingest_session(
         canon_spoke, unk_spoke = canonicalize_names(chunk.speakers_spoke, speaker_alias_map)
         canon_mentioned, unk_mentioned = canonicalize_names(chunk.speakers_mentioned, speaker_alias_map)
         canon_entities, _unk_entities = canonicalize_names(chunk.entities, speaker_alias_map)
+        # Re-establish the speakers_spoke / speakers_mentioned partition.
+        # Stage C computed it against raw aliases; canonicalization can collapse
+        # different raw forms (e.g., "Adam" + "Adam - Gold Flamingo" both ->
+        # "Adam James"), putting the same person in BOTH lists. The contract is
+        # "speakers_mentioned excludes anyone in speakers_spoke for this chunk."
+        # Enforce it deterministically post-canonical.
+        spoke_set = set(canon_spoke or [])
+        canon_mentioned = [n for n in (canon_mentioned or []) if n not in spoke_set]
         chunk.speakers_spoke = canon_spoke or chunk.speakers_spoke
         chunk.speakers_mentioned = canon_mentioned
         chunk.entities = canon_entities
