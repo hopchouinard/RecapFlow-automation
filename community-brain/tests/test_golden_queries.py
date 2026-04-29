@@ -39,8 +39,8 @@ def golden_db(tmp_path_factory):
 
     db = lancedb.connect(str(db_path))
     table = db.open_table("chunks")
-    ensure_fts_index(table, "full_text")
-    optimize_fts_index(table, "full_text")
+    ensure_fts_index(table, "bm25_text")
+    optimize_fts_index(table, "bm25_text")
     return str(db_path)
 
 

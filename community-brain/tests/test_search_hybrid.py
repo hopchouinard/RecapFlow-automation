@@ -70,6 +70,7 @@ def chunks_db(tmp_path, monkeypatch):
             "chunk_index": 0,
             "embed_text": "...",
             "full_text": "Adam from Gold Flamingo discussed sales funnel design",
+            "bm25_text": "Adam from Gold Flamingo discussed sales funnel design",
             "embedding": [0.0, 1.0] + [0.0] * (EMBEDDING_DIM - 2),
         },
         {
@@ -78,6 +79,7 @@ def chunks_db(tmp_path, monkeypatch):
             "chunk_index": 1,
             "embed_text": "...",
             "full_text": "weekly community sync covered onboarding and retention strategies",
+            "bm25_text": "weekly community sync covered onboarding and retention strategies",
             "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
         },
         {
@@ -86,6 +88,7 @@ def chunks_db(tmp_path, monkeypatch):
             "chunk_index": 2,
             "embed_text": "...",
             "full_text": "engagement patterns and member churn discussed at length",
+            "bm25_text": "engagement patterns and member churn discussed at length",
             "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
         },
         {
@@ -94,12 +97,13 @@ def chunks_db(tmp_path, monkeypatch):
             "chunk_index": 3,
             "embed_text": "...",
             "full_text": "broader thematic conversations about content cadence and pricing",
+            "bm25_text": "broader thematic conversations about content cadence and pricing",
             "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
         },
     ]
     table.add(rows)
-    ensure_fts_index(table, "full_text")
-    optimize_fts_index(table, "full_text")
+    ensure_fts_index(table, "bm25_text")
+    optimize_fts_index(table, "bm25_text")
 
     # Mock the ollama embed call: return a vector close to 'b' (so pure
     # vector would rank 'b' first; hybrid+BM25 should surface 'a' for
@@ -162,10 +166,11 @@ def test_hybrid_excludes_failed_extraction_chunks(chunks_db):
             "extraction_status": "failed",
             "embedding": [0.0] * EMBEDDING_DIM,
             "full_text": "Adam Gold Flamingo failed extraction",
+            "bm25_text": "Adam Gold Flamingo failed extraction",
         }
     )
     table.add([failed_row])
-    optimize_fts_index(table, "full_text")
+    optimize_fts_index(table, "bm25_text")
 
     result = search_chunks(
         question="Adam Gold Flamingo",
@@ -263,13 +268,14 @@ def test_search_chunks_metadata_summary_counts_correctly(chunks_db):
         "chunk_id": "flagged",
         "chunk_index": 99,
         "full_text": "open question about retention strategy unresolved",
+        "bm25_text": "open question about retention strategy unresolved",
         "has_unresolved_question": True,
         "has_insight": True,
         "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
     })
     table.add([flagged])
     from community_brain.query.fts_lifecycle import optimize_fts_index
-    optimize_fts_index(table, "full_text")
+    optimize_fts_index(table, "bm25_text")
 
     result = search_chunks(
         question="retention strategy",
@@ -291,6 +297,108 @@ def test_search_chunks_metadata_summary_counts_correctly(chunks_db):
     # The flagged chunk must be in the results (it matches the question lexically).
     ids = [c["chunk_id"] for c in chunks]
     assert "flagged" in ids, f"flagged chunk missing from results: {ids}"
+
+
+def test_search_pinned_to_bm25_text_when_full_text_index_exists(tmp_path, monkeypatch):
+    """Migration safety: if a legacy full_text FTS index lingers alongside the
+    v3 bm25_text FTS index, search must still use bm25_text per fts_columns
+    binding. Without the explicit fts_columns kwarg, LanceDB may silently
+    fall back to whichever index it finds first.
+
+    Setup:
+      chunk_a: bm25_text contains 'Adam James', full_text does NOT
+      chunk_b: full_text contains 'Adam James', bm25_text does NOT
+
+    With fts_columns='bm25_text', the BM25 leg must return chunk_a (not chunk_b).
+    """
+    db_path = tmp_path / "lancedb"
+    db = lancedb.connect(str(db_path))
+    schema = pyarrow_table_schema()
+    table = db.create_table("chunks", schema=schema)
+
+    common_fields = {
+        "schema_version": "1.0",
+        "session_id": "2026-04-01",
+        "session_date": "2026-04-01",
+        "session_title": None,
+        "content_type": "prepared_transcript",
+        "source_file": "prepared-transcript.md",
+        "total_chunks_in_source": 2,
+        "embed_text": "...",
+        "speakers_spoke": [],
+        "speakers_mentioned": [],
+        "entities": [],
+        "keywords": [],
+        "topic_label": None,
+        "session_themes": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "corpus_derived_markers": [],
+        "corpus_markers_computed_at": None,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "extraction_model": "test",
+        "extraction_prompt_version": "test-v1",
+        "extraction_status": "success",
+        "extraction_error": None,
+        "extracted_at": "2026-04-01T00:00:00",
+    }
+
+    table.add([
+        {
+            **common_fields,
+            "chunk_id": "chunk_a",
+            "chunk_index": 0,
+            # bm25_text has "Adam James"; full_text does NOT
+            "bm25_text": "Adam James discussed coaching strategy",
+            "full_text": "unrelated community discussion about onboarding",
+            "embedding": [0.0, 1.0] + [0.0] * (EMBEDDING_DIM - 2),
+        },
+        {
+            **common_fields,
+            "chunk_id": "chunk_b",
+            "chunk_index": 1,
+            # full_text has "Adam James"; bm25_text does NOT
+            "full_text": "Adam James joined the weekly session",
+            "bm25_text": "unrelated community discussion about retention",
+            "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
+        },
+    ])
+
+    # Create BOTH FTS indexes — simulating the migration-limbo state where the
+    # legacy full_text index wasn't fully cleaned up.
+    table.create_fts_index("full_text")
+    table.create_fts_index("bm25_text")
+
+    import ollama
+    # Query vector is neutral (equal distance from both chunks); BM25 drives result.
+    monkeypatch.setattr(ollama, "embed", lambda model, input: {
+        "embeddings": [[0.5, 0.5] + [0.0] * (EMBEDDING_DIM - 2)]
+    })
+
+    result = search_chunks(
+        question="Adam James",
+        db_path=str(db_path),
+        top_k=2,
+        filters=None,
+    )
+    ids = [c["chunk_id"] for c in result["chunks"]]
+
+    # chunk_a must be present: it matches via bm25_text (the pinned column).
+    # chunk_b must NOT be the sole BM25-powered result: its "Adam James" is
+    # only in full_text, which we explicitly bypass via fts_columns binding.
+    assert "chunk_a" in ids, (
+        f"fts_columns binding broken: search should surface chunk_a "
+        f"(matched via bm25_text) but got {ids}"
+    )
 
 
 def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
@@ -322,6 +430,7 @@ def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
             {
                 "chunk_id": suffix,
                 "full_text": f"additional thematic discussion variant {i}",
+                "bm25_text": f"additional thematic discussion variant {i}",
                 "has_unresolved_question": False,
                 "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
             }
@@ -334,12 +443,13 @@ def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
         {
             "chunk_id": "u",
             "full_text": "general weekly community sync about onboarding and retention",
+            "bm25_text": "general weekly community sync about onboarding and retention",
             "has_unresolved_question": True,
             "embedding": [0.95, 0.05] + [0.0] * (EMBEDDING_DIM - 2),
         }
     )
     table.add([flagged_row])
-    optimize_fts_index(table, "full_text")
+    optimize_fts_index(table, "bm25_text")
 
     result = search_chunks(
         question="what unresolved questions came up?",

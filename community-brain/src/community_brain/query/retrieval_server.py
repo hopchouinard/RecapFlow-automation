@@ -204,7 +204,12 @@ class ScoreBreakdown(BaseModel):
 
     Surfaces the components that contributed to a chunk's ranking:
     - vector_similarity: cosine similarity from the vector leg
-    - bm25_rank: 1-indexed position in BM25-only ranking (None if vector-only)
+    - bm25_rank: 1-indexed position in BM25-only ranking, or None.
+      None means EITHER the chunk did not appear in BM25 results
+      (vector-only contribution) OR the chunk's lexical rank fell
+      beyond the rank-lookup window (rare; window is at least 1000
+      results). Operators wanting to distinguish should grep server
+      logs at DEBUG level.
     - rrf_score: post-fusion score before cue boost
     - cue_delta: additive delta from cue boost (sum of fired rules)
     - cue_rules_fired: names of rules that fired for this chunk

@@ -225,8 +225,11 @@ def search_chunks(
             # LanceDB 0.30.x hybrid API: explicit builder form. Passing the
             # vector positionally to .search() while also calling .text(...)
             # raises ValueError. See spec §11.1 Resolution side note.
+            # fts_columns pins the lexical leg to bm25_text; without this,
+            # LanceDB may fall back to a legacy full_text FTS index that
+            # drop_full_text_index_if_present can't always clean up.
             query = (
-                table.search(query_type="hybrid")
+                table.search(query_type="hybrid", fts_columns="bm25_text")
                 .vector(query_vector)
                 .text(question)
                 .where(where_expr)
@@ -285,11 +288,16 @@ def search_chunks(
     # at current corpus size (acceptable per spec §15). Candidates that don't
     # appear in the BM25 result got here purely via the vector leg; their
     # bm25_rank will be None.
+    # fts_columns pins the lexical leg to bm25_text (same rationale as the
+    # hybrid search above). Limit is max(top_k * 10, 1000): generous enough
+    # that bm25_rank=None reliably means "vector-only" or "outside top-1000
+    # BM25 results" (rare at current corpus size). See ScoreBreakdown docstring.
     try:
+        bm25_limit = max(top_k * 10, 1000)
         bm25_results = (
-            table.search(question, query_type="fts")
+            table.search(question, query_type="fts", fts_columns="bm25_text")
             .where(where_expr)
-            .limit(candidate_count * 5)  # generous to cover all hybrid candidates
+            .limit(bm25_limit)
             .to_arrow()
             .to_pylist()
         )
