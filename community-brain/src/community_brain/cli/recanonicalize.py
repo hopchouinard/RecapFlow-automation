@@ -68,6 +68,15 @@ def recanonicalize_chunks(
         new_men, _ = canonicalize_names(row.get("speakers_mentioned") or [], alias_map)
         new_ent, _ = canonicalize_names(row.get("entities") or [], alias_map)
 
+        # Re-establish the speakers_spoke / speakers_mentioned partition.
+        # Same fix as pipeline.py post-canonicalization (round 6, commit 4ade1ae):
+        # canonicalization can collapse different raw aliases into the same
+        # canonical name across both fields, putting the same person in BOTH
+        # lists. The contract is "speakers_mentioned excludes anyone in
+        # speakers_spoke for this chunk."
+        spoke_set = set(new_spk or [])
+        new_men = [n for n in (new_men or []) if n not in spoke_set]
+
         spk_changed = _diff_lists(new_spk, row.get("speakers_spoke"))
         men_changed = _diff_lists(new_men, row.get("speakers_mentioned"))
         ent_changed = _diff_lists(new_ent, row.get("entities"))

@@ -276,3 +276,35 @@ def test_recanonicalize_skips_transcript_with_missing_summary_marker(
     rows_after = db.open_table("chunks").to_arrow().to_pylist()
     assert rows_after[0]["embed_text"] == "legacy embed format with no summary marker"
     assert rows_after[0]["speakers_spoke"] == ["Adam"]
+
+
+def test_recanonicalize_preserves_speaker_mention_partition(db_path: Path):
+    """Regression for round 7 finding: recanonicalize must not put the same
+    canonical person in both speakers_spoke and speakers_mentioned even when
+    different raw aliases collapse to the same canonical.
+
+    Same partition contract as ingest's pipeline.py fix (round 6, commit 4ade1ae).
+    """
+    # "Adam - Gold Flamingo" (spoke) and "Adam" (mentioned) both map to "Adam James".
+    rows = [
+        _make_chunk(
+            chunk_id="partition-test",
+            speakers_spoke=["Adam - Gold Flamingo"],
+            speakers_mentioned=["Adam"],
+        ),
+    ]
+    _create_table(db_path, rows)
+    registry = {
+        "aliases": {"Adam James": ["Adam - Gold Flamingo", "Adam"]},
+        "pending": [],
+    }
+    recanonicalize_chunks(db_path, registry, embed_fn=_stub_embed)
+    db = lancedb.connect(str(db_path))
+    rows_after = db.open_table("chunks").to_arrow().to_pylist()
+    row = rows_after[0]
+    assert row["speakers_spoke"] == ["Adam James"]
+    # The canonical name must NOT appear in both lists.
+    assert "Adam James" not in row["speakers_mentioned"], (
+        "speakers_mentioned must exclude any name already in speakers_spoke"
+    )
+    assert row["speakers_mentioned"] == []
