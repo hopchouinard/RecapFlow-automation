@@ -192,7 +192,7 @@ def search_chunks(
 
     Pipeline (spec §3.1):
       1. Embed `question` via Ollama (nomic-embed-text).
-      2. LanceDB hybrid query: RRF(vector, BM25 on full_text), oversampled
+      2. LanceDB hybrid query: RRF(vector, BM25 on bm25_text), oversampled
          by OVERSAMPLE_FACTOR.
       3. WHERE clause: extraction_status = 'success' AND caller's filters.
       4. Return top (top_k * OVERSAMPLE_FACTOR) raw rows; cue boost runs

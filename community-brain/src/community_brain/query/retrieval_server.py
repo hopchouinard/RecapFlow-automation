@@ -32,7 +32,10 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
     render_alias_block,
 )
-from community_brain.query.fts_lifecycle import ensure_fts_index
+from community_brain.query.fts_lifecycle import (
+    drop_full_text_index_if_present,
+    ensure_fts_index,
+)
 from community_brain.query.query_local import sql_quote
 
 logger = logging.getLogger(__name__)
@@ -84,18 +87,25 @@ def _verify_api_key(api_key: str | None = Security(_api_key_header)) -> str | No
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Server startup hook: ensure the FTS index on chunks.full_text exists.
+    """Server startup hook: ensure the FTS index on chunks.bm25_text exists.
 
     No-ops if the chunks table doesn't exist yet (fresh deployment, no
     sessions ingested) — /ingest will create the table, and the next boot
     will build the index.
+
+    Also attempts best-effort cleanup of any legacy v2 FTS index on the
+    full_text column. The drop is a no-op on fresh v3 tables.
     """
     db_path = os.environ.get("LANCEDB_PATH", DEFAULT_DB_PATH)
     try:
         db = lancedb.connect(db_path)
         if "chunks" in db.list_tables().tables:
             table = db.open_table("chunks")
-            ensure_fts_index(table, "full_text")
+            ensure_fts_index(table, column="bm25_text")
+            try:
+                drop_full_text_index_if_present(table)
+            except Exception as exc:
+                logger.debug("legacy full_text FTS index cleanup skipped: %s", exc)
         else:
             logger.info(
                 "startup: chunks table does not exist yet at %s; FTS index "

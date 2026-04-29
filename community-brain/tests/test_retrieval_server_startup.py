@@ -20,22 +20,22 @@ def populated_db(tmp_path, monkeypatch):
     return db_path
 
 
-def test_startup_ensures_fts_index_on_chunks_full_text(populated_db):
+def test_startup_ensures_fts_index_on_chunks_bm25_text(populated_db):
     """When the server boots and the chunks table exists without an FTS
-    index, the lifespan startup hook must build it."""
+    index, the lifespan startup hook must build it on bm25_text (v3)."""
     from community_brain.query import retrieval_server
     from community_brain.query.fts_lifecycle import has_fts_index
 
     db = lancedb.connect(str(populated_db))
     table = db.open_table("chunks")
-    assert has_fts_index(table, "full_text") is False, "precondition: no FTS index yet"
+    assert has_fts_index(table, "bm25_text") is False, "precondition: no FTS index yet"
 
     with TestClient(retrieval_server.app) as _client:
         # TestClient context triggers lifespan startup
         pass
 
     table = db.open_table("chunks")
-    assert has_fts_index(table, "full_text") is True
+    assert has_fts_index(table, "bm25_text") is True
 
 
 def test_startup_no_chunks_table_does_not_raise(tmp_path, monkeypatch):
