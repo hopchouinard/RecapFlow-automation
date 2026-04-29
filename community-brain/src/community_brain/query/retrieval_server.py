@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException, Security
 from fastapi.responses import PlainTextResponse
 from fastapi.security import APIKeyHeader
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, field_validator
 
 from community_brain.ingestion.pipeline import (
     CommitError,
@@ -189,11 +189,34 @@ class QueryRequestV2(BaseModel):
     response_shape: Literal["structured"] = "structured"
 
 
+class ScoreBreakdown(BaseModel):
+    """Per-chunk retrieval-confidence breakdown.
+
+    Surfaces the components that contributed to a chunk's ranking:
+    - vector_similarity: cosine similarity from the vector leg
+    - bm25_rank: 1-indexed position in BM25-only ranking (None if vector-only)
+    - rrf_score: post-fusion score before cue boost
+    - cue_delta: additive delta from cue boost (sum of fired rules)
+    - cue_rules_fired: names of rules that fired for this chunk
+
+    For operator-side debug + answering-LLM citation hygiene.
+    Not currently rendered in the LLM-facing context (filter valve
+    ``expose_score_breakdown`` opts in, default off).
+    """
+
+    vector_similarity: float
+    bm25_rank: int | None = None
+    rrf_score: float
+    cue_delta: float = 0.0
+    cue_rules_fired: list[str] = Field(default_factory=list)
+
+
 class QueryChunkResult(BaseModel):
     ground_truth: dict
     derived_metadata: dict
     provenance: dict
     similarity: float
+    score_breakdown: ScoreBreakdown
 
 
 class QueryResponseV2(BaseModel):
@@ -201,6 +224,7 @@ class QueryResponseV2(BaseModel):
     chunks: list[QueryChunkResult]
     total_matched: int
     filters_applied: dict
+    metadata_summary: dict = Field(default_factory=dict)
 
 
 GROUND_TRUTH_FIELDS = (
@@ -281,8 +305,7 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
         ollama_base_url=ollama_base_url,
     )
     raw = result["chunks"]
-    # metadata_summary is computed but not yet wired into QueryResponseV2 (T17).
-    _metadata_summary = result["metadata_summary"]
+    metadata_summary = result["metadata_summary"]
 
     chunks: list[QueryChunkResult] = []
     for row in raw:
@@ -290,11 +313,20 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
         derived = {k: row.get(k) for k in DERIVED_FIELDS}
         provenance = {k: row.get(k) for k in PROVENANCE_FIELDS}
         similarity = round(1 - row.get("_distance", 0), 4)
+        _sb_data = row.get("score_breakdown") or {}
+        score_breakdown = ScoreBreakdown(
+            vector_similarity=_sb_data.get("vector_similarity", 0.0),
+            bm25_rank=_sb_data.get("bm25_rank"),
+            rrf_score=_sb_data.get("rrf_score", 0.0),
+            cue_delta=_sb_data.get("cue_delta", 0.0),
+            cue_rules_fired=_sb_data.get("cue_rules_fired") or [],
+        )
         chunks.append(QueryChunkResult(
             ground_truth=ground,
             derived_metadata=derived,
             provenance=provenance,
             similarity=similarity,
+            score_breakdown=score_breakdown,
         ))
 
     return QueryResponseV2(
@@ -302,6 +334,7 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
         chunks=chunks,
         total_matched=len(chunks),
         filters_applied=filters_dict,
+        metadata_summary=metadata_summary,
     )
 
 

@@ -70,6 +70,13 @@ def _fake_chunk() -> dict:
         "extraction_error": None,
         "extracted_at": "2026-03-10T14:22:11+00:00",
         "_distance": 0.12,
+        "score_breakdown": {
+            "vector_similarity": 0.88,
+            "bm25_rank": 3,
+            "rrf_score": 0.032,
+            "cue_delta": 0.05,
+            "cue_rules_fired": ["has_insight"],
+        },
     }
 
 
@@ -230,3 +237,70 @@ def test_post_query_rejects_unknown_response_shape(monkeypatch) -> None:
 
     resp = client.post("/query", json={"question": "x", "response_shape": "flat"})
     assert resp.status_code == 422
+
+
+def test_query_response_includes_metadata_summary(monkeypatch) -> None:
+    """/query response top-level shape includes metadata_summary
+    with of_top_k and the 5 per-flag counts."""
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    client = TestClient(server_mod.app)
+
+    with patch(
+        "community_brain.query.query_local.search_chunks",
+        return_value=_fake_search_result_dict(),
+    ):
+        resp = client.post("/query", json={"question": "what about agents?", "top_k": 5})
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert "metadata_summary" in data
+    ms = data["metadata_summary"]
+    assert ms["of_top_k"] == 1
+    assert "has_question_count" in ms
+    assert "has_answer_count" in ms
+    assert "has_unresolved_question_count" in ms
+    assert "has_insight_count" in ms
+    assert "references_prior_count" in ms
+
+
+def test_query_response_chunks_include_score_breakdown(monkeypatch) -> None:
+    """Each chunk in the /query response carries a score_breakdown sub-model
+    with: vector_similarity, bm25_rank (int|null), rrf_score, cue_delta,
+    cue_rules_fired (list)."""
+    monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    client = TestClient(server_mod.app)
+
+    with patch(
+        "community_brain.query.query_local.search_chunks",
+        return_value=_fake_search_result_dict(),
+    ):
+        resp = client.post("/query", json={"question": "what about agents?", "top_k": 5})
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert len(data["chunks"]) == 1
+    sb = data["chunks"][0]["score_breakdown"]
+    assert "vector_similarity" in sb
+    assert "bm25_rank" in sb
+    assert "rrf_score" in sb
+    assert "cue_delta" in sb
+    assert "cue_rules_fired" in sb
+    assert isinstance(sb["cue_rules_fired"], list)
+    assert sb["vector_similarity"] == 0.88
+    assert sb["bm25_rank"] == 3
+    assert sb["cue_rules_fired"] == ["has_insight"]
+
+
+def test_score_breakdown_bm25_rank_is_nullable() -> None:
+    """bm25_rank is None when the chunk arrived only via the vector leg.
+    Pydantic must serialize None as JSON null, not raise."""
+    sb = server_mod.ScoreBreakdown(
+        vector_similarity=0.42,
+        bm25_rank=None,
+        rrf_score=0.024,
+        cue_delta=0.0,
+        cue_rules_fired=[],
+    )
+    j = sb.model_dump()
+    assert j["bm25_rank"] is None
+    assert j["vector_similarity"] == 0.42
