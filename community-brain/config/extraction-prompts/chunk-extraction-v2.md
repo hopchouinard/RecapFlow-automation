@@ -8,6 +8,7 @@ You will receive:
 - `CHUNK_TEXT` — the full text of the chunk (may include speaker attribution, segment headers, inline tags)
 - `ENTITY_REGISTRY` — list of canonical entity names and their aliases (informational only — see entities rule below)
 - `SPEAKER_ALIASES` — list of canonical speaker names and their aliases (informational only — see speakers rule below)
+- `SPEAKERS_SPOKE` — JSON array of canonical speaker names who actually spoke in this chunk. Use this to exclude those names from `speakers_mentioned` (see speakers_mentioned rule below).
 
 ## Output schema (JSON)
 
@@ -58,9 +59,9 @@ The pipeline applies a separate canonicalization pass at chunk write time to map
 
 Output the deterministic subset of `entities` that satisfies BOTH:
 1. The entity is a person (category 1 above).
-2. The person is NOT one of the speakers_spoke for this chunk (i.e., they're talked-about, not present).
+2. The person is NOT in the `SPEAKERS_SPOKE` list provided in the input context (i.e., they are talked-about but not a speaker in this chunk).
 
-Empty list if the chunk has no people-typed entities, or all such entities are also in speakers_spoke.
+Empty list if the chunk has no people-typed entities, or all such person entities are also in `SPEAKERS_SPOKE`.
 
 ### keywords
 

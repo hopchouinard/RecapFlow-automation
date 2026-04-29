@@ -309,6 +309,7 @@ def ingest_session(
             speaker_alias_names=speaker_names,
             model=extraction_cfg.chunk_extraction_model,
             prompt_template=chunk_extraction_prompt,
+            speakers_spoke=chunk.speakers_spoke or [],
         )
         chunk.extraction_model = extraction_cfg.chunk_extraction_model
         chunk.extraction_prompt_version = chunk_prompt_version
@@ -323,13 +324,15 @@ def ingest_session(
         chunk.extraction_status = "success"
         chunk.extraction_error = None
         chunk.entities = res.entities
-        # speakers_mentioned is a derived field representing people REFERENCED in
-        # the chunk (spoken + mentioned-but-not-spoken). The current Stage C prompt
-        # doesn't emit this distinctly, so v1 leaves it as None. Task: wire a
-        # dedicated "mentioned_people" field into chunk-extraction-v2.md and
-        # populate here from res.mentioned_people. Consumers MUST handle None per
-        # docs/inference-guidelines.md (absence = chunk predates this extraction).
-        chunk.speakers_mentioned = None
+        # v2 fields — all assigned BEFORE bm25_text / embed_text re-synthesis so
+        # re-synthesis sees the freshly-populated values, not chunker defaults.
+        chunk.topic_label = res.topic_label
+        chunk.speakers_mentioned = res.speakers_mentioned
+        chunk.keywords = res.keywords
+        chunk.has_question = res.has_question
+        chunk.has_answer = res.has_answer
+        chunk.has_unresolved_question = res.has_unresolved_question
+        chunk.has_insight = res.has_insight
         chunk.speech_acts = res.speech_acts
         chunk.stance = res.stance  # type: ignore[assignment]
         chunk.certainty = res.certainty  # type: ignore[assignment]

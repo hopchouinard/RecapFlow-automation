@@ -66,6 +66,7 @@ def extract_chunk_metadata(
     speaker_alias_names: list[str],
     model: str,
     prompt_template: str,
+    speakers_spoke: list[str] | None = None,
 ) -> ExtractionResult:
     """Run Stage C extraction on one chunk.
 
@@ -78,15 +79,20 @@ def extract_chunk_metadata(
         model: OpenRouter model identifier, e.g. "google/gemini-3.1-flash-lite-preview".
         prompt_template: The extraction prompt (loaded from chunk-extraction-v1.md).
             Rendered before the context blocks below.
+        speakers_spoke: Canonical names of speakers who spoke in this chunk.
+            Used to populate SPEAKERS_SPOKE in v2 prompts so the model can exclude
+            them from speakers_mentioned. Defaults to [] for backward compat.
 
     Returns:
         ExtractionResult with status="success" and populated fields on success,
         or status="failed" with a populated error message on any failure mode.
     """
+    spoke_list = speakers_spoke or []
     prompt = (
         f"{prompt_template}\n\n"
         f"ENTITY_REGISTRY:\n{json.dumps(entity_registry_names)}\n\n"
         f"SPEAKER_ALIASES:\n{json.dumps(speaker_alias_names)}\n\n"
+        f"SPEAKERS_SPOKE:\n{json.dumps(spoke_list)}\n\n"
         f"CHUNK_TEXT:\n{chunk_text}\n"
     )
 
@@ -144,6 +150,20 @@ def extract_chunk_metadata(
             type_errors.append(
                 f"{bool_field} expected bool, got {type(data[bool_field]).__name__}"
             )
+
+    # v2 required string/list fields — must be present (not merely well-typed)
+    if "topic_label" not in data or data["topic_label"] is None:
+        type_errors.append("topic_label missing")
+    elif not isinstance(data["topic_label"], str):
+        type_errors.append(
+            f"topic_label expected str, got {type(data['topic_label']).__name__}"
+        )
+
+    if "speakers_mentioned" not in data:
+        type_errors.append("speakers_mentioned missing")
+
+    if "keywords" not in data:
+        type_errors.append("keywords missing")
 
     if type_errors:
         return _failure(f"invalid field types: {'; '.join(type_errors)}")

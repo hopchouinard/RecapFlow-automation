@@ -733,6 +733,76 @@ def test_pipeline_embed_text_includes_stage_c_entities_for_transcripts(
         )
 
 
+def test_pipeline_persists_all_stage_c_v2_fields(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Committed chunks must carry all Stage C v2 fields (topic_label, keywords,
+    has_question, has_insight, speakers_mentioned) reflecting the mocked LLM
+    response, not the chunker defaults (None / empty).
+
+    Regression test for the HIGH 1 finding from Codex adversarial review:
+    pipeline's Stage C success branch was discarding parsed v2 fields.
+    """
+    import lancedb
+    from community_brain.ingestion.pipeline import ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Agent frameworks comparison",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        # topic_label must reflect the mocked Stage C response, not chunker default (None)
+        assert row["topic_label"] == "Agent frameworks comparison", (
+            f"topic_label not written by Stage C on {row['chunk_id']}; "
+            f"got {row['topic_label']!r} (chunker default is None)"
+        )
+        # keywords must carry the mocked v2 values
+        assert "LangGraph" in (row["keywords"] or []), (
+            f"keywords not written by Stage C on {row['chunk_id']}; "
+            f"got {row['keywords']!r}"
+        )
+        # has_insight must reflect the mocked True value
+        assert row["has_insight"] is True, (
+            f"has_insight not written by Stage C on {row['chunk_id']}; "
+            f"got {row['has_insight']!r}"
+        )
+        # has_question must reflect the mocked False value (not a default issue,
+        # but confirms the flag path runs through)
+        assert row["has_question"] is False, (
+            f"has_question not written by Stage C on {row['chunk_id']}; "
+            f"got {row['has_question']!r}"
+        )
+        # speakers_mentioned must be the mocked [] value, not chunker default (None)
+        assert row["speakers_mentioned"] is not None, (
+            f"speakers_mentioned is None on {row['chunk_id']} — Stage C v2 fields not written"
+        )
+
+
 def test_commit_chunks_refuses_to_mutate_pre_v1_1_table(tmp_path: Path) -> None:
     """If the existing chunks table lacks bm25_text column (pre-v1.1),
     _commit_chunks raises CommitError BEFORE deleting anything.
