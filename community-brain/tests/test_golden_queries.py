@@ -143,6 +143,52 @@ def test_v3_corpus_has_some_populated_entities(golden_db):
     )
 
 
+def test_v3_query_returns_chunks_with_populated_entities(golden_db, fake_embed):
+    """Regression guard: search_chunks must preserve `entities` on returned chunks.
+
+    A bug in query-side projection/serialization that empties entities on the
+    response would otherwise ship undetected — the storage-level sanity check
+    above only scans rows directly, never exercises the retrieval path.
+
+    Loads the v3-entities-populated golden query, runs search_chunks, then
+    asserts each expected chunk (by ID) appears in the result with a non-empty
+    entities array and that the arrays contain expected values.
+    """
+    spec = _get_v3_query("v3-entities-populated")
+    result = search_chunks(
+        question=spec["question"],
+        db_path=golden_db,
+        top_k=spec["top_k"],
+        filters=None,
+    )
+    chunks_by_id = {c["chunk_id"]: c for c in result["chunks"]}
+    for expected_id in spec["expected_chunk_ids"]:
+        assert expected_id in chunks_by_id, (
+            f"Expected chunk {expected_id!r} not found in search_chunks result; "
+            f"got chunk_ids: {list(chunks_by_id)}"
+        )
+        chunk = chunks_by_id[expected_id]
+        entities = chunk.get("entities")
+        assert entities, (
+            f"Chunk {expected_id!r} returned by search_chunks has empty or missing "
+            f"entities — projection/serialization may have dropped the field. "
+            f"Chunk keys: {list(chunk)}"
+        )
+    # Spot-check specific expected entity values from the seed fixtures.
+    assert "Adam" in chunks_by_id["f6-adam-1"]["entities"], (
+        "f6-adam-1 should carry 'Adam' in entities; got: "
+        f"{chunks_by_id['f6-adam-1']['entities']}"
+    )
+    assert "Gold Flamingo" in chunks_by_id["f6-adam-1"]["entities"], (
+        "f6-adam-1 should carry 'Gold Flamingo' in entities; got: "
+        f"{chunks_by_id['f6-adam-1']['entities']}"
+    )
+    assert "Adam" in chunks_by_id["f6-adam-2"]["entities"], (
+        "f6-adam-2 should carry 'Adam' in entities; got: "
+        f"{chunks_by_id['f6-adam-2']['entities']}"
+    )
+
+
 def test_v3_query_response_has_metadata_summary(golden_db, fake_embed):
     """Every /query response includes metadata_summary with the 6 expected keys.
 
