@@ -13,7 +13,7 @@ session_themes:
   model: google/gemini-3.1-flash-lite-preview
 
 chunk_extraction:
-  prompt_file: chunk-extraction-v1.md
+  prompt_file: chunk-extraction-v2.md
   model: google/gemini-3.1-flash-lite-preview
 
 # NOTE: extract_signal and prep_prompt are NOT loaded by ExtractionConfig.
