@@ -23,3 +23,7 @@ Corpus chunks may be from different `schema_version` or `extraction_prompt_versi
 ## Enforcement boundary
 
 The reference compliant consumer is the `community_brain_filter` Open WebUI function. Consumers that bypass these guidelines — direct LanceDB access, custom API clients that ignore the `ground_truth` vs `derived_metadata` distinction, LLM prompts that don't prepend this fragment — are considered **unsupported**. The system's correctness guarantees apply only within the enforcement boundary.
+
+## Presentation tags
+
+When the answering context contains lines like `[flags: <flag_names>]` (per-chunk) or `[corpus summary: <counts>]` (above all chunks), these are presentation conventions exposing structured derived metadata. The `[flags: ...]` line lists boolean derived flags that Stage C marked True for the immediately-following chunk. The `[corpus summary: ...]` line gives authoritative counts of those flags across the retrieved set. Both are derived (the same trust-contract caveats apply — re-derive from `full_text` when in doubt), but they reflect what Stage C and the retrieval layer concluded; they are not invented by you.
