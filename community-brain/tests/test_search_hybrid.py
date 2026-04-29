@@ -176,6 +176,44 @@ def test_hybrid_excludes_failed_extraction_chunks(chunks_db):
     assert "c-failed" not in ids
 
 
+def test_search_chunks_records_score_breakdown(chunks_db, monkeypatch):
+    """Every chunk in search_chunks output has a score_breakdown dict
+    with the 5 expected sub-fields and appropriate types."""
+    # Use no filters so we get multiple chunks back; top_k=2 is enough.
+    results = search_chunks(
+        question="Adam from Gold Flamingo",
+        db_path=chunks_db,
+        top_k=2,
+        filters=None,
+    )
+    assert len(results) >= 1, "expected at least one result"
+    for chunk in results:
+        assert "score_breakdown" in chunk, f"chunk {chunk.get('chunk_id')} missing score_breakdown"
+        sb = chunk["score_breakdown"]
+        assert set(sb.keys()) == {
+            "vector_similarity",
+            "bm25_rank",
+            "rrf_score",
+            "cue_delta",
+            "cue_rules_fired",
+        }, f"unexpected score_breakdown keys: {set(sb.keys())}"
+        assert isinstance(sb["vector_similarity"], (int, float)), (
+            f"vector_similarity must be numeric, got {type(sb['vector_similarity'])}"
+        )
+        assert sb["bm25_rank"] is None or isinstance(sb["bm25_rank"], int), (
+            f"bm25_rank must be int or None, got {type(sb['bm25_rank'])}"
+        )
+        assert isinstance(sb["rrf_score"], (int, float)), (
+            f"rrf_score must be numeric, got {type(sb['rrf_score'])}"
+        )
+        assert isinstance(sb["cue_delta"], (int, float)), (
+            f"cue_delta must be numeric, got {type(sb['cue_delta'])}"
+        )
+        assert isinstance(sb["cue_rules_fired"], list), (
+            f"cue_rules_fired must be a list, got {type(sb['cue_rules_fired'])}"
+        )
+
+
 def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
     chunks_db, monkeypatch
 ):

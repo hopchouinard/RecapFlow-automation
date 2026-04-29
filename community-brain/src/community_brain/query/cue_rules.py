@@ -150,6 +150,8 @@ def apply_cue_boosts(
             try:
                 if rule.target_predicate(chunk):
                     chunk["_rrf_score"] = chunk.get("_rrf_score", 0.0) + rule.delta
+                    chunk["_cue_delta"] = chunk.get("_cue_delta", 0.0) + rule.delta
+                    chunk.setdefault("_cue_rules_fired", []).append(rule.name)
             except Exception as exc:
                 logger.warning(
                     "cue rule %r predicate raised on chunk %r: %s; skipping rule for remaining candidates",

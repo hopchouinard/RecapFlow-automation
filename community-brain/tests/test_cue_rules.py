@@ -461,6 +461,39 @@ def test_load_cue_rules_empty_on_first_failure(tmp_path, clear_cue_rules_cache):
     assert rules == ()
 
 
+def test_apply_cue_boosts_tracks_fired_rules_and_delta():
+    """apply_cue_boosts now populates _cue_delta and _cue_rules_fired
+    on each chunk it boosts."""
+    rule_a = CueRule(
+        name="ra",
+        cue_phrases=("foo",),
+        target_predicate=lambda c: c.get("flag_a") is True,
+        delta=0.01,
+    )
+    rule_b = CueRule(
+        name="rb",
+        cue_phrases=("foo",),
+        target_predicate=lambda c: c.get("flag_b") is True,
+        delta=0.005,
+    )
+    candidates = [
+        {"chunk_id": "c1", "_rrf_score": 0.05, "flag_a": True, "flag_b": True},
+        {"chunk_id": "c2", "_rrf_score": 0.05, "flag_a": True, "flag_b": False},
+        {"chunk_id": "c3", "_rrf_score": 0.05, "flag_a": False, "flag_b": False},
+    ]
+    boosted = apply_cue_boosts("foo bar", candidates, rules=(rule_a, rule_b))
+    by_id = {c["chunk_id"]: c for c in boosted}
+    # c1 fires both rules
+    assert by_id["c1"]["_cue_delta"] == pytest.approx(0.015)
+    assert sorted(by_id["c1"]["_cue_rules_fired"]) == ["ra", "rb"]
+    # c2 fires only ra
+    assert by_id["c2"]["_cue_delta"] == pytest.approx(0.01)
+    assert by_id["c2"]["_cue_rules_fired"] == ["ra"]
+    # c3 fires nothing
+    assert by_id["c3"].get("_cue_delta", 0.0) == 0.0
+    assert by_id["c3"].get("_cue_rules_fired", []) == []
+
+
 def test_existing_apply_cue_boosts_works_with_yaml_loaded_rules(tmp_path):
     """Smoke test: the existing apply_cue_boosts function works with YAML-loaded rules."""
     from community_brain.query.cue_rules import (

@@ -256,11 +256,59 @@ def search_chunks(
         else:
             # Vector-only fallback path: _distance is already present from LanceDB.
             row["_rrf_score"] = 1.0 - float(row.get("_distance", 0.0))
+        # Derive vector_similarity from the cosine distance computed above.
+        # Range: [0.0, 1.0]; higher = more similar.
+        row["_vector_similarity"] = 1.0 - float(row.get("_distance", 0.0))
         candidates.append(row)
+
+    # BM25-only query to capture per-candidate rank in the lexical leg.
+    # This is a separate lightweight query — just FTS, no vector component —
+    # so we can assign a 1-indexed rank to each candidate. ~10-20ms overhead
+    # at current corpus size (acceptable per spec §15). Candidates that don't
+    # appear in the BM25 result got here purely via the vector leg; their
+    # bm25_rank will be None.
+    try:
+        bm25_results = (
+            table.search(question, query_type="fts")
+            .where(where_expr)
+            .limit(candidate_count * 5)  # generous to cover all hybrid candidates
+            .to_arrow()
+            .to_pylist()
+        )
+        bm25_rank_by_id: dict[str, int] = {
+            row["chunk_id"]: idx + 1
+            for idx, row in enumerate(bm25_results)
+        }
+    except Exception as exc:
+        logger.warning("BM25 rank query failed (%r); bm25_rank will be None for all chunks", exc)
+        bm25_rank_by_id = {}
+
+    for chunk in candidates:
+        chunk["_bm25_rank"] = bm25_rank_by_id.get(chunk.get("chunk_id", ""))
+
+    # Snapshot RRF score before cue boost so score_breakdown can report
+    # the pre-boost value separately from the final ranking signal.
+    for chunk in candidates:
+        chunk["_rrf_score_pre_boost"] = chunk.get("_rrf_score", 0.0)
 
     rules = _resolve_cue_rules()
     boosted = apply_cue_boosts(question, candidates, rules=rules)
+
+    top_k_chunks = boosted[:top_k]
+
+    # Build per-chunk score_breakdown dict from the tracked accumulators.
+    # The underscored fields (_vector_similarity etc.) are kept on the chunk
+    # for debugging; score_breakdown is the public surface.
+    for chunk in top_k_chunks:
+        chunk["score_breakdown"] = {
+            "vector_similarity": chunk.get("_vector_similarity", 0.0),
+            "bm25_rank": chunk.get("_bm25_rank"),
+            "rrf_score": chunk.get("_rrf_score_pre_boost", 0.0),
+            "cue_delta": chunk.get("_cue_delta", 0.0),
+            "cue_rules_fired": chunk.get("_cue_rules_fired", []),
+        }
+
     # IMPORTANT: do NOT re-sync _distance from _rrf_score here.
     # _distance reflects vector cosine similarity (spec §7.2); cue boost
     # only changes ranking via _rrf_score, not the surface similarity field.
-    return boosted[:top_k]
+    return top_k_chunks
