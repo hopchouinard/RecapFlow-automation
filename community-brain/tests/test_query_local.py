@@ -135,3 +135,44 @@ def test_query_local_uses_shared_active_embed_model() -> None:
 
     # The function object is the same — not redefined locally
     assert ql._active_embed_model is emb._active_embed_model
+
+
+def test_search_chunks_uses_yaml_cue_rules(monkeypatch, tmp_path):
+    """search_chunks should load cue rules from a YAML at the configured path on each call.
+
+    COMMUNITY_BRAIN_CUE_RULES_PATH env var overrides the default path.
+    """
+    yaml_path = tmp_path / "query-cues.yaml"
+    yaml_path.write_text("""
+cue_rules:
+  - name: r
+    cue_phrases: [unresolved]
+    target_predicate: {field: has_unresolved_question, value: true}
+    delta: 0.010
+""")
+    monkeypatch.setenv("COMMUNITY_BRAIN_CUE_RULES_PATH", str(yaml_path))
+
+    import community_brain.query.query_local as query_local
+
+    rules = query_local._resolve_cue_rules()
+    assert len(rules) == 1
+    assert rules[0].name == "r"
+
+
+def test_yaml_cue_rules_path_default_when_env_unset(monkeypatch, tmp_path):
+    """Without COMMUNITY_BRAIN_CUE_RULES_PATH, the default path is used.
+    With a missing default file, an empty rule set is returned (loader's
+    graceful-degradation contract from T13).
+    """
+    monkeypatch.delenv("COMMUNITY_BRAIN_CUE_RULES_PATH", raising=False)
+
+    import community_brain.query.query_local as query_local
+
+    monkeypatch.setattr(
+        query_local,
+        "CUE_RULES_PATH_DEFAULT",
+        str(tmp_path / "missing.yaml"),
+        raising=False,
+    )
+    rules = query_local._resolve_cue_rules()
+    assert rules == ()

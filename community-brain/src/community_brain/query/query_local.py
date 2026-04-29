@@ -6,12 +6,18 @@ Exposes the search/filter helpers used by the retrieval server.
 from __future__ import annotations
 
 import logging
+import os
+from pathlib import Path
 
 import lancedb
 import ollama
 
 from community_brain.ingestion.embedding import _active_embed_model
-from community_brain.query.cue_rules import apply_cue_boosts
+from community_brain.query.cue_rules import (
+    CUE_RULES,  # legacy fallback reference; not used directly in the hot-reload path
+    apply_cue_boosts,
+    load_cue_rules_from_yaml,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +25,20 @@ logger = logging.getLogger(__name__)
 # returns top_k * OVERSAMPLE_FACTOR raw candidates so the downstream cue-boost
 # step (T10) has headroom to re-rank before truncating to top_k.
 OVERSAMPLE_FACTOR = 3
+
+# Default path for the cue-rules YAML inside the container (spec §12.4).
+# Overridable via COMMUNITY_BRAIN_CUE_RULES_PATH env var at call time.
+CUE_RULES_PATH_DEFAULT = "/app/config/query-cues.yaml"
+
+
+def _resolve_cue_rules():
+    """Load cue rules from YAML at call time. Path overridable via
+    COMMUNITY_BRAIN_CUE_RULES_PATH env var. Falls back to empty tuple
+    if the file is missing/malformed (load_cue_rules_from_yaml's
+    graceful-degradation contract from T13).
+    """
+    cue_path = os.environ.get("COMMUNITY_BRAIN_CUE_RULES_PATH") or CUE_RULES_PATH_DEFAULT
+    return load_cue_rules_from_yaml(cue_path)
 
 __all__ = [
     "search_chunks",
@@ -238,7 +258,8 @@ def search_chunks(
             row["_rrf_score"] = 1.0 - float(row.get("_distance", 0.0))
         candidates.append(row)
 
-    boosted = apply_cue_boosts(question, candidates)
+    rules = _resolve_cue_rules()
+    boosted = apply_cue_boosts(question, candidates, rules=rules)
     # IMPORTANT: do NOT re-sync _distance from _rrf_score here.
     # _distance reflects vector cosine similarity (spec §7.2); cue boost
     # only changes ranking via _rrf_score, not the surface similarity field.

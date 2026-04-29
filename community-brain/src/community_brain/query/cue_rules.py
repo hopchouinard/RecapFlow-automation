@@ -176,22 +176,22 @@ def _build_predicate(spec: dict[str, Any]):
         return lambda chunk, _f=field, _v=expected: chunk.get(_f) == _v
     check = spec.get("check")
     if check == "non_empty":
-        def pred(chunk, _f=field):
+        def _pred_non_empty(chunk, _f=field):
             v = chunk.get(_f)
             return isinstance(v, (list, str)) and len(v) > 0
-        return pred
+        return _pred_non_empty
     if check == "contains":
         needle = spec.get("value")
         if needle is None:
             raise ValueError("check: contains requires 'value'")
-        def pred(chunk, _f=field, _n=needle):
+        def _pred_contains(chunk, _f=field, _n=needle):
             v = chunk.get(_f)
             if isinstance(v, list):
                 return _n in v
             if isinstance(v, str):
                 return _n in v
             return False
-        return pred
+        return _pred_contains
     raise ValueError(f"unsupported target_predicate spec: {spec}")
 
 

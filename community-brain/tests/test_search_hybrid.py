@@ -177,7 +177,7 @@ def test_hybrid_excludes_failed_extraction_chunks(chunks_db):
 
 
 def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
-    chunks_db,
+    chunks_db, monkeypatch
 ):
     """When the question contains 'unresolved questions', a chunk tagged
     has_unresolved_question=True must rank above an otherwise-equal chunk
@@ -186,6 +186,11 @@ def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
     Verifies the cue boost layer runs after RRF fusion and before top_k
     truncation.
     """
+    # Point the YAML loader at the real config file so cue rules load correctly.
+    from pathlib import Path
+    real_yaml = Path(__file__).parent.parent / "config" / "query-cues.yaml"
+    monkeypatch.setenv("COMMUNITY_BRAIN_CUE_RULES_PATH", str(real_yaml))
+
     db = lancedb.connect(chunks_db)
     table = db.open_table("chunks")
     base = dict(table.to_arrow().to_pylist()[0])
