@@ -967,6 +967,50 @@ For a Phase 6 sign-off run, this configuration is known good:
 - Answering model: GPT-oss 20B (validated) or Qwen3-coder 30B (validated with caveat on numerical drift). Avoid Gemma family.
 - Operator awareness: vector-search-on-names limitation means entity queries may need keyword rephrasing until hybrid search ships.
 
+##### v2 hybrid retrieval validation (2026-04-28 — against live VM)
+
+Hybrid Retrieval v2 (`docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md`) deployed to the live VM via the standard runbook (rollback SHA `e737b01` → deployed `0ce6e7b`, FTS index on `chunks.full_text` built at server boot). Live-VM validation re-ran the two queries that motivated v2 (Findings 6 and 7) plus operator-side cross-check via Open WebUI (GPT-oss 20B answering model). Corpus state at validation: 9 sessions, 184 chunks (8-session baseline + `2026-04-21` + `2026-04-28`), 39 chunks tagged `has_unresolved_question=True`.
+
+**Finding 6 (entity-grounded retrieval) — PASS.**
+
+Direct `/query` for *"What did Adam from Gold Flamingo commit to?"*, `top_k=10`:
+
+- v1 baseline: 0 of 10 chunks contained "Adam" in `full_text`.
+- v2 result: **6 of 10 chunks (60%) contain "Adam" in `full_text`** — exceeding the v2 design target of ≥5/10.
+- Surfaced chunks include canonical Adam material: `2025-02-05:transcript:001` (Adam introducing his sales-funnel idea), `2025-02-05:transcript:002` (Brandon prompting Adam, "I heard you're doing a sales funnel"), `2025-02-05:signal:decisions` (Adam's LinkedIn-content commitment), `2025-02-12:transcript:001` (Adam in conversation), `2025-02-12:signal:general`, `2026-04-28:signal:decisions`.
+- Open WebUI cross-check (GPT-oss 20B): produced a clean answer with verbatim quote and real `chunk_id` citation (`2025-02-12:transcript:001`). No fabrication of dates or entities. A-grade RAG discipline preserved.
+
+**Finding 7 (metadata-tagged retrieval) — PASS at retrieval layer; Finding 8 emerges at generation layer.**
+
+Direct `/query` for *"What unresolved questions came up across these calls that didn't get fully answered?"*, `top_k=10`:
+
+- v1 baseline: 1 of 10 chunks tagged `has_unresolved_question=True`.
+- v2 result: **6 of 10 chunks (60%) tagged `has_unresolved_question=True`** — exceeding the v2 design target of ≥5/10.
+- Cue-boost layer fired the `unresolved_questions` rule (Δ=0.010 per spec §5.2 of the v2 spec) on candidates whose `has_unresolved_question=True` predicate matched, promoting tagged chunks above otherwise-equal untagged ones.
+
+**Finding 8 — answering LLM under-utilizes Stage C metadata flags (NEW, surfaced by v2 validation).**
+
+Open WebUI cross-check on the same Finding 7 query (GPT-oss 20B): the answering LLM cited only **one** unresolved question despite 6 of the retrieved chunks being tagged `has_unresolved_question=True`. The model's visible thinking trace shows it reading each chunk's `full_text` and **re-deriving** unresolved-ness by hunting for explicit textual cues ("I don't know", "we haven't decided") rather than trusting the `derived_metadata.has_unresolved_question` flag.
+
+This behavior is **correct per `docs/inference-guidelines.md`** — the trust contract classifies `derived_metadata` as *"LLM-interpreted; probabilistic; re-derivable"*, explicitly NOT ground truth. The model is following the contract. The trade-off: text-only re-derivation under-counts because the textual signal of an unresolved question is often subtle (an awkward pause, a topic-change, a soft "anyway, moving on") that is exactly the pattern Stage C extraction was built to flag.
+
+Pre-v2 this gap was invisible: retrieval was the bottleneck, only 1 tagged chunk reached the model so the under-utilization couldn't manifest. v2's retrieval fix has surfaced the next constraint in the chain.
+
+**v3 follow-up candidates** (none of these are blockers for v2 sign-off):
+
+- Tighten `inference-guidelines.md`: when `has_unresolved_question=True`, instruct the model to treat it as a strong signal even if the textual cue is subtle. Trade-off: weakens the "derived is probabilistic" partition; needs careful wording to keep the trust contract coherent.
+- Filter-side presentation: format the chunk in the LLM-facing prompt with the flag inline (e.g. `[FLAG: unresolved_question]` next to `full_text`), so the model sees the signal without needing to re-derive.
+- Add a `metadata_summary` field to the `/query` response: *"of the N retrieved chunks, M are tagged `has_unresolved_question=True`"*. Gives the model an authoritative count even before it reads the chunks.
+- Operator-facing: when answering counts/listing questions of "unresolved questions" type, the operator can pass the explicit `filters.has_unresolved_question=true` parameter to `/query`, which forces the WHERE-clause guard to return only tagged chunks. Useful for audit-style queries; less useful for free-form chat.
+
+**Operational confirmations from this validation:**
+
+- Public `similarity` field stays in the v1 cosine range (0.4–0.6 observed across both validation queries). Open WebUI filter's `min_score=0.2` valve passes everything cleanly. v2 spec §7.2 contract upheld; T17 of the v2 plan was the right call.
+- Container deploy via standard runbook (`§4 Incremental update`): clean. LanceDB snapshot at `community-brain/lancedb-backups/lancedb-20260429T020753Z.tgz` (1.2M, taken via `docker exec ... tar czf -` workaround for container-user UID ownership of LanceDB files; runbook §4.1 may benefit from this note).
+- Stage C `entities` extraction observation: 0 of 6 surfaced Adam chunks have "Adam" in their `entities` array, despite "Adam" appearing in `full_text` and being the most-mentioned named entity in those chunks. v2 retrieval surfaces the chunks correctly (via BM25 over `full_text`), so this doesn't break Finding 6 — but it does indicate a Stage C extractor under-performance worth its own follow-up. Not a v2 concern.
+
+**Sign-off:** v2 retrieval delivers what the design promised. Findings 6 and 7 are empirically resolved at the retrieval layer. Finding 8 is a new, distinct concern that v2 made visible (not a regression) and is queued for v3 consideration.
+
 ### Rollout dependencies
 
 ```
