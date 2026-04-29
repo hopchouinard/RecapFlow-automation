@@ -40,6 +40,17 @@ def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
     rows = table.to_arrow().to_pylist()
     now_iso = _now_iso()
 
+    # MEDIUM mitigation: soft warning at large corpus sizes. KNN is O(N) per
+    # chunk; at 10k+ chunks the auto-trigger adds non-trivial latency per /ingest.
+    # Don't fail — just signal that the operator should consider moving lint to
+    # a manual/cron schedule at that scale.
+    if len(rows) > 10_000:
+        logger.warning(
+            "lint_corpus: scanning %d chunks; consider running this manually "
+            "rather than as an /ingest auto-trigger at this scale",
+            len(rows),
+        )
+
     recurrent_count = 0
     for row in rows:
         chunk_id = row["chunk_id"]
@@ -56,7 +67,10 @@ def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
             logger.error("lint_corpus k-nearest query failed for %s: %s", chunk_id, exc)
             continue
 
-        cross_session = 0
+        # HIGH 2 fix: track distinct session IDs, not neighbor-chunk count.
+        # Two similar chunks from a single other session must not satisfy the
+        # CROSS_SESSION_COUNT_MIN >= 2 threshold.
+        cross_session_session_ids: set[str] = set()
         for nbr in results:
             if nbr["chunk_id"] == chunk_id:
                 continue
@@ -65,41 +79,43 @@ def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
             if similarity < SIMILARITY_THRESHOLD:
                 continue
             if nbr["session_id"] != session_id:
-                cross_session += 1
+                cross_session_session_ids.add(nbr["session_id"])
 
         existing_markers = list(row.get("corpus_derived_markers") or [])
-        if cross_session >= CROSS_SESSION_COUNT_MIN:
+        if len(cross_session_session_ids) >= CROSS_SESSION_COUNT_MIN:
             if "recurrent" not in existing_markers:
                 existing_markers.append("recurrent")
             recurrent_count += 1
 
-        # Update row via delete+add (project pattern; LanceDB 0.30.x lacks robust update API
-        # for list-typed columns -- see recanonicalize.py for the established convention).
+        # HIGH 1 fix: use table.update() instead of delete+add.
+        # LanceDB 0.30.x update() is non-destructive — if it fails the row is
+        # left intact (no prior delete). WARN-on-failure from the auto-trigger
+        # is now an honest contract.
+        #
+        # Implementation note: LanceDB 0.30.x update() raises
+        # "concat requires input of at least one array" when the new value for
+        # a list[str] column is an empty list []. Workaround: always update
+        # the timestamp (str field, never fails), and only update the markers
+        # column when there is something non-empty to write. Since markers are
+        # additive (we only ever append, never clear), skipping the write for
+        # an empty result is safe — the existing [] value is already correct.
         safe_id = chunk_id.replace("'", "''")
-        original_row_snapshot = dict(row)
-        new_row = {
-            **original_row_snapshot,
-            "corpus_derived_markers": existing_markers,
-            "corpus_markers_computed_at": now_iso,
-        }
         try:
-            table.delete(f"chunk_id = '{safe_id}'")
-            table.add([new_row])
+            table.update(
+                where=f"chunk_id = '{safe_id}'",
+                values={"corpus_markers_computed_at": now_iso},
+            )
+            if existing_markers:
+                table.update(
+                    where=f"chunk_id = '{safe_id}'",
+                    values={"corpus_derived_markers": existing_markers},
+                )
         except Exception as exc:
-            logger.error("lint_corpus row rewrite failed for %s: %s", chunk_id, exc)
-            try:
-                table.add([original_row_snapshot])
-                logger.info(
-                    "lint_corpus: restored original row for %s after rewrite failure",
-                    chunk_id,
-                )
-            except Exception as restore_exc:
-                logger.critical(
-                    "lint_corpus CRITICAL: row %s LOST after rewrite failure (%s) AND "
-                    "restore failure (%s). Source artifact at /data/output/<session>/ "
-                    "is the recovery path.",
-                    chunk_id, exc, restore_exc,
-                )
+            logger.error(
+                "lint_corpus marker update failed for %s: %s — row unchanged",
+                chunk_id,
+                exc,
+            )
             raise exc
 
     return {"scanned": len(rows), "recurrent": recurrent_count}

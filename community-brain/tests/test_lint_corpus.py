@@ -195,3 +195,108 @@ def test_lint_corpus_below_threshold_neighbors_dont_count(db_path: Path):
     _create_table(db_path, rows)
     stats = lint_corpus_chunks(db_path)
     assert stats["recurrent"] == 0
+
+
+def test_recurrent_requires_neighbors_from_distinct_sessions(db_path: Path):
+    """HIGH 2 regression: two highly-similar neighbors from a SINGLE other session
+    must NOT mark the target as recurrent.
+
+    cross_session_session_ids counts distinct sessions, not neighbor chunks.
+    {s2} has len=1 which is below CROSS_SESSION_COUNT_MIN=2, so no recurrent mark.
+    """
+    rows = [
+        # Target chunk in s1
+        _make_chunk_row(
+            chunk_id="s1:c0",
+            session_id="s1",
+            embedding=_direction_vector(0),
+        ),
+        # Two highly-similar neighbors in s2 (single other session)
+        _make_chunk_row(
+            chunk_id="s2:c0",
+            session_id="s2",
+            embedding=_direction_vector(0),
+        ),
+        _make_chunk_row(
+            chunk_id="s2:c1",
+            session_id="s2",
+            embedding=_direction_vector(0),
+        ),
+    ]
+    _create_table(db_path, rows)
+    stats = lint_corpus_chunks(db_path)
+    # cross_session_session_ids = {"s2"} -> len=1 -> below CROSS_SESSION_COUNT_MIN=2
+    assert stats["recurrent"] == 0, (
+        "Two neighbors from ONE other session should not satisfy recurrent threshold"
+    )
+
+
+def test_lint_corpus_marker_update_non_destructive_on_failure(
+    db_path: Path, monkeypatch
+) -> None:
+    """HIGH 1 regression: if the marker write fails, the row must be unchanged.
+
+    Under the update()-based implementation, a failed update leaves the row
+    intact (no delete has occurred). The lint function raises, which propagates
+    out of the auto-trigger. Chunks are NOT destroyed.
+    """
+    import lancedb as _ldb
+    from community_brain.cli import lint_corpus as _lint_mod
+
+    rows = [
+        _make_chunk_row(
+            chunk_id="s1:c0",
+            session_id="s1",
+            embedding=_direction_vector(0),
+            full_text="original content",
+        ),
+        _make_chunk_row(
+            chunk_id="s2:c0",
+            session_id="s2",
+            embedding=_direction_vector(0),
+        ),
+    ]
+    _create_table(db_path, rows)
+
+    # Capture the real open_table so we can wrap it
+    real_connect = _ldb.connect
+
+    class _FaultyTable:
+        """Proxy that raises on update() to simulate a write failure."""
+        def __init__(self, real_table):
+            self._real = real_table
+
+        def __getattr__(self, name):
+            return getattr(self._real, name)
+
+        def update(self, *args, **kwargs):
+            raise RuntimeError("simulated marker write failure")
+
+    class _FaultyDB:
+        def __init__(self, real_db):
+            self._real = real_db
+
+        def open_table(self, name):
+            return _FaultyTable(self._real.open_table(name))
+
+    original_connect = _ldb.connect
+
+    def patched_connect(path, *args, **kwargs):
+        return _FaultyDB(original_connect(path, *args, **kwargs))
+
+    monkeypatch.setattr(_lint_mod, "lancedb", type("mod", (), {
+        "connect": staticmethod(patched_connect),
+    })())
+
+    # lint_corpus raises because update() fails
+    with pytest.raises(RuntimeError, match="simulated marker write failure"):
+        _lint_mod.lint_corpus_chunks(db_path)
+
+    # The row must still be present and its full_text must be unchanged
+    db = _ldb.connect(str(db_path))
+    rows_after = db.open_table("chunks").to_arrow().to_pylist()
+    assert len(rows_after) == 2, "Row count changed — data was destroyed"
+    s1_row = next(r for r in rows_after if r["chunk_id"] == "s1:c0")
+    assert s1_row["full_text"] == "original content", (
+        "full_text was mutated — row was not left intact after update failure"
+    )
