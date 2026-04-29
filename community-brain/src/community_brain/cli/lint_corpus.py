@@ -8,6 +8,7 @@ T24 will auto-trigger this from /ingest at end of session commit.
 
 Usage:
     python -m community_brain.cli.lint_corpus [--db /data/lancedb/nomic-v1]
+    python -m community_brain.cli.lint_corpus [--db /path] --rebuild
 """
 from __future__ import annotations
 
@@ -30,8 +31,19 @@ def _now_iso() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat()
 
 
-def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
+def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[str, int]:
     """Apply 'recurrent' markers across the corpus; set computed_at on every row.
+
+    rebuild=False (default): additive-only. Adds 'recurrent' when a chunk
+        qualifies. Skips stale-marker removal — uses table.update() exclusively
+        so writes are atomic. Auto-triggered after /ingest. Logs a WARN when
+        stale markers are found that would have been removed under rebuild=True.
+
+    rebuild=True (manual): full recompute. Removes 'recurrent' from chunks
+        that no longer qualify. Uses row-rewrite (delete+add with snapshot
+        restore) for the empty-list case because LanceDB 0.30.x rejects
+        empty list[str] values in update(). Run this manually after big
+        corpus changes (re-extracts, threshold tweaks, session deletions).
 
     Returns {"scanned": int, "recurrent": int}.
     """
@@ -51,6 +63,8 @@ def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
             len(rows),
         )
 
+    LINT_OWNED_MARKERS: set[str] = {"recurrent"}
+
     recurrent_count = 0
     for row in rows:
         chunk_id = row["chunk_id"]
@@ -67,7 +81,7 @@ def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
             logger.error("lint_corpus k-nearest query failed for %s: %s", chunk_id, exc)
             continue
 
-        # HIGH 2 fix: track distinct session IDs, not neighbor-chunk count.
+        # Track distinct session IDs, not neighbor-chunk count.
         # Two similar chunks from a single other session must not satisfy the
         # CROSS_SESSION_COUNT_MIN >= 2 threshold.
         cross_session_session_ids: set[str] = set()
@@ -82,70 +96,93 @@ def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
                 cross_session_session_ids.add(nbr["session_id"])
 
         existing_markers = list(row.get("corpus_derived_markers") or [])
-        # Strip markers owned by lint_corpus before re-evaluating so that
-        # stale markers are removed when the chunk no longer qualifies.
-        # Currently lint owns 'recurrent'; add any future lint-owned markers here.
-        LINT_OWNED_MARKERS = {"recurrent"}
-        had_lint_markers = any(m in LINT_OWNED_MARKERS for m in existing_markers)
-        existing_markers = [m for m in existing_markers if m not in LINT_OWNED_MARKERS]
-        if len(cross_session_session_ids) >= CROSS_SESSION_COUNT_MIN:
-            existing_markers.append("recurrent")
-            recurrent_count += 1
+        should_be_recurrent = len(cross_session_session_ids) >= CROSS_SESSION_COUNT_MIN
+        currently_recurrent = "recurrent" in existing_markers
 
-        # Decide how to write back.
-        #
-        # LanceDB 0.30.x update() raises "concat requires input of at least one
-        # array" when the new value for a list[str] column is an empty list [].
-        # Two cases for the marker column:
-        #
-        #   A) existing_markers is non-empty: safe to call update() directly.
-        #   B) existing_markers is empty AND the row previously had lint-owned
-        #      markers: must CLEAR them. update() would choke on []; use
-        #      row-rewrite (delete + add) as the fallback — same data-loss risk
-        #      accepted in T11/recanonicalize, but bounded: only fires when
-        #      clearing the LAST lint-owned marker.
-        #   C) existing_markers is empty AND the row had no lint-owned markers:
-        #      nothing to write for the marker column; update timestamp only.
         safe_id = chunk_id.replace("'", "''")
-        needs_marker_clear = (not existing_markers) and had_lint_markers
+
         try:
-            if needs_marker_clear:
-                # Row-rewrite path: delete then add with cleared markers.
-                snapshot = dict(row)
-                snapshot["corpus_derived_markers"] = []
-                snapshot["corpus_markers_computed_at"] = now_iso
-                try:
-                    table.delete(f"chunk_id = '{safe_id}'")
-                    table.add([snapshot])
-                except Exception as rewrite_exc:
-                    # Attempt restore; if this also fails the row is lost — log loudly.
-                    try:
-                        table.add([dict(row)])
-                        logger.error(
-                            "lint_corpus marker clear failed for %s: %s — "
-                            "row restored from snapshot",
-                            chunk_id,
-                            rewrite_exc,
+            if should_be_recurrent and not currently_recurrent:
+                # ADD path — safe atomic update; non-empty list so update() is fine.
+                new_markers = existing_markers + ["recurrent"]
+                table.update(
+                    where=f"chunk_id = '{safe_id}'",
+                    values={
+                        "corpus_derived_markers": new_markers,
+                        "corpus_markers_computed_at": now_iso,
+                    },
+                )
+                recurrent_count += 1
+
+            elif not should_be_recurrent and currently_recurrent:
+                if rebuild:
+                    # REMOVE path — destructive row-rewrite (rebuild=True, explicit operator action).
+                    new_markers = [m for m in existing_markers if m not in LINT_OWNED_MARKERS]
+                    if new_markers:
+                        # Non-empty result: safe to update() directly.
+                        table.update(
+                            where=f"chunk_id = '{safe_id}'",
+                            values={
+                                "corpus_derived_markers": new_markers,
+                                "corpus_markers_computed_at": now_iso,
+                            },
                         )
-                    except Exception as restore_exc:
-                        logger.error(
-                            "lint_corpus CRITICAL: marker clear AND restore failed "
-                            "for %s: clear=%s restore=%s — row may be lost",
-                            chunk_id,
-                            rewrite_exc,
-                            restore_exc,
-                        )
-                    raise rewrite_exc
-            else:
+                    else:
+                        # Empty result — LanceDB 0.30.x rejects empty list[str] in update().
+                        # Fall back to row-rewrite (delete + add) with snapshot restore.
+                        snapshot = dict(row)
+                        snapshot["corpus_derived_markers"] = []
+                        snapshot["corpus_markers_computed_at"] = now_iso
+                        try:
+                            table.delete(f"chunk_id = '{safe_id}'")
+                            table.add([snapshot])
+                        except Exception as rewrite_exc:
+                            # Attempt restore; if this also fails the row is lost — log loudly.
+                            try:
+                                table.add([dict(row)])
+                                logger.error(
+                                    "lint_corpus marker clear failed for %s: %s — "
+                                    "row restored from snapshot",
+                                    chunk_id,
+                                    rewrite_exc,
+                                )
+                            except Exception as restore_exc:
+                                logger.error(
+                                    "lint_corpus CRITICAL: marker clear AND restore failed "
+                                    "for %s: clear=%s restore=%s — row may be lost",
+                                    chunk_id,
+                                    rewrite_exc,
+                                    restore_exc,
+                                )
+                            raise rewrite_exc
+                else:
+                    # Auto-trigger (rebuild=False): skip removal, log WARN.
+                    # Operator must run lint_corpus_chunks(rebuild=True) to clean up.
+                    logger.warning(
+                        "lint_corpus: chunk %s has stale 'recurrent' marker (no longer "
+                        "qualifies); rebuild=False so leaving stale. Run "
+                        "lint_corpus_chunks(rebuild=True) to clean up.",
+                        chunk_id,
+                    )
+
+            elif should_be_recurrent:
+                # Already recurrent and still qualifies — no-op for markers; bump timestamp.
+                # Non-empty markers list so update() is safe.
+                recurrent_count += 1
                 table.update(
                     where=f"chunk_id = '{safe_id}'",
                     values={"corpus_markers_computed_at": now_iso},
                 )
-                if existing_markers:
-                    table.update(
-                        where=f"chunk_id = '{safe_id}'",
-                        values={"corpus_derived_markers": existing_markers},
-                    )
+
+            else:
+                # Doesn't qualify and isn't currently marked — bump timestamp only.
+                # The timestamp column is string, not list[str], so update() is always
+                # safe here even when corpus_derived_markers is [].
+                table.update(
+                    where=f"chunk_id = '{safe_id}'",
+                    values={"corpus_markers_computed_at": now_iso},
+                )
+
         except Exception as exc:
             logger.error(
                 "lint_corpus marker update failed for %s: %s — row unchanged",
@@ -162,8 +199,17 @@ def main() -> int:
         description="Populate corpus_derived_markers (recurrent) on chunks."
     )
     parser.add_argument("--db", default="/data/lancedb/nomic-v1")
+    parser.add_argument(
+        "--rebuild",
+        action="store_true",
+        help=(
+            "Recompute markers from scratch (destructive; uses row-rewrite "
+            "for stale-marker cleanup). Default off — use after big corpus "
+            "changes; auto-trigger from /ingest is always rebuild=False."
+        ),
+    )
     args = parser.parse_args()
-    stats = lint_corpus_chunks(args.db)
+    stats = lint_corpus_chunks(args.db, rebuild=args.rebuild)
     print(f"[ok] lint_corpus: scanned {stats['scanned']}, recurrent {stats['recurrent']}")
     return 0
 

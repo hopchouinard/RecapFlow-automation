@@ -65,7 +65,7 @@ from community_brain.ingestion.session_extractor import (
     extract_session_themes,
     select_session_input,
 )
-from community_brain.query.fts_lifecycle import optimize_fts_index
+from community_brain.query.fts_lifecycle import ensure_fts_index, optimize_fts_index
 from community_brain.cli.lint_corpus import lint_corpus_chunks
 
 logger = logging.getLogger(__name__)
@@ -556,16 +556,14 @@ def _commit_chunks(
         # Fresh-deploy regression: spec §17.1 drops the table; first /ingest
         # creates it; without this call, the new table ships without an index.
         try:
-            from community_brain.query.fts_lifecycle import ensure_fts_index
             ensure_fts_index(table, column="bm25_text")
             logger.info("Created chunks table and built FTS index on bm25_text")
         except Exception as exc:
-            logger.error(
-                "Created chunks table but FTS index build failed: %s. "
-                "/query hybrid will fall back to vector-only until the index is built. "
-                "Run server startup hook or call ensure_fts_index manually.",
-                exc,
-            )
+            raise CommitError(
+                f"Created chunks table but FTS index build on bm25_text failed: {exc}. "
+                f"Refusing to ship with vector-only retrieval. Drop the chunks table "
+                f"and re-run /ingest, or build the FTS index manually before retrying."
+            ) from exc
         return
 
     table = db.open_table(TABLE_NAME)

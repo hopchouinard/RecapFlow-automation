@@ -338,7 +338,8 @@ def test_recurrent_marker_removed_when_chunk_no_longer_qualifies(db_path: Path):
         "test setup: 'recurrent' should be present before lint runs"
     )
 
-    stats = lint_corpus_chunks(db_path)
+    # rebuild=True: full recompute, removes stale markers
+    stats = lint_corpus_chunks(db_path, rebuild=True)
 
     # No cross-session neighbors -> recurrent_count should be 0.
     assert stats["recurrent"] == 0, (
@@ -354,3 +355,146 @@ def test_recurrent_marker_removed_when_chunk_no_longer_qualifies(db_path: Path):
     )
     # corpus_markers_computed_at must be set (lint did run on this row).
     assert s1c0_post["corpus_markers_computed_at"] is not None
+
+
+# ---------------------------------------------------------------------------
+# NEW: rebuild=False / rebuild=True mode tests (verification adversarial review)
+# ---------------------------------------------------------------------------
+
+
+def test_lint_corpus_default_does_not_remove_stale_recurrent(db_path: Path, caplog) -> None:
+    """rebuild=False (default, auto-trigger): leaves stale 'recurrent' alone
+    and logs a WARN. Trade-off: safer under interruption, but operator must
+    run rebuild=True manually to clean up.
+    """
+    import logging
+
+    rows = [
+        # Chunk in s1 with stale 'recurrent' but no cross-session high-sim neighbors.
+        _make_chunk_row(
+            chunk_id="s1:c0",
+            session_id="s1",
+            embedding=_direction_vector(0),
+            corpus_derived_markers=["recurrent"],
+        ),
+        # Same-session neighbor — does NOT satisfy cross-session requirement.
+        _make_chunk_row(
+            chunk_id="s1:c1",
+            session_id="s1",
+            embedding=_direction_vector(0),
+        ),
+    ]
+    _create_table(db_path, rows)
+
+    with caplog.at_level(logging.WARNING, logger="community_brain.cli.lint_corpus"):
+        stats = lint_corpus_chunks(db_path)  # rebuild=False is the default
+
+    # Marker must still be present — auto-trigger does NOT remove stale markers.
+    db = lancedb.connect(str(db_path))
+    post_rows = db.open_table("chunks").to_arrow().to_pylist()
+    s1c0 = next(r for r in post_rows if r["chunk_id"] == "s1:c0")
+    assert "recurrent" in s1c0["corpus_derived_markers"], (
+        "rebuild=False must leave stale 'recurrent' in place (no destructive write)"
+    )
+
+    # A WARN must have been emitted signalling the staleness.
+    stale_warnings = [r for r in caplog.records if "stale" in r.message and "recurrent" in r.message]
+    assert stale_warnings, (
+        "rebuild=False must log a WARN about stale 'recurrent' marker so operators know cleanup is pending"
+    )
+
+    # recurrent_count in stats: stale marker was not re-added, so this chunk
+    # was NOT counted as a new recurrent addition (it was already marked, and
+    # the already-marked path increments only in the should_be_recurrent branch).
+    assert stats["scanned"] == 2
+
+
+def test_lint_corpus_rebuild_removes_stale_recurrent(db_path: Path) -> None:
+    """rebuild=True (manual operator command): actually removes stale markers
+    via row-rewrite for the empty-result case."""
+    rows = [
+        # Chunk in s1 with stale 'recurrent' marker, no qualifying cross-session neighbors.
+        _make_chunk_row(
+            chunk_id="s1:c0",
+            session_id="s1",
+            embedding=_direction_vector(0),
+            corpus_derived_markers=["recurrent"],
+        ),
+        # Same-session neighbor — does NOT count as cross-session.
+        _make_chunk_row(
+            chunk_id="s1:c1",
+            session_id="s1",
+            embedding=_direction_vector(0),
+        ),
+    ]
+    _create_table(db_path, rows)
+
+    stats = lint_corpus_chunks(db_path, rebuild=True)
+
+    db = lancedb.connect(str(db_path))
+    post_rows = db.open_table("chunks").to_arrow().to_pylist()
+    s1c0 = next(r for r in post_rows if r["chunk_id"] == "s1:c0")
+    assert "recurrent" not in s1c0["corpus_derived_markers"], (
+        "rebuild=True must remove stale 'recurrent' when chunk no longer qualifies"
+    )
+    assert stats["recurrent"] == 0
+
+
+def test_lint_corpus_default_uses_update_not_delete_add(db_path: Path, monkeypatch) -> None:
+    """Verify the auto-trigger path never calls table.delete (data-loss
+    safety regression: prior fix used delete+add even in the default path)."""
+    import lancedb as _ldb
+    from community_brain.cli import lint_corpus as _lint_mod
+
+    rows = [
+        _make_chunk_row(
+            chunk_id="s1:c0",
+            session_id="s1",
+            embedding=_direction_vector(0),
+        ),
+        _make_chunk_row(
+            chunk_id="s2:c0",
+            session_id="s2",
+            embedding=_direction_vector(0),
+        ),
+        _make_chunk_row(
+            chunk_id="s3:c0",
+            session_id="s3",
+            embedding=_direction_vector(0),
+        ),
+    ]
+    _create_table(db_path, rows)
+
+    # Monkeypatch: intercept lancedb.connect and wrap the table so table.delete raises.
+    original_connect = _ldb.connect
+
+    class _NoDeleteTable:
+        def __init__(self, real_table):
+            self._real = real_table
+
+        def __getattr__(self, name):
+            return getattr(self._real, name)
+
+        def delete(self, *args, **kwargs):
+            raise AssertionError(
+                "table.delete() was called in the rebuild=False (auto-trigger) path — "
+                "this is a data-loss risk and must NOT happen"
+            )
+
+    class _NoDeleteDB:
+        def __init__(self, real_db):
+            self._real = real_db
+
+        def open_table(self, name):
+            return _NoDeleteTable(self._real.open_table(name))
+
+    def patched_connect(path, *args, **kwargs):
+        return _NoDeleteDB(original_connect(path, *args, **kwargs))
+
+    monkeypatch.setattr(_lint_mod, "lancedb", type("mod", (), {
+        "connect": staticmethod(patched_connect),
+    })())
+
+    # rebuild=False (default) must not call table.delete — no exception from the patch.
+    stats = lint_corpus_chunks(db_path)  # default rebuild=False
+    assert stats["scanned"] == 3

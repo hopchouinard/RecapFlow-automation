@@ -1385,3 +1385,42 @@ def test_commit_chunks_builds_fts_index_when_creating_table(
         "bm25_text FTS index must exist immediately after the first ingest "
         "into a fresh table (spec §17.1 fresh-deploy regression)"
     )
+
+
+def test_commit_chunks_raises_when_fts_index_creation_fails(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Fresh-table FTS index failure must raise CommitError, not silently
+    ship without a bm25_text index. Regression for the verification-pass
+    finding: degraded retrieval should be a loud failure, not a log line.
+
+    Monkeypatches ensure_fts_index (the fresh-table case in _commit_chunks)
+    to raise, then asserts CommitError propagates out of ingest_session.
+    """
+    import lancedb as _lancedb
+    from community_brain.ingestion.pipeline import CommitError
+
+    # Patch ensure_fts_index to raise on the fresh-table path.
+    def _raise_fts(*_args, **_kwargs):
+        raise RuntimeError("simulated FTS build failure")
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.ensure_fts_index",
+        _raise_fts,
+    )
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "fts_fail_lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="FTS failure test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    with pytest.raises(CommitError, match="FTS index build on bm25_text failed"):
+        ingest_session(request, config_dir, str(db_path), None)
