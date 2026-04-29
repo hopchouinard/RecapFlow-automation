@@ -115,22 +115,54 @@ def render_corpus_summary(metadata_summary: dict | None) -> str:
     return f"[corpus summary: of the {of_top_k} retrieved chunks]"
 
 
-def render_chunk(chunk: dict) -> str:
+def render_score_breakdown(score_breakdown: dict | None) -> str:
+    """Build '[score: vector=0.420, bm25=3, rrf=0.024, cue=+0.010 (rules)]'.
+
+    bm25_rank=None renders as 'bm25=n/a'.
+    cue_rules_fired empty omits the trailing parenthesized rules list.
+    """
+    if not score_breakdown:
+        return ""
+    vector_sim = score_breakdown.get("vector_similarity", 0.0)
+    bm25_rank = score_breakdown.get("bm25_rank")
+    rrf_score = score_breakdown.get("rrf_score", 0.0)
+    cue_delta = score_breakdown.get("cue_delta", 0.0)
+    rules = score_breakdown.get("cue_rules_fired") or []
+    bm25_str = "n/a" if bm25_rank is None else str(bm25_rank)
+    cue_str = f"+{cue_delta:.3f}"
+    if rules:
+        cue_str += f" ({', '.join(rules)})"
+    return (
+        f"[score: vector={vector_sim:.3f}, "
+        f"bm25={bm25_str}, "
+        f"rrf={rrf_score:.3f}, "
+        f"cue={cue_str}]"
+    )
+
+
+def render_chunk(chunk: dict, valves: object | None = None) -> str:
     """Render a single chunk for the LLM-facing context.
 
-    Format:
-        [flags: <names>]   <- line omitted when no flags True
+    Format (lines optional based on chunk content + valve state):
+        [score: ...]      <- only when valves.expose_score_breakdown is True
+        [flags: <names>]  <- line omitted when no flags True
         <full_text>
 
     The flags line lists derived boolean metadata that Stage C marked True,
     per the v3 presentation contract (see docs/inference-guidelines.md).
     """
+    parts: list[str] = []
+    if valves is not None and getattr(valves, "expose_score_breakdown", False):
+        sb_line = render_score_breakdown(chunk.get("score_breakdown"))
+        if sb_line:
+            parts.append(sb_line)
     derived = chunk.get("derived_metadata") or {}
     full_text = (chunk.get("ground_truth") or {}).get("full_text", "")
     flag_tag = _flag_tags_for_chunk(derived)
     if flag_tag:
-        return f"{flag_tag}\n{full_text}"
-    return full_text
+        parts.append(flag_tag)
+    parts.append(full_text)
+    return "\n".join(parts)
 
 
 class Filter:
@@ -165,6 +197,15 @@ class Filter:
         enabled: bool = Field(
             default=True,
             description="Enable/disable transcript retrieval",
+        )
+        expose_score_breakdown: bool = Field(
+            default=False,
+            description=(
+                "When True, prepend each chunk with a [score: ...] line "
+                "exposing vector_similarity / bm25_rank / rrf_score / "
+                "cue_delta / cue_rules_fired for operator-side debugging. "
+                "Default False (LLM-facing context stays clean)."
+            ),
         )
 
     def __init__(self):
@@ -235,7 +276,7 @@ class Filter:
                 f"Topic: {topic}"
                 + (f" | Themes: {themes_str}" if themes_str else "")
                 + f"\nSpeakers: {speakers_str}\n"
-                f"<transcript_data>\n{render_chunk(chunk)}\n</transcript_data>\n\n---"
+                f"<transcript_data>\n{render_chunk(chunk, valves=self.valves)}\n</transcript_data>\n\n---"
             )
 
         return "\n".join(parts)

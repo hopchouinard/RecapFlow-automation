@@ -768,3 +768,118 @@ class TestCorpusSummaryIntegration:
         # Chunk text is present
         assert "Some question content." in msg
         assert "An insightful observation." in msg
+
+
+class TestRenderScoreBreakdown:
+    def test_render_score_breakdown_format(self):
+        """[score: ...] line includes vector, bm25, rrf, cue summary, with rules
+        list when fired."""
+        from community_brain.openwebui.community_brain_filter import render_score_breakdown
+
+        sb = {
+            "vector_similarity": 0.42,
+            "bm25_rank": 3,
+            "rrf_score": 0.024,
+            "cue_delta": 0.010,
+            "cue_rules_fired": ["unresolved_questions"],
+        }
+        out = render_score_breakdown(sb)
+        assert out.startswith("[score:")
+        assert "vector=0.420" in out
+        assert "bm25=3" in out
+        assert "rrf=0.024" in out
+        assert "cue=+0.010" in out
+        assert "unresolved_questions" in out
+
+    def test_render_score_breakdown_with_no_bm25_rank(self):
+        """bm25=n/a when bm25_rank is None."""
+        from community_brain.openwebui.community_brain_filter import render_score_breakdown
+
+        sb = {
+            "vector_similarity": 0.50,
+            "bm25_rank": None,
+            "rrf_score": 0.020,
+            "cue_delta": 0.0,
+            "cue_rules_fired": [],
+        }
+        out = render_score_breakdown(sb)
+        assert "bm25=n/a" in out
+        assert "vector=0.500" in out
+        assert "cue=+0.000" in out
+
+    def test_render_score_breakdown_no_rules_no_parens(self):
+        """When cue_rules_fired is empty, no '(...)' suffix on cue= part."""
+        from community_brain.openwebui.community_brain_filter import render_score_breakdown
+
+        sb = {
+            "vector_similarity": 0.30,
+            "bm25_rank": 1,
+            "rrf_score": 0.030,
+            "cue_delta": 0.0,
+            "cue_rules_fired": [],
+        }
+        out = render_score_breakdown(sb)
+        # No parenthesized rules list when none fired
+        assert "(" not in out
+
+    def test_score_breakdown_not_rendered_when_valve_off(self):
+        """Default valve state (expose_score_breakdown=False): no [score: ...] line."""
+        from community_brain.openwebui.community_brain_filter import Filter, render_chunk
+
+        f = Filter()
+        assert f.valves.expose_score_breakdown is False
+
+        chunk = {
+            "ground_truth": {"chunk_id": "test:001", "full_text": "Some content."},
+            "derived_metadata": {"has_question": True},
+            "score_breakdown": {
+                "vector_similarity": 0.42,
+                "bm25_rank": 3,
+                "rrf_score": 0.024,
+                "cue_delta": 0.010,
+                "cue_rules_fired": ["unresolved_questions"],
+            },
+        }
+        rendered = render_chunk(chunk, valves=f.valves)
+        assert "[score:" not in rendered
+
+    def test_score_breakdown_rendered_when_valve_on(self):
+        """Valve on: [score: ...] line appears above [flags: ...] line above full_text."""
+        from community_brain.openwebui.community_brain_filter import Filter, render_chunk
+
+        f = Filter()
+        f.valves.expose_score_breakdown = True
+
+        chunk = {
+            "ground_truth": {"chunk_id": "test:001", "full_text": "Some content."},
+            "derived_metadata": {
+                "has_question": False,
+                "has_answer": False,
+                "has_unresolved_question": True,
+                "has_insight": False,
+                "references_prior": False,
+            },
+            "score_breakdown": {
+                "vector_similarity": 0.42,
+                "bm25_rank": 3,
+                "rrf_score": 0.024,
+                "cue_delta": 0.010,
+                "cue_rules_fired": ["unresolved_questions"],
+            },
+        }
+        rendered = render_chunk(chunk, valves=f.valves)
+        # All three parts present
+        assert "[score:" in rendered
+        assert "[flags:" in rendered
+        assert "Some content." in rendered
+        # Order: [score:] before [flags:] before full_text
+        score_pos = rendered.find("[score:")
+        flags_pos = rendered.find("[flags:")
+        text_pos = rendered.find("Some content.")
+        assert score_pos < flags_pos < text_pos
+
+    def test_valves_default_expose_score_breakdown_is_false(self):
+        from community_brain.openwebui.community_brain_filter import Filter
+
+        f = Filter()
+        assert f.valves.expose_score_breakdown is False
