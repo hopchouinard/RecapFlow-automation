@@ -8,6 +8,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
+from community_brain.ingestion.schema import SCHEMA_VERSION
 from community_brain.query import retrieval_server as server_mod
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -17,9 +18,10 @@ def _fake_extract_response(model, prompt):
     if "SESSION_INPUT:" in prompt:
         return json.dumps({"themes": ["agent frameworks"]})
     return json.dumps({
+        "topic_label": "Test topic",
         "entities": [],
-        "new_entities_seen": [],
-        "new_speakers_seen": [],
+        "speakers_mentioned": [],
+        "keywords": [],
         "speech_acts": [],
         "stance": None,
         "certainty": "asserted",
@@ -28,6 +30,10 @@ def _fake_extract_response(model, prompt):
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
     })
 
 
@@ -58,7 +64,7 @@ session_themes:
   prompt_file: session-themes-v1.md
   model: test-model
 chunk_extraction:
-  prompt_file: chunk-extraction-v1.md
+  prompt_file: chunk-extraction-v2.md
   model: test-model
         """,
         encoding="utf-8",
@@ -72,7 +78,7 @@ chunk_extraction:
     prompts = cfg / "extraction-prompts"
     prompts.mkdir()
     (prompts / "session-themes-v1.md").write_text("p", encoding="utf-8")
-    (prompts / "chunk-extraction-v1.md").write_text("p", encoding="utf-8")
+    (prompts / "chunk-extraction-v2.md").write_text("p", encoding="utf-8")
     return cfg
 
 
@@ -83,6 +89,7 @@ def test_post_ingest_success(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
     monkeypatch.setenv("LANCEDB_PATH", str(db_path))
     monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.delenv("OLLAMA_BASE_URL", raising=False)
 
     client = TestClient(server_mod.app)
 
@@ -112,8 +119,8 @@ def test_post_ingest_success(tmp_path: Path, monkeypatch) -> None:
     data = resp.json()
     assert data["session_id"] == "2026-03-10"
     assert data["chunks_written"] > 0
-    assert data["schema_version"] == "1.0"
-    assert data["extraction_prompt_version"] == "chunk-extraction-v1"
+    assert data["schema_version"] == SCHEMA_VERSION
+    assert data["extraction_prompt_version"] == "chunk-extraction-v2"
 
 
 def test_post_ingest_empty_artifact_paths_returns_400(tmp_path: Path, monkeypatch) -> None:
@@ -199,6 +206,7 @@ def test_post_ingest_response_shape_contains_expected_fields(tmp_path: Path, mon
     monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
     monkeypatch.setenv("LANCEDB_PATH", str(db_path))
     monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.delenv("OLLAMA_BASE_URL", raising=False)
 
     client = TestClient(server_mod.app)
 

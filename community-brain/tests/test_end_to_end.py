@@ -6,7 +6,7 @@ vectors. This is the closest approximation to production behavior without
 actually starting Docker or calling Ollama/OpenRouter.
 
 Verifies:
-  - POST /ingest writes chunks to LanceDB with the v1.0 schema
+  - POST /ingest writes chunks to LanceDB with the current schema version
   - POST /query returns those chunks via vector search
   - GET /sessions reflects the ingested session
   - The three endpoints compose correctly end-to-end
@@ -20,6 +20,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
+from community_brain.ingestion.schema import SCHEMA_VERSION
 from community_brain.query import retrieval_server as server_mod
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -30,9 +31,10 @@ def _fake_extract_response(model, prompt):
     if "SESSION_INPUT:" in prompt:
         return json.dumps({"themes": ["agent frameworks", "embeddings"]})
     return json.dumps({
+        "topic_label": "Test topic",
         "entities": ["LangGraph"],
-        "new_entities_seen": [],
-        "new_speakers_seen": [],
+        "speakers_mentioned": [],
+        "keywords": ["agents", "langgraph"],
         "speech_acts": ["comparison"],
         "stance": "positive",
         "certainty": "asserted",
@@ -41,6 +43,10 @@ def _fake_extract_response(model, prompt):
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
     })
 
 
@@ -73,7 +79,7 @@ session_themes:
   prompt_file: session-themes-v1.md
   model: test-model
 chunk_extraction:
-  prompt_file: chunk-extraction-v1.md
+  prompt_file: chunk-extraction-v2.md
   model: test-model
         """,
         encoding="utf-8",
@@ -95,7 +101,7 @@ chunk_extraction:
     prompts = cfg / "extraction-prompts"
     prompts.mkdir()
     (prompts / "session-themes-v1.md").write_text("p", encoding="utf-8")
-    (prompts / "chunk-extraction-v1.md").write_text("p", encoding="utf-8")
+    (prompts / "chunk-extraction-v2.md").write_text("p", encoding="utf-8")
     return cfg
 
 
@@ -106,6 +112,7 @@ def test_end_to_end_ingest_then_query(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
     monkeypatch.setenv("LANCEDB_PATH", str(db_path))
     monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.delenv("OLLAMA_BASE_URL", raising=False)
     # Do NOT set COMMUNITY_BRAIN_ARTIFACT_ROOT for this test; artifacts live in
     # tests/fixtures/ which is outside any constrained root.
     monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
@@ -138,7 +145,7 @@ def test_end_to_end_ingest_then_query(tmp_path: Path, monkeypatch) -> None:
     assert ingest_resp.status_code == 200, ingest_resp.text
     ingest_data = ingest_resp.json()
     assert ingest_data["chunks_written"] >= 7
-    assert ingest_data["schema_version"] == "1.0"
+    assert ingest_data["schema_version"] == SCHEMA_VERSION
     assert ingest_data["chunks_failed"] == 0
 
     # Query with a mocked query-side embedding (same vector so cosine returns matches)
@@ -155,7 +162,7 @@ def test_end_to_end_ingest_then_query(tmp_path: Path, monkeypatch) -> None:
     assert "ground_truth" in chunk
     assert "derived_metadata" in chunk
     assert "provenance" in chunk
-    assert chunk["provenance"]["schema_version"] == "1.0"
+    assert chunk["provenance"]["schema_version"] == SCHEMA_VERSION
     assert chunk["derived_metadata"]["entities"] == ["LangGraph"]
     # session_themes from Stage B should be denormalized onto this chunk
     assert chunk["derived_metadata"]["session_themes"] == ["agent frameworks", "embeddings"]
@@ -168,6 +175,7 @@ def test_end_to_end_sessions_endpoint_after_ingest(tmp_path: Path, monkeypatch) 
     monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
     monkeypatch.setenv("LANCEDB_PATH", str(db_path))
     monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.delenv("OLLAMA_BASE_URL", raising=False)
     monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
 
     client = TestClient(server_mod.app)
@@ -217,6 +225,7 @@ def test_end_to_end_reindex_dry_run_reflects_ingested_corpus(
     monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
     monkeypatch.setenv("LANCEDB_PATH", str(db_path))
     monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.delenv("OLLAMA_BASE_URL", raising=False)
     monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
 
     client = TestClient(server_mod.app)
@@ -246,7 +255,7 @@ def test_end_to_end_reindex_dry_run_reflects_ingested_corpus(
     resp = client.post(
         "/reindex",
         json={
-            "filter": {"extraction_prompt_version": "chunk-extraction-v1"},
+            "filter": {"extraction_prompt_version": "chunk-extraction-v2"},
             "operation": "re-extract",
             "dry_run": True,
         },
@@ -262,6 +271,7 @@ def test_end_to_end_idempotent_ingest(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setenv("COMMUNITY_BRAIN_CONFIG_DIR", str(cfg_dir))
     monkeypatch.setenv("LANCEDB_PATH", str(db_path))
     monkeypatch.delenv("RETRIEVAL_API_KEY", raising=False)
+    monkeypatch.delenv("OLLAMA_BASE_URL", raising=False)
     monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
 
     client = TestClient(server_mod.app)
