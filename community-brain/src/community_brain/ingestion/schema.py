@@ -30,7 +30,7 @@ from typing import Literal
 
 import pyarrow as pa
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "1.1"
 
 ContentType = Literal["prepared_transcript", "extracted_signal", "community_post"]
 Stance = Literal["positive", "negative", "neutral", "mixed"]
@@ -58,7 +58,7 @@ _LIST_FIELDS_NORMALIZED_TO_EMPTY: tuple[str, ...] = (
 
 @dataclass
 class Chunk:
-    """A single row in the LanceDB chunks table (v1.0 schema, 37 fields).
+    """A single row in the LanceDB chunks table (v1.1 schema, 38 fields).
 
     Note: not frozen — the chunker (Task 14) and extractor (Tasks 15/16) mutate
     fields in-place during construction. Do not add frozen=True.
@@ -114,9 +114,10 @@ class Chunk:
     extraction_error: str | None
     extracted_at: dt.datetime | None
 
-    # --- Content & embedding (3) ---
+    # --- Content & embedding (4) ---
     embed_text: str
     full_text: str
+    bm25_text: str
     embedding: list[float]
 
     def to_arrow_dict(self) -> dict:
@@ -209,6 +210,7 @@ def pyarrow_table_schema() -> pa.Schema:
         ("extracted_at", pa.string()),
         ("embed_text", pa.string()),
         ("full_text", pa.string()),
+        ("bm25_text", pa.string()),
         ("embedding", pa.list_(pa.float32(), EMBEDDING_DIM)),
     ])
 
@@ -256,5 +258,6 @@ def lancedb_table_schema() -> dict[str, str]:
         "extracted_at": "string|null",
         "embed_text": "string",
         "full_text": "string",
+        "bm25_text": "string",
         "embedding": "list[float]",
     }
