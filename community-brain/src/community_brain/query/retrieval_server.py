@@ -273,13 +273,16 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     effective_filters = req.filters if req.filters is not None else QueryFilters()
     filters_dict = effective_filters.model_dump(exclude_none=False)
 
-    raw = search_chunks(
+    result = search_chunks(
         question=req.question,
         db_path=db_path,
         top_k=req.top_k,
         filters=filters_dict,
         ollama_base_url=ollama_base_url,
     )
+    raw = result["chunks"]
+    # metadata_summary is computed but not yet wired into QueryResponseV2 (T17).
+    _metadata_summary = result["metadata_summary"]
 
     chunks: list[QueryChunkResult] = []
     for row in raw:

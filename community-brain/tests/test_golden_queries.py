@@ -62,13 +62,13 @@ def _load_queries():
 
 @pytest.mark.parametrize("query_spec", _load_queries(), ids=lambda q: q["id"])
 def test_golden_query_hybrid(query_spec, golden_db, fake_embed):
-    results = search_chunks(
+    result = search_chunks(
         question=query_spec["question"],
         db_path=golden_db,
         top_k=query_spec["top_k"],
         filters=None,
     )
-    ids = [r["chunk_id"] for r in results]
+    ids = [r["chunk_id"] for r in result["chunks"]]
     matches = [c for c in query_spec["expected_chunk_ids"] if c in ids]
     assert len(matches) >= query_spec["min_match_count"], (
         f"hybrid retrieval missed expected chunks for {query_spec['id']}: "
@@ -85,14 +85,14 @@ def test_golden_query_hybrid(query_spec, golden_db, fake_embed):
 def test_golden_query_vector_only_baseline_misses(query_spec, golden_db, fake_embed):
     """Lift validation: pure-vector path must NOT satisfy min_match_count
     on these queries — proves the hybrid+cue layers are doing the work."""
-    results = search_chunks(
+    result = search_chunks(
         question=query_spec["question"],
         db_path=golden_db,
         top_k=query_spec["top_k"],
         filters=None,
         _use_hybrid=False,
     )
-    ids = [r["chunk_id"] for r in results]
+    ids = [r["chunk_id"] for r in result["chunks"]]
     matches = [c for c in query_spec["expected_chunk_ids"] if c in ids]
     assert len(matches) < query_spec["min_match_count"], (
         f"vector-only baseline UNEXPECTEDLY satisfied {query_spec['id']}: "

@@ -127,12 +127,13 @@ def test_hybrid_surfaces_adam_chunk_for_keyword_query(chunks_db):
     be brittle to sort-ties. Top-2 is enough to prove the lexical pull
     without depending on tie-break order.
     """
-    results = search_chunks(
+    result = search_chunks(
         question="Adam from Gold Flamingo",
         db_path=chunks_db,
         top_k=2,
         filters=None,
     )
+    results = result["chunks"]
     assert len(results) >= 1
     ids = [r["chunk_id"] for r in results]
     assert "a" in ids, f"hybrid retrieval missed entity-grounded chunk; got {ids}"
@@ -140,13 +141,13 @@ def test_hybrid_surfaces_adam_chunk_for_keyword_query(chunks_db):
 
 def test_hybrid_returns_empty_on_missing_table(tmp_path):
     """Fresh LanceDB with no chunks table → empty list, no exception."""
-    results = search_chunks(
+    result = search_chunks(
         question="anything",
         db_path=str(tmp_path),
         top_k=5,
         filters=None,
     )
-    assert results == []
+    assert result["chunks"] == []
 
 
 def test_hybrid_excludes_failed_extraction_chunks(chunks_db):
@@ -166,13 +167,13 @@ def test_hybrid_excludes_failed_extraction_chunks(chunks_db):
     table.add([failed_row])
     optimize_fts_index(table, "full_text")
 
-    results = search_chunks(
+    result = search_chunks(
         question="Adam Gold Flamingo",
         db_path=chunks_db,
         top_k=5,
         filters=None,
     )
-    ids = [r["chunk_id"] for r in results]
+    ids = [r["chunk_id"] for r in result["chunks"]]
     assert "c-failed" not in ids
 
 
@@ -180,12 +181,13 @@ def test_search_chunks_records_score_breakdown(chunks_db, monkeypatch):
     """Every chunk in search_chunks output has a score_breakdown dict
     with the 5 expected sub-fields and appropriate types."""
     # Use no filters so we get multiple chunks back; top_k=2 is enough.
-    results = search_chunks(
+    result = search_chunks(
         question="Adam from Gold Flamingo",
         db_path=chunks_db,
         top_k=2,
         filters=None,
     )
+    results = result["chunks"]
     assert len(results) >= 1, "expected at least one result"
     for chunk in results:
         assert "score_breakdown" in chunk, f"chunk {chunk.get('chunk_id')} missing score_breakdown"
@@ -212,6 +214,83 @@ def test_search_chunks_records_score_breakdown(chunks_db, monkeypatch):
         assert isinstance(sb["cue_rules_fired"], list), (
             f"cue_rules_fired must be a list, got {type(sb['cue_rules_fired'])}"
         )
+
+
+def test_search_chunks_returns_metadata_summary(chunks_db):
+    """search_chunks return shape includes metadata_summary with of_top_k +
+    per-flag counts for boolean flags."""
+    # chunks_db contains 4 chunks, all with has_* flags False and references_prior False
+    # (from common_fields in the fixture). Requesting top_k=4 so we get all of them.
+    result = search_chunks(
+        question="Adam from Gold Flamingo",
+        db_path=chunks_db,
+        top_k=4,
+        filters=None,
+    )
+    assert isinstance(result, dict), "search_chunks must return a dict"
+    assert "chunks" in result, "return dict must have 'chunks' key"
+    assert "metadata_summary" in result, "return dict must have 'metadata_summary' key"
+
+    chunks = result["chunks"]
+    ms = result["metadata_summary"]
+
+    assert ms["of_top_k"] == len(chunks), (
+        f"of_top_k ({ms['of_top_k']}) must equal actual chunk count ({len(chunks)})"
+    )
+
+    # All fixture chunks have all boolean flags = False, so every count must be 0.
+    for flag_count_key in (
+        "has_question_count",
+        "has_answer_count",
+        "has_unresolved_question_count",
+        "has_insight_count",
+        "references_prior_count",
+    ):
+        assert flag_count_key in ms, f"metadata_summary missing key '{flag_count_key}'"
+        assert ms[flag_count_key] == 0, (
+            f"expected {flag_count_key}=0 for all-False fixture, got {ms[flag_count_key]}"
+        )
+
+
+def test_search_chunks_metadata_summary_counts_correctly(chunks_db):
+    """metadata_summary flag counts match the actual flags on returned chunks."""
+    # Add a chunk with has_unresolved_question=True and has_insight=True.
+    db = lancedb.connect(chunks_db)
+    table = db.open_table("chunks")
+    base = dict(table.to_arrow().to_pylist()[0])
+    flagged = dict(base)
+    flagged.update({
+        "chunk_id": "flagged",
+        "chunk_index": 99,
+        "full_text": "open question about retention strategy unresolved",
+        "has_unresolved_question": True,
+        "has_insight": True,
+        "embedding": [1.0, 0.0] + [0.0] * (EMBEDDING_DIM - 2),
+    })
+    table.add([flagged])
+    from community_brain.query.fts_lifecycle import optimize_fts_index
+    optimize_fts_index(table, "full_text")
+
+    result = search_chunks(
+        question="retention strategy",
+        db_path=chunks_db,
+        top_k=10,
+        filters=None,
+    )
+    assert isinstance(result, dict)
+    chunks = result["chunks"]
+    ms = result["metadata_summary"]
+
+    assert ms["of_top_k"] == len(chunks)
+
+    # Count flags on the returned chunks directly to verify metadata_summary.
+    expected_unresolved = sum(1 for c in chunks if c.get("has_unresolved_question") is True)
+    expected_insight = sum(1 for c in chunks if c.get("has_insight") is True)
+    assert ms["has_unresolved_question_count"] == expected_unresolved
+    assert ms["has_insight_count"] == expected_insight
+    # The flagged chunk must be in the results (it matches the question lexically).
+    ids = [c["chunk_id"] for c in chunks]
+    assert "flagged" in ids, f"flagged chunk missing from results: {ids}"
 
 
 def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
@@ -262,13 +341,13 @@ def test_search_chunks_promotes_unresolved_question_chunk_via_cue_boost(
     table.add([flagged_row])
     optimize_fts_index(table, "full_text")
 
-    results = search_chunks(
+    result = search_chunks(
         question="what unresolved questions came up?",
         db_path=chunks_db,
         top_k=3,
         filters=None,
     )
-    ids = [r["chunk_id"] for r in results]
+    ids = [r["chunk_id"] for r in result["chunks"]]
     assert "u" in ids, (
         f"cue boost failed to promote unresolved-question chunk; got {ids}"
     )

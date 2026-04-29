@@ -160,6 +160,24 @@ def build_filter_expression(filters: dict | None) -> str | None:
     return " AND ".join(clauses)
 
 
+def _compute_metadata_summary(top_k_chunks: list[dict]) -> dict:
+    """Authoritative aggregate counts of boolean derived flags across the
+    retrieved chunks. Used by the answering LLM (Finding 8 fix path c).
+    """
+    flag_fields = (
+        "has_question",
+        "has_answer",
+        "has_unresolved_question",
+        "has_insight",
+        "references_prior",
+    )
+    summary: dict[str, int] = {"of_top_k": len(top_k_chunks)}
+    for f in flag_fields:
+        count = sum(1 for c in top_k_chunks if c.get(f) is True)
+        summary[f"{f}_count"] = count
+    return summary
+
+
 def search_chunks(
     question: str,
     db_path: str,
@@ -168,7 +186,7 @@ def search_chunks(
     ollama_base_url: str | None = None,
     table_name: str = "chunks",
     _use_hybrid: bool = True,
-) -> list[dict]:
+) -> dict:
     """Hybrid (vector + BM25) search against the chunks table with optional
     structured filters and the success-guard.
 
@@ -186,7 +204,7 @@ def search_chunks(
     """
     db = lancedb.connect(db_path)
     if table_name not in db.list_tables().tables:
-        return []
+        return {"chunks": [], "metadata_summary": _compute_metadata_summary([])}
     table = db.open_table(table_name)
 
     if ollama_base_url:
@@ -311,4 +329,8 @@ def search_chunks(
     # IMPORTANT: do NOT re-sync _distance from _rrf_score here.
     # _distance reflects vector cosine similarity (spec §7.2); cue boost
     # only changes ranking via _rrf_score, not the surface similarity field.
-    return top_k_chunks
+    metadata_summary = _compute_metadata_summary(top_k_chunks)
+    return {
+        "chunks": top_k_chunks,
+        "metadata_summary": metadata_summary,
+    }

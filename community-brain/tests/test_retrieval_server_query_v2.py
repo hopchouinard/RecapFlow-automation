@@ -10,49 +10,67 @@ from fastapi.testclient import TestClient
 from community_brain.query import retrieval_server as server_mod
 
 
+def _fake_search_result_dict() -> dict:
+    """Shape matching what search_chunks returns (dict with chunks + metadata_summary)."""
+    return {
+        "chunks": [_fake_chunk()],
+        "metadata_summary": {
+            "of_top_k": 1,
+            "has_question_count": 0,
+            "has_answer_count": 0,
+            "has_unresolved_question_count": 0,
+            "has_insight_count": 1,
+            "references_prior_count": 0,
+        },
+    }
+
+
 def _fake_search_results() -> list[dict]:
-    """Shape matching what search_chunks returns from LanceDB."""
-    return [
-        {
-            "chunk_id": "2026-03-10:transcript:001",
-            "session_id": "2026-03-10",
-            "session_date": "2026-03-10",
-            "session_title": "t",
-            "content_type": "prepared_transcript",
-            "source_file": "x.md",
-            "full_text": "ground truth text",
-            "embed_text": "topic: x",
-            "topic_label": "x",
-            "speakers_spoke": ["Alex Rojas"],
-            "speakers_mentioned": ["Alex Rojas"],
-            "entities": ["LangGraph"],
-            "keywords": ["agents"],
-            "session_themes": ["agent frameworks"],
-            "speech_acts": ["comparison"],
-            "stance": "positive",
-            "certainty": "asserted",
-            "chunk_local_markers": ["emphasized"],
-            "corpus_derived_markers": [],
-            "corpus_markers_computed_at": None,
-            "has_question": False,
-            "has_answer": False,
-            "has_unresolved_question": False,
-            "has_insight": True,
-            "decisions": [],
-            "action_items": [],
-            "external_refs": [],
-            "references_prior": False,
-            "chunk_index": 1,
-            "total_chunks_in_source": 2,
-            "schema_version": "1.0",
-            "extraction_model": "m",
-            "extraction_prompt_version": "chunk-extraction-v1",
-            "extraction_status": "success",
-            "extraction_error": None,
-            "extracted_at": "2026-03-10T14:22:11+00:00",
-            "_distance": 0.12,
-        }
-    ]
+    """Raw chunk list (used for spy side_effects that return chunks directly)."""
+    return _fake_search_result_dict()["chunks"]
+
+
+def _fake_chunk() -> dict:
+    """A single chunk dict matching the LanceDB schema."""
+    return {
+        "chunk_id": "2026-03-10:transcript:001",
+        "session_id": "2026-03-10",
+        "session_date": "2026-03-10",
+        "session_title": "t",
+        "content_type": "prepared_transcript",
+        "source_file": "x.md",
+        "full_text": "ground truth text",
+        "embed_text": "topic: x",
+        "topic_label": "x",
+        "speakers_spoke": ["Alex Rojas"],
+        "speakers_mentioned": ["Alex Rojas"],
+        "entities": ["LangGraph"],
+        "keywords": ["agents"],
+        "session_themes": ["agent frameworks"],
+        "speech_acts": ["comparison"],
+        "stance": "positive",
+        "certainty": "asserted",
+        "chunk_local_markers": ["emphasized"],
+        "corpus_derived_markers": [],
+        "corpus_markers_computed_at": None,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": True,
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "chunk_index": 1,
+        "total_chunks_in_source": 2,
+        "schema_version": "1.0",
+        "extraction_model": "m",
+        "extraction_prompt_version": "chunk-extraction-v1",
+        "extraction_status": "success",
+        "extraction_error": None,
+        "extracted_at": "2026-03-10T14:22:11+00:00",
+        "_distance": 0.12,
+    }
 
 
 def test_post_query_returns_structured_shape(monkeypatch) -> None:
@@ -61,7 +79,7 @@ def test_post_query_returns_structured_shape(monkeypatch) -> None:
 
     with patch(
         "community_brain.query.query_local.search_chunks",
-        return_value=_fake_search_results(),
+        return_value=_fake_search_result_dict(),
     ):
         resp = client.post("/query", json={"question": "what about agents?", "top_k": 5})
 
@@ -93,7 +111,7 @@ def test_post_query_passes_filters_to_search(monkeypatch) -> None:
         captured["filters"] = filters
         captured["question"] = question
         captured["top_k"] = top_k
-        return _fake_search_results()
+        return _fake_search_result_dict()
 
     with patch(
         "community_brain.query.query_local.search_chunks",
@@ -131,7 +149,7 @@ def test_post_query_default_filters_match_spec(monkeypatch) -> None:
 
     def _spy(question, db_path, top_k, filters, ollama_base_url):
         captured["filters"] = filters
-        return []
+        return {"chunks": [], "metadata_summary": {"of_top_k": 0, "has_question_count": 0, "has_answer_count": 0, "has_unresolved_question_count": 0, "has_insight_count": 0, "references_prior_count": 0}}
 
     with patch(
         "community_brain.query.query_local.search_chunks",
@@ -154,7 +172,7 @@ def test_post_query_filters_applied_echoed_in_response(monkeypatch) -> None:
 
     with patch(
         "community_brain.query.query_local.search_chunks",
-        return_value=_fake_search_results(),
+        return_value=_fake_search_result_dict(),
     ):
         resp = client.post(
             "/query",
@@ -177,7 +195,7 @@ def test_post_query_total_matched_reflects_returned_chunks(monkeypatch) -> None:
 
     with patch(
         "community_brain.query.query_local.search_chunks",
-        return_value=_fake_search_results(),
+        return_value=_fake_search_result_dict(),
     ):
         resp = client.post("/query", json={"question": "x"})
 
