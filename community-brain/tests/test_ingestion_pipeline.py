@@ -664,6 +664,75 @@ def test_pipeline_populates_bm25_text_on_commit(
         )
 
 
+def test_pipeline_embed_text_includes_stage_c_entities_for_transcripts(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """After Stage C populates entities, transcript embed_text must reflect
+    them (same timing pattern as bm25_text). Construction-time-only synthesis
+    used entities=[] so embed_text was stale until Stage C re-synthesis.
+
+    signal/post chunks must keep embed_text == full_text (no enrichment).
+    """
+    import lancedb
+    from community_brain.ingestion.pipeline import ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Agent frameworks comparison",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    transcript_rows = [r for r in rows if r["content_type"] == "prepared_transcript"]
+    signal_post_rows = [r for r in rows if r["content_type"] in ("extracted_signal", "community_post")]
+
+    assert transcript_rows, "expected at least one prepared_transcript row"
+
+    for row in transcript_rows:
+        # embed_text must use structured v3 format (six-line layout)
+        embed = row["embed_text"]
+        assert embed.startswith("topic:"), (
+            f"embed_text does not start with 'topic:' on {row['chunk_id']}; got: {embed[:60]!r}"
+        )
+        assert "speakers:" in embed, f"'speakers:' missing from embed_text on {row['chunk_id']}"
+        assert "mentions:" in embed, f"'mentions:' missing from embed_text on {row['chunk_id']}"
+        assert "entities:" in embed, f"'entities:' missing from embed_text on {row['chunk_id']}"
+        assert "keywords:" in embed, f"'keywords:' missing from embed_text on {row['chunk_id']}"
+        assert "summary:" in embed, f"'summary:' missing from embed_text on {row['chunk_id']}"
+        # Stage C entity must be reflected (not the construction-time empty list)
+        assert "LangGraph" in embed, (
+            f"Stage C entity 'LangGraph' missing from embed_text on {row['chunk_id']}; "
+            f"embed_text was synthesized before Stage C populated entities"
+        )
+
+    for row in signal_post_rows:
+        # signal/post chunks: embed_text must equal full_text (no enrichment)
+        assert row["embed_text"] == row["full_text"], (
+            f"embed_text != full_text on {row['content_type']} chunk {row['chunk_id']}"
+        )
+
+
 def test_commit_chunks_refuses_to_mutate_pre_v1_1_table(tmp_path: Path) -> None:
     """If the existing chunks table lacks bm25_text column (pre-v1.1),
     _commit_chunks raises CommitError BEFORE deleting anything.

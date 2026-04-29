@@ -27,6 +27,7 @@ from community_brain.ingestion.parser import (
     TranscriptSegment,
 )
 from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
+from community_brain.ingestion.embedding import build_transcript_embed_text
 from community_brain.ingestion.schema import Chunk, SCHEMA_VERSION
 
 logger = logging.getLogger(__name__)
@@ -267,14 +268,21 @@ def _extract_speakers_from_body(body: str) -> list[str]:
 
 
 def _segment_embed_text(segment: TranscriptSegment) -> str:
-    """Build the text that gets embedded for a transcript segment.
+    """Build the construction-time embed_text placeholder for a transcript segment.
 
-    Per dual-field design: embed the topical header fields, not the body.
+    v3 format: structured-field-enriched layout (spec §6.4). speakers_spoke is
+    available from segment metadata at construction time. speakers_mentioned,
+    entities, and keywords (post-Stage-C) are empty here; pipeline.py
+    re-synthesizes embed_text after Stage C using the same helper, so this
+    placeholder is only briefly the canonical value.
     """
-    return (
-        f"topic: {segment.topic}\n"
-        f"summary: {segment.summary}\n"
-        f"keywords: {', '.join(segment.keywords)}"
+    return build_transcript_embed_text(
+        topic_label=segment.topic,
+        speakers_spoke=list(segment.speakers),
+        speakers_mentioned=[],
+        entities=[],
+        keywords=list(segment.keywords),
+        summary=segment.summary,
     )
 
 

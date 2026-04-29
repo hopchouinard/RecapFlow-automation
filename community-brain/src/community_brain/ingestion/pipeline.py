@@ -58,6 +58,7 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
 )
 from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
+from community_brain.ingestion.embedding import build_transcript_embed_text
 from community_brain.ingestion.schema import SCHEMA_VERSION, Chunk, pyarrow_table_schema
 from community_brain.ingestion.session_extractor import (
     extract_session_themes,
@@ -351,6 +352,28 @@ def ingest_session(
             keywords=chunk.keywords,
             full_text=chunk.full_text,
         )
+
+        # Re-synthesize embed_text for transcript chunks after Stage C populated
+        # entities (and eventually speakers_mentioned + keywords). Construction-time
+        # used empty lists for those fields; the embedding-relevant value is the
+        # post-Stage-C form. signal/post chunks keep embed_text == full_text.
+        #
+        # Summary recovery: the LLM-written summary isn't stored as a Chunk field,
+        # but it was encoded into the construction-time embed_text by
+        # build_transcript_embed_text() as the last "summary: <text>" line.
+        # Parse it back here rather than storing a redundant field on Chunk.
+        # This is stable as long as build_transcript_embed_text format doesn't change.
+        if chunk.content_type == "prepared_transcript":
+            existing = chunk.embed_text or ""
+            summary = existing.split("summary:", 1)[-1].lstrip() if "summary:" in existing else ""
+            chunk.embed_text = build_transcript_embed_text(
+                topic_label=chunk.topic_label,
+                speakers_spoke=chunk.speakers_spoke,
+                speakers_mentioned=chunk.speakers_mentioned,
+                entities=chunk.entities,
+                keywords=chunk.keywords,
+                summary=summary,
+            )
 
     # --- Stage D: embeddings (one batched call) ---
     # Only embed chunks with successful extraction. Failed chunks persist with

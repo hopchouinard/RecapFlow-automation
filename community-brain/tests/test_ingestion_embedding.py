@@ -86,3 +86,67 @@ def test_embed_texts_empty_env_falls_through_to_default(monkeypatch) -> None:
         embed_texts(["hello"], ollama_base_url="http://localhost:11434")
 
     mock_client.embed.assert_called_once_with(model="nomic-embed-text", input=["hello"])
+
+
+def test_transcript_embed_text_includes_enriched_fields():
+    from community_brain.ingestion.embedding import build_transcript_embed_text
+
+    result = build_transcript_embed_text(
+        topic_label="Sales funnel optimization",
+        speakers_spoke=["Brandon Hancock", "Patrick Chouinard"],
+        speakers_mentioned=["Andrej Karpathy"],
+        entities=["Adam James", "Gold Flamingo"],
+        keywords=["LinkedIn", "outreach"],
+        summary="Adam discussed his sales funnel approach for law firms.",
+    )
+    for token in (
+        "Sales funnel optimization", "Brandon Hancock", "Patrick Chouinard",
+        "Andrej Karpathy", "Adam James", "Gold Flamingo", "LinkedIn",
+        "outreach", "Adam discussed",
+    ):
+        assert token in result, f"Missing token: {token}"
+
+
+def test_transcript_embed_text_handles_empty_lists():
+    from community_brain.ingestion.embedding import build_transcript_embed_text
+    result = build_transcript_embed_text(
+        topic_label="Topic",
+        speakers_spoke=[],
+        speakers_mentioned=[],
+        entities=[],
+        keywords=[],
+        summary="Summary text",
+    )
+    assert "Topic" in result
+    assert "Summary text" in result
+
+
+def test_transcript_embed_text_handles_none_lists():
+    from community_brain.ingestion.embedding import build_transcript_embed_text
+    result = build_transcript_embed_text(
+        topic_label="Topic",
+        speakers_spoke=None,
+        speakers_mentioned=None,
+        entities=None,
+        keywords=None,
+        summary="content",
+    )
+    assert "Topic" in result
+    assert "content" in result
+
+
+def test_transcript_embed_text_format_is_six_lines():
+    """Layout invariant: topic / speakers / mentions / entities / keywords / summary."""
+    from community_brain.ingestion.embedding import build_transcript_embed_text
+    result = build_transcript_embed_text(
+        topic_label="t", speakers_spoke=["s"], speakers_mentioned=["m"],
+        entities=["e"], keywords=["k"], summary="sm",
+    )
+    lines = result.split("\n")
+    assert len(lines) == 6
+    assert lines[0].startswith("topic:")
+    assert lines[1].startswith("speakers:")
+    assert lines[2].startswith("mentions:")
+    assert lines[3].startswith("entities:")
+    assert lines[4].startswith("keywords:")
+    assert lines[5].startswith("summary:")
