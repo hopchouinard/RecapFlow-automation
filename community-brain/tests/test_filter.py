@@ -619,3 +619,152 @@ class TestRenderChunk:
         rendered = render_chunk(chunk)
         assert "[flags:" not in rendered
         assert "x" in rendered
+
+
+class TestCorpusSummary:
+    def test_corpus_summary_renders_with_only_nonzero_counts(self):
+        from community_brain.openwebui.community_brain_filter import render_corpus_summary
+
+        metadata_summary = {
+            "of_top_k": 10,
+            "has_question_count": 4,
+            "has_answer_count": 3,
+            "has_unresolved_question_count": 6,
+            "has_insight_count": 5,
+            "references_prior_count": 0,  # zero -> omitted
+        }
+        rendered = render_corpus_summary(metadata_summary)
+        assert "of the 10 retrieved chunks" in rendered
+        assert "6 are tagged unresolved_question" in rendered
+        assert "5 are tagged insight" in rendered
+        assert "4 are tagged question" in rendered
+        assert "3 are tagged answer" in rendered
+        assert "references_prior" not in rendered  # zero count omitted
+        assert rendered.startswith("[corpus summary:")
+
+    def test_corpus_summary_orders_by_descending_count(self):
+        from community_brain.openwebui.community_brain_filter import render_corpus_summary
+
+        metadata_summary = {
+            "of_top_k": 10,
+            "has_question_count": 1,
+            "has_answer_count": 2,
+            "has_unresolved_question_count": 6,
+            "has_insight_count": 0,
+            "references_prior_count": 3,
+        }
+        rendered = render_corpus_summary(metadata_summary)
+        # Order: 6 (unresolved_question) > 3 (references_prior) > 2 (answer) > 1 (question)
+        pos_6 = rendered.find("unresolved_question")
+        pos_3 = rendered.find("references_prior")
+        pos_2 = rendered.find(" answer")
+        assert pos_6 < pos_3 < pos_2
+
+    def test_corpus_summary_minimal_when_all_zero(self):
+        from community_brain.openwebui.community_brain_filter import render_corpus_summary
+
+        metadata_summary = {
+            "of_top_k": 5,
+            "has_question_count": 0, "has_answer_count": 0,
+            "has_unresolved_question_count": 0, "has_insight_count": 0,
+            "references_prior_count": 0,
+        }
+        rendered = render_corpus_summary(metadata_summary)
+        assert "of the 5 retrieved chunks" in rendered
+        assert "tagged" not in rendered  # no flags listed
+        assert rendered.startswith("[corpus summary:")
+
+    def test_corpus_summary_handles_missing_metadata_summary(self):
+        """Defensive: empty dict (or missing) renders an empty string."""
+        from community_brain.openwebui.community_brain_filter import render_corpus_summary
+        assert render_corpus_summary({}) == ""
+        assert render_corpus_summary(None) == ""
+
+    def test_corpus_summary_handles_one_count(self):
+        from community_brain.openwebui.community_brain_filter import render_corpus_summary
+        metadata_summary = {
+            "of_top_k": 7,
+            "has_question_count": 0, "has_answer_count": 0,
+            "has_unresolved_question_count": 1, "has_insight_count": 0,
+            "references_prior_count": 0,
+        }
+        rendered = render_corpus_summary(metadata_summary)
+        assert "of the 7 retrieved chunks" in rendered
+        assert "1 are tagged unresolved_question" in rendered
+
+
+class TestCorpusSummaryIntegration:
+    def test_assembled_context_has_corpus_summary_above_chunks(self):
+        """The full assembled context begins with [corpus summary: ...] line,
+        followed by per-chunk renderings each starting with [flags: ...] (when
+        the chunk has true flags)."""
+        from community_brain.openwebui.community_brain_filter import Filter
+
+        f = Filter()
+        chunks = [
+            {
+                "ground_truth": {
+                    "chunk_id": "2026-03-10:transcript:001",
+                    "session_date": "2026-03-10",
+                    "full_text": "Some question content.",
+                },
+                "derived_metadata": {
+                    "topic_label": "agents",
+                    "speakers_spoke": ["Alex"],
+                    "session_themes": [],
+                    "has_question": True,
+                    "has_answer": False,
+                    "has_unresolved_question": False,
+                    "has_insight": False,
+                    "references_prior": False,
+                },
+                "provenance": {},
+                "similarity": 0.9,
+            },
+            {
+                "ground_truth": {
+                    "chunk_id": "2026-03-10:transcript:002",
+                    "session_date": "2026-03-10",
+                    "full_text": "An insightful observation.",
+                },
+                "derived_metadata": {
+                    "topic_label": "tools",
+                    "speakers_spoke": ["Sam"],
+                    "session_themes": [],
+                    "has_question": False,
+                    "has_answer": False,
+                    "has_unresolved_question": False,
+                    "has_insight": True,
+                    "references_prior": False,
+                },
+                "provenance": {},
+                "similarity": 0.85,
+            },
+        ]
+        metadata_summary = {
+            "of_top_k": 2,
+            "has_question_count": 1,
+            "has_answer_count": 0,
+            "has_unresolved_question_count": 0,
+            "has_insight_count": 1,
+            "references_prior_count": 0,
+        }
+
+        msg = f._build_sources_message(chunks, metadata_summary)
+
+        # Corpus summary must be present
+        assert "[corpus summary:" in msg
+        assert "of the 2 retrieved chunks" in msg
+
+        # Corpus summary must appear before per-chunk content
+        corpus_pos = msg.find("[corpus summary:")
+        source1_pos = msg.find("[Source 1]")
+        assert corpus_pos < source1_pos
+
+        # Per-chunk flags lines appear inside transcript_data sections
+        assert "[flags: question]" in msg
+        assert "[flags: insight]" in msg
+
+        # Chunk text is present
+        assert "Some question content." in msg
+        assert "An insightful observation." in msg
