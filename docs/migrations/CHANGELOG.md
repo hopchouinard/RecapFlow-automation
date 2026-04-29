@@ -51,9 +51,9 @@ Every schema version bump or extraction-breaking change is recorded here.
 
 ### Stage C contract change
 - Active extraction prompt: `chunk-extraction-v1` → `chunk-extraction-v2`.
-- v2 emits typed `entities` (4 categories: people, companies/orgs, products/tools, frameworks/standards/techniques), populates `speakers_mentioned` (deterministic subset of entities-people not in `speakers_spoke`), populates `keywords` uniformly across all content types, drops `new_entities_seen` and `new_speakers_seen` from the JSON output schema.
+- v2 prompts the LLM to emit `entities` as a flat `list[str]` covering four conceptual categories (people, companies/orgs, products/tools, frameworks/standards/techniques) — no type discriminator is persisted; the categorization lives in the prompt's extraction guidance. Populates `speakers_mentioned` (deterministic subset of entities that are people not in `speakers_spoke`), populates `keywords` uniformly across all content types, drops `new_entities_seen` and `new_speakers_seen` from the JSON output schema.
 - Stage C prompt accepts `SPEAKERS_SPOKE` as input context so `speakers_mentioned` partition is computed against an explicit speaker list.
-- Pipeline applies a canonicalization pass at chunk write time, mapping `speakers_spoke` / `speakers_mentioned` / people-typed `entities` through `config/speaker-aliases.yaml`.
+- Pipeline applies a canonicalization pass at chunk write time, mapping `speakers_spoke` / `speakers_mentioned` / `entities` through `config/speaker-aliases.yaml`. Because the alias map only contains people, non-people entities (companies, products, frameworks) pass through unchanged. v3 has no analogous registry for non-people entities; they're stored raw.
 
 ### embed_text synthesis change (transcripts only)
 - Prior: `topic: <X>\nsummary: <Y>` (~600 chars).
