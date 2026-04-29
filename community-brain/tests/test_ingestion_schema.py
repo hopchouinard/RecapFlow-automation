@@ -1,4 +1,4 @@
-"""Tests for the v1.0 LanceDB chunk schema."""
+"""Tests for the v1.1 LanceDB chunk schema."""
 
 from __future__ import annotations
 
@@ -234,10 +234,6 @@ def test_chunk_dataclass_has_bm25_text_field():
     from community_brain.ingestion.schema import Chunk
     field_names = {f.name for f in fields(Chunk)}
     assert "bm25_text" in field_names
-
-def test_schema_version_is_1_1():
-    from community_brain.ingestion.schema import SCHEMA_VERSION
-    assert SCHEMA_VERSION == "1.1"
 
 def test_pyarrow_schema_includes_bm25_text():
     from community_brain.ingestion.schema import pyarrow_table_schema

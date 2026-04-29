@@ -1,13 +1,13 @@
-"""LanceDB schema v1.0 for the Community Brain ingestion pipeline.
+"""LanceDB schema v1.1 for the Community Brain ingestion pipeline.
 
-37 fields, organized into ground-truth, derived-metadata, and provenance groups.
+38 fields, organized into ground-truth, derived-metadata, and provenance groups.
 Authoritative field-by-field definition:
     docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md §6
 
 ## Trust partitions (see docs/inference-guidelines.md)
 
 - **Ground truth**: chunk_id, session_id, session_date, session_title, source_file,
-  full_text, chunk_index, total_chunks_in_source. Authoritative. Quotes must resolve
+  full_text, embed_text, bm25_text, chunk_index, total_chunks_in_source. Authoritative. Quotes must resolve
   to these. chunk_index and total_chunks_in_source are positional/deterministic (set
   by the chunker, not derived by LLM).
 - **Derived metadata**: entities, speech_acts, stance, certainty, chunk_local_markers,
