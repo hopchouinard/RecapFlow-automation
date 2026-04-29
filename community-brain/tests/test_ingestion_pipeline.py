@@ -648,3 +648,9 @@ def test_pipeline_populates_bm25_text_on_commit(
         assert row["full_text"][:50] in row["bm25_text"], (
             f"full_text prefix missing from bm25_text on {row['chunk_id']}"
         )
+        # bm25_text must reflect Stage C entities, not the construction-time
+        # empty list. The mock returns entities=["LangGraph"] for every chunk.
+        assert "LangGraph" in row["bm25_text"], (
+            f"Stage C entity 'LangGraph' missing from bm25_text on {row['chunk_id']}; "
+            f"bm25_text was synthesized before Stage C populated entities"
+        )

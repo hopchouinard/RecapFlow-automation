@@ -57,6 +57,7 @@ from community_brain.ingestion.registries import (
     load_entity_registry,
     load_speaker_registry,
 )
+from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
 from community_brain.ingestion.schema import SCHEMA_VERSION, Chunk, pyarrow_table_schema
 from community_brain.ingestion.session_extractor import (
     extract_session_themes,
@@ -338,6 +339,18 @@ def ingest_session(
         chunk.references_prior = res.references_prior
         unknown_entities.update(res.new_entities_seen)
         unknown_speakers.update(res.new_speakers_seen)
+
+        # Re-synthesize bm25_text after Stage C mutated chunk.entities,
+        # speakers_mentioned, etc. Construction-time synthesis used empty
+        # entities; the FTS-index-relevant value is the post-Stage-C form.
+        chunk.bm25_text = synthesize_bm25_text(
+            topic_label=chunk.topic_label,
+            entities=chunk.entities,
+            speakers_spoke=chunk.speakers_spoke,
+            speakers_mentioned=chunk.speakers_mentioned,
+            keywords=chunk.keywords,
+            full_text=chunk.full_text,
+        )
 
     # --- Stage D: embeddings (one batched call) ---
     # Only embed chunks with successful extraction. Failed chunks persist with
