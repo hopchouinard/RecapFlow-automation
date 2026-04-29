@@ -1247,3 +1247,100 @@ def test_pipeline_canonicalization_applied_before_resynthesis(
         assert not raw_adam_pattern.search(bm25), (
             f"Raw 'Adam' (without 'James') still in bm25_text of {row['chunk_id']}: {bm25!r}"
         )
+
+
+def test_ingest_session_auto_triggers_lint_corpus(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """After ingest_session commits, corpus_markers_computed_at is set on every
+    committed chunk — proof that lint_corpus auto-fired."""
+    import lancedb
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(tmp_path / "lancedb"))
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Auto lint trigger test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        assert row["corpus_markers_computed_at"] is not None, (
+            f"corpus_markers_computed_at is None on {row['chunk_id']} — "
+            "lint_corpus did not auto-fire after ingest"
+        )
+
+
+def test_ingest_session_lint_failure_does_not_fail_ingest(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """If lint_corpus_chunks raises, ingest_session still returns success and
+    chunks are committed. Failure should log a WARNING."""
+    import lancedb
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(tmp_path / "lancedb"))
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.lint_corpus_chunks",
+        lambda *a, **kw: (_ for _ in ()).throw(RuntimeError("boom")),
+    )
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Lint failure resilience test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Should not raise even though lint raises
+    result = ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+    assert result.chunks_written > 0, "chunks_written should be > 0 even when lint fails"
+
+    # Chunks must be in the table
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+    assert len(rows) > 0, "chunks not committed when lint fails"
+
+    # corpus_markers_computed_at must be None (lint never ran)
+    for row in rows:
+        assert row["corpus_markers_computed_at"] is None, (
+            f"corpus_markers_computed_at should be None when lint fails, "
+            f"got {row['corpus_markers_computed_at']!r} on {row['chunk_id']}"
+        )

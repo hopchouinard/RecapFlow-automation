@@ -66,6 +66,7 @@ from community_brain.ingestion.session_extractor import (
     select_session_input,
 )
 from community_brain.query.fts_lifecycle import optimize_fts_index
+from community_brain.cli.lint_corpus import lint_corpus_chunks
 
 logger = logging.getLogger(__name__)
 
@@ -456,6 +457,20 @@ def ingest_session(
                 "optimize_fts_index after ingest raised %r; chunks committed but FTS "
                 "may lag until next refresh", exc
             )
+
+    # Auto-trigger corpus lint to refresh corpus_derived_markers across the
+    # (now-larger) corpus. WARN-on-failure: chunks are already committed; lint
+    # will retry on next ingest or a manual run.
+    try:
+        _lint_db_path = os.environ.get("COMMUNITY_BRAIN_DB_PATH") or db_path
+        lint_stats = lint_corpus_chunks(_lint_db_path)
+        logger.info(
+            "lint_corpus auto-trigger: scanned %d, recurrent %d",
+            lint_stats["scanned"],
+            lint_stats["recurrent"],
+        )
+    except Exception as exc:
+        logger.warning("lint_corpus auto-trigger failed: %s; chunks committed", exc)
 
     # Tally chunks_written by content type
     by_type: dict[str, int] = {}
