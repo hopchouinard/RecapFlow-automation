@@ -44,6 +44,14 @@ class ExtractionResult:
     action_items: list[str]
     external_refs: list[str]
     references_prior: bool
+    # v2 fields — required in v2 LLM responses
+    topic_label: str | None = None
+    speakers_mentioned: list[str] | None = None
+    keywords: list[str] | None = None
+    has_question: bool = False
+    has_answer: bool = False
+    has_unresolved_question: bool = False
+    has_insight: bool = False
     error: str | None = None
 
 
@@ -105,6 +113,7 @@ def extract_chunk_metadata(
     type_errors: list[str] = []
     for field, expected_type in (
         ("entities", list),
+        # new_entities_seen / new_speakers_seen are v1 fields; tolerate absence
         ("new_entities_seen", list),
         ("new_speakers_seen", list),
         ("speech_acts", list),
@@ -112,6 +121,9 @@ def extract_chunk_metadata(
         ("decisions", list),
         ("action_items", list),
         ("external_refs", list),
+        # v2 list fields
+        ("speakers_mentioned", list),
+        ("keywords", list),
     ):
         val = data.get(field)
         if val is not None and not isinstance(val, expected_type):
@@ -124,12 +136,22 @@ def extract_chunk_metadata(
             f"references_prior expected bool, got {type(data['references_prior']).__name__}"
         )
 
+    # v2 boolean fields — must all be present and be real bools
+    for bool_field in ("has_question", "has_answer", "has_unresolved_question", "has_insight"):
+        if bool_field not in data:
+            type_errors.append(f"{bool_field} missing")
+        elif not isinstance(data[bool_field], bool):
+            type_errors.append(
+                f"{bool_field} expected bool, got {type(data[bool_field]).__name__}"
+            )
+
     if type_errors:
         return _failure(f"invalid field types: {'; '.join(type_errors)}")
 
     return ExtractionResult(
         status="success",
         entities=_as_str_list(data.get("entities")),
+        # v1 compat: absent in v2 responses → empty list so pipeline.py keeps compiling
         new_entities_seen=_as_str_list(data.get("new_entities_seen")),
         new_speakers_seen=_as_str_list(data.get("new_speakers_seen")),
         speech_acts=_as_str_list(data.get("speech_acts")),
@@ -140,6 +162,14 @@ def extract_chunk_metadata(
         action_items=_as_str_list(data.get("action_items")),
         external_refs=_as_str_list(data.get("external_refs")),
         references_prior=bool(data.get("references_prior", False)),
+        # v2 fields
+        topic_label=data.get("topic_label") if isinstance(data.get("topic_label"), str) else None,
+        speakers_mentioned=_as_str_list(data.get("speakers_mentioned")),
+        keywords=_as_str_list(data.get("keywords")),
+        has_question=bool(data["has_question"]),
+        has_answer=bool(data["has_answer"]),
+        has_unresolved_question=bool(data["has_unresolved_question"]),
+        has_insight=bool(data["has_insight"]),
         error=None,
     )
 
@@ -192,5 +222,12 @@ def _failure(msg: str) -> ExtractionResult:
         action_items=[],
         external_refs=[],
         references_prior=False,
+        topic_label=None,
+        speakers_mentioned=None,
+        keywords=None,
+        has_question=False,
+        has_answer=False,
+        has_unresolved_question=False,
+        has_insight=False,
         error=msg,
     )

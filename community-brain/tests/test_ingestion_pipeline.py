@@ -32,6 +32,14 @@ def _fake_extract_response(model, prompt):
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        # v2 fields required by extractor
+        "topic_label": "Agent frameworks comparison",
+        "speakers_mentioned": [],
+        "keywords": ["LangGraph", "agent", "framework"],
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": True,
     })
 
 
