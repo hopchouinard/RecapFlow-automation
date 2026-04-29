@@ -348,6 +348,119 @@ cue_rules:
     assert rule.target_predicate({"entities": "Adam Smith"}) is True  # string also supported
 
 
+# ---------------------------------------------------------------------------
+# Regression tests for Codex Phase 4 findings (HIGH + MEDIUM)
+# ---------------------------------------------------------------------------
+
+import pytest  # noqa: F811 (already imported above; harmless re-import in test files)
+
+
+@pytest.fixture(autouse=False)
+def clear_cue_rules_cache():
+    """Clear the module-level last-known-good cache before and after each test
+    that manipulates it, so tests don't bleed into each other."""
+    from community_brain.query import cue_rules as _mod
+    _mod._LAST_GOOD_RULES.clear()
+    yield
+    _mod._LAST_GOOD_RULES.clear()
+
+
+def test_load_cue_rules_rejects_bare_string_cue_phrases(tmp_path, clear_cue_rules_cache):
+    """Catastrophic-failure-mode regression: bare string for cue_phrases
+    must NOT be accepted as a character-by-character cue list."""
+    yaml_text = '''
+cue_rules:
+  - name: bad_bare_string
+    cue_phrases: unresolved
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+  - name: good
+    cue_phrases: [unresolved]
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+'''
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "bare_string_cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert len(rules) == 1
+    assert rules[0].name == "good"
+
+
+def test_load_cue_rules_rejects_non_string_cue_phrase_element(tmp_path, clear_cue_rules_cache):
+    """Non-string elements in cue_phrases would cause TypeError in cue_phrase_matches."""
+    yaml_text = '''
+cue_rules:
+  - name: bad_int
+    cue_phrases: [123]
+    target_predicate:
+      field: has_question
+      value: true
+    delta: 0.010
+'''
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "int_cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
+def test_load_cue_rules_rejects_empty_string_cue_phrase(tmp_path, clear_cue_rules_cache):
+    """Empty string is a substring of every question — would fire on every query."""
+    yaml_text = '''
+cue_rules:
+  - name: bad_empty
+    cue_phrases: [""]
+    target_predicate:
+      field: has_question
+      value: true
+    delta: 0.010
+'''
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "empty_cue.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
+def test_load_cue_rules_uses_last_known_good_on_subsequent_failure(tmp_path, clear_cue_rules_cache):
+    """Successful load is cached; a subsequent failure on the same path
+    returns the cached rules instead of empty (MEDIUM finding)."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    path = tmp_path / "transient_cues.yaml"
+    path.write_text('''
+cue_rules:
+  - name: good
+    cue_phrases: [unresolved]
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+''')
+    rules1 = load_cue_rules_from_yaml(path)
+    assert len(rules1) == 1
+
+    # Simulate partial write during in-place editor save
+    path.write_text("[: invalid yaml")
+    rules2 = load_cue_rules_from_yaml(path)
+    # Cache rescues us
+    assert len(rules2) == 1
+    assert rules2[0].name == "good"
+
+
+def test_load_cue_rules_empty_on_first_failure(tmp_path, clear_cue_rules_cache):
+    """No cache yet → first-ever failure returns empty (bootstrap behavior)."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "never_existed_bootstrap.yaml"  # never written
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
 def test_existing_apply_cue_boosts_works_with_yaml_loaded_rules(tmp_path):
     """Smoke test: the existing apply_cue_boosts function works with YAML-loaded rules."""
     from community_brain.query.cue_rules import (

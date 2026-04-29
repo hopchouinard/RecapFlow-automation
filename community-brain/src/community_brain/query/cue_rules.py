@@ -20,6 +20,11 @@ import yaml
 
 logger = logging.getLogger(__name__)
 
+# Last-known-good cache keyed by resolved path string.
+# On successful load, the result is stored here.
+# On failure with a cached path, the cached result is returned (MEDIUM finding fix).
+_LAST_GOOD_RULES: dict[str, tuple["CueRule", ...]] = {}
+
 
 @dataclass(frozen=True)
 class CueRule:
@@ -198,28 +203,63 @@ def _build_predicate(spec: dict[str, Any]):
 def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
     """Load cue rules from YAML.
 
-    Returns empty tuple on missing file. Logs WARN.
+    Returns empty tuple on first-time missing/malformed file (bootstrap path).
+    For subsequent failures on a previously-cached path, returns the
+    last-known-good rules and logs WARNING — protects /query from transient
+    edit windows that produce malformed/partial YAML.
+
     Skips individual malformed rules with ERROR; continues with the rest.
     """
     p = Path(path)
+    cache_key = str(p.resolve()) if p.exists() else str(p)
+
+    def _fallback_or_empty(reason: str) -> tuple[CueRule, ...]:
+        cached = _LAST_GOOD_RULES.get(cache_key)
+        if cached is not None:
+            logger.warning(
+                "cue rules YAML load failed (%s); using last-known-good %d rules from cache",
+                reason,
+                len(cached),
+            )
+            return cached
+        return ()
+
     if not p.exists():
         logger.warning("cue rules YAML not found: %s; using empty rule set", p)
-        return ()
+        return _fallback_or_empty("file missing")
     try:
         data = yaml.safe_load(p.read_text())
     except Exception as exc:
         logger.error("failed to parse cue rules YAML at %s: %s", p, exc)
-        return ()
+        return _fallback_or_empty(f"parse error: {exc}")
     if not isinstance(data, dict) or "cue_rules" not in data:
         logger.error("cue rules YAML at %s missing top-level 'cue_rules' key", p)
-        return ()
+        return _fallback_or_empty("missing 'cue_rules' top-level key")
     rules: list[CueRule] = []
     for entry in data.get("cue_rules") or []:
         try:
             name = entry["name"]
-            cue_phrases = tuple(entry["cue_phrases"])
-            if len(cue_phrases) == 0:
+            raw_phrases = entry["cue_phrases"]
+            if isinstance(raw_phrases, str):
+                raise ValueError(
+                    f"cue_phrases must be a list of strings, got bare string {raw_phrases!r} "
+                    f"(common YAML mistake: write 'cue_phrases: [{raw_phrases}]' instead)"
+                )
+            if not isinstance(raw_phrases, (list, tuple)):
+                raise ValueError(
+                    f"cue_phrases must be a list, got {type(raw_phrases).__name__}"
+                )
+            if len(raw_phrases) == 0:
                 raise ValueError("cue_phrases is empty")
+            for phrase in raw_phrases:
+                if not isinstance(phrase, str):
+                    raise ValueError(
+                        f"cue_phrases element must be a string, got "
+                        f"{type(phrase).__name__}: {phrase!r}"
+                    )
+                if not phrase:
+                    raise ValueError("cue_phrases element is empty string")
+            cue_phrases = tuple(raw_phrases)
             predicate = _build_predicate(entry["target_predicate"])
             delta = float(entry["delta"])
             if delta < 0:
@@ -236,4 +276,7 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                 entry.get("name", "<unnamed>") if isinstance(entry, dict) else "<not-a-dict>",
                 exc,
             )
-    return tuple(rules)
+    out = tuple(rules)
+    if out:
+        _LAST_GOOD_RULES[cache_key] = out
+    return out
