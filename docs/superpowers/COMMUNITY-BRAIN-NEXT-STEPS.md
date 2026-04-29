@@ -1,6 +1,6 @@
 # Community Brain — Next Steps Handoff
 
-**Snapshot date:** 2026-04-27
+**Snapshot date:** 2026-04-28
 **Purpose:** Single entry-point document for a fresh session that needs to pick up the Community Brain project. Reads in 3 minutes, tells you exactly what's done, what's outstanding, where the canonical artifacts live, and how to start each remaining track.
 
 ---
@@ -33,9 +33,22 @@ Canonical references:
 
 ### Phase 6 — Open WebUI validation (PARTIAL — 8-session corpus)
 
-Validated the 5 query types from Plan A spec §10 against the 8-session subset. 3 query types pass cleanly (evolution, relationships, unresolved-questions when chunks reach the model). 2 query types have documented retrieval-layer caveats that motivate Track C below.
+Validated the 5 query types from Plan A spec §10 against the 8-session subset. 3 query types pass cleanly (evolution, relationships, unresolved-questions when chunks reach the model). 2 query types had retrieval-layer caveats (Findings 6 and 7) — both addressed in Hybrid Retrieval v2 below.
 
-All findings are captured in [Plan A spec §10 Phase 6 Validation findings (2026-04-27)](specs/2026-04-18-community-brain-ingestion-pipeline-design.md#phase-6--open-webui-integration-and-validation). Read that section before doing any v2 retrieval work.
+All findings are captured in [Plan A spec §10 Phase 6 Validation findings](specs/2026-04-18-community-brain-ingestion-pipeline-design.md#phase-6--open-webui-integration-and-validation). Findings 6 and 7 cross-reference the v2 spec.
+
+### Hybrid Retrieval v2 — DONE in code; live-VM validation pending
+
+Replaces pure-vector ranking with hybrid (vector + BM25 RRF, k=60) plus cue-driven metadata-aware boosting. Oversamples top_k by 3× internally; applies additive RRF-score deltas when question-side lexical cues align with chunks' structured-metadata flags. Public `similarity` field continues to expose vector cosine (spec-faithful). Vector-only path retained as internal graceful-degradation fallback only — no `mode` parameter, no parallel endpoint, legacy v0 helpers and `_v2` suffix archaeology removed.
+
+302 tests passing. Server bumped to `0.2.0`. Open WebUI filter and n8n workflows continue to work without change.
+
+Canonical references:
+- Spec: [`docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md`](specs/2026-04-27-hybrid-retrieval-v2-design.md)
+- Plan: [`docs/superpowers/plans/2026-04-27-hybrid-retrieval-v2-plan.md`](plans/2026-04-27-hybrid-retrieval-v2-plan.md)
+- CHANGELOG entry: [`docs/migrations/CHANGELOG.md`](../../docs/migrations/CHANGELOG.md) (2026-04-28 — Hybrid Retrieval v2)
+
+Only outstanding piece: **v2 Task 16 — operator-side validation against the live VM.** Deploy the `0.2.0` container, re-run the Phase 6 query types via Open WebUI, append a §10.x addendum to the Plan A spec confirming Findings 6 and 7 are empirically resolved.
 
 ---
 
@@ -91,66 +104,62 @@ Don't introduce new spec or plan documents — Plan C is execution-only.
 - The backfill is not strictly required before Track C (v2 hybrid retrieval) — you can do them in parallel or in either order. Backfill increases the corpus from 8 → 65 sessions, which strengthens v2 design tests but isn't a blocker.
 - If 429 rate-limit cascades become a problem during the run, the workflow's per-session retry + state file design tolerates partial failure cleanly. Failed entries stay in `failed[]` and re-run on next invocation.
 
-### Track C — Hybrid Retrieval v2 (substantial, needs full design cycle)
+### Track C — Hybrid Retrieval v2 (DONE; only T16 remains)
 
-Phase 6 validation surfaced two retrieval-layer limitations (findings 6 and 7 in the spec) that share a common root cause: **pure vector similarity ignores the structured fields the schema was built to support.**
+Designed, planned, implemented, and merged on 2026-04-28. 16 commits on `feat/hybrid-retrieval-v2` (now in `main`). 302 tests passing.
 
-Concrete impacts observed:
-- **Entity-grounded queries fail.** Asking "What did Adam from Gold Flamingo commit to?" returned 0 chunks containing Adam in top-10. Rephrasing with concrete keywords ("Adam Gold Flamingo Solutions sales funnel law firms LinkedIn") returned the right chunks at sim 0.42+.
-- **Metadata-tagged chunk queries fail.** Asking "What questions came up that didn't get fully answered?" returned 1 of 38 `has_unresolved_question=True` tagged chunks.
+Findings 6 (rare-token retrieval) and 7 (metadata-tagged retrieval) addressed by:
+1. **Hybrid LanceDB query** — RRF (k=60) over native FTS index on `chunks.full_text` + the existing vector column. Oversampled 3× internally before truncation to `top_k`.
+2. **Cue-driven metadata boost layer** — Python post-RRF pass that adds small additive deltas (0.003–0.010) to chunks whose structured flags align with question-side lexical cues. Six cue rules covering `has_unresolved_question`, non-empty `decisions`/`action_items`, `has_insight`, `references_prior`, `has_question`.
+3. **Filter-then-rank guards preserved** — `extraction_status='success'` and caller's `QueryFilters` continue to apply as a WHERE clause before retrieval.
+4. **Graceful degradation** — hybrid query exception → vector-only fallback with WARN log; cue rule exception → log and skip rule, others continue; FTS index missing on boot → log and continue.
+5. **No API contract change** — request/response shapes identical; the public `similarity` field continues to reflect vector cosine similarity (spec-faithful).
 
-The schema already has the rich structured fields (`has_unresolved_question`, `decisions`, `action_items`, `entities`, `speakers_spoke`, etc.) — they're just not part of the ranking signal. v2 fixes this.
+The only remaining piece is **T16: operator-side validation against the live VM.** Deploy the `0.2.0` container, re-run Phase 6 query types via Open WebUI, append a §10.x addendum to the Plan A spec confirming Findings 6 and 7 are empirically resolved.
 
-#### Design space (do NOT pre-decide; brainstorm in the new session)
-
-Possible approaches, each with tradeoffs:
-
-1. **Hybrid: vector + BM25 reranking** — classic. LanceDB has full-text search support. Re-rank top-K vector candidates by BM25 over a configurable text field.
-2. **Metadata-aware filtering** — let `/query` accept structured filters (`where has_unresolved_question = true`, `where entities CONTAINS 'Adam'`, etc.) that combine with vector similarity.
-3. **Query intent classification** — small LLM upstream classifies the user's question (entity-grounded? metadata-tagged? thematic?) and routes to the appropriate retrieval strategy.
-4. **Reranker model** — embedding-based or cross-encoder reranker as a second-stage pass over a wider top-K candidate pool.
-5. **Some combination of the above.**
-
-Don't pick before brainstorming. Each has implementation cost, latency, and explainability tradeoffs.
-
-#### Starter prompt for Track C (paste into new session)
+#### Starter prompt for T16 (paste into new session)
 
 ```
-I'm continuing the Community Brain project. Plan A and Plan B are
-complete. Plan C (full backfill) is [either: also complete / pending
-- adjust as appropriate].
+I'm continuing the Community Brain project. Hybrid Retrieval v2 is
+implemented and merged to main on 2026-04-28; the only remaining
+piece is operator-side validation against the live VM.
 
-The work for this session: design and implement Hybrid Retrieval v2
-for the Community Brain retrieval server. Read /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md
-first for current status, THEN read docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md §10 Phase 6 Validation findings —
-particularly findings 6 (entity tokens) and 7 (structured metadata).
-Those findings are the seed for this work.
+Read /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md
+first for current status, then community-brain/docs/DEPLOYMENT.md
+for the canonical SSH-driven deploy runbook (it encodes the
+permission model — 🟢 auto / 🟡 confirm / 🔴 gated — that you must
+respect when acting as operator).
 
-The current retrieval server uses pure vector similarity via
-nomic-embed-text. The schema has rich structured fields that are not
-leveraged by ranking. v2 should fix that.
+Steps:
+1. Pre-flight: confirm SSH access to n8n-automation (LAN IP
+   10.1.30.10), retrieval-server health, Ollama nomic-embed-text
+   pinned.
+2. Deploy: pull/rebuild the retrieval-server container from main;
+   confirm `INFO: FTS index on column 'full_text' built in N.NNs`
+   appears in startup logs.
+3. Validate via Open WebUI: re-run the five Phase 6 query types
+   from Plan A spec §10. Specifically retest the failing cases that
+   motivated v2:
+     - Finding 6: "What did Adam from Gold Flamingo commit to?"
+       (top-10 must contain ≥5 chunks with Adam in entities or
+       full_text)
+     - Finding 7: "What unresolved questions came up?"
+       (top-10 must contain ≥5 of 38 corpus chunks with
+       has_unresolved_question=True)
+4. Document outcomes: append a §10.x addendum to
+   docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md
+   capturing the validated/failing query results.
+5. If validation fails, tune cue rule deltas in
+   community_brain/query/cue_rules.py or OVERSAMPLE_FACTOR in
+   community_brain/query/query_local.py, then re-validate.
 
-Use superpowers:brainstorming to explore the design space (vector +
-BM25 reranking? metadata filters? query intent classification?
-cross-encoder reranker? combination?). Don't pre-decide. Then write
-a spec via superpowers:writing-plans → an implementation plan.
-Ship via superpowers:subagent-driven-development.
-
-Don't break the existing /query contract — clients (n8n workflows,
-Open WebUI filter) MUST continue to work unchanged. v2 should be
-either an opt-in parameter on /query or a new endpoint.
-
-Reference docs (read in this order):
-- docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md (this handoff)
-- docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md §10 Phase 6 (ESPECIALLY findings 6 and 7)
-- community-brain/CLAUDE.md (architectural discipline + non-negotiables)
-- community-brain/src/community_brain/query/retrieval_server.py (current /query implementation)
-- community-brain/src/community_brain/ingestion/schema.py (37-field schema with structured fields)
+Reference docs:
+- docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md
+  (especially §9 Validation plan)
+- docs/superpowers/plans/2026-04-27-hybrid-retrieval-v2-plan.md
+  (Task 16 has the operator runbook)
+- community-brain/docs/DEPLOYMENT.md (deploy steps + permission model)
 ```
-
-#### Why this needs a fresh session
-
-The current session has 250k+ tokens of context. Fresh session = clean head, follows the natural brainstorming → spec → plan → implement flow. Don't try to continue v2 work in this session.
 
 ---
 
