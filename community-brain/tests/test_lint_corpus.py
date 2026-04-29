@@ -300,3 +300,57 @@ def test_lint_corpus_marker_update_non_destructive_on_failure(
     assert s1_row["full_text"] == "original content", (
         "full_text was mutated — row was not left intact after update failure"
     )
+
+
+def test_recurrent_marker_removed_when_chunk_no_longer_qualifies(db_path: Path):
+    """Regression: lint_corpus must REMOVE 'recurrent' from a chunk whose
+    cross-session-neighbor count drops below CROSS_SESSION_COUNT_MIN, not
+    just leave it stuck. Otherwise re-extracts, deleted sessions, or
+    threshold tweaks leave stale markers that look freshly validated.
+
+    Setup: seed a chunk in s1 with 'recurrent' already in corpus_derived_markers,
+    but its only neighbor is in the SAME session s1 — so cross-session count
+    is 0, below CROSS_SESSION_COUNT_MIN=2. After lint runs, 'recurrent' must
+    be gone.
+    """
+    rows = [
+        # Chunk in s1 that was previously marked recurrent (stale marker).
+        _make_chunk_row(
+            chunk_id="s1:c0",
+            session_id="s1",
+            embedding=_direction_vector(0),
+            corpus_derived_markers=["recurrent"],
+        ),
+        # Another chunk in the SAME session s1 (does NOT count cross-session).
+        _make_chunk_row(
+            chunk_id="s1:c1",
+            session_id="s1",
+            embedding=_direction_vector(0),
+        ),
+    ]
+    _create_table(db_path, rows)
+
+    # Pre-condition: the stale marker is present before lint runs.
+    db = lancedb.connect(str(db_path))
+    pre_rows = db.open_table("chunks").to_arrow().to_pylist()
+    s1c0_pre = next(r for r in pre_rows if r["chunk_id"] == "s1:c0")
+    assert "recurrent" in s1c0_pre["corpus_derived_markers"], (
+        "test setup: 'recurrent' should be present before lint runs"
+    )
+
+    stats = lint_corpus_chunks(db_path)
+
+    # No cross-session neighbors -> recurrent_count should be 0.
+    assert stats["recurrent"] == 0, (
+        "Chunks with only same-session neighbors must not be marked recurrent"
+    )
+
+    # The stale marker must have been removed.
+    db2 = lancedb.connect(str(db_path))
+    post_rows = db2.open_table("chunks").to_arrow().to_pylist()
+    s1c0_post = next(r for r in post_rows if r["chunk_id"] == "s1:c0")
+    assert "recurrent" not in s1c0_post["corpus_derived_markers"], (
+        "Stale 'recurrent' marker must be stripped when chunk no longer qualifies"
+    )
+    # corpus_markers_computed_at must be set (lint did run on this row).
+    assert s1c0_post["corpus_markers_computed_at"] is not None

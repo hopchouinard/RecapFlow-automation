@@ -1344,3 +1344,44 @@ def test_ingest_session_lint_failure_does_not_fail_ingest(
             f"corpus_markers_computed_at should be None when lint fails, "
             f"got {row['corpus_markers_computed_at']!r} on {row['chunk_id']}"
         )
+
+
+def test_commit_chunks_builds_fts_index_when_creating_table(
+    tmp_path: Path, mocked_pipeline_env
+) -> None:
+    """Regression: fresh-table _commit_chunks must build the bm25_text FTS index.
+
+    Spec §17.1 drops the v1.0 table on deploy; first /ingest creates the v1.1
+    table. Without explicit FTS build, /query hybrid has no lexical leg until
+    server restart triggers the startup hook. This test asserts the index is
+    present immediately after the first ingest into a brand-new database.
+    """
+    import lancedb as _lancedb
+    from community_brain.query.fts_lifecycle import has_fts_index
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "fresh_lancedb"
+
+    # Confirm the DB directory doesn't exist yet (truly fresh deploy).
+    assert not db_path.exists()
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Fresh table FTS regression",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    result = ingest_session(request, config_dir, str(db_path), None)
+    assert result.chunks_written > 0, "Ingest must write chunks for this test to be meaningful"
+
+    # Open the table and verify the FTS index exists on bm25_text.
+    db = _lancedb.connect(str(db_path))
+    table = db.open_table("chunks")
+    assert has_fts_index(table, "bm25_text"), (
+        "bm25_text FTS index must exist immediately after the first ingest "
+        "into a fresh table (spec §17.1 fresh-deploy regression)"
+    )

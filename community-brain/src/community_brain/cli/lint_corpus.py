@@ -82,34 +82,70 @@ def lint_corpus_chunks(db_path: str | Path) -> dict[str, int]:
                 cross_session_session_ids.add(nbr["session_id"])
 
         existing_markers = list(row.get("corpus_derived_markers") or [])
+        # Strip markers owned by lint_corpus before re-evaluating so that
+        # stale markers are removed when the chunk no longer qualifies.
+        # Currently lint owns 'recurrent'; add any future lint-owned markers here.
+        LINT_OWNED_MARKERS = {"recurrent"}
+        had_lint_markers = any(m in LINT_OWNED_MARKERS for m in existing_markers)
+        existing_markers = [m for m in existing_markers if m not in LINT_OWNED_MARKERS]
         if len(cross_session_session_ids) >= CROSS_SESSION_COUNT_MIN:
-            if "recurrent" not in existing_markers:
-                existing_markers.append("recurrent")
+            existing_markers.append("recurrent")
             recurrent_count += 1
 
-        # HIGH 1 fix: use table.update() instead of delete+add.
-        # LanceDB 0.30.x update() is non-destructive — if it fails the row is
-        # left intact (no prior delete). WARN-on-failure from the auto-trigger
-        # is now an honest contract.
+        # Decide how to write back.
         #
-        # Implementation note: LanceDB 0.30.x update() raises
-        # "concat requires input of at least one array" when the new value for
-        # a list[str] column is an empty list []. Workaround: always update
-        # the timestamp (str field, never fails), and only update the markers
-        # column when there is something non-empty to write. Since markers are
-        # additive (we only ever append, never clear), skipping the write for
-        # an empty result is safe — the existing [] value is already correct.
+        # LanceDB 0.30.x update() raises "concat requires input of at least one
+        # array" when the new value for a list[str] column is an empty list [].
+        # Two cases for the marker column:
+        #
+        #   A) existing_markers is non-empty: safe to call update() directly.
+        #   B) existing_markers is empty AND the row previously had lint-owned
+        #      markers: must CLEAR them. update() would choke on []; use
+        #      row-rewrite (delete + add) as the fallback — same data-loss risk
+        #      accepted in T11/recanonicalize, but bounded: only fires when
+        #      clearing the LAST lint-owned marker.
+        #   C) existing_markers is empty AND the row had no lint-owned markers:
+        #      nothing to write for the marker column; update timestamp only.
         safe_id = chunk_id.replace("'", "''")
+        needs_marker_clear = (not existing_markers) and had_lint_markers
         try:
-            table.update(
-                where=f"chunk_id = '{safe_id}'",
-                values={"corpus_markers_computed_at": now_iso},
-            )
-            if existing_markers:
+            if needs_marker_clear:
+                # Row-rewrite path: delete then add with cleared markers.
+                snapshot = dict(row)
+                snapshot["corpus_derived_markers"] = []
+                snapshot["corpus_markers_computed_at"] = now_iso
+                try:
+                    table.delete(f"chunk_id = '{safe_id}'")
+                    table.add([snapshot])
+                except Exception as rewrite_exc:
+                    # Attempt restore; if this also fails the row is lost — log loudly.
+                    try:
+                        table.add([dict(row)])
+                        logger.error(
+                            "lint_corpus marker clear failed for %s: %s — "
+                            "row restored from snapshot",
+                            chunk_id,
+                            rewrite_exc,
+                        )
+                    except Exception as restore_exc:
+                        logger.error(
+                            "lint_corpus CRITICAL: marker clear AND restore failed "
+                            "for %s: clear=%s restore=%s — row may be lost",
+                            chunk_id,
+                            rewrite_exc,
+                            restore_exc,
+                        )
+                    raise rewrite_exc
+            else:
                 table.update(
                     where=f"chunk_id = '{safe_id}'",
-                    values={"corpus_derived_markers": existing_markers},
+                    values={"corpus_markers_computed_at": now_iso},
                 )
+                if existing_markers:
+                    table.update(
+                        where=f"chunk_id = '{safe_id}'",
+                        values={"corpus_derived_markers": existing_markers},
+                    )
         except Exception as exc:
             logger.error(
                 "lint_corpus marker update failed for %s: %s — row unchanged",

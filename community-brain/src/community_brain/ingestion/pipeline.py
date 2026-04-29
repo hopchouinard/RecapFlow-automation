@@ -550,7 +550,22 @@ def _commit_chunks(
 
     db = lancedb.connect(db_path)
     if TABLE_NAME not in db.list_tables().tables:
-        db.create_table(TABLE_NAME, data=records, schema=pyarrow_table_schema())
+        table = db.create_table(TABLE_NAME, data=records, schema=pyarrow_table_schema())
+        # Build FTS index immediately on the newly-created table; otherwise
+        # subsequent /query hybrid calls have no FTS leg until server restart.
+        # Fresh-deploy regression: spec §17.1 drops the table; first /ingest
+        # creates it; without this call, the new table ships without an index.
+        try:
+            from community_brain.query.fts_lifecycle import ensure_fts_index
+            ensure_fts_index(table, column="bm25_text")
+            logger.info("Created chunks table and built FTS index on bm25_text")
+        except Exception as exc:
+            logger.error(
+                "Created chunks table but FTS index build failed: %s. "
+                "/query hybrid will fall back to vector-only until the index is built. "
+                "Run server startup hook or call ensure_fts_index manually.",
+                exc,
+            )
         return
 
     table = db.open_table(TABLE_NAME)
