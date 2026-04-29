@@ -339,14 +339,18 @@ Use when code on main has advanced and we want the VM running the new version.
 
 Pre-deploy backup. Pauses for user confirmation because it's non-trivial but not destructive.
 
+**Use the docker-exec form (host-side `tar czf` fails on container-owned files):**
+
 ```bash
-ssh n8n-automation 'cd ~/n8n && TIMESTAMP=$(date -u +%Y%m%dT%H%M%SZ) && \
-  mkdir -p community-brain/lancedb-backups && \
-  tar czf community-brain/lancedb-backups/lancedb-${TIMESTAMP}.tgz -C community-brain lancedb && \
-  ls -lh community-brain/lancedb-backups/lancedb-${TIMESTAMP}.tgz'
+ssh n8n-automation 'BAK=~/n8n/community-brain/lancedb-backups/lancedb-$(date -u +%Y%m%dT%H%M%SZ).tgz; \
+  mkdir -p ~/n8n/community-brain/lancedb-backups; \
+  docker exec community_brain_retrieval tar czf - /data/lancedb > $BAK; \
+  ls -lh $BAK'
 ```
 
-**Expected:** a `.tgz` file in `community-brain/lancedb-backups/`, size depends on corpus. For a corpus of N chunks, roughly N × 10-50 KB (mostly embeddings).
+**Expected:** a `.tgz` file in `community-brain/lancedb-backups/`, size depends on corpus. For a corpus of N chunks, roughly N × 10-50 KB (mostly embeddings). Verified 2026-04-28: 184 chunks → 1.2M tarball.
+
+**Why docker exec, not host-side tar?** LanceDB files inside the volume are owned by the container's user (UID inside the container, e.g. `node`), NOT by the SSH user (`pchouinard`). A host-side `tar czf` will fail with `Cannot open: Permission denied` on every `.lance` data file. Running tar **inside the container** sidesteps the ownership mismatch — the container user can read its own files, tar streams to stdout, the SSH session's remote shell redirects that stream to a host-side path. The resulting `.tgz` is written by the SSH user via plain shell redirection (no Docker volume crossing on the write side), so the file lands in `~/n8n/community-brain/lancedb-backups/` owned by `pchouinard` and freely manipulable by host-side tools (`tar tzf`, `ls -lh`, etc.).
 
 **Confirm with user before running:** "About to snapshot LanceDB to `community-brain/lancedb-backups/lancedb-<timestamp>.tgz`. Proceed?"
 
