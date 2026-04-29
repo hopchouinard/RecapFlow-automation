@@ -52,6 +52,52 @@ The reference compliant consumer is the `community_brain_filter` Open WebUI func
 """
 
 
+def _flag_tags_for_chunk(derived_metadata: dict | None) -> str:
+    """Return '[flags: name1, name2]' or empty string if no flags True.
+
+    Maps schema field names to compact labels:
+      has_question            -> question
+      has_answer              -> answer
+      has_unresolved_question -> unresolved_question
+      has_insight             -> insight
+      references_prior        -> references_prior  (no has_ prefix to strip)
+    """
+    if not derived_metadata:
+        return ""
+    flag_to_label = {
+        "has_question": "question",
+        "has_answer": "answer",
+        "has_unresolved_question": "unresolved_question",
+        "has_insight": "insight",
+        "references_prior": "references_prior",
+    }
+    true_flags = [
+        label for field, label in flag_to_label.items()
+        if derived_metadata.get(field) is True
+    ]
+    if not true_flags:
+        return ""
+    return f"[flags: {', '.join(true_flags)}]"
+
+
+def render_chunk(chunk: dict) -> str:
+    """Render a single chunk for the LLM-facing context.
+
+    Format:
+        [flags: <names>]   <- line omitted when no flags True
+        <full_text>
+
+    The flags line lists derived boolean metadata that Stage C marked True,
+    per the v3 presentation contract (see docs/inference-guidelines.md).
+    """
+    derived = chunk.get("derived_metadata") or {}
+    full_text = (chunk.get("ground_truth") or {}).get("full_text", "")
+    flag_tag = _flag_tags_for_chunk(derived)
+    if flag_tag:
+        return f"{flag_tag}\n{full_text}"
+    return full_text
+
+
 class Filter:
     """Open WebUI Filter that injects Community Brain transcript context."""
 
@@ -143,7 +189,7 @@ class Filter:
                 f"Topic: {topic}"
                 + (f" | Themes: {themes_str}" if themes_str else "")
                 + f"\nSpeakers: {speakers_str}\n"
-                f"<transcript_data>\n{ground.get('full_text', '')}\n</transcript_data>\n\n---"
+                f"<transcript_data>\n{render_chunk(chunk)}\n</transcript_data>\n\n---"
             )
 
         return "\n".join(parts)

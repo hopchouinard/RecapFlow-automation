@@ -530,3 +530,92 @@ class TestChunkIdCitation:
 
         # The prompt should name chunk_id as the citation mechanism
         assert "chunk_id" in msg.lower()
+
+
+class TestRenderChunk:
+    def test_chunk_renders_flags_tag_when_flags_true(self):
+        from community_brain.openwebui.community_brain_filter import render_chunk
+
+        chunk = {
+            "ground_truth": {"chunk_id": "test:001", "full_text": "Some content."},
+            "derived_metadata": {
+                "has_question": False,
+                "has_answer": False,
+                "has_unresolved_question": True,
+                "has_insight": True,
+                "references_prior": False,
+            },
+            "provenance": {},
+            "similarity": 0.5,
+        }
+        rendered = render_chunk(chunk)
+        # Both flags must appear; order tolerated either way.
+        assert (
+            "[flags: unresolved_question, insight]" in rendered
+            or "[flags: insight, unresolved_question]" in rendered
+        )
+        assert "Some content." in rendered
+
+    def test_chunk_renders_no_flags_tag_when_all_flags_false(self):
+        from community_brain.openwebui.community_brain_filter import render_chunk
+
+        chunk = {
+            "ground_truth": {"chunk_id": "test:001", "full_text": "Plain text."},
+            "derived_metadata": {
+                "has_question": False, "has_answer": False,
+                "has_unresolved_question": False, "has_insight": False,
+                "references_prior": False,
+            },
+            "provenance": {},
+            "similarity": 0.5,
+        }
+        rendered = render_chunk(chunk)
+        assert "[flags:" not in rendered
+        assert "Plain text." in rendered
+
+    def test_chunk_renders_references_prior_in_flags(self):
+        from community_brain.openwebui.community_brain_filter import render_chunk
+        chunk = {
+            "ground_truth": {"chunk_id": "test:001", "full_text": "Discussed last week."},
+            "derived_metadata": {
+                "has_question": False, "has_answer": False,
+                "has_unresolved_question": False, "has_insight": False,
+                "references_prior": True,
+            },
+            "provenance": {},
+            "similarity": 0.5,
+        }
+        rendered = render_chunk(chunk)
+        assert "[flags: references_prior]" in rendered
+        assert "Discussed last week." in rendered
+
+    def test_chunk_renders_all_five_flags(self):
+        from community_brain.openwebui.community_brain_filter import render_chunk
+        chunk = {
+            "ground_truth": {"chunk_id": "test:001", "full_text": "x"},
+            "derived_metadata": {
+                "has_question": True, "has_answer": True,
+                "has_unresolved_question": True, "has_insight": True,
+                "references_prior": True,
+            },
+            "provenance": {},
+            "similarity": 0.5,
+        }
+        rendered = render_chunk(chunk)
+        # All five labels appear in the flags line
+        for label in ("question", "answer", "unresolved_question", "insight", "references_prior"):
+            assert label in rendered
+
+    def test_chunk_renders_handles_missing_derived_metadata(self):
+        """Defensive: chunk without derived_metadata key (legacy/malformed shape)
+        renders without flags line."""
+        from community_brain.openwebui.community_brain_filter import render_chunk
+        chunk = {
+            "ground_truth": {"chunk_id": "test:001", "full_text": "x"},
+            # derived_metadata missing
+            "provenance": {},
+            "similarity": 0.5,
+        }
+        rendered = render_chunk(chunk)
+        assert "[flags:" not in rendered
+        assert "x" in rendered
