@@ -13,10 +13,63 @@ Spec: docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md §
 from __future__ import annotations
 
 import argparse
+import logging
 from pathlib import Path
 from typing import Any
 
 import yaml
+
+
+logger = logging.getLogger(__name__)
+
+
+class ProposalConflictError(Exception):
+    """Raised when proposals would create alias-canonical conflicts."""
+    pass
+
+
+def _validate_proposals(
+    registry: dict[str, Any],
+    proposals: dict[str, Any],
+) -> list[str]:
+    """Return a list of conflict descriptions; empty if no conflicts."""
+    aliases = registry.get("aliases") or {}
+    pending = set(registry.get("pending") or [])
+    canonicals = set(aliases.keys())
+
+    # Build alias-to-canonical lookup for the existing registry.
+    existing_alias_to_canonical: dict[str, str] = {}
+    for canonical, alias_list in aliases.items():
+        for alias in alias_list or []:
+            existing_alias_to_canonical[alias] = canonical
+
+    conflicts: list[str] = []
+    for prop in proposals.get("proposals") or []:
+        canonical = prop["canonical"]
+        for candidate in prop.get("candidate_aliases") or []:
+            # Conflict 1: candidate is itself a canonical (other than the target one)
+            if candidate in canonicals and candidate != canonical:
+                conflicts.append(
+                    f"candidate '{candidate}' is already a canonical name; "
+                    f"refusing to merge it as an alias of '{canonical}'"
+                )
+            # Conflict 2: candidate is already an alias for a DIFFERENT canonical
+            existing_canonical = existing_alias_to_canonical.get(candidate)
+            if existing_canonical and existing_canonical != canonical:
+                conflicts.append(
+                    f"candidate '{candidate}' is already an alias of '{existing_canonical}'; "
+                    f"refusing to remap to '{canonical}'"
+                )
+            # Candidate not in pending — log but don't block (manually-curated registries
+            # may have candidates already removed from pending; re-applying a known-good
+            # proposal should still work).
+            if candidate not in pending and candidate not in (aliases.get(canonical) or []):
+                logger.warning(
+                    "apply_canonicalizations: candidate '%s' is not in pending "
+                    "(may have been manually promoted); applying anyway.",
+                    candidate,
+                )
+    return conflicts
 
 
 def apply_proposals_to_registry(
@@ -30,7 +83,17 @@ def apply_proposals_to_registry(
 
     Ambiguous proposals are not applied (they stay in pending for
     operator review). The input registry is not mutated.
+
+    Raises ProposalConflictError if any candidate would conflict with
+    an existing canonical or alias. The conflict list is included in the
+    exception message; nothing is applied when conflicts are detected.
     """
+    conflicts = _validate_proposals(registry, proposals)
+    if conflicts:
+        raise ProposalConflictError(
+            "Proposal application aborted due to "
+            f"{len(conflicts)} conflict(s):\n  - " + "\n  - ".join(conflicts)
+        )
     out: dict[str, Any] = {}
     if "version" in registry:
         out["version"] = registry["version"]

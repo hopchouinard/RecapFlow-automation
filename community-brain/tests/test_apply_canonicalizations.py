@@ -1,7 +1,12 @@
 """Tests for apply_canonicalizations CLI."""
 from __future__ import annotations
 
-from community_brain.cli.apply_canonicalizations import apply_proposals_to_registry
+import pytest
+
+from community_brain.cli.apply_canonicalizations import (
+    apply_proposals_to_registry,
+    ProposalConflictError,
+)
 
 
 def test_apply_merges_accepted_proposals_into_aliases():
@@ -104,3 +109,38 @@ def test_apply_canonicals_sorted():
     }
     updated = apply_proposals_to_registry(registry, proposals)
     assert updated["aliases"]["X"] == sorted(["zeta", "alpha", "beta"])
+
+
+def test_apply_raises_when_candidate_is_already_a_different_canonical_alias():
+    """Stale proposals: 'Adam' was already promoted to 'Adam James',
+    but a proposal tries to add 'Adam' as alias of 'Adam Smith'."""
+    registry = {
+        "aliases": {"Adam James": ["Adam"], "Adam Smith": []},
+        "pending": [],
+    }
+    proposals = {
+        "proposals": [
+            {"canonical": "Adam Smith", "candidate_aliases": ["Adam"],
+             "confidence": "high", "reason": "test"},
+        ],
+        "ambiguous": [],
+    }
+    with pytest.raises(ProposalConflictError, match="already an alias"):
+        apply_proposals_to_registry(registry, proposals)
+
+
+def test_apply_raises_when_candidate_is_a_canonical():
+    """A proposal can't make a canonical name into an alias of another canonical."""
+    registry = {
+        "aliases": {"Adam James": [], "Adam Smith": []},
+        "pending": [],
+    }
+    proposals = {
+        "proposals": [
+            {"canonical": "Adam James", "candidate_aliases": ["Adam Smith"],
+             "confidence": "high", "reason": "test"},
+        ],
+        "ambiguous": [],
+    }
+    with pytest.raises(ProposalConflictError, match="already a canonical"):
+        apply_proposals_to_registry(registry, proposals)

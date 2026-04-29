@@ -76,6 +76,8 @@ def recanonicalize_chunks(
         if not anything_changed:
             continue
 
+        chunk_id = row["chunk_id"]
+
         # Re-synthesize bm25_text and (for transcripts) embed_text.
         keywords = row.get("keywords") or []
         topic_label = row.get("topic_label")
@@ -90,7 +92,15 @@ def recanonicalize_chunks(
         )
         if _is_transcript(row):
             existing = row.get("embed_text") or ""
-            summary = existing.split("summary:", 1)[-1].lstrip() if "summary:" in existing else ""
+            if "summary:" not in existing:
+                logger.warning(
+                    "recanonicalize: chunk %s has no 'summary:' marker in embed_text; "
+                    "skipping canonicalization to preserve vector content. "
+                    "Re-extract via /ingest force_reextract=true if name canonicalization is needed.",
+                    chunk_id,
+                )
+                continue
+            summary = existing.split("summary:", 1)[-1].lstrip()
             new_embed_text = build_transcript_embed_text(
                 topic_label=topic_label,
                 speakers_spoke=new_spk,
@@ -118,23 +128,40 @@ def recanonicalize_chunks(
         # speakers_spoke, entities, etc.) through LanceDB's value_to_sql path.
         # Use delete-then-add instead, which is the established pattern in
         # pipeline._commit_chunks. Not truly atomic but consistent with project
-        # convention; failure after delete raises so the caller can retry via
-        # force_reextract or by re-running recanonicalize.
-        chunk_id = row["chunk_id"]
+        # convention; snapshot original row so we can restore on add failure.
         safe_id = chunk_id.replace("'", "''")
-        new_row = {**row}
-        new_row["speakers_spoke"] = new_spk
-        new_row["speakers_mentioned"] = new_men
-        new_row["entities"] = new_ent
-        new_row["embed_text"] = new_embed_text
-        new_row["bm25_text"] = new_bm25_text
-        new_row["embedding"] = new_embedding
+        original_row_snapshot = dict(row)  # full snapshot for restore
+        new_row = {
+            **original_row_snapshot,
+            "speakers_spoke": new_spk,
+            "speakers_mentioned": new_men,
+            "entities": new_ent,
+            "embed_text": new_embed_text,
+            "bm25_text": new_bm25_text,
+            "embedding": new_embedding,
+        }
         try:
             table.delete(f"chunk_id = '{safe_id}'")
             table.add([new_row])
-        except Exception as exc:
-            logger.error("recanonicalize failed on %s: %s", chunk_id, exc)
-            raise
+        except Exception as add_exc:
+            logger.error(
+                "recanonicalize add failed for %s: %s; attempting restore",
+                chunk_id, add_exc,
+            )
+            try:
+                table.add([original_row_snapshot])
+                logger.info(
+                    "recanonicalize: restored original row for %s after add failure",
+                    chunk_id,
+                )
+            except Exception as restore_exc:
+                logger.critical(
+                    "recanonicalize CRITICAL: row %s LOST after add failure (%s) AND "
+                    "restore failure (%s). Source artifact at /data/output/<session>/ "
+                    "is the recovery path.",
+                    chunk_id, add_exc, restore_exc,
+                )
+            raise add_exc
 
     return {"scanned": scanned, "updated": updated}
 

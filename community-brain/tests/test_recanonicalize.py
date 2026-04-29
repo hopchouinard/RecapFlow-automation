@@ -189,3 +189,90 @@ def test_recanonicalize_dry_run_does_not_write(db_path: Path):
     db = lancedb.connect(str(db_path))
     rows_after = db.open_table("chunks").to_arrow().to_pylist()
     assert rows_after[0]["speakers_spoke"] == ["Adam"]  # unchanged
+
+
+def test_recanonicalize_restores_original_row_when_add_fails(db_path: Path, monkeypatch):
+    """If table.add raises after delete, the snapshot is restored.
+
+    Injects a failure on the first table.add call (the new-row write)
+    so that the restore path fires and the original row is preserved.
+    """
+    rows = [_make_chunk(chunk_id="c1", speakers_spoke=["Adam"], entities=["Adam"])]
+    _create_table(db_path, rows)
+    registry = {"aliases": {"Adam James": ["Adam"]}, "pending": []}
+
+    # Open the same table that recanonicalize_chunks will open, then
+    # monkeypatch lancedb.connect so our pre-patched table is returned.
+    import lancedb as _lancedb
+
+    real_connect = _lancedb.connect
+
+    def patched_connect(path, *args, **kwargs):
+        db = real_connect(path, *args, **kwargs)
+        table = db.open_table("chunks")
+        original_add = table.add
+        call_count = {"n": 0}
+
+        def flaky_add(rows_arg):
+            call_count["n"] += 1
+            if call_count["n"] == 1:
+                raise RuntimeError("simulated add failure")
+            return original_add(rows_arg)
+
+        monkeypatch.setattr(table, "add", flaky_add)
+
+        original_open = db.open_table
+
+        def patched_open(name):
+            if name == "chunks":
+                return table
+            return original_open(name)
+
+        monkeypatch.setattr(db, "open_table", patched_open)
+        return db
+
+    monkeypatch.setattr(_lancedb, "connect", patched_connect)
+
+    with pytest.raises(RuntimeError, match="simulated add failure"):
+        recanonicalize_chunks(db_path, registry, embed_fn=_stub_embed)
+
+    # Open the table directly (bypassing our monkeypatch) to check restore.
+    db = real_connect(str(db_path))
+    table = db.open_table("chunks")
+    rows_after = table.to_arrow().to_pylist()
+    assert len(rows_after) == 1, "row should have been restored after add failure"
+    assert rows_after[0]["chunk_id"] == "c1"
+    # speakers_spoke still contains "Adam" — restore path preserved the original
+    assert rows_after[0]["speakers_spoke"] == ["Adam"]
+
+
+def test_recanonicalize_skips_transcript_with_missing_summary_marker(
+    db_path: Path, caplog
+):
+    """A transcript chunk whose embed_text lacks 'summary:' should be skipped
+    with a WARNING, not silently rewritten with an empty summary."""
+    rows = [
+        _make_chunk(
+            chunk_id="legacy",
+            content_type="prepared_transcript",
+            speakers_spoke=["Adam"],
+            embed_text="legacy embed format with no summary marker",
+        ),
+    ]
+    _create_table(db_path, rows)
+    registry = {"aliases": {"Adam James": ["Adam"]}, "pending": []}
+
+    import logging
+
+    with caplog.at_level(logging.WARNING, logger="community_brain.cli.recanonicalize"):
+        stats = recanonicalize_chunks(db_path, registry, embed_fn=_stub_embed)
+
+    assert stats["scanned"] == 1
+    assert stats["updated"] == 0  # skipped, not updated
+    assert any("no 'summary:' marker" in rec.message for rec in caplog.records)
+
+    # Original row preserved — speakers_spoke still raw, embed_text untouched.
+    db = lancedb.connect(str(db_path))
+    rows_after = db.open_table("chunks").to_arrow().to_pylist()
+    assert rows_after[0]["embed_text"] == "legacy embed format with no summary marker"
+    assert rows_after[0]["speakers_spoke"] == ["Adam"]
