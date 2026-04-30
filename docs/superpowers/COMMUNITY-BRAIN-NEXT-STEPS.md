@@ -128,12 +128,114 @@ Don't introduce new spec or plan documents — Plan C is execution-only.
 
 ### v4 design (when warranted)
 
-Two soft-miss candidates from v3 validation:
+v3 shipped on 2026-04-30 with three soft-misses on retrieval-side validation criteria, all tracing to the same root cause: Stage C v2 + Gemma 4 31B is more conservative than v1 was on entity-of-speakers and `has_unresolved_question` extraction. Corpus state is excellent (entities populated, canonicalization clean, recurrent + score_breakdown working); retrieval-side edge cases fall slightly short of spec targets.
 
-1. **entities-in-top-10 (16.1.2):** deterministic post-Stage-C step that always merges `speakers_spoke` + `speakers_mentioned` into `entities`. Prevents the case where a speaker appears in `full_text` and `speakers_spoke` but not `entities`, causing a miss on entity-grounded queries.
-2. **has_unresolved_question sensitivity (16.1.8 F7):** prompt tuning to lift the flag's detection sensitivity. Corpus-wide count dropped 39 (v1) → 20 (v3) on the same model with a different prompt. Direction: more permissive trigger in chunk-extraction-v3.
+**Two validation-driven v4 candidates (high priority):**
 
-When you're ready to design v4, fresh session + `superpowers:brainstorming` is the right starting point.
+1. **entities-in-top-10 (closes 16.1.2):** deterministic post-Stage-C step that always merges `speakers_spoke` + `speakers_mentioned` into `entities`. Prevents the case where a speaker appears in `full_text` and `speakers_spoke` but not `entities`, causing a miss on entity-grounded queries. **Code change only — no re-extract required.** Implementable as a `recanonicalize`-style pass that updates `entities` from existing fields.
+2. **`has_unresolved_question` sensitivity (closes 16.1.8 F7 + 16.1.1):** prompt tuning to lift the flag's detection sensitivity. Corpus-wide tagged count dropped 39 (v1) → 20 (v3) on the same model with a different prompt. Direction: more permissive trigger in `chunk-extraction-v3` prompt. **Stage C prompt change — full re-extract required.** This is the main candidate that affects Plan C re-ingest risk.
+
+**Other v4 candidates from `2026-04-29-retrieval-v3-and-stage-c-v2-design.md` §19:**
+
+- LLM intent classifier (pre-retrieval LLM call → structured filter dict + ranking weights). Speculative.
+- Cross-encoder reranker (`bge-reranker-large` or similar over top-30 hybrid candidates). Only motivate if hybrid + bm25_text + cue boost still misses.
+- Weighted-sum fusion (alternative to RRF). Anti-feature without calibration story.
+- Entity-canonicalization registry for non-people entities (companies, products, frameworks).
+- Synthesized BM25 field iteration if entity coverage stays weak.
+- Additional `corpus_derived_markers` types (`cross_session_thread`, `unresolved_followup`, etc.). New lint pass; no re-extract.
+- Metadata summary array counts (extend with `decisions_count`, `action_items_count`).
+- Multi-writer registry support (flock).
+- Read/write API key split.
+- Deep `/health` endpoint (config presence, LanceDB readability, Ollama reachability).
+
+**Operational invariants v4 MUST NOT break** (surfaced through 19 rounds of v3 adversarial review):
+
+- Trust partition (`ground_truth` / `derived_metadata` / `provenance`) structure
+- `verify_corpus_v3_state` fail-closed semantics on startup, post-commit, and `/query`
+- `lint_corpus` auto-trigger is additive-only (UPDATE); destructive cleanup only behind `--rebuild`
+- Speaker partition (`speakers_mentioned` excludes `speakers_spoke`) enforced post-canonicalization in BOTH `pipeline.py` and `recanonicalize.py`
+- Filter trusted tags (`[flags:]`, `[corpus summary:]`, `[score:]`) structurally separated from `<transcript_data>` (format-injection defense)
+- Cue rules YAML loader: never silently use stale cached rules when current load returns valid-but-empty (Appendix C accepted-by-design)
+
+**Read in this order before brainstorming:**
+
+1. `docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md` (full v3 spec, especially §2.2 non-goals, §19 future work, Appendix C accepted-by-design)
+2. `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` §10 v3 validation addendum (the per-criterion table + soft-miss analysis)
+3. `community-brain/CLAUDE.md` "Trade-offs we've deliberately kept" + "Known v2 backlog" — what's intentional vs follow-up
+4. This handoff document
+
+#### Starter prompt for v4 (paste into a new session)
+
+```
+I'm continuing the Community Brain project. Plan A (retrieval server),
+Plan B (n8n ingestion), Hybrid Retrieval v2, and Retrieval v3 + Stage C
+v2 are all DEPLOYED.
+
+v3 shipped to the live VM on 2026-04-30 (commit e484ea4 on main).
+Validation gate: 5 PASS, 3 soft-miss (each off by 1-2 chunks), 1
+manual filter visual check still pending. The 3 soft-misses share
+one root cause: Stage C v2 + Gemma 4 31B is more conservative than
+v1 was on entity-of-speakers and has_unresolved_question
+extraction. Corpus state is excellent; retrieval-side edge cases
+fall slightly short of spec targets.
+
+The work for this session: design Retrieval v4.
+
+Read in this order before brainstorming:
+1. docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md (this handoff;
+   "v4 design (when warranted)" subsection)
+2. docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md
+   (full v3 spec — focus §2.2 non-goals, §19 future work,
+   Appendix C accepted-by-design)
+3. docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md
+   §10 v3 validation addendum (per-criterion table + soft-miss
+   analysis)
+4. community-brain/CLAUDE.md "Trade-offs we've deliberately kept"
+   + "Known v2 backlog"
+
+Plan C status (verify before brainstorming):
+- If Plan C has run since v3 deploy, the corpus has ~65 sessions
+  ingested under chunk-extraction-v2. Soft-miss numbers may have
+  shifted. Re-run validation gate against new corpus before
+  scoping v4.
+- If Plan C has NOT run, the corpus is the 9-session post-v3-deploy
+  state. The soft-miss numbers in §10 v3 addendum still apply.
+- Check via: curl http://10.1.30.10:8999/sessions
+
+Two validation-driven v4 candidates (high priority):
+1. entities-in-top-10 (16.1.2) — deterministic post-Stage-C merge
+   of speakers_spoke + speakers_mentioned into entities.
+   CODE-ONLY; no re-extract.
+2. has_unresolved_question sensitivity (16.1.8 F7 + 16.1.1) —
+   prompt tuning in chunk-extraction-v3 to lift detection sensitivity.
+   STAGE C PROMPT CHANGE; full re-extract required (~$5 cost,
+   ~12-15 hr wall at 65 sessions).
+
+Other v4 candidates listed in v3 spec §19. Operational invariants
+v4 must not break listed in this handoff above.
+
+Use superpowers:brainstorming to explore the design space (which
+candidates to bundle into v4, scope, whether to include Stage C
+prompt revision given re-extract cost). Don't pre-decide. Then
+spec via superpowers:writing-plans, then implementation plan,
+then ship via superpowers:subagent-driven-development.
+
+Constraints:
+- Don't break the existing /query request/response contract (same
+  clean-break stance as v2 + v3 — no `mode` parameter, no parallel
+  endpoint, no backwards-compat shims for a single-operator
+  deployment).
+- Preserve the trust partition (ground_truth / derived_metadata /
+  provenance) at the structural level.
+- Preserve verify_corpus_v3_state fail-closed semantics, the
+  speaker partition contract, and the filter format-injection
+  defense (these were 19 rounds of adversarial review to
+  establish; do not relitigate them).
+- Solo operator, no real users. Same operational reality as v2/v3.
+- If v4 includes Stage C prompt revision, the re-extract cost is
+  ~$5 / ~12-15 hr at the post-Plan-C corpus size; budget
+  accordingly.
+```
 
 ---
 
