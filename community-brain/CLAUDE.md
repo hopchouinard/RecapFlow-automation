@@ -12,7 +12,7 @@ Python package implementing the Community Brain ingestion pipeline and retrieval
 - **Parses, chunks, extracts LLM metadata, embeds, and writes** to LanceDB per the v1.0 schema (37 fields)
 - **Serves** `/query`, `/sessions`, `/ingest`, `/reindex` via FastAPI on port 8999
 
-Distinct from the root repo's n8n workflows, which will call this service in Plan B. The package is deployed as a Docker container via the root-level `docker-compose.yml` (`retrieval-server` service).
+Distinct from the root repo's n8n workflows, which call this service (wired in Plan B — live). The package is deployed as a Docker container via the root-level `docker-compose.yml` (`retrieval-server` service).
 
 **Authoritative docs:**
 - Design spec: `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md`
@@ -205,7 +205,7 @@ Local dev reads `config/.env` via `python-dotenv`; Docker reads it via compose `
 The retrieval server is a CONSUMER of n8n's outputs, not a replacement:
 
 1. n8n Merged Call Summarizer produces `output/<YYYY-MM-DD>/*.md` files (root workflow)
-2. After producing them, n8n will POST to `http://retrieval-server:8999/ingest` (planned in Plan B — not yet wired)
+2. After producing them, n8n POSTs to `http://retrieval-server:8999/ingest` (wired in Plan B — live)
 3. Retrieval server reads the artifact files (via `./output:/data/output:ro` volume mount) and ingests them
 
 The `./output` directory is shared between the two containers. n8n writes, retrieval-server reads. `COMMUNITY_BRAIN_ARTIFACT_ROOT=/data/output` in the container constrains `/ingest` to only accept paths under this mount.
