@@ -15,6 +15,19 @@ def _mock_llm_response(payload: dict) -> str:
     return json.dumps(payload)
 
 
+def _v2_defaults() -> dict:
+    """Minimal v2 required fields to include in test payloads."""
+    return {
+        "topic_label": "Test topic",
+        "speakers_mentioned": [],
+        "keywords": [],
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+    }
+
+
 def test_extract_chunk_metadata_success() -> None:
     payload = {
         "entities": ["LangGraph"],
@@ -28,6 +41,7 @@ def test_extract_chunk_metadata_success() -> None:
         "action_items": [],
         "external_refs": ["https://langchain.com/docs/langgraph"],
         "references_prior": False,
+        **_v2_defaults(),
     }
 
     with patch("community_brain.ingestion.extractor._call_llm", return_value=_mock_llm_response(payload)):
@@ -94,6 +108,7 @@ def test_extract_chunk_metadata_strips_markdown_code_fences() -> None:
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        **_v2_defaults(),
     }
     fenced = f"```json\n{json.dumps(payload)}\n```"
     with patch("community_brain.ingestion.extractor._call_llm", return_value=fenced):
@@ -109,8 +124,9 @@ def test_extract_chunk_metadata_strips_markdown_code_fences() -> None:
 
 
 def test_extract_chunk_metadata_missing_fields_filled_with_defaults() -> None:
-    """LLM returns partial JSON; extractor fills missing fields with safe defaults."""
-    payload = {"entities": ["X"]}
+    """LLM returns minimal JSON with only v2 required booleans; optional list/string
+    fields are absent and the extractor fills them with safe defaults."""
+    payload = {"entities": ["X"], **_v2_defaults()}
     with patch("community_brain.ingestion.extractor._call_llm", return_value=_mock_llm_response(payload)):
         result = extract_chunk_metadata(
             chunk_text="...",
@@ -150,6 +166,7 @@ def test_extract_chunk_metadata_prompt_includes_context() -> None:
             "action_items": [],
             "external_refs": [],
             "references_prior": False,
+            **_v2_defaults(),
         })
 
     with patch("community_brain.ingestion.extractor._call_llm", side_effect=_capture):
@@ -181,6 +198,7 @@ def test_extract_chunk_metadata_invalid_stance_defaults_to_none() -> None:
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        **_v2_defaults(),
     }
     with patch(
         "community_brain.ingestion.extractor._call_llm",
@@ -210,6 +228,7 @@ def test_extract_chunk_metadata_invalid_certainty_defaults_to_asserted() -> None
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        **_v2_defaults(),
     }
     with patch(
         "community_brain.ingestion.extractor._call_llm",
@@ -241,6 +260,7 @@ def test_extract_chunk_metadata_empty_chunk_text() -> None:
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        **_v2_defaults(),
     }
     with patch("community_brain.ingestion.extractor._call_llm", return_value=_mock_llm_response(payload)):
         result = extract_chunk_metadata(
@@ -311,3 +331,284 @@ def test_extract_chunk_metadata_rejects_string_references_prior() -> None:
         )
     assert result.status == "failed"
     assert "references_prior" in (result.error or "")
+
+
+# ---------------------------------------------------------------------------
+# v2 contract tests
+# ---------------------------------------------------------------------------
+
+def test_extractor_v2_parses_response_with_new_fields() -> None:
+    """v2 LLM response shape includes topic_label, speakers_mentioned,
+    keywords, and has_* flags. Extractor parses without error."""
+    v2_payload = {
+        "topic_label": "Sales funnel optimization",
+        "entities": ["Adam James", "Gold Flamingo", "LinkedIn"],
+        "speakers_mentioned": ["Andrej Karpathy"],
+        "keywords": ["funnel", "outreach", "law firms"],
+        "speech_acts": ["question", "recommendation"],
+        "stance": "positive",
+        "certainty": "asserted",
+        "chunk_local_markers": ["emphasized"],
+        "decisions": [],
+        "action_items": ["Adam will draft a sample funnel by Friday"],
+        "external_refs": [],
+        "references_prior": False,
+        "has_question": True,
+        "has_answer": False,
+        "has_unresolved_question": True,
+        "has_insight": True,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(v2_payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="Adam discussed his sales funnel approach.",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="test-model",
+            prompt_template="test prompt: {CHUNK_TEXT}",
+        )
+    assert result.status == "success"
+    assert result.topic_label == "Sales funnel optimization"
+    assert "Adam James" in result.entities
+    assert result.speakers_mentioned == ["Andrej Karpathy"]
+    assert "funnel" in result.keywords
+    assert result.has_question is True
+    assert result.has_answer is False
+    assert result.has_unresolved_question is True
+    assert result.has_insight is True
+
+
+def test_extractor_v2_response_without_new_entities_seen_succeeds() -> None:
+    """v2 response shape drops new_entities_seen / new_speakers_seen.
+    The extractor must NOT raise on their absence."""
+    v2_payload = {
+        "topic_label": "Topic",
+        "entities": [],
+        "speakers_mentioned": [],
+        "keywords": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(v2_payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="content",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="test-model",
+            prompt_template="test: {CHUNK_TEXT}",
+        )
+    assert result.status == "success"
+    # pipeline.py compat: removed fields default to empty list
+    assert result.new_entities_seen == []
+    assert result.new_speakers_seen == []
+
+
+def test_extractor_v2_missing_required_field_fails() -> None:
+    """If the v2 response is missing one of the new required fields
+    (e.g., has_question), the extractor should report status=failed."""
+    incomplete = {
+        "topic_label": "Topic",
+        "entities": [],
+        "speakers_mentioned": [],
+        "keywords": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        # has_question intentionally missing
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(incomplete),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="content",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="test-model",
+            prompt_template="test: {CHUNK_TEXT}",
+        )
+    assert result.status == "failed"
+    assert "has_question" in (result.error or "")
+
+
+# ---------------------------------------------------------------------------
+# HIGH 2 — required v2 string/list field validation
+# ---------------------------------------------------------------------------
+
+def test_extractor_v2_missing_topic_label_fails() -> None:
+    """LLM response missing topic_label must produce status=failed."""
+    payload = {
+        # topic_label intentionally omitted
+        "entities": [],
+        "speakers_mentioned": [],
+        "keywords": ["x"],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="content",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="test-model",
+            prompt_template="test",
+        )
+    assert result.status == "failed"
+    assert "topic_label" in (result.error or "")
+
+
+def test_extractor_v2_missing_speakers_mentioned_fails() -> None:
+    """LLM response missing speakers_mentioned must produce status=failed."""
+    payload = {
+        "topic_label": "Some topic",
+        "entities": [],
+        # speakers_mentioned intentionally omitted
+        "keywords": ["x"],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="content",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="test-model",
+            prompt_template="test",
+        )
+    assert result.status == "failed"
+    assert "speakers_mentioned" in (result.error or "")
+
+
+def test_extractor_v2_missing_keywords_fails() -> None:
+    """LLM response missing keywords must produce status=failed."""
+    payload = {
+        "topic_label": "Some topic",
+        "entities": [],
+        "speakers_mentioned": [],
+        # keywords intentionally omitted
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+    }
+    with patch(
+        "community_brain.ingestion.extractor._call_llm",
+        return_value=_mock_llm_response(payload),
+    ):
+        result = extract_chunk_metadata(
+            chunk_text="content",
+            entity_registry_names=[],
+            speaker_alias_names=[],
+            model="test-model",
+            prompt_template="test",
+        )
+    assert result.status == "failed"
+    assert "keywords" in (result.error or "")
+
+
+# ---------------------------------------------------------------------------
+# MEDIUM — speakers_spoke exclusion
+# ---------------------------------------------------------------------------
+
+def test_extractor_speakers_spoke_passed_in_prompt() -> None:
+    """speakers_spoke names passed to extract_chunk_metadata must appear in
+    the SPEAKERS_SPOKE block sent to the LLM, so the model can exclude them
+    from speakers_mentioned."""
+    captured: dict[str, str] = {}
+
+    def _capture(model: str, prompt: str) -> str:
+        captured["prompt"] = prompt
+        return json.dumps({
+            "topic_label": "Test",
+            "entities": ["Adam James"],
+            "speakers_mentioned": [],  # Adam excluded because he's in speakers_spoke
+            "keywords": ["test"],
+            "speech_acts": [],
+            "stance": None,
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch("community_brain.ingestion.extractor._call_llm", side_effect=_capture):
+        result = extract_chunk_metadata(
+            chunk_text="Adam James described the sales approach.",
+            entity_registry_names=["Adam James"],
+            speaker_alias_names=["Adam James"],
+            model="test-model",
+            prompt_template="test prompt",
+            speakers_spoke=["Adam James"],
+        )
+
+    assert result.status == "success"
+    # SPEAKERS_SPOKE block must appear in the prompt sent to the LLM
+    assert "SPEAKERS_SPOKE" in captured["prompt"]
+    assert "Adam James" in captured["prompt"]
+    # The mock response puts Adam in entities but NOT in speakers_mentioned
+    # (simulating correct model behaviour given the prompt context)
+    assert "Adam James" in result.entities
+    assert "Adam James" not in (result.speakers_mentioned or [])

@@ -174,7 +174,7 @@ This repo is a multi-module project. Everything above describes the n8n orchestr
 
 The two modules interact at the filesystem boundary: n8n writes artifacts to `./output/<YYYY-MM-DD>/`, and the retrieval-server container mounts that directory read-only as `/data/output/`. Plan B will wire n8n workflows to POST to the retrieval server's `/ingest` endpoint after producing artifacts.
 
-## Current status (as of 2026-04-28)
+## Current status (as of 2026-04-30)
 
 **Plan A — COMPLETE and DEPLOYED.** Retrieval server live on the n8n VM at `http://10.1.30.10:8999` (LAN-reachable). 37-field LanceDB v1.0 schema, trust-partitioned `/query`.
 
@@ -187,8 +187,10 @@ The two modules interact at the filesystem boundary: n8n writes artifacts to `./
 
 **Hybrid Retrieval v2 — COMPLETE and DEPLOYED.** `/query` ranking is now hybrid (vector + BM25 RRF, k=60) with cue-driven metadata-aware boosting, oversampled 3×, vector-only graceful fallback. Legacy v0 helpers + `_v2` suffix archaeology removed. Server bumped to `0.2.0`. 302 tests passing on main. Live-VM validation on 2026-04-28 confirmed Findings 6 and 7 empirically resolved (entity-grounded queries went from 0/10 → 6/10 Adam-containing chunks; metadata-tagged queries went from 1/10 → 6/10 `has_unresolved_question=True` chunks). Validation surfaced **Finding 8** — answering LLM under-utilizes Stage C metadata flags because the trust contract correctly tells it to re-derive — queued as a v3 candidate. See Plan A spec §10 for the full validation addendum.
 
+**Hybrid Retrieval v3 + Stage C v2 — DEPLOYED (2026-04-30).** All 9 ingested sessions re-extracted under v1.1 schema with chunk-extraction-v2 prompt. Validation gate: 5/9 criteria passed cleanly, 2 manual checks pending (Open WebUI F8 cross-check + filter `[flags:]` rendering), 2 soft-misses on entity-in-top-10 and has_unresolved_question-in-top-10 (each off by 1 chunk; documented as v4 candidates). Track B (Plan C — backfill remaining ~57 sessions) now unblocked. See `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` §10 v3 addendum for the full validation report.
+
 **What's still open — one operational track:**
-- **Track B:** Plan C — full backfill across remaining ~57 of 65 historical sessions (~12 hr overnight run, ~$3 cost). Operator decision: hold until v3 retrieval design lands so the corpus isn't reprocessed twice.
+- **Track B:** Plan C — full backfill across remaining ~57 of 65 historical sessions (~12 hr overnight run, ~$3 cost). NOW UNBLOCKED — v3 is deployed and validated.
 
 **👉 START HERE in any new session:** [`docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`](docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md).
 
@@ -200,5 +202,7 @@ The two modules interact at the filesystem boundary: n8n writes artifacts to `./
 - Plan B plan: `docs/superpowers/plans/2026-04-19-plan-b-n8n-ingestion-integration-plan.md`
 - v2 spec: `docs/superpowers/specs/2026-04-27-hybrid-retrieval-v2-design.md`
 - v2 plan: `docs/superpowers/plans/2026-04-27-hybrid-retrieval-v2-plan.md`
+- v3 spec: `docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md`
+- v3 plan: `docs/superpowers/plans/2026-04-29-retrieval-v3-and-stage-c-v2-plan.md`
 - Trust contract: `docs/inference-guidelines.md`
 - Schema evolution rules: `docs/migrations/CHANGELOG.md`

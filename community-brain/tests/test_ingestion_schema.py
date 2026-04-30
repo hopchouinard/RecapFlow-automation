@@ -1,4 +1,4 @@
-"""Tests for the v1.0 LanceDB chunk schema."""
+"""Tests for the v1.1 LanceDB chunk schema."""
 
 from __future__ import annotations
 
@@ -7,8 +7,9 @@ import datetime as dt
 from community_brain.ingestion.schema import Chunk, SCHEMA_VERSION
 
 
-def test_schema_version_is_1_0() -> None:
-    assert SCHEMA_VERSION == "1.0"
+def test_schema_version_is_current() -> None:
+    # Renamed from test_schema_version_is_1_0 when bumped to v1.1
+    assert SCHEMA_VERSION == "1.1"
 
 
 def test_chunk_construction_with_all_fields() -> None:
@@ -49,6 +50,7 @@ def test_chunk_construction_with_all_fields() -> None:
         extracted_at=dt.datetime(2026, 3, 10, 14, 22, 11, tzinfo=dt.timezone.utc),
         embed_text="...",
         full_text="...",
+        bm25_text="...",
         embedding=[0.0] * 768,
     )
     assert chunk.chunk_id == "2026-03-10:transcript:001"
@@ -97,6 +99,7 @@ def test_chunk_to_arrow_dict_normalizes_null_list_fields() -> None:
         extracted_at=dt.datetime(2026, 3, 10, 15, 0, 0, tzinfo=dt.timezone.utc),
         embed_text="text",
         full_text="text",
+        bm25_text="text",
         embedding=[0.0] * 768,
     )
 
@@ -150,6 +153,7 @@ def test_chunk_to_arrow_dict_serializes_datetimes_iso() -> None:
         extracted_at=now,
         embed_text="t",
         full_text="t",
+        bm25_text="t",
         embedding=[0.0] * 768,
     )
     d = chunk.to_arrow_dict()
@@ -205,12 +209,12 @@ def test_chunk_to_arrow_dict_raises_on_empty_embedding_for_success() -> None:
         chunk.to_arrow_dict()
 
 
-def test_lancedb_table_schema_describes_37_fields() -> None:
+def test_lancedb_table_schema_describes_38_fields() -> None:
     from community_brain.ingestion.schema import lancedb_table_schema
 
     schema = lancedb_table_schema()
-    # v1.0 has 37 fields total
-    assert len(schema) == 37
+    # v1.1 has 38 fields total (added bm25_text)
+    assert len(schema) == 38
 
 
 def test_chunk_dataclass_matches_lancedb_schema_fields() -> None:
@@ -223,6 +227,31 @@ def test_chunk_dataclass_matches_lancedb_schema_fields() -> None:
         f"Drift: in Chunk only {chunk_fields - schema_fields}; "
         f"in schema only {schema_fields - chunk_fields}"
     )
+
+
+def test_chunk_dataclass_has_bm25_text_field():
+    from dataclasses import fields
+    from community_brain.ingestion.schema import Chunk
+    field_names = {f.name for f in fields(Chunk)}
+    assert "bm25_text" in field_names
+
+def test_pyarrow_schema_includes_bm25_text():
+    from community_brain.ingestion.schema import pyarrow_table_schema
+    schema = pyarrow_table_schema()
+    field_names = [f.name for f in schema]
+    assert "bm25_text" in field_names
+    bm25_field = schema.field("bm25_text")
+    assert str(bm25_field.type) == "string"
+
+def test_lancedb_schema_dict_includes_bm25_text():
+    from community_brain.ingestion.schema import lancedb_table_schema
+    descr = lancedb_table_schema()
+    assert descr.get("bm25_text") == "string"
+
+def test_chunk_dataclass_has_38_fields():
+    from dataclasses import fields
+    from community_brain.ingestion.schema import Chunk
+    assert len(fields(Chunk)) == 38
 
 
 def _minimal_chunk(**overrides) -> "Chunk":
@@ -264,6 +293,7 @@ def _minimal_chunk(**overrides) -> "Chunk":
         extracted_at=dt.datetime(2026, 1, 1, tzinfo=dt.timezone.utc),
         embed_text="t",
         full_text="t",
+        bm25_text="t",
         embedding=[0.0] * 768,
     )
     defaults.update(overrides)

@@ -217,7 +217,7 @@ def test_chunk_prepared_transcript_schema_version_and_defaults() -> None:
         segments, "2026-03-10", "2026-03-10", "t", "t", 1500,
     )
     c = chunks[0]
-    assert c.schema_version == "1.0"
+    assert c.schema_version == "1.1"
     # LLM-derived fields are defaulted — extractor fills later
     assert c.entities == []
     assert c.speech_acts == []

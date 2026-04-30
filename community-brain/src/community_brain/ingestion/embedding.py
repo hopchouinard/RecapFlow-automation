@@ -29,6 +29,39 @@ def _active_embed_model() -> str:
     return os.environ.get("COMMUNITY_BRAIN_EMBED_MODEL") or DEFAULT_EMBED_MODEL
 
 
+def build_transcript_embed_text(
+    *,
+    topic_label: str | None,
+    speakers_spoke: list[str] | None,
+    speakers_mentioned: list[str] | None,
+    entities: list[str] | None,
+    keywords: list[str] | None,
+    summary: str,
+) -> str:
+    """Synthesize embed_text for a prepared_transcript chunk.
+
+    v3 format (per spec §6.4): structured-field-enriched layout.
+    Vector retrieval grips on proper nouns + keywords + topic + summary,
+    not on raw conversation. Hybrid retrieval (BM25 over bm25_text)
+    covers raw-conversation lexical search separately.
+
+        topic: <topic_label>
+        speakers: <speakers_spoke joined>
+        mentions: <speakers_mentioned joined>
+        entities: <entities joined>
+        keywords: <keywords joined>
+        summary: <LLM-written summary>
+    """
+    return (
+        f"topic: {topic_label or ''}\n"
+        f"speakers: {', '.join(speakers_spoke or [])}\n"
+        f"mentions: {', '.join(speakers_mentioned or [])}\n"
+        f"entities: {', '.join(entities or [])}\n"
+        f"keywords: {', '.join(keywords or [])}\n"
+        f"summary: {summary}"
+    )
+
+
 def embed_texts(texts: list[str], ollama_base_url: str | None) -> list[list[float]]:
     """Embed a batch of texts in one Ollama call.
 

@@ -968,3 +968,25 @@ The `speaker-aliases.yaml` registry has 4 canonicalized aliases (Alex Rojas, Ale
 - **`metadata_summary`:** top-level field on `/query` response; corpus-level aggregate counts of derived boolean flags across the retrieved chunks. Authoritative count (retrieval-derived); orthogonal to the per-chunk trust partition.
 - **`score_breakdown`:** per-chunk field on `/query` response; retrieval-derived breakdown of the chunk's vector similarity, BM25 rank, RRF score, and cue boost. For explainability and operator-side debugging; not rendered to LLMs by default.
 - **`recurrent` marker:** corpus-derived marker assigned to chunks whose embedding sits in a topical cluster spanning 2+ sessions. Detected by the `lint_corpus` pass. Filterable via `QueryFilters.require_corpus_markers` / `exclude_corpus_markers`.
+
+## Appendix C — Accepted-by-design behaviors (post-deploy notes)
+
+After implementation, ten rounds of adversarial review (per-phase + holistic) surfaced ~13 findings. Twelve were structural and got fixed in-branch (culminating in the convergent root-cause refactor at commit `7e0622a`). The remaining one is documented here as accepted-by-design with explicit rationale rather than fixed.
+
+### C.1 Empty cue-rules YAML (all rules malformed) leaves cue boost disabled
+
+**Behavior:** if an operator edits `config/query-cues.yaml` such that the file is syntactically valid YAML and has the top-level `cue_rules:` key, but EVERY individual rule entry fails per-rule validation (e.g., missing `target_predicate`, malformed `cue_phrases`), the loader returns an empty rule tuple. `apply_cue_boosts` is a no-op on empty rules. Hybrid retrieval (vector + BM25) continues to serve, but the metadata-aware boost layer (Finding 7 / Finding 8 patterns) is silently dropped until the operator fixes the YAML.
+
+**Per-rule WARN logs identify which rules were rejected.** The fix-forward path is: operator notices in logs or query-quality dip → re-edits YAML → next `/query` picks up the corrected rules via hot-reload.
+
+**Why not "fall back to last-known-good rules" instead?** The proposed alternative would mask the operator's broken edit: their new cue rule appears active because cached old rules continue firing, but the fix isn't taking effect. That trades a quiet downgrade for a subtler "your edits aren't working but you can't tell" failure mode — the same silent-degradation class the v3 refactor was eliminating.
+
+**Trigger frequency:** rare. Requires an operator edit that breaks all rules simultaneously (typically: global rename of a field name during refactor, or a copy-paste accident). Sub-monthly cadence at solo-operator usage.
+
+**Blast radius if it occurs:** narrow. Per-query degradation only on cue-eligible queries (those whose lexical cues match a rule). Vector + BM25 still serve every query. Not a corpus-state corruption; not a /query failure; just temporary loss of ranking refinement.
+
+**Recovery cost:** seconds. Operator fixes the YAML; hot-reload picks it up on the next query. No data loss, no schema impact.
+
+**Accepted by design.** The current behavior is operator-honest (loud per-rule WARNs; visible cue-boost behavior change in query results) and avoids introducing a stale-cached-rules silent-confusion mode.
+
+If this assumption changes (e.g., automated config sync where operator-WARN logs aren't read; multi-operator environments where one's edits affect another's queries), revisit and add fall-back-to-last-known-good with `allow_empty: true` opt-in marker.

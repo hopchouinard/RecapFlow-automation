@@ -1011,6 +1011,46 @@ Pre-v2 this gap was invisible: retrieval was the bottleneck, only 1 tagged chunk
 
 **Sign-off:** v2 retrieval delivers what the design promised. Findings 6 and 7 are empirically resolved at the retrieval layer. Finding 8 is a new, distinct concern that v2 made visible (not a regression) and is queued for v3 consideration.
 
+##### v3 retrieval + Stage C v2 validation (2026-04-30 — against live VM)
+
+Retrieval v3 (`docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md`) deployed to the live VM via the spec §17.1 sequence: stop v2 container → drop v1.0 chunks table → build v3 image → start v3 container (verify_corpus_v3_state passes empty DB) → curate speaker-aliases.yaml registry (39 canonicals, 49 alias entries, 17 pending) → re-extract 9 sessions via /ingest force_reextract:true. Total wall ~10 minutes, ~$0.50 LLM cost.
+
+Corpus state post-deploy: 184 chunks across 9 sessions, schema v1.1 (38 fields incl. bm25_text), extraction_prompt_version=chunk-extraction-v2, all chunks_failed=0.
+
+**Per-criterion results (spec §16.1):**
+
+| # | Criterion | Result | Status |
+|---|---|---|---|
+| 16.1.1 | F8 fix — answering LLM cites ≥5 unresolved | pending Open WebUI manual check | manual |
+| 16.1.2 | Adam in `entities` (top-10 for "Adam Gold Flamingo" query) | 4/10 (target ≥5) | ❌ off by 1 |
+| 16.1.3 | Canonicalization applied (`speakers_spoke=["Adam James"]` filter) | 10/10 | ✓ |
+| 16.1.4 | `recurrent` marker populated | 157/184 (85.3%); target ≥30% | ✓ |
+| 16.1.5 | score_breakdown on every chunk in /query | all chunks have all 5 sub-fields | ✓ |
+| 16.1.6 | `[flags:]` and `[corpus summary:]` rendered | pending Open WebUI manual check | manual |
+| 16.1.7 | Test suite green | 466 pass, 0 fail | ✓ |
+| 16.1.8 F6 | Adam in `full_text` (regression check) | 5/10 (target ≥5) | ✓ |
+| 16.1.8 F7 | has_unresolved_question True (top-10 for "unresolved questions" query) | 4/10 (target ≥5) | ❌ off by 1 |
+
+**Sign-off (operator decision 2026-04-30): ship A — accept soft misses; capture as v4 candidates.**
+
+**Soft-miss analysis:**
+
+- **16.1.2 (Adam in entities, 4/10):** Stage C v2 + Gemma 4 31B doesn't reliably include speakers in `entities`. Corpus-level fill rate for the Adam case: 20/30 chunks where Adam appears in `full_text` also have him in `entities` (67%). Top-10 retrieval for "Adam Gold Flamingo" surfaces 1 chunk (2025-02-05:transcript:001) where Adam is in `speakers_spoke` but not in `entities`. Real extraction-quality gap; corpus is fine, retrieval surface misses by 1.
+  - **v4 candidate fix:** deterministic post-Stage-C step that always merges `speakers_spoke` + `speakers_mentioned` into `entities`. Spec'd but not shipped; revisit when v4 retrieval work begins.
+
+- **16.1.8 F7 (has_unresolved_question, 4/10):** corpus-wide tagged chunk count dropped 39 (v1, Gemma 4 31B + chunk-extraction-v1) → 20 (v3, Gemma 4 31B + chunk-extraction-v2). Same model, different prompt. Stage C v2 is more conservative on this flag. Per-query top-10 surfaces 4 tagged chunks where v2 baseline surfaced 6.
+  - **v4 candidate fix:** prompt tuning to lift sensitivity on `has_unresolved_question`. Note: false positives from v1 may also have been present; we don't have a labeled ground-truth set to know whether 39 was over-counting or 20 is under-counting.
+
+**Operational confirmations:**
+
+- `verify_corpus_v3_state` passed startup with empty DB (no chunks table) and again after first /ingest created the table with proper bm25_text + FTS index.
+- All 9 sessions ingested without errors. 0 idempotent skips (clean re-extract). 31 new pending speaker entries flagged across the 9 sessions (mostly speakers-mentioned references like Lex Fridman, Russell Brunson, Andrej Karpathy).
+- Canonicalization fired correctly: 11 chunks resolved to canonical "Adam James" from raw "Adam" + "Adam - Gold Flamingo" + "Adam James" forms.
+- Speaker partition holds: chunks where the canonical name is in `speakers_spoke` correctly excluded from `speakers_mentioned`.
+- Filter rendering (path b/c) untested via this gate; operator validates separately via Open WebUI session.
+
+**Sign-off:** v3 ships. Track B (Plan C — full backfill of remaining ~57 sessions) is now unblocked. Soft misses on 16.1.2 and 16.1.8-F7 captured as v4 candidates; corpus state is solid (entities populated, canonicalization clean, recurrent + score_breakdown working); retrieval is near-target on both edge cases. v3 measurably better than v2 across every dimension that doesn't depend on Stage C extraction sensitivity tuning.
+
 ### Rollout dependencies
 
 ```

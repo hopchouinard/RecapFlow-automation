@@ -57,12 +57,21 @@ from community_brain.ingestion.registries import (
     load_entity_registry,
     load_speaker_registry,
 )
+from community_brain.ingestion.bm25_synthesis import synthesize_bm25_text
+from community_brain.ingestion.canonicalize import (
+    build_alias_map,
+    canonicalize_chunk_fields,
+    canonicalize_names,
+)
+from community_brain.ingestion.embedding import build_transcript_embed_text
 from community_brain.ingestion.schema import SCHEMA_VERSION, Chunk, pyarrow_table_schema
 from community_brain.ingestion.session_extractor import (
     extract_session_themes,
     select_session_input,
 )
-from community_brain.query.fts_lifecycle import optimize_fts_index
+from community_brain.query.fts_lifecycle import ensure_fts_index
+from community_brain.query.corpus_verify import CorpusInvalidError, verify_corpus_v3_state
+from community_brain.cli.lint_corpus import lint_corpus_chunks
 
 logger = logging.getLogger(__name__)
 
@@ -261,6 +270,14 @@ def ingest_session(
             kept.append(chunk)
         all_chunks = kept
         if not all_chunks:
+            # All chunks already present; nothing to write. Still enforce the
+            # same post-commit invariants as the normal commit path (FTS index,
+            # corpus lint) so a retry after a torn fresh-table init leaves the
+            # corpus in a fully consistent state before returning success.
+            db_early = lancedb.connect(db_path)
+            if TABLE_NAME in db_early.list_tables().tables:
+                _tbl_early = db_early.open_table(TABLE_NAME)
+                _post_commit_maintenance(_tbl_early, db_path)
             return IngestResult(
                 session_id=request.session_id,
                 chunks_written=0,
@@ -295,6 +312,9 @@ def ingest_session(
     # --- Stage C: per-chunk LLM extraction ---
     entity_names = list(entity_reg.entities.keys())
     speaker_names = list(speaker_reg.aliases.keys())
+    # Build alias map once per session; cheap (dict construction over registry data).
+    # Wraps speaker_reg.aliases as {"aliases": ...} to match build_alias_map's expected shape.
+    speaker_alias_map = build_alias_map({"aliases": speaker_reg.aliases})
     unknown_entities: set[str] = set()
     unknown_speakers: set[str] = set()
     failed_count = 0
@@ -307,6 +327,7 @@ def ingest_session(
             speaker_alias_names=speaker_names,
             model=extraction_cfg.chunk_extraction_model,
             prompt_template=chunk_extraction_prompt,
+            speakers_spoke=chunk.speakers_spoke or [],
         )
         chunk.extraction_model = extraction_cfg.chunk_extraction_model
         chunk.extraction_prompt_version = chunk_prompt_version
@@ -321,13 +342,15 @@ def ingest_session(
         chunk.extraction_status = "success"
         chunk.extraction_error = None
         chunk.entities = res.entities
-        # speakers_mentioned is a derived field representing people REFERENCED in
-        # the chunk (spoken + mentioned-but-not-spoken). The current Stage C prompt
-        # doesn't emit this distinctly, so v1 leaves it as None. Task: wire a
-        # dedicated "mentioned_people" field into chunk-extraction-v2.md and
-        # populate here from res.mentioned_people. Consumers MUST handle None per
-        # docs/inference-guidelines.md (absence = chunk predates this extraction).
-        chunk.speakers_mentioned = None
+        # v2 fields — all assigned BEFORE bm25_text / embed_text re-synthesis so
+        # re-synthesis sees the freshly-populated values, not chunker defaults.
+        chunk.topic_label = res.topic_label
+        chunk.speakers_mentioned = res.speakers_mentioned
+        chunk.keywords = res.keywords
+        chunk.has_question = res.has_question
+        chunk.has_answer = res.has_answer
+        chunk.has_unresolved_question = res.has_unresolved_question
+        chunk.has_insight = res.has_insight
         chunk.speech_acts = res.speech_acts
         chunk.stance = res.stance  # type: ignore[assignment]
         chunk.certainty = res.certainty  # type: ignore[assignment]
@@ -336,8 +359,65 @@ def ingest_session(
         chunk.action_items = res.action_items or None
         chunk.external_refs = res.external_refs or None
         chunk.references_prior = res.references_prior
-        unknown_entities.update(res.new_entities_seen)
-        unknown_speakers.update(res.new_speakers_seen)
+
+        # Apply canonicalization to all three person-bearing fields and enforce
+        # the speakers_spoke / speakers_mentioned partition. canonicalize_chunk_fields
+        # is the single canonical implementation shared with recanonicalize.py —
+        # both call sites are identical so partition logic cannot drift.
+        # Entity-side unknowns are intentionally NOT tracked: no entity registry
+        # exists in v3, so they stay raw and surface via BM25 over bm25_text /
+        # full_text instead.
+        # res.new_speakers_seen / res.new_entities_seen are always [] since T6
+        # (extractor no longer emits them); canonicalization-derived unknowns
+        # replace them as the pending-queue feed source.
+        canon_spoke, canon_mentioned, canon_entities, unk_spoke, unk_mentioned = (
+            canonicalize_chunk_fields(
+                speakers_spoke=chunk.speakers_spoke,
+                speakers_mentioned=chunk.speakers_mentioned,
+                entities=chunk.entities,
+                alias_map=speaker_alias_map,
+            )
+        )
+        chunk.speakers_spoke = canon_spoke or chunk.speakers_spoke
+        chunk.speakers_mentioned = canon_mentioned
+        chunk.entities = canon_entities
+        unknown_speakers.update(unk_spoke)
+        unknown_speakers.update(unk_mentioned)
+        # entity-side unknowns intentionally discarded (see comment above)
+
+        # Re-synthesize bm25_text after Stage C mutated chunk.entities,
+        # speakers_mentioned, etc. Construction-time synthesis used empty
+        # entities; the FTS-index-relevant value is the post-Stage-C form.
+        chunk.bm25_text = synthesize_bm25_text(
+            topic_label=chunk.topic_label,
+            entities=chunk.entities,
+            speakers_spoke=chunk.speakers_spoke,
+            speakers_mentioned=chunk.speakers_mentioned,
+            keywords=chunk.keywords,
+            full_text=chunk.full_text,
+        )
+
+        # Re-synthesize embed_text for transcript chunks after Stage C populated
+        # entities (and eventually speakers_mentioned + keywords). Construction-time
+        # used empty lists for those fields; the embedding-relevant value is the
+        # post-Stage-C form. signal/post chunks keep embed_text == full_text.
+        #
+        # Summary recovery: the LLM-written summary isn't stored as a Chunk field,
+        # but it was encoded into the construction-time embed_text by
+        # build_transcript_embed_text() as the last "summary: <text>" line.
+        # Parse it back here rather than storing a redundant field on Chunk.
+        # This is stable as long as build_transcript_embed_text format doesn't change.
+        if chunk.content_type == "prepared_transcript":
+            existing = chunk.embed_text or ""
+            summary = existing.split("summary:", 1)[-1].lstrip() if "summary:" in existing else ""
+            chunk.embed_text = build_transcript_embed_text(
+                topic_label=chunk.topic_label,
+                speakers_spoke=chunk.speakers_spoke,
+                speakers_mentioned=chunk.speakers_mentioned,
+                entities=chunk.entities,
+                keywords=chunk.keywords,
+                summary=summary,
+            )
 
     # --- Stage D: embeddings (one batched call) ---
     # Only embed chunks with successful extraction. Failed chunks persist with
@@ -359,6 +439,9 @@ def ingest_session(
             entity_reg.append_pending(sorted(unknown_entities))
             entity_reg.flush(config_dir / "entity-registry.yaml")
     except Exception as exc:
+        # Transient: registry flush is best-effort pending-queue bookkeeping.
+        # Chunk ingestion proceeds regardless; the operator can flush manually.
+        # Not an invariant violation — corpus correctness doesn't depend on it.
         logger.warning("Failed to flush entity-registry pending updates: %s", exc)
 
     try:
@@ -366,6 +449,7 @@ def ingest_session(
             speaker_reg.append_pending(sorted(unknown_speakers))
             speaker_reg.flush(config_dir / "speaker-aliases.yaml")
     except Exception as exc:
+        # Transient: same rationale as entity-registry flush above.
         logger.warning("Failed to flush speaker-aliases pending updates: %s", exc)
 
     # --- Stage E: commit to LanceDB ---
@@ -380,23 +464,14 @@ def ingest_session(
         full_session_rewrite=request.force_reextract,
     )
 
-    # Refresh FTS index so the freshly-committed chunks become BM25-searchable
-    # on the next /query. Under LanceDB 0.30.x this is a no-op (auto-update
-    # path verified by spike, spec §11.1 Resolution); kept as the canonical
-    # refresh seam in case a future LanceDB version drops auto-update.
-    if all_chunks:
-        try:
-            db = lancedb.connect(db_path)
-            if TABLE_NAME in db.list_tables().tables:
-                table = db.open_table(TABLE_NAME)
-                optimize_fts_index(table, "full_text")
-        except Exception as exc:
-            # optimize_fts_index already catches and logs internally; this is
-            # belt-and-suspenders against future changes that might propagate.
-            logger.warning(
-                "optimize_fts_index after ingest raised %r; chunks committed but FTS "
-                "may lag until next refresh", exc
-            )
+    # Run post-commit invariants (FTS index + corpus lint). Opens the table
+    # fresh so the newly-committed rows are visible to both ensure_fts_index
+    # and lint_corpus. This is the same helper called by the all-skipped
+    # idempotency path, ensuring both paths enforce identical post-commit state.
+    _post_commit_db = lancedb.connect(db_path)
+    if TABLE_NAME in _post_commit_db.list_tables().tables:
+        _post_commit_table = _post_commit_db.open_table(TABLE_NAME)
+        _post_commit_maintenance(_post_commit_table, db_path)
 
     # Tally chunks_written by content type
     by_type: dict[str, int] = {}
@@ -417,6 +492,38 @@ def ingest_session(
     )
 
 
+def _post_commit_maintenance(table, db_path: str | Path) -> None:
+    """Run the post-commit invariants: corpus validity check + lint.
+
+    verify_corpus_v3_state is invariant-enforcing: it checks schema + FTS
+    index in one call and raises CorpusInvalidError if either is broken.
+    Translated to CommitError here so callers see consistent failure signal.
+
+    Lint is best-effort: chunks are already committed. WARN-on-failure;
+    operator can run lint_corpus manually to recover.
+    """
+    try:
+        verify_corpus_v3_state(table)
+    except CorpusInvalidError as exc:
+        raise CommitError(f"Corpus invalid post-commit: {exc}") from exc
+    try:
+        # db_path is authoritative here — it's the same path ingest_session
+        # committed chunks to. COMMUNITY_BRAIN_DB_PATH is NOT consulted so that
+        # deploy misconfiguration (a leftover env var pointing elsewhere) cannot
+        # silently run lint against the wrong corpus.
+        lint_stats = lint_corpus_chunks(db_path)
+        logger.info(
+            "lint_corpus auto-trigger: scanned %d, recurrent %d",
+            lint_stats["scanned"],
+            lint_stats["recurrent"],
+        )
+    except Exception as exc:
+        # Transient: chunks are already committed; lint failure doesn't mean
+        # the corpus is invalid, just that recurrent-marker computation didn't
+        # complete. Operator can run lint_corpus manually to recover.
+        logger.warning("lint_corpus auto-trigger failed: %s; chunks committed", exc)
+
+
 def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, str]:
     """Return {chunk_id -> extraction_prompt_version} for existing SUCCESS rows.
 
@@ -429,6 +536,9 @@ def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, st
             return {}
         table = db.open_table(TABLE_NAME)
     except Exception:
+        # Transient: LanceDB connectivity or filesystem error reading idempotency
+        # state. Safe to return {} — ingest will re-extract all chunks, which is
+        # correct but not optimally idempotent. Not an invariant violation.
         return {}
 
     try:
@@ -439,6 +549,8 @@ def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, st
             .to_list()
         )
     except Exception:
+        # Transient: query failure reading idempotency rows (e.g. schema mismatch
+        # after a partial migration). Same recovery: full re-extract is correct.
         return {}
 
     return {r["chunk_id"]: r["extraction_prompt_version"] for r in rows}
@@ -476,10 +588,50 @@ def _commit_chunks(
 
     db = lancedb.connect(db_path)
     if TABLE_NAME not in db.list_tables().tables:
-        db.create_table(TABLE_NAME, data=records, schema=pyarrow_table_schema())
+        table = db.create_table(TABLE_NAME, data=records, schema=pyarrow_table_schema())
+        # Build FTS index immediately on the newly-created table; otherwise
+        # subsequent /query hybrid calls have no FTS leg until server restart.
+        # Fresh-deploy regression: spec §17.1 drops the table; first /ingest
+        # creates it; without this call, the new table ships without an index.
+        try:
+            ensure_fts_index(table, column="bm25_text")
+            logger.info("Created chunks table and built FTS index on bm25_text")
+        except Exception as exc:
+            raise CommitError(
+                f"Created chunks table but FTS index build on bm25_text failed: {exc}. "
+                f"Refusing to ship with vector-only retrieval. Drop the chunks table "
+                f"and re-run /ingest, or build the FTS index manually before retrying."
+            ) from exc
         return
 
     table = db.open_table(TABLE_NAME)
+
+    # Schema compatibility preflight: refuse to mutate if the existing
+    # table predates v1.1 (no bm25_text column). Otherwise the delete-then-add
+    # pattern would lose rows when the v1.1 add() raises on schema mismatch.
+    if "bm25_text" not in table.schema.names:
+        raise CommitError(
+            f"chunks table schema is pre-v1.1 (no bm25_text column). "
+            f"Refusing to mutate; drop the table and re-ingest under v1.1 "
+            f"per docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md §17.1."
+        )
+
+    # FTS-index invariant: ensure the bm25_text FTS index exists before mutation.
+    # Covers the retry-after-fresh-table-failure scenario: fresh-table path creates
+    # the table + rows then raises CommitError when FTS build fails, leaving a
+    # half-initialized table. Operator retry takes this existing-table branch;
+    # without this check the retry would return success with no FTS index and
+    # /query would silently fall back to vector-only.
+    # ensure_fts_index is idempotent: no-op when the index already exists.
+    try:
+        ensure_fts_index(table, column="bm25_text")
+    except Exception as exc:
+        raise CommitError(
+            f"Existing chunks table lacks bm25_text FTS index and rebuild failed: {exc}. "
+            f"Refusing to mutate; investigate the LanceDB FTS error or drop the table "
+            f"and re-ingest fresh."
+        ) from exc
+
     try:
         if full_session_rewrite:
             table.delete(f"session_id = '{session_id}'")

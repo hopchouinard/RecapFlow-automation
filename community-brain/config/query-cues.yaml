@@ -1,0 +1,70 @@
+cue_rules:
+  - name: unresolved_questions
+    cue_phrases:
+      - unresolved
+      - open question
+      - not answered
+      - outstanding
+      - didn't get answered
+      - didn't get fully answered
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+
+  - name: decisions
+    cue_phrases:
+      - decision
+      - decided
+      - resolved
+      - concluded
+    target_predicate:
+      field: decisions
+      check: non_empty
+    delta: 0.008
+
+  - name: action_items
+    cue_phrases:
+      - action item
+      - commit
+      - commitment
+      - next step
+      - to-do
+      - todo
+      - homework
+    target_predicate:
+      field: action_items
+      check: non_empty
+    delta: 0.008
+
+  - name: insights
+    cue_phrases:
+      - insight
+      - realization
+      - aha moment
+      - key takeaway
+    target_predicate:
+      field: has_insight
+      value: true
+    delta: 0.006
+
+  - name: referenced_prior
+    cue_phrases:
+      - referenced
+      - prior call
+      - last week
+      - previously
+      - discussed before
+    target_predicate:
+      field: references_prior
+      value: true
+    delta: 0.006
+
+  - name: questions_general
+    cue_phrases:
+      - question
+      - asked
+    target_predicate:
+      field: has_question
+      value: true
+    delta: 0.003

@@ -1,6 +1,6 @@
 # Community Brain — Next Steps Handoff
 
-**Snapshot date:** 2026-04-28
+**Snapshot date:** 2026-04-30
 **Purpose:** Single entry-point document for a fresh session that needs to pick up the Community Brain project. Reads in 3 minutes, tells you exactly what's done, what's outstanding, where the canonical artifacts live, and how to start each remaining track.
 
 ---
@@ -54,40 +54,57 @@ Canonical references:
 - CHANGELOG entry: [`docs/migrations/CHANGELOG.md`](../../docs/migrations/CHANGELOG.md) (2026-04-28 — Hybrid Retrieval v2)
 - Validation addendum: Plan A spec §10, "v2 hybrid retrieval validation (2026-04-28 — against live VM)"
 
+### Hybrid Retrieval v3 + Stage C v2 — DONE and DEPLOYED
+
+Schema bumped to v1.1 (38 fields; synthesized `bm25_text` FTS column). Stage C extraction prompt updated to chunk-extraction-v2. All 9 sessions re-extracted under the new prompt. Speaker-aliases.yaml curated (39 canonicals, 49 alias entries). Canonicalization applied at chunk write. `recurrent` corpus marker populated via `lint_corpus` (157/184 chunks). `score_breakdown` + `metadata_summary` on every `/query` response. `[flags:]` and `[corpus summary:]` presentation tags structurally separated from transcript content. F8 partial fix: filter now renders the structured presentation tags so the answering LLM sees them.
+
+466 tests passing. Server `0.3.0` deployed to live VM on 2026-04-30. Track B (Plan C) is now unblocked.
+
+Validation gate outcomes (full addendum in Plan A spec §10 "v3 retrieval + Stage C v2 validation"):
+- **16.1.3 (canonicalization):** 10/10. PASS.
+- **16.1.4 (recurrent marker):** 157/184 (85.3%). PASS.
+- **16.1.5 (score_breakdown):** all chunks have all 5 sub-fields. PASS.
+- **16.1.7 (test suite):** 466 pass, 0 fail. PASS.
+- **16.1.8 F6 (Adam in full_text regression):** 5/10. PASS.
+- **16.1.2 (Adam in entities, top-10):** 4/10. Soft miss (off by 1); v4 candidate.
+- **16.1.8 F7 (has_unresolved_question, top-10):** 4/10. Soft miss (off by 1); v4 candidate.
+- **16.1.1 + 16.1.6:** pending manual Open WebUI operator check.
+
+Canonical references:
+- Spec: [`docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md`](specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md)
+- Plan: [`docs/superpowers/plans/2026-04-29-retrieval-v3-and-stage-c-v2-plan.md`](plans/2026-04-29-retrieval-v3-and-stage-c-v2-plan.md)
+- Validation addendum: Plan A spec §10, "v3 retrieval + Stage C v2 validation (2026-04-30 — against live VM)"
+
 ---
 
 ## One outstanding track
 
-### Track B — Plan C: Full historical backfill (operational, holding for v3)
+### Track B — Plan C: Full historical backfill (UNBLOCKED — ready to run)
 
 Run Workflow 2 across the remaining ~57 of 65 historical sessions. Total cost ~$3, total wall time ~12 hours.
 
-**Operator decision (2026-04-28):** holding this track until v3 retrieval design lands. Reasoning: backfilling 57 sessions through a retrieval pipeline that may be revised in v3 (to address Finding 8) means paying the cost twice — once to ingest under v2 prompts, again to re-extract if v3 changes the extraction contract or `extraction_prompt_version`. Better to wait until the retrieval layer is settled, then run the backfill once cleanly.
+**Status (2026-04-30):** v3 is deployed and validated. Track B is now unblocked. The 9 sessions already in LanceDB are under v1.1 schema with chunk-extraction-v2. Running the full backfill now means all sessions land cleanly under the same extraction contract.
 
 **No formal plan document exists** because the operational steps already live in Plan B Tasks 11–15 (the workflow itself). Only thing missing is the "kick off the full run" trigger and post-run state cleanup.
 
 #### Starter prompt for Track B (paste into new session, when ready to run)
 
 ```
-I'm continuing the Community Brain project. Plan A, Plan B, and
-Hybrid Retrieval v2 are all complete (retrieval server + n8n
-workflows deployed; v2 ranking validated 2026-04-28). Track B
-(Plan C full backfill) was held pending v3 retrieval design.
+I'm continuing the Community Brain project. Plan A, Plan B,
+Hybrid Retrieval v2, and Hybrid Retrieval v3 + Stage C v2 are
+all complete and deployed. Track B (Plan C full backfill) is
+now unblocked.
 
 Read /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md
 first for current status.
 
 The work for this session: execute Plan C — full historical backfill.
-The retrieval server is deployed at http://10.1.30.10:8999. 9 of 65
-historical sessions are already ingested (verify via /sessions). The
-remaining ~56 are pre-staged at ~/n8n/historical/ on the VM.
-Workflow 2 (n8n id 6) handles the per-session pipeline. State
-tracked in ~/n8n/n8n-state/backfill-state.json.
-
-Before kicking off the backfill, confirm the retrieval pipeline
-is on the v2-or-later code you intend to ingest under (a re-run is
-expensive). Check git log + retrieval_server version 0.2.0 (or
-later if v3 has shipped).
+The retrieval server is deployed at http://10.1.30.10:8999 running
+v0.3.0 (v1.1 schema, chunk-extraction-v2). 9 of 65 historical
+sessions are already ingested (verify via /sessions). The remaining
+~56 are pre-staged at ~/n8n/historical/ on the VM. Workflow 2
+(n8n id 6) handles the per-session pipeline. State tracked in
+~/n8n/n8n-state/backfill-state.json.
 
 Steps:
 1. Pre-flight: verify retrieval server health, Ollama
@@ -107,19 +124,16 @@ Don't introduce new spec or plan documents — Plan C is execution-only.
 
 **Notes:**
 - If 429 rate-limit cascades become a problem during the run, the workflow's per-session retry + state file design tolerates partial failure cleanly. Failed entries stay in `failed[]` and re-run on next invocation.
-- If v3 lands BEFORE this backfill runs, re-read the v3 spec for any changes to `extraction_prompt_version` or per-session behavior that might affect idempotency.
+- All sessions will ingest under v1.1 schema + chunk-extraction-v2, consistent with the 9 already-ingested sessions.
 
-### v3 design (when warranted)
+### v4 design (when warranted)
 
-Finding 8 (answering LLM under-utilizes Stage C metadata flags) is the leading v3 candidate. Three concrete fix paths captured in the Plan A spec §10 v2 validation addendum:
+Two soft-miss candidates from v3 validation:
 
-1. Tighten `inference-guidelines.md` so models treat strong metadata flags (e.g. `has_unresolved_question=True`) as authoritative even when textual cues are subtle. Trade-off: weakens the "derived is probabilistic" partition.
-2. Filter-side: format chunks in the LLM prompt with metadata flags inline (e.g. `[FLAG: unresolved_question]`).
-3. Add a `metadata_summary` field to `/query` responses giving authoritative per-flag counts.
+1. **entities-in-top-10 (16.1.2):** deterministic post-Stage-C step that always merges `speakers_spoke` + `speakers_mentioned` into `entities`. Prevents the case where a speaker appears in `full_text` and `speakers_spoke` but not `entities`, causing a miss on entity-grounded queries.
+2. **has_unresolved_question sensitivity (16.1.8 F7):** prompt tuning to lift the flag's detection sensitivity. Corpus-wide count dropped 39 (v1) → 20 (v3) on the same model with a different prompt. Direction: more permissive trigger in chunk-extraction-v3.
 
-Plus secondary v3 candidates from the v2 spec §12: LLM intent classifier, cross-encoder reranker, weighted-sum fusion, BM25 over a synthesized `topic_label + entities + full_text` field, cue rules in YAML config.
-
-When you're ready to design v3, fresh session + `superpowers:brainstorming` is the right starting point.
+When you're ready to design v4, fresh session + `superpowers:brainstorming` is the right starting point.
 
 ---
 

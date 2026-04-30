@@ -42,6 +42,59 @@ Every schema version bump or extraction-breaking change is recorded here.
   "spoke in this chunk" from "was referenced/mentioned without speaking."
   v1 consumers should read `speakers_spoke` only.
 
+## 2026-04-29 — Schema 1.0 → 1.1 + Stage C v2 + FTS column migration (Retrieval v3)
+
+### Schema changes
+- Additive: new `bm25_text` string column on chunks. Synthesized at chunk write as the concatenation of `topic_label`, `entities`, `speakers_spoke`, `speakers_mentioned`, `keywords`, and `full_text`. Required at write time (every chunk has it).
+- `SCHEMA_VERSION` bumps `1.0` → `1.1`.
+- Field types and existing field semantics unchanged.
+
+### Stage C contract change
+- Active extraction prompt: `chunk-extraction-v1` → `chunk-extraction-v2`.
+- v2 prompts the LLM to emit `entities` as a flat `list[str]` covering four conceptual categories (people, companies/orgs, products/tools, frameworks/standards/techniques) — no type discriminator is persisted; the categorization lives in the prompt's extraction guidance. Populates `speakers_mentioned` (deterministic subset of entities that are people not in `speakers_spoke`), populates `keywords` uniformly across all content types, drops `new_entities_seen` and `new_speakers_seen` from the JSON output schema.
+- Stage C prompt accepts `SPEAKERS_SPOKE` as input context so `speakers_mentioned` partition is computed against an explicit speaker list.
+- Pipeline applies a canonicalization pass at chunk write time, mapping `speakers_spoke` / `speakers_mentioned` / `entities` through `config/speaker-aliases.yaml`. Because the alias map only contains people, non-people entities (companies, products, frameworks) pass through unchanged. v3 has no analogous registry for non-people entities; they're stored raw.
+
+### embed_text synthesis change (transcripts only)
+- Prior: `topic: <X>\nsummary: <Y>` (~600 chars).
+- v3: `topic + speakers + mentions + entities + keywords + summary` (~800 chars).
+- Vector embeddings change for `prepared_transcript` chunks; `extracted_signal` and `community_post` chunks unaffected (their `embed_text == full_text`).
+
+### Retrieval / index
+- FTS index target column migrates from `full_text` to `bm25_text`. Server startup hook builds the new index; legacy index dropped on best-effort basis (LanceDB 0.30.x lacks a working `drop_index` API; helper graceful-degrades).
+- All FTS-side queries pin `fts_columns="bm25_text"` to prevent silent fallback to a lingering legacy index.
+- `cue_rules` data moves from hardcoded Python tuple to `config/query-cues.yaml`. Hot-reload on each `/query` call. Per-path last-known-good cache rescues transient YAML read errors.
+- `/query` response gains `metadata_summary` top-level field (per-flag counts across retrieved chunks) and per-chunk `score_breakdown` (vector_similarity, bm25_rank, rrf_score, cue_delta, cue_rules_fired). Existing fields unchanged.
+
+### Filter (Open WebUI) rendering
+- Per-chunk `[flags: <names>]` line lists True boolean derived flags (uniform across `has_question`, `has_answer`, `has_unresolved_question`, `has_insight`, `references_prior`).
+- Top-of-context `[corpus summary: of the N retrieved chunks, ...]` line carries authoritative aggregate counts.
+- `expose_score_breakdown` valve (default off) opts in to per-chunk `[score: vector=X, bm25=Y, rrf=Z, cue=+W (rules)]` line for operator-side debug.
+- Trusted tags structurally separated from raw transcript content: `[flags:]` / `[corpus summary:]` / `[score:]` rendered OUTSIDE `<transcript_data>...</transcript_data>` wrapper; transcript content inside. Position contract documented in `docs/inference-guidelines.md`.
+- Corpus summary recomputed post-`min_score` filter so it reflects only chunks the LLM sees.
+
+### Corpus-lint
+- New `recurrent` marker populated by the `lint_corpus` pass. K=8 nearest neighbors over the embedding column; chunks whose neighbors span 2+ distinct sessions at similarity ≥ 0.65 receive the marker.
+- Auto-triggered at end of `/ingest` (WARN-on-failure; chunks already committed).
+- Atomic marker writes via `table.update()` (not delete+add) so failures don't risk row loss.
+
+### Operator pattern (canonicalization)
+- Three new CLIs: `propose_canonicalizations` (heuristic merge proposals from pending queue), `apply_canonicalizations` (merges proposals into registry; auto-triggers recanonicalize; `--no-recanonicalize` escape), `recanonicalize` (standalone chunk-rewrite pass; re-applies registry; re-embeds when needed).
+- Validates proposals before write to refuse alias-canonical conflicts (raises `ProposalConflictError`).
+- Snapshot+restore on failure to minimize data loss in the rare double-failure case.
+
+### Migration sequence (one-time, see spec §17.1)
+1. Drop existing v1.0 chunks table.
+2. Run `propose_canonicalizations` → operator reviews YAML → run `apply_canonicalizations --no-recanonicalize` (chunks table is empty after step 1).
+3. Re-extract 9 ingested sessions via `/ingest` with `force_reextract: true`. First ingest creates v1.1 schema with `bm25_text`; subsequent ingests append.
+4. Run validation gate (8 criteria — see spec §16.1).
+5. Plan C kickoff.
+
+### Files changed (high-level)
+- New modules: `community_brain.ingestion.bm25_synthesis`, `.canonicalize`, `.cli.propose_canonicalizations`, `.cli.apply_canonicalizations`, `.cli.recanonicalize`, `.cli.lint_corpus`.
+- Modified: schema (38 fields), pipeline (canonicalization + bm25_text + lint auto-trigger), extractor (v2 prompt parsing), embedding (build_transcript_embed_text), query_local (score_breakdown + metadata_summary + YAML cue rules + fts_columns binding), retrieval_server (response shape + FTS migration), cue_rules (YAML loader + last-known-good cache), fts_lifecycle (column param + drop helper), openwebui filter (rendering + valves + parity).
+- Tests: 100+ new tests across the surface; 4 pre-existing infrastructure failures unchanged.
+
 ## 2026-04-28 — Hybrid Retrieval v2 (no schema migration)
 
 - Type: Retrieval-layer change (additive index, no schema migration).

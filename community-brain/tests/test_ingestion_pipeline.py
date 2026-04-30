@@ -32,6 +32,14 @@ def _fake_extract_response(model, prompt):
         "action_items": [],
         "external_refs": [],
         "references_prior": False,
+        # v2 fields required by extractor
+        "topic_label": "Agent frameworks comparison",
+        "speakers_mentioned": [],
+        "keywords": ["LangGraph", "agent", "framework"],
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": True,
     })
 
 
@@ -133,7 +141,7 @@ def test_ingest_session_end_to_end(tmp_path: Path, mocked_pipeline_env) -> None:
     assert result.chunks_by_type["extracted_signal"] == 4
     assert result.chunks_by_type["community_post"] == 1
     assert result.extraction_prompt_version == "chunk-extraction-v1"
-    assert result.schema_version == "1.0"
+    assert result.schema_version == "1.1"
 
 
 def test_ingest_session_idempotent_reingest(tmp_path: Path, mocked_pipeline_env) -> None:
@@ -527,6 +535,7 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
             extracted_at=dt.datetime(2026, 4, 18, tzinfo=dt.timezone.utc),
             embed_text="x",
             full_text="x",
+            bm25_text="x",
             embedding=[0.0] * 768,
         )
 
@@ -559,19 +568,21 @@ def test_commit_chunks_accepts_real_speakers_after_first_write_had_none(tmp_path
     assert "_distance" in vec_rows[0]
 
 
-def test_ingest_session_calls_optimize_fts_index_after_commit(
+def test_ingest_session_calls_ensure_fts_index_after_commit(
     tmp_path: Path, mocked_pipeline_env, monkeypatch
 ) -> None:
     """After a successful chunk commit, ingest_session must call
-    optimize_fts_index so the new chunks become BM25-searchable on the
-    next /query."""
-    optimize_calls: list[tuple] = []
+    ensure_fts_index (via _post_commit_maintenance) so the new chunks become
+    BM25-searchable on the next /query."""
+    ensure_calls: list[tuple] = []
+    from community_brain.query.fts_lifecycle import ensure_fts_index as _real_ensure
 
     def _capture(table, column):
-        optimize_calls.append((column,))
+        ensure_calls.append((column,))
+        return _real_ensure(table, column)
 
     monkeypatch.setattr(
-        "community_brain.ingestion.pipeline.optimize_fts_index",
+        "community_brain.ingestion.pipeline.ensure_fts_index",
         _capture,
     )
 
@@ -597,6 +608,1192 @@ def test_ingest_session_calls_optimize_fts_index_after_commit(
         ollama_base_url=None,
     )
 
-    assert optimize_calls == [("full_text",)], (
-        f"expected exactly one optimize call with column='full_text'; got {optimize_calls}"
+    # ensure_fts_index is called at least once after commit (once in _commit_chunks
+    # for table creation, once in _post_commit_maintenance for post-commit invariant).
+    assert len(ensure_calls) >= 1, (
+        f"expected at least one ensure_fts_index call with column='bm25_text'; got {ensure_calls}"
     )
+    assert all(col == "bm25_text" for (col,) in ensure_calls), (
+        f"all calls should target bm25_text; got {ensure_calls}"
+    )
+
+
+def test_pipeline_populates_bm25_text_on_commit(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Chunks committed by ingest_session must have bm25_text containing
+    topic_label, entities, speakers_spoke, speakers_mentioned, keywords,
+    and full_text content concatenated.
+    """
+    import lancedb
+    from community_brain.ingestion.pipeline import ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Agent frameworks comparison",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        assert row["bm25_text"], f"empty bm25_text on {row['chunk_id']}"
+        # bm25_text must embed full_text content
+        assert row["full_text"][:50] in row["bm25_text"], (
+            f"full_text prefix missing from bm25_text on {row['chunk_id']}"
+        )
+        # bm25_text must reflect Stage C entities, not the construction-time
+        # empty list. The mock returns entities=["LangGraph"] for every chunk.
+        assert "LangGraph" in row["bm25_text"], (
+            f"Stage C entity 'LangGraph' missing from bm25_text on {row['chunk_id']}; "
+            f"bm25_text was synthesized before Stage C populated entities"
+        )
+
+
+def test_pipeline_embed_text_includes_stage_c_entities_for_transcripts(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """After Stage C populates entities, transcript embed_text must reflect
+    them (same timing pattern as bm25_text). Construction-time-only synthesis
+    used entities=[] so embed_text was stale until Stage C re-synthesis.
+
+    signal/post chunks must keep embed_text == full_text (no enrichment).
+    """
+    import lancedb
+    from community_brain.ingestion.pipeline import ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Agent frameworks comparison",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    transcript_rows = [r for r in rows if r["content_type"] == "prepared_transcript"]
+    signal_post_rows = [r for r in rows if r["content_type"] in ("extracted_signal", "community_post")]
+
+    assert transcript_rows, "expected at least one prepared_transcript row"
+
+    for row in transcript_rows:
+        # embed_text must use structured v3 format (six-line layout)
+        embed = row["embed_text"]
+        assert embed.startswith("topic:"), (
+            f"embed_text does not start with 'topic:' on {row['chunk_id']}; got: {embed[:60]!r}"
+        )
+        assert "speakers:" in embed, f"'speakers:' missing from embed_text on {row['chunk_id']}"
+        assert "mentions:" in embed, f"'mentions:' missing from embed_text on {row['chunk_id']}"
+        assert "entities:" in embed, f"'entities:' missing from embed_text on {row['chunk_id']}"
+        assert "keywords:" in embed, f"'keywords:' missing from embed_text on {row['chunk_id']}"
+        assert "summary:" in embed, f"'summary:' missing from embed_text on {row['chunk_id']}"
+        # Stage C entity must be reflected (not the construction-time empty list)
+        assert "LangGraph" in embed, (
+            f"Stage C entity 'LangGraph' missing from embed_text on {row['chunk_id']}; "
+            f"embed_text was synthesized before Stage C populated entities"
+        )
+
+    for row in signal_post_rows:
+        # signal/post chunks: embed_text must equal full_text (no enrichment)
+        assert row["embed_text"] == row["full_text"], (
+            f"embed_text != full_text on {row['content_type']} chunk {row['chunk_id']}"
+        )
+
+
+def test_pipeline_persists_all_stage_c_v2_fields(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Committed chunks must carry all Stage C v2 fields (topic_label, keywords,
+    has_question, has_insight, speakers_mentioned) reflecting the mocked LLM
+    response, not the chunker defaults (None / empty).
+
+    Regression test for the HIGH 1 finding from Codex adversarial review:
+    pipeline's Stage C success branch was discarding parsed v2 fields.
+    """
+    import lancedb
+    from community_brain.ingestion.pipeline import ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Agent frameworks comparison",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        # topic_label must reflect the mocked Stage C response, not chunker default (None)
+        assert row["topic_label"] == "Agent frameworks comparison", (
+            f"topic_label not written by Stage C on {row['chunk_id']}; "
+            f"got {row['topic_label']!r} (chunker default is None)"
+        )
+        # keywords must carry the mocked v2 values
+        assert "LangGraph" in (row["keywords"] or []), (
+            f"keywords not written by Stage C on {row['chunk_id']}; "
+            f"got {row['keywords']!r}"
+        )
+        # has_insight must reflect the mocked True value
+        assert row["has_insight"] is True, (
+            f"has_insight not written by Stage C on {row['chunk_id']}; "
+            f"got {row['has_insight']!r}"
+        )
+        # has_question must reflect the mocked False value (not a default issue,
+        # but confirms the flag path runs through)
+        assert row["has_question"] is False, (
+            f"has_question not written by Stage C on {row['chunk_id']}; "
+            f"got {row['has_question']!r}"
+        )
+        # speakers_mentioned must be the mocked [] value, not chunker default (None)
+        assert row["speakers_mentioned"] is not None, (
+            f"speakers_mentioned is None on {row['chunk_id']} — Stage C v2 fields not written"
+        )
+
+
+def test_commit_chunks_refuses_to_mutate_pre_v1_1_table(tmp_path: Path) -> None:
+    """If the existing chunks table lacks bm25_text column (pre-v1.1),
+    _commit_chunks raises CommitError BEFORE deleting anything.
+
+    Regression test for the migration hazard surfaced in v3 Phase 1
+    adversarial review: delete-then-add against a v1.0 table would
+    delete rows then fail to add v1.1 records, causing data loss.
+    """
+    import datetime as dt
+
+    import lancedb
+    import pyarrow as pa
+
+    from community_brain.ingestion.pipeline import CommitError, _commit_chunks
+    from community_brain.ingestion.schema import EMBEDDING_DIM, Chunk, ContentType
+
+    # Build a v1.0-shape schema: full pyarrow_table_schema() minus bm25_text.
+    v1_0_schema = pa.schema([
+        ("schema_version", pa.string()),
+        ("chunk_id", pa.string()),
+        ("session_id", pa.string()),
+        ("session_date", pa.string()),
+        ("session_title", pa.string()),
+        ("content_type", pa.string()),
+        ("source_file", pa.string()),
+        ("chunk_index", pa.int64()),
+        ("total_chunks_in_source", pa.int64()),
+        ("speakers_spoke", pa.list_(pa.string())),
+        ("speakers_mentioned", pa.list_(pa.string())),
+        ("entities", pa.list_(pa.string())),
+        ("keywords", pa.list_(pa.string())),
+        ("topic_label", pa.string()),
+        ("session_themes", pa.list_(pa.string())),
+        ("speech_acts", pa.list_(pa.string())),
+        ("stance", pa.string()),
+        ("certainty", pa.string()),
+        ("chunk_local_markers", pa.list_(pa.string())),
+        ("corpus_derived_markers", pa.list_(pa.string())),
+        ("corpus_markers_computed_at", pa.string()),
+        ("has_question", pa.bool_()),
+        ("has_answer", pa.bool_()),
+        ("has_unresolved_question", pa.bool_()),
+        ("has_insight", pa.bool_()),
+        ("decisions", pa.list_(pa.string())),
+        ("action_items", pa.list_(pa.string())),
+        ("external_refs", pa.list_(pa.string())),
+        ("references_prior", pa.bool_()),
+        ("extraction_model", pa.string()),
+        ("extraction_prompt_version", pa.string()),
+        ("extraction_status", pa.string()),
+        ("extraction_error", pa.string()),
+        ("extracted_at", pa.string()),
+        ("embed_text", pa.string()),
+        ("full_text", pa.string()),
+        # bm25_text deliberately absent — this is the pre-v1.1 shape
+        ("embedding", pa.list_(pa.float32(), EMBEDDING_DIM)),
+    ])
+
+    # Seed the v1.0 table with one existing row so we can verify it survives.
+    db_path = tmp_path / "lancedb"
+    db = lancedb.connect(str(db_path))
+    existing_row = {
+        "schema_version": "1.0",
+        "chunk_id": "2026-01-01:post:001",
+        "session_id": "2026-01-01",
+        "session_date": "2026-01-01",
+        "session_title": "old session",
+        "content_type": "community_post",
+        "source_file": "output/2026-01-01/community-post.md",
+        "chunk_index": 1,
+        "total_chunks_in_source": 1,
+        "speakers_spoke": [],
+        "speakers_mentioned": [],
+        "entities": [],
+        "keywords": [],
+        "topic_label": None,
+        "session_themes": [],
+        "speech_acts": [],
+        "stance": None,
+        "certainty": "asserted",
+        "chunk_local_markers": [],
+        "corpus_derived_markers": [],
+        "corpus_markers_computed_at": None,
+        "has_question": False,
+        "has_answer": False,
+        "has_unresolved_question": False,
+        "has_insight": False,
+        "decisions": [],
+        "action_items": [],
+        "external_refs": [],
+        "references_prior": False,
+        "extraction_model": "m",
+        "extraction_prompt_version": "chunk-extraction-v1",
+        "extraction_status": "success",
+        "extraction_error": None,
+        "extracted_at": "2026-01-01T00:00:00+00:00",
+        "embed_text": "old embed",
+        "full_text": "old full text",
+        "embedding": [0.0] * EMBEDDING_DIM,
+    }
+    db.create_table("chunks", data=[existing_row], schema=v1_0_schema)
+
+    # Construct a v1.1 Chunk to attempt to ingest.
+    new_chunk = Chunk(
+        schema_version="1.1",
+        chunk_id="2026-01-01:post:002",
+        session_id="2026-01-01",
+        session_date="2026-01-01",
+        session_title="old session",
+        content_type="community_post",
+        source_file="output/2026-01-01/community-post.md",
+        chunk_index=2,
+        total_chunks_in_source=2,
+        speakers_spoke=None,
+        speakers_mentioned=None,
+        entities=[],
+        keywords=None,
+        topic_label=None,
+        session_themes=[],
+        speech_acts=[],
+        stance=None,
+        certainty="asserted",
+        chunk_local_markers=[],
+        corpus_derived_markers=[],
+        corpus_markers_computed_at=None,
+        has_question=False,
+        has_answer=False,
+        has_unresolved_question=False,
+        has_insight=False,
+        decisions=None,
+        action_items=None,
+        external_refs=None,
+        references_prior=False,
+        extraction_model="m",
+        extraction_prompt_version="chunk-extraction-v1",
+        extraction_status="success",
+        extraction_error=None,
+        extracted_at=dt.datetime(2026, 1, 1, tzinfo=dt.timezone.utc),
+        embed_text="new embed",
+        full_text="new full text",
+        bm25_text="new bm25",
+        embedding=[0.0] * EMBEDDING_DIM,
+    )
+
+    # _commit_chunks must raise CommitError without touching existing rows.
+    with pytest.raises(CommitError, match="pre-v1.1"):
+        _commit_chunks(str(db_path), "2026-01-01", [new_chunk], full_session_rewrite=True)
+
+    # The existing row must still be intact — no deletion occurred.
+    rows = (
+        lancedb.connect(str(db_path))
+        .open_table("chunks")
+        .search()
+        .to_list()
+    )
+    assert len(rows) == 1, f"expected 1 row (untouched), got {len(rows)}"
+    assert rows[0]["chunk_id"] == "2026-01-01:post:001"
+
+
+# ---------------------------------------------------------------------------
+# T9: canonicalization applied at chunk write
+# ---------------------------------------------------------------------------
+
+def _write_min_configs_with_aliases(base: Path) -> Path:
+    """Like _write_min_configs but speaker-aliases.yaml includes Adam->Adam James."""
+    base.mkdir(parents=True, exist_ok=True)
+    (base / "chunking.yaml").write_text(
+        """
+schema_version: "1.0"
+chunking:
+  transcript_segment_max_tokens: 1500
+  post_max_tokens: 2500
+  session_themes_input_max_tokens: 3000
+extraction:
+  retry_attempts: 3
+  retry_backoff_seconds: [2, 8, 32]
+  inter_session_delay_seconds: 30
+        """,
+        encoding="utf-8",
+    )
+    (base / "extraction-config.yaml").write_text(
+        """
+session_themes:
+  prompt_file: session-themes-v1.md
+  model: test-model
+chunk_extraction:
+  prompt_file: chunk-extraction-v1.md
+  model: test-model
+        """,
+        encoding="utf-8",
+    )
+    # aliases: Adam James has raw alias "Adam"; Brandon Hancock has no aliases
+    (base / "speaker-aliases.yaml").write_text(
+        'version: "x"\naliases:\n  Adam James:\n    - Adam\n  Brandon Hancock: []\npending: []\n',
+        encoding="utf-8",
+    )
+    (base / "entity-registry.yaml").write_text(
+        (
+            'version: "x"\n'
+            'entities:\n'
+            '  LangGraph:\n'
+            '    type: framework\n'
+            '    aliases: [langgraph]\n'
+            'pending: []\n'
+        ),
+        encoding="utf-8",
+    )
+    prompts = base / "extraction-prompts"
+    prompts.mkdir(exist_ok=True)
+    (prompts / "session-themes-v1.md").write_text("session themes prompt", encoding="utf-8")
+    (prompts / "chunk-extraction-v1.md").write_text("chunk extraction prompt", encoding="utf-8")
+    return base
+
+
+def test_pipeline_canonicalizes_speakers_at_write(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """When the speaker-aliases registry has 'Adam' -> 'Adam James', Stage C output
+    containing the raw 'Adam' is committed with canonical 'Adam James' form in
+    speakers_mentioned and entities."""
+    import json
+    import lancedb
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    config_dir = _write_min_configs_with_aliases(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    # Stage C returns raw "Adam" in both entities and speakers_mentioned
+    def _alias_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["agent frameworks"]})
+        return json.dumps({
+            "entities": ["Adam"],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": ["discussion"],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Canonicalization test",
+            "speakers_mentioned": ["Adam"],
+            "keywords": ["canonicalization"],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_alias_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_alias_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-10",
+            session_date="2026-03-10",
+            session_title="Canonicalization test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        entities = row.get("entities") or []
+        speakers_mentioned = row.get("speakers_mentioned") or []
+        assert "Adam James" in entities, (
+            f"entities not canonicalized on {row['chunk_id']}: got {entities!r}"
+        )
+        assert "Adam" not in entities, (
+            f"raw 'Adam' still present in entities on {row['chunk_id']}: {entities!r}"
+        )
+        assert "Adam James" in speakers_mentioned, (
+            f"speakers_mentioned not canonicalized on {row['chunk_id']}: got {speakers_mentioned!r}"
+        )
+        assert "Adam" not in speakers_mentioned, (
+            f"raw 'Adam' still in speakers_mentioned on {row['chunk_id']}: {speakers_mentioned!r}"
+        )
+
+
+def test_canonicalization_preserves_speaker_mention_partition(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """Regression for verification round 6 finding: when speakers_spoke and
+    speakers_mentioned use DIFFERENT raw aliases that canonicalize to the
+    SAME name, the canonical name must NOT end up in both lists.
+
+    Scenario:
+    - speakers_spoke (raw): ["Adam - Gold Flamingo"]  -> canonical "Adam James"
+    - Stage C emits speakers_mentioned (raw): ["Adam"] -> canonical "Adam James"
+    - Without the partition fix, "Adam James" would appear in BOTH lists.
+    - After the fix, "Adam James" must be ONLY in speakers_spoke.
+    """
+    import json
+    import lancedb
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    # Build a config where BOTH "Adam - Gold Flamingo" and "Adam" resolve to "Adam James".
+    config_dir = _write_min_configs_with_aliases(tmp_path / "config")
+    (config_dir / "speaker-aliases.yaml").write_text(
+        (
+            'version: "x"\n'
+            'aliases:\n'
+            '  Adam James:\n'
+            '    - Adam\n'
+            '    - Adam - Gold Flamingo\n'
+            '  Brandon Hancock: []\n'
+            'pending: []\n'
+        ),
+        encoding="utf-8",
+    )
+    db_path = tmp_path / "lancedb"
+
+    # Stage C sees raw SPEAKERS_SPOKE=["Adam - Gold Flamingo"] and returns
+    # speakers_mentioned=["Adam"] — realistic because Stage C doesn't resolve
+    # aliases; it just recognizes the bare name "Adam" from the transcript text.
+    def _partition_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["partition regression"]})
+        return json.dumps({
+            "entities": [],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": ["discussion"],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Partition regression test",
+            "speakers_mentioned": ["Adam"],
+            "keywords": ["partition"],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_partition_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_partition_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-11",
+            session_date="2026-03-11",
+            session_title="Partition regression test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        speakers_spoke = row.get("speakers_spoke") or []
+        speakers_mentioned = row.get("speakers_mentioned") or []
+        if "Adam James" in speakers_spoke:
+            assert "Adam James" not in speakers_mentioned, (
+                f"Partition broken on {row['chunk_id']}: 'Adam James' is in BOTH "
+                f"speakers_spoke={speakers_spoke!r} and speakers_mentioned={speakers_mentioned!r}. "
+                "Post-canonicalization subtraction of speakers_spoke from speakers_mentioned "
+                "did not fire."
+            )
+
+
+def test_pipeline_unknown_speakers_flow_to_pending(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """Names in Stage C speakers_mentioned that aren't in the alias map are
+    appended to speaker-aliases.yaml's pending list at session end."""
+    import json
+    import lancedb
+    import yaml
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    # Use base config with no aliases so Tony/Vlad are guaranteed unknowns
+    config_dir = _write_min_configs(tmp_path / "config")
+    # Overwrite with truly empty alias map
+    (config_dir / "speaker-aliases.yaml").write_text(
+        'version: "x"\naliases: {}\npending: []\n',
+        encoding="utf-8",
+    )
+    db_path = tmp_path / "lancedb"
+
+    def _unknown_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["topics"]})
+        return json.dumps({
+            "entities": [],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": [],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Unknown test",
+            "speakers_mentioned": ["Tony", "Vlad"],
+            "keywords": [],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_unknown_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_unknown_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-10",
+            session_date="2026-03-10",
+            session_title="Unknown test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    updated = yaml.safe_load((config_dir / "speaker-aliases.yaml").read_text())
+    pending = updated.get("pending") or []
+    assert "Tony" in pending, f"'Tony' not in pending: {pending!r}"
+    assert "Vlad" in pending, f"'Vlad' not in pending: {pending!r}"
+
+
+def test_pipeline_canonicalization_applied_before_resynthesis(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """bm25_text reflects canonical names, not raw aliases, confirming
+    canonicalization fires before the bm25_text re-synthesis block."""
+    import json
+    import lancedb
+    from community_brain.ingestion.pipeline import IngestRequest, ingest_session
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    config_dir = _write_min_configs_with_aliases(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    def _canon_resync_extract(model, prompt):  # noqa: ARG001
+        if "SESSION_INPUT:" in prompt:
+            return json.dumps({"themes": ["resynthesis test"]})
+        return json.dumps({
+            "entities": ["Adam"],
+            "new_entities_seen": [],
+            "new_speakers_seen": [],
+            "speech_acts": [],
+            "stance": "neutral",
+            "certainty": "asserted",
+            "chunk_local_markers": [],
+            "decisions": [],
+            "action_items": [],
+            "external_refs": [],
+            "references_prior": False,
+            "topic_label": "Resynthesis test",
+            "speakers_mentioned": ["Adam"],
+            "keywords": [],
+            "has_question": False,
+            "has_answer": False,
+            "has_unresolved_question": False,
+            "has_insight": False,
+        })
+
+    with patch(
+        "community_brain.ingestion.embedding.ollama.embed",
+        side_effect=_mock_ollama_embed,
+    ), patch(
+        "community_brain.ingestion.extractor._call_llm",
+        side_effect=_canon_resync_extract,
+    ), patch(
+        "community_brain.ingestion.session_extractor._call_llm",
+        side_effect=_canon_resync_extract,
+    ):
+        request = IngestRequest(
+            session_id="2026-03-10",
+            session_date="2026-03-10",
+            session_title="Resynthesis test",
+            artifact_paths={
+                "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            },
+            force_reextract=False,
+        )
+        ingest_session(request=request, config_dir=config_dir, db_path=str(db_path), ollama_base_url=None)
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        bm25 = row.get("bm25_text") or ""
+        assert "Adam James" in bm25, (
+            f"'Adam James' not found in bm25_text of {row['chunk_id']}: {bm25!r}"
+        )
+        # bm25_text must not contain standalone raw "Adam" (i.e., without " James" following).
+        # "Adam James" obviously contains "Adam" as a substring, so check that
+        # the raw-only form (", Adam," or " Adam\n" etc.) is absent.
+        import re
+        # Match "Adam" that is NOT followed by " James"
+        raw_adam_pattern = re.compile(r'\bAdam\b(?! James)')
+        assert not raw_adam_pattern.search(bm25), (
+            f"Raw 'Adam' (without 'James') still in bm25_text of {row['chunk_id']}: {bm25!r}"
+        )
+
+
+def test_ingest_session_auto_triggers_lint_corpus(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """After ingest_session commits, corpus_markers_computed_at is set on every
+    committed chunk — proof that lint_corpus auto-fired."""
+    import lancedb
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(tmp_path / "lancedb"))
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Auto lint trigger test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+
+    assert len(rows) > 0, "no rows committed"
+    for row in rows:
+        assert row["corpus_markers_computed_at"] is not None, (
+            f"corpus_markers_computed_at is None on {row['chunk_id']} — "
+            "lint_corpus did not auto-fire after ingest"
+        )
+
+
+def test_ingest_session_lint_failure_does_not_fail_ingest(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """If lint_corpus_chunks raises, ingest_session still returns success and
+    chunks are committed. Failure should log a WARNING."""
+    import lancedb
+
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(tmp_path / "lancedb"))
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "lancedb"
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.lint_corpus_chunks",
+        lambda *a, **kw: (_ for _ in ()).throw(RuntimeError("boom")),
+    )
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Lint failure resilience test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+            "extracted_signal": str(FIXTURES / "extracted-signal-sample.md"),
+            "community_post": str(FIXTURES / "community-post-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Should not raise even though lint raises
+    result = ingest_session(
+        request=request,
+        config_dir=config_dir,
+        db_path=str(db_path),
+        ollama_base_url=None,
+    )
+    assert result.chunks_written > 0, "chunks_written should be > 0 even when lint fails"
+
+    # Chunks must be in the table
+    db = lancedb.connect(str(db_path))
+    tbl = db.open_table("chunks")
+    rows = tbl.to_arrow().to_pylist()
+    assert len(rows) > 0, "chunks not committed when lint fails"
+
+    # corpus_markers_computed_at must be None (lint never ran)
+    for row in rows:
+        assert row["corpus_markers_computed_at"] is None, (
+            f"corpus_markers_computed_at should be None when lint fails, "
+            f"got {row['corpus_markers_computed_at']!r} on {row['chunk_id']}"
+        )
+
+
+def test_commit_chunks_builds_fts_index_when_creating_table(
+    tmp_path: Path, mocked_pipeline_env
+) -> None:
+    """Regression: fresh-table _commit_chunks must build the bm25_text FTS index.
+
+    Spec §17.1 drops the v1.0 table on deploy; first /ingest creates the v1.1
+    table. Without explicit FTS build, /query hybrid has no lexical leg until
+    server restart triggers the startup hook. This test asserts the index is
+    present immediately after the first ingest into a brand-new database.
+    """
+    import lancedb as _lancedb
+    from community_brain.query.fts_lifecycle import has_fts_index
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "fresh_lancedb"
+
+    # Confirm the DB directory doesn't exist yet (truly fresh deploy).
+    assert not db_path.exists()
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="Fresh table FTS regression",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    result = ingest_session(request, config_dir, str(db_path), None)
+    assert result.chunks_written > 0, "Ingest must write chunks for this test to be meaningful"
+
+    # Open the table and verify the FTS index exists on bm25_text.
+    db = _lancedb.connect(str(db_path))
+    table = db.open_table("chunks")
+    assert has_fts_index(table, "bm25_text"), (
+        "bm25_text FTS index must exist immediately after the first ingest "
+        "into a fresh table (spec §17.1 fresh-deploy regression)"
+    )
+
+
+def test_commit_chunks_raises_when_fts_index_creation_fails(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Fresh-table FTS index failure must raise CommitError, not silently
+    ship without a bm25_text index. Regression for the verification-pass
+    finding: degraded retrieval should be a loud failure, not a log line.
+
+    Monkeypatches ensure_fts_index (the fresh-table case in _commit_chunks)
+    to raise, then asserts CommitError propagates out of ingest_session.
+    """
+    import lancedb as _lancedb
+    from community_brain.ingestion.pipeline import CommitError
+
+    # Patch ensure_fts_index to raise on the fresh-table path.
+    def _raise_fts(*_args, **_kwargs):
+        raise RuntimeError("simulated FTS build failure")
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.ensure_fts_index",
+        _raise_fts,
+    )
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = tmp_path / "fts_fail_lancedb"
+
+    request = IngestRequest(
+        session_id="2026-03-10",
+        session_date="2026-03-10",
+        session_title="FTS failure test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    with pytest.raises(CommitError, match="FTS index build on bm25_text failed"):
+        ingest_session(request, config_dir, str(db_path), None)
+
+
+def test_commit_chunks_rebuilds_fts_when_existing_table_lacks_it(
+    tmp_path: Path, mocked_pipeline_env
+) -> None:
+    """Regression: if the existing chunks table lacks the bm25_text FTS index
+    (simulating a half-initialized state from a prior failed fresh-table init),
+    _commit_chunks must rebuild the index before mutation so /query keeps both
+    retrieval legs.
+    """
+    import lancedb as _lancedb
+    import pyarrow as pa
+    from community_brain.ingestion.pipeline import TABLE_NAME, _commit_chunks
+    from community_brain.ingestion.schema import pyarrow_table_schema
+    from community_brain.query.fts_lifecycle import has_fts_index
+
+    db_path = str(tmp_path / "half_init_lancedb")
+    db = _lancedb.connect(db_path)
+
+    # Create the table with valid v1.1 schema but intentionally skip the FTS build
+    # (simulates: fresh-table init ran create_table + add but FTS build raised).
+    config_dir = _write_min_configs(tmp_path / "config")
+    request_first = IngestRequest(
+        session_id="2026-01-10",
+        session_date="2026-01-10",
+        session_title="Half-init session",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+    # Do the first ingest normally so the table+rows+FTS exist.
+    ingest_session(request_first, config_dir, db_path, None)
+
+    # Now simulate the half-init: drop the FTS index by rewriting the table
+    # without it (LanceDB doesn't expose a drop-index API, so we recreate).
+    tbl = db.open_table(TABLE_NAME)
+    rows = tbl.to_arrow()
+    db.drop_table(TABLE_NAME)
+    db.create_table(TABLE_NAME, data=rows, schema=pyarrow_table_schema())
+    tbl_no_fts = db.open_table(TABLE_NAME)
+    assert not has_fts_index(tbl_no_fts, "bm25_text"), "precondition: table lacks FTS index"
+
+    # Second ingest against same db — takes existing-table branch.
+    # Must rebuild the FTS index.
+    request_second = IngestRequest(
+        session_id="2026-01-17",
+        session_date="2026-01-17",
+        session_title="Retry after half-init",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+    result = ingest_session(request_second, config_dir, db_path, None)
+    assert result.chunks_written > 0, f"expected chunks written, got {result}"
+
+    tbl_after = db.open_table(TABLE_NAME)
+    assert has_fts_index(tbl_after, "bm25_text"), (
+        "FTS index was not rebuilt on the existing-table path; "
+        "/query would have silently fallen back to vector-only"
+    )
+
+
+def test_commit_chunks_after_fresh_table_fts_failure_rebuilds_on_retry(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """End-to-end regression for verification round-3 finding:
+    1. First /ingest creates fresh table; ensure_fts_index raises (simulated).
+       CommitError raised; table and rows persist.
+    2. Second /ingest with ensure_fts_index restored:
+       - Takes existing-table branch (column check passes).
+       - Must build the FTS index before returning success.
+    Without the fix, step 2 returns success with no FTS index.
+    """
+    import lancedb as _lancedb
+    from community_brain.ingestion.pipeline import CommitError, TABLE_NAME
+    from community_brain.query.fts_lifecycle import ensure_fts_index as _real_ensure_fts
+    from community_brain.query.fts_lifecycle import has_fts_index
+
+    call_count = {"n": 0}
+
+    def _fail_first(*args, **kwargs):
+        call_count["n"] += 1
+        if call_count["n"] == 1:
+            raise RuntimeError("simulated FTS failure on first call")
+        return _real_ensure_fts(*args, **kwargs)
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.ensure_fts_index",
+        _fail_first,
+    )
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = str(tmp_path / "retry_fts_lancedb")
+
+    request = IngestRequest(
+        session_id="2026-02-10",
+        session_date="2026-02-10",
+        session_title="Retry FTS regression",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Step 1: first ingest — fresh-table path — FTS build raises.
+    with pytest.raises(CommitError, match="FTS index build on bm25_text failed"):
+        ingest_session(request, config_dir, db_path, None)
+
+    # Table and rows must have been persisted (pre-fix bug left them behind).
+    db = _lancedb.connect(db_path)
+    assert TABLE_NAME in db.list_tables().tables, "table must persist after CommitError"
+    tbl_torn = db.open_table(TABLE_NAME)
+    assert not has_fts_index(tbl_torn, "bm25_text"), "precondition: no FTS index after failure"
+
+    # Step 2: retry — idempotency path: all chunks already present from the torn
+    # first ingest, so chunks_written=0 and chunks_skipped_idempotent>0.
+    # The FTS invariant must still be enforced on this path.
+    result = ingest_session(request, config_dir, db_path, None)
+    assert result.chunks_skipped_idempotent > 0, (
+        f"expected idempotency skip on retry, got {result}"
+    )
+
+    tbl_after = db.open_table(TABLE_NAME)
+    assert has_fts_index(tbl_after, "bm25_text"), (
+        "FTS index was not rebuilt on the all-skipped idempotency retry path; "
+        "round-3 finding NOT fixed"
+    )
+
+
+def test_idempotent_retry_runs_lint_corpus(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Regression for round-4 finding: the idempotent all-skipped early-return
+    path must run lint_corpus auto-trigger (not just FTS). After a torn
+    fresh-table init + retry, corpus_markers_computed_at must be set on
+    restored chunks before /ingest returns.
+
+    Scenario:
+    1. First ingest: _commit_chunks succeeds, but ensure_fts_index raises
+       on the post-commit path (CommitError surfaced; rows persist).
+    2. Second ingest: idempotent all-skipped path (all chunks present).
+       _post_commit_maintenance must fire lint_corpus so
+       corpus_markers_computed_at is populated before returning success.
+    """
+    import lancedb as _lancedb
+    from community_brain.ingestion.pipeline import CommitError, TABLE_NAME
+    from community_brain.query.fts_lifecycle import ensure_fts_index as _real_ensure_fts
+
+    call_count = {"n": 0}
+
+    def _fail_first(*args, **kwargs):
+        call_count["n"] += 1
+        if call_count["n"] == 1:
+            raise RuntimeError("simulated FTS failure on first call")
+        return _real_ensure_fts(*args, **kwargs)
+
+    monkeypatch.setattr(
+        "community_brain.ingestion.pipeline.ensure_fts_index",
+        _fail_first,
+    )
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(tmp_path / "lint_retry_lancedb"))
+
+    config_dir = _write_min_configs(tmp_path / "config")
+    db_path = str(tmp_path / "lint_retry_lancedb")
+
+    request = IngestRequest(
+        session_id="2026-02-11",
+        session_date="2026-02-11",
+        session_title="Lint idempotent retry regression",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Step 1: first ingest — FTS build raises on post-commit path.
+    with pytest.raises(CommitError):
+        ingest_session(request, config_dir, db_path, None)
+
+    # Precondition: rows are present but corpus_markers_computed_at is None
+    # (lint never ran because FTS failed first).
+    db = _lancedb.connect(db_path)
+    assert TABLE_NAME in db.list_tables().tables, "table must persist after CommitError"
+    rows_before = db.open_table(TABLE_NAME).to_arrow().to_pylist()
+    assert len(rows_before) > 0, "rows must persist after CommitError"
+    assert all(r["corpus_markers_computed_at"] is None for r in rows_before), (
+        "corpus_markers_computed_at should be None before retry — lint did not run"
+    )
+
+    # Step 2: retry — all chunks present, takes idempotent all-skipped path.
+    result = ingest_session(request, config_dir, db_path, None)
+    assert result.chunks_skipped_idempotent > 0, (
+        f"expected idempotency skip on retry, got {result}"
+    )
+    assert result.chunks_written == 0
+
+    # corpus_markers_computed_at must now be set — lint ran on the retry path.
+    rows_after = db.open_table(TABLE_NAME).to_arrow().to_pylist()
+    assert all(r["corpus_markers_computed_at"] is not None for r in rows_after), (
+        "corpus_markers_computed_at still None after idempotent retry — "
+        "lint_corpus did NOT run on the all-skipped early-return path (round-4 finding)"
+    )
+
+
+def test_post_commit_maintenance_lint_uses_explicit_db_path_not_env_var(
+    tmp_path: Path, mocked_pipeline_env, monkeypatch
+) -> None:
+    """Regression: COMMUNITY_BRAIN_DB_PATH env var must NOT override the
+    db_path that ingest_session passes to _post_commit_maintenance.
+
+    If the env var could override the explicit path, lint would run on the
+    wrong corpus (db_b) while chunks were committed to the right one (db_a) —
+    a silent maintenance bypass introduced by deploy misconfiguration.
+
+    Setup:
+    - db_a = ingest target (used as db_path arg)
+    - db_b = bogus override target (set as COMMUNITY_BRAIN_DB_PATH)
+    - Run ingest_session with db_path=db_a
+    - Assert: chunks in db_a have corpus_markers_computed_at != None
+              (lint ran on db_a, the right corpus)
+    - Assert: db_b is untouched (env-var override was NOT followed)
+    """
+    import lancedb as _lancedb
+
+    db_a = tmp_path / "db_a"
+    db_b = tmp_path / "db_b"
+
+    # Set COMMUNITY_BRAIN_DB_PATH to db_b — the wrong target.
+    monkeypatch.setenv("COMMUNITY_BRAIN_DB_PATH", str(db_b))
+    monkeypatch.delenv("COMMUNITY_BRAIN_ARTIFACT_ROOT", raising=False)
+
+    config_dir = _write_min_configs(tmp_path / "config")
+
+    request = IngestRequest(
+        session_id="2026-02-12",
+        session_date="2026-02-12",
+        session_title="Env-var override regression test",
+        artifact_paths={
+            "prepared_transcript": str(FIXTURES / "prepared-transcript-sample.md"),
+        },
+        force_reextract=False,
+    )
+
+    # Ingest into db_a explicitly.
+    ingest_session(request, config_dir, str(db_a), None)
+
+    # db_a: lint must have run — all rows should have corpus_markers_computed_at set.
+    db_a_conn = _lancedb.connect(str(db_a))
+    rows_a = db_a_conn.open_table("chunks").to_arrow().to_pylist()
+    assert len(rows_a) > 0, "no rows in db_a — ingest did not run"
+    assert all(r["corpus_markers_computed_at"] is not None for r in rows_a), (
+        "corpus_markers_computed_at is None in db_a — lint did not run on the "
+        "explicit db_path (round-5 regression: env-var override may have fired)"
+    )
+
+    # db_b: must not exist (or must be empty) — lint must NOT have touched it.
+    if db_b.exists():
+        db_b_conn = _lancedb.connect(str(db_b))
+        tables_b = db_b_conn.list_tables().tables
+        assert "chunks" not in tables_b, (
+            "db_b has a 'chunks' table — COMMUNITY_BRAIN_DB_PATH env var "
+            "overrode the explicit db_path in _post_commit_maintenance (round-5 regression)"
+        )

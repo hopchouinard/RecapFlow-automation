@@ -7,6 +7,7 @@ import pyarrow as pa
 import pytest
 
 from community_brain.query.fts_lifecycle import (
+    drop_full_text_index_if_present,
     ensure_fts_index,
     has_fts_index,
 )
@@ -109,3 +110,64 @@ def test_optimize_fts_index_does_not_log_warning_after_t8_wireup(tmp_path, caplo
     assert warnings_or_higher == [], (
         f"optimize_fts_index logged at WARNING+ unexpectedly: {warnings_or_higher}"
     )
+
+
+# --- T18: bm25_text default + legacy cleanup ---
+
+
+def _make_bm25_table(db_path):
+    """Minimal table with a bm25_text column for T18 tests."""
+    db = lancedb.connect(str(db_path))
+    schema = pa.schema([
+        ("chunk_id", pa.string()),
+        ("bm25_text", pa.string()),
+        ("full_text", pa.string()),
+        ("embedding", pa.list_(pa.float32(), 4)),
+    ])
+    table = db.create_table("chunks", schema=schema)
+    table.add([
+        {
+            "chunk_id": "a",
+            "bm25_text": "hello world coaching call",
+            "full_text": "hello world",
+            "embedding": [1.0, 0, 0, 0],
+        },
+    ])
+    return db, table
+
+
+def test_ensure_fts_index_default_column_is_bm25_text(tmp_path):
+    """Default column for ensure_fts_index is bm25_text (v3 migration)."""
+    _db, table = _make_bm25_table(tmp_path)
+    assert has_fts_index(table, "bm25_text") is False
+    ensure_fts_index(table)  # default column = bm25_text
+    assert has_fts_index(table, "bm25_text") is True
+
+
+def test_ensure_fts_index_default_does_not_create_full_text_index(tmp_path):
+    """When called with no column arg, ensure_fts_index should NOT create a
+    full_text FTS index — it targets bm25_text only."""
+    _db, table = _make_bm25_table(tmp_path)
+    ensure_fts_index(table)  # default = bm25_text
+    # full_text index should remain absent
+    assert has_fts_index(table, "full_text") is False
+
+
+def test_drop_full_text_index_if_present_no_op_when_absent(tmp_path):
+    """When no full_text FTS index exists, drop helper returns False without raising."""
+    _db, table = _make_bm25_table(tmp_path)
+    result = drop_full_text_index_if_present(table)
+    # Either False (no index found / API unavailable) or True (attempted drop).
+    # The key guarantee is: no exception raised.
+    assert result is False
+
+
+def test_drop_full_text_index_if_present_returns_false_on_fresh_table(tmp_path):
+    """On a table that has never had a full_text FTS index, the helper is a no-op."""
+    _db, table = _make_bm25_table(tmp_path)
+    # Build bm25_text index — simulates the v3 state after migration.
+    ensure_fts_index(table, "bm25_text")
+    result = drop_full_text_index_if_present(table)
+    assert result is False
+    # bm25_text index is still present after the drop attempt
+    assert has_fts_index(table, "bm25_text") is True

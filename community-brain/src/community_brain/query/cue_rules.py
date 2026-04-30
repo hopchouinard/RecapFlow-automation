@@ -12,10 +12,18 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
-from typing import Callable
+from pathlib import Path
+from typing import Any, Callable
+
+import yaml
 
 
 logger = logging.getLogger(__name__)
+
+# Last-known-good cache keyed by resolved path string.
+# On successful load, the result is stored here.
+# On failure with a cached path, the cached result is returned (MEDIUM finding fix).
+_LAST_GOOD_RULES: dict[str, tuple["CueRule", ...]] = {}
 
 
 @dataclass(frozen=True)
@@ -142,6 +150,8 @@ def apply_cue_boosts(
             try:
                 if rule.target_predicate(chunk):
                     chunk["_rrf_score"] = chunk.get("_rrf_score", 0.0) + rule.delta
+                    chunk["_cue_delta"] = chunk.get("_cue_delta", 0.0) + rule.delta
+                    chunk.setdefault("_cue_rules_fired", []).append(rule.name)
             except Exception as exc:
                 logger.warning(
                     "cue rule %r predicate raised on chunk %r: %s; skipping rule for remaining candidates",
@@ -155,3 +165,120 @@ def apply_cue_boosts(
 
     boosted.sort(key=lambda c: c.get("_rrf_score", 0.0), reverse=True)
     return boosted
+
+
+def _build_predicate(spec: dict[str, Any]):
+    """Translate a YAML target_predicate dict to a callable predicate.
+
+    Supported shapes:
+      - {field: NAME, value: VAL}                  -> chunk[NAME] == VAL
+      - {field: NAME, check: non_empty}            -> chunk[NAME] is non-empty list/string
+      - {field: NAME, check: contains, value: STR} -> STR in chunk[NAME] (list or string)
+    """
+    field = spec.get("field")
+    if not field:
+        raise ValueError("target_predicate missing 'field'")
+    if "value" in spec and "check" not in spec:
+        expected = spec["value"]
+        return lambda chunk, _f=field, _v=expected: chunk.get(_f) == _v
+    check = spec.get("check")
+    if check == "non_empty":
+        def _pred_non_empty(chunk, _f=field):
+            v = chunk.get(_f)
+            return isinstance(v, (list, str)) and len(v) > 0
+        return _pred_non_empty
+    if check == "contains":
+        needle = spec.get("value")
+        if needle is None:
+            raise ValueError("check: contains requires 'value'")
+        def _pred_contains(chunk, _f=field, _n=needle):
+            v = chunk.get(_f)
+            if isinstance(v, list):
+                return _n in v
+            if isinstance(v, str):
+                return _n in v
+            return False
+        return _pred_contains
+    raise ValueError(f"unsupported target_predicate spec: {spec}")
+
+
+def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
+    """Load cue rules from YAML.
+
+    Returns empty tuple on first-time missing/malformed file (bootstrap path).
+    For subsequent failures on a previously-cached path, returns the
+    last-known-good rules and logs WARNING — protects /query from transient
+    edit windows that produce malformed/partial YAML.
+
+    Skips individual malformed rules with ERROR; continues with the rest.
+    """
+    p = Path(path)
+    cache_key = str(p.resolve()) if p.exists() else str(p)
+
+    def _fallback_or_empty(reason: str) -> tuple[CueRule, ...]:
+        cached = _LAST_GOOD_RULES.get(cache_key)
+        if cached is not None:
+            logger.warning(
+                "cue rules YAML load failed (%s); using last-known-good %d rules from cache",
+                reason,
+                len(cached),
+            )
+            return cached
+        return ()
+
+    if not p.exists():
+        logger.warning("cue rules YAML not found: %s; using empty rule set", p)
+        return _fallback_or_empty("file missing")
+    try:
+        data = yaml.safe_load(p.read_text())
+    except Exception as exc:
+        logger.error("failed to parse cue rules YAML at %s: %s", p, exc)
+        return _fallback_or_empty(f"parse error: {exc}")
+    if not isinstance(data, dict) or "cue_rules" not in data:
+        logger.error("cue rules YAML at %s missing top-level 'cue_rules' key", p)
+        return _fallback_or_empty("missing 'cue_rules' top-level key")
+    rules: list[CueRule] = []
+    for entry in data.get("cue_rules") or []:
+        try:
+            name = entry["name"]
+            raw_phrases = entry["cue_phrases"]
+            if isinstance(raw_phrases, str):
+                raise ValueError(
+                    f"cue_phrases must be a list of strings, got bare string {raw_phrases!r} "
+                    f"(common YAML mistake: write 'cue_phrases: [{raw_phrases}]' instead)"
+                )
+            if not isinstance(raw_phrases, (list, tuple)):
+                raise ValueError(
+                    f"cue_phrases must be a list, got {type(raw_phrases).__name__}"
+                )
+            if len(raw_phrases) == 0:
+                raise ValueError("cue_phrases is empty")
+            for phrase in raw_phrases:
+                if not isinstance(phrase, str):
+                    raise ValueError(
+                        f"cue_phrases element must be a string, got "
+                        f"{type(phrase).__name__}: {phrase!r}"
+                    )
+                if not phrase:
+                    raise ValueError("cue_phrases element is empty string")
+            cue_phrases = tuple(raw_phrases)
+            predicate = _build_predicate(entry["target_predicate"])
+            delta = float(entry["delta"])
+            if delta < 0:
+                raise ValueError("delta must be non-negative")
+            rules.append(CueRule(
+                name=name,
+                cue_phrases=cue_phrases,
+                target_predicate=predicate,
+                delta=delta,
+            ))
+        except Exception as exc:
+            logger.error(
+                "skipping malformed cue rule %r: %s",
+                entry.get("name", "<unnamed>") if isinstance(entry, dict) else "<not-a-dict>",
+                exc,
+            )
+    out = tuple(rules)
+    if out:
+        _LAST_GOOD_RULES[cache_key] = out
+    return out

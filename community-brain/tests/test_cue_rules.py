@@ -204,3 +204,318 @@ def test_apply_cue_boosts_does_not_mutate_input():
     original_score = candidates[0]["_rrf_score"]
     apply_cue_boosts("what unresolved questions remain?", candidates)
     assert candidates[0]["_rrf_score"] == original_score
+
+
+# ---------------------------------------------------------------------------
+# YAML loader tests (T13)
+# ---------------------------------------------------------------------------
+
+import pytest  # noqa: E402 (below other imports is fine for test files)
+
+
+def test_load_cue_rules_from_yaml(tmp_path):
+    """The YAML loader produces CueRule instances with predicates that match
+    the same shape as the legacy hardcoded set."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    yaml_text = """
+cue_rules:
+  - name: test_unresolved
+    cue_phrases: [unresolved]
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+  - name: test_decisions
+    cue_phrases: [decision]
+    target_predicate:
+      field: decisions
+      check: non_empty
+    delta: 0.008
+"""
+    path = tmp_path / "cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert len(rules) == 2
+
+    # boolean rule
+    bool_rule = rules[0]
+    assert bool_rule.name == "test_unresolved"
+    assert bool_rule.target_predicate({"has_unresolved_question": True}) is True
+    assert bool_rule.target_predicate({"has_unresolved_question": False}) is False
+
+    # non_empty rule
+    list_rule = rules[1]
+    assert list_rule.target_predicate({"decisions": ["X"]}) is True
+    assert list_rule.target_predicate({"decisions": []}) is False
+    assert list_rule.target_predicate({"decisions": None}) is False
+
+
+def test_load_cue_rules_missing_file_returns_empty(tmp_path):
+    """Missing YAML file: loader returns empty tuple, logs WARN."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    rules = load_cue_rules_from_yaml(tmp_path / "missing.yaml")
+    assert rules == ()
+
+
+def test_load_cue_rules_malformed_yaml_returns_empty(tmp_path):
+    """Unparseable YAML: loader returns empty tuple, logs ERROR."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "broken.yaml"
+    path.write_text("[: invalid: yaml: -")
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
+def test_load_cue_rules_missing_top_level_key_returns_empty(tmp_path):
+    """YAML without 'cue_rules' top-level key: loader returns empty, logs ERROR."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "wrong.yaml"
+    path.write_text("not_cue_rules: []")
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
+def test_load_cue_rules_skips_malformed_rule_keeps_others(tmp_path):
+    """A rule missing required keys is skipped; well-formed rules still load."""
+    yaml_text = """
+cue_rules:
+  - name: bad
+    cue_phrases: []
+    target_predicate:
+      field: missing_value_or_check
+    delta: 0.01
+  - name: good
+    cue_phrases: [x]
+    target_predicate:
+      field: has_question
+      value: true
+    delta: 0.003
+"""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert len(rules) == 1
+    assert rules[0].name == "good"
+
+
+def test_load_cue_rules_negative_delta_skipped(tmp_path):
+    """A rule with negative delta is rejected; other rules load."""
+    yaml_text = """
+cue_rules:
+  - name: bad_negative
+    cue_phrases: [foo]
+    target_predicate:
+      field: has_question
+      value: true
+    delta: -0.01
+  - name: good
+    cue_phrases: [x]
+    target_predicate:
+      field: has_question
+      value: true
+    delta: 0.003
+"""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert len(rules) == 1
+    assert rules[0].name == "good"
+
+
+def test_load_cue_rules_contains_predicate(tmp_path):
+    """Predicate type 'contains' supported for list-or-string fields."""
+    yaml_text = """
+cue_rules:
+  - name: entity_match
+    cue_phrases: [foo]
+    target_predicate:
+      field: entities
+      check: contains
+      value: Adam
+    delta: 0.005
+"""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert len(rules) == 1
+    rule = rules[0]
+    assert rule.target_predicate({"entities": ["Adam", "Bob"]}) is True
+    assert rule.target_predicate({"entities": ["Bob"]}) is False
+    assert rule.target_predicate({"entities": "Adam Smith"}) is True  # string also supported
+
+
+# ---------------------------------------------------------------------------
+# Regression tests for Codex Phase 4 findings (HIGH + MEDIUM)
+# ---------------------------------------------------------------------------
+
+import pytest  # noqa: F811 (already imported above; harmless re-import in test files)
+
+
+@pytest.fixture(autouse=False)
+def clear_cue_rules_cache():
+    """Clear the module-level last-known-good cache before and after each test
+    that manipulates it, so tests don't bleed into each other."""
+    from community_brain.query import cue_rules as _mod
+    _mod._LAST_GOOD_RULES.clear()
+    yield
+    _mod._LAST_GOOD_RULES.clear()
+
+
+def test_load_cue_rules_rejects_bare_string_cue_phrases(tmp_path, clear_cue_rules_cache):
+    """Catastrophic-failure-mode regression: bare string for cue_phrases
+    must NOT be accepted as a character-by-character cue list."""
+    yaml_text = '''
+cue_rules:
+  - name: bad_bare_string
+    cue_phrases: unresolved
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+  - name: good
+    cue_phrases: [unresolved]
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+'''
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "bare_string_cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert len(rules) == 1
+    assert rules[0].name == "good"
+
+
+def test_load_cue_rules_rejects_non_string_cue_phrase_element(tmp_path, clear_cue_rules_cache):
+    """Non-string elements in cue_phrases would cause TypeError in cue_phrase_matches."""
+    yaml_text = '''
+cue_rules:
+  - name: bad_int
+    cue_phrases: [123]
+    target_predicate:
+      field: has_question
+      value: true
+    delta: 0.010
+'''
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "int_cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
+def test_load_cue_rules_rejects_empty_string_cue_phrase(tmp_path, clear_cue_rules_cache):
+    """Empty string is a substring of every question — would fire on every query."""
+    yaml_text = '''
+cue_rules:
+  - name: bad_empty
+    cue_phrases: [""]
+    target_predicate:
+      field: has_question
+      value: true
+    delta: 0.010
+'''
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "empty_cue.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
+def test_load_cue_rules_uses_last_known_good_on_subsequent_failure(tmp_path, clear_cue_rules_cache):
+    """Successful load is cached; a subsequent failure on the same path
+    returns the cached rules instead of empty (MEDIUM finding)."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    path = tmp_path / "transient_cues.yaml"
+    path.write_text('''
+cue_rules:
+  - name: good
+    cue_phrases: [unresolved]
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+''')
+    rules1 = load_cue_rules_from_yaml(path)
+    assert len(rules1) == 1
+
+    # Simulate partial write during in-place editor save
+    path.write_text("[: invalid yaml")
+    rules2 = load_cue_rules_from_yaml(path)
+    # Cache rescues us
+    assert len(rules2) == 1
+    assert rules2[0].name == "good"
+
+
+def test_load_cue_rules_empty_on_first_failure(tmp_path, clear_cue_rules_cache):
+    """No cache yet → first-ever failure returns empty (bootstrap behavior)."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+    path = tmp_path / "never_existed_bootstrap.yaml"  # never written
+    rules = load_cue_rules_from_yaml(path)
+    assert rules == ()
+
+
+def test_apply_cue_boosts_tracks_fired_rules_and_delta():
+    """apply_cue_boosts now populates _cue_delta and _cue_rules_fired
+    on each chunk it boosts."""
+    rule_a = CueRule(
+        name="ra",
+        cue_phrases=("foo",),
+        target_predicate=lambda c: c.get("flag_a") is True,
+        delta=0.01,
+    )
+    rule_b = CueRule(
+        name="rb",
+        cue_phrases=("foo",),
+        target_predicate=lambda c: c.get("flag_b") is True,
+        delta=0.005,
+    )
+    candidates = [
+        {"chunk_id": "c1", "_rrf_score": 0.05, "flag_a": True, "flag_b": True},
+        {"chunk_id": "c2", "_rrf_score": 0.05, "flag_a": True, "flag_b": False},
+        {"chunk_id": "c3", "_rrf_score": 0.05, "flag_a": False, "flag_b": False},
+    ]
+    boosted = apply_cue_boosts("foo bar", candidates, rules=(rule_a, rule_b))
+    by_id = {c["chunk_id"]: c for c in boosted}
+    # c1 fires both rules
+    assert by_id["c1"]["_cue_delta"] == pytest.approx(0.015)
+    assert sorted(by_id["c1"]["_cue_rules_fired"]) == ["ra", "rb"]
+    # c2 fires only ra
+    assert by_id["c2"]["_cue_delta"] == pytest.approx(0.01)
+    assert by_id["c2"]["_cue_rules_fired"] == ["ra"]
+    # c3 fires nothing
+    assert by_id["c3"].get("_cue_delta", 0.0) == 0.0
+    assert by_id["c3"].get("_cue_rules_fired", []) == []
+
+
+def test_existing_apply_cue_boosts_works_with_yaml_loaded_rules(tmp_path):
+    """Smoke test: the existing apply_cue_boosts function works with YAML-loaded rules."""
+    from community_brain.query.cue_rules import (
+        apply_cue_boosts, load_cue_rules_from_yaml,
+    )
+    yaml_text = """
+cue_rules:
+  - name: r
+    cue_phrases: [unresolved]
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+"""
+    path = tmp_path / "cues.yaml"
+    path.write_text(yaml_text)
+    rules = load_cue_rules_from_yaml(path)
+    candidates = [
+        {"chunk_id": "a", "_rrf_score": 0.01, "has_unresolved_question": True},
+        {"chunk_id": "b", "_rrf_score": 0.02, "has_unresolved_question": False},
+    ]
+    boosted = apply_cue_boosts("unresolved questions", candidates, rules=rules)
+    by_id = {c["chunk_id"]: c["_rrf_score"] for c in boosted}
+    assert by_id["a"] == pytest.approx(0.020)
+    assert by_id["b"] == pytest.approx(0.020)

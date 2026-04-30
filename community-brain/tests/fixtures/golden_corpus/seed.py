@@ -70,6 +70,9 @@ def _row(idx, chunk_id, session_id, full_text, **overrides):
         "has_insight": False,
         "references_prior": False,
         "full_text": full_text,
+        # bm25_text mirrors full_text in the golden corpus; in production it's
+        # synthesized from full_text + structured metadata fields.
+        "bm25_text": full_text,
         "embedding": [float((idx + 1) * 0.01)] * EMBEDDING_DIM,
     }
     base.update(overrides)
@@ -99,6 +102,8 @@ def _decoy(idx, chunk_id, full_text):
         "has_insight": False,
         "references_prior": False,
         "full_text": full_text,
+        # bm25_text mirrors full_text in the golden corpus
+        "bm25_text": full_text,
         "embedding": [0.5] * EMBEDDING_DIM,
     }
 

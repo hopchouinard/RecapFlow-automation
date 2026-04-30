@@ -6,12 +6,19 @@ Exposes the search/filter helpers used by the retrieval server.
 from __future__ import annotations
 
 import logging
+import os
+from pathlib import Path
 
 import lancedb
 import ollama
 
 from community_brain.ingestion.embedding import _active_embed_model
-from community_brain.query.cue_rules import apply_cue_boosts
+from community_brain.query.corpus_verify import CorpusInvalidError
+from community_brain.query.cue_rules import (
+    CUE_RULES,  # legacy fallback reference; not used directly in the hot-reload path
+    apply_cue_boosts,
+    load_cue_rules_from_yaml,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +26,20 @@ logger = logging.getLogger(__name__)
 # returns top_k * OVERSAMPLE_FACTOR raw candidates so the downstream cue-boost
 # step (T10) has headroom to re-rank before truncating to top_k.
 OVERSAMPLE_FACTOR = 3
+
+# Default path for the cue-rules YAML inside the container (spec §12.4).
+# Overridable via COMMUNITY_BRAIN_CUE_RULES_PATH env var at call time.
+CUE_RULES_PATH_DEFAULT = "/app/config/query-cues.yaml"
+
+
+def _resolve_cue_rules():
+    """Load cue rules from YAML at call time. Path overridable via
+    COMMUNITY_BRAIN_CUE_RULES_PATH env var. Falls back to empty tuple
+    if the file is missing/malformed (load_cue_rules_from_yaml's
+    graceful-degradation contract from T13).
+    """
+    cue_path = os.environ.get("COMMUNITY_BRAIN_CUE_RULES_PATH") or CUE_RULES_PATH_DEFAULT
+    return load_cue_rules_from_yaml(cue_path)
 
 __all__ = [
     "search_chunks",
@@ -140,6 +161,24 @@ def build_filter_expression(filters: dict | None) -> str | None:
     return " AND ".join(clauses)
 
 
+def _compute_metadata_summary(top_k_chunks: list[dict]) -> dict:
+    """Authoritative aggregate counts of boolean derived flags across the
+    retrieved chunks. Used by the answering LLM (Finding 8 fix path c).
+    """
+    flag_fields = (
+        "has_question",
+        "has_answer",
+        "has_unresolved_question",
+        "has_insight",
+        "references_prior",
+    )
+    summary: dict[str, int] = {"of_top_k": len(top_k_chunks)}
+    for f in flag_fields:
+        count = sum(1 for c in top_k_chunks if c.get(f) is True)
+        summary[f"{f}_count"] = count
+    return summary
+
+
 def search_chunks(
     question: str,
     db_path: str,
@@ -148,13 +187,13 @@ def search_chunks(
     ollama_base_url: str | None = None,
     table_name: str = "chunks",
     _use_hybrid: bool = True,
-) -> list[dict]:
+) -> dict:
     """Hybrid (vector + BM25) search against the chunks table with optional
     structured filters and the success-guard.
 
     Pipeline (spec §3.1):
       1. Embed `question` via Ollama (nomic-embed-text).
-      2. LanceDB hybrid query: RRF(vector, BM25 on full_text), oversampled
+      2. LanceDB hybrid query: RRF(vector, BM25 on bm25_text), oversampled
          by OVERSAMPLE_FACTOR.
       3. WHERE clause: extraction_status = 'success' AND caller's filters.
       4. Return top (top_k * OVERSAMPLE_FACTOR) raw rows; cue boost runs
@@ -166,7 +205,7 @@ def search_chunks(
     """
     db = lancedb.connect(db_path)
     if table_name not in db.list_tables().tables:
-        return []
+        return {"chunks": [], "metadata_summary": _compute_metadata_summary([])}
     table = db.open_table(table_name)
 
     if ollama_base_url:
@@ -187,8 +226,11 @@ def search_chunks(
             # LanceDB 0.30.x hybrid API: explicit builder form. Passing the
             # vector positionally to .search() while also calling .text(...)
             # raises ValueError. See spec §11.1 Resolution side note.
+            # fts_columns pins the lexical leg to bm25_text; without this,
+            # LanceDB may fall back to a legacy full_text FTS index that
+            # drop_full_text_index_if_present can't always clean up.
             query = (
-                table.search(query_type="hybrid")
+                table.search(query_type="hybrid", fts_columns="bm25_text")
                 .vector(query_vector)
                 .text(question)
                 .where(where_expr)
@@ -196,16 +238,19 @@ def search_chunks(
             )
             results = query.to_arrow()
         except Exception as exc:
-            logger.warning(
-                "hybrid query failed (%r); falling back to vector-only ranking",
-                exc,
-            )
-            query = (
-                table.search(query_vector)
-                .where(where_expr)
-                .limit(candidate_count)
-            )
-            results = query.to_arrow()
+            # Runtime hybrid-search failure after verify_corpus_v3_state passed
+            # at /query entry means the corpus is in an unexpected bad state
+            # (corrupt index, fts_columns incompatibility, persistent FTS
+            # execution error). Don't silently degrade to vector-only — fail
+            # loud per the convergent refactor's principle. Operator must
+            # investigate. If a narrowly-scoped transient failure mode is
+            # observed in production later, add it back with a typed exception
+            # check; do NOT revert to a catch-all.
+            raise CorpusInvalidError(
+                f"hybrid search failed at runtime despite passing corpus "
+                f"verification: {exc}. Corpus may have a corrupt FTS index or "
+                f"other state issue."
+            ) from exc
     else:
         query = (
             table.search(query_vector)
@@ -236,10 +281,72 @@ def search_chunks(
         else:
             # Vector-only fallback path: _distance is already present from LanceDB.
             row["_rrf_score"] = 1.0 - float(row.get("_distance", 0.0))
+        # Derive vector_similarity from the cosine distance computed above.
+        # Range: [0.0, 1.0]; higher = more similar.
+        row["_vector_similarity"] = 1.0 - float(row.get("_distance", 0.0))
         candidates.append(row)
 
-    boosted = apply_cue_boosts(question, candidates)
+    # BM25-only query to capture per-candidate rank in the lexical leg.
+    # This is a separate lightweight query — just FTS, no vector component —
+    # so we can assign a 1-indexed rank to each candidate. ~10-20ms overhead
+    # at current corpus size (acceptable per spec §15). Candidates that don't
+    # appear in the BM25 result got here purely via the vector leg; their
+    # bm25_rank will be None.
+    # fts_columns pins the lexical leg to bm25_text (same rationale as the
+    # hybrid search above). Limit is max(top_k * 10, 1000): generous enough
+    # that bm25_rank=None reliably means "vector-only" or "outside top-1000
+    # BM25 results" (rare at current corpus size). See ScoreBreakdown docstring.
+    try:
+        bm25_limit = max(top_k * 10, 1000)
+        bm25_results = (
+            table.search(question, query_type="fts", fts_columns="bm25_text")
+            .where(where_expr)
+            .limit(bm25_limit)
+            .to_arrow()
+            .to_pylist()
+        )
+        bm25_rank_by_id: dict[str, int] = {
+            row["chunk_id"]: idx + 1
+            for idx, row in enumerate(bm25_results)
+        }
+    except Exception as exc:
+        # Transient: the BM25 rank query is a secondary scoring annotation, not
+        # the primary result set. Its failure means score_breakdown.bm25_rank will
+        # be None for all chunks, but ranking and retrieval remain correct via the
+        # hybrid query's RRF output. Not an invariant violation.
+        logger.warning("BM25 rank query failed (%r); bm25_rank will be None for all chunks", exc)
+        bm25_rank_by_id = {}
+
+    for chunk in candidates:
+        chunk["_bm25_rank"] = bm25_rank_by_id.get(chunk.get("chunk_id", ""))
+
+    # Snapshot RRF score before cue boost so score_breakdown can report
+    # the pre-boost value separately from the final ranking signal.
+    for chunk in candidates:
+        chunk["_rrf_score_pre_boost"] = chunk.get("_rrf_score", 0.0)
+
+    rules = _resolve_cue_rules()
+    boosted = apply_cue_boosts(question, candidates, rules=rules)
+
+    top_k_chunks = boosted[:top_k]
+
+    # Build per-chunk score_breakdown dict from the tracked accumulators.
+    # The underscored fields (_vector_similarity etc.) are kept on the chunk
+    # for debugging; score_breakdown is the public surface.
+    for chunk in top_k_chunks:
+        chunk["score_breakdown"] = {
+            "vector_similarity": chunk.get("_vector_similarity", 0.0),
+            "bm25_rank": chunk.get("_bm25_rank"),
+            "rrf_score": chunk.get("_rrf_score_pre_boost", 0.0),
+            "cue_delta": chunk.get("_cue_delta", 0.0),
+            "cue_rules_fired": chunk.get("_cue_rules_fired", []),
+        }
+
     # IMPORTANT: do NOT re-sync _distance from _rrf_score here.
     # _distance reflects vector cosine similarity (spec §7.2); cue boost
     # only changes ranking via _rrf_score, not the surface similarity field.
-    return boosted[:top_k]
+    metadata_summary = _compute_metadata_summary(top_k_chunks)
+    return {
+        "chunks": top_k_chunks,
+        "metadata_summary": metadata_summary,
+    }
