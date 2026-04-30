@@ -1021,7 +1021,7 @@ Corpus state post-deploy: 184 chunks across 9 sessions, schema v1.1 (38 fields i
 
 | # | Criterion | Result | Status |
 |---|---|---|---|
-| 16.1.1 | F8 fix — answering LLM cites ≥5 unresolved | pending Open WebUI manual check | manual |
+| 16.1.1 | F8 fix — answering LLM cites ≥5 unresolved | 3 cited (Paul Miller's adoption question; Mike Simko's ICP-platform question; community Claude Code performance question); v2 baseline 1 → v3 3× improvement | ❌ off by 2 |
 | 16.1.2 | Adam in `entities` (top-10 for "Adam Gold Flamingo" query) | 4/10 (target ≥5) | ❌ off by 1 |
 | 16.1.3 | Canonicalization applied (`speakers_spoke=["Adam James"]` filter) | 10/10 | ✓ |
 | 16.1.4 | `recurrent` marker populated | 157/184 (85.3%); target ≥30% | ✓ |
@@ -1040,6 +1040,9 @@ Corpus state post-deploy: 184 chunks across 9 sessions, schema v1.1 (38 fields i
 
 - **16.1.8 F7 (has_unresolved_question, 4/10):** corpus-wide tagged chunk count dropped 39 (v1, Gemma 4 31B + chunk-extraction-v1) → 20 (v3, Gemma 4 31B + chunk-extraction-v2). Same model, different prompt. Stage C v2 is more conservative on this flag. Per-query top-10 surfaces 4 tagged chunks where v2 baseline surfaced 6.
   - **v4 candidate fix:** prompt tuning to lift sensitivity on `has_unresolved_question`. Note: false positives from v1 may also have been present; we don't have a labeled ground-truth set to know whether 39 was over-counting or 20 is under-counting.
+
+- **16.1.1 (F8 fix, 3 cited):** same root cause as 16.1.8 F7 — fewer tagged chunks in the retrieval pool means fewer can be cited. With only 4 tagged chunks in the top-10 for the unresolved-questions query, the model citing 3 is a strong recall rate (75%). v2 baseline was 1; v3 is 3× improvement. The model's reasoning trace shows healthy trust-contract behavior: it re-derives from text rather than blindly trusting `[flags:]` tags, and even surfaces additional unresolved questions Stage C didn't tag (Mike Simko's ICP-platform question, "What phrase resonates more?", "Are there other ICPs?"). Citation discipline is clean — chunk_id references match real chunks, no fabricated dates/entities.
+  - **v4 candidate fix:** same as F7 — prompt sensitivity tuning will indirectly lift this metric. Independently, ground-truth labeling of unresolved-question chunks across the 9-session corpus would let us calibrate Stage C's flag against operator judgment.
 
 **Operational confirmations:**
 
