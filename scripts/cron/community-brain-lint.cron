@@ -1,0 +1,12 @@
+# Community Brain — daily lint run
+# Spec: docs/superpowers/specs/2026-05-02-ingest-lint-decoupling-design.md
+#
+# Runs at 04:00 UTC daily, after the LanceDB snapshot at 03:30 UTC so
+# snapshots capture pre-lint state and lint changes are visible the next day.
+# Logs to ~pchouinard/n8n/logs/lint-corpus.log. Failure is non-fatal —
+# markers stay where they are and retry tomorrow.
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+0 4 * * * pchouinard docker exec community_brain_retrieval python -m community_brain.cli.lint_corpus >> /home/pchouinard/n8n/logs/lint-corpus.log 2>&1
