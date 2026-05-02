@@ -27,3 +27,6 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Vector database runtime files (3.8GB, rotates on every ingest)
+community-brain/lancedb/
