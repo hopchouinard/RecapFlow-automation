@@ -1,101 +1,98 @@
 ## general
 
-This was a coaching/community call for ShipKit members, hosted by Brandon Hancock. The session followed a round-robin format where participants shared project updates and asked questions. Brandon opened with a personal update about being accepted into TinySeed and a passport emergency that disrupted travel plans.
+This was a coaching/community call for the ShipKit community, hosted by Brandon Hancock. The session followed a round-robin format where members shared project updates, demos, and asked questions. Brandon opened by sharing that he had been accepted into TinySeed for a startup based on the RAG template, and that a passport emergency had disrupted his travel plans.
 
-The call covered a wide range of projects: Patrick Chouinard's work on enterprise AI platform evaluation and a custom GPT for template selection; Scott Rippey's personal AI morning-summary agent with parallelized sub-agents; Ryan C's social media automation SaaS with AI image editing; Maksym Liamin's WhatsApp-based automotive RAG and voice agents for Nissan, Mazda, and Infinity; George Kurian's plans for compliance/audit automation; Ty Wells' kiosk platform rebuild, predictive analytics SaaS, remote coding agent on a VPS, and a Fire Stick photo-display gift project; and Tiran Dagan's portfolio of tools including a resume analyzer, emergency preparedness planner, consulting report generator, trip planner, and a Picasa-style photo gallery.
+Participants covered a wide range of projects: Patrick Chouinard was building a custom GPT to identify which ShipKit template to use for a given project, and was also leading an enterprise AI platform evaluation at his company. Scott Rippey demonstrated a parallelized morning summary agent built with the Anthropic TypeScript SDK and Google APIs. Ryan C showed a social media automation platform with AI image editing via Nano Banana. Maksym Liamin shared updates on WhatsApp-based automotive sales tools for Nissan, Mazda, and Infinity, plus a new iMessage personal assistant product. Tiran Dagan presented four projects: a resume analyzer (CV Refinery), an emergency preparedness planner, a consulting report-to-interactive-site converter, and a trip planning tool (SherpaCow). Ty Wells showed a predictive analytics platform for SMBs, a remote cloud-based coding agent accessible from mobile, and a Fire Stick-based family photo display with face recognition.
 
-Discussion threads included agentic workflow patterns (generator-evaluator loops, parallelization), voice agent model selection, LinkedIn outreach strategy for B2B enterprise sales, local model recommendations, SOC 2 / CASA 2 certification processes, and ShipKit onboarding improvements.
+The call also included discussions on enterprise AI model evaluation strategy, voice agent latency trade-offs, LinkedIn outreach for B2B sales, SOC 2 / CASA 2 certification, local model recommendations, and ShipKit onboarding improvements.
 
 ## insights
 
-- **Patrick Chouinard:** Claude Code outperforms Gemini CLI for web search + scraping research pipelines because it can mix web search and web fetch (scraping) in the same workflow. It costs more but produces better results.
-- **Patrick Chouinard:** In enterprise AI agreements, you buy a shared token pool across all users rather than per-seat limits, and enterprise versions include tools and assets not present in public versions. Binding to a single provider long-term is risky given the pace of market change.
-- **Brandon Hancock:** The generator-evaluator agentic loop (worker generates → evaluator scores pass/fail → feedback loops back) is a reliable pattern for producing high-quality outputs on nebulous tasks, at the cost of speed.
-- **Scott Rippey:** Splitting a large monolithic agent call into parallel sub-agents with their own context windows reduces timeout and context-overflow problems, not just latency.
-- **Scott Rippey:** Providing a screenshot of a desired workflow pattern (e.g., from Trigger.dev) as visual context when prompting Claude Code is an effective way to communicate architecture intent.
-- **Brandon Hancock:** The "service before software" approach — validating a service manually first, then automating it — is the textbook SaaS path and reduces risk significantly (Ryan C's social media agency is cited as the example).
-- **Brandon Hancock:** For enterprise B2B, consistent LinkedIn connection-building over a year (20 invites/day, posting as a thought leader, no immediate sales pitch) is a high-ROI long-game strategy.
-- **Tiran Dagan:** Feeding an existing PRD into ShipKit's prompts and having the AI answer the framework questions on your behalf (rather than answering them yourself) can surface surprising and valuable new directions.
-- **Brandon Hancock:** Creating a Claude command (e.g., `git workflow commit`) that fires in a background terminal window makes committing frictionless and preserves rollback ability without interrupting flow.
-- **Maksym Liamin:** Voice agent model selection is a hard trade-off: smarter models have too much latency; fast models can't reliably do tool calls. Kimi K2 is currently used in production for this balance.
-- **Ty Wells:** Running four parallel Claude Code projects with sub-agents simultaneously can burn through $300 in a single evening — but the output volume justifies it if the work is well-planned.
-- **Brandon Hancock:** Planning upfront (PRD, task artifacts, code-change plans) pays compounding dividends; diving straight into coding leads to context-window exhaustion and hallucination loops at the 50% mark.
-- **Patrick Chouinard:** A "horizontal" research pipeline (wide coverage of many topics daily) is the inverse of deep research and is well-suited to tracking a fast-moving market like AI providers.
+- Patrick Chouinard: Claude Code outperforms Gemini CLI for web search + scraping tasks because it can mix web search and web fetch (scraping) in the same workflow.
+- Patrick Chouinard: Enterprise AI agreements typically come with a shared token pool across all users, making unlimited usage practical; binding to a single provider long-term is risky given how fast the market moves.
+- Brandon Hancock: The generator-evaluator loop pattern (worker generates, evaluator critiques with feedback, loop repeats) produces high-quality agentic outputs for nebulous tasks, at the cost of speed.
+- Scott Rippey: Splitting parallel agent calls into separate context windows prevents context overflow and timeout issues that occur when one large call tries to process too much data at once.
+- Brandon Hancock: The textbook SaaS approach is to validate the service manually first (prove it delivers value), then build software to automate it — not the reverse.
+- Brandon Hancock: For enterprise/B2B sales, a long-play LinkedIn strategy (20 connection requests/day, consistent thought leadership content, no immediate pitch) compounds significantly over a year.
+- Tiran Dagan: When using ShipKit's ideation prompts, feeding an existing PRD into the AI and asking it to answer the prompts on your behalf produces richer, more surprising outputs than answering from scratch.
+- Brandon Hancock: Committing frequently via a simple Claude command ("commit this to GitHub") removes friction and preserves rollback points — critical when AI agents make unexpected changes.
+- Ty Wells: Running four parallel Claude Code projects with sub-agents can burn through $300+ in a single evening — but the volume of work completed justifies it.
+- Brandon Hancock: Planning thoroughly before coding means slower initial progress but much faster velocity past the 50% mark of a project.
+- Maksym Liamin: Voice agent model selection is a hard trade-off — smarter models have too much latency; fast models can't reliably do tool calls. Kimi K2 (quantized, hosted) was their current production choice.
+- Ty Wells: GPT-4o mini on ElevenLabs achieves ~45ms latency while still supporting tool calls — a viable balance point for voice agents.
 
 ## qa
 
-**Q (Elijah):** When setting up ShipKit, do you have to use Cursor, or can you use another IDE like VS Code or Windsurf?
-**A (Brandon Hancock):** The `cursor .` command just opens the folder in Cursor — it's not doing anything magical. You can open the same folder in any editor manually. Currently 90% of the work is done in Claude Code (terminal), with Windsurf used ~10% of the time for visual/UI tasks using Gemini 2.5 Pro.
+**Q (Brandon Hancock):** What happens when the output from all your parallel tasks exceeds the context window?
+**A (Scott Rippey):** I hard-coded rules to limit data scope (e.g., only look back 7 days, use meeting summaries not full transcripts, only scan knowledge base titles). Splitting into separate parallel calls also gives each its own context window, so no single call gets overloaded.
 
-**Q (Brandon Hancock):** Scott, what did you do when parallel agent outputs risked exceeding the context window?
-**A (Scott Rippey):** Added hard constraints in the prompts (e.g., only look back 7 days, only use meeting summaries not full transcripts, only scan knowledge base titles unless relevant). Splitting into separate parallel calls also gives each sub-agent its own context window, dramatically reducing the risk.
+**Q (Brandon Hancock):** Are you using Vercel AI SDK or the Anthropic SDK directly?
+**A (Scott Rippey):** The Anthropic TypeScript SDK directly — not the agent SDK, not Vercel. It's a standard Next.js app deployed via GitHub to Netlify.
 
-**Q (Brandon Hancock):** Maxim, for voice agents, what's the model you're using and what's the latency trade-off?
-**A (Maksym Liamin):** Currently using Kimi K2 in production — GPT models were too slow as of June. The core trade-off is that smarter models have too much latency (~40ms target), while fast models fail at tool calls. Ty Wells added that GPT-4o mini on ElevenLabs achieves ~45ms with reliable tool calls.
+**Q (Brandon Hancock):** For the voice side of your automotive product, are sales agents being replaced or is this supplementary?
+**A (Maksym Liamin):** Still supplementary. The client-facing voice agent is in mid-beta, handling 300–500 leads per week out of full capacity. Full rollout is likely a year away.
 
-**Q (Patrick Chouinard):** Have you considered selling the CV Refinery tool to consulting firms, who spend enormous time reformatting CVs for RFP submissions?
-**A (Tiran Dagan):** Loved the idea — coming from consulting, he confirmed the pain is real. The use case is consuming the client's RFP requirements and automatically selecting and presenting the matching CV content in the required format. Called it a "different league" opportunity.
+**Q (Brandon Hancock):** What's the latency on your voice agent and which model are you using?
+**A (Ty Wells):** About 45ms using GPT-4o mini on ElevenLabs — it balances tool call reliability and low latency.
 
-**Q (Maksym Liamin):** Do you know anything about CASA Tier 2 certification from Google (required for OAuth scopes with restricted permissions)?
-**A (Brandon Hancock):** Not familiar with CASA 2 specifically, but the analogous process for SOC 2 uses platforms like Vanta (~$7k) plus an auditor (~$7k). SOC 1 is a point-in-time audit; SOC 2 requires six months of continuous monitoring logs. Ryan C added that some findings can be formally accepted/indemnified rather than fixed, saving time and cost.
+**Q (Maksym Liamin):** Have you heard of CASA 2 certification from Google, and do you have contacts who can help?
+**A (Brandon Hancock):** Not specifically CASA 2, but for similar certifications (SOC 2), Vanta is the recommended platform (~$7k) plus ~$7k for the auditor. SOC 1 is a point-in-time test; SOC 2 requires 6 months of continuous monitoring logs. Glenn also dropped tips in chat about finding an actual vendor.
 
-**Q (Brandon Hancock):** Tiran, do you think AI will disrupt consulting on the thinking/planning side, the deliverable side, or the whole process?
-**A (Tiran Dagan):** Both — the report generation (research + analysis) and the deliverable production (converting markdown to interactive HTML dashboards) are both being automated. The human consultants bring domain expertise and client relationships; AI handles the data overlay, market research, and presentation layer.
+**Q (Patrick Chouinard):** Have you considered selling CV Refinery to consulting firms, who spend enormous time reformatting CVs for RFP submissions?
+**A (Tiran Dagan):** That's a great idea — in consulting you pick the team that's available and then have to convince the client they're the right fit. The tool could consume the client's RFP requirements and reformat the CV to match, which is exactly the problem. Will pursue this angle.
+
+**Q (Elijah):** When you say "cursor dot" in the ShipKit setup instructions, is that doing something important?
+**A (Brandon Hancock):** No — it just tells Cursor to open the folder. You can open any IDE manually and point it at the folder. There's nothing magic about that command.
+
+**Q (Brandon Hancock):** Is there a way to build a Windows desktop application through Claude Code?
+**A (Ty Wells / Brandon Hancock / Tiran Dagan):** Ty built a Rust launcher via Claude Code, deployed through GitHub Actions, which then runs a web-view kiosk. Brandon suggested Electron for cross-platform desktop apps or compiled Python (PyInstaller). Tiran suggested a configured VM image for easy redeployment.
 
 ## tools
 
-- **Claude Code** — Primary agentic coding environment used by most participants; also used for parallel research pipelines and remote VPS-based coding agents
-- **Gemini CLI** — Used for parallel web-search research pipelines; Patrick found Claude Code superior for mixing search + scraping
-- **Windsurf (Windsurf IDE / "Anti-Gravity")** — Used by Brandon ~10% of the time for visual/UI tasks with Gemini 2.5 Pro; has built-in memory/learning about coding style
-- **Trigger.dev** — Referenced as a visual example of parallelization and generator-evaluator loop patterns for agentic workflows
-- **Anthropic TypeScript SDK** — Scott's agent app is built directly on this (not Vercel AI SDK or the agent SDK)
-- **Vercel AI SDK** — Mentioned as an alternative for parallel `generateText` calls without streaming complexity
-- **ElevenLabs** — Used by Ty for voice playback in his remote coding agent; Ty uses GPT-4o mini on ElevenLabs for ~45ms latency with tool calls
-- **Kimi K2** — Maksym's current production voice agent model; chosen for latency/tool-call balance
-- **GPT-4o mini** — Ty's recommendation for voice agents on ElevenLabs balancing latency and tool calls
-- **GPT Realtime API** — Carlos mentioned it as OpenAI's recommended model specifically for voice use cases
-- **N8N** — Scott uses it for customer back-end automations but not in his personal agent app
-- **Supabase** — Standard database/auth/blob store in ShipKit stack; Tiran uses it for photo caching
-- **Netlify** — Deployment platform used by Scott and Ryan
-- **Cloudflare R2** — Ryan uses it as a media bucket to avoid overloading Supabase storage
-- **Google APIs (Gmail, Calendar, Drive)** — Scott's agent app pulls emails, meetings, and tasks directly via Google APIs
-- **WhatsApp Business API** — Maksym's automotive chatbot and CRM reminder system runs over WhatsApp
-- **Appify** — Brandon plans to use it for LinkedIn scraping as a seed data source before running Gemini CLI research
-- **Linked Helper** — Mentioned by Elijah as a LinkedIn automation tool used by community member Dawn Davis for podcast guest outreach
-- **Vanta** — SOC 2 compliance platform Brandon's team plans to use starting January 2026
-- **Electron** — Suggested by Brandon as a framework for building cross-platform desktop (Windows/Mac) applications
-- **PyInstaller** — Tiran dropped a link in chat; converts Python scripts to Windows/Linux executables
-- **Rust + GitHub Actions** — Ty built a launcher application in Rust, compiled and deployed via GitHub Actions, without touching a local environment
-- **AWS Rekognition** — Ty uses it for face recognition and auto-tagging in his Fire Stick photo display app
-- **Fabric** — Mentioned by Ty as a skills/prompt library used in his VPS-based personal assistant setup
-- **Whisperflow** — Voice-to-text tool used by Scott and Ryan to talk to Claude Code instead of typing
-- **Limitless (wearable)** — Brandon wears it for ambient note-taking; noted it gets strange looks in public
-- **Qwen3 Coder** — Patrick recommended it as a local model; suggested a smaller quantization to fit in 24GB RAM
-- **OpenCoder** — Patrick described it as "Claude Code but for open/local models"; recommended for running local models
-- **Picasa** — Referenced as the inspiration for Tiran's Dropbox-based photo gallery tool
-- **Dropbox API** — Tiran's photo gallery tool reads from Dropbox folders; noted the API is slow, requiring Supabase caching
-- **Poke** — iMessage-based personal assistant app from SF that Maksym referenced as inspiration for his B2C side project
-- **SAP** — Tiran suggested building a data bridge to SAP as a go-to-market move for Ty's predictive analytics SaaS
-- **PECAN AI** — The competitive reference product Ty is building against for his SMB predictive analytics platform
-- **Magnet** — Mac window management app Brandon recommends for keyboard-driven screen layout
-- **Amphetamine** — Mac utility to keep the computer awake; Brandon recommends it
-- **Presentify** — Mac app Brandon recommends buying immediately on a new Mac
-- **Claude Code Usage (VS Code extension)** — Bastian shared a VS Code extension in WhatsApp that shows remaining Claude Code session time in the status bar
+- **Claude Code** — Primary coding agent used by most participants; Patrick found it superior to Gemini CLI for mixed web search + scraping workflows.
+- **Gemini CLI** — Used by Brandon/Patrick for parallel custom deep-research agents with Google Search access; being superseded by Claude Code for some use cases.
+- **Trigger.dev** — Referenced as a platform for parallelization and evaluator-loop agentic workflows; Scott used a screenshot of it as context when building his own parallel implementation.
+- **Anthropic TypeScript SDK** — Scott's core SDK for building his morning summary agent and chat interface; not the agent SDK.
+- **ElevenLabs** — Voice synthesis used by Ty Wells for his remote coding agent's audio playback; also used by Maksym for voice agents.
+- **Nano Banana 3 Pro** — Image generation/retouching model integrated into Ryan C's social media platform for in-app image editing.
+- **Cloudflare R2** — Used by Ryan C as a media bucket to avoid overloading Supabase storage.
+- **Supabase** — Database, auth, and blob store used across multiple participants' projects as the core backend.
+- **Netlify** — Deployment platform used by Scott and Ryan C (GitHub → Netlify pipeline).
+- **N8N** — Scott uses it for customer project back-end automations, but not in his current agent application.
+- **Appify** — Brandon plans to use it for LinkedIn scraping to seed data for his parallel Gemini CLI research pipeline.
+- **Linked Helper** — LinkedIn automation tool mentioned by Elijah; community member Dawn Davis uses it to automate podcast guest outreach.
+- **Whisperflow** — Voice-to-text tool used by Scott and Ryan C to talk to Claude instead of typing.
+- **Limitless** — Wearable note-taking device Brandon uses; mentioned in context of walking around talking to himself to capture notes.
+- **Vanta** — SOC 2 compliance platform Brandon plans to use starting January 2026; estimated ~$7k.
+- **PyInstaller** — Python-to-executable tool for Windows/Linux, shared by Tiran Dagan in chat for Ty's kiosk use case.
+- **Electron** — Suggested by Brandon for building cross-platform desktop applications.
+- **Kimi K2** — Open-source LLM used by Maksym in production for voice agents due to low latency and tool call support.
+- **OpenCoder** — Open-source Claude Code equivalent for local/open models, recommended by Patrick for running local models.
+- **Qwen3 Coder** — Local model recommended by Patrick for running on 24GB RAM machines via OpenCoder.
+- **Anti-Gravity (Windsurf)** — IDE Brandon uses ~10% of the time for visual/UI tasks with Gemini 2.5 Pro; praised for agentic memory that improves over time.
+- **AWS Rekognition** — Used by Ty Wells in his Fire Stick photo display app for automatic face tagging.
+- **Dropbox API** — Used by Tiran Dagan in his photo gallery tool; noted as extremely slow, requiring Supabase caching.
+- **Google Maps API** — Integrated into Tiran Dagan's SherpaCow trip planner for place search and directions.
+- **Magnet** — Mac window management app recommended by Brandon (~$3); enables keyboard shortcuts to snap windows.
+- **Amphetamine** — Mac utility recommended by Brandon to keep the computer awake during long work sessions.
+- **Presentify** — Mac app recommended by Brandon (~$8) for screen presentations.
+- **Fabric** — Skills/pattern framework mentioned by Ty Wells as used in his VPS-based remote coding agent.
+- **PECAN AI** — Existing ML prediction platform that inspired Ty Wells's SMB-focused predictive analytics tool.
+- **SAP** — Suggested by Tiran Dagan as a bridge integration target for Ty's analytics platform given SAP's SMB market push.
 
 ## links
 
-- No explicit URLs were shared verbally or pasted into the transcript in a retrievable form. (PyInstaller was mentioned as a link dropped in chat by Tiran, and a Claude Code usage VS Code extension screenshot was sent via WhatsApp by Bastian, but no URLs were read aloud.)
+- No explicit URLs were shared verbally or in chat that were captured in the transcript with full links. (Patrick shared a link to OpenCoder and Tiran shared PyInstaller in chat, but the actual URLs were not read aloud or transcribed.)
 
 ## decisions
 
-- **Patrick Chouinard** will publish his custom GPT file (which identifies which ShipKit template to use for a given project) to the community Discord.
-- **Brandon Hancock** will redo the ShipKit onboarding experience after returning from travel, including a "which template should I use?" feature and better guidance for different user journeys.
-- **Brandon Hancock** will try Claude Code (instead of Gemini CLI) for the parallel web-search research pipeline, based on Patrick's recommendation.
-- **Brandon Hancock** will test Appify for LinkedIn scraping as a seed-data step before running Gemini CLI deep-research agents per person.
-- **Brandon Hancock** will share the worker SaaS walkthrough GitHub repository with Elijah as it is being built out, ahead of the full video release in January.
-- **Brandon Hancock** will start the SOC 2 process with Vanta on January 1, 2026.
-- **Elijah** will coordinate an introduction between Brandon's partner and community member Dawn Davis regarding Linked Helper for LinkedIn outreach automation.
-- **Tiran Dagan** will rebuild the Prepper tool architecture based on ShipKit prompt outputs and share updates once it is running.
-- **Maksym Liamin** will try GPT-4o mini on ElevenLabs and the GPT Realtime API for voice agents, based on Ty's and Carlos's recommendations.
-- **Ryan C** will clear his Claude Code conversation context and restart fresh to resolve the hallucination loop breaking his image-editing feature.
-- **Ty Wells** will spin up a second Docker container to enable live preview of his kiosk application during development.
+- Patrick Chouinard will publish his custom GPT template-selector code to the ShipKit community Discord in addition to adding it to his own GPT.
+- Brandon Hancock will redo the ShipKit onboarding experience after returning from travel, including a "which template should I use?" feature.
+- Brandon Hancock will try Claude Code for the parallel web-search/scraping research pipeline (instead of Gemini CLI) based on Patrick's recommendation.
+- Brandon Hancock will explore using Appify for LinkedIn scraping as a seed step before kicking off Gemini CLI deep-research agents.
+- Brandon Hancock will send the Linked Helper tool information to his business partner for LinkedIn outreach automation.
+- Brandon Hancock will start the Vanta SOC 2 certification process on January 1, 2026.
+- Brandon Hancock will share the video production SaaS GitHub repository with Elijah as it is being built out (before the full walkthrough video is ready in January).
+- Tiran Dagan will explore Patrick's suggestion of targeting consulting firms as a customer segment for CV Refinery.
+- Maksym Liamin will test GPT-4o mini on ElevenLabs and the GPT real-time model for voice agent use cases based on Ty Wells's and Carlos Aguilar's recommendations.
+- Brandon Hancock will download and test the Claude Code usage/status VS Code extension that Bastian shared via WhatsApp.
