@@ -14,7 +14,10 @@
       "Bash(docker:*)",
       "WebSearch",
       "WebFetch(domain:developers.fathom.ai)",
-      "WebFetch(domain:opclwsec.patchoutech.com)"
+      "WebFetch(domain:opclwsec.patchoutech.com)",
+      "Bash(ssh n8n-automation *)",
+      "Bash(curl -fsS http://10.1.30.10:8999/speaker-aliases-block)",
+      "Read(//tmp/**)"
     ]
   }
 }
