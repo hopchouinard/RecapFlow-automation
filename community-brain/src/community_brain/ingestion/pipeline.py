@@ -71,7 +71,6 @@ from community_brain.ingestion.session_extractor import (
 )
 from community_brain.query.fts_lifecycle import ensure_fts_index
 from community_brain.query.corpus_verify import CorpusInvalidError, verify_corpus_v3_state
-from community_brain.cli.lint_corpus import lint_corpus_chunks
 
 logger = logging.getLogger(__name__)
 
@@ -277,7 +276,7 @@ def ingest_session(
             db_early = lancedb.connect(db_path)
             if TABLE_NAME in db_early.list_tables().tables:
                 _tbl_early = db_early.open_table(TABLE_NAME)
-                _post_commit_maintenance(_tbl_early, db_path)
+                _post_commit_maintenance(_tbl_early)
             return IngestResult(
                 session_id=request.session_id,
                 chunks_written=0,
@@ -471,7 +470,7 @@ def ingest_session(
     _post_commit_db = lancedb.connect(db_path)
     if TABLE_NAME in _post_commit_db.list_tables().tables:
         _post_commit_table = _post_commit_db.open_table(TABLE_NAME)
-        _post_commit_maintenance(_post_commit_table, db_path)
+        _post_commit_maintenance(_post_commit_table)
 
     # Tally chunks_written by content type
     by_type: dict[str, int] = {}
@@ -492,36 +491,22 @@ def ingest_session(
     )
 
 
-def _post_commit_maintenance(table, db_path: str | Path) -> None:
-    """Run the post-commit invariants: corpus validity check + lint.
+def _post_commit_maintenance(table) -> None:
+    """Run the post-commit invariant: corpus validity check.
 
     verify_corpus_v3_state is invariant-enforcing: it checks schema + FTS
     index in one call and raises CorpusInvalidError if either is broken.
     Translated to CommitError here so callers see consistent failure signal.
 
-    Lint is best-effort: chunks are already committed. WARN-on-failure;
-    operator can run lint_corpus manually to recover.
+    Lint is NOT called here — see spec
+    docs/superpowers/specs/2026-05-02-ingest-lint-decoupling-design.md.
+    Operators run lint via the daily cron at 04:00 UTC, or manually:
+        docker exec community_brain_retrieval python -m community_brain.cli.lint_corpus
     """
     try:
         verify_corpus_v3_state(table)
     except CorpusInvalidError as exc:
         raise CommitError(f"Corpus invalid post-commit: {exc}") from exc
-    try:
-        # db_path is authoritative here — it's the same path ingest_session
-        # committed chunks to. COMMUNITY_BRAIN_DB_PATH is NOT consulted so that
-        # deploy misconfiguration (a leftover env var pointing elsewhere) cannot
-        # silently run lint against the wrong corpus.
-        lint_stats = lint_corpus_chunks(db_path)
-        logger.info(
-            "lint_corpus auto-trigger: scanned %d, recurrent %d",
-            lint_stats["scanned"],
-            lint_stats["recurrent"],
-        )
-    except Exception as exc:
-        # Transient: chunks are already committed; lint failure doesn't mean
-        # the corpus is invalid, just that recurrent-marker computation didn't
-        # complete. Operator can run lint_corpus manually to recover.
-        logger.warning("lint_corpus auto-trigger failed: %s; chunks committed", exc)
 
 
 def _load_existing_chunk_versions(db_path: str, session_id: str) -> dict[str, str]:

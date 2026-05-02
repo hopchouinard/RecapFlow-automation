@@ -167,22 +167,14 @@ def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[st
                     )
 
             elif should_be_recurrent:
-                # Already recurrent and still qualifies — no-op for markers; bump timestamp.
-                # Non-empty markers list so update() is safe.
+                # Already correctly marked — count it but don't write.
+                # corpus_markers_computed_at semantics tightened to "last meaningful
+                # marker change" (spec 2026-05-02-ingest-lint-decoupling-design.md §7).
                 recurrent_count += 1
-                table.update(
-                    where=f"chunk_id = '{safe_id}'",
-                    values={"corpus_markers_computed_at": now_iso},
-                )
 
             else:
-                # Doesn't qualify and isn't currently marked — bump timestamp only.
-                # The timestamp column is string, not list[str], so update() is always
-                # safe here even when corpus_derived_markers is [].
-                table.update(
-                    where=f"chunk_id = '{safe_id}'",
-                    values={"corpus_markers_computed_at": now_iso},
-                )
+                # Doesn't qualify and isn't currently marked — no-op, no write.
+                pass
 
         except Exception as exc:
             logger.error(
