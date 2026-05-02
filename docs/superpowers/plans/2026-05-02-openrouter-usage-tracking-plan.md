@@ -3,30 +3,49 @@
 > **Status:** DRAFT — do not begin implementation until Plan C (n8n Workflow 6 backfill) is complete.
 > **Tier:** Personal preprocessing tier only. Not bundled into the shareable Community Brain artifact.
 
-**Goal:** Capture per-call OpenRouter usage (tokens, cost, model, provider, finish reason, latency) for every LLM invocation in n8n workflows, store it in Postgres + a JSONL audit log on the n8n-automation VM, and expose it through Grafana on the monitoring-stack VM for spend visibility and trend analysis.
+**Goal:** Capture per-call OpenRouter usage (tokens, cost, model, provider, finish reason, latency) for **every** LLM invocation in the system — both n8n workflow LLM calls (Workflow 5/6's Prep-Prompt, Extract Signal, Community Post, Compress Post, Weekly Invite) AND server-side LLM calls inside the retrieval-server (Stage B session themes, Stage C per-chunk extraction). Store it in Postgres + a JSONL audit log on the n8n-automation VM, and expose it through Grafana on the monitoring-stack VM for spend visibility, trend analysis, and forensic diagnostics.
+
+**Why both sources matter:** During the 2026-05-02 lint-decoupling work, diagnosing a "no Gemma calls" question required forensic queries against LanceDB chunk provenance to reconstruct what Stage B/C did during /ingest. With server-side logging in place, the same question becomes a single SQL query against `openrouter_usage`. The diagnostic value is at least as important as the cost-tracking value — possibly more so for operational debugging.
 
 **Architecture:**
 
 ```
-n8n LLM call (ChainLLM, OpenRouter)
-        │
-        ▼
-   Code node
-   ├─ extract usage from response
-   ├─ append line to JSONL (~/n8n/logs/openrouter-usage-YYYY-MM-DD.jsonl)
-   └─ pass clean object to next node
-        │
-        ▼
-   Postgres node
-   └─ INSERT INTO openrouter_usage
-        │
-        ▼
-   (continue normal workflow)
-
-monitoring-stack VM (10.1.30.X)
-   Grafana
-   └─ Postgres datasource → n8n-automation:5432 (read-only grafana_ro user)
+                        ┌─────────────────────────────────────┐
+                        │     n8n-automation VM               │
+                        │                                     │
+n8n LLM call            │                                     │
+(ChainLLM, OpenRouter)  │                                     │
+        │               │                                     │
+        ▼               │                                     │
+   Code node            │                                     │
+   ├─ extract usage     │      Postgres (n8n_db)             │
+   ├─ append JSONL      │      └─ openrouter_usage table     │
+   └─ shape object      │           ▲          ▲              │
+        │               │           │          │              │
+        ▼               │           │          │              │
+   Postgres node ───────┼───────────┘          │              │
+   (INSERT)             │                      │              │
+                        │                      │              │
+        │               │   retrieval-server   │              │
+   (continue workflow)  │   container          │              │
+                        │                      │              │
+                        │   call_llm()         │              │
+                        │   ├─ HTTP POST       │              │
+                        │   │  to OpenRouter   │              │
+                        │   ├─ append JSONL    │              │
+                        │   └─ INSERT ─────────┘              │
+                        │                                     │
+                        └─────────────────────────────────────┘
+                                          │
+                                          ▼ (LAN, 10.1.30.0/24)
+                        ┌─────────────────────────────────────┐
+                        │     monitoring-stack VM             │
+                        │   Grafana                           │
+                        │   └─ Postgres datasource (grafana_ro)│
+                        └─────────────────────────────────────┘
 ```
+
+Both writers (n8n Code+Postgres node pair + retrieval-server `call_llm` instrumentation) target the same `openrouter_usage` table. Schema includes nullable `workflow_id` / `execution_id` / `node_name` so server-side calls (no n8n context) and n8n calls (full context) coexist cleanly.
 
 **Tech stack:**
 - n8n 2.15 — Code nodes (`fs`-enabled) + native Postgres node
@@ -53,6 +72,11 @@ monitoring-stack VM (10.1.30.X)
 | Modify | `docker-compose.yml` | Add `./logs/` bind mount on `n8n` container; bind `n8n_db` Postgres port to VM's LAN IP |
 | Modify | `.gitignore` | Exclude `logs/openrouter-usage-*.jsonl` (runtime data) |
 | Modify | `workflows/merged-call-summarizer.json` | Add Code + Postgres node pair after each of the 4 LLM calls |
+| Modify | `community-brain/src/community_brain/llm.py` | Instrument `call_llm` to write usage records to Postgres + JSONL on every call |
+| Create | `community-brain/src/community_brain/usage_log.py` | New module: shared usage-record writer (Postgres + JSONL). Imported by `llm.py`. |
+| Create | `community-brain/tests/test_usage_log.py` | Unit tests for the writer (mock Postgres, tmp_path JSONL) |
+| Modify | `community-brain/tests/test_llm.py` | Verify `call_llm` invokes the usage writer on success and on retried failure |
+| Modify | `docker-compose.yml` | Add `./logs/` bind mount on `retrieval-server` container too (in addition to `n8n`); pass Postgres connection env vars to retrieval-server |
 | Create | `docs/grafana/openrouter-usage-dashboard.json` | Exported Grafana dashboard for version control |
 | Modify | `CLAUDE.md` | Document the new logging layer + dashboard URL |
 | Modify | `docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md` | Mark cost-tracking phase as DEPLOYED once complete |
@@ -73,13 +97,15 @@ Phase 0 (discovery)
 Phase 1 (Postgres schema + grafana_ro user)
         │
         ▼
-Phase 2 (JSONL infrastructure on n8n VM)
+Phase 2 (JSONL infrastructure on n8n VM + retrieval-server volume)
         │
-        ├─────────────────────────┐
-        ▼                         ▼
-Phase 3 (n8n workflow nodes)   Phase 4 (network access for Grafana)
-        │                         │
-        └────────────┬────────────┘
+        ├─────────────────────────┬─────────────────────────┐
+        ▼                         ▼                         ▼
+Phase 3 (n8n workflow nodes)  Phase 3b (retrieval-      Phase 4 (network access
+                              server call_llm           for Grafana)
+                              instrumentation)
+        │                         │                         │
+        └────────────┬────────────┴─────────────────────────┘
                      ▼
               Phase 5 (Grafana dashboard)
                      │
@@ -87,7 +113,7 @@ Phase 3 (n8n workflow nodes)   Phase 4 (network access for Grafana)
               Phase 6 (backfill + validation)
 ```
 
-Phases 3 and 4 are independent and can land in either order; everything else is sequential.
+Phases 3, 3b, and 4 are independent and can land in any order; everything else is sequential. Phase 3 covers n8n-side LLM calls (Workflow 5/6 LLMs); Phase 3b covers server-side LLM calls (Stage B/C). Both write to the same Postgres table.
 
 ---
 
@@ -136,10 +162,14 @@ Phases 3 and 4 are independent and can land in either order; everything else is 
 CREATE TABLE IF NOT EXISTS openrouter_usage (
   id              BIGSERIAL PRIMARY KEY,
   ts              TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  -- n8n-side context (NULL for server-side calls from retrieval-server)
   workflow_id     TEXT,
   workflow_name   TEXT,
   execution_id    BIGINT,
-  node_name       TEXT,
+  node_name       TEXT,        -- 'LLM: Prep-Prompt' / 'stage_b_themes' / 'stage_c_extraction' / etc.
+  -- server-side context (NULL for n8n-side calls)
+  session_id      TEXT,        -- the session_id being processed when the LLM call was made
+  -- shared call data
   model           TEXT NOT NULL,
   provider        TEXT,
   prompt_tokens   INT,
@@ -156,7 +186,11 @@ CREATE INDEX IF NOT EXISTS idx_openrouter_usage_ts ON openrouter_usage (ts DESC)
 CREATE INDEX IF NOT EXISTS idx_openrouter_usage_model ON openrouter_usage (model);
 CREATE INDEX IF NOT EXISTS idx_openrouter_usage_workflow ON openrouter_usage (workflow_id);
 CREATE INDEX IF NOT EXISTS idx_openrouter_usage_execution ON openrouter_usage (execution_id);
+CREATE INDEX IF NOT EXISTS idx_openrouter_usage_session ON openrouter_usage (session_id);
+CREATE INDEX IF NOT EXISTS idx_openrouter_usage_node_name ON openrouter_usage (node_name);
 ```
+
+`workflow_id` / `session_id` are mutually exclusive in practice: n8n-side rows have `workflow_id` populated and `session_id` NULL (n8n doesn't always know the session_id at the LLM-call moment); server-side rows have `session_id` populated and `workflow_id` NULL. `node_name` is always populated and disambiguates the source type ("LLM: Prep-Prompt" vs "stage_b_themes" vs "stage_c_extraction").
 
 ### 1.2 Read-only role (`scripts/sql/usage_tracking_grants.sql`)
 
@@ -306,6 +340,114 @@ return { json: record };
 
 ---
 
+## Phase 3b: Retrieval-server `call_llm` instrumentation
+
+**Purpose:** Capture every LLM call that originates inside the retrieval-server container — Stage B (session themes), Stage C (per-chunk extraction), and any future server-side LLM use. Without this, the dashboard sees only n8n-side calls and misses ~10x the volume during /ingest. Today's "where are the Gemma calls?" diagnostic is the canonical example of why this matters.
+
+**Why this can't ride on the n8n-side capture:** Stage B/C never traverse n8n. They're triggered by `/ingest` requests and run entirely inside the `community-brain` Python package via `community_brain.llm.call_llm`. The Code-node-after-LLM pattern from Phase 3 has zero visibility into them.
+
+### 3b.1 New module: `community_brain/usage_log.py`
+
+Single-purpose writer used by `call_llm`. Writes one record to JSONL and one row to Postgres on every successful LLM call. Best-effort: Postgres or JSONL failures must NOT propagate up to fail the LLM call (logging is secondary; the actual extraction work is primary).
+
+```python
+# Sketch — full implementation in Phase 3b.2
+def log_llm_call(
+    *,
+    model: str,
+    response: dict,
+    prompt_tokens: int | None,
+    completion_tokens: int | None,
+    cost_usd: float | None,
+    latency_ms: int,
+    finish_reason: str | None,
+    generation_id: str | None,
+    node_name: str,         # e.g. "stage_b_themes" or "stage_c_extraction"
+    session_id: str | None, # populated when the caller knows it
+) -> None:
+    record = {
+        "ts": ...,
+        "workflow_id": None,            # NULL for server-side
+        "workflow_name": None,
+        "execution_id": None,
+        "node_name": node_name,
+        "model": model,
+        "provider": response.get("provider"),
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+        "total_tokens": (prompt_tokens or 0) + (completion_tokens or 0),
+        "cost_usd": cost_usd,
+        "finish_reason": finish_reason,
+        "latency_ms": latency_ms,
+        "generation_id": generation_id,
+        "session_id": session_id,       # see schema note below
+        "raw_response": json.dumps(response)[:50000],
+    }
+    try:
+        _append_jsonl(record)
+    except Exception as exc:
+        logger.warning("usage_log JSONL append failed: %s", exc)
+    try:
+        _insert_postgres(record)
+    except Exception as exc:
+        logger.warning("usage_log Postgres insert failed: %s", exc)
+```
+
+### 3b.2 Schema fit
+
+The Phase 1 schema already includes `session_id TEXT` and `idx_openrouter_usage_session` — no migration needed. n8n-side records (Phase 3) leave `session_id` NULL; server-side records (Phase 3b) populate it from the active `IngestRequest`. The `node_name` column disambiguates row provenance ("LLM: Prep-Prompt" vs "stage_b_themes" vs "stage_c_extraction").
+
+### 3b.3 Wire into `call_llm`
+
+Modify `community_brain/llm.py`:
+
+1. Accept optional `node_name: str` and `session_id: str | None` keyword args (default-ed for back-compat)
+2. After successful response: call `log_llm_call(...)` with the gathered fields
+3. Capture `latency_ms` via `time.monotonic()` around the HTTP call
+4. Capture `generation_id` from `response.get("id")`
+5. On retry-then-fail: log a final failure record (with `finish_reason="error"` or similar) so dashboard sees the call attempt, not just successes
+
+### 3b.4 Update callers to pass node_name and session_id
+
+- `community_brain/ingestion/extractor.py::_call_llm` → wraps `call_llm` with `node_name="stage_c_extraction"` and the chunk's session_id
+- `community_brain/ingestion/session_extractor.py::_call_llm` → same with `node_name="stage_b_themes"`
+- Other call sites (if any — check `propose_canonicalizations`, etc.) get appropriate `node_name` values
+
+### 3b.5 JSONL path inside the retrieval-server container
+
+Bind-mount `~/n8n/logs/` into the retrieval-server container (same host path as the n8n logs mount). Inside the container, write to `/data/logs/openrouter-usage-server-YYYY-MM-DD.jsonl` (separate file from the n8n one to avoid lock contention; both go into the same Postgres table so the dashboard sees them unified).
+
+### 3b.6 Postgres connection from retrieval-server
+
+Add env vars in `docker-compose.yml`:
+
+```yaml
+  retrieval-server:
+    environment:
+      USAGE_LOG_PG_HOST: n8n_db
+      USAGE_LOG_PG_PORT: 5432
+      USAGE_LOG_PG_USER: n8n
+      USAGE_LOG_PG_PASSWORD: ${POSTGRES_PASSWORD}
+      USAGE_LOG_PG_DATABASE: n8n
+```
+
+Use a dedicated connection (not pooled with anything else) since LLM calls are infrequent. `psycopg2-binary` or `psycopg[binary]` added to `pyproject.toml`.
+
+### Steps
+
+- [ ] **3b.1 — Write `community_brain/usage_log.py`** with the writer + tests in `test_usage_log.py`. Mock Postgres, use `tmp_path` for JSONL.
+- [ ] **3b.2 — Modify `community_brain/llm.py`** to call the writer on every response (success + final failure).
+- [ ] **3b.3 — Update extractor and session_extractor** to pass `node_name` and `session_id` through. Audit other call sites (propose_canonicalizations etc.) and tag them too.
+- [ ] **3b.4 — Add `psycopg[binary]` dependency** to `community-brain/pyproject.toml`. Run `pip install -e ".[dev]"` to refresh.
+- [ ] **3b.5 — Add bind mount + env vars** to `docker-compose.yml` for the retrieval-server.
+- [ ] **3b.6 — Rebuild retrieval-server** and trigger one /ingest on a fresh session. Verify both the chunks land AND ~21 new rows appear in `openrouter_usage` with `node_name LIKE 'stage_%'` and the correct session_id.
+- [ ] **3b.7 — Verify failure path:** monkeypatch the writer to raise; confirm `call_llm` still returns successfully and the chunk extracts fine. (Logging must never break extraction.)
+- [ ] **3b.8 — Idempotency check:** trigger /ingest on a session whose chunks already exist with the current `extraction_prompt_version`. Verify NO Stage B/C calls fire and NO usage_log rows are written for that ingest. (Confirms the dashboard correctly distinguishes "skipped due to idempotency" from "failed silently" — exactly the question that motivated this whole phase.)
+
+**Phase 3b exit criteria:** one /ingest produces ~21 server-side rows in `openrouter_usage` (1 Stage B + N Stage C). All rows have `session_id` populated, `workflow_id` NULL, `node_name` indicating the source. JSONL audit file appended in parallel. Forensic SQL query like `SELECT * FROM openrouter_usage WHERE session_id='2026-03-04' AND node_name LIKE 'stage_%' ORDER BY ts` returns the full extraction trail.
+
+---
+
 ## Phase 4: Network access for Grafana
 
 **Purpose:** Allow `monitoring-stack` VM to reach `n8n-automation:5432` over the LAN, restricted to the `grafana_ro` role.
@@ -380,9 +522,14 @@ In Grafana UI → Configuration → Data sources → Add data source → Postgre
 | Total spend (last 30 days) | Stat | `SELECT SUM(cost_usd) FROM openrouter_usage WHERE ts >= NOW() - INTERVAL '30 days'` |
 | Token usage time series | Time series | `SELECT date_trunc('hour', ts) AS time, SUM(prompt_tokens) AS prompt, SUM(completion_tokens) AS completion FROM openrouter_usage GROUP BY 1` |
 | Top 20 expensive calls | Table | `SELECT ts, workflow_name, node_name, model, cost_usd, total_tokens FROM openrouter_usage ORDER BY cost_usd DESC LIMIT 20` |
-| Cost per session | Bar | (joins workflow + execution; query depends on how session id is captured — likely needs a derived column or annotation node in n8n) |
+| Cost per session | Bar | `SELECT session_id, SUM(cost_usd) FROM openrouter_usage WHERE session_id IS NOT NULL GROUP BY 1 ORDER BY 2 DESC LIMIT 30` (server-side rows have session_id; n8n-side rows can be joined via execution_id when n8n records the session being processed) |
 | Finish reason distribution | Pie | `SELECT finish_reason, COUNT(*) FROM openrouter_usage GROUP BY 1` |
 | Avg latency by model | Bar | `SELECT model, AVG(latency_ms) FROM openrouter_usage WHERE latency_ms IS NOT NULL GROUP BY 1` |
+| **Diagnostic panels (enabled by Phase 3b)** | | |
+| Stage B/C call rate per ingest | Time series | `SELECT date_trunc('hour', ts) AS time, COUNT(*) FILTER (WHERE node_name='stage_b_themes') AS stage_b, COUNT(*) FILTER (WHERE node_name='stage_c_extraction') AS stage_c FROM openrouter_usage GROUP BY 1` |
+| Server-side calls by session | Table | `SELECT session_id, node_name, COUNT(*), SUM(cost_usd) FROM openrouter_usage WHERE workflow_id IS NULL GROUP BY 1, 2 ORDER BY 1, 2` |
+| /ingest extraction failures | Table | `SELECT ts, session_id, node_name, model, finish_reason FROM openrouter_usage WHERE workflow_id IS NULL AND finish_reason NOT IN ('stop', 'end_turn') ORDER BY ts DESC LIMIT 50` |
+| n8n vs server LLM call ratio | Stat | `SELECT COUNT(*) FILTER (WHERE workflow_id IS NOT NULL) AS n8n_side, COUNT(*) FILTER (WHERE workflow_id IS NULL) AS server_side FROM openrouter_usage WHERE ts >= NOW() - INTERVAL '24 hours'` |
 
 ### Steps
 
@@ -392,7 +539,7 @@ In Grafana UI → Configuration → Data sources → Add data source → Postgre
 - [ ] **5.4 — Export dashboard JSON** (Settings → JSON Model → copy) and commit to `docs/grafana/openrouter-usage-dashboard.json`.
 - [ ] **5.5 — Document the dashboard URL** in `CLAUDE.md` so future sessions know where to look.
 
-**Phase 5 exit criteria:** dashboard renders all 7 panels with real data; JSON exported and committed.
+**Phase 5 exit criteria:** dashboard renders all 11 panels (7 cost/usage + 4 diagnostic) with real data; JSON exported and committed.
 
 ---
 
@@ -416,9 +563,10 @@ Note: the `openrouter_usage` schema needs a UNIQUE constraint on `generation_id`
 - [ ] **6.2 — Write `scripts/backfill-openrouter-usage.py`.** Test against last 24 hours of data first.
 - [ ] **6.3 — Run full backfill** for the last 30 days (OpenRouter's typical retention window — verify the actual limit).
 - [ ] **6.4 — Cross-check totals:** sum `cost_usd` from `openrouter_usage` for a known time window, compare to the same window in OpenRouter's web UI. Should match within rounding.
-- [ ] **6.5 — Spot-check a Plan C session.** Pick `2026-04-30` — that's a real ingestion day. Confirm the dashboard shows the expected ~30-90 LLM calls (3 per session × N sessions) with realistic costs.
-- [ ] **6.6 — Update `CLAUDE.md`** to document: backfill script, dashboard location, schema location, refresh expectations.
-- [ ] **6.7 — Update `docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`** to mark cost-tracking as DEPLOYED.
+- [ ] **6.5 — Spot-check a Plan C session (n8n side).** Pick `2026-04-30` — that's a real ingestion day. Confirm the dashboard shows the expected ~30-90 LLM calls from n8n (3 per session × N sessions) with realistic costs. NOTE: server-side Stage B/C calls from before Phase 3b deployment will NOT appear via backfill (the backfill source is OpenRouter's activity API; Stage B/C calls are recoverable from there but not session-tagged retroactively). They'll start appearing in real-time once Phase 3b ships.
+- [ ] **6.6 — Spot-check a fresh /ingest (server side, post-Phase-3b).** Trigger a new ingest. Verify the dashboard shows the n8n calls (~3 from Workflow 5/6) AND the server-side calls (~21 from Stage B/C) for the same session, joinable via `session_id`.
+- [ ] **6.7 — Update `CLAUDE.md`** to document: backfill script, dashboard location, schema location, refresh expectations.
+- [ ] **6.8 — Update `docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`** to mark cost-tracking as DEPLOYED.
 
 **Phase 6 exit criteria:** dashboard shows correct historical and live data; backfill is idempotent (re-running doesn't double-count); documentation reflects the live state.
 
@@ -435,6 +583,9 @@ Note: the `openrouter_usage` schema needs a UNIQUE constraint on `generation_id`
 | OpenRouter API rate-limits during backfill | Low | Low | Backfill script paginates with sleep; idempotent on re-run |
 | Cost field absent from response (no `usage_include_cost`) | Medium | Medium | Phase 0.3 locks in source; fallback price table maintained in script if needed |
 | Schema migration needed later | Medium | Low | Use `ALTER TABLE` patterns + version comments at top of `usage_tracking_schema.sql` |
+| Server-side `usage_log` writer breaks `/ingest` | Low | High | Phase 3b.7 explicitly verifies the failure path (logging never propagates errors). Best-effort is the contract. |
+| Server-side rows balloon the table at scale | Medium | Low | Stage C is ~20 calls/session; at 65 sessions × ~10 calls/year that's ~13K rows/year. Indexes on (ts, session_id, node_name) keep queries cheap. Not a concern at personal-tier scale. |
+| Postgres connection pool exhaustion on retrieval-server | Low | Medium | Use a single dedicated connection per `usage_log` insert (no pooling). LLM calls are sequential per /ingest so concurrent inserts are bounded by uvicorn worker count (1). |
 
 ---
 
@@ -444,7 +595,9 @@ Note: the `openrouter_usage` schema needs a UNIQUE constraint on `generation_id`
 2. Does OpenRouter's response include `cost` natively without `usage_include_cost`, or is that flag required? Affects Phase 0.3 decision.
 3. What's OpenRouter's activity API retention window — 30 days, 90 days, longer? Affects backfill scope.
 4. Does the n8n `n8n_db` Postgres need a password rotation now, given we're about to expose it on LAN? (Probably yes.)
-5. Should we add session_id as a dedicated column for clean cost-per-session queries, or derive it from `execution_id` joins? Affects Phase 1 schema.
+5. ~~Should we add session_id as a dedicated column for clean cost-per-session queries, or derive it from `execution_id` joins?~~ **Resolved:** dedicated `session_id TEXT` column, populated by server-side rows (Phase 3b) directly. n8n-side rows leave it NULL and join via `execution_id` if needed.
+6. Should `usage_log` writes fan out to BOTH a per-call dedicated psycopg connection AND a connection-pool? Default: dedicated psycopg connection per call, since LLM calls are sequential per /ingest and the connect overhead is negligible compared to a 30-second LLM call. Revisit if /ingest is parallelized.
+7. **Phase 3b motivating example to lock in:** the 2026-05-02 "where are the Gemma calls?" diagnostic (run #4549 partial-commit + run #4550 idempotency skip). After Phase 3b, the same question is one SQL query: `SELECT * FROM openrouter_usage WHERE session_id='2026-02-25' ORDER BY ts`. Rows from #4549's partial commit would be visible alongside #4550's n8n-side calls; idempotency-skip events would show as zero server-side rows for that ingest window — exactly the disambiguation that took an hour today.
 
 ---
 
