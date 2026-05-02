@@ -42,6 +42,73 @@ Every schema version bump or extraction-breaking change is recorded here.
   "spoke in this chunk" from "was referenced/mentioned without speaking."
   v1 consumers should read `speakers_spoke` only.
 
+## 2026-05-02 — `lint_corpus` decoupled from `/ingest` (no schema migration)
+
+- Type: Architectural fix — corpus-lint integration. No schema change.
+- Affected chunks: None directly. `corpus_markers_computed_at` semantic tightened
+  (see below).
+- Migration: Automatic. Operator must install daily cron after deploy
+  (`/etc/cron.d/community-brain-lint` via `scripts/cron/install-cron.sh`).
+
+### Why
+`lint_corpus_chunks` was doing one `table.update()` per chunk per ingest, even
+when the chunk's marker state didn't change (timestamp-bump only). At ~1500
+chunks, that saturated LanceDB's manifest writer and surfaced as a
+"Too many concurrent writers" retry storm. `/ingest` calls began exceeding
+n8n's 30-minute HTTP timeout (observed 2026-05-02 04:11 UTC on session
+`2025-12-09` — chunks committed, but `/ingest` never returned in time).
+
+### Changes
+- **`lint_corpus_chunks`:** drop the two no-op timestamp-bump branches.
+  Function now writes only when a chunk's `corpus_derived_markers` actually
+  changes. Stable corpus (no marker transitions) → 0 writes.
+- **`_post_commit_maintenance`:** remove the `lint_corpus_chunks` call.
+  Post-commit work is now just `verify_corpus_v3_state`. Unused `db_path`
+  parameter dropped from signature; both call sites updated.
+- **Operational:** lint runs via daily host cron at 04:00 UTC instead of
+  inline after every `/ingest`. Files added: `scripts/cron/community-brain-lint.cron`,
+  `scripts/cron/install-cron.sh`. System cron (`/etc/cron.d/`) is preferred;
+  user crontab works as a fallback.
+
+### Behavior change (deliberate)
+- `corpus_markers_computed_at` semantics: was "timestamp of last lint pass that
+  scanned this chunk." Now "timestamp of last meaningful marker change." Chunks
+  that never qualify as recurrent retain `None` indefinitely. Operators can
+  force a refresh of all chunks by running `lint_corpus_chunks(rebuild=True)`
+  via the CLI, which rewrites markers from scratch.
+
+### Tests
+- 4 obsolete tests removed from `test_ingestion_pipeline.py` (3 were using
+  "timestamp present" as an indirect proxy for "lint auto-fired" — broken by
+  Change A semantics; 1 verified ingest survives lint failure — no longer a
+  reachable scenario).
+- 5 new/updated tests:
+  - `test_lint_corpus_write_count_scales_with_state_changes_not_corpus_size`
+    (parametrized 10/25/50 chunks; second-pass write count must be 0)
+  - `test_lint_corpus_skips_writes_when_marker_state_unchanged`
+  - `test_lint_corpus_writes_only_when_state_changes`
+  - `test_post_commit_maintenance_does_not_call_lint_corpus`
+  - `test_post_commit_maintenance_still_verifies_corpus_state`
+- `test_lint_corpus_writes_corpus_markers_computed_at` and
+  `test_lint_corpus_marker_update_non_destructive_on_failure` updated to use
+  multi-session aligned corpora that trigger real state changes.
+
+### Files changed
+- Modified: `community-brain/src/community_brain/cli/lint_corpus.py`,
+  `community-brain/src/community_brain/ingestion/pipeline.py`,
+  `community-brain/tests/test_lint_corpus.py`,
+  `community-brain/tests/test_ingestion_pipeline.py`,
+  `community-brain/CLAUDE.md`.
+- New: `scripts/cron/community-brain-lint.cron`,
+  `scripts/cron/install-cron.sh`.
+- Spec: `docs/superpowers/specs/2026-05-02-ingest-lint-decoupling-design.md`.
+- Plan: `docs/superpowers/plans/2026-05-02-ingest-lint-decoupling-plan.md`.
+
+### Rollback
+`git revert <commit-hash> && docker compose up -d --build retrieval-server`
+plus `sudo rm /etc/cron.d/community-brain-lint`. Behavior reverts to inline
+auto-trigger; the storm returns at /ingest scale, but no data is at risk.
+
 ## 2026-04-29 — Schema 1.0 → 1.1 + Stage C v2 + FTS column migration (Retrieval v3)
 
 ### Schema changes

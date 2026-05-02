@@ -54,6 +54,24 @@ Canonical references:
 - CHANGELOG entry: [`docs/migrations/CHANGELOG.md`](../../docs/migrations/CHANGELOG.md) (2026-04-28 — Hybrid Retrieval v2)
 - Validation addendum: Plan A spec §10, "v2 hybrid retrieval validation (2026-04-28 — against live VM)"
 
+### Ingest / Lint Decoupling — DONE and DEPLOYED (2026-05-02)
+
+Discovered during Plan C re-attempt: `lint_corpus_chunks` was doing one `table.update()` per chunk in the entire corpus on every `/ingest`, ~95% as no-op timestamp bumps. At ~1500 chunks this saturated LanceDB's manifest writer and surfaced as "Too many concurrent writers" retry storms. `/ingest` calls began exceeding n8n's 30-min HTTP timeout (observed on `2025-12-09` — chunks committed, but the response never came back).
+
+Fix: two coordinated changes plus one operational change.
+- **Change A:** drop the no-op timestamp-bump branches in `lint_corpus_chunks`. Function writes only when marker state actually changes.
+- **Change E:** remove the `lint_corpus_chunks` call from `_post_commit_maintenance`. `/ingest`'s post-commit work is now just `verify_corpus_v3_state`.
+- **Change F (operational):** lint runs via daily cron at 04:00 UTC (`/etc/cron.d/community-brain-lint`) instead of inline after every `/ingest`.
+
+Behavior change (deliberate): `corpus_markers_computed_at` now records "last meaningful marker change," not "last lint pass." No schema migration required.
+
+471 tests passing. Deployed to live VM on 2026-05-02. Cron installed via `scripts/cron/install-cron.sh`. State file fix: `2025-12-09` moved from `failed[]` → `completed[]` (it actually succeeded; the timeout was on the lint, not the commit).
+
+Canonical references:
+- Spec: [`docs/superpowers/specs/2026-05-02-ingest-lint-decoupling-design.md`](specs/2026-05-02-ingest-lint-decoupling-design.md)
+- Plan: [`docs/superpowers/plans/2026-05-02-ingest-lint-decoupling-plan.md`](plans/2026-05-02-ingest-lint-decoupling-plan.md)
+- CHANGELOG entry: [`docs/migrations/CHANGELOG.md`](../../docs/migrations/CHANGELOG.md) (2026-05-02)
+
 ### Hybrid Retrieval v3 + Stage C v2 — DONE and DEPLOYED
 
 Schema bumped to v1.1 (38 fields; synthesized `bm25_text` FTS column). Stage C extraction prompt updated to chunk-extraction-v2. All 9 sessions re-extracted under the new prompt. Speaker-aliases.yaml curated (39 canonicals, 49 alias entries). Canonicalization applied at chunk write. `recurrent` corpus marker populated via `lint_corpus` (157/184 chunks). `score_breakdown` + `metadata_summary` on every `/query` response. `[flags:]` and `[corpus summary:]` presentation tags structurally separated from transcript content. F8 partial fix: filter now renders the structured presentation tags so the answering LLM sees them.
