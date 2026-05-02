@@ -1,16 +1,624 @@
-# Canonical entity registry.
-# Maps raw entity mentions (tools, people, companies, concepts) to canonical names.
-# Ingestion pipeline reads this; unknowns get appended to `pending:`.
-#
-# Structure:
-#   entities:
-#     <CanonicalName>:
-#       type: tool | framework | company | person | concept | product
-#       category: <optional grouping string>
-#       aliases: [list of raw mentions that should resolve here]
-
-version: "2026-04-18"
-
+version: '2026-04-18'
 entities: {}
-
-pending: []
+pending:
+- Anthropic
+- Azure Foundry
+- Claude
+- Claude Code
+- Claude Managed Agents
+- CoWork
+- Codex
+- Copilot desktop
+- Discord
+- Docker
+- Excel
+- Gemini Pro
+- Ghost
+- GitHub
+- Google Enterprise
+- Gusto
+- Karpathy LLM Wiki
+- LanceDB
+- Limitless
+- Linux
+- Memory Palace
+- Microsoft
+- Microsoft Copilot
+- Microsoft Copilot Studio
+- Microsoft M365 connector
+- Mila Djokovic repo
+- Mythos
+- N8N
+- Nate B. Jones
+- Notebook LM
+- Obsidian
+- OpenClaude
+- Postgres
+- Power Automate
+- PowerPoint
+- Proxmox
+- RAG
+- RecapFlow
+- Salesforce
+- SharePoint
+- ShipKit
+- Telegram
+- Word
+- Workday
+- AI
+- Ghost (ghost.build)
+- Karpathy LLM Wiki Gist
+- Karpathy LLM Wiki prompt
+- Mythos model
+- Perplexity
+- Presidential AI Challenge
+- Community Brain pipeline
+- Copilot Studio
+- Gemini Flash
+- Gemma 4 31b
+- Haiku-tier
+- Microsoft 365
+- Ollama
+- nomic-embed-text
+- Haiku
+- Andrej Karpathy's LLM Wiki
+- Anthropic Managed Agents
+- ChatGPT
+- Claude Agents
+- Claude Opus
+- Claw-code
+- Copilot
+- Entropic
+- FileMaker Pro
+- Foundry
+- Gemini
+- Gemini Gems
+- Ghost database
+- Ghost database tool
+- Google Docs
+- Google Gemini 2.5 Flash
+- Google Gemini Enterprise
+- Google Gemini Pro
+- Linux VMs
+- Mac Mini
+- Morgan Cook
+- OpenAI Codex plugin
+- OpenClaw
+- Opus
+- Patchutex Conkwork
+- Perplexity Workflow
+- Pro
+- Recap Flow
+- SDLC
+- Service Manager
+- Slack
+- YouTube
+- n8n
+- text-to-SQL
+- ARMs
+- Agent SDK
+- Anthropic's Claude Managed Agents
+- Bitcoin
+- Claude Agent SDK
+- Fathom
+- Fire tablet
+- Fire tablets
+- GPT-2
+- GPT-3
+- GWS CLI
+- Gemini Enterprise
+- Ghost Postgres
+- Google Pro
+- Hermes
+- Iron Claw
+- Karpathy's LLM Wiki
+- Karpathy's LLM Wiki prompt
+- LLM Wiki
+- M365 connector
+- MeetGeek
+- Microsoft Azure
+- NPM
+- Nate B. Jones channel
+- Node
+- Notebook LM Enterprise
+- NotebookLM
+- NotebookLM Enterprise
+- Obsidian Vault
+- OpenAI
+- Python
+- RAG database
+- RFPs
+- Read.ai
+- Red Hat agents
+- Sonnet
+- Spud
+- Teams
+- ghost.build
+- lightweight RAG
+- local LLM
+- onestopcreativeagency.co.uk
+- openclaude
+- ARMYs
+- Andrej Karpathy
+- Anthropic Claude Managed Agents
+- CLI
+- CMS
+- Cloud
+- Cloud Agents
+- ERP
+- Fire Tablet
+- Google
+- Google Calendar
+- Google Drive
+- JavaScript
+- KDS
+- Karpathy LLM Wiki gist
+- Markdown
+- Microsoft Teams
+- Node.js
+- PRDs
+- Pull Request
+- Quantum Computing
+- RFP
+- SMS
+- SQL
+- SaaS
+- lightweight rag
+- notebook.lm
+- open-claw agent
+- recap flow
+- text-to-SQL platform
+- 80-90 AI
+- AWS
+- AWS SES
+- AWS Simple Email Service
+- All In Podcast
+- Amazon
+- Amazon S3
+- Astro
+- Atlassian
+- Be Advise
+- Be Equipped
+- Be Prepared
+- Be Ready
+- CLI-Anything
+- Chessly
+- Church of Claude
+- Church of Molt
+- Clarity
+- Class to Curb
+- Claude Desktop
+- Claude Sonnet 4.6
+- Claude code
+- Clockify
+- Cloud Code
+- Cloudflare
+- Cloudflare D1
+- Cognitive Service Bus
+- Community Brain
+- Convex
+- Cursor
+- DeepGram
+- EAS
+- EMS Soap
+- Explosive Growth
+- Expo.dev
+- FEMA
+- Florida Power & Light
+- Flutter Flow
+- FlutterFlow
+- Gemma 4
+- Gemma 4B
+- Git Worktrees
+- GiveButter
+- Go High Level
+- Google Apps Script
+- Google Apps Scripts
+- Google Workspace
+- Google Workspace CLI
+- Haiku 4.5
+- Heritage Plot
+- HubSpot
+- IPAWS
+- Kimi K2.5
+- KimiK 2.5
+- LeadCap
+- Linear
+- Meta Glasses
+- Meta Ray-Ban
+- Meta Ray-Ban glasses
+- Microsoft Clarity
+- Next.js
+- Open Claude Secure Architecture
+- OpenRouter
+- OpenWebUI
+- Oxytocin Rewire
+- Pencil MCP
+- PostHog
+- Propia
+- Remotion
+- Resend
+- SES
+- ShipSafe
+- SideQuest
+- Sonnet 4.6
+- Sonnet 4.6 1M context
+- Sonnet 4.7
+- Stripe
+- Supabase
+- Terraform
+- ThinkPad Foundation
+- Trigger.dev
+- Upstash
+- Vercel
+- Vertex AI
+- Whoop
+- Workspace
+- expo.dev
+- optimization4all.com
+- AI Authority Accelerator
+- AI Workshop community
+- Apple Notes
+- Claude 3.5 Sonnet
+- Crew AI
+- D3.js
+- DeepCloud
+- DeepSeek
+- DeepSeek O3
+- DeepSeek R1
+- Drupal
+- Fiverr
+- GPT
+- Grok
+- LinkedIn
+- Llama 3
+- Llama 3 distilled
+- Make.com
+- North Coast 500
+- North Coast 500 app
+- O3
+- O3 Mini
+- Phantombuster API
+- R1
+- React
+- Relevance AI
+- Service M8
+- ServiceM8
+- SmartHew.ai
+- Smarthew.ai
+- Twitter
+- Upwork
+- V0
+- Windsurf
+- X
+- YouTube Studio
+- smarthew.ai
+- Claude (3.5 Sonnet)
+- Clerk
+- CrewAI
+- Llama 3 (distilled, 8B)
+- Netflix
+- SmartSew.ai
+- D3
+- Glide
+- Janus
+- Loom
+- Make
+- the fork
+- 11 Labs
+- AIMP
+- AIMP course
+- AWS Lambda
+- AWS SQS
+- AWS Step Functions
+- AgentOps
+- Agentic News Analysis framework
+- Apify
+- Ask
+- Azure
+- Azure App Service
+- Azure Web Apps
+- Browser Base
+- Browserbase
+- Claude (Anthropic)
+- Claude Project
+- Claude Projects
+- Conda
+- Crawl4AI
+- DeepSeek scraper tool
+- DuckDuckGo
+- ElevenLabs
+- FFmpeg
+- FastAPI
+- Flows
+- Galileo
+- Gold Flamingo Solutions
+- Lambda
+- LinkedIn Sales Navigator
+- Llama 3.2
+- Llama 3.2 1B
+- Lovable
+- Mac M4 Max
+- Microsoft for Startups
+- Miro
+- Mistral Small
+- Mistral Small (24B)
+- MyVisor
+- NGINX
+- NVIDIA H100
+- Newsletter Crew
+- Nissan
+- Open Router
+- Open WebUI
+- OpenAI Deep Research
+- OpenAI O3
+- OpenAI O3 Mini
+- Playwright
+- Python FastAPI
+- Qwen 2.5
+- Resume Optimization Crew
+- SQS
+- Sales Navigator
+- School on X
+- Ship30for30
+- Streamlit
+- Super Whisper
+- Surfer
+- TypeShare
+- Typeshare
+- UV
+- UV package manager
+- Udemy
+- VS Code
+- WebSocket
+- WhatsApp
+- WinSurf
+- X/Twitter
+- pip
+- venv
+- AI Developer Accelerator
+- AI Voice Bootcamp
+- Ahrefs
+- Anchor Browser
+- Ben AI
+- Ben AI YouTube channel
+- Ben AI channel
+- Canva
+- Canvas
+- Circle
+- Claude 3.5
+- Eraser
+- Excalidraw
+- Figma
+- Flash 2.0
+- Gamma
+- Gemini 2.0 Flash
+- Gemini 2.0 Flash agent
+- Gemini Flash 2.0
+- Google Keyword Planner
+- Groq
+- Integromat
+- Janis Moore community
+- Keyword Planner
+- LangChain
+- Lex Fridman
+- Notion
+- Photo AI
+- School
+- Skool
+- cursor
+- keyword planner
+- Appify
+- Azure Blob
+- Azure Blob Storage
+- Azure for Startups
+- Bolt
+- Brandon's newsletter agent GitHub repo
+- CPQ
+- Chroma
+- Claude 3.5 Haiku
+- Clean Code
+- CrewAI Enterprise
+- CrewAI open source
+- Cursor Pro
+- DOGE
+- Dave data freelancer YouTube channel
+- Design Patterns
+- Design Patterns book
+- Design patterns YouTube playlist
+- Designing Data-Intensive Applications
+- Devin
+- Docling
+- Docling library
+- Dropbox
+- GPT-4o mini
+- Gemini Advanced
+- Google Cloud Platform
+- Google Maps
+- Google stock
+- Hypefury
+- Jake Tran YouTube channel
+- Juan's LinkedIn video
+- Juan's RAG YouTube short
+- LangGraph
+- LawPay
+- Microsoft Suite
+- Mistral
+- Neon
+- OneDrive
+- OpenAI API
+- Python 3.11
+- Python 3.12.8
+- Qdrant
+- Qdrant Cloud
+- Quadrant
+- QuickBooks
+- RAG systems
+- Refactoring
+- S3
+- Screen Studio
+- Tabs 3
+- Tabs3
+- Tailwind
+- Tick Token
+- TypeScript
+- Weaviate
+- clean code
+- conda
+- conversation crew
+- crew
+- crewai
+- iCloud
+- load_dotenv
+- open router
+- refactoring
+- tiktoken
+- v0
+- vector stores
+- 12 Months to $1 Million
+- 12 Months to 1 Million
+- AI Authority
+- AI Profit Space
+- AI Studio
+- Alex Hormozi
+- Bachelore
+- BookLM
+- Brandon's AI Authority Accelerator landing page
+- CapCut
+- Claude Engineer
+- ConvertKit
+- Descript
+- Flux
+- GPT assistant
+- GitHub star history
+- Google AI Studio
+- Hugging Face
+- Hugging Face Smolagents
+- Klaive
+- Kled
+- Klein
+- Mervin
+- MongoDB
+- Mooma Labs
+- Napkin
+- Napkin AI
+- Payload CMS
+- Plotly
+- Ryan Daniel Moran
+- School community
+- School community workshop
+- Shopify
+- Shopify API
+- Smolagents
+- Star History
+- Starlet
+- Tele-TV
+- Tele.TV
+- Tellie
+- The AI Profit Space
+- Tyler AI
+- Tyler AI YouTube channel
+- deep research
+- pro community
+- pro membership
+- smolagents
+- star-history.com
+- ADAS
+- Auth0
+- Automatic Design of Agent Systems
+- Azure OpenAI
+- Azure PostgreSQL
+- Browser Use
+- Calendly
+- Claude Sonnet 3.5
+- Federal Reserve
+- Firecrawl
+- Flash models
+- GPT-4o
+- Google Alerts
+- Google Gemini
+- Google NotebookLM
+- Grok 3
+- Hagen
+- HeyGen
+- Instantly
+- LLM
+- LangFlow
+- LangSmith
+- LiteLLM
+- MCP
+- Microsoft AI Foundry
+- Model Context Protocol
+- O3 Advanced
+- Pika
+- Puppeteer
+- Runway
+- Shadcn
+- Sora
+- Supabase Auth
+- Supabase RLS
+- Superand
+- Supernis
+- Supernis group
+- Superwrist
+- Trideca
+- WebSockets
+- Yesware
+- Zapier
+- gRPC
+- shadcn
+- vector database
+- xAI
+- A2A
+- ADK
+- ADK Python 2.0 beta
+- AI booth project
+- AI photo booth
+- ATAP Worldwide
+- Amazon Web Services
+- Claude Design
+- Claude Sonnet
+- Claude.md
+- Codex 5.5
+- Cohere
+- DataWeb
+- ERP system
+- Excalibur MCP
+- Fieldy
+- Fireflies.ai
+- GCP
+- GCS
+- GLM
+- GPT Image 2
+- GPT-OSS
+- Gemma 4.30b
+- Git
+- GitHub Copilot
+- Gmail
+- GoPro
+- Google ADK
+- Google ADK Python 2.0 beta
+- Google Cloud
+- Google Cloud Enterprise
+- Google Cloud Workers
+- Granola
+- JWT
+- Kimi K2
+- Lenny's Newsletter
+- Magic Link
+- Mercury
+- MinMax
+- Nano Banana
+- Nomic
+- OTP
+- OTP/magic-link login
+- Office 365
+- Propria
+- Shipkit
+- Superpower
+- Superpower development methodology plugin
+- Whisperflow
+- agent.md
+- community brain preprocessing pipeline
+- magic-link login
+- superpowers

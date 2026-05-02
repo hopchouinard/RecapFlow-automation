@@ -1,12 +1,11 @@
 # Extracted Chat Signal
 
-## Summary
+## general
 This call featured a mix of project demos and technical discussions centered on agentic AI development workflows. Highlights included a demo of a natural language Text-to-SQL data analysis platform (Kira) by Eric Li, updates to Patrick's Claude Code plugin ecosystem and Obsidian-based knowledge base, Ryan's SEO-optimized website rebuild and lead capture app, and a substantive group discussion on enterprise AI development workflows, the Claude Code source leak, Gemma 4, and the Claude/Codex hybrid development pattern.
 
 ---
 
-## Key Insights
-
+## insights
 - **Claude + Codex hybrid workflow**: Using the official OpenAI Codex plugin for Claude Code enables automated code review, adversarial testing, and rescue loops. Patrick runs a $100/month Claude Max account alongside a $20/month Codex subscription and gets the equivalent of ~$15,000/month in API value. The plugin includes `/codex review`, `/codex status`, `/codex rescue`, `/codex setup`, and an **adversarial review** function that actively attempts to break your application and reports vulnerabilities.
 
 - **Obsidian + Claude Code as a lightweight RAG**: Using Andrej Karpathy's prompt (linked below), you can turn an Obsidian vault into an auto-classifying knowledge base managed by Claude Code via terminal. It performs comparably to a light RAG system for up to a few hundred documents, with no additional infrastructure required. Patrick fed it web articles, emails, PDFs, and GitHub READMEs and it organized and backlinked everything automatically.
@@ -29,8 +28,7 @@ This call featured a mix of project demos and technical discussions centered on 
 
 ---
 
-## Key Q&A
-
+## qa
 **Q: How does Kira (Eric's app) handle data security when non-technical users access the data warehouse?**
 - **A:** Security is managed at the workspace level within the app. Admins control which tables each workspace can access. Slack-based access is governed by Slack channel membership — users in a channel can only query data that channel is authorized to access. The app enforces SELECT-only queries; no INSERT, UPDATE, or CREATE operations are permitted.
 - **Synthesis:** The app acts as a controlled translation layer between natural language and the data warehouse, with security delegated to Slack channel permissions and workspace-level table restrictions.
@@ -52,8 +50,7 @@ This call featured a mix of project demos and technical discussions centered on 
 
 ---
 
-## Tools and Concepts Mentioned
-
+## tools
 | Tool / Concept | Why It Mattered |
 |---|---|
 | **Claude Code** | Core agentic coding tool used by most members; central to all development workflows discussed |
@@ -77,8 +74,7 @@ This call featured a mix of project demos and technical discussions centered on 
 
 ---
 
-## Shared Resources
-
+## links
 | Title | URL | Why It Matters |
 |---|---|---|
 | Andrej Karpathy's Obsidian + Claude Code gist | https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f | The prompt/setup for turning an Obsidian vault into an auto-classifying knowledge base using Claude Code; highly recommended by Patrick |
@@ -92,8 +88,7 @@ This call featured a mix of project demos and technical discussions centered on 
 
 ---
 
-## Follow-Ups Worth Revisiting
-
+## decisions
 1. **Ty's UI Arena skill**: Ty mentioned building a "skill arena" that generates multiple UI/UX mockup options from an existing codebase. He indicated he may publish it to a public repo. Worth following up to see if it has been released.
 
 2. **Patrick's plugin contribution model**: Ty expressed interest in contributing his Arena skill to Patrick's PatchouTech marketplace. Patrick confirmed he just needs repo access. This collaboration was not finalized on the call.

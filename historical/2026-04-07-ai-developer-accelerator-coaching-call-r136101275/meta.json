@@ -1,0 +1,33 @@
+{
+  "title": "AI Developer Accelerator Coaching Call",
+  "meeting_title": "AI Developer Accelerator Coaching Call",
+  "url": "https://fathom.video/calls/627437226",
+  "created_at": "2026-04-07T23:34:51Z",
+  "scheduled_start_time": "2026-04-07T22:00:00Z",
+  "scheduled_end_time": "2026-04-07T23:30:00Z",
+  "recording_id": 136101275,
+  "recording_start_time": "2026-04-07T21:47:26Z",
+  "recording_end_time": "2026-04-07T23:34:41Z",
+  "calendar_invitees_domains_type": "one_or_more_external",
+  "transcript": null,
+  "transcript_language": "en",
+  "default_summary": null,
+  "action_items": null,
+  "calendar_invitees": [
+    {
+      "name": "Brandon Hancock",
+      "email": "brandon@brandonhancock.io",
+      "email_domain": "brandonhancock.io",
+      "is_external": false,
+      "matched_speaker_display_name": null
+    }
+  ],
+  "recorded_by": {
+    "name": "Brandon Hancock",
+    "email": "brandon@brandonhancock.io",
+    "email_domain": "brandonhancock.io",
+    "team": null
+  },
+  "share_url": "https://fathom.video/share/yiP3fpzB5Nx-NSCVhBePK7sJMBFDfrxy",
+  "crm_matches": null
+}

@@ -1,0 +1,33 @@
+{
+  "title": "AI Developer Accelerator Weekly Call",
+  "meeting_title": "AI Developer Accelerator Weekly Call",
+  "url": "https://fathom.video/calls/306292244",
+  "created_at": "2025-05-21T00:07:47Z",
+  "scheduled_start_time": "2025-05-20T21:54:44Z",
+  "scheduled_end_time": "2025-05-20T22:54:44Z",
+  "recording_id": 63767634,
+  "recording_start_time": "2025-05-20T21:55:56Z",
+  "recording_end_time": "2025-05-21T00:07:28Z",
+  "calendar_invitees_domains_type": "one_or_more_external",
+  "transcript": null,
+  "transcript_language": "en",
+  "default_summary": null,
+  "action_items": null,
+  "calendar_invitees": [
+    {
+      "name": "Brandon Hancock",
+      "email": "brandon@brandonhancock.io",
+      "email_domain": "brandonhancock.io",
+      "is_external": false,
+      "matched_speaker_display_name": null
+    }
+  ],
+  "recorded_by": {
+    "name": "Brandon Hancock",
+    "email": "brandon@brandonhancock.io",
+    "email_domain": "brandonhancock.io",
+    "team": null
+  },
+  "share_url": "https://fathom.video/share/36_2fsLdbcayxDgQ2L5AJxR-9ZRPogjr",
+  "crm_matches": null
+}

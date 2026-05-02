@@ -1,21 +1,414 @@
-# Canonical speaker alias registry.
-# Maps raw names (as they appear in transcripts) to canonical full names.
-# Ingestion pipeline reads this at startup; unknown speakers get appended to `pending:`.
-
-version: "2026-04-18"
-
+version: '2026-04-30'
 aliases:
   Alex Rojas:
-    - alexrojas
-    - "Alex R"
-    - arojas
+  - alexrojas
+  - Alex R
+  - arojas
   Alex Wilson:
-    - AlexH
-    - "Alex H"
+  - AlexH
+  - Alex H
   Sam:
-    - sam
-    - "Sam C"
+  - sam
+  - Sam C
   Shakur:
-    - shakur
-
-pending: []
+  - shakur
+  Adam James:
+  - Adam
+  - Adam (Gold Flamingo)
+  - Adam - Gold Flamingo
+  Alexandra Spalato:
+  - Alexandra
+  Andrej Karpathy:
+  - Karpathy
+  Andrew Nanton:
+  - Andrew
+  Asako Hayase:
+  - Asako
+  - asako
+  Bastian Venegas:
+  - Bastian
+  Biggi Fraley:
+  - Biggi
+  Brandon Hancock:
+  - Brandon
+  - Brendan
+  Christopher Marin:
+  - Chris
+  - Christopher
+  - Christopher (Chris) Marin
+  Delvis Nunez:
+  - Delvis
+  - delvis
+  David’s iPhone:
+  - David
+  - David (David's iPhone)
+  Elijah Stambaugh:
+  - Elijah
+  Eureka Vanterpool:
+  - Eureka
+  Jake Maymar:
+  - Jake
+  Joh Leonhardt:
+  - Joh
+  Juan Torres:
+  - Juan
+  Maksym Liamin:
+  - Maksym
+  Mike Simko:
+  - Mike
+  Morgan Cook:
+  - Morgan
+  Nate B. Jones:
+  - Nate
+  Orlando Agostinho:
+  - Orlando
+  Patrick Chouinard:
+  - Patrick
+  Paul Miller:
+  - Paul
+  - Paul's CTO
+  Pavan Vemuri:
+  - Pavan
+  Philip Couboura:
+  - Philip
+  Reuben Lomas:
+  - Reuben
+  Rob Brennan:
+  - Rob
+  Ryan - One Stop Creative Agency:
+  - Ryan
+  Shima:
+  - shima
+  Tiran Dagan:
+  - Tiran
+  Tom Welsh:
+  - Tom
+  Ty Wells:
+  - Ty
+  Brian Major: []
+  Marc Juretus: []
+  Nate Ginn: []
+pending:
+- Aaron
+- Chamath
+- Dmitry
+- Don
+- Dudley
+- Elena
+- Fitz
+- Maxim
+- Miguel
+- Mitch
+- Raul
+- Richard
+- Sharif
+- The Dharma House
+- Tony
+- Victor
+- Vlad
+- Alex from OZ
+- Ben AI
+- Andrea
+- Janis Moore
+- Lex Fridman
+- Michelle
+- Nick Peris
+- Bastian Manaz
+- Cole
+- Dave
+- Dickie
+- Jake Tran
+- V.I. Lenin
+- Alex Hormozi
+- Mervin
+- Russell Brunson
+- Ryan Daniel Moran
+- Tyler AI
+- Musk
+- Tim
+- sherif abushadi
+- Nate Jones
+- President Trump
+- Cliff Lerner
+- Scott
+- Townsend
+- James Clear
+- Andrew Ng
+- Richard Collier
+- Sam Altman
+- Steven Pressfield
+- Anna
+- Cole Needen
+- Eric
+- Eric Li
+- Mohamed
+- Network Chuck
+- Ryan C
+- Ana P
+- IndieDevDan
+- Julie
+- Theo
+- Winner
+- Winner Konou
+- Aaron (The Dharma House)
+- Adam Hanson
+- Christopher Okhravi
+- Cyril
+- Cyril I
+- Eleanor
+- Masako
+- Sherif
+- Sherif Abushadi
+- Scott Rippey
+- David Stamper
+- Matt Berman
+- Mitchell McCauley
+- Raga
+- Steve Mucks
+- Timothy
+- AK
+- Hackysterio
+- Naveen
+- Naveen Selvaraju
+- Patrick Hutchinson
+- Sagar
+- Sagar Passi
+- Thomas Frank
+- Tiago Forte
+- hackysterio
+- Al Cole
+- Charles Stross
+- Don Davis
+- Elon Musk
+- Hemal Shah
+- Naren
+- Paul Bettany
+- Prem
+- Nate G
+- Steve
+- Adam Schroeder
+- Santiago
+- Santiago/Underfitted
+- Sebastian
+- RODRIGO DONOSO
+- Cyril I.
+- Emilio
+- Peter
+- Sakura
+- Scott Graham
+- Carly
+- Parker
+- Parker Rex
+- Adam Silverman
+- Clement
+- Dr. Mohamed Samy
+- Leonard Mlodinow
+- Michal
+- Michal Simko
+- Alex
+- Dave Ebbert
+- Fernando
+- Fernando Lopes Jr.
+- AbdulShakur
+- AbdulShakur Abdullah
+- Albert
+- Michael
+- Abdul
+- Andanak
+- Gaurav
+- Gaurav Shukla
+- Nissan
+- Om Kundalini
+- Peter Levels
+- Premkumar
+- Premkumar Subbiah Thangarajan
+- Brett Weinstein
+- Greg Eisenberg
+- Krish Naik
+- Lucas
+- Lucas cooper-Bey
+- James
+- James Rennie
+- Ola Oyo
+- Alex (Alexander)
+- Alexander
+- Bert
+- Marc
+- Mark
+- Neel
+- Neel More
+- Robert Chirwa
+- Simon Høiberg
+- Aleksandr
+- Mauri
+- Mauri Lindberg
+- Robert
+- robertchirwa
+- Alec
+- Elad
+- Elad Weinstein
+- Kanav
+- Kanav Arora
+- Richard Richard
+- Sandeep
+- Al
+- Lee
+- Robin
+- Dan
+- Dan Martell
+- David Shapiro
+- Dua Lipa
+- Joe
+- Michael Truel
+- Migos code
+- Nicholas Cole
+- The Weeknd
+- Abdul Shakur
+- Andrian
+- Andrian Georgiev
+- Christina
+- David André
+- Jaylen
+- Jaylen Davis
+- Jaylen.Davis
+- Matias
+- Muhammad
+- Sam (unnamed speaker)
+- Zain
+- Zain K
+- Zhuo
+- andrean georgiev
+- Brett
+- Chouinpa
+- Joao
+- Matias Coca
+- Theo T3
+- WebDev Cody
+- Migos
+- Dan Coe
+- Gopal
+- Gopal Seshadri
+- Abhi
+- Brian
+- Cole Medin
+- Ed Zitron
+- Simon Willison
+- Stephen
+- StephenAmstutz
+- Alex (Mexico)
+- Ammar
+- Ammar FunnelBuilder
+- Hemal
+- Jusin Gibbs
+- Saul
+- Temitayo
+- Temitayo Gbolahan
+- Lewis
+- Never2Nervous
+- Never2Nervous (Lewis)
+- Chip Huyen
+- Daniel Miesler
+- Daniel Miessler
+- Matt Wolfe
+- Daniel Frazio
+- Kris Larson
+- Ola
+- Sam Shore
+- Jahangir
+- Jahangir Jadi
+- Ross
+- Pedro
+- Pedro Gomez
+- Joel Wilson
+- Kamal (Joel Wilson)
+- Mario
+- Mario Polanco
+- elijahstambaugh
+- Al Anthony
+- Anthony
+- Bill Gates
+- Larry Ellison
+- Michael Gerber
+- Stefan Marek
+- Vladimir Mirkhev
+- Alroj
+- Drew Brees
+- Garron
+- Garron Selliken
+- Gosu Coder
+- Manny
+- Ray Kurzweil
+- Sidney Poitier
+- alroj
+- Rod
+- Rod Morrison
+- Alex (AlexH)
+- brandon hancock
+- Ana
+- Masatoshi
+- Tiberius
+- Tiberius K
+- Mitch McCauley
+- Dave Far
+- Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com
+- abdulshakur.abdullah
+- HP (Scott)
+- Scott (HP)
+- Daniel Miser
+- Glenn
+- Glenn Marcus
+- Lan
+- Nick
+- Nick Mohler
+- Parker Walbeck
+- Web Dev Dan
+- Bastian Venegas Arevalo
+- Carlos
+- Carlos Aguilar
+- Daniel Messer
+- Dawn Davis
+- George Kurian
+- Maxim Liamin
+- scottrippey
+- NetworkChuck
+- Alex Becker
+- Ryan Serhant
+- Dan Martel
+- Dmitry Avramenko
+- George
+- HP
+- Maya
+- Raj
+- Robert De Niro
+- Sarah
+- Trump
+- Biggie Fraley
+- Gene Kim
+- Ivan
+- Raghav
+- Steve Yegge
+- Jack Butcher
+- Natalie
+- Stephen G. Pope
+- elijah stambaugh
+- Ama
+- Dario
+- Dario Amodei
+- David Goggins
+- Raghav Ram
+- Ana Preciado
+- Ashley
+- Paul Gallovich
+- Shah Martinez
+- anapreciado
+- Bastien
+- Elon
+- Altman
+- Kevin O'Leary
+- LeCun
+- Mark Cuban
+- Nancy Pelosi
+- Nate Herc
+- Darryl Goldstein
+- Peter Steinberger
+- Rag Ch

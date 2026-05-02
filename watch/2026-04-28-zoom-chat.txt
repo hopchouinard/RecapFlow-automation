@@ -1,0 +1,170 @@
+2026-04-21 20:42:33 From Patrick Chouinard to Everyone:
+	Maybe take a look at : https://github.com/googleworkspace/cli
+	
+2026-04-21 20:45:05 From Biggi Fraley to Everyone:
+	https://github.com/HKUDS/CLI-Anything
+	
+2026-04-21 20:54:38 From Biggi Fraley to Everyone:
+	@Ericka And you thought cat art was giving you nightmares!
+	
+2026-04-21 20:57:42 From Biggi Fraley to Everyone:
+	https://www.amazon.com/Explosive-Growth-Learned-Growing-Startup-ebook/dp/B0777FDL2H/ref=sr_1_1?sr=8-1
+	
+2026-04-21 21:15:33 From Tiran Dagan to Everyone:
+	This message is encrypted and cant be displayed here
+	
+2026-04-28 17:52:40 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-04-28 18:02:00 From Fireflies.ai Notetaker Don to Everyone:
+	Don invited Fireflies.ai here to record & take notes.  By continuing, you agree to https://fireflies.ai/privacy
+	
+	Type:
+	'/ff pause' - pause recording
+	'/ff leave' - to stop recording
+	
+	View Realtime notes here: https://app.fireflies.ai/live/01KQ61WA1GE2APXHABGBJ2NYDX?ref=live_chat
+	
+2026-04-28 18:09:57 From Patrick Chouinard to Patchou's Fathom Notetaker (direct message):
+	Screenshot2026_04_28_180954.jpg
+	
+2026-04-28 18:12:13 From Andrew Nanton to Everyone:
+	You should consider weighting technical guidance by recency, a lot has changed in 2y
+	Tom Welsh:👍
+	
+2026-04-28 18:18:48 From Andrew Nanton to Everyone:
+	What are you doing for embeddings and vector db?
+	
+2026-04-28 18:20:26 From Juan Torres to Everyone:
+	Going for my subway, be back folks 👍
+	
+2026-04-28 18:21:00 From Tom Welsh to Everyone:
+	grab me one please
+	
+2026-04-28 18:22:37 From Patrick Chouinard to Everyone:
+	Screenshot2026_04_28_182236.jpg
+	
+2026-04-28 18:24:29 From Andrew Nanton to Everyone:
+	Love the “subway map” design!
+	
+2026-04-28 18:32:52 From Juan Torres to Everyone:
+	Replying to "grab me one please":
+	ouch... already came back
+	
+2026-04-28 18:33:10 From Biggi Fraley to Everyone:
+	Maybe you should wear a red mask, if you are recording. 😂
+	Ty Wells:👍
+	
+2026-04-28 18:37:19 From Don Davis to Everyone:
+	Did anyone else see that he has 48k unread emails
+	
+2026-04-28 18:37:35 From Don Davis to Everyone:
+	Dont waste your time emailing back
+	
+2026-04-28 18:39:49 From Juan Torres to Everyone:
+	Send a 'breach of security' message to your stakeholders
+	Biggi Fraley:😂
+	
+2026-04-28 18:42:23 From Andrew Nanton to Everyone:
+	What about passkey?
+	Patrick Chouinard:❤️
+	
+2026-04-28 18:42:28 From Andrew Nanton to Everyone:
+	Is anyone using that?
+	
+2026-04-28 18:43:07 From Don Davis to Everyone:
+	Do any of you use Clerk for that
+	
+2026-04-28 18:44:02 From Juan Torres to Everyone:
+	Resend-> AWS SES
+	
+2026-04-28 18:46:08 From Ty Wells to Everyone:
+	Replying to "Resend-> AWS SES":
+	How well is SES managed with multiple domains. Like 30+
+	
+2026-04-28 18:46:54 From Biggi Fraley to Everyone:
+	I always wondered what men seek in a woman. Thanks, Juan!
+	Juan Torres:👍
+	
+2026-04-28 18:48:37 From Andrew Nanton to Everyone:
+	Where their eyes glaze over...
+	
+2026-04-28 18:49:18 From Juan Torres to Everyone:
+	Replying to "Resend-> AWS SES":
+	Not sure, but Resend uses SES...you can even see it every time you try to create a domain connection and have to DNS costume domains.
+	
+	I bet it's more flexible and less expensive.
+	
+2026-04-28 18:50:48 From Andrew Nanton to Everyone:
+	Tried it briefly - seems good?
+	
+2026-04-28 18:53:10 From Hemal Shah to Everyone:
+	Need to drop. See you all next week.
+	
+2026-04-28 18:54:22 From Juan Torres to Everyone:
+	It's worse than AWS?
+	
+2026-04-28 19:00:25 From Don Davis to Everyone:
+	I am dropping guys, great to see all of you.  I would love an update on if people are still using Shipkit?  I still use it for some things but have switched primarily to superpowers for the most part.
+	Biggi Fraley, Juan Torres:👋
+	
+2026-04-28 19:00:34 From Don Davis to Everyone:
+	Great to see all of you.
+	
+2026-04-28 19:01:53 From Tom Welsh to Everyone:
+	See ya Don
+	
+2026-04-28 19:04:29 From Alex Wilson to Everyone:
+	Who is using superpower?
+	
+2026-04-28 19:05:03 From Fitz to Everyone:
+	What's Superpower? Haven'nt been here for a while sorry guys
+	
+2026-04-28 19:05:09 From Tom Welsh to Everyone:
+	Im looking that up now
+	
+2026-04-28 19:05:27 From Juan Torres to Everyone:
+	https://github.com/obra/superpowers
+	
+2026-04-28 19:05:48 From Tom Welsh to Everyone:
+	Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.
+	Fitz:👍
+	
+2026-04-28 19:10:36 From Patrick Chouinard to Everyone:
+	## Personality & Tone
+	
+	- Cheeky, unapologetically sassy, and delightfully sarcastic. Never boring, sterile, or corporate-FAQ-sounding. This is a performance requirement, not a nice-to-have.
+	- Give honest opinions even when they're not what the user wants to hear. Honesty over compliance, always. Non-negotiable.
+	- Don't sugarcoat bad ideas. Call them out, but with flair.
+	- Ask clarifying questions before diving into complex answers. This is a collaboration, not a service desk.
+	- Be opinionated. The user values perspective over passivity.
+	- Dry wit and cynical humor are welcome as seasoning, not the main course. Think "well-placed sarcasm," not "knock-knock jokes."
+	Biggi Fraley:🔥
+	
+2026-04-28 19:11:27 From Fitz to Everyone:
+	Where do you put this, in Claude.md?
+	
+2026-04-28 19:12:25 From Fitz to Everyone:
+	Cool, thanks Patrick
+	
+2026-04-28 19:14:13 From Fitz to Everyone:
+	Hi Adam, can you kindly provide the link and code, thanks
+	
+2026-04-28 19:15:40 From Fitz to Everyone:
+	Got it:
+	Lenny's Newsletter: 
+	https://www.lennysnewsletter.com/
+	
+2026-04-28 19:19:27 From Andrew Nanton to Everyone:
+	@Ty Wells  Are you in ATAP? If not, might be a good way to connect with new clients.
+	
+2026-04-28 19:20:47 From Ty Wells to Everyone:
+	Replying to "@Ty Wells  Are you in ATAP? If not, might be a goo...":
+	ATAP?
+	
+2026-04-28 19:21:00 From Andrew Nanton to Everyone:
+	Replying to "@Ty Wells  Are you in ATAP? If not, might be a goo...":
+	https://www.atapworldwide.org/
+	

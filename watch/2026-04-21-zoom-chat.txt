@@ -1,0 +1,301 @@
+2026-04-21 17:56:14 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-04-21 17:59:12 From Xiaoming Notetaker to Everyone:
+	I’m recording this meeting with MeetGeek.ai for note taking purposes.
+	
+2026-04-21 17:59:58 From Dudley's MeetGeek Notetaker to Everyone:
+	I’m recording this meeting with MeetGeek.ai for note taking purposes.
+	
+2026-04-21 18:03:08 From Paul Miller to Everyone:
+	@Brandon Hancock wow that was work the pivot!
+	
+2026-04-21 18:03:45 From Patrick Chouinard to Everyone:
+	Congratulation @Brandon Hancock
+	
+2026-04-21 18:05:31 From Brandon Hancock to Everyone:
+	Screenshot 2026-04-21 at 6.05.03 PM.png
+	
+2026-04-21 18:07:11 From Paul Miller to Everyone:
+	Congratulations @Tony
+	
+2026-04-21 18:10:07 From Patrick Chouinard to Everyone:
+	@Ty Wells coming from the person who joined the call from the golf course… If you take time between golf holes to think about AI projects you are not slumping… 😛
+	Ty Wells:👍
+	
+2026-04-21 18:12:02 From Ryan - One Stop Creative Agency to Everyone:
+	Ty, N8N running on a VM is gold for essentially unlimited emails for a reasonable monthly cost :)
+	
+2026-04-21 18:12:11 From Juan Torres to Everyone:
+	https://aws.amazon.com/ses/
+	Ty Wells:👍
+	
+2026-04-21 18:27:41 From Juan Torres to Everyone:
+	Ty is a demi-God of vibe coding
+	
+2026-04-21 18:28:17 From Patrick Chouinard to Everyone:
+	@Brandon Hancock Right now the ratio is for Claude Code 200$ /month = 5000$ of API calls
+	Brandon Hancock:🔥
+	
+2026-04-21 18:35:18 From alexrojas to Everyone:
+	Cool, Tony!
+	
+2026-04-21 18:35:23 From Ty Wells to Everyone:
+	Nice
+	
+2026-04-21 18:35:43 From Ty Wells to Everyone:
+	Reminds me of order my UberEats
+	
+2026-04-21 18:35:54 From Biggi Fraley to Everyone:
+	It's really nice, @Tony!
+	
+2026-04-21 18:36:56 From Patrick Chouinard to Everyone:
+	https://www.pencil.dev/
+	
+2026-04-21 18:39:16 From Patrick Chouinard to Everyone:
+	Pencil is also facing a challenge right now because of : https://claude.ai/design
+	
+2026-04-21 18:40:08 From alexrojas to Everyone:
+	Supabase failed on me while I was with a client showing the app…. It was bad, hehe
+	
+2026-04-21 18:40:30 From Juan Torres to Everyone:
+	Have a staging database and production db
+	
+2026-04-21 18:41:47 From alexrojas to Everyone:
+	Ignorance is bliss!! hehe
+	
+2026-04-21 18:43:08 From alexrojas to Everyone:
+	@Adam when you say modular you mean encapsulate each feature as something you can add?
+	
+2026-04-21 18:44:26 From Morgan Cook to Everyone:
+	meta components.
+	alexrojas:👍
+	
+2026-04-21 18:44:31 From Adam to Everyone:
+	Replying to "@Adam when you say modular you mean encapsulate ea...":
+	Separate client specific code from universally applicable code.
+	alexrojas:👍
+	
+2026-04-21 18:50:49 From Ty Wells to Everyone:
+	RLE?
+	
+2026-04-21 18:51:59 From Ty Wells to Everyone:
+	Dictate to claude
+	
+2026-04-21 18:52:07 From Ty Wells to Everyone:
+	And use Patrick voice back
+	Patrick Chouinard:😂
+	
+2026-04-21 18:52:53 From Tony to Everyone:
+	Replying to "It's really nice, @Tony!":
+	Thank you @Biggi Fraley  😊
+	Biggi Fraley:👍
+	
+2026-04-21 18:54:50 From Morgan Cook to Everyone:
+	@Juan Torres you need a left right control in you preview to cycle over all your selected results.
+	
+2026-04-21 18:55:07 From alexrojas to Everyone:
+	Cool @Juan Torres  looks dope!
+	Juan Torres:🔥
+	
+2026-04-21 18:55:25 From Patrick Chouinard to Everyone:
+	@Juan Torres Extremely nice concept, I can see so many usage for this.
+	Juan Torres:🔥
+	
+2026-04-21 19:06:53 From Juan Torres to Everyone:
+	Replying to "@Juan Torres you need a left right control in you ...":
+	What do you mean?
+	
+2026-04-21 19:09:52 From Adam to Everyone:
+	@Juan Torres You might want to talk to physical photo both providers. The ones I have seen have computers built in.
+	Juan Torres:👍
+	
+2026-04-21 19:12:35 From Ty Wells to Everyone:
+	4.7 is no bueno
+	
+2026-04-21 19:13:07 From Biggi Fraley to Everyone:
+	Codex here we come!
+	alexrojas:😂
+	
+2026-04-21 19:17:54 From Morgan Cook to Everyone:
+	@Brandon Hancock if you start claude with a parameter you can still select the older model. as in
+	claude --model claude-opus-4-6-[1m]
+	Just tested and still works.
+	Biggi Fraley:❤️
+	
+2026-04-21 19:18:17 From Brandon Hancock to Everyone:
+	Replying to "@Brandon Hancock if you start claude with a parame...":
+	You are my hero! Thank you! Id don’t know you could do that still!
+	
+2026-04-21 19:18:58 From Juan Torres to Everyone:
+	Thanks Patrick
+	
+2026-04-21 19:20:31 From Brandon Hancock to Everyone:
+	Replying to "@Brandon Hancock if you start claude with a parame...":
+	claude --model claude-opus-4-6-[1m]
+	zsh: no matches found: claude-opus-4-6-[1m]
+	
+	It’s fighting me ^^^
+	
+2026-04-21 19:22:00 From Morgan Cook to Everyone:
+	Replying to "@Brandon Hancock if you start claude with a parame...":
+	I'm running on Linux. Claude Code v2.1.116
+	
+2026-04-21 19:25:20 From Patrick Chouinard to Everyone:
+	https://church.thoughtbox.ca/
+	Biggi Fraley, alexrojas, Juan Torres:😂
+	
+2026-04-21 19:26:25 From Adam to Everyone:
+	Replying to "https://church.thoughtbox.ca/":
+	https://molt.church/
+	alexrojas, Biggi Fraley, Juan Torres:😂
+	
+2026-04-21 19:30:51 From Adam to Everyone:
+	@Paul Miller Optimization4All does logistics meetups.
+	https://optimization4all.com/
+	
+2026-04-21 19:33:16 From Ty Wells to Everyone:
+	Propria at work
+	Screenshot 2026-04-21 at 6.32.53 PM.png
+	Biggi Fraley, Patrick Chouinard:👍
+	Juan Torres:😯
+	
+2026-04-21 19:40:07 From Morgan Cook to Everyone:
+	I'll be a team member!
+	Paul Miller:👍
+	
+2026-04-21 19:40:24 From Paul Miller to Everyone:
+	Replying to "I'll be a team member!":
+	lets talk DM me
+	
+2026-04-21 19:43:57 From Patrick Chouinard to Everyone:
+	You would be surprise the number of US companies are using nearshore ressources from Quebec. Cheaper (not as much as Eastern Europe but still) mostly bilingual and  low culture shock.
+	Ty Wells:👍
+	
+2026-04-21 19:44:55 From Biggi Fraley to Everyone:
+	I've had to abandon products because they had this horrible front-line support that you just couldn't get past.
+	
+2026-04-21 19:44:57 From Dudley's MeetGeek Notetaker to Everyone:
+	You have a few minutes left for this meeting, as per your calendar. Learn more about what I can do at https://go.meetgeek.ai/learn
+	
+2026-04-21 19:48:24 From Juan Torres to Everyone:
+	Nice
+	
+2026-04-21 19:51:50 From Biggi Fraley to Everyone:
+	I really feel for those home services providers. I think the moat lies in building something that protects them from the onslaught of marketers while routing legitimate leads directly to them. 😛
+	Patrick Chouinard:👍
+	
+2026-04-21 19:54:11 From alexrojas to Everyone:
+	Beautiful indeed @Ryan - One Stop Creative Agency  good one, sir!
+	Ryan - One Stop Creative Agency:❤️
+	
+2026-04-21 19:55:52 From Biggi Fraley to Everyone:
+	Looks very affordable to me. 👍
+	
+2026-04-21 19:57:08 From Patrick Chouinard to Everyone:
+	@Ryan - One Stop Creative Agency You should probably think about adding monthly prices billed annually  (easy way for long term business)
+	Ryan - One Stop Creative Agency:❤️
+	
+2026-04-21 19:57:14 From Biggi Fraley to Everyone:
+	And I thought all those YouTubers have those red marks on their nose because they finally took off those horrible nose strips. But no, they took off their Ray-Bans! 😂
+	Brandon Hancock:🤣
+	
+2026-04-21 19:58:34 From Biggi Fraley to Everyone:
+	How long have you been working on this, @Ryan - One Stop Creative Agency?
+	
+2026-04-21 20:10:46 From Adam to Everyone:
+	Taking a break from AI.
+	IMG_bike.jpg
+	Juan Torres, Patrick Chouinard, Biggi Fraley:❤️
+	
+2026-04-21 20:11:42 From Juan Torres to Everyone:
+	Gotta go folks...nice talk
+	Brandon Hancock:❤️
+	Biggi Fraley, Ryan - One Stop Creative Agency:👋
+	
+2026-04-21 20:12:50 From Biggi Fraley to Everyone:
+	Replying to "Taking a break from AI. IMG_bike.jpg":
+	We all need one. 😅
+	
+2026-04-21 20:12:55 From Morgan Cook to Everyone:
+	GiveButter
+	Adam:♥️
+	
+2026-04-21 20:14:48 From Biggi Fraley to Everyone:
+	Replying to "GiveButter":
+	https://givebutter.com
+	Fundraising Software For Nonprofits | Givebutter
+	Givebutter equips nonprofits with modern fundraising tools, from donation forms that convert 47% of potential donors—4x the industry average, to events, auctions, and pages that delight
+	
+2026-04-21 20:15:44 From Morgan Cook to Everyone:
+	https://spread.givebutter.com/
+	Biggi Fraley:👍
+	
+2026-04-21 20:18:59 From Biggi Fraley to Everyone:
+	Aw, I want it. Where is he located? - Awesome site, @Morgan Cook. ❤️
+	
+2026-04-21 20:19:50 From Patrick Chouinard to Everyone:
+	@Morgan Cook Awesome stuff. If I had a cat I would buy one.
+	
+2026-04-21 20:20:23 From Biggi Fraley to Everyone:
+	Replying to "@Morgan Cook Awesome stuff. If I had a cat I would...":
+	If I had a catio, I'd buy a cat! 😂
+	Ericka, Patrick Chouinard:😂
+	
+2026-04-21 20:20:57 From Ericka to Everyone:
+	Some of that art is going to give me nightmares.
+	
+2026-04-21 20:21:01 From Ty Wells to Everyone:
+	I have a skill that create 4 of the best UI and u choose but I created partially working HTML mockups
+	Brandon Hancock:🤣
+	
+2026-04-21 20:23:21 From Ty Wells to Everyone:
+	@Morgan Cook do u want me run my scanner against it?
+	
+2026-04-21 20:24:28 From Morgan Cook to Everyone:
+	@ty that would be cool to see.
+	
+2026-04-21 20:29:40 From Patrick Chouinard to Everyone:
+	Purely on price:
+	Gemini 2.5 Flash $0.30/M input tokens$2.50/M output tokens 
+	Kimi K2.5 $0.44/M input tokens$2/M output tokens
+	
+	Kimi is close to Sonnet quality
+	Biggi Fraley:👍
+	
+2026-04-21 20:30:20 From Biggi Fraley to Everyone:
+	Replying to "Purely on price: Gemini 2.5 Flash $0.30/M input to...":
+	Have you tested Kimi 2.6 yet?
+	
+2026-04-21 20:31:18 From Patrick Chouinard to Everyone:
+	Replying to "Purely on price: Gemini 2.5 Flash $0.30/M input to...":
+	Not yet, it appear on OpenRouter yesterday, but it is twice the cost of 2.5, so for my use cases it’s not worth it yet.
+	Biggi Fraley:👍
+	
+2026-04-21 20:31:53 From Biggi Fraley to Everyone:
+	Replying to "Purely on price: Gemini 2.5 Flash $0.30/M input to...":
+	Thanks for that. I heard it was just released but had not yet checked the pricing.
+	
+2026-04-21 20:32:35 From Patrick Chouinard to Everyone:
+	Replying to "Purely on price: Gemini 2.5 Flash $0.30/M input to...":
+	Kimi K2.6 : $0.80/M input tokens$3.50/M output tokens
+	Biggi Fraley:👍
+	
+2026-04-21 20:42:33 From Patrick Chouinard to Everyone:
+	Maybe take a look at : https://github.com/googleworkspace/cli
+	
+2026-04-21 20:45:05 From Biggi Fraley to Everyone:
+	https://github.com/HKUDS/CLI-Anything
+	Patrick Chouinard:👍
+	
+2026-04-21 20:54:38 From Biggi Fraley to Everyone:
+	@Ericka And you thought cat art was giving you nightmares!
+	
+2026-04-21 20:57:41 From Biggi Fraley to Everyone:
+	https://www.amazon.com/Explosive-Growth-Learned-Growing-Startup-ebook/dp/B0777FDL2H/ref=sr_1_1?sr=8-1
+	
+2026-04-21 21:15:33 From Tiran Dagan to Everyone:
+	ryan: my email is tiran@bepreparedsolutions.co
+	

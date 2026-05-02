@@ -1,12 +1,11 @@
 # Extracted Chat Signal
 
-## Summary
+## general
 This weekly AI community call covered a wide range of practical topics including new tools and security incidents (Claude Code source leak, NPM hack), member project showcases (Patrick's Claude Code plugin ecosystem and voice integration, Ty's FaceGate facial recognition app, Scott's AI news digest blog, Ryan's hedge fund expense software), and substantive discussions on the future of work with AI, RAG architecture decisions, scope creep management with AI-accelerated clients, and repurposing gaming PCs as local AI infrastructure servers.
 
 ---
 
-## Key Insights
-
+## insights
 - **Working WITH AI vs. delegating TO AI** is the critical distinction for future-proofing careers. The ability to structure problems, design workflows, and ask the right questions remains a human skill that AI cannot yet replicate.
 - **Curiosity is the single most important skill to cultivate** in the AI era, according to Patrick. Breadth of knowledge and subjective experience build the judgment that AI lacks.
 - **Knowledge work with no judgment calls is most at risk** from AI displacement. If your job is following a decision tree and clicking through steps, it is automatable.
@@ -23,8 +22,7 @@ This weekly AI community call covered a wide range of practical topics including
 
 ---
 
-## Key Q&A
-
+## qa
 **Q: Which jobs will be most impacted by AI, and in what timeframe?**
 - A: The more useful question is which jobs will *not* be impacted. Knowledge work with no judgment calls (step-following, decision-tree execution) is most at risk. Cybersecurity, skilled trades (plumbing, electrical), and data center construction are most defensible. Programming is not going away — syntax is being automated, but architectural thinking, workflow design, and problem structuring still require humans.
 - *Synthesis*: Multiple participants agreed that the ability to ask good questions and think across domains is the meta-skill. Patrick framed it as a historical IT cycle repeating at faster speed.
@@ -49,8 +47,7 @@ This weekly AI community call covered a wide range of practical topics including
 
 ---
 
-## Tools and Concepts Mentioned
-
+## tools
 | Tool / Concept | Why It Mattered |
 |---|---|
 | **Claude Code** | Primary coding agent used by most members; central to most project showcases |
@@ -83,8 +80,7 @@ This weekly AI community call covered a wide range of practical topics including
 
 ---
 
-## Shared Resources
-
+## links
 | Resource | URL | Why It Matters |
 |---|---|---|
 | **Codex Plugin for Claude Code** | https://github.com/openai/codex-plugin-cc | Allows Codex to run inside Claude Code for code review; token-saving strategy |
@@ -100,8 +96,7 @@ This weekly AI community call covered a wide range of practical topics including
 
 ---
 
-## Follow-Ups Worth Revisiting
-
+## decisions
 1. **Claude Speak demo** — Patrick's voice integration for Claude Code didn't fully demo live (microphone conflict suspected). Worth a clean demo next session.
 2. **FaceGate feedback** — Ty asked members to test his facial recognition authentication app and submit feedback via the in-app purple icon. URL to be shared after he adds the feedback widget.
 3. **Everything Claude Code deep dive** — Multiple members expressed interest but hadn't gone through it yet. Worth a dedicated discussion once members have explored it.
