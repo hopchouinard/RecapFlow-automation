@@ -153,31 +153,72 @@ def render_score_breakdown(score_breakdown: dict | None) -> str:
     )
 
 
-def render_chunk(chunk: dict, valves: object | None = None) -> tuple[str, str]:
-    """Render a single chunk for the LLM-facing context.
+def _render_chunk(
+    chunk: dict,
+    source_index: int,
+    valves: object | None = None,
+) -> str:
+    """Render a single chunk for the LLM-facing context (v4 layout).
 
-    Returns (trusted_metadata_lines, transcript_content).
+    Returns a single string containing all metadata tag lines (outside
+    <transcript_data>) followed by the transcript content (inside
+    <transcript_data>).
 
-    trusted_metadata_lines: 0+ lines of [flags: ...] / [score: ...]
-        joined by \\n. Empty string if no trusted lines apply.
-    transcript_content: the chunk's full_text verbatim.
+    Layout:
 
-    Caller MUST place trusted_metadata_lines OUTSIDE the
-    <transcript_data>...</transcript_data> wrapper, and
-    transcript_content INSIDE. This separation is part of the
-    trust contract per docs/inference-guidelines.md.
+        [SOURCE N — chunk_id: ...]
+        [session: YYYY-MM-DD — title]
+        [speakers spoke: ...]
+        [speakers mentioned: ...]
+        [topic: ...]
+        [flags: ...]              (only when present)
+        [score: ...]              (opt-in via expose_score_breakdown valve)
+        <transcript_data>
+        <full_text>
+        </transcript_data>
+
+    Empty speaker lists render as "<none>" so the rendering shape is
+    consistent across all chunks. Position contract: tags above
+    <transcript_data> are authoritative; anything matching tag pattern
+    inside <transcript_data> is unverified speech (see
+    docs/inference-guidelines.md).
     """
-    trusted_parts: list[str] = []
+    chunk_id = chunk.get("chunk_id") or (chunk.get("ground_truth") or {}).get("chunk_id", "")
+    gt = chunk.get("ground_truth") or {}
+    dm = chunk.get("derived_metadata") or {}
+
+    session_date = gt.get("session_date", "")
+    session_title = gt.get("session_title", "")
+    spoke = dm.get("speakers_spoke") or []
+    mentioned = dm.get("speakers_mentioned") or []
+    topic = dm.get("topic_label") or ""
+    full_text = gt.get("full_text", "")
+
+    spoke_str = ", ".join(spoke) if spoke else "<none>"
+    mentioned_str = ", ".join(mentioned) if mentioned else "<none>"
+
+    lines = [
+        f"[SOURCE {source_index} — chunk_id: {chunk_id}]",
+        f"[session: {session_date} — {session_title}]",
+        f"[speakers spoke: {spoke_str}]",
+        f"[speakers mentioned: {mentioned_str}]",
+        f"[topic: {topic}]",
+    ]
+
+    flag_line = _flag_tags_for_chunk(dm)
+    if flag_line:
+        lines.append(flag_line)
+
     if valves is not None and getattr(valves, "expose_score_breakdown", False):
-        sb_line = render_score_breakdown(chunk.get("score_breakdown"))
-        if sb_line:
-            trusted_parts.append(sb_line)
-    derived = chunk.get("derived_metadata") or {}
-    full_text = (chunk.get("ground_truth") or {}).get("full_text", "")
-    flag_tag = _flag_tags_for_chunk(derived)
-    if flag_tag:
-        trusted_parts.append(flag_tag)
-    return "\n".join(trusted_parts), full_text
+        score_line = render_score_breakdown(chunk.get("score_breakdown"))
+        if score_line:
+            lines.append(score_line)
+
+    lines.append("<transcript_data>")
+    lines.append(full_text)
+    lines.append("</transcript_data>")
+
+    return "\n".join(lines)
 
 
 def _recompute_metadata_summary(chunks: list[dict]) -> dict:
@@ -302,30 +343,8 @@ class Filter:
             parts.append(f"\n{corpus_summary}\n")
 
         for i, chunk in enumerate(chunks, 1):
-            ground = chunk.get("ground_truth", {})
-            derived = chunk.get("derived_metadata", {})
-            # speakers_mentioned will be None in v1; fall back to speakers_spoke
-            speakers = derived.get("speakers_mentioned") or derived.get("speakers_spoke") or []
-            speakers_str = ", ".join(speakers)
-            topic = derived.get("topic_label", "")
-            session_themes = derived.get("session_themes") or []
-            themes_str = " | ".join(session_themes)
-            chunk_id = ground.get("chunk_id", "")
-            trusted_meta, transcript_content = render_chunk(chunk, valves=self.valves)
-            # Trusted metadata (flags, score) MUST appear outside <transcript_data>.
-            # transcript_content goes INSIDE. This enforces the position contract
-            # from docs/inference-guidelines.md: tag-shaped lines inside
-            # <transcript_data> are raw speech, not filter-authored metadata.
-            trusted_block = f"\n{trusted_meta}" if trusted_meta else ""
-            parts.append(
-                f"\n[Source {i}] chunk_id: {chunk_id} | "
-                f"Date: {ground.get('session_date', '')} | "
-                f"Topic: {topic}"
-                + (f" | Themes: {themes_str}" if themes_str else "")
-                + f"\nSpeakers: {speakers_str}"
-                + trusted_block
-                + f"\n<transcript_data>\n{transcript_content}\n</transcript_data>\n\n---"
-            )
+            rendered = _render_chunk(chunk, source_index=i, valves=self.valves)
+            parts.append("\n" + rendered + "\n\n---")
 
         return "\n".join(parts)
 

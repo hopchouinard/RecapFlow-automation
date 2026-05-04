@@ -103,7 +103,7 @@ class TestInletSuccess:
         assert result["messages"][0]["role"] == "system"
         content = result["messages"][0]["content"]
         assert CONTEXT_TAG in content
-        assert "[Source 1]" in content
+        assert "[SOURCE 1" in content
         assert "AI Tools and New Tech Adoption" in content
         assert "<transcript_data>" in content
         assert "Did anybody try the new codex?" in content
@@ -152,8 +152,8 @@ class TestInletMinScore:
             result = f.inlet(body, __user__={"id": "test"})
 
         content = result["messages"][0]["content"]
-        assert "[Source 1]" in content
-        assert "[Source 2]" not in content
+        assert "[SOURCE 1" in content
+        assert "[SOURCE 2" not in content
 
     def test_no_chunks_above_min_score_injects_disclaimer(self):
         f = Filter()
@@ -263,7 +263,7 @@ class TestInletIdempotency:
         ]
         assert len(context_messages) == 1
         assert "Old stale context" not in context_messages[0]["content"]
-        assert "[Source 1]" in context_messages[0]["content"]
+        assert "[SOURCE 1" in context_messages[0]["content"]
 
     def test_preserves_non_context_system_messages(self):
         f = Filter()
@@ -338,7 +338,7 @@ class TestPromptInjectionProtection:
         assert "</transcript_data>" in content
         # The safety instruction must appear BEFORE any source content
         safety_pos = content.find("IMPORTANT")
-        source_pos = content.find("[Source 1]")
+        source_pos = content.find("[SOURCE 1")
         assert safety_pos < source_pos
 
 
@@ -533,16 +533,28 @@ class TestChunkIdCitation:
 
 
 class TestRenderChunk:
-    """render_chunk returns (trusted_metadata_lines, transcript_content).
+    """_render_chunk returns a single string covering the full v4 chunk layout.
 
-    trusted_metadata_lines contains [flags: ...] and optional [score: ...].
-    transcript_content is the raw full_text verbatim.
-    Callers must place trusted_metadata_lines OUTSIDE <transcript_data>
-    and transcript_content INSIDE — this is the position contract.
+    Layout: bracket-tagged metadata lines (SOURCE/session/speakers/topic/flags/
+    optional score) followed by <transcript_data>...</transcript_data>.
+    Trusted metadata lines must appear OUTSIDE <transcript_data>; full_text
+    appears INSIDE — this is the position contract from
+    docs/inference-guidelines.md.
     """
 
+    @staticmethod
+    def _split_outside_transcript(rendered: str) -> tuple[str, str]:
+        """Helper: split rendered output into (outside, inside) of <transcript_data>."""
+        open_tag = "<transcript_data>"
+        close_tag = "</transcript_data>"
+        open_idx = rendered.index(open_tag)
+        close_idx = rendered.index(close_tag)
+        outside = rendered[:open_idx]
+        inside = rendered[open_idx + len(open_tag):close_idx]
+        return outside, inside
+
     def test_chunk_renders_flags_tag_when_flags_true(self):
-        from community_brain.openwebui.community_brain_filter import render_chunk
+        from community_brain.openwebui.community_brain_filter import _render_chunk
 
         chunk = {
             "ground_truth": {"chunk_id": "test:001", "full_text": "Some content."},
@@ -556,18 +568,19 @@ class TestRenderChunk:
             "provenance": {},
             "similarity": 0.5,
         }
-        trusted, transcript = render_chunk(chunk)
+        rendered = _render_chunk(chunk, source_index=1)
+        outside, inside = self._split_outside_transcript(rendered)
         # Both flags must appear in the trusted part; order tolerated either way.
         assert (
-            "[flags: unresolved_question, insight]" in trusted
-            or "[flags: insight, unresolved_question]" in trusted
+            "[flags: unresolved_question, insight]" in outside
+            or "[flags: insight, unresolved_question]" in outside
         )
-        assert "Some content." in transcript
+        assert "Some content." in inside
         # flags must NOT bleed into the transcript content
-        assert "[flags:" not in transcript
+        assert "[flags:" not in inside
 
     def test_chunk_renders_no_flags_tag_when_all_flags_false(self):
-        from community_brain.openwebui.community_brain_filter import render_chunk
+        from community_brain.openwebui.community_brain_filter import _render_chunk
 
         chunk = {
             "ground_truth": {"chunk_id": "test:001", "full_text": "Plain text."},
@@ -579,13 +592,14 @@ class TestRenderChunk:
             "provenance": {},
             "similarity": 0.5,
         }
-        trusted, transcript = render_chunk(chunk)
-        assert "[flags:" not in trusted
-        assert trusted == ""
-        assert "Plain text." in transcript
+        rendered = _render_chunk(chunk, source_index=1)
+        outside, inside = self._split_outside_transcript(rendered)
+        assert "[flags:" not in outside
+        assert "[flags:" not in inside
+        assert "Plain text." in inside
 
     def test_chunk_renders_references_prior_in_flags(self):
-        from community_brain.openwebui.community_brain_filter import render_chunk
+        from community_brain.openwebui.community_brain_filter import _render_chunk
         chunk = {
             "ground_truth": {"chunk_id": "test:001", "full_text": "Discussed last week."},
             "derived_metadata": {
@@ -596,12 +610,13 @@ class TestRenderChunk:
             "provenance": {},
             "similarity": 0.5,
         }
-        trusted, transcript = render_chunk(chunk)
-        assert "[flags: references_prior]" in trusted
-        assert "Discussed last week." in transcript
+        rendered = _render_chunk(chunk, source_index=1)
+        outside, inside = self._split_outside_transcript(rendered)
+        assert "[flags: references_prior]" in outside
+        assert "Discussed last week." in inside
 
     def test_chunk_renders_all_five_flags(self):
-        from community_brain.openwebui.community_brain_filter import render_chunk
+        from community_brain.openwebui.community_brain_filter import _render_chunk
         chunk = {
             "ground_truth": {"chunk_id": "test:001", "full_text": "x"},
             "derived_metadata": {
@@ -612,42 +627,43 @@ class TestRenderChunk:
             "provenance": {},
             "similarity": 0.5,
         }
-        trusted, transcript = render_chunk(chunk)
-        # All five labels appear in the trusted flags line
+        rendered = _render_chunk(chunk, source_index=1)
+        outside, inside = self._split_outside_transcript(rendered)
+        # All five labels appear in the trusted flags line (outside transcript)
         for label in ("question", "answer", "unresolved_question", "insight", "references_prior"):
-            assert label in trusted
-        assert "x" in transcript
+            assert label in outside
+        assert "x" in inside
 
     def test_chunk_renders_handles_missing_derived_metadata(self):
         """Defensive: chunk without derived_metadata key (legacy/malformed shape)
         renders without flags line."""
-        from community_brain.openwebui.community_brain_filter import render_chunk
+        from community_brain.openwebui.community_brain_filter import _render_chunk
         chunk = {
             "ground_truth": {"chunk_id": "test:001", "full_text": "x"},
             # derived_metadata missing
             "provenance": {},
             "similarity": 0.5,
         }
-        trusted, transcript = render_chunk(chunk)
-        assert trusted == ""
-        assert "[flags:" not in trusted
-        assert "x" in transcript
+        rendered = _render_chunk(chunk, source_index=1)
+        outside, inside = self._split_outside_transcript(rendered)
+        assert "[flags:" not in outside
+        assert "[flags:" not in inside
+        assert "x" in inside
 
-    def test_trusted_metadata_and_transcript_are_separate_strings(self):
-        """render_chunk returns a 2-tuple, not a flat string."""
-        from community_brain.openwebui.community_brain_filter import render_chunk
+    def test_render_chunk_returns_single_string(self):
+        """_render_chunk returns a single string (not a tuple), covering the
+        full v4 layout including the <transcript_data> wrapper."""
+        from community_brain.openwebui.community_brain_filter import _render_chunk
         chunk = {
             "ground_truth": {"chunk_id": "test:001", "full_text": "Hello."},
             "derived_metadata": {"has_insight": True},
             "provenance": {},
             "similarity": 0.7,
         }
-        result = render_chunk(chunk)
-        assert isinstance(result, tuple)
-        assert len(result) == 2
-        trusted, transcript = result
-        assert isinstance(trusted, str)
-        assert isinstance(transcript, str)
+        result = _render_chunk(chunk, source_index=1)
+        assert isinstance(result, str)
+        assert "<transcript_data>" in result
+        assert "</transcript_data>" in result
 
 
 class TestCorpusSummary:
@@ -786,7 +802,7 @@ class TestCorpusSummaryIntegration:
 
         # Corpus summary must appear before per-chunk content
         corpus_pos = msg.find("[corpus summary:")
-        source1_pos = msg.find("[Source 1]")
+        source1_pos = msg.find("[SOURCE 1")
         assert corpus_pos < source1_pos
 
         # Per-chunk flags lines are present
@@ -799,7 +815,7 @@ class TestCorpusSummaryIntegration:
 
         # Position contract: [flags: ...] must appear BEFORE <transcript_data>
         # in each source block. Check for source 1.
-        source1_block_start = msg.find("[Source 1]")
+        source1_block_start = msg.find("[SOURCE 1")
         source1_transcript_start = msg.find("<transcript_data>", source1_block_start)
         source1_flags_pos = msg.find("[flags: question]", source1_block_start)
         assert source1_flags_pos < source1_transcript_start, (
@@ -868,8 +884,8 @@ class TestRenderScoreBreakdown:
         assert "(" not in out
 
     def test_score_breakdown_not_rendered_when_valve_off(self):
-        """Default valve state (expose_score_breakdown=False): no [score: ...] in trusted lines."""
-        from community_brain.openwebui.community_brain_filter import Filter, render_chunk
+        """Default valve state (expose_score_breakdown=False): no [score: ...] anywhere."""
+        from community_brain.openwebui.community_brain_filter import Filter, _render_chunk
 
         f = Filter()
         assert f.valves.expose_score_breakdown is False
@@ -885,13 +901,14 @@ class TestRenderScoreBreakdown:
                 "cue_rules_fired": ["unresolved_questions"],
             },
         }
-        trusted, transcript = render_chunk(chunk, valves=f.valves)
-        assert "[score:" not in trusted
-        assert "[score:" not in transcript
+        rendered = _render_chunk(chunk, source_index=1, valves=f.valves)
+        assert "[score:" not in rendered
 
     def test_score_breakdown_rendered_when_valve_on(self):
-        """Valve on: [score: ...] then [flags: ...] both in trusted_metadata, full_text in transcript."""
-        from community_brain.openwebui.community_brain_filter import Filter, render_chunk
+        """Valve on: [score: ...] and [flags: ...] both outside <transcript_data>;
+        full_text inside <transcript_data> only. Order: [flags:] before [score:]
+        per v4 layout."""
+        from community_brain.openwebui.community_brain_filter import Filter, _render_chunk
 
         f = Filter()
         f.valves.expose_score_breakdown = True
@@ -913,16 +930,21 @@ class TestRenderScoreBreakdown:
                 "cue_rules_fired": ["unresolved_questions"],
             },
         }
-        trusted, transcript = render_chunk(chunk, valves=f.valves)
-        # Both trusted tags present in trusted_metadata; full_text in transcript only
-        assert "[score:" in trusted
-        assert "[flags:" in trusted
-        assert "Some content." in transcript
-        assert "Some content." not in trusted
-        # Order within trusted: [score:] before [flags:]
-        score_pos = trusted.find("[score:")
-        flags_pos = trusted.find("[flags:")
-        assert score_pos < flags_pos
+        rendered = _render_chunk(chunk, source_index=1, valves=f.valves)
+        # Split outside vs inside <transcript_data>
+        open_idx = rendered.index("<transcript_data>")
+        close_idx = rendered.index("</transcript_data>")
+        outside = rendered[:open_idx]
+        inside = rendered[open_idx + len("<transcript_data>"):close_idx]
+        # Both trusted tags appear outside; full_text only inside
+        assert "[score:" in outside
+        assert "[flags:" in outside
+        assert "Some content." in inside
+        assert "Some content." not in outside
+        # v4 order: [flags:] is appended before [score:]
+        flags_pos = outside.find("[flags:")
+        score_pos = outside.find("[score:")
+        assert flags_pos < score_pos
 
     def test_valves_default_expose_score_breakdown_is_false(self):
         from community_brain.openwebui.community_brain_filter import Filter
@@ -971,7 +993,7 @@ class TestFormatInjectionDefense:
         msg = f._build_sources_message([chunk])
 
         # The legitimate filter-authored [flags: insight] must appear OUTSIDE transcript_data
-        source_start = msg.find("[Source 1]")
+        source_start = msg.find("[SOURCE 1")
         transcript_open = msg.find("<transcript_data>", source_start)
         transcript_close = msg.find("</transcript_data>", source_start)
         before_transcript = msg[source_start:transcript_open]
@@ -1115,9 +1137,9 @@ class TestCorpusSummaryRecomputedPostFilter:
         content = result["messages"][0]["content"]
 
         # Only 2 chunks survive the filter
-        assert "[Source 1]" in content
-        assert "[Source 2]" in content
-        assert "[Source 3]" not in content
+        assert "[SOURCE 1" in content
+        assert "[SOURCE 2" in content
+        assert "[SOURCE 3" not in content
         assert "Chunk C content" not in content
 
         # Corpus summary must reflect post-filter state: 2 chunks, 1 unresolved_question
