@@ -257,6 +257,67 @@ def bulk_phase(
     return succeeded, failed
 
 
+def report_phase(
+    server: str, succeeded: list[str], failed: list[tuple[str, str]]
+) -> None:
+    """Phase 3: print corpus-wide post-extract report."""
+    print("=" * 70)
+    print("PHASE 3: REPORT")
+    print("=" * 70)
+
+    print(f"\nSucceeded: {len(succeeded)} sessions")
+    if failed:
+        print(f"\nFailed: {len(failed)} sessions")
+        for sid, reason in failed:
+            print(f"  - {sid}: {reason}")
+
+    # Aggregate metrics across all succeeded sessions
+    print("\nCollecting post-extract metrics...")
+    all_metrics: list[SessionMetrics] = []
+    for sid in succeeded:
+        m = fetch_session_metrics(server, sid)
+        if m is not None:
+            all_metrics.append(m)
+
+    if not all_metrics:
+        print("No metrics collected.")
+        return
+
+    total_chunks = sum(m.chunk_count for m in all_metrics)
+    if total_chunks == 0:
+        print("No chunks across reported sessions.")
+        return
+
+    avg_unresolved = sum(m.has_unresolved_question_rate * m.chunk_count for m in all_metrics) / total_chunks
+    avg_entity = sum(m.entity_count_avg * m.chunk_count for m in all_metrics) / total_chunks
+    avg_decisions = sum(m.decision_count_avg * m.chunk_count for m in all_metrics) / total_chunks
+    avg_topic_present = sum(m.topic_label_present_rate * m.chunk_count for m in all_metrics) / total_chunks
+
+    print(f"\nCorpus-wide post-extract metrics ({len(all_metrics)} sessions, {total_chunks} chunks):")
+    print(f"  has_unresolved_question rate: {avg_unresolved:.3f}")
+    print(f"  entities/chunk avg:           {avg_entity:.2f}")
+    print(f"  decisions/chunk avg:          {avg_decisions:.2f}")
+    print(f"  topic_label present rate:     {avg_topic_present:.3f}")
+
+    # Validator: corpus-wide has_unresolved_question count target (>=35)
+    expected_min_unresolved_count = 35
+    unresolved_total = sum(
+        m.has_unresolved_question_rate * m.chunk_count for m in all_metrics
+    )
+    if unresolved_total < expected_min_unresolved_count:
+        print(f"\nWARNING: corpus-wide has_unresolved_question count is "
+              f"{unresolved_total:.0f}, below v4 target of {expected_min_unresolved_count}")
+    else:
+        print(f"\nv4 has_unresolved_question target met: {unresolved_total:.0f} ≥ {expected_min_unresolved_count} ✓")
+
+    # Anomaly flag: any session with 0 chunks?
+    zero_chunk_sessions = [m.session_id for m in all_metrics if m.chunk_count == 0]
+    if zero_chunk_sessions:
+        print(f"\nANOMALY: {len(zero_chunk_sessions)} sessions have 0 chunks: {zero_chunk_sessions}")
+
+    print("\nReport complete.")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Re-extract all sessions")
     parser.add_argument("--server", default="http://10.1.30.10:8999")
@@ -283,11 +344,12 @@ def main():
     # Phase 2: BULK
     succeeded, failed = bulk_phase(args.server, output_root, SMOKE_SESSIONS)
 
-    # Phase 3 (REPORT) added in Task 16. For now, summarize failures.
+    # Phase 3: REPORT — runs even on partial bulk failure so the operator
+    # gets a corpus-wide view of what landed.
+    all_succeeded = SMOKE_SESSIONS + succeeded
+    report_phase(args.server, all_succeeded, failed)
+
     if failed:
-        print(f"\nBULK phase finished with {len(failed)} failure(s):")
-        for sid, reason in failed:
-            print(f"  - {sid}: {reason}")
         sys.exit(2)
 
 
