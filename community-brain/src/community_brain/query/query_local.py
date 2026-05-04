@@ -16,7 +16,9 @@ from community_brain.ingestion.embedding import _active_embed_model
 from community_brain.query.corpus_verify import CorpusInvalidError
 from community_brain.query.cue_rules import (
     CUE_RULES,  # legacy fallback reference; not used directly in the hot-reload path
+    CueRule,
     apply_cue_boosts,
+    build_speaker_auto_rule,
     load_cue_rules_from_yaml,
 )
 
@@ -31,15 +33,27 @@ OVERSAMPLE_FACTOR = 3
 # Overridable via COMMUNITY_BRAIN_CUE_RULES_PATH env var at call time.
 CUE_RULES_PATH_DEFAULT = "/app/config/query-cues.yaml"
 
+# Default path for the speaker-aliases YAML inside the container.
+# Overridable via COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH at call time.
+SPEAKER_ALIASES_PATH_DEFAULT = "/app/config/speaker-aliases.yaml"
 
-def _resolve_cue_rules():
-    """Load cue rules from YAML at call time. Path overridable via
-    COMMUNITY_BRAIN_CUE_RULES_PATH env var. Falls back to empty tuple
-    if the file is missing/malformed (load_cue_rules_from_yaml's
-    graceful-degradation contract from T13).
+
+def _resolve_cue_rules() -> tuple[CueRule, ...]:
+    """Load cue rules from YAML at call time and merge with the
+    in-memory speaker auto-rule synthesized from speaker-aliases.yaml.
+    Both paths are overridable via env vars at call time. Falls back to
+    empty tuples if files are missing/malformed.
     """
     cue_path = os.environ.get("COMMUNITY_BRAIN_CUE_RULES_PATH") or CUE_RULES_PATH_DEFAULT
-    return load_cue_rules_from_yaml(cue_path)
+    yaml_rules = load_cue_rules_from_yaml(cue_path)
+
+    aliases_path = (
+        os.environ.get("COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH")
+        or SPEAKER_ALIASES_PATH_DEFAULT
+    )
+    speaker_rules = build_speaker_auto_rule(aliases_path)  # tuple of 2
+
+    return tuple(yaml_rules) + speaker_rules
 
 __all__ = [
     "search_chunks",

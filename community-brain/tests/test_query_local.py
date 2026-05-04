@@ -141,6 +141,9 @@ def test_search_chunks_uses_yaml_cue_rules(monkeypatch, tmp_path):
     """search_chunks should load cue rules from a YAML at the configured path on each call.
 
     COMMUNITY_BRAIN_CUE_RULES_PATH env var overrides the default path.
+    The merged result also includes 2 speaker auto-rules synthesized from
+    speaker-aliases.yaml; when that file is missing, both sentinel rules
+    use a never-match regex so they're inert at /query time.
     """
     yaml_path = tmp_path / "query-cues.yaml"
     yaml_path.write_text("""
@@ -151,20 +154,31 @@ cue_rules:
     delta: 0.010
 """)
     monkeypatch.setenv("COMMUNITY_BRAIN_CUE_RULES_PATH", str(yaml_path))
+    monkeypatch.setenv(
+        "COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH", str(tmp_path / "missing-aliases.yaml")
+    )
 
     import community_brain.query.query_local as query_local
 
     rules = query_local._resolve_cue_rules()
-    assert len(rules) == 1
-    assert rules[0].name == "r"
+    # YAML rule + 2 speaker auto-rules (sentinel never-match regex when registry empty)
+    assert len(rules) == 3
+    yaml_rule_names = [r.name for r in rules if r.match_strategy is None]
+    assert yaml_rule_names == ["r"]
+    speaker_rule_names = sorted(r.name for r in rules if r.match_strategy is not None)
+    assert speaker_rule_names == ["speaker_auto_mentioned", "speaker_auto_spoke"]
 
 
 def test_yaml_cue_rules_path_default_when_env_unset(monkeypatch, tmp_path):
     """Without COMMUNITY_BRAIN_CUE_RULES_PATH, the default path is used.
-    With a missing default file, an empty rule set is returned (loader's
-    graceful-degradation contract from T13).
+    With a missing default file, the YAML rule set is empty (loader's
+    graceful-degradation contract from T13). The merged result still
+    contains the 2 speaker auto-rule sentinels.
     """
     monkeypatch.delenv("COMMUNITY_BRAIN_CUE_RULES_PATH", raising=False)
+    monkeypatch.setenv(
+        "COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH", str(tmp_path / "missing-aliases.yaml")
+    )
 
     import community_brain.query.query_local as query_local
 
@@ -175,4 +189,8 @@ def test_yaml_cue_rules_path_default_when_env_unset(monkeypatch, tmp_path):
         raising=False,
     )
     rules = query_local._resolve_cue_rules()
-    assert rules == ()
+    # No YAML rules, but the two never-match speaker sentinels are always returned.
+    yaml_rules = tuple(r for r in rules if r.match_strategy is None)
+    assert yaml_rules == ()
+    speaker_rule_names = sorted(r.name for r in rules if r.match_strategy is not None)
+    assert speaker_rule_names == ["speaker_auto_mentioned", "speaker_auto_spoke"]

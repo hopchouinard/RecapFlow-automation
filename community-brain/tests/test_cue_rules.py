@@ -571,6 +571,85 @@ cue_rules:
     assert by_id["b"] == pytest.approx(0.020)
 
 
+def test_apply_cue_boosts_handles_v4_rules():
+    """v4 rules with question_regex + match_strategy fire correctly."""
+    import pytest
+    from community_brain.query.cue_rules import CueRule, apply_cue_boosts
+
+    rule = CueRule(
+        name="date_iso",
+        cue_phrases=(),
+        target_predicate=None,
+        delta=0.04,
+        question_regex=r"\b(\d{4}-\d{2}-\d{2})\b",
+        match_field="session_date",
+        match_strategy="iso_date_equals",
+    )
+    candidates = [
+        {"chunk_id": "a", "session_date": "2026-03-04", "_rrf_score": 0.020},
+        {"chunk_id": "b", "session_date": "2026-02-25", "_rrf_score": 0.020},
+    ]
+    boosted = apply_cue_boosts(
+        question="What did they discuss on 2026-03-04?",
+        candidates=candidates,
+        rules=(rule,),
+    )
+    by_id = {c["chunk_id"]: c for c in boosted}
+    assert by_id["a"]["_rrf_score"] == pytest.approx(0.060)
+    assert by_id["b"]["_rrf_score"] == pytest.approx(0.020)
+    assert by_id["a"]["_cue_delta"] == pytest.approx(0.040)
+    assert by_id["a"]["_cue_rules_fired"] == ["date_iso"]
+
+
+def test_apply_cue_boosts_speaker_two_rule_pattern(tmp_path):
+    """build_speaker_auto_rule returns 2 rules; apply_cue_boosts dispatches
+    each independently. The 'spoke' rule fires on speakers_spoke matches with
+    delta 0.04; the 'mentioned' rule fires on speakers_mentioned-only matches
+    with delta 0.02."""
+    import pytest
+    from community_brain.query.cue_rules import (
+        apply_cue_boosts, build_speaker_auto_rule,
+    )
+
+    yaml_path = tmp_path / "speaker-aliases.yaml"
+    yaml_path.write_text("""
+aliases:
+  Adam James:
+    - Adam
+""")
+    spoke_rule, mentioned_rule = build_speaker_auto_rule(yaml_path)
+
+    candidates = [
+        {
+            "chunk_id": "a",
+            "speakers_spoke": ["Adam James"],
+            "speakers_mentioned": [],
+            "_rrf_score": 0.020,
+        },
+        {
+            "chunk_id": "b",
+            "speakers_spoke": ["Brandon Hancock"],
+            "speakers_mentioned": ["Adam James"],
+            "_rrf_score": 0.020,
+        },
+        {
+            "chunk_id": "c",
+            "speakers_spoke": [],
+            "speakers_mentioned": [],
+            "_rrf_score": 0.020,
+        },
+    ]
+    boosted = apply_cue_boosts(
+        question="What has Adam James talked about?",
+        candidates=candidates,
+        rules=(spoke_rule, mentioned_rule),
+    )
+    by_id = {c["chunk_id"]: c for c in boosted}
+    assert by_id["a"]["_rrf_score"] == pytest.approx(0.060)
+    assert by_id["b"]["_rrf_score"] == pytest.approx(0.040)
+    assert by_id["c"]["_rrf_score"] == pytest.approx(0.020)
+
+
 def test_yaml_loader_rejects_half_v4_entry(tmp_path, caplog):
     """An entry with only one of question_regex/match_strategy is rejected
     at load time with a clear error (not a silent KeyError on cue_phrases)."""

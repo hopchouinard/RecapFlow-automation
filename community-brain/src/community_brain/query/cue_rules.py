@@ -1,11 +1,20 @@
-"""Cue rules for hybrid retrieval v2 metadata-aware boosting.
+"""Cue rules for hybrid retrieval v4 metadata-aware boosting.
 
-A CueRule fires when ANY phrase in `cue_phrases` is found
-(case-insensitive substring) in the question, AND the chunk satisfies
-`target_predicate`. When it fires, `delta` is added to the chunk's RRF score.
+Two rule shapes are supported:
 
-Rules are hardcoded here in v2; the schema's flag/array universe is small
-enough that YAML config would be premature. See spec §5 for the full design.
+1. **Legacy** (`cue_phrases` + `target_predicate`): rule fires when any
+   phrase in `cue_phrases` is a case-insensitive substring of the question,
+   AND the chunk satisfies `target_predicate`.
+
+2. **v4** (`question_regex` + `match_strategy`): rule fires when
+   `question_regex` matches the question, AND `apply_v4_strategy` returns
+   True for the chunk under one of the strategies (`iso_date_equals`,
+   `month_year_overlap`, `token_overlap`, `name_resolve_then_check`).
+
+When a rule fires, `delta` is added to the chunk's RRF score. Rules load
+from `config/query-cues.yaml` at call time and are merged with an
+in-memory speaker auto-rule synthesized from `config/speaker-aliases.yaml`.
+See spec docs/superpowers/specs/2026-05-03-retrieval-v4-quality-improvements-design.md §5.
 """
 
 from __future__ import annotations
@@ -338,25 +347,57 @@ def apply_cue_boosts(
 ) -> list[dict]:
     """Apply cue-driven additive boosts to candidate RRF scores.
 
-    For each rule whose cue phrases match the question, scan the candidates;
-    for each candidate satisfying the rule's target_predicate, add the
-    rule's delta to the candidate's `_rrf_score`. Returns a new list of new
-    dicts, sorted by boosted score descending.
+    Two rule shapes are supported:
 
-    Rule exceptions are caught and logged at WARNING; the offending rule is
-    skipped, other rules continue.
+    1. Legacy (cue_phrases + target_predicate): rule fires if any cue
+       phrase is in the question; for each chunk passing
+       target_predicate, add delta.
 
-    Spec §5.4 (composition): multiple rules can fire on the same candidate;
-    deltas accumulate without cap.
+    2. v4 (question_regex + match_strategy): rule fires if regex matches
+       question; for each chunk passing apply_v4_strategy with the
+       rule's match_field, add delta.
+
+    Rule exceptions are caught and logged at WARNING; the offending
+    rule is skipped, other rules continue.
     """
     boosted = [dict(c) for c in candidates]
 
     for rule in rules:
+        is_v4 = rule.question_regex is not None and rule.match_strategy is not None
+
+        if is_v4:
+            try:
+                if not re.search(rule.question_regex, question, flags=re.IGNORECASE):
+                    continue
+            except re.error:
+                logger.warning("v4 cue rule %r has invalid regex; skipping", rule.name)
+                continue
+            for chunk in boosted:
+                try:
+                    if apply_v4_strategy(
+                        question=question,
+                        chunk=chunk,
+                        question_regex=rule.question_regex,
+                        match_field=rule.match_field or "",
+                        match_strategy=rule.match_strategy,
+                    ):
+                        chunk["_rrf_score"] = chunk.get("_rrf_score", 0.0) + rule.delta
+                        chunk["_cue_delta"] = chunk.get("_cue_delta", 0.0) + rule.delta
+                        chunk.setdefault("_cue_rules_fired", []).append(rule.name)
+                except Exception as exc:
+                    logger.warning(
+                        "v4 cue rule %r raised on chunk %r: %s; skipping rule for remaining candidates",
+                        rule.name, chunk.get("chunk_id", "<no-id>"), exc,
+                    )
+                    break
+            continue
+
+        # Legacy path
         if not cue_phrase_matches(question, rule.cue_phrases):
             continue
         for chunk in boosted:
             try:
-                if rule.target_predicate(chunk):
+                if rule.target_predicate is not None and rule.target_predicate(chunk):
                     chunk["_rrf_score"] = chunk.get("_rrf_score", 0.0) + rule.delta
                     chunk["_cue_delta"] = chunk.get("_cue_delta", 0.0) + rule.delta
                     chunk.setdefault("_cue_rules_fired", []).append(rule.name)
