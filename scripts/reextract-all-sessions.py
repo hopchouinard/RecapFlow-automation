@@ -40,6 +40,9 @@ SMOKE_SESSIONS = [
 # Failure thresholds (ratios — 0.7 means a 30% drop)
 NON_TARGET_METRIC_DROP_THRESHOLD = 0.7  # any drop below this triggers abort
 
+# v4 target: corpus-wide has_unresolved_question chunk count must reach at least this
+MIN_UNRESOLVED_COUNT_TARGET = 35
+
 # Metrics we expect roughly stable
 STABLE_METRICS = (
     "entity_count_avg",
@@ -75,7 +78,7 @@ def fetch_session_metrics(server: str, session_id: str) -> SessionMetrics | None
         json={
             "question": f"chunks for session {session_id}",
             "top_k": 100,
-            "session_filter": session_id,
+            "filters": {"session_date_range": [session_id, session_id]},
         },
         timeout=120,
     )
@@ -89,7 +92,11 @@ def fetch_session_metrics(server: str, session_id: str) -> SessionMetrics | None
     n = len(chunks)
 
     def avg(field: str) -> float:
-        total = sum(len((c.get("derived_metadata") or {}).get(field) or []) for c in chunks)
+        total = 0
+        for c in chunks:
+            value = (c.get("derived_metadata") or {}).get(field)
+            if isinstance(value, list):
+                total += len(value)
         return total / n if n else 0.0
 
     def rate(field: str) -> float:
@@ -119,8 +126,30 @@ def fetch_session_metrics(server: str, session_id: str) -> SessionMetrics | None
     )
 
 
+def fetch_session_title_lookup(server: str) -> dict[str, str]:
+    """Map session_id -> session_title from /sessions response.
+    Returns empty dict on failure (callers should fall back defensively).
+    """
+    try:
+        resp = requests.get(f"{server}/sessions", timeout=60)
+        resp.raise_for_status()
+    except Exception as exc:
+        print(f"WARN: could not fetch /sessions for title lookup: {exc}")
+        return {}
+    data = resp.json()
+    sessions = data.get("sessions", [])
+    return {
+        s.get("session_id"): s.get("session_title") or s.get("session_id", "")
+        for s in sessions
+        if s.get("session_id")
+    }
+
+
 def reextract_session(
-    server: str, session_id: str, output_root: Path
+    server: str,
+    session_id: str,
+    session_title: str,
+    output_root: Path,
 ) -> dict[str, Any]:
     """POST /ingest force_reextract for the given session.
     Returns the response JSON.
@@ -128,7 +157,7 @@ def reextract_session(
     payload = {
         "session_id": session_id,
         "session_date": session_id,  # ISO date == session_id by convention
-        "session_title": f"Re-extract {session_id}",  # filled in actually by Stage B
+        "session_title": session_title,
         "artifact_paths": {
             "prepared_transcript": f"{output_root}/{session_id}/prepared-transcript.md",
             "extracted_signal": f"{output_root}/{session_id}/extracted-signal.md",
@@ -142,7 +171,10 @@ def reextract_session(
 
 
 def smoke_phase(
-    server: str, output_root: Path, smoke_sessions: list[str]
+    server: str,
+    output_root: Path,
+    smoke_sessions: list[str],
+    title_lookup: dict[str, str],
 ) -> bool:
     """Re-extract sentinel sessions, compare pre/post metrics. Return True if all pass."""
     print("=" * 70)
@@ -152,6 +184,10 @@ def smoke_phase(
 
     for sid in smoke_sessions:
         print(f"--- {sid} ---")
+        title = title_lookup.get(sid)
+        if title is None:
+            print(f"  ABORT: no title found in /sessions for {sid} — sentinel missing or registry broken")
+            return False
         pre = fetch_session_metrics(server, sid)
         if pre is None:
             print(f"  ABORT: no chunks for {sid} pre-extract — sentinel missing from corpus")
@@ -159,7 +195,7 @@ def smoke_phase(
         print(f"  pre:  chunks={pre.chunk_count} unresolved_rate={pre.has_unresolved_question_rate:.2f}")
 
         t0 = time.time()
-        result = reextract_session(server, sid, output_root)
+        result = reextract_session(server, sid, title, output_root)
         elapsed = time.time() - t0
         chunks_failed = result.get("chunks_failed", 0)
         if chunks_failed > 0:
@@ -208,11 +244,14 @@ def list_corpus_sessions(server: str) -> list[str]:
 
 
 def bulk_phase(
-    server: str, output_root: Path, smoke_sessions: list[str]
-) -> tuple[list[str], list[tuple[str, str]]]:
+    server: str,
+    output_root: Path,
+    smoke_sessions: list[str],
+    title_lookup: dict[str, str],
+) -> tuple[list[str], list[tuple[str, str]], list[str]]:
     """Re-extract all sessions not in smoke_sessions.
-    Returns (succeeded_session_ids, failed_session_ids_with_reason).
-    Aborts on 3 consecutive failures.
+    Returns (succeeded_session_ids, failed_session_ids_with_reason, unprocessed_session_ids).
+    Aborts on 3 consecutive failures; unprocessed tracks sessions not yet attempted.
     """
     print("=" * 70)
     print("PHASE 2: BULK")
@@ -225,40 +264,56 @@ def bulk_phase(
     succeeded: list[str] = []
     failed: list[tuple[str, str]] = []
     consecutive_failures = 0
+    abort_index: int | None = None
 
     for i, sid in enumerate(queue, start=1):
         print(f"[{i}/{len(queue)}] {sid}")
-        try:
-            t0 = time.time()
-            result = reextract_session(server, sid, output_root)
-            elapsed = time.time() - t0
-            chunks_failed = result.get("chunks_failed", 0)
-            chunks_written = result.get("chunks_written", 0)
-            if chunks_failed > 0:
-                reason = f"chunks_failed={chunks_failed}"
-                print(f"  FAIL: {reason}")
-                failed.append((sid, reason))
-                consecutive_failures += 1
-            else:
-                print(f"  OK: chunks_written={chunks_written} elapsed={elapsed:.1f}s")
-                succeeded.append(sid)
-                consecutive_failures = 0
-        except Exception as exc:
-            reason = f"exception: {exc}"
+        title = title_lookup.get(sid)
+        if title is None:
+            reason = "no title in /sessions"
             print(f"  FAIL: {reason}")
             failed.append((sid, reason))
             consecutive_failures += 1
+        else:
+            try:
+                t0 = time.time()
+                result = reextract_session(server, sid, title, output_root)
+                elapsed = time.time() - t0
+                chunks_failed = result.get("chunks_failed", 0)
+                chunks_written = result.get("chunks_written", 0)
+                if chunks_failed > 0:
+                    reason = f"chunks_failed={chunks_failed}"
+                    print(f"  FAIL: {reason}")
+                    failed.append((sid, reason))
+                    consecutive_failures += 1
+                else:
+                    print(f"  OK: chunks_written={chunks_written} elapsed={elapsed:.1f}s")
+                    succeeded.append(sid)
+                    consecutive_failures = 0
+            except Exception as exc:
+                reason = f"exception: {exc}"
+                print(f"  FAIL: {reason}")
+                failed.append((sid, reason))
+                consecutive_failures += 1
 
         if consecutive_failures >= 3:
             print(f"\nABORT: 3 consecutive failures. Stopping bulk phase.")
+            abort_index = i  # queue is 0-indexed, enumerate started at 1
             break
 
-    print(f"\nBULK phase done: {len(succeeded)} succeeded, {len(failed)} failed")
-    return succeeded, failed
+    unprocessed: list[str] = []
+    if abort_index is not None:
+        unprocessed = queue[abort_index:]  # everything after the abort index (0-based: abort_index == i-1+1 == i)
+
+    print(f"\nBULK phase done: {len(succeeded)} succeeded, {len(failed)} failed, {len(unprocessed)} unprocessed")
+    return succeeded, failed, unprocessed
 
 
 def report_phase(
-    server: str, succeeded: list[str], failed: list[tuple[str, str]]
+    server: str,
+    succeeded: list[str],
+    failed: list[tuple[str, str]],
+    unprocessed: list[str],
 ) -> None:
     """Phase 3: print corpus-wide post-extract report."""
     print("=" * 70)
@@ -270,6 +325,10 @@ def report_phase(
         print(f"\nFailed: {len(failed)} sessions")
         for sid, reason in failed:
             print(f"  - {sid}: {reason}")
+    if unprocessed:
+        print(f"\nUnprocessed: {len(unprocessed)} sessions (BULK aborted before reaching them)")
+        for sid in unprocessed:
+            print(f"  - {sid}")
 
     # Aggregate metrics across all succeeded sessions
     print("\nCollecting post-extract metrics...")
@@ -299,16 +358,15 @@ def report_phase(
     print(f"  decisions/chunk avg:          {avg_decisions:.2f}")
     print(f"  topic_label present rate:     {avg_topic_present:.3f}")
 
-    # Validator: corpus-wide has_unresolved_question count target (>=35)
-    expected_min_unresolved_count = 35
+    # Validator: corpus-wide has_unresolved_question count target
     unresolved_total = sum(
         m.has_unresolved_question_rate * m.chunk_count for m in all_metrics
     )
-    if unresolved_total < expected_min_unresolved_count:
+    if unresolved_total < MIN_UNRESOLVED_COUNT_TARGET:
         print(f"\nWARNING: corpus-wide has_unresolved_question count is "
-              f"{unresolved_total:.0f}, below v4 target of {expected_min_unresolved_count}")
+              f"{unresolved_total:.0f}, below v4 target of {MIN_UNRESOLVED_COUNT_TARGET}")
     else:
-        print(f"\nv4 has_unresolved_question target met: {unresolved_total:.0f} ≥ {expected_min_unresolved_count} ✓")
+        print(f"\nv4 has_unresolved_question target met: {unresolved_total:.0f} ≥ {MIN_UNRESOLVED_COUNT_TARGET} ✓")
 
     # Anomaly flag: any session with 0 chunks?
     zero_chunk_sessions = [m.session_id for m in all_metrics if m.chunk_count == 0]
@@ -330,9 +388,15 @@ def main():
 
     output_root = Path(args.output_root)
 
+    title_lookup = fetch_session_title_lookup(args.server)
+    if not title_lookup:
+        print("ABORT: empty title lookup — server unreachable or /sessions returned no entries")
+        sys.exit(1)
+    print(f"Loaded {len(title_lookup)} session titles from /sessions\n")
+
     # Phase 1: SMOKE
     if not args.skip_smoke:
-        smoke_passed = smoke_phase(args.server, output_root, SMOKE_SESSIONS)
+        smoke_passed = smoke_phase(args.server, output_root, SMOKE_SESSIONS, title_lookup)
         if not smoke_passed:
             print("\nSMOKE phase failed. Aborting.")
             sys.exit(1)
@@ -342,14 +406,14 @@ def main():
         sys.exit(0)
 
     # Phase 2: BULK
-    succeeded, failed = bulk_phase(args.server, output_root, SMOKE_SESSIONS)
+    succeeded, failed, unprocessed = bulk_phase(args.server, output_root, SMOKE_SESSIONS, title_lookup)
 
     # Phase 3: REPORT — runs even on partial bulk failure so the operator
     # gets a corpus-wide view of what landed.
     all_succeeded = SMOKE_SESSIONS + succeeded
-    report_phase(args.server, all_succeeded, failed)
+    report_phase(args.server, all_succeeded, failed, unprocessed)
 
-    if failed:
+    if failed or unprocessed:
         sys.exit(2)
 
 
