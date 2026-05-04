@@ -744,3 +744,29 @@ When escalating: state (a) which step was in progress, (b) the unexpected observ
 | `GET /sessions` | Corpus inventory |
 | `GET /sessions/{id}` | One session's metadata |
 | `POST /reindex` | V1 minimal: dry-run matching |
+
+---
+
+## Open WebUI custom-model — manual deploy step (v4+)
+
+The system prompt for the answering model is configured manually in Open WebUI's custom-model UI. The repo's `docs/inference-guidelines.md` is the canonical content.
+
+**Why manual:** Open WebUI doesn't expose a programmatic system-prompt API; the only way to configure the prompt is paste-into-textarea via Admin Settings. Treat the Open WebUI custom model as a deployment artifact that must be re-pasted whenever the source file changes.
+
+### Initial setup (one-time, v4 deploy)
+
+1. Open WebUI → Admin Settings → Models → Create new model
+2. Base model: `gpt-oss:20b`
+3. Custom model name: `community-brain-v4-gpt-oss:20b` (the conspicuous v4 name signals it's distinct from base `gpt-oss:20b` — easy to tell at a glance which model a chat is using)
+4. System prompt: paste the entire content of `docs/inference-guidelines.md`
+5. Save
+6. Open WebUI → Settings → Default chat model → set to `community-brain-v4-gpt-oss:20b` (or instruct users to select it from the model picker for new chats)
+
+### When `inference-guidelines.md` changes
+
+1. Open WebUI → Admin Settings → Models
+2. Edit `community-brain-v4-gpt-oss:20b` (or whatever the current custom-model name is)
+3. Replace the system prompt with the current content of `docs/inference-guidelines.md`
+4. Save
+
+The retrieval-server filter (`community_brain_filter.py`) no longer prepends the inference-guidelines content as of v4 (Task 8). The custom model's system prompt is the single source for that content at runtime.
