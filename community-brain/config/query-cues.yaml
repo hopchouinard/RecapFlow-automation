@@ -10,7 +10,7 @@ cue_rules:
     target_predicate:
       field: has_unresolved_question
       value: true
-    delta: 0.010
+    delta: 0.040  # was 0.010 — v4 boost per spec 2026-05-03
 
   - name: decisions
     cue_phrases:
