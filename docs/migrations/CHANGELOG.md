@@ -42,6 +42,40 @@ Every schema version bump or extraction-breaking change is recorded here.
   "spoke in this chunk" from "was referenced/mentioned without speaking."
   v1 consumers should read `speakers_spoke` only.
 
+## 2026-05-03 — Retrieval v4 quality improvements (no schema migration; corpus re-extract)
+
+- Type: Retrieval-quality enhancement; one corpus re-extract; no schema_version bump.
+- Affected chunks: ALL 68 sessions (~1457 chunks) re-extracted under chunk-extraction-v3.
+- Migration: Run `scripts/reextract-all-sessions.py`. ~$3 in Gemma calls + ~12h wall.
+
+### Why
+2026-05-03 10-question test battery against `gpt-oss:20b` in Open WebUI showed 4/10 hard-fails clustered on date-blindness, weak speaker retrieval, weak `has_unresolved_question` retrieval, and citation hallucination. v4 addresses all four while keeping `gpt-oss:20b` as the answering model.
+
+### Changes
+- **bm25_text:** Level 3 date variants — ~9 added tokens per chunk (ISO date, year-month, month name, month-year, phrased forms `"March 4 2026"`, quarter `Q1-Q4`, half `H1`/`H2`, and an `early/mid/late`-prefixed month-year computed from day-of-month).
+- **chunk-extraction-v3 prompt:** more permissive `has_unresolved_question` criterion. Defaults to `true` when in doubt; flags partial answers, deferred answers, and unresolved-on-pivot as unresolved; closes only on clear definitive resolution. All other Stage C extractions unchanged from v2.
+- **query-cues.yaml:** added 4 date-aware cue rules (ISO, month-year, relative phrasing, quarter); bumped `unresolved_questions` delta from 0.010 → 0.040.
+- **CueRule schema:** extended with `question_regex`, `match_field`, `match_strategy` for v4 rules. Legacy `target_predicate` rules unchanged. YAML loader gained an XOR guard that rejects half-v4 entries with a clear error.
+- **Speaker auto-rule:** synthesized at server startup from `speaker-aliases.yaml`. Single regex with longest-first alternation; field-specific deltas (full +0.04 on `speakers_spoke` match, half +0.02 on `speakers_mentioned`-only).
+- **Filter rendering:** new metadata block above `<transcript_data>` — `[SOURCE N — chunk_id: …]`, `[session: YYYY-MM-DD — title]`, `[speakers spoke: …]`, `[speakers mentioned: …]`, `[topic: …]`. Existing `[flags:]` and opt-in `[score:]` lines preserved. Empty speaker lists render as `<none>` for shape consistency.
+- **Filter:** stops injecting `inference-guidelines.md` content (system prompt now carries it).
+- **System prompt:** `docs/inference-guidelines.md` refactored into V1 system prompt (~440 words). Deployed manually via Open WebUI custom model `community-brain-v4-gpt-oss:20b`.
+- **Tooling:** `scripts/reextract-all-sessions.py` orchestrates corpus re-extract with SMOKE/BULK/REPORT phases, abort-on-failure semantics, real session_title lookup from `/sessions`, supported `session_date_range` filter shape.
+
+### Tests
+- New: `test_bm25_synthesis_date_variants.py`, `test_cue_rules_match_strategies.py`, `test_cue_rules_speaker_auto.py`, `test_filter_rendering_v4.py`.
+- Removed: `TestInferenceGuidelinesEmbedded` parity tests (filter constant gone; system prompt is the canonical home).
+
+### Files changed
+- New: `community-brain/config/extraction-prompts/chunk-extraction-v3.md`, `scripts/reextract-all-sessions.py`, plus the 4 test files above.
+- Modified: `community-brain/src/community_brain/ingestion/bm25_synthesis.py`, `community-brain/src/community_brain/ingestion/pipeline.py`, `community-brain/src/community_brain/ingestion/chunker.py`, `community-brain/src/community_brain/cli/recanonicalize.py`, `community-brain/src/community_brain/query/cue_rules.py`, `community-brain/src/community_brain/query/query_local.py`, `community-brain/src/community_brain/openwebui/community_brain_filter.py`, `community-brain/config/query-cues.yaml`, `community-brain/config/extraction-config.yaml`, `docs/inference-guidelines.md`, `community-brain/docs/DEPLOYMENT.md`, `community-brain/CLAUDE.md` (Task 19).
+
+### Rollback
+Revert the v4 commits + restore LanceDB from snapshot (cron at 03:30 UTC daily) + reset `extraction-config.yaml` to `chunk-extraction-v2.md` + revert Open WebUI custom-model system prompt or switch the chat default back to bare `gpt-oss:20b`.
+
+### Distribution implications
+v4 changes (Layers 1-4) ship in the distributable Community Brain artifact: `bm25_synthesis.py`, `chunk-extraction-v3.md`, `query-cues.yaml`, `community_brain_filter.py`, `inference-guidelines.md` (system-prompt source). Future community members running their own corpus get v4 quality automatically. Layer 5 (`scripts/reextract-all-sessions.py`) is operational tooling for personal-tier use only — greenfield ingest produces v4 quality from day one.
+
 ## 2026-05-02 — `lint_corpus` decoupled from `/ingest` (no schema migration)
 
 - Type: Architectural fix — corpus-lint integration. No schema change.
