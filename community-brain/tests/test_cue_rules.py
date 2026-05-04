@@ -494,6 +494,35 @@ def test_apply_cue_boosts_tracks_fired_rules_and_delta():
     assert by_id["c3"].get("_cue_rules_fired", []) == []
 
 
+def test_cue_rule_supports_match_field_and_strategy():
+    """v4: CueRule accepts match_field and match_strategy as optional kwargs."""
+    from community_brain.query.cue_rules import CueRule
+
+    # Legacy rule (target_predicate) still works
+    legacy = CueRule(
+        name="legacy",
+        cue_phrases=("foo",),
+        target_predicate=lambda c: True,
+        delta=0.01,
+    )
+    assert legacy.match_field is None
+    assert legacy.match_strategy is None
+
+    # New v4 rule shape
+    v4 = CueRule(
+        name="date_iso",
+        cue_phrases=(),  # v4 rules use question_regex instead
+        target_predicate=None,
+        delta=0.04,
+        question_regex=r"\b(\d{4}-\d{2}-\d{2})\b",
+        match_field="session_date",
+        match_strategy="iso_date_equals",
+    )
+    assert v4.match_field == "session_date"
+    assert v4.match_strategy == "iso_date_equals"
+    assert v4.question_regex == r"\b(\d{4}-\d{2}-\d{2})\b"
+
+
 def test_existing_apply_cue_boosts_works_with_yaml_loaded_rules(tmp_path):
     """Smoke test: the existing apply_cue_boosts function works with YAML-loaded rules."""
     from community_brain.query.cue_rules import (

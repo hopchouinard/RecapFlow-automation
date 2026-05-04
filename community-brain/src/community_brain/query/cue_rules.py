@@ -30,8 +30,12 @@ _LAST_GOOD_RULES: dict[str, tuple["CueRule", ...]] = {}
 class CueRule:
     name: str
     cue_phrases: tuple[str, ...]
-    target_predicate: Callable[[dict], bool]
+    target_predicate: Callable[[dict], bool] | None
     delta: float
+    # v4 additions (all optional for backward compat):
+    question_regex: str | None = None
+    match_field: str | None = None
+    match_strategy: str | None = None
 
 
 def _has_unresolved_question(chunk: dict) -> bool:
