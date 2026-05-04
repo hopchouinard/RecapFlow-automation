@@ -1,9 +1,8 @@
 """Tests for speaker auto-rule generation from speaker-aliases.yaml."""
 from __future__ import annotations
 
+import re
 from pathlib import Path
-
-import pytest
 
 from community_brain.query.cue_rules import (
     build_speaker_auto_rule,
@@ -50,8 +49,13 @@ aliases:
 
     # Both rules share the same regex
     assert spoke_rule.question_regex == mentioned_rule.question_regex
-    assert "Adam James" in spoke_rule.question_regex
-    assert "Brandon Hancock" in spoke_rule.question_regex
+    # Behavior: the regex matches and captures the expected names
+    m_adam = re.search(spoke_rule.question_regex, "What has Adam James talked about?", re.IGNORECASE)
+    assert m_adam is not None, "regex should match 'Adam James' in question"
+    assert m_adam.group(1) == "Adam James"
+    m_brandon = re.search(spoke_rule.question_regex, "What has Brandon Hancock talked about?", re.IGNORECASE)
+    assert m_brandon is not None, "regex should match 'Brandon Hancock' in question"
+    assert m_brandon.group(1) == "Brandon Hancock"
 
 
 def test_speaker_auto_rule_longest_first(tmp_path: Path):
@@ -64,10 +68,13 @@ aliases:
     yaml_path = _write_speaker_yaml(tmp_path, yaml_content)
     rules = build_speaker_auto_rule(yaml_path)
     regex = rules[0].question_regex
-    # "Adam James" must appear before "Adam" so it matches greedily
-    idx_full = regex.index("Adam James")
-    idx_short = regex.index("Adam|") if "Adam|" in regex else regex.index("Adam)")
-    assert idx_full < idx_short, f"Adam James must precede Adam in regex; got: {regex}"
+    # Behavior: "Adam James" must be captured in full, not just "Adam",
+    # proving longest-first ordering wins the alternation.
+    m = re.search(regex, "Adam James", re.IGNORECASE)
+    assert m is not None, f"regex should match 'Adam James'; got: {regex}"
+    assert m.group(1) == "Adam James", (
+        f"captured group should be 'Adam James' (longest-first), got {m.group(1)!r}; regex: {regex}"
+    )
 
 
 def test_name_resolve_strategy_matches_speakers_spoke_only(tmp_path: Path):

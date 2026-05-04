@@ -143,10 +143,12 @@ def _load_speaker_aliases_yaml(path: Path) -> dict[str, list[str]]:
     return out
 
 
-def _refresh_speaker_resolver(path: str | Path) -> None:
+def _refresh_speaker_resolver(path: str | Path) -> dict[str, list[str]]:
     """Re-read speaker-aliases.yaml and refresh the name->canonical lookup.
 
     Called by retrieval_server on hot-reload of speaker-aliases.yaml.
+    Returns the parsed aliases map so callers can reuse it without a second
+    YAML parse.
     """
     global _SPEAKER_NAME_TO_CANONICAL
     aliases_map = _load_speaker_aliases_yaml(Path(path))
@@ -155,6 +157,7 @@ def _refresh_speaker_resolver(path: str | Path) -> None:
         _SPEAKER_NAME_TO_CANONICAL[canonical] = canonical
         for alias in aliases:
             _SPEAKER_NAME_TO_CANONICAL[alias] = canonical
+    return aliases_map
 
 
 def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
@@ -170,8 +173,7 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
     Both use match_strategy='name_resolve_then_check' which respects the
     match_field -- only checks that one field for the canonical's group.
     """
-    _refresh_speaker_resolver(path)
-    aliases_map = _load_speaker_aliases_yaml(Path(path))
+    aliases_map = _refresh_speaker_resolver(path)
 
     # Collect ALL names (canonicals + aliases)
     name_to_canonical: dict[str, str] = {}
@@ -181,7 +183,8 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
             name_to_canonical[alias] = canonical
 
     if not name_to_canonical:
-        # Empty registry -- return two rules that never match
+        # Empty registry -- return two rules that never match.
+        # Never-match sentinel for empty-registry case.
         never_match = r"(?!x)x"
         spoke = CueRule(
             name="speaker_auto_spoke", cue_phrases=(), target_predicate=None,
@@ -196,11 +199,8 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
         return (spoke, mentioned)
 
     # Longest-first alternation; escape regex metacharacters.
-    # re.escape escapes spaces (as '\ ') in Python 3.7+, but spaces are not
-    # metacharacters in standard (non-verbose) mode — unescape them so the
-    # pattern stays readable and the canonical name strings appear verbatim.
     sorted_names = sorted(name_to_canonical.keys(), key=lambda n: -len(n))
-    escaped = [re.escape(n).replace(r"\ ", " ") for n in sorted_names]
+    escaped = [re.escape(n) for n in sorted_names]
     pattern = r"\b(" + "|".join(escaped) + r")\b"
 
     spoke = CueRule(
