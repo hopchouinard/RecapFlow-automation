@@ -394,6 +394,7 @@ def ingest_session(
             speakers_mentioned=chunk.speakers_mentioned,
             keywords=chunk.keywords,
             full_text=chunk.full_text,
+            session_date=chunk.session_date,
         )
 
         # Re-synthesize embed_text for transcript chunks after Stage C populated

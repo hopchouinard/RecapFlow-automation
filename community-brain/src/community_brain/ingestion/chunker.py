@@ -257,6 +257,7 @@ def _base_chunk(
             speakers_mentioned=None,
             keywords=keywords,
             full_text=full_text,
+            session_date=session_date,
         ),
         embedding=[],
     )

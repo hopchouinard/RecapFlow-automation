@@ -99,6 +99,7 @@ def recanonicalize_chunks(
             speakers_mentioned=new_men,
             keywords=keywords,
             full_text=full_text,
+            session_date=row.get("session_date", ""),
         )
         if _is_transcript(row):
             existing = row.get("embed_text") or ""
