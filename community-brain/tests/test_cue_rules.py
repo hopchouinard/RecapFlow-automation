@@ -523,6 +523,27 @@ def test_cue_rule_supports_match_field_and_strategy():
     assert v4.question_regex == r"\b(\d{4}-\d{2}-\d{2})\b"
 
 
+def test_yaml_loader_supports_v4_fields(tmp_path):
+    """v4 cue rules in YAML use question_regex + match_field + match_strategy."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    p = tmp_path / "cues.yaml"
+    p.write_text("""
+cue_rules:
+  - name: date_iso
+    question_regex: '\\b(\\d{4}-\\d{2}-\\d{2})\\b'
+    match_field: session_date
+    match_strategy: iso_date_equals
+    delta: 0.04
+""")
+    rules = load_cue_rules_from_yaml(p)
+    assert len(rules) == 1
+    assert rules[0].name == "date_iso"
+    assert rules[0].match_strategy == "iso_date_equals"
+    assert rules[0].match_field == "session_date"
+    assert rules[0].delta == 0.04
+
+
 def test_existing_apply_cue_boosts_works_with_yaml_loaded_rules(tmp_path):
     """Smoke test: the existing apply_cue_boosts function works with YAML-loaded rules."""
     from community_brain.query.cue_rules import (

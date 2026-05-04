@@ -449,6 +449,24 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
     for entry in data.get("cue_rules") or []:
         try:
             name = entry["name"]
+            delta = float(entry["delta"])
+            if delta < 0:
+                raise ValueError("delta must be non-negative")
+
+            # v4 path: question_regex + match_strategy (no cue_phrases / target_predicate)
+            if "question_regex" in entry and "match_strategy" in entry:
+                rules.append(CueRule(
+                    name=name,
+                    cue_phrases=(),
+                    target_predicate=None,
+                    delta=delta,
+                    question_regex=entry["question_regex"],
+                    match_field=entry.get("match_field"),
+                    match_strategy=entry["match_strategy"],
+                ))
+                continue
+
+            # Legacy path: cue_phrases + target_predicate
             raw_phrases = entry["cue_phrases"]
             if isinstance(raw_phrases, str):
                 raise ValueError(
@@ -471,9 +489,6 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                     raise ValueError("cue_phrases element is empty string")
             cue_phrases = tuple(raw_phrases)
             predicate = _build_predicate(entry["target_predicate"])
-            delta = float(entry["delta"])
-            if delta < 0:
-                raise ValueError("delta must be non-negative")
             rules.append(CueRule(
                 name=name,
                 cue_phrases=cue_phrases,
