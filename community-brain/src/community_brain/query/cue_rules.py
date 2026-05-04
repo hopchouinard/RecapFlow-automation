@@ -81,15 +81,147 @@ def apply_v4_strategy(
             return False
         # Whitespace-tokenized check
         tokens = field_value.split()
-        return any(token in t or token == t for t in tokens)
+        return any(token in t for t in tokens)
 
     if match_strategy == "name_resolve_then_check":
-        # Implemented in Task 3 -- requires speaker registry integration.
-        logger.warning("name_resolve_then_check requires speaker registry; not yet implemented")
-        return False
+        # Capture the matched name from the question
+        captured = m.group(1) if m.lastindex else m.group(0)
+        canonical = _SPEAKER_NAME_TO_CANONICAL.get(captured)
+        if canonical is None:
+            return False
+        # Check ONLY the field named in match_field (caller-controlled).
+        # The auto-rule generator creates two rules — one per field —
+        # so each rule applies its own delta to its own field.
+        field_values = chunk.get(match_field) or []
+        if not isinstance(field_values, list):
+            return False
+        all_names_for_canonical = {
+            n for n, c in _SPEAKER_NAME_TO_CANONICAL.items() if c == canonical
+        }
+        return bool(set(field_values) & all_names_for_canonical)
 
     logger.warning("unknown cue match strategy: %r", match_strategy)
     return False
+
+
+# ---------------------------------------------------------------------------
+# Speaker auto-rule generation
+# ---------------------------------------------------------------------------
+
+# Module-level cache: name -> canonical
+# Populated by build_speaker_auto_rule; read by name_resolve_then_check
+_SPEAKER_NAME_TO_CANONICAL: dict[str, str] = {}
+
+
+def _load_speaker_aliases_yaml(path: Path) -> dict[str, list[str]]:
+    """Returns {canonical_name: [aliases]} from speaker-aliases.yaml.
+
+    Reads the production schema:
+
+        aliases:
+          <Canonical Name>:
+            - <alias>
+            - <alias>
+
+    Returns an empty dict on missing/malformed files.
+    """
+    if not path.exists():
+        logger.warning("speaker-aliases.yaml not found: %s", path)
+        return {}
+    try:
+        data = yaml.safe_load(path.read_text())
+    except Exception as exc:
+        logger.error("failed to parse speaker-aliases.yaml at %s: %s", path, exc)
+        return {}
+    raw = (data or {}).get("aliases") or {}
+    out: dict[str, list[str]] = {}
+    for canonical, aliases in raw.items():
+        if isinstance(aliases, list):
+            out[canonical] = list(aliases)
+        else:
+            out[canonical] = []
+    return out
+
+
+def _refresh_speaker_resolver(path: str | Path) -> None:
+    """Re-read speaker-aliases.yaml and refresh the name->canonical lookup.
+
+    Called by retrieval_server on hot-reload of speaker-aliases.yaml.
+    """
+    global _SPEAKER_NAME_TO_CANONICAL
+    aliases_map = _load_speaker_aliases_yaml(Path(path))
+    _SPEAKER_NAME_TO_CANONICAL = {}
+    for canonical, aliases in aliases_map.items():
+        _SPEAKER_NAME_TO_CANONICAL[canonical] = canonical
+        for alias in aliases:
+            _SPEAKER_NAME_TO_CANONICAL[alias] = canonical
+
+
+def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
+    """Synthesize the speaker auto-rules from the alias registry.
+
+    Builds a regex with all canonical names and aliases, longest-first so
+    multi-word names match before single-word alternatives.
+
+    Returns a tuple of TWO rules sharing the same regex:
+      - 'speaker_auto_spoke' (match_field=speakers_spoke, delta=0.04)
+      - 'speaker_auto_mentioned' (match_field=speakers_mentioned, delta=0.02)
+
+    Both use match_strategy='name_resolve_then_check' which respects the
+    match_field -- only checks that one field for the canonical's group.
+    """
+    _refresh_speaker_resolver(path)
+    aliases_map = _load_speaker_aliases_yaml(Path(path))
+
+    # Collect ALL names (canonicals + aliases)
+    name_to_canonical: dict[str, str] = {}
+    for canonical, aliases in aliases_map.items():
+        name_to_canonical[canonical] = canonical
+        for alias in aliases:
+            name_to_canonical[alias] = canonical
+
+    if not name_to_canonical:
+        # Empty registry -- return two rules that never match
+        never_match = r"(?!x)x"
+        spoke = CueRule(
+            name="speaker_auto_spoke", cue_phrases=(), target_predicate=None,
+            delta=0.04, question_regex=never_match,
+            match_field="speakers_spoke", match_strategy="name_resolve_then_check",
+        )
+        mentioned = CueRule(
+            name="speaker_auto_mentioned", cue_phrases=(), target_predicate=None,
+            delta=0.02, question_regex=never_match,
+            match_field="speakers_mentioned", match_strategy="name_resolve_then_check",
+        )
+        return (spoke, mentioned)
+
+    # Longest-first alternation; escape regex metacharacters.
+    # re.escape escapes spaces (as '\ ') in Python 3.7+, but spaces are not
+    # metacharacters in standard (non-verbose) mode — unescape them so the
+    # pattern stays readable and the canonical name strings appear verbatim.
+    sorted_names = sorted(name_to_canonical.keys(), key=lambda n: -len(n))
+    escaped = [re.escape(n).replace(r"\ ", " ") for n in sorted_names]
+    pattern = r"\b(" + "|".join(escaped) + r")\b"
+
+    spoke = CueRule(
+        name="speaker_auto_spoke",
+        cue_phrases=(),
+        target_predicate=None,
+        delta=0.04,
+        question_regex=pattern,
+        match_field="speakers_spoke",
+        match_strategy="name_resolve_then_check",
+    )
+    mentioned = CueRule(
+        name="speaker_auto_mentioned",
+        cue_phrases=(),
+        target_predicate=None,
+        delta=0.02,
+        question_regex=pattern,
+        match_field="speakers_mentioned",
+        match_strategy="name_resolve_then_check",
+    )
+    return (spoke, mentioned)
 
 
 # Last-known-good cache keyed by resolved path string.
