@@ -7,7 +7,6 @@ from __future__ import annotations
 
 import logging
 import os
-from pathlib import Path
 
 import lancedb
 import ollama
@@ -15,7 +14,6 @@ import ollama
 from community_brain.ingestion.embedding import _active_embed_model
 from community_brain.query.corpus_verify import CorpusInvalidError
 from community_brain.query.cue_rules import (
-    CUE_RULES,  # legacy fallback reference; not used directly in the hot-reload path
     CueRule,
     apply_cue_boosts,
     build_speaker_auto_rule,

@@ -154,6 +154,9 @@ cue_rules:
     delta: 0.010
 """)
     monkeypatch.setenv("COMMUNITY_BRAIN_CUE_RULES_PATH", str(yaml_path))
+    # Speaker auto-rule loader returns 2 never-match sentinels when the YAML
+    # is missing (see build_speaker_auto_rule). Pointing env at /missing keeps
+    # this test focused on the YAML path while still exercising the merge.
     monkeypatch.setenv(
         "COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH", str(tmp_path / "missing-aliases.yaml")
     )
@@ -176,6 +179,9 @@ def test_yaml_cue_rules_path_default_when_env_unset(monkeypatch, tmp_path):
     contains the 2 speaker auto-rule sentinels.
     """
     monkeypatch.delenv("COMMUNITY_BRAIN_CUE_RULES_PATH", raising=False)
+    # Speaker auto-rule loader returns 2 never-match sentinels when the YAML
+    # is missing (see build_speaker_auto_rule). Pointing env at /missing keeps
+    # this test focused on the YAML path while still exercising the merge.
     monkeypatch.setenv(
         "COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH", str(tmp_path / "missing-aliases.yaml")
     )

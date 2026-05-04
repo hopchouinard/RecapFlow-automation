@@ -366,8 +366,11 @@ def apply_cue_boosts(
         is_v4 = rule.question_regex is not None and rule.match_strategy is not None
 
         if is_v4:
+            question_regex = rule.question_regex
+            match_strategy = rule.match_strategy
+            assert question_regex is not None and match_strategy is not None  # narrowed by is_v4
             try:
-                if not re.search(rule.question_regex, question, flags=re.IGNORECASE):
+                if not re.search(question_regex, question, flags=re.IGNORECASE):
                     continue
             except re.error:
                 logger.warning("v4 cue rule %r has invalid regex; skipping", rule.name)
@@ -377,9 +380,9 @@ def apply_cue_boosts(
                     if apply_v4_strategy(
                         question=question,
                         chunk=chunk,
-                        question_regex=rule.question_regex,
+                        question_regex=question_regex,
                         match_field=rule.match_field or "",
-                        match_strategy=rule.match_strategy,
+                        match_strategy=match_strategy,
                     ):
                         chunk["_rrf_score"] = chunk.get("_rrf_score", 0.0) + rule.delta
                         chunk["_cue_delta"] = chunk.get("_cue_delta", 0.0) + rule.delta
