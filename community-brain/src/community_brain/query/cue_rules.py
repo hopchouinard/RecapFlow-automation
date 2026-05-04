@@ -11,6 +11,7 @@ enough that YAML config would be premature. See spec §5 for the full design.
 from __future__ import annotations
 
 import logging
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable
@@ -19,6 +20,77 @@ import yaml
 
 
 logger = logging.getLogger(__name__)
+
+MONTH_NAMES: tuple[str, ...] = (
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+)
+_MONTH_TO_NUM = {name: f"{i+1:02d}" for i, name in enumerate(MONTH_NAMES)}
+
+
+def apply_v4_strategy(
+    *,
+    question: str,
+    chunk: dict,
+    question_regex: str,
+    match_field: str,
+    match_strategy: str,
+) -> bool:
+    """Evaluate a v4 cue rule's match strategy.
+
+    Returns True if the rule should fire for this (question, chunk) pair.
+    Unknown strategies log a WARNING and return False (defensive — no raises).
+    """
+    try:
+        m = re.search(question_regex, question, flags=re.IGNORECASE)
+    except re.error as exc:
+        logger.warning("cue rule regex %r failed to compile: %s", question_regex, exc)
+        return False
+    if not m:
+        return False
+
+    if match_strategy == "iso_date_equals":
+        captured = m.group(1) if m.lastindex else m.group(0)
+        return chunk.get(match_field) == captured
+
+    if match_strategy == "month_year_overlap":
+        # Capture groups: 1 = month name, 2 = year
+        if not m.lastindex or m.lastindex < 2:
+            return False
+        month_name = m.group(1)
+        year = m.group(2)
+        # Normalize: "march" -> "March"
+        month_name_norm = month_name.capitalize()
+        if month_name_norm not in _MONTH_TO_NUM:
+            return False
+        target_prefix = f"{year}-{_MONTH_TO_NUM[month_name_norm]}"
+        session_date = chunk.get(match_field, "")
+        return isinstance(session_date, str) and session_date.startswith(target_prefix)
+
+    if match_strategy == "token_overlap":
+        # Captures get joined with "-" and checked against tokens in match_field.
+        # E.g., "Q1 2026" -> "Q1-2026" expected as a token in bm25_text.
+        if not m.lastindex:
+            return False
+        captures = [m.group(i) for i in range(1, m.lastindex + 1) if m.group(i)]
+        if not captures:
+            return False
+        token = "-".join(captures)
+        field_value = chunk.get(match_field, "")
+        if not isinstance(field_value, str):
+            return False
+        # Whitespace-tokenized check
+        tokens = field_value.split()
+        return any(token in t or token == t for t in tokens)
+
+    if match_strategy == "name_resolve_then_check":
+        # Implemented in Task 3 -- requires speaker registry integration.
+        logger.warning("name_resolve_then_check requires speaker registry; not yet implemented")
+        return False
+
+    logger.warning("unknown cue match strategy: %r", match_strategy)
+    return False
+
 
 # Last-known-good cache keyed by resolved path string.
 # On successful load, the result is stored here.
