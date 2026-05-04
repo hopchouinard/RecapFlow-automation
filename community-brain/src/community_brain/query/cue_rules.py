@@ -454,7 +454,14 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                 raise ValueError("delta must be non-negative")
 
             # v4 path: question_regex + match_strategy (no cue_phrases / target_predicate)
-            if "question_regex" in entry and "match_strategy" in entry:
+            has_qr = "question_regex" in entry
+            has_ms = "match_strategy" in entry
+            if has_qr != has_ms:
+                raise ValueError(
+                    "v4 cue rule requires both 'question_regex' and 'match_strategy' "
+                    "(got only one); see spec §5.2a"
+                )
+            if has_qr and has_ms:
                 rules.append(CueRule(
                     name=name,
                     cue_phrases=(),

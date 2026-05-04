@@ -569,3 +569,25 @@ cue_rules:
     by_id = {c["chunk_id"]: c["_rrf_score"] for c in boosted}
     assert by_id["a"] == pytest.approx(0.020)
     assert by_id["b"] == pytest.approx(0.020)
+
+
+def test_yaml_loader_rejects_half_v4_entry(tmp_path, caplog):
+    """An entry with only one of question_regex/match_strategy is rejected
+    at load time with a clear error (not a silent KeyError on cue_phrases)."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    p = tmp_path / "cues.yaml"
+    # Entry has question_regex but no match_strategy → should be rejected,
+    # NOT silently fall through to legacy.
+    p.write_text("""
+cue_rules:
+  - name: half_v4_broken
+    question_regex: '\\b\\w+\\b'
+    delta: 0.04
+""")
+    with caplog.at_level(logging.ERROR):
+        rules = load_cue_rules_from_yaml(p)
+    # Rule was rejected; loader returned an empty rule set (no last-known-good cache yet).
+    assert len(rules) == 0
+    assert any("question_regex" in r.message and "match_strategy" in r.message
+               for r in caplog.records)

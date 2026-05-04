@@ -82,7 +82,7 @@ cue_rules:
     delta: 0.04
 
   - name: date_relative_phrasing
-    question_regex: '\b(early|mid|late)[-\s]+(January|February|March|April|May|June|July|August|September|October|November|December)\b'
+    question_regex: '\b(early|mid|late)[-\s]+(January|February|March|April|May|June|July|August|September|October|November|December)(?:\s+(\d{4}))?\b'
     match_field: bm25_text
     match_strategy: token_overlap
     delta: 0.04
