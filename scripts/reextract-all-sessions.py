@@ -198,28 +198,97 @@ def smoke_phase(
     return True
 
 
+def list_corpus_sessions(server: str) -> list[str]:
+    """Return sorted list of session_ids in the corpus."""
+    resp = requests.get(f"{server}/sessions", timeout=60)
+    resp.raise_for_status()
+    data = resp.json()
+    sessions = data.get("sessions", [])
+    return sorted({s.get("session_id") for s in sessions if s.get("session_id")})
+
+
+def bulk_phase(
+    server: str, output_root: Path, smoke_sessions: list[str]
+) -> tuple[list[str], list[tuple[str, str]]]:
+    """Re-extract all sessions not in smoke_sessions.
+    Returns (succeeded_session_ids, failed_session_ids_with_reason).
+    Aborts on 3 consecutive failures.
+    """
+    print("=" * 70)
+    print("PHASE 2: BULK")
+    print("=" * 70)
+
+    all_sessions = list_corpus_sessions(server)
+    queue = [s for s in all_sessions if s not in smoke_sessions]
+    print(f"Remaining sessions: {len(queue)}\n")
+
+    succeeded: list[str] = []
+    failed: list[tuple[str, str]] = []
+    consecutive_failures = 0
+
+    for i, sid in enumerate(queue, start=1):
+        print(f"[{i}/{len(queue)}] {sid}")
+        try:
+            t0 = time.time()
+            result = reextract_session(server, sid, output_root)
+            elapsed = time.time() - t0
+            chunks_failed = result.get("chunks_failed", 0)
+            chunks_written = result.get("chunks_written", 0)
+            if chunks_failed > 0:
+                reason = f"chunks_failed={chunks_failed}"
+                print(f"  FAIL: {reason}")
+                failed.append((sid, reason))
+                consecutive_failures += 1
+            else:
+                print(f"  OK: chunks_written={chunks_written} elapsed={elapsed:.1f}s")
+                succeeded.append(sid)
+                consecutive_failures = 0
+        except Exception as exc:
+            reason = f"exception: {exc}"
+            print(f"  FAIL: {reason}")
+            failed.append((sid, reason))
+            consecutive_failures += 1
+
+        if consecutive_failures >= 3:
+            print(f"\nABORT: 3 consecutive failures. Stopping bulk phase.")
+            break
+
+    print(f"\nBULK phase done: {len(succeeded)} succeeded, {len(failed)} failed")
+    return succeeded, failed
+
+
 def main():
     parser = argparse.ArgumentParser(description="Re-extract all sessions")
     parser.add_argument("--server", default="http://10.1.30.10:8999")
     parser.add_argument("--output-root", default="/home/pchouinard/n8n/output")
     parser.add_argument("--smoke-only", action="store_true",
                         help="Run only the SMOKE phase and exit")
+    parser.add_argument("--skip-smoke", action="store_true",
+                        help="Skip SMOKE phase (use only if already passed)")
     args = parser.parse_args()
 
     output_root = Path(args.output_root)
 
     # Phase 1: SMOKE
-    smoke_passed = smoke_phase(args.server, output_root, SMOKE_SESSIONS)
-    if not smoke_passed:
-        print("\nSMOKE phase failed. Aborting.")
-        sys.exit(1)
+    if not args.skip_smoke:
+        smoke_passed = smoke_phase(args.server, output_root, SMOKE_SESSIONS)
+        if not smoke_passed:
+            print("\nSMOKE phase failed. Aborting.")
+            sys.exit(1)
 
     if args.smoke_only:
         print("--smoke-only specified; exiting after SMOKE.")
         sys.exit(0)
 
-    # Phase 2 (BULK) and Phase 3 (REPORT) added in Tasks 15 and 16.
-    print("\nPhase 2 (BULK) and Phase 3 (REPORT) are added in Task 15 and 16.")
+    # Phase 2: BULK
+    succeeded, failed = bulk_phase(args.server, output_root, SMOKE_SESSIONS)
+
+    # Phase 3 (REPORT) added in Task 16. For now, summarize failures.
+    if failed:
+        print(f"\nBULK phase finished with {len(failed)} failure(s):")
+        for sid, reason in failed:
+            print(f"  - {sid}: {reason}")
+        sys.exit(2)
 
 
 if __name__ == "__main__":
