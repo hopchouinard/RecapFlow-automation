@@ -390,15 +390,16 @@ class TestInletDisabled:
         assert result["messages"] == original_messages
 
 
-class TestChunkIdCitation:
-    def test_sources_message_exposes_chunk_id_for_citation(self):
-        """Inference guidelines require chunk_id citations.
+class TestSourceNCitation:
+    """v4 contract: cite sources by [SOURCE N], chunk_id is trace metadata only.
 
-        The sources message MUST include each chunk's chunk_id in a form the
-        downstream LLM can quote back. Without this, the guidelines' rule
-        'Direct quotes must cite a specific chunk_id' is unenforceable because
-        the LLM has no chunk_id to cite.
-        """
+    Spec: docs/inference-guidelines.md rule 2 ("Cite by [SOURCE N] only.")
+    """
+
+    def test_sources_message_exposes_chunk_id_for_traceability(self):
+        """The chunk_id must still appear in the rendered SOURCE header so
+        consumers can trace quotes back to ground_truth, even though it's
+        not the citation format."""
         from community_brain.openwebui.community_brain_filter import Filter
 
         f = Filter()
@@ -437,9 +438,11 @@ class TestChunkIdCitation:
         assert "2026-03-10:transcript:042" in msg
         assert "2026-03-10:signal:tools" in msg
 
-    def test_sources_message_tells_llm_to_cite_chunk_id(self):
-        """The prompt must explicitly instruct the LLM to cite chunk_id values,
-        not the bracket number shorthand."""
+    def test_sources_message_tells_llm_to_cite_source_n(self):
+        """v4: the runtime prompt must instruct the LLM to cite by [SOURCE N],
+        matching the system-prompt contract in docs/inference-guidelines.md.
+        It must NOT carry the v3-era 'chunk_id, NOT the bracket number'
+        instruction, which would directly contradict the system prompt."""
         from community_brain.openwebui.community_brain_filter import Filter
 
         f = Filter()
@@ -457,8 +460,10 @@ class TestChunkIdCitation:
         ]
         msg = f._build_sources_message(chunks)
 
-        # The prompt should name chunk_id as the citation mechanism
-        assert "chunk_id" in msg.lower()
+        # New v4 citation contract.
+        assert "[SOURCE N]" in msg or "[SOURCE 3]" in msg
+        # The contradicting v3 instruction must be gone.
+        assert "NOT the bracket number" not in msg
 
 
 class TestRenderChunk:

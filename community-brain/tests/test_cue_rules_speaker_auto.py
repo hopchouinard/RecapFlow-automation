@@ -163,3 +163,81 @@ aliases:
         match_strategy="name_resolve_then_check",
     )
     assert matched is False
+
+
+def test_name_resolve_strategy_lowercase_canonical_matches(tmp_path: Path):
+    """v4: question_regex runs IGNORECASE, so a lowercase user query
+    ("adam james") must still resolve to the registry-cased canonical
+    ("Adam James"). This is the failure mode Codex flagged."""
+    yaml_content = """
+aliases:
+  Adam James:
+    - Adam
+"""
+    yaml_path = _write_speaker_yaml(tmp_path, yaml_content)
+    rules = build_speaker_auto_rule(yaml_path)
+    spoke_rule = rules[0]
+
+    chunk = {
+        "speakers_spoke": ["Adam James"],
+        "speakers_mentioned": [],
+    }
+    matched = apply_v4_strategy(
+        question="what has adam james talked about?",
+        chunk=chunk,
+        question_regex=spoke_rule.question_regex,
+        match_field="speakers_spoke",
+        match_strategy="name_resolve_then_check",
+    )
+    assert matched is True
+
+
+def test_name_resolve_strategy_lowercase_alias_matches(tmp_path: Path):
+    """Lowercase alias ('adam') should resolve to the same canonical
+    as 'Adam' / 'Adam James'."""
+    yaml_content = """
+aliases:
+  Adam James:
+    - Adam
+"""
+    yaml_path = _write_speaker_yaml(tmp_path, yaml_content)
+    rules = build_speaker_auto_rule(yaml_path)
+    spoke_rule = rules[0]
+
+    chunk = {
+        "speakers_spoke": ["Adam James"],
+        "speakers_mentioned": [],
+    }
+    matched = apply_v4_strategy(
+        question="what has adam talked about?",
+        chunk=chunk,
+        question_regex=spoke_rule.question_regex,
+        match_field="speakers_spoke",
+        match_strategy="name_resolve_then_check",
+    )
+    assert matched is True
+
+
+def test_name_resolve_strategy_uppercase_matches(tmp_path: Path):
+    """Uppercase user input ('ADAM JAMES') still resolves correctly."""
+    yaml_content = """
+aliases:
+  Adam James:
+    - Adam
+"""
+    yaml_path = _write_speaker_yaml(tmp_path, yaml_content)
+    rules = build_speaker_auto_rule(yaml_path)
+    spoke_rule = rules[0]
+
+    chunk = {
+        "speakers_spoke": ["Adam James"],
+        "speakers_mentioned": [],
+    }
+    matched = apply_v4_strategy(
+        question="WHAT HAS ADAM JAMES TALKED ABOUT?",
+        chunk=chunk,
+        question_regex=spoke_rule.question_regex,
+        match_field="speakers_spoke",
+        match_strategy="name_resolve_then_check",
+    )
+    assert matched is True

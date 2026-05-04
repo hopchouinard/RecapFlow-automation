@@ -84,6 +84,53 @@ def test_token_overlap_no_match():
     ) is False
 
 
+def test_token_overlap_lowercase_quarter_matches_canonical_chunk():
+    """v4: question_regex runs IGNORECASE; the v4 cue must boost a chunk
+    whose bm25_text holds canonical-cased "Q1-2026" even when the user
+    types lowercase "q1 2026"."""
+    chunk = {"bm25_text": "topic\n\nspeakers\n\nQ1-2026 H1-2026 March-2026\n\nfull text"}
+    assert apply_v4_strategy(
+        question="what about q1 2026?",
+        chunk=chunk,
+        question_regex=r"\b(Q[1-4])\s+(\d{4})\b",
+        match_field="bm25_text",
+        match_strategy="token_overlap",
+    ) is True
+
+
+def test_token_overlap_lowercase_relative_phrasing_matches():
+    """v4: lowercase 'early march 2026' must match stored 'early-March-2026'."""
+    chunk = {"bm25_text": "topic\n\nspeakers\n\nMarch-2026 early-March-2026\n\ntext"}
+    assert apply_v4_strategy(
+        question="what happened in early march 2026?",
+        chunk=chunk,
+        question_regex=(
+            r"\b(early|mid|late)[-\s]+"
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)"
+            r"(?:\s+(\d{4}))?\b"
+        ),
+        match_field="bm25_text",
+        match_strategy="token_overlap",
+    ) is True
+
+
+def test_token_overlap_mixed_case_matches():
+    """v4: 'Early March 2026' (title case in user input) still resolves
+    to stored 'early-March-2026'."""
+    chunk = {"bm25_text": "topic\n\nspeakers\n\nMarch-2026 early-March-2026\n\ntext"}
+    assert apply_v4_strategy(
+        question="what about Early March 2026?",
+        chunk=chunk,
+        question_regex=(
+            r"\b(early|mid|late)[-\s]+"
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)"
+            r"(?:\s+(\d{4}))?\b"
+        ),
+        match_field="bm25_text",
+        match_strategy="token_overlap",
+    ) is True
+
+
 def test_unknown_strategy_returns_false():
     """Unknown strategy is logged but doesn't raise — defensive."""
     chunk = {"session_date": "2026-03-04"}

@@ -79,28 +79,36 @@ def apply_v4_strategy(
     if match_strategy == "token_overlap":
         # Captures get joined with "-" and checked against tokens in match_field.
         # E.g., "Q1 2026" -> "Q1-2026" expected as a token in bm25_text.
+        # Comparison is case-insensitive: the question_regex runs with
+        # IGNORECASE, so captures may be lowercase/mixed; bm25_text tokens are
+        # stored at canonical casing ("Q1-2026", "early-March-2026"). casefold
+        # both sides so "q1 2026" still boosts a chunk with "Q1-2026".
         if not m.lastindex:
             return False
         captures = [m.group(i) for i in range(1, m.lastindex + 1) if m.group(i)]
         if not captures:
             return False
-        token = "-".join(captures)
+        token = "-".join(captures).casefold()
         field_value = chunk.get(match_field, "")
         if not isinstance(field_value, str):
             return False
-        # Whitespace-tokenized check
         tokens = field_value.split()
-        return any(token in t for t in tokens)
+        return any(token in t.casefold() for t in tokens)
 
     if match_strategy == "name_resolve_then_check":
-        # Capture the matched name from the question
+        # Capture the matched name from the question. Regex runs IGNORECASE so
+        # `captured` may be in any casing; resolver keys are stored at registry
+        # casing. Look up via casefolded view so "adam james" resolves to the
+        # same canonical as "Adam James" / "ADAM JAMES".
         captured = m.group(1) if m.lastindex else m.group(0)
-        canonical = _SPEAKER_NAME_TO_CANONICAL.get(captured)
+        canonical = _SPEAKER_CASEFOLD_LOOKUP.get(captured.casefold())
         if canonical is None:
             return False
         # Check ONLY the field named in match_field (caller-controlled).
         # The auto-rule generator creates two rules — one per field —
         # so each rule applies its own delta to its own field.
+        # field_values come from extraction at registry casing, so the
+        # set-intersection here uses the registry-cased lookup.
         field_values = chunk.get(match_field) or []
         if not isinstance(field_values, list):
             return False
@@ -117,9 +125,15 @@ def apply_v4_strategy(
 # Speaker auto-rule generation
 # ---------------------------------------------------------------------------
 
-# Module-level cache: name -> canonical
+# Module-level cache: name -> canonical (registry casing)
 # Populated by build_speaker_auto_rule; read by name_resolve_then_check
 _SPEAKER_NAME_TO_CANONICAL: dict[str, str] = {}
+
+# Parallel index keyed by name.casefold() -> canonical (registry casing).
+# Used by name_resolve_then_check so user queries in any casing
+# ("adam james", "ADAM JAMES") resolve to the same canonical as the
+# registry-cased entry.
+_SPEAKER_CASEFOLD_LOOKUP: dict[str, str] = {}
 
 
 def _load_speaker_aliases_yaml(path: Path) -> dict[str, list[str]]:
@@ -159,13 +173,16 @@ def _refresh_speaker_resolver(path: str | Path) -> dict[str, list[str]]:
     Returns the parsed aliases map so callers can reuse it without a second
     YAML parse.
     """
-    global _SPEAKER_NAME_TO_CANONICAL
+    global _SPEAKER_NAME_TO_CANONICAL, _SPEAKER_CASEFOLD_LOOKUP
     aliases_map = _load_speaker_aliases_yaml(Path(path))
     _SPEAKER_NAME_TO_CANONICAL = {}
+    _SPEAKER_CASEFOLD_LOOKUP = {}
     for canonical, aliases in aliases_map.items():
         _SPEAKER_NAME_TO_CANONICAL[canonical] = canonical
+        _SPEAKER_CASEFOLD_LOOKUP[canonical.casefold()] = canonical
         for alias in aliases:
             _SPEAKER_NAME_TO_CANONICAL[alias] = canonical
+            _SPEAKER_CASEFOLD_LOOKUP[alias.casefold()] = canonical
     return aliases_map
 
 
