@@ -105,11 +105,11 @@
             {
               "id": "1",
               "operator": {
-                "type": "boolean",
-                "operation": "true"
+                "type": "string",
+                "operation": "equals"
               },
               "leftValue": "={{ $json.bothPresent }}",
-              "rightValue": ""
+              "rightValue": "true"
             }
           ]
         }
