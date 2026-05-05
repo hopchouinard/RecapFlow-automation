@@ -7,6 +7,20 @@ cue_rules:
       - outstanding
       - didn't get answered
       - didn't get fully answered
+      # v4 hotpatch (2026-05-05): broaden to common natural-English phrasings
+      # that came up in 10-question validation. Use multi-word phrases (not
+      # bare "fully answered") to avoid false-firing on "What was fully
+      # answered?".
+      - nobody fully answered
+      - nobody answered
+      - no one fully answered
+      - no one answered
+      - left unanswered
+      - left hanging
+      - without an answer
+      - never answered
+      - never got answered
+      - hasn't been answered
     target_predicate:
       field: has_unresolved_question
       value: true
@@ -77,6 +91,17 @@ cue_rules:
 
   - name: date_month_year_match
     question_regex: '\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})\b'
+    match_field: session_date
+    match_strategy: month_year_overlap
+    delta: 0.04
+
+  # v4 hotpatch (2026-05-05): natural-language date phrasings with day-of-month.
+  # Validation surfaced that "March 4th, 2026" matches NO existing date rule
+  # because the day is between month and year. This rule's regex tolerates an
+  # optional ordinal suffix and comma so the captures (month, year) can flow
+  # through month_year_overlap unchanged.
+  - name: date_phrased_with_day
+    question_regex: '\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:st|nd|rd|th)?,?\s+(\d{4})\b'
     match_field: session_date
     match_strategy: month_year_overlap
     delta: 0.04
