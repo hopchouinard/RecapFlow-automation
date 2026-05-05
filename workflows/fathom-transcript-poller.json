@@ -122,8 +122,12 @@
       "typeVersion": 1.2,
       "position": [1750, 200],
       "parameters": {
-        "source": "database",
-        "workflowId": "5",
+        "workflowId": {
+          "__rl": true,
+          "value": "5",
+          "mode": "list",
+          "cachedResultName": "Merged Call Summarizer"
+        },
         "options": {}
       }
     },
