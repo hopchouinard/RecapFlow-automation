@@ -10,7 +10,13 @@ Three phases (run in order):
 
 Usage:
   python scripts/reextract-all-sessions.py --server http://10.1.30.10:8999 \\
-      --output-root /home/pchouinard/n8n/output
+      --output-root /data/output
+
+Note: --output-root must be the path the retrieval-server *container*
+sees, not the host path. The container mounts ./output at /data/output
+read-only and constrains /ingest paths to that root via
+COMMUNITY_BRAIN_ARTIFACT_ROOT. Passing the host path
+(/home/pchouinard/n8n/output) is rejected with HTTP 400.
 
 Spec: docs/superpowers/specs/2026-05-03-retrieval-v4-quality-improvements-design.md §5.5
 """
@@ -166,7 +172,12 @@ def reextract_session(
         "force_reextract": True,
     }
     resp = requests.post(f"{server}/ingest", json=payload, timeout=1800)
-    resp.raise_for_status()
+    if not resp.ok:
+        # Surface server-side error detail; raise_for_status alone hides the body.
+        raise requests.HTTPError(
+            f"{resp.status_code} {resp.reason} for {server}/ingest: {resp.text}",
+            response=resp,
+        )
     return resp.json()
 
 
@@ -379,7 +390,15 @@ def report_phase(
 def main():
     parser = argparse.ArgumentParser(description="Re-extract all sessions")
     parser.add_argument("--server", default="http://10.1.30.10:8999")
-    parser.add_argument("--output-root", default="/home/pchouinard/n8n/output")
+    parser.add_argument(
+        "--output-root",
+        default="/data/output",
+        help=(
+            "Path the retrieval-server CONTAINER sees for the artifact root. "
+            "Default /data/output matches the docker-compose mount + "
+            "COMMUNITY_BRAIN_ARTIFACT_ROOT. Do NOT pass the host path."
+        ),
+    )
     parser.add_argument("--smoke-only", action="store_true",
                         help="Run only the SMOKE phase and exit")
     parser.add_argument("--skip-smoke", action="store_true",
