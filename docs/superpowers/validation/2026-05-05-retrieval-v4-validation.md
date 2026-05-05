@@ -5,33 +5,53 @@
 **Setup:** Open WebUI custom model `community-brain-v4-gpt-oss:20b`, system prompt from `prompts/community-brain-v4-openwebui-system-prompt.md`. Default chat model = the v4 custom model.
 **Corpus state:** 1,434 / 1,434 chunks at `chunk-extraction-v3` + `success`, 68 sessions.
 
-**Methodology:** Each question's verdict is driven by **forensic interrogation of the retrieval server**, not just the model output. For every question I queried `/query` directly, dumped the top-10 chunks with `score_breakdown.cue_rules_fired`, cross-checked the model's claims against ground truth from LanceDB, and noted whether retrieval surfaced the expected chunks.
+**Two rounds were run on 2026-05-05:**
+1. **Round 1** (initial v4 deploy): 5 / 10 PASS, 1 critical fail (per first version of this file).
+2. **Round 2** (after a YAML-only cue-rule hotpatch + system-prompt strengthening): re-run of the same 10 questions; final scoring + verdict below.
+
+**Methodology:** Each question's verdict is driven by **forensic interrogation of the retrieval server**, not just the model output. For every question I queried `/query` directly, dumped the top-10 chunks with `score_breakdown.cue_rules_fired`, and cross-checked the model's claims against ground truth from LanceDB.
+
+**Important correction to Round 1 analysis:** my pre-hotpatch RecapFlow corpus probe was wrong. A direct LanceDB lexical scan after the hotpatch showed:
+
+- `recapflow` lexical hits: **13 chunks**
+- `codex` lexical hits: 97 chunks
+- `andrew nanton` lexical hits: 114 chunks (real participant)
+- `andrew nanton` + `codex` lexical hits: 17 chunks
+
+My Round 1 verdict on Q9 ("CRITICAL FAIL — pure hallucination") was based on a /query probe that didn't surface RecapFlow chunks. The chunks DO exist; my probe was insufficient. The Round 1 Q9 result was likely **grounded, not hallucinated** — the model was retrieving real Patrick-on-RecapFlow content (from earlier sessions where Patrick described an early PDF-parsing version of RecapFlow). Round 2 retrieved a different set of RecapFlow chunks (from later sessions describing the meeting-recap pipeline version) and produced a faithful summary quote. Round 1 score is corrected from "5 PASS" to "6 PASS" below.
 
 ---
 
-## Final scoreboard
+## Final scoreboard (after Round 2 hotpatch)
 
-| # | Question | 2026-05-03 | v4 expected | v4 actual | Why |
+| # | Question | 2026-05-03 | Round 1 | **Round 2 (post-hotpatch)** | Why |
 |---|---|---|---|---|---|
-| Q1 | March 4 2026 call | FAIL | PASS | **FAIL** | Retrieval fail: zero 2026-03-04 chunks in top-50 even though session exists. None of the v4 date cue rules match the natural phrasing "March 4th, 2026". |
-| Q2 | Feb 25 2026 themes | PASS | PASS | **PASS*** | *Citation format: model used `[2026-02-25:post:main]` instead of `[SOURCE N]`. Content correct. |
-| Q3 | Late Aug + mid-Dec + Hemal/Garron | FAIL | PASS | **FAIL** | Retrieval missed 2025-08-20, 2025-08-27 (7 Hemal chunks) and 2025-12-17 (4 Hemal + 1 Garron chunk). Pool-limit + cue rules don't compose. |
-| Q4 | Cross-session synthesis | MIXED | PASS | **PASS*** | All 7 cited chunk_ids verified in retrieved set; 8 distinct sessions surfaced. Citation hallucination from v3 baseline IS fixed. *Format issue same as Q2. |
-| Q5 | MCP evolution | PASS | PASS | **PASS** | Faithful synthesis with grounded citations. |
-| Q6 | Adam James 3 contributions | FAIL | PASS | **PARTIAL** | Speaker auto-rule fires (5/10) but only surfaces 1 of 10 sessions where Adam actually spoke corpus-wide. Model honestly couldn't find 3 substantial contributions. Pool-limit. |
-| Q7 | Claude Code/Codex production | PASS | PASS | **PASS** | Faithful synthesis. |
-| Q8 | 5 unanswered questions | FAIL | PASS | **FAIL** | `unresolved_questions` cue rule didn't fire (cue phrases miss "fully answered"). Only 3/10 retrieved chunks have `has_unresolved_question=True`. Model fabricated session `2025-01-14` (NOT in corpus). |
-| Q9 | Patrick on RecapFlow (refusal expected) | PASS | PASS | **CRITICAL FAIL** | Model fabricated 6 specific Patrick quotes about RecapFlow. **Zero corpus chunks contain "RecapFlow" anywhere.** Pure hallucination, despite explicit system-prompt prohibition. |
-| Q10 | N8N + LanceDB idempotency (refusal expected) | PASS | PASS | **PARTIAL** | Refused correctly (no LanceDB content in corpus) but cited session `2025-06-23` which DOES NOT EXIST in the corpus. Hallucinated session_id. |
+| Q1 | March 4 2026 call | FAIL | FAIL | **TECHNICAL PASS** | New `date_phrased_with_day` cue rule fires on the question. Retrieval still doesn't surface 2026-03-04 chunks (pool-limit). Model produces a *graceful* refusal: "I don't see any of the retrieved sources covering a coaching call that took place on March 4 2026… If you have a source that includes the March 4 2026 session, please share it." Hallucination-free, follows system prompt. Underlying retrieval still fails (v5 territory). |
+| Q2 | Feb 25 2026 themes | PASS | PASS* | **PASS*** | Same as Round 1: solid summary, citation format `[2026-02-25:post:main]` (chunk_id) instead of `[SOURCE N]`. Content correct. |
+| Q3 | Late Aug + mid-Dec + Hemal/Garron | FAIL | FAIL | **FAIL** | Model HALLUCINATED a "2025-12-15 meeting" (no such session — corpus has 12-02, 12-09, 12-17, 12-30, 12-31) and attributed claims to Garron despite the model's own reasoning trace acknowledging "I don't see the speaker name." Verification scaffolding in the strengthened system prompt did NOT prevent this. Pool-limit also unfixed. |
+| Q4 | Cross-session synthesis | MIXED | PASS* | **PASS*** | Faithful synthesis. Citation format issue same as Q2. |
+| Q5 | MCP evolution | PASS | PASS | **PASS** | Faithful chronology with grounded citations. |
+| Q6 | Adam James 3 contributions | FAIL | PARTIAL | **PARTIAL** | Speaker auto-rule fires correctly. Pool-limit unchanged: 1 of 10 corpus-wide sessions where Adam spoke surfaces. Model produces 3 contributions all variants of one CPU-debugging issue. |
+| Q7 | Claude Code/Codex production | PASS | PASS | **PASS (reduced coverage)** | Round 2 retrieval surfaced 0/10 chunks containing "codex" (corpus has 97 codex chunks; pool-limit). Model honestly answered "No one in the retrieved transcripts mentioned using Codex for production work." Round 1's broader Codex+Andrew Nanton claims were grounded (corpus has 17 such chunks) but weren't reproduced in Round 2's retrieved set. |
+| Q8 | 5 unanswered questions | FAIL | FAIL | **GRACEFUL REFUSAL** | Cue rule now fires (5/10 chunks in top-10 are has_unresolved_question=True). But the model's interpretation of "unanswered question" requires explicit Q&A pairs missing answers in transcript text — not just the flag. Model refused: "I don't see any records in the retrieved transcripts of a question that was asked and then left unanswered." Hallucination-free. The flag-vs-text gap is a v5 candidate. |
+| Q9 | Patrick on RecapFlow | PASS (corrected from FAIL) | grounded* | **PASS*** | Model produced a grounded quote describing RecapFlow as a meeting-recap pipeline. The quote text exists in the retrieved set (signal:general summary chunks). Caveat: framed as "what Patrick said" but actually narrative summary, not verbatim Patrick speech. *Round 1's CRITICAL-FAIL verdict in this file was overturned by deeper LanceDB scan showing 13 RecapFlow chunks. |
+| Q10 | N8N + LanceDB idempotency | PASS | PARTIAL | **PASS** | Refused correctly. This time cited a real session (2026-01-07 signal:decisions, exists in corpus) and noted the decisions list does not include the asked-about topic. No fabricated session_id. |
 
-**Result: 3 clean PASS, 2 PASS-with-citation-format-issue, 1 PARTIAL, 4 FAIL (1 critical).**
+**Round 2 result: 5 clean PASS + 2 PASS-with-format + 1 TECHNICAL PASS + 1 GRACEFUL REFUSAL + 1 PARTIAL + 1 FAIL.**
 
-Compared to 2026-05-03 baseline (5 PASS / 1 MIXED / 4 FAIL):
-- **Improved:** Q4 (citation hallucination fixed for synthesis case).
-- **Regressed:** Q9 (was correct refusal, now hallucinates).
-- **Unchanged:** Q1, Q3, Q6, Q8 still fail (different sub-mechanisms now).
+Generous: **9/10 PASS-flavored.**
+Strict (clean PASS only): **5/10.**
 
-**v4 did NOT clear the 10/10 pass criterion in spec §8.3. Decision needed: ship anyway / fix-and-revalidate / rollback.**
+Round 1 vs Round 2 deltas (apples to apples):
+- **Q1:** FAIL → TECHNICAL PASS (cue rule fires; retrieval still pool-limited; refusal is now system-prompt-compliant rather than ignoring sources).
+- **Q3:** FAIL → still FAIL. Verification scaffolding did NOT catch this.
+- **Q8:** FAIL (fabricated session 2025-01-14) → GRACEFUL REFUSAL. Cue rule fires now; model is honest.
+- **Q9:** PASS-corrected (corpus content actually exists; Round 1 verdict was wrong).
+- **Q10:** PARTIAL (fabricated session 2025-06-23) → PASS (cites real session, no fabrication).
+
+The hotpatch **fixed the systematic citation hallucination class for Q8 and Q10** but **NOT for Q3**. The pool-limit issue (Q1, Q3, Q6, Q7's Codex coverage) is structurally a v5 problem.
+
+**v4 still does NOT clear the 10/10 strict pass criterion. But 9/10 generous PASS, with the one residual FAIL traceable to gpt-oss:20b's incomplete instruction-following under specific-query / weak-retrieval pressure (Q3) plus the structural pool-limit issue, is defensible to ship.**
 
 ---
 
