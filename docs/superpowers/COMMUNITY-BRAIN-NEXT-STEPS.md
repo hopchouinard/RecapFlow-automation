@@ -175,6 +175,41 @@ v3 shipped on 2026-04-30 with three soft-misses on retrieval-side validation cri
 - Filter trusted tags (`[flags:]`, `[corpus summary:]`, `[score:]`) structurally separated from `<transcript_data>` (format-injection defense)
 - Cue rules YAML loader: never silently use stale cached rules when current load returns valid-but-empty (Appendix C accepted-by-design)
 
+### v5 candidates (surfaced during v4 deployment)
+
+These do NOT block v4. They're observations from the 2026-05-04 SMOKE + sentinel validation pass on Track A and the Codex adversarial review.
+
+**1. Cue-driven candidate injection (high priority — pool-limit finding)**
+
+v4 cue boosts are **additive within the candidate pool** of `top_k × OVERSAMPLE_FACTOR` (default 30) — they re-rank, they don't recruit. Concrete observation from the 2026-05-04 sentinel validation: querying "What was discussed in late December 2025?" returned zero `2025-12-30` chunks in the top-50 even though `date_relative_phrasing` AND `date_month_year_match` would both fire on that session's chunks (combined +0.08 boost waiting). The session's base hybrid RRF was too low to crack the 150-candidate pool, so the boost never saw it.
+
+Speaker queries don't suffer this because frequent speakers have many high-base-relevance chunks already in the pool. Date queries against quiet/short sessions (10 chunks for 2025-12-30) suffer it most.
+
+**Direction:** add a "cue-driven candidate injection" pass to `query_local.search_chunks` BEFORE the cue boost step. For each cue rule that fires, also pull a small slice of top-N chunks (e.g., 5-10) ranked purely by that rule's strategy (not the base hybrid), and merge them into the candidate pool. Then apply the boost as today. Scope: code-only, no schema/data change, no re-extract. v3 already has the OVERSAMPLE_FACTOR=3 architecture as the single tunable; this would add a parallel cue-driven injection alongside it.
+
+**Why not just raise OVERSAMPLE_FACTOR:** wasteful (most queries don't need 300 candidates) and still doesn't help the pathological case where a session has uniformly weak base relevance to a date-only query.
+
+**2. Speaker auto-rule resilience asymmetry (medium)**
+
+`load_cue_rules_from_yaml` has a per-path `_LAST_GOOD_RULES` cache that returns the last-known-good rules during a transient YAML edit window. `build_speaker_auto_rule` does NOT — if `speaker-aliases.yaml` is in a partial-write state during `/query`, the speaker auto-rule silently degrades to the never-match `(?!x)x` sentinels for that one request. The boost is additive so the request still returns; but for ~ms windows during a registry edit, speaker queries lose their boost without any signal in the response.
+
+**Direction:** mirror the YAML loader's last-known-good cache pattern in `build_speaker_auto_rule`. One dict keyed by path, populated on successful load, returned on parse error. Code-only.
+
+**3. has_unresolved_question prompt over-permissive guard (medium)**
+
+The chunk-extraction-v3 prompt is more permissive than v2 ("default to true when in doubt"). The 2026-05-04 SMOKE phase showed unresolved-rate increases of 0.15→0.30, 0.00→0.10, 0.06→0.25 on the 3 sentinels — healthy. But a prompt change at this scale can drift in the opposite direction over time as the model learns. Add a corpus-wide alarm in `lint_corpus` that flags if `has_unresolved_question_rate` exceeds e.g. 50% across the corpus (over-triggering) so we catch a subsequent prompt regression before it skews retrieval.
+
+**4. /query top_k vs pool-limit documentation (low)**
+
+The pool-limit finding above is non-obvious to operators. Document in `community-brain/CLAUDE.md` that cue boosts are pool-limited and that operator-facing tuning options are: raise `top_k`, raise `OVERSAMPLE_FACTOR`, or wait for v5's cue-driven injection. Until v5 ships, the workaround is to raise `top_k` to 30+ for date-query-heavy use cases.
+
+**5. Codex adversarial review surfaced in v4 (already fixed, kept here as v5 watch-items)**
+
+These were caught and fixed in v4 commit `91c3cb1` but are worth keeping in mind for v5 testing:
+
+- Case-sensitive cue lookup (speaker resolver + token_overlap) — fixed via casefold normalization. v5 should add property-based tests covering case permutations across rule types.
+- Filter runtime prompt vs system-prompt citation contract conflict — fixed by aligning filter on `[SOURCE N]`. v5 should add a parity test asserting the filter and `docs/inference-guidelines.md` don't carry contradicting citation directives.
+
 **Read in this order before brainstorming:**
 
 1. `docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md` (full v3 spec, especially §2.2 non-goals, §19 future work, Appendix C accepted-by-design)
