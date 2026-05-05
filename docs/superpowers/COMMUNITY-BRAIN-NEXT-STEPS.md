@@ -1,6 +1,6 @@
 # Community Brain — Next Steps Handoff
 
-**Snapshot date:** 2026-04-30
+**Snapshot date:** 2026-05-05
 **Purpose:** Single entry-point document for a fresh session that needs to pick up the Community Brain project. Reads in 3 minutes, tells you exactly what's done, what's outstanding, where the canonical artifacts live, and how to start each remaining track.
 
 ---
@@ -92,6 +92,33 @@ Canonical references:
 - Spec: [`docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md`](specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md)
 - Plan: [`docs/superpowers/plans/2026-04-29-retrieval-v3-and-stage-c-v2-plan.md`](plans/2026-04-29-retrieval-v3-and-stage-c-v2-plan.md)
 - Validation addendum: Plan A spec §10, "v3 retrieval + Stage C v2 validation (2026-04-30 — against live VM)"
+
+### Retrieval v4 — Quality Improvements — DONE and DEPLOYED (2026-05-05)
+
+Surfaced via 2026-05-03 10-question test battery against `gpt-oss:20b` in Open WebUI. 4 hard-fails clustered on date-blindness, weak speaker retrieval, weak `has_unresolved_question` retrieval, and citation hallucination. v4 addresses all four with a five-layer change set, with `gpt-oss:20b` preserved as the answering model per the distribution constraint.
+
+- **Layer 1 (data, +9 tokens/chunk):** `bm25_text` Level-3 date variants (ISO date, year-month, month name, month-year, phrased form, `Q1-Q4`, `H1`/`H2`, `early/mid/late`-prefixed month-year). `chunk-extraction-v3` prompt: more permissive `has_unresolved_question` criterion (defaults to `true` when in doubt; flags partial answers, deferred answers, and unresolved-on-pivot).
+- **Layer 2 (retrieval, hot-reload):** 4 date-aware cue rules (`date_iso_match`, `date_month_year_match`, `date_phrased_with_day` added in hotpatch, `date_relative_phrasing`, `date_quarter_match`). Speaker auto-rule synthesized at server startup from `speaker-aliases.yaml`, longest-first alternation, casefold-normalized for case-insensitive matching. `unresolved_questions` cue delta bumped from 0.010 → 0.040 with broadened cue phrases ("nobody fully answered", "left hanging", "without an answer", etc.).
+- **Layer 3 (filter):** new metadata block above `<transcript_data>` — `[SOURCE N — chunk_id: ...]`, `[session: YYYY-MM-DD — title]`, `[speakers spoke: ...]`, `[speakers mentioned: ...]`, `[topic: ...]`. Filter no longer prepends `inference-guidelines.md` content.
+- **Layer 4 (system prompt):** `docs/inference-guidelines.md` refactored to V1 system prompt (~440 words) with explicit verification scaffolding (rules 2-3-4: literal source verification before citation, anti-hallucination directive against training-data familiarity). Deployed manually as Open WebUI custom model `community-brain-v4-gpt-oss:20b`. Operator paste artifact at `prompts/community-brain-v4-openwebui-system-prompt.md`.
+- **Layer 5 (tooling):** `scripts/reextract-all-sessions.py` orchestrates corpus re-extract with SMOKE / BULK / REPORT phases.
+
+Corpus state after Plan-G deployment: **1,434 / 1,434 chunks at `chunk-extraction-v3` + `success`**, 68 sessions. `has_unresolved_question` corpus-wide tagged count: **394** (target ≥35; v1 was 39, v3 was 20). entities/chunk avg: 12.55. Cost of full re-extract: **$0.751** in Gemma calls (4× cheaper than the plan's $3 estimate).
+
+512 tests passing. Server `0.4.0` deployed to live VM on 2026-05-05.
+
+10-question validation outcomes (Round 2, after a YAML-only cue-rule + system-prompt hotpatch on 2026-05-05; full forensic in [`docs/superpowers/validation/2026-05-05-retrieval-v4-validation.md`](validation/2026-05-05-retrieval-v4-validation.md)):
+
+- 5 clean PASS + 2 PASS-with-citation-format + 1 TECHNICAL PASS + 1 GRACEFUL REFUSAL + 1 PARTIAL + 1 FAIL.
+- Generous: **9/10 PASS-flavored**. Strict: **5/10 clean PASS**.
+- Q3 still hallucinates ("2025-12-15 meeting" — session doesn't exist; subscription model attributed to Garron without source verification). System-prompt verification scaffolding insufficient against `gpt-oss:20b`'s inferential narrative tendency under specific-query / weak-retrieval pressure. Queued as v5 candidate.
+- Pool-limit issue (Q1, Q3, Q6 partial coverage; Q7's Codex coverage absent despite 97 chunks corpus-wide containing "codex") is a structural retrieval architecture concern. Queued as v5 candidate.
+
+Canonical references:
+- Spec: [`docs/superpowers/specs/2026-05-03-retrieval-v4-quality-improvements-design.md`](specs/2026-05-03-retrieval-v4-quality-improvements-design.md)
+- Plan: [`docs/superpowers/plans/2026-05-03-retrieval-v4-quality-improvements-plan.md`](plans/2026-05-03-retrieval-v4-quality-improvements-plan.md)
+- CHANGELOG: [`docs/migrations/CHANGELOG.md`](../../docs/migrations/CHANGELOG.md) (2026-05-03)
+- Validation: [`docs/superpowers/validation/2026-05-05-retrieval-v4-validation.md`](validation/2026-05-05-retrieval-v4-validation.md)
 
 ---
 
@@ -209,6 +236,40 @@ These were caught and fixed in v4 commit `91c3cb1` but are worth keeping in mind
 
 - Case-sensitive cue lookup (speaker resolver + token_overlap) — fixed via casefold normalization. v5 should add property-based tests covering case permutations across rule types.
 - Filter runtime prompt vs system-prompt citation contract conflict — fixed by aligning filter on `[SOURCE N]`. v5 should add a parity test asserting the filter and `docs/inference-guidelines.md` don't carry contradicting citation directives.
+
+### v5 candidates added from v4 Round-2 validation (2026-05-05)
+
+The 10-question Round 2 validation against the live v4 deploy (after the YAML+system-prompt hotpatch) surfaced three additional candidates:
+
+**6. Filter-side citation post-processing (high — Q3 hallucination class)**
+
+Round 2 Q3 demonstrated that even with explicit verification scaffolding in the system prompt ("Before naming any session date, verify it appears literally in one of those headers"), `gpt-oss:20b` still fabricated session "2025-12-15" and attributed claims to "Garron" without speaker verification. The model's own reasoning trace acknowledged "I don't see the speaker name" yet committed to the attribution in the final answer. System-prompt scaffolding alone cannot guarantee `gpt-oss:20b` compliance under specific-query / weak-retrieval pressure.
+
+**Direction:** defense-in-depth in the Open WebUI filter. After the model produces an answer, post-process to:
+
+- Strip or flag any `[SOURCE N]` / `[chunk_id]` references whose values don't appear in the headers of the retrieved set.
+- Strip or flag any session-date strings (regex: `\b\d{4}-\d{2}-\d{2}\b`) not present in the `[session: ...]` lines of the retrieved set.
+
+This catches Q3-style fabrications regardless of how well the model follows the prompt. Implementation: add a post-render guard in `community_brain_filter.py:Filter.outlet` (or wherever the filter receives the model's response). Code-only, no schema or data change.
+
+**7. has_unresolved_question Q&A-pair semantics gap (medium)**
+
+Round 2 Q8 showed that `unresolved_questions` cue rule fires correctly post-hotpatch (5/10 retrieved chunks tagged True), but `gpt-oss:20b` refused to enumerate examples. Reasoning: the model's interpretation of "questions nobody fully answered" is "explicit Q&A pairs in the transcript where the answer is missing." But the `has_unresolved_question` flag captures a broader semantics ("a question raised that doesn't get a clear, definitive answer in the same chunk", per chunk-extraction-v3.md) — which includes deferred answers, pivots, and partial responses.
+
+When the model verifies in transcript text it only finds answers that look complete enough; it doesn't trust the flag.
+
+**Direction (one of):**
+- (a) Tighten the chunk-extraction-v3 prompt's `has_unresolved_question` definition to align with the Q&A-pair-missing-answer interpretation. Requires a corpus re-extract.
+- (b) Add a sentence to the system prompt clarifying that flagged-unresolved chunks indicate Q's the chunk didn't fully resolve, and the LLM can trust the flag for surveying purposes (skip transcript re-verification for this specific case).
+- (c) Document the gap and accept that "list 5 unanswered questions" will return a refusal even when retrieval is correct.
+
+**8. gpt-oss:20b instruction-following limitations (high — affects v4's hallucination guarantees)**
+
+Round 2 Q3 confirmed that strong system-prompt directives are not reliably followed by `gpt-oss:20b` when the question is highly specific and retrieval is weak. The constraint "gpt-oss:20b stays as the answering model" (per distribution goal) limits the fix surface. Options:
+
+- (a) Filter-side post-processing (candidate #6 above) — most direct.
+- (b) Lower the model's `temperature` to 0 in the Open WebUI custom model — reduces the model's tendency to "fill gaps" with plausible-sounding content. Not yet tried.
+- (c) Add explicit failure-mode examples in the system prompt ("BAD: 'Garron discussed subscription model in the 2025-12-15 meeting' (no source verification). GOOD: 'I don't see Garron mentioned in the retrieved sources.'"). Worth trying as a low-risk tweak.
 
 **Read in this order before brainstorming:**
 
