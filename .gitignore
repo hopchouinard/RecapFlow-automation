@@ -31,3 +31,6 @@ Thumbs.db
 
 # Vector database runtime files (3.8GB, rotates on every ingest)
 community-brain/lancedb/
+
+# Visual brainstorming companion runtime files
+.superpowers/
