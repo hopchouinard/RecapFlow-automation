@@ -1,0 +1,860 @@
+[00:00:25] Patrick Chouinard: Hey, Marc.
+[00:00:31] Patrick Chouinard: Give a sec.
+[00:00:32] Patrick Chouinard: I think I have an audio issue.
+[00:00:36] Patrick Chouinard: Give me a second.
+[00:00:41] Marc Juretus: Hey, what's up, man?
+[00:00:42] Marc Juretus: That was me.
+[00:00:43] Patrick Chouinard: Okay.
+[00:00:45] Marc Juretus: Oh, like the backdrop.
+[00:00:47] Marc Juretus: I assume that's not your residence.
+[00:00:48] Patrick Chouinard: Would that be correct?
+[00:00:50] Patrick Chouinard: I would love it to be mine.
+[00:00:53] Marc Juretus: You know what?
+[00:00:54] Marc Juretus: I honestly would, too.
+[00:00:55] Paul Miller: I don't know if I would need forward in there, but outside of that, I'm in.
+[00:00:59] Patrick Chouinard: Actually, the only thing I would like to have is the board.
+[00:01:02] Marc Juretus: A chalkboard?
+[00:01:04] Marc Juretus: Wow, okay.
+[00:01:07] Marc Juretus: I'm not with you on that one, brother.
+[00:01:13] Patrick Chouinard: Hey, guys.
+[00:01:14] Marc Juretus: Oh, there we go.
+[00:01:16] Marc Juretus: Tiger Woods is at it again, I see.
+[00:01:19] Ty Wells: This is a hacking opportunity for me.
+[00:01:21] Patrick Chouinard: I'm going to try to hack this ball out of the rough.
+[00:01:24] Paul Miller: What's your handicap, Ty?
+[00:01:27] Marc Juretus: Ten.
+[00:01:28] Paul Miller: Oh, okay.
+[00:01:30] Paul Miller: Well, you need to be working on it.
+[00:01:32] Ty Wells: You need to get into those single digits.
+[00:01:34] Ty Wells: Absolutely.
+[00:01:35] Ty Wells: Well, that's hard to maintain, though.
+[00:01:36] Paul Miller: don't know if I'm going to do that.
+[00:01:38] Paul Miller: A lot of golf.
+[00:01:39] Ty Wells: Yeah.
+[00:01:41] Ty Wells: Well, due to the pressure of it.
+[00:01:43] Ty Wells: I'll be in and out, guys.
+[00:01:46] Patrick Chouinard: No problem.
+[00:01:54] Patrick Chouinard: Based on last week, Tyken out-designed us while golfing.
+[00:01:58] Paul Miller: So .
+[00:02:00] Paul Miller: I think, I think there's some secret sauce somehow in there.
+[00:02:04] Patrick Chouinard: My golfing is terrible though.
+[00:02:08] Patrick Chouinard: Honestly, the only thing I've done in golf is the driving range and I can get the ball really far.
+[00:02:14] Patrick Chouinard: I just have no direction whatsoever.
+[00:02:17] Paul Miller: Oh, yeah, man.
+[00:02:18] Paul Miller: That's a problem.
+[00:02:20] Marc Juretus: I'm actually a fairly good athlete.
+[00:02:26] Marc Juretus: Don't feel bad.
+[00:02:27] Marc Juretus: I can't golf at all.
+[00:02:28] Marc Juretus: All I would do is the driving range.
+[00:02:29] Marc Juretus: I could never do that or skate growing up.
+[00:02:32] Marc Juretus: That was the best.
+[00:02:39] Patrick Chouinard: Hi, Adam.
+[00:02:42] Adam: That's going to be fun this week.
+[00:02:53] Patrick Chouinard: I'm going to be able to give a more complete demo of my community.
+[00:03:02] Patrick Chouinard: I've learned more doing that about RAG than I've learned doing any other project.
+[00:03:13] Paul Miller: Wow, okay.
+[00:03:15] Patrick Chouinard: Filtering conversational data is brutally hard.
+[00:03:24] Paul Miller: Yeah, I'm just doing a project now with that.
+[00:03:27] Paul Miller: It's a project that I attempted a year ago, and it's always harder than you think.
+[00:03:34] Patrick Chouinard: Well, figure out a couple of tricks if you ever want to discuss about it.
+[00:03:41] Patrick Chouinard: I mean, I've had many, many, many hundreds of thousands of tokens thrown at the issue.
+[00:03:47] Paul Miller: Okay, no, that would be good.
+[00:03:52] Ty Wells: I realized last week I put the, or the last couple, maybe a couple of weeks ago, we did this shot.
+[00:03:59] Ty Wells: I mean, of
+[00:04:00] Ty Wells: The traditional first T-hole shot and it was on camera.
+[00:04:03] Ty Wells: So I couldn't do that again this week.
+[00:04:05] Patrick Chouinard: I forgot it was being recorded.
+[00:04:07] Patrick Chouinard: So we did.
+[00:04:09] Ty Wells: We did it already.
+[00:04:10] Ty Wells: Just so you know, we got it out of the way.
+[00:04:12] Paul Miller: Okay.
+[00:04:12] Paul Miller: Did you make power?
+[00:04:15] Ty Wells: I'm waiting on my buddy.
+[00:04:16] Ty Wells: He's probably going to shank his off to the left.
+[00:04:18] Paul Miller: Oh, okay.
+[00:04:27] Juan Torres: Hey, folks.
+[00:04:28] Juan Torres: Can you hear me?
+[00:04:29] Paul Miller: This meeting is being recorded.
+[00:04:37] Juan Torres: Sweet, sweet, sweet.
+[00:04:40] Juan Torres: Patrick, I got the the app.
+[00:04:43] Juan Torres: So I can show it to you guys.
+[00:04:45] Patrick Chouinard: Oh, good.
+[00:04:46] Patrick Chouinard: Good.
+[00:04:50] Patrick Chouinard: Yeah.
+[00:04:50] Patrick Chouinard: Sorry about my late post for the primer for this week.
+[00:04:55] Patrick Chouinard: Meaning I completely forgot about it and then remembered it that like midnight.
+[00:04:59] Patrick Chouinard: like.
+[00:05:00] Juan Torres: No worries, you're always keeping up with the group.
+[00:05:03] Patrick Chouinard: Thank you for that.
+[00:05:05] Paul Miller: Given how busy your awakens are, I'm not surprised.
+[00:05:08] Juan Torres: Yeah.
+[00:05:10] Patrick Chouinard: Well, it's just that this week was the big go-live for Claude in the Enterprise for us, so let's just say I'm the sole trainer for Claude Code.
+[00:05:24] Patrick Chouinard: And just in the pilot, I have a hundred people, so we're kind of busy.
+[00:05:29] Paul Miller: It's a big pilot.
+[00:05:34] Patrick Chouinard: And the fun part is we have people, pure dev, and we have business user with Claude Code.
+[00:05:41] Paul Miller: Those are fun.
+[00:05:44] Paul Miller: Yeah, that's scary.
+[00:05:49] Patrick Chouinard: It's like, oh, we're not going to give co-work right now, it's too dangerous.
+[00:05:53] Patrick Chouinard: Okay, so no hammer, but AK-47, no problem.
+[00:05:57] Patrick Chouinard: Okay.
+[00:06:01] Patrick Chouinard: But it allowed me to learn how to do configuration hardening for cloud code.
+[00:06:14] Juan Torres: How do you do that?
+[00:06:16] Patrick Chouinard: Actually, you can deploy a setting.json at the organizational level that supersedes the personal one.
+[00:06:26] Patrick Chouinard: And for my pilot user, I also included a seeded cloud.md that constrained them even more, but actually explained to them why they're constrained.
+[00:06:37] Patrick Chouinard: So they're not just trying to bypass it.
+[00:06:40] Patrick Chouinard: It's something that tells them, no, no, that's, we want that behavior for these reasons.
+[00:06:49] Patrick Chouinard: So yeah, quite not really easy, but really, really interesting to do.
+[00:07:11] Patrick Chouinard: That's where you learn that those tools in the enterprise is very different than VibeCoding.
+[00:07:23] Paul Miller: Have we got a quorum here?
+[00:07:27] Paul Miller: We'll just wait another minute.
+[00:07:32] Marc Juretus: Learning a new word.
+[00:07:33] Marc Juretus: What's a quorum?
+[00:07:34] Paul Miller: got to look that up.
+[00:07:37] Paul Miller: Minimum viable number of participants in the meeting.
+[00:07:41] Juan Torres: In order to make a vote.
+[00:07:43] Paul Miller: Yeah, yeah.
+[00:07:44] Marc Juretus: Big words.
+[00:07:45] Marc Juretus: 400, Alex, please.
+[00:07:48] Juan Torres: Well, wouldn't quorum come from the Latin word of cuatro, which is four?
+[00:07:54] Juan Torres: So you need four people at least in the meeting in order to make constitutional amendments.
+[00:07:59] Paul Miller: Yep.
+[00:08:00] Marc Juretus: So we're supposed to analyze prefixes.
+[00:08:02] Marc Juretus: I got you, right?
+[00:08:04] Juan Torres: The advantages of knowing Spanish.
+[00:08:06] Juan Torres: It's a combination of Latin and a little bit of Arab.
+[00:08:11] Marc Juretus: Mine used to be a lot better, my Spanish.
+[00:08:18] Marc Juretus: Hey Tom.
+[00:08:24] Paul Miller: Okay.
+[00:08:25] Paul Miller: Right, shall we...
+[00:08:29] Paul Miller: I'll just take a screenshot.
+[00:08:31] Paul Miller: Okay.
+[00:08:47] Paul Miller: We have a cool order, but Patrick, did we have any questions ahead or specific things that people were going to demonstrate this week?
+[00:08:59] Patrick Chouinard: No, nothing.
+[00:09:00] Patrick Chouinard: I and again, most probably my fault because I posted it pretty late this week.
+[00:09:05] Patrick Chouinard: Sorry about that.
+[00:09:10] Paul Miller: Good.
+[00:09:11] Paul Miller: Given you are first, did you want to start?
+[00:09:15] Patrick Chouinard: Why not?
+[00:09:17] Patrick Chouinard: Let's get this ball rolling.
+[00:09:19] Patrick Chouinard: What I wanted to show this week is I've kept on working on my recap flow slash community brain.
+[00:09:30] Patrick Chouinard: So basically digesting all of the transcript of the past two and a half years worth of this community.
+[00:09:37] Patrick Chouinard: A big thank you to our Brandon to have supplied me with all the historical transcript that I didn't yet have.
+[00:09:48] Patrick Chouinard: It's actually impressive.
+[00:09:49] Patrick Chouinard: Doing all of the pre-treatment of the information, plus the chunking, plus the summarizing and the...
+[00:10:00] Patrick Chouinard: Embedding, I've used a lot of open router model to do that, and a lot of the pre-treatment used a quite big model.
+[00:10:10] Patrick Chouinard: I used a lot of Sonnet 4.6 and Kimike 2.5 because for the pre-treatment, I need to digest the entire two and a half hours worth of transcript at once to understand the order and the topic being addressed.
+[00:10:26] Patrick Chouinard: And even that said, treating 65 sessions, or 68 sessions, sorry, so that's over 130 hours worth of transcript, it costs total, total, total, like 30 bucks worth of token.
+[00:10:48] Patrick Chouinard: So pretty impressed on that front.
+[00:10:52] Patrick Chouinard: And I also realized building that, that the chunk and the embedding are...
+[00:10:59] Patrick Chouinard: are...
+[00:10:59] Patrick Chouinard: are...
+[00:10:59] Patrick Chouinard: are...
+[00:10:59] Patrick Chouinard: are...
+[00:11:00] Patrick Chouinard: The most worthless part of the whole project, the real value is in the pre-process data, pre-chunking, pre-embedding, because the chunking and embedding, honestly, re-summarizing all of the chunks cost 75 cents for the whole 68 session out of the 30 bucks.
+[00:11:22] Patrick Chouinard: So, that can be redone easily.
+[00:11:26] Patrick Chouinard: And I've done also a lot of tests with multiple embedding models.
+[00:11:30] Patrick Chouinard: I've tossed, obviously, I'm still using Gnomic 1.5, the one that comes with Olama.
+[00:11:37] Patrick Chouinard: I've tried the latest Gnomic 2.
+[00:11:40] Patrick Chouinard: I tried the new one from Google, the Gemini Embedding V2.
+[00:11:48] Patrick Chouinard: Honestly, found almost no gain as long as I had very solid prep work done on my data.
+[00:11:57] Patrick Chouinard: So, a lot of...
+[00:12:00] Patrick Chouinard: Very interesting conclusion I got out of that process.
+[00:12:04] Patrick Chouinard: I'm using an hybrid retrieval method with both BM25 keyword search plus the vector embedding.
+[00:12:12] Patrick Chouinard: I've done a lot of metadata insertion.
+[00:12:15] Patrick Chouinard: So let me show you guys what it looks like.
+[00:12:19] Patrick Chouinard: I'm not able to share it just yet because I haven't packaged it.
+[00:12:22] Patrick Chouinard: But the goal is to eventually package the completely processed LensDB vector database for anybody to download and use, as well as the raw prepared material.
+[00:12:41] Patrick Chouinard: So anyone who wants to build on top of or re-embed it in their own application or run it under ChromaDB or Pinecone or whatever, I'm going to share everything because it's our content.
+[00:12:55] Patrick Chouinard: It's basically everything we've said over the past two and a half years.
+[00:12:58] Paul Miller: So they're designed.
+[00:13:02] Patrick Chouinard: So you see, I'm running it in OpenWeb UI, so it's a local container that connects to my local Olamo instance.
+[00:13:13] Patrick Chouinard: And the model you see here, community brain, it's basically just GPT OSS with a system prompt specifically made to interrogate that database.
+[00:13:26] Juan Torres: Nice.
+[00:13:27] Juan Torres: So you download the whole model together with the repo?
+[00:13:30] Patrick Chouinard: Yeah.
+[00:13:33] Patrick Chouinard: Well, actually, you don't need to.
+[00:13:36] Patrick Chouinard: I'm packaging it right now.
+[00:13:38] Patrick Chouinard: It's going to be a deployment instruction because the only thing that that is, is once you have GPT OSS, the standard model, you just go here and edit the configuration and you just insert a custom system prompt and save it.
+[00:13:57] Patrick Chouinard: That's it.
+[00:14:00] Patrick Chouinard: And in OpenWebUI, there's one more thing that you need to configure.
+[00:14:06] Patrick Chouinard: It's a filter function that you just copy and paste.
+[00:14:14] Patrick Chouinard: So that's just Python code to connect to the retrieval server that interrogates the LensDB.
+[00:14:24] Patrick Chouinard: And there's a bit of configuration, so basically where it is, your API key.
+[00:14:30] Patrick Chouinard: I don't care about sharing it.
+[00:14:32] Patrick Chouinard: This is local, so, and your top K and your timeout.
+[00:14:39] Patrick Chouinard: That's it.
+[00:14:42] Juan Torres: Really cool.
+[00:14:43] Patrick Chouinard: Yeah.
+[00:14:44] Patrick Chouinard: So that said, you just, I had an example here or for example.
+[00:14:53] Patrick Chouinard: So this is across all coaching call.
+[00:14:55] Patrick Chouinard: What are the most consistently discussed topic about agentic AI development?
+[00:15:00] Patrick Chouinard: This extremely hard.
+[00:15:01] Patrick Chouinard: I had to redo the database multiple times to get to answer such basic cases, not find me the latest point where this was discussed.
+[00:15:12] Patrick Chouinard: It's analyze all of the chunks across all the calls and tell me the top discussion scenario.
+[00:15:22] Patrick Chouinard: So you have all the teams, why it showed up in every round table and the calls themselves that keep talking about it.
+[00:15:32] Patrick Chouinard: So interesting.
+[00:15:37] Patrick Chouinard: Exactly.
+[00:15:37] Patrick Chouinard: So you have a bunch of like voice to CPU, what Adam's Jane talked about across the coaching call, pick three of the most substantial contribution.
+[00:15:47] Patrick Chouinard: There you go.
+[00:15:52] Patrick Chouinard: Oops.
+[00:15:53] Patrick Chouinard: And that's it.
+[00:16:03] Patrick Chouinard: That's the little prompts that are saved.
+[00:16:05] Patrick Chouinard: I want to put a little more meat behind them, so they give follow-up prompts that are a little bit more interesting.
+[00:16:16] Patrick Chouinard: But yeah, basically.
+[00:16:17] Patrick Chouinard: And what's nice is to look at the thinking of OSS, how it actually drilled inside of the content.
+[00:16:24] Patrick Chouinard: It's not perfect yet, but I did a test with CloudCode where I asked Opus to basically do a test where it uses the same system prompt as it gave to OSS, and do the retrieval itself, and then compare its answer with the one that OSS gave me.
+[00:16:50] Patrick Chouinard: And we're about 80% of the performance for 1% of the size.
+[00:17:00] Patrick Chouinard: So, GPT-OSS is giving me results that are approximately 75% as good as Opus.
+[00:17:08] Patrick Chouinard: So we see that the retrieval server does a load of job to bypass the short of the model.
+[00:17:18] Paul Miller: Have you looked at Gemma 4 yet?
+[00:17:21] Patrick Chouinard: I've tried Gemma 4, honestly.
+[00:17:24] Patrick Chouinard: It's actually what does my summarizing at the chunk level.
+[00:17:28] Patrick Chouinard: So for that, it's awesome.
+[00:17:30] Patrick Chouinard: But for retrieval logic, it could not follow instruction to save its life.
+[00:17:38] Paul Miller: Wow, interesting.
+[00:17:40] Patrick Chouinard: It does very good function call.
+[00:17:42] Patrick Chouinard: So function calling is awesome.
+[00:17:44] Patrick Chouinard: But following complex logic, I even tried the Gemma 4 30B, the biggest one.
+[00:17:51] Juan Torres: Oh, interesting.
+[00:17:53] Patrick Chouinard: Maybe half as good as OSS.
+[00:18:00] Juan Torres: You know, Patrick, I tested GPT OSS 20 billion parameters for the extraction of entities in the general ledgers, the issue that I was working with, and it was actually doing pretty well.
+[00:18:17] Juan Torres: was reaching 85% accuracy, but given the tax purposes of the clients, I did have to use a bigger model.
+[00:18:27] Juan Torres: So, but yeah, I do agree.
+[00:18:30] Juan Torres: I've seen the 80% to 20% health difference, and it really depends on your specific needs.
+[00:18:38] Juan Torres: The tolerance level, for example, in this case, you know, it allows for that 80%.
+[00:18:44] Patrick Chouinard: Yeah, but again, we're talking about the hardest possible data to query because it has to map meaning across years of transcript.
+[00:18:57] Patrick Chouinard: I clean it up, but it stays dead.
+[00:18:59] Patrick Chouinard: dead.
+[00:19:00] Patrick Chouinard: And the original content is a bunch of conversation with, I'm not sure, let me think about it, you know, a lot of site information that's not necessary.
+[00:19:11] Patrick Chouinard: So the cleaning up has to do a lot of legwork.
+[00:19:16] Patrick Chouinard: I realized that what I was doing for RecapFlow, you know, to create the detailed summary after each call was already very valuable preprocessing.
+[00:19:26] Patrick Chouinard: So I'm leveraging that on top of reclassifying the entire transcript itself.
+[00:19:34] Patrick Chouinard: all of that together is, I'm really anxious to actually package it in a deployable fashion to share it with everyone.
+[00:19:45] Patrick Chouinard: But at this point, my version four of the specs are, at a degree, I'm ready to start packaging it for deployment.
+[00:19:53] Patrick Chouinard: So hopefully, if everything goes well, I should have a package version next week to share with all of you guys.
+[00:20:00] Juan Torres: Nice.
+[00:20:03] Patrick Chouinard: And is there any questions?
+[00:20:12] Patrick Chouinard: Yeah, about superpower, I might have a little something to talk about there, not in the context of ShipKit, but in the context of superpower in and of itself.
+[00:20:24] Patrick Chouinard: As you might know, we're deploying at my work cloud code in the enterprise, and we decided to push superpower as the SDD framework by default for everyone.
+[00:20:39] Patrick Chouinard: So I'm going to have a lot of data pretty soon on its usability at scale in a pretty constrained corporate environment.
+[00:20:52] Paul Miller: Yeah, that would be helpful.
+[00:20:54] Patrick Chouinard: Yep.
+[00:20:55] Patrick Chouinard: Yeah, because it's always fun when you're an admin on your station.
+[00:21:00] Patrick Chouinard: And you configure anything any way you want, but when it's time to make that work with corporate cybersecurity department and network department and sysadmin, it's another ballgame.
+[00:21:15] Paul Miller: Indeed.
+[00:21:18] Paul Miller: Okay.
+[00:21:19] Paul Miller: Thank you, Patrick.
+[00:21:21] Paul Miller: Cool stuff.
+[00:21:23] Paul Miller: So, Marc, how are things going, Marc?
+[00:21:28] Marc Juretus: Can you hear me?
+[00:21:29] Paul Miller: Yep.
+[00:21:30] Marc Juretus: All right.
+[00:21:31] Marc Juretus: Let's check it.
+[00:21:31] Marc Juretus: Nothing really new to report.
+[00:21:33] Marc Juretus: I'm kind of all wrapped up in, this one guy that I follow, he's got agents actually investing for him.
+[00:21:40] Marc Juretus: So there's an API called Alpaca that you can, it'll give you $100,000 if you start out, obviously play money.
+[00:21:48] Marc Juretus: So I've built some agents that are just, an agent is basically investing.
+[00:21:54] Marc Juretus: What I'm more into is I love the lessons it learns each day on its own, and it writes
+[00:22:00] Marc Juretus: Back to a JSON lessons file, and it's kind of interesting to read, so it's up $3,000 already, but I just keep tweaking it a little bit each day, so I'm curious to see where it is in about two months, and that I actually may give it some money and see what it can do.
+[00:22:16] Marc Juretus: So, I'm going to get it off of my PC I saw, which you guys obviously probably know, there's those routines in Claude where it'll pull from the repo, my code, and run it, so instead of me running like jobs on the AP schedule or locally, I think I'm going to look into doing that, but it's pretty interesting where we're at right now, but I'm kind of into the guy that I followed, I guess he's got another guy in this space, and they basically have a bet on whose agent's going to earn more money in two months.
+[00:22:44] Marc Juretus: So, it's kind of cool, I'm kind of into that, but like I said, nothing real of note, I'm in, we're doing a co-pilot studio, co-pilot agent with all kinds of service now connectors, so I'm having a whole lot of fun with that.
+[00:23:00] Marc Juretus: If you did not have a sarcasm, but you know, that's where we're at right now.
+[00:23:04] Marc Juretus: That's what I'm up to.
+[00:23:06] Marc Juretus: So nothing to report really.
+[00:23:09] Paul Miller: Cool.
+[00:23:12] Marc Juretus: Oh, man, dude, it's, it's, it sucks, man.
+[00:23:16] Marc Juretus: It's, it is what it is, man.
+[00:23:18] Marc Juretus: It's what we're using.
+[00:23:19] Marc Juretus: So we're connecting to SharePoint, but it's like a six second lag time till you get it in context.
+[00:23:26] Marc Juretus: So we've got to, we've got to move it up to Azure for an AI search that indexes it.
+[00:23:33] Marc Juretus: You know, it's just stuff like that.
+[00:23:35] Marc Juretus: It's the service now connector.
+[00:23:37] Marc Juretus: You can, you can submit incidents, but the requests, you can't do it that way.
+[00:23:42] Marc Juretus: And they, well, we want an agent that they can submit an incident request.
+[00:23:45] Marc Juretus: Well, incident is pretty much out of the box.
+[00:23:47] Paul Miller: This request is a different beast.
+[00:23:49] Paul Miller: So a lot of fun.
+[00:23:51] Paul Miller: Yeah.
+[00:23:51] Paul Miller: Now we, we use Zoho help desk and we were getting a.
+[00:24:00] Paul Miller: I tiresome customer, just putting lots of terrible support tickets through the helpdesk and then following up with email, but I built a reporting system out of Claude that analyzed the Zoho helpdesks, the ticket nature, and all the emails and categorized every one of them about their appropriateness and are they taking advantage of our helpdesk?
+[00:24:30] Paul Miller: helpdesk team because everyone's starting to get really antsy with that customer, but there's some great stats and insights you can get from that and see the trends of, well, are you actually responding in a positive way or not, or is that customer taking the proverbial?
+[00:24:48] Marc Juretus: Yeah, one of our biggest problems is, and the other guy on my team, I feel bad for him because he's been tasked with, we're using a third-party CMS called Unile, and the whole, aw.
+[00:25:00] Marc Juretus: Authentication of the agent running in a widget in it where you need to pass your credentials over is not playing nice with a token.
+[00:25:07] Marc Juretus: So we're working through stuff like that.
+[00:25:10] Marc Juretus: Like you just don't look forward to work every day, if you will.
+[00:25:13] Marc Juretus: I'll put it that way, man.
+[00:25:15] Marc Juretus: Yeah.
+[00:25:17] Paul Miller: Yeah.
+[00:25:18] Paul Miller: Yeah.
+[00:25:18] Paul Miller: I hear you.
+[00:25:20] Paul Miller: Cool.
+[00:25:21] Paul Miller: Thank you, Marc.
+[00:25:24] Paul Miller: Juan, how's it going?
+[00:25:26] Juan Torres: Good.
+[00:25:27] Juan Torres: Good.
+[00:25:27] Juan Torres: I just wonder who's going to get their private yacht first.
+[00:25:30] Paul Miller: Either Brandon or Marc.
+[00:25:33] Paul Miller: The what?
+[00:25:34] Juan Torres: Private yacht.
+[00:25:36] Paul Miller: The private yacht.
+[00:25:39] Marc Juretus: Yeah.
+[00:25:40] Marc Juretus: Hey, man.
+[00:25:40] Marc Juretus: The some of these semiconductors you're running with the little investment I do on my own.
+[00:25:44] Marc Juretus: My God, man.
+[00:25:45] Marc Juretus: Like you could just invest in anything.
+[00:25:47] Marc Juretus: It just goes up right now because of all this AI stuff.
+[00:25:50] Juan Torres: But anyways, sorry Juan.
+[00:25:52] Juan Torres: That's right.
+[00:25:53] Juan Torres: Invest in the AI bubble before it burst.
+[00:25:56] Marc Juretus: Exactly.
+[00:25:57] Marc Juretus: Exactly.
+[00:25:58] Marc Juretus: Exactly, yo.
+[00:25:59] Paul Miller: I agree.
+[00:26:00] Paul Miller: I'm looking for the second wave with the tulip bubble.
+[00:26:04] Paul Miller: All right, guys.
+[00:26:05] Juan Torres: I want to just show what I did for the front end.
+[00:26:09] Juan Torres: A couple of weeks ago, I was just presenting the data web application that just was kind of a testing, diffusion, prompt engineering ground for me to be able to create the prompts for one of the each styles that I'm creating.
+[00:26:30] Juan Torres: For an app that essentially transforms a picture into an AI-style generated image, right?
+[00:26:40] Juan Torres: And this is an idea for its deployment as an AI booth studio on the field on, you know, social events.
+[00:26:49] Juan Torres: So I'm going to share what I did for the front end.
+[00:26:53] Juan Torres: Send request.
+[00:26:59] Juan Torres: Okay.
+[00:27:00] Juan Torres: I'm going to share screen number four.
+[00:27:06] Juan Torres: Can you guys see my screen?
+[00:27:08] Paul Miller: Yep.
+[00:27:09] Juan Torres: All right.
+[00:27:09] Juan Torres: So this is basically the first screen that I intend the guests to be able to see.
+[00:27:17] Juan Torres: And so I'm going to touch because this is an actual touch screen.
+[00:27:21] Juan Torres: So this is on the side of my, all right.
+[00:27:28] Paul Miller: Yep.
+[00:27:31] Juan Torres: And then the guests are able to pick a couple of styles.
+[00:27:35] Juan Torres: What do you guys want me to pick?
+[00:27:39] Paul Miller: Disney.
+[00:27:41] Juan Torres: Disney.
+[00:27:42] Juan Torres: All right.
+[00:27:43] Juan Torres: Two more.
+[00:27:47] Juan Torres: There's also other ones around here.
+[00:27:50] Juan Torres: classic oil painting, classical oil painting.
+[00:27:55] Juan Torres: All right.
+[00:27:55] Morgan Cook: What else?
+[00:27:57] Morgan Cook: Akira.
+[00:27:57] Juan Torres: Yeah.
+[00:27:58] Juan Torres: All right.
+[00:27:58] Paul Miller: All right.
+[00:27:59] Paul Miller: Yeah.
+[00:28:00] Juan Torres: So now it's going to go through the process of sending this to the inference engine.
+[00:28:06] Juan Torres: And we're going to see right now, it's going to take about a minute and a half in order to transform the images.
+[00:28:15] Juan Torres: In the meantime, I'm going to show you this is what I have for the backend transformation.
+[00:28:22] Juan Torres: So this is my test, right?
+[00:28:24] Juan Torres: I can basically go into each one of the styles that I have right here.
+[00:28:32] Juan Torres: and edit them if I want to, right?
+[00:28:36] Juan Torres: And this basically gets saved into a database, specifically a table that has the prompt test.
+[00:28:44] Juan Torres: And I have a couple of transformations here as well that I have made just to, and I, you know, I have this on the database and organized by an event in order to have a different.
+[00:29:00] Juan Torres: And the capacity to be able to test them and group them per event so that people can then have them later on.
+[00:29:19] Juan Torres: So this is the transformation, right?
+[00:29:49] Juan Torres: And you can actually get this through a new QR code.
+[00:29:54] Juan Torres: So I have my phone here.
+[00:29:57] Juan Torres: And actually, you guys might be able to actually do this.
+[00:30:01] Juan Torres: So I'm going to pull out my phone.
+[00:30:05] Juan Torres: And now, as you can see my screen right here, that's all my transformations.
+[00:30:19] Juan Torres: And I can save it on my phone.
+[00:30:26] Juan Torres: And I can click Save Images or post them in my Instagram or whatever it is.
+[00:30:33] Tom Welsh: Cool.
+[00:30:34] Juan Torres: Yeah.
+[00:30:35] Juan Torres: So this is what I have.
+[00:30:37] Juan Torres: If you guys have questions, constructive criticism.
+[00:30:43] Marc Juretus: That's cool, man.
+[00:30:44] Marc Juretus: I like that.
+[00:30:44] Paul Miller: Yeah, that's neat stuff.
+[00:30:48] Juan Torres: Thank you.
+[00:30:52] Morgan Cook: Juan, this is meant to be used at social events like weddings and bar mitzvahs or whatever, right?
+[00:31:00] Juan Torres: Yeah, I've got ideas for you to share later.
+[00:31:06] Juan Torres: Please do.
+[00:31:08] Juan Torres: I'm going share my LinkedIn on the chat so you can send me a message.
+[00:31:14] Morgan Cook: No, I just met later in today's meeting.
+[00:31:16] Juan Torres: Oh, okay.
+[00:31:17] Juan Torres: Gotcha.
+[00:31:21] Patrick Chouinard: Is it publicly available?
+[00:31:22] Juan Torres: No.
+[00:31:25] Juan Torres: It's authenticated with clerk.
+[00:31:28] Juan Torres: It says staging because I specifically choose the domain staging.
+[00:31:35] Juan Torres: Let me show you again.
+[00:31:36] Juan Torres: So what I'm doing here, so as you can see right here, it has staging right here because this is the staging environment.
+[00:31:51] Juan Torres: I haven't placed it in an out-of-scale group yet.
+[00:31:54] Juan Torres: So it's just an EC2 instance, right?
+[00:31:57] Juan Torres: So, um...
+[00:32:00] Juan Torres: I'm going to do a couple of tests in the field with the staging environment because right now I don't think it's necessary because the current egress IO network data is being processed by CloudFront, not by the EC2 instance, at least for the front-end application.
+[00:32:19] Juan Torres: So I don't think it's going to get overwhelmed, but later on if I try to have several events, I do think I'm going to have to out-of-scale it.
+[00:32:31] Patrick Chouinard: Because we might be 20 version in the future by that time, but this is the type of thing that my boss would actually love for the Christmas party.
+[00:32:42] Juan Torres: I don't know where you are, you're in Canada, right?
+[00:32:44] Patrick Chouinard: Yeah.
+[00:32:45] Juan Torres: Damn, I don't know how I can reach you.
+[00:32:51] Patrick Chouinard: Well, if it's ever available online, it would definitely be a service you would be ready to pay for.
+[00:32:58] Juan Torres: You know, maybe...
+[00:33:00] Juan Torres: Maybe if it picks up from a field thing to license in it, you know, maybe that's a thing that I can do in the future.
+[00:33:10] Juan Torres: But for now, Christmas party, you have a bit of time.
+[00:33:14] Juan Torres: We'll see.
+[00:33:22] Paul Miller: Oh, great stuff, Juan.
+[00:33:24] Juan Torres: Thank you.
+[00:33:25] Paul Miller: That's been fun.
+[00:33:27] Paul Miller: What's the end game for you with that project?
+[00:33:30] Paul Miller: Where do you want to take it?
+[00:33:33] Juan Torres: Well, I was trying to really deploy an application, a functional application that can be tested on the field on my own just to also exercise my DevOps capacity.
+[00:33:50] Juan Torres: And, you know, it's a test of my capacity to actually create AI applications for when I start applying.
+[00:34:00] Paul Miller: Time for jobs.
+[00:34:02] Juan Torres: And then test it on the field and see how popular it gets and see if people like it.
+[00:34:12] Paul Miller: Brilliant.
+[00:34:12] Paul Miller: Thanks, Juan.
+[00:34:15] Paul Miller: Adam, how's it going?
+[00:34:22] Adam: Pretty good.
+[00:34:23] Adam: We had over here an open claw meetup.
+[00:34:28] Adam: One of the people in town met, organized a bunch of people to go meet up and turned out to be an 80s bar.
+[00:34:35] Paul Miller: So that was kind of fun.
+[00:34:39] Adam: Mostly talked about, I don't know, it seemed like a lot of us were doing our own thing and just kind of got there and complained about big corporations and how, you know, it's better to be on your own and not have to deal with all the inefficiencies and just kind of talking about how, like...
+[00:35:00] Adam: Like, yeah, just being small and nimble.
+[00:35:04] Adam: Well, of course, we're all biased, right?
+[00:35:06] Adam: But we're all thinking that all these small companies are going to be coming out and taking a big chunk out of the bigger organizations.
+[00:35:17] Paul Miller: What was the general mood about where OpenClaw is now that it's under the OpenAI umbrella?
+[00:35:27] Adam: Well, it turned out most people were just talking about agents in general, not necessarily OpenClaw, and how AI wasn't impacting basically the economy as more of a whole, it seemed like.
+[00:35:44] Adam: Yeah, the conversation very quickly changed from OpenClaw-specific to just more general, because, I mean, I played around with OpenClaw, but I don't use it, and that's how most of the people were there.
+[00:35:58] Paul Miller: Have you got into...
+[00:36:00] Paul Miller: We're doing the Hermes one, Hermes, the Hermes agent instead, sounds better.
+[00:36:09] Adam: No, I'm just mostly working on the SaaS product today, integrating the, I decided to go with Zoho CRM, integrating that in, and to my surprise, it didn't just work, so just trying to debug what's going on.
+[00:36:25] Paul Miller: There's a great API with Zoho CRM, and they do have an MCP that's worth doing, I've had a deep play with that, because that's our CRM tool.
+[00:36:38] Adam: Okay.
+[00:36:39] Adam: The MCP, is that for development, or for getting at customer data?
+[00:36:46] Paul Miller: More development, but I'd probably start with the API.
+[00:36:50] Paul Miller: First, it does expose quite a lot, but it's got tokens, token limits is the only challenge you might have to top up for tokens that you're able to pull.
+[00:37:00] Paul Miller: Pulled through us from the API.
+[00:37:01] Adam: Yeah.
+[00:37:04] Adam: All right.
+[00:37:05] Adam: Thanks.
+[00:37:07] Paul Miller: Cool.
+[00:37:08] Paul Miller: Anything else?
+[00:37:09] Paul Miller: Any other updates?
+[00:37:11] Adam: Any other cool things on the horizon?
+[00:37:14] Adam: Well, not work-related, or not, I guess, AI-related, but yeah, my son's graduating Saturday, so heading out there for that.
+[00:37:23] Paul Miller: Far more exciting this week.
+[00:37:25] Adam: Yes.
+[00:37:27] Paul Miller: Cool.
+[00:37:28] Paul Miller: Okay.
+[00:37:29] Patrick Chouinard: Yep.
+[00:37:30] Patrick Chouinard: And I just realized now that I will have to do a search and replace in the transcript, because if I give this transcript to Claude Code, it's going to want to charge me out of the subscription.
+[00:37:41] Adam: Oh, yeah.
+[00:37:43] Patrick Chouinard: It's not a joke.
+[00:37:44] Patrick Chouinard: I found one where we pronounced the word, and it actually jumped out of the subscription token.
+[00:37:51] Paul Miller: Yep.
+[00:37:52] Paul Miller: Oh, God.
+[00:37:53] Paul Miller: I'm quite paranoid about it.
+[00:37:55] Paul Miller: Yeah.
+[00:37:56] Paul Miller: It's not a bad word in Claude Code.
+[00:37:58] Paul Miller: Let's do a search and replace.
+[00:37:59] Paul Miller: replace.
+[00:38:00] Patrick Chouinard: Nice.
+[00:38:01] Paul Miller: We can't even talk about certain subjects?
+[00:38:03] Paul Miller: Isn't that freaking?
+[00:38:06] Patrick Chouinard: It's not that we can talk about it.
+[00:38:08] Patrick Chouinard: Since I processed the transcript, now I have to add a pre-processed step where I need to remove it because if Cloud Code sees that name, it's going to jump all the processing out of subscription and go into token mode.
+[00:38:23] Morgan Cook: Yeah, that's crazy.
+[00:38:26] Patrick Chouinard: Yep.
+[00:38:30] Paul Miller: All right.
+[00:38:31] Paul Miller: Thanks, Adam.
+[00:38:34] Paul Miller: Ty, are you between shots at the moment?
+[00:38:41] Paul Miller: How's the round going?
+[00:38:45] Paul Miller: We might have to come back to Ty.
+[00:38:47] Paul Miller: could be getting pretty scary on the course.
+[00:38:52] Paul Miller: Tom, are you still there, Tom?
+[00:38:59] Paul Miller: All
+[00:39:00] Paul Miller: And still wanting to jump on?
+[00:39:03] Tom Welsh: I was.
+[00:39:04] Tom Welsh: I was speaking.
+[00:39:05] Tom Welsh: I thought I'd unmuted myself.
+[00:39:07] Tom Welsh: Yeah, I'm still working on my membership system for my military association.
+[00:39:11] Tom Welsh: And we've got into system engineering stuff now.
+[00:39:15] Tom Welsh: And because being military, you think we'd be organized, but there's about 30,000 blinking cooks in this place.
+[00:39:23] Tom Welsh: So we have a web system, a website, obviously, where we can play our memberships in through, which then goes off to a back end.
+[00:39:31] Tom Welsh: Zerto, or Xero, accounting system.
+[00:39:35] Tom Welsh: And then we've got my system, which is taking the original system of 5,000 users and exposing it and making it work.
+[00:39:42] Tom Welsh: So we're just trying to tie it all back in together.
+[00:39:45] Tom Welsh: So the websites run on WordPress.
+[00:39:47] Tom Welsh: So I'm looking at WordPress APIs for that.
+[00:39:49] Tom Welsh: I'm looking at the API for Xero to pull stuff in.
+[00:39:53] Tom Welsh: And no one can agree on the mechanism for who creates the membership number where.
+[00:40:00] Tom Welsh: Which is obviously a very big question once you try to bill people, because we've got billing coming in.
+[00:40:06] Tom Welsh: We can't attribute it to anybody.
+[00:40:08] Tom Welsh: Like, well, that's just ridiculous to start with.
+[00:40:12] Tom Welsh: So this is what I'm working with currently.
+[00:40:14] Tom Welsh: And it's, I wouldn't say challenging, but entertaining more than anything.
+[00:40:20] Paul Miller: Have you got the Xero API?
+[00:40:22] Paul Miller: Because it's got quite a few different hooks.
+[00:40:24] Tom Welsh: Yeah.
+[00:40:24] Tom Welsh: Yeah.
+[00:40:25] Tom Welsh: I've got, I've got, I've got that now.
+[00:40:26] Tom Welsh: Yeah.
+[00:40:26] Tom Welsh: It's just, I was laid out in Excalage Auditor yesterday saying, look, it comes in this way, then it spurs off from, so we take, we take payment for the association through Stripe.
+[00:40:40] Tom Welsh: Yeah.
+[00:40:40] Tom Welsh: And Stripe pushes to Xero.
+[00:40:44] Tom Welsh: So I can, I can see that.
+[00:40:45] Tom Welsh: I can see them coming in.
+[00:40:46] Tom Welsh: It's just trying to then, but Xero's got no membership numbers.
+[00:40:50] Tom Welsh: So I'm going to look, well, I can, I can match all this up.
+[00:40:53] Tom Welsh: We just put another field in here.
+[00:40:55] Tom Welsh: Let's get these linked.
+[00:40:57] Paul Miller: So yeah.
+[00:40:58] Tom Welsh: Let's just try and get the account.
+[00:41:00] Tom Welsh: And the secretary of the association to agree that this is what needs to be done.
+[00:41:05] Tom Welsh: But apart from that, nothing overly exciting for me.
+[00:41:10] Paul Miller: Cool.
+[00:41:13] Paul Miller: All right.
+[00:41:14] Paul Miller: Who have got next?
+[00:41:15] Paul Miller: Morgan.
+[00:41:17] Paul Miller: How's things going with you?
+[00:41:21] Morgan Cook: Going good.
+[00:41:21] Morgan Cook: Really busy.
+[00:41:22] Morgan Cook: I've got a little movement on the heritage plot.
+[00:41:26] Morgan Cook: So the client is on board, just a slow process.
+[00:41:31] Morgan Cook: So I just got to push through it.
+[00:41:35] Morgan Cook: I've got a client that I'm helping with a book right now that she wants to push out to Kindle Direct Print.
+[00:41:45] Morgan Cook: And then the foundation is requesting, one of the foundations is requesting a display unit that they can have in their lobbies and display content.
+[00:41:58] Morgan Cook: And so...
+[00:41:59] Morgan Cook: so...
+[00:42:00] Morgan Cook: I did a bunch of research.
+[00:42:01] Morgan Cook: He had originally suggested he had a bunch of old iPads, and I'm like, man, that's not really going to work all that well.
+[00:42:11] Morgan Cook: I mean, it can, but it's a pain in the butt to update.
+[00:42:15] Morgan Cook: And so this last weekend, I thought, you know what, I'm going to build this.
+[00:42:18] Morgan Cook: I've thought about this several times before about having a kiosk, you know, slideshow kind of display that shows information and updates as it goes.
+[00:42:29] Morgan Cook: And, Juan, if you're paying attention, this is what I'm talking about for you.
+[00:42:33] Morgan Cook: So in the background of my video, if you guys maximize my screen, I can't share it because it's actually running, is one of the kiosks.
+[00:42:42] Morgan Cook: And this runs on a Raspberry Pi, and it self-boots and recovers from any kind of failure.
+[00:42:52] Morgan Cook: Is it a touchscreen, or is that?
+[00:42:56] Paul Miller: No, it's just a big, like, 40-inch key.
+[00:43:03] Morgan Cook: And so it runs in a Raspberry Pi, and it runs, it's connected through Wi-Fi off the network, but it doesn't rely on the network at all for the content.
+[00:43:13] Morgan Cook: So what it does is it's a push and pull process, the Raspberry Pi does.
+[00:43:18] Morgan Cook: So it'll check and check a manifest, and if there's something new, it'll go pull all the new content, and then just runs locally.
+[00:43:25] Morgan Cook: So if it can't find anything new, it just runs with whatever you have on there.
+[00:43:28] Morgan Cook: For you, the thought that came to my mind with your project was, at an event, you could have a couple of these set up where the pictures that people are taking end up rotating out to the public, you know, so everybody can see the information going on, right?
+[00:43:47] Morgan Cook: As well as other content that would be relative.
+[00:43:50] Morgan Cook: If it was like a wedding or something, you know, they could have some wedding information and different content shown throughout the event.
+[00:43:58] Morgan Cook: So just...
+[00:44:01] Juan Torres: So you're saying that use a Raspberry Pi as the computational unit to then project in the screen the rotation of the image is transformed?
+[00:44:11] Morgan Cook: So everything's running off this right here.
+[00:44:13] Juan Torres: Yeah.
+[00:44:14] Morgan Cook: The little Pi, just on the HDMI.
+[00:44:17] Morgan Cook: It boots Chrome up into a, not a headless state, but a skinless state, right?
+[00:44:24] Morgan Cook: So it's maximized full screen, no mouse, no keyboard, no dialogues ever pop up.
+[00:44:30] Morgan Cook: It just boots right into Chrome basically.
+[00:44:32] Morgan Cook: And then sits and rotates every, it's got a manifest and the manifest for my specific situation has each slide has a specific time.
+[00:44:45] Morgan Cook: There's a default time.
+[00:44:46] Morgan Cook: And then every slide has its own time.
+[00:44:48] Morgan Cook: If you need one that has a lot of content, you want to have a little on there a little longer and then has expiration dates.
+[00:44:55] Morgan Cook: So for the foundation, there's some of the things that they put.
+[00:44:59] Morgan Cook: treffen.
+[00:45:00] Morgan Cook: Those are like job fairs that have a time, and they'll count down.
+[00:45:07] Morgan Cook: And so the timer, as soon as that's in the past, historically, it'll just stop displaying that slide altogether.
+[00:45:15] Juan Torres: You modulated this Raspberry Pi in order to do all of this?
+[00:45:20] Morgan Cook: Yeah, it's running on the Raspberry Pi OS.
+[00:45:25] Juan Torres: Nice.
+[00:45:26] Morgan Cook: And then it's just a couple of scripts, really, that does it.
+[00:45:31] Morgan Cook: So when it boots, it boots into the script, the script loads everything, and it starts running.
+[00:45:36] Morgan Cook: Nice.
+[00:45:38] Paul Miller: Cool.
+[00:45:39] Morgan Cook: So going back to my plan for it, what I want to do with the next step, what I tested this last weekend was just the engine.
+[00:45:46] Morgan Cook: Make sure I can get the Raspberry Pi engine working, and I can push files to it, and it'll update.
+[00:45:52] Morgan Cook: So I don't have to do anything with that.
+[00:45:53] Morgan Cook: I could push a couple files out there, and in five minutes, this next cycle, it would update and start.
+[00:46:00] Morgan Cook: displaying new slides.
+[00:46:02] Morgan Cook: For my purpose on the foundation, what I want to do is the front end of that then is to allow the administrator, all those slides that you're seeing is AI generated from some simple markdown.
+[00:46:16] Morgan Cook: So it takes the markdown, the AI generates this content, that's a countdown to a scheduled event that's going to happen, right?
+[00:46:27] Morgan Cook: It has a QR code that you could scan to register for the event, those kind of things.
+[00:46:33] Morgan Cook: So the AI on the back side of it is going to allow the non-technical user to say, okay, I've got this event, here's the generic information, just as simple as possible, right?
+[00:46:48] Morgan Cook: In a markdown kind of JSON, just the name, content, everything.
+[00:46:53] Morgan Cook: And then it'll build the slide to the perfect size with the nice color, the boxes and everything.
+[00:46:59] Morgan Cook: interesting.
+[00:47:00] Morgan Cook: And push it out to the device.
+[00:47:04] Morgan Cook: So that's the next phase is to build that for what I'm doing with it, for what you would have, same kind of thing.
+[00:47:10] Morgan Cook: You've already got the front end side of it done, taking the picture, generating the image.
+[00:47:15] Morgan Cook: And then all you got to do is push it to a folder, a hot folder, and let the hot folder sync it with the devices.
+[00:47:22] Morgan Cook: And then that would be a cool, cool little event display, you know, added thing to the whole event.
+[00:47:30] Morgan Cook: You know, I think that'd be cool.
+[00:47:32] Juan Torres: Yeah.
+[00:47:34] Juan Torres: Great.
+[00:47:34] Juan Torres: Yeah.
+[00:47:35] Juan Torres: I got to think about that.
+[00:47:38] Morgan Cook: Well, I'll have no problem sharing what I'm doing with this.
+[00:47:42] Morgan Cook: We're on two different paths as far as that goes, but I'll share what I have with the Raspberry Pi.
+[00:47:48] Morgan Cook: It's real simple.
+[00:47:49] Morgan Cook: I've got a whole setup script and a duplication for the ISO image.
+[00:47:54] Morgan Cook: So you can just duplicate it to create as many as you wanted.
+[00:47:58] Morgan Cook: And then you just smack it on the back.
+[00:48:01] Morgan Cook: And there's plenty of those all over the place.
+[00:48:03] Morgan Cook: So, especially at event centers now, they usually have at least one or two hanging around, or you could bring a couple and set them up.
+[00:48:11] Juan Torres: For sure.
+[00:48:13] Morgan Cook: Do you have LinkedIn?
+[00:48:15] Morgan Cook: LinkedIn?
+[00:48:16] Juan Torres: Yeah.
+[00:48:16] Juan Torres: Do I have you on LinkedIn?
+[00:48:17] Juan Torres: I'm not even sure.
+[00:48:21] Morgan Cook: Do I have a link to what?
+[00:48:23] Morgan Cook: No, LinkedIn.
+[00:48:23] Morgan Cook: asking?
+[00:48:24] Morgan Cook: I do have a LinkedIn account.
+[00:48:26] Juan Torres: Okay.
+[00:48:27] Juan Torres: I'll add you.
+[00:48:28] Juan Torres: I'll send you mine in private chat.
+[00:48:30] Morgan Cook: Okay.
+[00:48:33] Paul Miller: I'll DM you as well, Morgan, because I've got a conference that I sponsor, and we've got a few screens there.
+[00:48:43] Paul Miller: And it's always that last minute rush to chuck up a few slides, and it's usually quite messy in the way that we manage the screens.
+[00:48:50] Paul Miller: Right.
+[00:48:51] Paul Miller: If we can have a little pie box and have it nicely managed, that would be really cool.
+[00:48:58] Morgan Cook: Yeah.
+[00:48:59] Morgan Cook: So, that's the .
+[00:49:00] Morgan Cook: The moat on this whole thing is the PiBox is the engine that drives it, and it will communicate back to the SaaS environment where the user is editing the content and pushing it, right?
+[00:49:11] Morgan Cook: So that's where you control the moat of this specific SaaS environment is through the Pi and the engine that drives it.
+[00:49:19] Morgan Cook: There's a bunch of different types of these things out there.
+[00:49:30] Morgan Cook: You know, I'm not saying this is the first kind of push of this content, but it was just nice to be able to throw it together on a weekend and prove the concept and lock it down a little bit, you know?
+[00:49:46] Paul Miller: Hardware and software, too, which is always fun.
+[00:49:49] Morgan Cook: What's that?
+[00:49:50] Paul Miller: Hardware and software, which is always fun to have something a bit more tangible.
+[00:49:56] Morgan Cook: Exactly.
+[00:50:00] Paul Miller: That's cool.
+[00:50:02] Morgan Cook: Somebody sent some stuff in the chat, I can't quite see it.
+[00:50:09] Bastian Venegas: Yeah, I sent something.
+[00:50:11] Bastian Venegas: It's an alternative to Playwright that, instead of running Chrome, uses something based in SIG and uses like one-tenth of the memory.
+[00:50:20] Bastian Venegas: It can be useful for some automations that access to the browser.
+[00:50:29] Morgan Cook: Cool, I appreciate that.
+[00:50:31] Morgan Cook: Yeah, I just went with Chrome because it was one that I knew and that I knew I could run headless, or not headless, but as a kiosk with no inputs and frames or scrolling or any of that kind of stuff, you know?
+[00:50:49] Bastian Venegas: Yeah, JavaScript.
+[00:50:52] Morgan Cook: Yeah.
+[00:50:56] Morgan Cook: So it handles garbage as well.
+[00:50:59] Morgan Cook: Like if somebody puts a
+[00:51:00] Morgan Cook: A bunch of stuff in there that's not formatted properly or whatever, it'll ignore those slides or images or any of that kind of stuff.
+[00:51:11] Morgan Cook: The engine looks for any kind of injection in JavaScript and all that.
+[00:51:15] Morgan Cook: So it's actually pretty cool.
+[00:51:19] Morgan Cook: I've been running it for about three days now, and so we'll see how it goes.
+[00:51:28] Morgan Cook: But I'll send you some information.
+[00:51:30] Morgan Cook: I think it would be cool for your project, Juan.
+[00:51:32] Juan Torres: Thank you.
+[00:51:33] Juan Torres: That would be great.
+[00:51:36] Morgan Cook: And that's about all I have, really, for this week.
+[00:51:39] Morgan Cook: I've been quite busy.
+[00:51:41] Morgan Cook: I've got a lot of work to do still on the AppScript for automating the other stuff for that foundation.
+[00:51:51] Morgan Cook: And we'll see how that pans out.
+[00:51:53] Morgan Cook: I haven't really started it yet, but I did one little test run to see how complicated it's going to be.
+[00:51:59] Morgan Cook: It seems like it will be okay.
+[00:52:00] Morgan Cook: All right.
+[00:52:00] Morgan Cook: I just got to learn the environment.
+[00:52:05] Juan Torres: Got to respect hardware engineering.
+[00:52:09] Morgan Cook: Yeah.
+[00:52:11] Morgan Cook: Well, that's the thing.
+[00:52:12] Morgan Cook: Some of the limitations on this is right now I have no real transitions.
+[00:52:17] Morgan Cook: There is a bunch of transitions I can apply, but the pie, if it has to do any kind of repaint in the transition, then that's going to create a jittery thing.
+[00:52:26] Morgan Cook: If it's just a transition or transpose, like, you know, start at minus 100 and move X to zero for like a slide in effect or something like that.
+[00:52:36] Morgan Cook: Those are smooth because it's not a repaint function.
+[00:52:38] Morgan Cook: It's just a, it's just repositioning the actual image bits.
+[00:52:43] Morgan Cook: It can handle those pretty good or fade in and fade out.
+[00:52:46] Morgan Cook: Also, let just create two, two interfaces and have one hidden and then show the other one over the top.
+[00:52:52] Morgan Cook: Right.
+[00:52:52] Morgan Cook: So there's some stuff I can enhance there for the transitions, but you can't put too much load on it.
+[00:53:00] Morgan Cook: It's, you know, the memory and limitations on the graphics inside the Raspberry Pi is what we're limited to.
+[00:53:07] Juan Torres: Have you thought of utilizing touchscreens together with your setup, especially when they have to input data, I don't know, or forms?
+[00:53:16] Juan Torres: I mean, I don't know.
+[00:53:17] Juan Torres: It's just lights right now, but maybe forms in the future.
+[00:53:21] Morgan Cook: Yeah, this device is meant to be, and from where I'm going with it, display only.
+[00:53:26] Morgan Cook: No kind of input whatsoever.
+[00:53:30] Morgan Cook: So think about it as something that's, you know, 10, 15 feet up in the air on the side of a wall or something that's not meant to be interacted with at that level.
+[00:53:42] Morgan Cook: The interaction is through QR code.
+[00:53:47] Morgan Cook: You follow the link after that.
+[00:53:52] Paul Miller: Cool.
+[00:53:53] Paul Miller: Thanks, Morgan.
+[00:53:54] Paul Miller: That's really neat stuff.
+[00:53:56] Tom Welsh: Sorry, I'm just going to jump in there a minute.
+[00:53:58] Tom Welsh: It's just literally just when she's
+[00:54:00] Tom Welsh: 15 feet in the air, half the train companies I work for around the country here have these custom information screens just sit there displaying this stuff.
+[00:54:09] Tom Welsh: can just see this being perfect, that kind of operation, you know, host the managed ones and just push content to them daily because all the CIS screens are just HTML.
+[00:54:20] Morgan Cook: Right, this supports any kind of graphics, so the graphics that are being generated are generated to the, you know, 69 ratio, but then the HTML, it'll generate, the AI piece generates one static HTML with built in JavaScript to do whatever needs to be done on that specific page, and those are all loaded into an iframe inside the content.
+[00:54:49] Morgan Cook: So the next phase is to create, you know, a slide folder for one slide, it might have an actual folder with the HTML and its associated resources.
+[00:55:00] Morgan Cook: You know, any, any graphics and JavaScript or CSS that it needs to display that one slide.
+[00:55:06] Tom Welsh: Yeah.
+[00:55:07] Morgan Cook: And so there can be some decent animation and graphics and some of this stuff it's, you can't see it through the video, but it's, it's pulsating and, you know, it's not just a dead static image.
+[00:55:19] Morgan Cook: has animation in it a little bit.
+[00:55:23] Paul Miller: Yeah, that, that, that could be a winner for you, Tom.
+[00:55:30] Tom Welsh: Yeah, exactly what I was thinking.
+[00:55:36] Paul Miller: Yeah, Morgan will jump on a plane.
+[00:55:38] Paul Miller: He'll do the London, he'll do the London thing.
+[00:55:41] Paul Miller: As long as you put him up at a good hotel in Mayfair and get it, pick him up in a, in a fancy car at the airport, but a business class pipe.
+[00:55:51] Paul Miller: He's there.
+[00:55:51] Paul Miller: You're out of, you're out of it now, Paul.
+[00:55:53] Tom Welsh: The place to be now is Raffles on Whitehall.
+[00:55:56] Paul Miller: Oh, okay.
+[00:55:57] Tom Welsh: Stay there one night.
+[00:55:59] Tom Welsh: Three thousand.
+[00:56:02] Paul Miller: I used to stay at Raffles because it was the company hotel when I worked for Insta Young, which it seemed an utterly ridiculous place to have as a company hotel, but certainly wasn't that much per night.
+[00:56:17] Tom Welsh: This is in Whitehall, which is basically our government area, and I was sitting in the bar one day and watching all these government drones come in, having meetings, drinking really expensive coffee and really expensive biscuits, and going, I'm going, this is taxpayers' money you're spending.
+[00:56:35] Paul Miller: Yeah, all over that.
+[00:56:38] Paul Miller: Don't worry.
+[00:56:41] Paul Miller: Yeah, scary stuff.
+[00:56:46] Paul Miller: Okay.
+[00:56:48] Paul Miller: Thanks, Morgan.
+[00:56:50] Paul Miller: Does anyone else want to jump on?
+[00:56:54] Paul Miller: Adam, did you want to?
+[00:56:55] Paul Miller: I don't think we covered you earlier.
+[00:56:58] Paul Miller: Anyone else want
+[00:57:00] Paul Miller: Were there any questions?
+[00:57:03] Paul Miller: We did have some questions on where people's thinking's at with using the superpowers versus, and we did cover off a question a few weeks ago around sort of how are things evolving with using ShipKit now.
+[00:57:24] Paul Miller: But did anyone want to talk about where their thinking is at at the moment with superpowers and Claude, or superpowers and Codex for that matter?
+[00:57:37] Patrick Chouinard: Yeah, actually, I think that's the nice thing about Superpower is they're bridging the gap with Codex because I was always afraid to switch to Codex full time.
+[00:57:50] Patrick Chouinard: I use it for debugging and for certain tasks, but to switch it for full development process was more of all of the nicety that I
+[00:58:04] Patrick Chouinard: So basically it's not as much as I was attached to the model as I was attached to the harness, but now with superpower that exists on boat harness, basically blurs the line.
+[00:58:15] Patrick Chouinard: And to be quite honest, by next month, I'm thinking of shutting down my Claude Max and flipping to Codex Max that now has a $100 a month tier in between the $20 and $200.
+[00:58:31] Patrick Chouinard: And it's vastly more generous than Claude Limit, so if I have superpower on the other side, I have my full development harness there.
+[00:58:46] Patrick Chouinard: And superpower, it's really, and they work everywhere.
+[00:58:49] Patrick Chouinard: They work in GitHub Copilot, they work on Claude Co, they work on Codex.
+[00:58:56] Patrick Chouinard: And honestly, they're getting better every single month.
+[00:58:59] Patrick Chouinard: They've added.
+[00:59:01] Patrick Chouinard: So yeah, really, really a big fan of using it, even in brownfield projects, so not just for the greenfield projects, but even doing a new additional functionality in an existing application or anything of that sort, going very, very good.
+[00:59:27] Paul Miller: It's interesting you're saying that, and I think from my own experience, I'm finding Claude a bit, getting a bit distracted at the moment.
+[00:59:38] Paul Miller: It's the token limits are being reached much more.
+[00:59:42] Paul Miller: I've been on the $200 plan, and for the first time yesterday, I nearly maxed it out in a week, and I'm kind of thinking, well, I'm not happy with the results that are coming out of it.
+[00:59:54] Paul Miller: And I'm spending, spending a lot of tokens.
+[00:59:57] Paul Miller: So yeah, I think if it's, if it's...
+[01:00:00] Paul Miller: If you guys have made the jump, you've gone for Codex, but you're doing it with superpowers as well, that would be an easier transition from my perspective.
+[01:00:10] Patrick Chouinard: The only sad thing to me is the fact that there's not yet any remote control or mobile Codex application.
+[01:00:18] Paul Miller: Okay.
+[01:00:19] Patrick Chouinard: That's something that's very, very nice with Cloud Code, honestly, to keep a process going while you're in the gym or on the road.
+[01:00:28] Patrick Chouinard: It's really powerful.
+[01:00:30] Paul Miller: Yep.
+[01:00:31] Paul Miller: Yep.
+[01:00:32] Paul Miller: Yep.
+[01:00:32] Patrick Chouinard: All right.
+[01:00:33] Paul Miller: Well, I think it sounds worth doing.
+[01:00:38] Paul Miller: Yeah, no, I'm going to make the move.
+[01:00:41] Paul Miller: I've spent a week trying to fix my little nav map, and Claude's got to a point where it just can't fix it.
+[01:00:51] Paul Miller: I think I need to hand it to Codex and maybe put the superpowers in there and get it to re-look at it.
+[01:00:57] Patrick Chouinard: the We'll have do Here you're end You're going corner.
+[01:01:00] Patrick Chouinard: Actually, you know that if you use the Codex plugin for CloudCode, you can call Codex Rescue.
+[01:01:07] Patrick Chouinard: So basically, it flips the work to Codex, but with all of the contexts that you had in CloudCode.
+[01:01:15] Patrick Chouinard: So everything Cloud tried to debug that didn't work, it passed it on to Codex, and then Codex Rescue CloudCode by fixing the issue for all.
+[01:01:24] Paul Miller: I'll have to give it another go, because I tried it the other day, and I had some weird error loading up the Codex Claude variant.
+[01:01:35] Paul Miller: I'll reinstall it and try and resolve what the technical issue was, but there was some weird error with it.
+[01:01:42] Paul Miller: But is it pretty stable from your perspective, adding that?
+[01:01:47] Patrick Chouinard: Well, I've been using it, it's been my current harness is running the Codex plugin in auto-review mode.
+[01:01:56] Patrick Chouinard: So basically, every time it completes a coding...
+[01:02:01] Patrick Chouinard: Iteration, sends everything to be reviewed by Codex, sends it back, correct whatever it finds, and it loops until it finds nothing.
+[01:02:09] Patrick Chouinard: So, so far, it artificially makes it look like CloudCode is doing good work, but I realized that CloudCode is wasting a whole lot of token being corrected by Codex.
+[01:02:22] Patrick Chouinard: That's what showed me that the quality seemed to be dripping, even though I didn't feel it because Codex rescued it all the time, but yeah.
+[01:02:33] Morgan Cook: Does anybody notice the slowdown of Sonnet?
+[01:02:37] Morgan Cook: Like, it's just really slow.
+[01:02:40] Patrick Chouinard: Yep.
+[01:02:40] Ty Wells: They're all slow.
+[01:02:41] Ty Wells: They've got a compute problem.
+[01:02:43] Ty Wells: They just can't keep up.
+[01:02:46] Patrick Chouinard: And I'd be very curious to hear Bastian talk about, because yeah, I, you, I love the idea of using Codex with T3 code for remote work.
+[01:02:58] Ty Wells: Did you?
+[01:02:59] Bastian Venegas: I'm
+[01:03:00] Bastian Venegas: I'm two screenshots in the chat, so you can see it visually, but you can connect with a QR code if you're on the same network, or you can SSH into your computer.
+[01:03:15] Bastian Venegas: I've heard you can use Telscale as well.
+[01:03:21] Bastian Venegas: Yeah, so that's what most people use for their open cloud, for example, or a lot of people.
+[01:03:26] Bastian Venegas: I don't know if most, but, so it's pretty common stack to connect.
+[01:03:32] Bastian Venegas: They build their own custom thing, but you can connect in those ways.
+[01:03:37] Ty Wells: Did you guys discuss the, did you discuss the government speaking with the Frontier Labs about possibly some sort of regulation?
+[01:03:52] Paul Miller: No, no.
+[01:03:53] Paul Miller: What was that about?
+[01:03:55] Ty Wells: What's that?
+[01:03:57] Paul Miller: Does anyone know about that one?
+[01:03:59] Paul Miller: I don't know.
+[01:04:00] Ty Wells: Yeah, they had a conversation with those guys to sort of give them a heads up, like, you know, which models get released, maybe government preview, purview, sorry, they have to look at and decide, I guess, what they're going to release.
+[01:04:22] Ty Wells: Or that's a possibility.
+[01:04:23] Ty Wells: I'm just saying they gave them a heads up.
+[01:04:25] Patrick Chouinard: Oh, , who hit that phone?
+[01:04:26] Patrick Chouinard: Oh, sorry, guys.
+[01:04:30] Patrick Chouinard: That smells of export control.
+[01:04:35] Paul Miller: Well, maybe whichever, I'm sorry to tinge on the political, it's like, well, whoever's going to donate to that ballroom, their models can get approved.
+[01:04:51] Tom Welsh: Yeah, yeah, 100%.
+[01:04:53] Paul Miller: Sorry, as a non-American, I don't want to really tread on that, I suppose, but.
+[01:05:00] Tom Welsh: Yeah, I think that'll be interesting.
+[01:05:02] Tom Welsh: So that almost seems like going back to SSL and crypto and like export controls out of the US for stuff like that.
+[01:05:10] Tom Welsh: Yeah, I mean, they're already doing that with China for chips and this, that, and the other.
+[01:05:16] Paul Miller: Challenges, what is dangerous?
+[01:05:21] Paul Miller: China's not going to stop.
+[01:05:22] Paul Miller: They're going to keep going on.
+[01:05:24] Tom Welsh: Europe's going for it.
+[01:05:25] Tom Welsh: Yeah, 100%.
+[01:05:26] Paul Miller: You've got the different AI houses in America all doing different approaches and amazing things.
+[01:05:32] Paul Miller: You've got hardware-based models that are doing things cleverly and all really fast instead of really smart.
+[01:05:42] Paul Miller: Can you really stop that?
+[01:05:45] Paul Miller: Now it's gone.
+[01:05:46] Tom Welsh: Well, I mean, think there's, I think there was a story a couple of weeks back, maybe months now, where I think it was Anthropic wasn't going to open the models up to the government and the government was basically going to say, well, you, you won't be on any, any news on Anthropic won't be on the proofs.
+[01:06:01] Tom Welsh: You know, so using that kind of leverage against stuff, you know, it just seems like they're trying to jerry-rig or backdoor everything.
+[01:06:13] Paul Miller: It's a challenge.
+[01:06:14] Paul Miller: And you let that genie out of the bottle too.
+[01:06:16] Paul Miller: And just from a security, that stuff around the security stuff that Claude model was finding, that's a worry once that's out there.
+[01:06:27] Paul Miller: There's already a lot of the open source libraries that are being, people are finding source code and coming up with hacks very frequently.
+[01:06:39] Patrick Chouinard: Yeah, but you have to take into consideration also that there's a lot there that is made to be sensational for the news cycle.
+[01:06:48] Patrick Chouinard: Because, yeah, Mythos is able to find those when it's unbounded and unleashed with no compute cap.
+[01:06:58] Patrick Chouinard: And because because-
+[01:07:00] Patrick Chouinard: The part they don't say is, yeah, it found a bug that was there hidden for 18 years.
+[01:07:06] Patrick Chouinard: But how much did that single thing cost in token?
+[01:07:13] Patrick Chouinard: It's a couple of thousand dollars.
+[01:07:16] Patrick Chouinard: It's multiple thousand dollars.
+[01:07:17] Patrick Chouinard: So it's the type of agentic loop that you as a consumer, even with infinite money, would not be allowed because you would reach the rate limiting of enterprise.
+[01:07:30] Patrick Chouinard: Tropic before you could do something like that.
+[01:07:32] Patrick Chouinard: yeah, internally the model is capable, but it's not being, it's never going to be released in such an unbridled form.
+[01:07:42] Patrick Chouinard: So, because on an intelligent perspective, GPT 5.5 is right up there with it right now.
+[01:07:49] Patrick Chouinard: The only reason it's not capping the same benchmark, it's because they benchmarked it in its guardrail version.
+[01:08:00] Paul Miller: So, yeah, it's a risk.
+[01:08:04] Patrick Chouinard: I'm not downplaying the fact that it is, but it's not the existential doomsday risk that they're playing for the new cycle either.
+[01:08:17] Paul Miller: Cool.
+[01:08:19] Paul Miller: On that scary note, is there anything else that anyone wants to raise?
+[01:08:26] Paul Miller: Any new cool projects or big questions you'd like to put to the team?
+[01:08:32] Patrick Chouinard: One little thing I found this week that I want to share with you guys, this link, if you take a look, it's all of the preferred tech stack by CloudCode.
+[01:08:44] Patrick Chouinard: And it's basically very similar to Codex as well.
+[01:08:48] Patrick Chouinard: It's basically what the model learned.
+[01:08:50] Patrick Chouinard: So whenever you don't give it a tech stack selection, what it will tend to recommend.
+[01:08:56] Patrick Chouinard: And it's really interesting.
+[01:08:58] Patrick Chouinard: They're going in.
+[01:09:00] Patrick Chouinard: Not just, oh, it's going to do Vercel and Supabase.
+[01:09:03] Patrick Chouinard: It goes way, way further than that.
+[01:09:06] Patrick Chouinard: Going to talk about feature flag authentication, authorization, observability, email, real-time, form validation, like every tech choice of the model.
+[01:09:18] Patrick Chouinard: And honestly, it's basically all of the tech stack that you see now performing.
+[01:09:23] Patrick Chouinard: It's the one listed there.
+[01:09:25] Patrick Chouinard: So this is the new SEO.
+[01:09:27] Patrick Chouinard: If your technology is not referenced by the model by default, you basically don't exist anymore.
+[01:09:37] Patrick Chouinard: So, yeah, brutal, but very interesting read, if you want to take a peek.
+[01:09:45] Paul Miller: Excellent.
+[01:09:47] Patrick Chouinard: Yep.
+[01:09:48] Patrick Chouinard: And you see clearly that it was created by Opus, but still.
+[01:09:53] Morgan Cook: I like the term at the top of some
+[01:10:00] Morgan Cook: Near Monopoly.
+[01:10:01] Paul Miller: Yeah.
+[01:10:02] Patrick Chouinard: It is.
+[01:10:04] Patrick Chouinard: Except what I was looking up.
+[01:10:09] Patrick Chouinard: It's definitely what it is.
+[01:10:15] Paul Miller: Cool.
+[01:10:16] Paul Miller: Okay.
+[01:10:17] Paul Miller: Is there anything else before we wrap up?
+[01:10:25] Paul Miller: No.
+[01:10:26] Paul Miller: Okay.
+[01:10:27] Paul Miller: Well, have a wonderful week, guys.
+[01:10:30] Paul Miller: Enjoy the modeling.
+[01:10:31] Paul Miller: I'm jumping into Codex because I've wasted four days of not delivering.
+[01:10:40] Paul Miller: Thank you for putting up with my hosting, Patrick.
+[01:10:45] Paul Miller: Guys, cool stuff.
+[01:10:49] Paul Miller: Hopefully, the golf game is going right for Ty.
+[01:10:56] Ty Wells: I just won this hole.
+[01:10:57] Ty Wells: So, yes.
+[01:10:58] Paul Miller: Thank you for that.
+[01:10:58] Paul Miller: that's good.
+[01:10:59] Paul Miller: That's
+[01:11:00] Paul Miller: Good, but how's the round, though?
+[01:11:02] Paul Miller: Are you up on the round?
+[01:11:03] Ty Wells: We're only discussing this whole.
+[01:11:06] Paul Miller: Oh, okay, okay.
+[01:11:08] Paul Miller: Let's not get contingency.
+[01:11:11] Ty Wells: Thanks, Keith.
+[01:11:12] Ty Wells: Thanks, Paul.
+[01:11:12] Paul Miller: All the best.
+[01:11:13] Paul Miller: Have a good week.
+[01:11:14] Ty Wells: All right.
+[01:11:15] Ty Wells: See you, guys.
+[01:11:15] Ty Wells: Bye.
+[01:11:16] Ty Wells: See you.

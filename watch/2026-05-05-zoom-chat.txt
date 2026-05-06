@@ -1,0 +1,171 @@
+2026-04-28 19:19:27 From Andrew Nanton to Everyone:
+	@Ty Wells  Are you in ATAP? If not, might be a good way to connect with new clients.
+	
+2026-04-28 19:20:47 From Ty Wells to Everyone:
+	Replying to "@Ty Wells  Are you in ATAP? If not, might be a goo...":
+	ATAP?
+	
+2026-04-28 19:21:00 From Andrew Nanton to Everyone:
+	Replying to "@Ty Wells  Are you in ATAP? If not, might be a goo...":
+	https://www.atapworldwide.org/
+	
+2026-05-05 17:52:19 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-05-05 18:03:02 From Paul Miller to Everyone:
+	Screenshot2026_05_06_100258.jpg
+	
+2026-05-05 18:07:32 From Fitz to Everyone:
+	Is anyone still using Shipkit or has something else superseded it?
+	
+2026-05-05 18:08:26 From Paul Miller to Everyone:
+	Replying to "Is anyone still using Shipkit or has something els...":
+	I use claude superpowers instead
+	Fitz:👍
+	
+2026-05-05 18:08:55 From Tom Welsh to Everyone:
+	Replying to "Is anyone still using Shipkit or has something els...":
+	A few people last week also mentioned superpowers
+	Fitz:👍
+	
+2026-05-05 18:10:42 From Fitz to Everyone:
+	Replying to "Is anyone still using Shipkit or has something els...":
+	Yeah, been hearing about superpowers a lot. Got to go get my own superpowers lol
+	
+2026-05-05 18:16:41 From Juan Torres to Everyone:
+	Marc in two weeks
+	Giphy [ID:xTiTnqUxyWbsAXq7Ju]
+	Adam, Patrick Chouinard:😂
+	
+2026-05-05 18:16:53 From Tom Welsh to Everyone:
+	lol
+	
+2026-05-05 18:17:26 From Fitz to Everyone:
+	Hey Marc is that a test environment you're running Alpaka in?
+	
+2026-05-05 18:19:42 From Patrick Chouinard to Everyone:
+	CMS are the bane of AI agents
+	
+2026-05-05 18:21:57 From Patrick Chouinard to Everyone:
+	I like the silent flex ( I am going to share screen #4)
+	
+2026-05-05 18:23:30 From Fitz to Everyone:
+	Hey Patrick, late comer so forgive me. Can I assume the data for your RAG is community notetaker or am I miles away?
+	
+2026-05-05 18:24:11 From Patrick Chouinard to Everyone:
+	@Fitz It’s actually Fathom
+	Fitz:👍
+	
+2026-05-05 18:24:40 From Patrick Chouinard to Everyone:
+	Replying to "Hey Patrick, late comer so forgive me. Can I assum...":
+	https://fathom.video/users/sign_in
+	
+2026-05-05 18:24:41 From Bastian Venegas to Everyone:
+	Yup QR works
+	Juan Torres:👍
+	
+2026-05-05 18:28:48 From Biggi Fraley to Everyone:
+	Great job, @Juan Torres! Love the app and idea.
+	Juan Torres:❤️
+	
+2026-05-05 18:32:56 From Bastian Venegas to Everyone:
+	the claw that should not be named. I wonder if it would ban the emoticon too
+	
+2026-05-05 18:33:00 From Biggi Fraley to Everyone:
+	As Theo would say "F*@# Anthropic!"
+	Bastian Venegas, Patrick Chouinard, Adam:👍
+	Juan Torres, Fitz, Paul Miller:😂
+	
+2026-05-05 18:35:31 From Fitz to Patrick Chouinard (direct message):
+	Hey Patrick, this is private message. What work you referring to that Claude doesn't like. Will the same thing happen if I'm using it in my dev environment?
+	
+2026-05-05 18:39:16 From Tom Welsh to Everyone:
+	Does anyone have any recommendations for AI app development books, preferably available on on Audible?
+	
+2026-05-05 18:40:10 From Ty Wells to Everyone:
+	https://crowdpics.ai
+	
+2026-05-05 18:40:33 From Ty Wells to Everyone:
+	@Juan Torres check this out. I built this last year
+	
+2026-05-05 18:40:48 From Paul Miller to Everyone:
+	Replying to "Does anyone have any recommendations for AI app de...":
+	Have a look through pattricks search app and find out all discussed in past year
+	Patrick Chouinard:❤️
+	
+2026-05-05 18:41:14 From Patrick Chouinard to Fitz (direct message):
+	Any mention of OpenClaw or Hermes will trigger your Claude Code session to switch in API token mode, not subscription. It was initially because you are not allow to RUN those agent on a subscription, but now the simplement mention of the name in context will do the same thing.
+	Fitz:😂
+	
+2026-05-05 18:42:05 From Tom Welsh to Everyone:
+	Replying to "Does anyone have any recommendations for AI app de...":
+	I was thinking that
+	
+2026-05-05 18:43:16 From Patrick Chouinard to Everyone:
+	Replying to "Does anyone have any recommendations for AI app de...":
+	I am querying the DB right now
+	
+2026-05-05 18:43:29 From Bastian Venegas to Everyone:
+	https://lightpanda.io/ 
+	
+	Alternative to Playwright for cases that dont neeed graphical rendering
+	
+	This should be lighter for devices like raspberry pi. Worth trying. 
+	
+	https://github.com/lightpanda-io/browser 
+	
+	Not based on Chromium, Blink, or WebKit
+	Written in Zig, a low-level language with explicit memory control
+	No graphical rendering engine
+	Screenshot2026_05_05_183926.jpg, Screenshot2026_05_05_184117.jpg
+	
+2026-05-05 18:45:48 From Patrick Chouinard to Everyone:
+	Replying to "Does anyone have any recommendations for AI app de...":
+	**Books on AI Development Mentioned in the Coaching Calls**
+	
+	After reviewing every coaching‑call transcript you provided, there are **no titles that specifically cover AI development** (e.g., design patterns, RAG pipelines, agent orchestration, or coding best‑practices for LLMs).  
+	
+	The only books that were referenced during the sessions were:
+	
+	| # | Book Title | Author | Context of Mention |
+	|---|-------------|--------|--------------------|
+	| 1 | *12 Months to $1 Million* | Ryan Daniel Moran | Suggested as an e‑commerce growth playbook (not AI‑dev specific). |
+	| 2 | *The War of Art* | Steven Pressfield | Recommended to overcome resistance/procrastination (general creativity/entrepreneurship). |
+	| 3 | *Building a Second Brain* | Tiago Forte | Discussed for knowledge‑management, not a technical guide to AI programming. |
+	
+	Because none of these works are focused on AI development, they cannot be meaningfully ranked by recommendation for that specific topic.
+	
+2026-05-05 18:48:09 From Ty Wells to Everyone:
+	It runs on a firestick
+	
+2026-05-05 18:52:52 From Bastian Venegas to Everyone:
+	I already downgraded Claude. Keeping it just for frontend
+	
+2026-05-05 18:53:00 From Biggi Fraley to Everyone:
+	Yay! Patrick's switching to team Codex.
+	
+2026-05-05 18:55:06 From Bastian Venegas to Everyone:
+	I use Codex with T3Code when I want to do remote stuff
+	Biggi Fraley, Patrick Chouinard:❤️
+	
+2026-05-05 18:57:16 From Bastian Venegas to Everyone:
+	Screenshot2026_05_05_185704.jpg, Screenshot2026_05_05_185710.jpg
+	Patrick Chouinard:❤️
+	
+2026-05-05 19:02:49 From Patrick Chouinard to Everyone:
+	https://amplifying.ai/research/claude-code-picks/report
+	Biggi Fraley:👍
+	
+2026-05-05 19:04:42 From Adam to Everyone:
+	Replying to "https://amplifying.ai/research/claude-code-picks/r...":
+	I remember when ChatGPT first came out, it would recommend Azure.
+	Biggi Fraley:😂
+	
+2026-05-05 19:04:48 From Biggi Fraley to Everyone:
+	Thanks, Paul
+	
+2026-05-05 19:05:20 From Fitz to Everyone:
+	Thanks Paul, want to jump onto Codex as well
+	
