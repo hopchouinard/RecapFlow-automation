@@ -8,7 +8,7 @@
 #   snapshot-vm.sh now                # ad-hoc snapshot (same behavior)
 #
 # Env overrides:
-#   STAGING_ROOT (default: /var/lib/recapflow-backup/staging)
+#   STAGING_ROOT (default: ~/recapflow-backup/staging — no sudo required)
 #   REPO_ROOT    (default: directory containing this script's parent)
 #   RETENTION    (default: 7  — number of snapshots to keep)
 
@@ -20,7 +20,7 @@ source "${SCRIPT_DIR}/lib/manifest.sh"
 # shellcheck source=lib/preflight.sh
 source "${SCRIPT_DIR}/lib/preflight.sh"
 
-STAGING_ROOT="${STAGING_ROOT:-/var/lib/recapflow-backup/staging}"
+STAGING_ROOT="${STAGING_ROOT:-${HOME}/recapflow-backup/staging}"
 REPO_ROOT="${REPO_ROOT:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
 RETENTION="${RETENTION:-7}"
 
