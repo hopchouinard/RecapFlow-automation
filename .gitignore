@@ -34,3 +34,9 @@ community-brain/lancedb/
 
 # Visual brainstorming companion runtime files
 .superpowers/
+
+# bats test cache
+tests/.bats-cache/
+
+# Restore staging dir created by bootstrap.sh
+restore-staging/
