@@ -5,7 +5,7 @@
 # Env overrides:
 #   VM_HOST      (default: n8n-automation)
 #   VM_USER      (default: $USER)
-#   VM_STAGING   (default: /home/pchouinard/recapflow-backup/staging)
+#   VM_STAGING   (default: /home/$VM_USER/recapflow-backup/staging)
 #   HDD_STAGING  (default: /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging)
 #
 # NOTE: VM_STAGING default matches the snapshot-vm.sh STAGING_ROOT default
@@ -22,7 +22,7 @@ source "${SCRIPT_DIR}/lib/preflight.sh"
 
 VM_HOST="${VM_HOST:-n8n-automation}"
 VM_USER="${VM_USER:-${USER}}"
-VM_STAGING="${VM_STAGING:-/home/pchouinard/recapflow-backup/staging}"
+VM_STAGING="${VM_STAGING:-/home/${VM_USER}/recapflow-backup/staging}"
 HDD_STAGING="${HDD_STAGING:-/Volumes/HDD_4TB_Archive/RecapFlow-backups/staging}"
 
 log() {

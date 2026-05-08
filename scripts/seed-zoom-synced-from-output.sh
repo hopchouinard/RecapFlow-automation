@@ -5,14 +5,14 @@
 # Env overrides:
 #   VM_HOST    (default: n8n-automation)
 #   VM_USER    (default: $USER)
-#   OUTPUT_DIR (default: /home/pchouinard/n8n/output)
+#   OUTPUT_DIR (default: /home/$VM_USER/n8n/output)
 #   STATE_FILE (default: ~/.zoom-chat-synced)
 
 set -euo pipefail
 
 VM_HOST="${VM_HOST:-n8n-automation}"
 VM_USER="${VM_USER:-${USER}}"
-OUTPUT_DIR="${OUTPUT_DIR:-/home/pchouinard/n8n/output}"
+OUTPUT_DIR="${OUTPUT_DIR:-/home/${VM_USER}/n8n/output}"
 STATE_FILE="${STATE_FILE:-${HOME}/.zoom-chat-synced}"
 
 main() {

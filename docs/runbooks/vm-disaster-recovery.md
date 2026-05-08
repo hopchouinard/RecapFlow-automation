@@ -160,7 +160,7 @@ Recovery: not a bootstrap bug. Verify:
 - Workstation is on; Ollama serving on port 11434
 - Workstation firewall allows incoming on 11434 from the VM
 - VM can ping the workstation
-- `community-brain/config/.env` has correct `OLLAMA_URL` value (default in the codebase: `http://10.1.50.219:11434`)
+- `community-brain/config/.env` has correct `OLLAMA_BASE_URL` value (default in the codebase: `http://10.1.50.219:11434`)
 
 ### Port already in use
 

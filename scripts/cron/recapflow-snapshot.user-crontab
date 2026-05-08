@@ -4,7 +4,7 @@
 #
 # 0 6 * * * /home/pchouinard/n8n/scripts/snapshot-vm.sh >> /home/pchouinard/recapflow-backup/snapshot.log 2>&1
 #
-# Schedule: 06:00 UTC daily (= 02:00 EDT / 03:00 EST, America/Toronto).
+# Schedule: 06:00 UTC daily (= 02:00 EDT / 01:00 EST, America/Toronto).
 # The VM clock is Etc/UTC — all cron times are UTC. Use 06:00 UTC in summer
 # (EDT, UTC-4) and change to 07:00 UTC in winter (EST, UTC-5) if strict
 # local-time alignment matters; 06:00 UTC year-round is fine for a backup job.
