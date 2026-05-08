@@ -174,7 +174,11 @@ phase4_restore_state() {
 
   log "extracting lancedb tar"
   mkdir -p "${REPO_ROOT}/community-brain/lancedb"
-  tar -xf "${staging}/lancedb/lancedb.tar" -C "${REPO_ROOT}/community-brain/lancedb"
+  # The tar was packed via `docker cp /data/lancedb - > lancedb.tar`, which
+  # includes the `lancedb/` directory itself as the root component.
+  # Strip it so the contents land directly in community-brain/lancedb/
+  # (matching the docker-compose volume mount: ./community-brain/lancedb:/data/lancedb).
+  tar -xf "${staging}/lancedb/lancedb.tar" -C "${REPO_ROOT}/community-brain/lancedb" --strip-components=1
 
   log "installing secrets"
   if [ -f "${staging}/secrets/.env" ]; then
