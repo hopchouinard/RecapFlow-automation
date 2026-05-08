@@ -51,10 +51,15 @@ main() {
   log "snapshotting lancedb"
   docker compose --project-directory "${REPO_ROOT}" pause retrieval-server
   trap 'docker compose --project-directory "${REPO_ROOT}" unpause retrieval-server || true' EXIT
-  # Tar from inside the container (runs as root) to avoid host-side permission
-  # denied on root-owned _deletions/ _versions/ _transactions/ files.
-  docker exec community_brain_retrieval \
-    tar -cf - -C /data/lancedb . | tar -xf - -C "${staging}/lancedb/"
+  # LanceDB internal files (_deletions, _versions, etc.) are root:root 600,
+  # written by the container process. docker exec into a paused container is
+  # refused. Use a fresh ephemeral alpine container with the lancedb bind-mount
+  # to tar the data as root without touching the paused container.
+  local lancedb_host_path="${REPO_ROOT}/community-brain/lancedb"
+  docker run --rm \
+    -v "${lancedb_host_path}:/src:ro" \
+    -v "${staging}/lancedb:/out" \
+    alpine sh -c 'tar -cf - -C /src . | tar -xf - -C /out'
   docker compose --project-directory "${REPO_ROOT}" unpause retrieval-server
   trap - EXIT
 
