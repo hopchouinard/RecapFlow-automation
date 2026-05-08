@@ -51,7 +51,10 @@ main() {
   log "snapshotting lancedb"
   docker compose --project-directory "${REPO_ROOT}" pause retrieval-server
   trap 'docker compose --project-directory "${REPO_ROOT}" unpause retrieval-server || true' EXIT
-  rsync -a "${REPO_ROOT}/community-brain/lancedb/" "${staging}/lancedb/"
+  # Tar from inside the container (runs as root) to avoid host-side permission
+  # denied on root-owned _deletions/ _versions/ _transactions/ files.
+  docker exec community_brain_retrieval \
+    tar -cf - -C /data/lancedb . | tar -xf - -C "${staging}/lancedb/"
   docker compose --project-directory "${REPO_ROOT}" unpause retrieval-server
   trap - EXIT
 
