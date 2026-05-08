@@ -87,7 +87,7 @@ Add after the `retrieval-server` service, before the `volumes:` block:
       # Set the actual value in community-brain/config/.env (or a sibling
       # open-webui.env file) and reference it here. For now, hardcode the
       # workstation LAN IP; revisit if it churns.
-      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://10.1.30.20:11434}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://10.1.50.219:11434}
       - WEBUI_AUTH=true
     volumes:
       - open-webui-data:/app/backend/data
@@ -124,7 +124,7 @@ N8N_ENCRYPTION_KEY=
 
 # Open WebUI's Ollama target — points at the inference workstation over LAN.
 # Replace with your workstation's LAN IP. Port 11434 must be reachable from the VM.
-OLLAMA_BASE_URL=http://10.1.30.20:11434
+OLLAMA_BASE_URL=http://10.1.50.219:11434
 ```
 
 - [ ] **Step 4: Verify port 3000 is not already used on the VM**
@@ -151,7 +151,7 @@ Expected: container starts, logs show "open-webui listening on port 8080" or sim
 - [ ] **Step 6: Verify connectivity to Ollama on workstation**
 
 ```bash
-docker exec open-webui curl -s http://10.1.30.20:11434/api/tags
+docker exec open-webui curl -s http://10.1.50.219:11434/api/tags
 ```
 
 Expected: JSON response listing installed models (`nomic-embed-text:v1.5`, `gpt-oss:20b`).
