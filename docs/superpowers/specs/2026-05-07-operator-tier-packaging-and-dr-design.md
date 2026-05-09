@@ -38,10 +38,10 @@ The RecapFlow stack is a two-node system:
 │                                            │         │  retrieval-server + open-webui   │
 │  Local-side responsibilities:              │────────▶│  both call inference workstation │
 │    - Zoom chat sync (Automator + launchd)  │  rsync  │  over LAN for embeddings + gen   │
-│    - Backup staging on attached HDD:       │  (push) │                                  │
-│      /Volumes/HDD_4TB_Archive/             │         │  VM-side state:                  │
-│        RecapFlow-backups/                  │◀────────│    /var/lib/recapflow-backup/    │
-│    - Arq (existing) backs up to cloud      │  rsync  │    (staging dir for nightly      │
+│    - Backup staging on boot volume:        │  (push) │                                  │
+│      ~/RecapFlow-backups/                  │         │  VM-side state:                  │
+│      (avoids macOS TCC on secondary vols)  │◀────────│    /var/lib/recapflow-backup/    │
+│    - Arq backs up boot vol incl. staging   │  rsync  │    (staging dir for nightly      │
 │                                            │  (pull) │     snapshots)                   │
 │                                            │         │                                  │
 │  Continuity fallback: if local inference   │         └──────────────────────────────────┘
@@ -55,8 +55,8 @@ The RecapFlow stack is a two-node system:
 - **Asymmetric responsibilities.** Inference workstation owns local model serving, sync orchestration, and backup staging. VM owns the entire Docker application stack.
 - **Open WebUI moves from workstation Docker Desktop to the VM Docker Compose stack.** Unifies Docker management on one node, captures Open WebUI state in the existing VM staging snapshot, and slims the workstation's responsibilities to model serving + sync + Arq.
 - **VM bootstrap touches Docker only.** No GPU drivers, no model downloads. Fresh VM → install Docker → `docker compose up`.
-- **Workstation DR is its own runbook.** Re-pull models from registry, restore configs/scripts/SSH keys/state from Arq, ensure the external HDD is mounted, restart services.
-- **External HDD is a precondition, not an option.** Backup pipeline includes a mount-check that fails loud if `/Volumes/HDD_4TB_Archive/` is missing.
+- **Workstation DR is its own runbook.** Re-pull models from registry, restore configs/scripts/SSH keys/state from Arq, restart services. Staging is on the boot volume — no external HDD required.
+- **Boot volume staging avoids macOS TCC.** Originally specced as `/Volumes/HDD_4TB_Archive/`; changed post-implementation because launchd UserAgents cannot write to secondary APFS volumes even with FDA granted. See Post-Implementation Addendum.
 - **Single-point-of-failure on the inference workstation is accepted.** Continuity story is "repoint Open WebUI at a cloud LLM (OpenRouter/OpenAI)." No warm spare designed.
 
 ## Backup Pipeline
@@ -93,21 +93,21 @@ VM (daily, e.g. 02:00 local)                      Inference workstation         
 
 cron → /usr/local/sbin/recapflow-snapshot.sh      launchd timer (~02:30):
   1. mkdir staging/<ISO-timestamp>/
-  2. docker exec n8n_db pg_dump → staging/         1. preflight: check
-  3. retrieval-server pause                           /Volumes/HDD_4TB_Archive
-     rsync lancedb → staging/                        is mounted (FAIL LOUD
-     retrieval-server unpause                         if not — exit nonzero,
-  4. tar+zstd of data/, n8n-state/,                  notification)
-     output/, watch/, historical/                  2. ssh+rsync from VM:
-  5. cp .env files → staging/secrets/ (chmod 600)    /var/lib/recapflow-backup/
-  6. cp compose + workflows + prompts                 staging/latest/
-  7. compute sha256, write MANIFEST.txt           → /Volumes/HDD_4TB_Archive/
-  8. update symlink staging/latest                    RecapFlow-backups/
-  9. prune local staging older than 7 days            staging/<ISO>/
+  2. docker exec n8n_db pg_dump → staging/         1. ssh+rsync from VM:
+  3. retrieval-server pause                            /var/lib/recapflow-backup/
+     rsync lancedb → staging/                          staging/latest/
+     retrieval-server unpause                       → ~/RecapFlow-backups/
+  4. tar+zstd of data/, n8n-state/,                   staging/<ISO>/         (boot volume;
+     output/, watch/, historical/                  2. verify latest symlink   no TCC issue)
+  5. cp .env files → staging/secrets/ (chmod 600)  3. verify MANIFEST
+  6. cp compose + workflows + prompts
+  7. compute sha256, write MANIFEST.txt
+  8. update symlink staging/latest
+  9. prune local staging older than 7 days
 
                                                   Arq's existing schedule picks up   ──────▶ encrypted
-                                                  /Volumes/HDD_4TB_Archive/...                cloud
-                                                  as part of normal Mac backup                dest
+                                                  ~/RecapFlow-backups/ as part of             cloud
+                                                  normal boot-volume backup                   dest
 ```
 
 ### Triggers
@@ -141,12 +141,12 @@ This section exists because most "I have backups" stories fail here.
 
 ```
 [On the inference workstation]
-1. Verify latest snapshot exists and HDD is mounted:
-     ls /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/MANIFEST.txt
+1. Verify latest snapshot exists:
+     ls ~/RecapFlow-backups/staging/latest/MANIFEST.txt
 
 2. Pack and ship to new VM:
      tar -cf /tmp/recapflow-restore.tar \
-       -C /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/ .
+       -C ~/RecapFlow-backups/staging/latest/ .
      scp /tmp/recapflow-restore.tar newvm:/tmp/
 
 [On the new VM, after fresh OS install + SSH access]
@@ -252,8 +252,8 @@ Print the post-install checklist:
 
 ### Two failure modes
 
-- **Mode A: workstation died, attached backup HDD survived.** Faster path. Backup history intact; just new hardware + reinstall + reattach.
-- **Mode B: workstation died AND HDD died (or HDD missing).** Slower path. Arq's cloud copy is the only source; restore the HDD-staged backups from Arq before VM-side state can be reconstructed.
+- **Mode A: workstation died, Arq backup current.** Normal path. Arq restores boot volume including `~/RecapFlow-backups/` staging.
+- **Mode B: workstation died AND Arq stale or unreachable.** Slower path. May need an older snapshot or fallback options.
 
 ### Procedure (Mode A)
 
@@ -267,17 +267,17 @@ Print the post-install checklist:
    Critical paths to confirm restored:
      ~/scripts/sync-zoom-chats.sh
      ~/Library/LaunchAgents/com.patchoutech.sync-zoom-chats.plist
-     ~/Library/LaunchAgents/com.patchoutech.recapflow-pull.plist  (new)
+     ~/Library/LaunchAgents/com.patchoutech.recapflow-pull.plist
      ~/Library/Workflows/Applications/Folder Actions/Sync Zoom Chats.workflow
      ~/.ssh/                       (workstation→VM key)
      ~/.zoom-chat-synced            (state — see note below)
      ~/.zoom-chat-sync.log
+     ~/RecapFlow-backups/           (staging — on boot volume, included in Arq)
 
-3. Reattach external HDD. Verify mount path is exactly:
-     /Volumes/HDD_4TB_Archive/
-   If macOS auto-renamed (e.g., "HDD_4TB_Archive 1"), rename in Disk Utility.
-   The path is hard-coded in launchd jobs and rsync targets — divergence here
-   silently breaks the pipeline.
+3. Verify staging is present:
+     ls ~/RecapFlow-backups/staging/latest/
+   If the directory is missing, restore from Arq before proceeding.
+   No external HDD required — staging is on the boot volume.
 
 4. Install local-model serving software.
    Current implementation: `brew install ollama` (or DMG installer), then:
@@ -297,13 +297,17 @@ Print the post-install checklist:
      launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.patchoutech.sync-zoom-chats.plist
      launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.patchoutech.recapflow-pull.plist
 
+   No FDA grant needed — staging is on the boot volume.
+
 8. Reattach Arq to its existing destination (config in ~/Library/Arq usually
-   restored, but re-validate license + repo password).
+   restored, but re-validate license + repo password). Confirm ~/RecapFlow-backups/
+   is in the backup scope.
 
 9. Verify pipeline:
-     /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/MANIFEST.txt exists?
-     Run ad-hoc pull: ./scripts/recapflow-pull-now.sh
-     Expect: rsync completes, no errors, mtime updates.
+     ls ~/RecapFlow-backups/staging/latest/MANIFEST.txt
+     launchctl kickstart -k gui/$UID/com.patchoutech.recapflow-pull
+     tail -20 ~/Library/Logs/recapflow-pull.log
+     Expect: "pull complete; latest = ..." with no rsync errors.
 
 10. Verify Open WebUI on VM can reach this workstation:
      curl http://<workstation-LAN-IP>:11434/api/tags  (from VM)
@@ -311,16 +315,15 @@ Print the post-install checklist:
      If macOS firewall blocks, allow incoming on port 11434 for Ollama.
 ```
 
-### Procedure differences for Mode B (HDD also dead)
-
-Insert between steps 3 and 4:
+### Procedure differences for Mode B (Arq stale or unreachable)
 
 ```
-3a. Restore HDD contents from Arq:
-      Open Arq → restore /Volumes/HDD_4TB_Archive/RecapFlow-backups/
-      Target: new external HDD mounted at /Volumes/HDD_4TB_Archive/
-      Time budget: depends on cloud → workstation bandwidth and total snapshot
-      size. Plan for "leave it overnight."
+3a. If ~/RecapFlow-backups/ was not restored by Arq (stale or cloud unavailable):
+      - Check if a recent snapshot exists in Arq from a different date
+      - As a fallback, trigger a fresh pull from the VM manually:
+          launchctl kickstart -k gui/$UID/com.patchoutech.recapflow-pull
+      This requires SSH to the VM to be working first (Step 6 must come first
+      if you flip the order).
 ```
 
 ### Critical gotcha: `~/.zoom-chat-synced`
@@ -386,7 +389,7 @@ If any of these three are missing or unreadable, bootstrap aborts before bringin
 ## Known Limitations / Accepted Risks
 
 - **Inference workstation is a single point of failure for AI features.** Mitigation: manual repoint of Open WebUI to OpenRouter/OpenAI. Documented, not designed-around.
-- **External HDD is a single point of failure for the local backup stage.** Mitigation: Arq's cloud copy. If both die simultaneously, recovery is from Arq cloud only, slower.
+- **Boot volume is the local backup stage.** Staging lives at `~/RecapFlow-backups/` (see Post-Implementation Addendum). Boot volume loss = full workstation DR scenario anyway. Mitigation: Arq's cloud copy of the boot volume.
 - **Daily snapshot cadence means up to ~24h of state loss in DR.** Acceptable given workload (handful of sessions/week). Can tighten to hourly later if needed.
 - **Re-pulling `gpt-oss:20B` on workstation DR is bandwidth-bound** (~13GB). Acceptable since workstation DR is rarer than VM DR.
 
@@ -398,6 +401,22 @@ If any of these three are missing or unreadable, bootstrap aborts before bringin
 4. **Pre-commit secret scanning.** Mandatory before any community tier ships.
 5. **VM bootstrap support for additional OSes** (Fedora, NixOS-style declarative).
 6. **Migration to systemd unit + `docker compose up`** to remove manual restart steps if the VM reboots.
+
+## Post-Implementation Addendum (2026-05-08)
+
+The originally-spec'd staging path `/Volumes/HDD_4TB_Archive/RecapFlow-backups/`
+proved problematic in production: macOS TCC blocks launchd UserAgents from
+writing to secondary APFS volumes regardless of Full Disk Access grants on
+the spawned binaries. Manual terminal runs work; scheduled launchd runs do
+not.
+
+**Implemented mitigation:** staging moved to `~/RecapFlow-backups/` on the
+boot volume. Arq is configured to back up that path. Same encrypted cloud
+destination, same retention behavior, no FDA dance required.
+
+The runbooks and scripts reflect this revised location. The external HDD
+plays no role in the live backup pipeline anymore (it remains in Arq's
+backup scope for unrelated content).
 
 ## Open Questions
 

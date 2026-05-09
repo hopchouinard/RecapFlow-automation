@@ -13,7 +13,7 @@ VM, exercising Postgres restore, Docker stack bring-up, and smoke tests.
 ## Pre-requisites
 
 - Proxmox access to create a throwaway VM
-- Latest snapshot on workstation HDD: `/Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/`
+- Latest snapshot on workstation boot volume: `~/RecapFlow-backups/staging/latest/`
 - ~30 min budget (one full bootstrap run)
 
 ## Steps
@@ -27,7 +27,7 @@ VM, exercising Postgres restore, Docker stack bring-up, and smoke tests.
 2. On workstation, pack a fresh tarball from the latest snapshot:
    ```
    tar -cf /tmp/recapflow-rehearsal.tar \
-     -C /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/ .
+     -C ~/RecapFlow-backups/staging/latest/ .
    ```
 
 3. Transfer to the throwaway VM:

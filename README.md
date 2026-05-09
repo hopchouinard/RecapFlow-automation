@@ -203,7 +203,7 @@ This stack is a two-node system: the VM (Docker Compose stack) and the inference
 The backup pipeline is automated:
 
 - VM cron at 06:00 UTC stages a daily snapshot at `~/recapflow-backup/staging/`.
-- Workstation launchd at 02:30 local pulls to `/Volumes/HDD_4TB_Archive/RecapFlow-backups/`.
+- Workstation launchd at 02:30 local pulls to `~/RecapFlow-backups/` (boot volume; avoids macOS TCC restrictions on secondary APFS volumes).
 - Arq's existing schedule encrypts and ships to cloud.
 
 Verify pipeline health: `~/Library/Scripts/recapflow/recapflow-freshness-check.sh` (also runs daily at 09:00 local).

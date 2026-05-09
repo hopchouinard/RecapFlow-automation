@@ -10,8 +10,8 @@ This runbook does NOT cover the inference workstation — see `workstation-disas
 
 - A fresh Ubuntu 22.04+ or Debian 12+ VM with sudo access via SSH.
 - The inference workstation is operational (Ollama running, models pulled, LAN reachable).
-- The external HDD is mounted on the workstation with a recent snapshot at `/Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/`.
-- The workstation's Arq license + repo password are accessible (in case the HDD is also dead and we need to restore from cloud first).
+- A recent snapshot exists at `~/RecapFlow-backups/staging/latest/` on the workstation (boot volume).
+- The workstation's Arq license + repo password are accessible (in case snapshots are stale and a cloud restore is needed).
 
 ## Procedure
 
@@ -20,18 +20,18 @@ This runbook does NOT cover the inference workstation — see `workstation-disas
 On the workstation:
 
 ```
-ls -la /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/
-head /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/MANIFEST.txt
+ls -la ~/RecapFlow-backups/staging/latest/
+head ~/RecapFlow-backups/staging/latest/MANIFEST.txt
 ```
 
 Confirm `snapshot_timestamp` is recent. If older than 25h, the pipeline has been broken for a while; see Step 1b below.
 
-### Step 1b (only if HDD is dead OR snapshots are stale): restore from Arq
+### Step 1b (only if snapshots are stale or missing): restore from Arq
 
 1. Open Arq.app.
-2. Navigate to the most recent backup of `/Volumes/HDD_4TB_Archive/RecapFlow-backups/`.
-3. Restore to either the original location (if HDD is back) or to `~/RecapFlow-backups-restore/` temporarily.
-4. Update `HDD_STAGING` env var in subsequent commands accordingly.
+2. Navigate to the most recent backup of `~/RecapFlow-backups/` (boot volume scope).
+3. Restore to either the original location or to `~/RecapFlow-backups-restore/` temporarily.
+4. Update `LOCAL_STAGING` env var in subsequent commands accordingly.
 
 ### Step 2: Pack and transfer the snapshot
 
@@ -39,7 +39,7 @@ On the workstation:
 
 ```
 tar -cf /tmp/recapflow-restore.tar \
-  -C /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging/latest/ .
+  -C ~/RecapFlow-backups/staging/latest/ .
 scp /tmp/recapflow-restore.tar new-vm-host:/tmp/
 ```
 
@@ -116,7 +116,7 @@ sleep 60
 tail -30 ~/Library/Logs/recapflow-pull.log
 ```
 
-Expected: pull completes, manifest verifies. If it fails with "Operation not permitted", grant Full Disk Access to `/bin/bash` via System Settings → Privacy & Security → Full Disk Access.
+Expected: pull completes, manifest verifies. Staging is on the boot volume so no FDA grant is required.
 
 ### Step 9: Verify end-to-end
 

@@ -12,8 +12,8 @@ The VM itself is unaffected and continues to run; only the workstation needs rec
 
 ## Failure modes
 
-- **Mode A: workstation died, attached HDD survived.** Faster path. Backup history intact.
-- **Mode B: workstation AND HDD died.** Slower path. Restore HDD from Arq cloud first.
+- **Mode A: workstation died, boot volume Arq backup intact.** Normal path. Restore from cloud.
+- **Mode B: workstation AND Arq unreachable or too stale.** Slower path — may need to recover from a secondary backup.
 
 ## Prerequisites
 
@@ -36,15 +36,16 @@ Use Apple Migration Assistant (if going Mac-to-Mac) or manual Arq restore. Criti
 ~/.ssh/                       (workstation→VM key)
 ~/.zoom-chat-synced            (state — see "Critical gotcha" below)
 ~/.zoom-chat-sync.log
+~/RecapFlow-backups/           (backup staging — Arq backs up boot volume)
 ```
 
-### Step 2: Reattach the external HDD
+### Step 2: Verify backup staging is accessible
 
 ```
-ls /Volumes/HDD_4TB_Archive/
+ls ~/RecapFlow-backups/staging/latest/
 ```
 
-If macOS auto-renamed the volume (e.g., "HDD_4TB_Archive 1"), rename back to `HDD_4TB_Archive` in Disk Utility. The path is hard-coded in launchd plists and rsync targets — divergence here silently breaks the pipeline.
+Staging lives on the boot volume (`~/RecapFlow-backups/`), so there is no external HDD to remount. Arq backs up the boot volume and includes this directory. If the latest symlink is missing or stale, restore `~/RecapFlow-backups/` from Arq before proceeding.
 
 ### Step 3: Install the local-model serving software
 
@@ -82,19 +83,15 @@ cd /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation
 
 This copies `recapflow-pull.sh`, `recapflow-freshness-check.sh`, and `lib/*` to `~/Library/Scripts/recapflow/` and loads the launchd agents.
 
-### Step 7: Grant Full Disk Access to /bin/bash
+### Step 7: No FDA grant required
 
-**This step is required.** Without it, the launchd-scheduled pull will fail with `rsync: error: open: Operation not permitted`. Manual interactive runs from Terminal.app work without this because Terminal.app itself has FDA by default — do not let that mislead you into thinking the step is optional.
+Backup staging is on the boot volume (`~/RecapFlow-backups/`). macOS TCC does not restrict user-process writes to the boot volume, so launchd UserAgents can write there without Full Disk Access. No FDA configuration is needed for the pull job to succeed.
 
-1. System Settings → Privacy & Security → Full Disk Access.
-2. Click `+` and add `/bin/bash`. (You may need to reveal hidden folders with Cmd+Shift+. in the file picker, or navigate via "Go to Folder" → `/bin`.)
-3. Toggle the `/bin/bash` entry on.
-
-The freshness check job works without FDA because it only reads from the HDD. The pull job writes to the HDD and requires FDA.
+If you see `rsync: error: open: Operation not permitted` in a pull log, the script is writing to a secondary APFS volume — check that `LOCAL_STAGING` resolves under `$HOME` and not under `/Volumes/`.
 
 ### Step 8: Reattach Arq
 
-Open Arq.app → restore configuration if not auto-recovered → re-validate license + repo password.
+Open Arq.app → restore configuration if not auto-recovered → re-validate license + repo password. Confirm that `~/RecapFlow-backups/` is included in the backup scope (boot volume). If it was previously configured for `/Volumes/HDD_4TB_Archive/RecapFlow-backups/`, update the path to `~/RecapFlow-backups/`.
 
 ### Step 9: Verify the backup pipeline
 
@@ -132,17 +129,15 @@ cd /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation
 
 This queries the VM for already-processed dates (approximately 69 dates as of 2026-05) and seeds the state file. See "Critical gotcha" below for the full picture.
 
-## Procedure (Mode B): HDD also dead
+## Procedure (Mode B): Arq cloud restore needed
 
-Insert between steps 2 and 3:
+If `~/RecapFlow-backups/staging/latest/` is missing or older than 25h (the pipeline was down for a while before the disaster):
 
-### Step 2a: Restore HDD contents from Arq
-
-1. Mount a new external HDD at `/Volumes/HDD_4TB_Archive/`.
-2. Open Arq → restore `/Volumes/HDD_4TB_Archive/RecapFlow-backups/`.
+1. Open Arq → find the most recent backup of `~/RecapFlow-backups/`.
+2. Restore to `~/RecapFlow-backups/` (overwriting, or to a temp location then move).
 3. Time budget: depends on cloud bandwidth and snapshot total size. Plan for "leave it overnight."
 
-After restore completes, continue with Step 3.
+After restore completes, verify the `latest` symlink is present and resolvable, then continue from Step 3.
 
 ## Critical gotcha: `~/.zoom-chat-synced`
 

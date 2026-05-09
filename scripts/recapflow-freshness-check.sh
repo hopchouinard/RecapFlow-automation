@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 # RecapFlow freshness check.
-# Asserts the latest snapshot on the HDD is younger than MAX_AGE_HOURS.
+# Asserts the latest snapshot in local staging is younger than MAX_AGE_HOURS.
 # Surfaces failure as a macOS notification (osascript) if too old.
 #
 # Env overrides:
-#   HDD_STAGING      (default: /Volumes/HDD_4TB_Archive/RecapFlow-backups/staging)
+#   LOCAL_STAGING    (default: ${HOME}/RecapFlow-backups/staging)
 #   MAX_AGE_HOURS    (default: 25)
 
 set -euo pipefail
 
-HDD_STAGING="${HDD_STAGING:-/Volumes/HDD_4TB_Archive/RecapFlow-backups/staging}"
+LOCAL_STAGING="${LOCAL_STAGING:-${HOME}/RecapFlow-backups/staging}"
 MAX_AGE_HOURS="${MAX_AGE_HOURS:-25}"
 
 notify_failure() {
@@ -21,19 +21,14 @@ notify_failure() {
 }
 
 main() {
-  if [ ! -d "/Volumes/HDD_4TB_Archive" ]; then
-    notify_failure "External HDD not mounted"
-    exit 1
-  fi
-
-  if [ ! -L "${HDD_STAGING}/latest" ]; then
-    notify_failure "No latest snapshot symlink at ${HDD_STAGING}"
+  if [ ! -L "${LOCAL_STAGING}/latest" ]; then
+    notify_failure "No latest snapshot symlink at ${LOCAL_STAGING}"
     exit 1
   fi
 
   local latest_target
-  latest_target=$(readlink "${HDD_STAGING}/latest")
-  local latest_path="${HDD_STAGING}/${latest_target}"
+  latest_target=$(readlink "${LOCAL_STAGING}/latest")
+  local latest_path="${LOCAL_STAGING}/${latest_target}"
 
   if [ ! -d "${latest_path}" ]; then
     notify_failure "Latest snapshot dir does not exist: ${latest_path}"
