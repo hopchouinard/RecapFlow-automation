@@ -88,6 +88,13 @@ services:
       - WEBUI_AUTH=true
     volumes:
       - open-webui-data:/app/backend/data
+    extra_hosts:
+      # Lets the community-brain filter's default retrieval_url valve
+      # (http://host.docker.internal:8999/query) resolve to the VM host's
+      # published port 8999, where retrieval-server listens. Filter was
+      # configured for that URL when OW ran on workstation Docker Desktop;
+      # this preserves it now that OW is on the VM compose network.
+      - "host.docker.internal:host-gateway"
 
 volumes:
   db_data:
