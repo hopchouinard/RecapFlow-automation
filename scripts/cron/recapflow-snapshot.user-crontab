@@ -1,0 +1,23 @@
+# RecapFlow VM-side daily snapshot — user crontab entry.
+# Install with: crontab -e
+# Then paste the line below (uncommented):
+#
+# 0 6 * * * /home/pchouinard/n8n/scripts/snapshot-vm.sh >> /home/pchouinard/recapflow-backup/snapshot.log 2>&1
+#
+# Schedule: 06:00 UTC daily (= 02:00 EDT / 01:00 EST, America/Toronto).
+# The VM clock is Etc/UTC — all cron times are UTC. Use 06:00 UTC in summer
+# (EDT, UTC-4) and change to 07:00 UTC in winter (EST, UTC-5) if strict
+# local-time alignment matters; 06:00 UTC year-round is fine for a backup job.
+#
+# Log: appended to ~/recapflow-backup/snapshot.log (rotate manually or via logrotate later).
+# Output: each run writes a new snapshot under ~/recapflow-backup/staging/<ISO-timestamp>/
+#         and updates the `latest` symlink. Snapshots older than 7 are pruned.
+#
+# Timing rationale vs. other crons in /etc/cron.d/:
+#   03:30 UTC — LanceDB snapshot (community-brain internal)
+#   04:00 UTC — community-brain-lint (/etc/cron.d/community-brain-lint)
+#   06:00 UTC — THIS entry (RecapFlow full-stack snapshot)
+# All three are at least 90 minutes apart — no interleave risk.
+#
+# PATH note: snapshot-vm.sh uses docker (in /usr/bin), zstd, tar, and cp —
+# all present in cron's default PATH on this Debian VM. No PATH override needed.

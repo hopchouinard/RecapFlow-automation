@@ -192,6 +192,24 @@ Start with `docs/reference-architecture/index.md` for the full architecture narr
 - Do not delete or replace the contents of `data/` without a backup
 - Treat `.env` and anything under `data/` as sensitive runtime material
 
+## Disaster Recovery
+
+This stack is a two-node system: the VM (Docker Compose stack) and the inference workstation (local model serving + sync orchestration + Arq backups). DR procedures are documented separately:
+
+- **VM DR:** `docs/runbooks/vm-disaster-recovery.md` — bringing a fresh VM up from a backup snapshot. Time budget: 20–45 minutes.
+- **Inference workstation DR:** `docs/runbooks/workstation-disaster-recovery.md` — rebuilding the workstation. Time budget: depends on Mode A vs B and bandwidth for model re-pulls.
+- **DR rehearsal procedure:** `docs/runbooks/dr-rehearsal-operator-checklist.md` — quarterly validation on a throwaway VM. Recommended.
+
+The backup pipeline is automated:
+
+- VM cron at 06:00 UTC stages a daily snapshot at `~/recapflow-backup/staging/`.
+- Workstation launchd at 02:30 local pulls to `/Volumes/HDD_4TB_Archive/RecapFlow-backups/`.
+- Arq's existing schedule encrypts and ships to cloud.
+
+Verify pipeline health: `~/Library/Scripts/recapflow/recapflow-freshness-check.sh` (also runs daily at 09:00 local).
+
+Spec: `docs/superpowers/specs/2026-05-07-operator-tier-packaging-and-dr-design.md`.
+
 ## Useful Commands
 
 Restart the stack after changes:
