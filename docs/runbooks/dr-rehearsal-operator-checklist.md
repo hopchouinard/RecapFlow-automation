@@ -81,6 +81,21 @@ VM, exercising Postgres restore, Docker stack bring-up, and smoke tests.
   `--strip-components=1` to remove the `lancedb/` prefix from the tar;
   if you see the nested path, the bootstrap version predates that fix.
 
+## What to verify when bumping the Open WebUI image SHA
+
+Open WebUI alembic migrations have caused silent data loss across version jumps in this stack's history. The image SHA in `docker-compose.yml` is pinned for a reason. If you need to upgrade:
+
+1. On a throwaway VM with a recent snapshot already restored:
+   - Note the current `alembic_version` in `webui.db`:
+     `docker exec open-webui python -c "import sqlite3; c=sqlite3.connect('/app/backend/data/webui.db').cursor(); c.execute('SELECT version_num FROM alembic_version'); print(c.fetchall())"`
+   - Note current row counts in `chat`, `function`, `model`, `prompt`, `knowledge`, `file` tables.
+2. Bump the image SHA in compose.
+3. `docker compose up -d open-webui`
+4. Inspect logs for `alembic.script.revision.ResolutionError`. If you see it, the new image cannot read the existing schema — DO NOT proceed; revert the SHA.
+5. If alembic ran cleanly, re-check the same table counts. They MUST match. If not, the new image had a destructive migration and you've lost data — revert and use a different upgrade path (e.g., upgrade the workstation Open WebUI first to migrate the DB through OW's own chain, then export and import).
+
+Don't merge the SHA bump until you've confirmed all counts match on the rehearsal VM.
+
 ## When to run
 
 - Quarterly: just for confidence

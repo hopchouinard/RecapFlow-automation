@@ -418,6 +418,18 @@ The runbooks and scripts reflect this revised location. The external HDD
 plays no role in the live backup pipeline anymore (it remains in Arq's
 backup scope for unrelated content).
 
+### Open WebUI deployment lessons (2026-05-08 evening)
+
+Discovered during the post-merge troubleshooting of "retrieval functions and custom system prompt missing on the new VM-side Open WebUI":
+
+- **Volume naming.** Compose's default `volumes: open-webui-data:` creates a volume named `<project>_open-webui-data` (e.g. `n8n_open-webui-data`). The Task 1.2 manual migration restored data into the un-prefixed `open-webui-data` volume because that's what the old workstation compose used. Compose was therefore mounting a different, empty volume than the migrated one. Fix: declare `open-webui-data` as `external: true` in compose so it uses the literal name. Bootstrap Phase 5b creates the volume idempotently before `docker compose up`.
+
+- **Image SHA, not tag.** The `:main` and `:0.8.12` tags both pulled different builds with incompatible alembic migration trees. The workstation OW had been running a build whose head revision (`b2c3d4e5f6a7`) was not in the `:0.8.12` migration scripts; alembic raised `ResolutionError` and Open WebUI silently fell back to a fresh DB, wiping all user state. Pinning by image SHA (immutable) keeps the VM on the exact build that produced the migrated webui.db.
+
+- **`host.docker.internal` mapping for the filter.** The community-brain Open WebUI filter's default `retrieval_url` valve is `http://host.docker.internal:8999/query`, set when Open WebUI ran on workstation Docker Desktop. Now that Open WebUI runs in the VM compose network, an `extra_hosts: host.docker.internal:host-gateway` directive on the open-webui service is required for that hostname to resolve to the VM host's published :8999 port. Alternative would be editing the filter's valve via Admin Settings → Functions to point at the compose service name (`http://retrieval-server:8999/query`); we kept the valve untouched and added the compose mapping to preserve user state exactly.
+
+- **Future Open WebUI upgrades require rehearsal.** Bumping the image SHA can break the schema in non-obvious ways. The DR rehearsal checklist now documents a procedure for safely validating an upgrade on a throwaway VM before merging the SHA bump.
+
 ## Open Questions
 
 None at design time. Implementation may surface specifics around:

@@ -181,6 +181,24 @@ tar -xf /tmp/recapflow-restore.tar \
 
 Then restart the retrieval-server container and retest.
 
+### Open WebUI volume / image pinning gotchas
+
+The `open-webui-data` volume is declared `external: true` in `docker-compose.yml`. This means Compose expects the volume to exist before `docker compose up`. The bootstrap script handles this in Phase 5b — it creates the volume even when the snapshot has no Open WebUI tar to restore. If you ever skip the bootstrap and try `docker compose up` on a fresh install without the volume, expect a `volume not found` error. Run `docker volume create open-webui-data` to fix.
+
+The `open-webui` image is pinned by SHA-256 digest, not a tag like `:main` or `:0.8.12`. The Open WebUI alembic migration tree is sensitive to which build initialized the database; bumping the image to a different SHA can cause alembic to fail with `Can't locate revision identified by 'XXXX'`, leading Open WebUI to silently fall back to a fresh DB and wipe user state (chats, custom models, filter installations). Don't bump the SHA without first rehearsing the upgrade on a copy of the volume — see `dr-rehearsal-operator-checklist.md` for procedure.
+
+The `open-webui` service has an `extra_hosts: host.docker.internal:host-gateway` mapping. The community-brain Open WebUI filter's default `retrieval_url` valve is `http://host.docker.internal:8999/query` — this is set in webui.db, not in the filter source, and changing it requires editing through the Open WebUI Admin Settings UI. The compose mapping lets that default resolve to the VM host where retrieval-server publishes port 8999.
+
+### Stale volume cleanup (post-DR, optional)
+
+If you previously ran `docker compose up` before declaring the `open-webui-data` volume external, you may have an empty stale volume named `n8n_open-webui-data`. Remove it:
+
+```
+docker volume rm n8n_open-webui-data
+```
+
+Safe to do at any time after confirming `open-webui-data` (the external one) is intact.
+
 ## Out of scope
 
 - Recovering Arq license + repo password (must come from operator's password manager).

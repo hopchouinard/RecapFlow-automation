@@ -191,6 +191,7 @@ Start with `docs/reference-architecture/index.md` for the full architecture narr
 - Keep PostgreSQL pinned to `postgres:17` unless you have a migration plan for the existing volume
 - Do not delete or replace the contents of `data/` without a backup
 - Treat `.env` and anything under `data/` as sensitive runtime material
+- The `open-webui` image is pinned by SHA digest in `docker-compose.yml`. Don't bump the SHA without rehearsing the upgrade on a copy of the open-webui-data volume per `docs/runbooks/dr-rehearsal-operator-checklist.md`. Mismatched alembic migration trees between Open WebUI builds can silently wipe user state.
 
 ## Disaster Recovery
 

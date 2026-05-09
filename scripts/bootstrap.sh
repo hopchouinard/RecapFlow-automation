@@ -234,13 +234,19 @@ phase5b_openwebui_restore() {
 
   local staging="${REPO_ROOT}/restore-staging"
 
+  # Always create the volume. docker-compose.yml declares open-webui-data
+  # as external, so the volume MUST exist before phase 6's `docker compose
+  # up` regardless of whether we have data to restore. docker volume create
+  # is idempotent — safe if the volume already exists.
+  log "creating open-webui-data volume"
+  docker volume create open-webui-data >/dev/null
+
   if [ -f "${staging}/openwebui/open-webui-data.tar" ]; then
-    log "creating open-webui-data volume and restoring contents"
-    docker volume create open-webui-data >/dev/null
+    log "restoring open-webui volume contents from snapshot"
     docker run --rm -v open-webui-data:/data -v "${staging}/openwebui:/import" alpine \
       tar -xf /import/open-webui-data.tar -C /data
   else
-    log "WARN: no open-webui volume in snapshot; service will start fresh"
+    log "WARN: snapshot has no open-webui-data.tar; service will start fresh"
   fi
 }
 
