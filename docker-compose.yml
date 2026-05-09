@@ -91,4 +91,8 @@ services:
 
 volumes:
   db_data:
+  # External so compose uses the literal `open-webui-data` volume
+  # (the one Task 1.2 migrated 1.1 GB of state into) rather than
+  # creating a project-prefixed `n8n_open-webui-data` from scratch.
   open-webui-data:
+    external: true
