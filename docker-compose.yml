@@ -69,7 +69,12 @@ services:
       - "host.docker.internal:host-gateway"
 
   open-webui:
-    image: ghcr.io/open-webui/open-webui:main
+    # Pinned to 0.8.12 to match the version that holds the workstation's
+    # historical state (chats, prompts, custom models, filter). Newer images
+    # (e.g. :main as of 2026-04-24) ran destructive alembic migrations on the
+    # imported DB and wiped user data. Don't bump without doing an upgrade
+    # rehearsal on a copy of the volume first.
+    image: ghcr.io/open-webui/open-webui:0.8.12
     container_name: open-webui
     restart: unless-stopped
     ports:
