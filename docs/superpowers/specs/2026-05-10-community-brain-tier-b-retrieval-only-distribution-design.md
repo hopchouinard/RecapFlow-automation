@@ -27,27 +27,42 @@ The operator-tier work produced a two-node stack (VM + workstation) that deliver
 
 The "retrieval-only" tier maintains the personal-vs-shareable boundary established in the operator-tier work: ingestion/cost-tracking/personal API keys stay operator-personal; the curated LanceDB + retrieval API + chat UX ship.
 
-### 1.3 Audience
+### 1.3 Audience and trust model
 
-Members of the operator's public community who participated in the coaching calls. Specific characteristics that drive design:
+**Primary audience:** members of the operator's public community who participated in the coaching calls. Specific characteristics that drive design:
 
 - They were on the calls — corpus content is not new information to them; the value is searchability, not discovery.
 - They build AI-assisted applications — assume they have at least one of `{Claude Code, Codex, Cursor, Gemini CLI, Aider}` installed and functional.
 - Mixed technical sophistication, but uniformly comfortable enough with AI coding tools to delegate setup work to an agent if given good instructions.
-- Hardware: mixed (Mac/Windows/Linux). Cannot assume Apple Silicon with 24 GB unified memory.
+- Hardware: mixed (Mac with Apple Silicon, Windows with WSL2, Linux). Cannot assume 24 GB unified memory for local-LLM mode.
 
-### 1.4 Locked-in decisions (from brainstorming, 2026-05-10)
+**Distribution access model: genuinely public.** Both the `community-brain-distribution` repo and the corpus blob are published as public GitHub artifacts. Anyone on the internet who follows the install runbook can download and run the stack. This is deliberate, not accidental:
+
+- The community itself is open and public; content was generated in that context.
+- Recipients of primary interest are community participants, but no technical gating prevents outside access.
+- The operator accepts that copies will circulate beyond the original community.
+- "Consent-by-attendance" describes the *moral* basis (participants knew the calls were being recorded for community use); the *distribution mechanism* makes no attempt to enforce a participant-only audience.
+
+Implications:
+- No invite system, no signed-URL gating on the corpus blob, no email-based access lists.
+- The repo and blob URL appear in public documentation; anyone can fetch them.
+- If the operator ever wants to walk this back (e.g., a participant withdraws consent retroactively), the design needs a v2 access-control story — but the v1 commitment is public-by-default.
+
+### 1.4 Locked-in decisions (from brainstorming + spec review, 2026-05-10)
 
 | Decision | Choice | Rationale |
 |---|---|---|
-| Corpus content | Full curated corpus, ships as-is | Recipients are participants; consent-by-attendance is the cleanest model |
+| Corpus content | Full curated corpus, ships as-is | Public-community provenance; participants are primary audience |
+| Distribution access | Public (no gating) | See §1.3 trust model; explicit choice |
 | Hosting model | 100% recipient self-host | Preserves personal-state philosophy; bounds operator cost; no multi-tenant infra |
 | UX shape | Open WebUI + filter + custom model; pluggable inference backend | Matches operator's daily UX; same package supports cloud-LLM and local-LLM modes |
-| Platforms | macOS + Windows + Linux | Three-way Docker target; ~zero exclusion |
+| Platforms | macOS, Linux native; **Windows via WSL2 only** | Bash-shaped tooling; WSL2 is the supported Windows path |
 | Install path | Single rigorous Markdown runbook (agent-agnostic) + human extras + verification harness | Audience-aware: AI assistants drive install for recipients who delegate; humans follow same doc by hand |
 | Distribution channel | Public GitHub repo, sibling `community-brain-distribution` | Cooked-product repo separate from operator source |
 | Build/release model | Pre-built Docker images on ghcr.io + corpus blob as GitHub Release asset | SHA-pinning discipline; free hosting; `git pull` updates |
-| API surface | `/query` + `/sessions` only; no `/ingest` | Read-only contract |
+| Authoritative version axis | **Distribution-repo tag is the single version recipients see** | Repo tag pins server image SHA + corpus SHA via committed files; image and corpus sub-tags are operator-internal release machinery |
+| API surface (distribution mode) | `/health`, `/query`, `/sessions`, `/sessions/{id}`, `/speaker-aliases-block` | All read-only; `/ingest` and `/reindex` physically removed |
+| Distribution-mode mechanism | **Runtime env var** (`COMMUNITY_BRAIN_DISTRIBUTION_MODE=true`) controls route registration | Simpler for v1; build-time variant deferred to v2 if threat materializes |
 | Network binding | 127.0.0.1 only for all services | Localhost is the auth gate; no token theater |
 
 ---
@@ -127,6 +142,25 @@ The retrieval-server image published to ghcr.io for Tier B has a single behavior
 
 The operator image (used in operator-tier deployment) keeps the env var unset and registers all routes normally. Same source code, different runtime config.
 
+**Routes present in distribution mode:**
+
+| Route | Method | Purpose |
+|---|---|---|
+| `/health` | GET | Liveness + version metadata (extended in v1; see §4.2) |
+| `/query` | POST | Hybrid retrieval over corpus (the main read endpoint) |
+| `/sessions` | GET | List all sessions in the corpus (manifest verification) |
+| `/sessions/{session_id}` | GET | Per-session detail |
+| `/speaker-aliases-block` | GET | Read-only registry block (safe; harmless; useful for diagnostic tooling) |
+
+**Routes removed in distribution mode:**
+
+| Route | Method | Reason |
+|---|---|---|
+| `/ingest` | POST | Write endpoint; distribution is read-only |
+| `/reindex` | POST | Write endpoint; distribution is read-only |
+
+**Required implementation contract:** an automated test must assert that `app.routes` does not contain `/ingest` or `/reindex` when `COMMUNITY_BRAIN_DISTRIBUTION_MODE=true` is set, and that all five listed routes ARE present. The test runs in both operator-repo CI (against the operator image, with the env var set) and distribution-repo CI (against the published image).
+
 ---
 
 ## 3. Distribution repo contents
@@ -165,12 +199,14 @@ services:
     image: ghcr.io/<operator>/community-brain-retrieval@sha256:abc123...
     environment:
       OLLAMA_BASE_URL: ${OLLAMA_BASE_URL}
-      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-nomic-embed-text:v1.5}
+      COMMUNITY_BRAIN_EMBED_MODEL: ${COMMUNITY_BRAIN_EMBED_MODEL:-nomic-embed-text}
       COMMUNITY_BRAIN_DISTRIBUTION_MODE: "true"
-      COMMUNITY_BRAIN_ARTIFACT_ROOT: "/data/output"  # unused in read-only mode but defensive
+      LANCEDB_PATH: /data/lancedb/nomic-v1
     volumes:
-      - ./corpus/lancedb:/app/lancedb:ro
-      - ./config:/app/config:ro
+      # Corpus directory layout: ./corpus/lancedb/nomic-v1/chunks.lance/...
+      # Mounts to /data so LANCEDB_PATH resolves to /data/lancedb/nomic-v1.
+      # Read-only: server expects clean v3 corpus state; no startup writes needed.
+      - ./corpus:/data:ro
     ports:
       - "127.0.0.1:8999:8999"
     extra_hosts:
@@ -197,7 +233,11 @@ volumes:
     external: false
 ```
 
-`extra_hosts: host.docker.internal:host-gateway` is required so containers reach the host's Ollama on all three platforms. We learned this the hard way during operator-tier work; documented in INSTALL.md troubleshooting.
+Three design choices to note:
+
+1. **`./corpus:/data:ro` is the only data mount.** The image already bundles its `config/` directory at `/app/config` via `Dockerfile:13` (cue rules, speaker aliases, chunking config). Mounting a host `./config` would mask the bundled curated config; we deliberately do not mount it. Release pipeline ensures the published image contains the operator's curated registries.
+2. **`LANCEDB_PATH=/data/lancedb/nomic-v1`** matches the Dockerfile default and the on-disk layout inside the corpus tarball.
+3. **`extra_hosts: host.docker.internal:host-gateway`** is required so containers reach the host's Ollama on all three platforms. We learned this the hard way during operator-tier work; documented in INSTALL.md troubleshooting.
 
 ---
 
@@ -215,32 +255,40 @@ Releases are not monolithic. Each of the following can be cut independently:
 
 **Flow B: corpus snapshot** (operator runs locally; CI helper)
 
-1. Operator runs `scripts/release-corpus.sh` (a script in the operator repo) which:
-   - SSHes to the VM
-   - Opens the live LanceDB read-only
-   - Calls `optimize_files()` and `cleanup_old_versions()` into a fresh `/tmp/corpus-vX.Y.Z/lancedb/` directory
-   - Tarballs as `corpus-vX.Y.Z.tar.gz`
-   - Generates `sha256sum.txt` for the tarball
-   - Generates a `corpus-manifest.json` (session count, schema version, generation timestamp, embedding model identifier)
-   - SCPs all three back to operator machine
-2. Operator runs `gh release create corpus-vX.Y.Z` in `community-brain-distribution`, attaching `corpus-vX.Y.Z.tar.gz`, `sha256sum.txt`, `corpus-manifest.json`.
-3. Operator opens a PR in `community-brain-distribution` updating `download-corpus.sh`'s `CORPUS_VERSION` constant and `EXPECTED_SHA256`. Operator reviews + merges.
+1. Operator runs `scripts/release-corpus.sh` (a script in the operator repo) which performs the safe-snapshot sequence detailed in §5.4. The script never opens the live LanceDB with mutating methods; it filesystem-snapshots first, then compacts the copy.
+2. Outputs of the script: `corpus-vX.Y.Z.tar.gz`, `sha256sum.txt`, `corpus-manifest.json`.
+3. Operator runs `gh release create corpus-vX.Y.Z` in `community-brain-distribution`, attaching all three files.
+4. Operator opens a PR in `community-brain-distribution` updating `download-corpus.sh`'s `CORPUS_VERSION` constant and `EXPECTED_SHA256`. Operator reviews + merges.
+
+**Internal vs recipient-facing version axes:** the `tier-b-retrieval-vX.Y.Z` tag (operator repo) and `corpus-vX.Y.Z` Release (distribution repo) are operator-internal release machinery — recipients never look at them. The authoritative version recipients see is the `community-brain-distribution` repo tag (`tier-b-vMAJOR.MINOR.PATCH`), which pins both via committed files (`docker-compose.yml` image SHA pin + `download-corpus.sh` CORPUS_VERSION/SHA constants). One version axis surfaces to recipients; the rest is bookkeeping.
 
 **Flow C: Open WebUI SHA bump** (operator, ad hoc)
 
 1. When operator decides to bump OWUI (after testing the new version against the filter + alembic migrations), operator manually opens a PR in `community-brain-distribution` with the new SHA.
 2. `verify-on-pr.yml` runs in the distribution repo CI: spins up the stack on `ubuntu-latest`, runs `verify-install.sh --post-install`. Catches alembic regressions before merge.
 
-### 4.2 Schema-bump discipline
+### 4.2 Schema-bump discipline and the extended `/health` endpoint
 
 If a `retrieval-server` release ships a LanceDB schema change (i.e., the new image expects a schema version newer than the latest published corpus), the matching `corpus-vX.Y.Z` Release MUST be published first or simultaneously.
 
-Enforcement mechanisms:
-- The corpus tarball's `corpus-manifest.json` declares the schema version that produced it.
-- The retrieval-server image declares its expected schema version at startup (already exists in `community-brain.ingestion.schema`).
-- `verify-install.sh` checks compatibility before starting the stack; a mismatch refuses the install with a clear "your corpus is schema vN.X, your server expects vN.Y — fetch a newer corpus" message.
+**Extended `/health` (new in v1):** rather than inventing a separate `/version` endpoint, v1 extends the existing `/health` route to return server and schema metadata:
 
-Operator-side: never tag a new retrieval-server release for distribution without confirming the corpus is consistent. The release-rehearsal step (§8) catches this if missed.
+```json
+{
+  "status": "ok",
+  "server_version": "0.3.0",
+  "schema_version": "v1.1",
+  "embedding_model": "nomic-embed-text",
+  "distribution_mode": true
+}
+```
+
+Enforcement mechanisms:
+- The corpus tarball's `corpus-manifest.json` declares the schema version + embedding model that produced it.
+- `/health` exposes the server's expected schema version + active embedding model at runtime.
+- `verify-install.sh` cross-checks `/health` against the manifest before letting the recipient declare the install green; mismatch surfaces a clear "your corpus is schema vN.X, your server expects vN.Y — fetch a newer corpus" message.
+
+Operator-side: never tag a new retrieval-server release for distribution without confirming the corpus is consistent. The release-rehearsal step (§11) catches this if missed.
 
 ### 4.3 Cross-repo authentication
 
@@ -288,36 +336,72 @@ Rationale:
 - Free, integrated with version tagging, no third-party setup.
 - Migration path to Cloudflare R2 (or B2, S3) is a one-line URL change in `download-corpus.sh` if ever needed.
 
-### 5.4 Compaction is required at every release
+### 5.4 Safe-snapshot compaction recipe
 
-Reasoning is two-fold:
+**Why compaction matters:**
 1. **Privacy:** `_versions/` contains operator-personal ingestion history (timestamps, intermediate-state snapshots from schema migrations, force-reextract operations). Shipping it leaks operator operational history.
 2. **Size hygiene:** 4 GB of history is dead weight for recipients who have no way to time-travel into it.
+3. **Read-only mount safety (§5.6):** the published corpus must be in clean v3 state so server startup doesn't need to mutate anything. Compaction is what produces that clean state.
 
-Implementation (in `scripts/release-corpus.sh`):
-```python
+**Safe sequence — filesystem snapshot BEFORE any LanceDB call.** Earlier draft of this spec described a sequence that called `optimize_files()` and `cleanup_old_versions()` on the live database and claimed "prod is never modified." That was wrong — those methods mutate the table they're called on. Corrected recipe:
+
+```bash
+# scripts/release-corpus.sh — runs on the VM (or via SSH from operator workstation)
+
+# Step 1: filesystem snapshot the live LanceDB to a fresh path.
+#   This is read-only on the source — rsync/cp never opens LanceDB programmatically.
+STAGING=/tmp/corpus-staging-vX.Y.Z
+rm -rf "$STAGING"
+mkdir -p "$STAGING/lancedb/nomic-v1"
+rsync -a /home/<operator>/n8n/community-brain/lancedb/nomic-v1/ "$STAGING/lancedb/nomic-v1/"
+
+# Step 2: compact the COPY. Source is never touched by lancedb code.
+python3 - <<'PYEOF'
 import lancedb
-db = lancedb.connect(SOURCE_PATH)
+from datetime import timedelta
+db = lancedb.connect("/tmp/corpus-staging-vX.Y.Z/lancedb/nomic-v1")
 table = db.open_table("chunks")
-table.optimize()                       # compact_files() under the hood
-table.cleanup_old_versions(older_than=timedelta(seconds=0))
-# Now copy the table directory to a fresh output path
+table.optimize()                                            # compact_files()
+table.cleanup_old_versions(older_than=timedelta(seconds=0)) # drop _versions/
+PYEOF
+
+# Step 3: assert clean v3 state on the compacted copy (no legacy v2 FTS index).
+#   Reuses the existing community_brain.query.corpus_verify module.
+python3 -m community_brain.cli.verify_corpus_clean_v3 "$STAGING/lancedb/nomic-v1"
+
+# Step 4: tarball + hash + manifest.
+cd /tmp
+tar -czf corpus-vX.Y.Z.tar.gz -C corpus-staging-vX.Y.Z .
+sha256sum corpus-vX.Y.Z.tar.gz > sha256sum.txt
+python3 -m community_brain.cli.write_corpus_manifest \
+    --staging "$STAGING" --out corpus-manifest.json --version vX.Y.Z
 ```
 
-The compacted directory is what gets tarballed. The operator's live LanceDB is never modified (the script reads + copies, never operates on the prod path in-place).
+The live LanceDB directory is touched ONLY by rsync (which is a read of source bytes, not a LanceDB API call). All mutating LanceDB operations happen on the staging copy. The script verifies clean v3 state after compaction; if verification fails (e.g., a stray v2 FTS index survived), the release aborts before tarballing.
+
+`scripts/release-corpus.sh` lives in the operator repo, not the `community-brain` Python package. The supporting CLIs (`verify_corpus_clean_v3`, `write_corpus_manifest`) are new entries in `community-brain/src/community_brain/cli/` and are part of the implementation scope.
 
 ### 5.5 Tarball format and integrity
 
-- **Format:** `tar.gz` (boring, universal). Internal layout: `corpus-vX.Y.Z/lancedb/nomic-v1/chunks.lance/`.
-- **Hashing:** SHA-256 generated server-side, published as `sha256sum.txt` alongside the tarball in the Release.
-- **Manifest:** `corpus-manifest.json` declares schema_version, embedding_model, session_count, generation_timestamp_utc, total_chunks. Used by `verify-install.sh` for compatibility checks.
+- **Format:** `tar.gz` (boring, universal). Internal layout: `lancedb/nomic-v1/chunks.lance/...` (no top-level version-prefixed directory; the tarball extracts directly into `./corpus/`).
+- **Hashing:** SHA-256 generated by `sha256sum`, published as `sha256sum.txt` alongside the tarball in the Release.
+- **Manifest:** `corpus-manifest.json` declares `schema_version`, `embedding_model`, `session_count`, `chunk_count`, `generation_timestamp_utc`, `corpus_version`. Used by `verify-install.sh` to cross-check `/health` at startup.
 
-`download-corpus.sh`:
-1. Reads `CORPUS_VERSION` from itself (the script is the version anchor).
+`download-corpus.sh` behavior:
+1. Reads `CORPUS_VERSION` and `EXPECTED_SHA256` constants from the top of itself (the script is the version anchor).
 2. Fetches the tarball + sha256sum.txt + manifest.json from the corresponding GitHub Release.
-3. Verifies SHA-256.
-4. Extracts to `./corpus/lancedb/`.
-5. Refuses to extract if SHA mismatch.
+3. Verifies SHA-256 against `EXPECTED_SHA256`. Refuses to extract on mismatch.
+4. Extracts into `./corpus/`. Existing `./corpus/` is moved to `./corpus.previous/` before extraction (one rollback level kept).
+
+### 5.6 Read-only mount precondition
+
+The compose stack mounts `./corpus:/data:ro`. This is safe only if the published corpus is in clean v3 state:
+- FTS index already built on `bm25_text` column (Stage C v2 / Retrieval v3)
+- No legacy v2 FTS index on `full_text` column
+- No partial transaction state
+- Schema version matches the latest production schema
+
+Server startup calls `verify_corpus_v3_state` (read-only) and `drop_full_text_index_if_present` (mutating but no-op on clean state). If the precondition holds, the mutating call has no work to do and the RO mount works. If the precondition is violated, the mutating call would error against an RO filesystem — but that error indicates a release-pipeline bug, not a recipient problem. The release-time `verify_corpus_clean_v3` CLI is the gate that prevents this.
 
 ---
 
@@ -338,19 +422,24 @@ The compacted directory is what gets tarballed. The operator's live LanceDB is n
 ## 0. Before You Start
    - Hardware: ≥8 GB RAM minimum; ≥24 GB unified memory if you plan local-LLM mode
    - Software prereqs: git, Docker (Desktop or CE), Ollama
-   - Pick your inference mode: local (gpt-oss:20b) or cloud (OpenAI/OpenRouter/Anthropic/Gemini)
+   - **Windows users:** install Docker Desktop + WSL2 + Ubuntu, and run every command in this guide
+     from an Ubuntu WSL2 shell. The distribution ships Bash-shaped tooling; native Windows
+     (PowerShell, Git Bash) is unsupported in v1.
+   - Pick your inference mode: local (gpt-oss:20b via Ollama) or cloud (OpenAI/OpenRouter/Anthropic/Gemini)
    - If you have an AI assistant (Claude Code / Codex / Cursor / Gemini CLI / Aider):
      give it this file and say "follow this install guide on my machine"
 
 ## 1. Install Docker + Ollama
-   - macOS subsection
-   - Windows subsection (WSL2 caveats)
-   - Linux subsection (group permissions caveats)
+   - macOS subsection: Docker Desktop OR OrbStack; Ollama native installer
+   - Windows subsection: Docker Desktop with WSL2 backend; Ollama installed inside Ubuntu WSL
+     (`curl -fsSL https://ollama.com/install.sh | sh`); all subsequent commands run in WSL
+   - Linux subsection: docker-ce + docker compose v2 plugin; user added to `docker` group;
+     Ollama via official installer
    - Verify: `docker --version`, `docker compose version`, `ollama --version`
 
 ## 2. Pull the embedding model
-   - `ollama pull nomic-embed-text:v1.5`
-   - Verify: `ollama list | grep nomic`
+   - `ollama pull nomic-embed-text`
+   - Verify: `ollama list | grep nomic-embed-text`
 
 ## 3. (Optional, local-LLM only) Pull the chat model
    - `ollama pull gpt-oss:20b`
@@ -363,17 +452,17 @@ The compacted directory is what gets tarballed. The operator's live LanceDB is n
 
 ## 5. Configure your .env
    - `cp .env.example .env`
-   - Generate `WEBUI_SECRET_KEY` (instructions inline)
-   - Choose inference mode block (uncomment the right one)
+   - Generate `WEBUI_SECRET_KEY` (`openssl rand -hex 32`)
+   - Choose inference mode block (uncomment exactly one)
    - Verify: `./verify-install.sh --step 5`
 
 ## 6. Download the corpus
    - `./download-corpus.sh`
-   - Verify: tarball SHA matches manifest; extraction succeeds
+   - Verify: tarball SHA matches `EXPECTED_SHA256`; extraction populates `./corpus/lancedb/nomic-v1/`
 
 ## 7. Start the stack
    - `docker compose up -d`
-   - Verify: `./verify-install.sh --step 7` (checks /health, /sessions, ports)
+   - Verify: `./verify-install.sh --step 7` (checks /health, /sessions, ports, schema/manifest match)
 
 ## 8. Configure Open WebUI (GUI walkthrough)
    - Open `http://127.0.0.1:3000` in browser
@@ -391,11 +480,19 @@ The compacted directory is what gets tarballed. The operator's live LanceDB is n
    - Annotated screenshots referenced inline.
 
 ## 9. End-to-end validation
-   - In OWUI chat, select "community-brain" model
-   - Send: "What sessions are in the corpus?"
-   - Verify: response contains `[corpus summary:]` header + session count matching corpus-manifest
-   - Send: "Find a quote from <speaker> about <topic>"
-   - Verify: response contains citation with session ID and quote that resolves to corpus
+   Step 9a (server-side, deterministic):
+   - `curl -s http://127.0.0.1:8999/sessions | jq '.sessions | length'`
+   - Verify: count matches `session_count` in `corpus/corpus-manifest.json`.
+   - `curl -s http://127.0.0.1:8999/health | jq '.schema_version, .embedding_model'`
+   - Verify: both match the manifest's schema_version and embedding_model.
+
+   Step 9b (OWUI retrieval smoke test, qualitative):
+   - In OWUI chat, select "community-brain" model.
+   - Send a content question you know the corpus can answer, e.g.,
+     "Summarize a recent discussion about pricing in the coaching calls."
+   - Verify: response renders a `[corpus summary: of the N retrieved chunks, ...]` line
+     (the filter's per-query summary, NOT a global inventory),
+     and citations include session IDs that match values from `/sessions`.
 
 ## Troubleshooting
    - See docs/troubleshooting.md (linked)
@@ -437,18 +534,32 @@ Green ✓ / red ✗ unicode (boring, works on every terminal). One-line remediat
 ### 7.3 Checks (non-exhaustive)
 
 - Docker + Compose minimum versions
-- Ollama reachable; required models pulled
-- `.env` exists; `WEBUI_SECRET_KEY` set; no commented-out values that should be uncommented for chosen mode
-- Corpus directory exists; SHA-256 of `chunks.lance/data/*.lance` files matches manifest
-- Schema version in corpus manifest matches what retrieval-server expects (read from a `/version` endpoint)
+- Ollama reachable on the configured `OLLAMA_BASE_URL`; `nomic-embed-text` model present in `ollama list`
+- `.env` exists; `WEBUI_SECRET_KEY` set; exactly one inference mode block uncommented
+- Corpus directory exists at `./corpus/lancedb/nomic-v1/chunks.lance/`
+- Tarball SHA-256 matches `EXPECTED_SHA256` constant in `download-corpus.sh`
 - Containers running; ports bound to 127.0.0.1 (not 0.0.0.0 — guard against accidental LAN exposure)
-- `curl 127.0.0.1:8999/health` returns 200
+- `curl 127.0.0.1:8999/health` returns 200 with `status=ok`
+- `/health` `schema_version` matches `corpus-manifest.json` `schema_version`
+- `/health` `embedding_model` matches `corpus-manifest.json` `embedding_model`
+- `/health` `distribution_mode` is `true`
 - `curl 127.0.0.1:8999/sessions | jq '.sessions | length'` matches `session_count` in corpus-manifest
 - `curl 127.0.0.1:3000` returns OWUI HTML
 
-### 7.4 Same script runs in CI
+### 7.4 Same script runs in CI (with fixture corpus + mocked embedding)
 
-`verify-on-pr.yml` in `community-brain-distribution` spins up the stack on `ubuntu-latest` with a fresh checkout and runs `verify-install.sh --post-install`. Any PR that breaks the install fails CI. This is the primary defense against doc-drift and image-pinning regressions.
+`verify-on-pr.yml` in `community-brain-distribution` spins up the stack on `ubuntu-latest`. Full Ollama is too heavy and flaky for CI, so the CI mode substitutes two things:
+
+1. **Fixture corpus**: a tiny pre-built LanceDB (3-5 chunks, known vectors, known schema version) checked into the distribution repo at `tests/fixtures/corpus/`. Used in place of the real downloaded blob.
+2. **Mocked embedding endpoint**: a small FastAPI shim (also checked into `tests/fixtures/`, ~50 LOC) that responds to Ollama's `/api/embeddings` shape with canned vectors matching the fixture corpus. The compose file in CI mode points `OLLAMA_BASE_URL` at this shim instead of host Ollama.
+
+The CI workflow:
+1. Substitutes the fixture corpus into `./corpus/`.
+2. Starts the mock-Ollama container alongside the stack.
+3. Runs `verify-install.sh --post-install` — same script the recipient runs, but pointed at the fixture stack.
+4. Asserts route shape: `/ingest` and `/reindex` return 404 with `COMMUNITY_BRAIN_DISTRIBUTION_MODE=true`; all five distribution-mode routes return non-404.
+
+Real-Ollama integration is NOT covered by CI; it's covered by the operator's manual pre-flight rehearsal (§11). The CI mode catches doc-drift, image-pinning regressions, schema-version mismatches, and route-shape regressions — not retrieval-quality regressions.
 
 ---
 
@@ -461,30 +572,39 @@ Green ✓ / red ✗ unicode (boring, works on every terminal). One-line remediat
 | `retrieval-server` | Query-time nomic embeddings via Ollama | No — always Ollama |
 | `open-webui` | Chat generation (text completion) | Yes — Ollama OR OpenAI-compatible endpoint |
 
-Ollama is always required because the corpus is pre-embedded with `nomic-embed-text:v1.5` and query embeddings must match at lookup time.
+Ollama is always required because the corpus is pre-embedded with `nomic-embed-text` (Ollama's default tag, no `:v1.5` suffix) and query embeddings must match at lookup time. The exact model identifier passed to Ollama at query time is whatever is in `COMMUNITY_BRAIN_EMBED_MODEL` (default `nomic-embed-text`); the corpus manifest declares the model used at ingestion time, and `verify-install.sh` enforces they match.
 
-### 8.2 `.env` shape
+### 8.2 `.env.example` shape (all overrides commented out)
 
 ```bash
-# === Always required ===
+# ============================================================
+# Always required — uncomment and set:
+# ============================================================
 OLLAMA_BASE_URL=http://host.docker.internal:11434
-EMBEDDING_MODEL=nomic-embed-text:v1.5
-WEBUI_SECRET_KEY=<random-string-generate-with-openssl-rand-hex-32>
+WEBUI_SECRET_KEY=  # generate with: openssl rand -hex 32
 
-# === Pick ONE chat inference block ===
+# ============================================================
+# Optional — overrides for image defaults. Leave commented to
+# accept the value baked into the published image.
+# ============================================================
+# COMMUNITY_BRAIN_EMBED_MODEL=nomic-embed-text
 
-# Option A — Local Ollama chat
-# Comment out OPENAI_API_* lines below; OWUI will use OLLAMA_BASE_URL.
+# ============================================================
+# Chat inference — uncomment EXACTLY ONE block below.
+# ============================================================
+
+# --- Option A: Local Ollama chat (requires ~24 GB unified memory) ---
 # Make sure `ollama pull gpt-oss:20b` has been run.
-INFERENCE_LOCAL_MODEL=gpt-oss:20b
+# INFERENCE_LOCAL_MODEL=gpt-oss:20b
 
-# Option B — Cloud OpenAI-compatible chat
-# Works with: OpenAI, OpenRouter (proxies Anthropic/Gemini/etc.), Anthropic-via-OpenRouter,
-# Gemini-via-OpenRouter, Together, Groq, etc.
+# --- Option B: Cloud OpenAI-compatible chat ---
+# Works with OpenAI, OpenRouter (proxies Anthropic/Gemini/etc.), Together, Groq, etc.
 # OPENAI_API_BASE_URL=https://openrouter.ai/api/v1
 # OPENAI_API_KEY=sk-or-v1-...
 # INFERENCE_CLOUD_MODEL=anthropic/claude-sonnet-4.6
 ```
+
+Every value is either left commented (image default applies) or set by the recipient. No active values are pre-populated. This matches the operator-tier `.env.example` discipline (empty-string env vars clobber Dockerfile defaults; commented-out values fall through).
 
 Compose passes the relevant env vars into Open WebUI. OWUI natively supports both backends; no custom adapter needed.
 
@@ -574,14 +694,13 @@ Before tagging any release in the operator repo, operator performs a clean-machi
 1. Spin up a fresh user account (or fresh VM) with no Docker, no Ollama, no prior state.
 2. Walk through `INSTALL.md` from the top, literally — no shortcuts, no operator memory.
 3. End with `./verify-install.sh --post-install` returning all green.
-4. Send the canonical test queries from §6.2 Step 9, confirm:
-   - `[corpus summary:]` header appears
-   - Session count matches manifest
-   - Citations resolve to actual corpus content
+4. Run §6.2 Step 9 validation:
+   - 9a (server-side): `/sessions` count matches manifest; `/health` schema_version and embedding_model match manifest
+   - 9b (OWUI retrieval test): send a content question; verify the filter's per-query `[corpus summary: ...]` line renders and citations resolve to actual corpus sessions
 
 This is lighter than the operator-tier DR rehearsal (no personal-state recovery at stake), but it's the only thing that catches "the runbook says X but the file is now called Y." Bake into the release checklist.
 
-The CI workflow `verify-on-pr.yml` covers most of this automatically, but a human walkthrough catches UX regressions (e.g., new OWUI version changed the menu path for Functions upload) that automated tests miss.
+The CI workflow `verify-on-pr.yml` (§7.4) covers structural correctness against a fixture corpus, but a human walkthrough on real hardware catches UX regressions (e.g., new OWUI version changed the menu path for Functions upload) and retrieval-quality regressions that fixture-based CI can't see.
 
 ---
 
@@ -628,10 +747,22 @@ Items deliberately left unresolved at design time, to be answered in the impleme
 
 1. **OWUI version pin baseline.** Which specific OWUI SHA does the v1 release ship with? Needs a test pass against the latest release that the operator has validated.
 2. **gpt-oss:20b as the documented local model.** Is this still the right default for local-LLM mode, or has a better local-model emerged that we'd recommend instead?
-3. **Compaction script location.** Does `scripts/release-corpus.sh` live in the operator repo or in `community-brain/` (the Python package)? Probably operator repo since it's an operator workflow, not a package capability.
-4. **CI cost.** GitHub Actions free tier on private repos has minute limits. Public repos are unlimited, but our smoke install workflow pulls Docker images + runs a stack — minutes-per-run could be 5-10 min. Need to estimate aggregate consumption vs free quota.
-5. **What does the agent-path actually look like in practice for non-Claude-Code agents?** The runbook is agent-agnostic in principle, but we should rehearse the install with each of {Codex, Gemini CLI, Aider} at least once to catch agent-specific failures.
-6. **Distribution-mode build mechanism.** Should `COMMUNITY_BRAIN_DISTRIBUTION_MODE` be a runtime env var (current proposal) or a build-time flag that produces a fundamentally different image? Runtime is simpler; build-time is more secure (literally cannot enable write routes by setting an env var). Recommendation: runtime for v1, build-time if a threat materializes.
+3. **CI minute consumption.** Public repos have unlimited GitHub Actions minutes, but our smoke install workflow pulls Docker images + runs a stack — minutes-per-run could be 5-10 min. Worth instrumenting after a few runs to confirm we're not burning resources.
+4. **Non-Claude-Code agent rehearsal.** The runbook is agent-agnostic in principle, but we should rehearse the install with each of {Codex, Gemini CLI, Aider} at least once to catch agent-specific failures the design didn't anticipate.
+
+Resolved during spec review (no longer open):
+- ~~Distribution-mode mechanism~~ — runtime env var for v1 (§1.4, §2.3)
+- ~~Compaction script location~~ — operator repo (§5.4)
+- ~~Authoritative version axis~~ — distribution repo tag (§1.4, §4.1)
+- ~~`/version` endpoint~~ — replaced by extended `/health` (§4.2)
+- ~~LanceDB mount path~~ — `./corpus:/data:ro` with `LANCEDB_PATH=/data/lancedb/nomic-v1` (§3.3)
+- ~~Embedding model env var~~ — `COMMUNITY_BRAIN_EMBED_MODEL` (untagged `nomic-embed-text`) (§3.3, §8.2)
+- ~~Config mount~~ — rely on image-bundled `/app/config`; no host mount (§3.3)
+- ~~Compaction "never modifies prod" claim~~ — corrected to filesystem-snapshot-first recipe (§5.4)
+- ~~Windows support depth~~ — WSL2 only (§1.4, §6.2 Step 0)
+- ~~CI smoke install with real Ollama~~ — fixture corpus + mocked embedding endpoint (§7.4)
+- ~~`.env.example` shape~~ — all values commented out, every mode opt-in (§8.2)
+- ~~OWUI validation expecting global corpus inventory~~ — split into server-side `/sessions` check + filter per-query summary check (§6.2 Step 9)
 
 ---
 
@@ -639,16 +770,34 @@ Items deliberately left unresolved at design time, to be answered in the impleme
 
 This spec hands off to a `writing-plans` session to produce the implementation plan. The plan should decompose into discrete tasks suitable for `subagent-driven-development`, covering:
 
-- Distribution-mode build flag in `community_brain.query.retrieval_server`
-- `scripts/release-corpus.sh` (compaction + tarball + manifest + SHA)
-- Operator-repo CI workflows: `build-retrieval-image.yml`, `sync-curated-files.yml`
-- New repo creation: `community-brain-distribution` (bootstrapping)
-- All files in §3.1 of this spec (compose.yml, INSTALL.md, verify-install.sh, .env.example, download-corpus.sh, docs/)
-- Distribution-repo CI: `verify-on-pr.yml`
-- Release rehearsal in a clean Mac VM
-- v1.0.0 cut: tag, build, snapshot, publish, announce
+**Server-side changes (in `community-brain/` Python package):**
+- Distribution-mode gating in `community_brain.query.retrieval_server` (skip `/ingest` + `/reindex` route registration when `COMMUNITY_BRAIN_DISTRIBUTION_MODE=true`)
+- Extended `/health` returning `status`, `server_version`, `schema_version`, `embedding_model`, `distribution_mode`
+- Route-shape test asserting absence of `/ingest` and `/reindex` and presence of the five distribution-mode routes when the env var is set
+- New CLI: `community_brain.cli.verify_corpus_clean_v3` (asserts FTS index built, no legacy v2 index, no partial transactions)
+- New CLI: `community_brain.cli.write_corpus_manifest` (emits `corpus-manifest.json` from a LanceDB path)
 
-Out of scope for the implementation plan (deferred):
+**Operator-side scripts (in operator repo `scripts/`):**
+- `release-corpus.sh` (filesystem-snapshot → compact → verify clean v3 → tarball → hash → manifest)
+- Optional helper to invoke `gh release create` and open the distribution-repo PR
+
+**Operator-repo CI workflows:**
+- `build-retrieval-image.yml` (build + push image on `tier-b-retrieval-v*` tag; open PR in distribution repo)
+- `sync-curated-files.yml` (copy `community_brain_filter.py` + `docs/inference-guidelines.md` into distribution repo on operator-repo main update)
+
+**New repo creation: `community-brain-distribution`:**
+- All files in §3.1 (compose.yml, INSTALL.md, verify-install.sh, .env.example, download-corpus.sh, docs/{screenshots,tour.md,troubleshooting.md})
+- `tests/fixtures/corpus/` (tiny pre-built LanceDB)
+- `tests/fixtures/mock-ollama/` (FastAPI shim serving canned vectors)
+- `.github/workflows/verify-on-pr.yml`
+- `.gitignore` blocking `.env`, `corpus/`, `corpus.previous/`
+
+**Release process:**
+- Documented operator release checklist (snapshot → image build → distribution PR → corpus PR → tag distribution repo → announce in Skool)
+- Pre-flight rehearsal step on a clean Mac VM
+- v1.0.0 cut
+
+**Out of scope for the implementation plan (deferred):**
 - Anything in §13 (v1.1 and v2 candidates)
 - Tier A (community-full) — separate spec
 
