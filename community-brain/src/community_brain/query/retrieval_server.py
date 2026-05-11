@@ -33,7 +33,11 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
     render_alias_block,
 )
-from community_brain.query.corpus_verify import CorpusInvalidError, verify_corpus_v3_state
+from community_brain.query.corpus_verify import (
+    CorpusInvalidError,
+    verify_corpus_v3_state,
+    verify_corpus_v3_state_readonly,
+)
 from community_brain.query.fts_lifecycle import (
     drop_full_text_index_if_present,
     ensure_fts_index,
@@ -54,6 +58,10 @@ load_dotenv(CONFIG_DIR / ".env")
 DEFAULT_DB_PATH = str(PROJECT_ROOT / "lancedb" / "nomic-v1")
 
 CONFIG_DIR_OVERRIDE_ENV = "COMMUNITY_BRAIN_CONFIG_DIR"
+
+DISTRIBUTION_MODE = (
+    os.environ.get("COMMUNITY_BRAIN_DISTRIBUTION_MODE", "").lower() == "true"
+)
 
 
 def _config_dir() -> Path:
@@ -115,16 +123,22 @@ async def lifespan(app: FastAPI):
         db = lancedb.connect(db_path)
         if "chunks" in db.list_tables().tables:
             table = db.open_table("chunks")
-            # FAIL CLOSED on invalid v3 state — was previously silent.
-            # CorpusInvalidError propagates to FastAPI lifespan → server
-            # refuses to start with a clear message.
-            verify_corpus_v3_state(table)
-            try:
-                drop_full_text_index_if_present(table)
-            except Exception as exc:
-                # Transient: legacy index cleanup is best-effort; missing
-                # drop_index API is not a correctness issue.
-                logger.debug("legacy full_text FTS index cleanup skipped: %s", exc)
+            if DISTRIBUTION_MODE:
+                # RO-mounted corpus: no repair attempts, no legacy cleanup.
+                # Spec §5.6.
+                verify_corpus_v3_state_readonly(table)
+            else:
+                # Operator mode: existing behavior (verify + repair + cleanup).
+                # FAIL CLOSED on invalid v3 state — was previously silent.
+                # CorpusInvalidError propagates to FastAPI lifespan → server
+                # refuses to start with a clear message.
+                verify_corpus_v3_state(table)
+                try:
+                    drop_full_text_index_if_present(table)
+                except Exception as exc:
+                    # Transient: legacy index cleanup is best-effort; missing
+                    # drop_index API is not a correctness issue.
+                    logger.debug("legacy full_text FTS index cleanup skipped: %s", exc)
         else:
             logger.info(
                 "startup: chunks table does not exist yet at %s; FTS index "
@@ -309,6 +323,13 @@ def health():
         # only. "1", "yes", "on", and similar truthy-looking strings are
         # NOT recognized. Operator scripts (verify-install.sh, compose) must
         # use the literal string "true".
+        #
+        # NOTE: this re-reads the env var at request time, which may differ
+        # from the module-level DISTRIBUTION_MODE constant that governs
+        # route registration. Route registration is fixed at import time;
+        # /health reflects current env. Mutating the env post-startup is
+        # not a supported operator workflow -- restart the container to
+        # change distribution mode reliably.
         "distribution_mode": (
             os.environ.get("COMMUNITY_BRAIN_DISTRIBUTION_MODE", "").lower() == "true"
         ),
@@ -424,8 +445,10 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     )
 
 
-@app.post("/ingest", response_model=IngestHTTPResponse)
-def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
+def _ingest_handler(
+    req: IngestHTTPRequest,
+    _key: str | None = Depends(_verify_api_key),
+) -> IngestHTTPResponse:
     """Ingest a session's artifacts into LanceDB.
 
     Artifact paths must be inside COMMUNITY_BRAIN_ARTIFACT_ROOT if that env
@@ -496,6 +519,10 @@ def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
         unknown_entities_flagged=result.unknown_entities_flagged,
         unknown_speakers_flagged=result.unknown_speakers_flagged,
     )
+
+
+if not DISTRIBUTION_MODE:
+    app.post("/ingest", response_model=IngestHTTPResponse)(_ingest_handler)
 
 
 # --- /sessions inventory endpoints ---
@@ -667,8 +694,10 @@ def _reindex_select_chunk_ids(filter_clause: dict) -> list[str]:
     return [arr["chunk_id"][i].as_py() for i in range(arr.num_rows)]
 
 
-@app.post("/reindex", response_model=ReindexResponse)
-def reindex(req: ReindexRequest, _key: str | None = Depends(_verify_api_key)):
+def _reindex_handler(
+    req: ReindexRequest,
+    _key: str | None = Depends(_verify_api_key),
+) -> ReindexResponse:
     """Match chunks against a filter and (in v2) apply re-extract/re-embed/delete.
 
     V1 scope: validates the operation, runs the filter, returns matched chunk_ids.
@@ -704,6 +733,10 @@ def reindex(req: ReindexRequest, _key: str | None = Depends(_verify_api_key)):
         matched_chunk_ids=matched,
         note=note,
     )
+
+
+if not DISTRIBUTION_MODE:
+    app.post("/reindex", response_model=ReindexResponse)(_reindex_handler)
 
 
 if __name__ == "__main__":
