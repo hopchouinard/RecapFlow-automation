@@ -805,7 +805,7 @@ from community_brain.query.fts_lifecycle import (
 ./.venv/bin/pytest tests/test_distribution_mode_routes.py -v
 ```
 
-Expected: all 5 tests PASS.
+Expected: all 7 tests PASS (5 route-shape + 2 auth-preservation).
 
 - [ ] **Step 7: Run full suite for regressions**
 
@@ -1992,13 +1992,13 @@ git init -b main
 Create `../community-brain-distribution/.gitignore`:
 
 ```
-# Recipient-local state
-.env
-corpus/
-corpus.previous/
-
-# Container runtime state (Open WebUI persistence)
-open-webui-data/
+# Recipient-local state (anchored to repo root with leading slash so
+# they don't accidentally match nested fixture directories like
+# tests/fixtures/corpus/).
+/.env
+/corpus/
+/corpus.previous/
+/open-webui-data/
 
 # Python local-dev artifacts (only relevant if recipients muck around)
 __pycache__/
@@ -2689,11 +2689,20 @@ set -euo pipefail
 
 FIXTURE_ROOT="$(cd "$(dirname "$0")" && pwd)"
 CORPUS="${FIXTURE_ROOT}/corpus"
-PYTHON="${COMMUNITY_BRAIN_VENV:-../../../community-brain/.venv}/bin/python"
+
+# Default venv path: from this script's location (community-brain-distribution/
+# tests/fixtures/), the operator repo is a sibling of the distribution repo,
+# so the venv lives at ../../../RecapFlow-automation/community-brain/.venv.
+# Override via COMMUNITY_BRAIN_VENV if the operator repo lives elsewhere.
+DEFAULT_VENV="${FIXTURE_ROOT}/../../../RecapFlow-automation/community-brain/.venv"
+PYTHON="${COMMUNITY_BRAIN_VENV:-$DEFAULT_VENV}/bin/python"
 
 if [[ ! -x "$PYTHON" ]]; then
-    echo "ERROR: python venv not found. Set COMMUNITY_BRAIN_VENV or run from a place where" >&2
-    echo "  ../../../community-brain/.venv exists." >&2
+    echo "ERROR: python venv not found at $(dirname "$PYTHON")" >&2
+    echo "  Either set COMMUNITY_BRAIN_VENV pointing at a venv that has the" >&2
+    echo "  community-brain package installed, or ensure the operator repo" >&2
+    echo "  is a sibling of community-brain-distribution at the expected path." >&2
+    echo "  Expected: $DEFAULT_VENV/bin/python" >&2
     exit 2
 fi
 
@@ -3463,20 +3472,29 @@ jobs:
         run: |
           docker build -t mock-ollama:ci tests/fixtures/mock-ollama/
 
-      - name: Start mock-ollama
+      - name: Start mock-ollama on the runner host
+        # Bind explicitly to 11434 on the runner. Compose containers reach
+        # this via host.docker.internal:host-gateway (declared in
+        # docker-compose.yml). 127.0.0.1 from inside the container would
+        # be the container's OWN loopback, NOT the runner — that's why
+        # OLLAMA_BASE_URL below uses host.docker.internal, not 127.0.0.1.
         run: |
-          docker run -d --name mock-ollama --network host mock-ollama:ci
+          docker run -d --name mock-ollama -p 11434:11434 mock-ollama:ci
           sleep 3
-          curl -sf http://127.0.0.1:11434/api/tags | jq .
+          curl -sf http://127.0.0.1:11434/api/tags | jq .   # runner-side probe
 
       - name: Stage fixture corpus as ./corpus
         run: |
           cp -r tests/fixtures/corpus ./corpus
 
       - name: Write a CI .env
+        # Containers reach the host runner's published port 11434 via
+        # host.docker.internal (resolves to host-gateway per compose's
+        # extra_hosts directive). Using 127.0.0.1 here would point at
+        # the retrieval-server container's own loopback and fail.
         run: |
           cat > .env <<EOF
-          OLLAMA_BASE_URL=http://127.0.0.1:11434
+          OLLAMA_BASE_URL=http://host.docker.internal:11434
           WEBUI_SECRET_KEY=$(openssl rand -hex 32)
           INFERENCE_LOCAL_MODEL=gpt-oss:20b
           EOF
@@ -3538,8 +3556,10 @@ jobs:
           p.write_text(s)
           PYEOF
 
-          # Use host networking so retrieval-server can reach mock-ollama on 127.0.0.1.
-          echo "OLLAMA_BASE_URL=http://127.0.0.1:11434" >> .env
+          # OLLAMA_BASE_URL is already set in .env (Write a CI .env step
+          # earlier in this job) to host.docker.internal:11434, which is
+          # how the retrieval-server container reaches the mock-ollama
+          # process published on the runner host's port 11434.
 
       - name: docker compose up
         run: |
