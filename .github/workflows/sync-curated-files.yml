@@ -1,0 +1,64 @@
+name: Sync curated files to distribution repo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'community-brain/src/community_brain/openwebui/community_brain_filter.py'
+      - 'docs/inference-guidelines.md'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout operator repo
+        uses: actions/checkout@v4
+
+      - name: Sync curated files to community-brain-distribution
+        env:
+          GH_TOKEN: ${{ secrets.DISTRIBUTION_REPO_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          set -euo pipefail
+          WORK=$(mktemp -d)
+          cd "$WORK"
+          gh repo clone "${OWNER}/community-brain-distribution" dist
+          cd dist
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Copy curated files in. Source paths relative to the workspace
+          # (we keep them in the runner from the actions/checkout step).
+          cp "${GITHUB_WORKSPACE}/community-brain/src/community_brain/openwebui/community_brain_filter.py" \
+             ./community_brain_filter.py
+          cp "${GITHUB_WORKSPACE}/docs/inference-guidelines.md" \
+             ./inference-guidelines.md
+
+          # If nothing changed, exit silently.
+          if git diff --quiet; then
+              echo "No changes to sync."
+              exit 0
+          fi
+
+          BRANCH="sync-curated-$(date -u +%Y%m%d-%H%M%S)"
+          git checkout -b "${BRANCH}"
+          git add community_brain_filter.py inference-guidelines.md
+          git commit -m "chore: sync curated files from operator repo
+
+          Auto-synced from upstream commit ${GITHUB_SHA}."
+          git push -u origin "${BRANCH}"
+
+          gh pr create \
+            --title "Sync curated files from operator repo" \
+            --body "Auto-opened by operator-repo \`sync-curated-files.yml\` workflow.
+
+          Updated files:
+          - community_brain_filter.py (Open WebUI filter)
+          - inference-guidelines.md (custom-model system prompt)
+
+          Upstream commit: ${GITHUB_SHA}
+
+          Verify before merging:
+          1. CI on this PR (verify-on-pr.yml) runs the smoke install
+          2. Inspect that the diff looks intentional (no merge-conflict noise)"
