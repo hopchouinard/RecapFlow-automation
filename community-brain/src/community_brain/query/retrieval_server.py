@@ -13,6 +13,7 @@ from __future__ import annotations
 import logging
 import os
 from contextlib import asynccontextmanager
+from importlib.metadata import version as _package_version, PackageNotFoundError as _PackageNotFoundError
 from pathlib import Path
 from typing import Literal
 
@@ -40,6 +41,11 @@ from community_brain.query.fts_lifecycle import (
 from community_brain.query.query_local import sql_quote
 
 logger = logging.getLogger(__name__)
+
+try:
+    _APP_VERSION = _package_version("community-brain")
+except _PackageNotFoundError:
+    _APP_VERSION = "0.0.0+uninstalled"
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 CONFIG_DIR = PROJECT_ROOT / "config"
@@ -138,7 +144,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="Community Brain Retrieval API",
     description="Search coaching call transcripts by semantic similarity.",
-    version="0.2.0",
+    version=_APP_VERSION,
     lifespan=lifespan,
 )
 
