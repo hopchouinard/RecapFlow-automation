@@ -690,32 +690,62 @@ DISTRIBUTION_MODE = (
 )
 ```
 
-- [ ] **Step 4: Wrap /ingest and /reindex registration in the env check**
+- [ ] **Step 4: Wrap /ingest and /reindex registration in the env check (preserve API-key auth)**
 
-Find the `@app.post("/ingest", ...)` decorator (around line 399) and the `@app.post("/reindex", ...)` decorator (around line 642). Convert each from decorator syntax to conditional registration. The cleanest pattern is to use a `register_if(condition)` wrapper or convert to imperative registration:
+Find the `@app.post("/ingest", ...)` decorator (around line 399) and the `@app.post("/reindex", ...)` decorator (around line 642). Convert each from decorator syntax to conditional registration. **Critical: preserve the `_key: str | None = Depends(_verify_api_key)` parameter** — the current code uses it to gate write routes behind `RETRIEVAL_API_KEY` in operator mode. Dropping it silently disables auth.
 
-Replace `@app.post("/ingest", response_model=IngestHTTPResponse)` and its function definition with:
+Replace the existing `@app.post("/ingest", response_model=IngestHTTPResponse)` decorator and the `def ingest(req, _key=Depends(_verify_api_key)):` signature with:
 
 ```python
-def _ingest_handler(req: IngestHTTPRequest) -> IngestHTTPResponse:
-    # ... existing body unchanged ...
+def _ingest_handler(
+    req: IngestHTTPRequest,
+    _key: str | None = Depends(_verify_api_key),
+) -> IngestHTTPResponse:
+    # ... existing function body unchanged ...
 
 if not DISTRIBUTION_MODE:
     app.post("/ingest", response_model=IngestHTTPResponse)(_ingest_handler)
 ```
 
-Apply the same pattern to `/reindex`. Move the function bodies into `_ingest_handler` / `_reindex_handler` and conditionally call `app.post(...)(handler)` only when `not DISTRIBUTION_MODE`.
-
-If the existing handlers use decorators with multiple parameters or have docstrings, preserve them by passing them to `app.post(...)`:
+Apply the same pattern to `/reindex`:
 
 ```python
+def _reindex_handler(
+    req: ReindexRequest,
+    _key: str | None = Depends(_verify_api_key),
+) -> ReindexResponse:
+    # ... existing function body unchanged ...
+
 if not DISTRIBUTION_MODE:
-    app.post(
-        "/ingest",
-        response_model=IngestHTTPResponse,
-        summary="Ingest a session's artifacts into the corpus",
-    )(_ingest_handler)
+    app.post("/reindex", response_model=ReindexResponse)(_reindex_handler)
 ```
+
+The `Depends(_verify_api_key)` parameter MUST stay on both handlers. Operator mode keeps the existing auth contract: `RETRIEVAL_API_KEY` set in env → 403 on missing/wrong header. Distribution mode skips registration entirely → 404.
+
+- [ ] **Step 4a: Add tests asserting auth still works in operator mode**
+
+Append to `community-brain/tests/test_distribution_mode_routes.py`:
+
+```python
+def test_operator_mode_ingest_requires_api_key_when_set(monkeypatch):
+    """Operator mode preserves the RETRIEVAL_API_KEY auth contract."""
+    monkeypatch.setenv("RETRIEVAL_API_KEY", "secret123")
+    app = _reload_app(monkeypatch, distribution_mode=False)
+    client = TestClient(app)
+    # No X-API-Key header → 403
+    r = client.post("/ingest", json={"session_id": "s1", "artifact_paths": {}})
+    assert r.status_code == 403
+
+
+def test_operator_mode_reindex_requires_api_key_when_set(monkeypatch):
+    monkeypatch.setenv("RETRIEVAL_API_KEY", "secret123")
+    app = _reload_app(monkeypatch, distribution_mode=False)
+    client = TestClient(app)
+    r = client.post("/reindex", json={"operation": "match-only", "filter": {}})
+    assert r.status_code == 403
+```
+
+These tests confirm that the route-registration refactor did NOT silently drop `Depends(_verify_api_key)`.
 
 - [ ] **Step 5: Update lifespan to branch on distribution mode**
 
@@ -754,14 +784,18 @@ async def lifespan(app: FastAPI):
     yield
 ```
 
-Add the `verify_corpus_v3_state_readonly` to the imports at the top of the file:
+Add the `verify_corpus_v3_state_readonly` to the existing imports at the top of the file. `drop_full_text_index_if_present` already lives in `community_brain.query.fts_lifecycle` (NOT `corpus_verify`); leave that import where it is. Update only the `corpus_verify` import line:
 
 ```python
 from community_brain.query.corpus_verify import (
     CorpusInvalidError,
     verify_corpus_v3_state,
-    verify_corpus_v3_state_readonly,
+    verify_corpus_v3_state_readonly,  # ← new
+)
+# Keep this import block unchanged (do NOT move drop_full_text_index_if_present):
+from community_brain.query.fts_lifecycle import (
     drop_full_text_index_if_present,
+    ensure_fts_index,
 )
 ```
 
@@ -1482,8 +1516,17 @@ TARBALL="corpus-${VERSION}.tar.gz"
 log "tarring -> ${OUTPUT_DIR}/${TARBALL}"
 tar -czf "${TARBALL}" -C "${STAGING_LOCAL}" .
 
+# SHA-256 — detect tool per platform (operator may be on macOS).
 log "writing sha256sum.txt"
-sha256sum "${TARBALL}" > sha256sum.txt
+if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum "${TARBALL}" > sha256sum.txt
+elif command -v shasum >/dev/null 2>&1; then
+    # Match sha256sum format: "<hash>  <filename>"
+    shasum -a 256 "${TARBALL}" > sha256sum.txt
+else
+    log "FATAL: neither sha256sum nor shasum found"
+    exit 2
+fi
 
 log "writing corpus-manifest.json"
 "${PYTHON}" -m community_brain.cli.write_corpus_manifest \
@@ -1570,7 +1613,12 @@ echo "--- tar + sha + manifest ---"
 mkdir -p "${OUTPUT_DIR}"
 cd "${OUTPUT_DIR}"
 tar -czf "corpus-${VERSION}.tar.gz" -C "${STAGING}" .
-sha256sum "corpus-${VERSION}.tar.gz" > sha256sum.txt
+# SHA-256 — detect tool per platform.
+if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum "corpus-${VERSION}.tar.gz" > sha256sum.txt
+else
+    shasum -a 256 "corpus-${VERSION}.tar.gz" > sha256sum.txt
+fi
 "${PYTHON}" -m community_brain.cli.write_corpus_manifest \
     --staging "${STAGING}" \
     --out "${OUTPUT_DIR}/corpus-manifest.json" \
@@ -2134,10 +2182,15 @@ Create `../community-brain-distribution/verify-install.sh`:
 # Idempotent. Per spec §7.
 #
 # Usage:
-#   ./verify-install.sh                  # all checks
-#   ./verify-install.sh --step N         # checks for step N (1-9)
-#   ./verify-install.sh --post-install   # end-to-end smoke
-#   ./verify-install.sh --check-env-drift  # warn on missing .env keys
+#   ./verify-install.sh                          # all checks
+#   ./verify-install.sh --step N                 # checks for step N (1-9)
+#   ./verify-install.sh --post-install           # end-to-end smoke
+#   ./verify-install.sh --check-required-env     # warn if required .env keys
+#                                                # (active in .env.example) are
+#                                                # missing from local .env.
+#                                                # Does NOT compare commented-out
+#                                                # optional keys; those are
+#                                                # opt-in by design.
 
 set -uo pipefail   # NOT -e: we want to keep running after a single check fails
 
@@ -2390,7 +2443,7 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --step) MODE="step"; STEP="$2"; shift 2 ;;
         --post-install) MODE="post"; shift ;;
-        --check-env-drift) MODE="env-drift"; shift ;;
+        --check-required-env) MODE="required-env-drift"; shift ;;
         *) echo "Unknown arg: $1" >&2; exit 2 ;;
     esac
 done
@@ -2414,18 +2467,20 @@ case "$MODE" in
             7) run_step_7 ;;
             *) echo "Unknown step: $STEP (valid: 1, 2, 4, 5, 6, 7)" >&2; exit 2 ;;
         esac ;;
-    env-drift)
+    required-env-drift)
+        # Compare only ACTIVE (uncommented) keys in .env.example to keys in
+        # the recipient's .env. Commented optional keys are intentionally
+        # opt-in and not flagged as missing.
         if [[ ! -f .env ]]; then
             bad ".env missing" "cp .env.example .env"
         else
-            # Compare keys in .env.example to keys in .env.
-            example_keys=$(grep -oE '^[A-Z_]+=' .env.example | sort -u)
+            required_keys=$(grep -oE '^[A-Z_]+=' .env.example | sort -u)
             actual_keys=$(grep -oE '^[A-Z_]+=' .env | sort -u)
-            missing=$(comm -23 <(echo "$example_keys") <(echo "$actual_keys"))
+            missing=$(comm -23 <(echo "$required_keys") <(echo "$actual_keys"))
             if [[ -n "$missing" ]]; then
-                bad "missing keys in .env vs .env.example:" "$(echo "$missing" | tr '\n' ' ')"
+                bad "missing required keys in .env vs .env.example:" "$(echo "$missing" | tr '\n' ' ')"
             else
-                ok ".env has all keys from .env.example"
+                ok ".env has all required keys from .env.example"
             fi
         fi ;;
 esac
@@ -2464,7 +2519,9 @@ git commit -m "feat: add verify-install.sh harness
 Per-step checks with idempotent invocation. Modes:
   --step N         single step (1, 2, 4, 5, 6, 7)
   --post-install   end-to-end smoke
-  --check-env-drift  warn on .env keys missing vs .env.example
+  --check-required-env   warn if required .env keys (active in .env.example)
+                         are missing from local .env (commented optional keys
+                         are intentionally not compared)
 
 Detects sha256sum vs shasum -a 256 per spec §6.2.
 Loads .env so checks see recipient configuration."
@@ -2646,33 +2703,83 @@ mkdir -p "$CORPUS/lancedb/nomic-v1"
 "$PYTHON" - <<PYEOF
 import json, pathlib
 import lancedb
-import pyarrow as pa
+
+# Reuse the REAL pyarrow schema so every column /sessions reads
+# (session_date, session_title, content_type, has_unresolved_question,
+# session_themes) and every field the server expects (e.g. `embedding`,
+# not `vector`) is present. Anything less makes _load_all_session_rows()
+# return empty and verify-install.sh fails on count-mismatch.
+from community_brain.ingestion.schema import pyarrow_table_schema, SCHEMA_VERSION
 
 DB_PATH = "${CORPUS}/lancedb/nomic-v1"
 db = lancedb.connect(DB_PATH)
-
-# Minimal v3 schema subset (must include bm25_text for FTS index).
-# For CI smoke install, we don't need the full 37-field schema —
-# the verify-install.sh check is /sessions count + /health metadata,
-# not real retrieval quality.
-schema = pa.schema([
-    ("session_id", pa.string()),
-    ("chunk_id", pa.string()),
-    ("bm25_text", pa.string()),
-    ("vector", pa.list_(pa.float32(), 768)),
-])
+schema = pyarrow_table_schema()
 table = db.create_table("chunks", schema=schema, mode="overwrite")
 
-# Canned rows with canned vectors (deterministic, all-zeros vectors for
-# CI; real retrieval quality is not tested here).
-def zero_vec(): return [0.0] * 768
+# Build a minimal row that satisfies every NOT-NULL column in the
+# real schema. The pyarrow_table_schema() function is authoritative;
+# we synthesize values from its field names rather than hand-coding.
+import datetime as _dt
+
+def _default_for_field(field):
+    """Best-effort default value matching a pyarrow field type."""
+    t = field.type
+    if pa_types_is_string(t):
+        # Special-case known fields to non-empty strings where /sessions reads them.
+        if field.name in ("session_id", "chunk_id", "bm25_text",
+                          "session_title", "content_type", "extraction_status"):
+            return f"fixture-{field.name}"
+        return ""
+    if pa_types_is_floating(t):
+        return 0.0
+    if pa_types_is_integer(t):
+        return 0
+    if pa_types_is_boolean(t):
+        return False
+    if pa_types_is_timestamp(t) or pa_types_is_date(t):
+        return _dt.datetime(2026, 5, 10, 0, 0, 0, tzinfo=_dt.timezone.utc)
+    if pa_types_is_fixed_size_list(t):
+        return [0.0] * t.list_size  # 768-dim zero embedding
+    if pa_types_is_list(t):
+        return []
+    if pa_types_is_struct(t):
+        return None
+    return None
+
+import pyarrow.types as _pat
+pa_types_is_string = _pat.is_string
+pa_types_is_floating = _pat.is_floating
+pa_types_is_integer = _pat.is_integer
+pa_types_is_boolean = _pat.is_boolean
+pa_types_is_timestamp = _pat.is_timestamp
+pa_types_is_date = _pat.is_date
+pa_types_is_fixed_size_list = _pat.is_fixed_size_list
+pa_types_is_list = _pat.is_list
+pa_types_is_struct = _pat.is_struct
+
+def _make_row(session_id, chunk_id, bm25_text):
+    row = {f.name: _default_for_field(f) for f in schema}
+    row["session_id"] = session_id
+    row["chunk_id"] = chunk_id
+    row["bm25_text"] = bm25_text
+    # Keep extraction_status='success' so chunks aren't filtered out by /query guards.
+    if "extraction_status" in row:
+        row["extraction_status"] = "success"
+    # Populate the columns /sessions reads with stable fixture values.
+    if "session_date" in row:
+        row["session_date"] = _dt.datetime(2026, 1, 1, tzinfo=_dt.timezone.utc)
+    if "session_title" in row:
+        row["session_title"] = f"Fixture session {session_id}"
+    if "content_type" in row:
+        row["content_type"] = "prepared_transcript"
+    if "has_unresolved_question" in row:
+        row["has_unresolved_question"] = False
+    return row
+
 rows = [
-    {"session_id": "fixture-001", "chunk_id": "fixture-001:c0",
-     "bm25_text": "hello fixture corpus", "vector": zero_vec()},
-    {"session_id": "fixture-001", "chunk_id": "fixture-001:c1",
-     "bm25_text": "second chunk of fixture-001", "vector": zero_vec()},
-    {"session_id": "fixture-002", "chunk_id": "fixture-002:c0",
-     "bm25_text": "another fixture session", "vector": zero_vec()},
+    _make_row("fixture-001", "fixture-001:c0", "hello fixture corpus"),
+    _make_row("fixture-001", "fixture-001:c1", "second chunk of fixture-001"),
+    _make_row("fixture-002", "fixture-002:c0", "another fixture session"),
 ]
 table.add(rows)
 table.create_fts_index("bm25_text", replace=True)
@@ -2680,14 +2787,14 @@ table.create_fts_index("bm25_text", replace=True)
 # Manifest.
 manifest = {
     "corpus_version": "v0.0.0-fixture",
-    "schema_version": "1.1",
+    "schema_version": SCHEMA_VERSION,
     "embedding_model": "nomic-embed-text",
     "session_count": 2,
     "chunk_count": 3,
     "generation_timestamp_utc": "2026-05-10T00:00:00Z",
 }
 pathlib.Path("${CORPUS}/corpus-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-print("fixture built at ${CORPUS}")
+print(f"fixture built at ${CORPUS} (schema_version={SCHEMA_VERSION})")
 PYEOF
 ```
 
@@ -3104,7 +3211,7 @@ See [`docs/troubleshooting.md`](./docs/troubleshooting.md).
 
 ```bash
 git pull
-./verify-install.sh --check-env-drift   # warn if new keys appear in .env.example
+./verify-install.sh --check-required-env  # warn if new required keys appeared in .env.example
 ./download-corpus.sh                    # no-op if CORPUS_VERSION unchanged
 docker compose pull                     # grab new image SHAs from compose.yml
 docker compose up -d                    # restart with new images
@@ -3374,25 +3481,69 @@ jobs:
           INFERENCE_LOCAL_MODEL=gpt-oss:20b
           EOF
 
-      - name: Patch docker-compose for CI
-        # Replace placeholders / use host networking for the mock-ollama
-        # connection, and pull the latest retrieval-server image (CI doesn't
-        # have access to a SHA-pinned image yet on first run).
+      - name: Resolve retrieval-server image for CI
+        # The distribution repo's docker-compose.yml uses a placeholder SHA
+        # that real releases bump via the operator-repo build workflow. CI
+        # needs a real image to pull. Two valid sources, checked in order:
+        #   1. Repo variable CI_RETRIEVAL_IMAGE — explicit override set by
+        #      the operator (e.g. ghcr.io/<owner>/community-brain-retrieval@sha256:...)
+        #   2. The :latest tag for the operator's published image.
+        # If neither resolves to a pullable image, fail loudly with a
+        # bootstrap-friendly message (the very first CI run pre-image-publish
+        # is expected to fail; that's documented in the milestone checkpoint).
+        id: resolve_image
+        env:
+          CI_RETRIEVAL_IMAGE: ${{ vars.CI_RETRIEVAL_IMAGE }}
+          OWNER: ${{ github.repository_owner }}
         run: |
-          # For CI, replace the PLACEHOLDER SHA with :latest tag. Real
-          # releases use SHA-pinning; CI just needs SOMETHING to pull.
-          sed -i 's|@sha256:PLACEHOLDER_BUMPED_BY_CI|:latest|g' docker-compose.yml
-          sed -i 's|@sha256:PLACEHOLDER_OWUI_SHA|:main|g' docker-compose.yml
-          # Replace REPLACE_OPERATOR_HERE with the github.repository_owner.
-          sed -i "s|REPLACE_OPERATOR_HERE|${GITHUB_REPOSITORY_OWNER}|g" docker-compose.yml
+          if [[ -n "${CI_RETRIEVAL_IMAGE}" ]]; then
+              IMAGE="${CI_RETRIEVAL_IMAGE}"
+              echo "Using CI_RETRIEVAL_IMAGE repo variable: ${IMAGE}"
+          else
+              IMAGE="ghcr.io/${OWNER}/community-brain-retrieval:latest"
+              echo "Falling back to :latest tag: ${IMAGE}"
+          fi
+
+          # Probe pullability — fail fast if the image doesn't exist.
+          if ! docker manifest inspect "${IMAGE}" >/dev/null 2>&1; then
+              echo "::error::Image ${IMAGE} is not pullable."
+              echo "::error::On first run before any retrieval image is published,"
+              echo "::error::publish tier-b-retrieval-v0.0.0-rc1 from the operator"
+              echo "::error::repo first, then set the CI_RETRIEVAL_IMAGE repo variable"
+              echo "::error::(Settings → Variables → Actions) to its @sha256 digest."
+              exit 1
+          fi
+          echo "image=${IMAGE}" >> "$GITHUB_OUTPUT"
+
+      - name: Patch docker-compose for CI
+        env:
+          RESOLVED_IMAGE: ${{ steps.resolve_image.outputs.image }}
+        run: |
+          # Replace retrieval-server image line with the resolved image.
+          python3 - <<PYEOF
+          import re, pathlib
+          p = pathlib.Path("docker-compose.yml")
+          s = p.read_text()
+          s = re.sub(
+              r"image:\s*ghcr\.io/[^/\s]+/community-brain-retrieval@sha256:[A-Za-z0-9_]+",
+              f"image: ${RESOLVED_IMAGE}",
+              s,
+          )
+          # OWUI: any known stable tag for CI; not exercising alembic depth here.
+          s = re.sub(
+              r"image:\s*ghcr\.io/open-webui/open-webui@sha256:[A-Za-z0-9_]+",
+              "image: ghcr.io/open-webui/open-webui:main",
+              s,
+          )
+          p.write_text(s)
+          PYEOF
+
           # Use host networking so retrieval-server can reach mock-ollama on 127.0.0.1.
-          # (docker compose port mapping wouldn't be visible to the container otherwise.)
-          # Quick override via env:
           echo "OLLAMA_BASE_URL=http://127.0.0.1:11434" >> .env
 
       - name: docker compose up
         run: |
-          docker compose pull || true   # tolerate :latest-not-yet-published
+          docker compose pull
           docker compose up -d
           sleep 5
           docker compose ps
@@ -3452,38 +3603,71 @@ schema-version mismatches, route-shape regressions."
 
 ### Milestone 3 Checkpoint
 
+This milestone defines all the distribution-repo files. **Live CI cannot pass yet** — the retrieval-server image hasn't been published. CI is expected to be exercised for the first time in Milestone 4 after Task 23 publishes the bootstrap RC image. Tasks here are complete when the FILES exist and parse correctly, not when CI is green on a PR.
+
+- [ ] **Validate workflow YAML parses:**
+
+```bash
+cd ../community-brain-distribution
+python3 -c "import yaml; yaml.safe_load(open('.github/workflows/verify-on-pr.yml'))"
+```
+
+Expected: no errors.
+
+- [ ] **Validate compose YAML parses:**
+
+```bash
+docker compose -f docker-compose.yml config --quiet
+```
+
+Expected: parses without errors (placeholder image strings are syntactically fine until pulled).
+
+- [ ] **Local smoke install from the distribution repo (uses local fixture; no remote image needed):**
+
+To run a true smoke install locally before the first published image, build a throwaway retrieval-server image from the operator-repo source and patch compose to use it:
+
+```bash
+# Build a local retrieval-server image from the operator-repo source.
+cd /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/community-brain
+docker build -t community-brain-retrieval:local .
+cd /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/../community-brain-distribution
+
+# Stage the fixture corpus and a CI-style .env.
+cp -r tests/fixtures/corpus ./corpus
+cat > .env <<EOF
+OLLAMA_BASE_URL=http://host.docker.internal:11434
+WEBUI_SECRET_KEY=$(openssl rand -hex 32)
+INFERENCE_LOCAL_MODEL=gpt-oss:20b
+EOF
+
+# Patch compose temporarily to use the local image (do NOT commit this edit).
+sed -i.bak 's|image: ghcr.io/[^/]*/community-brain-retrieval@sha256:[A-Za-z0-9_]*|image: community-brain-retrieval:local|' docker-compose.yml
+sed -i.bak 's|image: ghcr.io/open-webui/open-webui@sha256:[A-Za-z0-9_]*|image: ghcr.io/open-webui/open-webui:main|' docker-compose.yml
+
+docker compose up -d
+sleep 5
+./verify-install.sh --post-install
+docker compose down -v
+
+# Restore compose + clean up.
+mv docker-compose.yml.bak docker-compose.yml
+rm -rf ./corpus .env
+```
+
+Expected: all `verify-install.sh --post-install` checks pass.
+
 - [ ] **Push the distribution repo to GitHub:**
 
 Manual operator step:
 1. Create the public repo `community-brain-distribution` on GitHub (operator's account or org).
 2. `cd ../community-brain-distribution && git remote add origin <url> && git push -u origin main`.
+3. Do NOT open a PR yet — CI will fail until M4 Task 23 publishes the first retrieval-server image.
 
-- [ ] **Confirm CI runs:**
+- [ ] **Bootstrap-sequence note for the next milestone:** the very first CI run on this repo happens AFTER M4 Task 23 (image release). Once the bootstrap RC image is published, operator either:
+  - Sets repo variable `CI_RETRIEVAL_IMAGE` to the image's `@sha256` digest (Settings → Variables → Actions), or
+  - Confirms `:latest` resolves to the published image.
 
-Open a PR with a trivial change (e.g., README typo) to trigger `verify-on-pr.yml`. Expected: smoke install succeeds, route-shape checks pass, all-green.
-
-If the workflow fails, inspect the logs. Common issues:
-- The retrieval-server image isn't published yet (CI is using `:latest` which doesn't exist). Tag and push the operator-repo's first `tier-b-retrieval-v0.0.0-rc1` to publish a real image first.
-- OWUI's `:main` tag changed shape in a way that breaks alembic. Pin a known-good SHA in the CI override step.
-
-- [ ] **Local smoke install from the distribution repo (manual):**
-
-```bash
-cd ../community-brain-distribution
-cp -r tests/fixtures/corpus ./corpus    # fake the download
-echo "OLLAMA_BASE_URL=http://host.docker.internal:11434" > .env
-echo "WEBUI_SECRET_KEY=$(openssl rand -hex 32)" >> .env
-echo "INFERENCE_LOCAL_MODEL=gpt-oss:20b" >> .env
-docker compose up -d
-sleep 5
-./verify-install.sh --post-install
-docker compose down -v
-rm -rf ./corpus .env
-```
-
-Expected: all checks pass.
-
-Milestone 3 done. The distribution repo exists, CI passes, the fixture-based install works end-to-end.
+Milestone 3 done at the file-definition level. Live CI verification is deferred to Milestone 4.
 
 ---
 
