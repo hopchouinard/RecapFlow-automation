@@ -93,7 +93,8 @@ Implications:
 │  INSTALL.md                   ← Rigorous runbook             │
 │  verify-install.sh            ← Verification harness         │
 │  docker-compose.yml           ← SHA-pinned                   │
-│  .env.example                 ← All overrides commented out  │
+│  .env.example                 ← Required placeholders +      │
+│                                  commented optional overrides│
 │  community_brain_filter.py    ← Auto-synced from operator    │
 │  inference-guidelines.md      ← Auto-synced; for OWUI paste  │
 │  download-corpus.sh           ← Fetches LanceDB from Release │
@@ -417,11 +418,12 @@ If clean-v3 verification fails (e.g., a stray legacy v2 FTS index survived compa
 
 `download-corpus.sh` behavior:
 1. Reads `CORPUS_VERSION` and `EXPECTED_SHA256` constants from the top of itself (the script is the version anchor).
-2. Fetches the tarball + sha256sum.txt + manifest.json from the corresponding GitHub Release.
-3. Verifies SHA-256 against `EXPECTED_SHA256` (uses `sha256sum` on Linux, `shasum -a 256` on macOS — the script detects which is available). Refuses to extract on mismatch.
-4. Moves any existing `./corpus/` to `./corpus.previous/` (one rollback level kept).
-5. Extracts the tarball into `./corpus/`.
-6. Writes the fetched `corpus-manifest.json` to `./corpus/corpus-manifest.json` (verification harness and other scripts read it from this path).
+2. **Idempotency short-circuit:** if `./corpus/corpus-manifest.json` already exists and its `corpus_version` matches `CORPUS_VERSION`, log "corpus already at vX.Y.Z, skipping" and exit 0. Re-running the script is safe.
+3. Fetches the tarball + sha256sum.txt + manifest.json from the corresponding GitHub Release.
+4. Verifies SHA-256 against `EXPECTED_SHA256` (uses `sha256sum` on Linux, `shasum -a 256` on macOS — the script detects which is available). Refuses to extract on mismatch.
+5. **Rollback rotation:** if `./corpus.previous/` exists, delete it (`rm -rf`) — only one rollback level is kept. Then move `./corpus/` (if present) to `./corpus.previous/`.
+6. Extracts the tarball into `./corpus/`.
+7. Writes the fetched `corpus-manifest.json` to `./corpus/corpus-manifest.json` (verification harness and other scripts read it from this path).
 
 ### 5.6 Read-only mount precondition
 
@@ -510,9 +512,16 @@ The release-time `verify_corpus_clean_v3` CLI is the gate that prevents a corpus
 ## 8. Configure Open WebUI (GUI walkthrough)
    - Open `http://127.0.0.1:3000` in browser
    - Create admin account (first user becomes admin)
-   - Add inference connection:
-     - Local mode: confirm Ollama auto-discovered
-     - Cloud mode: paste OPENAI_API_BASE_URL + key into Connections panel
+   - Verify inference connection (auto-configured from .env via env_file):
+     - Local mode: Settings → Connections → Ollama section should show the Ollama
+       endpoint already populated from OLLAMA_BASE_URL. Confirm the connection
+       reports as available.
+     - Cloud mode: Settings → Connections → OpenAI section should show the endpoint
+       and a redacted API key already populated from OPENAI_API_BASE_URL and
+       OPENAI_API_KEY. Confirm the connection reports as available.
+     - In both modes: you do NOT paste credentials in the GUI — they came in via
+       .env. If a connection is missing, return to Step 5 and verify the .env
+       block for your chosen mode is uncommented and filled.
    - Create custom model "community-brain":
      - Base model: gpt-oss:20b (local) or your chosen cloud model
      - Paste system prompt from `inference-guidelines.md` into the model's system-prompt field
@@ -765,7 +774,7 @@ Explicit list, so future maintenance doesn't accidentally drift into scope creep
 - **No "bring your own corpus"** — recipients get the operator's curated set, period (v1.1 candidate: personal-notes side-table).
 - **No mobile UI** — desktop browser only; mobile is "use a mobile browser, no native support."
 - **No corpus delta updates** — every corpus release is a full tarball, not a diff. Acceptable while compacted size is <2 GB.
-- **No DRM / access control on the corpus blob** — recipients are trusted (participants); operator accepts that copies may circulate.
+- **No DRM / access control on the corpus blob** — distribution is genuinely public per §1.3; the blob URL appears in public docs, anyone can fetch, operator accepts circulation beyond the original community.
 
 ---
 
