@@ -17,7 +17,7 @@ Spec: docs/superpowers/specs/2026-04-29-retrieval-v3-and-stage-c-v2-design.md §
 """
 from __future__ import annotations
 
-from community_brain.query.fts_lifecycle import ensure_fts_index
+from community_brain.query.fts_lifecycle import ensure_fts_index, has_fts_index
 
 
 class CorpusInvalidError(Exception):
@@ -53,3 +53,38 @@ def verify_corpus_v3_state(table) -> None:
             f"chunks table has bm25_text column but FTS index cannot be "
             f"ensured: {exc}. Operator action required."
         ) from exc
+
+
+def verify_corpus_v3_state_readonly(table) -> None:
+    """Read-only variant of verify_corpus_v3_state for distribution mode.
+
+    Performs the same structural checks (bm25_text column present, FTS index
+    on bm25_text exists) but does NOT attempt to create the index if it's
+    missing. Used in distribution-mode startup against an RO-mounted corpus.
+
+    Reuses fts_lifecycle.has_fts_index for FTS detection — that helper is
+    case-insensitive against LanceDB's "FTS" vs "Inverted" naming variance.
+    Re-implementing the parsing here would produce asymmetric behavior:
+    operator mode (which ultimately calls has_fts_index via ensure_fts_index)
+    would accept a corpus that readonly mode rejected.
+
+    Raises:
+        CorpusInvalidError: if bm25_text column missing OR FTS index absent.
+            The shipped corpus is malformed in this case; recipient should
+            re-fetch via download-corpus.sh or report to operator.
+    """
+    schema_names = set(table.schema.names)
+    if "bm25_text" not in schema_names:
+        raise CorpusInvalidError(
+            "chunks table is pre-v1.1 (no bm25_text column). v3 server "
+            "cannot serve this corpus. The shipped corpus is malformed; "
+            "re-fetch via ./download-corpus.sh, or report to operator."
+        )
+
+    if not has_fts_index(table, "bm25_text"):
+        raise CorpusInvalidError(
+            "chunks table has bm25_text column but no FTS index on it. "
+            "The shipped corpus is malformed (release pipeline failed to "
+            "build the FTS index before tarballing). Re-fetch via "
+            "./download-corpus.sh, or report to operator."
+        )
