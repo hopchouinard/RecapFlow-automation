@@ -174,7 +174,7 @@ The operator image (used in operator-tier deployment) keeps the env var unset an
 | `INSTALL.md` | Hand-written | Operator (updated per release) | Rigorous step-by-step install runbook |
 | `verify-install.sh` | Hand-written | Operator | Bash verification harness; idempotent per-step checks |
 | `docker-compose.yml` | Hand-written, SHA-bumped by CI | Mixed (Flow A bumps SHAs; humans edit structure) | Stack definition with pinned image digests |
-| `.env.example` | Hand-written | Operator (per release when keys change) | Configurable knobs, all overrides commented |
+| `.env.example` | Hand-written | Operator (per release when keys change) | Required active placeholders (recipient fills in) + commented optional overrides; see §8.2 |
 | `community_brain_filter.py` | Auto-synced from operator repo | CI (`sync-curated-files.yml`) | Open WebUI filter; uploaded to OWUI as single file |
 | `inference-guidelines.md` | Auto-synced from operator repo | CI | System prompt to paste into OWUI custom model |
 | `download-corpus.sh` | Hand-written | Operator (rare updates); CORPUS_VERSION bumped by Flow B | Fetches + verifies LanceDB tarball |
@@ -815,7 +815,7 @@ Resolved during spec review (no longer open):
 - ~~Compaction "never modifies prod" claim~~ — corrected to filesystem-snapshot-first recipe (§5.4)
 - ~~Windows support depth~~ — WSL2 only (§1.4, §6.2 Step 0)
 - ~~CI smoke install with real Ollama~~ — fixture corpus + mocked embedding endpoint (§7.4)
-- ~~`.env.example` shape~~ — all values commented out, every mode opt-in (§8.2)
+- ~~`.env.example` shape~~ — required placeholders active; optional overrides and inference blocks opt-in (§8.2)
 - ~~OWUI validation expecting global corpus inventory~~ — split into server-side `/sessions` check + filter per-query summary check (§6.2 Step 9)
 
 ---
