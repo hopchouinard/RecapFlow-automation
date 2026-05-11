@@ -111,7 +111,7 @@ Implications:
 │  ─────────────────                                           │
 │  Docker (Desktop or CE)                                      │
 │  Ollama                                                      │
-│    nomic-embed-text:v1.5  ← mandatory                        │
+│    nomic-embed-text       ← mandatory (Ollama default tag)   │
 │    gpt-oss:20b            ← optional (local-LLM mode)        │
 │  Compose stack:                                              │
 │    retrieval-server  127.0.0.1:8999  (read-only)             │
@@ -215,11 +215,16 @@ services:
 
   open-webui:
     image: ghcr.io/open-webui/open-webui@sha256:def456...   # vanilla OWUI, SHA-pinned
+    # env_file: pass .env contents directly into the container. This lets
+    # recipients leave optional cloud-LLM vars (OPENAI_API_BASE_URL,
+    # OPENAI_API_KEY) commented out without compose injecting them as empty
+    # strings. Open WebUI persists env values into its DB on first run, so
+    # an empty string would clobber sensible defaults.
+    env_file:
+      - .env
     environment:
-      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL}
-      OPENAI_API_BASE_URL: ${OPENAI_API_BASE_URL:-}
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
-      WEBUI_SECRET_KEY: ${WEBUI_SECRET_KEY}
+      # Only the truly-required values are forced from the shell environment.
+      WEBUI_SECRET_KEY: ${WEBUI_SECRET_KEY:?WEBUI_SECRET_KEY must be set in .env}
     volumes:
       - open-webui-data:/app/backend/data
     ports:
@@ -277,16 +282,22 @@ If a `retrieval-server` release ships a LanceDB schema change (i.e., the new ima
 {
   "status": "ok",
   "server_version": "0.3.0",
-  "schema_version": "v1.1",
+  "schema_version": "1.1",
   "embedding_model": "nomic-embed-text",
   "distribution_mode": true
 }
 ```
 
+**Field sources (canonical):**
+- `server_version`: resolved via `importlib.metadata.version("community-brain")` at request time. Sourced from `pyproject.toml`'s `version` field. The hardcoded `0.2.0` currently in `retrieval_server.py:141` (`FastAPI(... version="0.2.0")`) and the `0.1.0` in `pyproject.toml` must be reconciled into a single source as part of v1 implementation; pick `pyproject.toml` as authoritative and have FastAPI's `version=` read from `importlib.metadata`.
+- `schema_version`: `community_brain.ingestion.schema.SCHEMA_VERSION` (currently `"1.1"`, bare numeric — no `v` prefix; matches the existing constant).
+- `embedding_model`: `community_brain.ingestion.embedding._active_embed_model()` (resolves `COMMUNITY_BRAIN_EMBED_MODEL` env or default `"nomic-embed-text"`).
+- `distribution_mode`: literal `True` when `COMMUNITY_BRAIN_DISTRIBUTION_MODE=true` env is set, else `False`.
+
 Enforcement mechanisms:
-- The corpus tarball's `corpus-manifest.json` declares the schema version + embedding model that produced it.
+- The corpus tarball's `corpus-manifest.json` declares the schema version + embedding model that produced it (same bare-numeric format: `"schema_version": "1.1"`).
 - `/health` exposes the server's expected schema version + active embedding model at runtime.
-- `verify-install.sh` cross-checks `/health` against the manifest before letting the recipient declare the install green; mismatch surfaces a clear "your corpus is schema vN.X, your server expects vN.Y — fetch a newer corpus" message.
+- `verify-install.sh` cross-checks `/health` against the manifest before letting the recipient declare the install green; mismatch surfaces a clear "your corpus is schema 1.X, your server expects 1.Y — fetch a newer corpus" message.
 
 Operator-side: never tag a new retrieval-server release for distribution without confirming the corpus is consistent. The release-rehearsal step (§11) catches this if missed.
 
@@ -343,19 +354,31 @@ Rationale:
 2. **Size hygiene:** 4 GB of history is dead weight for recipients who have no way to time-travel into it.
 3. **Read-only mount safety (§5.6):** the published corpus must be in clean v3 state so server startup doesn't need to mutate anything. Compaction is what produces that clean state.
 
-**Safe sequence — filesystem snapshot BEFORE any LanceDB call.** Earlier draft of this spec described a sequence that called `optimize_files()` and `cleanup_old_versions()` on the live database and claimed "prod is never modified." That was wrong — those methods mutate the table they're called on. Corrected recipe:
+**Safe sequence — pause writers, filesystem-snapshot, then operate on the copy.** Two concerns combined: (a) `optimize_files()` and `cleanup_old_versions()` mutate the table they're called on, so we must operate on a copy; (b) the source LanceDB is being written to by the running operator-tier `retrieval-server` (via `/ingest` from n8n workflows), so a naive rsync can capture torn state mid-transaction. The existing `scripts/snapshot-vm.sh:52` already establishes the pattern: pause the retrieval-server container around the copy. This script inherits it.
 
 ```bash
-# scripts/release-corpus.sh — runs on the VM (or via SSH from operator workstation)
+# scripts/release-corpus.sh — runs on the VM (or via SSH from operator workstation).
+# Pauses the operator-tier retrieval-server briefly to guarantee LanceDB
+# consistency during the copy. Pause window scales with corpus size:
+# at current 5 GB raw, rsync over local SSD takes ~2-5 min.
 
-# Step 1: filesystem snapshot the live LanceDB to a fresh path.
-#   This is read-only on the source — rsync/cp never opens LanceDB programmatically.
+set -euo pipefail
+
 STAGING=/tmp/corpus-staging-vX.Y.Z
-rm -rf "$STAGING"
-mkdir -p "$STAGING/lancedb/nomic-v1"
-rsync -a /home/<operator>/n8n/community-brain/lancedb/nomic-v1/ "$STAGING/lancedb/nomic-v1/"
+SOURCE=/home/<operator>/n8n/community-brain/lancedb
+COMPOSE_DIR=/home/<operator>/n8n
 
-# Step 2: compact the COPY. Source is never touched by lancedb code.
+# Step 1: pause writers around the filesystem snapshot.
+rm -rf "$STAGING"
+mkdir -p "$STAGING/lancedb"
+cd "$COMPOSE_DIR"
+docker compose pause retrieval-server
+trap 'docker compose --project-directory "$COMPOSE_DIR" unpause retrieval-server || true' EXIT
+rsync -a "$SOURCE/" "$STAGING/lancedb/"
+docker compose unpause retrieval-server
+trap - EXIT
+
+# Step 2: compact the COPY. Source is never opened by lancedb code.
 python3 - <<'PYEOF'
 import lancedb
 from datetime import timedelta
@@ -365,9 +388,9 @@ table.optimize()                                            # compact_files()
 table.cleanup_old_versions(older_than=timedelta(seconds=0)) # drop _versions/
 PYEOF
 
-# Step 3: assert clean v3 state on the compacted copy (no legacy v2 FTS index).
-#   Reuses the existing community_brain.query.corpus_verify module.
-python3 -m community_brain.cli.verify_corpus_clean_v3 "$STAGING/lancedb/nomic-v1"
+# Step 3: assert clean v3 state on the compacted copy.
+python3 -m community_brain.cli.verify_corpus_clean_v3 \
+    "$STAGING/lancedb/nomic-v1"
 
 # Step 4: tarball + hash + manifest.
 cd /tmp
@@ -377,7 +400,12 @@ python3 -m community_brain.cli.write_corpus_manifest \
     --staging "$STAGING" --out corpus-manifest.json --version vX.Y.Z
 ```
 
-The live LanceDB directory is touched ONLY by rsync (which is a read of source bytes, not a LanceDB API call). All mutating LanceDB operations happen on the staging copy. The script verifies clean v3 state after compaction; if verification fails (e.g., a stray v2 FTS index survived), the release aborts before tarballing.
+Three invariants this enforces:
+1. **Pause window bounded by rsync time.** At current 5 GB raw on local SSD: ~2-5 min. Linear in corpus size. Operator schedules releases during expected-idle windows (e.g., not while a coaching call is being ingested).
+2. **`trap` ensures unpause on failure.** If rsync fails or is killed, the trap restores writer availability before exit. Same pattern as `snapshot-vm.sh`.
+3. **Source LanceDB never opened by lancedb code.** Only rsync (raw file reads) touches the source. All mutating LanceDB API calls happen on the staging copy.
+
+If clean-v3 verification fails (e.g., a stray legacy v2 FTS index survived compaction), the release aborts before tarballing — the published corpus is never one that wouldn't satisfy the §5.6 RO-mount precondition.
 
 `scripts/release-corpus.sh` lives in the operator repo, not the `community-brain` Python package. The supporting CLIs (`verify_corpus_clean_v3`, `write_corpus_manifest`) are new entries in `community-brain/src/community_brain/cli/` and are part of the implementation scope.
 
@@ -390,8 +418,10 @@ The live LanceDB directory is touched ONLY by rsync (which is a read of source b
 `download-corpus.sh` behavior:
 1. Reads `CORPUS_VERSION` and `EXPECTED_SHA256` constants from the top of itself (the script is the version anchor).
 2. Fetches the tarball + sha256sum.txt + manifest.json from the corresponding GitHub Release.
-3. Verifies SHA-256 against `EXPECTED_SHA256`. Refuses to extract on mismatch.
-4. Extracts into `./corpus/`. Existing `./corpus/` is moved to `./corpus.previous/` before extraction (one rollback level kept).
+3. Verifies SHA-256 against `EXPECTED_SHA256` (uses `sha256sum` on Linux, `shasum -a 256` on macOS — the script detects which is available). Refuses to extract on mismatch.
+4. Moves any existing `./corpus/` to `./corpus.previous/` (one rollback level kept).
+5. Extracts the tarball into `./corpus/`.
+6. Writes the fetched `corpus-manifest.json` to `./corpus/corpus-manifest.json` (verification harness and other scripts read it from this path).
 
 ### 5.6 Read-only mount precondition
 
@@ -401,7 +431,15 @@ The compose stack mounts `./corpus:/data:ro`. This is safe only if the published
 - No partial transaction state
 - Schema version matches the latest production schema
 
-Server startup calls `verify_corpus_v3_state` (read-only) and `drop_full_text_index_if_present` (mutating but no-op on clean state). If the precondition holds, the mutating call has no work to do and the RO mount works. If the precondition is violated, the mutating call would error against an RO filesystem — but that error indicates a release-pipeline bug, not a recipient problem. The release-time `verify_corpus_clean_v3` CLI is the gate that prevents this.
+**Current `verify_corpus_v3_state` is NOT pure read-only.** `community_brain.query.corpus_verify:50` calls `ensure_fts_index(...)`, which will create the FTS index if it's missing — a mutation. In operator mode this is fine (the table is RW); in distribution mode against an RO mount, it would error.
+
+**Implementation contract for v1:**
+- Add `community_brain.query.corpus_verify.verify_corpus_v3_state_readonly(table) -> None` that performs the structural check (`bm25_text` column present) AND asserts the FTS index already exists, but does NOT attempt to create it. If the index is missing, raise `CorpusInvalidError` with a clear "shipped corpus is malformed — re-fetch via `./download-corpus.sh` or report the issue to the operator" message.
+- In `retrieval_server.py` startup, branch on `COMMUNITY_BRAIN_DISTRIBUTION_MODE`:
+  - Distribution mode → call `verify_corpus_v3_state_readonly`; skip `drop_full_text_index_if_present` (also mutating).
+  - Operator mode → existing behavior (`verify_corpus_v3_state` which can repair, plus best-effort legacy-index cleanup).
+
+The release-time `verify_corpus_clean_v3` CLI is the gate that prevents a corpus from being published without the FTS index already built, so the distribution-mode readonly check should always pass on a corpus produced by the §5.4 recipe.
 
 ---
 
@@ -421,7 +459,12 @@ Server startup calls `verify_corpus_v3_state` (read-only) and `drop_full_text_in
 
 ## 0. Before You Start
    - Hardware: ≥8 GB RAM minimum; ≥24 GB unified memory if you plan local-LLM mode
-   - Software prereqs: git, Docker (Desktop or CE), Ollama
+   - Software prereqs (all platforms):
+     * `git` (any modern version)
+     * `docker` + `docker compose` v2 (Docker Desktop or CE)
+     * `ollama` (installed natively on macOS/Linux, or inside Ubuntu WSL on Windows)
+     * `curl`, `tar`, `jq`, `openssl` — usually preinstalled on macOS/Linux; install via apt on WSL
+     * SHA256 tool: `sha256sum` (Linux/WSL) or `shasum -a 256` (macOS); scripts auto-detect
    - **Windows users:** install Docker Desktop + WSL2 + Ubuntu, and run every command in this guide
      from an Ubuntu WSL2 shell. The distribution ships Bash-shaped tooling; native Windows
      (PowerShell, Git Bash) is unsupported in v1.
@@ -574,18 +617,22 @@ Real-Ollama integration is NOT covered by CI; it's covered by the operator's man
 
 Ollama is always required because the corpus is pre-embedded with `nomic-embed-text` (Ollama's default tag, no `:v1.5` suffix) and query embeddings must match at lookup time. The exact model identifier passed to Ollama at query time is whatever is in `COMMUNITY_BRAIN_EMBED_MODEL` (default `nomic-embed-text`); the corpus manifest declares the model used at ingestion time, and `verify-install.sh` enforces they match.
 
-### 8.2 `.env.example` shape (all overrides commented out)
+### 8.2 `.env.example` shape
+
+Two categories of variables, two disciplines:
+
+- **Required (active placeholders).** Values the recipient MUST set for the stack to start. Active in `.env.example` as `KEY=` with no value (or a recipe to generate one). The recipient fills these in. `compose up` fails fast if any required key is unset — see `WEBUI_SECRET_KEY: ${WEBUI_SECRET_KEY:?...}` in §3.3.
+- **Optional (commented overrides).** Image-default-acceptable values, present only to document that they exist. Recipient uncomments and sets only if overriding the default. Empty-string-clobber footgun is avoided because compose reads them via `env_file:` directive — commented lines simply don't appear in the container env, and image defaults apply.
 
 ```bash
 # ============================================================
-# Always required — uncomment and set:
+# Required — fill in before `docker compose up`.
 # ============================================================
 OLLAMA_BASE_URL=http://host.docker.internal:11434
-WEBUI_SECRET_KEY=  # generate with: openssl rand -hex 32
+WEBUI_SECRET_KEY=                 # generate with: openssl rand -hex 32
 
 # ============================================================
-# Optional — overrides for image defaults. Leave commented to
-# accept the value baked into the published image.
+# Optional — uncomment ONLY if overriding image defaults.
 # ============================================================
 # COMMUNITY_BRAIN_EMBED_MODEL=nomic-embed-text
 
@@ -604,9 +651,7 @@ WEBUI_SECRET_KEY=  # generate with: openssl rand -hex 32
 # INFERENCE_CLOUD_MODEL=anthropic/claude-sonnet-4.6
 ```
 
-Every value is either left commented (image default applies) or set by the recipient. No active values are pre-populated. This matches the operator-tier `.env.example` discipline (empty-string env vars clobber Dockerfile defaults; commented-out values fall through).
-
-Compose passes the relevant env vars into Open WebUI. OWUI natively supports both backends; no custom adapter needed.
+Required values are active because the recipient cannot avoid setting them; commenting them out would just produce a less-obvious failure mode. Optional values are commented because leaving them empty in compose would clobber sensible Open WebUI defaults (see §3.3 `env_file:` note). The `verify-install.sh --step 5` check enforces that required values are set and exactly one inference block is active.
 
 ### 8.3 Open WebUI custom model
 
@@ -668,7 +713,7 @@ Operator commits to: no breaking changes inside a major version. If a breaking c
 | Attacker writes to corpus | `/ingest` route | Routes physically removed in distribution-mode build |
 | Recipient leaks their inference API key | `.env` committed to git | `.env` is in `.gitignore` from the start; `.env.example` is the template |
 | Operator sees recipient queries | Phone-home | None exists; no telemetry; no version-check ping |
-| Adversarial recipient redistributes corpus | Corpus blob is unprotected | Accepted: recipients are participants; corpus already in their hands |
+| Anyone redistributes the corpus blob | Public Release asset, no DRM | Accepted by design: §1.3 commits to genuinely public distribution; copies circulating beyond the original community is expected, not an exception |
 | Stale corpus + new server image | Schema mismatch | verify-install.sh checks compatibility; refuses to start on mismatch |
 
 ### 10.2 Auth surfaces
@@ -773,8 +818,11 @@ This spec hands off to a `writing-plans` session to produce the implementation p
 **Server-side changes (in `community-brain/` Python package):**
 - Distribution-mode gating in `community_brain.query.retrieval_server` (skip `/ingest` + `/reindex` route registration when `COMMUNITY_BRAIN_DISTRIBUTION_MODE=true`)
 - Extended `/health` returning `status`, `server_version`, `schema_version`, `embedding_model`, `distribution_mode`
+- Reconcile version source of truth: have FastAPI `version=` read from `importlib.metadata.version("community-brain")` instead of hardcoded `"0.2.0"`; bump `pyproject.toml` version to match the next release tag; `/health.server_version` reads from the same source
+- Distribution-mode startup branch: in lifespan, call new `verify_corpus_v3_state_readonly` (read-only check; raises `CorpusInvalidError` if FTS index missing instead of trying to create it); skip `drop_full_text_index_if_present` (mutating)
+- New function: `community_brain.query.corpus_verify.verify_corpus_v3_state_readonly(table) -> None` — pure read-only structural + index-presence check
 - Route-shape test asserting absence of `/ingest` and `/reindex` and presence of the five distribution-mode routes when the env var is set
-- New CLI: `community_brain.cli.verify_corpus_clean_v3` (asserts FTS index built, no legacy v2 index, no partial transactions)
+- New CLI: `community_brain.cli.verify_corpus_clean_v3` (asserts FTS index built, no legacy v2 index, no partial transactions — used by release pipeline)
 - New CLI: `community_brain.cli.write_corpus_manifest` (emits `corpus-manifest.json` from a LanceDB path)
 
 **Operator-side scripts (in operator repo `scripts/`):**
