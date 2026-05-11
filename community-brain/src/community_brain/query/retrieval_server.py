@@ -290,7 +290,29 @@ DERIVED_FIELDS = (
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    """Health probe + version metadata.
+
+    Returns server identity (version, schema version, embedding model,
+    distribution mode flag). Used by verify-install.sh in Tier B
+    distribution to cross-check the running server against the
+    corpus-manifest.json shipped with the corpus blob.
+    """
+    from community_brain.ingestion.embedding import _active_embed_model
+    from community_brain.ingestion.schema import SCHEMA_VERSION
+
+    return {
+        "status": "ok",
+        "server_version": _APP_VERSION,
+        "schema_version": SCHEMA_VERSION,
+        "embedding_model": _active_embed_model(),
+        # COMMUNITY_BRAIN_DISTRIBUTION_MODE: accepts case-insensitive "true"
+        # only. "1", "yes", "on", and similar truthy-looking strings are
+        # NOT recognized. Operator scripts (verify-install.sh, compose) must
+        # use the literal string "true".
+        "distribution_mode": (
+            os.environ.get("COMMUNITY_BRAIN_DISTRIBUTION_MODE", "").lower() == "true"
+        ),
+    }
 
 
 @app.get("/speaker-aliases-block", response_class=PlainTextResponse)
