@@ -383,7 +383,10 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
         db = lancedb.connect(db_path)
         if "chunks" in db.list_tables().tables:
             _table = db.open_table("chunks")
-            verify_corpus_v3_state(_table)
+            if DISTRIBUTION_MODE:
+                verify_corpus_v3_state_readonly(_table)
+            else:
+                verify_corpus_v3_state(_table)
     except CorpusInvalidError as exc:
         raise HTTPException(
             status_code=503,

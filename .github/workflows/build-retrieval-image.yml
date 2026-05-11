@@ -81,7 +81,7 @@ jobs:
           # Match: image: ghcr.io/<owner>/community-brain-retrieval@sha256:...
           new_image = f"image: ghcr.io/{os.environ['OWNER']}/community-brain-retrieval@{os.environ['NEW_DIGEST']}"
           s = re.sub(
-              r"image:\s*ghcr\.io/[^/]+/community-brain-retrieval@sha256:[a-f0-9]+",
+              r"image:\s*ghcr\.io/[^/]+/community-brain-retrieval@sha256:\S+",
               new_image,
               s,
           )
