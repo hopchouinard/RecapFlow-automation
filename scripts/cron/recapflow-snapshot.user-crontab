@@ -11,7 +11,11 @@
 #
 # Log: appended to ~/recapflow-backup/snapshot.log (rotate manually or via logrotate later).
 # Output: each run writes a new snapshot under ~/recapflow-backup/staging/<ISO-timestamp>/
-#         and updates the `latest` symlink. Snapshots older than 7 are pruned.
+#         and updates the `latest` symlink. Snapshots older than RETENTION (default 4) are pruned.
+#
+# Observability: each run also updates Prometheus textfile-collector metrics at
+# /var/lib/node_exporter/textfile/recapflow_snapshot{,_success}.prom — picked up
+# by node_exporter on :9100 and alerted on by the monitoring-stack Prometheus.
 #
 # Timing rationale vs. other crons in /etc/cron.d/:
 #   03:30 UTC — LanceDB snapshot (community-brain internal)
