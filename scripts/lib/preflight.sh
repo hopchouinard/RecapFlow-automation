@@ -44,6 +44,24 @@ preflight_check_volume_mounted() {
   return 0
 }
 
+preflight_require_free_space() {
+  # Args: path required_gb
+  # Fails if the filesystem containing <path> has less than <required_gb> GB free.
+  local path="$1"
+  local required_gb="$2"
+  local available_kb available_gb
+  if ! available_kb=$(df -P "${path}" 2>/dev/null | awk 'NR==2 {print $4}'); then
+    echo "ERROR: could not stat filesystem for ${path}" >&2
+    return 1
+  fi
+  available_gb=$((available_kb / 1024 / 1024))
+  if [ "${available_gb}" -lt "${required_gb}" ]; then
+    echo "ERROR: ${path} has ${available_gb}GB free; need ${required_gb}GB to proceed" >&2
+    return 1
+  fi
+  return 0
+}
+
 preflight_detect_os() {
   # Returns: ubuntu, debian, macos, or unknown
   case "$(uname)" in
