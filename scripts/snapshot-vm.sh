@@ -12,12 +12,22 @@
 #   REPO_ROOT    (default: directory containing this script's parent)
 #   RETENTION    (default: 4  — number of snapshots to keep)
 #   MIN_FREE_GB  (default: 10 — minimum free space required before snapshotting)
+#   METRICS_DIR  (default: /var/lib/node_exporter/textfile — Prometheus
+#                textfile-collector dir; metric emission is silently skipped
+#                if this dir is missing or unwritable)
 #
 # Failure handling:
 #   - Old snapshots beyond RETENTION are pruned at the START of every run, so
 #     repeated failures cannot starve disk space indefinitely.
 #   - On any failure (set -e), the EXIT trap unpauses the retrieval-server (if
 #     paused) and removes the partial staging dir — no zombie partials accrete.
+#
+# Observability:
+#   - Every run (success or failure) updates METRICS_DIR/recapflow_snapshot.prom
+#     with last_run_timestamp_seconds, last_exit_code, last_duration_seconds.
+#   - Successful runs additionally update METRICS_DIR/recapflow_snapshot_success.prom
+#     with last_success_timestamp_seconds. Prometheus scrapes both via the
+#     node_exporter textfile collector and alerts on stale success timestamps.
 
 set -euo pipefail
 
@@ -31,6 +41,9 @@ STAGING_ROOT="${STAGING_ROOT:-${HOME}/recapflow-backup/staging}"
 REPO_ROOT="${REPO_ROOT:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
 RETENTION="${RETENTION:-4}"
 MIN_FREE_GB="${MIN_FREE_GB:-10}"
+METRICS_DIR="${METRICS_DIR:-/var/lib/node_exporter/textfile}"
+METRICS_FILE="${METRICS_DIR}/recapflow_snapshot.prom"
+METRICS_SUCCESS_FILE="${METRICS_DIR}/recapflow_snapshot_success.prom"
 
 # Tracks whether retrieval-server is currently paused — cleanup() must unpause.
 PAUSED=0
@@ -39,9 +52,49 @@ PAUSED=0
 SUCCESS=0
 # Set by main() once the timestamp is known.
 STAGING_DIR=""
+# Epoch seconds at the start of main(); used by cleanup() to compute duration.
+START_TIME=0
 
 log() {
   echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] $*"
+}
+
+# Atomic write to METRICS_DIR. Best-effort: silently skip if the dir is missing
+# or unwritable so that monitoring infra absence never breaks the snapshot.
+write_metrics_file() {
+  local exit_code="$1"
+  local duration="$2"
+  local now
+  now=$(date +%s)
+  if [ ! -d "${METRICS_DIR}" ] || [ ! -w "${METRICS_DIR}" ]; then
+    return 0
+  fi
+  local tmp="${METRICS_FILE}.tmp.$$"
+  {
+    echo "# HELP recapflow_snapshot_last_run_timestamp_seconds Unix timestamp of the last attempted snapshot run."
+    echo "# TYPE recapflow_snapshot_last_run_timestamp_seconds gauge"
+    echo "recapflow_snapshot_last_run_timestamp_seconds ${now}"
+    echo "# HELP recapflow_snapshot_last_exit_code Exit code of the last snapshot run (0 = success)."
+    echo "# TYPE recapflow_snapshot_last_exit_code gauge"
+    echo "recapflow_snapshot_last_exit_code ${exit_code}"
+    echo "# HELP recapflow_snapshot_last_duration_seconds Duration in seconds of the last snapshot run."
+    echo "# TYPE recapflow_snapshot_last_duration_seconds gauge"
+    echo "recapflow_snapshot_last_duration_seconds ${duration}"
+  } > "${tmp}" 2>/dev/null && mv -f "${tmp}" "${METRICS_FILE}" 2>/dev/null || rm -f "${tmp}" 2>/dev/null || true
+}
+
+write_success_metric_file() {
+  local now
+  now=$(date +%s)
+  if [ ! -d "${METRICS_DIR}" ] || [ ! -w "${METRICS_DIR}" ]; then
+    return 0
+  fi
+  local tmp="${METRICS_SUCCESS_FILE}.tmp.$$"
+  {
+    echo "# HELP recapflow_snapshot_last_success_timestamp_seconds Unix timestamp of the last successful snapshot."
+    echo "# TYPE recapflow_snapshot_last_success_timestamp_seconds gauge"
+    echo "recapflow_snapshot_last_success_timestamp_seconds ${now}"
+  } > "${tmp}" 2>/dev/null && mv -f "${tmp}" "${METRICS_SUCCESS_FILE}" 2>/dev/null || rm -f "${tmp}" 2>/dev/null || true
 }
 
 cleanup() {
@@ -55,6 +108,11 @@ cleanup() {
     log "FAILED (exit ${exit_code}); removing partial snapshot: ${STAGING_DIR}"
     rm -rf "${STAGING_DIR}"
   fi
+  local duration=0
+  if [ "${START_TIME}" -gt 0 ]; then
+    duration=$(( $(date +%s) - START_TIME ))
+  fi
+  write_metrics_file "${exit_code}" "${duration}"
 }
 trap cleanup EXIT
 
@@ -86,6 +144,8 @@ prune_old_snapshots() {
 
 main() {
   preflight_require_not_root
+
+  START_TIME=$(date +%s)
 
   mkdir -p "${STAGING_ROOT}"
 
@@ -165,6 +225,7 @@ main() {
   ln -sfn "${timestamp}" "${STAGING_ROOT}/latest"
 
   log "snapshot complete: ${STAGING_DIR}"
+  write_success_metric_file
   SUCCESS=1
 }
 
