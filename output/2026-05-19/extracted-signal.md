@@ -84,7 +84,7 @@ Throughout the call, a recurring meta-discussion emerged around adversarial AI w
 - **Google Looker / Looker Studio** — Mitch demonstrated it as a dashboard/reporting layer over Google Sheets data
 - **Firebase** — Mentioned as a potential database upgrade path for Morgan's Google Workspace client
 - **Kling** — Video generation model mentioned by Mitch; noted for occasionally generating celebrity likenesses
-- **GPT Image 2 (GPT-2 image model)** — Praised by Ty and Mitch for high-quality realistic image generation
+- **GPT Image 2** — Praised by Ty and Mitch for high-quality realistic image generation
 - **Wavespeed** — API aggregator for image/video generation models (GPT Image 2, Gemini, etc.); has its own CLI
 - **OpenRouter** — Mitch's considered alternative to Wavespeed for model API access
 - **N8N / Zapier** — Mentioned briefly as agentic orchestration tools (Patrick asked if Juan used them)

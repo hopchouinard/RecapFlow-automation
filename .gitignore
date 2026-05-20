@@ -40,3 +40,6 @@ tests/.bats-cache/
 
 # Restore staging dir created by bootstrap.sh
 restore-staging/
+
+# VM backup snapshots (contains encryption key + encrypted credentials — never commit)
+backups/

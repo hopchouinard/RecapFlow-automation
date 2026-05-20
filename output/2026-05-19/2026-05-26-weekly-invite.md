@@ -17,7 +17,7 @@ The goal is simple: if you're taking the time to show up, you shouldn't have to 
 We’ve got open threads to explore: Patrick is preparing that adversarial review demonstration, Ty is meeting with hardware partners on the SwingTrack device (and has free ShipSafe access for the asking), and Juan is investigating a native iPhone port of the AI Photo Booth. If any of those projects spark questions—or if you’re navigating your own domain transition—drop them below.
 
 🔗 ZOOM LINK (save this)
-https://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1
+https://us06web.zoom.us/j/81995207847
 
 📅 WHEN
 Tuesday May 26th at 6PM ET
