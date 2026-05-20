@@ -78,3 +78,40 @@ teardown() {
   [ "$status" -eq 0 ]
   [ "$output" = "macos" ]
 }
+
+@test "preflight_require_free_space succeeds when filesystem has plenty of space" {
+  # 0 GB requirement always passes on a real filesystem.
+  run preflight_require_free_space "${TMPDIR_TEST}" 0
+  [ "$status" -eq 0 ]
+}
+
+@test "preflight_require_free_space fails when requirement exceeds available" {
+  # Require an absurdly large amount; no test filesystem has 999999 GB free.
+  run preflight_require_free_space "${TMPDIR_TEST}" 999999
+  [ "$status" -ne 0 ]
+  [[ "$output" =~ "need 999999GB" ]]
+}
+
+@test "preflight_require_free_space rejects empty required_gb" {
+  run preflight_require_free_space "${TMPDIR_TEST}" ""
+  [ "$status" -ne 0 ]
+  [[ "$output" =~ "must be a non-negative integer" ]]
+}
+
+@test "preflight_require_free_space rejects suffixed required_gb (10G)" {
+  run preflight_require_free_space "${TMPDIR_TEST}" "10G"
+  [ "$status" -ne 0 ]
+  [[ "$output" =~ "must be a non-negative integer" ]]
+}
+
+@test "preflight_require_free_space rejects decimal required_gb (10.5)" {
+  run preflight_require_free_space "${TMPDIR_TEST}" "10.5"
+  [ "$status" -ne 0 ]
+  [[ "$output" =~ "must be a non-negative integer" ]]
+}
+
+@test "preflight_require_free_space fails when path does not exist" {
+  run preflight_require_free_space "${TMPDIR_TEST}/does-not-exist" 1
+  [ "$status" -ne 0 ]
+  [[ "$output" =~ "could not stat filesystem" ]]
+}

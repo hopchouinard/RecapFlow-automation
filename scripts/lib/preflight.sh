@@ -47,8 +47,15 @@ preflight_check_volume_mounted() {
 preflight_require_free_space() {
   # Args: path required_gb
   # Fails if the filesystem containing <path> has less than <required_gb> GB free.
+  # required_gb must be a positive integer; non-integer input (empty, "10G",
+  # "10.5") fails fast with a clear message rather than tripping shell's
+  # opaque "integer expression expected" error under set -e.
   local path="$1"
   local required_gb="$2"
+  if ! [[ "${required_gb}" =~ ^[0-9]+$ ]]; then
+    echo "ERROR: required_gb must be a non-negative integer; got '${required_gb}'" >&2
+    return 1
+  fi
   local available_kb available_gb
   if ! available_kb=$(df -P "${path}" 2>/dev/null | awk 'NR==2 {print $4}'); then
     echo "ERROR: could not stat filesystem for ${path}" >&2

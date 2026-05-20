@@ -106,7 +106,9 @@ cleanup() {
   fi
   if [ "${SUCCESS}" -eq 0 ] && [ -n "${STAGING_DIR}" ] && [ -d "${STAGING_DIR}" ]; then
     log "FAILED (exit ${exit_code}); removing partial snapshot: ${STAGING_DIR}"
-    rm -rf "${STAGING_DIR}"
+    # Best-effort cleanup: a permission/IO error here must not abort the trap
+    # before write_metrics_file runs, otherwise the failure is invisible.
+    rm -rf "${STAGING_DIR}" || log "WARN: failed to remove ${STAGING_DIR}; continuing"
   fi
   local duration=0
   if [ "${START_TIME}" -gt 0 ]; then
