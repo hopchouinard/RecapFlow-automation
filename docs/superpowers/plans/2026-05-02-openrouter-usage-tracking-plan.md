@@ -67,11 +67,11 @@ Both writers (n8n Code+Postgres node pair + retrieval-server `call_llm` instrume
 |---|---|---|
 | Create | `scripts/sql/usage_tracking_schema.sql` | DDL for `openrouter_usage` table, indexes, `grafana_ro` user |
 | Create | `scripts/sql/usage_tracking_grants.sql` | Idempotent GRANT statements (separated for re-runnability) |
-| Create | `scripts/backfill-openrouter-usage.py` | One-shot import of historical OpenRouter activity into Postgres + JSONL |
+| Create | `scripts/backfill-openrouter-usage.py` | One-shot import of historical OpenRouter activity export / generation metadata into Postgres + JSONL |
 | Create | `scripts/postgres-test-grafana-access.sh` | Smoke test: connect from monitoring-stack as `grafana_ro`, run sample query |
-| Modify | `docker-compose.yml` | Add `./logs/` bind mount on `n8n` container; bind `n8n_db` Postgres port to VM's LAN IP |
+| Modify | `docker-compose.yml` | Add `./logs/` bind mount on `n8n` container; bind the `db` service / `n8n_db` container Postgres port to VM's LAN IP |
 | Modify | `.gitignore` | Exclude `logs/openrouter-usage-*.jsonl` (runtime data) |
-| Modify | `workflows/merged-call-summarizer.json` | Add Code + Postgres node pair after each of the 4 LLM calls |
+| Modify | `workflows/merged-call-summarizer.json` | Add side-branch Code + Postgres node pair for each Workflow 5 LLM call |
 | Modify | `community-brain/src/community_brain/llm.py` | Instrument `call_llm` to write usage records to Postgres + JSONL on every call |
 | Create | `community-brain/src/community_brain/usage_log.py` | New module: shared usage-record writer (Postgres + JSONL). Imported by `llm.py`. |
 | Create | `community-brain/tests/test_usage_log.py` | Unit tests for the writer (mock Postgres, tmp_path JSONL) |
@@ -128,22 +128,34 @@ Phases 3, 3b, and 4 are independent and can land in any order; everything else i
   - Top-level `tokenUsage` field (LangChain's wrapper name)
   - Nested `response.usage` or `usage` block
   - Total tokens, prompt tokens, completion tokens
-  - Cost field (may be absent unless `usage_include_cost` was set)
+  - Cost field (`usage.cost`, if n8n exposes the OpenRouter response payload)
   - Model name and provider
 
-  **If `tokenUsage` is present:** Code node can extract directly, no fallback needed.
-  **If `tokenUsage` is absent / stripped:** fall back to direct HTTP-Request-to-OpenRouter pattern with `usage: {include: true}` in the request body. (Workflow 5 is currently using ChainLLM, so this would be a structural change.)
+  **If `tokenUsage` / `usage` is present:** Code node can extract directly, no fallback needed.
+  **If usage is absent / stripped:** fall back to a direct HTTP-Request-to-OpenRouter pattern so the workflow can capture the raw response payload. Do not add deprecated `usage: {include: true}`; current OpenRouter usage details are included automatically when the response body is preserved.
 
-- [ ] **0.2 — Verify OpenRouter activity API is usable for backfill.**
+- [ ] **0.2 — Verify the OpenRouter historical backfill source.**
+  Do **not** assume `GET /api/v1/activity` exists or returns per-generation rows. Current OpenRouter docs expose:
+  - Live usage in chat completion responses (`response.usage`) automatically.
+  - Per-generation metadata via `GET /api/v1/generation?id=<generation_id>`.
+  - Activity exports from the OpenRouter web UI as CSV/PDF aggregate/detail exports.
+
+  First verify the actual backfill source available to this account:
   ```bash
+  # Confirm per-generation metadata shape for a known generation_id from a live call.
   curl -s -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-    "https://openrouter.ai/api/v1/activity" | jq '. | keys, .[0]'
+    -G "https://openrouter.ai/api/v1/generation" \
+    --data-urlencode "id=$OPENROUTER_GENERATION_ID" | jq '.data | keys'
   ```
-  Confirm: response has per-call records with `id`, `created_at`, `model`, `tokens_prompt`, `tokens_completion`, `total_cost`, `provider_name`. If structure differs, adjust the backfill script accordingly.
+
+  Backfill strategy:
+  - **If detailed Activity CSV export includes per-call rows with generation ids:** write the script to import the CSV, optionally enriching each row through `/api/v1/generation`.
+  - **If only aggregate exports are available:** backfill aggregate rows into a separate summary table or skip historical per-call backfill; do not fake per-call detail. Fake precision is worse than missing data, because dashboards then lie with confidence, the worst kind of lie.
+  - **If an account-specific per-call activity API exists after verification:** document the response shape here before using it.
 
 - [ ] **0.3 — Decide cost source-of-truth.**
   Two choices:
-  - **(Preferred)** Set `usage: {include: true}` in OpenRouter requests so each response carries `usage.cost` directly. Most accurate, no per-model price table to maintain.
+  - **(Preferred)** Use OpenRouter-provided usage data: live `response.usage.cost` for inline logging, and `/api/v1/generation` / verified export fields for historical rows. Current OpenRouter docs say usage is automatically included; `usage: {include: true}` is deprecated and should not be added as a magical incantation.
   - **(Fallback)** Maintain a static price table per model and compute `cost = prompt_tokens * input_price + completion_tokens * output_price`. Cheap to start but rots when OpenRouter changes prices.
 
   Lock in one approach for the rest of the plan. Default to (Preferred); switch only if it doesn't work with ChainLLM.
@@ -188,6 +200,9 @@ CREATE INDEX IF NOT EXISTS idx_openrouter_usage_workflow ON openrouter_usage (wo
 CREATE INDEX IF NOT EXISTS idx_openrouter_usage_execution ON openrouter_usage (execution_id);
 CREATE INDEX IF NOT EXISTS idx_openrouter_usage_session ON openrouter_usage (session_id);
 CREATE INDEX IF NOT EXISTS idx_openrouter_usage_node_name ON openrouter_usage (node_name);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_openrouter_usage_generation_id
+  ON openrouter_usage (generation_id)
+  WHERE generation_id IS NOT NULL;
 ```
 
 `workflow_id` / `session_id` are mutually exclusive in practice: n8n-side rows have `workflow_id` populated and `session_id` NULL (n8n doesn't always know the session_id at the LLM-call moment); server-side rows have `session_id` populated and `workflow_id` NULL. `node_name` is always populated and disambiguates the source type ("LLM: Prep-Prompt" vs "stage_b_themes" vs "stage_c_extraction").
@@ -260,21 +275,18 @@ Keep `logs/.gitkeep` so the directory exists at checkout.
 
 ## Phase 3: n8n workflow integration
 
-**Purpose:** Add the Code + Postgres node pair after each of the 4 LLM calls in Workflow 5 (Merged Call Summarizer). Workflow 6 (Plan C backfill) does not get this treatment because Plan C is one-shot — historical Plan C cost is recovered via the Phase 6 backfill script, not inline logging.
+**Purpose:** Add a side-branch Code + Postgres node pair for each LLM call in Workflow 5 (Merged Call Summarizer). Workflow 6 (Plan C backfill) does not get this treatment because Plan C is one-shot — historical Plan C cost is recovered via the Phase 6 backfill strategy, not inline logging.
 
-Per LLM call, the wiring becomes:
+Per LLM call, add a **side branch** for logging. Do not put the logging Code node inline between the LLM and the existing artifact-save node. The artifact branch must continue receiving the original LLM output; otherwise the save node gets a usage record instead of generated markdown, which is the sort of self-inflicted wound that looks clever for exactly four seconds.
 
 ```
 LLM: Extract Signal (ChainLLM)
+        ├──────────────► Save extracted-signal.md  (existing next node; unchanged input)
         │
-        ▼
-[NEW] Code: Log LLM Usage  ─ writes JSONL line, returns shaped object
-        │
-        ▼
-[NEW] Postgres: Insert Usage  ─ INSERT INTO openrouter_usage
-        │
-        ▼
-Save extracted-signal.md  (existing next node)
+        └──────────────► [NEW] Code: Log LLM Usage  ─ writes JSONL line, returns shaped object
+                              │
+                              ▼
+                         [NEW] Postgres: Insert Usage  ─ INSERT INTO openrouter_usage
 ```
 
 ### 3.1 Code node template
@@ -282,20 +294,24 @@ Save extracted-signal.md  (existing next node)
 ```javascript
 // Extract usage from previous LLM node's output
 const llmOutput = $input.item.json;
-const usage = llmOutput.tokenUsage || llmOutput.response?.usage || {};
+const usage = llmOutput.tokenUsage || llmOutput.usage || llmOutput.response?.usage || {};
 const fs = require('fs');
-const path = require('path');
+
+// Hardcode per cloned Code node, e.g. "LLM: Extract Signal".
+// Do not depend on a non-existent "Resolve LLM node name" helper node.
+const NODE_NAME = 'LLM: Extract Signal';
 
 const now = new Date();
 const date_str = now.toISOString().slice(0, 10);
 const log_path = `/home/node/logs/openrouter-usage-${date_str}.jsonl`;
+const raw_json = JSON.stringify(llmOutput);
 
 const record = {
   ts: now.toISOString(),
   workflow_id: $workflow.id,
   workflow_name: $workflow.name,
   execution_id: $execution.id,
-  node_name: $('Resolve LLM node name').first().json.name || 'unknown',  // captured upstream or hardcoded
+  node_name: NODE_NAME,
   model: llmOutput.model || llmOutput.response?.model || 'unknown',
   provider: llmOutput.response?.provider || null,
   prompt_tokens: usage.prompt_tokens || usage.promptTokens || null,
@@ -305,7 +321,9 @@ const record = {
   finish_reason: llmOutput.response?.finish_reason || llmOutput.finish_reason || null,
   latency_ms: llmOutput.latency_ms || null,
   generation_id: llmOutput.id || llmOutput.response?.id || null,
-  raw_response: JSON.stringify(llmOutput).slice(0, 50000),  // cap at 50KB for safety
+  raw_response: raw_json.length <= 50000
+    ? llmOutput
+    : { truncated: true, original_length: raw_json.length, preview: raw_json.slice(0, 50000) },
 };
 
 // Append to JSONL (best-effort — Postgres insert is the canonical write)
@@ -324,15 +342,15 @@ return { json: record };
 - **Operation:** Insert
 - **Schema:** `public`
 - **Table:** `openrouter_usage`
-- **Columns:** map all fields from the previous Code node's output
+- **Columns:** map all fields from the previous Code node's output. For `raw_response`, confirm the Postgres node sends a valid JSON object to the `JSONB` column; do not pass a sliced JSON string, because half a JSON blob is not JSON, it is just confetti with braces.
 - **Continue on Fail:** YES — don't break the workflow if logging fails (we have JSONL as backup)
 
 ### Steps
 
 - [ ] **3.1 — Build the Code node template** in a scratch workflow first, test against one LLM output until JSONL line and Postgres row both appear.
 - [ ] **3.2 — Verify field mappings.** Run a real LLM call, inspect the produced row in `openrouter_usage`, cross-check against OpenRouter's UI for the same call. Reconcile any discrepancies.
-- [ ] **3.3 — Wire into Workflow 5.** Insert Code+Postgres pair after each of: LLM: Extract Signal, LLM: Community Post, LLM: Compress Post, LLM: Weekly Invite. Total: 8 new nodes.
-- [ ] **3.4 — Wire prep-prompt LLM call too.** That one was added in Plan B — Code+Postgres pair goes after `LLM: Prep-Prompt`. Total now: 10 new nodes in Workflow 5.
+- [ ] **3.3 — Wire into Workflow 5 as side branches.** Add Code+Postgres logging branches for: LLM: Extract Signal, LLM: Community Post, LLM: Compress Post, LLM: Weekly Invite. Total: 8 new nodes. Existing artifact-save edges remain connected directly to the LLM outputs.
+- [ ] **3.4 — Wire prep-prompt LLM call too.** That one was added in Plan B — Code+Postgres logging branch goes off `LLM: Prep-Prompt`. Total now: 10 new nodes in Workflow 5.
 - [ ] **3.5 — Set Continue on Fail = YES** on every Postgres insert node.
 - [ ] **3.6 — Trigger Workflow 5** with a real session. Verify all 5 LLM calls produced JSONL lines and Postgres rows.
 
@@ -381,7 +399,15 @@ def log_llm_call(
         "latency_ms": latency_ms,
         "generation_id": generation_id,
         "session_id": session_id,       # see schema note below
-        "raw_response": json.dumps(response)[:50000],
+        "raw_response": (
+            response
+            if len(json.dumps(response)) <= 50000
+            else {
+                "truncated": True,
+                "original_length": len(json.dumps(response)),
+                "preview": json.dumps(response)[:50000],
+            }
+        ),
     }
     try:
         _append_jsonl(record)
@@ -409,8 +435,10 @@ Modify `community_brain/llm.py`:
 
 ### 3b.4 Update callers to pass node_name and session_id
 
-- `community_brain/ingestion/extractor.py::_call_llm` → wraps `call_llm` with `node_name="stage_c_extraction"` and the chunk's session_id
-- `community_brain/ingestion/session_extractor.py::_call_llm` → same with `node_name="stage_b_themes"`
+- `community_brain/ingestion/pipeline.py` is the source of truth for `request.session_id`; pass it into the Stage B and Stage C helpers from there.
+- `community_brain/ingestion/session_extractor.py::extract_session_themes(...)` should accept `session_id: str | None = None` and pass `node_name="stage_b_themes"` / `session_id=session_id` through its `_call_llm` wrapper.
+- `community_brain/ingestion/extractor.py::extract_chunk_metadata(...)` should accept `session_id: str | None = None` and pass `node_name="stage_c_extraction"` / `session_id=session_id` through its `_call_llm` wrapper.
+- Do not try to infer `session_id` inside `_call_llm(model, prompt)` alone; the current wrapper only has `model` and `prompt`, so pretending it knows chunk context would be adorable nonsense.
 - Other call sites (if any — check `propose_canonicalizations`, etc.) get appropriate `node_name` values
 
 ### 3b.5 JSONL path inside the retrieval-server container
@@ -424,10 +452,13 @@ Add env vars in `docker-compose.yml`:
 ```yaml
   retrieval-server:
     environment:
-      USAGE_LOG_PG_HOST: n8n_db
+      # Docker DNS uses the Compose service name, not container_name.
+      USAGE_LOG_PG_HOST: db
       USAGE_LOG_PG_PORT: 5432
       USAGE_LOG_PG_USER: n8n
-      USAGE_LOG_PG_PASSWORD: ${POSTGRES_PASSWORD}
+      # Matches the current compose default; if Postgres credentials are moved
+      # fully into .env, keep this value wired to the same source.
+      USAGE_LOG_PG_PASSWORD: ${POSTGRES_PASSWORD:-n8n}
       USAGE_LOG_PG_DATABASE: n8n
 ```
 
@@ -454,10 +485,10 @@ Use a dedicated connection (not pooled with anything else) since LLM calls are i
 
 ### 4.1 Postgres binding (`docker-compose.yml`)
 
-The `n8n_db` service currently binds Postgres to the Docker network only. We need to publish 5432 to the n8n VM's LAN interface so monitoring-stack can reach it. Bind to the LAN IP, NOT `0.0.0.0`:
+The Compose service is named `db` and its container is named `n8n_db`. It currently binds Postgres to the Docker network only. We need to publish 5432 to the n8n VM's LAN interface so monitoring-stack can reach it. Bind to the LAN IP, NOT `0.0.0.0`:
 
 ```yaml
-  n8n_db:
+  db:
     image: postgres:17
     ports:
       - "10.1.30.X:5432:5432"   # NEW — replace X with the n8n VM's actual LAN IP
@@ -486,7 +517,7 @@ docker exec n8n_db psql -U n8n -c "SELECT pg_reload_conf();"
 - [ ] **4.1 — Identify n8n-automation's LAN IP** with `ip addr show` on the VM. Note the address on the `10.1.30.0/24` interface.
 - [ ] **4.2 — Identify monitoring-stack's LAN IP** the same way (or via Proxmox UI).
 - [ ] **4.3 — Update `docker-compose.yml`** with the LAN-IP-bound port mapping.
-- [ ] **4.4 — Restart `n8n_db`** with `docker compose up -d n8n_db`. Verify Postgres is listening on the LAN IP only with `ss -tlnp | grep 5432`.
+- [ ] **4.4 — Restart the Postgres service** with `docker compose up -d db`. Verify Postgres is listening on the LAN IP only with `ss -tlnp | grep 5432`. `docker exec n8n_db ...` remains correct for container-level commands because `n8n_db` is the container name, not the Compose service name.
 - [ ] **4.5 — Edit `pg_hba.conf`** with the monitoring-stack whitelist entry.
 - [ ] **4.6 — Reload Postgres config** via `pg_reload_conf()`.
 - [ ] **4.7 — Smoke test from monitoring-stack:**
@@ -549,21 +580,27 @@ In Grafana UI → Configuration → Data sources → Add data source → Postgre
 
 ### 6.1 Backfill script (`scripts/backfill-openrouter-usage.py`)
 
-Standalone Python script that:
-1. Reads `OPENROUTER_API_KEY` from environment
-2. Pages through `https://openrouter.ai/api/v1/activity?after=<earliest_unwritten_ts>` (or whatever the actual API supports)
-3. For each record, INSERT INTO `openrouter_usage` with `ON CONFLICT (generation_id) DO NOTHING` to be idempotent
-4. Also writes to `~/n8n/logs/openrouter-usage-backfill.jsonl` for audit trail
+Standalone Python script whose input mode is selected after Phase 0.2:
+1. Reads `OPENROUTER_API_KEY` from environment only when enriching generation IDs through `/api/v1/generation`.
+2. Imports a verified detailed Activity CSV export **or** a verified account-specific per-call API response. Do not build against an assumed `/api/v1/activity` endpoint unless Phase 0 proves it exists and documents the response shape.
+3. For each per-call record with a non-null `generation_id`, insert into `openrouter_usage` idempotently:
+   ```sql
+   INSERT INTO openrouter_usage (...)
+   VALUES (...)
+   ON CONFLICT (generation_id) WHERE generation_id IS NOT NULL DO NOTHING;
+   ```
+   The `WHERE` predicate must match the partial unique index from Phase 1. Without it, Postgres can reject the conflict target. Database pedantry: annoying, correct, and undefeated.
+4. Also writes to `~/n8n/logs/openrouter-usage-backfill.jsonl` for audit trail.
 
-Note: the `openrouter_usage` schema needs a UNIQUE constraint on `generation_id` for the upsert to work. Add to Phase 1's DDL: `CREATE UNIQUE INDEX IF NOT EXISTS idx_openrouter_usage_generation_id ON openrouter_usage (generation_id) WHERE generation_id IS NOT NULL;` (partial index — generation_id is nullable).
+If the export only provides aggregate rows with no generation IDs, do not insert them into `openrouter_usage` as fake per-call rows. Either skip historical per-call backfill or create a separate aggregate summary artifact/table. The per-call table should stay honest.
 
 ### Steps
 
-- [ ] **6.1 — Add the partial unique index** to the schema (retroactive Phase 1 update).
-- [ ] **6.2 — Write `scripts/backfill-openrouter-usage.py`.** Test against last 24 hours of data first.
-- [ ] **6.3 — Run full backfill** for the last 30 days (OpenRouter's typical retention window — verify the actual limit).
+- [ ] **6.1 — Confirm Phase 1 partial unique index exists** (`idx_openrouter_usage_generation_id`). It should already be in the schema; this is a verification step, not a retroactive migration surprise.
+- [ ] **6.2 — Write `scripts/backfill-openrouter-usage.py`** against the verified input source from Phase 0.2. Test against a tiny export/window first.
+- [ ] **6.3 — Run full backfill** for the available historical window. If using UI export, record the selected export range. If using an API, verify the actual retention/page limits.
 - [ ] **6.4 — Cross-check totals:** sum `cost_usd` from `openrouter_usage` for a known time window, compare to the same window in OpenRouter's web UI. Should match within rounding.
-- [ ] **6.5 — Spot-check a Plan C session (n8n side).** Pick `2026-04-30` — that's a real ingestion day. Confirm the dashboard shows the expected ~30-90 LLM calls from n8n (3 per session × N sessions) with realistic costs. NOTE: server-side Stage B/C calls from before Phase 3b deployment will NOT appear via backfill (the backfill source is OpenRouter's activity API; Stage B/C calls are recoverable from there but not session-tagged retroactively). They'll start appearing in real-time once Phase 3b ships.
+- [ ] **6.5 — Spot-check a Plan C session (n8n side).** Pick `2026-04-30` — that's a real ingestion day. Confirm the dashboard shows the expected historical n8n-side calls with realistic costs if the verified backfill source contains per-call detail. Server-side Stage B/C calls from before Phase 3b may appear only as untagged OpenRouter generations if the export/source includes them; they cannot be reliably assigned to `session_id` retroactively unless an external correlation key exists. Do not claim session-level attribution where the data does not support it.
 - [ ] **6.6 — Spot-check a fresh /ingest (server side, post-Phase-3b).** Trigger a new ingest. Verify the dashboard shows the n8n calls (~3 from Workflow 5/6) AND the server-side calls (~21 from Stage B/C) for the same session, joinable via `session_id`.
 - [ ] **6.7 — Update `CLAUDE.md`** to document: backfill script, dashboard location, schema location, refresh expectations.
 - [ ] **6.8 — Update `docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`** to mark cost-tracking as DEPLOYED.
@@ -580,8 +617,8 @@ Note: the `openrouter_usage` schema needs a UNIQUE constraint on `generation_id`
 | Postgres insert fails (lock contention, network blip) | Low | Low | Continue on Fail = YES on Postgres node + JSONL is durable backup |
 | `pg_hba.conf` misconfiguration leaves Postgres exposed | Low | High | Phase 4.8 explicitly tests deny path before declaring done |
 | Grafana password leaks via committed config | Medium | Medium | Password lives only in `.env` (gitignored) and Grafana UI; never inline in dashboard JSON |
-| OpenRouter API rate-limits during backfill | Low | Low | Backfill script paginates with sleep; idempotent on re-run |
-| Cost field absent from response (no `usage_include_cost`) | Medium | Medium | Phase 0.3 locks in source; fallback price table maintained in script if needed |
+| OpenRouter API rate-limits during backfill enrichment | Low | Low | Backfill script sleeps between `/api/v1/generation` enrichment calls; idempotent on re-run |
+| Cost field absent from n8n ChainLLM output | Medium | Medium | Phase 0.1 verifies whether n8n preserves `usage.cost`; fallback is direct HTTP-to-OpenRouter or generation metadata, not deprecated usage flags |
 | Schema migration needed later | Medium | Low | Use `ALTER TABLE` patterns + version comments at top of `usage_tracking_schema.sql` |
 | Server-side `usage_log` writer breaks `/ingest` | Low | High | Phase 3b.7 explicitly verifies the failure path (logging never propagates errors). Best-effort is the contract. |
 | Server-side rows balloon the table at scale | Medium | Low | Stage C is ~20 calls/session; at 65 sessions × ~10 calls/year that's ~13K rows/year. Indexes on (ts, session_id, node_name) keep queries cheap. Not a concern at personal-tier scale. |
@@ -592,8 +629,8 @@ Note: the `openrouter_usage` schema needs a UNIQUE constraint on `generation_id`
 ## Open questions to resolve during Phase 0
 
 1. Does the LangChain ChainLLM node in n8n 2.15 expose `tokenUsage` in its main output, or only in `pairedItem`/sub-node output? Affects the Code node's data-fetching pattern.
-2. Does OpenRouter's response include `cost` natively without `usage_include_cost`, or is that flag required? Affects Phase 0.3 decision.
-3. What's OpenRouter's activity API retention window — 30 days, 90 days, longer? Affects backfill scope.
+2. Does n8n's ChainLLM node preserve OpenRouter's `usage.cost` in the main output, or does it strip the raw response? Affects whether Phase 3 can stay on ChainLLM.
+3. What historical source is actually available for backfill: detailed Activity CSV export, per-generation IDs, an account-specific API, or aggregates only? Affects whether historical per-call backfill is possible at all.
 4. Does the n8n `n8n_db` Postgres need a password rotation now, given we're about to expose it on LAN? (Probably yes.)
 5. ~~Should we add session_id as a dedicated column for clean cost-per-session queries, or derive it from `execution_id` joins?~~ **Resolved:** dedicated `session_id TEXT` column, populated by server-side rows (Phase 3b) directly. n8n-side rows leave it NULL and join via `execution_id` if needed.
 6. Should `usage_log` writes fan out to BOTH a per-call dedicated psycopg connection AND a connection-pool? Default: dedicated psycopg connection per call, since LLM calls are sequential per /ingest and the connect overhead is negligible compared to a 30-second LLM call. Revisit if /ingest is parallelized.
