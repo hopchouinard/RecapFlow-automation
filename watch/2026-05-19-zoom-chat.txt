@@ -1,0 +1,107 @@
+2026-05-19 18:43:39 From Bastian Venegas to Everyone:
+	The new composer model seems awesome. Looking forward to trying that
+	
+2026-05-19 18:44:03 From Juan Torres to Everyone:
+	Replying to "The new composer model seems awesome. Looking forw...":
+	Hopefully does not shoot from the hip like composer 2
+	
+2026-05-19 18:53:50 From Bastian Venegas to Everyone:
+	That is very on-demand. Anyone can build a website, but making a system scale is still hard.
+	
+2026-05-19 18:53:56 From Bastian Venegas to Everyone:
+	yup Excactly what patrick was saying
+	
+2026-05-19 18:54:44 From Bastian Venegas to Everyone:
+	True. Im not aware of any youtube channels for agent devops.
+	
+2026-05-19 19:00:03 From Brandon Hancock to Everyone:
+	I have to hop on my 7 o’clock call! But good luck guys! I think it’s my turn to host next week so super excited to catch up with all of you super soon!!
+	
+	Excited to talk about some of my updated workflows and lessons learned as well!
+	Biggi Fraley, Ryan C (One Stop Creative Agency - UK):👋
+	
+2026-05-19 19:02:31 From pchouinard to Everyone:
+	@Fitz here is a cli tool very well made for AI harnesses : https://github.com/googleworkspace/cli
+	
+2026-05-19 19:02:45 From Bastian Venegas to Everyone:
+	https://x.com/MentraGlass 
+	
+	https://www.ycombinator.com/companies/mentra 
+	
+	
+	glasses with an open SDK. YC backed. Maybe hit them up at some point @Ty Wells  👀. I
+	Screenshot2026_05_19_190139.jpg
+	Andrew Nanton, Biggi Fraley:👍
+	
+2026-05-19 19:03:21 From Bastian Venegas to Everyone:
+	Replying to "https://x.com/MentraGlass   https://www.ycombinato...":
+	Screenshot2026_05_19_190317.jpg
+	
+2026-05-19 19:04:18 From Fitz to Everyone:
+	Replying to "@Fitz here is a cli tool very well made for AI har...":
+	Hey, thanks for the heads-up Patrick. 🙏
+	
+2026-05-19 19:11:49 From Tom Welsh to Everyone:
+	Replying to "@Fitz here is a cli tool very well made for AI har...":
+	Sorry guys, I need to drop. calls in the morning
+	Biggi Fraley, Fitz, Juan Torres:👋
+	
+2026-05-19 19:11:58 From Tom Welsh to Everyone:
+	Replying to "@Fitz here is a cli tool very well made for AI har...":
+	good call as usual
+	
+2026-05-19 19:18:10 From Morgan Cook to Everyone:
+	@Adam Great tool for multi machine setups that allows you to control and synch the two machines keyboard and mouse and setup the monitors as though they were one system. https://symless.com/synergy
+	
+2026-05-19 19:19:49 From Ty Wells to Everyone:
+	https://shipsafe.franklabs.io/ 
+	https://swingtrack-nu.vercel.app/ 
+	https://conchpass.com/
+	Biggi Fraley, pchouinard, Fitz, Adam:❤️
+	
+2026-05-19 19:26:29 From Adam to Everyone:
+	Replying to "@Adam Great tool for multi machine setups that all...":
+	I used Deskflow, but had to switch from Wayland to X11 for copy/paste to work.
+	
+2026-05-19 19:27:30 From Andrew Nanton to Everyone:
+	Gotta run, thanks everyone
+	Biggi Fraley, pchouinard:👋
+	
+2026-05-19 19:38:16 From Juan Torres to Everyone:
+	Also, had steak this week for my stakeholders
+	IMG_2057.jpg
+	pchouinard, Ty Wells, Biggi Fraley, Fitz:❤️
+	
+2026-05-19 19:44:37 From pchouinard to Everyone:
+	@Mitch McCauley , is this what you were talking about : https://cloud.google.com/looker
+	Mitch McCauley:👍
+	
+2026-05-19 19:44:54 From Mitch McCauley to Everyone:
+	https://lookerstudio.google.com/
+	pchouinard, Juan Torres:❤️
+	
+2026-05-19 19:50:28 From Juan Torres to Everyone:
+	https://arena.ai/leaderboard/text-to-image/pareto
+	
+2026-05-19 19:53:04 From Juan Torres to Everyone:
+	https://wavespeed.ai/dashboard
+	
+2026-05-19 20:03:11 From Mitch McCauley to Everyone:
+	Have you seen this video? https://www.youtube.com/watch?v=S9EGx6ik-18&t=1924s
+	
+2026-05-19 20:03:23 From Mitch McCauley to Everyone:
+	@pchouinard
+	
+2026-05-19 20:17:59 From Mitch McCauley to Everyone:
+	https://anthropic.skilljar.com/claude-code-in-action
+	
+2026-05-19 20:20:20 From Juan Torres to Everyone:
+	Use a Tony Robins motivational speech at the start of your session
+	Mitch McCauley:😂
+	
+2026-05-19 20:27:20 From Mitch McCauley to Everyone:
+	Thanks guys, take care
+	
+2026-05-19 20:28:21 From Juan Torres to Everyone:
+	Gotta go folks, see ya
+	

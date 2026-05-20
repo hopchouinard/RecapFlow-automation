@@ -1,0 +1,1493 @@
+[00:00:00] Ty Wells: Hey Mr.
+[00:00:01] Ty Wells: Ty, how's it going?
+[00:00:02] Ty Wells: How's it going?
+[00:00:05] Patrick Chouinard: Good, good.
+[00:00:07] Ty Wells: Good.
+[00:00:08] Ty Wells: Good weekend?
+[00:00:11] Patrick Chouinard: Busy weekend.
+[00:00:13] Ty Wells: Tell me about it.
+[00:00:14] Ty Wells: My last daughter's graduation.
+[00:00:16] Patrick Chouinard: I had people flying in.
+[00:00:19] Patrick Chouinard: I had to entertain them.
+[00:00:20] Ty Wells: I had to cook.
+[00:00:22] Ty Wells: I'm still spent.
+[00:00:26] Ty Wells: Mother's Day, I couldn't do anything.
+[00:00:28] Ty Wells: And my mother was one of them.
+[00:00:29] Patrick Chouinard: So she went back to the Bahamas.
+[00:00:31] Patrick Chouinard: Okay.
+[00:00:31] Ty Wells: And, um, so she, um, so, you know, I spent the whole Saturday with her and my uncle and aunt.
+[00:00:41] Ty Wells: So it was a busy day.
+[00:00:45] Patrick Chouinard: Good.
+[00:00:46] Patrick Chouinard: At least it was a nice day.
+[00:00:47] Ty Wells: It was a beautiful day too.
+[00:00:49] Ty Wells: That was, they had good weather, which is great.
+[00:00:55] Ty Wells: Oh my goodness.
+[00:00:57] Ty Wells: I'm still tired today.
+[00:00:59] Ty Wells: Well, that's.
+[00:00:59] Ty Wells: I 27 holes yesterday, that may have had something to do with it.
+[00:01:05] Patrick Chouinard: Yeah, I'm managing the training of about 90 developers, all getting Claude code for the first time, so, fun week.
+[00:01:19] Ty Wells: I can imagine.
+[00:01:20] Ty Wells: For the first time, no agentic coding assistant or anything?
+[00:01:24] Patrick Chouinard: Well, GitHub co-pilot, but pretty much as a helper, not as an agentic coding environment.
+[00:01:30] Patrick Chouinard: They're discovering super power, they're discovering SDD, they're discovering all of that, and at the same time, I had to invent a new SDLC for Natural Language Artifact, so, cool, don't we?
+[00:01:47] Ty Wells: Yeah.
+[00:01:48] Ty Wells: Listen, you literally, I created something today.
+[00:01:52] Ty Wells: I'm going to share it with you guys today.
+[00:01:53] Patrick Chouinard: literally created it today.
+[00:01:55] Patrick Chouinard: I mean, this is the way it goes, right?
+[00:01:56] Patrick Chouinard: Mm-hmm.
+[00:01:57] Patrick Chouinard: I needed something, and—
+[00:02:00] Ty Wells: So, you know, when I need something, I meta it all the time.
+[00:02:03] Ty Wells: I just like, I just can't do it as a one-time, you know, I think about it in like in skill terms, in terms of, you know, am I going to reuse this?
+[00:02:11] Ty Wells: Could I use this in other projects?
+[00:02:13] Ty Wells: I think about it and then I'm like, yep, if I can, more than three projects, I'm going to sort of build it out.
+[00:02:20] Ty Wells: Of course, that slows me down a little bit.
+[00:02:21] Patrick Chouinard: I'm doing that, but we have to put an SDLC in place because for a financial firm, we can't take the chance of having people download skills from all over the place.
+[00:02:34] Ty Wells: we have to monitor it.
+[00:02:36] Patrick Chouinard: We have to be able to scan them.
+[00:02:38] Patrick Chouinard: We're going to have to find a prompt injection and poison pills and all of those nice little things.
+[00:02:45] Ty Wells: So, yeah, just recreate the skills that you, you know, that you need as you need them.
+[00:02:50] Ty Wells: Don't, don't, don't download.
+[00:02:53] Ty Wells: I mean, you can get a reference.
+[00:02:54] Ty Wells: References are great.
+[00:02:55] Ty Wells: It's a starting point.
+[00:02:56] Patrick Chouinard: Yeah, but it goes beyond that because in the financial.
+[00:02:59] Patrick Chouinard: industry, there's now new legislation that are coming out that our skills have to be audited, any natural language artifact have to be audited, and you have to be able to prove provenance and what you're doing to prevent.
+[00:03:16] Ty Wells: Oh, wow.
+[00:03:17] Ty Wells: Is that in the US too?
+[00:03:19] Patrick Chouinard: I don't know.
+[00:03:20] Patrick Chouinard: This is from what they call AMF in Quebec.
+[00:03:25] Ty Wells: It's basically the equivalent of the SEC.
+[00:03:29] Ty Wells: Right, right.
+[00:03:32] Ty Wells: Yeah, that's putting a monkey wrench into...
+[00:03:35] Patrick Chouinard: Well, it's not for right now.
+[00:03:37] Patrick Chouinard: It's for May 2027, but we need to prepare right away.
+[00:03:40] Ty Wells: Yes, yes, yes.
+[00:03:42] Ty Wells: Okay.
+[00:03:42] Ty Wells: Yeah, makes sense.
+[00:03:45] Ty Wells: Makes sense.
+[00:03:46] Patrick Chouinard: But I wouldn't be surprised if that happens in the States as well pretty soon.
+[00:03:49] Ty Wells: Yeah, there was a conversation.
+[00:03:52] Ty Wells: I know that the Frontier models met with the administration about potentially...
+[00:03:59] Ty Wells: Reviewing models before they get released as to like a, you know, ensuring that they're okay to be released and to the public, which is going to be an interesting, if that is pursued, that will, that's, whoa, that'll be crazy.
+[00:04:19] Ty Wells: That will be crazy.
+[00:04:20] Patrick Chouinard: And again, I'm not the guy that's going to ask for so much oversight, but there has to be a certain level because, I mean, the supply chain has been hacked, what, twice or three times in the last two months, so.
+[00:04:37] Ty Wells: That's true.
+[00:04:39] Ty Wells: That is true.
+[00:04:41] Ty Wells: With good, there's bad, right?
+[00:04:42] Ty Wells: Otherwise, there wouldn't be a balance.
+[00:04:44] Ty Wells: This world would be completely out of balance.
+[00:04:47] Ty Wells: We need just as many bad people as we do good people.
+[00:04:50] Ty Wells: To survive.
+[00:04:52] Ty Wells: I won't say that we need them, but they do exist.
+[00:04:54] Ty Wells: Need is a bad word.
+[00:04:56] Ty Wells: Need is incorrect.
+[00:04:58] Ty Wells: I will reframe that.
+[00:05:00] Ty Wells: Um, that need is not the good, the right word.
+[00:05:04] Ty Wells: They're there and we need to manage.
+[00:05:06] Ty Wells: Yes, we do need to manage them.
+[00:05:11] Ty Wells: Yeah.
+[00:05:11] Ty Wells: I guess they, as many good, the same amount of bad exists.
+[00:05:18] Patrick Chouinard: How about that?
+[00:05:18] Patrick Chouinard: Yep.
+[00:05:19] Ty Wells: Okay.
+[00:05:20] Ty Wells: I'll stick with that.
+[00:05:25] Patrick Chouinard: Yep.
+[00:05:26] Patrick Chouinard: So, on my side, I've worked, uh, I kept on working, but I worked on the boring part of my community brain, the packaging.
+[00:05:36] Patrick Chouinard: It's actually quite complex to package because, uh, there's a vector DB, there's a bunch of, uh, code, there's their retrieval server, there's system prompts, their, uh, open web UI configuration.
+[00:05:52] Ty Wells: uh, I'll get my open UI ready for it.
+[00:05:55] Ty Wells: waiting to drop it in.
+[00:05:58] Patrick Chouinard: Bye.
+[00:05:59] Ty Wells: Although.
+[00:06:00] Ty Wells: You know, a lot of that, I think somebody brought that up on the last call, a lot of the content will be outdated, but you'd be able to see how things transition.
+[00:06:08] Patrick Chouinard: It's not a tool designed for, oh, I need to know what's the best technology for X.
+[00:06:15] Patrick Chouinard: It's more, oh, somebody talked about that.
+[00:06:18] Patrick Chouinard: And how did that thing evolve over time?
+[00:06:21] Patrick Chouinard: And what question did we have that was an answer?
+[00:06:25] Ty Wells: Things of that nature.
+[00:06:26] Ty Wells: Right.
+[00:06:27] Ty Wells: I think it answers some engineering questions too.
+[00:06:30] Ty Wells: Like we, we discuss those type things and an approach or approaches, I guess, to different concepts.
+[00:06:36] Patrick Chouinard: Yeah.
+[00:06:37] Patrick Chouinard: Or somebody mentioned a book a couple of months ago and I, I thought about it and I want to know what it is so I can go back and ask about it.
+[00:06:45] Patrick Chouinard: Yeah.
+[00:06:46] Patrick Chouinard: The idea here is more to show how I did it so it can be reapplied to any kind of, uh, transcript over time, more than the nature of this one specifically.
+[00:06:58] Ty Wells: Yeah.
+[00:06:59] Ty Wells: .
+[00:07:00] Ty Wells: That's sort of what I think I showed you guys here last week.
+[00:07:05] Ty Wells: It's sort of like that.
+[00:07:06] Ty Wells: It's just so much information coming in.
+[00:07:09] Ty Wells: The noise level is off the charts.
+[00:07:11] Ty Wells: So I'm just using that.
+[00:07:13] Ty Wells: I built that over time here to filter down the noise, really.
+[00:07:17] Ty Wells: You know, it's just money.
+[00:07:20] Ty Wells: I got to get out of this SOS group I'm in.
+[00:07:30] Patrick Chouinard: Well, I'm going to give people another minute or two to join in, and then we'll get started.
+[00:07:38] Patrick Chouinard: I know we have someone who asked to do a demo today.
+[00:07:43] Patrick Chouinard: So if I see her join in.
+[00:08:01] Patrick Chouinard: Okay, well, we're going to start, and if people join in, we'll take them as they come along.
+[00:08:09] Patrick Chouinard: There's not enough people.
+[00:08:11] Patrick Chouinard: I'm not going to do a screenshot.
+[00:08:12] Patrick Chouinard: I'm just going to go in the order I see you guys in my screen, and we'll add if need be.
+[00:08:22] Patrick Chouinard: So thank you all for joining us this week.
+[00:08:26] Patrick Chouinard: I'm getting ready for next week.
+[00:08:29] Patrick Chouinard: Next week, I'm going to be also managing the call.
+[00:08:32] Patrick Chouinard: know that Paul has mentioned that he's not going to be able to be present this weekend, next week.
+[00:08:37] Patrick Chouinard: And after that, it's going to be the grand return of Brendan.
+[00:08:43] Patrick Chouinard: We're getting closer to his full-time return.
+[00:08:46] Ty Wells: Oh.
+[00:08:48] Patrick Chouinard: Well, he said up to June, so I'm guessing a month, month and a half maybe, and we're going to have a little bit more from the grand master.
+[00:09:00] Patrick Chouinard: So as I was talking with Ty, let me give you a little bit of an update on where I am with the community brain.
+[00:09:11] Patrick Chouinard: The solution is pretty much functional now.
+[00:09:15] Patrick Chouinard: I'm in the process of packaging it.
+[00:09:18] Patrick Chouinard: As I mentioned, it's quite a challenge because there's a lot of moving parts and I want to make it as simple as possible to deploy, but it still requires a certain level of understanding on how to deploy the thing because, like I said, there's open web UI, there's a Lama, there's a vector database, a bunch of things.
+[00:09:38] Patrick Chouinard: On that, I'm actually trying to create and install MD.
+[00:09:44] Patrick Chouinard: So basically, I want to give you guys the opportunity to use your agent to do the deployment for you.
+[00:09:50] Patrick Chouinard: So I can't fully automate because there's a lot of tasks that are cross-platform that can't really be scripted, but where an agent
+[00:10:00] Patrick Chouinard: And like Cloud Code, Codex, whatever, we'll be able to do the deployment.
+[00:10:07] Patrick Chouinard: So hopefully I'm going to be able to wrap that up this week and have it ready by next week.
+[00:10:13] Patrick Chouinard: And I'm also going to give you all of the source material, even the pre-chunk data.
+[00:10:20] Patrick Chouinard: So you're going to be able to re-embed it any way you want or use the database as part of a project you may have.
+[00:10:28] Patrick Chouinard: I mean, I'm not putting any limitation on how you use the knowledge I've created in there.
+[00:10:37] Patrick Chouinard: And a little bit of an update also.
+[00:10:40] Patrick Chouinard: I know last week I mentioned that I was considering moving 100% to Codex, but obviously Entropic had to double their limit the following day.
+[00:10:52] Patrick Chouinard: So I'm sitting in between right now.
+[00:10:56] Patrick Chouinard: Basically, I've started to use Codex.
+[00:10:59] Patrick Chouinard: good Codex.
+[00:10:59] Patrick Chouinard: That's I've And That's So
+[00:11:00] Patrick Chouinard: As the validation loop for whatever CloudCode is creating.
+[00:11:06] Patrick Chouinard: But I truly have Codex and CloudCode open at the same time in the same directory.
+[00:11:13] Patrick Chouinard: So whenever Superpower creates a spec, I have a prompt that I ask Codex to go and validate it, argue about it, test it out.
+[00:11:23] Patrick Chouinard: Same thing for the implementation plan.
+[00:11:26] Patrick Chouinard: Same thing for the implementation.
+[00:11:27] Patrick Chouinard: And I've also started to create myself a library of red teaming prompt for my code.
+[00:11:35] Patrick Chouinard: So basically I ask Codex to attack it any way it can and whatever failure or weakness it finds to report it in an analysis report that I can feed back into Cloud so it can address it.
+[00:11:51] Patrick Chouinard: And so far it's been giving me some very, very nice results.
+[00:11:55] Patrick Chouinard: So not purely Codex, not purely CloudCode, but seems...
+[00:12:00] Patrick Chouinard: Like a merge of the two is giving an impressive result, and I'm starting to integrate that even in the corporate side by leveraging GitHub Copilot since we don't have Codex at work, but principle is the same.
+[00:12:15] Ty Wells: Hey, Pat.
+[00:12:16] Ty Wells: Yep.
+[00:12:17] Ty Wells: I thought I saw a video on running Claude inside of Codex.
+[00:12:22] Ty Wells: I'm just curious.
+[00:12:23] Ty Wells: You said you're running them separately.
+[00:12:24] Patrick Chouinard: No, it's Codex inside Claude.
+[00:12:26] Patrick Chouinard: You can actually, Codex has a plugin for Claude, but it's for very specific things, and they have an adversarial code review and code review, but it's their prompt limited to very specific section.
+[00:12:39] Patrick Chouinard: I built myself a complete harness of prompt that I use at every step, and Biggi, to answer you, I have not compared plan mode between the two because I don't use their plan mode.
+[00:12:51] Patrick Chouinard: I use super power, meaning that what Claude or Codex call plan mode, it's what super power called brainstorming.
+[00:12:59] Patrick Chouinard: I
+[00:13:00] Patrick Chouinard: I find it goes a lot deeper than Plan Mode goes.
+[00:13:05] Patrick Chouinard: Maybe not as deep as Ultra Plan, but there's other steps that it takes, so it does a similar type of job without the insane token consumption of Ultra Plan.
+[00:13:19] Patrick Chouinard: And Superpower works in both Codex and Cloud Code, so that's why I love the plugin works on both sides of the fence.
+[00:13:33] Patrick Chouinard: Any other question about what I've just...
+[00:13:36] Ty Wells: Yeah, I had one more question, but it escaped me just like that.
+[00:13:40] Patrick Chouinard: It's right here.
+[00:13:41] Patrick Chouinard: I may have to tap you again to get it through.
+[00:13:44] Patrick Chouinard: No problem.
+[00:13:46] Patrick Chouinard: Before I go any further, I see that Elena just joined us and Elena said that she wanted feedback on one of her POC, so Elena, if you want, the floor is yours.
+[00:13:59] Elena: Sure, thank you.
+[00:14:00] Elena: So how can I share my screen?
+[00:14:03] Patrick Chouinard: Just use the share function in Zoom.
+[00:14:06] Patrick Chouinard: As soon as you ask, I will have a pop-up and I will grant you share access.
+[00:14:11] Elena: Oh, good.
+[00:14:14] Elena: Okay.
+[00:14:17] Elena: Disable share.
+[00:14:18] Elena: Did you get the request?
+[00:14:20] Patrick Chouinard: Not yet.
+[00:14:21] Patrick Chouinard: You have to click on the share button once you've selected what you want to share.
+[00:14:26] Elena: Oh, it doesn't show me.
+[00:14:29] Elena: Just saying disable share.
+[00:14:31] Elena: If you click on the share, don't you have a screen where you have a blue share button and a bunch of windows that you can select?
+[00:14:42] Elena: No, it only says disable share, not disable, cause disable attendance screen share.
+[00:14:50] Elena: So it says.
+[00:14:51] Elena: Okay.
+[00:14:55] Patrick Chouinard: On my side, there's nothing I can do more than accept the share.
+[00:15:01] Elena: Okay.
+[00:15:04] Elena: This is what it says.
+[00:15:06] Elena: If I try just to share.
+[00:15:10] Patrick Chouinard: Post-disabled identity screen sharing?
+[00:15:13] Elena: Okay.
+[00:15:17] Patrick Chouinard: Is there anyone else you can try to share just to see if it's something, because I haven't done anything special compared to all the other calls.
+[00:15:26] Patrick Chouinard: Oh, yep.
+[00:15:28] Patrick Chouinard: I actually see that, Morgan.
+[00:15:35] Ty Wells: Let me try mine.
+[00:15:41] Patrick Chouinard: Yep.
+[00:15:45] Elena: You can.
+[00:15:45] Elena: Okay.
+[00:15:50] Patrick Chouinard: So in the main Zoom screen at the bottom, there should be a participant chat.
+[00:15:57] Elena: Now it's here.
+[00:15:58] Elena: Now it's on.
+[00:15:58] Elena: Okay.
+[00:15:59] Elena: Okay.
+[00:16:00] Ty Wells: I was going to say, you should share your screen so we can help you share your screen.
+[00:16:06] Elena: Exactly.
+[00:16:09] Elena: Just a second.
+[00:16:10] Elena: just realized I doesn't.
+[00:16:18] Elena: Can I just do some preparation and maybe we can do something else?
+[00:16:23] Patrick Chouinard: No problem.
+[00:16:24] Elena: just realized I need to open something else.
+[00:16:27] Elena: No worries.
+[00:16:28] Elena: Sorry.
+[00:16:29] Elena: Okay.
+[00:16:29] Elena: Thank you.
+[00:16:31] Patrick Chouinard: Okay, then if I go from the order I see, it would be Ty, so do you want to share your, the thing you developed today?
+[00:16:43] Ty Wells: Yeah.
+[00:16:46] Ty Wells: So I was talking to Patrick earlier, telling him that I'm, you know, as I need something, I just build it, but then I think about it in terms of, will I use it in other projects?
+[00:16:55] Ty Wells: And then, you know, then I'm building something new.
+[00:16:58] Ty Wells: I'm off that tangent.
+[00:17:00] Ty Wells: So, okay.
+[00:17:01] Ty Wells: So today I was doing some testing and I needed the ability to, so I actually, I said, okay, well, I'm going to share it.
+[00:17:15] Ty Wells: might as well put together a small presentation at the same time since I'm going to do that.
+[00:17:21] Ty Wells: But let's see here.
+[00:17:25] Ty Wells: I'm having sharing troubles myself.
+[00:17:26] Ty Wells: Look at that.
+[00:17:29] Ty Wells: I think something might have changed.
+[00:17:31] Patrick Chouinard: Okay.
+[00:17:32] Patrick Chouinard: There we go.
+[00:17:33] Ty Wells: Okay.
+[00:17:34] Ty Wells: So you guys know about my user-driven development.
+[00:17:42] Ty Wells: I've talked about that where the user sort of drives what they want built.
+[00:17:47] Ty Wells: Well, one of the things in building that, that's what this is, the feedback hub where they submit their request.
+[00:17:54] Ty Wells: It records their screen.
+[00:17:55] Ty Wells: They narrate what the issue is.
+[00:17:57] Ty Wells: It captures the network console.
+[00:18:00] Ty Wells: And whatever else, and sends that back to this hub for a registered project.
+[00:18:05] Ty Wells: That project, then it launches, it narrates with them back and forth through that chat interface to get up to at least 90% confident in what they're describing as their issue.
+[00:18:16] Ty Wells: Then it sends it here to the feedback hub, and that's where I look at the different requests that are coming in and what the issue is.
+[00:18:27] Ty Wells: Let's see, okay.
+[00:18:32] Ty Wells: But nonetheless, that's not even what I'm showing today.
+[00:18:35] Ty Wells: I'm showing something different.
+[00:18:36] Ty Wells: I'm not sure why those links aren't working.
+[00:18:39] Ty Wells: But once those, it builds out a plan, and then it, and then I basically approve it, it creates, builds the code and a cloud session that it spawns.
+[00:18:52] Ty Wells: And then it puts a, you know, creates a PR and then I review that and then I can approve it, you know, while I'm on the golf course.
+[00:19:00] Ty Wells: Which is, that's the key reason why I did that that way, but testing, turns out users really don't know what they want, so I built this package here called isotope, basically to help test the application, but there's some gaps in testing, you can write tests, and you can run the test, but it fails sometimes for different reasons, right?
+[00:19:25] Ty Wells: What the user sees is one thing, what happens in the database is something completely different, right?
+[00:19:33] Ty Wells: And what changed prior to, and what was the state of the data before, and what was the state of the data after, presented a challenge for me.
+[00:19:43] Ty Wells: So, basically, what I decided to do is, I need a little bit more control, so I can truly be that user testing out the application.
+[00:19:57] Ty Wells: So, I built this package.
+[00:19:59] Ty Wells: So,
+[00:20:00] Ty Wells: You in a project where you would run the tests, but it integrates, and this works with Superbase because I use Superbase mostly, but you run the tests and it basically logs what's changing on the database.
+[00:20:17] Ty Wells: It takes a screenshot as well, so not only what's on the UI, what's in the database prior to change, what's changed.
+[00:20:24] Ty Wells: And then it logs all of that so then I can see the full step and easily then easily identify where a problem might be that feeds back into the feedback hub that then will then generate another plan to go and fix that particular issue.
+[00:20:43] Ty Wells: Does that make sense?
+[00:20:47] Patrick Chouinard: Yep.
+[00:20:48] Ty Wells: Okay.
+[00:20:48] Ty Wells: So I couldn't find any tool that basically did what I needed to do.
+[00:20:54] Ty Wells: And so I put this together isotope.
+[00:20:59] Ty Wells: again,
+[00:21:00] Ty Wells: This was just for my project, but I decided I'm going to package it up so I can use it in all my other projects as well.
+[00:21:07] Ty Wells: So it's something I'll be putting out there so that you guys can.
+[00:21:11] Ty Wells: So what I had here was a, you know, I was trying to walk, you know, the setup, like you're talking about the packaging, Patrick.
+[00:21:20] Ty Wells: And so I was like, you know, people are just going to use AI assisted coding to do it.
+[00:21:24] Ty Wells: Right.
+[00:21:24] Ty Wells: So just give them the prompts that they need to run to get it installed.
+[00:21:29] Ty Wells: And I'll use this, of course, when I install it in another project.
+[00:21:32] Ty Wells: So that's what I had put it.
+[00:21:34] Ty Wells: Just easy prompts that somebody doesn't know anything but needs to do that testing that no one likes to do.
+[00:21:42] Ty Wells: We'll run through and test out the UI, but also the database, the endpoints and the database as well.
+[00:21:50] Ty Wells: So to make sure that those changes were the expected changes.
+[00:21:56] Ty Wells: So that was today's event.
+[00:22:00] Patrick Chouinard: Very, very nice, Ty.
+[00:22:03] Ty Wells: You love the interface, by the way.
+[00:22:05] Ty Wells: Yeah, you know, it all had to do with this darn graduation seating assignment thing that I did, and they were using it today, and it was testing, they were moving seats around where people were seated, and I ran into a few bugs, and I'm like, I'm not going to fix it, this one-off, I'm just going to go ahead and fix the whole thing one time, that way, you know, I can use it in other templates.
+[00:22:29] Ty Wells: So let me know if there's something of value in there for testing, because I do not like testing, but it's very important.
+[00:22:38] Patrick Chouinard: Yeah, and it's not just testing, and I realize that that's something that we tend to do as we do AI-assisted development, let's say.
+[00:22:47] Patrick Chouinard: We do a lot of functional testing, but not a lot of security testing, let's say.
+[00:22:54] Ty Wells: Yep.
+[00:22:55] Patrick Chouinard: That's why I've started to work a lot with Codex as my security.
+[00:22:59] Patrick Chouinard: It's codex, but me
+[00:23:01] Ty Wells: Yeah, and I'm doing that, and I use the adversarial review, but I'm doing the security coaching in another group, and so everything I built for them, I plan on throwing in, might as well test that since I'm going all the way, make sure the enums are correct, you know, the RLS policies, again, it's super-based driven policies are on there probably, you know, those types of things that you would sort of miss them, you know, if you're vibe coding to some degree.
+[00:23:30] Ty Wells: So it's just, you know, full suite of tests to ensure that the intended results are the actual results.
+[00:23:38] Patrick Chouinard: Yeah, and that's why I really like Codex for that part, because it's a lot less of an architect, and a lot more of an engineer, so if you give it a brutal red theme prompt, like you tell it to go at it, don't be polite, don't try to flatter me, like just try to destroy the application.
+[00:24:00] Patrick Chouinard: It really goes.
+[00:24:02] Patrick Chouinard: I've looked at the report it creates, and you can actually tell it, like, the report is to give to Cloud Code in order to fix whatever you find.
+[00:24:11] Ty Wells: Yeah, and I use it all the time.
+[00:24:13] Ty Wells: Good stuff.
+[00:24:15] Patrick Chouinard: Works very, very well.
+[00:24:17] Patrick Chouinard: Thank you very well, Ty.
+[00:24:21] Patrick Chouinard: Elena, are you ready to do the demo, or do you want me to ask someone else?
+[00:24:26] Elena: I just realized I don't have some values.
+[00:24:29] Patrick Chouinard: I need to retrieve them.
+[00:24:30] Patrick Chouinard: Sorry for that.
+[00:24:31] Patrick Chouinard: No problem, no problem.
+[00:24:32] Elena: I forgot about them a lot.
+[00:24:34] Patrick Chouinard: No worries.
+[00:24:36] Patrick Chouinard: Based on my screen, the next one would be Morgan.
+[00:24:41] Morgan Cook: Hey, guys.
+[00:24:41] Morgan Cook: How's it going?
+[00:24:43] Patrick Chouinard: Yeah.
+[00:24:45] Morgan Cook: I don't have too much programmatic stuff.
+[00:24:47] Morgan Cook: I spent last week helping my ex-wife publish her book, so...
+[00:24:53] Patrick Chouinard: Congratulations.
+[00:24:55] Morgan Cook: It's out, finally.
+[00:24:56] Morgan Cook: And that took a little bit of effort, but it was actually pretty...
+[00:25:00] Morgan Cook: Clean process.
+[00:25:01] Morgan Cook: She ran it through a Kindle digital press and went pretty good, but getting the contents in the right format and everything is where she doesn't have the right skills.
+[00:25:14] Morgan Cook: So that's what I spent my week doing was making sure the book was in order.
+[00:25:19] Morgan Cook: That was pretty fun for my little sign pie.
+[00:25:22] Morgan Cook: I found a another piece of hardware besides the Raspberry Pi is the actual fire stick from Amazon.
+[00:25:30] Morgan Cook: So a lot cheaper and I got to write a different engine for it, but there's already like there's plenty of them out there on the fire stick already, but that's the display part of it.
+[00:25:44] Morgan Cook: The part I want to actually push is the automation of creating the slides in the first place, right?
+[00:25:50] Morgan Cook: And that's where AI will be involved.
+[00:25:52] Morgan Cook: just dump whatever garbage info you have and AI is going to clean it up and make it really beautiful to display on the screen.
+[00:25:58] Morgan Cook: So that's...
+[00:26:00] Morgan Cook: The goal on that one.
+[00:26:02] Morgan Cook: And then, you know, theme it to whatever the style theme is for that specific client.
+[00:26:08] Morgan Cook: and your automation part, it runs on device or it runs in the cloud or it'll run on the, in the cloud, off of a, probably off of a Vercel app with a trigger back end to do any heavy lifting.
+[00:26:30] Ty Wells: I got a question for you on that Morgan.
+[00:26:34] Ty Wells: Remind me the, the, you're trying to display photos.
+[00:26:37] Ty Wells: I can't remember what you're displaying on the hardware, what you're.
+[00:26:40] Morgan Cook: No, it displays, it's anything that you would want to have displayed in a lobby.
+[00:26:45] Morgan Cook: So it's not just static content, right?
+[00:26:48] Morgan Cook: The content is live content and animated content and sometimes short video clips.
+[00:26:55] Ty Wells: Got you.
+[00:26:56] Morgan Cook: But that's meant to just rotate through a list of here's all the crap we wanted.
+[00:26:59] Morgan Cook: Here's
+[00:27:00] Morgan Cook: Just kind of display, just so it's not a static thing, right?
+[00:27:05] Morgan Cook: And so anything that has like an upcoming schedule or whatever will have a countdown timer and a barcode or something to tie off to, you know, QR code to tie off to any kind of link for registration or anything like that.
+[00:27:23] Morgan Cook: Then it has expiration.
+[00:27:25] Morgan Cook: So every slide might have, you know, it might only be a valid slide for the next two weeks.
+[00:27:31] Morgan Cook: At the end of the two weeks, we want that to not show up.
+[00:27:34] Morgan Cook: That's one of the other problems I've seen with a lot of the slide is you have to actively maintain it.
+[00:27:39] Morgan Cook: And if you don't, then you have a bunch of old data out there that's irrelevant being displayed all the time, right?
+[00:27:48] Ty Wells: Yeah.
+[00:27:48] Ty Wells: Are you deploying it directly to the device through AAB or are you going to ADP or are you going to put something in the Amazon store?
+[00:28:00] Morgan Cook: Right now, I haven't figured all that out.
+[00:28:02] Morgan Cook: I'm probably just going to go direct to the device.
+[00:28:05] Morgan Cook: The device will pull the content from their subscription.
+[00:28:10] Morgan Cook: So they will drive the content through the Vercel app.
+[00:28:14] Ty Wells: Yeah, no, I built something similar called CrowdPix, and there are some caveats you need to know.
+[00:28:19] Morgan Cook: So reach out before you think you can get through it.
+[00:28:23] Ty Wells: It's a little bit more complicated than that, but it's doable.
+[00:28:28] Morgan Cook: I have it working on the Raspberry Pi cleanly, so that's a solid path.
+[00:28:38] Ty Wells: Now, I wanted a cheaper option, right?
+[00:28:41] Morgan Cook: And the Fire Stick is a great price break for the video quality that it can produce.
+[00:28:46] Morgan Cook: And so that's what I was going after.
+[00:28:48] Morgan Cook: I haven't really done too much research other than seeing what's available.
+[00:28:52] Ty Wells: new models, you can't load directly.
+[00:28:54] Ty Wells: You can't sideload them.
+[00:28:55] Ty Wells: That's the big thing.
+[00:28:57] Ty Wells: Only up to the HD model.
+[00:29:00] Ty Wells: Just plain HD, that's very important.
+[00:29:03] Ty Wells: So if you want to get your hands on some, I would be eBaying that now, because I bought a lot of them, because the other ones won't allow you to sideload.
+[00:29:12] Ty Wells: You'd have to put something in the Amazon store, which you download, and there's some other things around it.
+[00:29:17] Ty Wells: So you can ping me about it, you know, just because it was a nightmare-ish issue.
+[00:29:23] Ty Wells: But there are a few workarounds for it.
+[00:29:25] Morgan Cook: Yeah, that's good to know.
+[00:29:31] Morgan Cook: I did see something about that with the new 4K one.
+[00:29:35] Ty Wells: Oh yeah, that won't work at all.
+[00:29:36] Morgan Cook: You can't sideload things.
+[00:29:38] Ty Wells: Nope.
+[00:29:39] Morgan Cook: When you say sideload, you mean off of the USB port on the Fire Stick?
+[00:29:44] Ty Wells: Or over the network.
+[00:29:46] Ty Wells: I do it over the network.
+[00:29:47] Ty Wells: It's just dumping the code directly onto it.
+[00:29:51] Ty Wells: You can't do that from your PC or Mac to the device.
+[00:29:56] Ty Wells: You can dump the code on there.
+[00:29:58] Morgan Cook: it.
+[00:29:58] Ty Wells: Yeah, the APK basically.
+[00:30:00] Ty Wells: Basically, you have to create an Amazon app in the store.
+[00:30:03] Ty Wells: And that's a route, too.
+[00:30:04] Ty Wells: There's nothing wrong.
+[00:30:05] Ty Wells: The only thing I'd tell you on that one is do not put FHIR in the name of your product.
+[00:30:11] Ty Wells: Because Amazon, I had to get notarized documents, and they still wouldn't allow it.
+[00:30:17] Ty Wells: I could barely get through the test.
+[00:30:18] Ty Wells: Anyhow, I had to change the That's why it's called CrowdPix.
+[00:30:22] Ty Wells: It used to be called FHIR Photo.
+[00:30:25] Ty Wells: And that was apparently that.
+[00:30:28] Ty Wells: Yeah.
+[00:30:29] Ty Wells: I can save you some gray hairs on that one, for sure, if you need.
+[00:30:34] Morgan Cook: It was before then?
+[00:30:37] Ty Wells: Yeah.
+[00:30:38] Ty Wells: Well, I had them, and then I got CrowdPix, and then this is what I've got left.
+[00:30:45] Morgan Cook: That's awesome, Ty.
+[00:30:46] Ty Wells: appreciate that information.
+[00:30:47] Ty Wells: Yeah.
+[00:30:47] Ty Wells: No worries.
+[00:30:48] Morgan Cook: That'll be great.
+[00:30:49] Morgan Cook: Are you still running that, or have that available?
+[00:30:52] Ty Wells: Yeah.
+[00:30:53] Ty Wells: Oh, yeah.
+[00:30:53] Ty Wells: Check out CrowdPix.ai.
+[00:30:56] Morgan Cook: Okay.
+[00:30:56] Ty Wells: Let's see it out there.
+[00:31:02] Patrick Chouinard: And Morgan, if you had to say in one sentence, what's your differentiator between your application and the vast majority of digital wall application, what would you say it is?
+[00:31:17] Morgan Cook: I think the one thing that it is, is garbage in and beauty out.
+[00:31:22] Morgan Cook: That's my goal.
+[00:31:23] Morgan Cook: I want to be able to take whatever garbage the person's trying to display and make it look really good for the display.
+[00:31:31] Morgan Cook: And that's a piece where people, you know, there's lots of tools to sit there and do all kinds of manual tweaks to it.
+[00:31:38] Morgan Cook: But if we can automate that whole thing and just, you know, I gave it an ugly PDF or picture of a PDF.
+[00:31:46] Morgan Cook: wasn't even a PDF, just a picture of a PDF that was hanging on the wall for an event, a little poster, right?
+[00:31:53] Morgan Cook: And then had the prompts reformat that, restructure it, put a rotating countdown.
+[00:32:00] Morgan Cook: Add a QR code, all that stuff automatically.
+[00:32:03] Morgan Cook: So it's really, the whole point of it is to get stuff on the screen as quick as possible that looks good, regardless of what kind of garbage you hand into the system.
+[00:32:14] Patrick Chouinard: Marketing-wise, I might spend a minute or two finding a synonym for garbage in, duty out, but I understand the idea.
+[00:32:27] Patrick Chouinard: Nice.
+[00:32:27] Morgan Cook: So that's, that's the goal is that there's nothing.
+[00:32:31] Morgan Cook: This was one of those things where, you know, after Brandon's conversation of, you know, we're coding's not the hard part anymore, you know, you find something you want to try and do, just do it, build it.
+[00:32:46] Morgan Cook: Right.
+[00:32:46] Morgan Cook: And that, this was one of those, well, let's see how far I can get on building this.
+[00:32:52] Morgan Cook: And I had a Raspberry Pi just sitting here and I thought, well, let's load it up on there, build an engine for it.
+[00:33:00] Morgan Cook: See what it can display, and it works really good for that.
+[00:33:05] Morgan Cook: I still have to build the whole front end piece and tweak all my prompting and that kind of stuff and choose a couple of different large language models to target the image generation with.
+[00:33:21] Morgan Cook: And most of it actually is not in a graphic image, it's HTML, it's structured HTML, single page structured HTML.
+[00:33:29] Morgan Cook: So, because I found that a lot of the, then I don't have to use an image generator, right?
+[00:33:37] Morgan Cook: For a lot of the information, it's text based, it's, you know, pretty graphics, but they're not necessarily graphics that are not outside the scope of HTML and a nice SVG.
+[00:33:49] Morgan Cook: And so all of the fonts and everything scalable, everything's, everything scales with whatever's going, whatever device it's being pushed on onto.
+[00:34:00] Patrick Chouinard: Yeah, talking about that, I'm actually working on something for one of my clients, because you talk about structured HTML, it's starting to be a new output format that everybody wants or everybody creates, but there's no stable way to publish it or standardized way to publish it.
+[00:34:23] Patrick Chouinard: And it creates a lot of scripts, and it makes cyber department pretty nervous to see a bunch of non-coder create scripts all over the place.
+[00:34:33] Morgan Cook: Yeah.
+[00:34:35] Patrick Chouinard: Basically, we created this small wrapper that pushed all of the page into a segregated iframe, just to make sure that whatever gets created cannot get outside of the page.
+[00:34:48] Morgan Cook: Right, and that's exactly what I do on the Raspberry Pi.
+[00:34:51] Morgan Cook: Yeah.
+[00:34:52] Morgan Cook: It sits inside a secure iframe, actually two of them, so that when I do the transition, I can just fade through from one iframe to the next.
+[00:35:00] Morgan Cook: Right?
+[00:35:00] Morgan Cook: Or whatever the transition model is that's pushing it.
+[00:35:03] Morgan Cook: So that way there's no paint draw from the Raspberry Pi because it's graphics cards not all that great.
+[00:35:11] Morgan Cook: So yeah, a transition works fine, but anything that causes a repaint in the HTML engine just chugs, so.
+[00:35:20] Patrick Chouinard: Yeah, you have different challenge, but yeah, it's the same primitives of publishing standard HTML or independent HTML, so.
+[00:35:30] Morgan Cook: It's been, I've used it twice now, so I used it in templates to generate all of the content from workbooks, right?
+[00:35:42] Morgan Cook: For the same thing, not for this book, but for a whole bunch of other workbooks, where she just gives me the text.
+[00:35:50] Morgan Cook: I have a, convert that text to Markdown and Markdown has a bunch of custom tags in it.
+[00:35:58] Morgan Cook: And then I have
+[00:36:00] Morgan Cook: I have an engine that is deterministic, so it no longer runs through AI, it just runs the script, but I had AI generate the script based on the first paths, right?
+[00:36:11] Morgan Cook: And what that does is it takes an HTML template and then converts all that markdown into beautiful, you know, 8.5x11 workbook pages that have all kinds of frames and colors and everything on it to be presented, right?
+[00:36:26] Morgan Cook: So, I've seen three or four times in the past six months where I've tried to do something with AI going from my prompt to the end result, like a graphic, right?
+[00:36:40] Morgan Cook: One of them was to paint a circle from a specific coordinate in a map, and the first attempt, man, it looked like an amoeba, you know, it was not a circle by any means.
+[00:36:53] Morgan Cook: And then I asked, the only thing I changed was I asked it to, instead of creating an image from, you know, GIS.
+[00:37:02] Morgan Cook: I said, just write a JavaScript to create this plot, right?
+[00:37:08] Morgan Cook: And it did it perfectly.
+[00:37:10] Morgan Cook: The thing looks perfect.
+[00:37:13] Morgan Cook: So what I learned from that was don't ask AI to generate artifacts, ask AI to generate code that generates artifacts because it knows how to generate the code and what the code is supposed to look like or present when it's done.
+[00:37:29] Morgan Cook: And so it was a pretty, I've used that several times now where, you know, don't write me a, don't give me a graphic, give me a JavaScript that generates the graphic.
+[00:37:41] Patrick Chouinard: Nice.
+[00:37:42] Patrick Chouinard: One thing, though, that you just remind me, the difference of what I tried with Codex specifically, you know that the Codex application now has the ability to use GPT Image 2 inside of it.
+[00:37:56] Patrick Chouinard: So as part of your agentic workflow, it can generate image.
+[00:38:03] Patrick Chouinard: Yeah, the Codex application.
+[00:38:10] Patrick Chouinard: Even the $20 a month subscription, you have decent limits that you can use.
+[00:38:15] Patrick Chouinard: And as part of your workflow, it's not just going to create the user interface and the HTML.
+[00:38:21] Patrick Chouinard: It will create whatever image it needs to embed within that page.
+[00:38:25] Patrick Chouinard: It's a differentiator from Cloud Code.
+[00:38:27] Patrick Chouinard: I have Cloud Code use the GPT-2 image.
+[00:38:34] Patrick Chouinard: Yeah, but it becomes an API call, right?
+[00:38:38] Ty Wells: Yeah, yeah, yeah.
+[00:38:39] Ty Wells: I got your point.
+[00:38:40] Ty Wells: If get my Codex, it's part of the subscription.
+[00:38:42] Ty Wells: Yes, yes.
+[00:38:43] Ty Wells: I forgot that's the angle you're always coming from.
+[00:38:46] Ty Wells: I'm going to change that today.
+[00:38:48] Patrick Chouinard: Thank you for that.
+[00:38:50] Ty Wells: Gem right there.
+[00:38:51] Ty Wells: I wasn't even thinking about it.
+[00:38:53] Ty Wells: I got the image and it was great.
+[00:38:55] Ty Wells: Wait a minute.
+[00:38:55] Ty Wells: It cost me.
+[00:38:57] Ty Wells: I'm already paying for it.
+[00:38:59] Ty Wells: of and I you're Fenriri.
+[00:38:59] Patrick Chouinard: no, Thank you.
+[00:39:00] Patrick Chouinard: Hey, I'm paying enough subscriptions.
+[00:39:02] Patrick Chouinard: I'm going to build them for everything they're doing.
+[00:39:05] Patrick Chouinard: They're going to give me, believe me.
+[00:39:07] Morgan Cook: Now my only two subscriptions are with, oh, actually three, I guess, with Claude, Winsurf, and ChatGPT.
+[00:39:20] Morgan Cook: So I got to evaluate.
+[00:39:22] Patrick Chouinard: still leverage your Winsurf subscription?
+[00:39:25] Morgan Cook: No, I haven't really used it in like two weeks, but I'm afraid to let go of it because when Claude goes down, that's my bad.
+[00:39:33] Morgan Cook: So I need to find a different path there, but I just, I just, it's, you know, I've paid for the year in advance, so I'm still just on that cycle.
+[00:39:41] Morgan Cook: I'm just waiting to get to the end of it.
+[00:39:43] Patrick Chouinard: Okay.
+[00:39:44] Ty Wells: I just jump on DeepSeq 4 when Claude goes down, that's in Claude.
+[00:39:52] Morgan Cook: I've just started a new session.
+[00:39:54] Morgan Cook: But you're using the UI, not the CLI?
+[00:39:59] Ty Wells: Yeah.
+[00:40:00] Ty Wells: Yeah, I just use Cloud, but I map the Anthropic to the Deep Seek 4, so it thinks it's going to Anthropic, but it's redirected to Deep Seek 4 Cloud.
+[00:40:11] Morgan Cook: All right.
+[00:40:12] Morgan Cook: How do you do that mapping?
+[00:40:14] Ty Wells: I can send you instructions.
+[00:40:16] Ty Wells: Actually, I think I saved instruction because I thought somebody else would use it.
+[00:40:19] Ty Wells: I may be able to post it to you right now or in the school community.
+[00:40:24] Patrick Chouinard: It's within the configuration of Cloud Code.
+[00:40:27] Ty Wells: Right.
+[00:40:27] Ty Wells: Right.
+[00:40:31] Morgan Cook: There's just so many different configurations.
+[00:40:33] Morgan Cook: I don't know where to start looking and where it's supposed to, you know, wedge itself in between something, two connectors of some sort, you know.
+[00:40:41] Patrick Chouinard: Actually, Cloud Code is very good to guide you on how to reconfigure Cloud Code.
+[00:40:46] Morgan Cook: Yeah.
+[00:40:49] Morgan Cook: Okay.
+[00:40:51] Morgan Cook: That's all I really have.
+[00:40:52] Morgan Cook: Heritage Plot is moving along.
+[00:40:54] Morgan Cook: I did finally get a hold of the county guy.
+[00:40:57] Morgan Cook: He's working on his side of it.
+[00:40:59] Morgan Cook: It's just a...
+[00:41:00] Morgan Cook: It's slow process with accounting, just trying to, I mean, I'm sure they're demanding when they request something from their service providers, but when they are the holdup, it's like, can't do nothing for you until you hand over the info I need.
+[00:41:19] Patrick Chouinard: They have pretty much the apex of a captured customer base.
+[00:41:24] Morgan Cook: They do.
+[00:41:25] Morgan Cook: They have the final capture.
+[00:41:30] Patrick Chouinard: Thank you very much, Morgan.
+[00:41:32] Morgan Cook: Right.
+[00:41:34] Patrick Chouinard: Elena, are we ready for the demo?
+[00:41:41] Elena: Yeah, I'm kind of started.
+[00:41:43] Elena: started.
+[00:41:44] Elena: I just don't know if something will fail.
+[00:41:46] Elena: I'm sorry.
+[00:41:47] Patrick Chouinard: Don't worry.
+[00:41:48] Patrick Chouinard: It's, we all, we've all known the demo gods.
+[00:41:52] Elena: We know what it is.
+[00:41:53] Elena: Don't Sounds good.
+[00:41:55] Elena: Okay.
+[00:41:55] Elena: Just a second.
+[00:41:56] Elena: Let me clear a little bit.
+[00:42:00] Elena: Okay, I'm still talking to Claude on the side, because I forgot some kind of parts.
+[00:42:08] Elena: All right, so here is my screen.
+[00:42:14] Elena: Do you see the screen?
+[00:42:16] Patrick Chouinard: Yes.
+[00:42:17] Elena: So this is a multi-cloud agent disaster recovery system.
+[00:42:23] Elena: And at this point for PFC, the only in the scope, the parts which is taking the basically information from the cloud, from the account, taking the GitHub repo, and as well as, oh, that's what was wrong.
+[00:42:44] Elena: Okay.
+[00:42:45] Elena: I don't know.
+[00:42:47] Elena: Basically, giving an analyst role, and basically due to generate disaster recovery planning, mapping, mapping.
+[00:43:00] Elena: In different services from one cloud to another, so doing some semantic mapping for the disaster recovery, and eventually generate and deploy the full infrastructure based on, it's also doing criticality assessment.
+[00:43:18] Elena: So I don't know if, so here, here I passed, I passed the AWS, it was basically a role, and it reviewed and found all the instances, which is there.
+[00:43:39] Elena: It also reviewed the application semantic profile, retrieved dependencies, confirming the scope.
+[00:43:48] Elena: So basically you can pick, like, which one, and now it should start criticality assessment, so we'll see how it will go.
+[00:44:00] Elena: So it's powered by Edible's Bedrock, basically all Edible's strengths as an agentic framework.
+[00:44:09] Elena: I don't know if criticality doesn't have yet anything.
+[00:44:16] Elena: Nothing here yet, but eventually.
+[00:44:21] Elena: So that's what it is right now.
+[00:44:24] Elena: It's still working.
+[00:44:26] Elena: It may take some time for criticality assessment.
+[00:44:31] Elena: Okay.
+[00:44:40] Elena: Recommended here to mission critical for your new bots.
+[00:44:42] Elena: So I created banking application, like basically mocking the banking application.
+[00:44:52] Elena: And right now basically on criticality evaluation, you can add some input from the user.
+[00:45:00] Elena: Originally, this part also can, you can add some business context, like maybe requirements, design, documents, whatever is available for the agent to make better decision from the beginning.
+[00:45:18] Elena: But additionally, you can basically change it here a little bit.
+[00:45:22] Elena: I can't remember which question I was giving, so that's another thing.
+[00:45:26] Elena: When I was testing it initially, for some reason, I think my Windows was restarted.
+[00:45:36] Elena: but let's just maybe, basically there is equations.
+[00:45:42] Elena: However, I need to understand more about what is revenue, revenue, I don't know, revenue is, I don't one, I don't one million dollars.
+[00:45:55] Elena: What else do you not come?
+[00:46:01] Elena: Let's see.
+[00:46:02] Elena: I had this question, I just lost it.
+[00:46:07] Elena: Answer.
+[00:46:08] Elena: Are you subject to?
+[00:46:09] Elena: Yes, subject to PCI DSS.
+[00:46:16] Elena: Let's just do this for now.
+[00:46:19] Elena: I don't know what it will come up with, but basically it might adjust criticality tier.
+[00:46:25] Elena: There is a total of four tiers.
+[00:46:28] Elena: The smaller it is, the more critical it is.
+[00:46:33] Elena: Okay, now it's giving us still T2.
+[00:46:36] Elena: Maybe it's not enough.
+[00:46:39] Elena: Numbers and there's justification for the tier choice.
+[00:46:49] Elena: And we can approve this.
+[00:46:53] Elena: And from that part, it will start generate strategy, disaster recovery strategy options.
+[00:47:00] Elena: Not yet there.
+[00:47:04] Elena: Okay, let's hope it will not fail somewhere in between.
+[00:47:13] Elena: I realized that I didn't save all the inputs from my testings.
+[00:47:21] Elena: It was just vanished.
+[00:47:24] Elena: Okay, here I think I did something.
+[00:47:26] Elena: They generate test strategies of warm standby or multi-site active-active.
+[00:47:34] Elena: I estimated the cost, but right now it's more like, let's say, random, and it needs to be refined.
+[00:47:41] Elena: So we can select warm standby or multi-site active-active.
+[00:47:48] Elena: I don't know.
+[00:47:52] Patrick Chouinard: While it's processing, just so I understand correctly, you start by analyzing an existing infrastructure.
+[00:48:00] Elena: From what I've seen in AWS?
+[00:48:02] Elena: Correct.
+[00:48:02] Elena: Infrastructure, the code.
+[00:48:04] Elena: Also, if any documentation is available, it also will take it into account.
+[00:48:11] Patrick Chouinard: And is it specific to AWS, or you support other IPerscalers?
+[00:48:16] Elena: So the idea is basically support all the clouds and have it like, I don't know how they spoke for between the clouds.
+[00:48:26] Elena: Okay, we selected this.
+[00:48:32] Elena: Oh, okay.
+[00:48:34] Elena: Okay, waiting plan.
+[00:48:35] Elena: I don't know where is this, but I think it's not going to be a blocker.
+[00:48:41] Elena: Okay.
+[00:48:42] Elena: And now it created us disaster recovery plan on GCP.
+[00:48:49] Elena: So, like based on whatever it's already in AWS, it's mapped into GCP services using AWS MCP.
+[00:49:00] Elena: server for documentation, as well as GCP, MCP servers for documentation.
+[00:49:08] Elena: And that's how it's mapping it.
+[00:49:10] Elena: So basically creating this one.
+[00:49:17] Elena: We can improve it.
+[00:49:21] Elena: But this is basically it.
+[00:49:23] Elena: So at this point at least.
+[00:49:24] Elena: And it can be downloadable for MD or PDF.
+[00:49:29] Elena: So this is not full scope.
+[00:49:32] Elena: I mean, eventually the idea to be very much like connecting to many clouds, between the clouds, between like Azure and GCP and AWS, and being able to map it from GCP to AWS, not only AWS to GCP as well.
+[00:49:48] Elena: So basically being like kind of the platform, which can create and deploy disaster recovery seamlessly, as seamlessly as possible.
+[00:50:04] Elena: Additionally, the plan is to implement some kind of disaster recovery testing as well using AI agents.
+[00:50:13] Elena: So that was an idea.
+[00:50:14] Elena: This is just a small piece of pure seal.
+[00:50:19] Elena: Basically, right now, what it's doing, it's doing autonomous criticality assessment and autonomous disaster recovery plan generation still needs to be refined and probably fine-tuned and look into each cases and overall just more cases than it is right now.
+[00:50:34] Elena: But at least what it's doing already is checking infrastructure deployed on OneCloud, looking into GitHub repo.
+[00:50:45] Elena: I didn't test yet the requirements part.
+[00:50:50] Elena: But, yep, so...
+[00:50:52] Patrick Chouinard: Very interesting, actually.
+[00:50:55] Elena: I come from the infrastructure world before, so that thought...
+[00:51:01] Elena: I mean, you probably know a lot, but disaster recovery, it's to be a pain, especially in enterprise architecture.
+[00:51:11] Elena: It's very rarely accurate.
+[00:51:14] Elena: It takes a lot of effort, takes a lot of manual work, manual brainstorming and thinking.
+[00:51:19] Elena: So I've been thinking why these outages recently was kind of, I don't know, it just made me thinking about it.
+[00:51:30] Elena: Very good idea.
+[00:51:31] Patrick Chouinard: But one thing I would say, in the enterprise, the large enterprise, they pretty much have that part covered, but you have a huge market of brand new startups that are, because of AI, starting all over the place, that, and all the AI tools that we have to create application are awesome to spawn an application out of nothing.
+[00:51:55] Patrick Chouinard: But there's literally nothing that helps people.
+[00:51:58] Patrick Chouinard: is.
+[00:52:00] Patrick Chouinard: Migrate whatever gets instantiated from a little Vercel Superbase set up to an actual infrastructure if you actually become a corporation and you want to deploy that on a solid infrastructure with DR capability, with SLAs, with all of those.
+[00:52:21] Patrick Chouinard: And if you do that through the Vercel Superbase of this world, it's doable, but it's going to cost you an arm and a leg when you start to go through a specific threshold.
+[00:52:32] Patrick Chouinard: This is a way to help those people go from a full SAS infrastructure to, how do I now migrate with the big boys?
+[00:52:43] Elena: Yeah, scalable, most secure environment, basically, because we say it's not really.
+[00:52:48] Elena: Yeah, so for the startups.
+[00:52:50] Elena: However, startups, I mean, they're growing.
+[00:52:52] Elena: So basically, they start from POC and MVP, and then they want to grow to more scalable.
+[00:53:00] Patrick Chouinard: More resilient architecture, right?
+[00:53:02] Patrick Chouinard: Exactly.
+[00:53:03] Patrick Chouinard: That's where I see a lot of value for this type of application, because there's less and less of us left to actually guide them through that kind of migration.
+[00:53:14] Elena: But can I ask you like the question, in the enterprise environment, there is a disaster recovery, but how hard is it to maintain them, to keep them intact, to keep them current?
+[00:53:24] Elena: Is it still the problem that can be solved by some kind of agentic work?
+[00:53:31] Elena: I would agree.
+[00:53:32] Patrick Chouinard: It's when you get to a larger infrastructure is they already have a bunch of contract into place.
+[00:53:37] Patrick Chouinard: You have a lot less wiggle room to say, oh, we're going to integrate a new hyperscaler.
+[00:53:42] Patrick Chouinard: like if you have a company that has passed a couple of hundreds of people telling them to go from Azure and integrate AWS or integrate GCP.
+[00:53:54] Patrick Chouinard: It's a huge multi-month, even some kind of year.
+[00:53:59] Patrick Chouinard: Yeah,
+[00:54:00] Elena: Great.
+[00:54:01] Elena: Those new hyperscaler.
+[00:54:03] Patrick Chouinard: As a smaller company that is starting to get into the enterprise workspace, they work from a blank slate.
+[00:54:10] Patrick Chouinard: So those type of system can guide them in their decision process because they don't have the background.
+[00:54:17] Patrick Chouinard: They don't have the people to guide them.
+[00:54:19] Patrick Chouinard: They need that type of things to help them get into those market.
+[00:54:23] Patrick Chouinard: So challenging company that have enterprise architect that have worked in infrastructure for the past 30 years to guide them into something they haven't seen before.
+[00:54:33] Patrick Chouinard: It's a very hard sell.
+[00:54:35] Patrick Chouinard: Guiding someone who doesn't know what enterprise infrastructure is, but needs to, that's money in your pocket.
+[00:54:42] Elena: It's a better spot, you think, versus, because I was thinking it's probably that it's going to be the customers, ideal customers will be actually enterprise architectures and the one who probably have multi-region to multi-cloud, I would say.
+[00:54:55] Patrick Chouinard: Not small startups, but in the small industry.
+[00:55:00] Patrick Chouinard: The medium, I would say more of the medium enterprise, like they're getting there, those are the ones that are going to have a need for something like that, because the large enterprise, they're going to have a PwC or Deloitte or something like that come in and do that for them.
+[00:55:16] Elena: They're not going to use the SaaS applications to do Consulting companies, right?
+[00:55:20] Patrick Chouinard: So basically some...
+[00:55:21] Patrick Chouinard: Yeah.
+[00:55:22] Elena: But it's going to be much more expensive, right?
+[00:55:24] Elena: Compared to...
+[00:55:25] Patrick Chouinard: Oh, absolutely.
+[00:55:26] Elena: can try to be a bit for the price.
+[00:55:28] Patrick Chouinard: So when you get into large enterprise, they see cost as equivalent to quality.
+[00:55:35] Patrick Chouinard: So when you have a low cost solution, they're just not going to consider...
+[00:55:40] Patrick Chouinard: I mean, I've seen it multiple times where, for example, with training, they have people that are extremely knowledgeable internally.
+[00:55:46] Patrick Chouinard: They'll hire an external company just because, hey, it's an external company.
+[00:55:50] Patrick Chouinard: They must know what they're talking about.
+[00:55:52] Patrick Chouinard: It's...
+[00:55:53] Patrick Chouinard: Enterprise companies are not necessarily logical.
+[00:55:56] Ty Wells: Not logical at all.
+[00:55:58] Ty Wells: to It's That go and think it's wikisoli or not is that's absolutely already?
+[00:56:00] Ty Wells: But just a little advice I'd give you here is I would say your ICP, your ideal customer is going to be that company that's making that jump.
+[00:56:12] Ty Wells: The question is, how do you identify that company that's making the jump?
+[00:56:16] Ty Wells: Is you actually use AI to track these companies that are, you know, in the news and making these moves and saying that they're, you know, they have X amount of users or they jump, you know, exponential, right?
+[00:56:29] Ty Wells: That's where I think you can identify who to target, but yeah, if you go into enterprise, charge them a million dollars a month just for retainer and they'll probably consider it, but if you go in low end, they will not, they won't even, you'll probably wouldn't even get in the door.
+[00:56:46] Ty Wells: mean, they just, those are all relationships and so forth, but you could get was trying to reach somebody who you already know within the network.
+[00:56:57] Elena: Yeah, that's a good idea and I think like to reach this kind of company.
+[00:56:59] Elena: Yeah.
+[00:57:00] Elena: I feel like it's, I can try to find them an accelerator, accelerators or founders meetings, right, and founders network.
+[00:57:10] Ty Wells: Yeah, but they're going to publish their news out there.
+[00:57:12] Ty Wells: Use that to your advantage to determine who they are, right?
+[00:57:15] Ty Wells: If they're going to boast and say that, you know, I'm 200x this quarter, okay, well, I've got the solution for you.
+[00:57:23] Ty Wells: You need to prepare yourself to move into the infrastructure to be able to scale, right?
+[00:57:29] Ty Wells: And that's the way I would approach it, if that's the direction you want to go to get those people, and they'll be willing to pay something and they'll know and, you know, reference anthropics issues and see what they say, they may, that may trigger them to, you better be prepared to scale.
+[00:57:47] Elena: So question about technologically, like, technologically and architecturally, any advices, if anyone.
+[00:58:00] Elena: As I mean, like, I see it's a multi-agent, of course, multi-agent system, and basically the workflows.
+[00:58:09] Patrick Chouinard: Well, in the backend, what are you using?
+[00:58:11] Patrick Chouinard: Is it Vercel?
+[00:58:13] Elena: Is it a custom app?
+[00:58:14] Patrick Chouinard: Is it?
+[00:58:15] Elena: It's strengths and AWS infrastructure.
+[00:58:19] Elena: So full, complete AWS infrastructure.
+[00:58:22] Elena: I think, yeah, I'm hosting right now in Amplify, but this is, like, probably just for POC.
+[00:58:29] Elena: But it's basically front-end only on Amplify.
+[00:58:33] Elena: It's Next.js for front-end dashboard.
+[00:58:35] Elena: On the backend, it's fast IP and strengths.
+[00:58:40] Patrick Chouinard: Okay.
+[00:58:41] Patrick Chouinard: And do you have any agentic workflow behind the scene?
+[00:58:44] Elena: Yeah.
+[00:58:45] Elena: So basically, yeah, onboarding agent, discovery agent, criticality agent.
+[00:58:51] Elena: I wonder, like, how to probably I will need to create sub-agents for each per cloud, right?
+[00:58:58] Elena: So, So, for example...
+[00:59:00] Elena: If it's discovery agent, I will have subagent for AWS, subagent for Azure, subagent for GCP, right?
+[00:59:10] Elena: And similarly, basically, this kind of hierarchy where separating the level of concerns like for different logical groups of workflows.
+[00:59:29] Patrick Chouinard: Yeah.
+[00:59:30] Patrick Chouinard: Just make sure it's split in logical workflow for the agent, not logical workflow for your understanding.
+[00:59:37] Patrick Chouinard: It's a trap that we fall into quite often is we try to split the work for the agent based on how we would split the work for a human being.
+[00:59:46] Elena: And for them, context is everything.
+[00:59:49] Elena: is not always the case.
+[00:59:50] Elena: Exactly, exactly.
+[00:59:52] Patrick Chouinard: It's split by context, not split by logical split of the work.
+[00:59:58] Elena: Okay.
+[00:59:59] Elena: I'll keep in mind Okay.
+[01:00:01] Patrick Chouinard: Basically, split it so each agent has a single main goal, and all other goals are towards this main goal.
+[01:00:11] Elena: If you have two opposite main goals in an agent, that's where you're going to get very, A lot of confusion by the agent.
+[01:00:21] Elena: Yes, so I feel like… Don't balance them either.
+[01:00:24] Morgan Cook: We try to split things so that everybody has equal work.
+[01:00:28] Morgan Cook: Agents don't care about equal work.
+[01:00:30] Morgan Cook: They care about very specific goal task work.
+[01:00:35] Morgan Cook: It's okay to overload one agent and let the other two take care of some minor things, right?
+[01:00:39] Patrick Chouinard: That's perfectly fine.
+[01:00:41] Elena: Yep.
+[01:00:42] Elena: Thank you.
+[01:00:43] Patrick Chouinard: That's what I was saying when I said split the work logically for the agent, not how we would, because we would do exactly that.
+[01:00:51] Patrick Chouinard: We would say, oh, you don't have enough things to do.
+[01:00:54] Patrick Chouinard: We're going to give you more.
+[01:00:55] Elena: Yeah, if you give it an other objective, then you're… enough objectives are…
+[01:01:00] Elena: Kind of contradiction, so it can create not-stable results.
+[01:01:05] Patrick Chouinard: Exactly.
+[01:01:06] Elena: Sounds good.
+[01:01:07] Elena: Thank you.
+[01:01:08] Elena: Thank you so much for your feedback.
+[01:01:10] Patrick Chouinard: No problem.
+[01:01:12] Elena: Very nice demo, by the way.
+[01:01:13] Elena: All right.
+[01:01:15] Elena: It did fail.
+[01:01:17] Ty Wells: One thing I would add on that is the slicing.
+[01:01:20] Ty Wells: I was listening to, I don't remember who, talking about, Morgan's talking about it here, and Patrick, in terms of your development.
+[01:01:29] Ty Wells: And it'll recommend, you know, do the database first and then do this and do that.
+[01:01:34] Ty Wells: And the time as you get to the UI, right, you haven't really tested anything.
+[01:01:39] Ty Wells: You don't have, you need to do a slice.
+[01:01:42] Ty Wells: So that slice covers all the different layers from your back end to your front end.
+[01:01:48] Ty Wells: And so now you're, you're in a better position without, you know, a lot, a lot of wasted tokens, you know, being able to protect.
+[01:01:59] Ty Wells: better position.
+[01:01:59] Ty Wells: Thank
+[01:02:00] Ty Wells: There's there at each level and different things that will help you going forward and you have a clearer picture and you have connectivity, you know, and you sort of confirmation that yes, you know, everything's touching everything and you're not, it's not scaffolding and telling you lies and stuff so because it has to work back to front and you sort of prove that and then you make it create a pattern from that and then it has no choice but to follow patterns, right?
+[01:02:31] Elena: Yeah, that's another point.
+[01:02:32] Elena: think like it's, it needs to have some kind of testing confirming what it was there and how did it land eventually to the second cloud or disaster recovery side.
+[01:02:45] Elena: So that's, that's another piece of like part of work.
+[01:02:50] Elena: Yeah.
+[01:02:50] Elena: Thank you so much for thinking points.
+[01:02:52] Elena: I'll be, I'll be working on it.
+[01:02:57] Patrick Chouinard: By the way, that reminds me.
+[01:03:00] Patrick Chouinard: For those who have multiple Claude subscription, have you seen the new slash goal that they've created, basically a copy of what they've done in Codex, a new slash command that are now in both?
+[01:03:14] Ty Wells: I saw it, but I haven't touched it.
+[01:03:16] Ty Wells: Enlighten me.
+[01:03:17] Patrick Chouinard: You'll save me some time.
+[01:03:19] Patrick Chouinard: Basically, it's the Ralph Wiggum loop on steroids.
+[01:03:23] Patrick Chouinard: It's just, you just slash goal, you give it a goal, and as long as the goal has a testable outcome that you can go against, that it can evaluate its work, it will run for an hour, two hour, 10 hour, two days straight until it's, but it's a token monster.
+[01:03:45] Patrick Chouinard: So that's why I'm saying for those who have multiple $200 subscription, it might be an idea to evaluate.
+[01:03:52] Ty Wells: Yeah, I may have, I'll, I'll look at it and see.
+[01:03:54] Ty Wells: I'll throw one subscription at it, see how it does.
+[01:03:57] Ty Wells: By the way, they changed the limits on the subscription.
+[01:04:00] Ty Wells: They increased, they doubled the hours, but they reduced the weekly limit.
+[01:04:05] Ty Wells: It's not an even Steven situation.
+[01:04:09] Patrick Chouinard: Yeah, because there's not a lot of people who hit the weekly limit, but a whole lot that hits the five-hour limit.
+[01:04:16] Ty Wells: Yeah, but no, if you're hitting the five-hour limit, you're going to hit the weekly limit, which I do often.
+[01:04:21] Ty Wells: So I'm just saying, I got one of the things all, but the other thing is going to catch me, right?
+[01:04:27] Ty Wells: It's buy from me or buy from me.
+[01:04:31] Patrick Chouinard: But yeah, now they have both implemented it.
+[01:04:37] Patrick Chouinard: So basically it came out on Codex first, and like two days later, Entropic implemented it in Claude.
+[01:04:46] Patrick Chouinard: So very nice little thing.
+[01:04:50] Patrick Chouinard: But again, that's why I emphasize use both.
+[01:04:53] Patrick Chouinard: Just specialize each of them in their own part of the SDLC.
+[01:04:57] Ty Wells: Yeah.
+[01:04:59] Patrick Chouinard: So.
+[01:04:59] Patrick Chouinard: So.
+[01:04:59] Patrick Chouinard: So.
+[01:04:59] Patrick Chouinard: So.
+[01:05:00] Patrick Chouinard: And it saves a lot of tokens as well.
+[01:05:06] Patrick Chouinard: Good.
+[01:05:08] Patrick Chouinard: Now, Amal, I saw you had your video camera online earlier.
+[01:05:15] Patrick Chouinard: Do you have something you want to share with the group?
+[01:05:20] Hemal Shah: Yeah, share plus I have questions as well.
+[01:05:24] Hemal Shah: Sharing wise, working on, I joined a new company.
+[01:05:29] Hemal Shah: So it's trying to get my feedback with all the processes and everything.
+[01:05:34] Hemal Shah: First task I'm looking into is to automate their digital marketing campaign.
+[01:05:39] Hemal Shah: Very simple thing, you know, just from a few instructions, we want to generate posts for Facebook, Instagram with caption and images and simple stuff like that.
+[01:05:51] Hemal Shah: And I'm right now doing it to the core.
+[01:05:58] Hemal Shah: I'm not inclined to use any
+[01:06:00] Hemal Shah: Pain or any other workflows, I mean, just staying in the cloud and run it through, it's so easy to get an entire pipeline in place.
+[01:06:10] Hemal Shah: Whatever ticketing system where we are going to put that ticket, it just reads it and then run the whole chain with approvals and whatever is needed.
+[01:06:20] Hemal Shah: So my first question is, is there any recommendation on the tools to use for these type of things?
+[01:06:27] Hemal Shah: Well, you're interacting with what exactly?
+[01:06:35] Hemal Shah: So basically the flow is going to be in a month, we might be creating, you know, one post every day for different social media platform and, and the high level theme of that post will be in one of the ticketing system, maybe Jira or linear or somewhere that, okay, this is something we want.
+[01:06:55] Hemal Shah: And from there on, I just, I'm planning to have that automatic.
+[01:07:00] Hemal Shah: In place, which will, depending upon different states, it will generate content, get content approval.
+[01:07:07] Hemal Shah: So that will be a step because there are different people who will approve different things.
+[01:07:10] Hemal Shah: And once content is approved, generate image, image is approved, publish it, things like that.
+[01:07:17] Hemal Shah: So interacting with ticketing system, that's the high level flow.
+[01:07:24] Hemal Shah: So my question is, like I mentioned, I'm more inclined to just develop everything in plot code with, you know, Python backed or any coding to do end-to-end run.
+[01:07:38] Hemal Shah: Of course, honoring different steps along the way, approval steps along the way.
+[01:07:43] Hemal Shah: And attain was another thing I was wondering to maybe create a workflow in attain itself, but wanted to pick your brain, this community's brain.
+[01:07:51] Patrick Chouinard: First, what triggers the start, is it autonomous, so does it need to run without anybody driving it?
+[01:07:59] Patrick Chouinard: And second...
+[01:08:00] Patrick Chouinard: Is there any kind of enterprise requirement for backup, for audit, for anything of that sort?
+[01:08:08] Hemal Shah: No, no enterprise requirement for backup of audit.
+[01:08:11] Hemal Shah: I'm thinking that whatever is the ticketing system, Jira or linear, we will, that's where we are going to maintain somewhat a state of what is the content, what is the image, who approved it.
+[01:08:22] Hemal Shah: So it will have, it will capture all those sort of information itself.
+[01:08:26] Hemal Shah: And it will be autonomous, let's say a ticket kicks in, ticket is created, there might be a polling, or I can put a webhook or something to do it autonomous, pick it off automatically.
+[01:08:40] Patrick Chouinard: Because if you want to, yeah, you could build it with CloudCode for sure.
+[01:08:44] Patrick Chouinard: But have you considered using the CloudAgent SDK for that?
+[01:08:49] Patrick Chouinard: it's basically CloudCode as a coding platform.
+[01:08:52] Patrick Chouinard: You basically use the engine of CloudCode, but within your application.
+[01:08:57] Hemal Shah: Okay, no, I have not thought about that.
+[01:09:00] Hemal Shah: Okay.
+[01:09:03] Hemal Shah: So you, you pretty much, you host, is, is that SDK hosted already on some entropic cloud?
+[01:09:11] Patrick Chouinard: You You either host it locally as the, using the cloud agent SDK, obviously connecting to whichever inference provider you're going to use Azure Bedrock or entropic directly, whatever, or you use what they call managed agent, which is basically the SDK hosted at entropic.
+[01:09:29] Hemal Shah: Okay.
+[01:09:31] Hemal Shah: All right.
+[01:09:31] Hemal Shah: Uh, I can give it a shot.
+[01:09:33] Hemal Shah: I can think about that.
+[01:09:34] Patrick Chouinard: Yeah.
+[01:09:35] Patrick Chouinard: Basically you have the whole harness that you're used to.
+[01:09:37] Patrick Chouinard: You just develop the code that's leveraging the harness in cloud code, but cloud code runs or the, the agent SDK runs your production.
+[01:09:49] Hemal Shah: Okay.
+[01:09:50] Hemal Shah: So instead of deploying my Python app in Docker or one of the cloud public cloud, it is, this will be the agent deployed on entropics.
+[01:09:59] Hemal Shah: Yes.
+[01:09:59] Hemal Shah: Let's S
+[01:10:00] Hemal Shah: Probably a managed agent or some other.
+[01:10:03] Patrick Chouinard: Yeah.
+[01:10:03] Patrick Chouinard: If you had a managed agent, but remember it's a full agent.
+[01:10:06] Patrick Chouinard: So don't just throw prompt, one shot prompt at it.
+[01:10:10] Patrick Chouinard: Otherwise just use any kind of inference platform.
+[01:10:13] Hemal Shah: Yeah.
+[01:10:13] Patrick Chouinard: You can leverage that because you want it to execute some of the, the, the workflow part.
+[01:10:21] Hemal Shah: Excellent.
+[01:10:21] Hemal Shah: Okay.
+[01:10:22] Hemal Shah: Um, another question I have is, thank you for that Patrick, by the way, and another question I have is two questions.
+[01:10:29] Hemal Shah: One is generic email client.
+[01:10:31] Hemal Shah: I know at one point you mentioned that you use, you know, some of the questions were answered by your email, um, automatically, your emails were automatically responded maybe by one of agents.
+[01:10:43] Hemal Shah: So how have you configured email agent?
+[01:10:46] Patrick Chouinard: don't do full automation.
+[01:10:47] Patrick Chouinard: I don't like automation in email because then I lose control about what gets answered.
+[01:10:53] Patrick Chouinard: I don't care if 99% of the time, it's no problem.
+[01:10:56] Patrick Chouinard: It's the 0.1%.
+[01:10:57] Hemal Shah: It's not that I don't want to avoid.
+[01:10:59] Hemal Shah: Bye.
+[01:10:59] Hemal Shah: Bye.
+[01:10:59] Hemal Shah: Bye.
+[01:10:59] Hemal Shah: Bye.
+[01:11:00] Patrick Chouinard: But no, I just feed everything, I never reply to an email myself, so basically, I feed whatever email I receive through the connectors, because they're all available now in Ether, Claude, in Codex, in Gemini, you can connect your mailbox, and I just give the email to the agent, tell it whatever extra context is needed, it builds the answer, and once I'm okay with it, it replies.
+[01:11:31] Patrick Chouinard: But I don't want to fully automate email answers.
+[01:11:36] Hemal Shah: Makes sense, yeah.
+[01:11:38] Hemal Shah: But in this setup, do you typically read emails through respective, let's say it's a Gmail, Google is email providers, do you still read through Gmail browser, or do you use it through one of the connectors?
+[01:11:56] Patrick Chouinard: don't Claude or...
+[01:12:01] Patrick Chouinard: Oh, that's your interface.
+[01:12:03] Hemal Shah: So you just say, okay, show me my unread emails or go fetch.
+[01:12:08] Patrick Chouinard: Go fetch my last email.
+[01:12:10] Patrick Chouinard: And a lot of the memory I built is basically now I use that as a blood pressure reducer.
+[01:12:20] Patrick Chouinard: So basically I answer the email to the agent in the way I would wish I answer it.
+[01:12:26] Patrick Chouinard: And then it reframes everything to be politically correct on the other end.
+[01:12:33] Patrick Chouinard: Incredibly relaxing.
+[01:12:34] Hemal Shah: Okay.
+[01:12:35] Morgan Cook: Patrick, that's funny because my business partner and I used to do that.
+[01:12:39] Morgan Cook: It's like, right.
+[01:12:39] Morgan Cook: However you nasty, you want to write that email, go ahead and write it, send it to me first.
+[01:12:43] Morgan Cook: I'll do the review and we'll send it out after that.
+[01:12:46] Patrick Chouinard: Well, it's very cathargic.
+[01:12:48] Patrick Chouinard: Yeah.
+[01:12:48] Patrick Chouinard: Laura Chachibit does the same thing for me now.
+[01:12:53] Hemal Shah: That's funny.
+[01:12:54] Hemal Shah: Okay.
+[01:12:55] Hemal Shah: And last question.
+[01:12:56] Patrick Chouinard: Yeah, go ahead.
+[01:12:57] Hemal Shah: Go ahead.
+[01:12:58] Hemal Shah: I'll take your talk.
+[01:12:59] Patrick Chouinard: I'll
+[01:13:00] Patrick Chouinard: I was going to say, you'd be surprised how Claude, especially, is able to take something very nasty of a reply and figure out a way to make it politically correct and still convey the same message.
+[01:13:17] Hemal Shah: And my last question is, typically from our, whenever we are implementing a feature, we prompt it, generate a spec, implement it, all the good stuff.
+[01:13:30] Hemal Shah: To manage and track it, I know linear is one of the tools that has, you know, I've heard a couple of times, but do you guys have any lightweight process?
+[01:13:39] Hemal Shah: Do you implement the whole thing in one shot or do you wire up spec, break it down into tasks, create a task for linear?
+[01:13:48] Hemal Shah: Just wanted to get an idea.
+[01:13:49] Hemal Shah: How do you use project tracking with development, code development?
+[01:13:54] Patrick Chouinard: Well, on my front, uh, being in the enterprise, uh, I would.
+[01:14:00] Patrick Chouinard: would love to have a lightweight tool, but no, we're stuck with Jira.
+[01:14:04] Hemal Shah: Yeah, yeah.
+[01:14:05] Patrick Chouinard: So we've added a layer for us, where we basically, we add a layer on top of Superpower, where it's what we call a workflow, a work stream, because basically we get whatever Jira's request to add functionality or build entirely new application.
+[01:14:27] Patrick Chouinard: But from that, we have a step that we do in Claude Code as a team, where we split the work in the work stream.
+[01:14:36] Patrick Chouinard: This is for Claude to identify how it can split the work in independent work stream vertically, exactly as Ty was saying.
+[01:14:46] Patrick Chouinard: like, take the work from start to end, but with as little impact or relationship between the work as possible.
+[01:14:55] Patrick Chouinard: Like, have a work stream that's as independent as you can make it.
+[01:14:59] Patrick Chouinard: And then...
+[01:15:00] Patrick Chouinard: And we recreate a new Juret task, in our case, that will be the input for superpower brainstorming session.
+[01:15:12] Patrick Chouinard: So everybody has their own work stream to go through.
+[01:15:16] Hemal Shah: And then you said super power?
+[01:15:18] Patrick Chouinard: What is that?
+[01:15:19] Patrick Chouinard: Sorry.
+[01:15:19] Patrick Chouinard: It's a plug-in family that exists that lives in both Cloud Code, Codex, Github Copilot, but basically all of the agentic harnessed are supported right now by super power.
+[01:15:36] Patrick Chouinard: So just look at the marketplace in Cloud Code, and you're going to see it's actually one of the only independent developer that is listed in the official entropic marketplace.
+[01:15:48] Hemal Shah: Wow.
+[01:15:49] Patrick Chouinard: It's a single guy that's building super power.
+[01:15:52] Hemal Shah: Wow.
+[01:15:52] Hemal Shah: So you brainstorming respective tasks for that particular stream.
+[01:15:56] Hemal Shah: And then once you see
+[01:16:00] Hemal Shah: There's a plan created, then ask Claude or Claudex to go ahead and implement it.
+[01:16:05] Patrick Chouinard: Is that the...
+[01:16:06] Patrick Chouinard: Actually, Superpower splits the work into a little bit more than that.
+[01:16:13] Patrick Chouinard: The work stream job that we do is just because right now, all of the spec-driven development workflow are built for single developers.
+[01:16:23] Patrick Chouinard: We have a team, so every time we receive something, we can just not assign everything to one guy.
+[01:16:28] Patrick Chouinard: So we split it in work stream, but once that is done, it is a definition of a requirement that we have.
+[01:16:37] Patrick Chouinard: So that's what we feed into the first entry point in Superpower, which is called brainstorming.
+[01:16:42] Patrick Chouinard: So Claude will brainstorm with you figuring out what you want to do at that point, but we've put just enough information in the work stream input so that we don't have like, go into 10 different directions between the work streams.
+[01:16:59] Patrick Chouinard: first point Superpower, the where And we're looking
+[01:17:00] Patrick Chouinard: We have to have some kind of a contract between all of them, but after that, once it has asked all the questions, it will start creating a specification, and it will go through the specification block by block.
+[01:17:14] Patrick Chouinard: So if it has 20 sections, it's going to present every section one at time, make sure to review it with you.
+[01:17:20] Patrick Chouinard: At the end, it will then ask you if you want to go and create an implementation plan.
+[01:17:25] Patrick Chouinard: So from the spec, it's going to create a plan.
+[01:17:29] Patrick Chouinard: The plan will be split in phases that it's going to go through in the implementation.
+[01:17:36] Patrick Chouinard: Once the implementation plan is completed, then it's going to ask you if you want to start in line or with sub-agent.
+[01:17:43] Patrick Chouinard: Obviously, it's always sub-agent, so it's going to spawn an army of sub-agent to implement the plan in whichever state it is.
+[01:17:51] Patrick Chouinard: And that's the steps where I inject validation flow from codecs.
+[01:17:59] Patrick Chouinard: So.
+[01:18:00] Patrick Chouinard: As soon as I finish the spec, I have the spec inspected by Codex and review until nothing's found.
+[01:18:09] Patrick Chouinard: Once I do the implementation plan, I also do that loop of validation.
+[01:18:14] Patrick Chouinard: Then I do the implementation and I'll do the validation on the code after.
+[01:18:20] Hemal Shah: Okay, perfect.
+[01:18:23] Hemal Shah: And then once everything is done, is it a manual step to push it back, update the status in JIRA, or that is automatically wired up?
+[01:18:32] Patrick Chouinard: the JIRA update is something we've baked in at every step.
+[01:18:36] Patrick Chouinard: So every time we move forward, it updates the JIRA ticket through the Atlassian MCP server.
+[01:18:43] Hemal Shah: Okay.
+[01:18:44] Hemal Shah: Okay.
+[01:18:44] Hemal Shah: Perfect.
+[01:18:45] Hemal Shah: And, um, spec plan implement task.
+[01:18:50] Hemal Shah: So there is GitHub has a spec kit as well.
+[01:18:52] Patrick Chouinard: Is that something similar?
+[01:18:55] Patrick Chouinard: It's honest, it's similar, but right now there's no, it's all.
+[01:18:59] Hemal Shah: like it's cool.
+[01:19:00] Hemal Shah: Spec-driven development framework.
+[01:19:01] Patrick Chouinard: you have that, you have GSD, that's Get  Done.
+[01:19:07] Patrick Chouinard: That's another one.
+[01:19:09] Patrick Chouinard: You have a bunch of them on the market.
+[01:19:11] Patrick Chouinard: Right now, none of them come close to superpowers.
+[01:19:15] Hemal Shah: Okay, all right.
+[01:19:16] Hemal Shah: Thank you.
+[01:19:18] Patrick Chouinard: No problem.
+[01:19:21] Patrick Chouinard: Anything else we can help with?
+[01:19:23] Hemal Shah: No, that tastes good.
+[01:19:24] Hemal Shah: Thank you.
+[01:19:27] Patrick Chouinard: Good.
+[01:19:30] Patrick Chouinard: Anything else from anyone, Elijah, anything you wanted to talk about this week?
+[01:19:41] Elijah Stambaugh: I'm going to take that as a note.
+[01:19:42] Elijah Stambaugh: Yeah.
+[01:19:43] Patrick Chouinard: Yep.
+[01:19:43] Elijah Stambaugh: So I have a client that is an electrical construction company with about 250 employees, and I am going in to help document some of their processes and use.
+[01:20:00] Elijah Stambaugh: I'm going to start in the sales and the proposal piece, but I want to kind of crawl through the business.
+[01:20:12] Elijah Stambaugh: know Ty had the three buckets.
+[01:20:15] Elijah Stambaugh: I'm surprised nobody's really built it yet, but storing the information is one thing, getting it's another.
+[01:20:25] Elijah Stambaugh: Even the time it takes to work with people, I see you smiling.
+[01:20:32] Elijah Stambaugh: Um, so, so I don't know if you guys have any resources that you could point me to, you know, I, I have been teaching people that I know, um, how to use Claude code to some extent.
+[01:20:50] Elijah Stambaugh: Um, but when I get into these company conversations, they want it quote unquote, they don't even know exactly.
+[01:21:00] Elijah Stambaugh: They want to redo their processes, they want to use AI, they want the hope that it would bring, I'm not even trying to oversell them, but there's got to be some enterprise, I've been looking at McKinsey, but all their stuff is so theoretical, I mean it's practical in some ways, but it's just not process driven, it's just very, like you need to have local models.
+[01:21:31] Elijah Stambaugh: Frontier models, you know, it's just so generic, you know, so they're forecasting the future, which is no doubt true, but process and tools.
+[01:21:43] Elijah Stambaugh: Is there any resources you guys could point to, or?
+[01:21:47] Patrick Chouinard: That is a challenge, those things change on a weekly basis right now, and I know what, this is magic.
+[01:21:56] Elijah Stambaugh: Yeah, I'm not referencing, I don't mean to, sorry, I didn't mean to cut you off.
+[01:22:00] Elijah Stambaugh: That way, what I'm saying is like, you know, the rubber meets the road sales, somebody on the call just had said, like, they're going in and the first thing they're going to look at is marketing.
+[01:22:11] Elijah Stambaugh: It's like businesses find value in those things that move the needle.
+[01:22:17] Elijah Stambaugh: They, some of them want customer support, but as I talk to them, it's like they bring up customer support, but then they, once you get to sales, oh, okay, help me with this, help me make more money.
+[01:22:28] Elijah Stambaugh: You know, so I guess that's what I'm saying is like, is there a, is there a process of, and tools, not just like the tools of the day.
+[01:22:39] Elijah Stambaugh: I mean, that help you to identify what parts of the business you would want to work on and then processes that would help you to extract and store and use that data.
+[01:22:56] Elijah Stambaugh: And does that make sense?
+[01:23:00] Ty Wells: Can I chime in?
+[01:23:03] Ty Wells: So, Eli, I run a couple of businesses, and obviously you looked at three buckets.
+[01:23:07] Ty Wells: But really, for me, the way I look at it is what adds value are my employees.
+[01:23:15] Ty Wells: They have way more value than they get paid for, than they care to share, because they are on the ground.
+[01:23:25] Ty Wells: They're boots on the ground.
+[01:23:26] Ty Wells: They know what works.
+[01:23:28] Ty Wells: They can tell you exactly what's wrong, what doesn't work.
+[01:23:30] Ty Wells: Why it doesn't work, from a completely different department, or how you're selling a product, or just the gamut, right?
+[01:23:38] Elijah Stambaugh: Yeah.
+[01:23:38] Ty Wells: And if you find those people, you've got to identify those guys.
+[01:23:42] Ty Wells: If you find them, they will be your champion that you can use to showcase.
+[01:23:48] Ty Wells: Because if you, and trust me, the only reason I can say this, I've done this before.
+[01:23:54] Ty Wells: Three buckets is a combination of things to change my business, the way my businesses operate.
+[01:23:58] Ty Wells: Right?
+[01:23:59] Ty Wells: Because...
+[01:24:00] Ty Wells: As the top-down approach doesn't work and following a framework and, you know, it's just blah, right?
+[01:24:07] Ty Wells: And then, like Patrick said, the tools change.
+[01:24:09] Ty Wells: Well, now the tools change.
+[01:24:11] Ty Wells: Before, the tools were stagnant.
+[01:24:12] Ty Wells: But now the tools change so quickly.
+[01:24:14] Ty Wells: That's out the window.
+[01:24:15] Ty Wells: But those little gems that those employees have in those different departments, marketing, sales, finance, wherever, those are the people you have to be, your skill set should be able to identify.
+[01:24:30] Ty Wells: Those, because that's who you want.
+[01:24:32] Ty Wells: And that's where you can bring value.
+[01:24:34] Ty Wells: If you're asking, how do you bring value?
+[01:24:36] Ty Wells: There is no one plus one is 16.
+[01:24:40] Ty Wells: That's the only truth in that.
+[01:24:42] Ty Wells: But, yeah, that's the way I approach it.
+[01:24:45] Ty Wells: And I've got so much value.
+[01:24:47] Ty Wells: Like just yesterday, they wanted to stamp POs, right?
+[01:24:52] Ty Wells: We print them, but we also stamp them with a physical stamp.
+[01:24:55] Ty Wells: She says, no, can we do an electronic stamp?
+[01:24:58] Ty Wells: And then a signature.
+[01:25:00] Ty Wells: Yeah, of course, know, cloud code, right?
+[01:25:02] Ty Wells: So I added that ability to, they can sign on screen and attach their own signature for that PO to authorize it.
+[01:25:11] Ty Wells: Then she came back and she said, well, I'd actually like to be able to, depending on how many items are on the PO, I'd actually like to be able to shift that and move that to place it because I had it fixed the bottom, you know, bottom right corner or whatever.
+[01:25:24] Ty Wells: And so she wanted to move it and place it wherever.
+[01:25:28] Ty Wells: So I did that for them.
+[01:25:29] Ty Wells: And she's just ecstatic, right?
+[01:25:32] Ty Wells: It's saving her so much time.
+[01:25:33] Ty Wells: One, she doesn't have to stamp all these POs physically.
+[01:25:37] Ty Wells: And two, now if, you know, a big PO comes in, she can easily adjust.
+[01:25:40] Ty Wells: So they bring the value to the table.
+[01:25:43] Ty Wells: You just have to sort of get it out of them.
+[01:25:45] Ty Wells: If you can identify those, those are some serious gems.
+[01:25:48] Ty Wells: So I'll do things for her quicker than others because, you know, I know she's thinking ahead, know, she's thinking big picture and so forth that that adds any value.
+[01:25:59] Elijah Stambaugh: Sorry.
+[01:26:00] Elijah Stambaugh: No, that's really helpful.
+[01:26:02] Elijah Stambaugh: Is it okay, Patrick, if I ask a couple questions there?
+[01:26:05] Elijah Stambaugh: It's been a minute.
+[01:26:08] Elijah Stambaugh: So, Ty, in that example, technically, you had said Claude Code, but, you know, you're doing this PDF signage tool or application.
+[01:26:20] Elijah Stambaugh: Like, how are you deploying that into the business?
+[01:26:23] Elijah Stambaugh: You know, because that's my struggle, too, just to be clear, is that what I think people need is Claude Code, and I'm using that generally.
+[01:26:32] Elijah Stambaugh: I know there's other models and stuff that you could run, but you know what I'm trying to say.
+[01:26:38] Elijah Stambaugh: More so than a software, a SaaS app, but that's, like, a whole other thing because then they're building their own stuff, and that's where sometimes the wheels fall off.
+[01:26:58] Ty Wells: Oh, definitely, yeah.
+[01:27:00] Ty Wells: I didn't say them building their own stuff, because the wheels will fall off, and that's why I ended up doing the user-driven development for that same purpose.
+[01:27:10] Ty Wells: I built a framework enough to get started, and they've added on top of it the things that make their job easier.
+[01:27:20] Ty Wells: And I term that as user-driven development in that it records their screen, it shows them, you know, it narrates with them trying to get explanations of what they're trying to change.
+[01:27:34] Ty Wells: That comes back into what I have like a linear, but I have a feedback hub, and then I review that, and then I make the actual Spawn of Cloud Code session to kick off to actually build that feature out once it's at a high percentage.
+[01:27:49] Ty Wells: I can just kick it off, sort of set it, and forget it.
+[01:27:52] Ty Wells: So that's my flow.
+[01:27:56] Patrick Chouinard: And if I can add on top of that, one thing I would consider-
+[01:28:00] Patrick Chouinard: You talk a lot about cloud code, and I understand I have the same mentality.
+[01:28:05] Patrick Chouinard: Everything I do goes through cloud code or codex right now, either.
+[01:28:08] Patrick Chouinard: But for business user, you have to think about co-work as well, because it's quite impressive how it can become the user interface for the new applications.
+[01:28:21] Patrick Chouinard: I'll give you an example.
+[01:28:22] Patrick Chouinard: We had been working for a long time for an AI chat bot that the company wanted, where everybody could go in and then ask whatever question, and the bot would go through the documentation and everything.
+[01:28:38] Patrick Chouinard: Sounds really simple, except in enterprise, you have an old intranet system with inaccessible information and a format of documentation that is unreadable, and basically you have stuff all over the place that became a lot harder.
+[01:28:58] Patrick Chouinard: And .
+[01:29:00] Patrick Chouinard: We were working on the user interface, user interface, user interface.
+[01:29:05] Patrick Chouinard: We realized at some point, like, no, just create a data vacuum that's going to vacuum all the information you need, properly prepare it, put it in a vector store somewhere, then just put an MCP in front of it and have whichever platform is your standard, Claude, Gemini, ChatGPT, Copilot, whatever, on top of that.
+[01:29:33] Patrick Chouinard: then the chat, not the chat, but the agent harness becomes your user interface.
+[01:29:39] Patrick Chouinard: And that's where something like Cowork can do a miracle for you because you don't have to think about how the user will interact with it.
+[01:29:47] Patrick Chouinard: It's a standardized information or a standardized platform that everybody's going to understand pretty quickly in the enterprise.
+[01:29:53] Patrick Chouinard: And it has all of the agentic workflow that you want from Claude Code.
+[01:30:00] Patrick Chouinard: Because behind the scene, it is CloudCode.
+[01:30:03] Patrick Chouinard: Yes, Morgan.
+[01:30:06] Morgan Cook: I just wanted to add a little bit to some of the conversation.
+[01:30:10] Morgan Cook: So, Eli, one of the things that I think Patrick truly...
+[01:30:14] Elijah Stambaugh: Can I say I prefer Elijah?
+[01:30:17] Elijah Stambaugh: It's not offensive or nothing.
+[01:30:18] Morgan Cook: I just prefer Elijah.
+[01:30:20] Morgan Cook: Thank you.
+[01:30:21] Morgan Cook: No problem, Elijah.
+[01:30:23] Morgan Cook: So one of the things that Patrick's kind of alluding to here is that AI is an amplifier, right?
+[01:30:31] Morgan Cook: If we apply AI to a broken process, it just exposes the problems with the process faster and sooner.
+[01:30:40] Morgan Cook: And so a lot of the problems that you have with going into a company that doesn't have any AI, and maybe their processes aren't very well specced out as far as the standard operating procedure, is that it's going to amplify all of the problems with their process and expose them, right?
+[01:30:56] Morgan Cook: And that's part of the first task of...
+[01:31:00] Morgan Cook: Bringing a company up to speed is, look, you have this process that is inherently broken.
+[01:31:05] Morgan Cook: You've got to fix that first before you can do anything with AI because AI is just going to expose and amplify the problem with that process.
+[01:31:14] Morgan Cook: And so that's like going in, that's one of the biggest first steps.
+[01:31:17] Morgan Cook: And then the second point I would say is sometimes you're not using AI in the process, but you're using AI to modify and elevate the process by employing deterministic scripts or things that are easily to automate that don't have to touch AI again after it's been created.
+[01:31:41] Morgan Cook: So in that case, you're using AI to identify what the deterministic process should be, and then you have AI create a script that you run separately from whatever engine is in place.
+[01:31:57] Morgan Cook: You know, you're not going to AI every time for the same.
+[01:32:02] Morgan Cook: You can build a lot of logic into a script just by having AI look at it a few times and then asking AI, okay, now build me a script that does this process without asking AI every time for that same task.
+[01:32:17] Morgan Cook: So it saves on tokens and it saves on time.
+[01:32:21] Morgan Cook: I mean, a script will run in microseconds compared to the many seconds that it takes AI to analyze it every time it has to process it.
+[01:32:31] Morgan Cook: Those are my inputs.
+[01:32:33] Elijah Stambaugh: Yeah.
+[01:32:34] Elijah Stambaugh: So, well, my question from what all of you are saying, thank you guys, I appreciate it, is, you know, what is the interface then?
+[01:32:45] Elijah Stambaugh: So, Patrick, you talked about co-work.
+[01:32:50] Elijah Stambaugh: I know you were referencing the scripts there, Oregon, so probably potentially running on top of their current application.
+[01:32:59] Elijah Stambaugh: by these P
+[01:33:00] Elijah Stambaugh: If you will, and then Ty, it sounded to me like you were building a custom solution with maybe a custom interface, or maybe you were using similar to Morgan, like you were just building on top of the existing software, say it's CRM or financial, whatever it is, tools they were using.
+[01:33:27] Elijah Stambaugh: Is that the way that you guys look at it?
+[01:33:29] Elijah Stambaugh: Like, is it just unique per, or what does the interface look like in the ways that you're describing this?
+[01:33:38] Morgan Cook: The one that I was referring to is, their main thing is Google Workspace.
+[01:33:46] Morgan Cook: So I'm writing a bunch of app scripts right now for them that do a very specific process.
+[01:33:52] Morgan Cook: But it's a full workflow that they've been doing manually up to this point, but you know, by answering emails and saving.
+[01:33:59] Morgan Cook: ...
+[01:34:00] Morgan Cook: PDFs and the drive folders and updating a spreadsheet and all these little tasks, but it's going to be per environment based on whatever they have their current processes going through right now.
+[01:34:15] Morgan Cook: So you've got to kind of analyze that and have an idea about how can you automate what they already have.
+[01:34:23] Morgan Cook: Because a lot of companies, especially the bigger they are, the less change they want to do to any of their existing application structure.
+[01:34:30] Ty Wells: Yeah, from my perspective, I'm talking, I replaced an existing SaaS solution, right, an ERP solution that was meeting our needs, probably 60%.
+[01:34:45] Ty Wells: And so everything I build is, you know, we're not building it to their need, right?
+[01:34:51] Ty Wells: So they're at 100% max, not 60% or even 80-20.
+[01:34:56] Ty Wells: Like that's, so any unnecessary stuff, I'm not building, right?
+[01:35:00] Ty Wells: If it's something new, I'm building it and adding it in because they need it for whatever, and that may change, you know, and that's the way I'm building it.
+[01:35:07] Ty Wells: So it's modular.
+[01:35:08] Elijah Stambaugh: What was the ERP that you were, do you mind sharing?
+[01:35:11] Ty Wells: Oudu, O-D-O Yeah, yeah.
+[01:35:14] Elijah Stambaugh: Yeah, I have, there's an AI call with him tomorrow I signed up for.
+[01:35:18] Elijah Stambaugh: I was looking at ERP Next as well.
+[01:35:22] Elijah Stambaugh: It's an open source framework.
+[01:35:24] Elijah Stambaugh: Cloud Code did the research.
+[01:35:26] Elijah Stambaugh: Oudu was number two.
+[01:35:27] Elijah Stambaugh: Next ERP was number one because I was thinking I might need to build some form of a data structure that's underneath.
+[01:35:38] Elijah Stambaugh: And even if I API extract their data, then I can transform it into what I want, but some of the folks need an interface.
+[01:35:47] Elijah Stambaugh: So I was thinking ERP.
+[01:35:49] Elijah Stambaugh: So you went ahead and just built your own.
+[01:35:51] Elijah Stambaugh: Did you, did you, did you point Cloud Code at Oudu and say, like, I did because they.
+[01:36:00] Ty Wells: They do it in modules, like the 60%, if you will, that we used.
+[01:36:05] Ty Wells: We did, but we have other subscription-based software for payroll and time and attendance and our security alarm monitoring systems.
+[01:36:15] Ty Wells: So we had other pieces that I just rolled into this ERP.
+[01:36:21] Ty Wells: So everything that we used in Udu, along with all these other subscriptions, so, you know, we're basically saving about $100,000 a year on subscriptions and whatever, you know, inference and hosting and so forth.
+[01:36:37] Elijah Stambaugh: And how long did it take you to build the ERP, and is it something that you consider a SaaS, or is it so customized and unique to your particular business that you're...
+[01:36:52] Ty Wells: It's going to be a SaaS.
+[01:36:54] Ty Wells: It's going to be a SaaS.
+[01:36:55] Ty Wells: But it is, because it's built for the Bahamas, so it...
+[01:37:00] Ty Wells: has a lot of the locales, the national insurance, different things that are just for that country, VAT and Inland Revenue Filing.
+[01:37:09] Ty Wells: So it's specific for that country that no one has.
+[01:37:12] Ty Wells: That's why I did it that way.
+[01:37:14] Ty Wells: But, yeah, it's built in a way that those things are always separate outside of the ERP.
+[01:37:20] Ty Wells: So you can turn them off or nobody has rights to them.
+[01:37:23] Ty Wells: You have rights to everything, but if you don't use it, you just shut it off.
+[01:37:26] Ty Wells: But specifically for my company first and then SaaS afterwards.
+[01:37:32] Elijah Stambaugh: And you didn't and you didn't you modeled it after Odoo.
+[01:37:38] Ty Wells: Just a couple, not too much of just the pieces, you know, the the finance part of it, not not even just the fact that, you know, it's got to be a sound financial package.
+[01:37:49] Ty Wells: But some of that based off of their customers, obviously, they had a lot of stuff we don't need.
+[01:37:55] Ty Wells: You know, they have different, you know, sales orders, work orders and other things in.
+[01:37:59] Ty Wells: And.
+[01:38:00] Ty Wells: They had some good stuff, so I took the good stuff, basically, that I wanted, and I built those, and then I put everything else around the framework.
+[01:38:09] Elijah Stambaugh: And you didn't use, quote-unquote, an open source tool.
+[01:38:15] Elijah Stambaugh: You just went ahead and built your own.
+[01:38:19] Ty Wells: No, no, no, no.
+[01:38:21] Ty Wells: I wouldn't do that one here.
+[01:38:23] Ty Wells: I will share my screen real quick.
+[01:38:26] Ty Wells: I'm sure I have it open.
+[01:38:27] Elijah Stambaugh: And is it, do you mind, like, what is the actual stack?
+[01:38:33] Elijah Stambaugh: Sorry, Patrick, but this is what I've been really struggling with, and I have, and, you know, over the past month or two, you know, I'll say God's been working in my life.
+[01:38:47] Elijah Stambaugh: One of my old friends who was at the company I used to be at is coming on board with me, and he's a programmer, database guy, that has, like,
+[01:39:00] Elijah Stambaugh: Business leadership experience as well.
+[01:39:02] Elijah Stambaugh: So I'm really, really happy.
+[01:39:04] Elijah Stambaugh: We have a couple of deals that we're working on together.
+[01:39:08] Elijah Stambaugh: And then this is something that we've been discussing and trying to figure out, like, how do we extract the data that we need?
+[01:39:17] Elijah Stambaugh: Because these businesses, you know, and I'm not trying to say this in a bad way.
+[01:39:20] Morgan Cook: You guys know what I'm trying to say when I say they're a mess, right?
+[01:39:24] Elijah Stambaugh: Because business is messy.
+[01:39:25] Elijah Stambaugh: And so it's like, how do we get this information in the way that we need to use it?
+[01:39:29] Elijah Stambaugh: So thank you, Ty, for sharing what you're doing.
+[01:39:32] Ty Wells: Yeah, no, no.
+[01:39:34] Ty Wells: I was just showing you this piece that I added here that now she can drag and position her purchase order stamp wherever she wants it.
+[01:39:42] Ty Wells: And then I have it tied.
+[01:39:43] Ty Wells: But this is the platform, you know, but we can certainly talk offline to show you, you know, what it covers.
+[01:39:49] Ty Wells: Obviously, it's got everything.
+[01:39:50] Ty Wells: We do life safety systems as well.
+[01:39:52] Ty Wells: So it's got that in there.
+[01:39:53] Ty Wells: People in HR, your time attendance, payroll, we have.
+[01:40:00] Ty Wells: Business leadership experience as well.
+[01:40:02] Ty Wells: So I'm really, really happy.
+[01:40:04] Elijah Stambaugh: We have a couple of deals that we're working on together.
+[01:40:08] Ty Wells: And then this is something that we've been discussing and trying to figure out, like, how do we extract the data that we need?
+[01:40:17] Elijah Stambaugh: Because these businesses, you know, and I'm not trying to say this in a bad way.
+[01:40:20] Elijah Stambaugh: You guys know what I'm trying to say when I say they're a mess, right?
+[01:40:24] Ty Wells: Because business is messy.
+[01:40:25] Ty Wells: And so it's like, how do we get this information in the way that we need to use it?
+[01:40:29] Ty Wells: So thank you, Ty, for sharing what you're doing.
+[01:40:32] Ty Wells: Yeah, no, no.
+[01:40:34] Ty Wells: I was just showing you this piece that I added here that now she can drag and position her purchase order stamp wherever she wants it.
+[01:40:42] Ty Wells: And then I have it tied.
+[01:40:43] Ty Wells: But this is the platform, you know, but we can certainly talk offline to show you, you know, what it covers.
+[01:40:49] Patrick Chouinard: Obviously, it's got everything.
+[01:40:50] Patrick Chouinard: We do life safety systems as well.
+[01:40:52] Ty Wells: So it's got that in there.
+[01:40:53] Patrick Chouinard: People in HR, your time attendance, payroll, we have.
+[01:41:00] Ty Wells: These things called NIB Compliance Report, just, you know, like I said, local stuff.
+[01:41:05] Ty Wells: We also do security guard services, physical security.
+[01:41:08] Ty Wells: How long have you been building it?
+[01:41:13] Ty Wells: August, I believe, somewhere in there, August, September.
+[01:41:16] Ty Wells: How many people are working on it?
+[01:41:18] Ty Wells: You're talking to him.
+[01:41:20] Ty Wells: Oh, man.
+[01:41:22] Ty Wells: Yeah.
+[01:41:23] Ty Wells: You're a baller, man.
+[01:41:25] Ty Wells: It's a monster.
+[01:41:26] Ty Wells: And I've shared some of the things with you guys in here.
+[01:41:28] Ty Wells: Like, for example, we needed a signature pad, right?
+[01:41:32] Elijah Stambaugh: I've got email, SMS, you know, queue in here that's sending out emails and so forth from the full system.
+[01:41:41] Ty Wells: But there's a client portal that I built out completely.
+[01:41:47] Ty Wells: has a client portal.
+[01:41:48] Ty Wells: Just be careful with what you share, because remember, it's going to be on this.
+[01:41:52] Elijah Stambaugh: Yes.
+[01:41:52] Elijah Stambaugh: Thank you for that.
+[01:41:54] Elijah Stambaugh: Just as you were saying that, was like, wait a minute.
+[01:41:58] Ty Wells: Yeah, there's a.
+[01:41:59] Ty Wells: There's a.
+[01:42:00] Elijah Stambaugh: Client portal that I built because, you know, we would send out quotes and then we would, in UDU, you would send it out, they'd click on it, it download it, whatever, and we're like, okay, that's just too much.
+[01:42:11] Elijah Stambaugh: Let me build a whole client portal so you can, when you log in, can see your, all your invoices, all your whatever you have out there, tickets and everything.
+[01:42:19] Elijah Stambaugh: Just, you know, what a mature ERP would have, which we didn't have.
+[01:42:22] Elijah Stambaugh: We have an employee portal in there.
+[01:42:24] Elijah Stambaugh: We didn't have that before in UDU.
+[01:42:25] Elijah Stambaugh: I don't, well, there's something like that in UDU, but just everything that we needed to do to make our jobs or their jobs easier.
+[01:42:35] Elijah Stambaugh: Well, yeah, I know we've talked through direct messaging and some things like that.
+[01:42:41] Elijah Stambaugh: Are you in Eastern Standard Time?
+[01:42:44] Elijah Stambaugh: I am in Central right now.
+[01:42:47] Elijah Stambaugh: Think for a second, sorry.
+[01:42:50] Elijah Stambaugh: Okay.
+[01:42:51] Elijah Stambaugh: Yeah, I mean, I definitely, I definitely would like to, like to talk to you a little bit more.
+[01:42:57] Elijah Stambaugh: Or, yeah.
+[01:42:59] Elijah Stambaugh: Yeah.
+[01:43:00] Elijah Stambaugh: Just because, yeah.
+[01:43:01] Elijah Stambaugh: And then, like, even prioritizing the business, like, what to address.
+[01:43:09] Elijah Stambaugh: And then how, you know, because, yeah, sorry, I could keep going.
+[01:43:14] Elijah Stambaugh: If it's okay, Patrick, I don't mean to.
+[01:43:16] Elijah Stambaugh: I mean, my thinking is I have to physically press the flesh with these folks, because that's what humans are used to.
+[01:43:26] Elijah Stambaugh: And, Morgan, when you were talking, that's really what I was thinking, was the change management aspect of what we're trying to do is as much a part of it as the technology right now.
+[01:43:41] Elijah Stambaugh: Right?
+[01:43:41] Elijah Stambaugh: Because people don't change easily, per se.
+[01:43:47] Elijah Stambaugh: And then it's also, like, this level of, I have to, I have to physically, you know, like you're saying, the woman wanted you to change the signature thing and some of that type of stuff.
+[01:43:59] Elijah Stambaugh: Yes.
+[01:43:59] Elijah Stambaugh: Yes.
+[01:43:59] Elijah Stambaugh: Yes.
+[01:43:59] Elijah Stambaugh: it
+[01:44:00] Elijah Stambaugh: But I'm just wondering, I know I'm not here yet, but I don't even know why I have to be in the conversation at all.
+[01:44:08] Ty Wells: I've got to get her to tell me at some point what needs to happen, right?
+[01:44:15] Ty Wells: But physically, why do I even have to be there?
+[01:44:17] Ty Wells: Can I have the three buckets, so to speak, or some version thereof?
+[01:44:22] Elijah Stambaugh: So your three buckets has definitely impacted me.
+[01:44:25] Elijah Stambaugh: It's just not, I'm thinking of it more in terms of like crawling the business, and then there's certain problems that we know every business has, right?
+[01:44:37] Elijah Stambaugh: I mean, you have to procure clients, you have to serve them, you have to, right, project manage or whatever it might be.
+[01:44:44] Elijah Stambaugh: So that's how I'm thinking about it.
+[01:44:48] Elijah Stambaugh: That's why I went to the ERP, and it's funny that you've already got there, just because that's data-wise.
+[01:44:56] Elijah Stambaugh: But most people can't do what you're doing in the context of.
+[01:45:00] Elijah Stambaugh: They don't have the authority to just say, we're going to stop paying Odoo and we're just going to do this because this is my business and I can make that choice.
+[01:45:10] Elijah Stambaugh: You know what I'm saying?
+[01:45:12] Elijah Stambaugh: I'm in a unique position.
+[01:45:13] Elijah Stambaugh: I'm not going to lie.
+[01:45:14] Elijah Stambaugh: You don't typically see that and then have the ability to actually produce the software.
+[01:45:19] Morgan Cook: So I'm a little bit, well, my thought is if we could build, if we can build alongside, right, I can, I can effectively like turn around after a period of time and just say like, well, why don't you switch over to this system?
+[01:45:39] Ty Wells: Because it's already running all of your information, like keep using their current processes without trying to convince anybody to change until the, uh, you know, for lack of a better term, the spider web, but I'm thinking more of like, you know, when you get surgery and you get.
+[01:46:00] Ty Wells: Something inserted into your body, and then your body literally grows through and into and with that thing.
+[01:46:09] Ty Wells: Like, that's how I'm thinking about this ERP idea.
+[01:46:13] Ty Wells: You would be able to effectively extract their information to the point where they can't go away from it.
+[01:46:20] Ty Wells: Not to say that deceptively, but you know what I'm trying to say.
+[01:46:25] Ty Wells: Morgan, did you want to answer something?
+[01:46:28] Ty Wells: Yeah, I actually had a question for Ty in your implementation of this.
+[01:46:31] Ty Wells: How long did it take you to transition from Odoo to your process, and was it, did you switch over one day, or was it an ongoing process that eventually you were able to shut down Odoo?
+[01:46:47] Ty Wells: Yeah, so we shut down, well, we, they still had access for about a month before they shut down because it expired, the subscription, what is this, May, April.
+[01:47:01] Ty Wells: So we had a time limit.
+[01:47:03] Ty Wells: We knew it was.
+[01:47:04] Ty Wells: That was my deadline.
+[01:47:07] Ty Wells: We weren't going to renew it at that point.
+[01:47:10] Ty Wells: So all the data was there.
+[01:47:13] Ty Wells: Actually, the data was there via API.
+[01:47:15] Ty Wells: don't even know if they know that.
+[01:47:17] Ty Wells: About two weeks, even after they shut down, because they sent a notice saying that you no longer have access and we couldn't log in.
+[01:47:23] Ty Wells: But the API was still open, which I was supposed to report that to them.
+[01:47:27] Ty Wells: But I was like, no, because I did have to use Use it one time.
+[01:47:30] Ty Wells: I was like, hey, see if you still have access to UDU.
+[01:47:33] Ty Wells: yep, sure enough, data's here.
+[01:47:35] Ty Wells: What do you want me to do?
+[01:47:36] Ty Wells: Oh, my God.
+[01:47:37] Ty Wells: But I didn't actually need the data.
+[01:47:39] Ty Wells: was just confirming something.
+[01:47:41] Ty Wells: But yeah, I'm laughing.
+[01:47:42] Ty Wells: You can't see that, but that's funny.
+[01:47:45] Ty Wells: Yeah, that was I was like, how could that still?
+[01:47:47] Ty Wells: OK, I'm not going to argue it.
+[01:47:48] Elijah Stambaugh: I got what I needed.
+[01:47:51] Elijah Stambaugh: Yeah.
+[01:47:52] Elijah Stambaugh: So it was a slow process over the over the course of producing your ERP system to replace UDU.
+[01:47:57] Ty Wells: It wasn't a one, you know, we're going to build this.
+[01:48:00] Ty Wells: And then switch over.
+[01:48:01] Ty Wells: Correct.
+[01:48:02] Ty Wells: Yeah, no, it a process I gave.
+[01:48:04] Ty Wells: Actually, I'll be honest with you, what I did was I left a lot of bugs in the code intentionally because I needed to know that they were using the system and they knew the countdown.
+[01:48:16] Ty Wells: And the only way they would test the system is if they actually use the system.
+[01:48:21] Ty Wells: So I knew they weren't reporting any bugs.
+[01:48:23] Ty Wells: So that's why I built that feedback system so they could report bugs when they did come up, because I knew they were there.
+[01:48:29] Ty Wells: I was just ready.
+[01:48:30] Ty Wells: You know, I was aware of them.
+[01:48:32] Ty Wells: I just didn't fix them because that was the only proof I had.
+[01:48:35] Morgan Cook: As long as they had access to the old system, they would continue to use the old system because they knew what the cutoff was.
+[01:48:42] Morgan Cook: So I had to force them down that path, which is, again, another unique thing.
+[01:48:48] Morgan Cook: What was that reporting tour process?
+[01:48:54] Elijah Stambaugh: You referenced it earlier, too.
+[01:48:56] Patrick Chouinard: What did you call it?
+[01:48:56] Ty Wells: User-driven development?
+[01:48:58] Ty Wells: Is that what you were saying?
+[01:48:59] Ty Wells: Yeah.
+[01:49:03] Ty Wells: So during the development process, I added a feedback option where they can click on that feedback.
+[01:49:12] Ty Wells: Let me see here.
+[01:49:14] Ty Wells: I actually use this across my other tools, too.
+[01:49:17] Ty Wells: Oh, I say that.
+[01:49:18] Morgan Cook: So down here, I added this feedback section.
+[01:49:22] Ty Wells: What it does is when you click on it, you can start recording.
+[01:49:27] Ty Wells: It'll say which window.
+[01:49:39] Ty Wells: When you started recording, we lost your voice.
+[01:49:42] Ty Wells: Your your mic got captured, but you can still see, right?
+[01:49:49] Ty Wells: Yes, you can hear me.
+[01:49:51] Ty Wells: Well, barely.
+[01:49:53] Ty Wells: We got we can hear you as well.
+[01:49:54] Ty Wells: little bit.
+[01:49:55] Ty Wells: Yeah, trying to find something that I can actually show you.
+[01:50:00] Ty Wells: show you anything, just inventory, so I can come in here and say, you know, when I come in here and click on this particular, on an inventory item, I want to move, I want to be able to reorganize these sections, like overview, tabs, I want to be able to organize them to my needs, so it extracts the frames from recording, it, okay, okay, it extracts the frame, trust me, it does work, it extracts the frames, they send, it goes back and forth to get an understanding up to 90%, and then it submits, it's just in the same window here, this feedback window, you get the chat, and then it sends it off to my actual feedback, let's see if I've got that up and running.
+[01:51:00] Ty Wells: And I thought about this exact thing.
+[01:51:03] Elijah Stambaugh: Have you, you probably heard a full story, right?
+[01:51:06] Ty Wells: Yeah.
+[01:51:07] Ty Wells: Yeah.
+[01:51:08] Elijah Stambaugh: I mean, that's a SaaS app right there.
+[01:51:10] Ty Wells: Yeah.
+[01:51:11] Ty Wells: That's pretty strong.
+[01:51:13] Elijah Stambaugh: Wow.
+[01:51:13] Elijah Stambaugh: But I have all my stuff that come in and I was sending them to Linear right away.
+[01:51:21] Ty Wells: But yeah, that's, that's the gist of what this app is doing.
+[01:51:26] Ty Wells: I'm not sure why it's not.
+[01:51:32] Ty Wells: Okay.
+[01:51:34] Elijah Stambaugh: And do you just embed that into your, whatever application?
+[01:51:38] Elijah Stambaugh: This isn't a third, this isn't a, not a third party.
+[01:51:41] Elijah Stambaugh: know it's yours, but it's not an additional application that you're running on top of, are you?
+[01:51:46] Elijah Stambaugh: It's just that widget, just that JavaScript widget that I drop into an app.
+[01:51:50] Elijah Stambaugh: I have to register my project or the URL, basically, where the, where the, because I can put that in any project and that'll come to me and I can decide what to do from there.
+[01:52:00] Elijah Stambaugh: Yeah, that's what I'm saying.
+[01:52:02] Elijah Stambaugh: You're not, it's not code native to the specific project.
+[01:52:07] Elijah Stambaugh: It's a third, it's a, it's an additional application that you're running kind of on top of.
+[01:52:15] Patrick Chouinard: Yeah, plug into that and send me all your issues.
+[01:52:18] Elena: And I use that on the school graduation.
+[01:52:20] Elena: I did share that with earlier in the session, but they, when they had issues, they would send me that way and I would decide and then process it.
+[01:52:30] Elena: So, and I can do that from the golf course.
+[01:52:34] Elena: So nice.
+[01:52:39] Elena: Nice.
+[01:52:44] Elena: What an exciting, what an exciting world we live in.
+[01:52:50] Patrick Chouinard: Absolutely.
+[01:52:51] Patrick Chouinard: So did that cover, uh, what you needed, Elijah?
+[01:52:54] Patrick Chouinard: Yeah.
+[01:52:55] Patrick Chouinard: I seen somebody raise their hand.
+[01:52:56] Patrick Chouinard: I appreciate it.
+[01:52:57] Patrick Chouinard: No, I'm so thankful.
+[01:52:59] Patrick Chouinard: I, uh,
+[01:53:00] Patrick Chouinard: You know, I work with a lot of folks that are interested at some level, but not really using and doing, so it's very refreshing to talk with you guys.
+[01:53:13] Patrick Chouinard: So thank you so much.
+[01:53:15] Patrick Chouinard: Awesome.
+[01:53:16] Patrick Chouinard: Thank you.
+[01:53:17] Patrick Chouinard: Yes, Elena.
+[01:53:18] Elena: Hi.
+[01:53:19] Patrick Chouinard: Yeah, I just wanted to ask about Cloud Agents.
+[01:53:22] Elena: So if somebody's using it and how do you use it overall?
+[01:53:26] Patrick Chouinard: I'm trying to figure it out right now because I usually just give some series of prompts, create the specs, some kind of templates for the prompts.
+[01:53:35] Patrick Chouinard: But now I'm trying to grasp, like, about this Cloud Code Agents, and I'm trying to understand, like, what is it used for?
+[01:53:43] Elena: I don't know, maybe we've already had discussions.
+[01:53:46] Elena: So when you're talking about Code Agents, you're talking about Cloud Code, Codex, those, yeah, those are basically what we call harnessed.
+[01:53:55] Elena: So you have the coding, you have the model themselves, the LLM.
+[01:53:59] Patrick Chouinard: So that would be.
+[01:54:00] Patrick Chouinard: Yeah, Claude, Gemini, ChatGPT, but those are just the text generator.
+[01:54:05] Patrick Chouinard: The development is done way more by the harness than by the model itself.
+[01:54:12] Patrick Chouinard: And there's a couple of really good harness right now.
+[01:54:16] Patrick Chouinard: There's Claude Code, obviously.
+[01:54:18] Patrick Chouinard: That's the big one.
+[01:54:19] Patrick Chouinard: Then you have Codex.
+[01:54:22] Patrick Chouinard: And Claude Code, obviously, it's built around the Claude models.
+[01:54:26] Patrick Chouinard: Codex is built around the GPT models.
+[01:54:28] Patrick Chouinard: You have Gemini CLI that's built around the Gemini model.
+[01:54:32] Patrick Chouinard: And then you have OpenCode.
+[01:54:34] Patrick Chouinard: That is the open source that takes any model as an input.
+[01:54:39] Elena: Okay.
+[01:54:40] Elena: Yeah, I think I understand, like, there is a Claude Code.
+[01:54:43] Patrick Chouinard: use it most of the time.
+[01:54:46] Patrick Chouinard: Basically, this is what they mean, because I also heard that you can kind of customize it somehow and build an agent out of it.
+[01:54:54] Patrick Chouinard: So I'm just trying to understand.
+[01:54:55] Patrick Chouinard: What they call the agent is the agentic work...
+[01:55:00] Patrick Chouinard: Flow within the harness, okay?
+[01:55:03] Patrick Chouinard: So a Cloud Code session would be called an agent, but a session can instantiate sub-agent.
+[01:55:12] Patrick Chouinard: So basically you have your main session where you would do all of your design, your specs, your implementation plan, and when it starts implementing, Cloud Code will be able to spawn sub-agent or sub-processes that will inherit a part of the job.
+[01:55:30] Patrick Chouinard: The goal of doing that is because you have a limited context window.
+[01:55:34] Patrick Chouinard: So even with a million token context window, first, you never want to use it all because the second half of the context window is a lot less precise than the first half.
+[01:55:46] Patrick Chouinard: So the sub-agent have their own context window.
+[01:55:50] Elena: So if your main context window is already half full, if it spawns a sub-agent, it spawns fresh, without anything in it.
+[01:56:00] Elena: It's context.
+[01:56:00] Elena: The main agent will give a context to the subagent just for the task it needs to do, okay?
+[01:56:10] Elena: So you can have multiple subagents in parallel.
+[01:56:13] Patrick Chouinard: Then you have all of the stuff you can add on top.
+[01:56:16] Patrick Chouinard: So all of the skills, those are basically prompts that can call scripts, that can call other markdown documents.
+[01:56:26] Elena: So those are saved intelligence that you can reuse.
+[01:56:30] Elena: And then you have MCP, which are the connectors that your harness will use to connect to whatever system.
+[01:56:37] Patrick Chouinard: So this is a little bit of the ecosystem of tools you're going to be leveraging.
+[01:56:41] Patrick Chouinard: And those are equivalent in all, not equivalent, but very similar in all harness.
+[01:56:48] Patrick Chouinard: So basically it has MCP for subagent.
+[01:56:51] Elena: Do you know any good tutorial like where to look how to utilize it?
+[01:56:57] Elena: Because I feel like I'm not using it.
+[01:57:00] Elena: As efficient as I can, I feel I'm just, I'm using code code, I'm, I'm having some, I'm specs, I'm creating tasks, I'm creating implementation plans, I'm creating even prompts on top, some kind of milestones, but I feel there's some more.
+[01:57:14] Elena: Install, install superpower.
+[01:57:16] Elena: Just do a slash plugin, okay, and it's going to show you all your install plugin, and if you're going to discover, as part of the Entropic Marketplace, you're going to find one that's called Superpowers.
+[01:57:31] Patrick Chouinard: This is basically all of this workflow sub-agent skill plugin for a development process, wrapped up in one package.
+[01:57:43] Patrick Chouinard: It will spawn the sub-agent when it needs, it will call the skills when it needs, it, it's already built for you.
+[01:57:50] Patrick Chouinard: One more follow-up question.
+[01:57:52] Patrick Chouinard: Do you know the good libraries or the good kind of place where there is standardized skills?
+[01:57:58] Patrick Chouinard: more-up question.
+[01:57:59] Patrick Chouinard: One more follow
+[01:58:00] Patrick Chouinard: Look for and maybe customize it, like templates for the skills.
+[01:58:04] Patrick Chouinard: For example, if I need to some kind of separate the workflow for, I'm just doing a little bit separation of, I have build agent, have plan agent, I have test agent, I have deployment agent, right?
+[01:58:16] Patrick Chouinard: And then sometimes I have GitHub agent, so I'm just basically splitting it up.
+[01:58:20] Patrick Chouinard: But I'm sure there is, again, there is something I can do better.
+[01:58:24] Patrick Chouinard: Again?
+[01:58:26] Patrick Chouinard: So basically, I can create the skills probably, yeah, I can supply my agents with some particular skills and particular programs if these servers.
+[01:58:36] Patrick Chouinard: But you see your agent as long-running agent in what you're doing.
+[01:58:41] Patrick Chouinard: They're not long-running, they're spawn on demand.
+[01:58:43] Patrick Chouinard: That's what super power will do for you.
+[01:58:46] Elena: You don't need a static planning agent and a static coding agent and a static, it will spawn an agent on demand based on what you need.
+[01:58:55] Elena: With its own context window, right?
+[01:58:57] Elena: Exactly, but if you want to build...
+[01:59:00] Elena: Skills, okay?
+[01:59:01] Elena: I would tell, don't download skills.
+[01:59:04] Patrick Chouinard: Right now, there has been way too many hacks of the supply chain.
+[01:59:09] Patrick Chouinard: I would not trust a text file that I download because you might read it and it looks okay.
+[01:59:16] Patrick Chouinard: You'd be surprised how easy it is to hide commands within the standard text that will do something you don't.
+[01:59:25] Patrick Chouinard: So I never download skill.
+[01:59:27] Patrick Chouinard: But there is one skill that comes with CloudCode called the skill creator skill.
+[01:59:33] Elena: So once you've gone through your process, okay, you figured out how you want the thing to work.
+[01:59:40] Patrick Chouinard: Just tell CloudCode, look at everything we just do, we just did, and create a skill that does the same thing.
+[01:59:47] Patrick Chouinard: And it will create it properly with the right syntax, with the right...
+[01:59:51] Elena: Just like in the context of when I'm doing something, I just catch it and I just ask CloudCode to create skill.
+[01:59:56] Patrick Chouinard: Should I split it per agent or the skills will be available to...
+[01:59:59] Patrick Chouinard: Just skill.
+[02:00:00] Patrick Chouinard: All of my agents, should I kind of subfolder it like?
+[02:00:03] Patrick Chouinard: The skill is at your project level or at your profile level.
+[02:00:08] Patrick Chouinard: So you can have skill that are installed and always available for every plot code session or every plot session, and you can have some that are deployed as part of your project context.
+[02:00:20] Elena: So basically at the root of your project, you're going to have a .clawd folder that contains a skills subfolder where all of your skill will be listed.
+[02:00:30] Morgan Cook: But if, for example, it's a testing skill or deployment skills, basically I don't need my test agent to be accessing deployment skills, right?
+[02:00:39] Morgan Cook: It's going to invoke it automatically.
+[02:00:41] Morgan Cook: That's the nice thing about skill is that they are invoked through natural language.
+[02:00:45] Morgan Cook: So whenever you say that something needs to be tested, know that it needs to use the testing skill.
+[02:00:50] Morgan Cook: It's going to invoke it.
+[02:00:51] Elena: Okay, but any starting point like templates on how to how it should look like or should I just ask code code to the skill creators?
+[02:01:00] Elena: It will create the template and will respect the template.
+[02:01:03] Elena: You just tell it, here's the process I want to make into a skill, and it will create the proper structure and all the crops.
+[02:01:12] Patrick Chouinard: Go on to Anthropic GitHub to get that skill creator skill.
+[02:01:17] Patrick Chouinard: Yeah, or actually, if you open the desktop application, it comes with it, so.
+[02:01:25] Patrick Chouinard: Okay, thank you.
+[02:01:27] Elena: Yes, Morgan?
+[02:01:28] Patrick Chouinard: Well, I was going to say, Patrick, what's that command in Claude to get your, like, how you've been using the tools, like a, it's like your employee review of your use of Claude.
+[02:01:42] Patrick Chouinard: Slash insights.
+[02:01:43] Patrick Chouinard: Insights.
+[02:01:44] Patrick Chouinard: So, what you could do, Elena, is run insights, and it'll tell you how you've been using it and what you can do to improve your usage.
+[02:01:54] Patrick Chouinard: Yeah.
+[02:01:55] Patrick Chouinard: That's good.
+[02:01:55] Patrick Chouinard: By the way, regarding security skills, is there any good, like, I don't know.
+[02:01:59] Patrick Chouinard: about So,
+[02:02:00] Patrick Chouinard: Set of security skills, because I don't think I'm doing it enough, like any place to browse through, or again, I can just ask Cloud Code to maybe create security skills.
+[02:02:14] Elena: first player, yes, I've created some skills or some prompt actually that I use in Codex to do that type of thing, but I can do a little bit of search and post it on the, on the community because I have to review a couple of repo that are made for by security company that have some skills that we need to evaluate.
+[02:02:41] Patrick Chouinard: So I'll paste the link afterward to those.
+[02:02:46] Patrick Chouinard: But again, if you don't have anything, just ask Cloud Code to help you build the evaluation.
+[02:02:53] Elena: It's not going to be perfect, obviously, but it's going to be way better than not doing it, let's say.
+[02:03:00] Elena: Sounds good.
+[02:03:01] Patrick Chouinard: Thank you.
+[02:03:01] Ty Wells: And whenever you do security evaluation, as much as you possibly can, do not evaluate the output of a model with the same model.
+[02:03:12] Ty Wells: Okay.
+[02:03:15] Ty Wells: Not same provider.
+[02:03:17] Ty Wells: Same provider is okay.
+[02:03:19] Ty Wells: It's simply to have different bias.
+[02:03:21] Ty Wells: It's not because one model is better than the other.
+[02:03:23] Ty Wells: It's just that they have different bias.
+[02:03:25] Ty Wells: So what's invisible to one will be visible to the other.
+[02:03:29] Patrick Chouinard: And PR also, right?
+[02:03:30] Patrick Chouinard: So if I, for example, want to do some code review, the same way, I can also create the skills for the code review and just...
+[02:03:38] Elena: Well, Superpower already has an awesome skill for code review built-in process.
+[02:03:43] Elena: I'm telling you, Superpower on top of Cloud Code, it's basically your entire SDLC built-in.
+[02:03:51] Elena: It's going to hold your hand from start to finish.
+[02:03:53] Patrick Chouinard: I mean, in the design phase, it's even going to spawn a web server to show you...
+[02:03:59] Patrick Chouinard: you...
+[02:04:00] Patrick Chouinard: Designs to help you choose which way you want to go.
+[02:04:04] Patrick Chouinard: The only thing I see with Superpowers is what it can't do, which is some of the rendering, the UI fails.
+[02:04:14] Elena: Like the code's solid, but obviously the UI fails.
+[02:04:17] Patrick Chouinard: It has some minified issues.
+[02:04:20] Elena: Sometimes it has some other stuff that you can't really do much with, but the code is pretty good.
+[02:04:27] Elena: Yeah.
+[02:04:29] Elena: And the validation, you can always use the Playwright MCP to patch that last little bit of validation.
+[02:04:37] Patrick Chouinard: Basically to build the framework on Playwright for what edition?
+[02:04:42] Patrick Chouinard: Well, Playwright already has an MCP server, so you just need to install it and that's it.
+[02:04:48] Elena: Okay, so I don't need to create the tests.
+[02:04:51] Elena: It just will use the Playwright MCP and it will do UI testing.
+[02:04:55] Patrick Chouinard: Well, Claude is very good to write the test.
+[02:04:58] Elena: It's just it can't...
+[02:05:00] Elena: Execute it without view of the UI, so that's where the Playwright MCP comes in.
+[02:05:06] Elena: So Claude can tell the Playwright MCP, here's what you need to test for, and through the MCP.
+[02:05:11] Elena: Playwright will go ahead and execute it from UI side.
+[02:05:14] Patrick Chouinard: And it can execute from local running as well, from local host?
+[02:05:19] Patrick Chouinard: Yep.
+[02:05:20] Patrick Chouinard: OK, interesting.
+[02:05:21] Patrick Chouinard: Thank you.
+[02:05:22] Elena: Playwright will run locally.
+[02:05:24] Elena: It will spawn a browser.
+[02:05:26] Elena: It will click on things.
+[02:05:28] Patrick Chouinard: Just via MCP server, so basically I can create, I can ask my test agent to use Playwright MCP to test it from UI, so I don't have to do it.
+[02:05:38] Patrick Chouinard: But you just install the MCP through like quad space MCP, and then provide the URL for the, because Playwright MCP is an HTTP, so just provide the HTTP link.

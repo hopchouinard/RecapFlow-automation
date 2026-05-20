@@ -1,0 +1,63 @@
+2026-05-12 17:53:21 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-05-12 18:06:12 From Biggi Fraley to Everyone:
+	Have you compared Plan mode between Codex & Claude?
+	
+2026-05-12 18:07:39 From Biggi Fraley to Everyone:
+	Replying to "Have you compared Plan mode between Codex & Claude...":
+	Awesome. Thanks, Patrick!
+	
+2026-05-12 18:09:04 From Elena to Everyone:
+	Disabled Share
+	Host disabled attendee screen sharing.
+	
+2026-05-12 18:25:37 From Ty Wells to Everyone:
+	https://crowdpics.ai
+	Biggi Fraley:❤️
+	
+2026-05-12 18:33:57 From Alex Roca to Everyone:
+	Cheers, guys, I have to run, great to catch up
+	Biggi Fraley, Patrick Chouinard:👋
+	
+2026-05-12 18:46:07 From Biggi Fraley to Everyone:
+	That's what I was thinking, Patrick. I feel all of us would be interested in something like this.
+	
+2026-05-12 18:47:19 From Biggi Fraley to Everyone:
+	And it should be easy to search online for startups in the right phase for this.
+	Elena:🙌
+	
+2026-05-12 18:50:04 From Biggi Fraley to Everyone:
+	That's why rich people will only buy $3 wines if they cost $6,000. 😂
+	Patrick Chouinard:😂
+	
+2026-05-12 18:53:20 From Ty Wells to Everyone:
+	That reminds me, let me get a bottle open
+	Biggi Fraley:😂
+	
+2026-05-12 18:54:21 From Ty Wells to Everyone:
+	Deepseek setup within Claude
+	
+2026-05-12 18:54:23 From Ty Wells to Everyone:
+	https://deepseek-claude-code.vercel.app
+	Biggi Fraley:👍
+	
+2026-05-12 18:57:29 From Biggi Fraley to Everyone:
+	I didn't know they added it to Claude too now.
+	
+2026-05-12 18:58:26 From Biggi Fraley to Everyone:
+	But, zero transparency - double of what? Nobody knows.
+	
+2026-05-12 19:07:19 From Biggi Fraley to Everyone:
+	There's an idea for a couples' communication app.
+	
+2026-05-12 19:27:49 From Hemal Shah to Everyone:
+	Need to drop, thanks. See you all next week.
+	Patrick Chouinard:👍
+	
+2026-05-12 19:57:28 From Fitz to Everyone:
+	Superpower development methodology plugin repository
+	https://github.com/obra/superpowers
+	

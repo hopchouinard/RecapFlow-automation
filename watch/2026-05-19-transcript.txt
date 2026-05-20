@@ -1,0 +1,1798 @@
+[00:00:00] Marc Juretus: Yeah, I basically use Curser, but I have the Claude CLI that I use for the most Hey, Patrick.
+[00:00:15] Marc Juretus: No sound, brother.
+[00:00:17] Marc Juretus: better turn that mic on.
+[00:00:18] Tom Welsh: You're muted.
+[00:00:20] pchouinard: Sorry, I said you can continue talking.
+[00:00:21] pchouinard: It's not because I arrived that you have to stop.
+[00:00:24] Tom Welsh: I was just looking at that magnificent beard of yours.
+[00:00:27] Marc Juretus: I was about to say, man.
+[00:00:29] Marc Juretus: How much are you paying to get there groomed a month?
+[00:00:30] Marc Juretus: A couple hundred bucks?
+[00:00:32] Tom Welsh: Good lord, dude.
+[00:00:35] pchouinard: Let's just say I have a good barber.
+[00:00:37] Tom Welsh: Yeah, I should think so.
+[00:00:41] Marc Juretus: Is that something religious or is that just the look you like?
+[00:00:45] pchouinard: No, just my look.
+[00:00:48] pchouinard: Give a lumberjack.
+[00:00:50] pchouinard: Do you have a lumberjack jacket?
+[00:00:55] pchouinard: Contrary to common thinking, no, even as a Canadian, I do not have...
+[00:01:09] Tom Welsh: We should have a couple of interesting questions tonight, if the people who posted actually come in.
+[00:01:24] Tom Welsh: Yeah, invited one of the new guys, he's been asking the startup, the starting question to come along.
+[00:01:30] Tom Welsh: He's from India.
+[00:01:31] Tom Welsh: So it's about 4am in the morning for him if he turns up.
+[00:01:34] pchouinard: Okay.
+[00:01:36] pchouinard: The question I got was more of a statistician with 20 years experience, wants to transition in AI engineering.
+[00:01:45] pchouinard: Hey, Bastian.
+[00:01:50] pchouinard: Hey, Bastian.
+[00:01:50] Bastian Venegas: Hey, Tom.
+[00:01:52] Bastian Venegas: Hey, Patrick.
+[00:01:53] Bastian Venegas: Sometime we'll see.
+[00:01:54] Tom Welsh: Yeah.
+[00:01:55] Bastian Venegas: Hello, Marc.
+[00:01:56] Marc Juretus: Hey, Bastian.
+[00:01:57] Tom Welsh: How goes it down in Chile?
+[00:02:00] Bastian Venegas: It's very cold, man.
+[00:02:02] Bastian Venegas: It was, well, you used Fahrenheit, maybe, but really  cold.
+[00:02:06] Tom Welsh: What's that, about 72?
+[00:02:10] pchouinard: Yeah, for us, it's getting up there.
+[00:02:18] pchouinard: We were closing on 85 today.
+[00:02:22] Tom Welsh: Yeah, Canada is quite weird, because I've got friends in Toronto and Missingagua, and it snows a lot, and it's really cold for a lot of the time, and then the temperature just goes through the roof.
+[00:02:33] pchouinard: Yep.
+[00:02:35] pchouinard: We're in the land of extreme.
+[00:02:37] pchouinard: We experience minus 30 as well as plus 35, so.
+[00:02:41] Tom Welsh: Yeah, did Berlin, which is like minus 22, 23 to plus 30.
+[00:02:46] pchouinard: Sorry, if I translate in Fahrenheit, it would be minus 30 still.
+[00:02:53] Tom Welsh: Yeah, yeah.
+[00:02:55] pchouinard: 100, let's say.
+[00:02:57] Tom Welsh: Yeah.
+[00:02:59] pchouinard: Hey, Ty.
+[00:03:04] pchouinard: Hi, how's it going?
+[00:03:07] pchouinard: Good.
+[00:03:09] Bastian Venegas: Are you on the deck or on the golf course?
+[00:03:12] Ty Wells: I'm on the deck today.
+[00:03:14] Ty Wells: I've got a hoodie on.
+[00:03:15] Ty Wells: It's a little nippy over here.
+[00:03:20] Ty Wells: So, we'll see.
+[00:03:23] Ty Wells: Do we have any Germans on the call, typically?
+[00:03:29] Bastian Venegas: I don't think so.
+[00:03:30] pchouinard: No, I don't think so.
+[00:03:32] Bastian Venegas: The closest was when Maxim was living in Germany, I think.
+[00:03:35] Tom Welsh: Yeah.
+[00:03:37] Ty Wells: I'm headed to Berlin tomorrow.
+[00:03:41] Ty Wells: You'll enjoy that.
+[00:03:42] Ty Wells: So I was going to reach out.
+[00:03:44] Tom Welsh: Nice.
+[00:03:46] Tom Welsh: Whereabouts is that in Berlin?
+[00:03:48] Ty Wells: Berlin, yeah.
+[00:03:50] Tom Welsh: Whereabouts in Berlin?
+[00:03:51] Ty Wells: Oh, .
+[00:03:52] Ty Wells: I don't know.
+[00:03:53] Ty Wells: I've got the address.
+[00:03:54] Tom Welsh: It's as much as I've got.
+[00:03:56] Tom Welsh: Yeah, yeah.
+[00:03:57] Ty Wells: I'll tell you.
+[00:03:58] Ty Wells: Hang on.
+[00:03:58] Ty Wells: I'll get it for you.
+[00:04:05] Ty Wells: Where is that?
+[00:04:09] Ty Wells: Actually, Claude should know.
+[00:04:11] Ty Wells: I can just ask it.
+[00:04:13] Ty Wells: Let's see here.
+[00:04:21] Ty Wells: You just wanted to check my German, didn't you?
+[00:04:26] Tom Welsh: Yeah.
+[00:04:27] Ty Wells: Okay.
+[00:04:28] Ty Wells: Well, you just said it.
+[00:04:29] Ty Wells: That's the word I got.
+[00:04:30] Ty Wells: Yeah.
+[00:04:32] Marc Juretus: I wonder where you were going with that question.
+[00:04:34] Marc Juretus: I was like, that's an odd started question.
+[00:04:36] Marc Juretus: Are there any Germans on the call?
+[00:04:37] Marc Juretus: I was like, okay.
+[00:04:38] Ty Wells: Is that what happy to do?
+[00:04:41] Ty Wells: It's at the Betahass Arena.
+[00:04:49] Ty Wells: Betahass, Kreuzberg, brilliant.
+[00:04:51] Tom Welsh: Kreuzberg, yeah.
+[00:04:52] Ty Wells: Kreuzberg, okay.
+[00:04:53] Ty Wells: There you go.
+[00:04:54] Ty Wells: Now I know how to pronounce it.
+[00:04:56] Tom Welsh: Yeah, Turkish sector.
+[00:04:57] Bastian Venegas: Well, they say it's basically English plus...
+[00:05:00] Bastian Venegas: It's a bit more yelling and spitting.
+[00:05:03] Ty Wells: Okay, that's good to know.
+[00:05:05] Tom Welsh: No, no, it's definitely not English, because if you can see a word in five letters in English, it's done in 26 in German.
+[00:05:13] Bastian Venegas: Yeah, they have these crazy long syllables.
+[00:05:16] Tom Welsh: Yeah, Uwe-Grober-Krammen-Mann-Führer.
+[00:05:21] Tom Welsh: Uwe-Bahnhof-Underground.
+[00:05:23] Tom Welsh: Good.
+[00:05:31] pchouinard: Let's slowly get started, and I'm gonna monitor to see if the person who asked the question in the comments this week actually shows up and we can address this question.
+[00:05:49] pchouinard: First, just a little update on the Community Brain Project.
+[00:05:54] pchouinard: I did not have a whole lot of time to go further.
+[00:05:58] pchouinard: It's almost packaged.
+[00:06:00] pchouinard: I just need to finalize some things to make sure it can be deployable in any environment because I need to make sure it deploys on Windows, Linux, and Mac.
+[00:06:11] pchouinard: So right now the first pass of backing up and packaging has been done.
+[00:06:16] pchouinard: I need to do another pass.
+[00:06:18] pchouinard: Sadly, my garden needed my attention this weekend.
+[00:06:22] pchouinard: So for once I was outside and not having fun with Cloud Code during the weekend.
+[00:06:30] pchouinard: But it is getting pretty close to being deployable.
+[00:06:34] pchouinard: And as you might have seen, Brendan was nice enough to do a little video with me that got posted on both Lincoln and in the school community.
+[00:06:45] pchouinard: So that was quite interesting.
+[00:06:47] Tom Welsh: That was a good video.
+[00:06:48] Ty Wells: I saw that.
+[00:06:49] Ty Wells: That was a great video.
+[00:06:50] Tom Welsh: Yep.
+[00:06:52] pchouinard: Thank you.
+[00:06:52] pchouinard: Thank you.
+[00:06:53] pchouinard: Hopefully the first one of many, but we'll see.
+[00:06:58] Tom Welsh: Yep.
+[00:07:01] pchouinard: Good.
+[00:07:03] pchouinard: So I don't see the person who asked the question, so let me grab a screenshot, and we're going to start with the people that are actually on the call.
+[00:07:14] pchouinard: Post that in the chat.
+[00:07:41] pchouinard: So based on this, I would start with Marc.
+[00:07:44] Marc Juretus: Hey, not too much to report on my end.
+[00:07:49] Marc Juretus: I'm working on a, kind of got roped into doing a personal site for this historic foundation.
+[00:07:56] Marc Juretus: So I'm trying to, I guess what I could ask you guys is...
+[00:08:00] Marc Juretus: They have a donation section and I've been looking at PayPal and Stripe.
+[00:08:04] Marc Juretus: Are there any other better options or something you recommend or any drawbacks for anyone who's done that?
+[00:08:11] Marc Juretus: It would be my question.
+[00:08:13] Marc Juretus: I know it's not really AI, but it's a general programming question.
+[00:08:17] Bastian Venegas: I hate PayPal.
+[00:08:18] Bastian Venegas: My experience was terrible, but maybe other people have better experiences.
+[00:08:22] Ty Wells: With what, Bastian?
+[00:08:27] Bastian Venegas: Maybe it was because the account for my company was kind of new, but I tried to wire money to pay a course and the money was kind of lost in the way.
+[00:08:41] Bastian Venegas: And all the time they blocked money that I was supposed to receive.
+[00:08:47] Bastian Venegas: It was like two, two grants.
+[00:08:50] Bastian Venegas: Which services?
+[00:08:51] Bastian Venegas: was never able to, PayPal.
+[00:08:53] Ty Wells: PayPal, okay.
+[00:08:53] Bastian Venegas: They said to check that with my credit card provider.
+[00:09:00] Bastian Venegas: And my critical provider told me to check it with them, so at the end, I lost the 2K.
+[00:09:05] Marc Juretus: Oh man, that sucks.
+[00:09:08] Tom Welsh: What front end are you using, Marc?
+[00:09:10] Marc Juretus: What's that?
+[00:09:11] Tom Welsh: What database back end or front end system are you using?
+[00:09:16] Marc Juretus: So it's basically Next.js and I'm using this interface called Sanity that lets you update the pages for them to add.
+[00:09:24] Marc Juretus: They just update blocks of the page.
+[00:09:26] Marc Juretus: They did have an existing site, but they had a real falling out with the developer.
+[00:09:31] Marc Juretus: So they did have donations before.
+[00:09:33] Marc Juretus: I've got a meeting with the guy tomorrow night.
+[00:09:35] Marc Juretus: So we may use what he has already or, you know, we may change to something else.
+[00:09:40] Tom Welsh: I don't remember if it was Stripe or not.
+[00:09:41] Tom Welsh: have to talk to him again.
+[00:09:43] Tom Welsh: Yeah, Stripe interfaces.
+[00:09:45] Marc Juretus: It's.js and Sanity.io is what I'm using.
+[00:09:48] Tom Welsh: Yeah, because Stripe interfaces quite well with Next.js.
+[00:09:51] Tom Welsh: They've got Motor Street in there.
+[00:09:54] Marc Juretus: Yeah, I'm going to look at it.
+[00:09:56] Marc Juretus: It's kind of like branching out.
+[00:09:57] Tom Welsh: So, yeah.
+[00:09:59] Marc Juretus: I'll be...
+[00:09:59] Marc Juretus: I'll
+[00:10:00] Marc Juretus: There's real of note.
+[00:10:01] Marc Juretus: I still have my stock trader running on its own.
+[00:10:03] Marc Juretus: I keep tweaking that every day, every couple of days from its lessons list that it learns lessons and it teaches itself stuff.
+[00:10:10] Marc Juretus: So we'll see where I'm at in a month.
+[00:10:12] Marc Juretus: I'm up like $5,200 out of the 100 grand that Alpaca gives you by default for trading.
+[00:10:17] Marc Juretus: So it's doing okay.
+[00:10:19] Adam: So, Marc, I was trying to think about helping one of my friends with his charity.
+[00:10:25] Adam: And when I looked into it, there's a couple providers that do open bank.
+[00:10:32] Adam: And I haven't developed anything.
+[00:10:34] Adam: But if they want to use their bank account instead of credit cards, the fees are just way lower.
+[00:10:40] Marc Juretus: Yeah.
+[00:10:41] Marc Juretus: Like I said, I don't remember what they had in place.
+[00:10:44] Marc Juretus: They did already have that working on an old site.
+[00:10:46] Marc Juretus: So I'm assuming they have some account in place that I can somehow leverage.
+[00:10:49] Marc Juretus: So I may use what they have already.
+[00:10:51] Marc Juretus: But if I don't like it, I wanted to see what my options were is pretty much what I was trying to find out.
+[00:10:57] Marc Juretus: It's pretty much what PayPal and Stripe, right?
+[00:10:59] Marc Juretus: There isn't a lot more out there.
+[00:11:01] Bastian Venegas: Yeah, Clerc does provide the service too, but they use Stripe under the hood.
+[00:11:06] Marc Juretus: They just try to make it easier for you.
+[00:11:08] Marc Juretus: So in case you run into issues, you may look into that.
+[00:11:11] Marc Juretus: Okay, thank you.
+[00:11:14] pchouinard: I believe there is a CLI for Stripe as well as an MCP for Cloud Code, so it might make it easier.
+[00:11:22] Ty Wells: Yeah, that's all I use too for Stripe, and CLI's wonderful way it works.
+[00:11:28] Ty Wells: So, never had it.
+[00:11:30] Ty Wells: Actually, I lie.
+[00:11:31] Ty Wells: The issues are usually on the callback.
+[00:11:34] Ty Wells: For some reason, those fail sometimes when you set up your callback to indicate, you know, receipt, payment, or whatever it is.
+[00:11:44] Ty Wells: So, just make sure that that's tested thoroughly.
+[00:11:49] Marc Juretus: Yeah, it'll definitely be a, I've never done a pay site thing before.
+[00:11:53] Marc Juretus: So, is that for your personal site or for your business?
+[00:11:55] Ty Wells: I would assume your business.
+[00:11:57] Ty Wells: Business, yeah.
+[00:11:58] Marc Juretus: Okay.
+[00:11:59] Marc Juretus: …and…
+[00:12:00] Marc Juretus: Yeah.
+[00:12:00] Marc Juretus: We'll figure it out.
+[00:12:04] pchouinard: Yeah.
+[00:12:06] pchouinard: Oh, there's a Codex plugin as well.
+[00:12:09] Bastian Venegas: Oh, nice.
+[00:12:11] Bastian Venegas: Yep.
+[00:12:12] Marc Juretus: Oh, let me pull up the chat.
+[00:12:13] Marc Juretus: didn't even see you with some chat stuff here.
+[00:12:15] Marc Juretus: Okay.
+[00:12:15] Marc Juretus: Yeah.
+[00:12:16] Marc Juretus: Oh, okay.
+[00:12:17] Marc Juretus: That's interesting.
+[00:12:19] pchouinard: I've been a big fan of, uh, Dual Arnest, uh, development and basically Cloud Code and Codex simultaneously.
+[00:12:29] Marc Juretus: Nah, I'm not balling yet, Juan.
+[00:12:30] Marc Juretus: I saw your message in there.
+[00:12:32] pchouinard: We're getting there.
+[00:12:34] Marc Juretus: We're getting there.
+[00:12:36] Marc Juretus: I actually probably will at some point deploy some real money with that if it keeps getting better.
+[00:12:41] Marc Juretus: you know, you know, hopefully I'll lose my shirt, but we'll see with the traders what I'm talking about.
+[00:12:49] pchouinard: Good.
+[00:12:51] pchouinard: Anything else for you, Mark?
+[00:12:53] Marc Juretus: No, that's, that's pretty much it for me.
+[00:12:55] Marc Juretus: haven't done anything new.
+[00:12:56] Marc Juretus: just kind of wanted to sit back and watch and see what Patrick's up to this week.
+[00:13:00] Marc Juretus: It sounds like, well, you could give us some gardening photos, like, you know, just some digression, see another side of you.
+[00:13:06] Marc Juretus: You got anything for us?
+[00:13:09] pchouinard: Not much.
+[00:13:10] pchouinard: I mean, basically, right now, my life is between my office and my garden.
+[00:13:18] pchouinard: Which is actually monitored by a webcam and fed back into ChatGPT for evaluation to tell me what I need to do to the garden.
+[00:13:29] pchouinard: So that's, I might eventually present that little project.
+[00:13:34] Ty Wells: We wouldn't expect anything less from you, Patrick.
+[00:13:36] Ty Wells: Come on, man.
+[00:13:37] Ty Wells: That's like automatic that happens, right?
+[00:13:42] pchouinard: Yeah, actually, I want to tie in with an automated irrigation system.
+[00:13:47] pchouinard: So ChatGPT monitors the garden, has all of the feedback from the agrometer and all of the sensors in the garden and whenever it needs it.
+[00:13:59] pchouinard: ChatGPT.
+[00:14:01] Adam: I see a lot of people use weather prediction, right, and then they can minimize their watering.
+[00:14:08] pchouinard: Yeah, to me it's not much to minimize because in Quebec we don't pay for water, so it's not a matter of reducing, but it's a matter more of making sure that I don't kill the thing by overwatering it.
+[00:14:21] Ty Wells: Yeah, I know pH is very important.
+[00:14:25] Ty Wells: That's very, very, just point, the point decimal is very important between good and bad.
+[00:14:32] pchouinard: Yeah, no, basically anything is data now.
+[00:14:35] pchouinard: So if you have a source of data, you can have the AI helps you navigate it.
+[00:14:41] pchouinard: So, uh, oh, okay.
+[00:14:43] pchouinard: I just saw that Eric has joined us.
+[00:14:48] pchouinard: Uh, so Eric, if you want, uh, you were the one with a question posted.
+[00:14:54] pchouinard: Just a quick recap.
+[00:14:55] pchouinard: Uh, basically you're a statistician with 20 years of background and matter.
+[00:15:00] pchouinard: And you want to transition into AI engineering, so feel free to tell us a little bit more about that and what questions you want to answer specifically.
+[00:15:11] Eric Tsai: Yeah, yeah.
+[00:15:12] Eric Tsai: Thank you so much, Patrick.
+[00:15:13] Eric Tsai: Yeah, I text you this morning, actually, the whole day.
+[00:15:17] Eric Tsai: Yeah, so my background got a PhD in Applied Math 20 plus years ago.
+[00:15:25] Eric Tsai: So after that, I started working, you know, when AI is now a thing, AI is still in the winter.
+[00:15:31] Eric Tsai: It's the winter break or something.
+[00:15:33] Eric Tsai: So started out as a statistician, you know, used this traditional statistical model.
+[00:15:39] Eric Tsai: Up to five, you know, six years ago when data scientist job title become a trend, you know, got switched to data scientist.
+[00:15:49] Eric Tsai: You know, job title even though still, you know, pretty much do similar thing, traditional statistical model.
+[00:15:56] Eric Tsai: And then, you know, the AI hit large language model.
+[00:15:59] Eric Tsai: though.
+[00:15:59] Eric Tsai: Thank so much.
+[00:16:01] Eric Tsai: And, you know, I'm trying to, like, pivot into AI engineer job position, and I just saw within the company I worked for, they just create an AI engineer job, and I look at the job description, and also, of course, look outside of the company, you know, there's so many AI engineer job posting, and just basically, you know, to be honest with you, like, from all the jobs, the laundry list of things you need to know, things you need to do before applying, it's it's shouting, like, software engineer, software engineer to my face, and basically, like, software engineer who know how to use OpenAI API, Anthropic API, and, you know, send a request and get a response back, and that's pretty much it, well, not much it, but, you know, in terms of, you know, machine learning, or statistics, or what's the old method, and, you the more automatic was,
+[00:17:00] Eric Tsai: So basically what I'm saying is I see more and more, like, mathematics and statistics out of the window, it's like, I mean, honestly speaking, nobody, I mean, I have to be frank with everyone, it's like, nobody really cares, and even the company I work for, there are data scientists who is building, you know, AI agents for, to handle the documents or to answer the customer's call request.
+[00:17:29] Eric Tsai: They build a model day in, day out, and when I ask them, do you really understand, you know, a little bit underneath what's going on, they say, no, why do I need to know?
+[00:17:39] Eric Tsai: You know, I just know how to call the API, I'm like, oh really?
+[00:17:42] Eric Tsai: Okay, okay, so just basically reinforce my conviction that I need to pick up the full stack, like the front end, the back end, the database, the authentication, the authentication, in order to build a full stack, AI application, or AI products.
+[00:18:00] Eric Tsai: So this is what I've learned so far, and I've been talking to different groups, different people, people always tell me, oh, it's great, you have the math background, fantastic, but I mean, honestly speaking, inside my heart, I'm like, man, this story does not matter whatsoever anymore, unless you want to be the front end, the niche, like you want to be in the lab, research lab, doing whatever algorithm, refinement, or whatever, right?
+[00:18:28] Eric Tsai: So, so my question for you, like, you know, can you guys help me, I mean, because my goal for this year is by end of this year, want to be at least feel confident enough to apply to AI engineer position, which clearly tell you, need to, like, three plus years of software engineer who know how to use API, the kind of job description.
+[00:18:52] Eric Tsai: So, I cannot wait to hear from you guys, experts, you know, share how to, for me, you know, to pick up those.
+[00:19:00] Eric Tsai: So self-engineering skills, yeah, that's, I don't know if it makes sense or not, yeah.
+[00:19:05] pchouinard: Actually, Eric, I'm a trainer in a company, and I train a classic developer into becoming AI-assisted developer, and what I always tell them is, like, you think your skills are no longer valuable, but they are extremely valuable, and I'll tell you what, why, actually.
+[00:19:25] pchouinard: Because you know how to evaluate the work the AI would create around your field of expertise, and that's the skill that's most needed, okay?
+[00:19:36] pchouinard: So if you want to train on AI engineering, don't try to go and grab a course that will show you how to do a SaaS website, and those are nice, but they're way further away to the start.
+[00:19:51] pchouinard: If you want to understand what it is to be an AI engineer, do a project where you build something that you understand.
+[00:19:59] pchouinard: Build a mathematical...
+[00:20:00] pchouinard: Build an A-B testing.
+[00:20:04] pchouinard: Whatever you do normally in your work, your expertise, build a system that does that.
+[00:20:11] pchouinard: That will teach you how to use AI, to do something, and you have the ability to evaluate what the AI has created because that ability to evaluate is the most important thing that you need to add to your skill set.
+[00:20:26] pchouinard: After you can go and learn how to do front-end, learn how to do back-end, not learning how to code those things.
+[00:20:33] pchouinard: You never will write a line of code in that realm.
+[00:20:36] pchouinard: But once you know how to guide AI, how to do the architecture to get to a solid structure, the rest is just the same method applied again and again.
+[00:20:48] pchouinard: So if anybody else wants to add, feel free, but that's what I would tell you upfront to start with.
+[00:20:57] Ty Wells: I'm in 100% agreement with that.
+[00:20:58] Ty Wells: The only thing I would add to that.
+[00:21:00] Ty Wells: That is that you have, it's about asking the right questions, being really curious, and yes, in your space, right, with your background, but really thinking through the questions that you're asking, and you'll find yourself diving deeper and deeper and getting the answers that you want, keeping it in your lane, and not necessarily a part of actual software engineering, but sort for me, and this is for me, for me, it's more of, I envision what the end result is, and then I reverse engineer back to code, and basically, Claude Code's doing the work, but I want to get to the product, or the end result first.
+[00:21:50] Ty Wells: If I can get there, then absolutely, I can get my way back, right, because if I got there, I can definitely get back, right, breadcrumbs and
+[00:22:00] Ty Wells: Just the flow.
+[00:22:00] Ty Wells: But that's the way I think about it.
+[00:22:02] Eric Tsai: I don't really think about it.
+[00:22:03] Eric Tsai: And I'm a software engineer.
+[00:22:04] Eric Tsai: Oh, you are.
+[00:22:05] Eric Tsai: Okay.
+[00:22:06] Ty Wells: Yeah.
+[00:22:06] Ty Wells: Sorry.
+[00:22:07] Ty Wells: I should have led with that.
+[00:22:08] Ty Wells: My bad.
+[00:22:09] Ty Wells: And so that's why it's important to just, I think those are the skills that are going to be important.
+[00:22:15] Ty Wells: Just, you know, like you're in mathematics, just take that and whatever sort of drives you, go with that.
+[00:22:24] Ty Wells: And something that you think that would add value, because you said you're going to try to produce a product.
+[00:22:29] Ty Wells: And you can come up with that, then you can easily get to the resolution.
+[00:22:33] Ty Wells: But you have to get to the end goal first.
+[00:22:34] Ty Wells: Got to get to the finish line.
+[00:22:37] Eric Tsai: So, for example, you know, a Gen.AI large length model campaign, like 20, 23 or something.
+[00:22:45] Eric Tsai: And I mean, there's a lot of things like, for example, no code, like lovable, right?
+[00:22:50] Eric Tsai: You guys know lovable.
+[00:22:52] Eric Tsai: So I try it and let it just, hey, you don't need to code.
+[00:22:56] Eric Tsai: You don't need to know whatsoever a single line of code.
+[00:22:58] Eric Tsai: You it generates.
+[00:22:59] Eric Tsai: know, generates.
+[00:23:00] Eric Tsai: So I just type it, you know, just prompt it, and create a front end for me, and just, you know, in the first iteration, there's some error, and I say, hey, there's an error, you know, but I don't know what's going on, fix it.
+[00:23:12] Eric Tsai: And just after several iterations, finally get to work, and I know nothing of that single line of those, like, you know, JavaScript or TypeScript codes.
+[00:23:23] Eric Tsai: So I, and later I heard the term called, technical debt, like, you may have it generate thousands or hundreds of code for you and run okay, and just call it your own.
+[00:23:36] Eric Tsai: I'm like, I feel not confident whatsoever, but, you know, like, you know how I feel, right?
+[00:23:43] Eric Tsai: So, at least you need to know what's going on, and in order to try to fix the bug, you cannot know nothing about that stuff's code, right?
+[00:23:52] Eric Tsai: And let Lovable create, or Claude created everything for you, isn't that true?
+[00:23:58] pchouinard: Actually, you'd be very...
+[00:24:00] pchouinard: I'm surprised that CloudCode, Codex, all of those coding harnessed are very good at debugging if you guide them properly.
+[00:24:09] pchouinard: What you need to learn to do is guide those systems.
+[00:24:13] pchouinard: Actually, Codex and CloudCode are now probably better than 90% of the true software engineer at debugging code.
+[00:24:22] pchouinard: Wow.
+[00:24:25] Eric Tsai: Right, right.
+[00:24:26] Eric Tsai: Okay.
+[00:24:26] pchouinard: You become someone that will guide, operate, manage a team of virtual agents way more than you're going to be a software developer, per se.
+[00:24:36] pchouinard: So you have to understand what is a front-end, what is a back-end, how they talk to each other, what's the need for each one.
+[00:24:42] pchouinard: But you don't need to know specifically how to code any of the nitty-gritty detail function in there, as long as you understand the structure.
+[00:24:53] pchouinard: And Lovable might be a little, it's good to start, but it's a bit, for my taste at least.
+[00:25:00] pchouinard: It's a little bit too ends off.
+[00:25:01] pchouinard: I like something in between, so that's why the Cloud Code, Codex, Cursor, Windsurf, a little bit more where I like to get in, simply because you see the background, you see the code getting generated, and as you're reading it, you're going to understand it more and more.
+[00:25:23] Eric Tsai: Yeah, exactly, but in order to know the overall structure, you know, what is right, what's wrong, how to guide it, exactly what you said, for example, when I asked Cloud Code to generate some traditional statistical model, I have to know in my mind, you know, what works, what does not work, and I have to tell them direction to take.
+[00:25:45] Eric Tsai: Exactly that when it comes to software, you guys know high-level how to design the infrastructure, but to get to know that, you need to at least be a software engineer, experience enough.
+[00:26:00] Eric Tsai: To know how to guide those, right?
+[00:26:03] Eric Tsai: Direction, right?
+[00:26:04] pchouinard: Isn't it?
+[00:26:05] pchouinard: I would agree, yes.
+[00:26:06] pchouinard: But you have to practice, basically.
+[00:26:08] pchouinard: It's like anything that you're not going to learn without practicing.
+[00:26:11] pchouinard: I'm not saying go tomorrow and get hired to do a multi-million dollar project with CloudCode, but I'm saying like you're, I'm sure you have thousands of ideas of little applications you can build from start to finish based on knowledge you already have.
+[00:26:26] pchouinard: So stuff that you will know how to validate if it was done properly.
+[00:26:30] pchouinard: And another tool I might suggest, no matter the harness you choose, is a plugin called Superpower.
+[00:26:39] pchouinard: I absolutely love that thing, because it will guide you through the software development life cycle.
+[00:26:47] pchouinard: Obviously, as you're getting better and better, you're going to be able to guide it into edge cases that it doesn't end all by default.
+[00:26:55] pchouinard: But in the beginning, it will hold your hands as to you go to a...
+[00:26:59] pchouinard: is get drinks.
+[00:27:00] pchouinard: It's brainstorming phase, it will present you the architecture that it will recommend, 90% of the time it's decent, it's not necessarily the absolute best, you're going to learn through exercise what actually works best for your use case, but whatever it will produce or propose will be correct enough in order to create an application that will at least work.
+[00:27:22] pchouinard: And you will go through the whole process of brainstorming, design review, implementation, code review, it will guide you through the whole Git process to create the proper branch, do a PR, it will tell you like, oh, now we need to do this.
+[00:27:40] pchouinard: And so you review the output, you validate that the intention is okay, you see the problem you encounter, next time you do something else, you will know a set of errors not to commit, and as you're doing more and more, you're going to learn to process organically.
+[00:28:00] Adam: Have you considered doing something more mathematical than software development, given your background?
+[00:28:07] Adam: The software development market is pretty saturated right now because a bunch of people got flooded, new grads couldn't get jobs.
+[00:28:15] Adam: For example, Google just changed the way they do quantization to basically a strategy of keeping the vectors the same between some of the values.
+[00:28:28] Adam: And it's like an old technique in math that none of the young kids knew, and it just made the model much more powerful with the same amount of data.
+[00:28:40] Adam: So there's probably just all kinds of stuff like that.
+[00:28:44] Eric Tsai: Right, right, yeah.
+[00:28:45] pchouinard: Are you talking about TurboQuant?
+[00:28:46] Adam: Yes, yeah.
+[00:28:50] Ty Wells: Yeah, you could go.
+[00:28:51] Ty Wells: That's a big thing.
+[00:28:52] Ty Wells: That's going to be good.
+[00:28:55] pchouinard: I would like to add something.
+[00:28:56] Bastian Venegas: thing, but it's...
+[00:28:59] Bastian Venegas: you...
+[00:29:00] Bastian Venegas: have a heavy math background, you're in a much better position to leverage that in more classical machine learning, meaning not generative AI, such as convolutional nets and recurrent neural networks within domains like audio and in video, where generative AI really struggles with, because they can, of course, input audio and video or whatever, but how they handle it, that is not very good, and there's a lot of space there to actually innovate when you have the knowledge for that and actually fine-tune models and leveraging stuff to get even proprietary things that you could sell to other businesses.
+[00:29:48] Bastian Venegas: I have a dumb use case in mind.
+[00:29:51] Bastian Venegas: For example, I'm from Chile and we have miners here and there are safety concerns always, and they, someone invented a model understanding So,
+[00:30:00] Bastian Venegas: The only thing it does is to see if you have your safety pad thing or whatever on, and that is very important, and the companies pay a lot of money because it has to do with compliance, and that's not a problem for a software engineer, because it doesn't have to do to build a full stack site or something like that, it has to do with understanding the problem, being able to measure the impact, understanding the baseline, and actually iterating on that solution.
+[00:30:29] Bastian Venegas: So I think there's your leverage in areas more like that.
+[00:30:33] Eric Tsai: Yeah, thank you.
+[00:30:34] Eric Tsai: You're talking about image recognition or something.
+[00:30:39] Bastian Venegas: Yeah.
+[00:30:40] Eric Tsai: Yeah.
+[00:30:40] Eric Tsai: Okay, great.
+[00:30:41] Eric Tsai: Thank you.
+[00:30:41] Eric Tsai: Thank you so much, guys.
+[00:30:43] Eric Tsai: I don't want to waste anybody's time.
+[00:30:46] pchouinard: Good.
+[00:30:46] pchouinard: Well, hopefully it answered your question, and if you come up with other, we're here every week, so don't hesitate to join back and we'll be able to, we're happy to answer other questions.
+[00:31:01] pchouinard: Good.
+[00:31:03] pchouinard: Next would be Tom.
+[00:31:09] Tom Welsh: Hey.
+[00:31:10] Tom Welsh: Not done too much, really.
+[00:31:12] Tom Welsh: I had my eye cut up yesterday with a nice cataract.
+[00:31:14] Tom Welsh: That was great fun.
+[00:31:15] Tom Welsh: So I'm just recovering.
+[00:31:17] Tom Welsh: Sitting in of the screens doing lots of code.
+[00:31:19] Tom Welsh: I'm still working on my membership application.
+[00:31:22] Tom Welsh: When I actually get around to faking lots of data, I'll actually put it back up and show you.
+[00:31:27] Tom Welsh: I just did a post in the chat with my new dashboard because we're talking about stats.
+[00:31:34] Tom Welsh: mean, everyone loves stats, especially boards.
+[00:31:37] Tom Welsh: So that's like gauges.
+[00:31:40] Tom Welsh: But no, my challenge currently is because I'm working for this association and I've got their full database, it was more about data privacy and reassuring them that I'm not co-opting their data for something else.
+[00:32:00] Tom Welsh: So I've been using Claude and Perplexi just to create privacy agreements, basically, and kind of like using your adversarial thing, chuck it into Perplexi, then chuck Perplexi's output into Claude and take Claude's output and put back into Perplexi and go, okay, I'm happy with that now.
+[00:32:20] Tom Welsh: Thanks.
+[00:32:22] Tom Welsh: But yeah, that's literally all I've been up to.
+[00:32:25] Tom Welsh: That's lovely exciting.
+[00:32:27] pchouinard: Good.
+[00:32:27] pchouinard: By the way, when I do that, I love to tell the AI that what it reads, it comes from another AI.
+[00:32:34] pchouinard: For some reason, I don't know if there's an adversarial thinking built in their learning data, but they love to get more intelligent than the next guy.
+[00:32:46] Tom Welsh: Nice.
+[00:32:47] Tom Welsh: Oh, quick question.
+[00:32:48] Tom Welsh: I missed last week's call.
+[00:32:49] Tom Welsh: I haven't watched it yet.
+[00:32:50] Tom Welsh: You're talking about adversarial on the code.
+[00:32:53] Tom Welsh: Do you use different coding models or different IDE?
+[00:33:00] pchouinard: To do the adversarial.
+[00:33:02] pchouinard: Actually, I tried to use different models to do the adversarial.
+[00:33:06] Tom Welsh: Okay, so I'm in Cursor, so I'm using Opus now or something.
+[00:33:10] Tom Welsh: Would you just switch to a different model?
+[00:33:14] pchouinard: Yeah, well, you can do it in Cursor, you can use different Harness if you use other Harness.
+[00:33:21] pchouinard: Basically, the idea is first, you don't want to do it in the same conversation to avoid having context, yeah, and I always take a different model of the same level of intelligence in order to avoid the model bias.
+[00:33:41] pchouinard: So if I code something using Claude, I will do the adversarial with ChatGPT, for example, or GPT-55 or something like that.
+[00:33:50] pchouinard: And vice versa, if I code with ChatGPT, I'm going to do the adversarial with Claude.
+[00:33:55] pchouinard: But somehow I find that GPT is more specific.
+[00:34:00] pchouinard: Fick, it's more, it's better basically at doing adversarial than Claude in my, in my.
+
+---
+[RECORDING BREAK — same coaching call, second recording starts here. Timestamps below restart from 00:00:00 but represent a continuous conversation following directly from the previous segment. Speakers may appear under slightly different display names across the two halves.]
+---
+
+[00:00:02] Tom Welsh: You're on mute.
+[00:00:03] Ryan C: Someone tell Brandon to stop starting other meetings.
+[00:00:09] Patrick Chouinard: Very sorry about that.
+[00:00:15] Patrick Chouinard: I can't wait for it to happen again when he gets kicked out of his meeting and restarts the other meeting that he's obviously trying to get onto.
+[00:00:25] Patrick Chouinard: If you have him on Messenger or something, Patrick might actually be worth just texting him.
+[00:00:35] Patrick Chouinard: Yeah, it's...
+[00:00:36] Ty Wells: Did the meeting end or was it me?
+[00:00:38] Patrick Chouinard: No, no, it's something...
+[00:00:40] Juan Torres: It did.
+[00:00:42] Bastian Venegas: It wasn't you.
+[00:00:42] Bastian Venegas: was definitely you.
+[00:00:44] Tom Welsh: Okay.
+[00:00:45] Juan Torres: I'm like, this is a private meeting actually.
+[00:00:48] Juan Torres: I don't know.
+[00:00:48] Ty Wells: Okay, sorry.
+[00:00:49] Ty Wells: I entered the wrong room.
+[00:00:53] Patrick Chouinard: I'll text Brendan.
+[00:00:55] Patrick Chouinard: Well, Tom, don't know if you want...
+[00:00:59] Patrick Chouinard: Did you finish what you were saying when Zoom decided to cut you off?
+[00:01:05] Tom Welsh: No, no, that was fine.
+[00:01:06] Tom Welsh: was one of the adversarial things, so I'll take that in a bit later.
+[00:01:12] Patrick Chouinard: Basically Codex and ChatGPT are very good for the adversarial stuff.
+[00:01:18] Juan Torres: Patrick, how do you get them to read each other's conversations?
+[00:01:22] Juan Torres: Do you create an empty file for one conversation and then tell the other one to read that empty file and see the problems with that, or how do you do that?
+[00:01:31] Patrick Chouinard: actually open them both.
+[00:01:33] Patrick Chouinard: Well, the thing is I don't use the same harnessed.
+[00:01:38] Patrick Chouinard: So basically I do that with CloudCode and Codex.
+[00:01:41] Patrick Chouinard: I just open them both in the same repo.
+[00:01:44] Juan Torres: Right.
+[00:01:45] Juan Torres: But how do they contextualize each other's thinking or plans?
+[00:01:50] Patrick Chouinard: I don't want Or do they see at the code that's the main source?
+[00:01:54] Patrick Chouinard: Exactly.
+[00:01:54] Juan Torres: I don't want them to see the context because that's context pollution.
+[00:01:59] Juan Torres: Ah.
+[00:01:59] Patrick Chouinard: I will.
+[00:02:00] Patrick Chouinard: We'll ask Codex, for example, to do an adversarial review based on the Git output.
+[00:02:08] Patrick Chouinard: So I'm going to have a list of Git commit to be reviewed.
+[00:02:13] Patrick Chouinard: That's what I'm going to give Codex and say, go have at it and be as savage as you can be, basically, to find problems.
+[00:02:23] Patrick Chouinard: Then it's going to give me a report.
+[00:02:26] Patrick Chouinard: That's what I'm going to save as a file.
+[00:02:28] Patrick Chouinard: So this is the analysis report.
+[00:02:30] Patrick Chouinard: That's what I'm going to give to Claude and say, Codex, find these things.
+[00:02:35] Juan Torres: Gotcha.
+[00:02:36] Juan Torres: Well, what I've done is that I allow Codex to create a plan and then Claude to review that plan before the implementation.
+[00:02:46] Juan Torres: And sometimes I find out that it's really good to even do that even before the implementation process.
+[00:02:54] Patrick Chouinard: Well, I do that, but again, since I'm a big fan of super power, I do the...
+[00:02:59] Patrick Chouinard: Brainstorming with Claude, and then I'll review this with Codex.
+[00:03:05] Patrick Chouinard: Codex is my reviewer.
+[00:03:07] Patrick Chouinard: So basically, I love the GPT model for review of plan, specs, or code, and the implementation I leave to Claude.
+[00:03:19] Patrick Chouinard: like that, I'm just going to jump between both.
+[00:03:21] Patrick Chouinard: Actually, I don't know if you saw, but the latest version of Codex actually has a terminal where you can run Claude code inside of the Codex desktop application.
+[00:03:36] Bastian Venegas: And it works.
+[00:03:37] Bastian Venegas: why do you do the superpowers thing in Claude?
+[00:03:42] Bastian Venegas: Is it because the Codex doesn't prompt you to kind of win the questions?
+[00:03:47] Patrick Chouinard: It just, to me, the brainstorming part is more of the architecture part, and I find that Claude is a better architect than most of the time.
+[00:03:59] Patrick Chouinard: The G21
+[00:03:59] Patrick Chouinard: GPT Model, once you have a plan, will follow it to the comma compared to Claude.
+[00:04:06] Patrick Chouinard: But to ideas and to go maybe a little bit outside the box, I find that Claude does a better job.
+[00:04:14] Bastian Venegas: Got it.
+[00:04:16] Patrick Chouinard: But again, my Claude and my Codex also have a personality block inside of their agent.md and Claude.md at my profile level.
+[00:04:26] Patrick Chouinard: So it also helps because it removes a lot of the sycophancy.
+[00:04:37] Patrick Chouinard: But sometimes I would not share the exchange live in training at the business level, but it still makes for a nice business, nice exchange, let's say.
+[00:04:55] Patrick Chouinard: Good.
+[00:04:57] Patrick Chouinard: Next one, actually, since we have...
+[00:05:00] Patrick Chouinard: I you on camera for the first time in a long time, Bastian, you would be next.
+[00:05:04] Bastian Venegas: Oh, great.
+[00:05:05] Bastian Venegas: Thank you.
+[00:05:05] Bastian Venegas: So I don't have anything to share right now because I'm not on my main computer, but I'm working on a fun stuff that, well, I'm working on some enterprise things that I can't share, obviously, but side project, I'm working on, I'm a music producer as well, so I'm working on something with Ableton Live, which is like FL Studio, something to digital audio workstation to make music.
+[00:05:27] Bastian Venegas: And I built a program that uses dbt real-time and some music knowledge to, which is basically math, to help you write a song with an actual scale, chords, and a melody that fits in that chord progression.
+[00:05:46] Bastian Venegas: And it's like a songwriter co-pilot, not like Suno that will create your song with all the instruments and all that.
+[00:05:53] Bastian Venegas: The idea is here that the model can help you program MIDI and adjust to that tempo and tell you.
+[00:06:00] Bastian Venegas: You can select a note, for example, or a couple of notes and say, this section feels soft, can you help me understand why I don't like this, why my ears don't like this, and it can feel in the blanks for you in terms of music theory, and so you can actually learn things as you go.
+[00:06:18] Bastian Venegas: I have achieved some good melodies to start with, so I want to, when it's more advanced, want to kind of benchmark how each model, each family of models make music for a similar prompt, so I think that will be a good thing to share later on.
+[00:06:41] Bastian Venegas: And other than that, I wanted to ask you guys something that's kind of a legal question, just in case you know.
+[00:06:49] Bastian Venegas: Have you guys ever had to deal with a refund that wasn't fulfilled by an online company?
+[00:06:57] Bastian Venegas: So, that's basically...
+[00:07:00] Bastian Venegas: That you need to collect in terms of that.
+[00:07:03] Patrick Chouinard: I don't know if any of you had any experience with that.
+[00:07:07] Ty Wells: A refund from like a retailer or something?
+[00:07:11] Bastian Venegas: thing.
+[00:07:12] Bastian Venegas: Yeah, an online partnership via Stripe.
+[00:07:17] Bastian Venegas: But yeah, basically a refund with Stripe.
+[00:07:22] Ty Wells: No, I mean, I have chargebacks with that.
+[00:07:24] Ty Wells: I mean, it's like a chargeback, right?
+[00:07:26] Ty Wells: They're canceling the order.
+[00:07:27] Ty Wells: Yeah.
+[00:07:28] Ty Wells: So that would be a chargeback.
+[00:07:30] Ty Wells: But there's nothing...
+[00:07:35] Bastian Venegas: Yeah, from what I understood, there's not like a standard process.
+[00:07:38] Bastian Venegas: It's like contact the vendor and try to work things out.
+[00:07:42] Ty Wells: Yeah, basically.
+[00:07:43] Bastian Venegas: Yeah.
+[00:07:44] Bastian Venegas: Okay.
+[00:07:48] Bastian Venegas: Recourse is minimal.
+[00:07:51] Bastian Venegas: What was that, Sorry.
+[00:07:54] Ty Wells: I see your recourse is minimal.
+[00:07:56] Ty Wells: You don't have many options, except try to work it out and get...
+[00:08:00] Ty Wells: Yeah.
+[00:08:01] Bastian Venegas: Got it.
+[00:08:02] Ty Wells: Or, you know, you can dox them or something.
+[00:08:04] Bastian Venegas: Nope.
+[00:08:05] Bastian Venegas: Can't recommend that.
+[00:08:05] Bastian Venegas: Don't do that.
+[00:08:07] Bastian Venegas: Yeah.
+[00:08:07] Bastian Venegas: Yeah.
+[00:08:07] Bastian Venegas: I know that's always a possibility.
+[00:08:13] Bastian Venegas: Oh, one quick comment for what Juan was commenting about the adversarial review.
+[00:08:21] Bastian Venegas: The other thing you can do is if you want to spawn a sub-agent from the chat that you're working on, you can do, just as there's cloud-p for cloud code, there's codex exec that will launch a sub-agent that won't inherit the context of your conversation.
+[00:08:46] Bastian Venegas: So you can ask the model to, you can ask codex, for example, to do cloud-p to review its work or present with a different view.
+[00:09:00] Bastian Venegas: For the plan that you were just elaborating with that model.
+[00:09:04] Bastian Venegas: And that's the parameter.
+[00:09:05] Bastian Venegas: When it says fork, it means that it will pollute its context, just as Patrick was saying he wouldn't want to.
+[00:09:13] Bastian Venegas: But if you tell it, don't fork, it will set it up as a regular survey, and it will just get the prompt that the model will give.
+[00:09:21] Patrick Chouinard: Yeah, the only thing you have to be careful is that Entropic has announced that now Claude-P is not considered as part of the subscription.
+[00:09:30] Patrick Chouinard: And you will pay API calls.
+[00:09:34] Bastian Venegas: Yeah, let's do it separately.
+[00:09:35] Juan Torres: Yep.
+[00:09:35] Bastian Venegas: They will give you some, an equivalent amount of dollars that you pay in your plan as a subsidized API calls.
+[00:09:43] Bastian Venegas: But once you're out of that, you're done.
+[00:09:46] Patrick Chouinard: Yep, but that's why you realize that 200 bucks of API call is not a lot.
+[00:09:52] Ty Wells: No, because it adds up real quick.
+[00:09:54] Ty Wells: They send me those $100 increments.
+[00:09:57] Patrick Chouinard: It's crazy.
+[00:10:00] Patrick Chouinard: That's why I love to do that with Codex, because the limit on the Codex side, even the $20 a month, are extremely high.
+[00:10:11] Bastian Venegas: Yeah, I've been restarting that multiple times a week.
+[00:10:15] Bastian Venegas: They just did it today, in fact.
+[00:10:18] Juan Torres: Bastian, what kind of music are you trying to produce?
+[00:10:24] Bastian Venegas: Right now it was kind of like an EDM thing, but it was just basic.
+[00:10:31] Bastian Venegas: The identity comes mainly from the instruments.
+[00:10:33] Bastian Venegas: So since it's MIDI in the first stage, I've kept it very simple, like a couple of synths, some pads, basic drum kits that come included with the software, because I don't want the model to have too many.
+[00:10:52] Bastian Venegas: If I pass all of the virtual instruments I have, it would be like trying to choose from a final instrument.
+[00:11:00] Bastian Venegas: So I've just kept it very simple for now.
+[00:11:04] Juan Torres: Do you know Seven Lions?
+[00:11:07] Bastian Venegas: Is that a group?
+[00:11:09] Bastian Venegas: A band?
+[00:11:09] Juan Torres: It's an EDM artist.
+[00:11:13] Juan Torres: Yeah, actually, you kind of look like him.
+[00:11:16] Juan Torres: I'll send him to you.
+[00:11:17] Bastian Venegas: Thank you.
+[00:11:20] Patrick Chouinard: And by the way, got confirmation that it was a call that our friend Brendan stopped that reset the meeting.
+[00:11:32] Tom Welsh: Can I have a quick question to Ryan?
+[00:11:36] Patrick Chouinard: Go ahead.
+[00:11:37] Tom Welsh: Ryan, what ID are you using and what models?
+[00:11:42] Tom Welsh: So I'm using Cursor and paying the $20 a month.
+[00:11:45] Tom Welsh: And you guys are all talking about $200 bills.
+[00:11:48] Tom Welsh: My biggest bill has been 48 and I've been on here for eight hours.
+[00:11:55] Tom Welsh: And I'm just wondering if it's a European thing and if the Yanks are getting it in the next
+[00:12:01] Ryan C: I'm not sure how much coding you're, well, I don't know how you're managing to use the $20 plan for eight hours, that's quite impressive.
+[00:12:14] Ryan C: I'm on the $100, and then if I know I want to have a particularly, because I do video stuff as well as part of me, so I'm kind of half and half, so I'm not coding all the time, but coding quite a lot of the time, and I'm just about to my limits on the $100, so there's months where I know I'm I'm going to be deep in it, so I'll upgrade, push up to the $200 for the month, and then come back down when I know I'm going to have a slightly slower coding month and a higher video month, so I kind of vary between the two, I'm using it in Cursor, I'm essentially, I don't know, Scott's probably run you through how he does his stuff, I essentially mirror exactly how he does his stuff, because he taught me how to do all of this stuff with the AI things, I was obviously coding pre-AI, but...
+[00:13:00] Ryan C: Yeah, so he kind of ran me through all of that, so yeah, we're currently using Cursor, obviously we've got 12 to 13 agents set up within there, we don't use too many of them outside of using them to do security audits, checks, SEO, that kind of thing, and the SEO agent we've built is sensational, but yeah, that's the main sort of stuff, I use a smattering of Gemini as kind of a backup when Claude decides to have one of his days where it's just not going to  work for half the day.
+[00:13:30] Ryan C: Yeah, I've been watching those stats.
+[00:13:32] Ryan C: And I vehemently try not to give Sam Altman any money because he is essentially the devil, so I attempt not to give OPI any money as far as I possibly can, otherwise Cursor is my backup, Codex is my backup really from a quality perspective, but I refuse to give him cash, so...
+[00:13:51] Tom Welsh: Yeah, okay, cool, that's fine.
+[00:13:54] Tom Welsh: Thank you.
+[00:13:55] Tom Welsh: That just gives me some context.
+[00:13:57] Tom Welsh: Yeah, that gives me context.
+[00:13:58] Tom Welsh: I'm still wondering...
+[00:14:01] Ryan C: You have to share your secret as to how you're managing to do eight hours on the 20-pound plan.
+[00:14:07] Tom Welsh: No idea.
+[00:14:09] Tom Welsh: have no idea.
+[00:14:09] Ryan C: I ran through that in like half an hour.
+[00:14:13] Patrick Chouinard: Actually, just doing the debugging with the 20 bucks a month on Cursor, I used to go through my limit within like not even a week.
+[00:14:24] Tom Welsh: Yeah, I have no idea.
+[00:14:27] Tom Welsh: It's been going on for months and months.
+[00:14:29] Tom Welsh: Well, years.
+[00:14:30] Patrick Chouinard: I have a colleague of mine who has actually bought the 20 bucks a month Claude subscription, canceled it, called them multiple times because it wasn't stopping.
+[00:14:43] Patrick Chouinard: Actually, they stopped charging her.
+[00:14:46] Patrick Chouinard: She called them and said, you're not billing me and my account is still active.
+[00:14:52] Patrick Chouinard: Like, did everything she could and has all the proof that she tried as much as he can.
+[00:14:56] Patrick Chouinard: She It's been years and she still has her subscriptions.
+[00:14:58] Juan Torres: Wow.
+[00:14:59] Patrick Chouinard: Wow.
+[00:14:59] Patrick Chouinard: Yes.
+[00:14:59] Patrick Chouinard: the goal.
+[00:15:05] Ryan C: You've just fallen between some gaps I wear in Anthropic and I've forgotten about you, so don't tell them whatever you do.
+[00:15:12] Tom Welsh: Oh, I'm definitely not telling anybody, I'm just sitting here, smiling.
+[00:15:18] Patrick Chouinard: Yep, basically use it as much as you can.
+[00:15:24] Juan Torres: You're trapped anyways.
+[00:15:27] Patrick Chouinard: Good.
+[00:15:29] Patrick Chouinard: Before I go too far, I know I got another question before the call from Fitz.
+[00:15:34] Patrick Chouinard: Did you want to ask your question in the call now, or do you want to do it later?
+[00:15:45] Fitz: Oh, hello, Patrick.
+[00:15:46] Fitz: Hi.
+[00:15:48] Fitz: Yeah, it's similar to the chat that came earlier on.
+[00:15:53] Patrick Chouinard: Okay.
+[00:15:53] Fitz: Actually, yeah, I wanted to just ask about the career path to maybe an AI.
+[00:15:59] Patrick Chouinard: Yeah.
+[00:16:01] Fitz: I've come mainly from the background of systems and stuff like that, systems and infrastructure, and I want to pivot into AI engineering because if you don't have any AI these days, I think you might be toasting the next two to three years, so that's my idea, but a roadmap towards that would be great, so that's what I'm trying to do at least at the end of this year to try and get into AI engineering, yeah.
+[00:16:33] Patrick Chouinard: Again, I'm going to tell you the exact same thing.
+[00:16:36] Patrick Chouinard: Use AI to amplify what you know, and what you know is actually extremely useful right now.
+[00:16:42] Patrick Chouinard: There's a lot of need for that, but guess what?
+[00:16:45] Patrick Chouinard: Cloud Code or Codex or any of those harnessed are really good to be operators as well, because infrastructure world is basically the world of CLIs.
+[00:16:56] Patrick Chouinard: Right.
+[00:16:56] Patrick Chouinard: guiding Cloud Codex to take the action.
+[00:17:00] Patrick Chouinard: But having the ability to validate the action, it does way better than most dev will be because you know the infrastructure, that would be incredibly useful.
+[00:17:11] Fitz: Brilliant.
+[00:17:12] Patrick Chouinard: Yeah.
+[00:17:13] Fitz: Yeah.
+[00:17:14] Fitz: So, I think, is it, Tom saying that he's got like unlimited plot.
+[00:17:21] Fitz: Now I'm on the $20.
+[00:17:24] Fitz: Is it $20?
+[00:17:25] Patrick Chouinard: Yeah.
+[00:17:25] Patrick Chouinard: Yeah.
+[00:17:25] Fitz: Yeah.
+[00:17:26] Fitz: I think in UK it's like $18, 18 pounds or something like that.
+[00:17:30] Fitz: And I, it's got a weekly, it's got, is it a daily or four hours or something like that?
+[00:17:36] Fitz: And then it's got weekly as well.
+[00:17:39] Fitz: And I sort of, immediately I start using it.
+[00:17:42] Fitz: It doesn't take any time at all.
+[00:17:44] Fitz: And I run out of the, you know, the rates and say, what are these guys doing?
+[00:17:49] Fitz: know, nobody can do any work at all.
+[00:17:52] Patrick Chouinard: What you experience is the reality for 99.999% of us.
+[00:17:57] Patrick Chouinard: Tom is, uh.
+[00:17:59] Patrick Chouinard: art.
+[00:17:59] Patrick Chouinard: just on now, said like that.
+[00:17:59] Patrick Chouinard: and Steve
+[00:18:00] Patrick Chouinard: Yeah.
+[00:18:00] Patrick Chouinard: In his own world where you have infinite AI call and we don't know why.
+[00:18:05] Fitz: And they said they doubled it.
+[00:18:06] Fitz: I had an email, they said they doubled it, and I don't see any difference at all.
+[00:18:13] Fitz: Yeah.
+[00:18:14] Tom Welsh: I've no idea.
+[00:18:15] Tom Welsh: Going back to your point about where you're coming from, my background is infrastructure and servers and stuff.
+[00:18:21] Tom Welsh: Right.
+[00:18:22] Tom Welsh: And I've used, I've transitioned across to, I'm a prompt grammar.
+[00:18:28] Tom Welsh: I don't even attempt to say I'm a programmer because I just prompt my way to wherever I'm going.
+[00:18:32] Fitz: A prompt grammar.
+[00:18:34] Tom Welsh: Yeah.
+[00:18:34] Tom Welsh: Yeah.
+[00:18:34] Tom Welsh: Well, that's what I am.
+[00:18:35] Tom Welsh: mean, I use TypeScript, but I don't know TypeScript.
+[00:18:40] Tom Welsh: I came from Python, as my code and police t-shirt says back in the 2019s.
+[00:18:47] Tom Welsh: But I've used, I've used Claude and Cursor for things like Docker, for setting up Terraform, for setting up Confix scripts for Ansible.
+[00:18:59] Tom Welsh: anymore, I'm
+[00:19:00] Tom Welsh: All that kind of infrastructure stuff that you do, because it's not just, AI is not just for coding Python and this, that, and other, there's a whole bunch of other config stuff you can do in your AI, and your transition, as Patrick says, you can go from where you are now to being a full on platform engineer or service reliability engineer, just by prompting.
+[00:19:20] Tom Welsh: You don't even need to get out and start doing, because you just need to understand AI, understand how to prompt, you've got the terminology, one of the I've got a client who's got a few guys that are really interested in AI, and they've got tons of problems trying to do so I'm going, you need to go away and get your vocabulary right, ask the right questions with the right vocabulary and you'll get the results you want.
+[00:19:43] Tom Welsh: If you don't know what a modal window is, how are you going to ask for a modal window in an application, you know?
+[00:19:49] Fitz: Exactly.
+[00:19:50] Tom Welsh: So yeah, it is just that, mean, write Cisco configs all day long and this stuff, it's easy, or Aruba, or convert one to the other.
+[00:19:57] Fitz: Wow.
+[00:19:58] Fitz: So it does this terraforming.
+[00:20:00] Fitz: And all that, Ansible and everything.
+[00:20:02] Fitz: Wow.
+[00:20:02] Patrick Chouinard: Yeah.
+[00:20:04] Fitz: Interesting.
+[00:20:05] Fitz: Okay.
+[00:20:06] Tom Welsh: Yeah.
+[00:20:06] Patrick Chouinard: Actually, to do infrastructure as code, Cloud Code or Codex are incredibly good.
+[00:20:11] Juan Torres: Yeah.
+[00:20:12] Tom Welsh: Yeah.
+[00:20:12] Tom Welsh: You just gave, what kind of infrastructure do you do?
+[00:20:17] Fitz: Mainly AWS, AWS, DevOps, basically, you know, so DevOps stuff, CICD and stuff like that.
+[00:20:26] Patrick Chouinard: Yeah.
+[00:20:26] Patrick Chouinard: There's CLI and NCP for everything in AWS, you can have Cloud Code or Codex do pretty much everything, and the advantage you have is you know if what they do is correct or not.
+[00:20:41] Fitz: Wow.
+[00:20:42] Fitz: Yeah.
+[00:20:42] Fitz: we're out of a job.
+[00:20:43] Juan Torres: We're out of a job.
+[00:20:44] Patrick Chouinard: In a way in future.
+[00:20:46] Juan Torres: No, but it's, yeah, it's really interesting because, as Brandon recommended, I've been given, and I've given this user to my local computer.
+[00:20:57] Juan Torres: I don't give it to an EC2 instance.
+[00:20:59] Juan Torres: Yeah.
+[00:21:00] Juan Torres: The right policies in order to construct, you know, EC2 instances, platforms, data links with S3, right?
+[00:21:09] Juan Torres: So I just give either a user the right policies or the IAM, what is it called, role?
+[00:21:17] Juan Torres: Yeah, IAM.
+[00:21:19] Juan Torres: And, you know, just basically give those permissions to your computer to have them.
+[00:21:24] Juan Torres: So those roles and the user are in your computer.
+[00:21:27] Juan Torres: And then you can do a lot of things.
+[00:21:29] Juan Torres: You don't have to use the AWS CLI.
+[00:21:34] Juan Torres: But even then, you can use AWS CLI with CloudCode and do a lot of research generation and review.
+[00:21:42] Juan Torres: And it has just facilitated everything.
+[00:21:45] Fitz: But my inclination is that you've got to check it though, don't you?
+[00:21:48] Fitz: You can't just blindly give it a trust and say, okay, you've generated a code, so then go on.
+[00:21:54] Fitz: So far it has been really good at managing resources.
+[00:21:58] Juan Torres: don't have to...
+[00:21:59] Juan Torres: ...
+[00:21:59] Juan Torres: ...
+[00:22:00] Juan Torres: It much than create an EC2 instance with Ubuntu, with 40 gigabytes of storage, and it doesn't.
+[00:22:09] Juan Torres: It's just really good at paring out the task.
+[00:22:13] Patrick Chouinard: But that's the thing, it works, but your value fits comes into the fact that, especially in the enterprise, you have the ability to validate if what the system did was secure, was according to best practice, was according to its own internal rules.
+[00:22:30] Patrick Chouinard: That's where your value comes in that the generic AI developer off the street will not be able to do the same thing you do, even with the power of cloud code or codecs.
+[00:22:41] Juan Torres: Sure, sure.
+[00:22:43] Juan Torres: Whiteboarding.
+[00:22:45] Ty Wells: Yeah, so that knowledge that Patrick's talking about that you have, right, those tools you were concerned about, the code that it's generating, well, that CLI is written by AWS.
+[00:22:55] Ty Wells: They know how it should work.
+[00:22:57] Ty Wells: It's going to function.
+[00:22:58] Ty Wells: The question is, you can
+[00:23:00] Ty Wells: You write the wrong tools, you can use it in the wrong way, so you actually need that knowledge that you have so it can be used properly.
+[00:23:08] Ty Wells: Anybody can connect the CLI, the AWS CLI, start going away, but do they do the right things, do they set it up properly, do they set up standard, and so forth.
+[00:23:19] Ty Wells: So that's where you come in.
+[00:23:20] Ty Wells: So the job doesn't go away, it actually becomes harder, because now you've got more X number of people, 10X people, doing that, and it's breaking and whatever, and so you need people that can solve those issues and help people set up the problem.
+[00:23:35] Fitz: Yeah, yeah.
+[00:23:36] Fitz: Yeah, if you pitch it like that, it makes sense, makes sense.
+[00:23:40] Fitz: Wow, okay, you some money.
+[00:23:42] Ty Wells: Thank you very know I was pitching, but that's good to know.
+[00:23:44] Fitz: I think I'm going to have to pitch it more.
+[00:23:46] Patrick Chouinard: Actually, I love that, because that's true.
+[00:23:49] Patrick Chouinard: One of the value you're going to have, Fitz, is the fact that, yeah, maybe a lot of what you used to do is now automated, but that said, it means there's a bunch of developer who has...
+[00:24:00] Patrick Chouinard: He no idea how to do infrastructure.
+[00:24:02] Patrick Chouinard: We are going to break a lot of things.
+[00:24:03] Patrick Chouinard: We're going to need a guy like you to come and fix it.
+[00:24:06] Juan Torres: Yeah.
+[00:24:07] Fitz: Brilliant.
+[00:24:07] Fitz: Brilliant.
+[00:24:08] Fitz: Brilliant.
+[00:24:08] Fitz: Wow.
+[00:24:09] Fitz: Yeah.
+[00:24:09] Fitz: Got some few ideas.
+[00:24:10] Fitz: Thanks, Patrick.
+[00:24:11] Patrick Chouinard: Thanks very much.
+[00:24:12] Patrick Chouinard: My pleasure.
+[00:24:13] Fitz: Thanks for inviting me.
+[00:24:15] Juan Torres: Just a point regarding that.
+[00:24:17] Juan Torres: I feel like there's huge need to teach people how to do Agentec DevOps.
+[00:24:23] Juan Torres: I feel like that's something so, so underrated.
+[00:24:26] Juan Torres: Everybody's doing Agentec coding.
+[00:24:28] Juan Torres: But now nobody's talking about Agentec DevOps.
+[00:24:32] Juan Torres: And I think that can be a really powerful niche.
+[00:24:36] Fitz: Wow.
+[00:24:37] Fitz: And you should do that on GCP first.
+[00:24:40] Fitz: GCP?
+[00:24:41] Juan Torres: No.
+[00:24:42] Fitz: It's a nightmare.
+[00:24:44] Fitz: GCP is all over the place.
+[00:24:46] Tom Welsh: Exactly.
+[00:24:47] Fitz: Yeah.
+[00:24:48] Fitz: I try and avoid it as much as I can.
+[00:24:50] Juan Torres: Merci.
+[00:24:51] Juan Torres: Merci.
+[00:24:53] Fitz: I stay in Azure and AWS.
+[00:24:56] Fitz: But yeah, GCP.
+[00:24:57] Fitz: But at least I think they are paying more money if you...
+[00:25:00] Fitz: Because there's a few people going there.
+[00:25:04] Fitz: Everybody's going to AWS and Azure, isn't it?
+[00:25:06] Fitz: So I guess if you get into GCP, you might get more, you know, you might get more.
+[00:25:13] Tom Welsh: Yeah, there's probably, it probably pays more for GCP because there's less people out there that know it.
+[00:25:19] Tom Welsh: And if you can, if you can agentify a GCP set up, because that's one of the biggest problems with GCP is trying to get something to automatically deploy.
+[00:25:28] Fitz: Because, like you say, it's a nightmare.
+[00:25:31] Fitz: Yeah.
+[00:25:34] Fitz: Yeah.
+[00:25:34] Patrick Chouinard: Actually, I think there's a Google Cloud Platform CLI that just got out recently that can help in that domain.
+[00:25:42] Patrick Chouinard: Again, if you have the knowledge of what it means or what it creates and how it works.
+[00:25:48] Patrick Chouinard: Because I also come from the infrastructure and virtualization side of things before I did what I do today.
+[00:25:54] Fitz: So, yeah, really needed.
+[00:25:56] Fitz: Cool, cool.
+[00:25:58] Fitz: Thanks, guys.
+[00:25:59] Fitz: Thanks, guys.
+[00:25:59] Tom Welsh: Thanks,
+[00:26:00] Tom Welsh: Welcome.
+[00:26:02] Patrick Chouinard: Good.
+[00:26:03] Patrick Chouinard: Next one would be Ty.
+[00:26:07] Patrick Chouinard: What have you created this week?
+[00:26:10] Ty Wells: Oh, you guys are in for a treat.
+[00:26:12] Patrick Chouinard: Hey, talking about a treat.
+[00:26:15] Patrick Chouinard: See who just joined.
+[00:26:16] Bastian Venegas: I'm bad.
+[00:26:17] Bastian Venegas: Wow, all we have to do is interrupt his calls.
+[00:26:22] Brandon Hancock: I'm on the  list.
+[00:26:23] Brandon Hancock: I apologize, guys.
+[00:26:25] Brandon Hancock: I had a call, and I had a...
+[00:26:28] Brandon Hancock: I was not expecting it to...
+[00:26:29] Brandon Hancock: I canceled the call, and it was like, oh, by the way, you left another meeting.
+[00:26:33] Brandon Hancock: I was like, what do you mean I left another meeting?
+[00:26:35] Brandon Hancock: I was only in one, and then...
+[00:26:36] Brandon Hancock: So I apologize, guys, for that.
+[00:26:40] Brandon Hancock: So thank you for holding down the floor, Patrick.
+[00:26:42] Brandon Hancock: But what's going on?
+[00:26:43] Brandon Hancock: I have a few minutes.
+[00:26:44] Brandon Hancock: have another call here in four, but just want to see what's going on in school land.
+[00:26:49] Patrick Chouinard: So, Ty, tell us what you created this week.
+[00:26:52] Ty Wells: Oh, So, hey, Brandon, let me share my screen.
+[00:26:57] Ty Wells: Sending a request.
+[00:26:58] Ty Wells: Sending a request.
+[00:27:02] Patrick Chouinard: As soon as I see it, I think I click it popped up.
+[00:27:08] Ty Wells: Okay, so you guys can see Swing Track.
+[00:27:16] Ty Wells: Well, this is a device that I'm building, a system for, because I play a lot of golf, and this device, this system allows me to visualize my game, replay it, and also get statistics and measurements.
+[00:27:35] Ty Wells: So that wristband has some gyro sensors in that, the cap will have a camera in it, and on the shaft of the club, there will be some reflectors that will help in determining, you know, where the club face is open for golfers and so forth.
+[00:27:55] Ty Wells: Anyhow, so in combination with that, you will be able to...
+[00:28:00] Ty Wells: I look at all your shots and see how you were set up or how well you did and look at all the analytics, but I'm combining some wearables with AI.
+[00:28:12] Ty Wells: So that's the first thing.
+[00:28:13] Ty Wells: That is SwingTrack.
+[00:28:17] Ty Wells: Any questions on that guy?
+[00:28:20] Brandon Hancock: Wait, do you have the hardware too?
+[00:28:22] Ty Wells: I'm building the hardware, yes.
+[00:28:24] Ty Wells: I actually have another meeting with the guys tomorrow that are helping me with the design of the hardware.
+[00:28:31] Brandon Hancock: Dude, that's awesome.
+[00:28:33] Ty Wells: But this is the concept behind it.
+[00:28:35] Ty Wells: been thoroughly vetted, but now I'm building out the actual hardware.
+[00:28:40] Ty Wells: And this camera may go actually on a clip, a marker clip that will be on the side of your cap.
+[00:28:48] Ty Wells: It may not be here in the front.
+[00:28:49] Ty Wells: So you'll be able to slide it around as needed.
+[00:28:52] Ty Wells: Could you also do a version that uses MetaSmart glasses if people already have glasses for the camera?
+[00:28:57] Ty Wells: The problem with that is, I mean, you could.
+[00:28:59] Ty Wells: make to
+[00:29:00] Ty Wells: I mean, you could, and not everybody wears glasses, and as a golfer, I'm looking at this strictly from, like Patrick talked about, stuff you know and do, and I do a lot of that stuff, a lot of golfing, so I know what will work, what won't work, I've been, you know, in my golfing buddies that, I mean, you know, so you get the expertise, if you will, in terms of a lot of rounds, a lot of play at different angles, and trust me, I have a lot of training aids to help, and a lot of people do, but, is something that'll help, I think, a little bit more, because I, I know the subject so well, and then I'm combining the use of AI to put together the product.
+[00:29:41] Patrick Chouinard: But, I think if I understand what you're saying, is what Bastian is saying, is if somebody already has the glasses, it would be nice if it could be used as the camera, or are you selling all of this as a bundle?
+[00:29:54] Ty Wells: Yes.
+[00:29:55] Ty Wells: This is, this would be a bundle, but that's a good point, that's a good point.
+[00:29:58] Ty Wells: It's just that they have
+[00:30:00] Ty Wells: To work together, and we know how open meta is, right?
+[00:30:04] Ty Wells: It could be either that or the new Google Glasses or...
+[00:30:08] Ty Wells: Yeah, something that's open.
+[00:30:09] Patrick Chouinard: Everybody's starting to create them now.
+[00:30:10] Ty Wells: Yeah, something that's open, that's the thing, right?
+[00:30:13] Ty Wells: Something that's open, I can take the data from this band, the wristband, from the camera and send it up to my own processing, and the device will have...
+[00:30:24] Ty Wells: So these will talk to each other over BLE, and then it'll send the data on Wi-Fi, because I prefer to send it...
+[00:30:35] Ty Wells: You'll still have an app, so you could still do it through Bluetooth, but you can also send it live as well, because there is a network play part to this.
+[00:30:44] Ty Wells: So, where again, like I told you, there's reflectors on your club stick, so you just put that on your club, you're playing at home, you play with your buddies, right?
+[00:30:53] Ty Wells: And you swing either a stick, just a simple stick, so you don't break anything, or you swing your...
+[00:31:01] Ty Wells: So very nice.
+[00:31:05] Ty Wells: Yeah.
+[00:31:06] Ty Wells: And there are sensors to on the screw in the top of the the the shaft of the club itself.
+[00:31:15] Patrick Chouinard: Oh, OK.
+[00:31:16] Ty Wells: Yeah.
+[00:31:18] Ty Wells: A.I.
+[00:31:19] Ty Wells: picture, obviously.
+[00:31:22] Ty Wells: But yeah, that's so that's the swing track tells you what data you get, so forth.
+[00:31:30] Ty Wells: That's the true pricing on it.
+[00:31:32] Ty Wells: That will be I got when I say golfers are talking these golfers I talked to these actual golfers, right?
+[00:31:40] Ty Wells: They're out there golfing.
+[00:31:43] Patrick Chouinard: Very nice.
+[00:31:45] Ty Wells: OK.
+[00:31:47] Ty Wells: So that is share number one.
+[00:31:50] Ty Wells: Let's go to let's go to share number two.
+[00:31:53] Ryan C: This is an interesting.
+[00:31:54] Ryan C: As of when you need a promo video for that, Ty, give Scott a shout because he's a videographer by trade.
+[00:32:00] Ryan C: He hates doing video now, but he can't say no to people that he likes, so you can tease him and come down and shoot you a promo video.
+[00:32:09] Ty Wells: Sounds good.
+[00:32:11] Ty Wells: All right.
+[00:32:11] Ty Wells: Can you guys see Kong Pass?
+[00:32:13] Patrick Chouinard: Yep.
+[00:32:14] Ty Wells: Okay.
+[00:32:15] Ty Wells: So who's been on the cruise ship before?
+[00:32:19] Ty Wells: I actually can't see you guys, but I'm assuming some people have been on cruises.
+[00:32:23] Ty Wells: So one of the things that I know when you go on a cruise, you get off and you explore that destination, right?
+[00:32:32] Ty Wells: And really, when you get off that ship, you are caught in between vendors, people trying to sell you stuff, all kinds of stuff going on, right?
+[00:32:44] Ty Wells: And you want to be safe.
+[00:32:45] Ty Wells: There's no safety security layer between you when you get off that ship and when you're walking amongst, you know, cruise destinations and you don't know which restaurant's good, who's selling fake goods, who's selling real goods, all that stuff.
+[00:32:59] Ty Wells: right.
+[00:32:59] Ty Wells: you.
+[00:33:00] Ty Wells: comes into play, and so ConkPass is, what it does, what it's about is local people, such as myself, I'm originally from the Bahamas, so local people that are vetting the vendors, and they have like, there's a pass, this ConkPass, that's displayed at their business outside, if they're fully vetted, they do all that online, they submit all the necessary documentation, you want to make sure they're legal, and whatever, and then, one local person goes and onboards these vendors, these merchants, and so now you're able to see that symbol outside the store that this is a vetted merchant.
+[00:33:41] Ty Wells: When you go inside, and if you purchase something, then you would, you can upload a picture of what you purchased, and that'll show you, so right here, like you scan and save when you go out, right, and then you upload your picture of you then and create I'm공 then so right
+[00:34:02] Ty Wells: So you can send that up as well.
+[00:34:07] Ty Wells: And then you can share if you want to.
+[00:34:09] Ty Wells: But sending this receipt back is proof because the merchant pays 5% for the platform, to be on the platform.
+[00:34:17] Ty Wells: So they're sending basically proof that somebody did make a purchase in the store, right, through the platform.
+[00:34:24] Ty Wells: That's what the cruise passenger is doing.
+[00:34:27] Ty Wells: Okay.
+[00:34:29] Ty Wells: You guys can look through this.
+[00:34:31] Ty Wells: These are actual places there in Nassau and the Bahamas.
+[00:34:35] Ty Wells: Talking about the shops, the Dunkin' Museum.
+[00:34:38] Ty Wells: I was just there over the weekend, so I got some updated photos.
+[00:34:42] Ty Wells: This is a second tier release, which is more of bringing together a post that somebody may have put up of this carved turtle.
+[00:34:57] Ty Wells: And you can go ahead and try to see.
+[00:35:00] Ty Wells: The turtle as it would exist in your living room or in your shelf or your mantle or whatever.
+[00:35:06] Ty Wells: This is before you even get on the cruise, right?
+[00:35:09] Ty Wells: If you're scrolling on KongPass and you're seeing all of these postings, if you will, then they can take a picture, I don't know if I can do that, but you can take a picture, you'll have to do it at kongpass.com, take a picture and it'll overlay the turtle in the picture, right?
+[00:35:24] Ty Wells: So that you can sort of visualize and make a connection to that item, something that you may see.
+[00:35:31] Ty Wells: And then you'll have the ability to pre-order that, because something like this is custom made, so vendors only have so many of these, but if that's what you want, you could pre-order it, put a deposit down, that sort of thing, okay?
+[00:35:46] Ty Wells: And so the wall would be all the postings that you have in there, and look at this guy, right?
+[00:35:53] Ty Wells: A little spiel on the founder.
+[00:35:55] Ty Wells: That's me.
+[00:35:56] Ty Wells: spiel.
+[00:35:57] Ty Wells: That's
+[00:36:00] Ty Wells: That's me, right?
+[00:36:01] Ty Wells: Off duty on the clock.
+[00:36:04] Ty Wells: And just, you know, this is where the vendors would come in, they'd sign up, they'd do all this stuff.
+[00:36:09] Ty Wells: So really low on the number of people that are involved.
+[00:36:13] Ty Wells: It's all automated.
+[00:36:15] Ty Wells: All right.
+[00:36:16] Ty Wells: Any questions on that before I do the last one?
+[00:36:19] Juan Torres: I have a question.
+[00:36:21] Juan Torres: Which diffusion model are you using for the overlaying of objects into specific areas of your living room?
+[00:36:29] Ty Wells: I missed the question completely.
+[00:36:31] Juan Torres: Oh, diffusion model, like image editing.
+[00:36:34] Ty Wells: Oh, Oh, GPT-2.
+[00:36:36] Juan Torres: Yeah.
+[00:36:37] Ty Wells: It's amazing.
+[00:36:38] Juan Torres: It's incredible.
+[00:36:39] Ty Wells: It is incredible what it can do.
+[00:36:42] Ty Wells: Yeah.
+[00:36:43] Ty Wells: So, all right.
+[00:36:45] Ty Wells: Anything else?
+[00:36:47] Ty Wells: What do you guys think about the concept?
+[00:36:48] Patrick Chouinard: The idea?
+[00:36:50] Patrick Chouinard: Concepts?
+[00:36:51] Patrick Chouinard: Cool.
+[00:36:52] Patrick Chouinard: Extremely interesting.
+[00:36:53] Patrick Chouinard: But I would just be worried a little bit, not about you, obviously, but about...
+[00:37:00] Patrick Chouinard: Someone doing the same idea because you're promoting the validity of a vendor, but what promotes the validity of your platform?
+[00:37:08] Patrick Chouinard: Basically, what tells me that the platform itself is not just a bunch of people paying for good publicity?
+[00:37:16] Ty Wells: Well, the vendors don't pay anything.
+[00:37:17] Patrick Chouinard: Okay.
+[00:37:18] Ty Wells: I mean, they pay when the guest purchases something.
+[00:37:21] Patrick Chouinard: Okay.
+[00:37:22] Ty Wells: They don't pay to be on the platform.
+[00:37:24] Patrick Chouinard: Okay.
+[00:37:25] Ty Wells: can't enhance their level on the platform.
+[00:37:29] Ty Wells: It's either you are approved.
+[00:37:31] Ty Wells: You have to do your own marketing and research to build that, right?
+[00:37:34] Ty Wells: To get customers in the door.
+[00:37:35] Ty Wells: But we're not saying this vendor is better than that vendor.
+[00:37:40] Ty Wells: They're just vetted, trustworthy.
+[00:37:43] Ty Wells: They're not going to take your card and scam it and so forth.
+[00:37:46] Ty Wells: That's more.
+[00:37:47] Ty Wells: It's that trust comfort layer.
+[00:37:49] Patrick Chouinard: Okay.
+[00:37:50] Patrick Chouinard: Okay.
+[00:37:50] Patrick Chouinard: Okay.
+[00:37:51] Patrick Chouinard: Because that part's really important because you're selling the concept that this vendor is legit.
+[00:37:59] Ty Wells: Yep.
+[00:38:00] Patrick Chouinard: Although it doesn't have a plus or minus, it's still you're selling to people that this is legit, so your platform has to have that legitimacy as well.
+[00:38:08] Ty Wells: Yes, absolutely.
+[00:38:10] Ty Wells: That is what the platform, that is what is being sold.
+[00:38:13] Ty Wells: The safety net, the security between you and the destination when you get off the ship, but also you know what's going to be checking the validity, the reputation of the vendor.
+[00:38:28] Ty Wells: It's going to be an agent running that vendor and the reports on Yelp and blah, blah, and wherever they send, you know, it's going to be pulling all that data, keeping that vendor honest, right?
+[00:38:38] Ty Wells: And also, I have a mystery shopper program, and there we'll offer a random vendor at different ports, you know, some incentive to go ahead and see, does this person actually give you a receipt, and do they try to oversell you, upsell you?
+[00:38:54] Ty Wells: That's what, I know these things because I've been there.
+[00:38:57] Ty Wells: That's why I know what the, the.
+[00:38:59] Ty Wells: ...
+[00:38:59] Ty Wells: ...
+[00:39:00] Ty Wells: Inns and outs are so that's that's that's I think that's covered make sure you get yourself a good insurance policy type just in case somebody does scam somebody and they see you because you said they were good and then they swipe the card well I mean no well it's think about it like this it's more of verification that all their their their uh they don't have any known issues they don't they are legally there they have a business with a business license and you know they're current with whatever compliance they need those types of of things they don't have any reports of any type of scamming coming from their reputation that's I don't need insurance like reviews if you will right you put a good review out there and you say hey you know they're five oh and then you go there it's a 2.0 but I see where I know if it's no offense to Americans but they're incredibly litigious I'll be incredibly careful oh no American this is first of all this is in the Bahamas I've got control there yes politicians the yes politicians
+[00:40:00] Juan Torres: It's under his pocket.
+[00:40:01] Ryan C: It'll be the Americans.
+[00:40:02] Juan Torres: It'll be the Americans.
+[00:40:03] Ty Wells: be the Americans.
+[00:40:04] Ty Wells: Yeah, Torres, they made the power of Ty.
+[00:40:07] Ty Wells: Yeah, no, I agree with what you're saying.
+[00:40:09] Ryan C: Those are valid points.
+[00:40:11] Ryan C: Ty's putting them in the ground if they try and sue him.
+[00:40:13] Juan Torres: It's all right.
+[00:40:13] Ty Wells: Well, no, no.
+[00:40:15] Ryan C: They don't like that.
+[00:40:18] Ty Wells: Okay, let me show you guys this last one because you guys are going get me in trouble.
+[00:40:24] Ty Wells: Okay.
+[00:40:25] Ty Wells: Just make sure your BNC are rock solid, basically.
+[00:40:28] Ty Wells: Yes, yes.
+[00:40:28] Ryan C: No, absolutely.
+[00:40:30] Ty Wells: Yeah.
+[00:40:30] Tom Welsh: I agree.
+[00:40:30] Tom Welsh: swim with the fishes.
+[00:40:34] Ty Wells: If there's an opportunity to sue, then I'm sure somebody will try to.
+[00:40:39] Ty Wells: I'm just trying to move this out of the way.
+[00:40:41] Ryan C: There's There's a claim.
+[00:40:43] Ty Wells: All right.
+[00:40:44] Ty Wells: So, this is not it.
+[00:40:49] Ryan C: Let's try that again.
+[00:40:50] Ryan C: You created Superbase?
+[00:40:51] Ryan C: Jesus Christ.
+[00:40:53] Juan Torres: Whoa.
+[00:40:55] Ty Wells: Sorry about that.
+[00:40:57] Patrick Chouinard: Right now, I'm to need to be surprised.
+[00:40:59] Ty Wells: I'm going to need
+[00:41:00] Ty Wells: I've talking about ShipSafe for a while.
+[00:41:02] Ty Wells: Actually, this doesn't even look like ShipSafe.
+[00:41:05] Ty Wells: But basically, what I added on to ShipSafe is the ability to...
+[00:41:12] Ty Wells: I added an MCP that's tied into your code on your pre-generation of codes on the interrupt there and the post-generation.
+[00:41:30] Ty Wells: Through one MCP server that's sitting on your own machine, so the code never leaves your machine, but it's checking it for a different security.
+[00:41:39] Ty Wells: This is for cybersecurity.
+[00:41:40] Ty Wells: Sorry, guys.
+[00:41:41] Ty Wells: This is for cybersecurity.
+[00:41:43] Ty Wells: And so, it's checking to make sure that you're generating good, solid code against a rule set, and then you can do other things in terms of getting recommendations for fixes.
+[00:41:57] Ty Wells: And yes, you could do that in cloud code.
+[00:41:59] Ty Wells: And then...
+[00:42:00] Ty Wells: Any of these harnesses, this has additional information, it's exactly what we were just talking about, to be honest with you, having the skills, knowing what to run the code, I think Fritz, we were talking to him about that and the first person, but having the skills behind it, how to actually use it, right, and that's what this MCP service does to put things in context and keep up to date with zero-day vulnerabilities and so forth.
+[00:42:33] Ty Wells: And then, on top of that, as a bonus, pardon me?
+[00:42:37] Ryan C: Are you going to sass this?
+[00:42:39] Ty Wells: This is for, I think I told you guys, this is for another school community that people come in, but yes, to answer your question, they come in, it's free in that school community for them to use, because I'm a coach in that community for cybersecurity, so it's free for them to come in, and certainly you guys are invited.
+[00:42:59] Ty Wells: I just- I just
+[00:43:00] Ty Wells: We just have to invite you in.
+[00:43:01] Ty Wells: Just send me an email, I'll get you in.
+[00:43:03] Ty Wells: But you have access to some of these tools that you can then use, especially this MCP tool, to check your code as you build it.
+[00:43:13] Ty Wells: Not after the fact, because that's the thing about security, and that's something that you learn over time.
+[00:43:18] Ty Wells: Well, you should know that if you're in the space, but you want to build security from day one, not after, okay, give me a serial review of this.
+[00:43:28] Ty Wells: Well, I mean, you're going to get somewhere, but you want to be thinking along that line.
+[00:43:32] Ty Wells: And this sits on your machine and is doing that as you generate, as the assistant is generating code.
+[00:43:42] Ty Wells: Oh, and then the bonus I said was, you know, I was like, okay, if I go and take this further, other people have MCP that they want to use, and it's valuable for them, but they could potentially
+[00:44:00] Ty Wells: He monetized their MCP tool, and this was a platform I was working on to, I built it actually, to basically enroll your MCP tool, and I know there are some platforms out there now, and it's just straightforward to get it all, you know, your tool there wrapped up, you pay very little to use it, you can bring your own key, you know, it's just, you guys can read through it, but it's really easy to work with if have tools.
+[00:44:30] Ty Wells: And you don't want to go through all the sales and stuff, you just throw it out there.
+[00:44:33] Ty Wells: Sort of like an Appify.
+[00:44:34] Ty Wells: I think Appify does something along that line.
+[00:44:39] Ty Wells: But it's more of a payments platform for, so indie developers that have something good that they want to throw out there, or any kind of, really an MCP tool that has some value.
+[00:44:50] Ty Wells: And only sort of pay as you use, not as you go.
+[00:44:55] Ty Wells: Does that make sense?
+[00:44:56] Ryan C: Yes.
+[00:44:57] Ryan C: Left field question for you, Ty.
+[00:44:58] Ryan C: What are you using for your...
+[00:44:59] Ryan C: What
+[00:45:03] Ty Wells: I have a skill that I have three UI design skills that compete against each other to present three options.
+[00:45:13] Ty Wells: And then I run a neuroscience archetype against that.
+[00:45:18] Ty Wells: And when they're running the three to give the, I always such things from a neuroscience because that's the best way to, you know, look at it from a person's perspective, not just my perspective.
+[00:45:31] Ty Wells: But from people over, you know, accumulated data.
+[00:45:34] Ty Wells: So that's how I always look at the data to present a UI that, you know, would appeal to the masses as opposed to when I'm building it might look like , right?
+[00:45:43] Ty Wells: Sorry, part of my language.
+[00:45:45] Ty Wells: But, you know, I, recognize that, you know, I may like a certain thing, but that's not necessarily where, you know, what the, the, the, the market census would say is good, I guess.
+[00:45:58] Ryan C: Awesome.
+[00:46:01] Patrick Chouinard: Extremely nice product, and I'll take a look even deeper if I have a chance, because bizarrely that's the part I'm working on for the training I'm building right now, so.
+[00:46:14] Ty Wells: Okay.
+[00:46:15] Patrick Chouinard: Well, hey.
+[00:46:16] Patrick Chouinard: Security evaluation.
+[00:46:18] Ty Wells: Yep.
+[00:46:19] Ty Wells: Sounds good.
+[00:46:20] Patrick Chouinard: Good.
+[00:46:21] Patrick Chouinard: Thank you very much, Ty.
+[00:46:23] Patrick Chouinard: Next one would be Adam.
+[00:46:25] Adam: Well, I had an extra monitor and laptop sitting around, so I decided to hook them all together with a virtual KVM switch, so now I've got three monitors and two laptop screens, so my home office is looking a little crazy now, like something out of a sci-fi movie.
+[00:46:48] Adam: I just thought, so I used to be like real into clean code, so things like make your methods small, don't repeat yourself at all, and I'd do things like if there was distance divide-
+[00:47:00] Adam: By time, I'd break that out to a temp variable called speed to make it more re-editable, and there doesn't seem to be any real AI tools to do that kind of thing, and it seems like the LLM-generated code doesn't adhere to those kind of policies, so I just basically told ChatTPD, learn everything you do about clean code, and then write up a prompt I can put in.
+[00:47:27] Adam: I didn't know what other people were doing, or like in modern, I guess, agent-generated development, that stuff's just all not necessary anymore.
+[00:47:40] Patrick Chouinard: I wouldn't say it's not necessary, it's just, it's another layer of tooling, and honestly, it goes back to another thing I'm working on business-wise, is the entire SDLC of natural language artifacts.
+[00:48:00] Patrick Chouinard: Inside of an AI Coding Assistant workflow, and what you're mentioning, to me, it sounds like pieces of an agent file, or a claw.md, agent.md, whatever your assistant is using, but this is a building block of one of those files, because right now, there is no SDLC that addresses natural language artifacts, and at some point, we'll need some.
+[00:48:29] Patrick Chouinard: We'll need an SDLC that goes, that does all the linting, that does all the validation, that does the actual security validation, to make sure that whatever natural language artifact doesn't have buried code, or buried statement, or even a base64 encrypted statement in there that would be executed to do exfiltration, all of those will be the building block that will create the next type of SDLC.
+[00:48:59] Patrick Chouinard: Let's see.
+[00:49:00] Patrick Chouinard: So what you're mentioning, it's a building block of that newest DLC model in my mind.
+[00:49:08] Adam: All right.
+[00:49:09] Juan Torres: Yeah.
+[00:49:09] Juan Torres: And I feel that in itself, it's like a new skill that is coming up now that we're free from having to actually code.
+[00:49:17] Juan Torres: I feel like the whole cycle itself is going to be kind of a skill in itself.
+[00:49:25] Patrick Chouinard: Absolutely.
+[00:49:26] Juan Torres: And because now you can integrate it into your IDE, essentially.
+[00:49:30] Patrick Chouinard: Mm-hmm.
+[00:49:34] Patrick Chouinard: Anything else you wanted to add, Adam?
+[00:49:36] Adam: No, that's it.
+[00:49:38] Patrick Chouinard: Good.
+[00:49:40] Patrick Chouinard: Next one would be Juan.
+[00:49:44] Juan Torres: Hey, folks.
+[00:49:46] Juan Torres: What have you done?
+[00:49:47] Juan Torres: Oh, I haven't, I had to resolve a lot of, spent a lot of time resolving the QR problem with the AI Photo Boot App application that I was.
+[00:50:00] Juan Torres: I you two weeks ago, and the main reason that it became a problem is I'm reaching a point in which basically I think I've systematized a really good methodology to assess non-deterministic outputs by the agentic systems from LLMs and now with diffusion models, although there's some troublesome choice of the image editing, image-to-image editing, that I have to do, but nevertheless, the problem with the QR code was mainly the result of when you have a phone, you have two main browsers.
+[00:50:42] Juan Torres: have Safari and you have Chrome.
+[00:50:45] Juan Torres: There's different modes in which you can download several files from the application.
+[00:50:52] Juan Torres: Just generally, just, you know, the Chrome in an iOS doesn't just to do
+[00:51:00] Juan Torres: Download several files in a normative way, so I had to find a methodology in order for my system to be able to read which, you know, whether the user is using Safari in iOS, Chrome in iOS, Android in, you know, Chrome in Android, so I had to create, you know, quite a complex system for the person where they have to download the images to be able to get them as soon as possible, because the egress process of having to get the data from the cloud all the way to their phones, it itself has to be a time process, has to be a methodological process.
+[00:51:47] Juan Torres: So that in itself was, it was really revealing.
+[00:51:50] Juan Torres: So I was able to get a sweet spot because the main thing that I'm trying to do is make it obvious, make it attractive, make it easy, and make it satisfying.
+[00:52:00] Juan Torres: The responsibility as an engineer is to pre-suppose possible permutations and deal with the complexity of the system so that the end user doesn't have to.
+[00:52:14] Juan Torres: So I think I was able to strike a balance on functionality and ease of use based on that.
+[00:52:22] Juan Torres: So actually, I have a diagram.
+[00:52:24] Juan Torres: don't know if you guys are interested in seeing the decision process.
+[00:52:27] Patrick Chouinard: Sure, go ahead.
+[00:52:29] Juan Torres: Whimsical.
+[00:52:31] Juan Torres: Whimsical is my whiteboard now.
+[00:52:36] Juan Torres: So this is the, let me pull out the other one, this one, yep.
+[00:52:42] Juan Torres: Sure, and I'm going to do my touch screen here.
+[00:52:48] Juan Torres: Can you guys see my touch screen?
+[00:52:51] Patrick Chouinard: Starting, yep.
+[00:52:52] Juan Torres: Awesome.
+[00:52:53] Juan Torres: So the decision tree on dealing with this, page loads are...
+[00:52:59] Juan Torres: Our 8...
+[00:52:59] Juan Torres: 8
+[00:53:00] Juan Torres: If it was ready, the main transition IO regress data comes from CloudFront, right?
+[00:53:08] Juan Torres: This was a conversation that I was having with you guys two weeks ago that I decouple IO egress internet traffic away from the EC2 instance.
+[00:53:20] Juan Torres: In the future, it's going to be out of load balancer.
+[00:53:23] Juan Torres: But for now, in the beta mode, a T3 x-large EC2 instance is enough in order to be able to carry out an event.
+[00:53:34] Juan Torres: But nevertheless, I decouple that in the IO egress data transfer processing away from the EC2 instance into CloudFront because it's better, more cost effective at handling data transfer.
+[00:53:49] Juan Torres: So, this is regarding that process in itself from the CloudFront.
+[00:53:54] Juan Torres: Are any photos ready?
+[00:53:56] Juan Torres: No, still rendering.
+[00:53:57] Juan Torres: We are out of pull four seconds, so the photos appear.
+[00:54:00] Juan Torres: If they are ready, you wait 15 milliseconds so that thumbnails get bandwidth into the QR code page that you get from the main page.
+[00:54:10] Juan Torres: Pre-pack one photo.
+[00:54:13] Juan Torres: At least one photo is going to be already pre-packed when you load the picture.
+[00:54:17] Juan Torres: And the reason why is because when I was pre-loading all the pictures, there was issues with, you know, there being too much information being loaded into the page.
+[00:54:32] Juan Torres: And having issues with the user actually having to click the button and not being displayed or not being given all the pictures at the same time.
+[00:54:40] Juan Torres: So now instead of giving the responsibility for the user to double tap in order to trigger the download, what I'm doing now is allowing the user to click once and see like a loading process happening and then click twice and then get the download.
+[00:55:00] Juan Torres: Once the egress process is already happening in CloudFront.
+[00:55:06] Juan Torres: So page settles, save all buttons.
+[00:55:09] Juan Torres: Which button?
+[00:55:10] Juan Torres: Save.
+[00:55:11] Juan Torres: So that's the thing.
+[00:55:13] Juan Torres: There's a diversion of how the photos are going to be downloaded.
+[00:55:18] Juan Torres: If you're using an iPhone Chrome, then you have to download the images individually.
+[00:55:26] Juan Torres: There's no mechanism right now.
+[00:55:28] Juan Torres: And I researched this.
+[00:55:29] Juan Torres: There's no mechanism for Chrome in iOS to download several images at the same time.
+[00:55:37] Juan Torres: So I'm just going to have a message.
+[00:55:39] Juan Torres: I don't know if it's necessary.
+[00:55:41] Juan Torres: Probably not.
+[00:55:41] Juan Torres: I should just get rid of the Chrome iPhone.
+[00:55:44] Juan Torres: Can't save all photos at once.
+[00:55:47] Juan Torres: Tap save under each photo.
+[00:55:51] Juan Torres: And but yeah, so this is this is what happens if you have Chrome.
+[00:55:56] Juan Torres: If you have Safari, then you can run to
+[00:56:00] Juan Torres: A save all parallel fetch of three images concurrently, show progress cards, so the progress bar that I was displaying, preparing end, pictures out of the total with ability to cancel, all workers settle, all OK, all failed, some failed, and then photos already preparing memory in the share menu opens immediately.
+[00:56:31] Juan Torres: No downloading or waiting.
+[00:56:32] Juan Torres: So one of the issues was that instead of downloading into the photos app, it was downloading into the files app of the iPhone.
+[00:56:41] Juan Torres: So I didn't want that because most people actually want their photos saved into their photo apps instead of their files apps.
+[00:56:49] Juan Torres: And so they'd share, open the menu, the person, the user can cancel.
+[00:56:54] Juan Torres: If it's yes, then it's sharing their photos.
+[00:56:58] Juan Torres: iOS error, tap,
+[00:57:00] Juan Torres: Save again in case there's an error for some reason.
+[00:57:06] Juan Torres: Per save is phone file.
+[00:57:10] Juan Torres: Okay, so this is the basically preloading process.
+[00:57:14] Juan Torres: Nothing has been done for this photo yet.
+[00:57:17] Juan Torres: We're starting.
+[00:57:19] Juan Torres: Pre-cooked photo is already prepared and sitting in the phone's memory.
+[00:57:22] Juan Torres: Yeah, this is the one picture that it's already pre-cooked in flight from pointer down.
+[00:57:27] Juan Torres: The download started a fraction of a second ago with the finger first touch the bottom end.
+[00:57:32] Juan Torres: It's currently still in progress.
+[00:57:34] Juan Torres: So yeah, this is basically the process that I created for, for me to be able to, let me actually pull this out.
+[00:57:43] Juan Torres: So you guys, for the ones that haven't seen this staging setup, Juan 16, my 16 that I never got to have.
+[00:57:56] Juan Torres: So this is what I mean, right?
+[00:57:58] Juan Torres: Like I transform myself.
+[00:58:00] Juan Torres: If you into Disney, Gothic, Graphic Noir, it's different styles, right?
+[00:58:07] Juan Torres: The QR codes, it's basically, this is what basically the user is going to have to use at the event, right?
+[00:58:13] Juan Torres: So you can actually try to use the QR code if you're using an iPhone.
+[00:58:17] Juan Torres: It's going to look different.
+[00:58:19] Juan Torres: It should look similar to what you use for Android.
+[00:58:25] Juan Torres: But this is the main issue that I was trying to resolve as of last week.
+[00:58:30] Juan Torres: Hmm.
+[00:58:38] Patrick Chouinard: So did you add any specific question you wanted to ask the community?
+[00:58:44] Juan Torres: No.
+[00:58:45] Juan Torres: I think I have this under control.
+[00:58:48] Juan Torres: Just wanted to show you the thought process that I took over to try to resolve this issue.
+[00:58:57] Patrick Chouinard: Do you have something executing that work?
+[00:59:02] Juan Torres: What do you mean by that?
+[00:59:03] Patrick Chouinard: Is it processed by N8N, by Zapier?
+[00:59:08] Juan Torres: No, no, no.
+[00:59:08] Juan Torres: It's not agentic at all.
+[00:59:09] Juan Torres: It's just pure programming decision process.
+[00:59:12] Juan Torres: Yeah.
+[00:59:12] Juan Torres: Yeah.
+[00:59:13] Juan Torres: They're terministic.
+[00:59:15] Patrick Chouinard: Morgan, did you add a comment or a question?
+[00:59:19] Patrick Chouinard: No?
+[00:59:20] Patrick Chouinard: Okay.
+[00:59:20] Ty Wells: I was to say that's OG.
+[00:59:23] Morgan Cook: My comment was that I see Mitch is on the line.
+[00:59:28] Morgan Cook: How are you doing, Mitch?
+[00:59:30] Mitch McCauley: I actually had a question.
+[00:59:32] Mitch McCauley: So are you doing it all on AWS, Juan?
+[00:59:35] Juan Torres: Yeah.
+[00:59:37] Mitch McCauley: I haven't done any egress stuff.
+[00:59:39] Mitch McCauley: I was kind of scared because it was like playing videos and stuff like that.
+[00:59:43] Mitch McCauley: So is it just as simple as kind of giving that media link to it and then kind of going from there, like through, what do say?
+[00:59:53] Mitch McCauley: Hosting something on a server, right?
+[00:59:54] Mitch McCauley: And then hosting that media.
+[00:59:55] Ty Wells: Mitch, I can barely hear you.
+[00:59:57] Ty Wells: I don't know if anybody else.
+[00:59:58] Ty Wells: I see.
+[01:00:03] Ryan C: They have a great co-op vibe as well.
+[01:00:05] Patrick Chouinard: Hello.
+[01:00:06] Mitch McCauley: I think the glasses are reflective.
+[01:00:16] Mitch McCauley: I appreciate you being patient with me, guys.
+[01:00:17] Mitch McCauley: That was crazy how patient you guys were with me.
+[01:00:20] Patrick Chouinard: I'm sorry about that.
+[01:00:22] Mitch McCauley: Yes, it's crazy because I have this mic here, but like Zoom doesn't...
+[01:00:24] Mitch McCauley: Anyways, I was curious about the egress situation and hosting media.
+[01:00:31] Mitch McCauley: Do you have to do anything other...
+[01:00:33] Mitch McCauley: I mean, my knowledge is it's pretty simple, right?
+[01:00:36] Mitch McCauley: You just give a media link.
+[01:00:37] Mitch McCauley: You take that media link and you put it in your app, right?
+[01:00:40] Mitch McCauley: And then it just previews it.
+[01:00:42] Mitch McCauley: But is it actually that simple?
+[01:00:45] Mitch McCauley: And they just kind of pay for egress like every time they request it or download it?
+[01:00:49] Juan Torres: Yeah.
+[01:00:49] Juan Torres: Well, the egress from the cloud from is relatively cheap.
+[01:00:54] Juan Torres: So what happens if I were to...
+[01:00:58] Juan Torres: Let me...
+[01:01:00] Juan Torres: Let the screen again.
+[01:01:02] Juan Torres: So what happens is that what is happening, well, you have your media in a data lake, right?
+[01:01:09] Juan Torres: Yeah.
+[01:01:10] Juan Torres: So there is a particular link.
+[01:01:12] Juan Torres: It's through an OAC connection that the data in your data lake, being images or videos, goes into your CloudFront.
+[01:01:24] Juan Torres: And actually, there is an RNN link that it's used, a particular link that is used in order to make the connection between Amazon S3 into Amazon CloudFront.
+[01:01:38] Juan Torres: And then CloudFront issues signed cookies and authorization only flow back into the EC2 instance in order to pick up on processes, on metadata.
+[01:01:51] Juan Torres: But the application itself picks the thumbnails and picks the images directly from Amazon CloudFront.
+[01:02:01] Mitch McCauley: Gotcha.
+[01:02:02] Mitch McCauley: Okay.
+[01:02:02] Mitch McCauley: That makes sense.
+[01:02:03] Juan Torres: Yeah.
+[01:02:04] Juan Torres: And I found out that Amazon CloudFront is, I mean, cheaper in order to, and I mean, especially since you want the EC2 instance or the out-of-scale group to handle the specialized computational necessities that you want solely, right?
+[01:02:23] Juan Torres: The processing of information, you want a specialized tool for it to do it.
+[01:02:28] Juan Torres: And CloudFront is specifically for this.
+[01:02:30] Juan Torres: And also CloudFront has the ability to give you variations of the links of the domain that you already purchased.
+[01:02:40] Juan Torres: So if I were to go back into this, you can see that I have staging at staging.aibootstudio, right?
+[01:02:48] Juan Torres: I'm going to then, for my data web application related to this, I'm going to basically create data.aibootstudio.
+[01:03:00] Juan Torres: Boot Studio as a more professionalized link in order for me to have just my data web application identified as such and my front-end application as such.
+[01:03:12] Juan Torres: So there's benefits to that, that I found out.
+[01:03:16] Mitch McCauley: Gotcha.
+[01:03:17] Juan Torres: Yeah.
+[01:03:18] Mitch McCauley: I appreciate it.
+[01:03:18] Mitch McCauley: Thank you, Yeah.
+[01:03:20] Patrick Chouinard: And you had just a great showcase for Fitz that was questioning the value of AWS infrastructure in the world by generated code.
+[01:03:30] Juan Torres: Well, and guys, this, this is made again with, uh, Terraform.
+[01:03:37] Juan Torres: Uh, I don't have to do any coding Terraform.
+[01:03:41] Juan Torres: just tell, uh, CloudCode to create a plan for the development of, uh, and again, this is a hosted in an EC2 instance, Ubuntu 40 gigabytes of memory, right?
+[01:03:54] Juan Torres: All those specs, um, the security mechanism that I told them create, uh, created.
+[01:04:00] Juan Torres: In a private subnet within this specific VPC with the specific VPC endpoints in order for it to connect to the S3 bucket, right?
+[01:04:09] Juan Torres: All those things you can specify to your cloud code or even your cursor IDE in order for then your agents to develop the CloudFront code.
+[01:04:22] Juan Torres: And if you have the right permissions, which is something that I do manually, the permissions I'm not going to give a role on IAM to the capacity to create policy permissions because that could be an exponential problem if something happens to my computer.
+[01:04:39] Juan Torres: But the only manual thing that I've done really is to give my IAM role and my user the right permissions in order to create resources, read resources and edit resources.
+[01:04:53] Patrick Chouinard: Very nice.
+[01:04:57] Patrick Chouinard: And as I said, the...
+[01:05:00] Patrick Chouinard: A couple of weeks ago, as soon as that application, sorry, goes online, let me know my boss would love that for our next Christmas party.
+[01:05:10] Juan Torres: All right.
+[01:05:10] Juan Torres: I will see how I can make it into an iPhone app.
+[01:05:16] Patrick Chouinard: Oh boy.
+[01:05:17] Patrick Chouinard: If you make it in a pure iPhone app, I'm going to have a very special conversation with my boss.
+[01:05:24] Patrick Chouinard: I'm known as the entire iPhone guy in the office.
+[01:05:26] Patrick Chouinard: If I come in and sell an iPhone app, some people will have fun with me.
+[01:05:32] Juan Torres: All right.
+[01:05:34] Patrick Chouinard: Good.
+[01:05:35] Juan Torres: Thank you.
+[01:05:35] Juan Torres: I have my connection.
+[01:05:38] Patrick Chouinard: Thank you, Juan.
+[01:05:39] Juan Torres: For sure.
+[01:05:41] Patrick Chouinard: Next one I would say would be Morgan.
+[01:05:49] Morgan Cook: Hey guys, how's everybody doing?
+[01:05:51] Patrick Chouinard: Good.
+[01:05:52] Morgan Cook: I've been working this last week on Apps Script, basically a bunch of automations.
+[01:06:00] Morgan Cook: This foundation uses Google Workspace, and they manage a lot of their stuff in spreadsheets and documents and emails and that kind of thing.
+[01:06:10] Morgan Cook: So I've been trudging my way through Apps Scripts, so your little link that you gave me for the GWS actually might be useful for some of the background processing.
+[01:06:24] Patrick Chouinard: You republished it in the conversation this week as well.
+[01:06:28] Morgan Cook: Yeah, I grabbed that earlier.
+[01:06:31] Morgan Cook: And so that's really what I've been working on.
+[01:06:34] Morgan Cook: They're pushing the limits of what they can do with Apps Scripts in a spreadsheet, you know.
+[01:06:42] Morgan Cook: It's like, okay, you're at the point where you really ought to just stick this in a database.
+[01:06:48] Morgan Cook: And if you want to stay with Google products, I guess we'll use Firebase.
+[01:06:51] Morgan Cook: But I mean, this is really pushing the limits of what you're trying to do here.
+[01:06:55] Patrick Chouinard: Agendic access?
+[01:06:58] Patrick Chouinard: Yeah.
+[01:06:59] Morgan Cook: No.
+[01:07:00] Morgan Cook: No, it's just their workflow itself is, they have multiple spreadsheets and the data needs to move from one spreadsheet to another through the process and then back to the original and into a historical archive and there's an attached folder of files that are moving along with all this stuff into different share drives and I mean it's functional and it's working and there's a trigger process they can request, I have a menu in their main spreadsheet that they can request a specific thing, it'll add it to a queue and then a background process picks that up to run the actual process against the data.
+[01:07:42] Morgan Cook: So they set states in the spreadsheet, fire off a request and then it goes through and does the work eventually.
+[01:07:49] Morgan Cook: And the queue updates itself from queued to running and completed.
+[01:07:55] Morgan Cook: So it's working and it's working well, but it's like
+[01:08:00] Morgan Cook: Like, man, any more requests, then we've got to redo something into a database.
+[01:08:06] Morgan Cook: And I think we might end up there when they want to build a dashboard for the people that need to see some of the content but not actually operate on the content.
+[01:08:21] Morgan Cook: And the problem right now is Google's authentication layer or their authorization layer to the resources are not convenient to that.
+[01:08:35] Morgan Cook: It's either an editor or, you know, viewing the data is one thing, but then you can't have any scripts that run against it to do anything with the data.
+[01:08:44] Mitch McCauley: Have you saw that looker at all?
+[01:08:47] Morgan Cook: No, I haven't.
+[01:08:48] Morgan Cook: I was just getting this initial workflow automated, right, for them to start with.
+[01:08:58] Morgan Cook: And then we'll
+[01:09:00] Morgan Cook: We'll move to a direction from that point, whatever it happens to be.
+[01:09:03] Morgan Cook: So what is Looker?
+[01:09:04] Mitch McCauley: Give me a more description about it's really cool because you can basically have Looker use the data source as the Google Sheet, and then you can do augmentation right on the preview level to the data level on the Google Sheet as the data source.
+[01:09:19] Mitch McCauley: You can, in fact, connect multiple spreadsheets and do queries, just like SQL queries.
+[01:09:25] Morgan Cook: So the data, the spreadsheet becomes more like a data view into the database?
+[01:09:30] Mitch McCauley: Yeah, yeah, I, yeah, mean, happy to show you on some of stuff that I did privately if you want to like reach out to me.
+[01:09:37] Mitch McCauley: But yeah, no, it is like a basically like a simple front end, you know, like front end to any website.
+[01:09:44] Mitch McCauley: And then you can share it just like a Google Doc kind of thing.
+[01:09:48] Mitch McCauley: And then you have, you can have like tabular views, you can have graph views.
+[01:09:53] Mitch McCauley: It's not like my favorite thing to work with, you know, like everyone who works with it, you know, they're not like jumping for joy that they're using Look.
+[01:09:59] Mitch McCauley: next
+[01:10:05] Mitch McCauley: I would say with what your use case is, think Looker is definitely the spot that I would unironically look into.
+[01:10:17] Mitch McCauley: Yeah, I 100% recommend that.
+[01:10:21] Mitch McCauley: And then you can use different data sources, all that different stuff, man.
+[01:10:25] Mitch McCauley: You might have to make some like custom sheets, right, of like a sheet that is augmented from all the other sheets.
+[01:10:32] Mitch McCauley: And then, you know, time that data.
+[01:10:35] Morgan Cook: Yeah, that's what we have right now as it is.
+[01:10:37] Morgan Cook: So there's a master sheet and then there are, each location has a view into that, but it's not, and there are separate sheets of their own that do not contain all of the other locations, right?
+[01:10:50] Morgan Cook: They're very location specific at that point.
+[01:10:52] Morgan Cook: So it copies all the data from the master sheet into the subsheet and there's a synchronization that happens by direction.
+[01:11:00] Morgan Cook: And that was a challenge because Google doesn't know what field was edited or what field wasn't edited, so I have to track in my script that these fields are only from the child going up to the parent, and other than those fields, the parent owns all the fields and it always transfers down.
+[01:11:23] Morgan Cook: So it's like who has control to write and modify.
+[01:11:30] Mitch McCauley: I show you real quick, actually.
+[01:11:32] Morgan Cook: I'm challenged to do that.
+[01:11:35] Mitch McCauley: Screen, screen number.
+[01:11:37] Mitch McCauley: Yep.
+[01:11:37] Mitch McCauley: Or I'll just do the browser.
+[01:11:39] Mitch McCauley: So you can see here.
+[01:11:41] Mitch McCauley: So this is Looker.
+[01:11:43] Mitch McCauley: This is like a, see, this is Looker Data Studio.
+[01:11:47] Mitch McCauley: You can create pages and sub pages.
+[01:11:50] Mitch McCauley: And then you can have like a data source here, right?
+[01:11:53] Mitch McCauley: So this is a spreadsheet.
+[01:11:55] Mitch McCauley: You can have different like merge files.
+[01:11:57] Mitch McCauley: You can have connections to other.
+[01:12:01] Mitch McCauley: I forgot how you add, you just add data, and then, you know, I typically use, I forgot what this guy uses, but you can do MySQL, can do a bunch of different stuff.
+[01:12:11] Mitch McCauley: think it's like instant.
+[01:12:12] Mitch McCauley: Oh, yeah, if I look at it here, it's like, they're not supposed to share all this stuff, but I forgot what, like, tool we use.
+[01:12:22] Mitch McCauley: It's like instant data, but you can just use regular looker.
+[01:12:24] Patrick Chouinard: Just be careful with what you're sharing, because remember, we're going to post the video afterward on the computer.
+[01:12:29] Mitch McCauley: No, it's fine.
+[01:12:30] Mitch McCauley: Yeah, it's just the names of different stuff.
+[01:12:32] Mitch McCauley: It's not a big deal.
+[01:12:34] Mitch McCauley: Not any, like, passwords or anything like that.
+[01:12:36] Morgan Cook: It's just a bunch of names.
+[01:12:38] Morgan Cook: Can you post the link to Looker in the chat?
+[01:12:41] Mitch McCauley: Oh, just Looker Studio.
+[01:12:42] Mitch McCauley: Just look up Looker Studio on Google.
+[01:12:44] Mitch McCauley: There was no private client info or anything like that, but...
+[01:12:49] Juan Torres: Morgan, are you trying to be able to display all your data to stakeholders?
+[01:12:54] Juan Torres: Is that why Mitch is showing you this?
+[01:12:58] Morgan Cook: Yeah, there's a, there's a group of stakeholders.
+[01:13:00] Morgan Cook: There that are outside the foundation that need to see into the data, and then there are different levels within the foundation, like there's the administration of the foundation, and then the foundation runs a bunch of houses, and the houses are managed, and so the house manager only has access to their own content, not to see all of the other houses, right?
+[01:13:22] Juan Torres: Yeah, lookup is great.
+[01:13:24] Juan Torres: I've used it before.
+[01:13:25] Juan Torres: Another suggestion is, I don't think it's very complex, especially with agent decoding, is creating a Flask in a web application.
+[01:13:37] Juan Torres: Flask is really good for displaying data, and it has really good table formats.
+[01:13:44] Juan Torres: That's what I always use in order to control, to display my data and filter it accordingly to my needs.
+[01:13:51] Juan Torres: And also to be able to see the outputs of each iteration in my Agentex system.
+[01:13:59] Juan Torres: system.
+[01:14:00] Juan Torres: So I would say have your front-end application and then have a folder in which you have your DataWeb application, Flask application, right?
+[01:14:13] Juan Torres: For this app that I just showed you, I have a Docker Composer, which has two images, mainly the DataWeb application and then the front-end application.
+[01:14:25] Juan Torres: So I can trigger the starting of FastAPI and Flask with one terminal command, or I can basically just start at the front-end.
+[01:14:36] Juan Torres: Or I start both if I needed to have the, you know, metrical data science view of the processes versus the front-end.
+[01:14:46] Juan Torres: So Flask to me is the go-to.
+[01:14:49] Juan Torres: There's also Plowly, but Plowly is more limited.
+[01:14:52] Juan Torres: But I just use Python Flask for data science, data view, you know, view of my data.
+[01:15:03] Morgan Cook: Well, those some great ideas and good directions, so I appreciate the input, you guys.
+[01:15:10] Morgan Cook: Other than that, not much.
+[01:15:11] Morgan Cook: I've been doing manual labor with, you know, physical objects, so I'm to head back out to do some more of that later this afternoon.
+[01:15:23] Patrick Chouinard: Good.
+[01:15:26] Patrick Chouinard: Excellent.
+[01:15:27] Patrick Chouinard: Thank you, Morgan.
+[01:15:29] Patrick Chouinard: And next would be Mitch, the revival of the Mitch.
+[01:15:36] Patrick Chouinard: What have you done lately and what can you share with us?
+[01:15:41] Mitch McCauley: Uh, yeah, I mean, I've just been, I got my YouTube channel monetized, so that's been good.
+[01:15:48] Mitch McCauley: Um, posting more, uh, building, like, a platform to better, like, manage.
+[01:15:55] Mitch McCauley: Oh, I appreciate the claps.
+[01:15:57] Mitch McCauley: Yeah, uh, I, I've been doing the...
+[01:16:00] Mitch McCauley: So basically making like static HTML previews of like the application that I'm wanting to build, I can share that with the class a little bit, but it's not like super relevant to everyone, but I'll just go through it like quickly and then basically been helping out the team with like integrating, you know, AI into particular endeavors.
+[01:16:25] Mitch McCauley: So I'll, I'll go into that as far as the questions, but I can just show you a quick little preview.
+[01:16:31] Mitch McCauley: So basically here's like a preview of the application.
+[01:16:34] Mitch McCauley: Uh, so like basically before this whole part, you, you put in the contents, like, uh, you're not having AI really make the idea itself or like that, the text that is then used to then make the queries to then make the request to the AI.
+[01:16:49] Mitch McCauley: This is just like a nice front end of all the different requests, like instead of having to, you know, put all of my clip contents and TXT files, you know.
+[01:17:00] Mitch McCauley: I can just copy and paste it in a specific format and then it will like then generate the requests so I can like basically choose like a winner, like a winning first frame for my vertical or horizontal thumbnails.
+[01:17:15] Mitch McCauley: I have like a series of images, right, that are the starting frames for each of my videos or not each of my videos, this is one idea in itself, one idea.
+[01:17:25] Mitch McCauley: And so like there's, you know, 25 different starting frames throughout the whole video.
+[01:17:29] Mitch McCauley: I can like, you know, click here and I can edit the prompt if I want to like, you know, edit the prompt or I could request a retake and it really just gets added to the queue.
+[01:17:38] Mitch McCauley: We'll go into that and the dialogue is to see like, okay, like what is the actual words that are being exchanged that I can edit and audit if needed.
+[01:17:47] Mitch McCauley: And then here's like the, the queue.
+[01:17:48] Mitch McCauley: So basically, uh, the application assumes that everything is good and then it requires the user to like select specific stuff and add it to the queue.
+[01:17:59] Mitch McCauley: And basically.
+[01:17:59] Mitch McCauley: And
+[01:18:00] Mitch McCauley: We do a git diff, you know, and then they can edit their commit, or they can just push the commit, right, and then we can't request the video until the image is done, so it's like telling the user, hey, like, you wait for the images to be done, but we can request this many right now, and then this will be applied right away for the dialog changes.
+[01:18:19] Mitch McCauley: Activity is to then see the overall update of, you these requests being done, and then possible errors, because errors are very real with these AI generated.
+[01:18:30] Mitch McCauley: video, or video gens, because, you know, certain stuff doesn't get approved, and, like, content not approved, or, like, an issue on their end, so a lot of different error handling, so they can just retry all requests or do whatever else it may be.
+[01:18:42] Mitch McCauley: And then for outputs, like, this is the final output, so it's, like, where all those different videos live, that's what I was asking you, about, you know, egress and some other media hosting stuff.
+[01:18:51] Mitch McCauley: And then, basically, they can request a simple retake or download all the different videos, and they can choose, like, all 30 videos, only the newest retake.
+[01:19:00] Mitch McCauley: The landscape and the portrait version, and then here's like notes.
+[01:19:05] Mitch McCauley: This isn't like a real Google Drive link or anything, but I can basically just have my editor leave a note of like, here's the media link, edit the video, and then I can say like, hey, like, you know, change this and this and we're good, and then whatever else might be.
+[01:19:17] Mitch McCauley: So, yeah, yeah, this has been a good chunk of work there.
+[01:19:24] Patrick Chouinard: Very nice, though.
+[01:19:25] Mitch McCauley: Oh, yeah.
+[01:19:26] Patrick Chouinard: Go ahead, Juan.
+[01:19:27] Patrick Chouinard: You have a question?
+[01:19:28] Juan Torres: No, this is really methodological.
+[01:19:30] Juan Torres: I love this.
+[01:19:31] Juan Torres: The whole process, the whole thought process of image-to-image generation, dialogue, attachment to the video, the image-to-video is really methodological.
+[01:19:44] Juan Torres: I had a question.
+[01:19:45] Juan Torres: For image-to-image or text-to-image, because I think that's what you're doing first.
+[01:19:54] Juan Torres: What is the model that you're using right now?
+[01:19:57] Mitch McCauley: Yeah, I haven't scoped it.
+[01:19:59] Mitch McCauley: I mean, I-
+[01:20:00] Mitch McCauley: I was looking at mostly Nano Banana, like the lightest one, and like there is going to be like, I didn't reference that, but there's like a specific artifacts view, like where we actually build out the artifacts of like, hey, here's what, you know, the actor looks like, you know, here's the vehicle that they're in, that's what that looks like, here's the environment and setting, stuff like that.
+[01:20:21] Mitch McCauley: Um, but I, cost isn't that big of a factor, um, because these videos aren't meant with the idea of making money, um, whereas like, you know, getting like users to, to, like, if I was just trying to sell this to someone, I would have to be like way more cognizant of the model, so I, unfortunately I don't have that great of an answer.
+[01:20:42] Mitch McCauley: Oh, you have the, uh, leaderboard.
+[01:20:44] Mitch McCauley: Yeah, I was, I actually thought GPT-2 made like some really good, um, like realistic images.
+[01:20:52] Mitch McCauley: Like, you know what saying?
+[01:20:52] Mitch McCauley: Like, like a, yeah, and I've noticed that too.
+[01:20:55] Mitch McCauley: So I might use GPT-2, which is, yeah, uh, the, I, I found it.
+[01:21:00] Juan Torres: This leaderboard of text to image generation is pretty decent in Saccuracy, and I think people who are interested in the fusion model engineering should look into this just because it gives, I think, really accurate information as to really good models.
+[01:21:22] Juan Torres: Right now GPT Image 2 is really good if I've tried it.
+[01:21:26] Mitch McCauley: Yeah.
+[01:21:27] Mitch McCauley: How did you find this?
+[01:21:28] Juan Torres: You're just Google searching?
+[01:21:30] Juan Torres: Well, there's in San Diego kind of like a meeting of AI engineers that I go to, and they were looking at a paper that was analyzing VIO, the emergent properties of VIO that not only essentially is able to generate, but it's able to detect shadows, depth, and all that stuff.
+[01:21:52] Juan Torres: So in the paper that I was reading, it had actually this link as a footnote.
+[01:21:58] Juan Torres: Oh, and the
+[01:22:00] Juan Torres: And since I'm like creating my own diffusion model app, I've found it really helpful.
+[01:22:07] Mitch McCauley: Yeah, you know, the funniest thing with these video models, especially Kling, is like randomly I'll be like, huh, that looks like Will Smith, you know, or like, huh, that looks like XYZ actor.
+[01:22:18] Mitch McCauley: And it's like, it's hilarious because I'm like, via this is a better job of like hiding that stuff.
+[01:22:23] Juan Torres: But these Chinese models, they're like, eh, you know.
+[01:22:25] Juan Torres: Yeah.
+[01:22:27] Juan Torres: Have you, have you tried a Wavespeed as your general API recall tool?
+[01:22:33] Mitch McCauley: No, I haven't even, what, Wavespeed?
+[01:22:35] Juan Torres: I've never heard of it.
+[01:22:36] Juan Torres: Wavespeed, because Wavespeed has basically all the, all the models, the main models.
+[01:22:43] Juan Torres: So if you were to use Wavespeed, create an account, put a couple of credits, I don't think it's that expensive.
+[01:22:50] Juan Torres: You can use GPT-Image2, can use Gemini, you can use C-Dance for image generation, for video generation.
+[01:22:58] Juan Torres: And they actually have a C.
+[01:23:00] Juan Torres: Wavesy has a CLI so you can use to basically ask questions about documentation and creating workflows.
+[01:23:06] Juan Torres: So I recommend you to check them out.
+[01:23:09] Juan Torres: If you wanted to systematize it into your whole data web application you created, I'm going to share it right here.
+[01:23:17] Mitch McCauley: Yeah, I was thinking about just using OpenRouter.
+[01:23:19] Mitch McCauley: I know they're classic with that 5%.
+[01:23:22] Mitch McCauley: I already kind of have stuff set up and then we will need tech stuff.
+[01:23:26] Mitch McCauley: But it's interesting.
+[01:23:27] Juan Torres: Definitely very interesting.
+[01:23:28] Juan Torres: Yeah.
+[01:23:29] Mitch McCauley: I appreciate it.
+[01:23:32] Mitch McCauley: And then for my question for the class is, so basically we have a data provider.
+[01:23:38] Mitch McCauley: That data provider hosts all of the Amazon data in very unique ways for the accounts that we manage.
+[01:23:45] Mitch McCauley: And now like basically set it up to where, you know, because residential IPs rotate.
+[01:23:52] Mitch McCauley: I now have like a fixed IP at a certain place, like in a digital ocean droplet, and we make their press through there.
+[01:23:58] Mitch McCauley: one, four guys.
+[01:23:59] Mitch McCauley: Yeah.
+[01:23:59] Mitch McCauley: didn't do personally.
+[01:24:00] Mitch McCauley: Personally, now I'm introducing it to the team and we're going to have to bring everyone on as far as doing a request through this actual company IP address and stuff like that.
+[01:24:14] Mitch McCauley: basically, no information on this AI stuff.
+[01:24:19] Mitch McCauley: I basically introduced them to making requests and taking CSVs and then augmenting them.
+[01:24:24] Mitch McCauley: This is the first time that AI is going to make requests for them and take insights from that data so they can basically talk to the data.
+[01:24:31] Mitch McCauley: So I'm basically presenting this tomorrow.
+[01:24:36] Mitch McCauley: And I've already had all the queries and all this other stuff kind of mapped out so they don't need to do all the complex stuff.
+[01:24:42] Mitch McCauley: But I'm probably going have to create a GitHub project.
+[01:24:46] Mitch McCauley: And I've done this before, but they don't use the GitHub project.
+[01:24:50] Mitch McCauley: So it's like all this stuff is great.
+[01:24:52] Mitch McCauley: Like CICD is great, but it's like people have to use it and like they don't even know how to use it.
+[01:24:56] Mitch McCauley: So it's like, I just use Google Chrome.
+[01:24:58] Mitch McCauley: Like here's the here's the code.
+[01:25:00] Mitch McCauley: Here's the most recent one, or sorry not Google Chrome, Google Drive, and they just download it, and it's like that's what they've actually used instead of GitHub, so I'm just like, as far as like managing these things, I'm just like, gosh, I feel like it just has to be kind of manual if like they don't want to kind of onboard with the tech that like where it makes the most sense, and it's like at the same time I have to focus on the people.
+[01:25:20] Mitch McCauley: It's curious if anyone had any opinions there.
+[01:25:24] Mitch McCauley: Yeah, I can make it a bit more of a specific question if needed, but basically, basically I'm improving the code over time.
+[01:25:33] Mitch McCauley: Every week, you know, I make some additions or like some additions and prompts for like having AI do queries on data and it like saving notes or like adding more tooling to the queries and or like giving more commentary on like, hey, here's what each of these data columns mean.
+[01:25:51] Mitch McCauley: But like basically as far as version control and sharing that with everyone, it's like, they're all inexperienced, so they don't really know how to manage GitHub.- .
+[01:25:59] Mitch McCauley: .
+[01:25:59] Mitch McCauley: .
+[01:26:00] Mitch McCauley: And then it's like, I can have them use the AI to manage the GitHub, but then they're like, should I like maybe have everyone have like their own branches and then like add maybe a main branch and like that might make more sense because then, I don't know, I don't know, it's just so confusing because they don't know how to use like the, like just basic GitHub stuff and it's like I could have them leverage AI to do it, but then it's like, then they're going to be touching production, so how do I manage production through like what they, versus like what they did, you know, yeah.
+[01:26:30] Juan Torres: Yeah, you, you need a Patrick in your team.
+[01:26:32] Mitch McCauley: Oh yeah, yeah, I think that is actually the solution, yeah.
+[01:26:37] Patrick Chouinard: Well, listening to what you're saying, what I would try to do is probably create an org for them to, if you want, and I know this is going to sound vastly over-engineered, but there's no way to give GitHub level of control without any risk, so something I could imagine is
+[01:27:00] Patrick Chouinard: Is you create an org in GitHub that you share with them, and basically you get them to fork your code in there, and then at the root of your project, you can put a little instruction file for the AI that they can reference in order to update their fork, but that way they work in their own environment, so whatever they screw up, they can screw up your main project, and they still have a tie in that that the GitHub mechanic will allow them to get update from you.
+[01:27:34] Patrick Chouinard: I think that's, unless somebody else has a better idea, think that's as much isolation you can create without adding too much complexity.
+[01:27:46] Adam: Yeah, the Codex Web Interfaces handles that all for you.
+[01:27:51] Adam: If they just have, I think, and I'm not sure if you need a paid ChatGPT account, I think you could do it with a free, but I'm not sure.
+[01:27:57] Adam: But you just go in there and do...
+[01:28:00] Adam: You could just tell, hey, change the color to background, it'll create a fork, a branch, it'll push that branch back up to Github, create a pull request, and as the code owner, you'd have to approve the pull request.
+[01:28:12] Juan Torres: Yeah.
+[01:28:14] Mitch McCauley: But here's the point, here's the point, is I don't want to make the pull request, as the issue is that I'm adding so much extra work.
+[01:28:23] Mitch McCauley: But I definitely get what you're saying, and I also 100% resonate with what Patrick is saying, too, because it's like, just create the forks.
+[01:28:29] Mitch McCauley: And then, if it's needed, then, like, if what they added was, like, needed, and they could add the fork or whatever else it may be, it's just like, okay, cool, then I'll update the main branch to what you guys said, what I wanted.
+[01:28:40] Mitch McCauley: But yeah, no, that's awesome.
+[01:28:41] Patrick Chouinard: The org is there just so you have a common area to work together.
+[01:28:47] Mitch McCauley: Yeah.
+[01:28:47] Patrick Chouinard: And I agree with you, Adam, that the codex can do all of that easily.
+[01:28:51] Patrick Chouinard: My point was not as much what can be automated by AI as much as what somebody who doesn't understand what he's doing can screw.
+[01:29:00] Mitch McCauley: I up using A.I.
+[01:29:01] Mitch McCauley: Yeah.
+[01:29:03] Juan Torres: Yeah.
+[01:29:07] Patrick Chouinard: Does that answer your question, Mitch?
+[01:29:09] Mitch McCauley: Yeah.
+[01:29:10] Mitch McCauley: Yeah.
+[01:29:10] Mitch McCauley: It's awesome.
+[01:29:11] Mitch McCauley: I appreciate it.
+[01:29:12] Mitch McCauley: Cause yeah, that call tomorrow.
+[01:29:13] Mitch McCauley: And I just, I just know areas like this, you can shoot yourself in the foot like really easily.
+[01:29:18] Mitch McCauley: So I'm pretty sure.
+[01:29:20] Juan Torres: Yeah.
+[01:29:20] Juan Torres: And if you, you practice good CI, CD discipline, will you, I mean, I would, I would tend to more what Adam said, like create a brand feature branches.
+[01:29:32] Juan Torres: Uh, ideally have your data engineer work on a, uh, migrations folder.
+[01:29:39] Juan Torres: You have your front end person working on the front end folder.
+[01:29:43] Juan Torres: Um, and then have actions.
+[01:29:45] Juan Torres: If you want to have a staging environment, like an EC2 instance, in order for everybody to be able to share, uh, that data, uh, awesome data web application that you had, uh, and then use NGROC for tunneling and sharing that information with everybody.
+[01:29:59] Juan Torres: So they
+[01:30:00] Juan Torres: You can see or work on the process, have a GitHub Actions in order to automate the process from local development environment to pushing it to the staging environment and just create a CLI command for someone to just push for them to be able to generate the Bankrock tunnel URL for them to see your web app.
+[01:30:28] Mitch McCauley: Yeah, that's another thing I'll have to figure out, but I think it would, yeah.
+[01:30:36] Juan Torres: Yeah.
+[01:30:37] Mitch McCauley: I definitely agree that's the most technically sound.
+[01:30:39] Juan Torres: Depends on what you want to do.
+[01:30:41] Mitch McCauley: Yeah.
+[01:30:42] Patrick Chouinard: I went under the assumption that there was no technically capable people in the...
+[01:30:48] Mitch McCauley: Yeah, no.
+[01:30:49] Mitch McCauley: You know, working with clients more and more, I'm like, you know, I'm like, here's this advanced thing with, like, you know, your Amazon account that, like, we're fixing and, like, they're like, like, so did number go up?
+[01:30:59] Mitch McCauley: And like...
+[01:31:00] Mitch McCauley: Like, yes, number one up.
+[01:31:00] Mitch McCauley: Like, okay, good.
+[01:31:02] Mitch McCauley: You know, it's like, okay, cool.
+[01:31:03] Mitch McCauley: You know, like, at the end of the day, did number go up?
+[01:31:07] Mitch McCauley: Yes, it did.
+[01:31:08] Juan Torres: Cool.
+[01:31:09] Mitch McCauley: You know, so, I feel like that's the evolution of engineering.
+[01:31:14] Mitch McCauley: What's that caveman repo, whatever?
+[01:31:17] Mitch McCauley: It's like, why say many word when few word do good?
+[01:31:20] Juan Torres: Oh, yeah.
+[01:31:21] Mitch McCauley: Yeah, that's how I speak.
+[01:31:23] Mitch McCauley: Yeah, I got a crack out of that one, but yeah.
+[01:31:26] Mitch McCauley: Anyways, okay, cool.
+[01:31:27] Mitch McCauley: Thank you, guys.
+[01:31:27] Patrick Chouinard: I appreciate it.
+[01:31:28] Patrick Chouinard: Thank you, Mitch.
+[01:31:32] Patrick Chouinard: I might have a little bit of, one, an update on something I'm working on, and then a question about something else I'm working on.
+[01:31:43] Patrick Chouinard: This week at work, I've been working a lot into thinking about a portable file type for the agentic world.
+[01:31:55] Patrick Chouinard: Basically, I realized that a lot of people are, were all.
+[01:31:59] Patrick Chouinard: it.
+[01:31:59] Patrick Chouinard: one.
+[01:31:59] Patrick Chouinard: birthday.
+[01:32:00] Patrick Chouinard: Pave, Co-Pilot, Claude, ChatGPT, whatever, it's not just about outputting raw text anymore, a lot of people are leveraging those tools to output HTML, but I realized that we ended up in the dichotomy where the HTML is really nice for human consumption, horrible for token consumption for AI, and the markdown is really efficient for AI, but horrible to look at for human.
+[01:32:27] Patrick Chouinard: So basically what I've been trying to create is a type of HTML that has a markdown payload that gets created out of a skill that also embed a brand kit.
+[01:32:45] Patrick Chouinard: So basically, it would give people inside of the company, obviously, a skill that they can call to generate output, basically bilingual, one version for the human to...
+[01:33:00] Patrick Chouinard: Consume, one version for the agent to consume, but all self-contained into one HTML file.
+[01:33:08] Patrick Chouinard: So you'd had the HTML file and it had a payload tag in there using a custom type of script tag where you can put the entire markdown.
+[01:33:20] Patrick Chouinard: So basically, as your answer gets created in your chat interface, it output markdown by default.
+[01:33:30] Patrick Chouinard: And then you simply call that skill to generate the self-contained HTML artifact, but that also gets the markdown as a payload.
+[01:33:41] Patrick Chouinard: So that way, if you share the artifact, it will be openable by everyone in their browser.
+[01:33:49] Patrick Chouinard: They're going to have the full detail layer and they're going to be able to give it back to their agentic system with a consumer.
+[01:34:00] Patrick Chouinard: That will know where to look for the payload and just consume the markdown so to have the full capability in both directions to be used as much for a human as for AI systems.
+[01:34:14] Patrick Chouinard: So as soon as I figure all of that thing out, I'm probably going to create an open source version of that.
+[01:34:22] Patrick Chouinard: I'm not saying I'm creating a new standard for the world, but I'm creating a standard that's going to work for me and if it's useful for others.
+[01:34:30] Patrick Chouinard: I'm going to be happy to share it.
+[01:34:32] Ty Wells: Well, Patrick, I've got a question for you on that.
+[01:34:35] Ty Wells: Sure.
+[01:34:35] Ty Wells: I love the concept.
+[01:34:37] Ty Wells: I think what I'm trying to look at is a use case of how you could benefit from something that I generated in terms of am I generating a document or just an artifact?
+[01:34:54] Ty Wells: I'm sorry.
+[01:34:55] Ty Wells: Let me rephrase that.
+[01:34:56] Ty Wells: How can one agent benefit?
+[01:34:59] Ty Wells: trying offend 厚生oy, monitoring could what would would-
+[01:35:00] Ty Wells: What could I benefit that another agent could use that?
+[01:35:03] Ty Wells: The agent version.
+[01:35:05] Ty Wells: So give me, give me like an example, if you will, a use case.
+[01:35:11] Patrick Chouinard: Sure.
+[01:35:12] Patrick Chouinard: Let's say I'm just trying to make sure I'm understanding it properly.
+[01:35:16] Patrick Chouinard: Let's say I, because the company I work for is working in finance.
+[01:35:20] Patrick Chouinard: So they work on a report or an investment analysis that has a bunch of numbers.
+[01:35:27] Patrick Chouinard: So they don't want to just show the raw text.
+[01:35:30] Patrick Chouinard: They want, a dashboard like output that they can create and they can share among themselves.
+[01:35:36] Patrick Chouinard: But that has a lot of data that can be used in a further analysis, or it can be used as a starting point for another type of output.
+[01:35:47] Patrick Chouinard: Well, you create the artifact that contain both the HTML and the markdown.
+[01:35:53] Patrick Chouinard: They share with their teammates.
+[01:35:56] Patrick Chouinard: I'm even thinking about a way to distribute it in terms
+[01:36:00] Patrick Chouinard: But basically it shows something that is valuable and easy to consume, but then if somebody else wants to create a new report or use it as a data source, they don't have to convert it.
+[01:36:14] Patrick Chouinard: They have a skill to consume it as an agent artifact to create a new version of that report or use that report as an input for another type of analysis, for example.
+[01:36:25] Patrick Chouinard: But that's in the investment world, but it could be anything.
+[01:36:29] Ty Wells: That protocol will have some sort of permission gate or level on it, because like say I create a dashboard of, you know, payroll for everybody in terms of compensation, right, or report along that line.
+[01:36:46] Ty Wells: So there has to be a security level to that, that says, you know, I guess whomever you share it with, they have access to it, period.
+[01:36:58] Patrick Chouinard: Yeah, but basically it's a...
+[01:37:00] Patrick Chouinard: It's a file.
+[01:37:00] Patrick Chouinard: The idea is everything is contained within a single file.
+[01:37:03] Patrick Chouinard: So you still manage the security as you would manage the security of any other file.
+[01:37:08] Patrick Chouinard: I'm not reinventing the security process you put it.
+[01:37:11] Ty Wells: No, but I'm saying if I share it, if I share it with you, you have access to, I'm just started walking my mind through this because I shared it with you, then you would have access to see it and you wouldn't be able to, no one else would be able to see it because they don't.
+[01:37:25] Patrick Chouinard: Okay.
+[01:37:25] Patrick Chouinard: Gotcha.
+[01:37:26] Patrick Chouinard: And the same principle, if you give me access to the raw data file, if I re-share it with somebody else, well, I'm exposing to the same risk.
+[01:37:34] Patrick Chouinard: Yeah.
+[01:37:34] Patrick Chouinard: I'm not introducing a new way of sharing information, just consuming information.
+[01:37:39] Ty Wells: Correct.
+[01:37:40] Ty Wells: Gotcha.
+[01:37:41] Ty Wells: Thanks.
+[01:37:43] Patrick Chouinard: Morgan, you had a question?
+[01:37:45] Morgan Cook: Yeah.
+[01:37:46] Morgan Cook: More of a comment.
+[01:37:48] Morgan Cook: I recently, we did a, we did a book recently.
+[01:37:53] Morgan Cook: Oh, you can see it.
+[01:37:55] Morgan Cook: And part of that process was doing a electronic book, right?
+[01:37:59] Morgan Cook: And he-
+[01:38:00] Morgan Cook: And the format for an ebook is an ePUB, which is basically just a zip file, and that zip file has exactly what you're talking about.
+[01:38:08] Morgan Cook: It's got an HTML version for the table of context, and it has a XSD version of the table of context for the exact same kind of reason.
+[01:38:18] Morgan Cook: There are two separate pieces inside the zip folder, but I think the idea is sound and used in other places.
+[01:38:25] Morgan Cook: And I use the output from HTML for creating worksheets, right?
+[01:38:34] Morgan Cook: And it takes the markdown as an input file and outputs formatted and structured HTML for PDF generation.
+[01:38:45] Morgan Cook: And that works pretty well, too.
+[01:38:48] Morgan Cook: And I can see this would be a useful thing to have that original markdown actually embedded with that for future so it stays versioned together, right?
+[01:38:57] Morgan Cook: So, as well.
+[01:39:00] Morgan Cook: There's some value there that I can see for my own workflows.
+[01:39:05] Patrick Chouinard: Good.
+[01:39:06] Patrick Chouinard: Well, I'm going to be more than happy to share it as soon as I have something tangible then.
+[01:39:11] Patrick Chouinard: Yes, Mitch?
+[01:39:14] Mitch McCauley: I was going to say, you have a lot of demand.
+[01:39:17] Mitch McCauley: I'm not sure if you watched.
+[01:39:18] Mitch McCauley: Have you watched that video that I linked?
+[01:39:20] Mitch McCauley: It's from Theo.
+[01:39:23] Mitch McCauley: It's a pretty interesting video because it talks a lot about what you're referencing, not necessarily as far as the side of like, hey, there's, and I, the issue that you're facing, I had the same thing where it's like, you know, we don't really have like a live server and authentication, all this stuff for all their data.
+[01:39:43] Mitch McCauley: So it's like, I just download or, you know, make queries to the data and then have the AI make an HTML version, present the static HTML client wants it.
+[01:39:52] Mitch McCauley: I'm like, hey, here's the download to it, you know?
+[01:39:55] Mitch McCauley: And then, you know, that's about it.
+[01:39:57] Mitch McCauley: But then it's like, yeah, like.
+[01:40:00] Mitch McCauley: There's some value there that I can see for my own workflows.
+[01:40:05] Mitch McCauley: Good.
+[01:40:06] Mitch McCauley: Well, I'm going to be more than happy to share it as soon as I have something tangible then.
+[01:40:11] Mitch McCauley: Yes, Mitch?
+[01:40:14] Mitch McCauley: I was going to say, you have a lot of demand.
+[01:40:17] Mitch McCauley: I'm not sure if you watched.
+[01:40:18] Mitch McCauley: Have you watched that video that I linked?
+[01:40:20] Mitch McCauley: It's from Theo.
+[01:40:23] Mitch McCauley: It's a pretty interesting video because it talks a lot about what you're referencing, not necessarily as far as the side of like, hey, there's, and I, the issue that you're facing, I had the same thing where it's like, you know, we don't really have like a live server and authentication, all this stuff for all their data.
+[01:40:43] Mitch McCauley: So it's like, I just download or, you know, make queries to the data and then have the AI make an HTML version, present the static HTML client wants it.
+[01:40:52] Mitch McCauley: I'm like, hey, here's the download to it, you know?
+[01:40:55] Patrick Chouinard: And then, you know, that's about it.
+[01:40:57] Patrick Chouinard: But then it's like, yeah, like.
+[01:41:00] Patrick Chouinard: Also, markdown to HTML parser, holy cow, that is some bloatware.
+[01:41:07] Patrick Chouinard: I never realized how prehistoric that is.
+[01:41:13] Patrick Chouinard: It's impossible to fix unless you just basically recreate it.
+[01:41:17] Patrick Chouinard: That's why Astro is out.
+[01:41:19] Patrick Chouinard: That's why HTMX is out.
+[01:41:20] Patrick Chouinard: But even then, it's not the markdown to HTML-like stuff.
+[01:41:28] Patrick Chouinard: So there's a lot of need.
+[01:41:29] Patrick Chouinard: I mean, even in the video, Theo was like, am I going to have to recreate this because this sucks?
+[01:41:35] Patrick Chouinard: And I was like, yeah, I'm not.
+[01:41:37] Patrick Chouinard: I'm sure not.
+[01:41:39] Patrick Chouinard: But no, it could definitely be done.
+[01:41:41] Patrick Chouinard: I think the curious thing is definitely going to be using a linter to practice best standards, right?
+[01:41:49] Mitch McCauley: It would probably have to be in that form.
+[01:41:54] Patrick Chouinard: But that's the thing.
+[01:41:55] Patrick Chouinard: I'm not creating an engine to do markdown to HTML.
+[01:41:59] Patrick Chouinard: I'm actually
+[01:42:00] Patrick Chouinard: Actually taking the markdown as a source of data, ask the AI agent, like Cloud Code, Codex, Cursor, whatever, to generate the HTML view.
+[01:42:11] Patrick Chouinard: So it's an ingenting task to create the HTML, and then the markdown is just attached as a payload.
+[01:42:17] Patrick Chouinard: Yeah, because I had exactly that same problem with Astro, with HTMLX, with all of those, because you always figure out, oh, there's something that hasn't worked or it doesn't render properly.
+[01:42:28] Morgan Cook: Basically, this way, the render is seen by the user as they create the artifact, so they're sure it works.
+[01:42:35] Morgan Cook: And then I just tack on the markdown as a payload for future agent to be able to consume.
+[01:42:44] Morgan Cook: So I'm kind of bypassing the issue this way.
+[01:42:47] Morgan Cook: Yeah, yeah.
+[01:42:49] Morgan Cook: I mean, that's how I currently do it, so...
+[01:42:52] Morgan Cook: Again, I'm not saying that this is something that's going to replace long-term solution.
+[01:42:57] Morgan Cook: Yes, if you want to do something.
+[01:42:59] Morgan Cook: Yeah.
+[01:43:00] Morgan Cook: That's going to live long-term.
+[01:43:01] Morgan Cook: Astro is still a very good solution.
+[01:43:03] Patrick Chouinard: I'm more saying I've created something that I want output and shared very quickly.
+[01:43:10] Patrick Chouinard: Internally, we even want to put time to live on those artifacts.
+[01:43:14] Patrick Chouinard: So after 60 days, if you haven't raised your hand to keep it alive, it's going to be automatically deleted and things like I see.
+[01:43:21] Patrick Chouinard: Stuff like that.
+[01:43:21] Patrick Chouinard: Okay.
+[01:43:22] Patrick Chouinard: a short-term exchange of information.
+[01:43:26] Patrick Chouinard: Morgan, did you have another common question?
+[01:43:29] Morgan Cook: No, just that the process I use with the workbook is it took a while to do some of those because they were pretty big.
+[01:43:39] Morgan Cook: You know, they're like 100 pages long.
+[01:43:41] Morgan Cook: Okay.
+[01:43:42] Morgan Cook: And so it took the LLM a little bit of time to process that into HTML.
+[01:43:50] Patrick Chouinard: Once I had it figured out what I needed, then what I did was I made that deterministic and told the large language models to just write me a JavaScript that converts this markdown format.
+[01:44:00] Patrick Chouinard: To HTML, right?
+[01:44:01] Patrick Chouinard: So it was a much quicker process of it.
+[01:44:04] Patrick Chouinard: It went from minutes to like 10 seconds.
+[01:44:07] Patrick Chouinard: And obviously for hundreds of pages, I would definitely go that way.
+[01:44:11] Patrick Chouinard: I'm more looking at something for a couple of pages that are getting exchanged.
+[01:44:15] Patrick Chouinard: So basically, something that a standard user could generate in a single prompt as a markdown output, just to convert it into an HTML form without sacrificing the markdown output, basically.
+[01:44:30] Patrick Chouinard: Yeah, and that's actually a problem that I have right now working with the people who are using chat but don't know what they're doing, right?
+[01:44:38] Patrick Chouinard: It's like that you want to present something to them, you can't just ship them a markdown file because they probably don't have any tools installed to read it, to actually see what you're trying to present.
+[01:44:50] Patrick Chouinard: So I've done that before where I just convert it to, you know, make a nice static HTML and I'll send them the HTML file.
+[01:44:57] Patrick Chouinard: So, yeah, I just want to put that into it.
+[01:45:00] Patrick Chouinard: A reusable skill because I have the same type of user, and no matter how I explain it, they're going to make a mistake, they're going to ask in a shortened way because they don't have the patience to use the full prompt, whatever.
+[01:45:13] Patrick Chouinard: If it's a skill that they can call generate HTML, that's it, or generate pretty preview, whatever you end up calling it, as simple as humanly possible.
+[01:45:27] Patrick Chouinard: I think that's what's going to make the success here.
+[01:45:33] Patrick Chouinard: Good!
+[01:45:34] Patrick Chouinard: Then, the thing I had a question about.
+[01:45:37] Patrick Chouinard: I'm building an advanced training internally for a Cloud Code user or advanced, let's just say, beyond introduction.
+[01:45:47] Patrick Chouinard: I don't want to say advanced.
+[01:45:49] Patrick Chouinard: And I was trying to find a good example for introducing the concept of skill and how you build skills.
+[01:45:59] Patrick Chouinard: don't your I I don't want and
+[01:46:00] Patrick Chouinard: Skills in the general way, not just CloudCode, but CloudCode, GitHub Copilot, they all use the skill standard.
+[01:46:07] Patrick Chouinard: And all the example I was finding were either too specific to a domain or too generic and basically useless.
+[01:46:18] Patrick Chouinard: The one I fell into is what I was telling you, Ty, earlier, is the concept of adversarial review, because there's tons of examples of code review skill that exist, but a shockingly small amount of adversarial review.
+[01:46:36] Patrick Chouinard: So I wanted to use that as the background for the demo, not to do an in-depth one, but at least to introduce the process.
+[01:46:45] Ty Wells: So to give my developer the mindset of don't just do a code review that's going to compile, do an adversarial code review that's actually going to try to break your code to make sure it finds actual bugs.
+[01:46:59] Ty Wells: has
+[01:47:00] Ty Wells: And everything I've talked about earlier, like do it as a sub-agent to make sure you're in a fresh context window, you don't get polluted by the context history that generated the code, make sure as much as possible to use a different model, but at the very least, you use a different context window to separate the generation from the validation.
+[01:47:26] Patrick Chouinard: And I wanted to know, based on your experience, do you think I'm aiming too high, or too complex, or do you think that's something that's bringing value, if it's just actually bringing people to think about the fact that they need to do adversarial code review for stuff to be vicar?
+[01:47:43] Patrick Chouinard: I think you're in the right track.
+[01:47:45] Patrick Chouinard: You start with the climax, right?
+[01:47:50] Patrick Chouinard: Broken code, and the result of that, and you work your way back.
+[01:47:55] Patrick Chouinard: So I would agree.
+[01:47:57] Patrick Chouinard: I mean, that's the approach that I just, I told you.
+[01:48:00] Ty Wells: I started with the end result with what I want, exactly how I can envision it, and I worked my way back.
+[01:48:07] Patrick Chouinard: And the presentation, obviously, is probably as a 10th grader or not a 10 year old in visual formatting.
+[01:48:20] Ty Wells: Because what I thought about using is what I call the cake method.
+[01:48:24] Ty Wells: Basically, I save a Cloud Code session that's already completed with the skill already built and used.
+[01:48:35] Ty Wells: And I start a new session with broken code, show them how to create the skill and use it.
+[01:48:42] Patrick Chouinard: But basically, when we get to the creation or the implementation of the skill, I then cut over to the second session that's already completed because I have an hour to give that training.
+[01:48:56] Patrick Chouinard: So I cannot wait 10 minutes for Cloud Code to build.
+[01:49:00] Patrick Chouinard: Why don't you table walk the process?
+[01:49:04] Patrick Chouinard: Because you've got, you're teaching engineers, right?
+[01:49:07] Patrick Chouinard: Yep.
+[01:49:08] Patrick Chouinard: So you do a table walkthrough where you don't use any code at all.
+[01:49:13] Patrick Chouinard: But what you do is going that table walkthrough, you identify all the steps that are in that skill.
+[01:49:19] Patrick Chouinard: And then you simply go to cloud code at the end and you say, use the skill creator.
+[01:49:25] Patrick Chouinard: Mm-hmm.
+[01:49:26] Patrick Chouinard: And you've documented your walkthrough.
+[01:49:29] Patrick Chouinard: Those are the steps.
+[01:49:30] Patrick Chouinard: And then you're just initiating that in cloud code.
+[01:49:33] Patrick Chouinard: So you're talking about how to teach people how to build skills?
+[01:49:37] Patrick Chouinard: Was that your question?
+[01:49:38] Patrick Chouinard: Yeah.
+[01:49:38] Patrick Chouinard: Okay.
+[01:49:38] Patrick Chouinard: Yeah.
+[01:49:39] Patrick Chouinard: So I would start with that thing that has nothing to do with AI or anything.
+[01:49:43] Patrick Chouinard: And then work your way back to, and then the simple command to generate the skill.
+[01:49:49] Patrick Chouinard: Yeah.
+[01:49:50] Ty Wells: My thing is I want to show them the result and usage of the result.
+[01:49:54] Ty Wells: So that's why I call that the cake method just because I reused the concept of.
+[01:50:00] Patrick Chouinard: I a recipe show where they show you, they create the recipe, they put it in the oven, and then they just open another oven with the cake already made out of it.
+[01:50:10] Patrick Chouinard: Yeah, perfectly done, skip the middle part.
+[01:50:13] Mitch McCauley: But yeah, would table walk them through constructing the skill, but then I want to show them a version of the skill.
+[01:50:19] Mitch McCauley: And at the same time, I use that to show them the concept of renaming a session and resuming a session in Cloud Code.
+[01:50:28] Mitch McCauley: Because then I show them that I'm resuming a session, they're going to see, look, it looks, the name is easy to follow because I renamed it.
+[01:50:36] Mitch McCauley: So in one go, I taught them how to create a skill, how to resume a session, and how to rename a session with minimum amount of time.
+[01:50:45] Mitch McCauley: So I need to compress the time because I have a single hour to show all of that.
+[01:50:50] Mitch McCauley: So yeah, I would go with what they know in terms like I said, nothing to do with just to get the concept in and then now then you put the see.
+[01:50:59] Mitch McCauley: see.
+[01:50:59] Mitch McCauley: Let's Let's see.
+[01:50:59] Mitch McCauley: Let's
+[01:51:00] Mitch McCauley: Syntax to it.
+[01:51:02] Mitch McCauley: Good.
+[01:51:04] Mitch McCauley: That's just what I wanted to bounce as an idea, because I finished working on that, like, five minutes before joining the call today.
+[01:51:14] Mitch McCauley: Have you checked out Cloud Code's, like, teachings and educations page?
+[01:51:21] Mitch McCauley: Yeah.
+[01:51:22] Mitch McCauley: Let me check the one you just sent.
+[01:51:25] Mitch McCauley: That one's a bit more about, like, you know, what is a hook, like, pre-hook, post-hook, all that stuff.
+[01:51:30] Mitch McCauley: And then, you know, you can put in, like, true context engineering.
+[01:51:35] Mitch McCauley: Yeah.
+[01:51:37] Mitch McCauley: And then, anyways, the preface was, you know, they have those different skills for, like, just, like, managing CSV files, like Excel.
+[01:51:47] Mitch McCauley: And so it's like, there's also that area, too.
+[01:51:52] Mitch McCauley: So for my internal team, it was, funny enough, taking the response that the AI is giving.
+[01:52:00] Patrick Chouinard: And then having a predetermined HTML output theme, so we have an HTML output theme, so there's like five different sub-pages, you know, they click on like these, like basically there's like a sidebar, and like these sidebars have different numbers, kind of like slides, and then that slide has a different preview, and so basically made a skill for the whole team on how to always have the agent output something on theme for the company, so we can present it to the client, and it always looks the same in uniform.
+[01:52:29] Patrick Chouinard: It's like actually, that's kind of ironic, and then, what did I say, in addition to that, is, oh yeah, and then like how do you take a skill and then like create a new one, was like the other simple thing, and so like Codex has a really easy way, right, of like seeing all the skills on the application, whereas like Claude Code or Co-Work, you know, has a different methodology, but then like, I think just the simplest thing of like, where does the skill live?
+[01:52:58] Patrick Chouinard: Okay, it's on this dot Claude.
+[01:53:00] Patrick Chouinard: And like just going to like that folder and like, hey, like here's what lives in this dot cloud folder and then just going to that folder and like that's where the skill is because it's always a question.
+[01:53:12] Patrick Chouinard: Yeah, actually, I did something for that.
+[01:53:14] Patrick Chouinard: I can't share it because it's purely from the client side that I created it, but I created a single interactive HTML page to showcase the full context hierarchy in cloud code.
+[01:53:28] Patrick Chouinard: So the Claw.md at the user level and the Claw.md at the project level and the sub project and the sub project level, the Claw.local.md that I didn't even know existed.
+[01:53:41] Patrick Chouinard: Oh yeah, yeah, because like there's like the .claw, then the .local, and then there's the .
+[01:53:47] Patrick Chouinard: yeah, yeah, yeah, that's interesting.
+[01:53:48] Patrick Chouinard: And the rules and all of that, all the hierarchy into an interactive HTML page when they can open and close the single section, they have the description, how does it work?
+[01:54:00] Patrick Chouinard: The hierarchy of which one supersedes which one, everything, and that's been very, very useful to most of the developer to consume, but you just point Cloud Code at the documentation.
+[01:54:12] Patrick Chouinard: And actually, the link you sent me, I haven't seen that one specifically, but normally what I do with those courses, because don't ask me why, developers in the enterprise, when they haven't been working with AI for a long time, seem to have a very, very hard time extrapolating any kind of exercise you give them to do.
+[01:54:33] Patrick Chouinard: It's like, if what they do on a daily basis is not an exact copy of what you show them, like, oh, it doesn't apply to me.
+[01:54:41] Patrick Chouinard: So I use those pages as sources for Cloud Code to create training material specifically for them within their own environment.
+[01:54:54] Patrick Chouinard: So basically.
+[01:54:55] Patrick Chouinard: Yeah.
+[01:54:55] Patrick Chouinard: Yeah.
+[01:54:55] Patrick Chouinard: have a project, an internal project.
+[01:54:58] Patrick Chouinard: So here's a project that will be worth.
+[01:55:00] Mitch McCauley: Working on, here's an example of training material from Entropic.
+[01:55:05] Patrick Chouinard: Can you create the same structural training material, but based on that code base?
+[01:55:11] Patrick Chouinard: And so far that's what's been creating something that sticks or that they actually listen to.
+[01:55:18] Patrick Chouinard: Otherwise it's like, yeah, but I don't do this or I don't use this library.
+[01:55:23] Patrick Chouinard: Yeah, but that's not the goal of the training.
+[01:55:26] Patrick Chouinard: no, what you're saying is not new, unfortunately.
+[01:55:29] Patrick Chouinard: Nothing's new under the sun with this sound.
+[01:55:32] Patrick Chouinard: Yeah, no.
+[01:55:33] Patrick Chouinard: So that's why I wanted to introduce the concept of adversarial review because that applies in every single possible case of development, especially in a case where the developer is not writing every single line of code.
+[01:55:49] Ty Wells: So I'll keep you updated on how it goes, but it's going to be an interesting challenge.
+[01:56:01] Ty Wells: Hey, just do like with Gemini, headless, YOLO, YOLO mode.
+[01:56:07] Ty Wells: Yeah, no, I don't want to manage that storm.
+[01:56:13] Patrick Chouinard: Let's put it that way.
+[01:56:15] Patrick Chouinard: The fallout from that hurricane?
+[01:56:17] Patrick Chouinard: Yeah.
+[01:56:19] Patrick Chouinard: Actually, auto mode in Cloud Code is surprisingly good.
+[01:56:23] Patrick Chouinard: It doesn't ask a lot of questions, but it stopped the worst instinct of some developer, let's say.
+[01:56:32] Ty Wells: So far, it's been pretty good.
+[01:56:34] Patrick Chouinard: I mean, it hasn't deleted any production database, hasn't done any of the scary story that we see online about the AI development so far, and hasn't bugged me every five seconds for an approval.
+[01:56:49] Patrick Chouinard: You know, it's amazing.
+[01:56:50] Patrick Chouinard: A lot of people will miss that, like it deleting databases and stuff.
+[01:56:57] Patrick Chouinard: I mean, things have gotten so much better, so much faster.
+[01:57:00] Patrick Chouinard: We were like, what are you talking about?
+[01:57:01] Patrick Chouinard: Claude did this back in May?
+[01:57:04] Patrick Chouinard: No way.
+[01:57:05] Patrick Chouinard: This is in August.
+[01:57:05] Patrick Chouinard: How is this possible?
+[01:57:06] Fitz: That was, you know, they never experienced some of that craziness, but there'll be new stuff.
+[01:57:13] Patrick Chouinard: And that's where the value of people like us are going to keep on growing because we've seen the worst of it, so we know it, we can anticipate that it's going to come back in some form whenever there's a new, level of abstraction, so.
+[01:57:32] Patrick Chouinard: Well, let's just say we're going to have patterns that we can recognize, right?
+[01:57:37] Patrick Chouinard: Yep.
+[01:57:38] Patrick Chouinard: Thung in cheek.
+[01:57:39] Patrick Chouinard: Exactly.
+[01:57:39] Patrick Chouinard: So that's why I'm not afraid for job security with AI.
+[01:57:43] Fitz: I know I have job security for quite a while.
+[01:57:46] Fitz: I might change what I do, but I don't think it's going to eliminate it.
+[01:57:53] Patrick Chouinard: Yes, sir.
+[01:57:56] Patrick Chouinard: Good.
+[01:57:59] Patrick Chouinard: Anything else?
+[01:58:00] Patrick Chouinard: Anything else?
+[01:58:00] Patrick Chouinard: Anyone has any additional question, comment before we close for this week?
+[01:58:09] Patrick Chouinard: Yeah, actually, Patrick, if you don't mind, I think last time you did touch on something about do not go and copy skills from anywhere else and use it because there's a lot of stuff going around.
+[01:58:25] Fitz: People, is it hacking people, stuff and all that?
+[01:58:28] Fitz: Well, it's natural language execution code, basically.
+[01:58:32] Fitz: You're executing natural language.
+[01:58:34] Fitz: It's really hide malevolent intention, what's called prompt injection.
+[01:58:42] Patrick Chouinard: Oh, is it the prompt injection or is it like invisible codes that are hidden within those skills that people can't see and all that?
+[01:58:51] Patrick Chouinard: Not necessarily invisible, it's just written in a way that when you read it as a human, it doesn't seem like it's a problem.
+[01:59:00] Patrick Chouinard: Right.
+[01:59:01] Patrick Chouinard: But it can be targeted at an AI to do something, and there's even more invisible way where they add Base64 encoding.
+[01:59:12] Patrick Chouinard: basically a little string that's Base64 encoded.
+[01:59:16] Patrick Chouinard: Okay.
+[01:59:18] Patrick Chouinard: innocuous to a human reading.
+[01:59:21] Patrick Chouinard: Yeah, yeah, yeah.
+[01:59:22] Patrick Chouinard: But it contained very specific instructions.
+[01:59:26] Patrick Chouinard: Instructions.
+[01:59:28] Patrick Chouinard: So there's no like, well, I mean, on your PC, you may say antivirus, catch these things.
+[01:59:36] Patrick Chouinard: it's a malware, isn't it?
+[01:59:37] Patrick Chouinard: Is malware?
+[01:59:39] Patrick Chouinard: You wouldn't call them malware, is it?
+[01:59:41] Patrick Chouinard: only a form of malware.
+[01:59:42] Patrick Chouinard: And yeah, actually the Quebec government, as, I don't know, it's the first time that the government here actually created something that might be useful worldwide, but they've implemented some kind of regulation for the.
+[02:00:00] Patrick Chouinard: Usage of natural language artifact in the financial industry that we will have to comply with, and I'm going through all of that material right now, but there's some ways that exist to inspect those type of artifacts, but there's no company right now that I know of, at least, that offers the equivalent of an antivirus for natural language, so it's techniques that exist.
