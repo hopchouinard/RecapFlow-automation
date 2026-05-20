@@ -13,6 +13,7 @@ from __future__ import annotations
 import logging
 import os
 from contextlib import asynccontextmanager
+from importlib.metadata import version as _package_version, PackageNotFoundError as _PackageNotFoundError
 from pathlib import Path
 from typing import Literal
 
@@ -32,7 +33,11 @@ from community_brain.ingestion.registries import (
     load_speaker_registry,
     render_alias_block,
 )
-from community_brain.query.corpus_verify import CorpusInvalidError, verify_corpus_v3_state
+from community_brain.query.corpus_verify import (
+    CorpusInvalidError,
+    verify_corpus_v3_state,
+    verify_corpus_v3_state_readonly,
+)
 from community_brain.query.fts_lifecycle import (
     drop_full_text_index_if_present,
     ensure_fts_index,
@@ -41,6 +46,11 @@ from community_brain.query.query_local import sql_quote
 
 logger = logging.getLogger(__name__)
 
+try:
+    _APP_VERSION = _package_version("community-brain")
+except _PackageNotFoundError:
+    _APP_VERSION = "0.0.0+uninstalled"
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 CONFIG_DIR = PROJECT_ROOT / "config"
 load_dotenv(CONFIG_DIR / ".env")
@@ -48,6 +58,10 @@ load_dotenv(CONFIG_DIR / ".env")
 DEFAULT_DB_PATH = str(PROJECT_ROOT / "lancedb" / "nomic-v1")
 
 CONFIG_DIR_OVERRIDE_ENV = "COMMUNITY_BRAIN_CONFIG_DIR"
+
+DISTRIBUTION_MODE = (
+    os.environ.get("COMMUNITY_BRAIN_DISTRIBUTION_MODE", "").lower() == "true"
+)
 
 
 def _config_dir() -> Path:
@@ -109,16 +123,22 @@ async def lifespan(app: FastAPI):
         db = lancedb.connect(db_path)
         if "chunks" in db.list_tables().tables:
             table = db.open_table("chunks")
-            # FAIL CLOSED on invalid v3 state — was previously silent.
-            # CorpusInvalidError propagates to FastAPI lifespan → server
-            # refuses to start with a clear message.
-            verify_corpus_v3_state(table)
-            try:
-                drop_full_text_index_if_present(table)
-            except Exception as exc:
-                # Transient: legacy index cleanup is best-effort; missing
-                # drop_index API is not a correctness issue.
-                logger.debug("legacy full_text FTS index cleanup skipped: %s", exc)
+            if DISTRIBUTION_MODE:
+                # RO-mounted corpus: no repair attempts, no legacy cleanup.
+                # Spec §5.6.
+                verify_corpus_v3_state_readonly(table)
+            else:
+                # Operator mode: existing behavior (verify + repair + cleanup).
+                # FAIL CLOSED on invalid v3 state — was previously silent.
+                # CorpusInvalidError propagates to FastAPI lifespan → server
+                # refuses to start with a clear message.
+                verify_corpus_v3_state(table)
+                try:
+                    drop_full_text_index_if_present(table)
+                except Exception as exc:
+                    # Transient: legacy index cleanup is best-effort; missing
+                    # drop_index API is not a correctness issue.
+                    logger.debug("legacy full_text FTS index cleanup skipped: %s", exc)
         else:
             logger.info(
                 "startup: chunks table does not exist yet at %s; FTS index "
@@ -138,7 +158,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="Community Brain Retrieval API",
     description="Search coaching call transcripts by semantic similarity.",
-    version="0.2.0",
+    version=_APP_VERSION,
     lifespan=lifespan,
 )
 
@@ -284,7 +304,36 @@ DERIVED_FIELDS = (
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    """Health probe + version metadata.
+
+    Returns server identity (version, schema version, embedding model,
+    distribution mode flag). Used by verify-install.sh in Tier B
+    distribution to cross-check the running server against the
+    corpus-manifest.json shipped with the corpus blob.
+    """
+    from community_brain.ingestion.embedding import _active_embed_model
+    from community_brain.ingestion.schema import SCHEMA_VERSION
+
+    return {
+        "status": "ok",
+        "server_version": _APP_VERSION,
+        "schema_version": SCHEMA_VERSION,
+        "embedding_model": _active_embed_model(),
+        # COMMUNITY_BRAIN_DISTRIBUTION_MODE: accepts case-insensitive "true"
+        # only. "1", "yes", "on", and similar truthy-looking strings are
+        # NOT recognized. Operator scripts (verify-install.sh, compose) must
+        # use the literal string "true".
+        #
+        # NOTE: this re-reads the env var at request time, which may differ
+        # from the module-level DISTRIBUTION_MODE constant that governs
+        # route registration. Route registration is fixed at import time;
+        # /health reflects current env. Mutating the env post-startup is
+        # not a supported operator workflow -- restart the container to
+        # change distribution mode reliably.
+        "distribution_mode": (
+            os.environ.get("COMMUNITY_BRAIN_DISTRIBUTION_MODE", "").lower() == "true"
+        ),
+    }
 
 
 @app.get("/speaker-aliases-block", response_class=PlainTextResponse)
@@ -334,7 +383,10 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
         db = lancedb.connect(db_path)
         if "chunks" in db.list_tables().tables:
             _table = db.open_table("chunks")
-            verify_corpus_v3_state(_table)
+            if DISTRIBUTION_MODE:
+                verify_corpus_v3_state_readonly(_table)
+            else:
+                verify_corpus_v3_state(_table)
     except CorpusInvalidError as exc:
         raise HTTPException(
             status_code=503,
@@ -396,8 +448,10 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
     )
 
 
-@app.post("/ingest", response_model=IngestHTTPResponse)
-def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
+def _ingest_handler(
+    req: IngestHTTPRequest,
+    _key: str | None = Depends(_verify_api_key),
+) -> IngestHTTPResponse:
     """Ingest a session's artifacts into LanceDB.
 
     Artifact paths must be inside COMMUNITY_BRAIN_ARTIFACT_ROOT if that env
@@ -468,6 +522,10 @@ def ingest(req: IngestHTTPRequest, _key: str | None = Depends(_verify_api_key)):
         unknown_entities_flagged=result.unknown_entities_flagged,
         unknown_speakers_flagged=result.unknown_speakers_flagged,
     )
+
+
+if not DISTRIBUTION_MODE:
+    app.post("/ingest", response_model=IngestHTTPResponse)(_ingest_handler)
 
 
 # --- /sessions inventory endpoints ---
@@ -639,8 +697,10 @@ def _reindex_select_chunk_ids(filter_clause: dict) -> list[str]:
     return [arr["chunk_id"][i].as_py() for i in range(arr.num_rows)]
 
 
-@app.post("/reindex", response_model=ReindexResponse)
-def reindex(req: ReindexRequest, _key: str | None = Depends(_verify_api_key)):
+def _reindex_handler(
+    req: ReindexRequest,
+    _key: str | None = Depends(_verify_api_key),
+) -> ReindexResponse:
     """Match chunks against a filter and (in v2) apply re-extract/re-embed/delete.
 
     V1 scope: validates the operation, runs the filter, returns matched chunk_ids.
@@ -676,6 +736,10 @@ def reindex(req: ReindexRequest, _key: str | None = Depends(_verify_api_key)):
         matched_chunk_ids=matched,
         note=note,
     )
+
+
+if not DISTRIBUTION_MODE:
+    app.post("/reindex", response_model=ReindexResponse)(_reindex_handler)
 
 
 if __name__ == "__main__":
