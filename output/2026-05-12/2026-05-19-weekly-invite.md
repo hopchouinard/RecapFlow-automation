@@ -17,7 +17,7 @@ The goal is simple: if you're taking the time to show up, you shouldn't have to 
 We've got some loose threads to pull on this week: Patrick is finalizing packaging for that community brain RAG system, Ty is getting Isotope ready for broader reuse across your projects, and Elena is integrating Superpower into her disaster recovery workflow while nailing down cost estimations. If any of those projects resonate—or if you're still weighing whether to build that social media pipeline as a standalone Python app or go full Agent SDK like Hemal—drop your questions below.
 
 🔗 ZOOM LINK (save this)
-https://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1
+https://us06web.zoom.us/j/81995207847
 
 📅 WHEN
 Tuesday May 19th at 6PM ET
