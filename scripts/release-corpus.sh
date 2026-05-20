@@ -39,6 +39,18 @@ if [[ $# -ne 1 ]]; then
 fi
 
 VERSION="$1"
+
+# Validate VERSION before it flows into filesystem paths (STAGING_LOCAL,
+# TARBALL) and the eventual rm -rf. Allow alphanumerics, dots, dashes,
+# underscores — covers semver ('v1.0.0', 'v1.0.0-rc1') and date tags
+# ('2026-05-19'). Reject anything else, including '/', whitespace, and
+# any occurrence of '..' that could resolve outside the intended staging
+# directory.
+if [[ ! "${VERSION}" =~ ^[a-zA-Z0-9._-]+$ ]] || [[ "${VERSION}" == *..* ]]; then
+    echo "FATAL: VERSION '${VERSION}' contains unsafe characters; allowed pattern: [a-zA-Z0-9._-]+ with no '..'" >&2
+    exit 2
+fi
+
 VM_HOST="${VM_HOST:-n8n-automation.patchoutech.lab}"
 VM_USER="${VM_USER:-pchouinard}"
 VM_LANCEDB_PATH="${VM_LANCEDB_PATH:-/home/pchouinard/n8n/community-brain/lancedb}"
