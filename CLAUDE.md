@@ -184,8 +184,12 @@ The two modules interact at the filesystem boundary: n8n writes artifacts to `./
 
 **Hybrid Retrieval v3 + Stage C v2 — DEPLOYED (2026-04-30).** All 9 ingested sessions re-extracted under v1.1 schema with chunk-extraction-v2 prompt. Validation gate: 5/9 criteria passed cleanly, 2 manual checks pending (Open WebUI F8 cross-check + filter `[flags:]` rendering), 2 soft-misses on entity-in-top-10 and has_unresolved_question-in-top-10 (each off by 1 chunk; documented as v4 candidates). Track B (Plan C — backfill remaining ~57 sessions) now unblocked. See `docs/superpowers/specs/2026-04-18-community-brain-ingestion-pipeline-design.md` §10 v3 addendum for the full validation report.
 
-**What's still open — one operational track:**
-- **Track B:** Plan C — full backfill across remaining ~57 of 65 historical sessions (~12 hr overnight run, ~$3 cost). NOW UNBLOCKED — v3 is deployed and validated.
+**Tier B (retrieval-only distribution) — SHIPPED v1.0.0 (2026-05-26).** Public distribution repo at https://github.com/hopchouinard/community-brain-distribution. First corpus release tagged `v1.0.0` (71 sessions, 1499 chunks, 26 MB tar.gz). Retrieval-server image published to `ghcr.io/hopchouinard/community-brain-retrieval:1.0.0` (multi-arch amd64+arm64). Distribution repo tagged `tier-b-v1.0.0`. CI (`verify-on-pr.yml`) exercises a fixture-corpus smoke install on every PR and is green. Plan C backfill is also done as part of getting to v1.0.0 (corpus reflects 71 of 65+ historical sessions; the operator added a few more during ingestion).
+
+**What's still open:**
+- **Tier A (community-full)** — operator-only ingestion stack as a separable distribution. Separate spec needed.
+- **Recipient-facing announcement** — Skool post linking to the v1.0.0 release. Not done in v1.0.0 ship; operator-driven.
+- **DISTRIBUTION_REPO_TOKEN PAT** — intentionally NOT configured (Option B path). Each new image release requires a manual `docker-compose.yml` SHA bump + PR. Acceptable for low-frequency Tier B releases; revisit if cadence increases.
 
 **👉 START HERE in any new session:** [`docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md`](docs/superpowers/COMMUNITY-BRAIN-NEXT-STEPS.md).
 
