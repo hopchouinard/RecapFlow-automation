@@ -313,12 +313,12 @@ Verify the artifacts auto-commit + auto-push without manual intervention.
 
 ---
 
-## Task 6: Update root CLAUDE.md for VM-only convention
+## Task 6: Update root CLAUDE.md for VM-only convention ✅ DONE (2026-05-26)
 
 **Files:**
 - Modify: `CLAUDE.md` (root)
 
-- [ ] **Step 1: Identify Mac-references to remove or rewrite**
+- [x] **Step 1: Identify Mac-references to remove or rewrite**
 
 ```
 grep -n "Mac\|mac\|local copy\|Mac Mini\|/Volumes" CLAUDE.md
@@ -326,7 +326,7 @@ grep -n "Mac\|mac\|local copy\|Mac Mini\|/Volumes" CLAUDE.md
 
 Review each hit. Most can be deleted; some need rewording (e.g., "Mac sync" section becomes "Manual chat-file copy to VM watch/" or similar).
 
-- [ ] **Step 2: Add a "Development model" section near the top**
+- [x] **Step 2: Add a "Development model" section near the top**
 
 Sample text:
 
@@ -344,7 +344,7 @@ auto-commit to `main` at the end of Workflow 5 via an n8n
 post-ingest step.
 ```
 
-- [ ] **Step 3: Commit the CLAUDE.md change**
+- [x] **Step 3: Commit the CLAUDE.md change**
 
 ```
 ssh n8n-automation.patchoutech.lab "cd ~/n8n && git add CLAUDE.md && git commit -m 'docs(CLAUDE): document VM-only development model' && git push origin main"

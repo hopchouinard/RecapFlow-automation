@@ -8,6 +8,12 @@ A self-hosted **n8n** deployment using Docker Compose. This is NOT the n8n sourc
 
 n8n is a workflow automation tool (similar to Zapier/Make) with a visual editor accessible at port 5678.
 
+## Development model
+
+All RecapFlow-automation development happens on the n8n VM (`n8n-automation.patchoutech.lab`) at `~/n8n/`. Code edits, git commits, Claude Code sessions, and PR creation all originate there. A second clone exists at `/Volumes/NVMe_2TB_Work/Development/RecapFlow-automation` on the Mac Mini but is a read-only mirror — updated only via `git fetch` / `git pull`, never edited locally.
+
+The Mac Mini still has an operational role as the Zoom host: after a call, chat logs are **manually** copied to the VM's `watch/` directory (see "Mac-Side File Copy" below). The previous Automator + rsync automation was retired as too fragile. `scripts/` contains the legacy sync script kept for reference; it isn't wired up.
+
 ## Repository Structure
 
 - `docker-compose.yml` — Orchestrates n8n + PostgreSQL containers
@@ -17,7 +23,7 @@ n8n is a workflow automation tool (similar to Zapier/Make) with a visual editor 
 - `watch/` — Incoming files for workflow processing (mounted at `/home/node/watch` in container)
 - `output/` — Workflow output files organized by date (mounted at `/home/node/output` in container)
 - `workflows/` — Workflow JSON definitions for import into n8n
-- `scripts/` — Mac-side sync scripts and launchd/Automator configs
+- `scripts/` — legacy Mac-side sync scripts (no longer wired up; kept for reference)
 - `docs/plans/` — Design and implementation plan documents
 
 ## Common Commands
@@ -47,8 +53,7 @@ docker exec n8n n8n export:workflow --all
 
 ```
 Mac Mini (~/Documents/Zoom/)
-    → Automator Folder Action
-    → rsync to VM
+    → manual copy to VM (scp / drag-and-drop)
 
 [VM: n8n-automation.patchoutech.lab]
     ./watch/ ──→ [n8n container :5678] ──→ [PostgreSQL container (n8n_db)]
@@ -92,7 +97,7 @@ Local File Trigger → Validate & Check Partner → Merge Content → Create Out
 ```
 
 **Input files** (both required, matched by `YYYY-MM-DD` prefix):
-- `YYYY-MM-DD-zoom-chat.txt` — from Mac-side rsync
+- `YYYY-MM-DD-zoom-chat.txt` — manually copied from the Mac after the call
 - `YYYY-MM-DD-transcript.txt` — from Fathom poller or manual fetch
 
 **Output files** (`./output/YYYY-MM-DD/`):
@@ -129,20 +134,11 @@ Usage: Run List Recordings to find the recording_id, then run Fetch Transcript w
 
 Original chat-only summarizer. Kept for reference but replaced by the Merged Call Summarizer.
 
-### Mac-Side File Sync
+### Mac-Side File Copy (manual)
 
-Files flow from Mac Mini to the VM automatically:
+Zoom saves chat logs on the Mac Mini at `~/Documents/Zoom/<date> <time> <meeting>/`. The chat file is copied to the VM's `watch/` directory **manually** (drag-and-drop / scp / Finder) after the call, renamed to `YYYY-MM-DD-zoom-chat.txt`. n8n's Local File Trigger then picks it up.
 
-1. Zoom saves chat to `~/Documents/Zoom/<date> <time> <meeting>/`
-2. **Automator Folder Action** on `~/Documents/Zoom/` triggers `scripts/sync-zoom-chats.sh`
-3. Script extracts date from folder name, renames to `YYYY-MM-DD-zoom-chat.txt`, rsyncs to VM's `./watch/`
-4. n8n Local File Trigger picks up the new file
-
-Key files on Mac:
-- `~/scripts/sync-zoom-chats.sh` — the sync script
-- `~/Library/Workflows/Applications/Folder Actions/Sync Zoom Chats.workflow` — Automator action
-- `~/.zoom-chat-synced` — tracks processed files (clear to reprocess)
-- `~/.zoom-chat-sync.log` — sync log for debugging
+The previous automated path (Automator Folder Action + rsync via `scripts/sync-zoom-chats.sh`) was retired — it was too fragile to justify versus a one-step manual copy once per weekly call. The script is still in `scripts/` for reference, but it isn't wired up.
 
 ## Important Notes
 
@@ -150,7 +146,6 @@ Key files on Mac:
 - **Postgres is pinned to v17** — `postgres:latest` upgraded to v18 which changed the data directory layout and breaks existing volumes.
 - **Local File Trigger** is disabled by default in n8n 2.0+ — `NODES_EXCLUDE=[]` re-enables it.
 - **Code nodes** cannot use `require()` by default — `NODE_FUNCTION_ALLOW_BUILTIN` whitelist is required.
-- **SSH key auth** must be set up between Mac and VM for rsync. Key passphrase stored in macOS Keychain via `ssh-add --apple-use-keychain`.
 
 ## Critical Warnings
 
