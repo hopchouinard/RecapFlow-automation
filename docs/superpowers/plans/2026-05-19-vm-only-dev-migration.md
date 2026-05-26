@@ -350,7 +350,7 @@ post-ingest step.
 ssh n8n-automation.patchoutech.lab "cd ~/n8n && git add CLAUDE.md && git commit -m 'docs(CLAUDE): document VM-only development model' && git push origin main"
 ```
 
-- [ ] **Step 4: Pull on Mac so the read-only mirror reflects the new doc**
+- [x] **Step 4: Pull on Mac so the read-only mirror reflects the new doc**
 
 ```
 git -C /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation pull --ff-only origin main
