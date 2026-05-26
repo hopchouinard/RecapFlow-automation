@@ -259,7 +259,18 @@ From Mac, open VS Code, connect to VM via Remote SSH, open `/home/pchouinard/n8n
 
 ---
 
-## Task 5: n8n auto-commit hook for weekly artifacts
+## Task 5: n8n auto-commit hook for weekly artifacts ✅ DONE (2026-05-26)
+
+**Implementation chosen:** neither Option A nor Option B as originally written. Picked a simpler variant — a host-side cron job that polls for any uncommitted state under `output/` or `watch/` and commits it. No sentinel file, no in-workflow signal, no container changes.
+
+- Script: `scripts/commit-weekly-artifacts.sh`
+- Schedule: `30 6 * * 3` (Wed 02:30 EDT / 06:30 UTC), offset 30 min from the existing daily snapshot cron at 02:00 EDT
+- Log: `/home/pchouinard/recapflow-logs/commit-weekly-artifacts.log`
+- Idempotent: bails out cleanly when there's nothing to commit; refuses to run mid-rebase/merge or off `main`; only stages `output/` and `watch/`, never `-A`
+- Auth: relies on existing `gh`-managed HTTPS credentials on the VM
+
+Pending validation: first real fire-off after the Tuesday weekly call (Step 4 below).
+
 
 **Files:**
 - Modify: `workflows/merged-call-summarizer.json` (n8n workflow id 5)
@@ -289,7 +300,7 @@ The workflow currently ends with the `/ingest` POST step. The auto-commit must r
 grep -E '"name":|"type":' workflows/merged-call-summarizer.json | tail -20
 ```
 
-- [ ] **Step 3: Implement chosen option**
+- [x] **Step 3: Implement chosen option** (host-side cron variant — see Task 5 header)
 
 **For Option B (recommended):**
 
