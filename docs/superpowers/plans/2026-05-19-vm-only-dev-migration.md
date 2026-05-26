@@ -371,11 +371,11 @@ git -C /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation pull --ff-only or
 
 ---
 
-## Task 7: Mac clone freeze marker
+## Task 7: Mac clone freeze marker ✅ DONE (2026-05-26, on Mac)
 
 **Files:** None modified in the repo. One local-only marker file added (gitignored via `.git/info/exclude`).
 
-- [ ] **Step 1: Add the read-only marker**
+- [x] **Step 1: Add the read-only marker**
 
 ```
 echo "This clone is read-only. Edit on the VM instead." > /Volumes/NVMe_2TB_Work/Development/RecapFlow-automation/.MAC-CLONE-READ-ONLY
