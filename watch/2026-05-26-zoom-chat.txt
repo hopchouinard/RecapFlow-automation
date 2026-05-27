@@ -1,0 +1,448 @@
+2026-05-19 19:53:04 From Juan Torres to Everyone:
+	https://wavespeed.ai/dashboard
+	
+2026-05-19 20:03:11 From Mitch McCauley to Everyone:
+	Have you seen this video? https://www.youtube.com/watch?v=S9EGx6ik-18&t=1924s
+	
+2026-05-19 20:03:22 From Mitch McCauley to Everyone:
+	@pchouinard
+	
+2026-05-19 20:17:59 From Mitch McCauley to Everyone:
+	https://anthropic.skilljar.com/claude-code-in-action
+	
+2026-05-19 20:20:20 From Juan Torres to Everyone:
+	Use a Tony Robins motivational speech at the start of your session
+	
+2026-05-19 20:27:20 From Mitch McCauley to Everyone:
+	Thanks guys, take care
+	
+2026-05-19 20:28:21 From Juan Torres to Everyone:
+	Gotta go folks, see ya
+	
+2026-05-26 17:55:11 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-05-26 18:02:56 From Brandon Hancock to Everyone:
+	Screenshot 2026-05-26 at 6.02.48 PM.png
+	
+2026-05-26 18:10:04 From Elijah Stambaugh's Sembly Agent to Everyone:
+	Hi, this is Elijah Stambaugh's Sembly Agent. This meeting is being recorded.
+	
+2026-05-26 18:13:24 From Bastian Venegas Arevalo to Everyone:
+	Should the app generate audio for the input word for pronunciation @Hiral ?
+	
+2026-05-26 18:13:35 From Ryan - One Stop Creative Agency to Everyone:
+	Does this need AI for the calls? Could you not just ingest the entire dictionary in all languages you desire then just store all results in the database and then just call the result for each word searched each time?
+	
+2026-05-26 18:14:26 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Does this need AI for the calls? Could you not jus...":
+	You could do that or leverage a cheap LLM since it’s general knowledge any LLM should have in its training data. Infrastructure vs LLM cost
+	
+2026-05-26 18:17:46 From Tom Welsh to Everyone:
+	Replying to "Does this need AI for the calls? Could you not jus...":
+	@hiral, remember you can come back to this recording over and over again to review what was said
+	Hiral:👍
+	
+2026-05-26 18:20:54 From Hiral to Everyone:
+	Replying to "Should the app generate audio for the input word f...":
+	yes it does both slow pronunciation and regular one
+	
+2026-05-26 18:23:40 From Juan Torres to Everyone:
+	Fear is the force that pushes firms to adapt AI in the Darwinian struggle for survival
+	Bastian Venegas Arevalo:❤️
+	Tom Welsh, Morgan Cook, Patrick Chouinard:👍
+	
+2026-05-26 18:25:07 From Juan Torres to Everyone:
+	Cojones
+	
+2026-05-26 18:26:07 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	yeah always shoot high (within reason).  when someone just accepts your offer so fast you are like oh shit lol.  value based.  this came from my video strategy days when i learned this
+	
+2026-05-26 18:27:38 From Patrick Chouinard to Everyone:
+	https://github.com/hopchouinard/community-brain-distribution
+	Biggi Fraley:❤️
+	Bastian Venegas Arevalo, Brandon Hancock, Juan Torres, Tom Welsh, Ty Wells:🔥
+	
+2026-05-26 18:28:09 From Bastian Venegas Arevalo to Everyone:
+	Replying to "https://github.com/hopchouinard/community-brain-di...":
+	⭐ the repo everybody!
+	
+2026-05-26 18:29:42 From Juan Torres to Everyone:
+	Is there a refund policy if this does not work?
+	Bastian Venegas Arevalo:😂
+	
+2026-05-26 18:30:27 From Ryan - One Stop Creative Agency to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.comcameras dead again... :P
+	
+2026-05-26 18:31:46 From Biggi Fraley to Everyone:
+	I've been following Hermes for months, and never heard a con.
+	
+2026-05-26 18:32:38 From Patrick Chouinard to Everyone:
+	https://github.com/clara-patchou-ai
+	
+2026-05-26 18:36:49 From Alex Wilson to Everyone:
+	I have a Mac mini too, and didn’t care for the Open Claw, so I built my own assistant.  A bit rough, but works well.  Will try Hermes as well though!  Thanks!
+	
+2026-05-26 18:36:55 From Juan Torres to Everyone:
+	https://www.youtube.com/watch?v=QQEgIo4Juxg&list=PLzdsqB48n2OyWUpKBt9xwkI5zJ34rkWpQ&index=175
+	
+2026-05-26 18:37:12 From Biggi Fraley to Everyone:
+	@Patrick Chouinard Have you found it necessary to add an additional memory layer to Hermes?
+	
+2026-05-26 18:37:42 From Morgan Cook to Everyone:
+	Replying to "@Patrick Chouinard Have you found it necessary to ...":
+	Try Honcho
+	
+2026-05-26 18:37:56 From Patrick Chouinard to Everyone:
+	Replying to "@Patrick Chouinard Have you found it necessary to ...":
+	Yes I have added Honcho https://honcho.dev/
+	
+2026-05-26 18:38:22 From Biggi Fraley to Everyone:
+	Replying to "@Patrick Chouinard Have you found it necessary to ...":
+	Sweet. Thanks, @Morgan Cook & @Patrick Chouinard!
+	
+2026-05-26 18:39:07 From Adam to Everyone:
+	@Bastian Venegas Arevalo I saw a post on LinkedIn from someone looking to build a patient state machine. She might be able to benefit from your experience.
+	
+	https://www.linkedin.com/posts/bethany-lyons-0395aa74_im-married-to-the-rarest-man-earth-one-activity-7455979395191619584-FsuN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAEktZ4BaAWqoRLCX-N3kErE02CxZlqKylU
+	
+2026-05-26 18:40:26 From Bastian Venegas Arevalo to Everyone:
+	Replying to "@Bastian Venegas Arevalo I saw a post on LinkedIn ...":
+	Thank you Adam!
+	
+2026-05-26 18:40:35 From Biggi Fraley to Everyone:
+	@Brandon Hancock, man, you are really falling behind skipping these weekly calls. LOL
+	Patrick Chouinard, Juan Torres, Brandon Hancock:😂
+	
+2026-05-26 18:42:10 From Ty Wells to Everyone:
+	Guys in Prague, after 20k of steps today, I’m crashing here.  Will check ReCap later.  See ya next week
+	Biggi Fraley, Ryan - One Stop Creative Agency:👋
+	
+2026-05-26 18:42:30 From Patrick Chouinard to Everyone:
+	@Brandon Hancock https://github.com/openai/codex-plugin-cc
+	Brandon Hancock:❤️
+	
+2026-05-26 18:44:32 From Brandon Hancock to Everyone:
+	https://crows.org/
+	
+2026-05-26 18:50:14 From Bastian Venegas Arevalo to Everyone:
+	Replying to "@Bastian Venegas Arevalo I saw a post on LinkedIn ...":
+	@Adam yes she’s absolutely right.
+	Screenshot2026_05_26_185008.jpg
+	
+2026-05-26 18:56:08 From Ryan - One Stop Creative Agency to Everyone:
+	you can skip my go and let Scott go in my place just doing bits and bobs this week and been catching up!
+	
+2026-05-26 18:56:22 From Juan Torres to Everyone:
+	Baller move
+	
+2026-05-26 18:56:38 From Bastian Venegas Arevalo to Everyone:
+	The DGX Spark NVIDIA @Brandon Hancock ?
+	
+2026-05-26 18:56:48 From Juan Torres to Everyone:
+	AWS competitor
+	
+2026-05-26 18:57:10 From Bastian Venegas Arevalo to Everyone:
+	@Tom Welsh you should check Alex Ziskind’s channel. He does all that fun Mac Studio rack thing + the best ways to connect them
+	
+2026-05-26 18:57:33 From Juan Torres to Everyone:
+	He will need a nuclear reactor to get it start it
+	
+2026-05-26 18:57:45 From Bastian Venegas Arevalo to Everyone:
+	https://www.youtube.com/results?search_query=alex+ziskind+mac+studio+rack
+	Screenshot2026_05_26_185736.jpg
+	
+2026-05-26 18:57:52 From Biggi Fraley to Everyone:
+	You'd probably have to get a couple of Tesla power-walls to go with it.
+	
+2026-05-26 18:58:19 From Tom Welsh to Everyone:
+	yunderbolt 5 all the way
+	
+2026-05-26 18:59:29 From Biggi Fraley to Everyone:
+	Okay, let's never again complain about a $200/month subscription. ;-)
+	Patrick Chouinard, Alex Wilson, Brandon Hancock:😂
+	
+2026-05-26 19:02:12 From Biggi Fraley to Everyone:
+	Okay, @Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com, since you keep asking, you may add me to the list - Seriously...thank you! ❤️
+	
+2026-05-26 19:04:46 From Tom Welsh to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com add me please
+	
+2026-05-26 19:06:04 From Juan Torres to Everyone:
+	Make a video
+	
+2026-05-26 19:06:14 From Alex Wilson to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com I will try it out if you would like.
+	
+2026-05-26 19:07:27 From Biggi Fraley to Everyone:
+	That's fantastic!!! I remember you sharing that app, Scott.
+	
+2026-05-26 19:11:12 From Biggi Fraley to Everyone:
+	Now imagine...you could charge people every time they use the toilet. And if it's a big event... 😂
+	
+2026-05-26 19:11:44 From Bastian Venegas Arevalo to Everyone:
+	The margins on parking spots and even building parking lots are outrageous
+	Brandon Hancock:➕
+	
+2026-05-26 19:11:59 From Bastian Venegas Arevalo to Everyone:
+	Tell him you’ll add them to Waze and Google Maps too
+	
+2026-05-26 19:12:26 From Juan Torres to Everyone:
+	Ask for equity in exchange for labor
+	
+2026-05-26 19:16:35 From Adam to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com I’m in Nevada. The Reno casinos used to let people park for free and take their shuttle to the airport. They recently stopped. I might be just that they don’t know how to monetize their empty spaces.
+	Juan Torres:🔥
+	
+2026-05-26 19:19:13 From Bastian Venegas Arevalo to Everyone:
+	Are you talking about the Auto Reserch project? or something else @Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com ?
+	
+2026-05-26 19:24:18 From Biggi Fraley to Everyone:
+	@Brandon Hancock As a YouTuber, do you use an app to automatically blur sensitive information on the screen, or does your editor do it afterward?
+	
+2026-05-26 19:24:39 From Brandon Hancock to Everyone:
+	Replying to "@Brandon Hancock As a YouTuber, do you use an app ...":
+	I would always just tell my editor to blur them!
+	Biggi Fraley:👍
+	
+2026-05-26 19:24:55 From Brandon Hancock to Everyone:
+	Replying to "@Brandon Hancock As a YouTuber, do you use an app ...":
+	I’ve accidentally recorded my own credit card and all sorts of stuff lol
+	Biggi Fraley:😮
+	
+2026-05-26 19:28:23 From Tom Welsh to Everyone:
+	Replying to "@Brandon Hancock As a YouTuber, do you use an app ...":
+	I have this $50 for life
+	{D33EC7FD-0861-4007-BBE2-2FEE079314E0}.png
+	Biggi Fraley:❤️
+	
+2026-05-26 19:28:28 From Tom Welsh to Everyone:
+	Replying to "@Brandon Hancock As a YouTuber, do you use an app ...":
+	chrome extension
+	
+2026-05-26 19:29:28 From Bastian Venegas Arevalo to Everyone:
+	Very cool. That looks like a real ad
+	
+2026-05-26 19:29:46 From Elijah Stambaugh to Everyone:
+	Yes please!
+	
+2026-05-26 19:29:53 From Bastian Venegas Arevalo to Everyone:
+	I want in! 😄
+	
+2026-05-26 19:29:55 From Tom Welsh to Everyone:
+	send it :)
+	
+2026-05-26 19:32:00 From Bastian Venegas Arevalo to Everyone:
+	Oh great idea
+	
+2026-05-26 19:32:46 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	https://github.com/scott-rippey/video-generator
+	Bastian Venegas Arevalo, Adam:⭐
+	Biggi Fraley, Patrick Chouinard, Elijah Stambaugh, Juan Torres:🔥
+	
+2026-05-26 19:33:19 From Biggi Fraley to Everyone:
+	Happy birthday, @Morgan Cook
+	Alex Wilson, Adam:🎉
+	
+2026-05-26 19:34:14 From Tom Welsh to Everyone:
+	You gotta spend the mola, or the taxman comes for it
+	
+2026-05-26 19:35:01 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	would love to see what you guys create with the video gen - feel free to email me 
+	Biggi Fraley:👍
+	
+2026-05-26 19:35:27 From Juan Torres to Everyone:
+	 I feel like I move faster on my own than with a dev team....feel you
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:❤️
+	
+2026-05-26 19:35:31 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	email me as well if you want any of the other docs i mentioned
+	
+2026-05-26 19:35:39 From Alex Wilson to Everyone:
+	ABSOLUTELY!
+	
+2026-05-26 19:36:15 From Alex Wilson to Everyone:
+	Google making things difficult that is.
+	
+2026-05-26 19:37:13 From Patrick Chouinard to Everyone:
+	For Google, that is what happen when you build a back end made of part from multiple acquired companies…
+	
+2026-05-26 19:37:28 From Bastian Venegas Arevalo to Everyone:
+	About things being more fun if you can do it along with an agent: Everything can be a skill. Including full programs. You just gotta ask nicely.
+	
+	I’m controlling some native apps (Ableton, a software for music producers) programatically using codex.
+	
+	And any app you build in typescript, python or whatever can expose its functions as a CLI for a skill to leverage
+	Alex Roca, Biggi Fraley:👍
+	
+2026-05-26 19:38:26 From Bastian Venegas Arevalo to Everyone:
+	Replying to "would love to see what you guys create with the vi...":
+	I’ll submit a PR if i can think of something to add! I have a similar project but i’m a beginner in terms of editing. Still, i think i added a nice trick!
+	
+2026-05-26 19:38:51 From Alex Roca to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	Nice, do you ask agent to do EQing or Compression to tracks? Or what type of workflow do you use in Ableton?
+	
+2026-05-26 19:39:33 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	I controll it using js and python scripts for Max For Live, which is they use to expose their APIs for people building plugins for music producers
+	
+2026-05-26 19:40:22 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	Im using it to help me write songs using MIDI and controlling effects! Then I ask it to suggest instruments that go with my vibe and wow. Huge unlocker for my creativity
+	
+2026-05-26 19:40:37 From Biggi Fraley to Everyone:
+	Gorgeous slides, Morgan!
+	
+2026-05-26 19:41:22 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	Since MIDI, You can get precision up to the note. »Oh I dont like that note. Can you make it less dissonant? what options do we have?« and it will explain why i dont like it and which notes woould be more suitable
+	
+2026-05-26 19:41:40 From Alex Roca to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	Nice, bro… that is dope, sounds amazing. I started in Live, now Ivam Luna user now, but for these tricks I am willing to go back hehe
+	
+2026-05-26 19:41:54 From Alex Roca to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	Do you have a music profile that I could get to listen to your tunes?
+	
+2026-05-26 19:42:19 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	Luna is that the software from Universal Audio?
+	
+2026-05-26 19:42:49 From Tom Welsh to Everyone:
+	sorry, gotta drop. brainm cant code and listen :)
+	
+2026-05-26 19:42:58 From Tom Welsh to Everyone:
+	and I cant type
+	Brandon Hancock, Alex Wilson:❤️
+	
+2026-05-26 19:43:00 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	I pictured you as a Reaper user! I bet thats even CRAZIER than Ableton. They are very dev-pilled
+	
+2026-05-26 19:44:29 From Alex Roca to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	@Bastian Venegas Arevalo  yep, I got an Apollo Twin X and moved to Luna, amazing… a mix between ProTools and Logic, something in the middle.  I did have my Reaper time, it is amazing jeje, even did some audacity, time, that is where I learned to swim
+	
+2026-05-26 19:45:05 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	I have the Twin X too!
+	
+2026-05-26 19:45:35 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	I’m glad the software is cool. Now i’ll have to give it a chance
+	
+2026-05-26 19:46:34 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	 i forgot to mention, if anyone uses n8n, i installed their cli skill, but it's dumb and only knows the json input.  i have a  repo in cc that rips documentation from 2 of their repos and then strips the signal noise, the skill then looks now at this documentation so it knows how to build nodes etc.  if anyone needs this email me and i'd be happy to set you up
+	Alex Roca, Biggi Fraley:👍
+	Brandon Hancock, Patrick Chouinard:🔥
+	
+2026-05-26 19:47:02 From Brandon Hancock to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com did you drop the video repo link?
+	
+2026-05-26 19:47:07 From Alex Roca to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	@Bastian Venegas Arevalo Nice…. This is a game changer with the DSP. Definitely, give  a chance to Luna. It has been good to me, great with UA plugins…
+	Bastian Venegas Arevalo:❤️
+	
+2026-05-26 19:47:28 From Adam to Everyone:
+	Replying to "@Scott Rippey | @scottmichaelmedia | scottmichaelm...":
+	https://github.com/scott-rippey/video-generator
+	
+2026-05-26 19:47:35 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	yes it's: https://github.com/scott-rippey/video-generator
+	Brandon Hancock:❤️
+	
+2026-05-26 19:47:41 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	got buried lol
+	
+2026-05-26 19:49:11 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	Youre probably familiar with Andrew Huang from Canada?
+	
+2026-05-26 19:50:18 From Bastian Venegas Arevalo to Everyone:
+	Just a nerd comment: you can have issues scanning QR codes with a mobile device because every web browser app in iOS is safari under the hood. Even chrome lol. While in android it’s different. 
+	
+	And when accessing it via the native API works differently.
+	Juan Torres:😂
+	
+2026-05-26 19:51:13 From Juan Torres to Everyone:
+	Replying to "Just a nerd comment: you can have issues scanning ...":
+	These tech monopolies have to make shit differently
+	
+2026-05-26 19:51:40 From Bastian Venegas Arevalo to Everyone:
+	@Morgan Cook If you struggle with PDF extraction, even with the LLM vision model, I recommend landing.ai for extracting via API. It costs pennies. I’m using it in production. Couldn’t be happier.
+	Brandon Hancock:🔥
+	
+2026-05-26 19:53:24 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	He’s a music producer and youtube like with 2m subscribers. He got me into those plugins in a course I took in Studio. Lasts 30 days and you make 3 songs. And I fell in love with Universal Audio plugins.
+	
+2026-05-26 19:53:59 From Bastian Venegas Arevalo to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	I bought the interface AND a mac because my windows laptop didnt have thunderbolt connections
+	
+2026-05-26 19:55:43 From Alex Roca to Everyone:
+	Replying to "About things being more fun if you can do it along...":
+	@Bastian Venegas Arevalo oh yeah, he is my boi, great content to explore tools. I feel you, I needed to get an M1 cause I could use my oldie jeje
+	Bastian Venegas Arevalo:❤️
+	
+2026-05-26 19:57:18 From Juan Torres to Everyone:
+	There is something therapeutic about desk set up
+	
+2026-05-26 20:00:38 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	that's pretty sweet @Juan Torres! i'm a nano banana fan all the way still so far myself
+	Juan Torres:❤️
+	
+2026-05-26 20:03:33 From Alex Roca to Everyone:
+	That is really cool @Juan Torres
+	Juan Torres:❤️
+	
+2026-05-26 20:06:15 From Alex Wilson to Everyone:
+	Pricing is huge….
+	
+2026-05-26 20:06:37 From Alex Roca to Everyone:
+	@Juan Torres  you could send a pdf with a collage with selected cool pics… a quick win that they would love
+	
+2026-05-26 20:09:33 From Bastian Venegas Arevalo to Everyone:
+	That’s genious @Brandon Hancock !Almost dont need sentry or posthog then. FOr the essentials
+	
+2026-05-26 20:11:13 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	next level folks lol.
+	
+2026-05-26 20:11:50 From Juan Torres to Everyone:
+	Replying to "@Juan Torres  you could send a pdf with a collage ...":
+	For sure, cool pics that I like?
+	
+2026-05-26 20:11:57 From Bastian Venegas Arevalo to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com what payment providers did you activate for the parking spot ?
+	
+2026-05-26 20:12:44 From Alex Wilson to Everyone:
+	Good to see you @Brandon Hancock .  Any ShipKit calls coming up?
+	
+2026-05-26 20:13:43 From Brandon Hancock to Everyone:
+	Replying to "Good to see you @Brandon Hancock .  Any ShipKit ca...":
+	Tentatively. We are just slammed working trying to get some more traction and leads so after things calm down and not doing 12+ hours a day I’d love ot bring them back
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:❤️
+	Alex Wilson:💜
+	
+2026-05-26 20:16:46 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "@Scott Rippey | @scottmichaelmedia | scottmichaelm...":
+	my response answered this correct?
+	Bastian Venegas Arevalo:👍
+	
+2026-05-26 20:18:31 From Juan Torres to Everyone:
+	Pay me in parking space
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com, Patrick Chouinard, Adam:😂
+	
+2026-05-26 20:19:36 From Adam to Everyone:
+	Replying to "Pay me in parking space":
+	a hedge against park-flation
+	Juan Torres:😂
+	
+2026-05-26 20:20:39 From Biggi Fraley to Everyone:
+	🤞Wishing all the best, Brandon.
+	
