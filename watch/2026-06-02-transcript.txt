@@ -1,0 +1,1237 @@
+[00:00:05] Patrick Chouinard: Hey, Marc.
+[00:00:06] Patrick Chouinard: How's it going?
+[00:00:15] Patrick Chouinard: Can you hear me?
+[00:00:55] Bastian Venegas Arevalo: This meeting is being recorded.
+[00:00:58] Bastian Venegas Arevalo: Hey, guys.
+[00:00:59] Bastian Venegas Arevalo: Hello.
+[00:01:00] Patrick Chouinard: Hi, Bastian.
+[00:01:04] Patrick Chouinard: Can you hear me?
+[00:01:06] Bastian Venegas Arevalo: Yep, perfect.
+[00:01:07] Patrick Chouinard: Okay, good.
+[00:01:09] Patrick Chouinard: I think it's just Marc who is not...
+[00:01:12] Patrick Chouinard: I think his sound is not up or something.
+[00:01:16] Bastian Venegas Arevalo: Yeah, he seems very focused.
+[00:01:24] Patrick Chouinard: Maybe not so much.
+[00:01:27] Bastian Venegas Arevalo: Grab a coffee and be right back.
+[00:01:43] Patrick Chouinard: No problem.
+[00:02:11] Patrick Chouinard: Hey Marc, can you hear me?
+[00:02:18] Marc Juretus: You're talking, I can't hear you.
+[00:02:21] Patrick Chouinard: Okay, because...
+[00:02:26] Marc Juretus: I believe you're on mute.
+[00:02:48] Patrick Chouinard: Can you hear me now?
+[00:02:54] Patrick Chouinard: Hey Patrick.
+[00:02:58] Patrick Chouinard: Hey Ty.
+[00:03:05] Ty Wells: The golf course.
+[00:03:06] Ty Wells: All day.
+[00:03:09] Patrick Chouinard: Just to be different.
+[00:03:12] Ty Wells: Gotta mix it up a little.
+[00:03:16] Patrick Chouinard: No worries.
+[00:03:32] Ty Wells: I tried to stay on the call last week.
+[00:03:36] Ty Wells: I was at Prague and I was the time zone.
+[00:03:38] Ty Wells: It was like one or two o'clock in the morning.
+[00:03:40] Patrick Chouinard: I was just dying.
+[00:03:43] Ty Wells: And I was trying to be quiet.
+[00:03:45] Ty Wells: My wife was sleeping.
+[00:03:47] Ty Wells: And so that didn't work out as well as I planned.
+[00:03:53] Patrick Chouinard: Hey, you tried as hard as you could.
+[00:03:56] Ty Wells: I did.
+[00:03:58] Ty Wells: Thank you.
+[00:04:07] Patrick Chouinard: Give people a couple more minutes to join, and then I'll take the screenshot and we'll get started.
+[00:04:21] Ola Oyo: Patrick Patrick, how's it going?
+[00:04:22] Patrick Chouinard: Patrick Good, good.
+[00:04:24] Patrick Chouinard: Thank you.
+[00:04:25] Patrick Chouinard: Yourself?
+[00:04:26] Ola Oyo: I am good, thanks.
+[00:04:39] Ola Oyo: Patrick Chouinard still lead these?
+[00:04:41] Ola Oyo: I noticed you are the anchor for today's meet.
+[00:04:45] Ola Oyo: I haven't been around for a while, so...
+[00:04:47] Patrick Chouinard: Yeah, he's on a bit of a hiatus right now.
+[00:04:51] Patrick Chouinard: He's there once per month.
+[00:04:53] Patrick Chouinard: Patrick was there last week, but...
+[00:04:55] Patrick Chouinard: Patrick Chouinard Me and Paul...
+[00:05:00] Patrick Chouinard: Miller have take over to cover the other weeks while he's working on this project before he comes back.
+[00:05:06] Ola Oyo: Cool stuff.
+[00:05:08] Ola Oyo: I'm guessing he starts up with the, I think it was the flyer department?
+[00:05:14] Patrick Chouinard: EMS.
+[00:05:15] Ola Oyo: EMS, yeah.
+[00:05:16] Ola Oyo: EMS.
+[00:05:17] Ola Oyo: That's really kicked off and it's taken up most of his time, yeah?
+[00:05:20] Patrick Chouinard: Yep, absolutely.
+[00:05:21] Patrick Chouinard: So he's the...
+[00:05:22] Ola Oyo: Awesome.
+[00:05:24] Patrick Chouinard: We're keeping the community alive while the master is away.
+[00:05:31] Ola Oyo: Good stuff.
+[00:05:32] Ola Oyo: Good stuff.
+[00:05:32] Ola Oyo: Thanks.
+[00:05:33] Patrick Chouinard: I'm going to give people another couple of minutes because I just want to be able to take the screenshot for the call order.
+[00:06:01] Patrick Chouinard: Hey, Ryan.
+[00:06:02] Patrick Chouinard: You're in a different place this week.
+[00:06:05] Patrick Chouinard: Or your camera's at that odd angle?
+[00:06:07] Ryan - One Stop Creative Agency: In the usual place, just on the laptop.
+[00:06:11] Patrick Chouinard: Oh, okay.
+[00:06:12] Ryan - One Stop Creative Agency: A bit of a lower angle, just pointing at the ceiling.
+[00:06:15] Patrick Chouinard: Okay, well, we'll get started and we'll see who joined in.
+[00:06:44] Patrick Chouinard: Just, Oyo, I've seen that you've posted something on the site.
+[00:06:50] Patrick Chouinard: You had a question about migrating to Google ADK.
+[00:06:54] Patrick Chouinard: Can you elaborate on a little bit?
+[00:06:57] Ola Oyo: Yeah.
+[00:06:59] Ola Oyo: So...
+[00:07:00] Ola Oyo: Google had sent me a word email just saying that, you know, they were going to disconnect if people weren't constantly using the Vertex AI, so I was just having a look at it and I realized that they had done quite a number of changes in moving from 1.0 to 2.0, and they were quite also, because I use my database as storage inside of Vertex, so there were quite a number of migrations and also in terms of how they've changed their, I think they've moved more to a graph linear structure.
+[00:07:34] Ola Oyo: So we haven't migrated yet to ADK 2.0, and just before doing that, was wondering if, you know, the community had touched on anything around it, because really with ADK 1.0, this was where ADK 2, and Brandon, you know, he had stuff that he had put out on all, so I was just wondering if there was anything on 2.0 that, you know, the community had been working on.
+[00:07:59] Patrick Chouinard: I've not been the best.
+[00:08:00] Patrick Chouinard: Biggest user of ADK so far, I don't know, Ty or Ryan, have you had a chance to touch it?
+[00:08:08] Ryan - One Stop Creative Agency: Not on my end, Scott probably is your best bet, he loves everything Google, but I don't think he's coming on because he's driving up north today, so I don't think he's going to be coming on.
+[00:08:18] Patrick Chouinard: Do you know who we're talking about when we're talking about Ryan?
+[00:08:22] Patrick Chouinard: Not Ryan, sorry, yeah.
+[00:08:26] Patrick Chouinard: Sorry, I'm a bit tired today.
+[00:08:28] Ola Oyo: No worries.
+[00:08:30] Ola Oyo: No, I don't know him.
+[00:08:33] Ola Oyo: But I'll probably just search for him on the community.
+[00:08:36] Ola Oyo: See if I can search for him.
+[00:08:37] Ola Oyo: What's his name?
+[00:08:40] Patrick Chouinard: Scott Rippey.
+[00:08:41] Ola Oyo: Scott Rippey.
+[00:08:42] Patrick Chouinard: Okay, I'll check him out.
+[00:08:43] Ola Oyo: Thanks Ryan.
+[00:08:44] Patrick Chouinard: Yeah.
+[00:08:45] Ola Oyo: Okay, seeing it, thanks.
+[00:08:47] Patrick Chouinard: He tries to be on the call once in a while when he has time, but he's extremely nice to talk to.
+[00:08:55] Patrick Chouinard: Believe me, if he can help, I know he will.
+[00:08:57] Ola Oyo: Okay, I will definitely.
+[00:09:00] Ola Oyo: Thanks for that pointer.
+[00:09:03] Patrick Chouinard: Perfect.
+[00:09:06] Patrick Chouinard: Looking at the other question.
+[00:09:10] Patrick Chouinard: know Juan had a question, I hope he's going to join.
+[00:09:13] Patrick Chouinard: That one I might be a little bit more able to answer.
+[00:09:18] Patrick Chouinard: And I know we've got a couple of questions also around Shipkit.
+[00:09:24] Patrick Chouinard: I'm just speaking out loud because it's going to be in the recording after the call.
+[00:09:30] Patrick Chouinard: But for Shipkit, I've reached out to Brendan and asked him to answer directly.
+[00:09:38] Patrick Chouinard: I don't want to answer for him on those ones.
+[00:09:44] Patrick Chouinard: I think this week seems that it's going to be going quite quickly.
+[00:09:51] Patrick Chouinard: There's not a lot of people.
+[00:09:53] Patrick Chouinard: Ryan, do you want to share a bit with us?
+[00:09:58] Ryan - One Stop Creative Agency: Yeah, it's not the same.
+[00:10:00] Ryan - One Stop Creative Agency: Well, as of last week, to be honest, because I do video stuff as well, all I do is spend my evenings editing, and my days shooting stuff, and then fitting and coding in between, so I've just been sort of bug fixing and upgrading little bits here and there, and I'm trying to sell as many of these, I don't know if you recall, I showed you the screen software that I made for retail screens a little while ago, so I've got 10 screens now, smattered around the UK, so I'm just trying to scale that up, so I use the SEO agent that's got one I made, and went to town on it, I know it says you shouldn't, but I've found real success with creating like, localised pages with keywords and stuff strewn in it, that it ranks locally and in particular towns and stuff where people are typing in, you know, retail screens, that sort of thing, so I might have added about 300 pages to my marketing website, with all sorts of combinations of keywords and locations and towns and cities across the whole of the UK to try and see you
+[00:11:00] Ryan - One Stop Creative Agency: And it seems to have worked.
+[00:11:01] Ryan - One Stop Creative Agency: It's ranking quite nicely in quite a lot of places.
+[00:11:03] Ryan - One Stop Creative Agency: So I submitted that two days ago to Google.
+[00:11:06] Ryan - One Stop Creative Agency: So it's already picked up quite nicely.
+[00:11:09] Ryan - One Stop Creative Agency: So hopefully I get started getting some inbound stuff because currently I'm literally walking down high streets, going into shop to shop to shop, having conversations with people, which obviously isn't the most efficient way to get new business.
+[00:11:21] Ryan - One Stop Creative Agency: So I'm just trying to try to build that up, really.
+[00:11:24] Ryan - One Stop Creative Agency: So that's been that I've not had a minute to try and do that lead application.
+[00:11:28] Ryan - One Stop Creative Agency: I've not touched it in like three weeks.
+[00:11:30] Ryan - One Stop Creative Agency: So I need to get back to that because that could be a bit of a moneymaker.
+[00:11:33] Ryan - One Stop Creative Agency: think I've been asked to create a real estate, like AI second brain type thing.
+[00:11:44] Ryan - One Stop Creative Agency: So I'm going to be tapping you and Scott Patrick for your iron claw setups, but I'm going to, I'm going to have to make it a little less secure because I'm going to have to tap it into a bunch of different things to try and make it like a localized brain for one of my agents that I do.
+[00:11:58] Ryan - One Stop Creative Agency: do a lot of video stuff for them.
+[00:12:00] Ryan - One Stop Creative Agency: Now, potentially want me to do that.
+[00:12:02] Ryan - One Stop Creative Agency: It's a whole thing.
+[00:12:03] Ryan - One Stop Creative Agency: So I'm just scoping that out at the moment, which think will go on.
+[00:12:07] Patrick Chouinard: Chouinard, Whenever you want, I'm going to be more than happy to help in whichever way I can.
+[00:12:12] Ryan - One Stop Creative Agency: Thanks.
+[00:12:13] Ryan - One Stop Creative Agency: I will definitely take you up on that when it comes to it.
+[00:12:17] Ryan - One Stop Creative Agency: So yeah, that's kind of the big stuff at the minute that I'm working on.
+[00:12:19] Ryan - One Stop Creative Agency: I've got a couple of small websites that I'm doing as well that are more just websites rather than web apps.
+[00:12:25] Ryan - One Stop Creative Agency: Patrick then I'm building a big e-commerce thing for a brand over in the US that's actually now about 80% of the way there.
+[00:12:34] Ryan - One Stop Creative Agency: I've got a lot of shipping.
+[00:12:36] Ryan - One Stop Creative Agency: Patrick I've got to hook it into the USPS shipping system to be able to generate and print labels.
+[00:12:41] Ryan - One Stop Creative Agency: So that's the last step.
+[00:12:44] Ryan - One Stop Creative Agency: I've left it to last because it's the scariest one where I'm like, this looks horrible to try and make it work.
+[00:12:50] Ryan - One Stop Creative Agency: Chouinard, And then I've got to integrate it with the label printer.
+[00:12:54] Ryan - One Stop Creative Agency: They've got full of their packaging and stuff, which then equally scares me because I hate printers with a passion.
+[00:12:59] Ryan - One Stop Creative Agency: Patrick Patrick
+[00:13:00] Ryan - One Stop Creative Agency: Antiques, they suck.
+[00:13:02] Ryan - One Stop Creative Agency: So yeah, that'll be fun.
+[00:13:04] Ryan - One Stop Creative Agency: So you may see me slightly greyer with slightly less hair next week once I started to do that.
+[00:13:10] Ryan - One Stop Creative Agency: But yeah, nothing to show and tell today, unfortunately.
+[00:13:13] Ryan - One Stop Creative Agency: I should hopefully have something in the next couple of weeks.
+[00:13:15] Ryan - One Stop Creative Agency: I'm starting to build a big CMS for a taxi company over here in London that do taxi tours for tourists, generally people from the US.
+[00:13:25] Ryan - One Stop Creative Agency: So I'm going to be building him a whole new website with an invoicing backend, an email, I'm going to build my own version of MailChimp, essentially, in the backend of the website using Resend and a bunch of other tools.
+[00:13:39] Ryan - One Stop Creative Agency: So we'll see how that lands.
+[00:13:41] Ryan - One Stop Creative Agency: That'll be a fun little experiment to try and build out.
+[00:13:45] Ryan - One Stop Creative Agency: So yeah, no, I'm busy.
+[00:13:46] Ryan - One Stop Creative Agency: I'm just trying to fit the coding in where I can, really.
+[00:13:49] Ryan - One Stop Creative Agency: I'd like to be able to dial down the video stuff and dial up doing more web projects.
+[00:13:55] Ryan - One Stop Creative Agency: But the video stuff, as you had the chance to try Google is So
+[00:14:00] Patrick Chouinard: Omni?
+[00:14:00] Patrick Chouinard: Gemini Omni, I should say?
+[00:14:02] Ryan - One Stop Creative Agency: I haven't, no.
+[00:14:04] Patrick Chouinard: Okay.
+[00:14:05] Patrick Chouinard: Well, you'd probably be their target market.
+[00:14:09] Patrick Chouinard: It's pretty impressive in terms of what it is.
+[00:14:12] Patrick Chouinard: Basically, you can feed it anything, and it will spit out anything in the sense that you can feed it video, audio, images, text, and it can output text, video, images, sound, video with sound, any mixture of Is it convincing?
+[00:14:31] Ryan - One Stop Creative Agency: Because people keep showing me these great video tools, and you sit there and you go, this just looks like AI slot.
+[00:14:38] Patrick Chouinard: Honestly, it's probably the best one I've seen so far.
+[00:14:42] Patrick Chouinard: mean, Google, it's basically the video tool built into Gemini now.
+[00:14:50] Patrick Chouinard: Whenever you start video creation in Gemini, it's not using VO in the background, it's using Omni.
+[00:15:01] Patrick Chouinard: And you have the ability to create an avatar now within Gemini to represent yourself, and it does a very decent job.
+[00:15:12] Ryan - One Stop Creative Agency: So when I press create video in Gemini, that's using Omni, not video anymore.
+[00:15:17] Ryan - One Stop Creative Agency: Interesting.
+[00:15:18] Ryan - One Stop Creative Agency: I'll give it a go.
+[00:15:19] Patrick Chouinard: I'll have a little play around with that.
+[00:15:21] Patrick Chouinard: Again, I'm not gonna replace Steven Spielberg with it.
+[00:15:25] Ryan - One Stop Creative Agency: I still need to go and shoot the properties, unfortunately.
+[00:15:27] Ryan - One Stop Creative Agency: I do a lot of property videography and real estate stuff.
+[00:15:31] Patrick Chouinard: But that's the thing.
+[00:15:33] Patrick Chouinard: Since it's multi-model, not multi-model, but multi-model, you can generate more than one type of output.
+[00:15:41] Patrick Chouinard: So you could generate a flyer with an embedded video, for example.
+[00:15:49] Patrick Chouinard: It's not limited to one type of media output.
+[00:15:53] Ryan - One Stop Creative Agency: I hadn't heard about it, so I will go and do some research and have a look into it.
+[00:15:57] Patrick Chouinard: Thanks, Patrick.
+[00:15:57] Patrick Chouinard: Appreciate you putting it on my radar.
+[00:15:58] Patrick Chouinard: don't know.
+[00:15:58] Patrick Chouinard: Yeah.
+[00:16:00] Patrick Chouinard: It was in the keynote of the Google event last week.
+[00:16:04] Ryan - One Stop Creative Agency: I did, to be honest with you, I haven't had the time to even look at that.
+[00:16:08] Ryan - One Stop Creative Agency: It's low down on my priority list for spending time at the minute.
+[00:16:11] Ryan - One Stop Creative Agency: I'm sitting up till 2am editing at the minute, pretty much every single day.
+[00:16:15] Patrick Chouinard: Yeah, well, it's on my worksheet every week to catch all of those because basically that's what I do when I'm not having fun with you guys is keeping up to date with everything that's new and re-feed it to my client.
+[00:16:33] Patrick Chouinard: Good.
+[00:16:34] Patrick Chouinard: Thank you, thank you.
+[00:16:38] Patrick Chouinard: We're going to go to the question we got this week because I see that Juan has joined us and you wanted to share a question with the group this week.
+[00:16:52] Juan Torres: Yes, actually, I wanted to ask about, I was actually talking to you, Patrick.
+[00:17:00] Juan Torres: Which is one of the best PRD end-to-end executioners.
+[00:17:06] Juan Torres: And there was a lot of people that were recommending, actually, I came up with Ralphie as one of my first questions, one of my first suggestions as to whether Ralphie was a good agentic framing for PRD finalizations.
+[00:17:23] Juan Torres: But a lot of people have recommended me to use gold, slash gold from, is it Codex, or...
+[00:17:32] Patrick Chouinard: It's now basically everywhere.
+[00:17:35] Patrick Chouinard: It started by being a Codex tool, but now Claude has it, Hermes has it, I believe OpenClaw even has it.
+[00:17:44] Patrick Chouinard: So pretty much all of the harnessed now have a slash gold.
+[00:17:49] Juan Torres: Yeah.
+[00:17:50] Juan Torres: And I just wanted to know how do people feel about that specific, those specific tools, if they're really great at, you know, executing.
+[00:17:59] Juan Torres: Thank you.
+[00:18:01] Juan Torres: And then also someone, actually, I've seen this guy before in the meetings, Dimitri Afrakenov.
+[00:18:11] Juan Torres: He came up with his, he seems to be like, here suggesting an agenda harness, essentially.
+[00:18:19] Juan Torres: He has a PDF that, you know, I'll share with you guys in the, in the chat, but he also has, you know, his own methodology of, you know, getting from a PRD to finalizing, I guess, the, the first proof of concept.
+[00:18:33] Juan Torres: So I just wanted to open the, you know, uh, ask people, what are they, they use as, as the means in order to, um, get the, the PRD, uh, their PRD started, uh, for their projects.
+[00:18:46] Patrick Chouinard: Well, if you're trying to get the PRD started, or you try to execute or implement the PRD, these are two completely different ends.
+[00:18:54] Patrick Chouinard: And I would not recommend a slash goal to create a PRD.
+[00:18:58] Patrick Chouinard: Your PRD has...
+[00:19:00] Patrick Chouinard: It's your intention, so you have to have that cleared up because slash goal is good, but you have to have a prompt that is extremely detailed because it needs to be able to validate its output.
+[00:19:14] Patrick Chouinard: If you don't give anything for the loop to actually validate against, it's not going to work.
+[00:19:19] Patrick Chouinard: So that's how it's going to be.
+[00:19:21] Patrick Chouinard: Just loop, consume, token, and produce nothing.
+[00:19:23] Juan Torres: Sorry, I didn't mean get the PRD started.
+[00:19:27] Juan Torres: Get the PRD with all the sufficient requirements and then get it going with, you know, goal or whatever tool that you're using.
+[00:19:38] Patrick Chouinard: That's why I would say the PRD is one half of what you need to give a slash goal.
+[00:19:43] Patrick Chouinard: This is the intent.
+[00:19:44] Patrick Chouinard: Now you need to create a validation.
+[00:19:46] Patrick Chouinard: So that's why I would iterate with whichever harness you're using to create the prompt for the goal, meaning give your PRD to a prompt.
+[00:20:00] Patrick Chouinard: We'll analyze it and try to come up with ways to validate every requirement inside it, and only then give it to Goal, because Goal, it works well for reasonably small idea.
+[00:20:14] Patrick Chouinard: Don't try to have it develop a three-tier, multi-layer, multi-deployment thing with 76 features.
+[00:20:22] Patrick Chouinard: That's not what Slash Goal is good for.
+[00:20:24] Patrick Chouinard: If you have something that can be built within a couple of hours, it can do a decent job.
+[00:20:30] Patrick Chouinard: But like I said, you have to...
+[00:20:33] Patrick Chouinard: At some point I'm debating, is it worth the time you need to take to prepare the stuff, compared to just actually interacting with something like Superpower, and get it done a little bit more traditionally, I should say.
+[00:20:50] Patrick Chouinard: At least that's my experiment.
+[00:20:51] Patrick Chouinard: I don't know if anyone else had tried any of those.
+[00:20:54] Patrick Chouinard: Ralph Wiggum, Ralphie, Slash Goal, any of those recursive...
+[00:21:00] Patrick Chouinard: Coding loops.
+[00:21:09] Patrick Chouinard: Ryan says he's grill with docs.
+[00:21:12] Patrick Chouinard: Okay.
+[00:21:13] Patrick Chouinard: Slash gold with a token budget.
+[00:21:15] Patrick Chouinard: Yeah, that's the thing.
+[00:21:16] Patrick Chouinard: Slash gold, when you don't give it a token budget, can eat through your subscription pretty quickly, actually.
+[00:21:25] Bastian Venegas Arevalo: I agree with Patrick that if you don't give it something to verify the loop, it would go and do a lot of nonsense.
+[00:21:33] Bastian Venegas Arevalo: But if you actually tell the agent to, like, are we in a position where it makes sense to have a goal and is this verifiable enough, then the model will tell you if it thinks you need to make a little more work and then you can kick up the goal.
+[00:21:50] Bastian Venegas Arevalo: And it's very useful if you do it like that.
+[00:21:54] Bastian Venegas Arevalo: But I also spent a lot of tokens when I didn't do that and got nothing.
+[00:21:59] Bastian Venegas Arevalo: time.
+[00:21:59] Bastian Venegas Arevalo: the
+[00:22:00] Bastian Venegas Arevalo: For example, a research task is very open.
+[00:22:03] Bastian Venegas Arevalo: It's not a good thing for a goal.
+[00:22:06] Juan Torres: What is GRILL?
+[00:22:10] Bastian Venegas Arevalo: It's a skill by Matt Pokok.
+[00:22:12] Bastian Venegas Arevalo: Basically, it goes through your documents and asks you a bunch of questions to clarify and create a dictionary of the terms that will be canonical to that implementation.
+[00:22:25] Bastian Venegas Arevalo: So it's a way to kind of give it ground more in specific terms that you agree with the model that will kind of operationalize your PRD.
+[00:22:38] Juan Torres: Gotcha.
+[00:22:38] Juan Torres: Is it by Matt Pokok?
+[00:22:42] Bastian Venegas Arevalo: Yep.
+[00:22:43] Juan Torres: Okay, gotcha.
+[00:22:43] Bastian Venegas Arevalo: Found it.
+[00:22:44] Bastian Venegas Arevalo: You can install it with NPX skill.
+[00:22:50] Juan Torres: Thank you.
+[00:22:52] Bastian Venegas Arevalo: Oh, and if you want to do it like quicker and spend a bit less tokens, you can ask it to present the question.
+[00:22:59] Bastian Venegas Arevalo: Question?
+[00:22:59] Bastian Venegas Arevalo: you,
+[00:23:00] Bastian Venegas Arevalo: questions with something that's called RequestUserInput, and that will give you like a multi-choice question that you can answer directly instead of needing to write the actual answer.
+[00:23:15] Juan Torres: Got it.
+[00:23:16] Juan Torres: And by docs, what do you mean by docs?
+[00:23:20] Bastian Venegas Arevalo: By docs?
+[00:23:21] Juan Torres: Yeah.
+[00:23:22] Bastian Venegas Arevalo: It's just a way that Matt uses to refer that.
+[00:23:26] Bastian Venegas Arevalo: He had a different skill that didn't instruct the model to read the documents first.
+[00:23:31] Juan Torres: Oh, okay.
+[00:23:31] Bastian Venegas Arevalo: So this is like trying to bother you less with questions that it could have solved by itself.
+[00:23:38] Juan Torres: Gotcha.
+[00:23:39] Juan Torres: Gotcha.
+[00:23:40] Juan Torres: Awesome.
+[00:23:46] Patrick Chouinard: Does that answer your question?
+[00:23:48] Juan Torres: Yeah.
+[00:23:49] Juan Torres: Yeah.
+[00:23:49] Juan Torres: And honestly, I don't know if I would go as far as finishing a whole product without having more modular reviews myself.
+[00:24:01] Juan Torres: I don't usually try to finish one project, one first proof of concept in itself, I try to do it more progressively to see if it's actually hitting the goal.
+[00:24:17] Juan Torres: But in case I needed to just push through really quickly, I just want to know the best method that's out there.
+[00:24:27] Patrick Chouinard: Actually, what I like to use goal for is have it used by my agents, my assistant like Hermes, for example, because it does have a slash goal, and for it to build itself tool to accomplish something.
+[00:24:44] Patrick Chouinard: So this is something that doesn't need to be polished, doesn't need to have a beautiful UI.
+[00:24:50] Patrick Chouinard: It's just, it needs a tool to do something.
+[00:24:54] Patrick Chouinard: It knows exactly what needs to be done because it's a task it's been given.
+[00:24:58] Patrick Chouinard: So it has something to
+[00:25:00] Patrick Chouinard: So for it to use gold create itself tools, it's actually quite useful.
+[00:25:07] Juan Torres: Gotcha.
+[00:25:08] Juan Torres: So it can be used for specific features and tools.
+[00:25:12] Patrick Chouinard: Well, exactly.
+[00:25:13] Patrick Chouinard: It's just because creating a tool has a very, very specific validation format because it needs to be able to use the tool to do whatever you ask for it.
+[00:25:25] Patrick Chouinard: So it's easy to validate.
+[00:25:30] Patrick Chouinard: So those are the type of things.
+[00:25:32] Patrick Chouinard: I'm not going to try to build a beautiful web application with a slash goal.
+[00:25:41] Patrick Chouinard: Good.
+[00:25:44] Patrick Chouinard: Thank you.
+[00:25:45] Juan Torres: Thank you, guys.
+[00:25:48] Patrick Chouinard: Thank you, sir.
+[00:25:50] Patrick Chouinard: Since there's not a lot of us, I'm just going to go with the one I see the camera open today.
+[00:25:56] Patrick Chouinard: Adam, you would be next.
+[00:26:01] Adam: Yeah, I had basically a boring week.
+[00:26:03] Adam: Nothing exciting to report, so.
+[00:26:07] Patrick Chouinard: Okay.
+[00:26:08] Patrick Chouinard: Any questions?
+[00:26:11] Patrick Chouinard: Anything you wanted to share with you?
+[00:26:13] Patrick Chouinard: No.
+[00:26:13] Patrick Chouinard: Good?
+[00:26:15] Patrick Chouinard: Okay.
+[00:26:16] Patrick Chouinard: Perfect.
+[00:26:18] Patrick Chouinard: Next one would be Rob.
+[00:26:21] Rod Morrison: Hey, y It's been a while.
+[00:26:23] Rod Morrison: I've been out of the pocket, in corporate, heck, if you will.
+[00:26:28] Rod Morrison: But, you know, Juan, as you were talking, so one of the things that we've been doing, right?
+[00:26:35] Rod Morrison: So first off, I had to sell my leadership team on Claude, right?
+[00:26:40] Rod Morrison: Then Claude code for my data science team.
+[00:26:44] Rod Morrison: But what we've been doing is we've been, like, doing rapid prototyping, meaning that, you know, I'm working on a few different models, right?
+[00:26:56] Rod Morrison: One that comes to mind is a human resources retention model.
+[00:27:00] Rod Morrison: Right, that predicts churn, right, when employees are going to turn over, et cetera, but one of the things that we've been doing is, you know, we'll get the data, we'll do the EDA, if we don't have all the data, we'll spoof it with Claude, but we've been building like standalone HTML prototypes that have the actual customer data in them, and I'm wondering if Goal may be a good use case for that, right, because there is a definitive finish, it's like, okay, look, you've got this data set, right, make it into a pretty standalone HTML page.
+[00:27:31] Rod Morrison: These are the types of levers that I want reports, etc.
+[00:27:36] Rod Morrison: That it may be good for things like that.
+[00:27:39] Rod Morrison: Because what I'm finding, instead of building out this vision in PowerPoint, just having a standalone HTML that you can talk to with a customer, you know, maybe there's some simulators.
+[00:27:50] Rod Morrison: And it also plays into the UI design as well.
+[00:27:53] Rod Morrison: Because this one app that I've built, I'm on the fourth time building it because it was completely in a vacuum.
+[00:28:00] Rod Morrison: And then once the user saw it, it's like, it's cute, but there's nothing I can, you know, this doesn't help me day to day, right?
+[00:28:08] Rod Morrison: So, and I've been screaming at my team, it's like, look, I need the, I need to meet with the users, right?
+[00:28:13] Rod Morrison: To be able to see how they want to use it, not like, you know, these are buyers, retail buyers, I don't know what they do day to day.
+[00:28:21] Rod Morrison: They live in spreadsheets, so, but no, I just wanted to come back, see how everybody was, you know, using the latest and greatest stuff.
+[00:28:30] Rod Morrison: Pretty much, all in on Claude, uh, like Brandon, I had to up my plan to the 200 max plan, but, you know, I was able to get it for my data science team, which has been helpful, but they're very skeptical.
+[00:28:43] Rod Morrison: And I had to hold their hand for about a two hour session and convince them.
+[00:28:47] Rod Morrison: And then I think they clicked.
+[00:28:50] Patrick Chouinard: So, that's right.
+[00:28:52] Patrick Chouinard: If I can, uh, comment on that, uh, for a data science team specifically, goal might be interesting because
+[00:29:00] Patrick Chouinard: Data science is really, really calculated.
+[00:29:03] Patrick Chouinard: There's a quantifiable result.
+[00:29:06] Patrick Chouinard: So that's very easy to validate.
+[00:29:09] Patrick Chouinard: Compared to make a pretty HTML, that's pretty subjective.
+[00:29:14] Patrick Chouinard: So that I'd be careful using the goal with because pretty is not a quantitative answer that you can validate against.
+[00:29:24] Rod Morrison: Well, mean, with perhaps like, you know, I was being, you know, a little short with it, but you know, a screenshot, right, you know, have a good problem.
+[00:29:32] Rod Morrison: I mean, look, I saw that.
+[00:29:35] Rod Morrison: And for me, I was just like, well, you know, I don't want this thing, you know, Claude has run rogue on me a number of times, right, as you know, all of them have.
+[00:29:46] Rod Morrison: So I'd like to do things step by step, you know, about, you know, build this validation step, okay, you know, let's manage a context right, you know, hand over doc, wash, rinse, repeat that type of thing.
+[00:29:57] Rod Morrison: And that seems to be working best for me.
+[00:30:00] Patrick Chouinard: Exactly, and I would recommend you continue that way.
+[00:30:03] Patrick Chouinard: For visual things, absolutely.
+[00:30:07] Patrick Chouinard: But for whenever you're creating something that's quantifiable, like increase the accuracy of this calculation by X number of percent, or do this calculation within this range of value, all of those, the model can validate that it did exactly that.
+[00:30:29] Patrick Chouinard: So this is going to be awesome for, for a slash goal.
+[00:30:32] Juan Torres: Yeah.
+[00:30:33] Patrick Chouinard: Otherwise, use skills.
+[00:30:35] Patrick Chouinard: Like for example, for presentation, I build all my training now using skills that have the company branding as part of the skill itself.
+[00:30:45] Patrick Chouinard: Basically, we have a skill for a PowerPoint that embed the company templates within it.
+[00:30:52] Patrick Chouinard: So it's just a reworked version of the PPTX skill from Entropic.
+[00:30:57] Patrick Chouinard: But it creates...
+[00:31:00] Patrick Chouinard: But the PowerPoint with the company look and feel already built into it, the user absolutely love it.
+[00:31:06] Patrick Chouinard: And I've extracted one from this to create exactly what you said, interactive HTML.
+[00:31:14] Patrick Chouinard: So all the training I give to Cloud Code, I've been built by Cloud Code using that Cloud skill in order to show the people in the course, like, here's some of the thing you can do, because it's just a derived skill.
+[00:31:30] Patrick Chouinard: From the PowerPoint that creates a slideshow within a an HTML document, again, using the the look and feel of the enterprise, but skills are awesome for that type of work.
+[00:31:41] Rod Morrison: Yeah, and one thing I've been using it to a lot for is, well, initially, probably last three months is like forensic type stuff.
+[00:31:49] Rod Morrison: And I'll give you a couple examples.
+[00:31:50] Rod Morrison: So I walk into three projects in flight, there's no documentation, everything, you know, there's just stuff scattered everywhere.
+[00:31:58] Rod Morrison: And I was able to use
+[00:32:00] Rod Morrison: Use Claude to, you know, pretty much just spider GCP, you know, go across BigQuery, Cloud Run, get source code, even get down to the pickle file, right, and be able to measure that and then do testing against it.
+[00:32:13] Rod Morrison: But then also, you know, we got an alert, it's like, hey, there's a $2,000, you know, BigQuery bill, what's gone rogue?
+[00:32:20] Rod Morrison: And I was able to trace that back to August of last year to where some bad materialization jobs were set up.
+[00:32:31] Rod Morrison: And they were, you know, this thing had just run rogue, the client had made some changes to their database.
+[00:32:36] Rod Morrison: And for every column, it was just rerunning this thing for seven hours and was able to trace it back and then put the safeguards in.
+[00:32:44] Rod Morrison: So I thought that was kind of a fringe use case.
+[00:32:47] Patrick Chouinard: Absolutely.
+[00:32:48] Patrick Chouinard: Absolutely.
+[00:32:49] Patrick Chouinard: Oyo, saw you on end race, did you have a question or comment?
+[00:32:54] Ola Oyo: I just had a question to the house, really.
+[00:32:59] Ola Oyo: I know Claude
+[00:33:00] Ola Oyo: has been on quite a bit of a tier, but what is you guys' experience between the results you see from Claude and also Codex?
+[00:33:15] Patrick Chouinard: If I can answer that one, I think Claude has been really good and it's always been really good, but lately the last couple of releases it's good, but I would say Codex has come up to me more as the validator.
+[00:33:36] Patrick Chouinard: mean, Claude is really imaginative, but it has difficulty to validate its own output sometimes.
+[00:33:44] Patrick Chouinard: So even if you run code review, security code review, it does a decent job, but never as good as asking Codex to do the same thing.
+[00:33:54] Rod Morrison: Yeah.
+[00:33:54] Ola Oyo: It's pretty much the same results I'm getting because with Claude, I noticed it does do quite
+[00:34:00] Ola Oyo: It's bit of hallucination, but Codex seems to be that super senior engineer that can really find things that, you know, all the other agents don't seem to find.
+[00:34:12] Ola Oyo: So I was just wondering if you were having a similar experience, which...
+[00:34:16] Patrick Chouinard: Yeah, but I would not use Codex alone, though, because, as you said, it has a very senior engineer way of working.
+[00:34:24] Patrick Chouinard: So the coded writing is clean, the validation is clean.
+[00:34:30] Patrick Chouinard: But the UI and the look and feel are horrible.
+[00:34:32] Ola Oyo: No, it's terrible for UI.
+[00:34:36] Patrick Chouinard: Exactly.
+[00:34:37] Patrick Chouinard: You need the artistic way of Claude to make something look nice.
+[00:34:43] Adam: I would say that Claude is a big picture thinker, and Codex is a detailed thinker.
+[00:34:53] Ola Oyo: Right.
+[00:34:54] Ola Oyo: Yeah.
+[00:34:55] Ola Oyo: Thanks.
+[00:34:56] Rod Morrison: I just prettied up an executive dashboard on...
+[00:35:00] Rod Morrison: I app that I'm building with Composer 2.5, and it just ripped through it.
+[00:35:04] Rod Morrison: It did a phenomenal job.
+[00:35:06] Rod Morrison: I was like, whoa.
+[00:35:08] Patrick Chouinard: So...
+[00:35:09] Patrick Chouinard: Yeah, I've heard a very, very good thing about Composer 2.5, but there's starting to be too many artists.
+[00:35:16] Juan Torres: Wait, isn't the Composer, like, supposed to be Kimi?
+[00:35:21] Juan Torres: Kimi K2?
+[00:35:22] Patrick Chouinard: K2.5 actually, not even 2.6.
+[00:35:24] Juan Torres: Yeah.
+[00:35:25] Rod Morrison: But for one task, right, rebuilding that dashboard, 51% of my quota for the month, I've got the $20 plan with Cursor, so .
+[00:35:37] Rod Morrison: I thought it was supposed to be more efficient.
+[00:35:39] Rod Morrison: Apparently not.
+[00:35:40] Rod Morrison: So...
+[00:35:43] Patrick Chouinard: It depends how much work there was in that update, but the $20 plan are now getting really, really easy to burn through on pretty much every one of those.
+[00:35:56] Patrick Chouinard: Because right now, I'm running two $100 plans.
+[00:36:00] Patrick Chouinard: And one for Clawed, one for Codex, and barely survived.
+[00:36:04] Juan Torres: Wow.
+[00:36:07] Patrick Chouinard: And I would not go to a single one at $200.
+[00:36:12] Patrick Chouinard: I still prefer to have the two separate one.
+[00:36:16] Rod Morrison: So I've been experimenting.
+[00:36:18] Rod Morrison: Have you heard of RTK, Rust Token Killer?
+[00:36:23] Patrick Chouinard: No.
+[00:36:24] Rod Morrison: Yeah.
+[00:36:24] Rod Morrison: So what it does, it's this RTK command that kind of proxies your operating system commands.
+[00:36:30] Rod Morrison: I'll put a link to the repository, but I just started using it, call it Sunday, and you know, it's telling me, you know, I'm getting like 95% point, it could be it, you know, celebrating itself, but the efficiency meter is like off the chart, you know, like save 3.1 million tokens over the last couple
+[00:37:00] Rod Morrison: And that's crossed like 1,000 commands.
+[00:37:04] Rod Morrison: But did you see any impact on the quality of the output or it's pretty much stable?
+[00:37:09] Rod Morrison: Not at all.
+[00:37:10] Rod Morrison: Not at all.
+[00:37:11] Rod Morrison: Let me find that repo.
+[00:37:13] Patrick Chouinard: Yeah, that'd be very interesting.
+[00:37:15] Patrick Chouinard: Anything that can save token.
+[00:37:17] Rod Morrison: That's it.
+[00:37:21] Patrick Chouinard: I mean, at work, we even have someone that we have to, that manages all of the token budgets.
+[00:37:28] Patrick Chouinard: And she's now mentioned as the dawn of the budget management.
+[00:37:36] Patrick Chouinard: Distributing tokens to the needy.
+[00:37:41] Rod Morrison: It's an interesting conversation.
+[00:37:42] Rod Morrison: That's for sure.
+[00:37:43] Patrick Chouinard: Yeah.
+[00:37:45] Morgan Cook: It used to be called petty cash.
+[00:37:47] Patrick Chouinard: Yeah.
+[00:37:51] Rod Morrison: My team's on the $20 plans, right?
+[00:37:54] Rod Morrison: And I'm like, look, don't worry about it.
+[00:37:56] Rod Morrison: We'll upgrade you.
+[00:37:56] Rod Morrison: Just, you know, the CRO wants to see you using it.
+[00:38:00] Rod Morrison: So just blow out your quota, and we'll get you fixed up.
+[00:38:03] Rod Morrison: But I put the links in there too.
+[00:38:05] Patrick Chouinard: Sorry.
+[00:38:06] Patrick Chouinard: Thank you, sir.
+[00:38:07] Rod Morrison: Yeah, let me.
+[00:38:08] Rod Morrison: That's all I got, Mr.
+[00:38:10] Patrick Chouinard: Patrick.
+[00:38:10] Patrick Chouinard: Thank you.
+[00:38:11] Patrick Chouinard: Thank you.
+[00:38:12] Patrick Chouinard: And please, Mr.
+[00:38:14] Patrick Chouinard: is my dad.
+[00:38:17] Rod Morrison: I live in Texas.
+[00:38:19] Juan Torres: It's kind of...
+[00:38:19] Juan Torres: Wait a second.
+[00:38:21] Juan Torres: Patrick, you need to go to the page.
+[00:38:22] Juan Torres: It looks like you're there.
+[00:38:24] Juan Torres: They have a picture of you like with an axe.
+[00:38:27] Patrick Chouinard: What the hell?
+[00:38:31] Patrick Chouinard: Yeah.
+[00:38:34] Juan Torres: Did they pay you for, you know, featuring you as the barbarian that slashes token usage?
+[00:38:43] Patrick Chouinard: I haven't wear a kilt in a long time, actually.
+[00:38:48] Juan Torres: It's never too late.
+[00:38:50] Patrick Chouinard: So thank you very much, Rob.
+[00:38:55] Patrick Chouinard: And then would be our good friend, Morgan.
+[00:38:59] Morgan Cook: then.
+[00:38:59] Morgan Cook: bättreball.
+[00:38:59] Morgan Cook: the
+[00:39:02] Morgan Cook: Hey guys, how's everybody doing?
+[00:39:04] Patrick Chouinard: Good.
+[00:39:05] Morgan Cook: I've been busy chasing physical issues this week, so I haven't really had too much time to do any AI programming.
+[00:39:16] Morgan Cook: I did miss around with Hermes for a little bit, but I haven't got it completely up to where I would want it to be.
+[00:39:24] Morgan Cook: It looks very promising though, but that's about all I have right now.
+[00:39:31] Patrick Chouinard: Okay.
+[00:39:32] Morgan Cook: Just been in the trenches.
+[00:39:35] Morgan Cook: Nothing really exciting to show or share today.
+[00:39:40] Elijah Stambaugh: Can I ask, when you say where you would like Hermes to be, what do you envision it being for you?
+[00:39:49] Morgan Cook: It's more of an orchestrator of my other agents.
+[00:39:52] Morgan Cook: So right now it's isolated and doesn't have access to my info.
+[00:39:58] Morgan Cook: So I want to give it...
+[00:40:00] Morgan Cook: I access to my Obsidian and give it access to my email and calendar, but I haven't tied them in, and to my Fieldy.
+[00:40:13] Morgan Cook: Where the hell is my Fieldy?
+[00:40:15] Morgan Cook: I haven't linked up to that Fieldy yet either.
+[00:40:17] Morgan Cook: So I do use it through Telegram and Direct, but haven't really got past much of that.
+[00:40:28] Patrick Chouinard: You're talking about this?
+[00:40:30] Morgan Cook: Yeah, exactly.
+[00:40:34] Morgan Cook: Mine's not right here.
+[00:40:35] Morgan Cook: Probably isn't even on right now.
+[00:40:42] Morgan Cook: One thing I did do was, in my area we have a vote going on right now, so I did a reverse process.
+[00:40:51] Morgan Cook: Instead of studying who all the candidates were for the vote, I went the opposite direction and used my TALOS file to integrative.
+[00:41:00] Morgan Cook: Identify, okay, where do I fit within what's going on in the political market?
+[00:41:05] Morgan Cook: And who is best in line with my beliefs and my philosophy?
+[00:41:10] Morgan Cook: Without looking at anything going on?
+[00:41:12] Morgan Cook: Let's start with me.
+[00:41:14] Morgan Cook: What do I want?
+[00:41:15] Morgan Cook: And it came back, rating each of the people and how closely they matched to my philosophy.
+[00:41:21] Morgan Cook: And that was a pretty cool process.
+[00:41:23] Morgan Cook: Much more entertaining way to look at the political spectrum.
+[00:41:28] Morgan Cook: So that was kind of a fun thing to do this last weekend.
+[00:41:33] Patrick Chouinard: Cool.
+[00:41:36] Morgan Cook: Well, that's all I have.
+[00:41:38] Patrick Chouinard: Good.
+[00:41:39] Patrick Chouinard: Thank you very much, Morgan.
+[00:41:40] Morgan Cook: All right, guys.
+[00:41:43] Patrick Chouinard: On my end, I did not have much time to dedicate to fun stuff this weekend.
+[00:41:49] Patrick Chouinard: A little bit of a family emergency to take care of.
+[00:41:53] Patrick Chouinard: But I did manage to work a little bit with Hermes.
+[00:41:59] Patrick Chouinard: And, uh.
+[00:42:00] Patrick Chouinard: I think you're going to like what I'm working on, Morgan, and I'm going to share more as I develop it, but right now it's, I'm positioning it as basically the operator of my home lab, and I'm doing that by, I have a monitoring stack, so it's basically Prometheus with the alert module plus Grafana.
+[00:42:26] Patrick Chouinard: And I used to send all of those alerts to a couple of Discord channel on my private server, but, and I'm still going to do that for archiving purposes, but I realized that instead I should build a listener internally that I send that to, and that listener is connected directly with Hermes.
+[00:42:46] Patrick Chouinard: So her, I could, I, originally I was like having Hermes look at the message in, inside of the Discord and way too complex.
+[00:42:55] Patrick Chouinard: Now everything goes to that internal listener.
+[00:42:59] Patrick Chouinard: I've been doing
+[00:43:00] Patrick Chouinard: That's basically the eyes and ears of Hermes inside of my home network.
+[00:43:04] Patrick Chouinard: It knows it has a full inventory that it managed, and I'm also having it start to be the deployment agent for every tool I build internally.
+[00:43:19] Patrick Chouinard: So since Hermes is the one deploying everything, she's able to actually update the inventory, update the monitoring, update the tracking at the same time.
+[00:43:30] Patrick Chouinard: Basically, I wanted to do an abstraction between CloudCode, Codex, and Hermes, where CloudCode and Codex are my development agent, and Hermes is my DevOps, basically.
+[00:43:43] Patrick Chouinard: So they can use Hermes as a tool.
+[00:43:47] Patrick Chouinard: Just say, here's a web app, deploy it.
+[00:43:50] Patrick Chouinard: Well, you know, a web app that goes on Vercel, has access to be able to push to Vercel, has all the tools to connect to Vercel.
+[00:43:57] Patrick Chouinard: So the back-end is going to be...
+[00:44:00] Patrick Chouinard: Either a Supabase or whatnot, or this is an internal tool.
+[00:44:05] Patrick Chouinard: Oh, internal tool, that means it's going to be deployed on one of my Docker server for development or for production.
+[00:44:12] Patrick Chouinard: The backend is going to be a Postgres database.
+[00:44:15] Patrick Chouinard: It has all of that information and where to deploy what, depending on the case, and it can monitor it.
+[00:44:22] Patrick Chouinard: Right now, I'm not having it do any intervention, but she's communicating with me through Discord to say, oh, this server is down or this server has been overwhelmed or there's not enough RAM on that machine or whatever.
+[00:44:39] Patrick Chouinard: And I'm going to take the instruction, but I'm still, I'm documenting what it does.
+[00:44:44] Patrick Chouinard: And as we go further, she's going to be able to start taking action and changing the resource allocation for containers or for VMs or a reset machine if need be, or whatever, and end up having it.
+[00:45:00] Patrick Chouinard: manage the, uh, the home lab.
+[00:45:03] Patrick Chouinard: Yes, Rob, you had a question.
+[00:45:05] Rod Morrison: Are you hosting that somewhere, Patrick, or you run it locally at home?
+[00:45:09] Patrick Chouinard: Locally.
+[00:45:10] Patrick Chouinard: This is a running off of a Proxmox server in a, uh, Linux VM.
+[00:45:16] Patrick Chouinard: Okay.
+[00:45:18] Patrick Chouinard: Yep.
+[00:45:18] Patrick Chouinard: Uh, everything, uh, about that machine is that since it's my network operator internally, it, I don't want it to be running on the VPS somewhere.
+[00:45:26] Patrick Chouinard: This is a hundred percent local, uh, in my infrastructure.
+[00:45:30] Rod Morrison: Got it.
+[00:45:31] Rod Morrison: Okay.
+[00:45:32] Rod Morrison: Thank you.
+[00:45:33] Patrick Chouinard: Hoyo, you had a question?
+[00:45:36] Ola Oyo: Um, just a quick question on, on Hermes that you're running.
+[00:45:40] Ola Oyo: So when you say it's able to, um, more or less orchestrate your DevOps, handle your containers and all, uh, with all that still sitting locally, does it, is the agent able to, does it go into manually tweak what's needed, or does it use maybe an, an and, and.
+[00:46:00] Ola Oyo: Orchestration platform like Infrastructure as Code, and that's what it modifies.
+[00:46:06] Patrick Chouinard: It depends on, right now it's not modifying yet.
+[00:46:09] Patrick Chouinard: Right now it's in learning mode, so it knows it needs to do something.
+[00:46:13] Patrick Chouinard: It will give me a plan that if I were to do it, here's what I would do.
+[00:46:17] Patrick Chouinard: But I'm not letting it do anything just right now.
+[00:46:20] Patrick Chouinard: It's been up for about a week and a half.
+[00:46:24] Patrick Chouinard: But the idea is it has access to all the tools I have internally, meaning if it needs orchestration, it has access to an N8N server that runs internally that it could leverage.
+[00:46:36] Patrick Chouinard: Otherwise it can intervene directly.
+[00:46:39] Patrick Chouinard: It has SSH access to the server internally, so it can go and intervene again if need be.
+[00:46:47] Patrick Chouinard: Right now it can only read and look.
+[00:46:49] Patrick Chouinard: It doesn't have any access right to do any kind of modification.
+[00:46:53] Patrick Chouinard: But that's the thing, is I increase its availability of access.
+[00:46:58] Patrick Chouinard: If it needs to leverage
+[00:47:00] Patrick Chouinard: Which infrastructure as code, it can write Ansible script if need be, it can write Docker Compose file if you need to spawn up a machine, because you have to remember that the harness behind Hermes is very, very inspired by Codex, so anything those harness can do, Hermes can do as well.
+[00:47:22] Patrick Chouinard: It's not made to be used by a developer to build an application like as Codex is, but it has the capability, so.
+[00:47:32] Ola Oyo: Okay.
+[00:47:33] Ola Oyo: Sounds pretty cool.
+[00:47:34] Patrick Chouinard: Nice.
+[00:47:35] Patrick Chouinard: Thank you.
+[00:47:37] Patrick Chouinard: So yeah, that's basically what I'm trying to get it to take care of my internal network.
+[00:47:44] Patrick Chouinard: And since I'm using Ubiquiti equipment, I've found that Ubiquiti has been doing a lot of work in terms of improving their API for users.
+[00:47:54] Patrick Chouinard: Even for their home network appliances.
+[00:47:56] Patrick Chouinard: So there's a lot more we can do today.
+[00:48:00] Patrick Chouinard: With an agent, obviously, right now, it, as I said, can read only, but I want it to get to the point where if it needs to spawn up a new VLAN, spawn new firewall rules eventually, I want to, but before it gets there, it's going to be running in a what if scenario for a couple of weeks, let's say.
+[00:48:24] Juan Torres: I need to check Procmox.
+[00:48:26] Juan Torres: Sounds like a really good virtualization platform.
+[00:48:32] Patrick Chouinard: I come from VMware, so it's really, really similar.
+[00:48:36] Patrick Chouinard: So anybody who knows VMware will be perfectly at ease within Procmox, and it's has one great advantage over VMware, it actually stayed free.
+[00:48:50] Juan Torres: Nice.
+[00:48:50] Juan Torres: Yeah, I've been thinking of getting, like, trying to just search through Facebook Marketplace and trying to get someone to sell.
+[00:48:59] Juan Torres: Matthew.
+[00:48:59] Juan Torres: no,
+[00:49:00] Juan Torres: Oh, like a server computer for an unrealistic cheap price?
+[00:49:04] Patrick Chouinard: Don't do that.
+[00:49:06] Patrick Chouinard: Don't do that.
+[00:49:07] Juan Torres: Why?
+[00:49:07] Patrick Chouinard: Those are power monsters.
+[00:49:09] Patrick Chouinard: They're extremely complex.
+[00:49:11] Patrick Chouinard: They come with licensed software that, even if you get a data center machine for like 500 bucks, and it might sound like an incredible deal, but most of the power comes from stuff that needs to be licensed, that needs to be running with a battery.
+[00:49:29] Patrick Chouinard: Back-end system that's going to validate it.
+[00:49:32] Patrick Chouinard: It's horrible.
+[00:49:35] Patrick Chouinard: They work well in data center because you have the infrastructure to back them up.
+[00:49:40] Patrick Chouinard: But like, even if you want to have remote access into them, they have technology that requires a license server to be up and running in the data center for the thing.
+[00:49:50] Juan Torres: Okay.
+[00:49:52] Patrick Chouinard: Spend a couple of bucks for a mini PC.
+[00:49:55] Patrick Chouinard: They have some now that are sub-$1,000.
+[00:49:59] Patrick Chouinard: Spend a couple of
+[00:50:00] Patrick Chouinard: with 32 gigs of RAM that do a marvelous job as a Proxmox host.
+[00:50:06] Juan Torres: Yeah, I have one.
+[00:50:08] Juan Torres: It's good.
+[00:50:09] Juan Torres: It's just that it has Windows 11, which sucks, but I can switch As soon as you get it, you format it and you install Proxmox as the OS and that's it.
+[00:50:18] Juan Torres: Yeah.
+[00:50:19] Patrick Chouinard: No more Windows that says raw Proxmox and build whatever you want on top of it.
+[00:50:23] Patrick Chouinard: Yeah.
+[00:50:26] Patrick Chouinard: But you're going to get way more bang for your buck than buying old data center hardware.
+[00:50:35] Patrick Chouinard: I've been, I've went that way before.
+[00:50:38] Juan Torres: Oh, okay.
+[00:50:39] Juan Torres: Just warning me.
+[00:50:40] Patrick Chouinard: Okay.
+[00:50:41] Patrick Chouinard: Yeah.
+[00:50:44] Patrick Chouinard: If you spend your day in a data center and you know those things front and front to back perfectly, you can get some interesting, uh, service out of them.
+[00:50:56] Patrick Chouinard: But again, you have to have very cheap electricity because
+[00:51:00] Patrick Chouinard: For what's going to take 20 Watt in a mini PC, you're going to spend 800 Watt running 24 hours a day to run the same data center machine.
+[00:51:11] Adam: Yeah, I'm running Proxmox as well.
+[00:51:16] Adam: One thing I was going to say is you might be able to release your Windows license and then install Windows in a virtual machine and reuse that license.
+[00:51:27] Adam: So you would at least have a Windows if you ever need to run Windows for something.
+[00:51:34] Patrick Chouinard: Yep, that could be interesting as well.
+[00:51:36] Patrick Chouinard: But run it from the mini PC, for sure.
+[00:51:42] Juan Torres: Gotcha.
+[00:51:43] Patrick Chouinard: I don't know.
+[00:51:44] Patrick Chouinard: Did you ever hear one of those machine also?
+[00:51:47] Juan Torres: No, I haven't.
+[00:51:50] Patrick Chouinard: Are you thinking about installing that in your home office?
+[00:51:56] Juan Torres: Yeah, that was what I was thinking.
+[00:51:57] Patrick Chouinard: Okay.
+[00:51:58] Patrick Chouinard: That's, like…
+[00:52:00] Patrick Chouinard: We jet engine coming off when it starts.
+[00:52:03] Patrick Chouinard: Those are not made to be silent, believe me.
+[00:52:07] Juan Torres: Got it.
+[00:52:07] Juan Torres: Okay.
+[00:52:09] Patrick Chouinard: It's better to have my car on than having that server on.
+[00:52:14] Patrick Chouinard: You probably wouldn't hear your car over the server.
+[00:52:18] Juan Torres: Wow.
+[00:52:21] Patrick Chouinard: So, yeah, if it's in the basement somewhere, like in a concrete room, fine.
+[00:52:27] Patrick Chouinard: But beside you, you wouldn't be able to have, we wouldn't have that conversation right now.
+[00:52:33] Dmitry Avramenko: Hey guys, I'm late.
+[00:52:35] Patrick Chouinard: I have joined.
+[00:52:37] Patrick Chouinard: Hey Dimitri.
+[00:52:40] Dmitry Avramenko: I almost slept.
+[00:52:41] Dmitry Avramenko: I was gonna join at like six o'clock in the morning for me, so.
+[00:52:47] Patrick Chouinard: No worries.
+[00:52:50] Patrick Chouinard: So when did that answer your question?
+[00:52:54] Juan Torres: For me, in terms of this encouraging me from getting in the Noisy server?
+[00:52:59] Patrick Chouinard: Yeah.
+[00:53:00] Patrick Chouinard: I'm just redirecting your funds to something that's going to be more useful.
+[00:53:04] Juan Torres: A wise man learns from other people's mistakes, so note it.
+[00:53:09] Patrick Chouinard: I just want to make sure that you get as much out of your expense as possible.
+[00:53:15] Juan Torres: Yeah, no, and definitely for the mini-PCA.
+[00:53:18] Juan Torres: So I didn't talk about Prosmox and virtualizing several virtual machines with different operating systems.
+[00:53:24] Juan Torres: I was just thinking of creating a double-boot system for Ubuntu, and then Windows if I needed it, as mentioned by Adam.
+[00:53:34] Juan Torres: But it seems that Prosmox has a more capable virtualization capacity, so I'm going to check it out.
+[00:53:43] Patrick Chouinard: Yep, and it even has its own type of container called LXC.
+[00:53:51] Patrick Chouinard: LXC, sorry.
+[00:53:53] Patrick Chouinard: So it can spawn either full VMs that runs any flavor of Linux you might want or...
+[00:54:00] Patrick Chouinard: Or it can spawn its own lightweight container, and then you can run whatever service you want in there.
+[00:54:09] Patrick Chouinard: It allows you to manage its own internal networking.
+[00:54:14] Patrick Chouinard: If you've ever seen an installation of VMware, basically everything you can do in VMware, you can do in Proxmox, and they have their own backup server that are made to backup your VM.
+[00:54:31] Patrick Chouinard: live without interruption, so you can respawn them.
+[00:54:36] Patrick Chouinard: Very nice little Homelab tool.
+[00:54:41] Patrick Chouinard: And it also has a CLI that allows Claude to manage it.
+[00:54:46] Juan Torres: Okay, so you can manage several virtual machines, essentially.
+[00:54:50] Patrick Chouinard: You can manage the cluster, you can manage the host, you can spawn virtual machine.
+[00:54:56] Patrick Chouinard: There's a CLI to access the Proxmox itself.
+[00:55:00] Patrick Chouinard: So everything you can do in Proxmox, you can do with the CLI, if you can do it with the CLI, Cloud Code is able to do it for you, or even Codex or whichever agent you're using.
+[00:55:11] Juan Torres: Gotcha.
+[00:55:14] Patrick Chouinard: Good.
+[00:55:16] Patrick Chouinard: Dmitry, I see that you've posted a question about Shipkit.
+[00:55:21] Patrick Chouinard: The only thing I want to make sure is clear is right now what I'm doing here is I'm just helping Brendan while he's on his EMS project.
+[00:55:33] Patrick Chouinard: to maintain the community call, but I don't have access to managing the actual Shipkit license and distribution.
+[00:55:42] Patrick Chouinard: So for that, you really need to talk with Brendan himself.
+[00:55:47] Dmitry Avramenko: Yeah, I sent an email, so maybe hopefully he'll respond.
+[00:55:52] Dmitry Avramenko: I'm gonna come down, I'm going down to work my dog and rejoin the call in two minutes.
+[00:55:58] Dmitry Avramenko: But um, is it still going?
+[00:56:00] Patrick Chouinard: Is it finishing already?
+[00:56:01] Patrick Chouinard: No, no, no, it's still going on.
+[00:56:03] Dmitry Avramenko: I'll probably, if you want that, I'll give a bit of what I'm doing in two minutes when I'm cut down.
+[00:56:09] Juan Torres: Oh yeah, you should come.
+[00:56:10] Juan Torres: I want to see your Ebonics CDLC agent stuff.
+[00:56:16] Dmitry Avramenko: Okay, I'll return in second.
+[00:56:18] Juan Torres: Sure, no problem.
+[00:56:23] Patrick Chouinard: Before we go too far, we've heard a bit about Ty in the beginning.
+[00:56:29] Patrick Chouinard: We know he's on the golf course, but can we have a little update?
+[00:56:33] Patrick Chouinard: Is there something you can update us on, or we're going to have to wait until next week?
+[00:56:39] Ty Wells: Well, I've got a call with a VC on Friday for one of my projects, so I will update on Tuesday, hopefully.
+[00:56:50] Patrick Chouinard: Cool, cool.
+[00:56:51] Ty Wells: And yes, I'm still on the golf course.
+[00:56:55] Patrick Chouinard: I don't want to scrap your handicap.
+[00:56:58] Patrick Chouinard: Yeah, so.
+[00:56:59] Ty Wells: I think what
+[00:57:00] Ty Wells: I'm going to do moving forward is if I'm going to play, I'm going to record my demo and then just send it and you can just play it at my time.
+[00:57:07] Ty Wells: How about that?
+[00:57:09] Patrick Chouinard: Cool.
+[00:57:09] Patrick Chouinard: That would be awesome.
+[00:57:11] Ty Wells: All right.
+[00:57:11] Ty Wells: Cool.
+[00:57:13] Patrick Chouinard: Thank you, sir.
+[00:57:18] Patrick Chouinard: Who do we have?
+[00:57:21] Patrick Chouinard: I know your camera's not on, but I'm going to ask you anyway, because you're not here so often.
+[00:57:27] Patrick Chouinard: Maxime, did you have anything you wanted to share?
+[00:57:33] Maksym Liamin: Patrick, how are doing?
+[00:57:36] Patrick Chouinard: Good.
+[00:57:40] Maksym Liamin: How are you doing?
+[00:57:43] Maksym Liamin: Guys, it's nice to be here.
+[00:57:47] Patrick Chouinard: Okay.
+[00:57:47] Patrick Chouinard: No, it's just your connection is cutting off a lot.
+[00:57:59] Patrick Chouinard: Okay.
+[00:58:00] Patrick Chouinard: I can't hear you, sorry.
+[00:58:03] Morgan Cook: Maybe just try voice.
+[00:58:05] Patrick Chouinard: Yeah.
+[00:58:06] Maksym Liamin: No, but can you hear me now?
+[00:58:08] Maksym Liamin: Is it better like that?
+[00:58:09] Maksym Liamin: Yes, that's better.
+[00:58:10] Patrick Chouinard: Yes.
+[00:58:11] Maksym Liamin: I'm not as deep technically right now as you guys, but more fixing stuff on the sales side of things.
+[00:58:19] Maksym Liamin: So for those who don't know, we work with the biggest automotive brands in Latin America, and we have around a third of the Mexican market.
+[00:58:29] Maksym Liamin: And what our tools do is they are specifically for car salespeople and to help them sell better.
+[00:58:37] Maksym Liamin: The initial chatbots on WhatsApp that are like operational systems with all the documents you need, with all the contracts you need, with photos of the cars, videos, whatever financing data, you can do the credit inquiry right from there.
+[00:58:51] Maksym Liamin: So this kind of stuff.
+[00:58:52] Maksym Liamin: And now we are trying to expand the vertical and go into the sales side of things also.
+[00:58:57] Juan Torres: So the second tools.
+[00:58:59] Maksym Liamin: Yeah.
+[00:59:01] Maksym Liamin: We run ads with and generate leads.
+[00:59:04] Maksym Liamin: The bot is converting people to a scheduler test drive, and we are sending them to the dealerships, where the salespeople receive all the information they need about the leads, and are prepared and ready to receive them.
+[00:59:18] Maksym Liamin: So now I'm more into kind of optimizing the funnel.
+[00:59:22] Maksym Liamin: We have pretty good results.
+[00:59:23] Maksym Liamin: Our conversion to test drive is 37%.
+[00:59:35] Maksym Liamin: So now we are just working on the top of the funnel to get to 50% in conversion to test drive, and then maybe another 50% to assistance rate.
+[00:59:45] Maksym Liamin: That would be really good.
+[00:59:46] Maksym Liamin: But on the AI side, I don't have that much to share with you.
+[00:59:50] Maksym Liamin: Codex is really good.
+[00:59:51] Maksym Liamin: That's all I know.
+[00:59:54] Patrick Chouinard: Awesome.
+[00:59:57] Patrick Chouinard: Thank you very much, sir.
+[00:59:59] Juan Torres: I I I
+[01:00:00] Juan Torres: Are you still in Mexico, Maxim?
+[01:00:02] Maksym Liamin: Yes, yes, I'm literally walking in the beautiful park of Mexico right now.
+[01:00:06] Juan Torres: Nice.
+[01:00:09] Elijah Stambaugh: Is your solution a SaaS application or is it custom per car dealership or deployment?
+[01:00:18] Maksym Liamin: I would say it's a SaaS that requires a manual setup per car brand.
+[01:00:23] Maksym Liamin: We don't close contracts with dealerships, but rather with brands.
+[01:00:26] Maksym Liamin: So, and then we distribute just across the entire dealership network, this kind of thing.
+[01:00:37] Patrick Chouinard: Does that answer your question?
+[01:00:43] Elijah Stambaugh: Yeah.
+[01:00:44] Elijah Stambaugh: Yeah, no, that's cool.
+[01:00:46] Elijah Stambaugh: I just, I didn't know when you said like chat agent and then it's got to be related to some custom information as well.
+[01:00:53] Elijah Stambaugh: There's probably some implementation there, but I didn't know if you were wiring up other parts of the business or just you.
+[01:01:03] Maksym Liamin: Yeah, mean, at the end of the day, it has direct control for each dealership and they have their own accesses and the managers manage their salespeople and have visibility of their own leads.
+[01:01:17] Maksym Liamin: So it's like very level distributed, I would say.
+[01:01:20] Maksym Liamin: But at the end of the day, the actual collaboration and the information comes mostly from the brand itself.
+[01:01:27] Maksym Liamin: And these are commercial offers, mostly that comes from their side and financing plans.
+[01:01:32] Maksym Liamin: And what we provide is our own database of already like media content.
+[01:01:36] Maksym Liamin: So photos, videos, and this kind of thing, we manage this information.
+[01:01:43] Juan Torres: The most important thing is when are you going to invite us to your private yacht?
+[01:01:49] Maksym Liamin: Hopefully soon, hopefully soon.
+[01:01:56] Maksym Liamin: So yeah, guys, I mean, I don't know any, I don't have anything.
+[01:02:00] Dmitry Avramenko: to share but if you have any questions especially of building on whatsapp or like i don't know product market fit validating kind of stuff i'm happy to answer i will stay until the end of the call so happy to chat always and thanks for having me here and max right but i want i want to talk to you offline about a couple of things um so i'll i'll see if i can uh find your name on on the group and contact you later yeah sure dmitry shoot me a dm i always have to help okay so now that you're back dmitry yeah so i have a i do have a lot of updates since because i haven't joined in a while um i won't be able to show uh ivanix demo today because i'm right now walking my dog i was slept i have to go home uh to work soon but anyway what happened since since i uh last attended the call so uh so my company ivanix have uh landed a contract with a major bank um and um i'm actually so initially uh want to go go one
+[01:03:00] Dmitry Avramenko: I started Avantix building my, basically, SDLC group of agents as a product.
+[01:03:05] Dmitry Avramenko: I had quite a few conversations with multiple companies in Asia and Middle East and Vietnam who wanted to actually start, you know, testing what I've built, but because it was built in a way that I was not easy to give, so I kind of like, I didn't do it, but then this contract with the bank came in, and so I was hired as Avantix to build a, AML, agentic AML platform for them.
+[01:03:33] Dmitry Avramenko: So basically they have, well, they have a lot of manual stuff.
+[01:03:37] Dmitry Avramenko: And so one of them is something called periodic review.
+[01:03:42] Dmitry Avramenko: Customers of the bank needs to be reviewed every now and then for different risk levels, if something happens, something happens to their directors.
+[01:03:49] Dmitry Avramenko: So basically the process is about like 70 manual steps, including collection of data from various regulatory websites, collecting documentation from clients, and so forth.
+[01:03:59] Dmitry Avramenko: Like.
+[01:04:00] Dmitry Avramenko: We parsing a lot of annual reports for direct information, for ownership information, so all of this stuff.
+[01:04:06] Dmitry Avramenko: So I was basically hired to do this work, to convert that into a genetic process.
+[01:04:13] Dmitry Avramenko: And of course they have a bunch of people they hired to do all this stuff manually.
+[01:04:18] Dmitry Avramenko: So I came in as a one-man show, so basically you could say I'm consulting.
+[01:04:26] Dmitry Avramenko: But I'm actually now eating my dog food.
+[01:04:29] Dmitry Avramenko: So I'm using my Evonix agents that I've built as a DLC team to actually build this.
+[01:04:36] Dmitry Avramenko: So I'm actually proving that what I've built is working.
+[01:04:40] Dmitry Avramenko: And so I'm actually quite impressed with this.
+[01:04:44] Dmitry Avramenko: And of course I'm continuously evolving it.
+[01:04:46] Dmitry Avramenko: So, so far I've been there two months.
+[01:04:48] Dmitry Avramenko: I've built like really a lot of stuff and including kind of complicated infrastructure, you know, a lot of things running in containers.
+[01:04:57] Dmitry Avramenko: So everything from infrastructure to code itself.
+[01:04:59] Dmitry Avramenko: we're able to us,
+[01:05:01] Dmitry Avramenko: Everything is built by my Ionix agent, so I haven't really wrote a single line of code.
+[01:05:06] Dmitry Avramenko: So all I'm doing is every day I'm continuously evolving my SELC agents to fix whatever issues that, you know, they're not still misbehaving.
+[01:05:15] Dmitry Avramenko: And so it's been a lot of fun and it's a really high, really high paying work.
+[01:05:21] Dmitry Avramenko: In fact, it's the highest paying job I ever had in my life.
+[01:05:25] Dmitry Avramenko: So I'm very happy about that.
+[01:05:27] Dmitry Avramenko: So my revenue to the company is coming.
+[01:05:29] Dmitry Avramenko: And I basically continue building my SELC agents while building the project.
+[01:05:34] Dmitry Avramenko: Now, interesting thing about SELC agents that you've probably seen Anthropic just released something called Workflows and Cloud Pony, like the latest Cloud Code version.
+[01:05:45] Dmitry Avramenko: So they have something now somewhat similar approach to what I actually had for a while, which is basically the deterministic workflow and adversarial reviews.
+[01:05:59] Dmitry Avramenko: beyond akhir melier Keep
+[01:06:01] Dmitry Avramenko: So basically, in their workflows, if you look at what they're doing, they have these proposals of agents, and then agents that verify work, and there are multiple versions of adversarial review happening from different angles.
+[01:06:14] Dmitry Avramenko: So this is basically what I've built, this is Winix, and I had it for a while.
+[01:06:19] Dmitry Avramenko: What I didn't have was the deterministic workflow itself, and I'm actually building it now.
+[01:06:27] Dmitry Avramenko: I'm using something called Dboss, so this is something that you guys may want to look at.
+[01:06:31] Dmitry Avramenko: So Dboss is a framework for doing workflows, and instead of like, for example, having your workflow in Claude saying, you know, first you do this, then you do that, that is non-deterministic.
+[01:06:45] Dmitry Avramenko: It may or may not happen, depending on your context, you could wrap your steps into a workflow engine, like Dboss or something else.
+[01:06:52] Dmitry Avramenko: I think, I don't know what the topic is using, but probably something similar.
+[01:06:56] Dmitry Avramenko: And then basically, you could build a deterministic...
+[01:07:03] Dmitry Avramenko: So I think this is what Claude basically released.
+[01:07:06] Dmitry Avramenko: I shared slides on chat of what, of how SDLC agents that I've built work.
+[01:07:16] Dmitry Avramenko: So at the center of reviews, there's only one small piece of it.
+[01:07:19] Dmitry Avramenko: I also have something called Technique Engine.
+[01:07:22] Dmitry Avramenko: And that is basically something that, you know, you all see in Ralph's loops on the internet.
+[01:07:29] Dmitry Avramenko: So everybody's saying just give it a go, let it run until it finishes.
+[01:07:33] Dmitry Avramenko: So to me, this is a bad idea.
+[01:07:36] Dmitry Avramenko: Well, it works, but basically it works.
+[01:07:39] Dmitry Avramenko: It's basically applying brute force to a process where at the end, you know, it may work, but it would have made all the decisions on how to make it work by itself.
+[01:07:51] Dmitry Avramenko: And you were not involved.
+[01:07:53] Dmitry Avramenko: Probably you were not going to get high quality code.
+[01:07:55] Dmitry Avramenko: So I have lots of called Technique Engine, which is basically a collection of different.
+[01:07:59] Dmitry Avramenko: that lot and
+[01:08:00] Dmitry Avramenko: There is some famous techniques, some of them from agile, some of them from business, like chain of verification and so forth, or, you know, basically, advocate, critique, judge, those are all very famous techniques that people do on the whiteboard.
+[01:08:14] Dmitry Avramenko: So, Evonix platform automatically selects a bunch of these techniques to use when I use, when I build my specs.
+[01:08:28] Dmitry Avramenko: And, basically, that's the serial review on the spec itself from multiple angles.
+[01:08:33] Dmitry Avramenko: It uses techniques.
+[01:08:35] Dmitry Avramenko: So, the quality of the specs that I'm getting, I'm literally mind-blowing.
+[01:08:41] Dmitry Avramenko: And, another thing, go, yeah.
+[01:08:43] Patrick Chouinard: We have two people who have questions.
+[01:08:45] Dmitry Avramenko: Yeah, okay.
+[01:08:46] Dmitry Avramenko: Go ahead, go ahead, sorry.
+[01:08:48] Patrick Chouinard: Okay, go ahead.
+[01:08:49] Patrick Chouinard: No worries, it's just because you're touching a subject that was discussed earlier in the call before you joined.
+[01:08:54] Dmitry Avramenko: Oh, Oh, I didn't know.
+[01:08:55] Dmitry Avramenko: Okay, go ahead.
+[01:08:56] Dmitry Avramenko: Wow.
+[01:08:56] Dmitry Avramenko: Because I'm walking, I couldn't see what people are asking.
+[01:09:00] Patrick Chouinard: Actually, I think it's going to be very relevant.
+[01:09:02] Juan Torres: Juan, you had a question?
+[01:09:03] Juan Torres: Yeah, yeah.
+[01:09:04] Juan Torres: Well, actually, congrats.
+[01:09:06] Juan Torres: One of the questions is, so is your Agentex systems, are they trying to solve Agentex ETL?
+[01:09:14] Juan Torres: Because it seems that you're doing a lot of data engineering, and it may seem that you're doing them with Agentex systems is process that data through your Agentex systems.
+[01:09:24] Juan Torres: And then secondly, how did you came about this contract?
+[01:09:28] Juan Torres: Because I've been interested in breaking into the banking sector, so I just want to know if you had connections, you reached out to them, and what was your proposal to them?
+[01:09:37] Dmitry Avramenko: Yeah, so first of all, so the agents that I built for Agentex, it's SDLC agents.
+[01:09:46] Dmitry Avramenko: It's basically agents that build specs, writes code, does QA, deployments.
+[01:09:51] Dmitry Avramenko: So those are basically the team that can do anything, right?
+[01:09:55] Dmitry Avramenko: So basically, you could then fine tune them, and not in a way.
+[01:09:59] Dmitry Avramenko: See, I
+[01:10:00] Dmitry Avramenko: Using Fine Tune, you know, broadly, you could then, once you start using them within the project, you're going to continuously, like, change them and adapt them to whatever project you're doing until they become really good at that project.
+[01:10:13] Dmitry Avramenko: So that's so, as far as data, so yeah, so all of this data extraction and processing and browsing websites and downloading files and all of this, so this is part of the project itself in the bank.
+[01:10:25] Dmitry Avramenko: So, my agent's now building four different agents for the bank, so basically, it's called the maker, the checker, the SDG manager, like the customer diligence manager, and the CRM agent.
+[01:10:39] Dmitry Avramenko: The CRM is the agent that actually owns the bank policy on compliance and all of this.
+[01:10:45] Dmitry Avramenko: So basically, so my agents are building agents, and all of the skills that those four new agents, banking agents have, they include, like, basically, ability to, you know, browse the websites, download the regulatory information.
+[01:11:01] Dmitry Avramenko: So all of that has been built as part of that banking process, but my SDLC agents are basically the agile team, basically.
+[01:11:09] Dmitry Avramenko: Now, as far as getting the contracts, so I spent most of my life in financial industry, and yes, it was a bit of a luck, so I went to New York to visit my parents, and I was reconnecting with people that I used to know, I used to work with.
+[01:11:27] Dmitry Avramenko: And one of them actually has become a very senior person in the bank, like CIO level.
+[01:11:35] Dmitry Avramenko: And we just basically caught up, and we discussed what I've been doing all these years.
+[01:11:39] Dmitry Avramenko: He was very impressed with what I've done.
+[01:11:42] Dmitry Avramenko: But also, I must say, guys, I think, like, really being present, that people say LinkedIn doesn't work.
+[01:11:49] Dmitry Avramenko: So I'm actually, another project, a genetic project I built was basically a LinkedIn agent that writes my...
+[01:12:00] Dmitry Avramenko: My posts, right?
+[01:12:01] Dmitry Avramenko: So it's not like AI slap.
+[01:12:03] Dmitry Avramenko: So if you, you know, I actually deeply want to post about topics that I want to post about, I collect.
+[01:12:09] Dmitry Avramenko: So my agent, like, for example, I watch a lot of YouTube, I read a lot of articles.
+[01:12:14] Dmitry Avramenko: I may see three, four, five things that actually kind of like jabbing together to create a very interesting angle in the story.
+[01:12:20] Dmitry Avramenko: But I have an agent that basically, I'll give it, okay, here's the whole five sources of information.
+[01:12:24] Dmitry Avramenko: It pulls it all together.
+[01:12:26] Dmitry Avramenko: And then it writes, you know, very long articles, basically.
+[01:12:30] Dmitry Avramenko: It's on the outline, I give it.
+[01:12:32] Dmitry Avramenko: But anyway, so I've been doing this, and I was posting this on LinkedIn, and you could look up.
+[01:12:37] Dmitry Avramenko: And then, so the guy actually saw it and was reading it, apparently.
+[01:12:41] Dmitry Avramenko: So that, yeah.
+[01:12:43] Patrick Chouinard: I'll serve as your watchdog, because I see there's another question that you can't see, so.
+[01:12:50] Dmitry Avramenko: Okay, so I'm gonna finish up.
+[01:12:53] Dmitry Avramenko: So basically, the fact that I've been actually, I've seen as a thought leader on LinkedIn, not just posting, know, here's what you do.
+[01:12:59] Dmitry Avramenko: you.
+[01:13:00] Dmitry Avramenko: I 10 things to learn about A.I.
+[01:13:02] Dmitry Avramenko: Actually, if you look at my articles, they're really deeply thought out, but they're actually really written at the end by my agent with instructions, what I gave, and style that I gave it.
+[01:13:14] Dmitry Avramenko: So I like Neil Stevenson, so all my latest articles are written in Neil Stevenson's style.
+[01:13:21] Dmitry Avramenko: So I think being seen on LinkedIn as a thought leader, plus knowing somebody, plus actually having a lot of financial background, helped me to lend my company, not just me, my company to be onboarded to the bank as basically a provider.
+[01:13:41] Dmitry Avramenko: Okay, next question.
+[01:13:43] Patrick Chouinard: Thank you, Dmitry.
+[01:13:44] Patrick Chouinard: Elijah, you had a question.
+[01:13:47] Elijah Stambaugh: Yeah, was wondering, you're talking a lot about agents.
+[01:13:52] Elijah Stambaugh: Is there a particular system or product that you use for building your own agents?
+[01:14:00] Elijah Stambaugh: And then, what do you think about the Hermes agent, and would you ever deploy that in a production setting in one of these corporate environments?
+[01:14:11] Dmitry Avramenko: Yeah.
+[01:14:13] Dmitry Avramenko: So, Hermes agent, no.
+[01:14:14] Dmitry Avramenko: OpenFlow, no.
+[01:14:15] Dmitry Avramenko: I'd say it's not just not now, but not never.
+[01:14:19] Dmitry Avramenko: I mean, not never in the regulatory environment, not never in a regulated environment like a bank, all right?
+[01:14:25] Dmitry Avramenko: If you are a mom and pop shop, right?
+[01:14:28] Dmitry Avramenko: So, I'm selling sneakers or, you know, whatever, a small, tiny restaurant, basically, my view is that all these agents, and agents that people use it in different ways, the OpenFlow and Hermes, right, those are tools for people who do not know how to code, and basically, they want to rely on somebody doing something for them.
+[01:14:47] Dmitry Avramenko: And again, it's a generic tool that will do things very inefficiently, it will do things very extensively, because you tell them what to do, and it does it, right?
+[01:14:55] Dmitry Avramenko: So, you have no idea how you did it, and what security evidence is there.
+[01:15:00] Dmitry Avramenko: None of them are secure.
+[01:15:01] Dmitry Avramenko: So very Singapore government, literally just yesterday, sent out a press release to the entire country, warning people against using OpenClaw and Hermes, because it's true, the problem is people give these tools their own permission of their own identity.
+[01:15:20] Dmitry Avramenko: The answer is no.
+[01:15:21] Dmitry Avramenko: What am I using?
+[01:15:22] Dmitry Avramenko: I'm using, I'm still using cloud code.
+[01:15:24] Dmitry Avramenko: I'm really itching to get off of it in terms of, and I really want to move to Pi.
+[01:15:30] Dmitry Avramenko: So Pi, if you basically don't care about subscription costs, like, which is the only thing that keeps me in cloud code is great subsidies that they give you.
+[01:15:39] Dmitry Avramenko: So I burned about two max subscriptions now, and I'm barely feeding into two max subscriptions, which I'm paying $400.
+[01:15:47] Dmitry Avramenko: And I'm probably burning about, you know, $12,000, $15,000 of tokens a month because of subsidy, right?
+[01:15:54] Dmitry Avramenko: So if I were to move off cloud code, and because they now don't allow you to use even like dash peak amount,,000, $11,000.
+[01:16:00] Dmitry Avramenko: So I'll be burning a lot of tokens.
+[01:16:04] Dmitry Avramenko: Otherwise, I'm already, I'll be moving off to a high agent and building basically, you know, as soon as I have to pay ATI codes, I might as well build my harness myself, so I would not, I would basically, would not build anything serious on, on those agents that you mentioned.
+[01:16:26] Dmitry Avramenko: Any other questions?
+[01:16:28] Patrick Chouinard: No, I think we're out of question for now.
+[01:16:32] Patrick Chouinard: If I may add for Hermes and OpenClaw and things of that nature, to me, they're more of a baseline.
+[01:16:41] Patrick Chouinard: It's not, you don't, first, you never install those into a corporation.
+[01:16:45] Patrick Chouinard: Even though I have a lot of those installed, I would never install them, especially in a bank.
+[01:16:50] Patrick Chouinard: I think they're developing tools.
+[01:16:53] Dmitry Avramenko: They're a set of tools.
+[01:16:55] Patrick Chouinard: They're not a deployable environment.
+[01:16:57] Patrick Chouinard: But if you build on
+[01:17:00] Patrick Chouinard: top of them, you can make them into pretty reliable things for a very specific scenario internally for yourself, but they're the start of a harness.
+[01:17:11] Patrick Chouinard: They're definitely not the full-fledged installation.
+[01:17:16] Dmitry Avramenko: I agree.
+[01:17:17] Dmitry Avramenko: But the problem is that people who know how to do things, they wouldn't use them because they would actually build that cron job and whatever, right?
+[01:17:24] Dmitry Avramenko: People who use them, actually people who are non-technical, they do not know the difference.
+[01:17:29] Dmitry Avramenko: So they will not be able to control them.
+[01:17:33] Dmitry Avramenko: They will basically say, do this, and they'll do it somehow.
+[01:17:35] Dmitry Avramenko: They'll figure out how to do it, probably very inefficiently, potentially dangerously security-wise, right?
+[01:17:42] Dmitry Avramenko: But it's useful.
+[01:17:43] Patrick Chouinard: Yeah, but be careful.
+[01:17:45] Patrick Chouinard: Ermes and OpenClaw are not the same thing they were a month or two ago.
+[01:17:49] Patrick Chouinard: They've evolved tremendously.
+[01:17:52] Patrick Chouinard: That is true.
+[01:17:53] Patrick Chouinard: The latest version of Ermes is...
+[01:17:56] Patrick Chouinard: And again, I went away from OpenClaw a little bit because...
+[01:18:00] Patrick Chouinard: It is still unstable compared to Hermes, but Hermes is a lot more serious right now, and I'm working with it day in and day out internally at home, and it does a very, very good job as a baseline, as I said, out of the box it does pretty much nothing, but if you tool it properly and give it access to other functionality, like I said earlier on, I built an actual centralized system that monitors my infrastructure, but that is built in order to be monitored by Hermes.
+[01:18:43] Dmitry Avramenko: Yeah.
+[01:18:43] Patrick Chouinard: So I basically gave it a view.
+[01:18:45] Patrick Chouinard: So once you start to tool it properly, it can do a pretty interesting thing, actually.
+[01:18:49] Dmitry Avramenko: I agree.
+[01:18:51] Dmitry Avramenko: But the banks, like, by the way, the banks, even basic stuff that is, like, I can, my mind is blown, right?
+[01:18:58] Dmitry Avramenko: So in this bank...
+[01:19:00] Dmitry Avramenko: I cannot name.
+[01:19:02] Dmitry Avramenko: So if you do anything using LLM, like literally anything, there's like 10, 15 teams that need to review this in terms of this, in terms of that.
+[01:19:14] Dmitry Avramenko: Basically, you can't move a finger.
+[01:19:19] Dmitry Avramenko: Actually, the word LLM is only part of it.
+[01:19:23] Dmitry Avramenko: It's about, basically, as soon as something moves across the bank, especially outside the bank, like basically, as soon as you hit LLM, right, it goes somewhere.
+[01:19:32] Dmitry Avramenko: So, you know, I learned so much about how it works.
+[01:19:36] Dmitry Avramenko: apparently, like for example, for Anthropic, even if you hit like endpoint within Azure, it doesn't stay there.
+[01:19:42] Dmitry Avramenko: Actually, Azure just proxies your data to Anthropic server.
+[01:19:46] Dmitry Avramenko: But Anthropic server, obviously, you would think they're on their own, but no, they're actually renting from everyone.
+[01:19:50] Dmitry Avramenko: So you may wind up like within your LLM call, let's say, right, it makes turns, right?
+[01:19:56] Dmitry Avramenko: So let's say you ask it, hey, explain to me, you know, how Hermes works, right?
+[01:20:00] Dmitry Avramenko: That takes 10, 15, 20 calls within that one answer.
+[01:20:06] Dmitry Avramenko: Every one of these 10 calls can find out in different architectures, different places.
+[01:20:11] Dmitry Avramenko: basically, the first one may go to Amazon, the second one may go to Elon Musk, and the third one may go to Google within the same answer.
+[01:20:20] Dmitry Avramenko: So basically, as you talk to your LLM within the same session, you may be hitting NVIDIA, you may be hitting TPUs of Google, and you have no control where it goes, right?
+[01:20:32] Dmitry Avramenko: So obviously, banks are not happy about scenarios like that.
+[01:20:35] Dmitry Avramenko: So it actually is very complicated what you can or what you cannot do without banks.
+[01:20:41] Dmitry Avramenko: This is something that, so bringing some buildings right now is a TOC status.
+[01:20:47] Dmitry Avramenko: Taking it back to a bank will be a tremendous challenge to actually bring it all back and deploy it inside the bank.
+[01:20:54] Patrick Chouinard: Yeah, and I work inside an investment firm, so I know that
+[01:21:00] Patrick Chouinard: And again, that's why I'm not recommending that to my client, because to me, the advantage of tools like that is the fact that they are personal, meaning that while they develop an interaction with one user, and actually, that's where I see local AI model getting more and more traction, because it's extremely hard to replace cloud code with a local model right now, not because of the intelligence, as much as because of Okay.
+[01:21:32] Patrick Chouinard: Developing an application with a 8 to 12k context window is pretty much impossible and 256, 512k context window on local hardware.
+[01:21:47] Patrick Chouinard: Yeah, maybe if you have a bank for yourself, you can afford it, but otherwise it's not really livable.
+[01:21:54] Patrick Chouinard: But for a day-to-day interaction for an assistant, that...
+[01:22:00] Patrick Chouinard: Can definitely work with a Quen-4, a Quen-3, or a Gemma-4 as a local LLN.
+[01:22:09] Dmitry Avramenko: I have another insight that is actually quite recent and interesting.
+[01:22:13] Dmitry Avramenko: So in the last six months or so, or eight months, every CAO and every bank and every big organization saying, we go, go AI, like you must use AI.
+[01:22:23] Dmitry Avramenko: So basically a lot of places, actually people were even mandated to use AI and they were saying, but they couldn't measure what you're doing.
+[01:22:29] Dmitry Avramenko: So in my wife's bank, they were told to use AI and some people, because they don't know how to use AI, they basically generate pictures of cats just to burn tokens so that when they have been reviewed, they are seen as their AI users, right?
+[01:22:42] Dmitry Avramenko: But now everybody is waking up to the cost and you've probably seen it on the internet.
+[01:22:46] Dmitry Avramenko: And the costs are exploding like everywhere.
+[01:22:49] Dmitry Avramenko: And so I was on the call with like a bunch of people, including CIO, and then they're saying, now it's like they're saying, okay, even like we can use AI, we need to actually justify why we...
+[01:23:01] Dmitry Avramenko: Because where is my ROI?
+[01:23:03] Dmitry Avramenko: Because they've seen a lot of people that they bought the tokens, they gave it to people, people are using it, they're burning it, the actual ROI on some projects are very questionable, so now, and it's happening everywhere, I've seen a lot of YouTube, very like top leaders on YouTube that I really like and think they really know what they're talking about, I hear this from many angles and I've seen it myself now, there will be a lot of backlash in terms of, like, you know, proof to me that this is actually bringing value before we actually allow you to use AI.
+[01:23:38] Dmitry Avramenko: And I think what's really missing in organizations is something I was also building for a while, it's called Tokonomics, where you need to be able to trace everything that you're doing identically, and basically if you're running, let's say a workflow that does something, you should be able to tell to your CIO or CFO saying, okay, that work that work.
+[01:24:00] Dmitry Avramenko: It costs $5 per run.
+[01:24:02] Dmitry Avramenko: Within that workflow, have 10 steps.
+[01:24:04] Dmitry Avramenko: This step costs $0.50, this step costs $1.
+[01:24:07] Dmitry Avramenko: Now, to orchestrate that and do this is a challenge.
+[01:24:12] Dmitry Avramenko: I've built my own before.
+[01:24:14] Dmitry Avramenko: I'm switching to length fuse right now and I'm going to be building on top of length fuse.
+[01:24:18] Dmitry Avramenko: But without things like that, I think in a very short distance from now, you won't be able to just teach, let's do AI.
+[01:24:27] Dmitry Avramenko: You'll have to justify the cost of what you're using versus ROI the organization is getting out of this.
+[01:24:34] Dmitry Avramenko: There's a lot of challenges how to measure it.
+[01:24:36] Dmitry Avramenko: In fact, most people don't know how to measure it.
+[01:24:39] Patrick Chouinard: Yeah, that I would definitely agree with.
+[01:24:46] Patrick Chouinard: Good.
+[01:24:48] Patrick Chouinard: Oh, Elijah, you had your end raise.
+[01:24:52] Elijah Stambaugh: Yeah, this is the question that I wanted to ask, but I was hoping that both of you guys could weigh in on it.
+[01:25:00] Elijah Stambaugh: And anyone else, but I, thankfully, I've been very fortunate and blessed over the past month to get two AI operator deals and one software.
+[01:25:15] Elijah Stambaugh: I do have a business partner that I'm working with that's actually, I had him get Shipkit just to review it so he understood what I knew.
+[01:25:24] Elijah Stambaugh: Um, he's a programmer, database guy, but what I'm doing in the companies is, um, recording my conversations, analyzing where the needs are within the business, um, preparing point solutions, whether those are applications or not, uh, to present that information to them.
+[01:25:50] Elijah Stambaugh: and then I'm going to be adding in the agentic ability within there to update data or do different things.
+[01:26:00] Elijah Stambaugh: Not necessarily build their software as they're using it necessarily, but more of interfacing with their data and being able to visualize it in different ways with user interface, which is really software, but and then my goal is to get it to be agentic in terms of like, you know, project management or sales meetings or bid meetings.
+[01:26:30] Elijah Stambaugh: You know, bidding, there's their sales backlog, if you will, um, so when they get ready to go into those meetings, uh, we'll prepare that information in advance, but what I'm doing is kind of human in the loop heavy at the beginning, and then I want to remove the human in the loop to the most as I can, but I also want to give the different people within the business their own
+[01:27:00] Elijah Stambaugh: I'll call it Hermes agent because I know you guys are more advanced than I am, but that's my technical ability.
+[01:27:07] Elijah Stambaugh: Plus, it's a really good harness.
+[01:27:10] Elijah Stambaugh: I've looked at, I don't know, Patrick, if you looked at Orgo.ai, I've seen him on the one, the one guy there.
+[01:27:19] Elijah Stambaugh: I talked to the founder.
+[01:27:20] Elijah Stambaugh: He's in San Francisco.
+[01:27:21] Elijah Stambaugh: He's a young guy and they're building, they believe in what he calls computer use.
+[01:27:30] Elijah Stambaugh: So it's a, it's a virtual machine, but it's, it's a, you know, you have your full Linux desktop and Chrome browser and all that kind of stuff.
+[01:27:41] Patrick Chouinard: So, um, I'd be very, very careful with anything computer use in the corporate realm.
+[01:27:48] Elijah Stambaugh: Uh, well, I'm not doing that.
+[01:27:49] Elijah Stambaugh: I'm just saying that's what they believe in what I'm, what that's just what the reason why I bring them Orgo up is like, that's their belief in terms of like, why.
+[01:28:00] Elijah Stambaugh: They're building what they're building, the way that they're building it.
+[01:28:02] Elijah Stambaugh: Mine is more about orchestrating many agents, you know, so you guys heard my plan, you know, there's very simple things like, what recording agent would you use in a corporate setting, you know, when I go in, if they're doing Gemini, if they have Google, then like, showing them that they can record their meetings with that, some of them have teams, but they have a corporate policy, not to record all their meetings, because they, they changed it and they were like, well, let's record everything.
+[01:28:35] Elijah Stambaugh: And then somebody said something stupid and they were like, wow, we don't want the lawyers to have that in a recording one day.
+[01:28:42] Elijah Stambaugh: So, you know, it's, it's very simple from the start to the finish.
+[01:28:46] Elijah Stambaugh: So any advice or thoughts?
+[01:28:48] Elijah Stambaugh: I'm open for it.
+[01:28:51] Patrick Chouinard: First, I'd be very careful about Hermes or OpenClaw or any of those type of harness.
+[01:28:57] Patrick Chouinard: They are very good learning tool for people.
+[01:29:00] Patrick Chouinard: Like us to learn how those behave and how to layer a memory and all of those, but in a corporate world right now, I know that not many will agree, but I would tend to go co-work and nothing more.
+[01:29:18] Patrick Chouinard: It's not the most powerful RNS, it's definitely not the best assistant in the world, but it is the more stable.
+[01:29:27] Patrick Chouinard: Not stable, but most stable right now, and at least there is auditing, there's monitoring, there's enterprise level tools around it, and since it works very well with its own sandbox, from a security perspective, it's not as hellish as installing a Hermes in the corporate environment, for example.
+[01:29:52] Patrick Chouinard: So start there, because you're going to see that a lot of people want to have agents, but once they get it, they have no clue how to...
+[01:30:00] Patrick Chouinard: Operate it.
+[01:30:01] Patrick Chouinard: So I see co-work as the first step, the first layer to get people to learn how to interact with an agent before you even contemplate something as complex as it remains.
+[01:30:15] Dmitry Avramenko: I have another comment on computer use, and this is like a story I heard recently.
+[01:30:21] Dmitry Avramenko: And it's very simple once you hear it, but if you didn't think about it, you will understand.
+[01:30:28] Dmitry Avramenko: So a lot of corporations, especially regular ones, will be terrified of computer use in general.
+[01:30:34] Dmitry Avramenko: Why?
+[01:30:34] Dmitry Avramenko: So the story goes like this.
+[01:30:36] Dmitry Avramenko: Basically, there were some people in the front office of a major financial institution who got access to tools.
+[01:30:43] Dmitry Avramenko: Like, you don't even need have Hermes or cloud code or anything, right?
+[01:30:46] Dmitry Avramenko: And they figured out that they can actually scrape the screen, which is computer use, right?
+[01:30:51] Dmitry Avramenko: You can just launch Chromium, you scrape the screen, take a picture.
+[01:30:54] Dmitry Avramenko: So what they were doing, they had a whole bunch of tools that, corporation paid for financial security.
+[01:30:59] Dmitry Avramenko: you
+[01:31:00] Dmitry Avramenko: The tools were very expensive, and they had, say, five different screens from five different providers of data on their screen, and they're allowed to look at it.
+[01:31:08] Dmitry Avramenko: What they've done is they wrote a little book that was just taking pictures of their screen, scraping data out of that screen, and then combining these four or five sources of data and sending it to LLM to do useful things for them.
+[01:31:21] Dmitry Avramenko: That will actually automate their lives, and they were very happy about it.
+[01:31:24] Dmitry Avramenko: But you can see where I'm going with this, right?
+[01:31:27] Dmitry Avramenko: So, basically, the license for these data streams will only look at them on screen.
+[01:31:31] Dmitry Avramenko: You were not supposed to retransmit or prepurpose them or do something.
+[01:31:36] Dmitry Avramenko: So, as soon as you say computer use, right, you're talking about being able to grab something from your screen, scrape it and process it in a way that was not sold to you in that intent.
+[01:31:47] Dmitry Avramenko: So, that was...
+[01:31:49] Dmitry Avramenko: Luckily, I think that corporation, you know, didn't get caught or didn't get sued.
+[01:31:54] Dmitry Avramenko: So, they stopped it.
+[01:31:56] Dmitry Avramenko: They removed all these tools from people's desks.
+[01:31:58] Dmitry Avramenko: But you can see, right, what...
+[01:32:00] Dmitry Avramenko: You know, and again, this sounds innocent, but it could, it actually can find out catastrophic to, depending on what it is, because now that you have this example, you can come up with 20 more of some licensing rules have been broken very badly.
+[01:32:13] Patrick Chouinard: Exactly.
+[01:32:14] Patrick Chouinard: Exactly.
+[01:32:15] Elijah Stambaugh: Well, can I also throw a point here?
+[01:32:19] Patrick Chouinard: Yeah, go ahead.
+[01:32:21] Maksym Liamin: Yeah, I just think that here, it's important to understand that the whole point of, I mean, building a business, or giving a service, is that you don't want to spin up as many agents as you possibly can.
+[01:32:35] Maksym Liamin: It's not about the amount of agents, and it's not about the amount of information you harness, but it's about the ROI for the business and what it does exactly.
+[01:32:47] Maksym Liamin: And even though, as a guy you are talking to, can tell you, ah, I need agents, I need agents, I want to try it.
+[01:32:53] Maksym Liamin: But at the end, if it's not bringing real results that are traceable, as Dmitry said, if you don't have a clear, calculated ROI, continue Miranda's
+[01:33:04] Maksym Liamin: Especially in a big corporation, well, you wouldn't even enter, but if you enter and it doesn't bring ROI, then the, I don't know, the VP of operation is canceling your contract in less than three months because they understand that it's not bringing real value.
+[01:33:17] Maksym Liamin: So here it's very important to understand the problem first, I would say.
+[01:33:20] Maksym Liamin: And from what I hear, I think you should change your strategy a little bit.
+[01:33:24] Maksym Liamin: You talk a lot with guys who will actually at the end purchase it, yeah, you're talking with the guys who are decision makers, and it's good, it's important.
+[01:33:30] Maksym Liamin: But I think you need to go to the real users, which are probably not them, yeah, which are the guys that actually work at this and that perform day-to-day operations.
+[01:33:39] Maksym Liamin: And ideally, if you can also go physically, I don't know if it's possible, but you need to be there with them and actually understanding their day-to-day problems.
+[01:33:46] Maksym Liamin: You will not solve an issue by listening to what a director tells you.
+[01:33:51] Maksym Liamin: You can only solve it if you're actually with the people who will eventually benefit from it.
+[01:34:00] Patrick Chouinard: I with you, Maxine.
+[01:34:01] Juan Torres: Amen.
+[01:34:03] Patrick Chouinard: Does that answer your question, Elijah?
+[01:34:10] Patrick Chouinard: Elijah?
+[01:34:11] Elijah Stambaugh: Sorry, it took me a minute to get to the mute button.
+[01:34:13] Elijah Stambaugh: No, I appreciate everything you guys are saying.
+[01:34:17] Elijah Stambaugh: Thank you so much.
+[01:34:18] Elijah Stambaugh: It is really helpful.
+[01:34:22] Elijah Stambaugh: Part of it is, like, the reason why I want to give folks whatever agent you want to call it, but the reason why I want to give them that interactive tool is because I've been doing what you've been saying Maxine, I've been, you know, I call it pressing the flesh, right?
+[01:34:39] Elijah Stambaugh: I've been meeting with folks, and then I do record the conversations.
+[01:34:43] Elijah Stambaugh: I record the screen shares.
+[01:34:45] Elijah Stambaugh: I'm recording what they're doing in their applications.
+[01:34:50] Elijah Stambaugh: I'm analyzing that.
+[01:34:51] Elijah Stambaugh: I'm creating standard operating procedures from that.
+[01:34:55] Elijah Stambaugh: In the agent sense, what I'm thinking is just ...
+[01:34:59] Elijah Stambaugh: ...
+[01:35:00] Elijah Stambaugh: Layering in to my conversation with them, because I'm already doing it with the transcripts effectively on my own, but I want to layer it in.
+[01:35:12] Elijah Stambaugh: It's kind of like the, you know, SDLC that you were talking about before, but not software development, this is more of just like business development, because a lot of what folks need is just preparing for their sales meetings.
+[01:35:29] Elijah Stambaugh: And in the proposals, doing research on the different organizations that they're preparing the proposals for, and making sure that they have all their products in the proposal, or services.
+[01:35:46] Elijah Stambaugh: So, like, when I'm saying I'm not necessarily deploying agents randomly, it's more related to the specific business process.
+[01:35:59] Elijah Stambaugh: So,
+[01:36:00] Elijah Stambaugh: Problems that they have.
+[01:36:02] Elijah Stambaugh: And it is the boots on the ground as well as the executives like all the way up the stream.
+[01:36:08] Elijah Stambaugh: Because the executives want to know like what's the profit margin that project manager has.
+[01:36:13] Elijah Stambaugh: So I've got to tie into different data sources in order to get that in one place, but that might not be a Gentic.
+[01:36:20] Elijah Stambaugh: That's just software development and automation to some extent.
+[01:36:24] Elijah Stambaugh: So there's like so many different lines that we're crossing here.
+[01:36:31] Elijah Stambaugh: When we talk about AI, because it's not just AI, there's still automation, there's still just plain Python code and algorithms.
+[01:36:40] Elijah Stambaugh: You don't always have to have AI behind it.
+[01:36:44] Elijah Stambaugh: But it's hard because you have to understand a lot about the business and the business problems in order to solve even some of these small things you need, like what humans do is so, you
+[01:37:00] Elijah Stambaugh: You know, not just creative, but insightful or intuitive, and it's hard to teach a machine to do all those little pieces.
+[01:37:10] Patrick Chouinard: Exactly, and I think we're getting close, closer to it now, but it's really aggregate system.
+[01:37:18] Patrick Chouinard: An LLM is basically your prefrontal cortex, but that's not your brain, and it never will be.
+[01:37:27] Patrick Chouinard: You need the memory, you need the sensory apparatus, you need all of that in order to have similar to human context or human behavior.
+[01:37:38] Patrick Chouinard: And that's what those harnessed are starting to make available.
+[01:37:45] Patrick Chouinard: We're very, very, very early, obviously, but that's the idea behind it.
+[01:37:51] Patrick Chouinard: And when you put that into place in company, Elijah, today I would focus...
+[01:38:00] Patrick Chouinard: I a lot more on skills than I would focus on agent.
+[01:38:02] Patrick Chouinard: Agent is the buzzword that everyone or every manager in the world wants, or believe they want, but 90% of them actually want skills, way more than they want agent.
+[01:38:16] Patrick Chouinard: I've lived with that on a daily basis at work, like, everybody wants, oh, we need to have a meeting, we need to discuss this incredible agent idea we have for our department.
+[01:38:28] Patrick Chouinard: And you listen to it, and you realize, no, what you need is two skill and a hook, and that's it.
+[01:38:35] Patrick Chouinard: It's going to do the job.
+[01:38:36] Patrick Chouinard: You need to have the traditional AI chatbot be able to do things.
+[01:38:45] Patrick Chouinard: And that's skills, not agents.
+[01:38:50] Dmitry Avramenko: I wanted to comment on Ali's comments.
+[01:38:52] Dmitry Avramenko: There are two things he said about Python.
+[01:38:55] Dmitry Avramenko: So actually, it's very relevant to actually what I'm doing.
+[01:38:58] Dmitry Avramenko: So I'm trying to build as much...
+[01:39:00] Dmitry Avramenko: It's possible deterministic, as is non-agentic.
+[01:39:03] Dmitry Avramenko: So for example, I need to go to dozens or more regulatory websites, find information there, save it as PDF.
+[01:39:12] Dmitry Avramenko: I could have done it as agentically, basically have a prompt or skill to go browse any website.
+[01:39:18] Dmitry Avramenko: But that is unpredictable.
+[01:39:20] Dmitry Avramenko: It may or may not work.
+[01:39:21] Dmitry Avramenko: Today it works, tomorrow it doesn't.
+[01:39:22] Dmitry Avramenko: So instead, what I'm doing is I'm actually using my, you know, skills agents, right, to write a deterministic Python code using Chromium browser to understand, like, first, of course, they examine the site very carefully, DOM, how it's done, JavaScript, this, this.
+[01:39:38] Dmitry Avramenko: So basically, and then it writes precise code to do it.
+[01:39:42] Dmitry Avramenko: Now, if website changes one day, I will go to spend, I'm going to encode, so one course to build it, and then the website changes, I will encode another course one time to fix it.
+[01:39:52] Dmitry Avramenko: And I will continue working for another, let's say, six months or a year, right?
+[01:39:55] Dmitry Avramenko: So in terms of costs, doing it that way is a lot cheaper than actually having Asian brands.
+[01:40:00] Dmitry Avramenko: It's possible deterministic, as is non-agentic.
+[01:40:03] Dmitry Avramenko: So for example, I need to go to dozens or more regulatory websites, find information there, save it as PDF.
+[01:40:12] Dmitry Avramenko: I could have done it as agentically, basically have a prompt or skill to go browse any website.
+[01:40:18] Dmitry Avramenko: But that is unpredictable.
+[01:40:20] Dmitry Avramenko: It may or may not work.
+[01:40:21] Dmitry Avramenko: Today it works, tomorrow it doesn't.
+[01:40:22] Dmitry Avramenko: So instead, what I'm doing is I'm actually using my, you know, skills agents, right, to write a deterministic Python code using Chromium browser to understand, like, first, of course, they examine the site very carefully, DOM, how it's done, JavaScript, this, this.
+[01:40:38] Dmitry Avramenko: So basically, and then it writes precise code to do it.
+[01:40:42] Dmitry Avramenko: Now, if website changes one day, I will go to spend, I'm going to encode, so one course to build it, and then the website changes, I will encode another course one time to fix it.
+[01:40:52] Dmitry Avramenko: And I will continue working for another, let's say, six months or a year, right?
+[01:40:55] Dmitry Avramenko: So in terms of costs, doing it that way is a lot cheaper than actually having Asian brands.
+[01:41:00] Patrick Chouinard: These websites, for every single request, they'll cost a ton.
+[01:41:03] Patrick Chouinard: And that affects your ROI, obviously.
+[01:41:07] Patrick Chouinard: And another thing is actually, energetic cost is unpredictable, right?
+[01:41:11] Patrick Chouinard: So that's why, you know, when you, it's very hard to actually promise that your energetic platform will bring you that ROI because, like, even with one change of model, for example, for Monthropic 4.6 opus to 4.7, costs went up almost like two and a half, three times for the same work.
+[01:41:30] Patrick Chouinard: Because they changed how the tokenizer worked, they changed some other things.
+[01:41:33] Patrick Chouinard: So basically, you all seen it on the news that basically, all of a sudden, the same work.
+[01:41:37] Patrick Chouinard: While they say we keep the price the same, in reality, you're paying a lot more.
+[01:41:41] Patrick Chouinard: So all of this is actually, very difficult to, to predict and formalize when you are building an identity platform.
+[01:41:49] Patrick Chouinard: And there's something that needs to be, you know, thought of when you build proposals, and especially when you're buying them, right?
+[01:41:55] Patrick Chouinard: Because your costs will vary.
+[01:41:57] Patrick Chouinard: Yep.
+[01:41:59] Elijah Stambaugh: That's exactly.
+[01:42:00] Elijah Stambaugh: That's why you give your agent tools.
+[01:42:02] Elijah Stambaugh: So whatever they have to execute, they execute with deterministic code.
+[01:42:08] Elijah Stambaugh: The agentic aspect of it is more determined which tool it needs to use at which moment.
+[01:42:15] Elijah Stambaugh: But to do the actual job, have it execute standard code as much as humanly possible, you can have way better results.
+[01:42:24] Elijah Stambaugh: And that's why I love skills compared to pure agent.
+[01:42:30] Elijah Stambaugh: Pure agent have their place, but not with the end user.
+[01:42:34] Elijah Stambaugh: Not today, at least.
+[01:42:36] Elijah Stambaugh: They're not precise enough today, maybe at some point.
+[01:42:40] Elijah Stambaugh: But right now, user understands skills that because the skill is just the workflow of tools that they need to use in order to produce a result.
+[01:42:50] Patrick Chouinard: And the result is deterministic because it's actually a script that's getting called by the skill to do the thing.
+[01:42:57] Patrick Chouinard: So doing it like that.
+[01:42:59] Patrick Chouinard: Yeah.
+[01:42:59] Patrick Chouinard: Yeah.
+[01:42:59] Patrick Chouinard: Can I ask you?
+[01:43:00] Patrick Chouinard: Question about that?
+[01:43:01] Patrick Chouinard: Sure.
+[01:43:02] Patrick Chouinard: How do you how do you think about how many like how big or how much should an agent do?
+[01:43:11] Patrick Chouinard: And or to your other point about skills, like how many skills are too much?
+[01:43:17] Patrick Chouinard: I know Hermes comes with 100 and then you're going to build another 20 or 50 because it's building them pretty fast.
+[01:43:26] Patrick Chouinard: And so I know the answer might be like, well, it just depends until it breaks.
+[01:43:30] Patrick Chouinard: I guess.
+[01:43:31] Patrick Chouinard: But, you know, how how small do you make an agent?
+[01:43:34] Patrick Chouinard: And then how many skills do you do in there?
+[01:43:37] Patrick Chouinard: Because you said you are building a deploy agent to manage your internal stuff.
+[01:43:42] Patrick Chouinard: But are you also doing any additional things with that?
+[01:43:46] Patrick Chouinard: Or would you or would you create another agent to do a subset of the part where you get to?
+[01:43:54] Patrick Chouinard: And that's exactly why I say and user are not ready for agent right now.
+[01:44:00] Patrick Chouinard: Because today, it's layer upon layer upon layer.
+[01:44:03] Patrick Chouinard: Basically, skills are the atomic part.
+[01:44:07] Patrick Chouinard: It's like, this is how you do thing X.
+[01:44:10] Patrick Chouinard: Okay, so now I'm going to have multiple skills for multiple actions that needs to be done.
+[01:44:16] Patrick Chouinard: Then I'm going to gather those skills into an agent profile.
+[01:44:20] Patrick Chouinard: And that's what I love about Hermes, the fact that I can have 30 different profiles within my Hermes system.
+[01:44:28] Patrick Chouinard: And each of them has their own role, has their own personality, and has their own set of skills that they're assigned to.
+[01:44:36] Patrick Chouinard: But all the skills that I give an agent profile is specific about a set of tools.
+[01:44:42] Patrick Chouinard: So my DevOps Hermes profile has its set of tools.
+[01:44:46] Patrick Chouinard: My network operator, DevOps, network operator Hermes agent has its set of tools.
+[01:44:52] Patrick Chouinard: And they all have their memory layer.
+[01:44:55] Dmitry Avramenko: But I have to keep in mind that context all the time.
+[01:44:59] Dmitry Avramenko: with
+[01:45:00] Dmitry Avramenko: And I work with them so they work efficiently, so that's why I would not give that to a standard user yet, but it's by people like us understanding those layers of functionality that we will be able eventually to provide end user with something that's going to work better, but for now, if you give the skills to the end user, they can be the orchestrating agent in the work, and first of all, it's let them know, or understand the first layer of interaction before they get ready to, oh, you know what you've been doing with all of those skills for the past two, three months?
+[01:45:39] Dmitry Avramenko: Now let's encode that into an agent, because they've done the work themselves, they understand why and how to call those skills and in what order, and now you can expose them to an agent, but you have to make them learn one layer at a time.
+[01:45:58] Dmitry Avramenko: I, I...
+[01:46:00] Dmitry Avramenko: Thank you, Patrick.
+[01:46:00] Dmitry Avramenko: I wanted to add to this.
+[01:46:01] Dmitry Avramenko: There's another angle to this.
+[01:46:03] Dmitry Avramenko: To me, basically, you have to have as little as possible anywhere.
+[01:46:09] Dmitry Avramenko: The reasons are, one is context window, right?
+[01:46:11] Dmitry Avramenko: Everything you have, a loading takes context window.
+[01:46:16] Dmitry Avramenko: So skills don't take that much.
+[01:46:17] Dmitry Avramenko: MCP servers takes shitload, right?
+[01:46:19] Dmitry Avramenko: So basically, you probably shouldn't have any MCP services.
+[01:46:23] Dmitry Avramenko: You don't need them.
+[01:46:23] Dmitry Avramenko: If you need one, maybe you have one, but never just load up on MCP servers.
+[01:46:27] Dmitry Avramenko: If look how much context window you're using on start, before you would do anything, if have, like, three, five MCP servers, you're probably consuming 20% of your context window.
+[01:46:37] Dmitry Avramenko: Skills take less, but they still take.
+[01:46:39] Dmitry Avramenko: That's one angle.
+[01:46:40] Dmitry Avramenko: So your context window, so you, as little as possible, only what you need.
+[01:46:43] Dmitry Avramenko: Second...
+[01:46:44] Dmitry Avramenko: Yeah, I want to call it.
+[01:46:45] Dmitry Avramenko: Parker, he'll pick it up for you.
+[01:46:47] Dmitry Avramenko: Call him back right now.
+[01:46:51] Dmitry Avramenko: Okay, second angle is security, right?
+[01:46:53] Dmitry Avramenko: The more skills you make available to LLM, the more confusing...
+[01:47:00] Dmitry Avramenko: Like in selecting, let's say, if you have like 20, 30 different skills, and among them, maybe two or three are similar skills, you may select one or the other.
+[01:47:08] Patrick Chouinard: So basically, you have to be very selective what you provide, because the more skills, the more confused the LLM will be.
+[01:47:14] Patrick Chouinard: So again, if you have actually something running in production, you should only have skills, the exact number of skills it needs, and nothing more.
+[01:47:21] Patrick Chouinard: And in terms of access, actually, you want to disable as much as you can.
+[01:47:25] Patrick Chouinard: So basically, for some skills, you want to completely disable right access.
+[01:47:29] Patrick Chouinard: So you specifically have to exclude, like, you cannot write.
+[01:47:32] Patrick Chouinard: So you can only read.
+[01:47:34] Patrick Chouinard: And that is all like supported by multiple, let's say, code code.
+[01:47:38] Patrick Chouinard: You could actually have now, you know, basically a header in your skill file to say that this is what it included, or you could do it in JSON file.
+[01:47:47] Patrick Chouinard: The configs basically enable or disable specific operations for LLMs that are allowed to do.
+[01:47:52] Patrick Chouinard: So from these two angles, basically, you want the minimum set of permissions.
+[01:47:56] Patrick Chouinard: Like, like, you literally want to turn them off until until it can no longer.
+[01:48:00] Patrick Chouinard: Do the job.
+[01:48:00] Patrick Chouinard: And then you just turn on what you need for that job.
+[01:48:03] Elijah Stambaugh: And in terms of context window, you want as little as possible to basically be able to do more.
+[01:48:09] Elijah Stambaugh: Yeah.
+[01:48:10] Elijah Stambaugh: That's exactly what I do with the agent profile, basically.
+[01:48:14] Patrick Chouinard: Because each agent profile has only the skill that that profile requires.
+[01:48:21] Patrick Chouinard: And the coordinating agent has the high level skill to understand which agent profile to call for something.
+[01:48:32] Patrick Chouinard: It's all about layer upon layer upon layer.
+[01:48:35] Fitz: But the execution layer, the one that touch reality, always have to be as strictly managed as possible with as little amount of skills and tools available to it for the specific job it's been created.
+[01:48:48] Fitz: But from a mindset, just look at it as layers upon layers calling each other.
+[01:48:57] Fitz: easier.
+[01:48:57] Fitz: go.
+[01:49:00] Fitz: Makes sense?
+[01:49:03] Fitz: Yep.
+[01:49:04] Fitz: You guys are amazing.
+[01:49:06] Fitz: And if you're putting out content, I'm picking it up.
+[01:49:11] Fitz: Thanks.
+[01:49:13] Patrick Chouinard: Good.
+[01:49:16] Patrick Chouinard: Anyone has any other question or comment they want to talk about?
+[01:49:25] Patrick Chouinard: Thank you, Maxime.
+[01:49:26] Patrick Chouinard: Yeah, absolutely right.
+[01:49:30] Patrick Chouinard: So anything else before we conclude this week's call?
+[01:49:40] Patrick Chouinard: Going once, going twice?
+[01:49:41] Patrick Chouinard: Quick question, Patrick.
+[01:49:43] Patrick Chouinard: Sorry, was going to, there's text in there, but I guess I'd rather ask you.
+[01:49:49] Patrick Chouinard: Go ahead.
+[01:49:49] Patrick Chouinard: Your RAG, you know, your RAG project.
+[01:49:53] Patrick Chouinard: Yep.
+[01:49:54] Patrick Chouinard: Is it the operator side of things?
+[01:49:55] Patrick Chouinard: Is it the case that you may need someone with a bit of spare time?
+[01:49:59] Fitz: to Go Thank
+[01:50:00] Patrick Chouinard: Assist, if not, it's okay as well, because I've got a bit of spare time that I can help on there to bring it.
+[01:50:07] Patrick Chouinard: It's more a matter of finding time to package it, because right now it's highly integrated into my home infrastructure, it's using my home N8N server.
+[01:50:19] Patrick Chouinard: I just need to package it, rip it out and package it and have all of the install file detail, how to create it in your own environment.
+[01:50:28] Patrick Chouinard: And yeah, I just need to de-Patrick-ize it, if you want.
+[01:50:35] Patrick Chouinard: Cool, okay, gotcha.
+[01:50:38] Patrick Chouinard: But yeah, let's just say that I thought I would finish it in a week or two, but some family events are preventing me from working as much as I want on it for the next couple of weeks.
+[01:50:52] Patrick Chouinard: So I'm making the call, but that's about as much as I can do right now, sadly.
+[01:50:59] Patrick Chouinard: much so much.
+[01:50:59] Patrick Chouinard: So
+[01:51:00] Patrick Chouinard: Certainly, certainly.
+[01:51:00] Patrick Chouinard: Okay, cool.
+[01:51:01] Patrick Chouinard: Got you now.
+[01:51:02] Patrick Chouinard: But I'm not forgetting about it.
+[01:51:04] Patrick Chouinard: Believe me, as soon as situations stabilize, I'm going to continue working on it.
+[01:51:09] Patrick Chouinard: And I've published the community brain distribution repo, and it's in the chat.
+[01:51:17] Elijah Stambaugh: It's going to be in the recap flow afterward.
+[01:51:19] Elijah Stambaugh: And if you try it and find anything, please just post it as issues in the GitHub repo.
+[01:51:28] Patrick Chouinard: Okay.
+[01:51:28] Patrick Chouinard: as soon as I have a couple of minutes free, I'm going to address them.
+[01:51:32] Patrick Chouinard: Right now, I haven't even tried it once.
+[01:51:34] Patrick Chouinard: So please just be forgiving.
+[01:51:38] Morgan Cook: Yeah, it's not, it's untested.
+[01:51:41] Morgan Cook: I just wanted to push it out as fast as possible to you.
+[01:51:44] Morgan Cook: No worries, no worries.
+[01:51:45] Morgan Cook: find anything, put an issue in the repo and I'm going to address it as soon as I have time.

@@ -1,0 +1,263 @@
+2026-05-26 19:57:18 From Juan Torres to Everyone:
+	There is something therapeutic about desk set up
+	
+2026-05-26 20:00:39 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	that's pretty sweet @Juan Torres! i'm a nano banana fan all the way still so far myself
+	
+2026-05-26 20:03:33 From Alex Roca to Everyone:
+	That is really cool @Juan Torres
+	
+2026-05-26 20:06:15 From Alex Wilson to Everyone:
+	Pricing is huge….
+	
+2026-05-26 20:06:37 From Alex Roca to Everyone:
+	@Juan Torres  you could send a pdf with a collage with selected cool pics… a quick win that they would love
+	
+2026-05-26 20:09:33 From Bastian Venegas Arevalo to Everyone:
+	That’s genious @Brandon Hancock !Almost dont need sentry or posthog then. FOr the essentials
+	
+2026-05-26 20:11:14 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	next level folks lol.
+	
+2026-05-26 20:11:50 From Juan Torres to Everyone:
+	Replying to "@Juan Torres  you could send a pdf with a collage ...":
+	For sure, cool pics that I like?
+	
+2026-05-26 20:11:57 From Bastian Venegas Arevalo to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com what payment providers did you activate for the parking spot ?
+	
+2026-05-26 20:12:44 From Alex Wilson to Everyone:
+	Good to see you @Brandon Hancock .  Any ShipKit calls coming up?
+	
+2026-05-26 20:13:43 From Brandon Hancock to Everyone:
+	Replying to "Good to see you @Brandon Hancock .  Any ShipKit ca...":
+	Tentatively. We are just slammed working trying to get some more traction and leads so after things calm down and not doing 12+ hours a day I’d love ot bring them back
+	
+2026-05-26 20:16:46 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "@Scott Rippey | @scottmichaelmedia | scottmichaelm...":
+	my response answered this correct?
+	
+2026-05-26 20:18:31 From Juan Torres to Everyone:
+	Pay me in parking space
+	
+2026-05-26 20:19:37 From Adam to Everyone:
+	Replying to "Pay me in parking space":
+	a hedge against park-flation
+	
+2026-05-26 20:20:39 From Biggi Fraley to Everyone:
+	🤞Wishing all the best, Brandon.
+	
+2026-06-02 17:52:49 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-06-02 17:56:55 From Biggi Fraley to Everyone:
+	I can hear you!
+	
+2026-06-02 17:57:02 From Patrick Chouinard to Everyone:
+	@Marc Juretus other can hear me
+	
+2026-06-02 18:03:06 From Ryan - One Stop Creative Agency to Everyone:
+	Scott Rippey
+	
+2026-06-02 18:12:11 From Ola Oyo to Everyone:
+	https://labs.google/fx/tools/flow
+	
+2026-06-02 18:12:21 From Ola Oyo to Everyone:
+	@Ryan - One Stop Creative Agency
+	
+2026-06-02 18:15:28 From Bastian Venegas Arevalo to Everyone:
+	I use Grill with Docs —> /goal with a Token budget
+	
+2026-06-02 18:20:17 From Bastian Venegas Arevalo to Everyone:
+	Example here @Juan Torres . You speak spanish
+	Screenshot2026_06_02_181953.jpg, Screenshot2026_06_02_182002.jpg
+	
+2026-06-02 18:20:29 From Juan Torres to Everyone:
+	evonix-sdlc-agents.pdf
+	
+2026-06-02 18:20:52 From Juan Torres to Everyone:
+	Replying to "Example here @Juan Torres . You speak spanish Scre...":
+	Orale, gracias Bastian
+	Bastian Venegas Arevalo:👍
+	
+2026-06-02 18:25:05 From Bastian Venegas Arevalo to Everyone:
+	@Rod Morrison I have a skill for rendering HTML with a couple of templates so it looks nice. I’ll share it later. Wrapping up some stuff to make the repo public
+	Biggi Fraley, Patrick Chouinard:👍
+	
+2026-06-02 18:30:17 From Bastian Venegas Arevalo to Everyone:
+	It is based on kimmy but they made the model bigger in terms of parameters and added more training data
+	Patrick Chouinard:👍
+	Juan Torres:💡
+	
+2026-06-02 18:32:13 From Rod Morrison to Everyone:
+	https://www.rtk-ai.app/ 
+	
+	https://www.rtk-ai.app/
+	
+2026-06-02 18:32:41 From Rod Morrison to Everyone:
+	https://github.com/rtk-ai/rtk
+	Biggi Fraley:👍
+	
+2026-06-02 18:34:42 From Rod Morrison to Everyone:
+	Screenshot2026_06_02_173436.jpg
+	
+2026-06-02 18:42:46 From Bastian Venegas Arevalo to Everyone:
+	Replying to "@Rod Morrison I have a skill for rendering HTML wi...":
+	npx skills@latest add https://github.com/ranvier2d2/skills-share.git
+	
+	I recommend:
+	
+	goal-planner
+	codex-goal-planner-skill-orchestrator
+	excalidraw-mermaid-safe
+	semantic-image-director
+	intent-html-renderer (supports standalone htmls and also includes a version that uses Shadcn components).
+	
+2026-06-02 18:43:08 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Example here @Juan Torres . You speak spanish Scre...":
+	@Juan Torres npx skills@latest add https://github.com/ranvier2d2/skills-share.git
+	
+	I recommend:
+	
+	goal-planner
+	codex-goal-planner-skill-orchestrator
+	excalidraw-mermaid-safe
+	semantic-image-director
+	intent-html-renderer (supports standalone htmls and also includes a version that uses Shadcn components).
+	
+2026-06-02 18:52:09 From Fitz to Everyone:
+	Hey Patrick quick question I missed a couple of sessions, is your genius RAG project been released as yet?
+	
+2026-06-02 18:53:32 From Patrick Chouinard to Everyone:
+	Replying to "Hey Patrick quick question I missed a couple of se...":
+	There is a very preliminary version here : https://github.com/hopchouinard/community-brain-distribution
+	
+2026-06-02 18:54:05 From Patrick Chouinard to Everyone:
+	Replying to "Hey Patrick quick question I missed a couple of se...":
+	This is just the runtime with the data, not the operator side, that I am still working on.
+	Fitz:👍
+	
+2026-06-02 18:55:09 From Fitz to Everyone:
+	Replying to "Hey Patrick quick question I missed a couple of se...":
+	When you say operator side, how do you mean?
+	
+2026-06-02 18:57:46 From Maksym Liamin to Everyone:
+	Congrats on the contract!
+	
+2026-06-02 18:58:26 From Patrick Chouinard to Everyone:
+	Replying to "Hey Patrick quick question I missed a couple of se...":
+	I mean the part that ingest the transcript and chat, does the chunking and embedding…
+	
+2026-06-02 18:58:34 From Morgan Cook to Everyone:
+	Is anyone else having difficulties with ChatGPT right now, Like its not reachable or intermittent?
+	
+2026-06-02 18:58:46 From Fitz to Everyone:
+	Replying to "Hey Patrick quick question I missed a couple of se...":
+	Ah got you, awesome!
+	
+2026-06-02 18:59:04 From Patrick Chouinard to Everyone:
+	Replying to "Hey Patrick quick question I missed a couple of se...":
+	What is in the distribution package is the vector db and all the config to consume the content locallly
+	
+2026-06-02 19:00:20 From Patrick Chouinard to Everyone:
+	Replying to "Is anyone else having difficulties with ChatGPT ri...":
+	Working all here
+	
+2026-06-02 19:00:24 From Fitz to Everyone:
+	Replying to "Hey Patrick quick question I missed a couple of se...":
+	Ok that makes sense, cheers
+	
+2026-06-02 19:01:16 From Juan Torres to Everyone:
+	His success and camera is dizzying
+	
+2026-06-02 19:01:24 From Bastian Venegas Arevalo to Everyone:
+	I don’t like how workflows are implemented right now. The agents get really confused if the chained dependencies aren’t mapped super clearly
+	
+2026-06-02 19:01:26 From Patrick Chouinard to Everyone:
+	https://www.dbos.dev/
+	Elijah Stambaugh:👌
+	
+2026-06-02 19:01:53 From Fitz to Everyone:
+	Replying to "Is anyone else having difficulties with ChatGPT ri...":
+	Working for me too!
+	
+2026-06-02 19:09:18 From Bastian Venegas Arevalo to Everyone:
+	https://www.youtube.com/watch?v=tK32trvj_b4&list=PLOXw6I10VTv9zUbhqqaT62O9AFjlndmjn&index=1 
+	
+	OpenAI just updated their AGENTS SDK for Python and Typescript. They now support skills and sandbox out of the box. It’s practically codex via API. 
+	
+	Overkill for pretty much everything BUT worth checking
+	Patrick Chouinard:❤️
+	
+2026-06-02 19:10:20 From Bastian Venegas Arevalo to Everyone:
+	You can use your openai subscription in Pi.
+	Patrick Chouinard:❤️
+	
+2026-06-02 19:11:30 From Mitch McCauley to Everyone:
+	@Patrick Chouinard  - How did your .md -> html project/skill go?
+	
+2026-06-02 19:13:14 From Bastian Venegas Arevalo to Everyone:
+	You should follow Teknium on X if you’re interested in Hermes. https://x.com/Teknium
+	
+2026-06-02 19:14:20 From Ryan - One Stop Creative Agency to Everyone:
+	so these agents you're building? How are you meeting the security policies of the bank when deploying these?
+	
+2026-06-02 19:18:34 From Juan Torres to Everyone:
+	AI FinOps
+	
+2026-06-02 19:19:34 From Patrick Chouinard to Everyone:
+	Replying to "@Patrick Chouinard  - How did your .md -> html pro...":
+	In dev for the moment, I was focusing on training  non tech user how to use Claude Code, but I should get back to it soon
+	
+2026-06-02 19:19:44 From Bastian Venegas Arevalo to Everyone:
+	Yeah getting aligned on a KPI with the business you’re selling to is essential. And its vry different to how you benchmark that internally. For example: Precision-Recall is not a KPI for a business even if its the appropriate one from a data science perspective
+	
+2026-06-02 19:25:55 From Bastian Venegas Arevalo to Everyone:
+	People say they want an agent when they actually want a simple workflow. By definition, an agent determines the next step, and that’s very tricky. 
+	
+	It’s not the same as having a set of available tools for an LLM to call
+	Patrick Chouinard:🔥
+	
+2026-06-02 19:28:29 From Bastian Venegas Arevalo to Everyone:
+	Forward deployed engineer @Maksym Liamin
+	Juan Torres, Fitz:🔥
+	
+2026-06-02 19:28:51 From Maksym Liamin to Everyone:
+	You know it Bastian
+	
+2026-06-02 19:32:00 From Fitz to Everyone:
+	Replying to "Forward deployed engineer @Maksym Liamin":
+	Some say FDE's are similar to consultants, but with FDE they also would need to know how to code like a software engineer or a data engineer
+	
+2026-06-02 19:32:59 From Bastian Venegas Arevalo to Everyone:
+	Generative AI is very limited in solving real-world problems if you don’t map everything to a state machine. The user journey, at the bare minimum.
+	Patrick Chouinard:👍
+	
+2026-06-02 19:35:24 From Adam to Everyone:
+	LLMs are like a brain broken brain
+	https://neurosciencenews.com/ai-aphasia-llms-28956/
+	
+2026-06-02 19:38:09 From Bastian Venegas Arevalo to Everyone:
+	The agent should have only the skills it needs at a given stage of the workflow. No universal skill libraries or self-invoking skills »per the agent’s criteria«. If one is enough, great.
+	
+	That’s fun for a Hermes or Claude Code, but I wouldn’t trust it for a product.
+	
+2026-06-02 19:41:15 From Bastian Venegas Arevalo to Everyone:
+	The only code that doesn’t break is the code you don’t write. The same goes for skills and every primitive in agentic coding. Less is more <3
+	
+2026-06-02 19:42:43 From Maksym Liamin to Everyone:
+	1. Make the Requirements "Less Dumb"
+	2. Delete the Part or Process Step
+	3. Simplify or Optimize
+	4. Accelerate Cycle Time
+	5. Automate Last
+	Bastian Venegas Arevalo, Juan Torres:❤️
+	
+2026-06-02 19:45:03 From Juan Torres to Everyone:
+	Money back guarantee
+	
+2026-06-02 19:46:02 From Biggi Fraley to Everyone:
+	Thank you, Patrick!
+	
