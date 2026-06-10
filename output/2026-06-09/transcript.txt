@@ -1,0 +1,779 @@
+[00:00:00] Ty Wells: But he's concerned about what it costs.
+[00:00:02] Ty Wells: You know, he sees the horror stories about agents running away, but he wants it.
+[00:00:06] Ty Wells: He doesn't want any of the complexity of it, but he wants it.
+[00:00:09] Ty Wells: He understands, I need to control my costs.
+[00:00:12] Ty Wells: That's one piece that he understands.
+[00:00:15] Ty Wells: He doesn't understand the security part of it, but that has to be there, too.
+[00:00:21] Ty Wells: And then authorization and authentication has to be there, too, because you have security.
+[00:00:27] Ty Wells: And then, like I said, any non-reversible action, there needs to be some way to manage that, and that's what the authentication is there for.
+[00:00:43] Ty Wells: And then be able to do things autonomously, because they want the autonomous, but it's very complex, and they don't want to understand it, and they don't really need to.
+[00:00:53] Ty Wells: And that's what this layer does for them.
+[00:00:55] Paul Miller: them.
+[00:00:57] Paul Miller: Might this be...
+[00:00:58] Paul Miller: ...
+[00:00:59] Paul Miller: ...
+[00:00:59] Paul Miller: Also, a marketplace in which you invite people to the existing stack and environment to then run their agents within it, or...?
+[00:01:13] Ty Wells: Yeah, just put that layer that your agent runs through when it's communicating.
+[00:01:22] Ty Wells: I mean, that's the bottom line.
+[00:01:24] Ty Wells: Whatever you build, it's going to be an agent of some sort.
+[00:01:28] Ty Wells: Let it run through the layer of protection.
+[00:01:34] Ty Wells: Patrick, do you have a question for me or for the...?
+[00:01:36] Patrick Chouinard: Actually, I just wanted to check because, Paul, you sent me a message.
+[00:01:41] Paul Miller: I just to sure that you were okay for the call.
+[00:01:44] Paul Miller: Yeah, we just need to be able to do shares.
+[00:01:49] Paul Miller: I don't have the authority to do shares.
+[00:01:52] Patrick Chouinard: Ask once, I'll approve it, then I'll be able to...
+[00:01:55] Patrick Chouinard: Okay.
+[00:01:58] Paul Miller: Ty, do you want to just...?
+[00:01:59] Paul Miller: Oh,
+[00:02:00] Paul Miller: Do you want to do a re-ask?
+[00:02:03] Ty Wells: Oh, there it is.
+[00:02:05] Paul Miller: Let's go.
+[00:02:08] Paul Miller: Working?
+[00:02:08] Paul Miller: Cool.
+[00:02:09] Paul Miller: We got it.
+[00:02:11] Paul Miller: We got it, Patrick.
+[00:02:12] Patrick Chouinard: Okay.
+[00:02:13] Paul Miller: Thank you.
+[00:02:14] Paul Miller: See you next week.
+[00:02:16] Patrick Chouinard: Yeah.
+[00:02:18] Patrick Chouinard: Bye, guys.
+[00:02:19] Paul Miller: Thanks, Patrick.
+[00:02:20] Paul Miller: Bye.
+[00:02:22] Ty Wells: Yeah, I mean, you guys can read it over, but I think I explained basically the layout.
+[00:02:30] Paul Miller: Well, yeah.
+[00:02:32] Paul Miller: It's like one of Patrick's suggestions.
+[00:02:35] Paul Miller: It's kind of It's big.
+[00:02:38] Paul Miller: It's got a lot of depth, a lot to think through because it's solving so many things because this is, yeah, this is good.
+[00:02:47] Ty Wells: Yeah, it has to be, you know, that's why I said I built it really different times because I needed different things.
+[00:02:53] Ty Wells: But it's really a full circle.
+[00:02:55] Ty Wells: If it's not a full circle, then it's really sort of useless.
+[00:02:59] Ty Wells: So that's why I had to build in all, you know, all the layers and then connect them properly.
+[00:03:05] Ty Wells: And now I can throw an agent on top of that.
+[00:03:07] Ty Wells: So I can, let me see if I can show you what that sort of looks like.
+[00:03:11] Ty Wells: I have, let's see.
+[00:03:23] Ty Wells: Okay.
+[00:03:25] Ty Wells: So yeah, let me see if I can share this.
+[00:03:36] Ty Wells: Okay.
+[00:03:37] Ty Wells: So you see here, so this is, this is the layout of it here.
+[00:03:43] Ty Wells: So you've got the Hermes agent.
+[00:03:45] Ty Wells: You've got these connections that, you know, it's built into Hermes.
+[00:03:51] Ty Wells: And then you have the ship's gateway and the metering proxy that handles all of the transactions.
+[00:03:58] Ty Wells: But that's isolated here.
+[00:04:00] Ty Wells: So this guy is isolated, everything rolls through the gateway, the metering comes in there as well, make any connections and then you go back in.
+[00:04:09] Ty Wells: That's sort of the layout of how you would do that.
+[00:04:12] Ty Wells: So who builds this and what functionality?
+[00:04:15] Ty Wells: Doesn't matter, it just needs to go through the gateway to make sure everything is good.
+[00:04:22] Ty Wells: So this gives you an idea here of what that's done.
+[00:04:30] Ty Wells: So everybody's provision on their own, they could come in or not come in.
+[00:04:36] Ty Wells: You know, they're running on $20 plan, right, for $20 plan for the for the hosting.
+[00:04:48] Ty Wells: And then, of course, they bring their own keys.
+[00:04:50] Ty Wells: There's a BYOK all the way through because I'm not tied in, right?
+[00:04:54] Ty Wells: Yeah.
+[00:04:55] Ty Wells: there's just, you know, so...
+[00:04:59] Ty Wells: They...
+[00:05:00] Ty Wells: If drop on the platform, if want to move on, they would still need to maintain their access to the platform to ship safe.
+[00:05:09] Ty Wells: Let's say they don't want to be a client anymore and pay the maintenance fee, then they've got to disconnect.
+[00:05:17] Ty Wells: Who wants to disconnect after you're deeply ingrained?
+[00:05:22] Paul Miller: Yes.
+[00:05:23] Paul Miller: So when you say, so under the pricing model, the solo user has three guarded surfaces.
+[00:05:33] Paul Miller: What's the definition of what a guarded surface is?
+[00:05:38] Ty Wells: Well, it's protection from where, if you have, so you're looking at the document, hang on, let me get over there.
+[00:05:46] Ty Wells: You're looking at the pricing?
+[00:05:47] Paul Miller: Yeah.
+[00:05:48] Paul Miller: Yeah.
+[00:05:49] Ty Wells: Yeah.
+[00:05:50] Ty Wells: So the guarded surfaces are the things that you're trying to protect.
+[00:05:56] Ty Wells: You're defining what's a guarded surface.
+[00:06:00] Ty Wells: So let's say you don't want to access a certain service or you want to say anything over a hundred bucks I want to be involved in.
+[00:06:14] Ty Wells: I want to approve that.
+[00:06:15] Ty Wells: So guarded services is self-defined.
+[00:06:18] Ty Wells: It's not something that is defined up front.
+[00:06:21] Ty Wells: You decide what guarded services you want to protect and that's what you protect.
+[00:06:26] Ty Wells: And those guarded services are those non-reversible actions.
+[00:06:31] Ty Wells: So, like, what would fall into that in particular?
+[00:06:38] Ty Wells: Spending money.
+[00:06:39] Ty Wells: Something you can't get your money back, basically.
+[00:06:41] Ty Wells: You can't return, you know, delete a directory.
+[00:06:45] Ty Wells: Delete my entire database.
+[00:06:46] Ty Wells: Okay, that's a non-reversible action.
+[00:06:48] Ty Wells: That should be guarded, right?
+[00:06:50] Ty Wells: So, you know, all the horror stories you heard about agents doing wild stuff, spending a bunch of money.
+[00:06:55] Paul Miller: Yeah, So you set those as guarded surfaces.
+[00:06:58] Paul Miller: Everything runs through the proxy.
+[00:07:00] Ty Wells: If can't get beyond, you've got to go through the proxy to see if that fits within policy, so there's a policy engine that you define, and that's where you define your guarded surfaces.
+[00:07:12] Ty Wells: But you define these things as a client at a high level.
+[00:07:15] Ty Wells: You don't get into the weeds.
+[00:07:17] Ty Wells: You just say, you know, yeah, I need to protect this particular client as a VIP.
+[00:07:23] Ty Wells: I need to make decisions.
+[00:07:24] Ty Wells: Anything making decisions on that client, that's a guarded surface, and those are self-defined.
+[00:07:30] Ty Wells: Those will vary from business to business.
+[00:07:34] Juan Torres: So how do you quantify the guarded surfaces in terms of the money stratification that I see here?
+[00:07:44] Ty Wells: Because they can be different sizes, you know?
+[00:07:48] Ty Wells: Yes.
+[00:07:49] Ty Wells: There's no quantification on it.
+[00:07:51] Ty Wells: It's just an individual surface you're defining.
+[00:07:55] Ty Wells: So you just define a specific surface that that's what you want guarded.
+[00:07:59] Ty Wells: at it.
+[00:07:59] Ty Wells: So
+[00:08:00] Ty Wells: That's one.
+[00:08:00] Ty Wells: That's how you quantify that.
+[00:08:02] Ty Wells: You need something else guarded, that's two.
+[00:08:05] Ty Wells: So that's how the surfaces are defined like that.
+[00:08:09] Ty Wells: And they will vary between businesses, between whatever actions that business is doing.
+[00:08:20] Paul Miller: Okay.
+[00:08:23] Paul Miller: Yeah.
+[00:08:25] Paul Miller: I'm thinking my only sort of practical feedback is that we're asking about this.
+[00:08:35] Paul Miller: You may need to just provide a little bit more tangible examples or some preset, real practical things that people are worried about money, they're worried about security.
+[00:08:47] Paul Miller: And like, here's where most users start or something like that for the pre-configured base setup.
+[00:09:00] Ty Wells: Yeah, no, I get what you're saying.
+[00:09:02] Ty Wells: And again, I guess it would be more of what the user wants.
+[00:09:14] Ty Wells: That's how I'm presenting it, not what needs to happen behind the scenes.
+[00:09:19] Paul Miller: So I'm sharing with you guys what's happening behind the scenes.
+[00:09:22] Ty Wells: What the user wants is, let me see if I can, I don't think I've ever taken this much time to explain.
+[00:09:30] Ty Wells: That's not a good thing.
+[00:09:33] Ty Wells: But let me see here if I have the presentation.
+[00:09:39] Bastian Venegas Arevalo: If something is very, very capable and it can do almost anything, it's hard to find a sudden point.
+[00:09:50] Paul Miller: Yeah, yeah, yeah.
+[00:09:52] Paul Miller: That's the challenge, Bastian.
+[00:09:54] Ty Wells: I didn't hear that, Bastian.
+[00:09:56] Ty Wells: Bastian?
+[00:09:58] Paul Miller: Bastian, want to...?
+[00:10:01] Paul Miller: Sorry, your volume's really low, Bastian.
+[00:10:12] Paul Miller: I'd heard Bastian was saying that because it's so powerful and it's so flexible, sometimes when you've got a more capable, open-ended capability, people don't know where to start in terms of how you can leverage it.
+[00:10:34] Paul Miller: Even though you don't want to ring fence it, you want to seed some examples of here's how you could start.
+[00:10:42] Ty Wells: Yeah.
+[00:10:43] Ty Wells: Yeah.
+[00:10:44] Ty Wells: No, I get what you're saying.
+[00:10:49] Ty Wells: Yes, I will definitely try to figure out the best way to present that.
+[00:10:55] Ty Wells: It's complicated, but I will definitely, I'll apply.
+[00:10:59] Ty Wells: I have got...
+[00:11:00] Ty Wells: They explained to me as a 10-year-old rule, so I will definitely do that, so it's a little clearer as to how the system works.
+[00:11:13] Paul Miller: Ryan's got a good thing on the chat, Ryan being Mr.
+[00:11:16] Paul Miller: Marketing.
+[00:11:16] Paul Miller: Marketing gold is being able to boil down complex stuff to simple examples that Joe Bloggs can understand.
+[00:11:27] Paul Miller: I thought, yeah, that's kind of on the money as well.
+[00:11:34] Ryan C: I don't know why I'm typing, sorry.
+[00:11:37] Ryan C: I think like a slider on the homepage or something tied with like five sort of big sort of hallmark stuff that's really simple, like it saves me five times the amount of money or this amount of time or whatever doing X, Y, Z.
+[00:11:53] Ryan C: just really, as you say, dumb it down so a five-year-old can get it.
+[00:11:57] Ryan C: Just the big headline-y stuff.
+[00:11:59] Ryan C: So somebody goes...
+[00:12:00] Ryan C: goes, ooh, cool, I'll look at more of this, because that header bit of the website, right, is the bit that most people hit and bounce back off of if they don't get it from that.
+[00:12:11] Ryan C: So that's the most important part, is that bit of the homepage, just what's that headline grabber that's going to get somebody to go, I'll scroll on, or I'll click onto more pages or whatever.
+[00:12:22] Ty Wells: Yes, yes.
+[00:12:24] Ryan C: The hooks, exactly that.
+[00:12:26] Ty Wells: Mm-hmm.
+[00:12:33] Ty Wells: I don't like that, guys.
+[00:12:36] Ryan C: I'm not saying that part is easy.
+[00:12:37] Ryan C: It's how you figure that bit out is the difficult bit.
+[00:12:40] Paul Miller: Wow.
+[00:12:41] Paul Miller: This solves so many problems, because, yeah, the gap between the agent capability and practical, real execution with commercial control, security, and the rest of it, that's what, yeah, that's the challenge we all have.
+[00:12:59] Paul Miller: Okay.
+[00:12:59] Paul Miller: Okay.
+[00:12:59] Paul Miller: Okay.
+[00:12:59] Paul Miller: Okay.
+[00:12:59] Paul Miller: Okay.
+[00:13:00] Paul Miller: That's cool stuff, Ty.
+[00:13:03] Ty Wells: Thanks.
+[00:13:04] Paul Miller: Thank you.
+[00:13:05] Paul Miller: Juan, how's it going on your end?
+[00:13:10] Juan Torres: Good, good.
+[00:13:13] Juan Torres: I don't know if I mentioned this last week, but the AI Booth project that I'm working on, it's ready to be deployed.
+[00:13:24] Juan Torres: The only thing that I need to work on is getting the hardware ready.
+[00:13:29] Juan Torres: I think I have most of the hardware.
+[00:13:30] Juan Torres: It's going to be a two screen setup touch screen.
+[00:13:35] Juan Torres: I have this second screen.
+[00:13:36] Juan Torres: It's smaller, but it's functional for the purposes that I have.
+[00:13:42] Juan Torres: Then I have to get my media person to come with me and film part of it so I can make content in my LinkedIn and Instagram and YouTube.
+[00:13:53] Juan Torres: And then I have to go for it with...
+[00:14:00] Juan Torres: I'm trying to get someone to hire someone to install the AI booth installation that I'm going to have.
+[00:14:11] Juan Torres: And the reason that I want to hire someone to outsource that is because I get more value out of concentrating and just like development work than actually doing the manual work.
+[00:14:26] Juan Torres: So this project needs ongoing development, especially since there are so many components that can continue to develop themselves to a great extent, but I want to get into the field because I want the friction of reality, basically crashing against my application and see where I face the weak points, where I face strengths and unforeseen.
+[00:14:54] Juan Torres: consequences of things that I didn't even think about.
+[00:14:58] Juan Torres: So I'm just like...
+[00:15:00] Juan Torres: Trying to get all the minimal requirements in order to get it out to the field, I think I'm in that position.
+[00:15:05] Juan Torres: I'm creating a monitoring mechanism for myself, created CloudWatch resources to watch the memory, CPU, RAM capacity of my EC2 instance.
+[00:15:19] Juan Torres: It's just one EC2 instance.
+[00:15:21] Juan Torres: I haven't deployed into an out-of-scale group because right now it seems to be working well in that staging environment.
+[00:15:28] Juan Torres: So I'm going to test it out into the field with just the staging environment and the staging database.
+[00:15:37] Juan Torres: Safety, security, it's pretty good.
+[00:15:40] Juan Torres: It's all resources are in their, you know, subnets.
+[00:15:46] Juan Torres: Communication between all resources within MyVPC are encrypted.
+[00:15:50] Juan Torres: Strong inbound, outbound rules in order to protect those resources within MyVPC.
+[00:15:58] Juan Torres: So I don't
+[00:16:00] Juan Torres: I the security is going to be an issue with my application.
+[00:16:04] Juan Torres: So it's just getting more than anything.
+[00:16:07] Juan Torres: The hardware and the people part now ready.
+[00:16:11] Juan Torres: I have potentially one person that I will be interviewing soon.
+[00:16:20] Juan Torres: But before I make a decision, want to outreach to other people that I have in my mind for the deployment of the application.
+[00:16:33] Paul Miller: So what's going to be the nature of the people that would partner with you that would do the deployment end?
+[00:16:40] Paul Miller: So what kind of are they conference people?
+[00:16:47] Paul Miller: Are they event management people?
+[00:16:49] Paul Miller: What's the nature of who's going to do the deployment?
+[00:16:52] Paul Miller: How does it complement what their businesses might be?
+[00:16:56] Juan Torres: Well, someone has to be in the field, deploying their actual
+[00:17:00] Juan Torres: TV stand.
+[00:17:01] Juan Torres: And installing the setup, right?
+[00:17:04] Juan Torres: And on top of that, it will be a process of monitoring processes because I don't know if you recall, but I developed like also a data web application in which you can see all the processes happening, all the images being generated.
+[00:17:18] Juan Torres: Actually, the title is the AI Boot Technician, right?
+[00:17:22] Juan Torres: That's what the title I gave the person or the position.
+[00:17:27] Juan Torres: So in that position, a person can have not very complex, you know, tasks in their hands, but it's more like delete images if he or she might deem them inappropriate.
+[00:17:42] Juan Torres: Send them through email.
+[00:17:44] Juan Torres: I'm using recent not only in my front end application, but also on the data web application.
+[00:17:49] Juan Torres: So in their tablet, they can actually send the images through email and trigger re-uploads.
+[00:17:55] Juan Torres: If, for example, the inference engine that I'm using for some reason gets stopped.
+[00:18:00] Juan Torres: They can re-trigger the retrieval of those images.
+[00:18:04] Juan Torres: So that is one of the most technical components that they will have to do.
+[00:18:10] Juan Torres: But other than that, it's just monitoring the setup and retrieving the setup and taking it back to my home when everything's done.
+[00:18:18] Juan Torres: And the thing is, I could do it.
+[00:18:25] Juan Torres: And probably I could do it better than they can because I know how to set up the...
+[00:18:29] Juan Torres: I know the mechanics of this better.
+[00:18:33] Juan Torres: And I guess for the initial component, I could do it myself.
+[00:18:36] Juan Torres: And then once I get streams of money coming in, maybe I can hire someone.
+[00:18:42] Juan Torres: And that's actually an accurate criticism of my career and business model.
+[00:18:51] Juan Torres: But at the same time, it will be time that it will be not used to actually continue to develop the application.
+[00:18:59] Juan Torres: So...
+[00:19:00] Juan Torres: I don't know.
+[00:19:01] Juan Torres: What do you think, Paul, especially since you're the business person?
+[00:19:05] Paul Miller: Can you remind me?
+[00:19:07] Paul Miller: Sorry, I've lost a few weeks of the context of the target of the application and using it.
+[00:19:17] Juan Torres: Have you seen the application?
+[00:19:19] Paul Miller: I saw a very early on you were talking about it, but I've kind of lost.
+[00:19:25] Juan Torres: Can you just reconnect me with um what what it's what it's doing and um and and the target audience um so the ai booth service is basically kind of like when you go to a party as a social event um quinceanera wedding or any other events uh there's a photo booth and you know any venue well not in any venue but in a lot of venues they contract someone to do that right
+[00:20:00] Juan Torres: So this one is like that, except that you get the original pictures and AI transform images.
+[00:20:08] Paul Miller: Yes, yes, I remember that.
+[00:20:10] Paul Miller: Yep, yep, yep.
+[00:20:12] Juan Torres: So that's the main spiel of the thing.
+[00:20:21] Juan Torres: So someone has to be physically there to install the thing, right?
+[00:20:26] Juan Torres: So it has to be either me or I get another person to do it for me.
+[00:20:35] Juan Torres: And then says Sebastian, maybe you can get an intern Juan.
+[00:20:39] Paul Miller: Yeah, that's what I was thinking.
+[00:20:40] Juan Torres: Yeah.
+[00:20:42] Juan Torres: Having written plenty of teams, you're better off providing the concept yourself before you hire anyone and have the responsibility, especially legally, taking anyone on as getting rid of them from HR perspective.
+[00:20:54] Juan Torres: Yeah, that's a very good argument.
+[00:20:56] Juan Torres: And the argument for that, it's not only that, but...
+[00:20:59] Juan Torres: there's you're say.
+[00:20:59] Juan Torres: Exactly.
+[00:20:59] Juan Torres: Thank
+[00:21:00] Juan Torres: If you do it yourself, you create a very strong modus operandi that you can document, and then you can pass out to someone else.
+[00:21:06] Ryan C: You iron out all the problems before you hand it off to somebody else, because if you hire somebody to do the first one, and it all goes wrong, you're not on site physically to fix it, that will probably give them a bad experience to start off with, and you'll end up having issues there that you don't want to have.
+[00:21:23] Ryan C: You're better off doing at least two or three to start off with yourself.
+[00:21:26] Ryan C: And I've made plenty of mistakes and learned a lot over my time, before I did any of this stuff, doing a lot of corporate stuff, hiring and firing people.
+[00:21:36] Ryan C: When you're, especially when you take somebody on, I don't know what country you're in, Juan, but the laws of getting rid of them are quite difficult in a lot of places.
+[00:21:47] Ryan C: Here, especially where I am in the UK, I mean, it's hell to try and get rid of somebody.
+[00:21:52] Ryan C: If you make a wrong hire, you're screwed, essentially, for at least three to six months of managing them out of the business.
+[00:21:58] Ryan C: And there's...
+[00:22:00] Ryan C: get it wrong in one step, you're getting sued, so you're better off proving concept yourself, as you said, documenting everything, so you have that step by step, and then when you bring somebody else in to kind of offload that time, so you get that time back, you've got a streamlined service, they have a good time, they want to keep doing it, you're offloading that to somebody else at a lower cost to you, you know, you make a little less profit, but actually you can do more because of it, and then potentially, if you wanted to make more money, you could have a second one, and you could do some of those, so on and so forth.
+[00:22:30] Ryan C: But I think the first couple is definitely worth doing yourself, because then you'll iron out all the kinks, and you won't have that responsibility, because if it doesn't work, and you hire somebody, you're in a world of pain.
+[00:22:40] Juan Torres: I actually agree with you, not on the labor component, because here in the United States, you know, the bosses...
+[00:22:47] Ryan C: Oh, you're in the States so far, if they ignore me then.
+[00:22:52] Juan Torres: What is it called?
+[00:22:53] Juan Torres: We didn't have the Soviet Union to worry the European bosses to create a more welfare system.
+[00:23:00] Juan Torres: And the labor history in the United States is bloody, so the bosses destroy a lot of the working class bulwarks that were edified in Europe or Australia or whatever, right?
+[00:23:14] Juan Torres: So fortunately for me, I don't have to worry about the labor standards so much, right?
+[00:23:19] Juan Torres: But the main thing that I do agree with you is facing the problems themselves, documenting those problems, and then edifying a strong standard operating procedure.
+[00:23:32] Juan Torres: And then through that, providing good leadership to my subordinate in order to basically just do this installation well.
+[00:23:42] Juan Torres: So I would say that that's a very strong argument.
+[00:23:45] Ryan C: guys, happy staff, happy life really, because then, you know, ultimately you can give them more responsibility and grow that over time as well.
+[00:23:51] Ryan C: And if you have people that are happy and enjoy working for you, they'll work harder, they'll do more, they'll put more shift in, they'll care more, all of the above.
+[00:24:01] Juan Torres: Yeah, the only thing, the only thing is that at the first event, I'm going to be at the first event, like the three or fourth, right?
+[00:24:09] Juan Torres: The first three or fourth, because I want to, the second job that I will, if I were to do this, I will have two jobs essentially.
+[00:24:16] Juan Torres: Because what I want to do is like really monitor.
+[00:24:20] Juan Torres: And I don't know how much time, how much effort this is going to take, but I want to monitor the EC2 instance.
+[00:24:29] Juan Torres: I want to monitor the local computer.
+[00:24:32] Juan Torres: And I want to monitor the expenditure that is being used in that event, right?
+[00:24:37] Juan Torres: So if I don't get someone, I do run the risk of deviating a lot of my attention away from, you know, attending, giving attention to the potential clients, overseeing the processes that are happening in the photo booth.
+[00:24:53] Juan Torres: So that will be the only reason that I'm still like split between, okay, maybe I'm right.
+[00:24:59] Juan Torres: yeah.
+[00:25:00] Juan Torres: You know, once I start, you know, I have this job, I give this person the side hustle of installing and overseeing client work.
+[00:25:09] Juan Torres: So that will be, like, one of the things that I'm sometimes, you know, thinking about.
+[00:25:13] Paul Miller: That's why I'm thinking of, like, getting someone from their early get-go.
+[00:25:17] Paul Miller: Is the first challenge, though, getting as many people to use the technology in their event?
+[00:25:31] Paul Miller: And then it's to scale from a networking perspective.
+[00:25:38] Paul Miller: How many people simultaneously can you be getting to add more and more nodes of this technology to be using the ecosystem?
+[00:25:50] Paul Miller: Surely is that your first challenge?
+[00:25:52] Paul Miller: Because I know you want to do a proof of concept test to understand, just make sure it's working, the ploys.
+[00:26:00] Paul Miller: How much is needed on the ground?
+[00:26:02] Paul Miller: Is the whole end-to-end process working in reality?
+[00:26:06] Paul Miller: So you're building that use case that you'll use to potentially, it might become a franchise-type model in which you say, okay, I ran the event side.
+[00:26:18] Paul Miller: This is what you need for it.
+[00:26:21] Paul Miller: Here's the upside.
+[00:26:22] Paul Miller: This is how you engage people to use it.
+[00:26:26] Paul Miller: You start building all the tools that will then become what you sell.
+[00:26:32] Paul Miller: And either you're selling this as a stand-alone product offering, but then the challenge is, how do you get to all the events?
+[00:26:44] Paul Miller: How do you participate in all the events?
+[00:26:46] Paul Miller: And a better way, because we've kind of, my SaaS business, we started as a SaaS business selling to end customers.
+[00:26:58] Paul Miller: What we found was had the business
+[00:27:00] Paul Miller: A more powerful model was not to sell to the end customer, but sell to people that have the biggest influence over the end customer network, so they're already in with the end customers, they're already running events in your context, they've got all of that, and this is an add-on where they can add an extra margin and do all the selling of your product, enabling you to sit further But you make them look good, and they pay a premium for that benefit.
+[00:27:36] Juan Torres: Yeah, no, and that's what I was actually thinking of doing, and actually I was thinking of just like, hey, do you have this event happening?
+[00:27:45] Juan Torres: Let me just install this so people can use it.
+[00:27:48] Juan Torres: I'm not going to charge you anything.
+[00:27:49] Juan Torres: Just use it so people can see it.
+[00:27:52] Juan Torres: I'll just like distribute my business cards and, you know, we'll see what happens.
+[00:27:58] Juan Torres: So that's what I was thinking of doing.
+[00:27:59] Juan Torres: I just give
+[00:28:00] Juan Torres: them a first demo by themselves, installing it right there in front of them and let them see what this thing is and then be like, and like, if I give them like a demo, I'm sure they're just going to be like, okay, just put it there on the corner, the service brings enough value ipso facto by itself that I don't think there's going to be any fight, there's no friction really there, but just like offering it for free, that will be the sum cost that I will have to intake in in order to basically get myself known in the industry.
+[00:28:33] Juan Torres: Yeah, I agree with you, Paul.
+[00:28:35] Juan Torres: That's a very good point.
+[00:28:39] Paul Miller: Well, that's exciting.
+[00:28:41] Paul Miller: So you're saying you've got some of the first events coming up?
+[00:28:44] Paul Miller: You've got some of the short ones?
+[00:28:47] Juan Torres: Yeah, I have been contacted any venue.
+[00:28:50] Juan Torres: I know some people in the industry here in San Diego.
+[00:28:54] Juan Torres: So I would be contacting them soon.
+[00:28:57] Juan Torres: Uh, in.
+[00:29:00] Juan Torres: And to be honest, like, my personality is more neurotic than open if I were to, like, believe in the training neuroticism, right?
+[00:29:07] Juan Torres: So I'm probably more ready than I think I am, and I should just put it out there.
+[00:29:12] Juan Torres: But yeah, I just need to essentially, like, get it going and basically find venues through which I can just distribute, install it, and since it's free, like, the risk of responsibility is not that great.
+[00:29:29] Juan Torres: So I can afford, you know, some -ups in the process of, you know, giving this service.
+[00:29:34] Juan Torres: And in that sense, you know, perhaps I can basically be the person that installs it, monitors, and attends to the clients.
+[00:29:44] Juan Torres: Actually, I think I've answered myself on my own question.
+[00:29:49] Paul Miller: Only other practical advice I would give you is when you go to those first events, don't go alone.
+[00:29:56] Paul Miller: Always have someone else come with you, because then they can .
+[00:30:00] Paul Miller: Step back and observe what's going on, because you might get caught up in the practical, and you don't see the interaction with the customers, the potential audience, what people are saying, they can kind of loop into that.
+[00:30:14] Paul Miller: So don't go alone.
+[00:30:16] Paul Miller: That was my lesson for going along to trade shows, talking with people, and sometimes when you're doing the talking, it's too hard to do the listening while you're doing the talking.
+[00:30:30] Juan Torres: Yeah.
+[00:30:31] Juan Torres: Yeah, well, I mean, that then goes back to, you know, getting someone to come with me, wouldn't it?
+[00:30:40] Paul Miller: Yeah, yeah.
+[00:30:42] Juan Torres: Okay.
+[00:30:44] Ryan C: It doesn't necessarily need be an employee for the first couple, though.
+[00:30:48] Ryan C: Take a friend, take something.
+[00:30:49] Paul Miller: Yeah, just the work for the league.
+[00:30:53] Juan Torres: Okay.
+[00:30:54] Paul Miller: Yeah, exactly.
+[00:30:57] Juan Torres: Yeah, the same.
+[00:30:57] Juan Torres: that's a lot.
+[00:30:58] Juan Torres: I could say this, B2B...
+[00:31:00] Juan Torres: Yeah, I think B2B is a possibility because I was actually doing some research on the competition and they seem to rely on a couple of providers of this AI booth provision.
+[00:31:15] Juan Torres: I know there's an AI booth here in San Diego that is trying to do AI transformation too, but it seems to be from the same providers of AI transformation.
+[00:31:25] Juan Torres: And from what I've been able to see just from the images, it's not that, it's not that dynamical.
+[00:31:33] Juan Torres: So there might be a possibility for, you know, future be a B2B provider of the SaaS in the future.
+[00:31:41] Juan Torres: But for now, I just want to, you know, get the friction of reality.
+[00:31:49] Paul Miller: Brilliant.
+[00:31:50] Paul Miller: Oh, it sounds exciting.
+[00:31:53] Paul Miller: When's it gonna happen, potentially?
+[00:31:56] Juan Torres: When's those first events?
+[00:31:57] Juan Torres: Ah, man.
+[00:31:58] Juan Torres: Um...
+[00:32:05] Juan Torres: Potentially in two weeks, I think.
+[00:32:12] Paul Miller: I look forward to hearing about it.
+[00:32:17] Juan Torres: Me too.
+[00:32:21] Paul Miller: Cool.
+[00:32:22] Paul Miller: Okay.
+[00:32:25] Paul Miller: Ryan, how's things going in the UK?
+[00:32:33] Ryan C: I'm running around like I have this chicken at the moment.
+[00:32:35] Ryan C: One of the things I've been trying to scale is my digital signage business.
+[00:32:41] Ryan C: So I think I've shared it on here a few times before building software that sits on a little mini PC that sits on the back of screens, essentially, that sit in retail stores, both internally and externally.
+[00:32:53] Ryan C: So sitting in front windows pointing out into the street and stuff inside as well.
+[00:32:58] Ryan C: So.
+[00:32:59] Ryan C: So,
+[00:33:00] Ryan C: I've just been making a lot of quality of life improvements to that.
+[00:33:03] Ryan C: One of the things I've found a lot is when I'm trying to debug the local machines, I'm having to remote into the machine and then manually pull console logs out, Chrome dev tools, because the little mini PCs are essentially just really weak laptops packed into a little machine.
+[00:33:22] Ryan C: So, you know, not knowing what I was doing at the start, I was kind of loading 4K videos onto it, and it was degrading over time because of the GPU in there.
+[00:33:32] Ryan C: It's just an onboard GPU wasn't dealing with things properly.
+[00:33:35] Ryan C: So I've added a whole load of stuff recently in the back end that just makes my life a bit easier.
+[00:33:43] Ryan C: Share my screen.
+[00:33:45] Ryan C: don't if you can see that.
+[00:33:47] Paul Miller: Yep.
+[00:33:49] Ryan C: But essentially, once you sign into this bad boy, I've got nine screens up and running now, across various different bits, but the idea being...
+[00:34:00] Ryan C: That when you go into a screen now, I've got full detection on power loss.
+[00:34:05] Ryan C: They've all got heartbeats built in now where they're reporting back every couple of minutes.
+[00:34:10] Ryan C: And if it drops, so their power goes off and they get a power cut, because I'm working on building a script that auto logs back into the machines and then auto starts the thing itself.
+[00:34:19] Ryan C: At the minute, I'm having a remote in and re-log back in and start it myself.
+[00:34:23] Ryan C: So I'm working on that at the moment.
+[00:34:25] Ryan C: Uh, but what I've done is I've added a full, um, heartbeat in, uh, it will be able to tell me whether the machine's on and the display's lost power and tells me what, what the last shutdown reason was on the machine.
+[00:34:39] Ryan C: So obviously these ones I've been testing, so it's been putting the power out, um, whether it's running or not within Chrome kiosk.
+[00:34:45] Ryan C: And then the pier de resistance of this is that, um, I've added a full, uh, update feature.
+[00:34:53] Ryan C: So, you know, like with any software, you can, you can update it actually on the machine.
+[00:34:57] Ryan C: I can now do that remotely.
+[00:34:59] Ryan C: So I've got.
+[00:35:00] Ryan C: The different versions, so as I update the machine code, I can literally go on and go into my screen status thing here, and I can update it remotely just by uploading the zip here, adding a new release, I've got different releases here, and then I can actually just press update and it will automatically push that to the screen, download it on the mini PC on the screen, switch it over, run the updater, pull the files out, compress the old one into a backup, because if it fails, it'll just restore the old one, and then relaunch it all automatically by itself, takes about two minutes, and then it only does the switch over, the actual physical, so the screen's down for about two seconds, which is awesome, so that's working perfectly, which is great, so I'm just testing a couple of different two screens on the latest version, which has got a whole load of logging in it, so if I go to one of these screens, and press view diagnostics, takes me back into the settings of the screen, screen, then
+[00:36:00] Ryan C: And where are they?
+[00:36:00] Ryan C: Here they are.
+[00:36:01] Ryan C: So I've got Lightweight Capture, which captures all the console events, which is these.
+[00:36:06] Ryan C: So I can then view all of the console from the screen, copy it all, and just chuck it straight into an MD filing cursor.
+[00:36:14] Ryan C: I can download that file if I want to and feed it into the cursor and say, right, have look at this, what's going on?
+[00:36:19] Ryan C: And then I found that with the degradation stuff, it didn't have it in that, so I have the ability to have a deeper capture, which I can toggle on and off, because that's a bit more taxing on the CPU and GPU on the machine, but it's useful for debugging.
+[00:36:32] Ryan C: I can come in here and I've got more various bits and bobs going on in here that I can then pull out and feed in, which is incredibly useful and it's helped me patch a bunch of stuff.
+[00:36:46] Ryan C: So I'm just running some tests on slightly lower res videos and seeing how that degrades over time.
+[00:36:53] Ryan C: So I'm just letting this run for the minute and I'll feed it all in.
+[00:36:56] Ryan C: But yeah, this has been the sort of just making my...
+[00:37:04] Paul Miller: So are these people that are using it, are they running content that you generate from your agency in terms of communicating with their clients, or what's the content?
+[00:37:18] Ryan C: It's 50-50, so I've got a lot of estate agents, so it doesn't work quite the same way.
+[00:37:23] Ryan C: Yeah.
+[00:37:24] Ryan C: Yeah.
+[00:37:24] Ryan C: I'm pulling from their CRMs, putting their property feeds on actual screens.
+[00:37:32] Ryan C: Actually, can probably show you.
+[00:37:38] Ryan C: So, it's like these guys, for example.
+[00:37:46] Ryan C: So it pulls through properties.
+[00:37:49] Paul Miller: Oh, yes, yes.
+[00:37:52] Ryan C: Pulls through their staff.
+[00:37:53] Ryan C: It's got a full QR system in there.
+[00:37:54] Ryan C: This is a vertical one.
+[00:37:56] Ryan C: It goes through, you can set it on the back end of this.
+[00:37:59] Ryan C: How many.
+[00:37:59] Ryan C: .
+[00:38:00] Ryan C: How many images per property, how long it works, the different transitions and stuff, and then there's a full lead generation bit in the back end of this for estate agents as well, and then they can put in, in the back end of this, custom slides, or even custom videos as well that play and intercede between the properties, they can stick in all their reviews, upload their Google reviews, they can add new reviews to the file here as well.
+[00:38:31] Ryan C: I'm going to work around getting it to hoover in reviews itself, they can put their property videos and stuff, and then it syncs, they're available under offers, lettings and sales, every 60 minutes with their CRM.
+[00:38:46] Ryan C: So that's that one, and then you've got non-estate agency clients, so this aesthetics company for example, and you can go in here, and these guys have
+[00:39:00] Ryan C: Need to update this one once I've finished doing my testing, you can still do reviews in here, can customize the review layout and stuff, have it all like a full custom builder in here, but then you've got this really cool flow builder, so this, and I need to fix the thumbnail for videos in here, but essentially it's a full node builder essentially, where you can come in, you can add image nodes, reviews, custom slides, you can embed HTML, and you can on these things, change how long it is, you can change the media from the media bank, and they can, this is all self-administrable, they have a client login where they can come and do this themselves, I can delete nodes, I can even change the transitions, I've various different effects, and you can upload your own stinger if you want, a bit like you do if you're streaming, that kind of stuff, so this is kind of for non-estate agent people, so I've just been refining, tweaking, adding, you know, doing bits
+[00:40:00] Ryan C: So I've got a full support thing in here.
+[00:40:01] Ryan C: Nobody's bothered using one yet, but they've got a full ticketing system.
+[00:40:04] Ryan C: Should they have any issues, they can use it.
+[00:40:07] Ryan C: They can view their leads that they get through here.
+[00:40:09] Ryan C: So, for example, this is just a test one.
+[00:40:13] Ryan C: Unfortunately, the only one that has the QR codes enabled, their screens aren't really in anywhere, but they're going to have too much thoroughfare so they don't really get anyone scanning them.
+[00:40:19] Ryan C: But this has lead status, all that kind of stuff in here, which is cool.
+[00:40:25] Ryan C: That comes through to them.
+[00:40:28] Ryan C: Yeah, that's kind of the big stuff.
+[00:40:30] Ryan C: Everything else I think everyone's seen before.
+[00:40:35] Ryan C: I've been working on building a couple of client bits that I can't show you.
+[00:40:39] Ryan C: A couple of econ websites over in the US, and then a big CMS and econ website, Bolton, for a company in London that do black cab tours for mainly American tourists, actually.
+[00:40:51] Ryan C: So I've got to try and make it rank SEO in America rather than in the UK.
+[00:40:58] Ryan C: Once I finish building that.
+[00:40:59] Ryan C: go.
+[00:41:00] Ryan C: Yeah, this is the big one, because this will be the moneymaker, because I charge £45 per month per screen, so all I need is 100 screens, and that will be enough to live, and then everything else is a bonus after that, and I'm up to nine at the moment, so, and that's literally just walking into stores and going, hi, you've got a screen, how much are paying a month for that?
+[00:41:22] Ryan C: I'm having conversations with people in my spare time.
+[00:41:25] Paul Miller: What about some of those bigger real estate agents that have got franchise, nationwide franchises?
+[00:41:34] Ryan C: Yeah, it's how I get to the people that make the decisions in head office is my current issue, and a lot of them dive into really long, awkward, horrible contracts with competitors.
+[00:41:46] Ryan C: The screen software business is, some of the software is awful, and it looks terrible, but they type people in by two, three years, or they lease the screens to them on the condition they use their software.
+[00:41:57] Ryan C: So it's a bit of a, you know, bit of a hit and miss, but...
+[00:42:00] Ryan C: I've got another three that I'm pretty much there or thereabouts with getting over the line, so just slowly building.
+[00:42:07] Ryan C: It'll be one of those that builds over a couple of years, I think, but once it's there, it's recurring income for not a huge amount, and I quite enjoy tinkering with this, so I just keep adding stuff.
+[00:42:16] Paul Miller: I might have some people in Australia that want this, but flick me an email.
+[00:42:28] Ryan C: Absolutely.
+[00:42:28] Ryan C: Brandon, actually, one of the people that I chat with was a bar over in the US, one of his clients that he produced something for, so yeah, I'm happy to do it internationally.
+[00:42:40] Ryan C: I've built in all the tools to be able to support it remotely, completely remotely, and if I can do the install, it's just plugging a mini PC into a screen and giving me remote access to it, and I can set it all up from here.
+[00:42:51] Paul Miller: Brilliant, brilliant.
+[00:42:54] Paul Miller: Cool.
+[00:42:54] Ryan C: No, flick me a note.
+[00:42:56] Paul Miller: I'm literally going to Sydney next week to talk about .
+[00:43:01] Paul Miller: Talk with a company that is touching on this, but needs it managed.
+[00:43:07] Ryan C: Chuck me your email in the chat, Paul Miller, I'll something over.
+[00:43:13] Juan Torres: So Ryan, if you were to summarize this in one sentence or two, what does this do in summary?
+[00:43:21] Ryan C: So it's, it does like retail screens, essentially.
+[00:43:25] Ryan C: So, uh, uh, So like in the front, uh, that's rubbish.
+[00:43:35] Ryan C: So, you know, like in the front of stores, you have things like, um, these sort of things, screens.
+[00:43:43] Juan Torres: Yeah.
+[00:43:43] Ryan C: Yeah.
+[00:43:44] Ryan C: Images.
+[00:43:45] Juan Torres: so it generates them.
+[00:43:47] Ryan C: Uh, so I, you know, like you go into a store and you see something like that, or actually, this is probably a good example.
+[00:43:53] Ryan C: We have these in the front of your stores.
+[00:43:55] Ryan C: I provide the software that powers them essentially, and then enables them to remotely manage.
+[00:44:00] Ryan C: So I build software that sits on a little computer that attaches to the back of these things, attaches via HDMI or DisplayPort, and then this cloud software talks to them.
+[00:44:13] Ryan C: you go into one of these, for example, this is literally one I installed last week.
+[00:44:19] Ryan C: You can either clone an existing screen, add a new screen, get a provisioning code, the screen software on the thing, you put the provisioning code in, and it then syncs up whatever you set up within here, within the Flow Builder.
+[00:44:32] Ryan C: This has only got three on at the minute because I'm literally going to meet the next week to actually get more stuff from them for content.
+[00:44:39] Ryan C: And then it just syncs so they can come in here, administer their screen, add an image or whatever if they've got a particular promotion on, press save, and within two minutes it's on the display.
+[00:44:48] Juan Torres: Nice.
+[00:44:49] Ryan C: And then it automates the feed of properties onto their screens because a lot of estate agents have screens in the front of their stores, but they have to manually log on to something or they have to put a USB stick into the back of it.
+[00:45:00] Ryan C: And that just takes somebody's time that could be selling property, right?
+[00:45:04] Ryan C: So it's just adding that back.
+[00:45:06] Juan Torres: And those nodes, those workflows, they're the workflows created for the user to be able to edit what it's displayed in the screen.
+[00:45:16] Ryan C: Exactly that, yes.
+[00:45:17] Ryan C: When you go into the flow builder, I can add a node, so I could add an image.
+[00:45:21] Ryan C: It's already got one of these in, but let's add that in, right?
+[00:45:23] Ryan C: And then get rid of the loop.
+[00:45:25] Ryan C: And then I can then just loop it back up to that, loops it in, I could change it to slide up.
+[00:45:31] Ryan C: Side left, side down, none, it just hard cuts.
+[00:45:35] Ryan C: I can change the different things in here.
+[00:45:38] Ryan C: can change how long it displays for, so on and so forth.
+[00:45:41] Ryan C: So you just upload a new image, add it in here, add it wherever you want.
+[00:45:45] Ryan C: So if I wanted to put this in between those two.
+[00:45:49] Juan Torres: Have you thought of encoding or using one of the nodes to generate HTML codes?
+[00:45:58] Juan Torres: You know, just how you
+[00:46:02] Ryan C: I can only do html embed.
+[00:46:04] Ryan C: What I'm trying to avoid with this is making it an AI thing.
+[00:46:10] Ryan C: Managing tokens is a pain in the .
+[00:46:12] Ryan C: And for me, 99% of the people that use these don't have a clue about coding or anything like that.
+[00:46:20] Ryan C: If they want a web page displayed, they'll come in here and for them, because this is just my ab in view, but for them, they'll be able to then put in the web page they want.
+[00:46:30] Ryan C: display, essentially.
+[00:46:31] Ryan C: It'll just pull that through.
+[00:46:33] Ryan C: Or they can insert html into the actual node themselves if they wanted to.
+[00:46:38] Ryan C: But this is probably not particularly popular.
+[00:46:41] Juan Torres: It's mainly images and videos and animations.
+[00:46:46] Juan Torres: The reason that I asked about html is because, and this is me just discovering this recently, there's a github set of plugins for Claw that helps with...
+[00:47:00] Juan Torres: The edification of those HTML presentations to just look beautiful.
+[00:47:05] Juan Torres: And they're based on specific templates, right?
+[00:47:08] Juan Torres: So I'm thinking, oh, maybe you can give the user five specific templates.
+[00:47:14] Juan Torres: And based on that, the person can edify the HTML representation of that template.
+[00:47:20] Juan Torres: And in that template, you can actually edit the wordings, the words, the titles.
+[00:47:29] Ryan C: So what you're saying is design your own screens, essentially.
+[00:47:34] Ryan C: So I mean, the way I might approach that to be slightly less, because obviously, if you're creating an HTML, right, the token spend on that could be very different depending on what they created.
+[00:47:45] Ryan C: I'd probably just link it up with Nano Banana and have a very specific set of rules and say, right, you get five screen generations a month or whatever for a bolt-on price.
+[00:47:56] Ryan C: And then they can go in and just tell it what they want it to be.
+[00:47:59] Ryan C: It already knows.
+[00:48:00] Ryan C: It already has their logo and stuff like that, so it can feed in all the assets that they might need and do it that way.
+[00:48:05] Ryan C: It's not a bad show.
+[00:48:06] Ryan C: I didn't think about that.
+[00:48:08] Ryan C: That's probably how I would do it, because I have a similar thing in my social media thing that I think I've shown on here before, where I've got it linked in nicely with Nanobanana.
+[00:48:20] Ryan C: But yeah, I know it's not massive tokens, Bastian, but obviously there is that.
+[00:48:25] Ryan C: It could be anything.
+[00:48:27] Ryan C: Whereas Nanobanana, you kind of know what the per image cost is.
+[00:48:30] Ryan C: So I can cost out a little bit easier.
+[00:48:32] Ryan C: I just don't want to make it too complicated, because a lot of the people that use these don't do technology.
+[00:48:37] Ryan C: The reason they're employing me to do their screen is because they don't want to have the hassle of, you know, having anything complicated.
+[00:48:43] Juan Torres: It needs to be really easy.
+[00:48:44] Ryan C: It needs to idiot proof, if I'm being completely honest, because yeah, most of the people that are doing these are just like, you know, they're good at the thing they do.
+[00:48:51] Ryan C: They don't have a clue about tech.
+[00:48:53] Ryan C: Half these people I'm doing their websites for them as well, because they don't have a clue what they're doing.
+[00:48:57] Ryan C: They've used WordPress or Wix or something horrible.
+[00:49:00] Ryan C: And to build an awful website.
+[00:49:02] Ryan C: So there's that kind of tie-in as well.
+[00:49:04] Juan Torres: use just, you know, try for yourself maybe five templates that you know they're going to modify really good HTML code or even your nano banana image generation, right?
+[00:49:18] Juan Torres: And then, you know, put them as five selections that you have for a node and see how people actually play with it.
+[00:49:27] Juan Torres: You know, maybe that's a future project, but you don't even have to make it complicated for yourself.
+[00:49:32] Juan Torres: Uh, just like, you know, just select a few ones that you think are going to, uh, prompts that are going to generate a good HTML, uh, presentation.
+[00:49:42] Ryan C: At the minute, I just kind of say, right, what screens do you want?
+[00:49:45] Ryan C: I'll give you a couple to start off with.
+[00:49:46] Ryan C: And I just use my Google subscription to generate stuff like this.
+[00:49:49] Ryan C: I get it to do a bit of research on the site and say, right, I need a couple of just generic screens.
+[00:49:53] Ryan C: can lob on there until they tell me more specifically what they want.
+[00:49:56] Ryan C: So I just got it to generate me this from some of the imagery on their website and using their
+[00:50:00] Ryan C: So, yeah, I'm kind of doing a manual version of that at the minute, I guess, from that perspective.
+[00:50:07] Ryan C: Yeah, no, not a bad idea.
+[00:50:08] Ryan C: I'll definitely consider that when I'm adding more features.
+[00:50:11] Ryan C: I just need to, I need to get my client base, my base client, client base in and up and running.
+[00:50:18] Ryan C: And then I can start adding more and more cool stuff.
+[00:50:22] Ryan C: But yeah, anyway, I've waffled on for far too long.
+[00:50:24] Ryan C: That's the main thing I'm tinkering around with that I can show you at the minute.
+[00:50:28] Ryan C: Everything else that I could show you, I think I already have.
+[00:50:31] Ryan C: I think I've showed you the lead thing, I've showed you the social stuff.
+[00:50:34] Ryan C: And neither of those have really changed too much since I last showed them to you all.
+[00:50:39] Paul Miller: Great stuff, Brian.
+[00:50:41] Paul Miller: It's a very nice, practical way to manage something that is a real problem with many, with many retailers and many, many retail space owners.
+[00:50:55] Ryan C: For me, it's how I get in with the big chains, Paul.
+[00:50:57] Ryan C: So if you know anyone that's at the top of the big
+[00:51:00] Ryan C: Do let me know, because it's getting over the big boys, I could get a big contract that would sort out that client base immediately, really.
+[00:51:07] Paul Miller: Well, yeah, I do, but let's have an offline discussion.
+[00:51:13] Paul Miller: I tend to be focused on what I call, well, it's one above banners.
+[00:51:21] Paul Miller: So banners is a whole retail chain.
+[00:51:24] Paul Miller: It's a channel.
+[00:51:25] Paul Miller: So the channels that I've got familiarity with is the liquor channels, so little odd bins, kind of liquor stores across Australia and New Zealand and other retailer types.
+[00:51:40] Paul Miller: So let's start with talking about that.
+[00:51:44] Ryan C: I think from memory, you and I come from quite a similar background, right, field marketing?
+[00:51:48] Paul Miller: Yeah, yeah.
+[00:51:49] Ryan C: Yeah.
+[00:51:49] Ryan C: I've got seven and a half, eight years in that.
+[00:51:52] Ryan C: So it'd be good to catch up, actually, on that anyway.
+[00:51:56] Paul Miller: Yep.
+[00:51:56] Paul Miller: right.
+[00:51:56] Paul Miller: All right.
+[00:51:57] Paul Miller: Brilliant, brilliant stuff.
+[00:52:00] Paul Miller: Next, next on, on the list, Adam.
+[00:52:06] Adam: Adam Chapman Yeah, I didn't really do too much on my SAS program.
+[00:52:10] Adam: One thing I did run into with AI related is my daughter calls me and she's like, can you help me figure out how to repay my student loans?
+[00:52:21] Adam: Like what, what would be most advantageous where I pay the least interest?
+[00:52:25] Adam: So I throw it into chat GPT, whatever it is, the extended thinking.
+[00:52:32] Adam: And I was surprised chat GPT really had a lot of trouble figuring out what to do, which I thought this would be like super easy to do with AI.
+[00:52:45] Adam: That was my only interesting bit from this week.
+[00:52:50] Ryan C: New passport, fake identity, leave the country.
+[00:52:52] Adam: that's going to be the best way.
+[00:52:57] Paul Miller: Did you try, did you try the clause?
+[00:53:00] Adam: Do Claude's latest model?
+[00:53:03] Adam: No.
+[00:53:04] Adam: I just basically started giving ChatGPT hints until it started being reasonable.
+[00:53:15] Ryan C: It seems that all student loans are just a rip-off.
+[00:53:18] Ryan C: I'm lucky I didn't go, but my missus, they just keep adding.
+[00:53:25] Ryan C: The interest rate is 3% one year, and they're oh, it's 9% now.
+[00:53:29] Ryan C: So you had a year left, you've got 5% now, so  you, I guess.
+[00:53:33] Ryan C: It's just a con.
+[00:53:35] Ryan C: Excuse my French, but it is just a con.
+[00:53:39] Adam: Well, in the U.S., you can have different situations where, like, you can trigger interest to compound, or you can, if you're, like, very careful, you cannot trigger a compounding event.
+[00:53:52] Adam: Right?
+[00:53:52] Ryan C: So you have to just kind of plan that out.
+[00:53:56] Adam: Yeah.
+[00:53:58] Ryan C: Yeah.
+[00:53:59] Ryan C: It's never any fun, is
+[00:54:01] Ryan C: I guess just invent a million dollar app and figure out a million dollar app and then pay it off in one lump sum or win the lottery.
+[00:54:14] Paul Miller: Right.
+[00:54:15] Paul Miller: So, Andrew, did you have any updates for this week?
+[00:54:26] Andrew Nanton: I see.
+[00:54:27] Andrew Nanton: Can you see and hear me now?
+[00:54:29] Paul Miller: I can hear you.
+[00:54:31] Paul Miller: Can't see you.
+[00:54:32] Andrew Nanton: picture yet.
+[00:54:33] Andrew Nanton: Okay.
+[00:54:33] Andrew Nanton: Well, we'll get there.
+[00:54:35] Andrew Nanton: Yeah.
+[00:54:36] Andrew Nanton: Give me just a second.
+[00:54:37] Andrew Nanton: And so I am continuing to work on a couple of different things, including a sort of practice guideline for forensic psychiatrists about AI use.
+[00:54:51] Andrew Nanton: And in doing so, I've been talking to a lot of different people and getting a lot of different perspectives.
+[00:54:56] Andrew Nanton: And it's been interesting to see where the.
+[00:54:59] Andrew Nanton: Um.
+[00:55:00] Andrew Nanton: The of public sentiment around AI has been, over these last few years, a bit of a rollercoaster, and I think we're back in another sort of more negative time, where I thought for a while there, things were looking a little more positive, but it remains really sort of misunderstood, and really, what I've learned from this is that when you say AI to anybody, all they think of is a chatbot, and they just really struggle with the idea of anything other than what it might look like other than a chatbot, and how a more systematic process might work, and even just approaching ideas like, oh, this is what an eval suite looks like, and how you know if things are getting better, or they're moving backwards, is really foreign territory to people.
+[00:56:00] Andrew Nanton: Which, you know, predictably, that's pretty nerdy stuff, but yeah, that has been part of what I've been up to over the last few months here.
+[00:56:14] Paul Miller: I think it's interesting because across so many different industry types, people seem to have a real issue converting the power of what AI is to what practically that means outside the chat where most people have had familiarity with.
+[00:56:40] Paul Miller: And it's funny when I'm in sales situations, people still ask, oh, what are you guys doing with AI with your product?
+[00:56:56] Paul Miller: And I'll go and say something like, well, what is it?
+[00:56:59] Paul Miller: Now,
+[00:57:00] Paul Miller: That you're looking for AI to do, and all they're really looking for is validation that we're thinking about it.
+[00:57:07] Paul Miller: No one can seem to quantify, in the normies out there, how it actually helps.
+[00:57:15] Paul Miller: So I think it's more the clever back office stuff, things that you can fix, and it's not even talking about the AI, it's just talking about doing the things that used to take a lot of time, but suddenly you've done it.
+[00:57:36] Paul Miller: Right, right.
+[00:57:38] Andrew Nanton: What are the tedious parts of your job?
+[00:57:40] Andrew Nanton: Because those are probably the best candidates for AI intervention.
+[00:57:45] Paul Miller: Yeah.
+[00:57:46] Paul Miller: Well, in my industry, where it's tracking people, salespeople's interactions with retailers, and no one...
+[00:57:59] Paul Miller: one...
+[00:58:00] Paul Miller: No one wants to go through the notes of everything that's been done.
+[00:58:04] Paul Miller: Everyone wants to know that it's been done.
+[00:58:07] Paul Miller: No one wants to read anything.
+[00:58:09] Paul Miller: No one wants to do reviews of what people have done in the week.
+[00:58:15] Paul Miller: Everyone hates quarterly or annual reviews because they somehow need to quickly delve into the depths and come up with practical examples to say somehow you know what that person's doing.
+[00:58:27] Paul Miller: And I think it's kind of doing all the boring crappy stuff and making other people look good is the half of it really.
+[00:58:46] Paul Miller: But that's not selling AI.
+[00:58:47] Paul Miller: It's selling the magic of what horrible things it takes us away from.
+[00:58:58] Paul Miller: a good thing.
+[00:58:58] Paul Miller: go through.
+[00:58:58] Paul Miller: Yeah.
+[00:58:59] Paul Miller: No.
+[00:58:59] Paul Miller: No.
+[00:58:59] Andrew Nanton: No.
+[00:59:00] Andrew Nanton: Well, right, I guess same as it ever was, right?
+[00:59:02] Andrew Nanton: Like what people really want to know is what's in it for me.
+[00:59:06] Paul Miller: yeah.
+[00:59:08] Paul Miller: But have you, and a question for you, Andrew, and a quick question for everyone.
+[00:59:16] Paul Miller: Has anyone been having a look or play with today the Mythos release that's come from Anthropic?
+[00:59:25] Paul Miller: So they did a big update overnight, making a cut down part of Mythos available.
+[00:59:37] Paul Miller: So it does everything except there's a part of the medical side and there's a part of the security analysis side that is locked down.
+[00:59:50] Paul Miller: But what are they calling the model?
+[00:59:57] Ty Wells: Fable.
+[00:59:57] Andrew Nanton: Fable.
+[00:59:58] Andrew Nanton: Fable.
+[00:59:59] Andrew Nanton: Fable.
+[00:59:59] Ty Wells: Fable.
+[01:00:00] Ty Wells: Yeah.
+[01:00:00] Ty Wells: But they also say that on the 22nd, I think that's where they may go to API usage for Fable 5 only.
+[01:00:09] Ty Wells: Yeah.
+[01:00:10] Paul Miller: It comes off your free, mostly subsidized allocation from the 22nd.
+[01:00:17] Paul Miller: So up until the 22nd, it's available to use with your Claude subscription, but after that date, it's token only.
+[01:00:29] Paul Miller: You have to buy tokens, free buy tokens for it.
+[01:00:33] Paul Miller: Yeah, two times this is expensive.
+[01:00:34] Ryan C: Better get building, guys.
+[01:00:36] Paul Miller: Yeah.
+[01:00:37] Paul Miller: So as you guys may be familiar with my day job story, my CTO has made the deep dive into AI, and when we had our morning stand-up meeting, so it was at 9 o'clock New Zealand time, already half my team had already...
+[01:01:00] Paul Miller: We've been running the model and we're giving feedback as to how effective it was with improving our business, so I'm in a really good zone today when I know that it's not me that's having to push all the AI stuff, we've got others in the team that are doing it, but any other feedback from anyone else that's been using Fable or had a play with it today and got any sort of high level insights with what you've seen and what you've discovered?
+[01:01:34] Ryan C: Not at the minute, but I'll let you know next week because I'm going to try and build my entire taxi app with it in the next week before they remove it from me and make it really expensive.
+[01:01:45] Juan Torres: Ryan, weren't you the guy that created the parking lot app?
+[01:01:50] Ryan C: No, that's not, but I'm going to shamelessly steal it because I've managed to find somebody that might want something similar here.
+[01:01:58] Ryan C: Because that would be a moneymaker, that.
+[01:02:00] Juan Torres: The unsexy is the new , I'm telling you.
+[01:02:09] Ryan C: I'm pretty sure he's almost at $20,000 as well already.
+[01:02:13] Ryan C: I chatted with Scott last week and he said he's already nearing 20 grand and he's had it live for like three weeks.
+[01:02:19] Andrew Nanton: Wow.
+[01:02:20] Ryan C: Which is crazy.
+[01:02:24] Paul Miller: So Bastian had a point there that looks like, and I was just looking online, it looks like Anthropic reset everyone's limits from today.
+[01:02:37] Paul Miller: So if you're worried that you're going to burn through a whole lot of your limits on your Claude subscription in the last two days, it looks like it was reset recently, so you've got a lot more to use potentially on Fable.
+[01:02:55] Ty Wells: Yeah, I was, I turned it on probably a couple hours ago and I was monitoring.
+[01:03:00] Ty Wells: And I went to check the usage and it was reset.
+[01:03:03] Ty Wells: So that's a setup, by the way.
+[01:03:06] Ty Wells: So you're going to feel like you've got more.
+[01:03:10] Paul Miller: So Andrew, have you got a demo you're wanting to share?
+[01:03:14] Andrew Nanton: Yeah, if that's all right.
+[01:03:16] Paul Miller: Go for it.
+[01:03:17] Andrew Nanton: It's been a little while since I give it a second here.
+[01:03:28] Andrew Nanton: I don't know why it's taking so long to...
+[01:03:30] Andrew Nanton: So I installed the beta of macOS, and perhaps that's why it's having a bit of trouble here.
+[01:03:41] Andrew Nanton: Are you seeing my screen or not yet?
+[01:03:44] Paul Miller: Not yet.
+[01:03:46] Andrew Nanton: Right.
+[01:03:49] Andrew Nanton: Oh.
+[01:03:57] Andrew Nanton: All right.
+[01:03:57] Andrew Nanton: Yeah, well, could be a...
+[01:04:00] Andrew Nanton: Maybe next time then.
+[01:04:01] Andrew Nanton: I'm going to assume that it's a don't install beta software on your production laptop scenario.
+[01:04:09] Paul Miller: Exactly.
+[01:04:17] Paul Miller: So, yeah, what did everyone think of the Apple updates?
+[01:04:25] Paul Miller: Obviously, they're coming from quite behind in the AI side of things, but with the partnership with Google.
+[01:04:34] Ryan C: Scott and I were just sitting there going, please give us the M5 Ultra chip with 512 gigs of RAM.
+[01:04:41] Ryan C: I need my personal assistant.
+[01:04:43] Ryan C: Because there was rumours they were going to, normally with WWDC, they do all this, and they're releasing a couple of new chips as well.
+[01:04:49] Ryan C: They're going to be in the Mac Studio, and they did that last year with the M4, I think, and the year before that as well with the M3.
+[01:04:57] Ryan C: So we were really hoping, but I think the RAM shortages.
+[01:04:59] Ryan C: It's just...
+[01:05:00] Ryan C: It's kind of screwed that, so we'll get them in October, I think, which is annoying.
+[01:05:03] Paul Miller: Yeah.
+[01:05:03] Ryan C: I'm really hoping they'll use that.
+[01:05:06] Ryan C: But other than that, was a bit warm, wasn't it?
+[01:05:08] Ryan C: It was sort of underwhelmed a little bit.
+[01:05:09] Ryan C: It was like, cool, it's everything I expected it to be.
+[01:05:12] Ryan C: Brilliant.
+[01:05:13] Ryan C: You're using Gemini because your own AI sucked.
+[01:05:16] Ryan C: It does everything that Gemini does in a nice, pretty way within the Apple UI.
+[01:05:21] Ryan C: They've dialed back on Glass because Glass sucks.
+[01:05:25] Ryan C: It's really annoying to use some of the UI with that, so they've kind of given you that dark thing to be able to dial that back.
+[01:05:30] Ryan C: You can finally EQ AirPods.
+[01:05:32] Ryan C: Thank God for that, so I can fiddle around with my AirPods now.
+[01:05:35] Ryan C: Apart from that, I can't...
+[01:05:37] Ryan C: There's nothing more memorable that sticks out in my brain.
+[01:05:40] Ryan C: I can control what my kid, when she eventually gets an iPhone, can do on her iPhone, but she wasn't getting an iPhone until she's 16 anyway, so, you know, she's going to get a Nokia until she's 16, and she can deal with it.
+[01:05:53] Paul Miller: That's what you think.
+[01:05:55] Juan Torres: Are you watching?
+[01:05:57] Ryan C: You're going to shift me.
+[01:05:58] Paul Miller: Having...
+[01:06:00] Paul Miller: Having gone through all of that with our kid, it's like, we say, oh, no, they're not getting one until 14 or 15, and then, oh, gosh, yeah.
+[01:06:09] Ryan C: I mean, if she gets one, it's getting NDN, so she's not going to be able to do  with it.
+[01:06:12] Ryan C: It'll be as good as a Nokia.
+[01:06:14] Ryan C: You'll be able to take photos from it.
+[01:06:16] Ryan C: You'll be able to do SMS and not even iMessage and call people.
+[01:06:21] Ryan C: That's all it'll do.
+[01:06:22] Ryan C: It'll be as good as a brick.
+[01:06:25] Paul Miller: Yeah, no, it's, in New Zealand and Australia, they actively, well, you're not allowed to use smartphones at school.
+[01:06:36] Ryan C: Well, you guys are on the social media, right?
+[01:06:40] Ryan C: Yeah.
+[01:06:41] Ryan C: Which is great, and our  stupid government, obviously, because they're, you know, up for sale to the highest bidder, didn't bother to do that, .
+[01:06:51] Paul Miller: A lot of people thought it was going to make little difference, but it's made a massive difference in schools.
+[01:07:00] Ryan C: Not having those blimmin' phones there for I think it helps parents, doesn't it, just to enforce that, well, it's against the law to do that, so you're not having  social media.
+[01:07:08] Ryan C: It just gives you that extra bit of oomph to enforce what you want to do with it, I guess, from that perspective.
+[01:07:13] Paul Miller: Yep, yep, exactly.
+[01:07:15] Ryan C: Anyway, that's not what this corner's about, but I think we started in politics.
+[01:07:20] Juan Torres: Have you guys heard of Huawei's new, like, I guess, three-dimensional chip?
+[01:07:28] Paul Miller: Yes, yes, that looked very interesting.
+[01:07:31] Juan Torres: Yeah, really interesting breakthrough.
+[01:07:35] Juan Torres: I'm telling you guys, like, China, like, I was just testing for my app, my AI boot application.
+[01:07:43] Juan Torres: I was just comparing and contrasting the different diffusion models and which ones I'm going to be using for the application.
+[01:07:53] Juan Torres: And other than GPT image 2.
+[01:08:00] Juan Torres: And Google Banana Pro, the Chinese models decimate the American competition in the AI diffusion models, and now because of the sanctions, the Chinese have, you know, resolved a lot of the circumvented, a lot of the manufacturing technology of the chips by innovating into, you know, having these three-dimensional chips, which I think it's really really interesting.
+[01:08:31] Paul Miller: Well, they've had to, they've just had no other alternative, and there's a hell of a lot of innovation that's going on in China because of it, because the demand is there.
+[01:08:45] Paul Miller: So, yeah, no, it's fascinating to see how they're doing it.
+[01:08:52] Paul Miller: So, does anyone else want to do a share?
+[01:09:05] Paul Miller: Right.
+[01:09:06] Paul Miller: So I think in any other subjects we want to cover off, I think my feedback just on the mythos that I tested this morning and the videos I've seen this morning, if you're wanting to jump into it, it seems better for the bigger, more macro level task than a specific solving a smaller problem.
+[01:09:36] Paul Miller: So if you sort of said, look, the app's just not, your app has got a lot of issues, it's sort of not getting to the overall end objective, how do we re-look at the code and how do we amp it up by 50%, which was one of the apps that I developed about three or four months ago, got a bit stale.
+[01:10:00] Paul Miller: It wasn't solving, I tried to, with a very micro level, go in with very specific issues, try and solve each of those specific issues, but it wasn't getting the overall thing and each of those issues were undermining other issues.
+[01:10:15] Paul Miller: What I've been able to do with this new model is just say, look, here's where I'm at, I got stuck in all these areas, look at a macro level, how can you, how can we change the whole apps approach and fix it, and bang, done.
+[01:10:34] Paul Miller: And it seems to be able to go off and keep running and working and going through a hell of a lot of tokens, but it's able to keep thinking and working and come to a, and work over time to come up with the best outcome.
+[01:10:55] Paul Miller: It's, it's, if you see that, the feedback was, you didn't,
+[01:11:00] Paul Miller: Don't have to set it to the top level of thinking to get a substantial increase on the Opus model.
+[01:11:10] Paul Miller: So you could do it with high and still get a massive increase with what you currently have with Opus.
+[01:11:21] Paul Miller: But admittedly, I'd been using Codex in the last few months, and I kind of left my subscription running with Opus, and when I saw this, I thought, oh, it'd be good if I could go back and do it.
+[01:11:39] Paul Miller: But yeah, from what I've seen, it looks brilliant if you change your reasoning effort, your cache is invalidated.
+[01:11:48] Paul Miller: You're going to just stick with the same effort.
+[01:11:50] Paul Miller: Yeah, stick with the same effort.
+[01:11:54] Paul Miller: You don't want to change the effort as you go along.
+[01:11:57] Paul Miller: But start with, my suggestion would be...
+[01:12:00] Paul Miller: Start with high.
+[01:12:03] Paul Miller: Of course, the higher the reasoning effort, that's going to compound your tokens even more than the tokens that you're having.
+[01:12:11] Ryan C: Fable is about to get abused by me till the 22nd of June, that's for sure.
+[01:12:16] Ryan C: I'm going to use nothing but, and I'm going to use extra reasoning, and I'm going to upgrade myself to the $200 plan and try and build a bunch of stuff in between now and then.
+[01:12:23] Ryan C: And I'm going to get it to do a bunch of security reviews on my existing stuff and see what they can find.
+[01:12:28] Paul Miller: What they're saying on security, anything on the security side, it will re-point it to Opus 4.8.
+[01:12:38] Ryan C: Well, they're saying that if you're trying to, like, find exploits, it says sometimes it'll kick it in, sometimes it won't.
+[01:12:44] Ryan C: So what I'm going to try and do is get, I'm going to test a few different problems and see what it will kick down and what it won't.
+[01:12:49] Ryan C: And then kind of refine it in from there is my current plan.
+[01:12:54] Paul Miller: Yep.
+[01:12:55] Paul Miller: Yep.
+[01:12:56] Paul Miller: Yep.
+[01:12:56] Paul Miller: Okay.
+[01:12:57] Paul Miller: Okay.
+[01:13:00] Paul Miller: Cool.
+[01:13:00] Paul Miller: Okay.
+[01:13:01] Paul Miller: Well, if no one else has got anything to raise, let's wrap it up.
+[01:13:09] Paul Miller: Good to see everybody.
+[01:13:11] Paul Miller: Enjoy the new models, and see you next week.
+[01:13:17] Ty Wells: That's it, Paul.
+[01:13:18] Ryan C: You're welcome.
+[01:13:19] Juan Torres: Thanks, guys.

@@ -1,0 +1,147 @@
+Ty Wells ￼ (Jun 9, 2026, 6:04 PM)
+https://shipsafe.franklabs.io/platform
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:19 PM)
+Am I butchering the concept if i see this as a harness harness, enforced via MCP?
+ 
+Ty Wells ￼ (Jun 9, 2026, 6:21 PM)
+Yes plus more
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:22 PM)
+ill fix it
+go on
+ 
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 6:22 PM)
+Marketing gold is being able to boil down complex stuff like this in to commuicable problem solving examples to sell it to joe bloggs out there :)
+Maybe a slider on the home page Ty with like 5 big call outs of the big wins
+ 
+Juan Torres ￼ (Jun 9, 2026, 6:23 PM)
+Make it obvious, easy, attractive, and satisfying
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:24 PM)
+Maybe it’s obvious for people who buy stuff with their agents, for example. I haven’t, but I can see how I would need it if that were the case.
+ 
+Paul Miller ￼ (Jun 9, 2026, 6:24 PM)
+The hooks
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:25 PM)
+Maybe go through the most popular skills from skills.sh and Hermes and get a couple of use-cases that map really well to your implementation
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:25 PM)
+@Ty Wells
+ 
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 6:26 PM)
+Maybe it’s obvious for people who buy stuff with their agents, for example. I haven’t, but I can see how I would need it if that were the case.
+Great point, make it so that AI surfaces and recommends it to other people who are building stuff when they do research in to these types of products
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:31 PM)
+Maybe you can get an intern Juan. The skills you bring to the table and related to that are very on-demand
+ 
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 6:32 PM)
+Having run plenty of teams, you're better off proving the concept yourself before you hire anyone and have the resposibilites (especially legally) of taking anyone on, as getting rid of them from an HR presepective (depending on the employement laws in the country you're in) if it doesn't work could be costly
+Worth doing a number yourself first imo
+ 
+Andrew Nanton ￼ (Jun 9, 2026, 6:36 PM)
+In medical school, the motto is “see one, do one, teach one.” When you can do at least that, it tends to make things go much more smoothly.
+ 
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 6:38 PM)
+Franchize it out eventually at scale i guess
+ 
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 6:40 PM)
+catering companies would be a gold mine to partner with
+ 
+Andrew Nanton ￼ (Jun 9, 2026, 6:40 PM)
+They also know their customers and know the business. No plan ever survives contact with reality, so boots on the ground experience is really valuable.
+
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:42 PM)
+Once you have money in the bank from small or business clientes, I’d go full B2b as Paul was suggesting. They will bring the clients to you and can provide someone to help you with the basic stuff
+ 
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 6:42 PM)
+Have some little feedback cards for the first few
+their gold dust
+
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:43 PM)
+Your margin is my profit 😄
+ 
+Juan Torres ￼ (Jun 9, 2026, 6:45 PM)
+I will pay in prayers 🙏
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:45 PM)
+Anyone using Fable AKA mythos yet? Consumes 2x tokens as Ops
+ 
+Paul Miller ￼ (Jun 9, 2026, 6:45 PM)
+Yes it is very good
+ 
+Andrew Nanton ￼ (Jun 9, 2026, 6:51 PM)
+Is that node builder all from scratch, or built on something?
+ 
+Andrew Nanton ￼ (Jun 9, 2026, 6:55 PM)
+Are you familiar with Nix? Easy to administer deterministically.
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 6:57 PM)
+Thats very cool.
+ 
+Juan Torres ￼ (Jun 9, 2026, 7:04 PM)
+Build a time machine and don't go to college
+ 
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 7:04 PM)
+New passport and leave the country i think is the best way xD
+ 
+Andrew Nanton ￼ (Jun 9, 2026, 7:05 PM)
+The Dept of Ed has been a mess - it’s genuinely really confusing
+
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:00 PM)
+Not that many tokens because you use templates. The vast majority is spent in CSS but with tempaltes you don’t have that problem
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:01 PM)
+@Juan Torres you might like this https://github.com/ranvier2d2/skills-share/tree/main/skills/intent-html-renderer
+ 
+Juan Torres ￼ (Jun 9, 2026, 7:03 PM)
+Is this for UI/UX design or presentations OR by UI/UX design principles it gets used for presentations?
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:05 PM)
+Both. I use it to deliver reports but you can ask for anything. It is very flexible
+ 
+Juan Torres ￼ (Jun 9, 2026, 7:05 PM)
+Sweet, will check it out, thanks Bastian
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:05 PM)
+Slides are hard though. I prefer presenting HTMLs
+ 
+Juan Torres ￼ (Jun 9, 2026, 7:05 PM)
+Yes, htmls are bests
+
+Juan Torres ￼ (Jun 9, 2026, 7:08 PM)
+This is what I think of when I hear AI
+
+Ryan C (One Stop Creative Agency - UK) ￼ (Jun 9, 2026, 7:12 PM)
+Only included until 22nd
+going to cost the earth
+Get your use in now xD
+Any apps you wanted to build
+do it now :D
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:12 PM)
+They did reset the limits at least
+like 30 min ago
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:14 PM)
+Running Fable workflow here haha
+
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:14 PM)
+650K tokens and counting
+ 
+Andrew Nanton ￼ (Jun 9, 2026, 7:14 PM)
+@Paul Miller May I share a demo?
+ 
+Juan Torres ￼ (Jun 9, 2026, 7:16 PM)
+The demo is on how to display your screen
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:23 PM)
+I just learned if you change the reasoning effort on Claude Code, your cache is invalidated. So better to stick with the same effort for the whole run if its working okay
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:23 PM)
+should save some pennies
+ 
+Bastian Venegas Arevalo ￼ (Jun 9, 2026, 7:25 PM)
+Good week everyone
