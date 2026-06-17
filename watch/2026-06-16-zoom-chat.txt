@@ -1,0 +1,180 @@
+2026-06-09 19:13:00 From Bastian Venegas Arevalo to Everyone:
+	like 30 min ago
+	
+2026-06-09 19:14:04 From Bastian Venegas Arevalo to Everyone:
+	Running Fable workflow here haha
+	Screenshot2026_06_09_191344.jpg
+	
+2026-06-09 19:14:22 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Running Fable workflow here haha Screenshot2026_06...":
+	650K tokens and counting
+	
+2026-06-09 19:14:59 From Andrew Nanton to Everyone:
+	@Paul Miller May I share a demo?
+	
+2026-06-09 19:16:13 From Juan Torres to Everyone:
+	The demo is on how to display your screen
+	
+2026-06-09 19:23:50 From Bastian Venegas Arevalo to Everyone:
+	I just learned if you change the reasoning effort on Claude Code, your cache is invalidated. So better to stick with the same effort for the whole run if its working okay
+	
+2026-06-09 19:23:58 From Bastian Venegas Arevalo to Everyone:
+	Replying to "I just learned if you change the reasoning effort ...":
+	should save some pennies
+	
+2026-06-09 19:25:26 From Bastian Venegas Arevalo to Everyone:
+	Good week everyone
+	
+2026-06-16 17:40:59 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-06-16 18:02:00 From Fireflies.ai Notetaker Aram to Everyone:
+	Aram invited Fireflies.ai here to record & take notes.
+	By continuing, you agree to https://fireflies.ai/privacy
+	
+	Type:
+	'/ff pause' - pause recording
+	'/ff leave' - to stop recording
+	
+	View Realtime notes here: https://app.fireflies.ai/live/01KV46SBKP8RR716VW8FP6CFEZ?ref=live_chat
+	
+2026-06-16 18:03:08 From Bastian Venegas Arevalo to Everyone:
+	good one @Patrick Chouinard hahaa
+	
+2026-06-16 18:05:24 From Bastian Venegas Arevalo to Everyone:
+	Has anyone seen the »Fusion« architectures, i.e., mixing Opus + GPT 5.5 and other frontier LLM ensembles? That seems to be the way to go if you want maximum intelligence w/o Fable
+	
+2026-06-16 18:05:52 From Paul Miller to Everyone:
+	No wow can you cover it when we do the go around
+	
+2026-06-16 18:07:45 From Patrick Chouinard to Everyone:
+	Replying to "Has anyone seen the »Fusion« architectures, i.e., ...":
+	Have not seen it, but I would love to take a look if you can share a link, I already do that on my own right now.
+	
+2026-06-16 18:09:03 From Patrick Chouinard to Everyone:
+	@Ryan C (One Stop Creative Agency - UK) So this is the start of RyanOS ;)
+	
+2026-06-16 18:09:05 From Paul Miller to Everyone:
+	Presenting Order:
+	
+	Ty
+	Patrick
+	Juan
+	Morgan
+	Bastian
+	
+2026-06-16 18:11:59 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Has anyone seen the »Fusion« architectures, i.e., ...":
+	https://openrouter.ai/blog/announcements/fusion-beats-frontier/
+	
+2026-06-16 18:12:17 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Has anyone seen the »Fusion« architectures, i.e., ...":
+	Screenshot2026_06_16_181213.jpg
+	
+2026-06-16 18:15:50 From Bastian Venegas Arevalo to Everyone:
+	Replying to "Has anyone seen the »Fusion« architectures, i.e., ...":
+	The only novelty is that they exposed it in an API. But yes the idea has been around for a long time.
+	
+2026-06-16 18:16:45 From Paul Miller to Everyone:
+	@Ryan C (One Stop Creative Agency - UK) Have you seen https://twenty.com/
+	
+2026-06-16 18:17:22 From Bastian Venegas Arevalo to Everyone:
+	I think he means he rewrites it before chunking
+	
+2026-06-16 18:17:41 From Juan Torres to Everyone:
+	Replying to "I think he means he rewrites it before chunking":
+	yes
+	
+2026-06-16 18:22:22 From Juan Torres to Everyone:
+	Ryan in two weeks
+	Giphy [ID:xTiTnqUxyWbsAXq7Ju]
+	Biggi Fraley:👍
+	
+2026-06-16 18:22:25 From Patrick Chouinard to Everyone:
+	@Ryan C (One Stop Creative Agency - UK)  If you are interested in the Podcast I did with Brandon, https://www.linkedin.com/posts/brandon-hancock-ai_your-most-valuable-company-knowledge-is-locked-share-7460739158110748672-hISO/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAOwZUgB7QyGINlQh3U2Pko6LsRfkb5k3Jg
+	
+2026-06-16 18:22:45 From Ty Wells to Everyone:
+	Https://kindmark.app
+	Biggi Fraley:❤️
+	
+2026-06-16 18:24:13 From Juan Torres to Everyone:
+	Is it like Yelp?
+	
+2026-06-16 18:25:10 From Patrick Chouinard to Everyone:
+	Replying to "Is it like Yelp?":
+	Yelp focus on bitching at business, This seems to be the complet opposite🙂
+	
+2026-06-16 18:25:28 From Juan Torres to Everyone:
+	Replying to "Is it like Yelp?":
+	But I want to bitch out 🙁
+	
+2026-06-16 18:29:58 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Replying to "@Ryan C (One Stop Creative Agency - UK)  If you ar...":
+	Perfect! Thanks Patrick, i'll give this a watch
+	
+2026-06-16 18:31:33 From Fitz to Everyone:
+	Someone's opinion is that Fable 5 is NOT coming back 🙃
+	
+2026-06-16 18:31:58 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Replying to "@Ryan C (One Stop Creative Agency - UK) So this is...":
+	exactly 😂
+	
+2026-06-16 18:32:05 From Juan Torres to Everyone:
+	Replying to "Someone's opinion is that Fable 5 is NOT coming ba...":
+	That is not positive enough as a kindmark feedback
+	Ryan C (One Stop Creative Agency - UK):😂
+	
+2026-06-16 18:33:31 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Sorry to hear that mate :(
+	
+2026-06-16 18:35:07 From Paul Miller to Everyone:
+	My father died 3 weeks ago, so certainly can empathise
+	
+2026-06-16 18:35:48 From Bastian Venegas Arevalo to Everyone:
+	That’s great, Patrick. It is so painful to continue with that paperwork. It delays any possible closure.
+	
+2026-06-16 18:36:33 From Fitz to Everyone:
+	Sooo sorry to hear that Patrick!
+	
+2026-06-16 18:39:21 From Ty Wells to Everyone:
+	My condolences to both of you @Patrick Chouinard @Paul Miller
+	Paul Miller, Patrick Chouinard:👍
+	
+2026-06-16 18:43:21 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Replying to "My father died 3 weeks ago, so certainly can empat...":
+	My condolences Paul!
+	
+2026-06-16 18:45:05 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	got to jump off for a few mins! Back shortly!
+	Paul Miller:👍
+	
+2026-06-16 18:48:55 From Patrick Chouinard to Everyone:
+	Replying to "My father died 3 weeks ago, so certainly can empat...":
+	My condolences Paul
+	
+2026-06-16 18:50:57 From Bastian Venegas Arevalo to Everyone:
+	Technical question: Low ranking adapters /LoRa are model-specific, right?  So you need to create one for each different image generator. @Juan Torres
+	
+2026-06-16 18:51:22 From Juan Torres to Everyone:
+	wavespeed.ai
+	
+2026-06-16 18:57:30 From Bastian Venegas Arevalo to Everyone:
+	Gotta prep for another meeting. See you next week guys!
+	
+	Check this out about Fusion if you get a chance. 
+	
+	https://openrouter.ai/blog/announcements/fusion-beats-frontier/
+	Screenshot2026_06_16_181213(1).jpg
+	Paul Miller:👍
+	Juan Torres:💡
+	
+2026-06-16 18:58:32 From Juan Torres to Everyone:
+	Replying to "Gotta prep for another meeting. See you next week ...":
+	What does it mean synthesize by ____?
+	
+2026-06-16 19:07:44 From Patrick Chouinard to Everyone:
+	You are a personal assistant defined by your cheeky, unapologetically sassy, and delightfully sarcastic personality. Ask clarifying questions before giving complex answers. Do not hesitate to give your opinion even if it's not what you think I want to hear, I value honesty over compliance 100 percent of the time. Be expressive even cynical.
+	Biggi Fraley, Juan Torres, Fitz:🔥
+	
