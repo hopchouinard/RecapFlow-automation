@@ -1,0 +1,1177 @@
+[00:02:00] Patrick Chouinard: Stable, describe 34, operate 116, 150 total, zero hard violations in either repo.
+[00:03:36] Patrick Chouinard: Hey scott.
+[00:03:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, here we go.
+[00:03:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Hold on.
+[00:03:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Change my audio.
+[00:03:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There we go.
+[00:03:59] Patrick Chouinard: Now I should be good.
+[00:04:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There we go.
+[00:04:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's like, my Focusrite, I got one of those little Focusrite things because I got XLRs in, but it's been acting up lately where I got to keep unplugging it and plugging it in, the USB, because it's like...
+[00:04:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: meeting is being recorded.
+[00:04:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The sound isn't coming on.
+[00:04:15] Patrick Chouinard: No worries.
+[00:04:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So nothing from Brandon, huh?
+[00:04:19] Patrick Chouinard: No, actually, I should probably have texted him, but let's just say that the last couple of weeks were a bit more busy than usual.
+[00:04:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, hopefully, that's a good thing.
+[00:04:33] Patrick Chouinard: Not really, but that's reality.
+[00:04:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I got a couple of things I'm saving for when he's on just because I want his opinion on it, too, as well, but I do have something I'll kind of show today that's a reminder about something I showed before with a repo that some people might want a reminder on and maybe some new people on to use it.
+[00:04:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I've got more of an example now.
+[00:04:57] Patrick Chouinard: Cool.
+[00:04:59] Patrick Chouinard: Hey, Ty.
+[00:05:00] Ty Wells: Hey guys, what's going on?
+[00:05:03] Patrick Chouinard: Good.
+[00:05:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Hey.
+[00:05:04] Patrick Chouinard: No golf today?
+[00:05:07] Ty Wells: Actually, I golfed this morning.
+[00:05:08] Ty Wells: I'm exhausted.
+[00:05:09] Ty Wells: I had to come home and take a nap.
+[00:05:11] Patrick Chouinard: I fall asleep right now.
+[00:05:14] Patrick Chouinard: I'm not sure how many people we'll have this week.
+[00:05:25] Patrick Chouinard: I know it should have been a Brandon week, but I completely forgot to call him.
+[00:05:31] Patrick Chouinard: So I'm going to see if he can.
+[00:05:33] Juan Torres: He did not get invited to his own group.
+[00:05:39] Patrick Chouinard: No, it's like anything.
+[00:05:41] Patrick Chouinard: When you train someone to wait for you to call, then you don't, you stop checking.
+[00:05:46] Patrick Chouinard: And I've been doing it for the last couple of months.
+[00:05:50] Patrick Chouinard: So I completely understand.
+[00:05:53] Patrick Chouinard: So as you might understand, I've been a bit distracted in the last couple of weeks.
+[00:05:57] Patrick Chouinard: So yeah.
+[00:05:59] Juan Torres: And thanks for...
+[00:06:00] Juan Torres: I'm this up, Patrick.
+[00:06:01] Juan Torres: I know it's heavy on the heart.
+[00:06:04] Patrick Chouinard: And then having to do this.
+[00:06:06] Patrick Chouinard: Well, it helps keeping my mind occupied at something else.
+[00:06:12] Patrick Chouinard: Hey, Ryan.
+[00:06:16] Ryan C: How you doing?
+[00:06:18] Patrick Chouinard: Good, good.
+[00:06:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Who let this wanker in here?
+[00:06:25] Ryan C: Wow.
+[00:06:27] Ryan C: I didn't even have comeback for that.
+[00:06:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You guys should hear how he talks to me.
+[00:06:31] Ty Wells: Come on now.
+[00:06:32] Ty Wells: Zoom is the comeback.
+[00:06:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Just the level of bullying we have to deal with, guys, all the time.
+[00:06:45] Patrick Chouinard: Seems like it's going to be pretty intimate tonight.
+[00:06:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, could be a quick one.
+[00:06:50] Juan Torres: Well, this is not labelled it intimate.
+[00:06:54] Juan Torres: For now.
+[00:06:54] Juan Torres: No.
+[00:07:01] Patrick Chouinard: We'll see.
+[00:07:09] Patrick Chouinard: By the way, if you hear some firework in the background, it's just because it's going to be the festivity.
+[00:07:19] Patrick Chouinard: It's the national holiday tomorrow here in Quebec.
+[00:07:24] Juan Torres: Independence?
+[00:07:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No.
+[00:07:28] Patrick Chouinard: Quebec is just, we call it Saint-Jean-Baptiste.
+[00:07:32] Patrick Chouinard: It's based on John the Baptist as the patron saint of Quebec.
+[00:07:40] Juan Torres: Quebec has a really, really religious background if you go back a couple of decades.
+[00:07:46] Patrick Chouinard: Pretty much all of our festivities are religious-based.
+[00:07:50] Juan Torres: Catholic?
+[00:07:52] Patrick Chouinard: Yeah.
+[00:07:53] Juan Torres: Oh, interesting.
+[00:07:56] Patrick Chouinard: All of our, a bunch of our cities are named after saints.
+[00:08:00] Patrick Chouinard: Part of our streets are named after saints, but there's nobody in any church, so it's kind of weird.
+[00:08:13] Juan Torres: Yeah, interesting.
+[00:08:14] Juan Torres: The residues of French colonialism.
+[00:08:17] Patrick Chouinard: Yep.
+[00:08:18] Patrick Chouinard: Yeah, it was pesky French.
+[00:08:23] Ryan C: You wouldn't see the British doing that.
+[00:08:25] Ryan C: We were pretty quiet.
+[00:08:31] Patrick Chouinard: There's a couple of battles that say otherwise here in Quebec.
+[00:08:36] Ryan C: Oh, we just forget about those.
+[00:08:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Okay.
+[00:08:45] Patrick Chouinard: Well, like I said, it seems it's going to be a short, intimate one today.
+[00:08:54] Patrick Chouinard: Maybe I'm going to give you a little bit of a heads up of what I've been working on.
+[00:09:00] Patrick Chouinard: Obviously, I've been working on a lot of stuff not AI related, but basically, I've still been focusing on, for those who weren't there last week, I've lost my mom three weeks ago, so I ended up having to do a whole lot of administrative work and weirdly enough, Claude has been extremely helpful and I realized that I could leverage it to take a lot out of my plate and it now has basically managed the entire funeral process.
+[00:09:39] Patrick Chouinard: Everything that was emotional, all the writing for the eulogy, all of that I took care of, but everything that was forms, submissions, emails, personal calls, all of that, Claude handled like a hundred percent of it and I was able to actually
+[00:10:00] Patrick Chouinard: We almost do A-B testing because I'd done this for my dad 10 years ago, took me about two months to go through everything that needed to happen.
+[00:10:11] Patrick Chouinard: For my mom, took 48 hours because it was assisted.
+[00:10:16] Patrick Chouinard: So weird place to leverage AI, but it was actually extremely helpful.
+[00:10:26] Patrick Chouinard: It made a lot of shopping for me that needed to happen.
+[00:10:31] Patrick Chouinard: I mean, it basically reminded me a lot of things that I would have completely forgotten and have been quite catastrophic if I did forget and took care of it.
+[00:10:41] Patrick Chouinard: That was quite surprising, actually.
+[00:10:44] Patrick Chouinard: It actually looked at, because I still had the material I made for my dad 10 years ago, I still had it on my computer, it found the material and reused it and gave me idea to build the same thing for my mom.
+[00:11:00] Juan Torres: So I was, uh, yeah, it's samples.
+[00:11:05] Patrick Chouinard: Yeah.
+[00:11:07] Patrick Chouinard: So we can say anything we want about, uh, the fact that it's just a tool, but sometimes it's a tool that can surprise you in its efficiency, even in the extremely hard realm of, uh, work in a, uh, a little bit more, uh, festive side of things.
+[00:11:28] Patrick Chouinard: Do you remember I told you I was building something that I called Agent Ops, which was basically an, a, operator harness for Hermes, uh, to manage my home lab?
+[00:11:42] Patrick Chouinard: Well, uh, I realized that, uh, it was growing, uh, a little bit, uh, all over the place.
+[00:11:50] Patrick Chouinard: So I was, oh, I need to add this functionality to build that project.
+[00:11:55] Patrick Chouinard: Oh, okay.
+[00:11:56] Patrick Chouinard: I'm going to try to merge those two for now to deploy them as well.
+[00:12:00] Patrick Chouinard: And, oh, I'm gonna build an MCP server.
+[00:12:02] Patrick Chouinard: Basically, I ended up with a bunch of disconnected tools.
+[00:12:07] Patrick Chouinard: And I was looking for something to try the slash loop on.
+[00:12:13] Patrick Chouinard: So what I did is I copied every single repo into a single directory root and launched loop to refactor every single subproject into one main project to tie into Hermes.
+[00:12:31] Patrick Chouinard: Hermes basically a Hermes type of toolbox, but well-structured, well-architected, well-documented.
+[00:12:40] Patrick Chouinard: And it's been running for around 48 hours now.
+[00:12:44] Patrick Chouinard: And the repo is getting impressively well-structured so far.
+[00:12:51] Patrick Chouinard: So I'm gonna say that I'm impressed once I deployed it and it works.
+[00:12:55] Patrick Chouinard: But from what I've seen from the last 48 hours of work...
+[00:13:00] Patrick Chouinard: Pretty impressed.
+[00:13:02] Patrick Chouinard: It found a bunch of things I would have never seen surface until I tried it in prod to find it ahead of time.
+[00:13:10] Patrick Chouinard: And I coupled that loop.
+[00:13:13] Patrick Chouinard: Basically, I did two loops.
+[00:13:15] Patrick Chouinard: I had the slash loop with a goal that it tries to achieve, but within that loop, it was using the codex validator, the code review.
+[00:13:28] Patrick Chouinard: So at every iteration of the loop, it called codex, which itself looped a bunch of time to correct all the mistake it found before Claude tried to do another iteration of loop.
+[00:13:41] Patrick Chouinard: And like I said, so far so good.
+[00:13:44] Patrick Chouinard: It ate a truckload of tokens, but it actually does the work very well.
+[00:13:50] Ty Wells: I was going to say, how many tokens are you in at 48 hours?
+[00:13:55] Patrick Chouinard: It's not too bad because it's a human validator.
+[00:13:58] Patrick Chouinard: It's a human validator.
+[00:14:00] Patrick Chouinard: Validated loop, so basically at every iteration it asked me, so I'm probably the thing that slowed it down a little bit.
+[00:14:07] Ty Wells: Come on, you're getting in the way, Patrick.
+[00:14:09] Patrick Chouinard: Let it ride.
+[00:14:11] Ty Wells: Put it all on black and go.
+[00:14:14] Patrick Chouinard: Would love to do that, but...
+[00:14:17] Patrick Chouinard: No, but actually it asked some very good questions and there's something where I diverted from the way it was going, so it was very beneficial to be in the loop.
+[00:14:28] Patrick Chouinard: It just, I didn't have to plan the whole thing.
+[00:14:31] Patrick Chouinard: honestly, once it's at iteration 30 or something, it was going in ways I would have not thought about looking.
+[00:14:39] Patrick Chouinard: But once I read what it did, it made a whole lot of sense that it did that.
+[00:14:43] Patrick Chouinard: So, yep, now I have a fully documented AIC infrastructure, but with a toolbox on top of it for my agent to continue taking care of it and making it evolve in the future.
+[00:14:59] Patrick Chouinard: So...
+[00:14:59] Patrick Chouinard: So...
+[00:14:59] Patrick Chouinard: So...
+[00:14:59] Patrick Chouinard: So...
+[00:15:00] Patrick Chouinard: I think that's gonna be a pretty nice little tool set.
+[00:15:04] Patrick Chouinard: And it's not just a plug-in, it's really a full harness on top of Hermes.
+[00:15:12] Juan Torres: Nice.
+[00:15:14] Patrick Chouinard: That was my week.
+[00:15:17] Juan Torres: Can't wait to see it.
+[00:15:20] Patrick Chouinard: Well, right now, the only thing I can show you is the loop still going on.
+[00:15:27] Patrick Chouinard: Good, so I'm gonna call upon you an order since we're such a small group tonight.
+[00:15:33] Patrick Chouinard: So, Scott, what did you have for us this week?
+[00:15:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: All right, so let me send a request here.
+[00:15:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'll share my screen.
+[00:15:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm gonna show this one tonight, but I'll probably show this one again, just because I think when we get a larger group, they can actually see...
+[00:15:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Do you remember that video repo that I did?
+[00:15:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Video generator?
+[00:15:54] Juan Torres: Yeah.
+[00:15:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That kind of combines a lot of different tools like Higgs field and 11 lab.
+[00:15:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, yeah.
+[00:16:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But using some local stuff like, you know, some auto-leveling like FFmpeg, Remotion, well, I actually added in, I need to add it into this repo still, but it's easy to add in yourself, added in HeyGen as well because I had a different pipeline for doing that for a customer because I, so I ended up launching a YouTube channel today that is AI based, but it's taught by my avatar, and it's all Pixar style.
+[00:16:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just decided to do it this way because I was like, I, and it's funny because I'm a film guy, right?
+[00:16:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I produce videos for people, or that's what I used to do a lot of before I got into doing development and stuff, but it's like, I thought this was kind of a cool thing because nobody, like some people are doing it, but like not really in our space, and I'm like, I just wanted to do it as something fun, so I took this repo, because the thing about this repo is it kind of just ramps you up into hooking everything up, but then you can just kind of make it your own because then you just start saying, okay, this is, this is for this channel.
+[00:16:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's.
+[00:17:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's helping me, like, it's using Nanobanana for, like, all my images that I'm popping up, and I'm creating all the SFX and the voice clone in Eleven Labs, and then, of course, Nanobanana, it's helping me do the images that, in HeyJen, you just literally upload the photo and it creates your avatar.
+[00:17:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, it's so easy, right?
+[00:17:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so, I launched this channel today, and was going to show you guys just a little snippet, and I think audio is on by default, isn't it?
+[00:17:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I think it should be.
+[00:17:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Let me play this.
+[00:17:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He built Claude Code, and he'll tell you his job.
+[00:17:32] Patrick Chouinard: Can you hear that?
+[00:17:33] Patrick Chouinard: Okay.
+[00:17:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, but, like, the Higgs field also gives you access to Kling, and you get so many credits.
+[00:17:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, seed ins, if you're trying to do real people, will burn through your credits.
+[00:17:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But the regular plan, like, doing all these little Pixar animations, like, this is hilarious.
+[00:17:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I got recurring characters now in this thing.
+[00:17:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: ...job now isn't writing prompts.
+[00:17:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's writing the loops that prompt the agent for him.
+[00:17:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Peter Steinberger, who built one of the most popular agent projects out there, said the same thing.
+[00:17:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: When the people who build the tools tell you the leverage...
+[00:18:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's worth taking seriously.
+[00:18:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, no, I'm not here to tell you loops are dumb.
+[00:18:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: They're powerful and more- funny you're talking about loops.
+[00:18:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm here to tell you the part they say fast that you need to hear slow.
+[00:18:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Why does just right loops keep going viral?
+[00:18:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Same story as always.
+[00:18:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Someone builds their first real loop, watches an agent grind through a task that used to eat their whole afternoon in a way.
+[00:18:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And honestly, it is- Like, just the stuff in here is hilarious.
+[00:18:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, we're building this channel to, it's called Building With Reason, and it's just this like, I'm gonna, I dropped two at once, but I'm gonna drop one a week where I'm just tired to like, I don't get stuck into the commenting on people's stuff too much, but there's just so much hype out there, it's just all this, this killed that, and this, I'm just like, and nobody's putting out anything of like, thinking with context, like a real engineer, and just like, like, hey, you know, it didn't kill it, it's just another lever, another tool, or another, you know, thing on the ladder, just, or different use cases, right?
+[00:18:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, so, um, I did, so I did one on like, loops, um, and then one on, uh, on any of them, but like, it's just good stuff for like, high-level thought and trying to Give a lot.
+[00:19:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's not like making any, I'm trying not to like, I'm not steering somebody to, I'm trying to get people to think about everything and putting some stuff out there and not being like, this is great, or this isn't, or do this or do that.
+[00:19:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's like, I'm just trying to like help teach a little bit of stuff.
+[00:19:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm just thinking.
+[00:19:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so I put a lot of effort into the scripts, and it's all me, like how I talk.
+[00:19:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so I put in a couple hours on each script and really kind of dial it in.
+[00:19:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then I generate it with my voice and my avatar and spend a lot of time on little B-roll scenes for the transitions, because Hey Jen has cuts.
+[00:19:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I do, and I do the animated stuff there.
+[00:19:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Um, and then I do a ton of like supporting images.
+[00:19:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And now that I've got a recurring character.
+[00:19:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So that guy you saw is the, my, uh, code and chill guy.
+[00:19:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's, that's like peeking out behind him up here on the, on the banner.
+[00:19:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So just started today.
+[00:19:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just something to do for fun.
+[00:19:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's kind of cathartic, but it's also kind of nice because honestly, it gives me content for my website, you know, because it's also more content and I don't care, even care how many people actually, uh, see it.
+[00:19:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it might do well at some.
+[00:20:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But like, it's also like now I got on my website is like, you know, additional content, which is just more, more things for the SEO, AO engine to crawl through, right?
+[00:20:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, and keeping all the descriptions there.
+[00:20:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, see, I just wanted to show this to people because you could really do a lot of cool stuff with this.
+[00:20:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so that's why I want to put that back out there.
+[00:20:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Cause I know I showed, I didn't really have a lot of examples.
+[00:20:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I had like one example of this, but this is like a pipeline.
+[00:20:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's just, all of this is done in cloud code.
+[00:20:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like I edited nothing.
+[00:20:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It was all just direction in cloud code to plan, put it all together and create everything.
+[00:20:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Cause I'm used to, you know, I I've worked in video editors and sound editors.
+[00:20:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I didn't have to do anything.
+[00:20:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So fun.
+[00:20:43] Patrick Chouinard: Juan, did you have a question?
+[00:20:45] Juan Torres: yeah.
+[00:20:46] Juan Torres: Uh, one of the things that I wanted to ask is how do you, which model are you using for the generation of the images?
+[00:20:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's all nano banana through Higgs field.
+[00:20:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But see, I find that like when you're in cloud code,
+[00:21:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: When you're trying to generate stuff, so Cloud Code's hooked into all this stuff mostly by MCPs, one of them might be a CLI, whatever the method is that works the best, it's like, when you try, I mean, Chats and Nano is pretty good when you're in the LLM, but I wouldn't be doing, like, you just don't get as good, like, when you can use Cloud Code, and you're telling it what you want, and then it writes the prompting, if you're very specific, it's so good at, like, getting better and better images, and my characters are all consistent, I can literally have it regenerate something, and everything stays the same, and then, like, it'll change something, else, like, it's just all running through Cloud Code into Higgsfield using the Nano Banana model for images, all the images are, are Nano for thumbnails, for characters, for the starting things before I animate them, I'll even create those in Nano first, and then it'll send it to Kling to animate our, like, base look, kind of a thing, because, I mean, there was a scene in here that, that was so complex, I was so impressed that it got this, this scene right here, this is wild to me.
+[00:22:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Two completely different worlds.
+[00:22:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, that is nuts.
+[00:22:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: that ties it all together, the thing the hype skips entirely.
+[00:22:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it did exactly what I wanted, the two worlds, all the crazy, you know, money on fire, the loops, the agents, and then the one guy with his piggy bank over here, and he's like looking, they're in slow-mo, and he's looking back in real time.
+[00:22:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It nailed it.
+[00:22:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, Kling's a really good model through Cloud Code, too, if you give it a really good reference image and explain what you're doing.
+[00:22:22] Juan Torres: So, yeah, I just think that this So, do you create the images, and then up for the dialogue, and then animate them in that coordination?
+[00:22:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, the dialogue part is super easy, because all you have to do, so I write the script, and then when the script is ready, I send that through, I have a, all you have to do is a quick clone in 11labs, it's gotten so good.
+[00:22:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And if you use the V3 engine now, it strips out all the break stuff.
+[00:22:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, you send it the text, it, it has been 100% perfect in figuring out intonations and rounding sentences.
+[00:22:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, I was using V2 with my old, like, pro clone, and I'm like, it's.
+[00:23:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's saying stuff wrong.
+[00:23:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's ending up on the end of a sentence.
+[00:23:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm like pulling my hair out.
+[00:23:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm like, this does not sound natural.
+[00:23:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then quick clone now with the V3 engine and it just gets it.
+[00:23:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's so easy.
+[00:23:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So once that audio comes down, Cloud Code then goes, okay, once I agree, it's like, yep, that's good.
+[00:23:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: All it does is send that to HeyGen and it sends a background because I make the backgrounds in Nano 2 and it can splice the background.
+[00:23:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It can tell HeyGen to use this background and then use the, because it kind of cuts out the, um, the avatar.
+[00:23:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'll show you.
+[00:23:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like you, all you do is upload a picture to HeyGen of your character for the avatar feature.
+[00:23:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it just, that's it.
+[00:23:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And all of a sudden I have all these different avatars.
+[00:23:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I, in Nano Banana, I have now four looks of four different color sweatshirts.
+[00:23:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like I have this, I've got my logo now.
+[00:23:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like the new ones are going to have a logo now.
+[00:24:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Literally, has a nano banana.
+[00:24:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I got my logo to make it look like it was embroidered.
+[00:24:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I've got these four looks.
+[00:24:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It just calls one of these avatars.
+[00:24:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It syncs the audio and makes your avatar move.
+[00:24:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: All it needs is a picture.
+[00:24:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's all it does.
+[00:24:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's even more expressive stuff, too.
+[00:24:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I was using the regular one, and I just used the more expressive thing on a test I was doing for a video for my website, for the hero video, instead of having the generic one, because I'm going to use I this avatar there, too, and it was even better.
+[00:24:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: was a little bit more fluid and moving more without just once in a while doing this.
+[00:24:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: A combination of HeyGen and Eleven Labs is pretty sick now.
+[00:24:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You can do a lot.
+[00:24:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: To me, this is fun because I'm not trying to make fake me.
+[00:24:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm trying to make, hey, my videos say, hey, this is Scott's avatar.
+[00:24:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: At the end, it'll be like, Scott's writing the next one.
+[00:24:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Real Scott's writing the next one.
+[00:24:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm not trying to be like, hey, make something real.
+[00:24:56] Juan Torres: That creeps me out when people try to make something that looks like them.
+[00:24:58] Juan Torres: Yeah.
+[00:24:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: like that.
+[00:24:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: that.
+[00:24:59] Juan Torres: Yeah.
+[00:25:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I think this is like a good use of it, you know, I'm not being disingenuous with it.
+[00:25:06] Juan Torres: And then how do you add the scenes in which you see like the explosion?
+[00:25:10] Juan Torres: Is that something that you create for the dialogue?
+[00:25:12] Juan Torres: You say to Seadream 8, create this explosion in the computer, and you just clip it in.
+[00:25:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So what happens is I get my whole take back, and the intro and outro I already have built, it remotion puts those on the end for me, or you know, my project does.
+[00:25:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So when I get back the avatar and the voice, and like from Hey Jane, like everything's set, but I have no B-roll yet, right?
+[00:25:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It has the script.
+[00:25:33] Juan Torres: B-roll?
+[00:25:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So B-roll is like supporting footage.
+[00:25:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I consider, like, so what you saw that scene was like B-roll.
+[00:25:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Really it's A-roll, but we won't even get into that.
+[00:25:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Everybody just calls it B-roll.
+[00:25:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But, um, so video scenes typically are B-roll, and then technically, you know, all my little pop-up supporting images I'll consider B-roll, because it's all just supporting stuff for like the talking head.
+[00:25:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And what I do is, I've built this thing now, so it knows like, now I've got it built like, I like B
+[00:26:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: These four effects are these types of diagrams that we do, and then what it does is we examine the script, when I get all that back, we look at the script and I say, hey, I want to do something about, because it knows the timing of everything, because I've got tools in here where it can pinpoint where to do this and do it correctly over where I'm saying certain things.
+[00:26:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it never really looks at the video anymore, it looks at my script, and then I say, all right, I want to do, I want to create an image in Nano Banana of like, you know, I was like, like, I want this AI agent smacking into a stop sign, and then I need a screeching sound that you need to make from 11, like, it knows to do that from 11 labs, like, I plan out my scenes, and then what it does is cool is, even though it comes back in 4K, as I'm working through this, it does quick things in 1080p, and it gives me like, I'll preview everything and then sign off on it and move on before it generates the entire video in 4K with, with all the overlays.
+[00:26:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it'll, it'll give me like a 10 second swing, and I can just kind of see that little clip, and then I go
+[00:27:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, we need to adjust this, do that, and when I sign off on it, boom, it marks that in the documentation, it moves on to the next, so I'm all done going through, and so I do pop-up images with little effects throughout the whole video where I think it would be nice, not too much, but enough to be entertaining, and then anytime you see those Kling video clips, I do those to cover the transition, they're jump cuts, because Hey Jen, can only do like two or three minutes at a time and you'll see a jump cut, so obviously I don't want that, so that's where I always do those little animated scenes with Kling is over the jump cuts, so I have one fluid experience, basically.
+[00:27:34] Juan Torres: So you're using clock codes with a tool to identify portions of your script to then generate the B-roll?
+[00:27:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: mean, it's not even a tool, I'm literally looking at it, so like, like, when I'm in here, like, so I'll show you, so building with reason is the repo for this locally, and so when I go in here, like, it'll create, like, so when I was writing this Just Loops one, basically I've got the voiceover, and so this is...
+[00:28:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This is, after I wrote the script, this is the voiceover we're going for, and it has timing in here, but this all gets stripped out.
+[00:28:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I just go through here and look, and I go, all right, when I say, hey, when I say like this, let's do this, and it starts working on it for me, and then it pops up a preview for me in QuickTime, and I just watch it, and I go, yes or no, or do I want to change something, and I move on to the next.
+[00:28:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I'm just looking at the script myself.
+[00:28:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The tool is the whole repo together, because it has all of the tools Cloud Code can call to do anything I need it to do, between the models to generate things, to re-motion, to move things around, to like FFmpeg-to-level audio, for like, there's, there's like, I've got some pixel approximation stuff in here too, where like it can tell exactly, it can freeze, it'll freeze frames to find something I'm looking for, like every once in a while.
+[00:28:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like I even added in a loop to this now, where like there's a gate check now, before it does anything to me, for me it checks everything, because I was finding that every once in a while I'd have a glitch here and there, and I'm like, why are you generating this for me without checking it first?
+[00:28:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, so now I've got a gate to where it's like, getting rid of common issues I've had, before I even.
+[00:29:01] Juan Torres: So GlockCode has CLI access to Higgsville, right?
+[00:29:05] Juan Torres: Is that what you're saying?
+[00:29:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: MCP, CLI, depending on the...
+[00:29:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Most of them are MCP, but yeah.
+[00:29:13] Juan Torres: Which model are you using for the generation of the videos for your B-rolls?
+[00:29:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So that's Kling.
+[00:29:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Those animations are Kling.
+[00:29:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: yeah, Kling.
+[00:29:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So Higgsville is just nice because it's a $50 plan where I have access to all these models.
+[00:29:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I'm primarily using Kling for animations and Nano for the reference image for the animations, as well as images I'm using in there.
+[00:29:37] Juan Torres: Yeah.
+[00:29:37] Juan Torres: Nice, nice.
+[00:29:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yep.
+[00:29:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just such a good pipeline.
+[00:29:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, it's just a custom thing that now that I've got this dialed in, like, it knows the purpose of this thing.
+[00:29:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It knows the YouTube channel.
+[00:29:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, it knows my voice.
+[00:29:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It knows the pipeline.
+[00:29:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, and you can see I've got, like, there's channel, you know, knowing about the channel identity.
+[00:29:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's voice for, for how I talk.
+[00:29:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's a pipeline.
+[00:30:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it knows the pipeline end-to-end.
+[00:30:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So every time I open this thing, the CloudMD points to these things, and it just gets more and more streamlined the more I use it.
+[00:30:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I've gone through two main videos already, and it's already pretty dialed in now.
+[00:30:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The first one took a long time because I had to build this whole thing, right?
+[00:30:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Even from that repo that you guys would get, if you want to customize it, that's the whole point.
+[00:30:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Customize it to whatever you're doing.
+[00:30:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It just helps you get there a little faster, is all.
+[00:30:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It gives you a base start, you know?
+[00:30:26] Juan Torres: Great stuff, man.
+[00:30:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:30:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'll pop that in the chat again, but I definitely want to show that when we've got a bunch of people on again, because I feel like people need to see, now they can see, like, what you could do with it.
+[00:30:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I didn't have a good example before.
+[00:30:41] Juan Torres: Hey, Brooks, I'll be back.
+[00:30:43] Ty Wells: Go ahead.
+[00:30:45] Ty Wells: So how does it work with, you have avatars, what other options could you do?
+[00:30:55] Ty Wells: That's Pixar?
+[00:30:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, so, like, I just said, like, I created an image.
+[00:31:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: HeyGen Nano because I wanted a Pixar look, but you could do any kind of look you want to do the Avatar feature in HeyGen, but you can also create realistic clones in HeyGen, that's the creepy part.
+[00:31:10] Ty Wells: can create things where like...
+[00:31:12] Ty Wells: never do that on a video.
+[00:31:13] Ty Wells: I'm trying to find a video, a character, but I wanted to be sure that it's AI, so nobody's even trying to guess if it's an Avatar or Yeah, yeah, exactly.
+[00:31:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:31:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No, I'm with you on that.
+[00:31:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But yeah, all it is is creating the character you want, which I would do through CloudCode into Nano because you can really dial it in a lot easier than just sitting there in Gemini trying to do it.
+[00:31:35] Ty Wells: It's just a lot easier with CloudCode.
+[00:31:37] Ty Wells: Yeah, that's good stuff, Scott.
+[00:31:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:31:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Thanks.
+[00:31:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's been fun.
+[00:31:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I don't even think I've had this much fun in a while and I'm finally doing a YouTube channel.
+[00:31:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I never thought I would be, but this is the way to do it for me because I'm like, alright, this makes me happy.
+[00:31:52] Patrick Chouinard: Honestly, if I ever have a YouTube channel worth publishing, it's probably going to be done that way as well.
+[00:31:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, totally.
+[00:31:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Dude, I want to see your...
+[00:31:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: want to see your...
+[00:32:04] Patrick Chouinard: That's the nice part.
+[00:32:06] Patrick Chouinard: If I ever build one, I'm sure it's not going to be a copy of anything.
+[00:32:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No, yeah, exactly.
+[00:32:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, dude, like your beard accidentally lights on fire or something.
+[00:32:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I can think of so many things already.
+[00:32:23] Patrick Chouinard: Talking about the YouTube channel that you created, I know it's not the same thing, but it reminded me of another I don't know if you've heard about the channel Claudius Papyrus.
+[00:32:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I don't think I've heard of him.
+[00:32:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I don't think I've ever seen it.
+[00:32:39] Patrick Chouinard: He faced the...
+[00:32:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oops.
+[00:32:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: there it is.
+[00:32:43] Patrick Chouinard: Let me look at this.
+[00:32:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Does he do an animation?
+[00:32:48] Patrick Chouinard: Yeah.
+[00:32:49] Patrick Chouinard: Well, it's not as well-structured as yours, obviously, but...
+[00:32:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, that's hilarious!
+[00:32:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I need to watch this.
+[00:32:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, that's cool.
+[00:33:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's actually wrote in the voice of Claude Code.
+[00:33:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No way.
+[00:33:07] Patrick Chouinard: Yeah, basically it says that...
+[00:33:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm going down a rabbit hole and watching all of this.
+[00:33:14] Patrick Chouinard: Basically, he says that he's not affiliated with Entropic or Claude, but he's powered by...
+[00:33:22] Patrick Chouinard: So basically it's as if Claude was having a YouTube channel.
+[00:33:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, I love his interpretation of the Claude character.
+[00:33:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's so funny.
+[00:33:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I think I've heard of it, but I've never seen it.
+[00:33:38] Patrick Chouinard: Yeah, and they don't have a whole lot of subscribers.
+[00:33:41] Patrick Chouinard: They have a lot of videos and long videos as well.
+[00:33:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh yeah, he's got 90 videos.
+[00:33:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But I mean, he does have 10k at least.
+[00:33:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, mine might never catch on, but with the popularity of all this stuff, I'm hoping I...
+[00:33:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean, I'd be happy to have a couple thousand subscribers that got entertained at some point.
+[00:33:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because, like, I also try to make it like...
+[00:33:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, and I hope you guys...
+[00:33:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, take a...
+[00:34:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Obviously, it's stuff that all of us know, but it's all good stuff, but I think it's going to help a lot of beginner to medium people, but also it's just a good conversation to have, but I try to put little jokes in there too, and now I'm going to have more, like I figured out in the second video that every transition is going to be the code and show guy, I didn't have that in the first video, I had him in a graphic, but I didn't use him in the scenes, so it's like coming up with these little things, like some of the little Easter eggs, the guitar in the background is going to switch out every video, like the first one, one was like a Strat style, the next one was a Les Paul, like that has nothing to do with anything, but it's just like little funny things like that, but like some of the jokes were like, there's a joke in the first one where there's something like, where I said like, no shade, and then the code and show guy pops up and he's like pulling a shade down, like just dumb things like that.
+[00:34:48] Patrick Chouinard: And I'll be really honest with you, now that I've seen your video, it's not impossible that some of them appear in the training I give.
+[00:34:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Hey, if it's useful man, I'd love it.
+[00:34:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like I.
+[00:35:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You know, then and then one's pretty good, the looping one I really like a lot, like, it's just, I don't know, I put a lot of idea, a lot of thought into the scripts, and obviously I went back and forth with Claude on it, but like, I brain dumped everything I wanted to say and just use it to organize it, really, and then make sure I have my facts correct, because sometimes you want, make sure that's right what I said, because I think it is, but like, you know, but like, I, it's one of those things where like, it, people that know me, like, that sounds like me, like how, how I think and how I keep talking about this stuff, you know, so, yeah.
+[00:35:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:35:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But thanks.
+[00:35:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Very nice.
+[00:35:33] Patrick Chouinard: Very, very nice.
+[00:35:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:35:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's all I got for now.
+[00:35:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's, there's two things.
+[00:35:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I, I'll show this again.
+[00:35:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I want to wait until Brandon's here only because like, I want him to see this.
+[00:35:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I, I, I have something, I have something that I built that's, that's a observable way of seeing security review, code review, two vendors, three models.
+[00:35:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yes, Codex is in.
+[00:36:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's all legal because it's all happening.
+[00:36:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I have a whole system of hooks for every time I push that's pulling settings from a database and a dashboard that also then reports.
+[00:36:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, I got a really cool thing that I built, probably the best thing I think I've ever built for anybody, and this is what I'm going to keep using, and it's model agnostic.
+[00:36:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it's like, I got a cool system for code quality and security reviews, but observability and reportability.
+[00:36:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I think it's really cool.
+[00:36:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I can't wait to show that.
+[00:36:30] Patrick Chouinard: I just wanted to tease it.
+[00:36:33] Juan Torres: Damn.
+[00:36:33] Patrick Chouinard: Very nice.
+[00:36:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: All right, I'm done.
+[00:36:38] Patrick Chouinard: Good.
+[00:36:40] Patrick Chouinard: Next would be Juan.
+[00:36:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I stopped sharing.
+[00:36:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, there it is.
+[00:36:46] Juan Torres: For me, what I have going on, I haven't had the AI booth application up into the field.
+[00:36:57] Juan Torres: Again, for the people that don't know helpful Iƒ
+[00:37:00] Juan Torres: What I'm trying to build, I have this service that I intend to use for parties, for events, in which I deploy a couple of screens and cameras in order to transform in real life, in real action, you know, normal images that you take with a camera into AI-generated images, depending on styles.
+[00:37:22] Juan Torres: Last week I had to do a lot of the hardware setup, changing one computer from another in the setup, and right now what I did for one of the computers was to, since I got it from OfferApp, I basically got rid of the current operating system, cleaned it up, all the disk, and reinstalled Windows 11, and I'm going to install Ubuntu to have a dual boot system for the computers.
+[00:37:49] Juan Torres: So that's that.
+[00:37:50] Juan Torres: I was going to interview a person yesterday, but she came late, so that's not a good sign, so I just like to score to her, so I need to maybe find another person.
+[00:38:03] Juan Torres: And then...
+[00:38:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: What's up, engineers?
+[00:38:08] Juan Torres: What's up?
+[00:38:11] Juan Torres: And yeah, that's it.
+[00:38:12] Juan Torres: This week, what I think I'm going to do, just because there's some personal issues that I have to resolve this week, is create a multi-model inference engine, in which I have several models other than one in order to transform the images, image-to-image transformation, including Google Banana Pro as one of them.
+[00:38:37] Juan Torres: But yeah, not much going on, actually.
+[00:38:40] Patrick Chouinard: Question for your...
+[00:38:42] Patrick Chouinard: That's the infrastructure guy in me speaking.
+[00:38:45] Juan Torres: Yeah.
+[00:38:46] Patrick Chouinard: Why do you install Dualboot, Windows, and Ubuntu instead of using WSL?
+[00:38:55] Juan Torres: WSL.
+[00:38:56] Juan Torres: Windows services for Linux.
+[00:39:00] Juan Torres: Well, because I wanted to save as much CPU capacity, because even if you have WSL, it's basically on top of Windows, right?
+[00:39:16] Patrick Chouinard: Within Windows, yeah.
+[00:39:18] Juan Torres: So, I mean, the main purpose of creating a dual boot system is to have an operating system that does not require Windows.
+[00:39:28] Juan Torres: And the reason that I don't want Windows is because Windows just, it's too unreliable for me, plus all the processes.
+[00:39:37] Patrick Chouinard: Oh, go ahead.
+[00:39:38] Patrick Chouinard: Then maybe something else to take into consideration, using Proxmox and spawning those two as VMs.
+[00:39:46] Juan Torres: Oh, yeah.
+[00:39:47] Patrick Chouinard: So then you don't have to dual boot, you can just switch from one VM to the other.
+[00:39:53] Patrick Chouinard: If you need as much power as possible, you shut one down, play in the other.
+[00:39:57] Patrick Chouinard: But basically, they're both...
+[00:40:00] Patrick Chouinard: Independent machine that eventually, if you get other hardware, you could just transfer away.
+[00:40:08] Juan Torres: Okay, so I can just transfer Proxmox with the two operating systems as virtual machines?
+[00:40:13] Patrick Chouinard: No, but actually, you transfer the virtual machine, because it's basically a complete machine inside a couple of files.
+[00:40:20] Patrick Chouinard: So you transfer the files to somewhere else, that also runs Proxmox, and you start the machine over.
+[00:40:29] Patrick Chouinard: Basically, the state of the machine is not bounded to the hardware it runs onto.
+[00:40:36] Juan Torres: Okay, so how would that look if I wanted to, would I have to basically set it up in BIOS?
+[00:40:45] Patrick Chouinard: No, you just install Proxmox as the OS.
+[00:40:47] Patrick Chouinard: It's a Linux distribution.
+[00:40:49] Juan Torres: Oh, it's itself an operating system.
+[00:40:50] Patrick Chouinard: light, because it's made to be a platform, and then you just start both machines, and you can even...
+[00:41:00] Patrick Chouinard: Connect to it, and you can even see the machine within the web interface of Proxmox itself.
+[00:41:07] Juan Torres: Oh, okay.
+[00:41:09] Juan Torres: So you're saying that I could just SSH into the machine and basically install it through that connection?
+[00:41:18] Juan Torres: Okay.
+[00:41:19] Juan Torres: Proxmox.
+[00:41:20] Juan Torres: Okay.
+[00:41:21] Juan Torres: I'll consider it.
+[00:41:22] Patrick Chouinard: I love Proxmox.
+[00:41:23] Patrick Chouinard: I've been buying mini PCs for a couple of years and just adding them as new nodes in my Proxmox cluster.
+[00:41:31] Patrick Chouinard: And whatever machine I need lives in there.
+[00:41:35] Juan Torres: Okay.
+[00:41:36] Juan Torres: Do you have like a resource on how to do this?
+[00:41:40] Patrick Chouinard: I mean, I can just look it up on Cloud Code, but just a review.
+[00:41:43] Patrick Chouinard: Oh, Code will guide you.
+[00:41:44] Patrick Chouinard: Cloud knows how to use Proxmox.
+[00:41:46] Patrick Chouinard: It will set up the server for you.
+[00:41:48] Patrick Chouinard: It will spawn the machine.
+[00:41:50] Patrick Chouinard: It has a full CLI that Cloud Code can use to...
+[00:41:56] Patrick Chouinard: Actually, you know when I said that I built an agent and that agent...
+[00:42:00] Patrick Chouinard: And actually helped me because it's monitoring it, it has agentic, it has NATs, it has in physical and all of those network services.
+[00:42:10] Patrick Chouinard: Well, I bought a machine, a mini PC that had like a Ryzen 5 with 32 gigs of RAM.
+[00:42:19] Patrick Chouinard: Okay.
+[00:42:20] Patrick Chouinard: I installed the bare bone Proxmox on it, gave SSH right to my workstation and told cloud code.
+[00:42:31] Patrick Chouinard: Here's the machine, go at it.
+[00:42:33] Patrick Chouinard: It actually created the proper template, spawned all the machine, configured them, deployed authentic, deployed traffic, deployed all of the network services for me, configured them to work together.
+[00:42:48] Patrick Chouinard: All infrastructure as code, all guided by cloud code in the backend.
+[00:42:52] Patrick Chouinard: So it's, hands off.
+[00:42:55] Juan Torres: So did you, for Proxmox, did you install it through a, you know...
+[00:42:59] Juan Torres: see lot
+[00:43:01] Patrick Chouinard: Yeah, USB key downloaded from their website.
+[00:43:05] Juan Torres: It's an ISO image.
+[00:43:06] Juan Torres: just copy and install it in BIOS.
+[00:43:09] Patrick Chouinard: Oh, yeah.
+[00:43:10] Juan Torres: I didn't even thought about it.
+[00:43:12] Patrick Chouinard: That was one of the things that I was thinking of actually doing, but you just get on grind mode and just go forward and you forget about those things.
+[00:43:21] Patrick Chouinard: Yeah.
+[00:43:21] Patrick Chouinard: And the nice thing is it also supports its own type of container called NXC container.
+[00:43:26] Patrick Chouinard: So you can have a container, a Docker container inside of your Linux VM, but you can also have native container on Proxmox itself.
+[00:43:38] Patrick Chouinard: So they're even lighter than a full VM.
+[00:43:41] Patrick Chouinard: You can have a bunch of them and keep some of them shut down, just bring them up whenever they need it.
+[00:43:47] Patrick Chouinard: You basically build yourself a full library of services and spin them up whenever you need them.
+[00:43:56] Juan Torres: Nice.
+[00:43:57] Ty Wells: I'm using it, Juan.
+[00:43:59] Patrick Chouinard: I love it.
+[00:44:00] Patrick Chouinard: Patrick.
+[00:44:00] Ty Wells: From Patrick's suggestion.
+[00:44:03] Ty Wells: Yep.
+[00:44:05] Patrick Chouinard: And another service that I find also very helpful with that, it's called PBS.
+[00:44:10] Patrick Chouinard: It's a Proxmox backup server.
+[00:44:13] Patrick Chouinard: So heads off, you just create the backup job.
+[00:44:16] Patrick Chouinard: It runs in the background.
+[00:44:17] Patrick Chouinard: It takes snapshots of all of your VMs.
+[00:44:20] Patrick Chouinard: So if anything happened, you can spin backup from or recover from one of those backup.
+[00:44:25] Patrick Chouinard: The service is running in the background.
+[00:44:28] Patrick Chouinard: You don't have anything to do to configure it.
+[00:44:32] Juan Torres: you can, you can set the policies of seven snapshots previously, like seven days or something like that.
+[00:44:38] Patrick Chouinard: Kind of like an EC2 instance backup.
+[00:44:40] Patrick Chouinard: day, four week, one year, like, uh, exactly, uh, the, setup you want and it's built in.
+[00:44:49] Juan Torres: Okay.
+[00:44:51] Patrick Chouinard: So, and if you ever get a NAS, one thing nice is you install TrueNAS on it and then you spawn a PBS as one of the VMs
+[00:45:00] Patrick Chouinard: The true NAS, and it used the local storage for backups.
+[00:45:04] Juan Torres: True.
+[00:45:05] Juan Torres: Yeah.
+[00:45:09] Patrick Chouinard: Yeah.
+[00:45:09] Patrick Chouinard: Infrastructure is kind of my playground.
+[00:45:15] Ty Wells: I think my NAS has been off for like at least a year.
+[00:45:19] Ty Wells: I don't use it anymore.
+[00:45:21] Patrick Chouinard: You should.
+[00:45:23] Ty Wells: Well, I'm going to.
+[00:45:25] Ty Wells: Now that you've said it out loud, I remember that it's there.
+[00:45:27] Patrick Chouinard: I'm going to put PBS on it.
+[00:45:30] Patrick Chouinard: Yeah.
+[00:45:30] Patrick Chouinard: Is it Synology?
+[00:45:32] Ty Wells: Yeah.
+[00:45:33] Ty Wells: Okay.
+[00:45:34] Patrick Chouinard: Yeah.
+[00:45:36] Patrick Chouinard: Synology, I think they can spawn VMs.
+[00:45:38] Patrick Chouinard: I believe they support it.
+[00:45:42] Ty Wells: I'm not sure.
+[00:45:43] Patrick Chouinard: Yeah, I think they do.
+[00:45:44] Patrick Chouinard: Because PBS is really, really lightweight.
+[00:45:47] Patrick Chouinard: It doesn't require a NAS that has gigabytes and gigabytes of RAM.
+[00:45:51] Patrick Chouinard: It's a very lightweight service, so it should be deployable as a service on that box.
+[00:45:59] Ty Wells: Nice.
+[00:45:59] Patrick Chouinard: That's our ba
+[00:46:00] Patrick Chouinard: Basically, a good little piece of backend infrastructure that comes with a truckload of services almost for free, and it should also be your storage for your Proxmox server, because if you present storage from your NAS to Proxmox, the nice things is the day you get a second node, they can then share the storage, meaning you can do live migration, meaning you can have a machine being migrated from one node to the other, without ever shutting down.
+[00:46:37] Patrick Chouinard: And CloudCode can do that for you.
+[00:46:39] Ty Wells: Yeah, I was just going to say, I know a guy.
+[00:46:44] Patrick Chouinard: But that's exactly the toolkit I'm trying to give Hermes, basically.
+[00:46:49] Patrick Chouinard: So it knows how to do those things.
+[00:46:51] Patrick Chouinard: So basically, when it receives a message from alert manager to say, oh, this machine's not working well because the host is out of RAM, well, it can...
+[00:47:00] Patrick Chouinard: Starts a live migration, then push it to another host that has enough RAM available.
+[00:47:05] Ty Wells: Makes sense.
+[00:47:07] Patrick Chouinard: Yep.
+[00:47:10] Patrick Chouinard: Good.
+[00:47:11] Patrick Chouinard: So, Ty, you would be next.
+[00:47:14] Ty Wells: Oh, okay.
+[00:47:17] Ty Wells: I posted something in the community last week after the call for the intent queue.
+[00:47:25] Ty Wells: Did you guys see that?
+[00:47:28] Ty Wells: So, the gist is, I had mentioned it last week that when the context is prime, I want to take advantage of that to use that context using the by the way command to capture the intent for the next feature or whatever.
+[00:47:51] Ty Wells: And so, that's what I decided to go a step further.
+[00:47:54] Ty Wells: I was just going to post a document out there, but then I did, I published.
+[00:48:00] Ty Wells: There's out there for it that you can bring into your repo, but basically it captures intent at the time when the context is under 40%, and then you could use that to build a queue, those intent capsules go into a queue, and it'll queue up, so when you start cold in your next CLAIR session, the first thing that you do is it shows you the queue on a hook.
+[00:48:29] Ty Wells: It shows you what's in the queue, and it will, it's a terse, you know, micro-language that will then be able to run that intent, whatever that was, without losing a beat, so, you know, it's, I've been running that like crazy, that's all I do now, I don't even, I just grab it while I, while the iron's hot, and then I just queue that up and start a fresh session.
+[00:48:59] Ty Wells: The only thing I want to
+[00:49:00] Ty Wells: What now is to have that auto-run, because really the only thing I'm doing is clearing the session, the queue is starting, just run the queue, and I'm saying, yeah, go ahead.
+[00:49:12] Ty Wells: So it's a lot of manual interaction.
+[00:49:15] Ty Wells: So that's a work in progress.
+[00:49:17] Ty Wells: So that's one project that I'm working on.
+[00:49:20] Ty Wells: The other one is, and if somebody, and I'm working on this, but maybe we can, maybe somebody's done something or can recommend, but so when I'm driving, often I use ChatGPT just to hash out ideas, right, do a dump, memory dump, but really at the same time going back and forth.
+[00:49:40] Ty Wells: What I like about that is, you know, I can speak freely, we can go back and forth, and then at end of the day, I generate possibly a PRD out of it, and then I actually take the PRD, I dump it into the intent queue, it builds the queue, the capsules, and then let it run.
+[00:50:00] Ty Wells: But what I want to do is talk to my code in the same way, in the same way, and this is just conceptually what I want to do.
+[00:50:11] Ty Wells: So, let's say I'm driving or I'm on the golf course.
+[00:50:14] Ty Wells: I don't want to have to chat like a remote control session, just sort of what I do now or through my Hermes agent.
+[00:50:23] Ty Wells: I want to get in a conversation about the code, just about the code, not to change anything, not to fix anything.
+[00:50:30] Ty Wells: So, I'm working on this thing called CodeTalk, basically a conversational with your repository about things, like, hey, go check this and see what about building out this feature and that sort of thing, but through conversation rather than through, you know, chat, and then, again, create intent cues or capsules and cue them up in there and then take them from there.
+[00:50:59] Ty Wells: So, I don't know if...
+[00:51:00] Ty Wells: I searched, there's some things out there, like GitHub Copilot, you could sort of use to some degree.
+[00:51:08] Ty Wells: There was another product out there, I can't remember the name, Voice AI, that's not the actual name.
+[00:51:16] Ty Wells: It's called Voice AI, but the URL is a little different.
+[00:51:20] Ty Wells: But I don't know, anybody seen anything like that?
+[00:51:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No, but now I'm going to go build it, because I like that idea.
+[00:51:27] Ty Wells: Well, I mean, I've got a halfway build, we can do this together, because it's, I mean, it was talking, I can't obviously use it now, I was doing that.
+[00:51:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: All this, because this is super interesting to me, so all this really is at the root of it, is it's literally just building an AI voice agent that is trained in principles and how you, what the types of things you want to look for, how you like to, how you like to code.
+[00:51:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like if it has the ethos of everything that it should have, and then it has access to everything, you can just have these conversations and it can, it can riff on looking at your code and analyze.
+[00:52:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because, like you said, then you can queue things up that you can then take into cloud code and actually do something with if you come up with a good idea or it flags something.
+[00:52:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's not like it has to do any work.
+[00:52:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It just needs to know the ethos of how it's going, the lens that it's going to examine the code from.
+[00:52:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If you build that right, then that's not a hard thing to do at all.
+[00:52:18] Ty Wells: Well, the thing is, now here's the catcher.
+[00:52:22] Ty Wells: My Proxmox where I'm running my local models, I'm using those to communicate with my repo because you want to be careful now as I'm now exposing my repo to these other models, these private repos.
+[00:52:36] Ty Wells: And you're sort of doing that now when you're running through cloud code.
+[00:52:39] Ty Wells: So, I don't know how much difference it is, but inference costs as well.
+[00:52:45] Ty Wells: So, I'm trying to run it, I'll clone the repo down, I'm talking to it, you know, check this feature, you know, what's this, whatever I need to communicate with that repo, and then, you know, potentially.
+[00:53:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But I want to do that through voice.
+[00:53:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It makes me a little bit more mobile, you know, that sort of thing.
+[00:53:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It sounds like for your thing, obviously, it's still doable.
+[00:53:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You just want to incorporate a little bit of local model stuff.
+[00:53:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I build that for me, I'll probably just use some other, I mean, I'm already shoving code to the cloud anyway at this point.
+[00:53:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But I mean, even the voice stuff, mean, as long as that, I mean, that can be, like, when I have web apps that have voice agents, I mean, it works just fine on your phone.
+[00:53:29] Ty Wells: Yeah, yeah, I'm using PipeCat.
+[00:53:31] Ty Wells: And so I've got, it's, I'm literally, they're probably going to be there by the end of the day.
+[00:53:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I was just chatting with it, but I couldn't use the mic because I jumped on this call.
+[00:53:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I'm waiting to jump off of this call to get back to that conversation.
+[00:53:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I like that idea, though.
+[00:53:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Just, just, just like pontification, like, let's just riff on, on, on the code base.
+[00:53:52] Ty Wells: Yeah, and I've, I've taken over some code bases too.
+[00:53:55] Ty Wells: And I don't want to necessarily, you know, go.
+[00:53:59] Ty Wells: you possible.
+[00:53:59] Ty Wells: Do you
+[00:54:00] Ty Wells: I a bunch of PRs all the time.
+[00:54:02] Ty Wells: I want to ask certain questions and have it, you know, respond accordingly to get the answers that I'm looking for.
+[00:54:10] Ty Wells: But I want to do, like I said, I want to do that on the fly.
+[00:54:12] Ty Wells: I just, I don't want to be tied down to a chat.
+[00:54:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, when you're thinking of it, you're driving around, you just want to respond.
+[00:54:18] Ty Wells: Yeah, is when hey, just remember this, yeah.
+[00:54:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because then you come back to the, to the stuff later.
+[00:54:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If it, if it, swirls some stuff away, then that's actionable to take into something later on when you can actually sit down and look at it.
+[00:54:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So yeah.
+[00:54:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No, that's, that's a good idea.
+[00:54:32] Ty Wells: I think I might.
+[00:54:33] Ty Wells: Kodak.
+[00:54:34] Ty Wells: That's, that's the name I've got.
+[00:54:35] Ty Wells: So you got to get a different name.
+[00:54:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh yeah, no.
+[00:54:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'll just keep it internal anyway, but yeah, I'll, I'll call it something dumb.
+[00:54:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:54:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I like that idea.
+[00:54:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's a great idea.
+[00:54:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's a great idea though.
+[00:54:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I like nerdy stuff like that.
+[00:54:48] Juan Torres: Scottify.
+[00:54:49] Patrick Chouinard: Scottify.
+[00:54:51] Ty Wells: Yeah, there you go.
+[00:54:53] Patrick Chouinard: That's actually something that, uh, Hermes could take care of.
+[00:54:57] Patrick Chouinard: Cause Hermes has very good voice support.
+[00:54:59] Ty Wells: great.
+[00:55:00] Ty Wells: It does, and I used it.
+[00:55:04] Ty Wells: My concern is the context, because I'm juggling multiple projects, and I wanted to be able to make sure I'm in context.
+[00:55:13] Ty Wells: I don't have a problem with what I'm working with at that time.
+[00:55:16] Ty Wells: But yes, I've used it through the voice, through Hermes.
+[00:55:20] Ty Wells: I've used it, and obviously through the chat.
+[00:55:22] Patrick Chouinard: But honestly, I've stopped using Telegram and Discord now for a couple of weeks, since I've installed Hermes Workspace.
+[00:55:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Hmm.
+[00:55:34] Patrick Chouinard: So now I have a full-fledged memory.
+[00:55:36] Ty Wells: Tell us more.
+[00:55:37] Ty Wells: What have we got here?
+[00:55:38] Ty Wells: What are we talking about?
+[00:55:39] Ty Wells: Show us some stuff.
+[00:55:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Patrick, are you saying I should pivot a little bit into integrating that into my Iron Claw setup instead of Discord?
+[00:55:47] Patrick Chouinard: Would it work?
+[00:55:48] Patrick Chouinard: Patrick, maybe?
+[00:55:49] Patrick Chouinard: Yeah, it could actually, because it's a public repo, and let me show you what it looks like.
+[00:56:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I do have my ironcloth thing running, by the way.
+[00:56:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm just not showing it for a while.
+[00:56:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's like 90% there.
+[00:56:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just one of these things where the Mac Mini really does limit you if you're trying to use your local stuff for as much as you can.
+[00:56:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's a little slow, but I'm trying to prove it on something as slow as possible, right?
+[00:56:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then whenever I get a massive box, I'm just going to crank the model up.
+[00:56:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But it works great.
+[00:56:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I switch to Haiku and Sonnet for anything, it's insanely cool because I built scraping stuff into it.
+[00:56:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean, it's pretty sweet.
+[00:56:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just, I got to finish a few things on it.
+[00:56:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's kind of like the side project to keep muddling with that I don't spend a ton of time on.
+[00:56:41] Patrick Chouinard: I then thought about that I was going to start this project tonight, but let me see.
+[00:56:48] Patrick Chouinard: Anyway, basically, let me see if I can find you the repo instead.
+[00:56:56] Ty Wells: Yeah.
+[00:56:56] Ty Wells: I mean, I can look at it.
+[00:56:57] Ty Wells: I just was unaware of it.
+[00:56:58] Ty Wells: You know, there's...
+[00:56:59] Ty Wells: wouldn't talk about to
+[00:57:00] Ty Wells: There's a lot.
+[00:57:02] Patrick Chouinard: Yeah.
+[00:57:03] Patrick Chouinard: But this one is pretty nice because it basically gives you a full web interface to interact with Hermes.
+[00:57:13] Patrick Chouinard: And there we go.
+[00:57:22] Patrick Chouinard: That's the repo.
+[00:57:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I haven't really ever messed with Hermes yet.
+[00:57:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's one of those things where I just haven't gotten to it.
+[00:57:35] Patrick Chouinard: Now I'm like, hmm.
+[00:57:36] Patrick Chouinard: Honestly, I've stopped working with OpenClaw altogether now that I'm working with Hermes.
+[00:57:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, so you think it's almost like, yeah, because like, obviously, you know, I went with, you know, IronClaw over OpenClaw, but like, do you think that this isn't just something to add on?
+[00:57:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This could be a replacement?
+[00:57:58] Patrick Chouinard: Yeah, absolutely.
+[00:57:59] Patrick Chouinard: It's a complete
+[00:58:00] Patrick Chouinard: It's based on the same principle, but it's a completely different infrastructure and a completely different harness in the back.
+[00:58:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Okay, so different kind of harness.
+[00:58:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So if it has its own workspace, this could potentially be something instead of Ironclad or run on that thing with the model I'm doing and the whole thing with the database.
+[00:58:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It could plug in just in a different way.
+[00:58:23] Patrick Chouinard: And the way it treats skills, the way it treats plugins is completely different.
+[00:58:29] Patrick Chouinard: And it's actually based on Codex.
+[00:58:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, okay.
+[00:58:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I didn't look into it that much.
+[00:58:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Okay, I'm gonna do a little...
+[00:58:37] Ty Wells: Yeah, I'm using Hermes as well.
+[00:58:40] Ty Wells: It's been solid for me.
+[00:58:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I'm running on my Pockbox.
+[00:58:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm notorious for pivoting hard 85% of the way into something anyway, so...
+[00:58:50] Ty Wells: We never do that.
+[00:58:51] Ty Wells: That's the one thing you have to do in this space.
+[00:58:54] Ty Wells: You have to be able to be a mercenary and willing.
+[00:58:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: learn a ton.
+[00:59:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's on the way, though, along the way.
+[00:59:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's the thing, it's like, I don't really Your loyalty is to efficiency.
+[00:59:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, all this stuff that I learned doing this ironcloth thing was, like, huge, and I'm like, man, I learned so much doing that thing, and even though it's pretty much working, you know, it's like, it's like, man, I'll go for something if it's, if it's got some other, you know, like, this seems like it would be more in the world of, like, easier to, like, plug things into it, maybe, you know, like, it, this seems pretty cool.
+[00:59:25] Patrick Chouinard: Okay, there we go.
+[00:59:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, yeah, because that's the thing, though, because there are a few things about ironcloth that I wish it had that, that opencloth has, but then most of opencloth I don't like.
+[00:59:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So there's, like, some trade-offs there between them both.
+[00:59:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But one of the things ironcloth is not too great at right now is memory.
+[00:59:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, it's, it doesn't handle that very well in the chats.
+[00:59:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, opencloth is better at that.
+[00:59:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I'm looking at this going, okay.
+[00:59:54] Ty Wells: Her memory is really, really nice.
+[00:59:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:59:57] Ty Wells: It really does.
+[01:00:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, I had something to the list.
+[01:00:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, crap.
+[01:00:10] Patrick Chouinard: You caught me mid-migration, actually.
+[01:00:12] Patrick Chouinard: I'm putting Authentic in front of it, and it hasn't completed the migration yet.
+[01:00:23] Patrick Chouinard: But, yeah, that's another thing.
+[01:00:25] Patrick Chouinard: The web service can be HTTPS internally because I'm using an internal CA to authenticate it to it.
+[01:00:34] Patrick Chouinard: And I can even front it with an OpenID, like Authentic.
+[01:00:41] Patrick Chouinard: So it has centralized, it basically has SSO on my internal network through Authentic.
+[01:00:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's really cool.
+[01:00:49] Patrick Chouinard: It's just like right now, it's literally mid-migration.
+[01:00:53] Patrick Chouinard: But, yeah, you have Conductor, which is a little bit like the...
+[01:01:03] Patrick Chouinard: So basically you just drop an idea and it will churn through it for a long time, you have a full dashboard, you have memories.
+[01:01:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: How does Hermes do with, like, the identity of itself, like, can you set, like, the identity of itself and yourself, similar to, like, in the clause?
+[01:01:17] Patrick Chouinard: You can do more than that.
+[01:01:19] Patrick Chouinard: You can set up multiple identities for Hermes and interact with whichever one you want or use them as a swarm.
+[01:01:28] Patrick Chouinard: So, yeah.
+[01:01:30] Patrick Chouinard: And it doesn't have a public skill repo.
+[01:01:34] Patrick Chouinard: It base everything on the skill that comes with the workspace, plus its skill builder.
+[01:01:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So we basically tell you, don't download skill, build them.
+[01:01:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Build them, yeah.
+[01:01:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I like that.
+[01:01:47] Patrick Chouinard: So, no, from a security point of view, honestly, to me, far superior.
+[01:01:52] Patrick Chouinard: Uh, even out of the box, uh, it has a very well-structured ENV file for...
+[01:02:00] Patrick Chouinard: Not the best because it's still written down in a local file, but it's ready to wire in to secret management.
+[01:02:10] Patrick Chouinard: Internally, I used Infysical for secret management for a vault, and it plugged in directly to Hermes.
+[01:02:16] Patrick Chouinard: So now Hermes is feeding its secret directly from Infysical.
+[01:02:20] Patrick Chouinard: So no API key on this, no login, no nothing.
+[01:02:24] Patrick Chouinard: All the secrets are in the vault.
+[01:02:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, on Ironclaw, I've got everything so segmented, it's crazy.
+[01:02:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So this is probably very, probably will do a very similar setup to it.
+[01:02:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I actually, so Ironclaw doesn't use like Docker, but it actually has this WASM, like it's able to do kind of sandboxing, even though I technically don't need it, because I'm not doing local bash commands or coding on it, but I am using the WASM.
+[01:02:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, does it do any sandboxing too, or no?
+[01:02:53] Patrick Chouinard: Not that I know of, but again, since all of the service are basically back-end infrastructure.
+[01:02:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: so, so, so, you.
+[01:03:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, yeah.
+[01:03:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's not like you need it.
+[01:03:02] Patrick Chouinard: Yeah, exactly.
+[01:03:03] Patrick Chouinard: Like, all the secrets.
+[01:03:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because I'm not doing it to code or let it touch the local machine anyway, you know, other than the very, other than the files in the database, you know.
+[01:03:12] Patrick Chouinard: Again, it's something that, as with OpenClaw, IronClaw, or any one of those, Hermes is the same thing.
+[01:03:18] Patrick Chouinard: I would dedicate a VM to it.
+[01:03:21] Patrick Chouinard: I would never, I would not install that on Bare Metal myself.
+[01:03:26] Patrick Chouinard: I would, because that way I can save states.
+[01:03:29] Patrick Chouinard: So if anything happened, if it gets corrupted, whatever, I don't start from...
+[01:03:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, yeah.
+[01:03:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But I mean, I've got backups, too.
+[01:03:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I've got all my states.
+[01:03:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean, I'm running it, as long as I have a dedicated device, then that's why I'm doing it on Bare Metal.
+[01:03:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But yeah.
+[01:03:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, I get you, though.
+[01:03:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, but still, coming back on Bare Metal still takes a lot more time than just...
+[01:03:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:03:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Spinning up another VM, yeah.
+[01:03:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I still have the internal infrastructures to really fire one up with.
+[01:03:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Plus, I actually want the Mac.
+[01:03:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I want the Mac.
+[01:03:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I had a more powerful Mac, I'd spin up a VM on it, but...
+[01:04:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I spin up a VM, I'm going to have too much overhead on this Mac Mini, probably, where I'm going to lose enough where it's not going to be worth it because it's not a great box, right?
+[01:04:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm running just the regular Mac Mini, you know, it's not the Pro, so it's like, you you got 32 gigs of RAM and you got your, you know, it's like, I want to run the MLX versions of these models, so it's like, that's the only reason I'm doing a bare metal.
+[01:04:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I had a beefier Mac box, I'd probably spin up a VM on it so I could still do it, but...
+[01:04:23] Patrick Chouinard: Oh, that's the other thing with Hermes.
+[01:04:26] Patrick Chouinard: It can leverage either OLAMA or LM Studio, which means your inference doesn't have to run locally on the same machine as Hermes.
+[01:04:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, nice.
+[01:04:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's pretty cool.
+[01:04:40] Patrick Chouinard: So, your Mac could still be your inference box, just serving them all through OLAMA.
+[01:04:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Mm-hmm.
+[01:04:47] Juan Torres: Through an API?
+[01:04:48] Patrick Chouinard: A pass API.
+[01:04:49] Patrick Chouinard: Yeah, OLAMA uses the same API as OpenAI.
+[01:04:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, OLAMA is just the thing, yeah, the thing that runs the models, yeah.
+[01:04:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:04:59] Ty Wells: But...
+[01:05:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Alama does not run MLX, though.
+[01:05:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Alama only runs the GGUF stuff.
+[01:05:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: but LM Studio does run MLX.
+[01:05:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Right, yeah, LM Studio does.
+[01:05:09] Patrick Chouinard: So it does both, then yeah.
+[01:05:12] Patrick Chouinard: Yeah.
+[01:05:12] Juan Torres: That's pretty cool.
+[01:05:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:05:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah?
+[01:05:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No, you've piqued my interest enough, I'm gonna have to take a hard look at it.
+[01:05:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Dang you, Patrick!
+[01:05:22] Patrick Chouinard: But by the way, what I've shown you, the Hermes workspace, this is just a project to go on top of Hermes.
+[01:05:28] Patrick Chouinard: It's not the Hermes itself.
+[01:05:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Right.
+[01:05:34] Patrick Chouinard: Okay, this is just, it's basically a UI plus, a UI plus plus on top of Hermes, basically.
+[01:05:42] Patrick Chouinard: And that's why now I don't use OpenClaw anymore, and I don't use either Discord or anything like that, because now it has its full web UI, so I just connect through through Tailscale, and I have a, I have the local.
+[01:05:59] Patrick Chouinard: Yeah
+[01:06:00] Patrick Chouinard: I web client on my phone now.
+[01:06:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I like Tailscale.
+[01:06:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm already using that right now because I need to access my Mac Mini when I'm not at home if I want to do direct configuration.
+[01:06:10] Patrick Chouinard: Yeah, so now I do Tailscale to a traffic reverse proxy that implements my local certificate that has been copied to my phone, and it does the authentication through Authentic.
+[01:06:22] Patrick Chouinard: So it's a full SSO encrypted path through a native web interface on mobile running completely inside of my internal infrastructure off of a couple of mini PCs that I bought off of Amazon.
+[01:06:40] Juan Torres: Yeah.
+[01:06:40] Juan Torres: Tailscale is such an underrated tool.
+[01:06:45] Patrick Chouinard: Yep.
+[01:06:46] Juan Torres: And I haven't hit a limit as to, well, only hit a limit on the administration side, but I would say I have been able to connect several servers to Tailscale without being charged.
+[01:06:59] Patrick Chouinard: No, but that's...
+[01:07:00] Patrick Chouinard: thing.
+[01:07:00] Patrick Chouinard: Use traffic.
+[01:07:01] Patrick Chouinard: Use an internal reverse proxy because that's my only target internally.
+[01:07:07] Patrick Chouinard: The only ingress in my whole network is the reverse proxy.
+[01:07:11] Patrick Chouinard: It does the routing to whichever machine I need internally afterward.
+[01:07:18] Juan Torres: Don't quite get it.
+[01:07:19] Patrick Chouinard: A reverse proxy, okay, it's one machine that every single request goes through.
+[01:07:26] Patrick Chouinard: But since I come in with, let's say, hermes.patchotech.lab, which is my internal domain, okay, the reverse proxy takes that and say, oh, that address is mapped to machine123.
+[01:07:40] Patrick Chouinard: So I'm going to redirect that to machine123.
+[01:07:43] Patrick Chouinard: If I come back again and I say, oh, this time I want to look at my prox mock.
+[01:07:47] Patrick Chouinard: So I go at pve.patchotech.lab.
+[01:07:50] Patrick Chouinard: Oh, knows, oh, this is machine B.
+[01:07:52] Patrick Chouinard: So I'm going to redirect them to machine B.
+[01:07:55] Patrick Chouinard: But the point of entry is always the reverse proxy.
+[01:08:00] Juan Torres: So it's like a Bastion server?
+[01:08:01] Patrick Chouinard: Yeah, if you want, yeah.
+[01:08:05] Patrick Chouinard: So doing it like that, from TailScale point of view, you're only ever hitting a single machine.
+[01:08:11] Juan Torres: True.
+[01:08:13] Patrick Chouinard: And you hit it with a fully qualified domain name that are only viable once you're connected through TailScale.
+[01:08:26] Patrick Chouinard: It's actually pretty nice.
+[01:08:28] Patrick Chouinard: And you have full SSO, so I have a login and password, managed internally as well.
+[01:08:35] Patrick Chouinard: No cloud computing required.
+[01:08:37] Patrick Chouinard: It's basically a private cloud buildup internally on very little hardware.
+[01:08:47] Patrick Chouinard: That way, no more Telegram, no more Discord, no more anything, just direct connectivity of the full power of Hermes.
+[01:09:04] Patrick Chouinard: Good.
+[01:09:08] Patrick Chouinard: So, was that all, Ty, for you?
+[01:09:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: We digressed.
+[01:09:14] Ty Wells: You know, that was it.
+[01:09:16] Ty Wells: I only have one window.
+[01:09:17] Ty Wells: I've got to find Zoom somehow quickly.
+[01:09:20] Patrick Chouinard: Perfect.
+[01:09:21] Ty Wells: Yeah, no, I'm good.
+[01:09:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Before I forget, Ty, email me because I have something you might like.
+[01:09:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I have a Claude project that I use for creating PRD, so I do the same thing as you.
+[01:09:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: My whole thing is I love to have chats and formulate ideas and I usually do it just with, even with, even though Claude isn't as good at the voice thing, I still do it with Claude in the car.
+[01:09:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then I have a whole project architecture that's built very strongly for creating PRDs.
+[01:09:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then when I have that, then that's when I go into cloud code and then I actually have it break out and build phases and keep going.
+[01:09:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But you might want to check that out because it's easy to just to make a little project and try shoving your next idea through it.
+[01:10:00] Ty Wells: Yeah, no, I'll definitely check it out.
+[01:10:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I will ping you.
+[01:10:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, ping me up.
+[01:10:10] Patrick Chouinard: Ryan, anything to showcase from the darkness of your office?
+[01:10:17] Ryan C: I'll turn on lights, but it's like 35 degrees outside and the mosquitoes will attempt to kill me.
+[01:10:26] Ryan C: So the glow of the screens attracts enough of them, so I'm just going to get my sticks in the darkness.
+[01:10:33] Ryan C: I think everyone that is here was here last week, so I've got nothing really more to show over and above that.
+[01:10:41] Ryan C: I'm literally just building out an entire back end of a store where I may have been telling them that it was pretty much done, because I thought I had about three more weeks than I did.
+[01:10:51] Ryan C: And then they're like, oh, can we see it all tomorrow?
+[01:10:53] Ryan C: And I'm like, .
+[01:10:55] Ryan C: So I've been sat here for six hours building out the back end of this thing, hooking up.
+[01:11:00] Ryan C: Recounts, Resend, a whole bunch of other stuff, so I'm just deep in that right now, hooking up environmental variables and stuff, then I've got to go in and test it and see if any of it actually works, and then probably do a whole round of fixes and tweaks, because it won't look like I want it to, etc.
+[01:11:14] Ryan C: So that's a small panic.
+[01:11:17] Ryan C: Yeah, so I'm just setting up right now.
+[01:11:20] Ryan C: Nothing over and above what I had last week.
+[01:11:22] Ryan C: I did a V4 sweep of the CRM that I'm building for estate agents, which was huge.
+[01:11:31] Ryan C: I did that on a slash goal, did a massive planning document, and then did a slash goal for it to go through and do it with a rubrics check at the end.
+[01:11:41] Ryan C: And Scott, I've just remembered that you told me to do a smoke test, and I completely forgot to tell it to do that, so no doubt there'll be a V5 when it  everything up that I asked it to do for V4, so I'll get it to do that on that.
+[01:11:55] Ryan C: And that's pay, really.
+[01:11:56] Ryan C: There's a whole bunch of other stuff that I've got to do, but this is now my soul.
+[01:12:00] Ryan C: I'll focus until 6 p.m.
+[01:12:02] Ryan C: tomorrow when I've got to present this thing in a functioning state of some sort, but nothing exciting like you guys at the minute, unfortunately.
+[01:12:17] Patrick Chouinard: Oh, pretty interesting.
+[01:12:18] Patrick Chouinard: Good.
+[01:12:19] Patrick Chouinard: Nice.
+[01:12:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I completely forgot that, because you just reminded me when you said smoke test, because some of this stuff, I haven't been on all these meetings, so I missed all the Fable 5 talk, and I went completely bananas on Fable 5 when I had it.
+[01:12:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I burned through so much stuff where like, so I actually had an SOP application I was building that I think I told you guys about before, and I started building, I had a great plan, it's planned out.
+[01:12:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I had started it, but I had all these phases left.
+[01:12:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I had like eight phases left.
+[01:12:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I'm like, well, I'm gonna run Fable on this thing, because it's all So explain stuff.
+[01:13:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I set that thing on auto and let it roll just to ramp it up, know, scaffold it up to the MVP, I could only run, I found out, I was like, hey, you need to do two phases and stop, and I'd wake up in the morning, so, because it would, two phases would burn my five-hour window, because when it starts going, like, the amount of looping and tests, and, like, I saw what it was doing, like, because I gave it all the, all the goals and the rubric stuff, and I was like, this thing is crazy.
+[01:13:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: about how much it catches things and, and, and redoes itself, and it was like, at one point, I think it had 50-some agents going, and I went, no wonder my tokens are gone, I was like, this is insane, like, but it was very impressive, like, as in, obviously, we can't do security stuff with it, because they have the guardrails, and so it was useless for that, but as a planning and a scaffolding very quickly and more accurately, there was less, way less to fix at the end of that, you know, uh, than there, you know, is with open.
+[01:14:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I didn't have to babysit it as hard.
+[01:14:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Opus is great, but like, that was impressive to me.
+[01:14:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's all I gotta say.
+[01:14:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I ran that thing hard for three days before they yanked it.
+[01:14:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Anyway, I'm sure you guys had a lot of conversation on that on the last one.
+[01:14:14] Patrick Chouinard: Yeah.
+[01:14:16] Patrick Chouinard: Not everybody was happy.
+[01:14:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No.
+[01:14:21] Patrick Chouinard: But we'll see a similar model probably coming up in the next couple of days or weeks.
+[01:14:28] Patrick Chouinard: Yeah.
+[01:14:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Also, Sonnet 5's, I think, about, or, yeah, it's 5?
+[01:14:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:14:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The new Sonnet's about to hit and, you know, now we'll see if supposedly it's better than Opus 4.8, so we'll just see.
+[01:14:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It'd be nice if it wasn't, because it's cheaper, so we'll see, you know?
+[01:14:45] Juan Torres: Have you guys tried GLM 5.2, I think?
+[01:14:51] Juan Torres: I I'm supposed to have better metrics than the Opus 4.8 or something like that?
+[01:14:57] Ty Wells: Who's gonna look into that, Juan?
+[01:14:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: What did you think of?
+[01:14:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: short.
+[01:15:01] Juan Torres: I've been thinking of downloading the GLM IDE just to try out their whole infrastructure and try the model, but I haven't had the chance to do it.
+[01:15:15] Juan Torres: It just seems it's weird because it's like all the Chinese models are opting the American models just by like a 5 percentile or a 10 percentile.
+[01:15:27] Juan Torres: It's like a measure, like jab in the nose.
+[01:15:30] Juan Torres: of the American AI infrastructure.
+[01:15:34] Juan Torres: So I'm pretty sure like the Chinese Communist Party has a strategy to keep like outpacing the American AI because they happen with the DeepSeek thing.
+[01:15:52] Juan Torres: It was just like outsmarting like ChatGPT at the time for by a certain percentile.
+[01:16:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I also think a lot of benchmarks are...
+[01:16:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: benchmarks are benchmarks and they're very lacking.
+[01:16:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: When you start looking into benchmarks and there's a lot of conversation on that, a lot of it's not even the correct stuff that's being benchmarked.
+[01:16:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's pretty basic.
+[01:16:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So to me, it's...
+[01:16:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I don't even take benchmarks seriously anymore.
+[01:16:18] Juan Torres: And it's supposed to be at one-fifth of the cost.
+[01:16:21] Juan Torres: Yeah.
+[01:16:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Cost is good though.
+[01:16:24] Juan Torres: Yeah.
+[01:16:24] Juan Torres: Especially if think about it.
+[01:16:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:16:32] Patrick Chouinard: Good.
+[01:16:33] Patrick Chouinard: Um, if you're still interested, I was just able to, uh, uh, Hermes, uh, on its, uh, new interface.
+[01:16:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Ooh.
+[01:16:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:16:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: me see what it looks like.
+[01:16:57] Ty Wells: I'll show you mine in a minute as I'm installing it as we...
+[01:17:00] Patrick Chouinard: Okay.
+[01:17:02] Patrick Chouinard: So do you see it?
+[01:17:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:17:05] Patrick Chouinard: Perfect.
+[01:17:06] Patrick Chouinard: So, yep, this is Hermes through the Hermes workspace interface.
+[01:17:16] Patrick Chouinard: So as you can see, I only have one model connected, but if I wanted, you can manage effort, you could switch the model if you need, do attachment, do voice dictation.
+[01:17:30] Patrick Chouinard: Although I internally, I still use Whisperflow, but it does support it.
+[01:17:35] Patrick Chouinard: You have, you can search through past chats.
+[01:17:41] Patrick Chouinard: You have your dashboard that tracks all of your usage, chat, your files.
+[01:17:55] Juan Torres: Wait, this, is this, you created this or is this from the workspace?
+[01:17:59] Patrick Chouinard: No,
+[01:18:00] Patrick Chouinard: That's the Hermes workspace project I've sent the link to.
+[01:18:04] Patrick Chouinard: It's just installed on top of.
+[01:18:06] Patrick Chouinard: It really makes all the difference in the world.
+[01:18:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, it's nice because I was manually creating, like, I wanted some dashboard stuff over Ironcloth, and I'm creating it myself and deploying it.
+[01:18:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm like, ugh.
+[01:18:18] Patrick Chouinard: Yeah, this is out of the box.
+[01:18:20] Patrick Chouinard: You see, you can do, this is all the cron job that it's scheduled for itself that you can look at, edit, play.
+[01:18:28] Patrick Chouinard: Nice, nice, nice.
+[01:18:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Has a Kanban board for tasks.
+[01:18:33] Patrick Chouinard: So you just drop a task and it will automatically start moving it through the Kanban board.
+[01:18:40] Patrick Chouinard: Conductor, this is its, and also have...
+[01:18:45] Juan Torres: What is that?
+[01:18:47] Juan Torres: What is Conductor supposed to do?
+[01:18:48] Patrick Chouinard: Conductor is basically its implementation of agent swarm.
+[01:18:52] Patrick Chouinard: So whatever you give Conductor, whatever task you give it to, it will spawn an agent swarm to take care of it.
+[01:18:58] Juan Torres: And And he...
+[01:19:00] Patrick Chouinard: And it shows you visually the little...
+[01:19:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Sorry.
+[01:19:05] Juan Torres: But I don't get how, like, the bench and then the agents are supposed to...
+[01:19:10] Juan Torres: Is the bench like a work assignment?
+[01:19:13] Patrick Chouinard: Yeah, basically.
+[01:19:14] Patrick Chouinard: It's just a visual representation of what the agents are doing in the back end.
+[01:19:18] Juan Torres: That's crazy.
+[01:19:20] Patrick Chouinard: Whoa!
+[01:19:21] Patrick Chouinard: Yep.
+[01:19:26] Patrick Chouinard: And you even have what they call Hermes World, which is an RPG that is managed strictly by the...
+[01:19:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: the agent itself.
+[01:19:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's a bunch of things.
+[01:19:36] Patrick Chouinard: It's really, really impressive.
+[01:19:39] Patrick Chouinard: I'm not gonna go into some of the memory, for example, because it shows the actual memory of the agent, but you can do all your memory management.
+[01:19:47] Patrick Chouinard: It has its own skill.
+[01:19:49] Patrick Chouinard: Those are managed internally.
+[01:19:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, I just realized that if it has MCP, I can connect it to my second brain MCP.
+[01:20:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's MCP Supabase that I already have in my neural spark.
+[01:20:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's how I can connect them.
+[01:20:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, man.
+[01:20:05] Patrick Chouinard: Yeah, this is my agent ops here.
+[01:20:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This is my own MCP I'm working on right now to give it all the tools access and everything.
+[01:20:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just got to figure out if I can really hook this into my kind of SQL database.
+[01:20:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's a little bit more than this one.
+[01:20:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I can hook it into my database, but I should be able to.
+[01:20:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, this is using a SQL, a Postgres server completely independent in the back end.
+[01:20:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Good.
+[01:20:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:20:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So you use something like that, too.
+[01:20:33] Patrick Chouinard: You didn't use their little light thing out of the box.
+[01:20:35] Patrick Chouinard: Okay, cool.
+[01:20:36] Patrick Chouinard: Yep.
+[01:20:36] Patrick Chouinard: Yeah, yeah, yeah.
+[01:20:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No, it's not using the database on the agent machine.
+[01:20:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Does it have router class?
+[01:20:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because that's the one thing I can do in Ironcloset.
+[01:20:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Does it have some sort of router?
+[01:20:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It might be called something different, but can we do router classifications?
+[01:20:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because I have mine where, like, it uses local first, and then it'll bump up to Sonnet for certain things.
+[01:20:53] Patrick Chouinard: Like, are you able to automatically route certain types of things to?
+[01:20:59] Patrick Chouinard: Yeah, you do that.
+[01:21:00] Patrick Chouinard: So with profiles.
+[01:21:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Profiles, okay.
+[01:21:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I figured it was just different language in here.
+[01:21:05] Patrick Chouinard: Okay, cool.
+[01:21:05] Patrick Chouinard: you see you have default.
+[01:21:07] Patrick Chouinard: This is who I talk to normally.
+[01:21:09] Patrick Chouinard: But then you have workspace, reviewer, QA, orchestrator.
+[01:21:13] Patrick Chouinard: And you can build new ones that have completely other personality, other memory, other behavior.
+[01:21:20] Juan Torres: Wow.
+[01:21:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That is the thing.
+[01:21:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's like on the ironcloth, really just one.
+[01:21:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's really technically just like one agent.
+[01:21:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And like this kind of lets you do more than that.
+[01:21:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's almost like you got like all these different agents that, you know, kind of like this.
+[01:21:34] Patrick Chouinard: Yeah.
+[01:21:34] Patrick Chouinard: And that's always been there in Hermes.
+[01:21:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just not easy to discover through the terminal only.
+[01:21:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:21:41] Patrick Chouinard: Right.
+[01:21:41] Patrick Chouinard: Hermes workspace have done a marvelous job to expose every single functionality of the tool.
+[01:21:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And this is all open source.
+[01:21:51] Patrick Chouinard: Yep.
+[01:21:54] Patrick Chouinard: You can.
+[01:21:55] Juan Torres: Now you have to switch.
+[01:21:56] Patrick Chouinard: Yep.
+[01:21:57] Juan Torres: Now you have to switch, Scott.
+[01:21:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean, it's.
+[01:22:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He shows me this, I'm going, oh, I'm going to have to just...
+[01:22:04] Juan Torres: It's a breakup.
+[01:22:06] Patrick Chouinard: Another two months of work.
+[01:22:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He knows, because I'm like, I've got some custom stuff, but it'll be worth it.
+[01:22:13] Patrick Chouinard: I know exactly what Hermes is going to have to respond to in terms of emails.
+[01:22:22] Patrick Chouinard: Because he sends me those long emails and what I do is basically I give that to my agent and tell them like, here's my high level opinion.
+[01:22:30] Juan Torres: Can you this work off of me?
+[01:22:32] Patrick Chouinard: Can full reply?
+[01:22:34] Juan Torres: This baggage.
+[01:22:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Patrick got to chew through some of my early, early planning, crazy long docs for, before I even touched any set up for Ironclaw.
+[01:22:48] Juan Torres: But I mean, a lot of the principles that you learned with Ironclaw can basically be transposed to this new.
+[01:22:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:22:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, it's understanding all the architecture too, because it was like planning that whole thing was like, okay.
+[01:23:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then you get into it and you're like, oh, okay.
+[01:23:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then you start realizing a few things that you weren't really planning for, because you can't, you never know until you really get in there if it's something you haven't touched before.
+[01:23:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because it's, it was so different, like, then it's different than building an app because there's so many more layers to when you're using physical things and you've got mediators in between, you got these different things you're putting together and you're building on top and underneath the system.
+[01:23:23] Juan Torres: Yeah.
+[01:23:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:23:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's a lot to it.
+[01:23:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So you learn a lot.
+[01:23:26] Juan Torres: We, we, we're, we're loyal to the principles, not the technology.
+[01:23:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh yeah.
+[01:23:32] Patrick Chouinard: Yeah.
+[01:23:33] Patrick Chouinard: Especially these days.
+[01:23:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Mm-hmm.
+[01:23:36] Patrick Chouinard: But I'd be really surprised to see how something like Hermes would work backed by something of a Fable class model.
+[01:23:47] Patrick Chouinard: Not necessarily Fable itself, but something that class would be scary.
+[01:23:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I wish I worked at, if I, if I worked at one of these AI labs, like, here's the thing.
+[01:23:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That you'll, you'll hear this in that loop video.
+[01:24:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's like, and it's legit, right?
+[01:24:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But a lot of times, all these influencers take these things and they're like, all right, if you're not doing this 24-7, you're behind.
+[01:24:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I'm like, who has free tokens to sit there?
+[01:24:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because, you know, Boris is just writing loops.
+[01:24:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He's not even writing prompts anymore.
+[01:24:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, yeah, because it's free for him.
+[01:24:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He does everything in a loop, you know?
+[01:24:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean, eventually, hopefully, some local model stuff we can do, but that's the thing.
+[01:24:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's like, if you had access like those guys do, or you could try this stuff, oh, my God.
+[01:24:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You know, on a Fable class, some sort of Claw or Hermes type thing.
+[01:24:40] Ryan C: That's good to say, also, Boris is sitting there, we're doing everything with Mythos, so, you know, that helps.
+[01:24:48] Ty Wells: Did anybody look at that AMD device that was, I can't remember the name, Halo, maybe?
+[01:24:54] Patrick Chouinard: Yeah, yeah, yeah, the one that's supposed to be in the same class as...
+[01:25:00] Patrick Chouinard: The Apple Silicon with shared memory?
+[01:25:03] Ty Wells: Yeah, 128 gig shared.
+[01:25:06] Ty Wells: I don't even know.
+[01:25:06] Ty Wells: Anybody know the price?
+[01:25:07] Ty Wells: I meant to look.
+[01:25:10] Patrick Chouinard: With memory price these days, with 128 gig, it must be eye-watering.
+[01:25:17] Ty Wells: I'm glad I got my MacBook.
+[01:25:18] Ty Wells: Somebody told me, get 128.
+[01:25:20] Ty Wells: I was like, I don't need all of that.
+[01:25:21] Ty Wells: And I got the 128.
+[01:25:22] Ty Wells: This was late December last year.
+[01:25:25] Ty Wells: My God.
+[01:25:26] Juan Torres: Yeah.
+[01:25:29] Patrick Chouinard: Probably, I don't know, the price of a small house right now.
+[01:25:34] Juan Torres: I should have done that, too, before everything got...
+[01:25:37] Juan Torres: 61.
+[01:25:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I got a really good MacBook, but, like, I was thinking, I don't need a...
+[01:25:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I got a decent amount.
+[01:25:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I think I got 64 on it, but I should have went...
+[01:25:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I should have just loaded that thing, because I was never thinking about running some local models for maybe coding at some point, because they're closing the gap.
+[01:25:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, you know what mean?
+[01:25:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just like, oh, why didn't I do it before everything was shorted?
+[01:25:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You know?
+[01:25:57] Patrick Chouinard: Yep.
+[01:25:58] Patrick Chouinard: I would have...
+[01:26:00] Patrick Chouinard: If I would have known, I would have bought a 512-gig Mac Studio.
+[01:26:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yep.
+[01:26:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, yeah.
+[01:26:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I know.
+[01:26:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because now they don't even do it, because that's what I was looking at.
+[01:26:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because 512 will get you very close to the Frontier class, like, pretty much almost right there.
+[01:26:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You've got room to run it.
+[01:26:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's like, you can't get anything with that on a Mac now.
+[01:26:23] Patrick Chouinard: No, my thinking is not necessarily to run Frontier class.
+[01:26:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'd be happy with something like a 70 billion parameter.
+[01:26:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, yeah.
+[01:26:31] Patrick Chouinard: Not for, but the idea is I could, with 512-gig, you can have context.
+[01:26:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yes.
+[01:26:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You can have a lot more context.
+[01:26:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:26:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That is true.
+[01:26:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I was running a Frontier on that, I'd want a terabyte, because then I wouldn't have any context.
+[01:26:46] Patrick Chouinard: Exactly.
+[01:26:47] Patrick Chouinard: Because if you run a terabyte model or a trillion parameter, you're going to need all of your memory just to load the model.
+[01:26:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: then you have more context.
+[01:26:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:26:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: can say, hello.
+[01:26:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You
+[01:27:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You can say hello, and that's it.
+[01:27:01] Ty Wells: Oh, who are you again?
+[01:27:04] Ty Wells: It's Viku again.
+[01:27:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Exactly.
+[01:27:07] Patrick Chouinard: So I prefer to have a 70 billion paramount, which is still pretty intelligent.
+[01:27:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, that's good.
+[01:27:13] Patrick Chouinard: can give it a 256k context window.
+[01:27:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: See you guys later.
+[01:27:17] Ty Wells: I'm going to drop off.
+[01:27:19] Ty Wells: See you, Ty.
+[01:27:20] Ty Wells: See you, Ty.
+[01:27:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, I should probably run and go get some dinner.
+[01:27:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That was a good one, though.
+[01:27:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That was a good close-knit crew.
+[01:27:28] Patrick Chouinard: Yeah, and I'm going to try to contact Brendan for next week and not forget for a second week in a row.
+[01:27:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, he's probably deep in it.
+[01:27:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He probably didn't even realize it, I bet.
+[01:27:41] Patrick Chouinard: Yeah, it was just a weird couple of weeks because, not just for me, but I know that Paul even had some personal stuff at the same time.
+[01:27:52] Patrick Chouinard: So it's like a bunch of us at the same time got hit with something.
+[01:27:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, it's hard to hear that too, man.
+[01:27:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I hope you're doing okay.
+[01:27:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Let's
+[01:28:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's never a good thing.
+[01:28:05] Patrick Chouinard: Yeah, but life goes on, so I prefer to come have fun with you guys.
+[01:28:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, I'm glad I made one.
+[01:28:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Good.
+[01:28:16] Patrick Chouinard: Just before we leave, Morgan, I see you connected.
+[01:28:19] Patrick Chouinard: Did you want a chance to say or show something, or it was not a presentation this week?
+[01:28:27] Morgan Cook: No, I don't have anything to presentate this week.
+[01:28:31] Morgan Cook: I did find one thing that kind of adds to what you guys were talking about.
+[01:28:34] Morgan Cook: There's a new local model engine called Air LLM, and it's a Python engine that can load a 32 billion model.
+[01:28:46] Morgan Cook: And the way it does it, instead of loading the entire thing in memory at one time, it loads each of the layers of the LLM model tree in a route loop kind of process.
+[01:28:58] Morgan Cook: So it'll process the first layer.
+[01:28:59] Morgan Cook: its周固 of Unfaherment
+[01:29:00] Morgan Cook: Swap out, load the next layer, process it, swap out, load the next layer, until it gets to the end of the chain.
+[01:29:06] Morgan Cook: I haven't installed and tested it yet, but it's supposed to be workable and faster than a model just loading straight completely in memory, when you have a limited amount of memory.
+[01:29:20] Morgan Cook: So its intent is to run on smaller devices and still be able to process through all the chain.
+[01:29:28] Morgan Cook: So that's something that might be worth looking at.
+[01:29:31] Morgan Cook: I'll see if I can find the link to put in.
+[01:29:34] Patrick Chouinard: Yep, that'd be very nice.
+[01:29:38] Patrick Chouinard: We're always constrained by memory, no matter how much memory we have.
+[01:29:42] Morgan Cook: Yeah.
+[01:29:47] Patrick Chouinard: Until the day I have a local machine running 20 terabytes of RAM, I'm always going to be constrained.
+[01:29:53] Morgan Cook: Exactly.
+[01:29:54] Morgan Cook: back.
+[01:29:54] Morgan Cook: That's important.
+[01:29:54] Morgan Cook: can't You've yourself You
+[01:30:03] Morgan Cook: It's actually a GitHub repository.
+[01:30:05] Patrick Chouinard: Cool.
+[01:30:06] Morgan Cook: It's an open source Python library designed to run massive large language models in a consumer hardware.
+[01:30:14] Morgan Cook: So if you do a search for air, here, I'll just pop it into the chat window.
+[01:30:27] Morgan Cook: I just saw it yesterday.
+[01:30:28] Morgan Cook: haven't had a chance to play around with it, but that might be a great resource if you're really trying to stay local and still be able to use a large chunk of memory to process something, you know?
+[01:30:48] Patrick Chouinard: Absolutely.
+[01:30:49] Patrick Chouinard: No, that's very nice.
+[01:30:51] Patrick Chouinard: Thank you, sir.
+[01:30:54] Morgan Cook: That's my contribution for the week.
+[01:30:55] Patrick Chouinard: Well, always something good.
+[01:31:00] Morgan Cook: And I did see that one, the new box that mimics the Mac Mini.
+[01:31:06] Morgan Cook: I saw an advertisement for that.
+[01:31:07] Morgan Cook: That looks really nice, the shared memory one.
+[01:31:11] Patrick Chouinard: Well, to me, as much as it's copying the Mac Mini, it's just finally shared memory on some other platform, you know?
+[01:31:18] Morgan Cook: Yeah, exactly.
+[01:31:19] Morgan Cook: That's what I'm, so it's like, okay, now we're getting close to the hardware companies are starting to really identify the fact that we need some more hardware that runs local.
+[01:31:29] Morgan Cook: Yeah, we were saying that because RAM used to be cheaper than VRAM, but I'm not sure how true it is today, though.
+[01:31:39] Morgan Cook: No, none of the chips are cheap.
+[01:31:41] Morgan Cook: All the companies are building, you can't get even a frickin' Raspberry Pi anymore that doesn't cost a normal way.
+[01:31:49] Patrick Chouinard: I know.
+[01:31:50] Patrick Chouinard: That's why I'm leveraging all the mini PCs I was able to get before all of that.
+[01:31:59] Morgan Cook: Bye.
+[01:31:59] Morgan Cook: All right, hey.
+[01:32:00] Morgan Cook: It's really good to see you guys.
+[01:32:01] Patrick Chouinard: I'm glad I was able to get on.
+[01:32:03] Patrick Chouinard: Yep.
+[01:32:04] Patrick Chouinard: Thank you very much, guys.
+[01:32:05] Patrick Chouinard: And see you next week.
+[01:32:09] Ryan C: Cheers, guys.
+[01:32:10] Ryan C: Bye.
