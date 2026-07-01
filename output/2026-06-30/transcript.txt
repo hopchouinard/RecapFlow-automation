@@ -1,0 +1,1912 @@
+[00:00:00] Ty Wells: And they eat everything, anything, whatever you put in front of them.
+[00:00:06] Paul Miller: This meeting is being recorded.
+[00:00:10] Ty Wells: Do we get a sighting today of Brandon?
+[00:00:24] Patrick Chouinard: We are supposed to see Mr.
+[00:00:27] Ty Wells: Brandon today.
+[00:00:29] Ty Wells: That's good.
+[00:00:30] Ty Wells: How are you doing, Patrick?
+[00:00:33] Patrick Chouinard: Surviving.
+[00:00:36] Ty Wells: That's crucial art right there.
+[00:00:40] Patrick Chouinard: Yep.
+[00:00:43] Patrick Chouinard: It seems that the more stress I'm under, the more creative I become.
+[00:00:48] Ty Wells: Listen, I've got a story for that.
+[00:00:50] Ty Wells: It's AI related.
+[00:00:51] Ty Wells: And there's golf involved.
+[00:00:55] Ty Wells: So that's a cheeser.
+[00:00:57] Ty Wells: What's that?
+[00:00:58] Patrick Chouinard: What a surprise.
+[00:01:01] Ty Wells: It all ended well, let's just say that.
+[00:01:05] Patrick Chouinard: Good.
+[00:01:29] Patrick Chouinard: I talked to Brendan yesterday, so technically he should be there.
+[00:02:11] Ryan C: Evening.
+[00:02:14] Patrick Chouinard: Hi, Ryan.
+[00:02:15] Paul Miller: Hello.
+[00:02:19] Ty Wells: Hey, Ryan.
+[00:02:23] Ryan C: Hello, gents.
+[00:02:26] Paul Miller: Good.
+[00:02:29] Ty Wells: Good.
+[00:02:29] Patrick Chouinard: How about yourself?
+[00:02:39] Ryan C: Yeah.
+[00:02:40] Patrick Chouinard: Hey, it is much alive.
+[00:02:46] Brandon Hancock: How's everybody doing?
+[00:02:48] Brandon Hancock: Happy Tuesday, everybody.
+[00:02:50] Paul Miller: Hey, Brandon.
+[00:02:52] Ty Wells: All right.
+[00:02:54] Brandon Hancock: Well, first off, always love to see some familiar faces.
+[00:02:59] Brandon Hancock: So glad to get to hop on.
+[00:03:02] Brandon Hancock: I know Paul, we've to catch up tomorrow too at some point.
+[00:03:06] Brandon Hancock: I've got to send some stuff over.
+[00:03:09] Brandon Hancock: I've to talk to Patrick yesterday, so it's a social week.
+[00:03:12] Brandon Hancock: I'm liking it.
+[00:03:14] Brandon Hancock: But no, what I'd love to do today is give you guys some cool updates of what I've been doing, and then would love to go and hear what you guys have been up to too, just so we can see what's all going on in the AI land.
+[00:03:26] Brandon Hancock: So let me show a few things really quickly.
+[00:03:31] Brandon Hancock: So first off, I want you guys, y'all know I love a good gadget, so I'm going to drop it in chat.
+[00:03:39] Brandon Hancock: I just pulled the trigger on this.
+[00:03:42] Brandon Hancock: Let me show it to you guys too.
+[00:03:45] Brandon Hancock: I think I logged in with the wrong account, Patrick.
+[00:03:47] Patrick Chouinard: No, that's okay.
+[00:03:49] Brandon Hancock: Okay, perfect.
+[00:03:52] Brandon Hancock: Okay.
+[00:03:55] Brandon Hancock: I think this would be, like, I think you'll probably buy it by the end of this.
+[00:03:59] Brandon Hancock: If I'm going to be.
+[00:04:01] Brandon Hancock: So what it does is they're, let me scroll down a little bit.
+[00:04:06] Brandon Hancock: So they're smart glasses.
+[00:04:07] Brandon Hancock: Why can't I show me the thing?
+[00:04:09] Brandon Hancock: Oh, here we go.
+[00:04:11] Brandon Hancock: So they're smart glasses where they have a display built in.
+[00:04:15] Brandon Hancock: They don't have a camera.
+[00:04:17] Brandon Hancock: They just have a microphone.
+[00:04:19] Brandon Hancock: And so like, okay, that's cool.
+[00:04:21] Brandon Hancock: Smart glasses.
+[00:04:22] Brandon Hancock: No, for code addicts like us, what they do that's super cool is they have integrations in with already like existing tools.
+[00:04:30] Brandon Hancock: And you can make your own apps.
+[00:04:31] Brandon Hancock: So they already have additional apps out like Claude Code, Codex.
+[00:04:35] Brandon Hancock: So literally with your glasses and this little ring thing, you could just at any point talk and be like, pick up a session that you were working on and just answering questions.
+[00:04:45] Brandon Hancock: And then whenever it's done, it just dings you like, hey, code's done.
+[00:04:48] Brandon Hancock: What do you want to do next?
+[00:04:49] Brandon Hancock: So it's like unlimited productivity.
+[00:04:52] Brandon Hancock: So I just pulled the trigger on it.
+[00:04:54] Brandon Hancock: They get here in like two weeks.
+[00:04:55] Brandon Hancock: So I'm excited for that.
+[00:04:56] Brandon Hancock: A few other cool nerdy things it has is like, whenever you don't I don't
+[00:05:00] Brandon Hancock: I know a lot of us got like Limitless and Plod and all sorts of other things, but because it's already glasses with a microphone, it just does what Plod does.
+[00:05:09] Brandon Hancock: So as you're talking, it'll record speaker A, speaker B, speaker C, do all the normal summarizing and everything.
+[00:05:16] Brandon Hancock: But what's also cool is if the person says something that like you don't think you might not know, it'll just give you like a little blurb like, oh, you know, the capital of this, whenever this person was talking about this, oh, it's actually the capital of this country.
+[00:05:29] Brandon Hancock: You're like, oh, this person did this.
+[00:05:31] Brandon Hancock: So it'll just like show like highlights.
+[00:05:33] Brandon Hancock: So it feels like you're cheating in real life.
+[00:05:34] Brandon Hancock: So it's like some some gadget stuff.
+[00:05:37] Brandon Hancock: So, so yeah, so it has, I don't know, it has everything that we have like looked at in the past between like Meta, Plod and everything else.
+[00:05:44] Brandon Hancock: And it's all all in one.
+[00:05:46] Brandon Hancock: It'll translate for you.
+[00:05:48] Brandon Hancock: I saw a guy build an app so he could control his Tesla from it.
+[00:05:51] Brandon Hancock: So he could just like literally just like, yeah, turn on the AC in the car from it, auto summon, like literally everything.
+[00:05:56] Brandon Hancock: So I am freaking pumped.
+[00:05:59] Brandon Hancock: I'll let you guys know.
+[00:06:00] Brandon Hancock: As soon as they come in.
+[00:06:00] Brandon Hancock: But yeah, I splurge.
+[00:06:03] Ryan C: Do you just like spending my money at this point, Brandon?
+[00:06:05] Ryan C: Come on.
+[00:06:06] Brandon Hancock: Hey, that's actually what it is.
+[00:06:09] Brandon Hancock: But I was like, hey, you know, you got to justify it.
+[00:06:13] Brandon Hancock: How do you justify it as a business expense?
+[00:06:15] Paul Miller: That's the most important thing.
+[00:06:16] Brandon Hancock: So it's like, oh, I primarily will be using it literally, like, I will be living inside these things with cloud code pretty much 24 seven.
+[00:06:24] Brandon Hancock: That's what I do anyways.
+[00:06:24] Brandon Hancock: Uh, but that's a, that's the, that's the big update.
+[00:06:28] Brandon Hancock: So I'll let you guys know as soon as it comes in, if it's, if it's actually worth the splurge, because they weren't cheap, but you know, I'm addicted to AI.
+[00:06:37] Ryan C: Um, well, he died while coding and driving.
+[00:06:39] Brandon Hancock: That's terrible.
+[00:06:43] Brandon Hancock: Well, it's like, oh, that sounded loud and painful.
+[00:06:46] Brandon Hancock: Would you like me to continue coding though?
+[00:06:49] Brandon Hancock: Um, so, uh, so that's a big update.
+[00:06:53] Brandon Hancock: Other cool, just, uh, business updates.
+[00:06:55] Brandon Hancock: Cause I'd like to keep you guys posted on the software journey.
+[00:06:58] Brandon Hancock: Um, so.
+[00:07:01] Brandon Hancock: So big thing, so I'll just show you guys app-wise where we're at, so we are finally getting a bunch of traction for our app, so I know Alex Hormozzi and a lot of guys talk about embracing the suck for a long time of like, hey, working very hard for an unknown amount of duration with a potential upside but not guaranteed, so we're finally seeing that, we've built a whole second version of our application, HIPAA sucked through the full nine yards, we went to a conference, actually, like we hosted our own booth, which was sick, we were giving out coffee, we were giving out all sorts of stuff, and books, everything, and we actually booked a ton of demos, so like Pipeline is like, you know, like 100,000 of deals over that, and then on top of that, we have, we've actually, because we've now just understood what our customers want, we're starting to do some like cold direct DMs of just like recording Loom videos, and just rip it
+[00:08:00] Brandon Hancock: And it's actually working, because we finally can articulate the customer's problems better than they can.
+[00:08:08] Brandon Hancock: It's actually starting to happen.
+[00:08:10] Brandon Hancock: So we're at the grind point towards now, just work like dogs to make sure as many people know about us.
+[00:08:17] Brandon Hancock: So if anyone has questions on cold outreach, conferences, happy to do that.
+[00:08:21] Brandon Hancock: And then final exciting news, and I'll be quiet.
+[00:08:24] Brandon Hancock: We finally talk with a PE firm tomorrow about half doing distribution for us, so half selling, and eventually buying us.
+[00:08:34] Brandon Hancock: So we have a huge pitch deck that I have to get done after this call tonight.
+[00:08:38] Brandon Hancock: So it's all the things happening all at the same time.
+[00:08:42] Brandon Hancock: So, yeah, happy to answer questions on any of it, just because it's been a...
+[00:08:47] Brandon Hancock: I'm excited to fast forward like a year and a half from now and be like, oh, I successfully had an exit and then just shared the full journey with you guys.
+[00:08:54] Brandon Hancock: So I like doing these little updates so you can see the struggle happen in real time, because it is a struggle.
+[00:08:59] Brandon Hancock: price the then Okay.
+[00:08:59] Brandon Hancock: Yeah, it's been he
+[00:09:00] Brandon Hancock: So, yeah, those are all my updates, and now I want to hear what you guys are on and, like I said, answer any questions to you guys, and then also just want to say thank you to Patrick and Paul for always holding down the fort while I'm lost in Claude Code and Codex every waking hour.
+[00:09:17] Brandon Hancock: So, thank you guys.
+[00:09:17] Brandon Hancock: And I just sent the thing, I think, Patrick, it had you right after Paul, but the screenshot didn't take it.
+[00:09:22] Brandon Hancock: But, Ty, if you want go first, buddy, we'd love to hear what's been going on, man.
+[00:09:26] Ty Wells: Hey, how are you?
+[00:09:29] Brandon Hancock: Good, crazy times to be alive.
+[00:09:31] Ty Wells: I know, right?
+[00:09:32] Ty Wells: I told the guys I had a story I wanted to tell.
+[00:09:36] Ty Wells: So, I, on Sunday I golfed, obviously, there's golf and AI involved.
+[00:09:42] Ty Wells: Sunday I golfed, and I have my limitless device, I have it on now, and I lost it during golfing.
+[00:09:49] Brandon Hancock: No.
+[00:09:49] Ty Wells: So, yeah, I couldn't, you know, it fell off, I couldn't find it.
+[00:09:53] Ty Wells: So, I looked where I thought I lost it, I couldn't find it, and there were players, so I couldn't
+[00:10:00] Ty Wells: I had to be careful.
+[00:10:02] Ty Wells: So I came home and I wrote an app that took my Garmin GPS data and took the life logs from the Limitless, cross-referenced the time to tell me when the last message came in, and then I used the GPS.
+[00:10:16] Ty Wells: So I went out back on the course that night, on Sunday night, using my home-built AirTag, if you will, just tracked it and told me 17, 16, 15, you know, 10 feet.
+[00:10:28] Ty Wells: I was in five feet and the guy who drove me out there from the clubhouse said, is this it?
+[00:10:33] Ty Wells: I showed him a picture.
+[00:10:34] Ty Wells: He's like, I think I got it.
+[00:10:35] Brandon Hancock: And he showed me it.
+[00:10:36] Brandon Hancock: There it is.
+[00:10:36] Brandon Hancock: Are serious?
+[00:10:37] Ty Wells: We took a selfie of it.
+[00:10:40] Brandon Hancock: What you need to do is tag Limitless and Garmin in a post because like that, like someone's going to see that and be like, that's freaking awesome.
+[00:10:49] Ty Wells: And hopefully they send some Garmin, some Garmin swag.
+[00:10:53] Ty Wells: Yeah.
+[00:10:53] Brandon Hancock: That's freaking awesome.
+[00:10:55] Ty Wells: I'll show you real quick.
+[00:10:56] Ty Wells: That's that's just half the story.
+[00:10:58] Ty Wells: So the other half is.
+[00:11:00] Ty Wells: As I go, I'm just gonna share my screen real quick here.
+[00:11:05] Brandon Hancock: Hi, can I just say real fast, the fact that you did that is like some detective , man.
+[00:11:09] Brandon Hancock: Like, most people, like, I mean, I would just be like, oh, damn, it's gone, it's not where I thought it was.
+[00:11:14] Brandon Hancock: Like, the fact that you're like, oh, my Garmin tracked me to, like, within a couple meters, and I can replay this back inside together.
+[00:11:21] Brandon Hancock: Like, dude, that's, that's, dude, you should have been in the CIA.
+[00:11:24] Brandon Hancock: Wrong profession.
+[00:11:25] Ty Wells: Well, had to, I had to find it.
+[00:11:26] Ty Wells: I already ordered an Omni, but it hasn't arrived yet.
+[00:11:31] Ty Wells: So this whole five was the suspect.
+[00:11:34] Ty Wells: Of course, the Google map that it grabbed was, was in the winter.
+[00:11:38] Ty Wells: But, so I, this is where it was, and I had duffed one off the tee box.
+[00:11:43] Ty Wells: So that's like a riverbed there.
+[00:11:45] Ty Wells: And then it was right here in this thick grass, this rough.
+[00:11:49] Ty Wells: So I started the GPS once I got close to five.
+[00:11:51] Ty Wells: And then I started the Bluetooth thing running through blue five because it runs in the browser.
+[00:11:57] Ty Wells: So blue five will run GP, uh,
+[00:12:01] Ty Wells: And sure I mean it just it was it was like magical I couldn't believe it happening so anyhow that was something with your laptop are you out there with you know this is my phone okay okay yeah this is I built it and then I use BlueFi which is a an app on iOS so okay you can use blue Bluetooth devices within it so on Monday I couldn't wait to tell the guys I played Monday again so on on the first hole I hit I go in the second hole say guys let me tell you a story about and I touch my chest and it's gone I lost it again I lost it on the first hole so I use the same app to go find it again I found it they're like Ty at this point we know you're just dropping it so you can look cool no no I'm not doing that at all but um yeah that's that's what so you guys yeah wait real fast how frantically were you building this app like when Claude's like hey let's think about this let's brainstorm let's like pontificate are you just like
+[00:13:00] Brandon Hancock: No questions.
+[00:13:01] Ty Wells: Just build.
+[00:13:03] Ty Wells: Yeah, I'm going deep to try to get this done, because obviously I wanted it.
+[00:13:08] Ty Wells: I mean, it wasn't a big deal, really, but, you know.
+[00:13:11] Brandon Hancock: I mean, they're not cheap, so...
+[00:13:13] Ty Wells: Well, it was a problem.
+[00:13:15] Ty Wells: I had to solve it.
+[00:13:16] Brandon Hancock: That's what golf is all about, solving problems, so I had to solve it.
+[00:13:20] Brandon Hancock: That's awesome, man.
+[00:13:23] Ty Wells: Can you guys see this here?
+[00:13:24] Ty Wells: says Omaha Tea Times.
+[00:13:26] Brandon Hancock: Yes, it looks great.
+[00:13:27] Ty Wells: Okay, this is another app I'm building just for us, for my golfing buddies, where they can come in and choose a day, and it'll scan.
+[00:13:36] Ty Wells: It's scanning all of the actual courses that are in town, that are pulling up and showing you the availability as you mouse over.
+[00:13:43] Ty Wells: And then you can click, and then you book directly.
+[00:13:46] Ty Wells: So if I chose, say, that guy, then I can go here, click, and it opens up right to their booking site.
+[00:13:52] Ty Wells: And so then you...
+[00:13:54] Ty Wells: So that's...
+[00:13:56] Brandon Hancock: That's cool.
+[00:13:57] Ryan C: Yeah, load on.
+[00:13:57] Ryan C: yourself on an affiliate scheme there, Ty.
+[00:13:59] Brandon Hancock: Yes.
+[00:14:00] Brandon Hancock: Seriously.
+[00:14:01] Ty Wells: Yeah.
+[00:14:01] Ty Wells: Yeah.
+[00:14:02] Ty Wells: So the last thing I want to show you guys real quick is my phone.
+[00:14:07] Ty Wells: And you sort of led right into this.
+[00:14:10] Ty Wells: This is what I, last week I talked, you weren't here, Brandon, but I talked about talking to my code.
+[00:14:16] Brandon Hancock: Yeah.
+[00:14:16] Ty Wells: ability for me to talk to my code.
+[00:14:18] Ty Wells: So I built this agent that runs on my Proxmox that does everything that I wanted to do.
+[00:14:29] Ty Wells: I get in a live kit session and it's as if I'm right there with the code.
+[00:14:35] Ty Wells: So you might not be able to hear this.
+[00:14:40] Ty Wells: Just when my daughter calls, right?
+[00:14:42] Brandon Hancock: Okay.
+[00:14:43] Brandon Hancock: Let's do it.
+[00:14:44] Ty Wells: Hey, are you there?
+[00:14:52] Ty Wells: Can you hear me?
+[00:14:56] Ty Wells: Well, you know what this is, right?
+[00:14:57] Ty Wells: Demo fever.
+[00:14:58] Brandon Hancock: The live demo.
+[00:14:59] Ty Wells: Yeah.
+[00:15:00] Ty Wells: Because I've been making changes with it, but, oh, I think it's because, no, shouldn't be.
+[00:15:06] Ty Wells: Let's try this other way.
+[00:15:07] Ty Wells: Hang on.
+[00:15:09] Ty Wells: Hello?
+[00:15:11] Ty Wells: Can you hear me?
+[00:15:12] Ty Wells: I'm making changes.
+[00:15:13] Ty Wells: But basically, the same thing in those glasses, this does the same thing.
+[00:15:17] Ty Wells: So I just have a room open, I talk to it, it has access to everything as if I'm in a code session, but it's not giving me code back.
+[00:15:26] Ty Wells: It's just, I'm iterating like you would talk in a chat GPT voice mode, except it can That's cool.
+[00:15:32] Ty Wells: my repos, can, it can do, it can create PRs, it can do anything I can do as if I was in front of my computer.
+[00:15:39] Brandon Hancock: Ah, .
+[00:15:40] Ty Wells: Quick sessions.
+[00:15:41] Ty Wells: This is the way to go.
+[00:15:42] Ty Wells: This is the only interface I will be using moving forward.
+[00:15:45] Ty Wells: So they'll be, there's going to be a lot more golf in my, I literally do not have to open my laptop.
+[00:15:50] Ty Wells: I can have it do whatever I need it to do.
+[00:15:53] Brandon Hancock: So.
+[00:15:54] Brandon Hancock: I see what you're doing real fast.
+[00:15:56] Brandon Hancock: Like that's what I like to do is like.
+[00:16:00] Brandon Hancock: I feel guilty if I'm not using AI.
+[00:16:05] Brandon Hancock: like, I'm wasting tokens.
+[00:16:07] Brandon Hancock: I could be doing something, or I'd hate if, let's just say, AI needed me for two seconds and then it was going to go on a tear for another 45 minutes.
+[00:16:14] Brandon Hancock: If I'm not there to respond, it's just like, damn, I wasted 45 minutes a day.
+[00:16:18] Brandon Hancock: So that's like, I mean, it's probably, I need to talk to a therapist about it, but, but I was, what you're talking about, I like to do with Claude Code and Codex, but I was like, I hate having to always be like a screen in my face.
+[00:16:32] Brandon Hancock: So like when I'm at the gym or something, it's gonna be so nice to like, I mean, it sounds like you could do it with headphones, which is sick.
+[00:16:38] Brandon Hancock: Like, that's awesome.
+[00:16:39] Brandon Hancock: And I just want to try and do it with my eyes and just click.
+[00:16:41] Brandon Hancock: So very, I need to investigate more of the talk side of things.
+[00:16:46] Ty Wells: Yeah.
+[00:16:46] Ty Wells: The only thing, can you get prescription in those?
+[00:16:48] Brandon Hancock: That's the only issue.
+[00:16:50] Brandon Hancock: Yeah.
+[00:16:50] Ty Wells: Yeah.
+[00:16:51] Brandon Hancock: Okay.
+[00:16:51] Brandon Hancock: got prescriptions and it comes with like a little ring around your finger.
+[00:16:54] Brandon Hancock: So you can like just scroll and like, oh, I want to go to this session or I want to do a new session.
+[00:16:58] Brandon Hancock: So it's just, it's kind of like clicking.
+[00:17:01] Brandon Hancock: But yeah, I'd be blind.
+[00:17:03] Brandon Hancock: The only gotcha is they don't do both.
+[00:17:05] Brandon Hancock: They only help you see far away, it looks like.
+[00:17:09] Brandon Hancock: They don't do the reading thing.
+[00:17:12] Ty Wells: That's what I'm on.
+[00:17:13] Ty Wells: I'm on cheetahs.
+[00:17:13] Ty Wells: That's all I need, so that's not going to work for me.
+[00:17:16] Ty Wells: But my phone thing works perfectly.
+[00:17:17] Ty Wells: I built an app today with the phone.
+[00:17:20] Ty Wells: just iterated it it came out of the spec, and then I let it build it and it came back.
+[00:17:25] Ty Wells: And then the unique thing about it is when you're building something, you need to see what it looks like.
+[00:17:31] Ty Wells: So I have it generate a secure token to show me the preview that I can look at right on my phone, and then I can go back on.
+[00:17:40] Ty Wells: That's anytime I have to look at anything, like I'm changing the design or whatever, that's the only piece I had to figure out.
+[00:17:47] Ty Wells: cool.
+[00:17:49] Ty Wells: It only opens in Safari, but other than that, it works just fine.
+[00:17:55] Brandon Hancock: That's awesome.
+[00:17:55] Brandon Hancock: I still just can't get over the Finding Unlimited list.
+[00:17:58] Ty Wells: My brain is still just racking on that one.
+[00:18:00] Ty Wells: I'm still racking over that one.
+[00:18:01] Brandon Hancock: That was crazy.
+[00:18:03] Brandon Hancock: What's so funny is your four wives probably heard you say all this a thousand times to every person you see, you know, because I know I would be doing it.
+[00:18:10] Brandon Hancock: Like, hey, you want hear something funny?
+[00:18:13] Brandon Hancock: No, that's awesome, Ty.
+[00:18:15] Brandon Hancock: Any other cool things?
+[00:18:16] Ty Wells: Any other cool projects going on in Thailand?
+[00:18:19] Ty Wells: I'm working on a bunch of different stuff, paying stuff.
+[00:18:24] Ty Wells: But, yeah, I've got some things out there.
+[00:18:27] Ty Wells: Probably in next couple of weeks I'll be doing some presentations.
+[00:18:32] Brandon Hancock: That's awesome.
+[00:18:33] Brandon Hancock: That's awesome.
+[00:18:33] Brandon Hancock: Well, dude, good luck.
+[00:18:34] Brandon Hancock: Good luck.
+[00:18:36] Brandon Hancock: As soon as I get the glasses, I'll let you know if it's worth it, by the way.
+[00:18:39] Brandon Hancock: Yeah.
+[00:18:41] Brandon Hancock: And, like I said, they might do the C-close.
+[00:18:44] Brandon Hancock: I can't tell.
+[00:18:44] Brandon Hancock: I just quickly skimmed just to see.
+[00:18:48] Brandon Hancock: But I'll let you know.
+[00:18:49] Ty Wells: Yeah, I'll check it up.
+[00:18:50] Brandon Hancock: Thanks.
+[00:18:51] Brandon Hancock: Of course.
+[00:18:51] Brandon Hancock: And I think Dave had a – he texted me in the chat real fast.
+[00:18:56] Dave Gottschalk: Dave, if you just want to hop on real fast, buddy, happy to answer your question.
+[00:18:58] Dave Gottschalk: questions?
+[00:18:59] Dave Gottschalk: Do
+[00:19:01] Dave Gottschalk: Sure.
+[00:19:01] Dave Gottschalk: Great meeting you guys.
+[00:19:02] Brandon Hancock: My first time here.
+[00:19:05] Dave Gottschalk: So thanks for the opportunity.
+[00:19:08] Dave Gottschalk: I'm building a new thing.
+[00:19:10] Dave Gottschalk: Going to market, similar to sounds like what you're going through, Brandon.
+[00:19:14] Dave Gottschalk: So that was my question, like cold outreach, trying to tell people about what your thing is.
+[00:19:19] Dave Gottschalk: Always a problem, concern.
+[00:19:22] Dave Gottschalk: We can build stuff.
+[00:19:23] Dave Gottschalk: Maybe you guys are better at building stuff than I am, but going to market is always until you get your first thousand customers or, you know, pick your number.
+[00:19:33] Dave Gottschalk: Uh, you don't know what you got because everything in your head is a great idea.
+[00:19:38] Dave Gottschalk: So you got to get in other people's heads and that's the way you do it is ask them what they think about how awesome you are.
+[00:19:46] Brandon Hancock: Yeah.
+[00:19:47] Brandon Hancock: So, so what I, what I could do, I'd like actually to share my screen, Dave, and just show you exactly what we're doing, how we got here and how we continually improve.
+[00:19:54] Brandon Hancock: Just because like, it's never a, just do it once and you're like, oh, it's, it's working perfectly forever.
+[00:19:59] Brandon Hancock: Like it's
+[00:20:00] Brandon Hancock: That's not how it works.
+[00:20:01] Brandon Hancock: So let me just show something super fast.
+[00:20:05] Brandon Hancock: So what we do, at least what I'm actively doing right now for direct outreach, is I'm using Claude to go city by city, because I know exactly where my customers are.
+[00:20:16] Brandon Hancock: They're private ambulance companies, hospitals, or fire departments.
+[00:20:19] Brandon Hancock: So it's very easy to find these people and allow Claude to discover who's the chief, who's the owner.
+[00:20:24] Brandon Hancock: So I can easily find my customers and research them, which is a cheat code.
+[00:20:28] Brandon Hancock: Like, they're on a public registry.
+[00:20:29] Brandon Hancock: That usually doesn't happen.
+[00:20:31] Brandon Hancock: So that's awesome.
+[00:20:32] Brandon Hancock: And I can usually try to find some additional data about them, such as, like, how many units do they have?
+[00:20:37] Brandon Hancock: Like, I can get in a ballpark.
+[00:20:38] Brandon Hancock: I'm not going to be perfect, but it's enough to, like, pitch an educated guess to them.
+[00:20:43] Brandon Hancock: And heck, if it's off, it's actually better because I can actually say, like, these are just numbers.
+[00:20:48] Brandon Hancock: Let's hop on a call and let's get you accurate numbers.
+[00:20:50] Brandon Hancock: So it's kind of like a, you know, it kind of helps open the conversation.
+[00:20:53] Brandon Hancock: But here's what I try to do in every video or every outreach.
+[00:20:59] Brandon Hancock: let's Bye.
+[00:20:59] Brandon Hancock: Bye.
+[00:21:00] Brandon Hancock: While small, I try to put in as much effort and as much value into each direct outreach as possible to improve the likelihood that they just open the door.
+[00:21:12] Brandon Hancock: I'm not a big fan of Instantly because it's just shooting like a thousand bullets at the wall and maybe something hits, but I would much rather, you know, kind of be like a sniper, I guess would be the way to describe it, of like, hey, I want to reach out to each person with max value to, because I just don't want to burn through my whole customer base.
+[00:21:31] Brandon Hancock: Like, you know, I don't have that opportunity.
+[00:21:33] Brandon Hancock: There's 18,000 of them.
+[00:21:35] Brandon Hancock: I don't want to annoy 10,000 and be like, damn, I just burned half the market.
+[00:21:40] Brandon Hancock: So, high value, you know, very direct, high value, call them by their name and everything.
+[00:21:45] Brandon Hancock: Then, our exact direct outreach is we showcase what we do.
+[00:21:52] Brandon Hancock: Like, I mean, I'll just give you the pick.
+[00:21:53] Brandon Hancock: It would be like for this one.
+[00:21:55] Brandon Hancock: It was like, hey, Zach, hope you're having a great day.
+[00:21:57] Brandon Hancock: My name is Brandon Hancock, co-founder of EMS.
+[00:22:00] Brandon Hancock: We help transport units just like yourselves, reduce their QA overhead, and, you know, 10x their reimbursement rate, and what I'd love to do in this video is just show you exactly how we work, make it easy for your crews, show you the proof and results of other agencies that are just like you, and then show you some estimates on how much money we believe we could save for your agency, and then talk about next steps.
+[00:22:21] Brandon Hancock: So it's just like I write out the gate, give them all the promises that I'm going to make in the video, and then I do the whole thing in like four minutes.
+[00:22:31] Brandon Hancock: So we quickly show the app in 30 seconds, like I hop screens, I show the app in action, so that they can see, oh , like instantly I understand what their app does, how it helps, and everything's great.
+[00:22:45] Brandon Hancock: Break down the proof of people just like them, of like, we made this agency another $2 million, and like, this is not the best one to actually make tweaks on this.
+[00:22:55] Brandon Hancock: And then just walk through, hey, for your agency size, we think we could help save you guys.
+[00:22:59] Brandon Hancock: thank Thank
+[00:23:00] Brandon Hancock: This is just saving, an additional $60,000 a year, but that's not even including all these other benefits.
+[00:23:06] Brandon Hancock: It doesn't even include other stuff.
+[00:23:08] Brandon Hancock: And here's what I mean by other stuff.
+[00:23:10] Brandon Hancock: I've sent out these direct outreaches, and because of this, we now have customer calls.
+[00:23:16] Brandon Hancock: And on these customer calls, they have now told me that, hey, our big concern is not only these three things, but it's actually training new employees because it takes so long to train people because we have high attrition.
+[00:23:27] Brandon Hancock: So now, I now update the slide to have a third thing, which is like, hey, it costs you around $5,000 per new employee to get them spun up.
+[00:23:36] Brandon Hancock: Well, hey, using us, we allow them to write 10 out of 10 reports on day two.
+[00:23:42] Brandon Hancock: So you don't have to spend as much money on training.
+[00:23:44] Brandon Hancock: So you send the direct outreach, have the conversation, pull out the keywords that they said, throw it into the next iteration, and it just has like a feedback loop to where every time I pitch, I'm pitching stronger because I'm using their words back to them.
+[00:23:57] Brandon Hancock: So they're like, holy , dude.
+[00:23:58] Brandon Hancock: Yeah.
+[00:23:59] Brandon Hancock: Like, you know,
+[00:24:00] Brandon Hancock: So that's, that is the feedback loop.
+[00:24:03] Brandon Hancock: So I hope, I hope that is helpful.
+[00:24:05] Brandon Hancock: And then I do, and then I do a, let me share one other thing.
+[00:24:10] Brandon Hancock: It's called Yesware.
+[00:24:12] Brandon Hancock: I'll, I'll drop a link in the chat.
+[00:24:15] Brandon Hancock: Let me do this.
+[00:24:16] Brandon Hancock: Yesware.
+[00:24:18] Brandon Hancock: But they basically allow you to track everything that gets sent out.
+[00:24:25] Brandon Hancock: You get to see who opened it, when they opened it.
+[00:24:28] Brandon Hancock: Did they click the link?
+[00:24:29] Brandon Hancock: Did they not?
+[00:24:29] Brandon Hancock: I mean, it's like some spy level stuff.
+[00:24:31] Brandon Hancock: But it's super cool if you're going to be doing this direct outreach.
+[00:24:34] Brandon Hancock: So yeah, that's kind of the playbook that we've been doing.
+[00:24:38] Brandon Hancock: Um, but it does take the product working and some social proof, but you know, only takes one success story to start the flywheel.
+[00:24:46] Brandon Hancock: Um, if that makes sense.
+[00:24:48] Dave Gottschalk: So how do you get the meeting in the first place?
+[00:24:51] Brandon Hancock: Yeah, that's, that's the cool part.
+[00:24:53] Brandon Hancock: These were all cold outreaches.
+[00:24:54] Brandon Hancock: I just found the guy.
+[00:24:55] Brandon Hancock: I sent him the email or I sent him the loom video.
+[00:24:59] Brandon Hancock: I mean, I'll just show you if you
+[00:25:00] Dave Gottschalk: I will just be hyper transparent.
+[00:25:02] Dave Gottschalk: But you did a Loom video, sent it directly to his email, they opened it, and they were like, cool, I want that.
+[00:25:09] Brandon Hancock: Exactly.
+[00:25:10] Brandon Hancock: And that's the whole ask at the very, I didn't show the last slide, but it's like the whole ask at the very end is like, hey, if this is of interest to you, saving $60,000 a year, minimum, by the way, minimum, would love to hop on a call so we could come up with a better estimate for you guys and answer any questions you might have.
+[00:25:30] Brandon Hancock: So that sent that, and then, who is this to?
+[00:25:33] Brandon Hancock: And I'll just show it to you.
+[00:25:35] Brandon Hancock: This one was actually, let me show you a better one.
+[00:25:39] Brandon Hancock: Let me find this.
+[00:25:40] Brandon Hancock: Oh, sorry, wrong email account.
+[00:25:41] Brandon Hancock: But yeah, I'll just show you the full thing so you guys can can steal this.
+[00:25:46] Brandon Hancock: A few seconds and I will, let me find the original email.
+[00:25:52] Brandon Hancock: I'll probably just take a screenshot and put it in there because I don't want to give away like old stuff.
+[00:26:00] Brandon Hancock: Well, I mean, I'll just show it.
+[00:26:04] Brandon Hancock: Here we go.
+[00:26:05] Brandon Hancock: Yeah, so I'll just drop it in chat.
+[00:26:08] Brandon Hancock: But basically, what you'll see in chat is like, said who I am, how I helped them, like how I found them, like I just actually saw them on the road when I was driving, told them the problem that they're most likely having, then I instantly said who I am, and we solved that exact problem.
+[00:26:28] Brandon Hancock: I actually made a video so you can see how we think we could help you guys save this amount of money in a year, if you want to watch it.
+[00:26:34] Brandon Hancock: And just, you know, the rough numbers, if you want to talk, let's talk.
+[00:26:37] Brandon Hancock: So that's kind of, that's at least a formula we have, I've been testing with, and it seems to be proving pretty like high, high success rate so far, relatively to like what usual cold outreach gets.
+[00:26:48] Brandon Hancock: Um, and I think it just comes down to a lot of like, being hyper clear on understanding their, their pain points and providing a valuable solution.
+[00:26:58] Brandon Hancock: um, that's,
+[00:27:00] Brandon Hancock: That makes them like, like when they hear that, they're like, oh , like I didn't even know that that was possible, but if you could do that for me, yeah, I'd love that.
+[00:27:07] Brandon Hancock: So it's like just honing in on that messaging, it would be the way I would describe it.
+[00:27:11] Brandon Hancock: But that is literally the entire feedback loop that we're testing right now for cold outreach.
+[00:27:15] Brandon Hancock: So I hope that's helpful.
+[00:27:20] Dave Gottschalk: Good, thank you.
+[00:27:22] Brandon Hancock: Of course.
+[00:27:22] Brandon Hancock: Hey, quick question, Dave, what are you building?
+[00:27:25] Brandon Hancock: I'd be curious to hear.
+[00:27:28] Dave Gottschalk: We're in the phase right now where data is the most valuable thing on the planet and we give it all away.
+[00:27:36] Dave Gottschalk: So I'm building the data ownership economy where people own and control all their online data.
+[00:27:43] Dave Gottschalk: Everything that currently makes money with data, now you make money with that data.
+[00:27:48] Dave Gottschalk: You end up having the most valuable data on the planet.
+[00:27:51] Dave Gottschalk: Portability is written into every law worldwide data.
+[00:27:56] Dave Gottschalk: Yeah.
+[00:27:58] Dave Gottschalk: For data.
+[00:27:58] Dave Gottschalk: Yeah.
+[00:27:59] Dave Gottschalk: I.
+[00:27:59] Dave Gottschalk: Yeah.
+[00:27:59] Dave Gottschalk: Yeah.
+[00:27:59] Dave Gottschalk: Yeah.
+[00:27:59] Dave Gottschalk: Thank
+[00:28:00] Dave Gottschalk: Privacy, so to speak, but privacy is defense.
+[00:28:03] Dave Gottschalk: Ownership is offense.
+[00:28:05] Dave Gottschalk: So when you own your data, you port it out, you got nowhere to port it to, now you have the place.
+[00:28:10] Dave Gottschalk: You bring it into my thing called Payback, Payback Owned, and you merge it all together into one account that you own and control, and you have it forever, it gets better every day, and now you have a whole new economy based on it.
+[00:28:26] Brandon Hancock: So out of curiosity, are creators the main customer?
+[00:28:32] Brandon Hancock: Who would be the main, I guess, I want to buy that, just out of curiosity?
+[00:28:36] Dave Gottschalk: Well, own is free.
+[00:28:38] Dave Gottschalk: So the premise is that everybody should own their own data.
+[00:28:43] Dave Gottschalk: Then the way you make money from it is advertising.
+[00:28:45] Dave Gottschalk: I mean, that's what data is used for today, but I don't like the model.
+[00:28:49] Dave Gottschalk: So anytime a marketer wants to talk to you, they invite you.
+[00:28:53] Dave Gottschalk: It's a new category of advertising called invitations.
+[00:28:57] Dave Gottschalk: So I invite you, if you engage, I pay you.
+[00:29:00] Dave Gottschalk: Now, you take that money over to the media side, and you say, hey, now I'm going to pay content creators directly for stuff that I consume.
+[00:29:09] Dave Gottschalk: So it's all ad-free, I pay for consumption, no subscriptions, whatever you engage with, that's what you pay for.
+[00:29:16] Brandon Hancock: Okay, that's awesome.
+[00:29:17] Brandon Hancock: Like I said, anytime you can help people fund their own specific knowledge, dude, I'm all in.
+[00:29:25] Brandon Hancock: So I've got to make sure people get paid for their work.
+[00:29:28] Brandon Hancock: So that's awesome.
+[00:29:29] Brandon Hancock: But yeah, happy to, happy to help, because you, the main thing is, this is a two-sided marketplace, that it sounds like, because like, you have to have the people making the data, and then you have to have the purchases of the data, so that, you know, you might have two separate email pitches, where like, pitch one is to invite the creators, and then pitch two is like, hey, I had this valuable data that you could, you know, and the more actionable you could make it to, like, here's why you'd want to pay these guys money, that's, if I was in your shoes, that's how I would do it.
+[00:29:58] Brandon Hancock: But, you know, I mean, and I would just be following.
+[00:30:00] Brandon Hancock: The playbook of Udemy, any video course platform, their go-to-market strategy, I would really look at like emulating, but yours is going the more agentic AI way, but it's still the same concept of I have valuable information, there's just happened to be in videos to teach people Python, HTML, whatever, and yours is just, you know, it is more intellectual, and I might be butchering some parts of it, but the same similar go-to-market strategy would probably be the, I would I'd rather emulate rather than recreate the wheel, if that makes sense.
+[00:30:33] Brandon Hancock: So, yeah, that's my two cents on it, so, but I'm very excited to see how it goes.
+[00:30:39] Dave Gottschalk: Yeah, I mean, the obvious part is that your data's worth more than you can imagine, and going forward it continues to grow in value, so to give it away for free is a relatively easy opportunity, people can download it and test it out, it doesn't cost them anything.
+[00:30:57] Dave Gottschalk: Now, all of a sudden, they start getting invitations.
+[00:31:00] Dave Gottschalk: Patients that start paying them, and they're like, holy , that happened fast, and now what am I going to do with it?
+[00:31:08] Dave Gottschalk: That part I haven't built yet, but the whole direct-to-media side.
+[00:31:12] Dave Gottschalk: So we can build the rails and finance everything at about a penny per minute.
+[00:31:17] Dave Gottschalk: So if you go on Reddit or you go on YouTube or whatever, you pay a penny per minute.
+[00:31:22] Dave Gottschalk: You earn at about a dollar per minute on the other side.
+[00:31:25] Dave Gottschalk: So most people would be interested in that, but we think the numbers will be significantly higher on the earnings side, so you'll have enough money to go pay directly for things all at free.
+[00:31:35] Dave Gottschalk: And that's my dream.
+[00:31:38] Brandon Hancock: That'd be cool.
+[00:31:39] Brandon Hancock: That'd be cool.
+[00:31:40] Brandon Hancock: Seriously, please keep us posted.
+[00:31:41] Brandon Hancock: But hopefully some advice is helpful, and dude, coolest time to be building.
+[00:31:45] Brandon Hancock: You'll be building faster than ever.
+[00:31:47] Brandon Hancock: So, dude, wishing you the best of luck, Dave.
+[00:31:49] Dave Gottschalk: And I know Juan had a few questions as well.
+[00:31:53] Juan Torres: Hey, Brandon.
+[00:31:54] Juan Torres: What did you decide to use for your infrastructure at the end of the day?
+[00:32:00] Brandon Hancock: Dude, same thing that we did in ShipKit.
+[00:32:02] Brandon Hancock: It is Supabase as the core backend.
+[00:32:05] Brandon Hancock: The main thing that is an addition is we have AWS and Google Cloud, but AWS is strictly just so we could use models like Claude.
+[00:32:17] Brandon Hancock: That's really all AWS is there for.
+[00:32:20] Brandon Hancock: And then when it comes to Google Cloud, it's so we can access Gemini, but we also use Google Cloud to run some backend jobs.
+[00:32:30] Brandon Hancock: So very similar to like the RAG pipeline in ShipKit.
+[00:32:34] Brandon Hancock: But in my case, it's doing, it is still document processing, but we also have some more ones.
+[00:32:38] Brandon Hancock: So very, very similar to what ShipKit was.
+[00:32:41] Brandon Hancock: It is the exact, it's just more flushed out and bigger is like the main thing.
+[00:32:46] Brandon Hancock: But yeah, mean, Supabase does charge you a pretty penny to get all of these like HIPAA, SOC2, like things like they're all add-ons.
+[00:32:55] Brandon Hancock: So every time you click a new button, they're like, that's $300 a month.
+[00:32:58] Brandon Hancock: That's $400 a month.
+[00:32:59] Brandon Hancock: But, you
+[00:33:00] Brandon Hancock: They charge you for it, but, like, it is very easy.
+[00:33:02] Brandon Hancock: So I will say it is nice.
+[00:33:06] Brandon Hancock: But yeah, that's what we're using Infrawise.
+[00:33:09] Juan Torres: Did you have any problems with the web scraping?
+[00:33:12] Juan Torres: Because I do remember trying to indicate to either clock code web scraping for particular clients in an industry.
+[00:33:20] Juan Torres: And it was saying, like, oh, I cannot collect their emails.
+[00:33:23] Juan Torres: That's a permissible kind of deal.
+[00:33:27] Brandon Hancock: So, I mean, what I do, because, like I said, I'm not doing this at mass, meaning scrape the entire nation at a time.
+[00:33:34] Brandon Hancock: So, like, in my case, it is, I just literally clawed.
+[00:33:38] Brandon Hancock: Like, I have a skill that I have on my local computer.
+[00:33:41] Brandon Hancock: And every time I want to reach out to a new area, I have a state.
+[00:33:45] Brandon Hancock: A state has cities and counties.
+[00:33:47] Brandon Hancock: And then within those, there's private ambulance companies, fire departments, and everyone else.
+[00:33:52] Brandon Hancock: So it's just, like, imagine a graph, like, or a tree towards, like, the city is the root node, sorry, the state's the root node, then the counties and cities.
+[00:34:00] Brandon Hancock: And then they go down from there.
+[00:34:01] Brandon Hancock: So it's a very easy search problem for my stuff to find.
+[00:34:05] Brandon Hancock: And it doesn't even have to get it perfect, because we also have something with Appify, to where the second I find a few guys' names, if their information is not there, it just has some like Appify tokens that does like a LinkedIn scrape and stuff.
+[00:34:16] Brandon Hancock: It's a tool call, basically, for my agent.
+[00:34:18] Brandon Hancock: So it's all done through Claude.
+[00:34:20] Brandon Hancock: I would use Haiku, I think, to do most of it.
+[00:34:23] Juan Torres: I didn't, I didn't mean as if technically possible, but the model on its ethics indicates that it's not supposed to, that you haven't encountered that issue?
+[00:34:35] Brandon Hancock: No, I have, Opus has done weird stuff in the past with any time I'm like, Opus is like a stickler.
+[00:34:42] Brandon Hancock: Haiku, I've had, I have not run into any issues with that.
+[00:34:45] Brandon Hancock: And I think it's all public data, too.
+[00:34:46] Brandon Hancock: So it's not even like I'm trying to like, be weird.
+[00:34:48] Brandon Hancock: It's just like, what's the website say?
+[00:34:51] Brandon Hancock: And it's like, okay.
+[00:34:52] Brandon Hancock: So maybe it might just be like private individual stuff versus a public official.
+[00:34:57] Brandon Hancock: I'm not sure.
+[00:35:00] Brandon Hancock: So that's how we're doing it right now.
+[00:35:04] Juan Torres: Gotcha.
+[00:35:05] Brandon Hancock: Okay, cool.
+[00:35:07] Brandon Hancock: All right, we'll keep on cruising.
+[00:35:08] Brandon Hancock: I think Paul and Patrick.
+[00:35:13] Patrick Chouinard: Mr.
+[00:35:13] Patrick Chouinard: Paul?
+[00:35:17] Paul Miller: Hey, Brandon.
+[00:35:19] Paul Miller: So a few things going down.
+[00:35:24] Paul Miller: The wonderful thing, which I don't know if it was across the line when we were both last on the call, but our CTO is fully AI, really into everything now.
+[00:35:42] Brandon Hancock: Got got the bug.
+[00:35:44] Paul Miller: Yep.
+[00:35:44] Paul Miller: Yep.
+[00:35:45] Paul Miller: He's a real clawed man.
+[00:35:47] Paul Miller: haven't told him yet.
+[00:35:48] Paul Miller: He probably needs to move to Codex, but look, we take the wins.
+[00:35:52] Brandon Hancock: Baby steps.
+[00:35:53] Paul Miller: Baby steps.
+[00:35:56] Paul Miller: That's funny.
+[00:35:58] Paul Miller: He's rewriting...
+[00:36:00] Paul Miller: All of our legacy code.
+[00:36:01] Paul Miller: So he's going through everything.
+[00:36:03] Paul Miller: He is extracting technical documentation out of it so he can build a vision for the next version of the platform.
+[00:36:12] Paul Miller: So, you know, I've got a lot of legacy code.
+[00:36:15] Paul Miller: We've got a lot of stuff, stuff written in C-sharp.
+[00:36:17] Paul Miller: We've got the server components.
+[00:36:19] Paul Miller: We've got native field apps because we've got iOS and Android stuff.
+[00:36:26] Paul Miller: He's going through the whole lot.
+[00:36:28] Brandon Hancock: Seriously.
+[00:36:30] Paul Miller: I've been going crazy about it.
+[00:36:32] Paul Miller: It's brilliant.
+[00:36:33] Brandon Hancock: That makes me happy.
+[00:36:34] Brandon Hancock: I know for a while there, you were starting to get some gray hairs from it, man.
+[00:36:38] Brandon Hancock: Oh, it makes me happy that it's all finally going in the right direction.
+[00:36:44] Paul Miller: Yeah.
+[00:36:45] Paul Miller: So the good thing is I don't have to worry about that as much.
+[00:36:48] Paul Miller: I can focus now back on the selling and customers that have asked for new features are happening really fast now.
+[00:36:56] Paul Miller: So that, that's just, that's just wonderful.
+[00:36:59] Paul Miller: But.
+[00:37:00] Paul Miller: I'm also getting into, because Patrick, you had your project the other day, you were doing some stuff with Lance DB in terms of organising information and things, and one of our, the nature of my sort of base company is we have a lot of data in which people have captured notes or discussions or audits of retailers, and it's in all sorts of formats.
+[00:37:30] Paul Miller: I'm trying to build that so it's a lot more searchable and usable, and I'm putting it into sort of Lance DB to make it easier to, because of the nature of the data entity types, I'm in the middle of mapping that out and working with that, but a question for Patrick, had you done any more communication with what you'd been doing, I know it was a little private project and sharing
+[00:38:00] Patrick Chouinard: Matt, is there anything I No, it's actually, well, it's actually public.
+[00:38:04] Patrick Chouinard: I'm not going to say it's finished, far from it, but it is public now, so I can put the link in the chat if you want.
+[00:38:12] Paul Miller: Yeah, that would be great.
+[00:38:14] Paul Miller: That would be great.
+[00:38:18] Patrick Chouinard: And it keeps on growing every week.
+[00:38:20] Patrick Chouinard: I keep on inserting every new transcript into it.
+[00:38:24] Paul Miller: So what I'm trying to do is have a comprehensive knowledge base that is a mixture of agentic searching, old-fashioned rag, upgraded rag with re-sorting, and then testing it constantly for needle and haystack and bigger trends as to what's happening.
+[00:38:59] Paul Miller: go.
+[00:39:02] Paul Miller: But it's really good.
+[00:39:06] Paul Miller: Yeah, Ryan, I will come back to you on that other stuff.
+[00:39:10] Paul Miller: But the final thing is I've got a sort of a new AI start, a new AI client.
+[00:39:18] Paul Miller: Well, it's not a new, I started with them, started the year building a big new enterprise system with them.
+[00:39:25] Paul Miller: That's going really well, other than I think if you're thinking about transforming a business, and this will be interesting for you, for what you're doing, Brandon, but we're taking an existing business and providing them a whole sort of business management system for a logistics company.
+[00:39:49] Paul Miller: The challenge was some of their processes, despite them spending hundreds of thousands on building a requirements and
+[00:40:00] Paul Miller: Documents and doing a whole of the BA work with an external company, they don't follow, their processes are not consistent, so we start building lots of code, and they say, well, that's kind of not what we do.
+[00:40:15] Paul Miller: It's like, well...
+[00:40:15] Brandon Hancock: You're supposed to do.
+[00:40:17] Paul Miller: You said you were going to do.
+[00:40:19] Paul Miller: You want efficient coding, you want the project furnished on time, on budget, you really need the process to be mapped out, give that to us, and give us feedback on that, we can workshop through it, and then we can start the coding.
+[00:40:36] Paul Miller: Oh, isn't that what AI can do?
+[00:40:38] Paul Miller: No, no, no, no.
+[00:40:41] Paul Miller: AI can do lots of things, and it's pretty simple business.
+[00:40:45] Paul Miller: It's like, you get an order, they need to move this container from this point to this point, at this time, this date, here's the other things that need to happen.
+[00:40:57] Paul Miller: How can this be complex?
+[00:40:59] Paul Miller: It's like, oh...
+[00:41:00] Paul Miller: Well, you know, they might not know the destination, and then they'll come back, and it's like, oh, come on, guys.
+[00:41:08] Paul Miller: So we've been having some fun with that, but we've gone back to them and said, look, either you have that right, or you're going to pay for another business analyst that is going to sit in your office and make your life hell until you define that.
+[00:41:26] Paul Miller: And I think that while I'm loving how good the AI models are, well, they were a bit better, but until the government pushed it back, I hope we get the fancy ones back soon, but it's still the old-fashioned problem of what's the process, how does it need to be, use the sign-off, that's the process, load the app on it, test it against the process, move on to the next level.
+[00:41:59] Paul Miller: It's the- those
+[00:42:00] Paul Miller: These are the bits that still have to happen and have to happen really well.
+[00:42:03] Brandon Hancock: Yeah, that's the foundation.
+[00:42:05] Brandon Hancock: Paul, I want to mention a few things just to help for the co-founder, your co-founder and everything, just to make sure I'm on the same page.
+[00:42:12] Brandon Hancock: So he, your CTO, sorry.
+[00:42:15] Brandon Hancock: So he is now, like, I know you said he obviously is using AI to start building now that he's all in on AI.
+[00:42:22] Brandon Hancock: So is he just repurposing the app?
+[00:42:26] Brandon Hancock: Is he just rebuilding it?
+[00:42:27] Paul Miller: Like, what's he actually doing just out of curiosity?
+[00:42:29] Paul Miller: So we've got significant, um, development IP, 10 years of coding.
+[00:42:36] Paul Miller: So he is taking all of that.
+[00:42:39] Paul Miller: Um, he's wanting to remove, uh, technical debt.
+[00:42:43] Paul Miller: So he's going back and auditing that with his dev tools, um, capturing all of the core stuff in there, the sort of debt for coding.
+[00:42:53] Brandon Hancock: What were the rules?
+[00:42:54] Paul Miller: What was the workflow?
+[00:42:56] Paul Miller: Uh, and establishing a strong, uh, baseline and also.
+[00:43:00] Paul Miller: Having our BA essays saying, well, look, this is how the app should work, CTO's got an understanding of how it does work in terms of how the app works with that, just so we have a very clear, documented understanding of what it is now, and then, as we look at changing it, we've got a basis of saying, well, this is what we do now, this is how we want to improve it, or this is how we want to replatform it to make it more efficient.
+[00:43:28] Paul Miller: Okay, no, that's awesome.
+[00:43:31] Brandon Hancock: The one thing I was going to mention that we have done to help us, like, sleep better at night is, like, because I love what y'all are doing right now.
+[00:43:38] Brandon Hancock: It's like, hey, current state, let's make sure, you know, just with any code-based technical debt does occur until it's, like, taken care of.
+[00:43:45] Brandon Hancock: So I love that, like, you're going to get to a good, clean state, and then now what's going to happen next is new features are going to come in.
+[00:43:52] Brandon Hancock: The old way, human way of doing it is people are the pipeline.
+[00:43:57] Brandon Hancock: So because it takes so long to build out, the review
+[00:44:00] Brandon Hancock: also takes probably equally as long.
+[00:44:02] Brandon Hancock: So it's just like a one-to-one ratio.
+[00:44:04] Brandon Hancock: But what happens now that your CTO is about to find out is it's like 10 to 1, meaning we're going to do 10 times the amount of work, but we still only have so many review hours, basically.
+[00:44:16] Brandon Hancock: So now it's like the reviewer becomes the bottleneck.
+[00:44:19] Brandon Hancock: So here's a few things that we have done.
+[00:44:22] Brandon Hancock: A, we have sandboxes for everything that we do.
+[00:44:26] Brandon Hancock: Anytime we build a new feature, it's a throwaway thing.
+[00:44:28] Brandon Hancock: So it's literally in its own environment.
+[00:44:30] Brandon Hancock: We have it build its own test.
+[00:44:32] Brandon Hancock: If the AI completely shut the bed and it destroyed the database, so be it, you know?
+[00:44:38] Brandon Hancock: So really embrace doing, you know, separate environments that are spinoffs.
+[00:44:44] Brandon Hancock: That's really going to help make it to where he could work on 10 things at Parallel and just try out as many bugs that you guys get in.
+[00:44:50] Brandon Hancock: Okay, well, cool.
+[00:44:51] Brandon Hancock: Now what's the next bottleneck?
+[00:44:53] Brandon Hancock: Well, now I have 10 things that I've been working on in Parallel and they all have to go into staging.
+[00:44:59] Brandon Hancock: So...
+[00:45:00] Brandon Hancock: Like, how you're talking about this company does not have a particular process for how they do their shipping and everything, while, like, well, as developers, we need to have a standardized process of, like, how do we take this code that was done in a sandbox and maybe three other features at the same time and merge them into staging in a safe way.
+[00:45:18] Brandon Hancock: So, like, you'll start to actually, like, these are just things to bring up to your CTO of, like, we need to have a skill for every single one of these, creating the sandboxes, merging sandbox into staging, merging staging into main, like, every one of these is a skill with tests, reviews, cleanups, like, everything in here has to be done, or else you're just going to get stuck at a bottleneck, um, and you'll just, the business will cap until that bottleneck is resolved.
+[00:45:43] Brandon Hancock: So I just want to, like, throw some, some ideas your way, just so when he's talking, it, um, it might, um, it might just open his eyes to a few things, uh, and David had a quick question, so yeah, we have Supabase for ours, and every time we create a new sandbox for a new feature, it's a
+[00:46:00] Brandon Hancock: It's a Supa-based branch, so we basically, in our project, we make a branch that's ephemeral, meaning, like, as soon as the work tree is done, it deletes automatically, so we're not paying 20 bucks a month, you know, it's up for two days and it's gone, cool, we paid $2.
+[00:46:15] Brandon Hancock: Yeah, Supa-based branching is the key for us, and then we just seed it with as much real-life-looking data as possible to where every time you're working on something, it feels like you're working on the app, not just like a shell of the app.
+[00:46:26] Brandon Hancock: So, these are just a few things that we're doing, but I just wanted to share it, because it's really helping us move stupid fast.
+[00:46:34] Paul Miller: Thank you.
+[00:46:36] Brandon Hancock: Yeah, of course.
+[00:46:38] Brandon Hancock: Yeah, those are all the things, but yeah, Paul, I'm very excited to hear how it's going.
+[00:46:42] Brandon Hancock: I should have time around, I think, like, 5.30 tomorrow, but I'll text you after this.
+[00:46:48] Paul Miller: Okay.
+[00:46:49] Paul Miller: Thank you.
+[00:46:50] Brandon Hancock: Perfect.
+[00:46:50] Brandon Hancock: Alright, cruising next is my man Patrick.
+[00:46:54] Brandon Hancock: What's going on?
+[00:46:55] Patrick Chouinard: Hey, so welcome back.
+[00:46:58] Patrick Chouinard: Feels good.
+[00:46:59] Brandon Hancock: Feels good.
+[00:47:00] Patrick Chouinard: It's longer than usual, so, uh, but, yeah, no, you tell me, yeah, I'm sorry, man, uh, yeah, so, uh, basically, as I said, uh, earlier on, stress is making me more creative, my, my, my, Claude Code is not my way to relax, so, I have it still coding right now, actually, uh, that's awesome.
+[00:47:30] Patrick Chouinard: So, uh, as I told you, the, the one thing I've worked on last week, well, uh, as of, uh, Sunday, obviously, not Saturday, uh, was, uh, my, uh, front-end for Agent Ops.
+[00:47:43] Patrick Chouinard: Uh, I know for some of the guys who've been here every week, Agent Ops is a harness that I'm building on top of Hermes in order to manage my home lab.
+[00:47:53] Patrick Chouinard: So, basically, what it does is, it, it's a set of, uh, MCP CLI.
+[00:47:59] Patrick Chouinard: See ya, life.
+[00:47:59] Patrick Chouinard: life.
+[00:48:00] Patrick Chouinard: It a bunch of scripts, and a bunch of connectors to hook onto all of my Homelab services, and it uses the Homelab itself as its nervous system.
+[00:48:16] Patrick Chouinard: Basically, what I mean by that is Hermes is on one VM running on Proxmox, and Proxmox is behind a traffic reverse proxy, which gets authenticated using Authentic.
+[00:48:31] Patrick Chouinard: So there's a whole lot of self-hosted tools that manage the lab.
+[00:48:37] Patrick Chouinard: Well, the lab in itself needs to then be controlled by something, and that's AgentOps.
+[00:48:44] Patrick Chouinard: And that's what Spot is continuing to build right now.
+[00:48:47] Patrick Chouinard: So basically, it hands control to a Hermes instance, the ability to spawn new VM or new container on Proxmox.
+[00:48:59] Patrick Chouinard: from this.
+[00:48:59] Patrick Chouinard: harbor.
+[00:49:00] Patrick Chouinard: Connect to an existing VM that is defined as a Docker host to spawn new container inside of it.
+[00:49:06] Patrick Chouinard: It can create new entries in the reverse proxy.
+[00:49:09] Patrick Chouinard: It can create new authentication in Authentic.
+[00:49:12] Patrick Chouinard: And all of this security is managed through a secret management system called Infysical.
+[00:49:18] Patrick Chouinard: So it's the poor man version of a vault, basically.
+[00:49:24] Patrick Chouinard: But it's actually pretty nice.
+[00:49:26] Patrick Chouinard: So it's a very nice system, but it has very good tooling.
+[00:49:30] Patrick Chouinard: So now, anytime my agent needs to access an API key for anything, it doesn't use its own ENV file.
+[00:49:39] Patrick Chouinard: It actually asks Infysical to give it access.
+[00:49:43] Patrick Chouinard: And Infysical is there to do all the key rotation and all of that.
+[00:49:47] Patrick Chouinard: So basically, my lab is alive now.
+[00:49:52] Brandon Hancock: Alive.
+[00:49:53] Brandon Hancock: And secure.
+[00:49:54] Brandon Hancock: And secure.
+[00:49:54] Patrick Chouinard: Alive.
+[00:49:55] Patrick Chouinard: Exactly.
+[00:49:56] Patrick Chouinard: Exactly.
+[00:49:56] Patrick Chouinard: And I've created a little...
+[00:49:59] Patrick Chouinard: Alive.
+[00:50:00] Patrick Chouinard: So that I really like because I realized that I was documenting everything I was doing in the form of a website.
+[00:50:07] Patrick Chouinard: So you've seen my architecture for OpenClaw, you've seen like all of those.
+[00:50:11] Patrick Chouinard: Well, now I have a skill because my way of deploying is my main domain is controlled by Hostinger.
+[00:50:19] Patrick Chouinard: And then I create subdomain for every project that I have, but those projects are hosted in Cloudflare as Cloudflare pages.
+[00:50:29] Patrick Chouinard: So I wanted a way to just tell CloudCode, like, publish this.
+[00:50:33] Patrick Chouinard: And it would create the project on Cloudflare.
+[00:50:38] Patrick Chouinard: It would go and do the DNSC name on Hostinger, bind everything, upload the thing, like one shot.
+[00:50:48] Brandon Hancock: Really?
+[00:50:49] Patrick Chouinard: And the one site I've actually built with this is the AgentOps documentation site.
+[00:50:58] Patrick Chouinard: So that site is...
+[00:50:59] Patrick Chouinard: is...
+[00:51:00] Patrick Chouinard: It's by CloudCode based on the AgentOps project itself, so it's a full site in the form of a white paper plus an item explorer, but all of that has been published out of that skill, it just published my site and it created everything it had to, so it's in a way one of the appendage of AgentOps on Hermes.
+[00:51:27] Brandon Hancock: So, Patrick, real quick, so how, so going from raw code to website, obviously, like, there has to be a middle step somewhere that's automating the creation of this white paper, and like, is that just like a part of your, like, CI pipeline of, like, making YAML files to then, or...?
+[00:51:46] Patrick Chouinard: Not yet.
+[00:51:47] Patrick Chouinard: Right now, it's pure conversation.
+[00:51:49] Brandon Hancock: It's...
+[00:51:50] Brandon Hancock: Okay.
+[00:51:50] Patrick Chouinard: I'm just chatting with Claude's like, hey, and honestly, Claude memory has improved a lot recently.
+[00:51:58] Patrick Chouinard: So, now when I thought...
+[00:52:00] Patrick Chouinard: Talk about creating a documentation site out of a project, I've done it enough time that it knows exactly what I want, that's the magic, when you interact with those agents enough, I mean, at some point, it's quite funny because now that I build Agent Ops, I realize that the human management of my home lab is done through Claude Code, where Ermes is the automated agent.
+[00:52:34] Brandon Hancock: What do you, out of curiosity, for Ermes, what do you, are you using OpenAI or are you doing a different model?
+[00:52:40] Brandon Hancock: Are you doing OpenRoute or something?
+[00:52:42] Patrick Chouinard: No, OpenAI, it's on my subscription.
+[00:52:45] Brandon Hancock: I pull the trigger now.
+[00:52:47] Patrick Chouinard: I don't buy glasses, I buy subscriptions.
+[00:52:52] Patrick Chouinard: So I have a hundred bucks a month subscription for OpenAI and one for Entropic.
+[00:52:58] Brandon Hancock: Oh, I gotcha.
+[00:53:00] Patrick Chouinard: It's just the 100, but I have 100 on both, so...
+[00:53:03] Patrick Chouinard: And while I build with Claude, I have Codex and Copilot that monitors my GitHub repos.
+[00:53:14] Patrick Chouinard: And now as part of my loop, I ask Claude Code to monitor every PR for half an hour to give the time to Codex and Copilot to post their analysis.
+[00:53:29] Brandon Hancock: Yeah.
+[00:53:29] Patrick Chouinard: And I tell them to actually automatically reply and resolve the issue that are found by the code reviewer.
+[00:53:37] Brandon Hancock: That's awesome.
+[00:53:38] Brandon Hancock: The whole thing is automated.
+[00:53:40] Patrick Chouinard: I love that.
+[00:53:40] Patrick Chouinard: Yeah.
+[00:53:41] Brandon Hancock: How are you doing the loop?
+[00:53:43] Brandon Hancock: Wait, is that what...
+[00:53:44] Brandon Hancock: Who's looking over?
+[00:53:45] Brandon Hancock: Who's doing the loop?
+[00:53:46] Patrick Chouinard: Is that Hermes that's looking?
+[00:53:48] Patrick Chouinard: I just tell the Claude Code, push the PR, create the PR, and monitor the PR for the next half hour and answer every comment.
+[00:53:58] Patrick Chouinard: see.
+[00:53:59] Patrick Chouinard: Correct Correct Correct Correct every every issue.
+[00:53:59] Patrick Chouinard: issue.
+[00:53:59] Patrick Chouinard: issue.
+[00:54:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I wait to talk about this more, because Patrick, you know you set me on fire with this.
+[00:54:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I've done it.
+[00:54:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This is going to be a fun conversation tonight.
+[00:54:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's all I gotta say.
+[00:54:13] Patrick Chouinard: But yeah, that's the thing.
+[00:54:16] Patrick Chouinard: And on top of that, because obviously that was not enough yet, I've created two other repo that are being built as we speak.
+[00:54:28] Patrick Chouinard: The first one is what I told you about the Loop Builder, the Loop Forge.
+[00:54:32] Patrick Chouinard: So basically, I created a repo or a tool that allows me to take a raw intent statement and convert it into a slash goal prompt to be given to the other system to implement, to run on a goal, so to run long running operations.
+[00:54:55] Patrick Chouinard: But to feed those into it, the problem is, like I said, I...
+[00:55:00] Patrick Chouinard: Like I told you, I talk to ChatGPT all the time, like every single minute of the day, I'm talking to it, so a lot of the idea are pieces of a conversation, so I didn't want to lose that, and I didn't want to have to then scroll back into a chat log that spawned three hours to figure out the statements that contained the information I wanted.
+[00:55:21] Patrick Chouinard: So, I'm building an MCP to be deployed through the OpenAI infrastructure, so it's available to ChatGPT mobile, so I will be able to invoke it, so it will actually create, whenever I invoke it, it will look at the, my communication for the last couple of minutes, and summarize the intent behind it, and then create a GitHub issue in a specific GitHub repo with that intent.
+[00:56:00] Patrick Chouinard: And that list of issues will be monitored by the Loop Forge as a pipeline of incoming stuff.
+[00:56:10] Patrick Chouinard: So I will be in my car just like, oh, that's interesting, create an issue with it.
+[00:56:16] Patrick Chouinard: It's going to go and it's going to pile onto the pipeline and it's going to get processed in the back end.
+[00:56:21] Brandon Hancock: That's awesome.
+[00:56:22] Brandon Hancock: And just to say it back, just to make sure I understand.
+[00:56:24] Brandon Hancock: So CHPT, you talk as much context as possible.
+[00:56:29] Brandon Hancock: You say magic command that's really an MCP under the hood that creates a GitHub issue.
+[00:56:35] Brandon Hancock: And then who's or what service or what agent is monitoring GitHub to check for new issues, then auto-do.
+[00:56:43] Brandon Hancock: Who is the actor?
+[00:56:45] Patrick Chouinard: That's the Loop Forge, which is just...
+[00:56:48] Brandon Hancock: Okay, okay.
+[00:56:49] Patrick Chouinard: It's basically just a workflow that is running on Codex.
+[00:56:57] Brandon Hancock: Okay.
+[00:56:58] Patrick Chouinard: Oh, there's a new issue.
+[00:57:00] Patrick Chouinard: Let's read it and pass it, because the LoopForge, it's a very, very simple pipeline that just reformat that intent into a fully detailed information.
+[00:57:13] Patrick Chouinard: So it will stay there.
+[00:57:15] Patrick Chouinard: It will not create the prompt automatically.
+[00:57:18] Patrick Chouinard: It will just ingest it and put it in the pipeline, because then I need to connect, because this is an interrogation.
+[00:57:25] Patrick Chouinard: It's going to, oh, so you say you want this.
+[00:57:28] Patrick Chouinard: So you're missing your target audience.
+[00:57:31] Brandon Hancock: You're missing this information.
+[00:57:33] Patrick Chouinard: So it's going to interrogate me to get all that information and then create the solid prompt that can then run for a day or two in a goal.
+[00:57:42] Brandon Hancock: What I think is really cool is, like, abstracting this out, which is, like, basically background services on steroids.
+[00:57:48] Brandon Hancock: And, like, I know right now we're talking about coding, but, like, the other thing that, like, really comes to my mind is, like, content.
+[00:57:54] Brandon Hancock: So it's, like, the exact same conversation about building a feature could also be about, like, oh, doing a blog post.
+[00:57:59] Brandon Hancock: Thank you.
+[00:58:00] Brandon Hancock: If a YouTube video or doing literally anything, this process could be applied.
+[00:58:04] Brandon Hancock: So I love this.
+[00:58:06] Brandon Hancock: That is very freaking cool what you guys have done.
+[00:58:10] Brandon Hancock: I think Bastian sent you some cool stuff, too.
+[00:58:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, I want to jump in on this, too, because, like, dude, Patrick, like, so I ripped out Ironclaw.
+[00:58:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, Brandon, so you probably don't know, but, like, last week I jumped on here and I forgot to look at Hermes.
+[00:58:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I've been working on an Ironclaw build for a while on a Mac Mini, and, like, Patrick sent me down this road and I was like, oh, there it is.
+[00:58:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm like, I ripped it out and pivoted and, like, in two days I have a better system with Hermes than I ever did with Ironclaw.
+[00:58:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, it's, like, I ripped it out and, man, so what I love about your, like, your GitHub thing, Patrick, is, like, everybody looks at this differently, right?
+[00:58:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, what I did with GitHub was I...
+[00:59:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I a cron job where it read-only pat, I have a way I do my apps where I have a docs folder, and then obviously everybody, if you're in cloud code, does the CloudMD file, so I actually have something that reads into my database, it pulls into my local database nightly, a cron job, all of my app documentation across customers, so that my Hermes agent actually understands my apps.
+[00:59:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I love listening to, like, what you were saying, though, because, like, it's just so different, like, we all think about this stuff so differently, right?
+[00:59:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, your thing was totally different than what I was thinking, like, like, we all just think of this completely differently.
+[00:59:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I just love it.
+[00:59:51] Patrick Chouinard: Yep.
+[00:59:52] Patrick Chouinard: Honestly, I've used those tools for one simple reason.
+[00:59:55] Patrick Chouinard: I wanted that to work in ChatGPT.
+[01:00:01] Patrick Chouinard: To me, that's the easiest way to communicate verbally with any kind of AI.
+[01:00:06] Patrick Chouinard: It has nothing to do with the model.
+[01:00:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, and the fact that we can use OAuth for, like, because that's, like, so we talked about this a little bit here.
+[01:00:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, local models, like, Mac Mini is pretty tough to, like, push the boundaries.
+[01:00:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, you can only do, like, a 7 billion model.
+[01:00:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, there's not a lot of headroom for, like, context and stuff.
+[01:00:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So the fact that Hermes legally lets you do chat is killer.
+[01:00:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm using, I'm like, I will use five point, I will pay a hundred dollars and use 5.5, like, you know, all day long.
+[01:00:39] Brandon Hancock: Any day of the week.
+[01:00:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, yeah.
+[01:00:43] Patrick Chouinard: And right now, since they allow you to reset your threshold.
+[01:00:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:00:49] Patrick Chouinard: Yeah, you get two resets a day.
+[01:00:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:00:51] Patrick Chouinard: I mean, with a hundred bucks a month, I get an insane amount of...
+[01:00:57] Patrick Chouinard: I will tie this in when I get to show some stuff.
+[01:01:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Tonight as well, but with the CC security review thing I was teasing earlier.
+[01:01:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:01:05] Brandon Hancock: Hey, final question, just on the review thing.
+[01:01:08] Brandon Hancock: So first off, I thought I was just special.
+[01:01:10] Brandon Hancock: So that just ruined.
+[01:01:12] Brandon Hancock: I was like, man, they really like me.
+[01:01:14] Brandon Hancock: They're giving me extra usage.
+[01:01:16] Brandon Hancock: I really appreciate the love and support.
+[01:01:18] Brandon Hancock: So I even tried looking it up and it was like, oh, they just do it.
+[01:01:22] Brandon Hancock: But like, I didn't know it was automatic.
+[01:01:24] Brandon Hancock: So I just thought they were just like, I was a preferred customer.
+[01:01:27] Brandon Hancock: felt like I was gonna get like a gold card or something.
+[01:01:28] Brandon Hancock: I didn't know they did it twice a day.
+[01:01:30] Brandon Hancock: Well, damn, that's disappointing.
+[01:01:32] Brandon Hancock: So, but no, I'm, I'm using the hell out of it.
+[01:01:36] Brandon Hancock: I hit, I hit the $200 plan on Claude.
+[01:01:39] Brandon Hancock: I was in Claude jail.
+[01:01:41] Brandon Hancock: I had the $200 plan on OpenAI.
+[01:01:42] Brandon Hancock: And then I started just ripping through those resets and it's, I was so thankful because I was just stuck.
+[01:01:48] Brandon Hancock: So, yeah, absolutely love it.
+[01:01:50] Brandon Hancock: Patrick, any other final things?
+[01:01:51] Brandon Hancock: Because like I said, so many cool projects you're working on.
+[01:01:53] Brandon Hancock: I just love how you literally are following the epitome of work, work on the process or work on the...
+[01:02:00] Brandon Hancock: The work itself, to make every action easier in the future, like you literally are the embodiment of that, so it's always cool to hear what you're working on, it always makes me very interested to open my brain.
+[01:02:10] Patrick Chouinard: One last piece of the home lab you might be interested in, all of that communication had to be managed by something, because there's a lot, it's a lot of message that goes from uptime Kuma to tell me the state of my servers, to a Prometheus or Grafana, or in physical to authentic, all of those have to talk to each other.
+[01:02:35] Patrick Chouinard: So I needed to build an integration highway of data between all of those that could be consumed by Hermes or myself.
+[01:02:46] Patrick Chouinard: And that's a product that I've discovered called NATS, N-A-T-S.
+[01:02:53] Patrick Chouinard: It doesn't have a UI, but it does message, it's basically...
+[01:03:00] Patrick Chouinard: The personal version of an ESB, an enterprise service bus.
+[01:03:03] Brandon Hancock: Really?
+[01:03:04] Patrick Chouinard: It creates a service bus of standardized message with publish, subscribe implementation.
+[01:03:11] Patrick Chouinard: And basically all of my system are publishing their data.
+[01:03:16] Patrick Chouinard: Hermes picks up whatever it needs from it.
+[01:03:18] Patrick Chouinard: It reacts.
+[01:03:20] Patrick Chouinard: And if it needs to push something back into one of the system, it just use the service bus as well.
+[01:03:25] Patrick Chouinard: So it's like the circulatory system of the lab, if I could say it like that.
+[01:03:31] Brandon Hancock: That's awesome.
+[01:03:32] Brandon Hancock: Like I said, I don't know, I need to rewatch this part to fully understand some things.
+[01:03:36] Brandon Hancock: So, but that is awesome, Patrick.
+[01:03:39] Brandon Hancock: Oh, very, very cool.
+[01:03:41] Patrick Chouinard: Just take the transcript, feed it to Claude, it's gonna understand it quickly.
+[01:03:46] Brandon Hancock: Explain it to me like I'm five.
+[01:03:47] Brandon Hancock: That's uh, I do that all the time.
+[01:03:50] Brandon Hancock: No, that's awesome.
+[01:03:51] Brandon Hancock: All right.
+[01:03:52] Brandon Hancock: Perfect.
+[01:03:53] Brandon Hancock: All right.
+[01:03:53] Brandon Hancock: Well, keep on cruising guys.
+[01:03:55] Brandon Hancock: Um, I think next up was, uh, it goes...
+[01:04:00] Brandon Hancock: Ryan, then Adam, then Juan.
+[01:04:05] Brandon Hancock: Yeah.
+[01:04:08] Ryan C: Sweet.
+[01:04:09] Ryan C: I've got nothing for show and tell today.
+[01:04:11] Ryan C: I feel like I'm letting the group down, so apologies.
+[01:04:14] Ryan C: I've been working and tinkering on...
+[01:04:15] Ryan C: Well, I've actually been working a lot on a website, but I can't show it to you because I'm under...
+[01:04:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Slacker.
+[01:04:19] Ryan C: Slacker.
+[01:04:20] Brandon Hancock: Slacker.
+[01:04:23] Ryan C: I'm on the $200 plan I have, you know.
+[01:04:26] Ryan C: I'm spending some tokens, but I've been doing a lot on a website for Kratom.
+[01:04:32] Ryan C: Which is quite a big thing in the US.
+[01:04:35] Ryan C: How do you spell that?
+[01:04:36] Ryan C: It's illegal everywhere else, because it's pretty bad for you, I think.
+[01:04:39] Ryan C: But K-R-A-T-O-M.
+[01:04:42] Ryan C: It's a bit like marijuana, but legal in quite a lot of US states.
+[01:04:49] Brandon Hancock: Huh.
+[01:04:50] Ryan C: It's a plant from Indonesia, I think.
+[01:04:53] Ryan C: But I'm building a website and a full CRM and my own version of MailChimp for them.
+[01:05:00] Ryan C: And I'm in the final stages of it, but I've just been throwing a load of time into that, but I can't really show anybody it, but I built the coolest drag-and-drop MailChimp-style mail builder, which is wicked, and it works.
+[01:05:11] Ryan C: I'm quite happy with myself with that.
+[01:05:13] Ryan C: I will be building a very similar feature into a different project that I will be able to show you, so watch this place for that.
+[01:05:20] Ryan C: And then I've started another company, just because I had some free time on my hands between about 3 a.m.
+[01:05:26] Ryan C: and 6 a.m., and I'm building up some people sleep.
+[01:05:31] Brandon Hancock: Yeah, well, who needs sleep?
+[01:05:33] Ryan C: You know, I'll do that when I'm dead in about 10 years' time.
+[01:05:36] Ryan C: Guys, this guy is the most unhealthy guy I know, ever.
+[01:05:41] Ryan C: I'm just enjoying my cider as well, just speaking of that.
+[01:05:46] Ryan C: And, yeah, so I'm starting an AI-forward CRM system for estate agents in the UK that they manage all their properties with, but it ingests all of their emails, WhatsApps, triages it, drafts...
+[01:06:00] Ryan C: Sponsors, does it in their brand voice, understands them, has a full RAG database with their history, etc., has like a companion iOS app with an AI chat that you can talk back and forth with that can just do pretty much everything within the system for them, so in theory, saving them time, a lot of automation, all that good stuff.
+[01:06:19] Ryan C: I can't remember if you were here last time when I showed that, but it's not in a position where I want to be showing it right now.
+[01:06:25] Ryan C: It needs a lot of work doing to it.
+[01:06:26] Ryan C: I spent about, I started it with Fable, and then Trump  me.
+[01:06:33] Brandon Hancock: Me too.
+[01:06:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm still thinking about it.
+[01:06:36] Brandon Hancock: Still thinking about it.
+[01:06:37] Brandon Hancock: Still hurts.
+[01:06:41] Brandon Hancock: Ryan, so quick question for you.
+[01:06:42] Brandon Hancock: So it sounds, throwing it back at you, so it sounds like you are taking on a bunch of high value client work to solve, like, on repeat, right?
+[01:06:52] Brandon Hancock: And like, and so it's just like, so just to help me understand the process, is this existing network?
+[01:06:59] Brandon Hancock: Is this just finding- You?
+[01:07:00] Brandon Hancock: Like the Kratom guys, for example, is that just, how is this full circle happening?
+[01:07:06] Ryan C: Bit of luck.
+[01:07:08] Ryan C: So some of it is like people I know that like, so they're contacts that I know that know them that then put me in touch, oh, you've the web guy, and then I end up getting me eating them, and then yeah, one thing leads to another.
+[01:07:19] Ryan C: I've been building this thing since December.
+[01:07:21] Ryan C: I've just been doing it in my spare time.
+[01:07:22] Ryan C: They've been paying me like a monthly, monthly thing that they'll keep paying me for the rest of time, which is quite nice.
+[01:07:28] Ryan C: And then one thing, I'm getting a profit share of it, and it's the profit margins and those things are absolutely mental.
+[01:07:34] Ryan C: So that should be quite nice.
+[01:07:38] Ryan C: But yeah, so those sort of things come from that.
+[01:07:40] Ryan C: Some of it is literally just from like getting in and pressing the flesh.
+[01:07:43] Ryan C: A lot of my stuff is just word of mouth.
+[01:07:45] Ryan C: I get a lot of secondary stuff from going and having conversations about screens.
+[01:07:49] Ryan C: So I had a meeting this morning with a larger state agency chain about screens, and then end up talking about videos, photos, and then potentially building a whole solicitor's app for him.
+[01:08:00] Ryan C: So there's a whole bunch of stuff that kind of spurs from that, about to build an estate, I literally just signed a contract to build an estate agent for an estate agent, so I'm essentially doing a lot of paid client work that keeps the lights on, pays my mortgage, but whether that be websites or web apps or videos or photos or whatever, also running social media obviously for that social app, which is I think one of the first things that I showed you guys many, many months ago, that's still chugging along and I've tweaked it and added a few bits but kind of largely the same and it's doing the job.
+[01:08:33] Ryan C: And then I'm building a couple of like businesses underneath that with the screen stuff that is now at 12 screens, about to get another two screens on, potentially another seven or eight with this guy that I talked to this morning.
+[01:08:48] Ryan C: And then obviously building out this CRM thing which, you know, if it works, could be pretty massive.
+[01:08:55] Brandon Hancock: So what I love that you're doing is you are, A, working like a freaking...
+[01:09:00] Brandon Hancock: Got to respect the hustle.
+[01:09:01] Brandon Hancock: And what's also really cool is you are sampling a bunch of different markets and verticals in parallel and profitably, like you're making money on all the different ones you're doing, which I love.
+[01:09:11] Brandon Hancock: Out of curiosity, I know a month ago when I talked to you guys, I think it was Scott that did the parking app for his buddy.
+[01:09:19] Brandon Hancock: I was curious, Ryan, if you have started to find any things that are repeatable, meaning like Scott found the parking lot thing.
+[01:09:28] Brandon Hancock: So it's like, man, it's kind of how you're like, you're this like drag and drop thing that you did.
+[01:09:32] Brandon Hancock: Now you get to copy that to the next app.
+[01:09:34] Brandon Hancock: I was very curious if there's any like customer archetypes of like, man, the client's going to pay 10, 20, 30.
+[01:09:41] Brandon Hancock: And I've already done 60% of the work one time.
+[01:09:44] Brandon Hancock: And now it's just, you know, this customization on top.
+[01:09:48] Brandon Hancock: That way it's, it's, you know, it's, it's a little bit more scalable.
+[01:09:52] Brandon Hancock: Cause that's like the hard part about it is every new.
+[01:09:55] Ryan C: Yeah.
+[01:09:56] Ryan C: I was just curious.
+[01:09:58] Ryan C: Mum and pop shop.
+[01:10:00] Ryan C: I've because they're so flippant, like Claude Design, chuck it into Claude Code, run a security optimizer on it, love it on the web, I could build like a two grand website in a day, which used to take me a month in WordPress to build, or whatever, you know, that's quite repeatable, I'm doing, I've got five of those little ones on the go at the moment, at the minute, and I have to drag them out, when they go, how long does it take?
+[01:10:23] Ryan C: I'm like, well, I can't really tell you it takes half an hour, because that would then not really justify how much I'm about to charge you, so I'm tell them it takes It a month, I'm going to do it in the day, and then just sit on it until, leave it a couple of weeks, and then have a conversation with them.
+[01:10:36] Ryan C: It's kind of the plan, but you're paying for the skill and the taste and that, because I've seen other people generate stuff, like, oh, I've made this thing with AI and looks like trash, and all of well, I've got the same action for the same tools, my stuff looks way better than yours, so, you know, there's a skill issue in there still, really, with some of them, so, but yeah, that's repeatable, past that, no, I'm talking to various people about,
+[01:11:00] Ryan C: Parking stuff, because that's quite a cool vertical to get into in terms of profitability, but there's a lot less private car parks.
+[01:11:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: When I told Ryan how much money my guy made, Ryan was trying to convince me to go in on this.
+[01:11:15] Ryan C: I was trying to buy a car park myself, so I could build an app to sell a car park yourself.
+[01:11:21] Brandon Hancock: software, I want assets.
+[01:11:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because, okay, so, Brandon, like, so, when I originally said this, like, yeah.
+[01:11:29] Brandon Hancock: Yeah, hit me the numbers, like, hit me the numbers.
+[01:11:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: made 24k in one month, like, he, I made 15k, he paid me off, like.
+[01:11:38] Brandon Hancock: In three weeks?
+[01:11:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, in, in literally, like, two or three weeks, like, it was insane.
+[01:11:45] Brandon Hancock: How much, hey, real fast, if that plot of land was for sale, how much do think it would be?
+[01:11:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, man, like, I don't know, because, like, he, I mean, the whole point here, obviously, is he.
+[01:12:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He's prime location, so you can't make this kind of money without having the land.
+[01:12:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, this isn't just like, oh, make a parking app and you can make money, but, oh man, I'm like, right time, you know?
+[01:12:17] Brandon Hancock: Well, that's the cool, because like, every time you guys give me ideas, I try to extract the abstract formula of it.
+[01:12:27] Brandon Hancock: And just like, I always am like, you guys do so many cool, interesting things.
+[01:12:32] Brandon Hancock: So whenever I see a problem, I'll have like a new mental model to apply to it.
+[01:12:36] Brandon Hancock: And I think the cool thing from listening to both of you guys is people have assets that are underutilized as of pre-AI.
+[01:12:46] Brandon Hancock: And that same asset can now be way more profitable for them and you as an arbitrage opportunity.
+[01:12:54] Brandon Hancock: So in my head, it's like, how do I copy and paste that?
+[01:12:57] Brandon Hancock: Okay, parking lots, storage units.
+[01:12:59] Brandon Hancock: I don't
+[01:13:00] Brandon Hancock: I don't know, car wash might be a little bit different, but like, there's so many different, like, what's a static asset that is low overhead and is very systematizable, parking lot's obviously the easiest, then maybe storage unit, then maybe, you know, something else, but like, there's a clear pattern here, so that's why, I don't know, someone who's listening to the recording of this, like, listen to this recording, take this three-minute snapshot, and then just say, in my local area, in 50 miles, find every opportunity that fits this archetype, and like, there's literally probably hundreds of thousands of dollars sitting right under your nose that just, like, this exact problem could do.
+[01:13:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I wish I owned his gym parking lot.
+[01:13:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, Jesus Christ.
+[01:13:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, it's insane.
+[01:13:43] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The amount of money he's making right now, it's actually insane.
+[01:13:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Insane.
+[01:13:50] Brandon Hancock: Yeah, no, that's awesome.
+[01:13:51] Ryan C: I generally got into multiple conversations with real estate agents about how much parking lots were up and down the UK, like, trying to figure out whether I could afford to, like, take a business.
+[01:14:00] Ryan C: I've how to buy one, and then I've done mathematical models on like a charge, what they're currently charging in these car parks and stuff.
+[01:14:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Ryan was hitting me up so hard that day.
+[01:14:09] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He was like, dude, he's like, we can buy, like, he was all about it.
+[01:14:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He was like trying to figure it out.
+[01:14:16] Brandon Hancock: Well, it's upsetting when you hear the numbers, because you're like, it's dirt.
+[01:14:20] Brandon Hancock: It's literally dirt in a good spot.
+[01:14:23] Brandon Hancock: You know, it's just upsetting.
+[01:14:25] Ryan C: If you got one next station and everything, $250,000 would have been great.
+[01:14:31] Brandon Hancock: I mean, just think about it, hitting $25,000 a month is a fantastic, like, holy , you were, like, peak top engineer at a big company.
+[01:14:39] Brandon Hancock: Like, you are a CTO, you know?
+[01:14:42] Brandon Hancock: And it's like, oh, he just does that and drinks beer, you know?
+[01:14:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's, that's the, that's the part that's upsetting.
+[01:14:52] Brandon Hancock: So, that's awesome.
+[01:14:54] Ryan C: But yeah, sorry, Ryan, we got sidetracked, but very cool The only other thing I've done is build out.
+[01:15:01] Ryan C: I've a completely custom image generator that's hooked into Higgsfield using Nano Banana through it, and I've just tweaked it for real estate, because I keep getting asked by people that have old photography that I didn't take that's crap, and they go, can you make this look a bit better with AI?
+[01:15:21] Ryan C: And then I have to take it into Nano Banana one by one, craft a prompt for it.
+[01:15:24] Ryan C: It takes ages.
+[01:15:25] Ryan C: So how do I systematize this?
+[01:15:27] Ryan C: So this afternoon I built the entire thing through, just literally as a project in Claude Code.
+[01:15:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Uh, Brian, did you not use the repo I gave you for this?
+[01:15:37] Ryan C: It's a very  thing.
+[01:15:38] Ryan C: I've got something that's specific for property photos, so I've given it thousands of photos that I've taken to train it on, and gone, it's for nothing else.
+[01:15:46] Ryan C: It's literally just for editing property photos to make them look like they've been taken on an HDR camera and not on a potato.
+[01:15:52] Ryan C: If I wanted a general thing, I'd have your thing, it's downloaded on my computer, but I wanted something specifically trained on my property stuff.
+[01:15:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: out.
+[01:15:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: know.
+[01:15:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You
+[01:16:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, yeah, yeah.
+[01:16:01] Ryan C: So I built that out.
+[01:16:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Hopefully you started with that.
+[01:16:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, like, start with that and then, like, train it.
+[01:16:06] Ryan C: I put it in the repo when I did the planning.
+[01:16:09] Ryan C: Don't you worry.
+[01:16:10] Ryan C: I said that we got this as a heart.
+[01:16:13] Ryan C: He's so touchy.
+[01:16:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Look at him.
+[01:16:16] Ryan C: That's so funny.
+[01:16:18] Ryan C: Yeah, built that out.
+[01:16:20] Ryan C: It's working quite nicely.
+[01:16:21] Ryan C: Actually, I'm actually just running a couple of tests on it before I give it 40 photos that he wants me to edit.
+[01:16:26] Brandon Hancock: That's awesome.
+[01:16:26] Brandon Hancock: So, So, so, right.
+[01:16:28] Brandon Hancock: So right.
+[01:16:28] Brandon Hancock: I mean, I I'm., I'm.
+[01:16:34] Brandon Hancock: hustling like an absolute madman and grinding so curiosity longer play we wave a wand or you know time machine six months past eight 12 months past what are we what's happening differently to help buy you some time back to where you're you're making more money and hopefully have more time just out of curiosity because like i like to like i always do this myself like if i put myself six months ahead what is different
+[01:17:00] Brandon Hancock: That makes me happy and like, okay, cool.
+[01:17:01] Brandon Hancock: Now I know what I'm going towards.
+[01:17:02] Brandon Hancock: I was just curious.
+[01:17:04] Ryan C: Naming for 100 screens.
+[01:17:06] Ryan C: 100 screens buys me, all my bills paid, and then I can pick and choose what I actually want to do.
+[01:17:12] Ryan C: And at least four estate agents signed up to my CRM.
+[01:17:16] Ryan C: That pays everything, gives me spending money and kind of enables me to take a breath and stop taking...
+[01:17:22] Ryan C: Most of my daytime is taken up by shooting videos.
+[01:17:25] Ryan C: If I can remove that, I then have more time to do more software stuff, which is what I have more of a passion for.
+[01:17:31] Ryan C: I'm taking a very similar path to Scott, where he was video first, loved it, and then it's just falling out of love with it very slowly.
+[01:17:38] Ryan C: And then he introduced me to all of this stuff.
+[01:17:41] Ryan C: I was like, well, that's the nail in the coffin for my video career.
+[01:17:44] Ryan C: So currently the video career is kind of paying half the bills and the website for the other half, but I want it to be fully aware.
+[01:17:50] Brandon Hancock: It's a big one, really.
+[01:17:52] Ryan C: That's repeatable income.
+[01:17:53] Ryan C: It's easy.
+[01:17:54] Ryan C: Once they're in, they kind of have to keep paying me, otherwise it doesn't work.
+[01:17:58] Ryan C: I love love love it.
+[01:17:59] Brandon Hancock: it.
+[01:17:59] Brandon Hancock: Thank you.
+[01:18:00] Brandon Hancock: I don't know if you guys are Sam Ovens fans or not, but one of the biggest things that he talked about is consulting work or just more gig work.
+[01:18:09] Brandon Hancock: Instant can pay the bills and a lot of money, but you hit a cap on what you can earn because of time.
+[01:18:15] Brandon Hancock: So always, his big thing back in the day was starting two businesses at once.
+[01:18:19] Brandon Hancock: It's like, this pays the bills and this other thing just has a longer growth curve.
+[01:18:23] Brandon Hancock: Just time has to happen.
+[01:18:25] Brandon Hancock: But it eventually becomes bigger than the main thing and hits less ceiling.
+[01:18:30] Ryan C: But both of those are my bets currently that I'm working on behind the scenes.
+[01:18:34] Ryan C: obviously, the screen thing is a bit further along with the CRM thing.
+[01:18:37] Ryan C: It's paying me money now and I'm building it slowly.
+[01:18:40] Ryan C: It's just relies on me finding the time to literally walk into stores and go, hey, have you considered getting a screen?
+[01:18:46] Ryan C: you've already got a screen.
+[01:18:47] Ryan C: How much are paying for that?
+[01:18:48] Ryan C: And then having that conversation.
+[01:18:51] Brandon Hancock: That's awesome.
+[01:18:52] Brandon Hancock: final thing, just because I know time is precious.
+[01:18:57] Brandon Hancock: Something that was kind of daunting, but it's also like...
+[01:19:00] Brandon Hancock: Like, it has been eye-opening to us and at least given us a clear direction.
+[01:19:05] Brandon Hancock: I'm a huge fan of, like, what are the systematic actions I have to take to hit my goal?
+[01:19:11] Brandon Hancock: I'm a fan of that type of thinking.
+[01:19:14] Brandon Hancock: And the biggest thing for us, as soon as we get past this, like, meeting with this, the PE firm tomorrow, is we know going forward to hit, literally, like, it'll be stupid money for both of us.
+[01:19:26] Brandon Hancock: It is, it takes 10 daily outreaches per person, per day, to, within a few months, make more money than we've ever made in our lives.
+[01:19:36] Brandon Hancock: And it's just like, damn.
+[01:19:37] Brandon Hancock: Like, I, like, it feels so good to just work backwards from the numbers of, like, we have to hit this many agencies.
+[01:19:43] Brandon Hancock: Okay, doing some back-of-the-math envelopes on conversion rates.
+[01:19:46] Brandon Hancock: Cool, we need to hit 600 agencies, and within a few months, we will hit our target salaries for both of us.
+[01:19:53] Brandon Hancock: And it's just, it's, like, daunting, but it's also, like, empowering, because it's like, damn.
+[01:19:57] Brandon Hancock: Now that I've broken down the math, I just have
+[01:20:00] Brandon Hancock: Take action every day.
+[01:20:01] Brandon Hancock: I just have a simple checklist.
+[01:20:02] Brandon Hancock: This is the most important needle-moving thing for my business.
+[01:20:05] Brandon Hancock: Everything else is technically noise, and it does need to happen, but it becomes secondary.
+[01:20:10] Brandon Hancock: So I was just going to say, it sounds like you're literally in that spot, too.
+[01:20:14] Brandon Hancock: Obviously, you have to pay the bills, but with any free time, it's very cool to know.
+[01:20:19] Brandon Hancock: I have to do this many walk-ins, I have to do this many Loom videos, and then I see the goal happening.
+[01:20:25] Brandon Hancock: And you can look at it on a calendar, because that's the thing that killed us.
+[01:20:27] Brandon Hancock: It's like, , is this six months?
+[01:20:29] Brandon Hancock: A year?
+[01:20:30] Brandon Hancock: Like, when does this actually mean meaningful money?
+[01:20:33] Brandon Hancock: And so helping doing it backwards was powerful for us.
+[01:20:37] Brandon Hancock: just an idea.
+[01:20:39] Ryan C: Hopefully it's helping.
+[01:20:40] Ryan C: Literally leaning on that exact thing.
+[01:20:42] Ryan C: I completely forgot.
+[01:20:43] Ryan C: I've got, I think I showed this to you last time, the lead cap thing, where you take a picture of a van and it automatically goes off.
+[01:20:48] Ryan C: So that is, part of that is obviously, and that is really close to being finished, actually.
+[01:20:53] Brandon Hancock: works.
+[01:20:53] Brandon Hancock: That's awesome, buddy.
+[01:20:54] Ryan C: It's going the outreach email that it's writing.
+[01:20:56] Ryan C: And then what I'm probably going to do is just use that myself for a bit.
+[01:20:59] Ryan C: So.
+[01:20:59] Ryan C: So.
+[01:21:01] Ryan C: I've got thousands.
+[01:21:03] Ryan C: I've been taking pictures like a madman.
+[01:21:04] Ryan C: bought the glasses to take pictures.
+[01:21:06] Ryan C: not ingested automatically as well.
+[01:21:08] Ryan C: So I'm going to do a mass email blast out to them in terms of reaching out to new customers and just try and really sell through that.
+[01:21:15] Ryan C: And that will be a combination of websites, web apps, screens, et cetera.
+[01:21:19] Ryan C: So that's kind of the plan for nailing that element of reach out.
+[01:21:24] Ryan C: I just need to dial in the actual email that it's writing now because it's a bit generic.
+[01:21:28] Ryan C: I need to make it a bit better.
+[01:21:29] Ryan C: But the actual doing the research, finding the people, doing all that stuff, it's doing quite well.
+[01:21:33] Brandon Hancock: So let's just finalize that.
+[01:21:36] Brandon Hancock: Final thing, because I want everyone to get a chance to go, but what's crazy is, Ryan, in 2027, if all these things do keep going well, it's like, damn.
+[01:21:45] Brandon Hancock: The amount of money coming in, it's like, oh, I will be buying parking lots every month.
+[01:21:49] Ryan C: That'll be the dream.
+[01:21:51] Brandon Hancock: It all comes back to parking lots.
+[01:21:54] Ryan C: That'll the dream.
+[01:21:56] Ryan C: Buy some physical investments as well.
+[01:21:58] Brandon Hancock: Yeah, seriously.
+[01:22:00] Brandon Hancock: All right.
+[01:22:00] Brandon Hancock: Oh, keep on cruising.
+[01:22:01] Brandon Hancock: Uh, I think it goes, uh, Juan, Scuff.
+[01:22:08] Adam: Um, yeah, I've had, like, this terrible sore throat for the past couple weeks, so really got anything done.
+[01:22:16] Adam: No fun, man.
+[01:22:17] Brandon Hancock: What, allergies, or just got sick?
+[01:22:20] Adam: Uh, some kind of virus.
+[01:22:21] Adam: I ended up, like, even going to the doctor.
+[01:22:23] Adam: I tempted to go to the ER a couple nights.
+[01:22:25] Adam: It was just so, so painful.
+[01:22:27] Adam: But, uh, now I can at least talk, which is pretty good.
+[01:22:30] Brandon Hancock: Yeah.
+[01:22:31] Brandon Hancock: Hey, that's, I can't say that is important.
+[01:22:33] Brandon Hancock: Don't want to have to be, like, Stephen Hawking, typing out all the words to talk to people.
+[01:22:38] Adam: Yeah, that's how I was communicating to my wife for the past couple weeks.
+[01:22:43] Adam: The only thing interesting is, um, I'm, like, friends on LinkedIn with a former CEO of this small company I work for, about 120 employees.
+[01:22:53] Adam: And, um, a couple days ago, maybe it was a couple weeks ago now, I see this post.
+[01:23:00] Adam: And it's all, thank you so much for you guys inviting me to be an early cursor investor.
+[01:23:06] Brandon Hancock: Oh my gosh, how upsetting.
+[01:23:10] Adam: Yeah.
+[01:23:12] Brandon Hancock: How upsetting.
+[01:23:14] Brandon Hancock: Yeah.
+[01:23:14] Adam: So the lesson is don't work, become an early cursor investor.
+[01:23:18] Brandon Hancock: Yeah.
+[01:23:19] Brandon Hancock: That's just the hard part.
+[01:23:20] Brandon Hancock: Out of curiosity, did anyone do SpaceX?
+[01:23:22] Brandon Hancock: Did anyone do the early IPO thing?
+[01:23:24] Brandon Hancock: Just show of hands.
+[01:23:27] Brandon Hancock: Anybody?
+[01:23:27] Ryan C: Okay.
+[01:23:28] Ryan C: It was like a massive rug pull weight and a half amount.
+[01:23:31] Brandon Hancock: Dude, I agree.
+[01:23:33] Brandon Hancock: I agree.
+[01:23:33] Brandon Hancock: The kicker is I, I, I messed up guys.
+[01:23:38] Brandon Hancock: I, the day of, I knew, like I did all sorts of like analysis of previous IPOs.
+[01:23:44] Brandon Hancock: Like I had it mapped out, like me and Claude spit forever mapping out a game plan of like, um, when I was going to buy in at 150 in the, I thought it would hit 190 within two days.
+[01:23:54] Brandon Hancock: I had the entire thing mapped out and I was for literally full.
+[01:24:00] Brandon Hancock: Or hours, just refreshing, refreshing, or three hours refreshing to try and get in, and then finally I had to do one 30-minute call with a customer, and as soon as I hopped on the call, the stock went live, so I didn't get to do anything, I was hoping to do a quick cash-in, cash-out, make a few grand, so I wanted to be a part of the pullers, I wanted to be a rug puller, I didn't get a chance, so I was so ready, I had all the money there, I had the right refresh, everything, and just bad timing on a customer call.
+[01:24:30] Brandon Hancock: But, yeah, I was just curious, because I know, like, I mean, biggest IPO of our lives, so, um, but yeah, Adam, I too wish I could have been in cursor.
+[01:24:38] Brandon Hancock: All problems would be solved.
+[01:24:41] Brandon Hancock: Anything else, though, or?
+[01:24:44] Adam: No, that's it.
+[01:24:45] Brandon Hancock: I gotcha.
+[01:24:46] Brandon Hancock: Well, hey, hope you, hope you feel better, and try and become better friends with that CEO.
+[01:24:51] Brandon Hancock: Hang out on his yacht.
+[01:24:54] Brandon Hancock: That's awesome.
+[01:24:55] Brandon Hancock: All right, keep cruising.
+[01:24:57] Brandon Hancock: Juan, you're up next, buddy.
+[01:24:58] Brandon Hancock: Dude.
+[01:24:58] Brandon Hancock: Dude.
+[01:24:59] Brandon Hancock: — ...
+[01:24:59] Brandon Hancock: ...
+[01:25:00] Brandon Hancock: I'm the overalls.
+[01:25:01] Brandon Hancock: I've been waiting to say this the entire time.
+[01:25:05] Juan Torres: They're not overalls.
+[01:25:07] Juan Torres: It's like a pack of tools that I have here.
+[01:25:10] Brandon Hancock: What are you saying?
+[01:25:11] Brandon Hancock: It's actually Kevlar.
+[01:25:14] Juan Torres: Patrick asked me, what's wrong with your neighborhood?
+[01:25:16] Juan Torres: Like, why are you wearing a vest?
+[01:25:19] Juan Torres: Listen, you know, I grew up in a rough neighborhood.
+[01:25:25] Juan Torres: What tools are you rocking?
+[01:25:28] Juan Torres: Well, I have a lot of controllers.
+[01:25:30] Juan Torres: So my setup is I have this mini keyboards because I have two mini PCs, one for the mirror booth that I have here and another one for the display, which is going to have my AI boot generated images.
+[01:25:44] Juan Torres: So the mini PCs are attached on the back.
+[01:25:48] Juan Torres: And this mirror booth actually had an old PC.
+[01:25:51] Brandon Hancock: Yeah.
+[01:25:52] Juan Torres: I basically, like, took it apart, rearranged the cables away from the, you know, the
+[01:26:00] Juan Torres: Touch control board, the display board, and reconnected them to my mini PC, because it has enough GPU capacity to make this stupid halo effect.
+[01:26:12] Brandon Hancock: That's cool, by the way.
+[01:26:13] Brandon Hancock: That's sick.
+[01:26:15] Juan Torres: Yeah, yeah.
+[01:26:15] Juan Torres: I actually recorded the thing, so hopefully it's going to become part of the video that I intend to do.
+[01:26:22] Juan Torres: So yeah, that's why I'm wearing all of this.
+[01:26:25] Brandon Hancock: have, like, this clip here and, like, my, what is it called?
+[01:26:29] Juan Torres: This thing to put on my hand and look at all the tools that I have and the boards that are inside the computer.
+[01:26:36] Brandon Hancock: So this is what I use.
+[01:26:37] Brandon Hancock: Poppins bag.
+[01:26:38] Brandon Hancock: Your hand just keeps going deeper.
+[01:26:39] Brandon Hancock: You're pulling out umbrellas.
+[01:26:40] Juan Torres: Yeah, it's like a shotgun.
+[01:26:42] Brandon Hancock: I, like, pull it out.
+[01:26:46] Brandon Hancock: That's awesome.
+[01:26:47] Brandon Hancock: Well, what's going on, buddy?
+[01:26:48] Brandon Hancock: What are the cool things you're working on?
+[01:26:50] Brandon Hancock: Sorry, Patrick?
+[01:26:51] Patrick Chouinard: I was going to say Inspector Gadget, but...
+[01:26:53] Brandon Hancock: Yeah, seriously.
+[01:26:55] Brandon Hancock: That's crazy.
+[01:26:56] Juan Torres: Guys, if you ever do some hardware engineering, it's not engineering,
+[01:27:00] Juan Torres: It's like messing up and tinkering, but if you ever guys have like the ability, I'll send it posted on the chat.
+[01:27:07] Juan Torres: It's really useful.
+[01:27:08] Juan Torres: Like you don't have to actually have extra pockets and you're just like foo, foo, foo, foo, foo, foo, and plop, plop, plop.
+[01:27:15] Juan Torres: That's sick.
+[01:27:16] Brandon Hancock: And a previous life at Georgia Tech, research engineer, yeah, I mean, we did so much stuff inside of like those big racks that you see in like data centers, and yeah, our stuff was just literally all over the floor.
+[01:27:28] Brandon Hancock: So that's, and the floor in the pockets, and that would have, and the would have a lot of It also has my name tag that I intend to use during events.
+[01:27:40] Brandon Hancock: Dude, that's sick, that's so cool, man.
+[01:27:45] Brandon Hancock: So what so okay so hit us from the top.
+[01:27:47] Brandon Hancock: You got the mirror behind you.
+[01:27:49] Brandon Hancock: What are we updates on that?
+[01:27:51] Brandon Hancock: What else we got going on?
+[01:27:53] Juan Torres: Oh, well, it's hardware wise.
+[01:27:56] Juan Torres: It's mainly the mirror booth that it's going to take pictures now.
+[01:27:59] Juan Torres: heaters.
+[01:27:59] Juan Torres: What
+[01:28:00] Juan Torres: Um, people are just gonna take, you know, I don't know if you can see yourself...
+[01:28:04] Juan Torres: Yeah, it's touch.
+[01:28:05] Juan Torres: So that's why I had to tinker with the, uh, back part of, um, this, this setup here.
+[01:28:12] Juan Torres: Because they already came with a computer.
+[01:28:14] Juan Torres: Um, the thing is like, uh, it come, it's a, it's like an old industrial computer.
+[01:28:20] Juan Torres: And this is actually made for Boots, but since I'm developing my own application, uh, and my application actually has a halo effect with uh, uh, some degree of rendering capacity.
+[01:28:33] Juan Torres: Uh, the GPU, uh, the GPU that is inside doesn't work.
+[01:28:38] Brandon Hancock: So that's why I had to go inside, like rearrange the cables away from the sensor boards and the display board, uh, and reconnect it to a mini PC, another one that I bought.
+[01:28:48] Brandon Hancock: Yeah.
+[01:28:49] Juan Torres: Um, and so I have on my site here, um, I don't know if you can see it here.
+[01:28:54] Juan Torres: Let me try to turn this.
+[01:28:58] Juan Torres: This is my display screen.
+[01:29:01] Juan Torres: Oh, that's cool.
+[01:29:03] Juan Torres: The display of a lot of the images are going to be here, right?
+[01:29:07] Juan Torres: So, and the reason that I'm designing it this way is because, you know, there's a load of lines that come about at the photos, and there's going to be also a line that's going to come along the display screen.
+[01:29:22] Ryan C: So, that's why...
+[01:29:24] Ryan C: think we're going to need to post all of those photos, Juan, in the group, please.
+[01:29:28] Juan Torres: What was that?
+[01:29:28] Ryan C: Just export all those photos out and chuck them in the group for us, yeah?
+[01:29:32] Juan Torres: This one?
+[01:29:33] Juan Torres: Sure.
+[01:29:34] Ryan C: We love it.
+[01:29:36] Brandon Hancock: Dude, stud.
+[01:29:37] Ryan C: Isn't it great?
+[01:29:39] Juan Torres: Yeah.
+[01:29:40] Juan Torres: So, that's what I've been working on.
+[01:29:42] Juan Torres: And I just finished creating a multi-model diffusion pipeline.
+[01:29:48] Juan Torres: So, actually, as a lot of this, I was using just one model, but now the pipeline has the ability for me to edit each, you know, the transformation part.
+[01:30:00] Juan Torres: So that's why you see several styles.
+[01:30:02] Brandon Hancock: You know what's really cool?
+[01:30:04] Brandon Hancock: You made me think of something interesting.
+[01:30:06] Brandon Hancock: unit economics, I want to dive into that for what you're doing, but it's also right now the model you're probably using to do stuff, they follow absurd cost curves, meaning today it's like, shoot, my per picture, I might be making 60% margins or whatever, but that literally fast forward six months, eight months, And it's like, oh, I'm now making, I was at 60%, now I'm at 80%, you know, because like, once you get the capability locked in at a good model, fast forward six to eight months, a new model does that exact same thing, usually at a cheaper cost.
+[01:30:43] Brandon Hancock: So it's just, it's crazy the second you realize, like, if I could do something valuable, as long as I can hold in and actually get people to buy, my margins improve over time, because it's deflationary.
+[01:30:55] Brandon Hancock: Like, that's the part that's crazy about working with this technology.
+[01:31:00] Brandon Hancock: Dude, if that's not your Tinder pic, I don't know what you're doing, dude.
+[01:31:06] Brandon Hancock: If I know, that's awesome.
+[01:31:11] Brandon Hancock: Okay, so, hey, a few things I had questions on.
+[01:31:13] Brandon Hancock: Yeah, so what I love, you're doing, I mean, you and Ryan are both doing hardware stuff, which I think is sick, because it's a bigger moat compared to someone just talking to Claude and saying, go rip, you know, like, you're in a world of your own.
+[01:31:27] Brandon Hancock: So, okay, what does the unit economics of what you're doing look like?
+[01:31:33] Brandon Hancock: So, like, I have to buy a TV at this, I have to buy a screen at this price, a computer at this price, maybe some extra stuff.
+[01:31:41] Brandon Hancock: Software seems probably, obviously, like, not too crazy to run, to do each run, to make an image.
+[01:31:50] Brandon Hancock: So, like, is it, hey, I do four events and then I break even?
+[01:31:54] Brandon Hancock: Is it, like, you know, just out of curiosity, because, like, that's the cool thing about what you guys are doing.
+[01:31:59] Brandon Hancock: It's,
+[01:32:00] Brandon Hancock: I'm setting myself up to do something different than anyone else.
+[01:32:05] Brandon Hancock: There's a little bit upfront, higher costs, but after a certain point, it's all profit.
+[01:32:11] Brandon Hancock: So I was just curious if you started to crack some numbers on this or what things are looking like.
+[01:32:17] Juan Torres: I'm not even sure.
+[01:32:19] Juan Torres: I think maybe after a couple of events, I would break even in terms of the hardware investment.
+[01:32:26] Juan Torres: But also, you've to consider the time investment.
+[01:32:29] Brandon Hancock: Yeah.
+[01:32:31] Juan Torres: Those are hours that are used specifically for this project.
+[01:32:36] Juan Torres: So I want to find both.
+[01:32:38] Juan Torres: I haven't done a model, but it will be something that I should look into.
+[01:32:44] Juan Torres: But I think, I mean, in terms of the value they're being sent, I think I could, you know, pull off even sooner or later.
+[01:32:57] Brandon Hancock: Here is...
+[01:32:59] Brandon Hancock: Here's first.
+[01:32:59] Brandon Hancock: I Yeah.
+[01:33:01] Brandon Hancock: Hey, let me show you this.
+[01:33:03] Brandon Hancock: This, this was in, let me show you this.
+[01:33:06] Brandon Hancock: I think it's similar to what, let me show this.
+[01:33:12] Brandon Hancock: So this is something like this.
+[01:33:14] Brandon Hancock: actually saw it like a recent, it was like a cherry, it's called like, we have like festivals and everything, but 180 a day.
+[01:33:25] Brandon Hancock: So, so I was, I was curious, but that was like, but they had people who are manning it too.
+[01:33:31] Brandon Hancock: So I was, I was curious, like, for you, like, do we do something, that towards like a, a rental?
+[01:33:37] Brandon Hancock: Does it have to be operated by someone else?
+[01:33:39] Brandon Hancock: Is it self-service?
+[01:33:40] Brandon Hancock: Cause like, it looked like for years you were clicking, which is pretty cool.
+[01:33:43] Brandon Hancock: Which is like, oh, I don't even have to have a person there.
+[01:33:45] Brandon Hancock: just have to have it set up.
+[01:33:46] Brandon Hancock: So yeah, was just curious what you were thinking.
+[01:33:48] Juan Torres: Sure.
+[01:33:49] Juan Torres: I mean, the only reason that I will have someone there is to, uh, make sure like nothing gets still, like the computers or anything like that.
+[01:33:57] Juan Torres: I mean, unless I secure them inside.
+[01:33:59] Juan Torres: Bye.
+[01:34:00] Juan Torres: But this is self-sustaining.
+[01:34:02] Juan Torres: The only thing that I was thinking I was talking to you guys was having hiring like an AI boot technician that's going to install the whole thing and just, you know, set up the interface correctly, because this is automated for after the event, all the pictures get sent to the client, aside on top of, you know, having the ability to QR code per guest.
+[01:34:25] Juan Torres: So I did created the tiers of and mechanisms to do so.
+[01:34:29] Juan Torres: So it's pretty intuitive.
+[01:34:31] Juan Torres: And the mechanics are there.
+[01:34:34] Juan Torres: But I still want someone to be there.
+[01:34:40] Juan Torres: Initially, I think it's just going to be me.
+[01:34:42] Juan Torres: And I probably I'll take someone to help me out with the equipment because this is really heavy.
+[01:34:49] Juan Torres: But I intend to be there.
+[01:34:52] Juan Torres: Also because I have, I want to test the mechanics, the, I mean, the, the loading.
+[01:34:59] Juan Torres: mean, the, so
+[01:35:00] Juan Torres: The observability of the whole application in terms of how much is being loaded into the EC2 instance.
+[01:35:07] Juan Torres: haven't pushed it into an out-of-scale group because I haven't had the need to.
+[01:35:11] Juan Torres: I want to see how much is also happening with the mini PCs, how much rendering is happening in the GPC.
+[01:35:17] Juan Torres: I have CloudWatch already set up to observe memory, CPU utilization, disk.
+[01:35:24] Juan Torres: So the observability is there.
+[01:35:26] Juan Torres: And also, I have the data web application, which I did show you guys last time, which basically displays all the metrics, including AI fan-ups, and basically all the jobs that had been generated with thumbnails that allows me to see all of those just happening.
+[01:35:42] Juan Torres: So the data science is there.
+[01:35:44] Juan Torres: Some observability is there.
+[01:35:47] Juan Torres: I hope that I'm following the four laws of behavioral change in terms of making it obvious, easy, attractive, and satisfying for the clients without them having to have any cognitive load on them.
+[01:35:58] Juan Torres: So I've had...
+[01:36:00] Juan Torres: I'm to be conscientious as much as possible in, you know, dealing with the complexity of the project so that the client can easily have smooth operation of this.
+[01:36:09] Brandon Hancock: Can I throw, I want to throw some business model ideas at you, because I think you are crushing every single thing in this pipeline.
+[01:36:17] Brandon Hancock: So I just want to throw through some business model ideas at you.
+[01:36:20] Brandon Hancock: If I was in your shoes today wearing that sick cargo bag, here's how I'd be thinking about this.
+[01:36:28] Brandon Hancock: I would be, how can I get my first 10 things myself?
+[01:36:31] Brandon Hancock: Like, how can I physically go try it out myself where I'm the operator and get feedback from the customers?
+[01:36:37] Brandon Hancock: No one's going to be able to sell it better than you.
+[01:36:40] Brandon Hancock: You know, you've done this.
+[01:36:41] Brandon Hancock: How can I do 10 of these specifically to where I get so many cool pictures from the end of it.
+[01:36:46] Brandon Hancock: People loved it.
+[01:36:47] Brandon Hancock: So then when I go to talk to a customer number 11, like every single person who's bought this, this is so novel.
+[01:36:52] Brandon Hancock: People absolutely love it.
+[01:36:53] Brandon Hancock: And it just becomes easy to sell.
+[01:36:55] Brandon Hancock: Fantastic.
+[01:36:56] Brandon Hancock: That's the first flywheel for the first 10, 10 of it.
+[01:36:59] Brandon Hancock: Okay.
+[01:36:59] Brandon Hancock: at it.
+[01:36:59] Brandon Hancock: Okay.
+[01:37:00] Brandon Hancock: Now, you are coming at this from a hardware and software perspective, which I love, because you're building the system from the ground up.
+[01:37:09] Brandon Hancock: Okay, so now I always ask myself, what happens if I scale?
+[01:37:13] Brandon Hancock: What happens if I had to work in 100 cities?
+[01:37:17] Brandon Hancock: Literally, how do I do that?
+[01:37:18] Brandon Hancock: Because that's when the numbers start to get, like, stupid, you know?
+[01:37:21] Brandon Hancock: So how do I do this?
+[01:37:22] Brandon Hancock: So the thing that comes to my mind is some sort of a franchise model to where you do some sort of case study for a city or two in a local area, and you just showcase on social media, like, hey, I'm starting to sell this thing, and let me just show you guys the numbers.
+[01:37:40] Brandon Hancock: It's so crazy.
+[01:37:41] Brandon Hancock: I literally just told these events places that I can do this, and now I book six in this city.
+[01:37:47] Brandon Hancock: I book 10 events, 12 a month, 12 events per month at $200 each.
+[01:37:53] Brandon Hancock: So what is that?
+[01:37:56] Brandon Hancock: 4K, something like that.
+[01:37:57] Brandon Hancock: It's like, I just made 4K, and all I have...
+[01:38:00] Brandon Hancock: All to do is work for, you know, not that many hours.
+[01:38:02] Brandon Hancock: Or, you know, you can figure out the numbers.
+[01:38:04] Brandon Hancock: Like there's some probably some better success stories that we could like work on.
+[01:38:09] Brandon Hancock: And then what's cool is you literally set yourself up for a franchise model because other people are just gonna be like, well, , I'd like to make easy money.
+[01:38:17] Brandon Hancock: You're telling me all I have to do is buy that thing from you from 800 bucks.
+[01:38:21] Brandon Hancock: That's the initial upfront investment.
+[01:38:23] Brandon Hancock: They pay you.
+[01:38:24] Brandon Hancock: Then they have a new vehicle to make money very easily to where they literally just knock knock on doors and say, hey, I'd like to put my stuff here.
+[01:38:33] Brandon Hancock: Anytime you do an event, here's the cost.
+[01:38:35] Brandon Hancock: And then that way you are out of the loop on driving and being places physically because that's not where your time is best spent.
+[01:38:41] Brandon Hancock: Your time is best spent improving the product, doing new things, shipping things, building the systems.
+[01:38:45] Brandon Hancock: So that is literally how I would do that playbook if I was you because it sets you up.
+[01:38:51] Brandon Hancock: Any other way, you're gonna hit some really hard bottlenecks pretty quickly just of like because of geographic constraints.
+[01:38:57] Brandon Hancock: And this is the only one that allows you to scale.
+[01:38:59] Brandon Hancock: And the
+[01:39:01] Brandon Hancock: Very big and start to get those software returns rather than like an event management returns.
+[01:39:08] Brandon Hancock: So that's, if I was, that is my 10 second pitch.
+[01:39:12] Juan Torres: Are you saying renting the software and the equipment?
+[01:39:18] Brandon Hancock: It specifically, you sell them, you sell the dream of you can start to make passive income.
+[01:39:25] Brandon Hancock: It's like, it's like, it's like a timeshare or it's like a, it's like, hey, you can buy a Coke machine, a vending machine.
+[01:39:30] Brandon Hancock: That's literally the same business model.
+[01:39:32] Brandon Hancock: You can buy a vending machine, park it here and get paid cash.
+[01:39:36] Brandon Hancock: You're selling the dream, but you first have to prove the dream works, which is what you're doing on your first 10 to 20 places.
+[01:39:42] Brandon Hancock: You're proving that you just had to walk in, shake a hand, go set it up and just pick it up, put it in, pick it up at the end of the night.
+[01:39:49] Brandon Hancock: Same thing as a vending machine.
+[01:39:51] Brandon Hancock: That is the dream you're selling.
+[01:39:53] Brandon Hancock: And obviously if it makes an economic return for them, like they're going to be your fans, they're, you know, um, I've going
+[01:40:01] Brandon Hancock: Very big and start to get those software returns rather than like an event management returns.
+[01:40:08] Brandon Hancock: So that's, if I was, that is my 10 second pitch.
+[01:40:12] Brandon Hancock: Are you saying renting the software and the equipment?
+[01:40:18] Ryan C: It specifically, you sell them, you sell the dream of you can start to make passive income.
+[01:40:25] Ryan C: It's like, it's like, it's like a timeshare or it's like a, it's like, hey, you can buy a Coke machine, a vending machine.
+[01:40:30] Ryan C: That's literally the same business model.
+[01:40:32] Ryan C: You can buy a vending machine, park it here and get paid cash.
+[01:40:36] Ryan C: You're selling the dream, but you first have to prove the dream works, which is what you're doing on your first 10 to 20 places.
+[01:40:42] Ryan C: You're proving that you just had to walk in, shake a hand, go set it up and just pick it up, put it in, pick it up at the end of the night.
+[01:40:49] Ryan C: Same thing as a vending machine.
+[01:40:51] Ryan C: That is the dream you're selling.
+[01:40:53] Ryan C: And obviously if it makes an economic return for them, like they're going to be your fans, they're, you know, um, I've going
+[01:41:00] Ryan C: Because you're going to have made them money very easily, and they solved your problems, and you solved theirs.
+[01:41:05] Ryan C: You made them money easily, and they solved your problem because you couldn't physically be in 20 cities that one night.
+[01:41:10] Ryan C: So yeah, the vending machine model is how I would think about this, if I were you.
+[01:41:16] Ryan C: Ryan, I saw you had a hand up too.
+[01:41:22] Ryan C: That was where I meet myself.
+[01:41:24] Ryan C: You're definitely onto the right thing.
+[01:41:25] Brandon Hancock: I went to my best mate's wedding on Sunday, and they had a little wooden pod with an iPad in it.
+[01:41:32] Brandon Hancock: You've literally taken a picture with the iPad's camera, front camera, and just doing some kind of art.
+[01:41:37] Brandon Hancock: You'd literally just like email, QR code, send it to yourself.
+[01:41:42] Brandon Hancock: Not even a tenth of what you're doing with your thing.
+[01:41:45] Brandon Hancock: And they're charging 600 pounds, which is equivalent to about $750, $800 for a day, literally just for the day.
+[01:41:54] Brandon Hancock: They've come pick up in the morning, and it goes to another wedding.
+[01:41:56] Brandon Hancock: So if they're making that a day, I mean, it's just...
+[01:42:00] Brandon Hancock: If you're one of those, then you can potentially franchise that out, right?
+[01:42:03] Brandon Hancock: You charge a rental fee and just ship it to the places you need it to be, charge the day rate, bring it back, put it into the next place, a little bit of ongoing repair amounts, you're making an absolute killing in no time.
+[01:42:15] Brandon Hancock: So you're definitely on to the right there.
+[01:42:17] Brandon Hancock: Literally, I saw the thing and I was thinking of you going, that's wicked.
+[01:42:21] Juan Torres: So I went and asked him how much he paid for it.
+[01:42:24] Brandon Hancock: I couldn't believe, £600 for an iPad in a wooden box, essentially.
+[01:42:27] Brandon Hancock: You can just buy an iPad.
+[01:42:31] Brandon Hancock: Yeah, yeah.
+[01:42:33] Brandon Hancock: That's crazy.
+[01:42:34] Brandon Hancock: And the final, one thing real fast, Juan, because what I love that you have done is, you have brought the digital world to the real world, which means, at any point, you're going to get so many cool ideas, and you can iterate like there's no tomorrow.
+[01:42:53] Brandon Hancock: An iPad, like, it's a camera.
+[01:42:55] Brandon Hancock: Like, that's not cool, you know?
+[01:42:57] Brandon Hancock: But this, I mean, between social proof of like
+[01:43:00] Brandon Hancock: Like, you could literally have the guest appear on the screen, you could have the person's wedding pictures leading up to it, like, there's so many things that you could do, turn it into a leaderboard, who has the stupidest picture, who has the funniest picture, literally have AI grade it, and like, have them, and literally have like, cutest couple of the night, hottest couple of the night, like, you know, like, you could have so many funny things that people like, it's a controversial, you know, in a screen, like, it would literally steal a few hours of the night, because people are like, oh my god, this is so cool, have you guys tried it out, like, so I'm gonna take 1% royalty for that last idea, but outside of that, it is all yours.
+[01:43:36] Paul Miller: No, that's actually really good, I didn't even thought about making it interactive in terms of voting rights, and I actually have, I think, there's the capacity to do so.
+[01:43:47] Paul Miller: Yeah, and have AI do it, like, literally just like people, it's like, I mean, you could be, I mean, it depends how quirky, like, you could have like, not safe for work mode.
+[01:43:54] Paul Miller: There's so many things you could do to mess with people.
+[01:44:00] Paul Miller: And just try it out, you know?
+[01:44:01] Paul Miller: And just iterate.
+[01:44:02] Paul Miller: And that's the thing I was going say, because you have the hardware solved, you have unlimited optionality on what you do next.
+[01:44:10] Paul Miller: So that's the cool spot to be in, you know?
+[01:44:12] Paul Miller: So please push hard, but let's go ahead and maybe get some dollars coming in to get some success studies, because you're going to iterate fast on software.
+[01:44:21] Paul Miller: If these first 10 deals, it's going to be the .
+[01:44:24] Paul Miller: So let's get that out of the way, you know?
+[01:44:26] Paul Miller: I think Paul had a few things, too.
+[01:44:28] Paul Miller: Yeah, one, I was at a trade show last week for my logistics customer.
+[01:44:39] Brandon Hancock: And I was hoping it was going to be lots of things related to trucks and doing containers and stuff like that.
+[01:44:46] Brandon Hancock: But it was all about robots, moving stuff, moving pallets, moving products.
+[01:44:53] Brandon Hancock: And the cost of those, if you think of, when you see those little videos of the Amazon.
+[01:45:00] Brandon Hancock: On centers where they're moving stuff and they have a little like floor robot that they can put boxes and stuff on top.
+[01:45:08] Brandon Hancock: The cost of those has fallen dramatically.
+[01:45:11] Brandon Hancock: So if in the evolution of where your camera stand product sits, maybe think of the portability and chucking some batteries and stuff in there because sometimes you're not always in the optimal space in an event or an event moves to another area.
+[01:45:31] Brandon Hancock: You might want it to have some knowledge around moving around.
+[01:45:38] Brandon Hancock: Okay.
+[01:45:39] Brandon Hancock: Juan, can I give you one other idea real fast?
+[01:45:40] Brandon Hancock: Yeah.
+[01:45:41] Brandon Hancock: Sorry, I just had to think because Paul made me think too for a second.
+[01:45:47] Brandon Hancock: So my friends, our best friends, they own a wedding venue.
+[01:45:50] Brandon Hancock: The other option too is, hey, if you could make this to where it literally needs zero human operators, I strictly just .
+[01:45:59] Brandon Hancock: .
+[01:46:00] Brandon Hancock: I need you to hook me up to Wi-Fi once, put this thing on wheels, to where during the event, I roll it out, and then at the end of the event, I roll it out, roll it back up, to where there's no, you're not doing the vending machine model, you're just doing the partnership model, to where you give that wedding venue an additional way to make an additional, I mean, what did Ryan just say, 600 bucks, 700 bucks, hey, it's 700 bucks, if your customers sign it, I'll just give you 350, write it in there.
+[01:46:26] Brandon Hancock: I'm going to send you the hardware, I'm going to maintain the software, you don't have to do anything else, mine is literally just walking over here, plugging it in, typing in the name of the wedding, like, you know, whoever's wedding it is, and then I'll handle the rest, you, like, and like, and you have made a permanent customer, you've given them an additional way to make hundreds of dollars, they're doing three, four weddings, I mean, nowadays people are getting married on Friday, Saturday, Sunday, you gave them additional way to make another thousand dollars every week, $52,000 a year, and all they have to do is just wheel us.
+[01:47:02] Juan Torres: You mean renting it to them?
+[01:47:04] Juan Torres: Renting the equipment?
+[01:47:07] Brandon Hancock: Yes.
+[01:47:07] Brandon Hancock: You give it to them.
+[01:47:10] Brandon Hancock: You give it to the wedding venue and basically you just say, hey, plug this in, connect it to Wi-Fi.
+[01:47:17] Brandon Hancock: So that has to be seamless.
+[01:47:18] Brandon Hancock: Literally a five-year-old should be able to read the instructions on how to do it.
+[01:47:22] Brandon Hancock: And then from there, I mean, as long as it can software update, you know, do whatever it needs where there's no humans.
+[01:47:30] Brandon Hancock: If it fails, it puts itself in a good state.
+[01:47:32] Brandon Hancock: Like it should never, it cannot be brickable because the second it breaks and they have to tell their team to go play with your stuff, they're gonna be like this, man, you know, it, this is not what we signed up for, but if you can get it to that clean state, dude, there's so many cool things that you could do.
+[01:47:46] Brandon Hancock: And you have, um, you have a customer out of, uh, three sevenths of the whole year booked Friday, Saturday, and Sunday at a wedding venue.
+[01:47:58] Brandon Hancock: Like that is your ideal partner.
+[01:48:00] Brandon Hancock: It will be the selling of the equipment, and then, of course, they will get into a subscription for the app or something like that.
+[01:48:07] Brandon Hancock: You only make money if they make money.
+[01:48:09] Brandon Hancock: You give them the thing for free.
+[01:48:11] Brandon Hancock: That is the easiest sell of all time.
+[01:48:13] Juan Torres: This is yours.
+[01:48:15] Brandon Hancock: I mean, for the first few customers, mean, okay, cool, we lost 800 bucks with the optionality of making 20,000 that year, 30, 40, and every year after that.
+[01:48:25] Brandon Hancock: So it's like, okay, like, there just needs to be some firm handshakes with a few people.
+[01:48:29] Brandon Hancock: Worst case, they don't use it, you take it back.
+[01:48:31] Brandon Hancock: It was free anyway, you know?
+[01:48:32] Brandon Hancock: Go work with someone else.
+[01:48:34] Brandon Hancock: But, like, the reason I bring this up, if you wanted to do this with my friends, they have a wedding venue.
+[01:48:39] Brandon Hancock: I would be more than happy to talk to them, get something like this set up.
+[01:48:44] Brandon Hancock: I know they're always looking for ways to, like, do cool stuff.
+[01:48:46] Brandon Hancock: And they stand out.
+[01:48:47] Brandon Hancock: They're the cool kids on the block.
+[01:48:48] Patrick Chouinard: And, yeah, the business model in this approach is you give it away for free.
+[01:48:53] Patrick Chouinard: And I only make money if you make money.
+[01:48:57] Patrick Chouinard: I see.
+[01:48:58] Patrick Chouinard: And that way, in every...
+[01:48:59] Patrick Chouinard: Kind of like...
+[01:49:00] Patrick Chouinard: Everyone's are aligned.
+[01:49:01] Patrick Chouinard: Everyone's incentives are aligned.
+[01:49:03] Patrick Chouinard: There's no, like, well, what happens if I don't use it this month?
+[01:49:05] Juan Torres: Well, they're going to, but like, you know, this, yeah.
+[01:49:10] Patrick Chouinard: I think this way keeps it as simple as possible.
+[01:49:13] Patrick Chouinard: And also, let's rent your parking lot.
+[01:49:15] Patrick Chouinard: Yeah, seriously.
+[01:49:17] Patrick Chouinard: Let me create an app.
+[01:49:19] Patrick Chouinard: Yeah.
+[01:49:20] Patrick Chouinard: But no, that's, sorry, I know I took a little bit on that, but like, this is such a very cool way.
+[01:49:25] Patrick Chouinard: In Macon alone, where I live, there's four wedding venues.
+[01:49:28] Patrick Chouinard: Okay.
+[01:49:28] Patrick Chouinard: Okay.
+[01:49:41] Patrick Chouinard: you know, know, uh, what, uh, Brendan said, uh, about the, uh, uh, reviewing or, uh, describing voting on
+[01:50:00] Patrick Chouinard: On the picture themselves.
+[01:50:01] Patrick Chouinard: And it sparked an idea.
+[01:50:04] Patrick Chouinard: How about, because I remember you showed a way to scan a QR code with the application.
+[01:50:10] Patrick Chouinard: Yeah.
+[01:50:10] Patrick Chouinard: So imagine you do that and you're in the wedding, and people can use the QR code to vote on which of the groom and the bride they want to be roasted out of all of their picture at the end of the night, and whoever gets the most vote gets roasted.
+[01:50:25] Brandon Hancock: And you give part of the proceeds to the couple or the venue, however you want to share, and you keep a part of the proceeds.
+[01:50:35] Brandon Hancock: another way to get more money into the system while providing something very funny, and then you can have your value out of building the personality of the AI that will do the roast at the end of the night.
+[01:50:47] Brandon Hancock: What would the roast look like?
+[01:50:49] Brandon Hancock: Whatever you want it to look like.
+[01:50:52] Brandon Hancock: You have a bunch of pictures that you can identify as anybody in the in the room that you can build into a story.
+[01:50:59] Brandon Hancock: B What the B
+[01:51:00] Ryan C: to have a funny roast at the end of the night and people vote on who they want it to be about during the night so basically you have gaming strategy you have a competition going on and in order to smoother the blow to the happy couple they get part of the proceed of the money that was invested so everybody's happy yeah there's so many cool things that's a cool thing you've created the operating system the platform for all future things and you could experiment like crazy it's just you got to get it in there um but yeah and the cool thing like literally I mean with Claude after this you could literally go do this entire thing you know a voting system an AI grading system literally let AI pick who was the most trashed like there's so many funny things that you could do you could also have it share the whole album with the whole anyone who uses the app during the whole time you could share a photo album so they can be like oh my god I never even know that they were
+[01:52:00] Ryan C: Like, they did this.
+[01:52:01] Ryan C: I don't know.
+[01:52:01] Ryan C: There's so many things that you could do.
+[01:52:03] Ryan C: But yeah, sorry.
+[01:52:04] Ryan C: Keep sidetracking.
+[01:52:05] Ryan C: I think Ryan had one final thing, too.
+[01:52:06] Juan Torres: Yeah.
+[01:52:06] Juan Torres: And Patrick.
+[01:52:08] Ryan C: You touched on one of my ideas.
+[01:52:10] Juan Torres: You could partner up with some sort of printing company, and people can then choose to pay to print stuff out or make an album or a physical album out of them.
+[01:52:17] Juan Torres: And then you get a cut of every single album that they produce, and so on and so forth.
+[01:52:22] Ryan C: There's all sorts of ways you can monetize that after the event, right?
+[01:52:25] Ryan C: So you could then set up some kind of nudges, email reminders.
+[01:52:28] Brandon Hancock: There's, and oh, can't it's, you're, oh, you're, they're the same thing, they're on the same You're, they're, same How would monetizing an album look like in this sense?
+[01:52:42] Brandon Hancock: Trying to visualize it.
+[01:52:43] Brandon Hancock: a, um, uh, affiliate sort of scheme.
+[01:52:47] Juan Torres: Yeah.
+[01:52:47] Juan Torres: 20%.
+[01:52:47] Juan Torres: a company that you can, essentially drop shipping really, but with whatever you're producing out of, um, out of your machine, build a, build a software in around that one that has an API essentially you can hook straight Yeah.
+[01:52:59] Juan Torres: Yeah.
+[01:52:59] Juan Torres: Yeah.
+[01:53:00] Juan Torres: They push the stuff to them.
+[01:53:02] Juan Torres: Your thing makes it into whatever template the printing company wants in the background.
+[01:53:07] Juan Torres: Oh, yeah.
+[01:53:08] Juan Torres: Okay.
+[01:53:08] Juan Torres: Gotcha.
+[01:53:08] Juan Torres: You take a cut, and it's free money, really.
+[01:53:12] Juan Torres: Yeah.
+[01:53:13] Juan Torres: Yeah.
+[01:53:13] Juan Torres: That's a very good idea.
+[01:53:14] Juan Torres: Juan, if you're not pulling an all-nighter after this call, I'm genuinely upset at you.
+[01:53:18] Juan Torres: I'm just gonna say that.
+[01:53:19] Juan Torres: I will.
+[01:53:20] Juan Torres: After the Mexico-Ecuador game, I will.
+[01:53:24] Juan Torres: I want to see a full store with all of this stuff in it.
+[01:53:29] Juan Torres: Yeah.
+[01:53:29] Brandon Hancock: And seriously, Juan, I mean, please, I mean, if you could, like, over the next week or two, seriously build some of this out to where, like, you could show it off as, like, a demo.
+[01:53:36] Brandon Hancock: Would love to make some introductions.
+[01:53:38] Brandon Hancock: I mean, I know different countries, so I don't know how it would be on mailing stuff.
+[01:53:44] Brandon Hancock: But, yeah, would be happy to help.
+[01:53:46] Brandon Hancock: Yeah, the emailing wouldn't be a problem.
+[01:53:49] Brandon Hancock: Which is the size, I guess.
+[01:53:51] Brandon Hancock: What do you guys think of the possibility?
+[01:53:54] Brandon Hancock: For example, for Patrick, he, you know, he mentioned that he wanted to use it...
+[01:53:59] Brandon Hancock: Drinks.
+[01:54:00] Brandon Hancock: I event, right?
+[01:54:01] Brandon Hancock: You know, because Patrick has helped me a lot and helps help a lot of people.
+[01:54:06] Brandon Hancock: wouldn't charge him only for the production of the AI tokens, but in the process of maybe creating for a client the ability for them to use this application on their iPad or even in their phone, right?
+[01:54:21] Brandon Hancock: Wouldn't it also be a possible business opportunity to productionalize it in such scale that, you know, I create, people create an account, and then they start basically using it with their own devices?
+[01:54:35] Brandon Hancock: Okay, I have an opinion on this.
+[01:54:39] Brandon Hancock: I personally would say no.
+[01:54:41] Brandon Hancock: But let me explain why.
+[01:54:43] Brandon Hancock: So, like, it goes back to the anecdote, Alex Mosey, solve rich people problems.
+[01:54:48] Brandon Hancock: A bride is dropping $50,000 on her wedding.
+[01:54:52] Patrick Chouinard: A random dude on a Tuesday night is going to give you $4, max, you know, if I just did it on my own iPad.
+[01:54:59] Patrick Chouinard: So it's like...
+[01:55:00] Patrick Chouinard: I personally would much rather, like, when else are you going to have someone pay you $750 to use this software?
+[01:55:07] Patrick Chouinard: I mean, at the end of the it's taking a picture, like, you know, with a bunch of cool AI stuff, but it's like, because you're doing it in such a unique setting, where hash is abundant, they're doing it to impress their friends.
+[01:55:20] Patrick Chouinard: Like, it's a ton of money, and it's a social thing, so that is so hard to compete with, because you'll, it's going to be very hard to get, and maybe I just misunderstood the thing, but, like, it would be very hard to, under any other circumstances, get someone to pay that amount of money.
+[01:55:35] Patrick Chouinard: It has to be in that specific time.
+[01:55:37] Patrick Chouinard: That, we're going to spend a bunch of money once in our life, might as well do it, you know?
+[01:55:41] Patrick Chouinard: Um, they've been waiting 30 years for this, you know?
+[01:55:44] Patrick Chouinard: So, but I might have heard something wrong, too, so Patrick, if I'm off, please, uh, I don't think I fully understand the context, too.
+[01:55:51] Juan Torres: For the individual, you're 100% right, but for a wedding venue, or a wedding organized, to buy a subscription to that,
+[01:56:00] Juan Torres: So we can rebuild it to their client on a per-wedding purpose, let's say they, I don't know, let's say they buy for a thousand bucks a month and they do X number of wedding and whatever, and then they rebuild it to their client depending on the level of picture that everybody wants.
+[01:56:20] Patrick Chouinard: It becomes a service they offer, basically.
+[01:56:22] Brandon Hancock: In that sense, I think it would make a lot of sense.
+[01:56:24] Brandon Hancock: Okay.
+[01:56:25] Brandon Hancock: I just had another idea.
+[01:56:27] Juan Torres: How about you couple what you did with the video pipeline that Scott presented last week?
+[01:56:34] Juan Torres: So you feed all of the picture and then it generates the video with the narration exactly like Scott did for his YouTube channel.
+[01:56:44] Brandon Hancock: But your pictures are the input to his pipeline.
+[01:56:49] Brandon Hancock: Yeah, yeah, that was the second phase of the project because this is an image-to-image AI pipeline with multi-model capacity.
+[01:57:00] Brandon Hancock: So the next phase after I ascended to the field and, like, I just wanted to send it to the field as soon as possible and not create more specs, was the image to video pipeline.
+[01:57:11] Brandon Hancock: Oh, yeah, yeah, yeah, of course.
+[01:57:14] Brandon Hancock: I'm gonna pin, is he still there?
+[01:57:16] Brandon Hancock: Yeah, he's still there.
+[01:57:18] Brandon Hancock: Okay, I'll pin him.
+[01:57:21] Brandon Hancock: Hey, Juan, do you have any pictures of this working, by chance?
+[01:57:24] Brandon Hancock: Because I'll see my buddies tomorrow.
+[01:57:25] Brandon Hancock: So if have pictures, I'll fly by him.
+[01:57:29] Brandon Hancock: Yeah.
+[01:57:29] Brandon Hancock: Pictures?
+[01:57:30] Brandon Hancock: Yeah, yeah, I can send them to you several ones.
+[01:57:32] Brandon Hancock: Uh, I can actually record a video, uh, of the whole process, uh, so that they get an idea of this.
+[01:57:40] Brandon Hancock: And you can send them to them and let them know, you know, if they're interested.
+[01:57:43] Brandon Hancock: That would be really cool.
+[01:57:44] Brandon Hancock: Yeah.
+[01:57:45] Brandon Hancock: No, this is, this is cool.
+[01:57:48] Brandon Hancock: One second, putting my thing in.
+[01:57:49] Brandon Hancock: You're just like, WhatsApp me, or...
+[01:57:51] Brandon Hancock: Yeah.
+[01:57:52] Brandon Hancock: I just dropped it.
+[01:57:53] Brandon Hancock: Um, but no, this is cool, Juan.
+[01:57:55] Brandon Hancock: I, like, the thing I love about this is, like, seriously...
+[01:58:01] Brandon Hancock: Scale as fast as possible, build this as quickly as possible, get as many partners as possible, even if the money at first isn't just like cash flowing in, because it will flood in, so it's like, like, okay, cool, I'm making, I'm doing all the images, I'm doing all the video, , I'm making 10 bucks, 20 bucks, 100 bucks per thing, man, like, you have an option to go cheap, and then, you know, like, oh, cool, for the 10 places I have, I'm making more money.
+[01:58:30] Brandon Hancock: It's like, no, no, no, that's not the game, it's, I want a thousand places, because it will become cheaper later on, I will make more money, and on top of that, like, this is, this is how you make an exit, you know, this is literally how some big company goes, we would love to do this, so just grow as fast as possible, is, like, the main thing I would say, like, literally 50% of your time is not spent selling this, we're focusing on the wrong thing.
+[01:58:57] Brandon Hancock: Yeah, yeah, by the way, Benjamin,
+[01:59:00] Brandon Hancock: Have you read The One Thing?
+[01:59:02] Brandon Hancock: Because you sound more like the person.
+[01:59:04] Brandon Hancock: This book, I don't know.
+[01:59:05] Brandon Hancock: Yeah.
+[01:59:06] Brandon Hancock: Oh, you read it?
+[01:59:06] Brandon Hancock: them.
+[01:59:07] Brandon Hancock: Okay, so I just finished this, The One Thing.
+[01:59:11] Brandon Hancock: Sorry.
+[01:59:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:59:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just finished it and it's- been a minute, but it's a good- now that you're saying it, I see the connection you're bringing up.
+[01:59:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But yeah, it's a- I mean, that's a cool thing.
+[01:59:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: There's a very clear roadmap for the next 12 months to where if you execute like a dog, I mean, holy , the amount of money you could make is unreal.
+[01:59:33] Brandon Hancock: And okay, AI gets better.
+[01:59:36] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Okay, no, it doesn't matter.
+[01:59:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No one's competing against you.
+[01:59:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Your product just got better and cheaper.
+[01:59:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So like, everyone else cries when AI, you know, eliminates their moat, but it's not doing that to you.
+[01:59:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If anything, just makes your stuff better, so.
+[01:59:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[01:59:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This are my two Bibles, Atomic Habits, and for habit engineering, that's what I try to implement.
+[01:59:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: principles.
+[01:59:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Dude, I love it.
+[01:59:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: All right, wait, I want to make sure everyone-
+[02:00:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Everyone else has one time to go, so I think, Scott, you were last up, I do have to hop up at 830 because we have to get ready for our, I have to call co-founder for our PE call in the morning, but I want to make sure everyone gets a chance to go.
+[02:00:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, yeah.
+[02:00:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, man.
+[02:00:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So let me share my screen.
+[02:00:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Let's go.
+[02:00:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so you guys see this GitHub?
+[02:00:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yes.
+[02:00:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Brandon, you weren't here before for this, but so I started a YouTube channel.
+[02:00:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: What?
+[02:00:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: got a lot of weird things going on here with an avatar.
+[02:00:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I'm kind of like...
+[02:00:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Dude, you got a good looking face.
+[02:00:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Put it on there.
+[02:00:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm kind of over the hype.
+[02:00:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, like, you know what mean?
+[02:00:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like over, like, all of the AI stuff, like, everybody's just like on these trends.
+[02:00:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I created an avatar.
+[02:00:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so basically it's like...
+[02:01:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like I spend like an hour at least like like coming up with the scripts and um it's kind of like thinking like an engineer like you know uh context kind of thing so just launched it really new um but uh the whole uh thing is this video generator thing that um that uh we were talking about earlier so like it it it combines like uh Higgs field um 11 labs, Haygen like it kind of combines everything so this whole thing is 100% in cloud code um and I'll kind of give like a little preview here 2400 years ago Plato warned that a hot new technology would wreck your memory and leave you with the appearance of wisdom instead of the real thing he wasn't talking about notion or obsidian or some shiny AI app he was talking about writing
+[02:02:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The original second brain.
+[02:02:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Hey, Scott's avatar here.
+[02:02:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The real Scott writes these.
+[02:02:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just get to break them down and cut through the hype.
+[02:02:07] Brandon Hancock: Search second brain today and you walk into a screaming match.
+[02:02:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: One side says an AI second brain will make you superhuman, a genius for the price of a subscription.
+[02:02:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The other side says it's a scam.
+[02:02:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Delete your notes.
+[02:02:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You're just hoarding with extra steps.
+[02:02:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Here's the context nobody gives you.
+[02:02:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: They're both a little right and both going way too far.
+[02:02:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Let's break down what a second brain actually is.
+[02:02:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And which one, if any, you actually need.
+[02:02:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Here's the thing about those two camps.
+[02:02:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: They look like opposites, but they're running the same exact play.
+[02:02:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Each side grabs a piece of...
+[02:02:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, just to give you guys a little...
+[02:02:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[02:02:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, like, I'm just having fun with it because I'm like, I'm actually like, so every Tuesday I'm going to release a video and it's just normally like just stuff I'm seeing online because like there's so much like crap.
+[02:02:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just so much like, I just, I can't, it's one of those things.
+[02:03:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: We're just like, like, you know, like, it's just so much like the whole vibe of what's going on right now.
+[02:03:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And I'm just like, oh, so that's my one thing.
+[02:03:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And although this, and I'll put this repo in there, this is kind of like a good little starter for this.
+[02:03:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So that's one thing.
+[02:03:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So the next thing I'm going to show you guys is, and this is what I teased before, so this is a Google Workspace NN flow, where I can basically, in Telegram, just anything I want to do with calendar, email, tasks, contacts.
+[02:03:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I can even take a picture of a business card, and it will make the contact.
+[02:03:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, like, um...
+[02:04:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The cool thing is you can do, so this whole thing was built because I was like, if I'm on the go, I'm like, I've got to be able to like just do this stuff quick, right?
+[02:04:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it does the open AI whisper thing, because I'm like just voice notes.
+[02:04:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's like I want to do a voice note to Telegram and have my Google workspace do the thing.
+[02:04:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, and this is also another public repo I have for you guys too.
+[02:04:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, I have a buddy who took this and did it, and it's all good.
+[02:04:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I will put this in here for you guys too.
+[02:04:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I could demo it, but I won't.
+[02:04:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Now, this is the fun one, Brennan.
+[02:04:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, I was waiting for you for this.
+[02:04:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, debut time.
+[02:04:51] Brandon Hancock: Yeah.
+[02:04:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I was like, oh, sorry.
+[02:04:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Sorry.
+[02:04:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Um, so this.
+[02:04:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm second is little
+[02:05:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This a hook.
+[02:05:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I wanted a method of checking for security things every time I pushed a repo, right?
+[02:05:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Or like I pushed a code change.
+[02:05:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, but I want observability, repeatability, and so this thing basically is a local cloud code hook that runs agents, and then it runs, the second thing is the, what is it, the security dash review thing from cloud code, and then Codex is the third thing.
+[02:05:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I have three models, two vendors, and Oh, that's cool.
+[02:05:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Every, but like, so, but it puts this all into a database, that's Supabase.
+[02:06:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so it's observability, I can, like, every time I, so if I do a new repo, the first time I push a repo, it will, like, do the whole, it will do a whole code base scan of the whole entire code base, but then after that, it's just, it's just, like, one off.
+[02:06:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I had this thing built to where it uses plans, because there's a plug-in, right, so it uses the adversarial review from Codex, so I have it built to where, like, everything's plan-based, but it's also, I can flip a switch at any point and do API, so it's, like, kind of forward-thinking, whatever models happen, whatever, you know, changes happen, and I can adapt this to whatever.
+[02:06:55] Brandon Hancock: And I even have an analysis co-pilot to where I can, like, talk about, like, what...
+[02:07:00] Brandon Hancock: what's going on besides reports.
+[02:07:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: like the whole thing is observability, reportability, code changes, like security, code quality, like it's just, but it's wild that I can't believe in it's legal because I'm not, I'm not actually running this from the app.
+[02:07:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The hooks will in cloud code will look for the, the settings in the, in the database.
+[02:07:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then, then it like pulls it and it doesn't.
+[02:07:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just wild.
+[02:07:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, I don't understand exactly how I figured this out, but it, it works so well.
+[02:07:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's like, so, so, I mean, this is, this is probably the most valuable thing I've ever created in my life.
+[02:07:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean, I was gonna say, like, it sounds like, because, I mean, we talked about it earlier when talking to Paul, like a lot of times you will run, like, as you grow, and as you ship more, you are more likely to break things.
+[02:07:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So the new bottleneck is review.
+[02:08:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it sounds like, literally, this is, like, reviewing on freaking steroids, it sounds like.
+[02:08:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[02:08:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean...
+[02:08:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's crazy.
+[02:08:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's so wild, like, I have this thing built to where, like, so I have an agent team that I built, and it's, like, code quality, security, blah, blah, blah, and then that's all on Opus, because it's plan, and then the security agent review is an anthropic built-in thing.
+[02:08:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I have that on Sonnet, and then the codex is the adversarial review.
+[02:08:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: so, now, the one thing about the codex one is it doesn't actually know the repo, so sometimes it might flag something that's not, like, it doesn't know the context as well.
+[02:08:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You know what mean?
+[02:08:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, because Anthropic, like, knows my repo, right?
+[02:08:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Right.
+[02:08:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But it still finds some things, like, every once in while, it finds something where I'm like, oh.
+[02:08:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So...
+[02:09:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because it's more, not just security, it's like edge cases.
+[02:09:03] Brandon Hancock: It's like things where I'm like, oh, if this happens and this happens, that could happen.
+[02:09:08] Brandon Hancock: And you're like, well, that's a great find.
+[02:09:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like it's, oh man, like it's been so valuable.
+[02:09:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And the fact that I can run this on plans still, but still can flip it to API if I want.
+[02:09:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like the whole thing is in cloud code.
+[02:09:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's all hooks and it all runs from there.
+[02:09:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It just reports to the database.
+[02:09:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just a, it's just a super based database with a dashboard, but it pulls settings from there.
+[02:09:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I can, I can flip everything.
+[02:09:40] Brandon Hancock: Is that the, um, at the, uh, level of like global or customer or repo based?
+[02:09:49] Brandon Hancock: Like I can set anything like that.
+[02:09:52] Brandon Hancock: And, and that's how I built it.
+[02:09:54] Brandon Hancock: We're like, can, I can set any kind of like, uh, model, uh, thing or
+[02:10:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's all just completely customizable.
+[02:10:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's awesome.
+[02:10:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It sounds like you made a CodeRabbit on steroids.
+[02:10:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, exactly!
+[02:10:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because the thing about CodeRabbit was it was only PR pushes, and I'm like, but I don't do that.
+[02:10:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Sometimes when you're a solo guy, it's like, I'm not pushing a PR, I just have commits and then pushes, but I'm not actually doing a PR.
+[02:10:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You know what mean?
+[02:10:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so that's what, like, it literally is CodeRabbit on steroids.
+[02:10:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You're right.
+[02:10:38] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, that's what I tried to create.
+[02:10:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's awesome.
+[02:10:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, because I was going to say, so how long does it take to run?
+[02:10:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, because, like, I just know, like, sometimes, like, sometimes it can, two things happen.
+[02:10:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Sometimes it might take a long time, or sometimes it might not produce valuable stuff.
+[02:10:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, I know that can be a, like, it gets hypercritical, and it's like, oh, that's not.
+[02:10:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So...
+[02:11:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, have you noticed anything when you've been playing with it?
+[02:11:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[02:11:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it's very, very accurate.
+[02:11:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And the only thing I would ever say, was like the anthropic stuff is pretty legit, but I wanted to have another model because I'm like, you can't have the model you coded with.
+[02:11:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's not the model that should check yourself.
+[02:11:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Right.
+[02:11:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So the whole thing about Codex is it doesn't have the context of the whole repo though.
+[02:11:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So sometimes it flags something.
+[02:11:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So here's the cool part.
+[02:11:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I didn't say this.
+[02:11:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it actually flags stuff in the database and resolves it.
+[02:11:38] Brandon Hancock: So the hook knows to do turn-based style with me.
+[02:11:44] Brandon Hancock: One by one, we go through everything and we figure out if it's real.
+[02:11:48] Brandon Hancock: So basically we go, is it a fixed?
+[02:11:51] Brandon Hancock: I see.
+[02:11:52] Brandon Hancock: Or is it a false positive or is it dismissed?
+[02:11:57] Brandon Hancock: Right?
+[02:11:58] Brandon Hancock: And that's very, very important.
+[02:11:59] Brandon Hancock: important.
+[02:12:00] Brandon Hancock: And I track all that in the database, and so I can manually do a dismiss or a false positive, and I put the reason why, but the autofixes, it actually does it on its own.
+[02:12:17] Brandon Hancock: That's cool.
+[02:12:18] Brandon Hancock: So Cloud Code will actually put that into the database, and then when it goes back through the next turn, like if we fix something, like it knows, and then like it resolves it in my dashboard.
+[02:12:29] Brandon Hancock: That's it's sick.
+[02:12:30] Brandon Hancock: It's so freaking sick.
+[02:12:32] Brandon Hancock: Like, one thing, like I'm sure probably some of guys will try this out.
+[02:12:37] Brandon Hancock: I don't know why I haven't been doing this earlier, but any time I need AI to explain something to me now, I have it, I have basically like a skill that if it makes a change, it finds a bug, or, you know, the different things that can happen with coding.
+[02:12:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[02:12:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I think I call it like visual explain, I can't remember what it's called exactly, but the skill, what it does is it makes an HTML.
+[02:12:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: TML.
+[02:12:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well...
+[02:13:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm going to show you with a concrete example of this was happening and it would produce this bad result directly under it.
+[02:13:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Here's the new thing that it had this.
+[02:13:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Now there's three steps instead of two to solve that exact issue.
+[02:13:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But anything I can do to like not have to read six chunks of text to be like, wait, what the ?
+[02:13:20] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: What are you talking about?
+[02:13:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You know, like anything I can do.
+[02:13:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And that's been one big thing to like help AI understand how to communicate with me better.
+[02:13:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I was going to say might be a cool thing because if it's doing this much reviewing, it can be overwhelming.
+[02:13:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's like, actually, I just want a one pager with some pictures.
+[02:13:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I want to read it like a fifth, like, you know, a four year old, like, oh, dog, cat, you know, like, I just want something I can look at and just instantly understand what you're trying to tell me because sometimes it gets super hard.
+[02:13:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The cool part about this one has been like, so obviously I'm like, okay, I'm using AI to help find like, like security, you know, code, like, like quality.
+[02:14:00] Brandon Hancock: It looks at everything.
+[02:14:02] Brandon Hancock: It's like, I need to be the human in the loop.
+[02:14:05] Brandon Hancock: It's meant to be that.
+[02:14:06] Brandon Hancock: So it's good.
+[02:14:09] Brandon Hancock: It hasn't been overwhelming.
+[02:14:10] Brandon Hancock: It's actually been pretty good on how this one got built.
+[02:14:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But that's the whole point, right?
+[02:14:17] Brandon Hancock: It's like, I don't want it to automatically, because I have to use my judgment, because sometimes it's like, well, no, this is false positive, or this is dismissed.
+[02:14:31] Brandon Hancock: Because of this reason.
+[02:14:32] Brandon Hancock: Right.
+[02:14:33] Brandon Hancock: But I built the hook and the skills to understand that it reads the database, it reads everything, and it goes term-based.
+[02:14:43] Brandon Hancock: And it's like, hey, we're going to have a discussion.
+[02:14:45] Brandon Hancock: Because the whole point is, every time it does this on any commit to push to GitHub, we discuss it, basically.
+[02:14:55] Brandon Hancock: Because I don't want to be out of the loop.
+[02:14:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, I have to know what's going on with it.
+[02:14:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I mean
+[02:15:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[02:15:00] Brandon Hancock: No, no, I totally, I totally agree.
+[02:15:03] Brandon Hancock: Um, that's, um, final thing, uh, for Auburn to Bastian, I just want make sure we get done, uh, before I have to hop off, the only extra cool thing, Scott, that I think is super valuable, what you're doing, is I always think feedback loops.
+[02:15:16] Brandon Hancock: If I'm not building a feedback loop into my system, it means there's value being left over that an agent could use.
+[02:15:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So there's so much context on the co-change, there's so much context on the review, specifically that you are physically going Going back and forth with, I prefer A, B, C, D.
+[02:15:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And especially because it's not done in cloud code memory, they're all just like, they're ephemeral agents that just get spun up with context, do work, and then report back.
+[02:15:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Anything that you can do in there as like a byproduct of going through and answering questions or anything, specifically, like as soon as something is fully done, like it's ready to merge, I might do one final quick hook or step before merging in the change, which, which is extract lessons.
+[02:16:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Learned from Review, and then it's just one long change, it's one long log of how you think about things, it's like a markdown file that's continually growing, and like there's ways to improve it, but it's basically stateful memory, or context, so just an idea, but you I just wanted to like, you're doing so much cool work, and so much.
+[02:16:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I also, like, Patrick got me into Hermes, and like I'm telling you, like I lit that system on fire, and so I'm like, I'm almost kind of like thinking about how I can meld some of these systems together now, because database, like, so, whoever was talking about that earlier, was saying data is power, right?
+[02:16:45] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, our information is the best, like, tool.
+[02:16:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's not the AI, it's actually like, like, your most valuable asset is your data.
+[02:16:57] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[02:16:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so I'm like, man, I'm like, how.
+[02:16:59] Brandon Hancock: Yeah.
+[02:17:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: could I kind of combine, you know, that, like, because I was already, you know, hinted at that earlier when I was telling Patrick, was like, dude, have, like, Hermes will read-only, Pat, like, it has all, like, because I always do the same kind of documentation in my repos, so I always have a CloudMD, obviously we all do, right, CloudMD if you're using Cloud code, but I always have a docs folder that has everything else in it, and so it's pulling all that, so it was wild where, like, I actually asked Hermes today, I was, like, testing it, and I was like, hey, give me some ideas for, like, app improvements, because it has all the documentation, because how I document apps is CloudMD is, like, very light, and I have a docs folder that has, like, very deep internal documentation on features, and CloudMD points to that, right?
+[02:17:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, see
+[02:18:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so I've always kind of done that.
+[02:18:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so the fact that I had that, and then I built that skill into Hermes, I was like, oh my God, it gave me some good ideas.
+[02:18:11] Brandon Hancock: It was wild.
+[02:18:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm still like, for Patrick, I'm like, thank you, dude.
+[02:18:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'm like, it's so much better than Ironclaw.
+[02:18:20] Brandon Hancock: I'm like, oh!
+[02:18:22] Brandon Hancock: I went through the initial setup.
+[02:18:24] Brandon Hancock: It's sitting right there on my other computer.
+[02:18:27] Brandon Hancock: I went through the setup.
+[02:18:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just haven't had enough time to dive deeper.
+[02:18:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, but y'all are, y'all are, you know, creating a fire under me.
+[02:18:33] Brandon Hancock: I gotta, I gotta go, go try it.
+[02:18:34] Brandon Hancock: It's so good, dude.
+[02:18:35] Brandon Hancock: It's, it's like the fact that you can easily, it's so easy because skills, MCP, like, it's like built to, and I'm actually using cloud code in the background.
+[02:18:47] Bastian Venegas Arevalo: So, yes, you can use the GUI, which is cool.
+[02:18:50] Bastian Venegas Arevalo: Um, and I am, but I'm still using cloud code to build it behind the scenes, like on the box, like I would have with Ironclaw.
+[02:19:00] Bastian Venegas Arevalo: And I did, but it's just that the system's so much more plug and play context.
+[02:19:06] Bastian Venegas Arevalo: Yeah.
+[02:19:07] Bastian Venegas Arevalo: Yeah.
+[02:19:07] Bastian Venegas Arevalo: So good.
+[02:19:09] Bastian Venegas Arevalo: I'm like, Oh, like, where's this been?
+[02:19:12] Bastian Venegas Arevalo: Yeah.
+[02:19:12] Bastian Venegas Arevalo: I need to spend so much time with iron claw, which was the right solution at the time.
+[02:19:18] Bastian Venegas Arevalo: Oh, yeah.
+[02:19:20] Bastian Venegas Arevalo: Yeah.
+[02:19:21] Bastian Venegas Arevalo: All right.
+[02:19:21] Bastian Venegas Arevalo: Well, I'm going to, all right.
+[02:19:22] Bastian Venegas Arevalo: Yeah.
+[02:19:24] Bastian Venegas Arevalo: Patrick, Patrick is, he's, he's keeping us too busy with all of us.
+[02:19:27] Bastian Venegas Arevalo: I know.
+[02:19:29] Bastian Venegas Arevalo: So last week he said this, I was like, here we go.
+[02:19:33] Bastian Venegas Arevalo: There goes my weekend.
+[02:19:36] Brandon Hancock: Perfect.
+[02:19:37] Bastian Venegas Arevalo: Well, hey, I know, Bastian wanted to go real fast.
+[02:19:39] Bastian Venegas Arevalo: And then I do have to run guys.
+[02:19:40] Bastian Venegas Arevalo: apologize.
+[02:19:40] Bastian Venegas Arevalo: have a meeting.
+[02:19:41] Bastian Venegas Arevalo: I just can't be late.
+[02:19:43] Bastian Venegas Arevalo: Um, but Bastian, dude, floor is yours, buddy.
+[02:19:46] Bastian Venegas Arevalo: What's been going on?
+[02:19:48] Bastian Venegas Arevalo: Yeah.
+[02:19:48] Bastian Venegas Arevalo: Nice to see everyone.
+[02:19:49] Bastian Venegas Arevalo: I'll make it brief.
+[02:19:50] Bastian Venegas Arevalo: just want to show, uh, a project I've been working on just to burn everyone's tokens, hopefully.
+[02:19:57] Bastian Venegas Arevalo: So, um, um, you guys,
+[02:20:00] Bastian Venegas Arevalo: really know how Codex and CloudCode has this sub-agents feature, and the issue with Codex, at least, is that when you spawn, like, over six agents, it will lead it to all of your memory, and it can spend, like, 10 gigs of memory or more, and it will also spike your processor like crazy, so I built an agentic harness that is built on Elixir, so each time it spawns a new agent, it's actually running in the same memory process, so the scaling is, like, from, like, hundreds of megabytes, not even a megabyte, so this is meant to be able to run dozens and even hundreds of sub-agents, and it's also meant to be, like, a sub-agent as a service, so you don't need to use the harness, you can just use it as a sub-agent for Codex, so it has a TLI that you spawn, and you spawn each sub-agent, or it can also spawn a workflow where it will map all of the chain dependencies, create a workflow
+[02:21:00] Bastian Venegas Arevalo: And then spawn each sub-agent, each one on its own worktree, and maybe not even a worktree because most of this stuff don't even need a git operation, and you can delay that until the final step, so you don't actually need to go through all of that complexity.
+[02:21:17] Bastian Venegas Arevalo: And I also build this to be really friendly on your cache, so it has a prefix that is really small, like it's inspired by Pi, and most of it gets cached like every time you hit a request, and since a sub-agent is typically just, caching is usually like 5 minutes or 10 minutes by default, but since it's really just cranking up work, and you're not really interacting with it, everything gets cached at crazy lower costs, and since it uses WebSockets, it's also much faster in terms of the request, and you can guarantee that you're always getting the same.
+[02:22:00] Bastian Venegas Arevalo: So you're always hitting the same GPU, and everything is much cheaper.
+[02:22:07] Bastian Venegas Arevalo: Basically, it doesn't have a user interface, because it uses the ACP client protocol that SED introduced.
+[02:22:14] Bastian Venegas Arevalo: So you can use it in the CLI, you can use it in something like T3 Code, and you can use it on SED, which is a very lightweight editor.
+[02:22:22] Bastian Venegas Arevalo: So I just have my agent here.
+[02:22:25] Bastian Venegas Arevalo: T3 Code also has a mobile app, so I have mobile running from my phone as well, connected to my computer.
+[02:22:34] Bastian Venegas Arevalo: It actually has this cool feature where it will follow the agent as it works.
+[02:22:41] Bastian Venegas Arevalo: So it will start appearing here.
+[02:22:43] Bastian Venegas Arevalo: That's Every time it opens a file or it edits something, you will see it happen in real time.
+[02:22:48] Bastian Venegas Arevalo: If you're interested in that, and if not, you can turn it off, of course.
+[02:22:51] Bastian Venegas Arevalo: For example, that it's reading the hs.md, and it will start loading, and you can actually see what it's doing if you want to do that.
+[02:22:58] Brandon Hancock: If not, you can use it by...
+[02:23:00] Brandon Hancock: via CLI or whatever.
+[02:23:02] Brandon Hancock: This will be open source.
+[02:23:04] Brandon Hancock: So probably next week I'll have it ready so anyone can try it.
+[02:23:10] Brandon Hancock: And it's been working really cool.
+[02:23:12] Brandon Hancock: And I also have this little guy here.
+[02:23:15] Brandon Hancock: I don't know if you are anyone familiar with Prodiparot from the 90s.
+[02:23:19] Brandon Hancock: No, but I love that.
+[02:23:21] Bastian Venegas Arevalo: switched to text.
+[02:23:22] Brandon Hancock: Can you say hello to the team and present yourself?
+[02:23:27] Brandon Hancock: Oh, I'm probably not sharing audio.
+[02:23:29] Brandon Hancock: No, he's talking.
+[02:23:32] Brandon Hancock: I mean, I can't hear him, but that's, I mean, yeah.
+[02:23:34] Brandon Hancock: Yeah, that's cool.
+[02:23:35] Brandon Hancock: speaks like a bar.
+[02:23:36] Brandon Hancock: I like it.
+[02:23:37] Brandon Hancock: It's kind of fun.
+[02:23:39] Brandon Hancock: Dude, this is fun.
+[02:23:40] Brandon Hancock: The cool thing is that this guy has only one tool, which is an MCP tool.
+[02:23:44] Bastian Venegas Arevalo: And under the hood, this calls my agent.
+[02:23:46] Brandon Hancock: So it gets access to everything.
+[02:23:49] Brandon Hancock: It's like having a second pair of eyes on top of everything you're doing.
+[02:23:53] Brandon Hancock: And it has permission to see your screen.
+[02:23:55] Brandon Hancock: So it's like an agent on top of your agent.
+[02:24:00] Brandon Hancock: That's cool.
+[02:24:01] Bastian Venegas Arevalo: So I guess, real fast, going back to Pixar, so the biggest thing, said simply, is it is mostly improving the user experience and also reducing memory usage?
+[02:24:16] Bastian Venegas Arevalo: Is that the two, is that the like concise version?
+[02:24:19] Bastian Venegas Arevalo: Yep.
+[02:24:20] Bastian Venegas Arevalo: Okay.
+[02:24:20] Bastian Venegas Arevalo: It's like sub-agents as a service.
+[02:24:23] Brandon Hancock: Okay.
+[02:24:24] Brandon Hancock: well, the reason I ask is just because like, I know on my laptop, whenever I'm ripping on codex, like, I mean, I just hear my, my computer gets hot as hell, my fans like, you know, and like, thank God I have a newer Mac.
+[02:24:36] Bastian Venegas Arevalo: Cause I know like, my old one would have just died, you know?
+[02:24:40] Bastian Venegas Arevalo: So that's very cool that they solve, solve that.
+[02:24:44] Bastian Venegas Arevalo: That's the problem I was facing.
+[02:24:47] Brandon Hancock: Yeah, that's, that's very cool.
+[02:24:48] Brandon Hancock: And, and I guess the one other thing real fast, so it, it can use, so like, how does it connect?
+[02:24:55] Brandon Hancock: Maybe I'm just like missing something.
+[02:24:56] Brandon Hancock: How does it work with- yeah.
+[02:24:57] Brandon Hancock: It connects with OpenAI.
+[02:24:59] Bastian Venegas Arevalo: You-
+[02:25:00] Bastian Venegas Arevalo: This is your OpenAI subscription.
+[02:25:03] Bastian Venegas Arevalo: Okay.
+[02:25:03] Bastian Venegas Arevalo: Okay.
+[02:25:04] Bastian Venegas Arevalo: That was my biggest thing.
+[02:25:05] Bastian Venegas Arevalo: It's like, how do you get your stuff in?
+[02:25:06] Bastian Venegas Arevalo: I didn't know if you had to use, like, GLM or something like that, or if you could just, you know, use OpenAI.
+[02:25:10] Bastian Venegas Arevalo: For now, I just added OpenAI just to make it really simple because they're the most general subscription by far.
+[02:25:18] Brandon Hancock: Cloud always has this thing where they will ban or maybe not ban Cloud P.
+[02:25:22] Brandon Hancock: Right.
+[02:25:24] Brandon Hancock: Yeah.
+[02:25:25] Brandon Hancock: Okay.
+[02:25:26] Brandon Hancock: Dude, very cool find.
+[02:25:27] Brandon Hancock: Yeah.
+[02:25:27] Brandon Hancock: I need to try that out just because, I mean, there's been actually a few times where, like, it's frozen some of my stuff because I'm doing too much in parallel with, yeah.
+[02:25:36] Brandon Hancock: So, that is a great find.
+[02:25:38] Brandon Hancock: Yeah.
+[02:25:38] Brandon Hancock: Much needed.
+[02:25:38] Brandon Hancock: Sometimes you're doing, like, remote job and you find that you just need to restart your Mac.
+[02:25:43] Brandon Hancock: There's no other choice.
+[02:25:45] Brandon Hancock: Which always gives me a heart attack because I'm in CMUX and, like, I have, like, literally 13 windows in parallel.
+[02:25:50] Brandon Hancock: And then when I had to turn it off, I'm like, oh, shoot, how am I going to find what session I was in doing what?
+[02:25:55] Brandon Hancock: So, it is getting, oh, God.
+[02:25:57] Brandon Hancock: That's my, that's my, like, that's nightmares.
+[02:25:59] Brandon Hancock: interviewers are made of
+[02:26:00] Brandon Hancock: There's a company that sells a button that it's just like it connects via USB and it's just to use your power button from your Mac or your PC, whatever, and it's just to restart in these edge cases where you're away from how many you need to like reboot your claw or whatever.
+[02:26:15] Brandon Hancock: Really?
+[02:26:16] Brandon Hancock: Yeah, it's like 30 bucks.
+[02:26:18] Brandon Hancock: funny.
+[02:26:18] Brandon Hancock: I will shoot that in your WhatsApp.
+[02:26:21] Brandon Hancock: Yeah, I need to try that out.
+[02:26:22] Brandon Hancock: That's awesome.
+[02:26:24] Brandon Hancock: Well, first off, thank you guys so much for hopping on.
+[02:26:29] Brandon Hancock: It always makes me so happy to see you guys and all the cool stuff y'all are working on.
+[02:26:32] Brandon Hancock: Every time I walk away, I'm like, damn, like, y'all are so smart.
+[02:26:37] Brandon Hancock: Just doing so much cool stuff, though.
+[02:26:40] Brandon Hancock: Thank y'all for helping me get smarter every time I get to hang out.
+[02:26:43] Brandon Hancock: And it just gets me pumped up hearing all the cool things that you guys are working on.
+[02:26:46] Brandon Hancock: Because like, I mean, we've said it for a while now, like, it's the coolest time to be alive.
+[02:26:50] Brandon Hancock: There's so many new ways to like make opportunities and money happen.
+[02:26:55] Brandon Hancock: It just takes a bunch of hard work.
+[02:26:57] Brandon Hancock: And like, but you guys are doing it, which is so cool.
+[02:26:59] Brandon Hancock: Because like, I mean, think about
+[02:27:00] Brandon Hancock: Like literally like a year ago, a year and a half ago, like they were all just like, most of us had just like ideas of like how we can do things, and it's so sick to see like every one of you is doing something in a cool way to like monetize all the cool skills that you guys have got over the, you know, over the past few years.
+[02:27:15] Brandon Hancock: So it just, it gets me amped up and hyped for you guys.
+[02:27:17] Brandon Hancock: So y'all are crushing it.
+[02:27:19] Brandon Hancock: So, oh wait, oh wait, oh he's Ty talking?
+[02:27:22] Brandon Hancock: Oh, never mind.
+[02:27:23] Brandon Hancock: I thought he had something to say.
+[02:27:25] Brandon Hancock: But yeah, seriously, thank you guys so much.
+[02:27:27] Brandon Hancock: Also, shout out to Paul Patrick for always holding them down the fort.
+[02:27:31] Brandon Hancock: we, I literally would not, it would not happen without you guys at this point.

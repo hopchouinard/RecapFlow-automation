@@ -1,0 +1,259 @@
+2026-06-23 19:36:17 From Sri Ram Kavali to Everyone:
+	I bought shipkit I need access to skool course
+	
+2026-06-23 19:36:35 From Sri Ram Kavali to Everyone:
+	@Brandon's Fathom Notetaker I bought shipkit I need access to skool course
+	
+2026-06-30 17:58:40 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-06-30 18:02:00 From Fireflies.ai Notetaker Don to Everyone:
+	Don invited Fireflies.ai here to record & take notes.
+	By continuing, you agree to https://fireflies.ai/privacy
+	
+	Type:
+	'/ff pause' - pause recording
+	'/ff leave' - to stop recording
+	
+	View Realtime notes here: https://app.fireflies.ai/live/01KWA3HCY1864N2MJYQ2J5Q4CS?ref=live_chat
+	
+2026-06-30 18:02:18 From Brandon Hancock to Everyone:
+	https://www.evenrealities.com/
+	
+2026-06-30 18:07:56 From Brandon Hancock to Everyone:
+	Screenshot 2026-06-30 at 6.07.49 PM.png
+	
+2026-06-30 18:08:14 From Juan Torres to Everyone:
+	yacht party coming up....Brandon will be in touch for the invites
+	
+2026-06-30 18:10:08 From Juan Torres to Everyone:
+	Stasi level
+	
+2026-06-30 18:12:29 From Don Davis to Everyone:
+	He needs to engineer another clip for Limitless
+	
+2026-06-30 18:17:05 From Juan Torres to Everyone:
+	Thailand lol
+	Brandon Hancock:😂
+	
+2026-06-30 18:21:20 From Patrick Chouinard to Everyone:
+	@Brandon Hancock is it just me who is surprise you are doing PowerPoint over HTML with a PDF export? 😂
+	Juan Torres, Biggi Fraley:😂
+	
+2026-06-30 18:23:01 From Brandon Hancock to Everyone:
+	https://www.yesware.com/
+	
+2026-06-30 18:24:49 From Brandon Hancock to Everyone:
+	Screenshot 2026-06-30 at 6.24.44 PM.png
+	
+2026-06-30 18:28:36 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	 yeah i would like a real world breakdown.  because that sounds like every slick hype thing out there.  so not dogging, just be aware that it comes off that way.
+	Juan Torres:👍
+	
+2026-06-30 18:29:55 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	i do agree with the viewpoint of your data is the most valuable.   def valuable
+	
+2026-06-30 18:34:10 From Juan Torres to Everyone:
+	Hello there grasshopper
+	Bastian Venegas Arevalo:❤️
+	
+2026-06-30 18:39:19 From Patrick Chouinard to Everyone:
+	@Paul Miller https://github.com/hopchouinard/community-brain-distribution
+	Biggi Fraley, Juan Torres, Adam:❤️
+	
+2026-06-30 18:39:46 From Patrick Chouinard to Everyone:
+	@Paul Miller https://github.com/hopchouinard/RecapFlow-automation
+	
+2026-06-30 18:44:24 From David’s iPhone to Everyone:
+	Sandboxing with Docker? Unique Supabase Project per sandbox?
+	
+2026-06-30 18:45:24 From David’s iPhone to Everyone:
+	Thank you
+	
+2026-06-30 18:45:33 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	love the supabse seeding
+	
+2026-06-30 18:46:30 From Don Davis to Everyone:
+	Great to see everyone…I am going to drop.  Love to hear what you are working on.
+	Brandon Hancock:❤️
+	Biggi Fraley:👋
+	
+2026-06-30 18:48:10 From David’s iPhone to Everyone:
+	Who manages the Beard!?
+	Biggi Fraley, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com, Juan Torres, Patrick Chouinard:😂
+	
+2026-06-30 18:48:12 From Juan Torres to Everyone:
+	Inphysical?
+	
+2026-06-30 18:48:26 From Juan Torres to Everyone:
+	https://infisical.com/ ?
+	
+2026-06-30 18:48:31 From Ty Wells to Everyone:
+	I’m using that too
+	
+2026-06-30 18:49:02 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "Who manages the Beard!?":
+	this comment killed me lol
+	
+2026-06-30 18:49:32 From Patrick Chouinard to Everyone:
+	https://agentops.patchoutech.com/
+	Juan Torres, Adam, Biggi Fraley:❤️
+	
+2026-06-30 18:56:38 From Bastian Venegas Arevalo to Everyone:
+	https://x.com/wshxnv/status/2067327251335835852 
+	
+	This guy won an OpenAI Hackathon with a project that you might find interesting @Patrick Chouinard 
+	
+	»««yesterday, at the Codex hackathon, i ended up solving this problem by building an MCP connector app that turns ChatGPT into Codex, sort of.
+	
+	1. you get to use GPT-5.5 Pro by exposing your local dev environment to ChatGPT, so you can use 5.5 pro for planning and handover to codex to execute it
+	2. you get to 2x your rate limits, just like last month, because apparently ChatGPT and Codex have separate rate limits
+	
+	here is the quick demo«««
+	Screenshot2026_06_30_185506.jpg
+	Patrick Chouinard:❤️
+	Biggi Fraley, Adam:🔥
+	
+2026-06-30 19:00:31 From Bastian Venegas Arevalo to Everyone:
+	https://x.com/thsottiaux 
+	
+	Tibo is the openai employee that does the crazy resets. They last for a month now
+	
+2026-06-30 19:00:53 From Juan Torres to Everyone:
+	systematizing systems
+	
+2026-06-30 19:08:00 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	i love ryan, and please join me in making fun of him saying "erm" a lot
+	Ryan C (One Stop Creative Agency - UK):😂
+	
+2026-06-30 19:12:47 From David’s iPhone to Everyone:
+	Vertical Parking
+	
+2026-06-30 19:13:05 From Biggi Fraley to Everyone:
+	I own this body, but the government won't let me rent it by the hour.
+	Ryan C (One Stop Creative Agency - UK):😂
+	
+2026-06-30 19:18:59 From Patrick Chouinard to Juan Torres (direct message):
+	I have to ask, is there a reason you have a tactical vest, is there a situation where you are? 😂
+	Juan Torres:😂
+	
+2026-06-30 19:19:07 From Juan Torres to Everyone:
+	What's the One Thing that will make everything else easy or irrelevant
+	
+2026-06-30 19:20:35 From Juan Torres to Everyone:
+	Sleeping in parking lots
+	Ryan C (One Stop Creative Agency - UK):😂
+	
+2026-06-30 19:21:43 From Juan Torres to Patrick Chouinard (direct message):
+	Hardware engineering haha
+	
+2026-06-30 19:22:59 From Patrick Chouinard to Juan Torres (direct message):
+	Now I am more curious
+	
+2026-06-30 19:26:19 From Patrick Chouinard to Everyone:
+	@Juan Torres Does it come with the sound effect 😛
+	Biggi Fraley:😂
+	
+2026-06-30 19:29:22 From Juan Torres to Everyone:
+	9b68c2b2-62d6-498c-bcbc-b33bcdcc6d20 (1).png
+	Bastian Venegas Arevalo:❤️
+	Ryan C (One Stop Creative Agency - UK), Patrick Chouinard:😁
+	
+2026-06-30 19:41:12 From Biggi Fraley to Everyone:
+	@Juan Torres This reminds me of some good content on offline business ideas that Chris Koerner has covered lately, like the inflatable movie theater rental business. Check him out at https://youtube.com/@thekoerneroffice
+	
+2026-06-30 19:44:27 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	become a 'preferred vendor' for as many wedding venues you can
+	Juan Torres:❤️
+	
+2026-06-30 19:44:44 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	easy way to get masses of bookings and give them a cut as an incentive
+	Juan Torres:👍
+	
+2026-06-30 19:50:22 From Bastian Venegas Arevalo to Everyone:
+	Canva provides that service, just to name one. You can outsource that and they’ll mail the albums to their house directly
+	Patrick Chouinard:👍
+	
+2026-06-30 19:50:57 From Adam to Everyone:
+	@Juan Torres  Example Roast https://youtu.be/N__nWSLeiaU
+	
+2026-06-30 19:52:19 From David’s iPhone to Everyone:
+	Checkout LuLu for drop ship quality printing over API
+	
+2026-06-30 19:52:28 From Bastian Venegas Arevalo to Everyone:
+	That sounds more like a commodity
+	
+2026-06-30 19:55:28 From Brandon Hancock to Everyone:
+	+1(478)997-9475
+	
+2026-06-30 19:58:24 From Bastian Venegas Arevalo to Everyone:
+	Can I go after Scott @Brandon Hancock ? if there’s nobody else in line
+	
+2026-06-30 19:58:29 From Brandon Hancock to Everyone:
+	Yes!!
+	
+2026-06-30 19:58:59 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@BuildingwithReason
+	
+2026-06-30 20:00:19 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Playback on screen share is choppy Scott fyi
+	
+2026-06-30 20:01:05 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	"claude just killed X,Y, Z" Everywhere atm
+	
+2026-06-30 20:02:54 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	"errr" "errr"
+	Biggi Fraley:😂
+	David’s iPhone, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:🤣
+	
+2026-06-30 20:03:05 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	👀
+	
+2026-06-30 20:04:39 From Juan Torres to Everyone:
+	Have to go folks....thanks for the great ideas
+	Brandon Hancock:❤️
+	
+2026-06-30 20:13:02 From Patrick Chouinard to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com You just obliterated my next 4-5 weekends…. Because now I want Hermes to be able to do these type of review in an ongoing basis and publish the result in a dashboard like yours.
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:😂
+	
+2026-06-30 20:18:52 From Patrick Chouinard to Everyone:
+	https://pixir.dev/
+	
+2026-06-30 20:19:05 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to ""errr" "errr"":
+	erm
+	
+2026-06-30 20:20:09 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "@Scott Rippey | @scottmichaelmedia | scottmichaelm...":
+	i will totally give you the plumbing lol
+	
+2026-06-30 20:20:48 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	https://github.com/scott-rippey/video-generator  for the video pipline start
+	Patrick Chouinard:❤️
+	David’s iPhone:😇
+	
+2026-06-30 20:22:03 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	https://github.com/scott-rippey/Telegram-Google-Voice-Agent  this will run you through doing the google agent in n8n from telegram
+	Patrick Chouinard:❤️
+	
+2026-06-30 20:23:44 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Patrick Hermes is so good lol
+	
+2026-06-30 20:24:02 From Biggi Fraley to Everyone:
+	At the AI Engineer World's Fair event today, they predicted developers will be moving their coding environment off their laptops in 6 months or less.
+	
+2026-06-30 20:24:47 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "At the AI Engineer World's Fair event today, they ...":
+	what does that mean lol.  and why is it important
+	
+2026-06-30 20:25:19 From Biggi Fraley to Everyone:
+	Replying to "At the AI Engineer World's Fair event today, they ...":
+	they were showing open laptops sitting around everywhere, because your agents need to keep coding
+	
+2026-06-30 20:25:47 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "At the AI Engineer World's Fair event today, they ...":
+	the agent thing is so over hyped lol
+	
