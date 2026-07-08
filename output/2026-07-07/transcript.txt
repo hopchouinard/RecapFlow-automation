@@ -1,0 +1,1025 @@
+[00:00:01] Marc Juretus: I understand.
+[00:00:02] mdcatc: They extended their little promo thing until the 12th, so you can still use it up to 50% of your weekly usage.
+[00:00:11] Marc Juretus: Nice.
+[00:00:12] mdcatc: So I was just about to be done with it, and now I got five days ahead of me.
+[00:00:22] Patrick Chouinard: Lucky you.
+[00:00:23] Patrick Chouinard: I'm waiting for my reset.
+[00:00:25] mdcatc: Well, mine reset last night at 1am.
+[00:00:31] Patrick Chouinard: This meeting is being recorded.
+[00:00:33] Patrick Chouinard: Yeah, when's your weekly cycle end?
+[00:00:37] Patrick Chouinard: Tomorrow.
+[00:00:38] Patrick Chouinard: No, not tomorrow.
+[00:00:40] Patrick Chouinard: Thursday night at 8.
+[00:00:42] Marc Juretus: What a worry, man.
+[00:00:46] Marc Juretus: So you're too productive, Patrick.
+[00:00:48] Patrick Chouinard: Well, I don't have any more Fable token left.
+[00:00:51] Patrick Chouinard: I don't even have any weekly token left.
+[00:00:55] Patrick Chouinard: I think I have like 1% left on my weekly quota.
+[00:00:59] Patrick Chouinard: After all.
+[00:01:00] Paul Miller: What about your second account?
+[00:01:04] Paul Miller: Surely, Patrick, you've got two accounts.
+[00:01:06] Patrick Chouinard: I have one Claude account, but I have one Codex account, and they're both topped off.
+[00:01:12] Patrick Chouinard: I've actually used the two manual reset on Codex as well.
+[00:01:17] Paul Miller: Oh, my goodness.
+[00:01:19] Paul Miller: Does that mean you have to take a holiday now?
+[00:01:22] Paul Miller: It means I have two days where I have to be really, really, really careful about what I ask to which model.
+[00:01:32] Patrick Chouinard: I'm actually finding myself using a Gemini right now.
+[00:01:37] Paul Miller: Oh, my God.
+[00:01:38] Paul Miller: Those are desperate times.
+[00:01:43] Patrick Chouinard: When you open Gemini CLI these days, yeah, you're desperate for tokens.
+[00:01:50] Paul Miller: Well, when you end up doing Ollama, then you really need to take a proper holiday.
+[00:01:55] Patrick Chouinard: If you're using Ollama in a local model, then we know Patrick has lost it.
+[00:02:01] Paul Miller: Don't worry, I still have a bit of token on perplexity and GitHub co-pilots.
+[00:02:11] Marc Juretus: Wow, dude, you sound like a guy that's trying to quit cigarettes but has him hid all over the house.
+[00:02:17] Paul Miller: You have someone in the glove box in the car.
+[00:02:20] Marc Juretus: go on that coffee can.
+[00:02:22] Marc Juretus: See, I told you there was three in there.
+[00:02:23] Paul Miller: That's funny.
+[00:02:25] Marc Juretus: That sounds like you, Patrick.
+[00:02:27] Patrick Chouinard: That's exactly it.
+[00:02:29] Paul Miller: That's funny.
+[00:02:30] Marc Juretus: Patrick doesn't take holiday.
+[00:02:31] Marc Juretus: Holiday is AI.
+[00:02:33] Marc Juretus: It's just a different version.
+[00:02:37] Patrick Chouinard: Well, I had to leverage as much of the Fable token as I possibly could because I bought some, because I actually went, no, that's not true.
+[00:02:46] Patrick Chouinard: I'm not tapped off.
+[00:02:47] Patrick Chouinard: I actually went over by 123 bucks.
+[00:02:52] Paul Miller: Well, it's not too bad.
+[00:02:54] Paul Miller: A worse.
+[00:02:57] Marc Juretus: That's funny.
+[00:02:59] Marc Juretus: funny.
+[00:02:59] Marc Juretus: The one, I do a couple of crypto investments, but long story short, one of them I have is called BitSensor, right, and that's basically like shared GPU, and it's funny when all that stuff went down with Fable and, you know, overseas where they blocked it, and what was the other one I forgot, I always forget the last one, but it's funny, like the stock price went up like 50 bucks as soon as that started getting blocked, so I'm wondering where we get to with shared GPU if that ever becomes a thing.
+[00:03:34] Patrick Chouinard: Yep.
+[00:03:35] Ty Wells: What's up, guys?
+[00:03:37] Patrick Chouinard: Hey, Ty.
+[00:03:39] Paul Miller: Hey, Ty.
+[00:03:40] Patrick Chouinard: Hey, Oh, no golf tonight?
+[00:03:44] Ty Wells: I'm in Tampa with my daughter, my wife and I, for a couple of weeks, so no, I brought my clubs.
+[00:03:52] Ty Wells: I haven't played yet.
+[00:03:53] Paul Miller: cool.
+[00:03:54] Marc Juretus: Yeah, we know that.
+[00:03:56] Marc Juretus: We know no clubs.
+[00:03:57] Marc Juretus: That's probably the car before his wife's back.
+[00:04:01] Ty Wells: Well, they have a simulator down in her, well upstairs, but I might have to go check that out in the evenings.
+[00:04:10] Marc Juretus: Boy, the world changed from when we first started Paul and Ty, right?
+[00:04:14] Marc Juretus: Like, you could just go on Tampa and work on the road for two weeks.
+[00:04:17] Marc Juretus: You know, you just couldn't do that before.
+[00:04:21] Marc Juretus: Like, you were affixed to that desk.
+[00:04:23] Marc Juretus: What a different world, man.
+[00:04:29] Paul Miller: Right, Patrick, do you want me to be the host today?
+[00:04:33] Patrick Chouinard: Yeah, if you could, that'd be helpful.
+[00:04:35] Patrick Chouinard: I'm, you know, taking it next week.
+[00:04:40] Paul Miller: Okay, let's, let's grab the screen list here.
+[00:04:47] Paul Miller: Okay.
+[00:04:47] Paul Miller: Okay.
+[00:04:48] Paul Miller: Um, let's see.
+[00:05:00] Paul Miller: All right.
+[00:05:01] Paul Miller: Let's start with you, Marc.
+[00:05:05] Paul Miller: How are things going?
+[00:05:07] Marc Juretus: Pretty good.
+[00:05:08] Marc Juretus: Not much to really report.
+[00:05:09] Marc Juretus: I'm in co-pilot studio hell for an agent we're trying to get out.
+[00:05:12] Marc Juretus: So I'm working with adaptive cards and presented like topic flows and tools.
+[00:05:18] Marc Juretus: So I haven't gotten to play a lot with AI outside of work because I've had my fill at work, if you will.
+[00:05:24] Marc Juretus: Best way to probably put that.
+[00:05:26] Marc Juretus: So I kind of wanted to come up and see what the boys are up to, man.
+[00:05:28] Marc Juretus: It's been a while.
+[00:05:32] Marc Juretus: What's the latest and greatest you guys have been up to?
+[00:05:35] Marc Juretus: It's been about four weeks since I've been on here.
+[00:05:40] Patrick Chouinard: Oh, there's been a ton.
+[00:05:42] Patrick Chouinard: I'm going to let people go around the room.
+[00:05:44] Patrick Chouinard: But yeah, there's been a lot going on.
+[00:05:47] Marc Juretus: Seems like you guys are leveraging Codex more from what I saw in your email feeler there.
+[00:05:55] Marc Juretus: What did it say?
+[00:05:56] Marc Juretus: It'll let Claude and Codex fight each other out for the correct code?
+[00:06:01] Marc Juretus: So I want to see that.
+[00:06:03] Marc Juretus: That's interesting.
+[00:06:07] Marc Juretus: But yeah, that's it for me, Paul.
+[00:06:09] Marc Juretus: I don't really have much to report.
+[00:06:10] Marc Juretus: I want to see what you guys have been up to.
+[00:06:13] Paul Miller: Okay, cool.
+[00:06:15] Paul Miller: Thanks, Marc.
+[00:06:17] Paul Miller: So mdcatc, what's going on in your world?
+[00:06:26] Paul Miller: How's that Cemetery application going?
+[00:06:30] mdcatc: Oh, the cemetery?
+[00:06:32] Paul Miller: It's going good.
+[00:06:34] mdcatc: I ran it through Fable yesterday to clean up any problems with it.
+[00:06:39] Paul Miller: Ah, yeah.
+[00:06:40] mdcatc: I found some really nice updates for it, so that was good.
+[00:06:45] mdcatc: I'm still waiting for the county that it's intended to be off their lulls and actually do something.
+[00:06:54] mdcatc: So I'm looking for a sales rep right now.
+[00:07:00] mdcatc: That can go hit up some of the other cemeteries in the state.
+[00:07:03] mdcatc: I'm not waiting any longer for the intended audience, so.
+[00:07:08] Paul Miller: Yeah, it's always the challenge with local government and federal government and state government.
+[00:07:15] Paul Miller: It's like getting them to get some action on them.
+[00:07:18] mdcatc: Yeah, it's like nobody claims to have any responsibility or accountability or authority to do something.
+[00:07:25] mdcatc: It's like, how do you guys ever get anything done?
+[00:07:28] mdcatc: There's no harm.
+[00:07:30] Paul Miller: Well, you need a politician that's got their ego on the line, then suddenly stuff gets done.
+[00:07:44] mdcatc: Well, part of the problem too is that the cemetery that it's intended for is controlled by the city and they just got a new city mayor, so.
+[00:07:58] mdcatc: Well, don't know.
+[00:08:00] mdcatc: You know, there's some changes in their ranks that are interfering with their budget and what they must manage them.
+[00:08:09] mdcatc: Like most cities and towns around the world, it's always the usual stuff that ratepayers and citizens want first.
+[00:08:19] mdcatc: Yeah.
+[00:08:21] mdcatc: So we'll see.
+[00:08:23] mdcatc: I just need to really get a good feel on what the penalties are because maybe they haven't had any yet.
+[00:08:36] mdcatc: But if they can't fulfill a request, then they start to pay penalties and then maybe they'll, you know, look at actually solving the problem.
+[00:08:52] Paul Miller: Have you ever, and this is kind of what one of the things I do to try and understand
+[00:09:00] Paul Miller: What's the trigger to get customers to get off their  and spend some money and sign things up?
+[00:09:06] Paul Miller: Where do people that run cemeteries, where do they sort of share with their colleagues that do similar things and moan and  about what's not happening and what is happening, that you can have kind of the AI do some deep research and sort of delve into what the hot buttons are to get these guys to have some more.
+[00:09:30] Paul Miller: Hustle to make a decision.
+[00:09:33] mdcatc: Yeah, I'm not sure exactly on the county.
+[00:09:37] mdcatc: was talking to my brother.
+[00:09:38] mdcatc: He works in the county and he's from the traditional business world, not from county work, right, or government work.
+[00:09:47] mdcatc: And he says his biggest pet peeve is most of the people are applying for the position because it is a government job, so they can just show up and not really do anything.
+[00:09:58] mdcatc: And once they get hired.
+[00:10:00] mdcatc: You know, it's really hard to get somebody fired from a government position, so.
+[00:10:06] Paul Miller: Are you able to leave Virginia the private cemeteries or surely some of those?
+[00:10:15] mdcatc: I've got a list of all the cemeteries in the state and I'm not sure, I haven't mapped it out to see which ones are private or county ran.
+[00:10:24] mdcatc: So this requirement is only applicable to county run cemeteries.
+[00:10:30] mdcatc: Ah, okay, okay.
+[00:10:32] mdcatc: that's true.
+[00:10:33] mdcatc: because it's a government thing, right?
+[00:10:36] mdcatc: So the private cemeteries or the commercially owned cemeteries don't have to apply or are not affected by the ruling for this grandma effect.
+[00:10:47] mdcatc: So, Juan, you had a question?
+[00:10:51] Juan Torres: Yeah.
+[00:10:51] Juan Torres: Is it possible to go to your, so it's municipal city level, right?
+[00:10:59] mdcatc: Right.
+[00:10:59] mdcatc: In terms...
+[00:11:00] Juan Torres: So if, who will be the client, if that's the case, do you think it will be fruitful to go to the city town hall meetings that, you know, sometimes municipal governments have and then talk to the city council members and be like, hey, this is how my application actually is going to be.
+[00:11:18] Juan Torres: Save the city government more money and do this and this for the citizenship and kind of carry like a mini political campaign for your application in that way.
+[00:11:30] mdcatc: Yeah, that would be great except for it's in a different state and I can't attend at this point.
+[00:11:37] mdcatc: It would, it would be a trip out and I don't know when their next meeting is so I need to find somebody who would be willing to go do that.
+[00:11:45] mdcatc: That's why I'm saying I'm looking for somebody that's in that local state to go do my sales stuff that's local.
+[00:11:53] Juan Torres: I think, I think, I more than anything like finding someone else's finding time for you because I mean, I would think.
+[00:11:59] Juan Torres: think.
+[00:12:00] Juan Torres: Then you're the best salesperson for the application at this point, but you know, I think that's a thing that could happen in the future once you free up your schedule and maybe try out to go there and then see what happens.
+[00:12:15] mdcatc: Yeah, no, I don't disagree with that at all.
+[00:12:19] Ty Wells: I would add to that, Morgan, if you have, like, yes, you would be the best person, but if that's not what you do, then, you know, that's not a soft skill that you do.
+[00:12:29] Ty Wells: Don't do it.
+[00:12:31] Ty Wells: Although you're the best person to understand, find somebody who you feel comfortable with is expressing in a, you know, from a sales perspective, what you're trying to articulate, but you may not be able to.
+[00:12:43] Ty Wells: So once you're comfortable with that person, then you can release the kraken, if you will.
+[00:12:50] Ty Wells: Yeah.
+[00:12:50] Ty Wells: But they've got to pass your test that they understand the product and the vision that you have.
+[00:12:57] Ty Wells: Yeah.
+[00:12:58] Paul Miller: And the problem.
+[00:12:59] Paul Miller: Yeah.
+[00:12:59] mdcatc: Thank
+[00:13:00] mdcatc: Yeah, the full screen problem.
+[00:13:03] Juan Torres: So a client, maybe.
+[00:13:07] Paul Miller: Or a former employee.
+[00:13:13] mdcatc: We'll work for tokens.
+[00:13:16] Paul Miller: Yep, we're all working for tokens now.
+[00:13:19] Marc Juretus: that's a good shirt, man.
+[00:13:21] Marc Juretus: Man, somebody better take that idea.
+[00:13:23] Paul Miller: actually like that.
+[00:13:25] Marc Juretus: Wow.
+[00:13:26] Marc Juretus: You gotta be around geeks, though, but yeah.
+[00:13:28] Paul Miller: Yeah, you got it.
+[00:13:30] Paul Miller: You'd have to go to like a geek bar and you're wearing that I work for tokens or I drink for tokens or, you know, because then you get the respect.
+[00:13:38] Paul Miller: Otherwise, it's just right over everyone's head.
+[00:13:42] mdcatc: So that's kind of the status on the cemetery, the heritage plot.
+[00:13:48] mdcatc: The other one that I've worked on and had a table five run through was my class to curb, which is a logistics of
+[00:14:00] mdcatc: End of day school to get the kids to the cars at the right time in all the charter schools.
+[00:14:05] mdcatc: You know, the issue there is they're in areas that aren't built for schools.
+[00:14:11] mdcatc: Usually they're in business districts and then they're nowhere near neighborhoods.
+[00:14:15] mdcatc: So everybody carpools.
+[00:14:18] mdcatc: And the end of day pickup is always a mess.
+[00:14:22] mdcatc: And the system actually makes it choreographs it so that the students leave the classroom.
+[00:14:29] mdcatc: Their picture shows up, they leave the classroom.
+[00:14:33] mdcatc: By the time they get to the curb, the car is at the curb.
+[00:14:35] mdcatc: So it's a logistics of matching up the incoming cars with the students in the classroom so that the flow is consistent.
+[00:14:44] mdcatc: So this is the second version of this I built.
+[00:14:46] mdcatc: The first one I did was maybe 15 years ago using PHP.
+[00:14:52] mdcatc: And we had, at that time, we had reduced our carpool mess from like...
+[00:14:59] mdcatc: God, were do.
+[00:14:59] mdcatc: go-time have God God
+[00:15:00] mdcatc: Some days it was like two hours long, down to like 15 minutes, so can get that school emptied in 15 minutes now.
+[00:15:07] mdcatc: So it's a drastic change and affects a lot of people positively.
+[00:15:14] Paul Miller: That would be big in Australia and New Zealand around the private schools.
+[00:15:20] mdcatc: Anywhere, all the private schools have that same issue.
+[00:15:22] mdcatc: They all set up in a business district area, because it's where they get cheap buildings, right?
+[00:15:28] Paul Miller: Yeah.
+[00:15:30] mdcatc: And nobody lives near there, so everybody has to carpool.
+[00:15:35] Paul Miller: Or it's like little Johnny can't ride his bike or take the bus or walk home.
+[00:15:44] Paul Miller: Got to be picked up and tiger mothers have got to come and make sure their child can only walk to the car and then get dropped off at home.
+[00:15:53] Paul Miller: Not like the 70s and 80s, but it is the reality of that.
+[00:16:00] mdcatc: Yeah, when the school was in the neighborhood, that was different.
+[00:16:02] mdcatc: Everybody could walk, but these schools, the charter schools and private schools, they're not in the neighborhood.
+[00:16:06] mdcatc: They're in business districts, and the students that are going to them are not necessarily within a geographic district.
+[00:16:17] mdcatc: Anybody can sign up and go to those charter schools.
+[00:16:20] mdcatc: So some of them are miles away, not just around the local area.
+[00:16:25] Paul Miller: Do the schools pay for the SAP?
+[00:16:28] Paul Miller: Is it a school thing that they buy, buy the SAP?
+[00:16:31] mdcatc: Yeah, it would be an app service that they would pay for.
+[00:16:35] Paul Miller: Cool.
+[00:16:36] Paul Miller: Cool.
+[00:16:36] Paul Miller: Oh, gosh.
+[00:16:37] mdcatc: The selling point, I'm going to put a calculator on the front page that shows, you know, how much time is wasted every month from everybody involved, all the parents, all the teachers.
+[00:16:50] mdcatc: You know, there's a lot of time of everybody sitting around waiting for something that should be relatively quick.
+[00:16:57] mdcatc: it's Yeah, it's a lot of a to this business.
+[00:16:59] mdcatc: It's and there's a business Thank
+[00:17:00] Paul Miller: The thing that occurs here is what you get is the city where the school is based gets in trouble with the traffic authorities saying that there's too much chaos, we're going to impose restrictions or penalties because you put the whole area around the school in gridlock at this time because you don't have a better system.
+[00:17:30] Paul Miller: So that's that's probably the that would be a big thing.
+[00:17:34] Paul Miller: That would be a big thing here.
+[00:17:35] Paul Miller: But I'll get the same problem here.
+[00:17:39] Paul Miller: Yeah, when you've when you've got it in a form, just let me know.
+[00:17:45] Paul Miller: I'd love to to introduce it to a few schools that I know that have got big issues with us.
+[00:17:51] mdcatc: Yeah, that'd be great.
+[00:17:52] mdcatc: So it's in I have it deployed on a staging.
+[00:17:56] mdcatc: I haven't actually deployed it to a production.
+[00:17:58] mdcatc: So So as soon as I get.
+[00:18:00] mdcatc: Get that done.
+[00:18:00] mdcatc: That's my next step.
+[00:18:02] Paul Miller: Well, that's a great mission.
+[00:18:05] Paul Miller: Who would have done that?
+[00:18:07] mdcatc: The whole process was Fable doing all the testing on it, running it up, load testing, everything.
+[00:18:14] mdcatc: It was great.
+[00:18:15] mdcatc: I was like, holy crap, this thing is amazing.
+[00:18:18] Paul Miller: Yeah.
+[00:18:18] Paul Miller: Yeah.
+[00:18:19] mdcatc: Found all the little problems and fixed them and it's just freaking nice.
+[00:18:25] Paul Miller: Not that Codex is anywhere near it.
+[00:18:29] Paul Miller: Well, we don't know with 5.6 because we haven't seen it yet, but had you played with Codex as well?
+[00:18:36] Paul Miller: Had you been using Clawed and then you...
+[00:18:39] mdcatc: Codex?
+[00:18:39] mdcatc: No, I haven't done that yet with that project.
+[00:18:42] mdcatc: The first task of it was just I wanted to finish it out.
+[00:18:47] Paul Miller: Yeah, because you've got all that.
+[00:18:49] Paul Miller: As you said, you've done it in PHP.
+[00:18:51] Paul Miller: So you've got a base.
+[00:18:53] Paul Miller: Here's what we did.
+[00:18:55] Paul Miller: Here's the kind of functionality.
+[00:18:57] Paul Miller: Now they modernize it for now and how...
+[00:19:00] Paul Miller: How you do it?
+[00:19:00] Paul Miller: And that's perfect for Fable.
+[00:19:03] mdcatc: Yeah, I didn't start with the PHP one.
+[00:19:05] mdcatc: I just started with the concept and redesigned it, replanned it.
+[00:19:15] Paul Miller: Brilliant.
+[00:19:16] Paul Miller: I love it, Morgan.
+[00:19:19] Paul Miller: Thanks for sharing.
+[00:19:22] Paul Miller: Anything else?
+[00:19:23] mdcatc: No, that's it for now.
+[00:19:27] mdcatc: I reformatted my Windows machine.
+[00:19:31] mdcatc: Goodbye, Windows.
+[00:19:33] Paul Miller: Oh, have you gone to Lightning?
+[00:19:35] mdcatc: I spent a few days this last weekend, rebuilding and finding tools that I thought I had figured out what I needed.
+[00:19:42] mdcatc: And you always find something and it's like, oh, I forgot about that.
+[00:19:47] Paul Miller: Make the jump to Apple.
+[00:19:49] Paul Miller: So right now, right now, today, my forgot about that was all the custom fonts I had installed.
+[00:19:55] Paul Miller: like, oh.
+[00:19:55] Paul Miller: Ah.
+[00:19:56] mdcatc: Whoa.
+[00:19:56] mdcatc: Oh, man.
+[00:19:57] Paul Miller: cool.
+[00:19:57] Paul Miller: Oh, No Thank you.
+[00:20:00] Paul Miller: Brilliant.
+[00:20:01] Paul Miller: Thanks, Morgan.
+[00:20:03] Paul Miller: Ryan, what's happening in the UK, other than celebrating getting through the next round of the football, which we won't talk about in front of the Americans?
+[00:20:13] Ryan C: Well, cheaters never prosper, that's what they say.
+[00:20:22] Ryan C: Getting one of your players unbanned, because essentially Trump has, I don't know, one of them's got dirt on each other, I'm not sure which way around it is.
+[00:20:30] Ryan C: But anyway, it is what it is.
+[00:20:32] Ryan C: You got battered anyway, so you came up against a superior team, we got destroyed.
+[00:20:38] Paul Miller: I like to proudly say that New Zealand had the same results, so the New Zealand team must be at the level of the American team now.
+[00:20:46] Marc Juretus: Well, what was happening wasn't unprecedented, where they overrode a decision like that.
+[00:20:52] Marc Juretus: Granted, it did come from Trump, but I've heard this has happened in the past years.
+[00:20:57] Paul Miller: I think it was a pretty flake.
+[00:21:00] Ryan C: I think it was free the tournament, which was also corrupt as  because they wanted him to play in the tournament because having Cristiano Ronaldo in the tournament is massive.
+[00:21:08] Marc Juretus: Not to digress, I gotta say one thing.
+[00:21:10] Marc Juretus: I have never seen an athlete other than Harry Kane that just does not look athletic in any possible way and be that good.
+[00:21:18] Marc Juretus: I'm serious, I think he's a great player, but when I look at him, I would never think football ever.
+[00:21:26] Paul Miller: Exactly.
+[00:21:27] Ryan C: I'll give you that.
+[00:21:29] Ryan C: What have I been doing, Jesus?
+[00:21:31] Ryan C: I got Fable Fever, let's just put it that way.
+[00:21:34] Ryan C: I've spent £400.
+[00:21:35] Ryan C: I bought two max accounts.
+[00:21:40] Ryan C: I've built three different, I've built two apps from scratch.
+[00:21:45] Ryan C: I decided that I couldn't be bothered to manage my own finances via the horrible spreadsheet that I built a couple of years ago when I started my business.
+[00:21:51] Ryan C: So I built my own Mac OS application that automates it from my invoicing system.
+[00:21:56] Ryan C: I just chucked some invoices into a folder.
+[00:21:58] Ryan C: I've got it scraping my Amazon.
+[00:21:59] Ryan C: It
+[00:22:01] Ryan C: And then it just populates a spreadsheet for me that I send over to my accountant, and then anything, it's not sure where it asks me, I built a full voice talking agent into it to discuss like, you know, we go, oh, can you just knock me up an invoice for this, and I'm going to create a little iPhone app for it as well, so I can just do stuff on the go, as and when I remember.
+[00:22:19] Ryan C: I built an entire estate agency website with it that's going to launch next week in three days.
+[00:22:26] Ryan C: And then I don't know, I think I've showed you guys the CRM that I'm working on for an estate agent.
+[00:22:31] Ryan C: I had a full scan of that, and then I've pretty much done an extra 50% of stuff on that.
+[00:22:37] Ryan C: It's bolted a whole load of stuff on.
+[00:22:39] Ryan C: I found that it works really nicely in Claude design.
+[00:22:42] Paul Miller: Yeah, yeah, yeah.
+[00:22:44] Ryan C: The design stuff on it is on a number level versus what Opus was doing with in Claude design.
+[00:22:49] Ryan C: So I've done it, got it to make me a bunch of stuff in there as well, which is quite cool.
+[00:22:54] Ryan C: And they've obviously just extended it to the 12th.
+[00:22:56] Ryan C: So once my thing resets in about 45 minutes.
+[00:23:00] Ryan C: I will be back on it and getting it to go through a couple of my other projects, and I may or may not have, I can't put it out because I was just plugged in, that might have happened.
+[00:23:18] Paul Miller: Oh, is that a mini?
+[00:23:19] Ryan C: That mini, yeah.
+[00:23:22] Ryan C: So that's a grand and a half in the hole that I'm not going get back, so thank you Patrick and Scott for essentially making me buy that.
+[00:23:32] Patrick Chouinard: Wait a minute, I never made you buy a Mac Mini, I built all of my Hermes install on Linux.
+[00:23:40] Ryan C: And then you showed it off, and I was like, hmm, I think I need to have one of those.
+[00:23:44] Ryan C: And then Scott then got his to start making phone calls to people, and it's incredible.
+[00:23:51] Ryan C: And that's kind of one of the things I wanted to do because I've got ADHD, so I'm one of those people that if it doesn't give me dopamine, I don't do it.
+[00:23:56] Ryan C: So I need a dentist appointment, I put it off for three months.
+[00:23:59] Ryan C: God.
+[00:23:59] Ryan C: God.
+[00:23:59] Ryan C: God.
+[00:24:00] Ryan C: So I'm going to make this my PA essentially, give it a whole personality, obviously I'm going to have pretty much the same setup that you Patrick and Scott have, build that out and get it to make phone calls and book appointments for me and stuff like that, so that's the plan, so that's been bought, I just need to get it set up, I've literally just mounted it to the bottom of my desk and then realised that my office, there was like a bomb's gone off on it, so I just started tidying, so I'm now just going through crap that's on my desk while we're on the school.
+[00:24:29] Ryan C: Sorting out rubbish, so yeah, it's been fun.
+[00:24:32] Ryan C: I've not got any sleep, that's for the week, right?
+[00:24:40] Paul Miller: Don't forget that video that you were going to send me, because that guy's waiting, he's got 400 stores in New Zealand.
+[00:24:48] Ryan C: I sent that to you, I sent you the video, I sent you all the stuff last week.
+[00:24:53] Ryan C: The day after you sent me that email, I think I sent it over to you Monday last week, maybe.
+[00:24:58] Paul Miller: I will go through it.
+[00:25:00] Paul Miller: must have missed it, or it must have gone into a wrong folder.
+[00:25:03] Paul Miller: Let me, I'll follow up with you if I can't find it.
+[00:25:07] Ryan C: Yeah, give me a shout if you can't find it, but I can record it to you if you want.
+[00:25:12] Ryan C: Put it to the top of inbox.
+[00:25:14] Paul Miller: Yep, yep, yep.
+[00:25:17] Ryan C: Yeah, that would be awesome.
+[00:25:18] Ryan C: I'll happily fly up to Australia and help them fit that out.
+[00:25:22] Ryan C: Not a problem at all.
+[00:25:25] Paul Miller: I remember it's the middle of winter here.
+[00:25:28] Ryan C: That's fine.
+[00:25:29] Ryan C: It's still going to be nice.
+[00:25:30] Ryan C: Actually, it'll probably be nicer than here.
+[00:25:32] Ryan C: It's too hot.
+[00:25:34] Paul Miller: Yeah.
+[00:25:35] Ryan C: So we are.
+[00:25:36] Ryan C: Yeah, where did I send it to?
+[00:25:38] Ryan C: Oh, they are.
+[00:25:41] Paul Miller: Yeah, I'll get you to re-scene.
+[00:25:44] Paul Miller: Thank you.
+[00:25:45] Ryan C: That should now be in the top of your inbox.
+[00:25:47] Ryan C: Give it a minute.
+[00:25:48] Ryan C: So yeah, that's been the main things really.
+[00:25:51] Ryan C: And just literally been camped in this, quite literally camped in this room.
+[00:25:55] Ryan C: I've got a little mattress and some things behind me that I've been putting on the floor.
+[00:25:59] Ryan C: So.
+[00:25:59] Ryan C: So.
+[00:26:00] Ryan C: I'm to sleep at about 4am, waking up at 6am and then cracking on.
+[00:26:03] Paul Miller: Damn.
+[00:26:04] Paul Miller: At what point do we need counselling is the question.
+[00:26:07] Juan Torres: Yeah, I was going to say that.
+[00:26:09] Juan Torres: Thank you for addressing the elephant in the room, Paul.
+[00:26:14] Ryan C: Scott Cue is telling me he's worried for my health.
+[00:26:16] Juan Torres: We're worried, Ryan.
+[00:26:18] Ryan C: I thought I only had Fathom until literally like 45 minutes time, so I've just been throwing everything at it across two accounts.
+[00:26:26] Paul Miller: Brandon, I think we might need, Patrick, might need in the software that you get to analyse the calls, we might need a liability check to make sure people aren't going too far with AI.
+[00:26:40] Juan Torres: Sentiment analysis, machine learning model to assist the state of mind of our attendees.
+[00:26:48] Patrick Chouinard: Yeah.
+[00:26:49] Ryan C: Brandon does put on free counselling, right, if you go too far.
+[00:26:52] Paul Miller: He's done it before.
+[00:26:55] Patrick Chouinard: I think we're too far gone by now.
+[00:26:57] Patrick Chouinard: mean, I would have to put the drill.
+[00:26:59] Paul Miller: We're lost.
+[00:27:03] Ryan C: That red line needs to be pretty high for that, I think, for this group.
+[00:27:08] Paul Miller: We've broken the token budget.
+[00:27:10] Paul Miller: We were up all night trying to use Fable to fit in with the timetable.
+[00:27:15] Juan Torres: Patrick is homeless.
+[00:27:19] Ty Wells: I feel bamboozled because I burnt everything.
+[00:27:22] Ryan C: Now I've got nothing for five days, right?
+[00:27:25] Ryan C: Same.
+[00:27:25] Ryan C: I literally maxed out 100% on Fable and literally the weekly limit.
+[00:27:30] Ryan C: My own account resets this evening, which is great, so I'm going to get it.
+[00:27:33] Ryan C: But my other account only resets on Saturday.
+[00:27:36] Ryan C: So I've said to the missus, you're going to see me on Sunday.
+[00:27:38] Ryan C: All I'm doing from midnight on Saturday onwards is coding.
+[00:27:42] Ryan C: So she's going to have to accept that.
+[00:27:45] Paul Miller: Well done.
+[00:27:52] Paul Miller: Ty.
+[00:27:53] Ryan C: Let me know before the end of the call, Paul, that's come through on Saturday.
+[00:27:57] Juan Torres: I think well done is a euphemism, Paul.
+[00:28:02] Paul Miller: Ty, how are you coping without gulp?
+[00:28:06] Ty Wells: I have my clubs in the other room, so literally I can go and touch them, so I'm good.
+[00:28:15] Juan Torres: Everybody's dealing with their addiction, Ty, no worries.
+[00:28:21] Ty Wells: No, actually, now that you bring that up, did I show you guys the tea time locator last week?
+[00:28:29] Ty Wells: Okay, good.
+[00:28:30] Ty Wells: So that was last week.
+[00:28:32] Ty Wells: This week I'm working on something else, of course.
+[00:28:37] Ty Wells: Let me share my screen.
+[00:28:45] Ty Wells: Sending a request?
+[00:28:47] Patrick Chouinard: Yep.
+[00:28:47] Patrick Chouinard: There you go.
+[00:28:49] Ty Wells: Okay.
+[00:28:57] Ty Wells: Okay, meet Q.
+[00:29:00] Ty Wells: Fathom is, well, you know, I have a company in the Bahamas that's a service provider.
+[00:29:07] Ty Wells: We do CCTV access control, life safety systems, fire alarm systems, all the low voltage type stuff.
+[00:29:17] Ty Wells: And so what had happened was my ice maker was on the fritz for the last probably year.
+[00:29:26] Ty Wells: And so I put a smart plug behind it, the refrigerator, so I could just have it recycle the power every week.
+[00:29:34] Ty Wells: And that seemed to work for a while, but last weekend it just, I did it and it wasn't working.
+[00:29:41] Ty Wells: wasn't generating ice.
+[00:29:42] Ty Wells: had people over.
+[00:29:43] Ty Wells: It was a, you know, an SS.
+[00:29:47] Ty Wells: So I decided I'm going to figure out why it's not working and identify exactly which part of it is failing.
+[00:29:54] Ty Wells: And so what I'm doing is I'm reading the electrical signal.
+[00:30:00] Ty Wells: The power, the voltage that's being pulled, the wattage that's being pulled, and I'm restarting the refrigerator.
+[00:30:08] Ty Wells: I've got two refrigerators.
+[00:30:10] Ty Wells: These are my real refrigerators.
+[00:30:12] Ty Wells: As you can see, they're saying, go get a technician.
+[00:30:15] Ty Wells: Anyhow, it reads the wattage that's being pulled on a fresh start, on a cold start.
+[00:30:21] Ty Wells: So refrigerators do certain things.
+[00:30:23] Ty Wells: They do four things, right?
+[00:30:25] Ty Wells: In particular, the ice maker pulls water, makes the ice, turns on the heater, releases the ice, and whatever.
+[00:30:34] Ty Wells: And then it starts the cycle again.
+[00:30:36] Ty Wells: It's called an ice harvest process.
+[00:30:39] Ty Wells: The compressor runs, obviously, when the temperature gets to a certain degree.
+[00:30:43] Ty Wells: There's a bunch of other things that go on.
+[00:30:46] Ty Wells: But every time something goes on, it leaves a signal as to what it's doing.
+[00:30:50] Ty Wells: And using the manufacturer's own specs, I use that along with a seven-day baseline to figure out what's happening with the refrigerator.
+[00:31:00] Ty Wells: So for my service company, instead of them offering, which I have, well, at my house, I've got a company that if, you know, if something breaks, they'll come and fix it, right?
+[00:31:12] Ty Wells: So you pay a monthly fee and then you pay a call out fee when they come.
+[00:31:16] Ty Wells: And if it's in your plan, you don't pay anything.
+[00:31:19] Ty Wells: If it's outside of your plan, you could opt to get that service.
+[00:31:23] Ty Wells: But they go through the process of diagnosing, right?
+[00:31:26] Ty Wells: So they'll start with whatever and, you know, triage it all the way down to, this is to watch it and tell, basically, I know when you're about to fail and I know what is going to fail because I understand how you work, right, in terms of any, any electrical appliance.
+[00:31:43] Ty Wells: So all of the, for my service company, this is what we will be implementing, um, from 400 amps, 200 amps, you know, big equipment to, you know, just a refrigerator, even a 220, like a wall, uh,
+[00:32:00] Ty Wells: If dry or maybe a dryer, wash is probably still 120, could be 220.
+[00:32:05] Ty Wells: So the point is, it's actual predictive analysis based on the electrical signals as opposed to, you know, the median time for failure or guessing what's going on with your device.
+[00:32:24] Ty Wells: So that's what Q is all about.
+[00:32:27] Ty Wells: So that's what I've been working on for the last week or so.
+[00:32:34] Ty Wells: And it's actually pretty good.
+[00:32:37] Ryan C: Having worked for Samsung for a number of years within the refrigeration department, Ty, that's sick.
+[00:32:44] Ryan C: Essentially, you've just rebuilt smart things, but with actual re-reading electrical signals, it's actually smarter than what they're doing.
+[00:32:54] Ty Wells: That's sick.
+[00:32:54] Ty Wells: Yeah.
+[00:32:55] Ty Wells: I mean, a lot of them have, they have thresholds.
+[00:32:59] Ty Wells: Like,
+[00:33:00] Ty Wells: If it hits this, you know, send a signal.
+[00:33:03] Ty Wells: I'm saying I see trend, right?
+[00:33:07] Ty Wells: I see this is where it's going based on the baseline and you're about to fail.
+[00:33:12] Ty Wells: So in the middle of winter, you don't want your furnace failing.
+[00:33:15] Ty Wells: Listen, so the service provider, and you need a service provider because they have to come and do the actual work, right, of changing the part, but what you've done is you've said you've identified the part, preemptively ordered the part, and your technician's now more efficient in when he's going to actually install.
+[00:33:34] Ty Wells: He's not guessing.
+[00:33:36] Ty Wells: But it's a learning system, of course, like, you know, it's AI.
+[00:33:39] Ty Wells: So every Samsung refrigerator of this model, it's learning, not just based on what it is, but the environment.
+[00:33:47] Ty Wells: And I forgot to add, there's a second backup to this, which is the power signals is great, but you could have things that tear that.
+[00:33:55] Ty Wells: So you'd have, like, for a refrigerator, you'd have a sensor that would be in the refrigerator.
+[00:34:00] Ty Wells: So if the compressor's working too hard, you should see a drop in temperature, right?
+[00:34:04] Ty Wells: Or if it's off, you should see a drop in temperature.
+[00:34:05] Ty Wells: Those type signals, like in an AC unit, you may have a leak detector or something that accompanies the signal, the power signature.
+[00:34:18] Ty Wells: So it varies on the different things which you would have there, but that's the approach that I'm taking.
+[00:34:25] Paul Miller: Have you thought about commercial customer types?
+[00:34:33] Paul Miller: Because I used to work, I'm a great fan of drinking a lot of sugar-free Coca-Cola, to the point that I decided in my earlier years, I like IT, I like Coca-Cola, why don't I do IT for Coca-Cola?
+[00:34:52] Paul Miller: And ended up running all the IT for New Zealand and doing a lot for Australia.
+[00:35:00] Paul Miller: And then doing the same for Pepsi.
+[00:35:02] Paul Miller: I put Coke in the Pepsi bottle outside the office, so when I came in it looked like I was drinking Pepsi when I was drinking Coke.
+[00:35:11] Paul Miller: But a massive opportunity for these beverage companies.
+[00:35:17] Ty Wells: Yeah, the reefer, the cold storage, you know, trailers, they have units in there that they have, they've got to check them, like somebody has to physically go check every six hours to make sure that it's on, it's plugged in, you know, it's different things because of the loss, you know.
+[00:35:34] Paul Miller: Yeah.
+[00:35:36] Ty Wells: think about convenience stores, you come in, you know, and the next day and you've restaurants that lose their stuff.
+[00:35:42] Paul Miller: And they are, but like I said, like, they're all threshold based.
+[00:35:47] Paul Miller: Or a retirement community, where a lot of the appliances are provided by the community and proactively managing because they're the assets of the company that owns.
+[00:35:59] Paul Miller: forंdel envy.
+[00:36:00] Paul Miller: The base units where you can get sort of really big commercial customers that you can cover the proactive management and cost for them.
+[00:36:10] Paul Miller: But I know like the Pepsi bottler that I'd worked for got taken over by Suntory in Japan.
+[00:36:18] Paul Miller: And the challenge that Suntory had is they've got millions of those automated vending machines in Japan.
+[00:36:26] Paul Miller: And if you if you multiply millions by a thousand dollars a device, if you can reduce the cost of maintenance of of tracking down to the minimal level, then then you've got certainly got global opportunities for for selling this type of service.
+[00:36:47] Ty Wells: Yeah.
+[00:36:48] Ty Wells: And even from the insurance perspective, like they're requiring certain things that they're covering food and then food dies, you know, spoil and stuff.
+[00:36:56] Ty Wells: They, you know, they they require that more than the actual.
+[00:37:01] Ty Wells: Merchant, you know, they would not record.
+[00:37:03] Ty Wells: Ooh, no more tea times today.
+[00:37:04] Ty Wells: Let's see if we're playing.
+[00:37:06] Ty Wells: So I've made some...
+[00:37:07] Ty Wells: We've saved the speed about golf, and now you've got to get out.
+[00:37:11] Ty Wells: Somehow it snuck in there, right?
+[00:37:13] Ty Wells: I was supposed to go this morning, but I didn't feel like it.
+[00:37:16] Paul Miller: It's a warm day.
+[00:37:20] Ty Wells: Yeah.
+[00:37:20] Ty Wells: I'm thinking maybe tomorrow or Friday.
+[00:37:23] Paul Miller: tomorrow would be nicer.
+[00:37:25] Paul Miller: Early tea tomorrow.
+[00:37:28] Ty Wells: Yeah.
+[00:37:28] Ty Wells: So I made quite a few changes here, as you can see.
+[00:37:36] Ty Wells: These are golf tea times based on what's available, sort of a list there.
+[00:37:43] Ty Wells: You can see the list and so forth.
+[00:37:45] Ty Wells: You can call them directly, or you can go by the course.
+[00:37:49] Ty Wells: I recently added the map, so you can easily, obviously, you know, these are all expected.
+[00:37:54] Ty Wells: So you can see based on where I'm at, you know, I'm here.
+[00:37:57] Ty Wells: These are my closest courses, so...
+[00:37:59] Ty Wells: go
+[00:38:00] Paul Miller: What did you do, the design, UI, UX, and was that with Claude Design, or do you just...
+[00:38:07] Ty Wells: No, I have this thing called Arena Skill.
+[00:38:11] Ty Wells: I've got a skill that has like Impeccable and UX and Front Design and something else.
+[00:38:18] Ty Wells: There's like five of those skills and they compete against each other to come up with the best design.
+[00:38:24] Ty Wells: And then I have another skill that is a mobile optimization skill for mobile, because obviously this is a PWA, so it optimizes for that.
+[00:38:38] Ty Wells: So what you're seeing there, if you pull up on your phone, you'll see how it looks, but certainly it's very...
+[00:38:45] Ty Wells: You think you're in an app and obviously if you do as a PWA, you would be in an app.
+[00:38:49] Ty Wells: So that's what I...
+[00:38:52] Ty Wells: Oh, one more thing.
+[00:38:53] Ty Wells: I just...
+[00:38:54] Ty Wells: So our ERP system that we have for that service company...
+[00:39:00] Ty Wells: We have a client that does, we resell some software called Linga, Linga, P-O-S, and they have like a beach getaway, so this is in the Bahamas, the cruise ships come in, they bus the people to this beach, a day on the beach sort of excursion, you know, you beach, they have activities, water sports, all can massage, all kinds of bar, you know, that sort of thing.
+[00:39:22] Ty Wells: And so they called us today and said, well the sales manager called me and said they want to go cashless, because right now they do credit card and cash, and so that's a project that, and they're a great paying customer, they pay annually, so I will definitely be pulling that into the ERP to go with a cashless based system, so I'm going to add that on to the ERP for their environment, so.
+[00:39:50] Paul Miller: Nice.
+[00:39:51] Ty Wells: That is, I think that's me for the day, guys.
+[00:39:55] Paul Miller: Brilliant.
+[00:39:56] Paul Miller: Always new and cool stuff.
+[00:39:58] Paul Miller: Thanks, Ty.
+[00:39:59] Paul Miller: Thank
+[00:40:00] Paul Miller: Juan, what's happening with your app and your appliance that you're building?
+[00:40:09] Juan Torres: Well, last week I was working just in getting the AI, multi-model AI pipeline, you know, set up.
+[00:40:20] Juan Torres: But just so you know, like, just to give context, I'm building an application that allows image-to-image transformation for an AI photo-boot service that will transform original taken pictures in an event into AI-generated images.
+[00:40:37] Juan Torres: So that's what I'm building.
+[00:40:40] Juan Torres: And at the stage in which I'm at is essentially, I was working on getting the multi-model pipeline ready and set.
+[00:40:52] Juan Torres: There was a small box that I had to fix.
+[00:40:55] Juan Torres: And then I added, started to add new styles, new transformations.
+[00:41:01] Juan Torres: I have a whole system to test and productionalize new styles.
+[00:41:08] Juan Torres: So I use the desktop version of Wavespeed in order to test a couple of styles that I want to use for transformation.
+[00:41:20] Juan Torres: And then my data web application allows for easy deployment into the frontend.
+[00:41:27] Juan Torres: So in terms of the dynamism, the flexibility, it's there.
+[00:41:32] Juan Torres: I've already tested it several times.
+[00:41:34] Juan Torres: So it's great in case like, for example, there's a client that wants a particular style that I haven't even thought about or just go with the trends of the youth, what they want to see, right?
+[00:41:47] Juan Torres: For example, I recently created a GTA 6 style.
+[00:41:56] Juan Torres: I'm going to share a picture here.
+[00:42:00] Juan Torres: I don't know if you guys know what GTA 6 is.
+[00:42:03] Juan Torres: It's a video game that's going to come up pretty soon, that it's really popular.
+[00:42:10] Patrick Chouinard: A video game that's been coming up for a couple of years.
+[00:42:13] Juan Torres: Yeah, it's a really popular game.
+[00:42:17] Juan Torres: I know for a fact that a lot of youth are going to love a style that's related to GTA 6.
+[00:42:24] Paul Miller: So that's what I'll be working on.
+[00:42:27] Juan Torres: And then this week, what I'm working on is having the right observability by having CloudWatch alerts in case there's more.
+[00:42:40] Juan Torres: 80% above the disk, the CPU utilization, the memory, just to make sure that when I deploy it in the field, there's not going to be...
+[00:42:50] Juan Torres: If there's, like, starting to increase too much, then I can basically observe that everything is up and going.
+[00:42:57] Juan Torres: I have the same alerts.
+[00:42:59] Juan Torres: Theindeneta, throat, It's don't
+[00:43:00] Juan Torres: That I'm going to be setting up for the database, which is Aurora Serverless 2, so I'm working on that right now, and then also I'm going to be working on having a dress rehearsal of packing and installing and installing the equipment.
+[00:43:16] Juan Torres: So I can document it and go through the smooth process of installing and uninstalling the whole setup.
+[00:43:25] Juan Torres: So yeah, that's what I'm working on.
+[00:43:27] Paul Miller: That's right.
+[00:43:29] Patrick Chouinard: Yep, I was just wondering, Juan, what are you using for your monitoring and alerting at the infrastructure level?
+[00:43:38] Juan Torres: I'm using CloudWatch.
+[00:43:40] Juan Torres: So for my EC2 instance, let me see, CloudWatch.
+[00:43:47] Patrick Chouinard: I thought you were monitoring the hardware of the booth itself.
+[00:43:52] Juan Torres: No, actually, that will be something that I would like to centralize because I am monitoring the EC2 instance.
+[00:44:00] Juan Torres: But I am not doing so for the actual physical mini PCs that I have.
+[00:44:08] Juan Torres: So if you have a suggestion, a means to centralize it, that would be great.
+[00:44:13] Patrick Chouinard: Prometheus and Alert Manager.
+[00:44:17] Juan Torres: And Ty is there.
+[00:44:22] Juan Torres: Prometheus and what?
+[00:44:24] Patrick Chouinard: Prometheus, it's the monitoring platform if you want.
+[00:44:27] Patrick Chouinard: And Alert Manager is an add-on to Prometheus that will publish the alert to whatever channel you want.
+[00:44:37] Patrick Chouinard: It can talk to Webhook, it can talk to N8N, can talk to Discord, it can talk to whatever you want.
+[00:44:43] Juan Torres: I mean, I can even add it to the DataWeb application as a monitoring tool.
+[00:44:48] Juan Torres: Okay, I'm going to check it out, Prometheus and the add-on of...
+[00:44:53] Patrick Chouinard: Alert Manager.
+[00:44:54] Juan Torres: Alert Manager.
+[00:44:56] Ty Wells: And the queue add-on.
+[00:44:57] Ty Wells: Don't forget the queue add-on.
+[00:44:58] Juan Torres: Queue-
+[00:45:00] Juan Torres: Like the letter Q add-on?
+[00:45:02] Ty Wells: That's what I just presented.
+[00:45:03] Ty Wells: It's called Q, C-U-E.
+[00:45:05] Juan Torres: Oh, okay.
+[00:45:06] Ty Wells: It was a joke.
+[00:45:08] Juan Torres: Well, not really, but it was a joke.
+[00:45:12] Juan Torres: So, yeah, no, I'm kind of a control freak, so I do want to have...
+[00:45:17] Juan Torres: I mean, it's not even like control freak, it's just like feasible monitoring.
+[00:45:22] Juan Torres: I think any application word insults should have.
+[00:45:28] Juan Torres: I do have a question that I posted on the site, and that is for, especially for the American business people here.
+[00:45:38] Juan Torres: I have an LLC, Limited Liability Company, S-Corp tax category.
+[00:45:48] Juan Torres: So, that's what I'm thinking of using for managing the service.
+[00:45:57] Juan Torres: Anyone has experience with...
+[00:45:59] Juan Torres: ...
+[00:46:00] Juan Torres: Dealing with LLCs, particularly for what I'm trying to do, do you guys think it's a good option?
+[00:46:07] Ty Wells: That's the way I operate right now.
+[00:46:11] Ty Wells: So it's been working well for me, but I have accountants that make sure it works well.
+[00:46:18] Ty Wells: But certainly I would say make sure you get professional help on setting it up and what your objectives are.
+[00:46:26] Ty Wells: Like when I have issues or concern, it's going to cost you, but it's good to get that advice.
+[00:46:32] Ty Wells: I mean, you can get it from the GPT, but, you know, it's good to get that advice.
+[00:46:37] Ty Wells: Actually, double check it with the GPT and get the questions that you want when you go in.
+[00:46:43] Ty Wells: But I would put the scenarios in there and then go to them like when you're at the tip of the spear and you know exactly what questions you really have because you understand the rest.
+[00:46:53] Juan Torres: Got it.
+[00:46:56] Juan Torres: I already have it and I GPT itself.
+[00:47:00] Juan Torres: A little too late, but, yeah.
+[00:47:02] Ty Wells: Yeah, no, but I'm saying get that, make sure you get that, an actual person's, a tax accountant, like my, the company I deal with, they have tax accountants and other lawyers there to do all of these things to make sure.
+[00:47:18] Ty Wells: My goal is being, I set a slash goal with them, and they have to meet that, so whatever it takes to get to that point is what I'm saying.
+[00:47:28] Juan Torres: Gotcha.
+[00:47:28] Juan Torres: Gotcha.
+[00:47:31] Ty Wells: Did I just say that out loud?
+[00:47:33] Ty Wells: That's crazy.
+[00:47:34] Ty Wells: Oh my.
+[00:47:35] Ty Wells: I need to take a break from Fable.
+[00:47:42] Juan Torres: Yeah.
+[00:47:42] Juan Torres: I actually did my taxes with GPT last year, and then I took it to an accountant to see if I was anything to need to be corrected, and she was like, everything seems fine.
+[00:47:57] Paul Miller: Scary.
+[00:47:57] Paul Miller: Andiusa.
+[00:47:57] Paul Miller: Rancery summary.
+[00:47:58] Paul Miller: You see Sorry.
+[00:47:59] Paul Miller: We didn't officie.
+[00:47:59] Paul Miller: Econ.
+[00:48:00] Paul Miller: We want to be an accountant at the moment.
+[00:48:01] Ty Wells: Trust me, I did the same, too, because these guys charged me quite a bit, and I wanted to see what they did this year, and they actually found a little bit more.
+[00:48:12] Ty Wells: So, I don't know.
+[00:48:14] Ty Wells: You've got to weigh that in, but certainly.
+[00:48:16] Paul Miller: That's because they're using Fable.
+[00:48:20] Ty Wells: They probably did have access to Fable when I didn't.
+[00:48:29] Paul Miller: Brilliant.
+[00:48:30] Paul Miller: Thanks, Juan.
+[00:48:34] Patrick Chouinard: Patrick, what's happening in your world of being token poor?
+[00:48:41] Patrick Chouinard: Well, I'm token poor because I was token intensive last weekend, let's say.
+[00:48:47] Patrick Chouinard: No, I really milked my Fable subscription as much as I can, and now that there's a couple of days more after my reset, I'm going to melt down some servers again.
+[00:48:59] Paul Miller: Yeah, but good thing,
+[00:49:01] Patrick Chouinard: But no, basically, I have made sure that Fable did not write a single line of code.
+[00:49:09] Patrick Chouinard: I had Fable architect all the solution I possibly could, write all the spec I possibly could.
+[00:49:19] Patrick Chouinard: So basically now I have a pipeline of, I don't know, three, four months worth of stuff to be developed by Opus.
+[00:49:29] Patrick Chouinard: So that's why I've spent my token, I really wanted to spend all of the Fable power as much as possible to spec stuff within an inch of its life in order to make sure that, and I specifically told Fable in my prompt, like, you're creating those specs for Opus, make sure that Opus can code that perfectly, so add even more detail if possible.
+[00:49:56] Patrick Chouinard: And I find that it makes a difference when you make them.
+[00:50:00] Patrick Chouinard: When you tell a model that you're the best, that'll create something for the lesser model, I don't know if it's condescending by nature, but it does add more detail.
+[00:50:15] mdcatc: Negative prompts work.
+[00:50:18] Patrick Chouinard: It works.
+[00:50:20] Patrick Chouinard: It actually works.
+[00:50:21] Patrick Chouinard: And I've developed some of the thing it actually created based on its recommendation, and it went flawlessly.
+[00:50:30] Patrick Chouinard: I mean, I had barely any rollback or anything.
+[00:50:35] Patrick Chouinard: It was really, really smooth sailing development, almost just executing the design.
+[00:50:41] Patrick Chouinard: So really, really happy with that.
+[00:50:44] Patrick Chouinard: You had a question, Ty?
+[00:50:47] Ty Wells: Yeah.
+[00:50:49] Ty Wells: And what you did is sort of what I did, although I had to build some stuff because I wanted to see that it was capable.
+[00:50:57] Ty Wells: Planning is great, but I ran into...
+[00:50:59] Ty Wells: This is...
+[00:51:00] Ty Wells: This just for the community, but I ran into an issue, because I maxed out on my three plans.
+[00:51:05] Juan Torres: I got like no more Fable.
+[00:51:06] Ty Wells: It's still Saturday and it'll end.
+[00:51:09] Ty Wells: But I was doing something in 4.8 and it failed.
+[00:51:16] Ty Wells: Something about transcribing YouTube.
+[00:51:19] Ty Wells: And so, a YouTube video and it said it couldn't do it.
+[00:51:23] Ty Wells: Okay, fine.
+[00:51:24] Ty Wells: But then I remember in another conversation, I was in Fable and I had to transform and it said it used something else to transform.
+[00:51:32] Ty Wells: I was like, okay, there's something there, right?
+[00:51:36] Ty Wells: So I was trying to identify what that gap was.
+[00:51:39] Ty Wells: So what I had Fable do is identify what that gap was.
+[00:51:45] Ty Wells: In this other session with 4.8, this is what it said it couldn't do and why did it say it couldn't do that when you were able to do it.
+[00:51:51] Ty Wells: So fill that gap for me.
+[00:51:53] Ty Wells: Help me understand.
+[00:51:54] Ty Wells: And then I said, what other areas other than YouTube translation
+[00:52:00] Ty Wells: I sort of distilled a little bit, if you will, what other areas would be different that it didn't do, or what would I try to get to the root cause of its harness, because that's really the big difference, right, the harness with Fable 5, and it's really that it tries more, and that's why it's so good at cybersecurity, that's why it's good at breaking stuff, because that's what I figured, it goes deeper, it doesn't stop at the first failure, it continues on to try to solve the problem, and I saw that again today, it solved something that was, for me, was unsolvable, because I knew, okay, that's just, I was, you know, I knew that that wouldn't work, and sure enough, it found a way to solve it.
+[00:52:43] Ty Wells: So, that gap is more of the harness, and its ability to iterate on it, not giving up on the first try, or second try.
+[00:52:57] Patrick Chouinard: Absolutely, Absolutely, and that's why I...
+[00:53:00] Patrick Chouinard: I have it do my architecture, because it will do that retry until it finds an architecture that works, and then Opus or Sonnet just have to execute it.
+[00:53:10] Patrick Chouinard: There is no more of those retry left.
+[00:53:13] Patrick Chouinard: So that helps a lot.
+[00:53:15] Patrick Chouinard: But again, when I said that I made it do architecture, it's not, oh, here's project A, do the architecture, here's project B, do the architecture.
+[00:53:23] Patrick Chouinard: Actually, Ty, I think you're going to like that one, because it talks a lot to the people around here who build a lot of different projects that are, oh, I have an idea, here's a project.
+[00:53:36] Patrick Chouinard: I set it at the root of my drive where I have all of my projects.
+[00:53:42] Patrick Chouinard: I had 160 repo on one drive.
+[00:53:47] Patrick Chouinard: And I basically told Fable, like, and this is probably where, where most of my token actually went, but okay, you can laugh.
+[00:54:00] Patrick Chouinard: I said it like, analyze this entire list of repositories, front, right, and center.
+[00:54:08] Patrick Chouinard: Try to see all possible relationship between the project, how you would restructure them, how you would restructure the actual repo themselves, how you would maybe merge some of the repo, separate some of the repo, fill gaps between some of the repo.
+[00:54:26] Patrick Chouinard: I have a prompt that's about three pages long, like basically telling it to attack this corpus every way it could.
+[00:54:36] Patrick Chouinard: Plus, I gave it all of the past Claude Code session JSONL file.
+[00:54:43] Patrick Chouinard: So all of the session I ever had with Claude Code, plus all of the JSONL file from the co-work session I ever had.
+[00:54:53] Patrick Chouinard: And then I, uh, launched it with, uh, UltraCode.
+[00:54:58] Patrick Chouinard: later.
+[00:54:58] Patrick Chouinard: later.
+[00:54:59] Patrick Chouinard: Bye.
+[00:54:59] mdcatc: Bye.
+[00:55:00] Ty Wells: Yeah, I love that one.
+[00:55:02] Patrick Chouinard: That was a good one.
+[00:55:04] Ty Wells: Well, it re-engineered my entire coding infrastructure.
+[00:55:15] Patrick Chouinard: I'm telling you, I have like three months worth of coding to do with Opus in front of me.
+[00:55:24] Patrick Chouinard: And everything I've done so far has been spot on.
+[00:55:30] Paul Miller: Yeah.
+[00:55:30] Patrick Chouinard: And basically, it's not like, oh, everything you're doing, it sounds like an operating system.
+[00:55:35] Patrick Chouinard: So let's build an operating system on top of Hermes.
+[00:55:39] Patrick Chouinard: Okay.
+[00:55:40] Paul Miller: Wow.
+[00:55:41] Patrick Chouinard: Wow.
+[00:55:42] Ty Wells: Yeah, it is pretty good.
+[00:55:45] Ty Wells: And I did what you did, but I did that on a couple of specific projects, because I don't think I want it looking at all my repos.
+[00:55:53] Ty Wells: It may get excited.
+[00:55:54] Ty Wells: So, but I may have to do that when I reset.
+[00:55:58] Patrick Chouinard: that.
+[00:55:58] Patrick Chouinard: re-engineering Check Let
+[00:56:00] Patrick Chouinard: Yeah, and honestly, it floored me.
+[00:56:03] Patrick Chouinard: It found things I didn't even remember I had.
+[00:56:07] Patrick Chouinard: Its capacity of searching is insane.
+[00:56:10] Patrick Chouinard: I mean, I didn't talk about Hermes.
+[00:56:13] Patrick Chouinard: I didn't talk about the fact that I had an Assistant VM on my network.
+[00:56:18] Patrick Chouinard: There are some projects in my code, and I'm talking about Hermes in some of the conversation with ClaudeCode, but my prompt didn't mention it whatsoever.
+[00:56:31] Patrick Chouinard: It actually found the information.
+[00:56:34] Patrick Chouinard: It found that I had a network inventory in one of my projects.
+[00:56:38] Patrick Chouinard: It actually found the VM where Hermes was set up.
+[00:56:41] Patrick Chouinard: And since I have an SSH authentication to it from my main workstation, it connected onto it.
+[00:56:51] Patrick Chouinard: It actually read the entire memory of Hermes.
+[00:56:53] Patrick Chouinard: It added that into its analysis.
+[00:56:56] Patrick Chouinard: Figured out from Hermes that I'm using a...
+[00:57:00] Patrick Chouinard: Fieldy, that Hermes had an access to the webhook and actually connected to the webhook, downloaded all of the conversation, analyzed the conversation, added that on top of it.
+[00:57:12] Patrick Chouinard: mean, there's a reason why I no longer have any tokens.
+[00:57:20] Paul Miller: Now none of us will have tokens after following your lead.
+[00:57:26] Patrick Chouinard: But honestly, what it did is absolutely insane.
+[00:57:31] Paul Miller: That's cool.
+[00:57:32] Patrick Chouinard: So I'm really, really anxious to see the result of everything.
+[00:57:37] Patrick Chouinard: But so far, I mean, it found some very old project that I did that I didn't even remember.
+[00:57:43] Patrick Chouinard: And it said, you know what?
+[00:57:45] Patrick Chouinard: If I use some of that basic and reapplied it to this new project, then we can make this third new project.
+[00:57:51] Patrick Chouinard: Wow.
+[00:57:53] Patrick Chouinard: So yeah, yeah, very, very impressed.
+[00:57:57] Patrick Chouinard: And we have it.
+[00:57:58] Ty Wells: Dropix is a new drug.
+[00:58:00] Patrick Chouinard: Yeah, most definitely, because I also use it at work, so once I had that success this weekend, obviously Monday morning I had to try it on someone else's token, so I did the same thing at the office for all of our internal, not internal as confidential, but all of the work-related repo that I have, that I work on, that basically all been coded by Claude anyway.
+[00:58:34] Patrick Chouinard: But did the same analysis, yeah.
+[00:58:37] Paul Miller: That would be great for your, I just think of your challenging work environment where your crazy management team got everyone excited about doing their own thing.
+[00:58:47] Paul Miller: Now you can finally grab some careful thinking back and look at where the gaps are and look at how to make it better, that's fabulous.
+[00:58:57] Patrick Chouinard: And it did a couple of things that...
+[00:58:59] Patrick Chouinard: that...
+[00:59:00] Patrick Chouinard: I mean, I don't know how I'm going to be able to share them because they're work-related, but the concept, it saw that I do a lot of training, so I create a lot of training material, and it built a training for CloudCode because we're in the pilot to introduce CloudCode to the developer community internally, and it saw that I had a lot of start, not finish training material, so I realized that some of my deliverable were creating a whole lot of training.
+[00:59:34] Patrick Chouinard: It actually created me a training that is executable by itself from CloudCode.
+[00:59:43] Patrick Chouinard: Basically, it gave files that have all of the material for the training, and you just load up the project in CloudCode and say, hi.
+[00:59:53] Patrick Chouinard: It starts and says, oh, welcome to this training, blah, blah, blah.
+[00:59:57] Patrick Chouinard: Here's the list of exercise.
+[00:59:58] Patrick Chouinard: Which one do you want to do?
+[00:59:59] Patrick Chouinard: do, and
+[01:00:00] Patrick Chouinard: And then you can go on and decide.
+[01:00:02] Patrick Chouinard: It's like a training where you are the hero.
+[01:00:05] Patrick Chouinard: You just point to whichever part of the training, it will open the file, it will guide you through the entire training.
+[01:00:10] Patrick Chouinard: It's basically AI-guided training for AI.
+[01:00:14] Paul Miller: That's fabulous.
+[01:00:17] Patrick Chouinard: It's pretty simple, but I never thought about having the harness guide the training itself.
+[01:00:24] Paul Miller: Well, that might answer a common question that many of us have, because we sit on this forum, we've got the history of the wisdom of what we've shared in the group.
+[01:00:38] Patrick Chouinard: We've got all the cool things we're doing.
+[01:00:40] Paul Miller: We know when we go to a barbecue and we talk to other people, you say you do AI, but it's going to fly over their head.
+[01:00:47] Paul Miller: The question is, the challenge is how do you get lieutenants that have the skill set and the understanding that you can take them through a training methodology that gets them up?
+[01:01:00] Paul Miller: To scratch really quickly, you might've just discovered that.
+[01:01:03] Paul Miller: That's the way.
+[01:01:05] Patrick Chouinard: Yeah.
+[01:01:07] Patrick Chouinard: Because as you give more context, because obviously what people will do in that training and what I've tried is, if you start to say, oh, here, yeah, but in my case, I would use AI to do this thing.
+[01:01:22] Patrick Chouinard: Well, you're talking to a live model, so it will take the content, of course, plus what you're giving it, and it will adapt the training as you're going along.
+[01:01:34] Paul Miller: That's cool.
+[01:01:35] Paul Miller: That's very cool.
+[01:01:37] Patrick Chouinard: That I've had.
+[01:01:39] Patrick Chouinard: Incredible.
+[01:01:40] Patrick Chouinard: And also, we are putting in place a lot of connectivity between CloudCode and all of our internal Databricks and Snowflake and all of the internal data services.
+[01:01:53] Patrick Chouinard: And we're having to guide people as to how do you configure disk connector and how do you configure disk connector.
+[01:02:00] Patrick Chouinard: And how do you configure that connector?
+[01:02:01] Patrick Chouinard: And it puts a lot of load on the support team, and I've exchanged with Cowork a lot of questions from the support team about those installed.
+[01:02:11] Patrick Chouinard: Well, when I did the walkthrough with Fable, it found it, and it proposed to write install.md for every one of those services, which are basically installed script but in plain language, to give to the harness itself in order to add its own connectivity.
+[01:02:32] Paul Miller: Wow.
+[01:02:34] Patrick Chouinard: And it works!
+[01:02:36] Patrick Chouinard: So, now you want to configure Snowflake, you just call the install.md from Snowflake, and it will do whatever it can automatically, and it will hand the user guidance step-by-step for whatever they need to do, if they need to create a token or create an authentication of some kind or whatever.
+[01:02:57] Patrick Chouinard: It's just going to guide them through.
+[01:02:59] Patrick Chouinard: So...
+[01:03:01] Patrick Chouinard: Yeah, the use Fable to inspect all your work and surface insight you might not never have thought about is an insane use case.
+[01:03:12] Paul Miller: Oh, gosh.
+[01:03:13] Paul Miller: Now I'm going to be burning on my Fable tokens today.
+[01:03:17] Ty Wells: Patrick, you need to DM me that prompt so I don't have to spend a token to get it.
+[01:03:23] Paul Miller: Yeah, I've seen it through to me as well.
+[01:03:28] Patrick Chouinard: Yeah, I'm going to have to...
+[01:03:29] Ty Wells: I'll also take a prompt.
+[01:03:35] Paul Miller: Maybe put the Stripe interface over it first, Patrick, and then see the link.
+[01:03:41] Ty Wells: Put a free tier on there, Patrick.
+[01:03:43] Juan Torres: I'll an OnlyFans subscription for those prompts.
+[01:03:48] Ryan C: I'm like a crack, don't I?
+[01:03:50] Ryan C: I'll have a dime bag of prompts, You can unblur this prompt if you pay $4.99.
+[01:03:57] Paul Miller: by the way.
+[01:03:57] Paul Miller: you know, tell pieces.
+[01:03:58] Paul Miller: you know?
+[01:03:58] Paul Miller: I mean, Yeah,
+[01:04:00] Ty Wells: Ransomware it.
+[01:04:05] Patrick Chouinard: I'll dig it out of my conversation history.
+[01:04:08] Juan Torres: No worries.
+[01:04:10] Paul Miller: Thank you, Patrick.
+[01:04:12] Patrick Chouinard: I might tweak it a little bit because there's a lot of this is to get into the mind of Patrick, so...
+[01:04:21] Ty Wells: No, that's the part we want, Patrick.
+[01:04:23] Paul Miller: Keep that in there.
+[01:04:24] Ty Wells: We want the naked, we want the naked prompts.
+[01:04:28] Juan Torres: Completely naked prompts.
+[01:04:30] Ty Wells: And naked prompts.
+[01:04:33] Ty Wells: Let's rephrase that, unfiltered.
+[01:04:35] Ty Wells: I forget this is recorded.
+[01:04:36] Ty Wells: Unfiltered.
+[01:04:37] Juan Torres: Not safe for work prompts.
+[01:04:40] Patrick Chouinard: Yeah, now what I'm thinking is that there's going to be sodat going over the transcription.
+[01:04:46] Patrick Chouinard: I'm going to be anxious to see the recap flow of this meeting.
+[01:04:52] Juan Torres: It's not safe for work because of the number of tokens it consumes.
+[01:04:58] Juan Torres: We actually...
+[01:05:02] Patrick Chouinard: So, yeah, no worries, I'll find it and I'll post it on the forum.
+[01:05:08] Paul Miller: Thank you, Patrick.
+[01:05:12] Paul Miller: On my side, I've used up my, well, I used up most of my Fable tokens on, I've got a project, so you guys might remember that I have a kind of a CRM slash Salesforce automation company.
+[01:05:34] Paul Miller: It's been running for 10 years.
+[01:05:36] Paul Miller: We have customers across Australia and New Zealand, they go out to retail stores, they audit the stores, encourage them to buy more products, do all sorts of interaction with field teams, but basically there's 10 years of data for many customers in there.
+[01:05:55] Paul Miller: And there's objectives with, look, I need you to get this, there's sales.
+[01:06:00] Paul Miller: So I thought, ah, I need to put all of those data insights together, and I want to throw them all at Fable.
+[01:06:11] Paul Miller: I want a system, and I looked at what you'd done, Patrick, with your analysis using LanceDB, build a base layer of a fully deterministic understanding of base data, make it very clear to the AI models that are working with the data analysis and interacting with users to always look at ground truth through the SQL side of things and through the LanceDB side of things, and then only use AI to interpret what it's seeing, and then doing self-learning based on asking for the customers and asking for people across a sales organization, I'm seeing
+[01:07:00] Paul Miller: Am I right to conclude that this is the outcome that you're trying to achieve, or that this week was a good one, or this week had its issues, and then feed that back into the model?
+[01:07:14] Paul Miller: And what it's built is this incredible level of insight for each of our customers that advise on the top level of management, the operational management of the field sales team, and the salespeople, and their customers, as to how well they're doing, where the opportunities are, and where the coaching needs to be.
+[01:07:39] Paul Miller: And my God, it blew my mind.
+[01:07:43] Paul Miller: I've looked at what salesforce.com, so I don't know if you read in the press, I kind of, that's our big nemesis competitor.
+[01:07:53] Paul Miller: They spend more on marketing than any other tech business that's out there, and they're losing money.
+[01:08:00] Paul Miller: We're cancelling salesforce.com as many CRM companies are losing money at the moment, but we're kind of making sure that for our customers, we can give insight around the data and how they should be operating their teams better.
+[01:08:14] Paul Miller: But that's taken a whole chunk of fable time to me.
+[01:08:19] Paul Miller: The other big win for me, I had a customer that said, show me a video of your data reporting, show me your demo environment, take me through how all your reporting works.
+[01:08:37] Paul Miller: And the problem is the reporting of a CRM type Salesforce automation company needs to be based on realistic data, not sort of random stuff that people have copied up there.
+[01:08:49] Paul Miller: We can't use, of course, any existing customer data.
+[01:08:52] Paul Miller: And I've been asking my dev team for this to be there for me to do demonstrations for about.
+[01:09:00] Paul Miller: It's three years now, and I suggested to them, why don't you get sort of artificial content coming through the system with AI, but then I kind of lost it and just thought, well, I'm just going to use it myself.
+[01:09:13] Paul Miller: What I managed to do, and I can demonstrate it, but it's quite contextual to the application, but I got Fable to recreate virtual users and gave them Android phone devices with our actual application.
+[01:09:37] Paul Miller: So they log into the Android device and ClaudeCode built an app to run multiple Android phone devices and behave as if they are virtual users doing all of the tasks that the system sets.
+[01:09:56] Paul Miller: And then it tracks all the performance.
+[01:10:00] Paul Miller: So the application, it does screenshots all the way.
+[01:10:03] Paul Miller: If it doesn't know functionality, then it can use, can look visually at the app and see what it's doing.
+[01:10:11] Paul Miller: So while a lot of people are using those sort of the browser base where you can control a browser based application, you can use it for across Android emulators and get it to control Android emulation.
+[01:10:25] Paul Miller: And it's basically testing and simulating and creating demo data for all of all of the app automatically.
+[01:10:34] Paul Miller: And I've just been able to build up all sorts of scripts.
+[01:10:36] Paul Miller: So in a couple of hours when I was told that, oh, it's going to take months and we don't have the time.
+[01:10:42] Paul Miller: don't have the resource.
+[01:10:44] Paul Miller: Thank you, Fable.
+[01:10:46] Paul Miller: Built it overnight.
+[01:10:48] Paul Miller: It's, oh, I just, I just love it.
+[01:10:50] Paul Miller: But the wonderful thing from our company's perspective is that doesn't touch any of our core system.
+[01:10:57] Paul Miller: We're using off the shelf user base.
+[01:11:00] Paul Miller: Um, application access and it's creating artificial demo data externally, which is then going back into our reporting system and, um, now fully usable and with a full audit history of how those applications worked with data that I can give back to the developers that are maintaining, but the, the app itself, but, oh gosh, yeah.
+[01:11:24] Paul Miller: Nah, I love it.
+[01:11:26] Paul Miller: Not enough hours in the day or tokens in the world.
+[01:11:30] Juan Torres: That's wild.
+[01:11:33] Patrick Chouinard: Absolutely.
+[01:11:34] Juan Torres: Yeah, that's pretty impressive.
+[01:11:37] Patrick Chouinard: Yep.
+[01:11:37] Patrick Chouinard: And by the way, that's what it does.
+[01:11:39] Patrick Chouinard: I just thought about something I forgot to mention, but, uh, if you have some question, not development, because that model is not available, uh, inside of any harness, but if you have some question that you think are fable level, and it's not exactly the same, but it's close enough.
+[01:11:59] Patrick Chouinard: isn't enough.
+[01:11:59] Patrick Chouinard: Alright.
+[01:12:00] Patrick Chouinard: Remember that if you have an OpenAI Pro account, even the $100, you have access to GPT 5.5 Pro, and the Pro version, it's not Fable, but it's  close.
+[01:12:18] Patrick Chouinard: So it's not going to develop, it could give you code inside, but it's only accessible through the web chat.
+[01:12:26] Patrick Chouinard: If you want to use it as an API, it's three times the cost of Fable.
+[01:12:31] Patrick Chouinard: So it's not, you're not going to use it like that.
+[01:12:34] Patrick Chouinard: But to figure out problems, actually to write prompt for Fable, it's actually pretty insane.
+[01:12:43] Ty Wells: And through the web chat, you have access as much as you want.
+[01:12:47] Ty Wells: Yeah, that's what I've been doing.
+[01:12:49] Ty Wells: I've been using Pro to just hash the madness out of it.
+[01:12:54] Ty Wells: And then I take it, it produces a PRD for me, and I throw that into Fable.
+[01:13:00] Ty Wells: Fable actually says, this is pretty good.
+[01:13:03] Ty Wells: This is better than I expected.
+[01:13:05] Ty Wells: That's what it likes to say.
+[01:13:06] Ty Wells: This is better than most, better than I expected.
+[01:13:09] Ty Wells: So I'm like, yeah, I know.
+[01:13:10] Ty Wells: It came from Bro.
+[01:13:12] Patrick Chouinard: But yeah, it's another high-level model that we can have access to for a reasonable amount of money, let's say.
+[01:13:20] Paul Miller: It's a nice strategy, Patrick, because I had, in those very depressing weeks in between when Fathom first came out, it was horribly taken away from us, and then it came back.
+[01:13:36] Paul Miller: I did a lot of that, start things in Clawed with Opus, then move it back to Codex, getting all the proposed requirements, documents, PRDs checked, backwards and forwards, and certainly got some better outcomes.
+[01:13:53] Paul Miller: But yeah, I never thought to try the Pro one as well, because that, yeah.
+[01:14:00] Paul Miller: I worry about you want to give Fable good stuff to think about.
+[01:14:04] Ty Wells: Right.
+[01:14:04] Ty Wells: I think that Fable is actually a little bit better than when it first came out.
+[01:14:11] Ty Wells: Because I'm sure they didn't stop working on it.
+[01:14:13] Ty Wells: They use the analytics to tweak it because it doesn't flag me as much as before.
+[01:14:19] Ty Wells: would say anything, it would flag.
+[01:14:23] Ty Wells: I didn't even say anything.
+[01:14:24] Ty Wells: It's better at that.
+[01:14:28] Ty Wells: We didn't have that much time, but I think it's definitely better at the flagging piece.
+[01:14:32] Ty Wells: And maybe that's the difference that they've tweaked it based on how bad it was flagging.
+[01:14:41] Paul Miller: Presumably, Anthropic had access to all of that compute that they were getting from SpaceX.
+[01:14:47] Paul Miller: So they just moved it to training because they didn't have to do inference over those few weeks.
+[01:14:53] Paul Miller: And they're probably quite dynamically moving it backwards and forwards because they've got that fixed contract with Elon.
+[01:14:59] Paul Miller: on same now.
+[01:14:59] Paul Miller: weeks.
+[01:14:59] Paul Miller: is
+[01:15:02] Ty Wells: Yeah, it could be.
+[01:15:03] Patrick Chouinard: They pretty much bought Colossus One, so.
+[01:15:07] Paul Miller: Yeah, yeah.
+[01:15:08] Paul Miller: Well, I'm sure Elon's guys got something in the back end recording everything that goes through it, so they'll have the next model just like the Chinese will in a few months time.
+[01:15:25] Paul Miller: Brilliant.
+[01:15:26] Paul Miller: Now, does anyone have anything else to share or any other questions that you want to cover off with the team?
+[01:15:38] Paul Miller: Or are we all good?
+[01:15:39] Paul Miller: We want to get back to Fable.
+[01:15:42] Patrick Chouinard: Ryan is...
+[01:15:43] Paul Miller: We want to get to the golf course.
+[01:15:45] Juan Torres: He's tweaking.
+[01:15:46] Juan Torres: Ryan is scratching.
+[01:15:47] Ryan C: Don't worry, lads.
+[01:15:48] Ryan C: I've already chatted, and I misread it.
+[01:15:50] Ryan C: wasn't midnight.
+[01:15:51] Ryan C: It's 1am, so I've got another 45 minutes.
+[01:15:53] Ty Wells: So if you want to chat for another 45 minutes, I don't know who else to do.
+[01:15:56] Paul Miller: Yeah, And then you'll be...
+[01:15:58] Paul Miller: And then the...
+[01:16:00] Paul Miller: Are games of the coming that you can watch the replays?
+[01:16:05] Ty Wells: Oh, the replays, yeah.
+[01:16:08] Ty Wells: would say everything's set now.
+[01:16:09] Ty Wells: The last game just finished.
+[01:16:12] Paul Miller: Brilliant.
+[01:16:15] Patrick Chouinard: Just as a reminder, the workflow is give everything you can to GBT 5.5 Pro, have it come up with the best possible prompt for Fable to do the architecture, give that the Fable to do the architecture, give it to Opus to do the coding, then Fable to do the PR review, and you should be...
+[01:16:37] Patrick Chouinard: This is how I extracted as much possible value from each model.
+[01:16:43] Ty Wells: You know, sorry, I'm on that train.
+[01:16:48] Ty Wells: I just don't like the back and forth too much because I've got to get a prompt.
+[01:16:51] Ty Wells: I mean, it's a little bit of work, so I'm going to work on that because I just wanted to take what I have in the UI and push
+[01:17:00] Ty Wells: Let's into Fable.
+[01:17:02] Ty Wells: Actually, now that we're talking about this, sorry, I'm working on my CMUX.
+[01:17:07] Ty Wells: I don't know if you guys are using CMUX.
+[01:17:09] Ty Wells: Patrick, I think you are.
+[01:17:11] Patrick Chouinard: I'm back into warp.
+[01:17:16] Ty Wells: Are you?
+[01:17:17] Ty Wells: So, yeah, I'm taking, there are some things that weren't working on CMUX.
+[01:17:22] Ty Wells: They're probably working on warp.
+[01:17:24] Ty Wells: So I can probably save my time on that.
+[01:17:26] Ty Wells: But one thing is switching subscriptions.
+[01:17:30] Ty Wells: Have you done, anybody done anything with that in CMUX, if you're doing that?
+[01:17:34] Patrick Chouinard: Not within the same provider.
+[01:17:37] Ty Wells: I've switched provider a lot, but...
+[01:17:38] Ty Wells: All right.
+[01:17:39] Ty Wells: Okay.
+[01:17:40] Ty Wells: Okay.
+[01:17:41] Ty Wells: I'm going to give that one to Fable.
+[01:17:43] Ty Wells: Hey, I need to switch between my three accounts to optimize usage, so switch when one's about to die.
+[01:17:50] Ty Wells: I mean, this is literally what I want to do.
+[01:17:51] Ty Wells: When I'm using low on that, running low on one, switch to the other one, downgrade the model, model, you know, because obviously I've got extra...
+[01:17:59] Ty Wells: You extra...
+[01:18:00] Ty Wells: Usage on, because if I'm in the middle of something, I want it to finish, but I want it to automatically switch, go to GPT 5.5 Pro, pull my thingamata there, PRD, bring it into Fable, build a plan, switch to Opus, build the product, switch back to Fable, check the product, and then ship the product, sort of the pipeline.
+[01:18:27] Paul Miller: Couldn't you do a CMUX skill that goes to OpenAI, does that prompting in OpenAI, pulls it across the other CMUX terminal?
+[01:18:39] Ty Wells: Yeah, that's what I started today, I'm starting to use to, I forked CMUX so I can go ahead and make the changes, because like it had problems with Google OAuth, it wouldn't work in the browser, I fixed that.
+[01:18:52] Ty Wells: I had problems with the microphone, I fixed that as well, so I'm just trying to work.
+[01:18:59] Ty Wells: Yeah, with
+[01:19:00] Ty Wells: With all the issues that I work around, I'm trying to work with now, at least get them resolved with Fable and DDT 5.5.
+[01:19:09] Patrick Chouinard: On my end, I manage the flip between different providers through GitHub, actually.
+[01:19:16] Patrick Chouinard: I use them as if they were independent people.
+[01:19:19] Patrick Chouinard: So basically, I build some, let's say I build the architecture from my architect, it will push the code, the specs, and then I will download it onto a second profile using Codex, for example, and we'll do either the code or the validation.
+[01:19:38] Patrick Chouinard: Basically, I use them as individual people and I leverage what tools you already have to have a multi-team of developer.
+[01:19:46] Ty Wells: That's interesting because yeah, what you can do, what I'm thinking is you just cue them up and you see something in there that says I'm ready to go in GitHub, pull it down in Fable, right?
+[01:19:59] Ty Wells: Because G
+[01:20:00] Ty Wells: Bt, put it there, put it down, fable, process it.
+[01:20:02] Ty Wells: When you said it's done, the other one's polling it, you know, go ahead and implement a 4.8 or even Sonnet 5, I don't know, and then fable back again when it's done.
+[01:20:16] Patrick Chouinard: Exactly.
+[01:20:17] Patrick Chouinard: Okay.
+[01:20:17] Patrick Chouinard: And my QA is done by a swarm of Hermes agents.
+[01:20:24] Ty Wells: Okay.
+[01:20:25] Patrick Chouinard: Because it's not the coding part, it's really the use the thing I just built and report whatever you find.
+[01:20:32] Ty Wells: Right.
+[01:20:34] Juan Torres: Wasn't there like an open router tool that's coordinated the work between all of the models?
+[01:20:41] Patrick Chouinard: No, the, the, the tool from the open router is more of a let's build fable out of multiple model working together.
+[01:20:50] Patrick Chouinard: It's not really individual model working separately.
+[01:20:55] Juan Torres: So it cannot be now with the, uh, use of fable.
+[01:21:00] Patrick Chouinard: Well, it could, but that's the thing, it amplifies the one model with the help of the others into an internal framework, and it spits out the improved answer.
+[01:21:14] Patrick Chouinard: But it's not like you can do part of the work with one, then give it to the other one to do another part of the work.
+[01:21:21] Juan Torres: Oh, I see.
+[01:21:22] Patrick Chouinard: It's really a fusion model that gives out better answer, but it's one question in, one answer out still.
+[01:21:31] Ty Wells: But you need a harness on top of the harnesses.
+[01:21:34] Patrick Chouinard: Yeah.
+[01:21:35] Ty Wells: Did you, the Omnigent, did you look at that?
+[01:21:38] Ty Wells: Is it called Omnigent?
+[01:21:40] Ty Wells: I think that's the name of it.
+[01:21:42] Ty Wells: O-M-I-G-E-N-T.
+[01:21:47] Ty Wells: I did play with that.
+[01:21:50] Ty Wells: O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O
+[01:22:02] Ty Wells: It's like a harness between models.
+[01:22:07] Ty Wells: Take a look at it, let's see.
+[01:22:13] Patrick Chouinard: I'm sure I have some publicity about it.
+[01:22:18] Ty Wells: Yeah, omnigent.ai.
+[01:22:21] Ty Wells: Let me see if I got the site.
+[01:22:27] Ty Wells: There we go.
+[01:22:29] Ty Wells: Found the GitHub, I'll copy that in the chat.
+[01:22:36] Ty Wells: Yeah, I looked at it.
+[01:22:38] Ty Wells: This was promising, but obviously it was an SOS call.
+[01:22:44] Ty Wells: Shiny Object Syndrome, for those that don't know.
+[01:22:47] Ty Wells: But I did spend a few hours working with it.
+[01:22:52] Ty Wells: It wasn't too bad, actually.
+[01:22:54] Ty Wells: I just didn't get back to it.
+[01:22:56] Patrick Chouinard: But no, I haven't seen that one.
+[01:22:59] Patrick Chouinard: So, end of it.
+[01:23:00] Patrick Chouinard: I think I'm going to have to investigate.
+[01:23:01] Patrick Chouinard: Hey.
+[01:23:03] Ty Wells: Well, it gives me something to do while I wait for my limit to reset.
+[01:23:07] Ty Wells: Reset.
+[01:23:11] Ty Wells: You queue it up for Fable to start looking at it.
+[01:23:15] Juan Torres: You will have to go outside to the real world.
+[01:23:19] Ty Wells: Can you explain the concept of what you just said?
+[01:23:24] Ty Wells: It is a UI with a, I think I may have it running actually.
+[01:23:30] Ty Wells: Let me see.
+[01:23:31] Ty Wells: It's a chat-based interface where it's basically using the models that you want to use at the time.
+[01:23:41] Ty Wells: You can sort of switch between models.
+[01:23:43] Ty Wells: Do I have it up and running?
+[01:23:44] Ty Wells: Hang on.
+[01:23:45] Ty Wells: I think it's in 127.
+[01:23:52] Juan Torres: Oh, I see.
+[01:23:54] Juan Torres: It's...
+[01:23:54] Juan Torres: No, I don't have What's the name of the app?
+[01:24:02] Ty Wells: Let me see if I have it running in CMUX.
+[01:24:08] Ty Wells: Nope.
+[01:24:08] Juan Torres: Like ML Studio?
+[01:24:13] Ty Wells: Could be, yeah.
+[01:24:14] Ty Wells: I mean, concept, similar.
+[01:24:19] Ty Wells: I thought I had it running here, though.
+[01:24:21] Ty Wells: Looks like I don't.
+[01:24:25] Ty Wells: But take a look at it.
+[01:24:27] Ty Wells: Like I said, I actually brought it up and running for a couple of hours.
+[01:24:31] Ty Wells: I used it, but it was having some memory issues, so it crashed often.
+[01:24:37] Ty Wells: That's what I remember.
+[01:24:39] Ty Wells: It was crashing, but obviously that's solvable with Fable.
+[01:24:44] Ty Wells: I mean, actually, I would go and fix the crash, right?
+[01:24:48] Ty Wells: I would go and fix what the bug was.
+[01:24:49] Ty Wells: I was running it locally.
+[01:24:51] Ty Wells: But then there were some issues with it, but I did like the concept, if I remember correctly.
+[01:24:58] Ty Wells: This was a whole week ago, so, you know.
+[01:25:00] Ty Wells: You know, this is ancient time that is yeah, that's so long ago.
+[01:25:04] Ty Wells: I don't I don't even have it running on my sea muck.
+[01:25:06] Ty Wells: So obviously can't be that important.
+[01:25:08] Juan Torres: It was a desperate measure.
+[01:25:11] Ty Wells: Well, no, somebody brought to my attention.
+[01:25:13] Ty Wells: So I said I would look at it for them.
+[01:25:16] Ty Wells: And I did for a minute.
+[01:25:22] Ty Wells: Okay, guys, I'm going to cut to touch some grass.
+[01:25:24] Ty Wells: See you guys next week.
+[01:25:28] Patrick Chouinard: Cool.
+[01:25:29] Juan Torres: Thank very much, everyone.
+[01:25:31] Paul Miller: See you guys.
+[01:25:33] Juan Torres: See you.
+[01:25:35] Juan Torres: See you.
