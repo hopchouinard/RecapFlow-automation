@@ -10,6 +10,8 @@ Install: Copy this file's content into Open WebUI → Functions → Create Filte
 from __future__ import annotations
 
 import logging
+import re
+from collections import OrderedDict
 from typing import Optional
 
 import httpx
@@ -23,6 +25,129 @@ CONTEXT_TAG = "[COMMUNITY_BRAIN_CONTEXT]"
 # They moved to the Open WebUI custom-model system prompt
 # (community-brain-v4-gpt-oss:20b). The repo's docs/inference-guidelines.md
 # is the canonical source for that content.
+
+# --- v5 citation guard (design D8-D10) ------------------------------------
+# Deterministic post-generation verification. gpt-oss:20b demonstrably
+# ignores system-prompt verification scaffolding under specific-query /
+# weak-retrieval pressure (v4 validation Q3); these functions verify the
+# ANSWER against the retrieved context instead of trusting the model.
+
+RETRIEVED_SOURCES_MARKER = "## Retrieved Sources"
+
+_SOURCE_HEADER_RE = re.compile(r"\[SOURCE (\d+) — chunk_id: ([^\]]+)\]")
+_SOURCE_REF_RE = re.compile(r"\[SOURCE\s+(\d+)\]", re.IGNORECASE)
+_CHUNK_ID_REF_RE = re.compile(
+    r"\[(\d{4}-\d{2}-\d{2}:[a-z_]+:[A-Za-z0-9_\-.]+)\]"
+)
+_ISO_DATE_RE = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
+_TRANSCRIPT_BLOCK_RE = re.compile(
+    r"<transcript_data>.*?</transcript_data>", re.DOTALL
+)
+
+# Bounded per-chat grounding stash: outlet-side fallback for Open WebUI
+# versions that don't replay injected system messages into outlet.
+_GROUNDING_STASH_MAX = 32
+
+
+def extract_grounding_facts(context_content: str) -> dict | None:
+    """Parse grounding facts out of a retrieved-sources context message.
+
+    Returns None when the content is not a sources context (no-results
+    notice, unavailable notice, arbitrary text) — callers must skip the
+    guard in that case.
+
+    source_indices / chunk_ids come from the [SOURCE N — chunk_id: ...]
+    header lines with all <transcript_data> bodies removed first, so a
+    tag-shaped line spoken inside a transcript cannot whitelist a
+    fabricated source (position contract, docs/inference-guidelines.md).
+    dates come from the FULL context including transcript bodies — a date
+    a speaker actually said is legitimate for the model to repeat.
+    """
+    if CONTEXT_TAG not in context_content:
+        return None
+    if RETRIEVED_SOURCES_MARKER not in context_content:
+        return None
+    metadata_only = _TRANSCRIPT_BLOCK_RE.sub("", context_content)
+    source_indices: set[int] = set()
+    chunk_ids: set[str] = set()
+    for m in _SOURCE_HEADER_RE.finditer(metadata_only):
+        source_indices.add(int(m.group(1)))
+        chunk_ids.add(m.group(2).strip())
+    dates = set(_ISO_DATE_RE.findall(context_content))
+    return {
+        "source_indices": source_indices,
+        "chunk_ids": chunk_ids,
+        "dates": dates,
+    }
+
+
+def verify_answer_grounding(answer: str, facts: dict) -> dict:
+    """Check every [SOURCE N] reference, chunk_id-shaped citation, and bare
+    ISO date in `answer` against the grounding facts. Returns the sorted
+    lists of tokens that could NOT be verified."""
+    cited_sources = {int(n) for n in _SOURCE_REF_RE.findall(answer)}
+    unverified_sources = sorted(cited_sources - facts["source_indices"])
+
+    cited_chunk_ids = set(_CHUNK_ID_REF_RE.findall(answer))
+    unverified_chunk_ids = sorted(cited_chunk_ids - facts["chunk_ids"])
+
+    dates_in_answer = set(_ISO_DATE_RE.findall(answer))
+    unverified_dates = sorted(dates_in_answer - facts["dates"])
+
+    return {
+        "unverified_sources": unverified_sources,
+        "unverified_chunk_ids": unverified_chunk_ids,
+        "unverified_dates": unverified_dates,
+    }
+
+
+def apply_guard(answer: str, verdict: dict, mode: str) -> str:
+    """Apply the guard policy to an answer given a non-empty verdict.
+
+    annotate: append a delimited warning block naming the unverified tokens.
+    strip: additionally replace each unverified token in place. Chunk-id
+        citations are replaced BEFORE bare dates so a fabricated date inside
+        a fabricated citation is handled once.
+    Returns the answer unchanged when the verdict is clean.
+    """
+    lines: list[str] = []
+    if verdict["unverified_dates"]:
+        lines.append(
+            "- session dates not present in the retrieved sources: "
+            + ", ".join(verdict["unverified_dates"])
+        )
+    if verdict["unverified_sources"]:
+        lines.append(
+            "- source citations with no matching retrieved source: "
+            + ", ".join(f"SOURCE {n}" for n in verdict["unverified_sources"])
+        )
+    if verdict["unverified_chunk_ids"]:
+        lines.append(
+            "- chunk ids not in the retrieved set: "
+            + ", ".join(verdict["unverified_chunk_ids"])
+        )
+    if not lines:
+        return answer
+
+    if mode == "strip":
+        for cid in verdict["unverified_chunk_ids"]:
+            answer = answer.replace(f"[{cid}]", "[unverified source]")
+        for n in verdict["unverified_sources"]:
+            answer = re.sub(
+                rf"\[SOURCE\s+{n}\]", "[unverified source]", answer,
+                flags=re.IGNORECASE,
+            )
+        for d in verdict["unverified_dates"]:
+            answer = answer.replace(d, "[unverified date]")
+
+    warning = (
+        "\n\n---\n"
+        "**Grounding check (automated):** this answer references material "
+        "that does NOT appear in the retrieved sources and may be "
+        "fabricated:\n" + "\n".join(lines) + "\n"
+        "Treat those specific claims as unverified."
+    )
+    return answer + warning
 
 
 def _flag_tags_for_chunk(derived_metadata: dict | None) -> str:
