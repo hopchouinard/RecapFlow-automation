@@ -216,11 +216,13 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
             name="speaker_auto_spoke", cue_phrases=(), target_predicate=None,
             delta=0.04, question_regex=never_match,
             match_field="speakers_spoke", match_strategy="name_resolve_then_check",
+            recruit=True,
         )
         mentioned = CueRule(
             name="speaker_auto_mentioned", cue_phrases=(), target_predicate=None,
             delta=0.02, question_regex=never_match,
             match_field="speakers_mentioned", match_strategy="name_resolve_then_check",
+            recruit=True,
         )
         return (spoke, mentioned)
 
@@ -237,6 +239,7 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
         question_regex=pattern,
         match_field="speakers_spoke",
         match_strategy="name_resolve_then_check",
+        recruit=True,
     )
     mentioned = CueRule(
         name="speaker_auto_mentioned",
@@ -246,6 +249,7 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
         question_regex=pattern,
         match_field="speakers_mentioned",
         match_strategy="name_resolve_then_check",
+        recruit=True,
     )
     return (spoke, mentioned)
 
@@ -266,6 +270,11 @@ class CueRule:
     question_regex: str | None = None
     match_field: str | None = None
     match_strategy: str | None = None
+    # v5 additions (design D3): recruitment opt-in + the raw YAML
+    # target_predicate mapping, preserved so candidate_injection can derive
+    # a WHERE clause from the same definition the boost predicate uses.
+    recruit: bool = False
+    predicate_spec: dict | None = None
 
 
 def _has_unresolved_question(chunk: dict) -> bool:
@@ -531,6 +540,7 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                     question_regex=entry["question_regex"],
                     match_field=entry.get("match_field"),
                     match_strategy=entry["match_strategy"],
+                    recruit=bool(entry.get("recruit", False)),
                 ))
                 continue
 
@@ -562,6 +572,8 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                 cue_phrases=cue_phrases,
                 target_predicate=predicate,
                 delta=delta,
+                recruit=bool(entry.get("recruit", False)),
+                predicate_spec=dict(entry["target_predicate"]),
             ))
         except Exception as exc:
             logger.error(
