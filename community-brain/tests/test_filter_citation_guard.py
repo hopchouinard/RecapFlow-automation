@@ -348,3 +348,33 @@ def test_inlet_clears_stash_on_retrieval_error(monkeypatch):
     }
     f.inlet(body)
     assert f._grounding_by_chat.get("c42") is None
+
+
+def test_inlet_no_user_message_clears_stale_stash():
+    from community_brain.openwebui import community_brain_filter as cbf
+
+    f = cbf.Filter()
+    f._grounding_by_chat["c7"] = {
+        "source_indices": set(),
+        "chunk_ids": set(),
+        "dates": {"2026-02-25"},
+    }
+    # No user message in this inlet call (title-gen / regenerate shape).
+    f.inlet({"chat_id": "c7", "messages": [{"role": "assistant", "content": "..."}]})
+    assert f._grounding_by_chat.get("c7") is None
+
+
+def test_outlet_fails_open_after_no_retrieval_turn():
+    from community_brain.openwebui import community_brain_filter as cbf
+
+    f = cbf.Filter()
+    f._grounding_by_chat["c8"] = {
+        "source_indices": set(),
+        "chunk_ids": set(),
+        "dates": {"2026-02-25"},
+    }
+    # A no-user-message inlet call for the same chat must clear stale facts.
+    f.inlet({"chat_id": "c8", "messages": [{"role": "assistant", "content": "..."}]})
+    out = f.outlet(_outlet_body(None, "On 2099-01-01 the group met.", chat_id="c8"))
+    # Fail open: no grounding context -> answer untouched (no stale-fact guard).
+    assert out["messages"][-1]["content"] == "On 2099-01-01 the group met."

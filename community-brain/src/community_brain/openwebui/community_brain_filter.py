@@ -599,6 +599,10 @@ class Filter:
         # Build retrieval query from recent conversation context
         user_messages = [m for m in messages if m.get("role") == "user"]
         if not user_messages:
+            # No retrieval this turn (title-gen / regenerate / non-user-turn
+            # call shape). Clear any stale facts so outlet fails OPEN instead
+            # of verifying against a prior turn's context (v5 D8).
+            self._stash_grounding(self._chat_id_of(body), None)
             body["messages"] = messages
             return body
 
