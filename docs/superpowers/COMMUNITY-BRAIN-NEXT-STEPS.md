@@ -124,6 +124,19 @@ Canonical references:
 
 ## One outstanding track
 
+### Retrieval v5 — Grounding (candidate injection + citation guard) — IMPLEMENTED (2026-07)
+
+Design + plan: `Patchou-plan` task 03 (external planning repo). Implements
+v5 candidates #1 (cue-driven candidate injection), #2 (speaker auto-rule
+LKG cache), #3 (`has_unresolved_question` alarm), #6 (filter-side citation
+post-processing) and #8 options (b)+(c), plus the RetryConfig TODO.
+Fabrication measurement: `scripts/eval-fabrication.py` +
+`scripts/eval/fabrication-queries.yaml` (12 adversarial probes; run the
+RETRIEVAL phase against a live server, ANSWER phase via Ollama).
+Deployment: bump to 0.5.0, redeploy container, recreate the Open WebUI
+custom model as `community-brain-v5-gpt-oss:20b` (temperature 0), re-upload
+the filter and RE-SET VALVES (`retrieval_url`, `api_key`, `citation_guard`).
+
 ### Track B — Plan C: Full historical backfill (UNBLOCKED — ready to run)
 
 Run Workflow 2 across the remaining ~57 of 65 historical sessions. Total cost ~$3, total wall time ~12 hours.
