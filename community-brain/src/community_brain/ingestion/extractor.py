@@ -19,6 +19,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from community_brain.ingestion._llm_parse import strip_code_fence
+from community_brain.ingestion.config_loader import RetryConfig
 from community_brain.llm import call_llm
 
 logger = logging.getLogger(__name__)
@@ -55,9 +56,16 @@ class ExtractionResult:
     error: str | None = None
 
 
-def _call_llm(model: str, prompt: str) -> str:
+def _call_llm(
+    model: str,
+    prompt: str,
+    retries: int = 3,
+    backoff_schedule: list[int] | None = None,
+) -> str:
     """Indirection for testing. Wraps the OpenRouter client call."""
-    return call_llm(prompt=prompt, model=model)
+    return call_llm(
+        prompt=prompt, model=model, retries=retries, backoff_schedule=backoff_schedule
+    )
 
 
 def extract_chunk_metadata(
@@ -67,6 +75,7 @@ def extract_chunk_metadata(
     model: str,
     prompt_template: str,
     speakers_spoke: list[str] | None = None,
+    retry_config: RetryConfig | None = None,
 ) -> ExtractionResult:
     """Run Stage C extraction on one chunk.
 
@@ -82,6 +91,8 @@ def extract_chunk_metadata(
         speakers_spoke: Canonical names of speakers who spoke in this chunk.
             Used to populate SPEAKERS_SPOKE in v2 prompts so the model can exclude
             them from speakers_mentioned. Defaults to [] for backward compat.
+        retry_config: chunking.yaml retry policy; None preserves call_llm's
+            built-in 3-attempt exponential default.
 
     Returns:
         ExtractionResult with status="success" and populated fields on success,
@@ -97,7 +108,15 @@ def extract_chunk_metadata(
     )
 
     try:
-        raw = _call_llm(model=model, prompt=prompt)
+        if retry_config is not None:
+            raw = _call_llm(
+                model=model,
+                prompt=prompt,
+                retries=retry_config.retry_attempts,
+                backoff_schedule=list(retry_config.retry_backoff_seconds),
+            )
+        else:
+            raw = _call_llm(model=model, prompt=prompt)
     except Exception as exc:
         logger.warning("LLM call failed: %s", exc)
         return _failure(f"{type(exc).__name__}: {exc}")

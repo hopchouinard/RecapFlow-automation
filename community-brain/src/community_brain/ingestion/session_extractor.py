@@ -23,6 +23,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from community_brain.ingestion._llm_parse import strip_code_fence
+from community_brain.ingestion.config_loader import RetryConfig
 from community_brain.ingestion.parser import (
     CommunityPost,
     SignalSection,
@@ -44,9 +45,16 @@ class SessionThemesResult:
     error: str | None = None
 
 
-def _call_llm(model: str, prompt: str) -> str:
+def _call_llm(
+    model: str,
+    prompt: str,
+    retries: int = 3,
+    backoff_schedule: list[int] | None = None,
+) -> str:
     """Indirection for testing. Wraps the OpenRouter client."""
-    return call_llm(prompt=prompt, model=model)
+    return call_llm(
+        prompt=prompt, model=model, retries=retries, backoff_schedule=backoff_schedule
+    )
 
 
 def select_session_input(
@@ -80,6 +88,7 @@ def extract_session_themes(
     input_text: str,
     model: str,
     prompt_template: str,
+    retry_config: RetryConfig | None = None,
 ) -> SessionThemesResult:
     """Run Stage B extraction for one session.
 
@@ -89,6 +98,8 @@ def extract_session_themes(
         model: OpenRouter model identifier.
         prompt_template: The session-themes prompt (loaded from
             session-themes-v1.md).
+        retry_config: chunking.yaml retry policy; None preserves call_llm's
+            built-in 3-attempt exponential default.
 
     Returns:
         SessionThemesResult. status="skipped" for empty input,
@@ -101,7 +112,15 @@ def extract_session_themes(
     prompt = f"{prompt_template}\n\nSESSION_INPUT:\n{input_text}"
 
     try:
-        raw = _call_llm(model=model, prompt=prompt)
+        if retry_config is not None:
+            raw = _call_llm(
+                model=model,
+                prompt=prompt,
+                retries=retry_config.retry_attempts,
+                backoff_schedule=list(retry_config.retry_backoff_seconds),
+            )
+        else:
+            raw = _call_llm(model=model, prompt=prompt)
     except Exception as exc:
         logger.warning("Stage B LLM failed: %s", exc)
         return SessionThemesResult(

@@ -16,7 +16,7 @@ from community_brain.ingestion.pipeline import IngestRequest, ingest_session
 FIXTURES = Path(__file__).parent / "fixtures"
 
 
-def _fake_extract_response(model, prompt):
+def _fake_extract_response(model, prompt, **_kwargs):
     """Distinguish Stage B (themes) from Stage C (chunk metadata) by prompt content."""
     if "SESSION_INPUT:" in prompt:
         return json.dumps({"themes": ["agent frameworks", "embeddings"]})
@@ -207,7 +207,7 @@ def test_ingest_session_chunk_extraction_failure_marks_status_failed(
     config_dir = _write_min_configs(tmp_path / "config")
     db_path = tmp_path / "lancedb"
 
-    def _broken_extract(model, prompt):  # noqa: ARG001
+    def _broken_extract(model, prompt, **_kwargs):  # noqa: ARG001
         if "SESSION_INPUT:" in prompt:
             return json.dumps({"themes": ["x"]})
         return "not json"  # malformed
@@ -295,7 +295,7 @@ def test_ingest_session_failed_chunks_have_empty_embedding(
     config_dir = _write_min_configs(tmp_path / "config")
     db_path = tmp_path / "lancedb"
 
-    def _broken_chunk_extract(model, prompt):
+    def _broken_chunk_extract(model, prompt, **_kwargs):
         if "SESSION_INPUT:" in prompt:
             return json.dumps({"themes": ["x"]})
         return "not json"  # malformed chunk extraction
@@ -1039,7 +1039,7 @@ def test_pipeline_canonicalizes_speakers_at_write(
     db_path = tmp_path / "lancedb"
 
     # Stage C returns raw "Adam" in both entities and speakers_mentioned
-    def _alias_extract(model, prompt):  # noqa: ARG001
+    def _alias_extract(model, prompt, **_kwargs):  # noqa: ARG001
         if "SESSION_INPUT:" in prompt:
             return json.dumps({"themes": ["agent frameworks"]})
         return json.dumps({
@@ -1144,7 +1144,7 @@ def test_canonicalization_preserves_speaker_mention_partition(
     # Stage C sees raw SPEAKERS_SPOKE=["Adam - Gold Flamingo"] and returns
     # speakers_mentioned=["Adam"] — realistic because Stage C doesn't resolve
     # aliases; it just recognizes the bare name "Adam" from the transcript text.
-    def _partition_extract(model, prompt):  # noqa: ARG001
+    def _partition_extract(model, prompt, **_kwargs):  # noqa: ARG001
         if "SESSION_INPUT:" in prompt:
             return json.dumps({"themes": ["partition regression"]})
         return json.dumps({
@@ -1226,7 +1226,7 @@ def test_pipeline_unknown_speakers_flow_to_pending(
     )
     db_path = tmp_path / "lancedb"
 
-    def _unknown_extract(model, prompt):  # noqa: ARG001
+    def _unknown_extract(model, prompt, **_kwargs):  # noqa: ARG001
         if "SESSION_INPUT:" in prompt:
             return json.dumps({"themes": ["topics"]})
         return json.dumps({
@@ -1290,7 +1290,7 @@ def test_pipeline_canonicalization_applied_before_resynthesis(
     config_dir = _write_min_configs_with_aliases(tmp_path / "config")
     db_path = tmp_path / "lancedb"
 
-    def _canon_resync_extract(model, prompt):  # noqa: ARG001
+    def _canon_resync_extract(model, prompt, **_kwargs):  # noqa: ARG001
         if "SESSION_INPUT:" in prompt:
             return json.dumps({"themes": ["resynthesis test"]})
         return json.dumps({

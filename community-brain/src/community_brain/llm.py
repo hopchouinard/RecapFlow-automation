@@ -42,6 +42,7 @@ def call_llm(
     prompt: str,
     model: str | None = None,
     retries: int = 3,
+    backoff_schedule: list[int] | None = None,
 ) -> str:
     """Call OpenRouter chat completions API and return the response text.
 
@@ -49,6 +50,8 @@ def call_llm(
         prompt: The user message to send.
         model: Override the default model.
         retries: Number of retry attempts on failure.
+        backoff_schedule: Per-attempt sleep seconds (index = attempt). When
+            None, falls back to exponential 2**attempt.
 
     Returns:
         The assistant's response text.
@@ -82,7 +85,10 @@ def call_llm(
             )
             if response.status_code >= 500:
                 if attempt < retries - 1:
-                    backoff = 2 ** attempt
+                    if backoff_schedule is not None and attempt < len(backoff_schedule):
+                        backoff = backoff_schedule[attempt]
+                    else:
+                        backoff = 2 ** attempt
                     logger.warning(
                         "LLM API error %d, retrying in %ds",
                         response.status_code, backoff,
@@ -106,7 +112,10 @@ def call_llm(
 
         except httpx.HTTPError as e:
             if attempt < retries - 1:
-                backoff = 2 ** attempt
+                if backoff_schedule is not None and attempt < len(backoff_schedule):
+                    backoff = backoff_schedule[attempt]
+                else:
+                    backoff = 2 ** attempt
                 logger.warning("LLM request failed (%s), retrying in %ds", e, backoff)
                 time.sleep(backoff)
             else:
