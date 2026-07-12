@@ -186,6 +186,17 @@ def _refresh_speaker_resolver(path: str | Path) -> dict[str, list[str]]:
     return aliases_map
 
 
+# Last-known-good cache for the speaker auto-rules, keyed by resolved path.
+# Stores (rule_pair, name_to_canonical snapshot, casefold snapshot) so a
+# transient partial-write window on speaker-aliases.yaml cannot degrade
+# speaker boosts/recruitment to never-match sentinels for that request
+# (v5 D12; mirrors _LAST_GOOD_RULES semantics for the YAML loader).
+_LAST_GOOD_SPEAKER_RULES: dict[
+    str,
+    tuple[tuple["CueRule", "CueRule"], dict[str, str], dict[str, str]],
+] = {}
+
+
 def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
     """Synthesize the speaker auto-rules from the alias registry.
 
@@ -198,8 +209,18 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
 
     Both use match_strategy='name_resolve_then_check' which respects the
     match_field -- only checks that one field for the canonical's group.
+
+    Resilience (v5 D12): when a previously-good path loads empty (missing,
+    unparseable, or transiently truncated), the last-known-good rule pair
+    is returned and the module-level resolver dicts are restored from the
+    cached snapshot. First-time-empty registries still return never-match
+    sentinels and cache nothing.
     """
+    global _SPEAKER_NAME_TO_CANONICAL, _SPEAKER_CASEFOLD_LOOKUP
+
     aliases_map = _refresh_speaker_resolver(path)
+    p = Path(path)
+    cache_key = str(p.resolve()) if p.exists() else str(p)
 
     # Collect ALL names (canonicals + aliases)
     name_to_canonical: dict[str, str] = {}
@@ -209,8 +230,19 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
             name_to_canonical[alias] = canonical
 
     if not name_to_canonical:
-        # Empty registry -- return two rules that never match.
-        # Never-match sentinel for empty-registry case.
+        cached = _LAST_GOOD_SPEAKER_RULES.get(cache_key)
+        if cached is not None:
+            rules, cached_names, cached_casefold = cached
+            _SPEAKER_NAME_TO_CANONICAL = dict(cached_names)
+            _SPEAKER_CASEFOLD_LOOKUP = dict(cached_casefold)
+            logger.warning(
+                "speaker-aliases load returned empty for %s; using "
+                "last-known-good speaker auto-rules (%d names)",
+                path,
+                len(cached_names),
+            )
+            return rules
+        # First-time empty registry -- never-match sentinels, nothing cached.
         never_match = r"(?!x)x"
         spoke = CueRule(
             name="speaker_auto_spoke", cue_phrases=(), target_predicate=None,
@@ -250,6 +282,11 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
         match_field="speakers_mentioned",
         match_strategy="name_resolve_then_check",
         recruit=True,
+    )
+    _LAST_GOOD_SPEAKER_RULES[cache_key] = (
+        (spoke, mentioned),
+        dict(_SPEAKER_NAME_TO_CANONICAL),
+        dict(_SPEAKER_CASEFOLD_LOOKUP),
     )
     return (spoke, mentioned)
 
