@@ -790,3 +790,14 @@ def test_unresolved_rate_no_alarm_at_healthy_rate(db_path: Path):
 
     assert stats["unresolved_rate"] == pytest.approx(0.2)
     assert stats["unresolved_alarm"] is False
+
+
+def test_unresolved_rate_empty_corpus_no_div_by_zero(db_path: Path):
+    """An empty corpus must not raise (guards the `if rows else 0.0` path)."""
+    _create_table(db_path, [])
+
+    stats = lint_corpus_chunks(db_path)
+
+    assert stats["scanned"] == 0
+    assert stats["unresolved_rate"] == 0.0
+    assert stats["unresolved_alarm"] is False

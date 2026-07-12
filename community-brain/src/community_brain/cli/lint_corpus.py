@@ -17,6 +17,7 @@ import datetime as dt
 import logging
 import os
 from pathlib import Path
+from typing import Any
 
 import lancedb
 
@@ -38,7 +39,7 @@ def _now_iso() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat()
 
 
-def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[str, int]:
+def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[str, Any]:
     """Apply 'recurrent' markers across the corpus; set computed_at on every row.
 
     rebuild=False (default): additive-only. Adds 'recurrent' when a chunk
