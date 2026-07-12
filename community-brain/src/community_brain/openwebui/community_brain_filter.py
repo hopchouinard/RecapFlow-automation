@@ -426,9 +426,25 @@ class Filter:
                 "Default False (LLM-facing context stays clean)."
             ),
         )
+        citation_guard: str = Field(
+            default="annotate",
+            description=(
+                "Post-generation grounding guard: 'annotate' appends a "
+                "warning block listing session dates / [SOURCE N] refs / "
+                "chunk_ids in the answer that don't appear in the retrieved "
+                "context; 'strip' additionally replaces them with "
+                "[unverified ...] markers; 'off' disables the guard. "
+                "The guard is deterministic (regex against the retrieved "
+                "context) — no extra LLM call."
+            ),
+        )
 
     def __init__(self):
         self.valves = self.Valves()
+        # Per-chat grounding stash (v5 D8): fallback for outlet when the
+        # injected system message is not replayed in the outlet body.
+        # ok -> facts dict; no_results/error -> None (clears stale facts).
+        self._grounding_by_chat: "OrderedDict[str, dict | None]" = OrderedDict()
 
     def _strip_prior_context(self, messages: list[dict]) -> list[dict]:
         """Remove any prior Community Brain context messages."""
@@ -556,6 +572,20 @@ class Filter:
             logger.error("Unexpected retrieval error: %s", e)
             return "error", [], None
 
+    @staticmethod
+    def _chat_id_of(body: dict) -> str:
+        return str(
+            body.get("chat_id")
+            or (body.get("metadata") or {}).get("chat_id")
+            or "default"
+        )
+
+    def _stash_grounding(self, chat_id: str, facts: dict | None) -> None:
+        self._grounding_by_chat[chat_id] = facts
+        self._grounding_by_chat.move_to_end(chat_id)
+        while len(self._grounding_by_chat) > _GROUNDING_STASH_MAX:
+            self._grounding_by_chat.popitem(last=False)
+
     def inlet(self, body: dict, __user__: Optional[dict] = None) -> dict:
         """Pre-process: inject retrieved transcript context into the message list."""
         if not self.valves.enabled:
@@ -589,9 +619,64 @@ class Filter:
         else:
             context_content = self._build_unavailable_message()
 
+        # Stash grounding facts for outlet (v5 D8). Non-ok statuses stash
+        # None so a previous turn's facts can't leak into this turn's guard.
+        chat_id = self._chat_id_of(body)
+        if status == "ok":
+            self._stash_grounding(chat_id, extract_grounding_facts(context_content))
+        else:
+            self._stash_grounding(chat_id, None)
+
         # Insert context at position 0
         context_message = {"role": "system", "content": context_content}
         messages.insert(0, context_message)
+
+        body["messages"] = messages
+        return body
+
+    def outlet(self, body: dict, __user__: Optional[dict] = None) -> dict:
+        """Post-generation grounding guard (v5 D8-D10).
+
+        Verifies session dates, [SOURCE N] references, and chunk_id-shaped
+        citations in the assistant's answer against the retrieved context.
+        Fails OPEN: when no grounding context is available the answer
+        passes through untouched (the guard is defense-in-depth, not a
+        gate). When the context message for this turn is a no-sources or
+        unavailable notice, the guard skips — the model was explicitly
+        told to answer generally or refuse.
+        """
+        mode = (self.valves.citation_guard or "annotate").strip().lower()
+        if mode == "off" or not self.valves.enabled:
+            return body
+
+        messages = body.get("messages", [])
+
+        facts: dict | None = None
+        context_found = False
+        for m in messages:
+            if m.get("role") == "system" and CONTEXT_TAG in (m.get("content") or ""):
+                context_found = True
+                facts = extract_grounding_facts(m.get("content") or "")
+                break
+
+        if context_found and facts is None:
+            # This turn's context is a no-sources/unavailable notice.
+            return body
+        if not context_found:
+            facts = self._grounding_by_chat.get(self._chat_id_of(body))
+        if not facts:
+            logger.warning(
+                "citation guard: no grounding context available; failing open"
+            )
+            return body
+
+        for m in reversed(messages):
+            if m.get("role") == "assistant":
+                answer = m.get("content") or ""
+                verdict = verify_answer_grounding(answer, facts)
+                if any(verdict.values()):
+                    m["content"] = apply_guard(answer, verdict, mode)
+                break
 
         body["messages"] = messages
         return body

@@ -209,3 +209,142 @@ def test_apply_guard_clean_verdict_returns_answer_unchanged():
         "unverified_dates": [],
     }
     assert apply_guard("clean answer", verdict, "annotate") == "clean answer"
+
+
+# ---------------------------------------------------------------------------
+# Filter.outlet integration (design D8)
+# ---------------------------------------------------------------------------
+
+
+def _sources_context():
+    return _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello world"),
+    ])
+
+
+def _outlet_body(context_content: str | None, answer: str, chat_id: str = "c1") -> dict:
+    messages = []
+    if context_content is not None:
+        messages.append({"role": "system", "content": context_content})
+    messages.append({"role": "user", "content": "question?"})
+    messages.append({"role": "assistant", "content": answer})
+    return {"chat_id": chat_id, "messages": messages}
+
+
+def test_outlet_annotates_fabricated_date():
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    f = Filter()
+    body = _outlet_body(_sources_context(), "That was decided on 2025-12-15.")
+    out = f.outlet(body)
+    answer = out["messages"][-1]["content"]
+    assert "Grounding check (automated)" in answer
+    assert "2025-12-15" in answer
+
+
+def test_outlet_leaves_grounded_answer_untouched():
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    f = Filter()
+    clean = "Per [SOURCE 1], the 2026-02-25 session covered hello world."
+    body = _outlet_body(_sources_context(), clean)
+    out = f.outlet(body)
+    assert out["messages"][-1]["content"] == clean
+
+
+def test_outlet_off_valve_disables_guard():
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    f = Filter()
+    f.valves.citation_guard = "off"
+    fabricated = "That was decided on 2025-12-15."
+    body = _outlet_body(_sources_context(), fabricated)
+    out = f.outlet(body)
+    assert out["messages"][-1]["content"] == fabricated
+
+
+def test_outlet_strip_mode_redacts():
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    f = Filter()
+    f.valves.citation_guard = "strip"
+    body = _outlet_body(_sources_context(), "Decided on 2025-12-15 [SOURCE 9].")
+    out = f.outlet(body)
+    answer = out["messages"][-1]["content"]
+    assert "[unverified date]" in answer
+    assert "[unverified source]" in answer
+
+
+def test_outlet_skips_when_context_is_no_sources_notice():
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    f = Filter()
+    notice = f._build_no_sources_message()
+    fabricated = "Generally speaking, 2025-12-15 was a Monday."
+    body = _outlet_body(notice, fabricated)
+    out = f.outlet(body)
+    # No sources context -> model was told to answer generally; guard skips.
+    assert out["messages"][-1]["content"] == fabricated
+
+
+def test_outlet_fails_open_without_any_context():
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    f = Filter()
+    fabricated = "On 2025-12-15 the group met."
+    body = _outlet_body(None, fabricated, chat_id="unknown-chat")
+    out = f.outlet(body)
+    assert out["messages"][-1]["content"] == fabricated
+
+
+def test_outlet_uses_inlet_stash_when_context_absent(monkeypatch):
+    """Some Open WebUI versions do not replay injected system messages into
+    outlet; the per-chat stash written by inlet covers that."""
+    from community_brain.openwebui import community_brain_filter as cbf
+
+    f = cbf.Filter()
+    ctx = _sources_context()
+    facts = cbf.extract_grounding_facts(ctx)
+    f._grounding_by_chat["c9"] = facts
+
+    body = _outlet_body(None, "Decided on 2025-12-15.", chat_id="c9")
+    out = f.outlet(body)
+    assert "Grounding check (automated)" in out["messages"][-1]["content"]
+
+
+def test_inlet_stashes_facts_per_chat(monkeypatch):
+    from community_brain.openwebui import community_brain_filter as cbf
+
+    f = cbf.Filter()
+
+    def _fake_retrieve(question):
+        chunks = [_make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello")]
+        return "ok", chunks, {"of_top_k": 1}
+
+    monkeypatch.setattr(f, "_retrieve_chunks", _fake_retrieve)
+    body = {
+        "chat_id": "c42",
+        "messages": [{"role": "user", "content": "what happened on 2026-02-25?"}],
+    }
+    f.inlet(body)
+    facts = f._grounding_by_chat.get("c42")
+    assert facts is not None
+    assert "2026-02-25" in facts["dates"]
+
+
+def test_inlet_clears_stash_on_retrieval_error(monkeypatch):
+    from community_brain.openwebui import community_brain_filter as cbf
+
+    f = cbf.Filter()
+    f._grounding_by_chat["c42"] = {"source_indices": {1}, "chunk_ids": set(), "dates": set()}
+
+    def _fake_retrieve(question):
+        return "error", [], None
+
+    monkeypatch.setattr(f, "_retrieve_chunks", _fake_retrieve)
+    body = {
+        "chat_id": "c42",
+        "messages": [{"role": "user", "content": "anything"}],
+    }
+    f.inlet(body)
+    assert f._grounding_by_chat.get("c42") is None
