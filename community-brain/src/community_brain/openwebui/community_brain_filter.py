@@ -150,6 +150,46 @@ def apply_guard(answer: str, verdict: dict, mode: str) -> str:
     return answer + warning
 
 
+# --- v5 render-time injection neutralization (design D9 security) ---------
+# extract_grounding_facts() trusts two structural token shapes in the
+# rendered context: the <transcript_data>/</transcript_data> block
+# delimiters (used to carve trusted metadata from unverified transcript
+# speech) and the [SOURCE N — chunk_id: ...] header lines (the source /
+# chunk_id whitelist). Corpus-derived, attacker-influenceable fields
+# (full_text, session_title, speakers, topic, chunk_id, session_date) are
+# embedded into that context. If such a field contains a literal
+# </transcript_data> it can prematurely close the block and smuggle a
+# forged header into the trusted metadata region; if it contains a literal
+# [SOURCE N — chunk_id: ...] it forges a header directly. Both defeat the
+# guard (a fabricated citation is reported as grounded).
+#
+# We neutralize these token shapes at render time by inserting a zero-width
+# space so the parser's literal match breaks while the text stays visually
+# identical for the model. Only these exact tokens are touched: ISO dates,
+# prose, and normal ids/titles pass through byte-for-byte, so legitimate
+# dates spoken in a transcript are still collected and existing rendering
+# output is unchanged. The renderer's OWN delimiters and header line are
+# emitted from trusted structure and never routed through this function, so
+# extract_grounding_facts still sees exactly the real blocks and headers.
+
+_ZWSP = "​"
+_TRANSCRIPT_TAG_TOKEN_RE = re.compile(r"<(/?)transcript_data>")
+_SOURCE_HEADER_OPENER_RE = re.compile(r"\[SOURCE")
+
+
+def _neutralize_context_tokens(text: str) -> str:
+    """Break forged <transcript_data> delimiters and [SOURCE ...] headers in
+    untrusted, corpus-derived content so they cannot fool
+    extract_grounding_facts. Non-token content is returned unchanged."""
+    if not text:
+        return text
+    text = _TRANSCRIPT_TAG_TOKEN_RE.sub(
+        lambda m: f"<{m.group(1)}transcript_data{_ZWSP}>", text
+    )
+    text = _SOURCE_HEADER_OPENER_RE.sub(f"[{_ZWSP}SOURCE", text)
+    return text
+
+
 def _flag_tags_for_chunk(derived_metadata: dict | None) -> str:
     """Return '[flags: name1, name2]' or empty string if no flags True.
 
@@ -278,6 +318,18 @@ def _render_chunk(
     mentioned = dm.get("speakers_mentioned") or []
     topic = dm.get("topic_label") or ""
     full_text = gt.get("full_text", "")
+
+    # Neutralize forged block delimiters / source headers in every
+    # corpus-derived field before it is embedded into the parsed context
+    # (design D9 security — see _neutralize_context_tokens). Normal values
+    # are unchanged, so rendering output and legitimate dates are preserved.
+    chunk_id = _neutralize_context_tokens(chunk_id)
+    session_date = _neutralize_context_tokens(session_date)
+    session_title = _neutralize_context_tokens(session_title)
+    topic = _neutralize_context_tokens(topic)
+    full_text = _neutralize_context_tokens(full_text)
+    spoke = [_neutralize_context_tokens(s) for s in spoke]
+    mentioned = [_neutralize_context_tokens(s) for s in mentioned]
 
     spoke_str = ", ".join(spoke) if spoke else "<none>"
     mentioned_str = ", ".join(mentioned) if mentioned else "<none>"
