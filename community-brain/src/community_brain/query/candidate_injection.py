@@ -163,3 +163,104 @@ def build_recruitment_query(rule: CueRule, question: str) -> RecruitmentSpec | N
                 fts_text=None,
             )
     return None
+
+
+def inject_candidates(
+    *,
+    question: str,
+    table,
+    rules: tuple[CueRule, ...],
+    where_expr: str,
+    existing_chunk_ids: set[str],
+    query_vector: list[float],
+) -> list[dict]:
+    """Run recruitment for every firing recruit-enabled rule; return
+    normalized rows not already in the pool.
+
+    Every returned row carries:
+      _rrf_score = 0.0            (no base hybrid signal; the downstream
+                                   boost pass prices it via the rules)
+      _distance / _vector_similarity  (cosine vs the query vector so the
+                                   public `similarity` keeps spec §7.2
+                                   semantics)
+      _injected_by = [rule names that recruited it]
+
+    Per-rule flow: FTS query (fts_text or the question) over bm25_text with
+    (<rule where>) AND <where_expr>, limit INJECT_PER_RULE. If the FTS leg
+    errors or finds nothing and the rule has a hard WHERE, fall back to a
+    plain filtered scan — a quiet session may share zero lexical tokens
+    with the question; that pathological case is this feature's reason to
+    exist. Total injections are capped at MAX_INJECTED_TOTAL.
+    """
+    # Function-level import: query_local imports this module at module
+    # level; importing back at module level would be circular.
+    from community_brain.query.query_local import _cosine_distance
+
+    injected: dict[str, dict] = {}
+    for rule in rules:
+        if len(injected) >= MAX_INJECTED_TOTAL:
+            logger.warning(
+                "recruitment: MAX_INJECTED_TOTAL=%d reached; remaining rules skipped",
+                MAX_INJECTED_TOTAL,
+            )
+            break
+        spec = build_recruitment_query(rule, question)
+        if spec is None:
+            continue
+        combined_where = (
+            f"({spec.where}) AND {where_expr}" if spec.where else where_expr
+        )
+        fts_query = spec.fts_text if spec.fts_text is not None else question
+        rows: list[dict] = []
+        try:
+            rows = (
+                table.search(fts_query, query_type="fts", fts_columns="bm25_text")
+                .where(combined_where)
+                .limit(INJECT_PER_RULE)
+                .to_arrow()
+                .to_pylist()
+            )
+        except Exception as exc:
+            # Transient: recruitment is additive best-effort; the base
+            # hybrid results are unaffected. Fall through to the scan path.
+            logger.warning(
+                "recruitment: FTS query for rule %r failed (%r); trying filtered scan",
+                rule.name,
+                exc,
+            )
+            rows = []
+        if not rows and spec.where is not None:
+            try:
+                rows = (
+                    table.search()
+                    .where(combined_where)
+                    .limit(INJECT_PER_RULE)
+                    .to_arrow()
+                    .to_pylist()
+                )
+            except Exception as exc:
+                logger.warning(
+                    "recruitment: filtered scan for rule %r failed (%r); skipping rule",
+                    rule.name,
+                    exc,
+                )
+                rows = []
+        for row in rows:
+            if len(injected) >= MAX_INJECTED_TOTAL:
+                break
+            chunk_id = row.get("chunk_id") or ""
+            if not chunk_id or chunk_id in existing_chunk_ids:
+                continue
+            if chunk_id in injected:
+                injected[chunk_id]["_injected_by"].append(rule.name)
+                continue
+            row["_rrf_score"] = 0.0
+            embedding = row.get("embedding")
+            if embedding:
+                row["_distance"] = _cosine_distance(query_vector, list(embedding))
+            else:
+                row["_distance"] = 0.0
+            row["_vector_similarity"] = 1.0 - float(row["_distance"])
+            row["_injected_by"] = [rule.name]
+            injected[chunk_id] = row
+    return list(injected.values())
