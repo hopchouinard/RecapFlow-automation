@@ -39,6 +39,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_QUERIES = REPO_ROOT / "scripts" / "eval" / "fabrication-queries.yaml"
 DEFAULT_SYSTEM_PROMPT = REPO_ROOT / "docs" / "inference-guidelines.md"
 
+# NOTE: refusal detection is a substring heuristic — it can misclassify
+# hedged answers and misses phrasings not listed here (e.g. "not mentioned
+# in the sources"). It skews fabrication_rate (refused answers are excluded
+# from that denominator) and refusal_correctness. Operators should sanity-
+# check per-query `answer` text and tune these patterns for their model.
 REFUSAL_PATTERNS = (
     "don't see",
     "do not see",
@@ -131,6 +136,9 @@ def evaluate_query(q: dict, args) -> dict:
         return result
 
     context, kept = render_context(data.get("chunks", []), args.min_score)
+    result["kept_sessions"] = sorted(
+        {(c.get("ground_truth") or {}).get("session_date", "") for c in kept} - {""}
+    )
     answer = run_answer(
         args.ollama_url, args.model, args.system_prompt_text, context,
         q["question"], args.temperature,
@@ -242,7 +250,7 @@ def main() -> int:
         print(f"[eval] {q['id']} ...", file=sys.stderr)
         try:
             per_query.append(evaluate_query(q, args))
-        except httpx.HTTPError as exc:
+        except Exception as exc:
             print(f"[eval] {q['id']} FAILED: {exc}", file=sys.stderr)
             per_query.append({"id": q["id"], "error": str(exc)})
 
