@@ -43,6 +43,27 @@ def test_first_time_empty_registry_still_returns_never_match(tmp_path):
     assert mentioned.question_regex == r"(?!x)x"
 
 
+def test_lkg_survives_transient_file_deletion(tmp_path, monkeypatch):
+    """A good load followed by a transient DELETION of the file (not just a
+    corrupt rewrite) must still hit the cache. Uses a RELATIVE path via chdir
+    so the unresolved key (str(p)) differs from the resolved key
+    (str(p.resolve())) -- an absolute path would hide the bug (v5 D12)."""
+    import os
+
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "aliases.yaml").write_text(ALIASES_YAML)
+    first = cue_rules.build_speaker_auto_rule("aliases.yaml")
+    assert "Adam" in (first[0].question_regex or "")
+
+    os.remove("aliases.yaml")
+    second = cue_rules.build_speaker_auto_rule("aliases.yaml")
+
+    assert second == first
+    # Resolver dicts restored even though the file is now GONE.
+    assert cue_rules._SPEAKER_CASEFOLD_LOOKUP.get("adam") == "Adam James"
+    assert cue_rules._SPEAKER_NAME_TO_CANONICAL.get("Garron") == "Garron Selliken"
+
+
 def test_lkg_is_per_path(tmp_path):
     good = tmp_path / "good.yaml"
     good.write_text(ALIASES_YAML)

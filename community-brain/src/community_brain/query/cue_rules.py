@@ -220,7 +220,11 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
 
     aliases_map = _refresh_speaker_resolver(path)
     p = Path(path)
-    cache_key = str(p.resolve()) if p.exists() else str(p)
+    # Key unconditionally on the resolved path (strict=False works on
+    # nonexistent paths) so a transient DELETE keys the SAME as the prior good
+    # load -- otherwise a relative/symlinked path would miss the cache and
+    # degrade to never-match sentinels (v5 D12 follow-up).
+    cache_key = str(p.resolve())
 
     # Collect ALL names (canonicals + aliases)
     name_to_canonical: dict[str, str] = {}
@@ -528,7 +532,11 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
     Skips individual malformed rules with ERROR; continues with the rest.
     """
     p = Path(path)
-    cache_key = str(p.resolve()) if p.exists() else str(p)
+    # Key unconditionally on the resolved path (strict=False works on
+    # nonexistent paths) so a transient DELETE keys the SAME as the prior good
+    # load -- otherwise a relative/symlinked path would miss the cache and
+    # degrade to empty (v5 D12 follow-up; harmonized with the speaker cache).
+    cache_key = str(p.resolve())
 
     def _fallback_or_empty(reason: str) -> tuple[CueRule, ...]:
         cached = _LAST_GOOD_RULES.get(cache_key)

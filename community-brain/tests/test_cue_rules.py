@@ -453,6 +453,35 @@ cue_rules:
     assert rules2[0].name == "good"
 
 
+def test_load_cue_rules_survives_transient_file_deletion(tmp_path, monkeypatch, clear_cue_rules_cache):
+    """A good load followed by a transient DELETION of the file (not just a
+    corrupt rewrite) must still hit the last-known-good cache. Uses a RELATIVE
+    path via chdir so the unresolved key (str(p)) differs from the resolved
+    key (str(p.resolve())) -- an absolute path would hide the bug because the
+    two derivations would coincide (v5 D12 follow-up)."""
+    import os
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "rel_cues.yaml").write_text('''
+cue_rules:
+  - name: good
+    cue_phrases: [unresolved]
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+    delta: 0.010
+''')
+    rules1 = load_cue_rules_from_yaml("rel_cues.yaml")
+    assert len(rules1) == 1
+
+    os.remove("rel_cues.yaml")
+    rules2 = load_cue_rules_from_yaml("rel_cues.yaml")
+    # Cache rescues us even though the file is now GONE.
+    assert len(rules2) == 1
+    assert rules2[0].name == "good"
+
+
 def test_load_cue_rules_empty_on_first_failure(tmp_path, clear_cue_rules_cache):
     """No cache yet → first-ever failure returns empty (bootstrap behavior)."""
     from community_brain.query.cue_rules import load_cue_rules_from_yaml
