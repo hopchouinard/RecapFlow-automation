@@ -17,6 +17,7 @@ import datetime as dt
 import logging
 import os
 from pathlib import Path
+from typing import Any
 
 import lancedb
 
@@ -27,12 +28,18 @@ K_NEAREST = 8
 SIMILARITY_THRESHOLD = 0.65
 CROSS_SESSION_COUNT_MIN = 2
 
+# v5 D13: corpus-wide alarm threshold for has_unresolved_question=True.
+# chunk-extraction-v3 deliberately defaults the flag toward true; healthy
+# corpus rate observed ~27%. Above 50% the flag has stopped discriminating
+# and the prompt has likely drifted over-permissive.
+UNRESOLVED_RATE_ALARM_THRESHOLD = 0.50
+
 
 def _now_iso() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat()
 
 
-def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[str, int]:
+def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[str, Any]:
     """Apply 'recurrent' markers across the corpus; set computed_at on every row.
 
     rebuild=False (default): additive-only. Adds 'recurrent' when a chunk
@@ -46,12 +53,26 @@ def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[st
         empty list[str] values in update(). Run this manually after big
         corpus changes (re-extracts, threshold tweaks, session deletions).
 
-    Returns {"scanned": int, "recurrent": int}.
+    Returns {"scanned": int, "recurrent": int, "unresolved_rate": float, "unresolved_alarm": bool}.
     """
     db = lancedb.connect(str(db_path))
     table = db.open_table("chunks")
     rows = table.to_arrow().to_pylist()
     now_iso = _now_iso()
+
+    unresolved_count = sum(
+        1 for r in rows if r.get("has_unresolved_question") is True
+    )
+    unresolved_rate = (unresolved_count / len(rows)) if rows else 0.0
+    unresolved_alarm = unresolved_rate > UNRESOLVED_RATE_ALARM_THRESHOLD
+    if unresolved_alarm:
+        logger.warning(
+            "lint_corpus: has_unresolved_question rate %.1f%% exceeds %.0f%% "
+            "alarm threshold — the chunk-extraction prompt may be "
+            "over-triggering; review before the next re-extract",
+            unresolved_rate * 100,
+            UNRESOLVED_RATE_ALARM_THRESHOLD * 100,
+        )
 
     # MEDIUM mitigation: soft warning at large corpus sizes. KNN is O(N) per
     # chunk; at 10k+ chunks the auto-trigger adds non-trivial latency per /ingest.
@@ -184,7 +205,12 @@ def lint_corpus_chunks(db_path: str | Path, *, rebuild: bool = False) -> dict[st
             )
             raise exc
 
-    return {"scanned": len(rows), "recurrent": recurrent_count}
+    return {
+        "scanned": len(rows),
+        "recurrent": recurrent_count,
+        "unresolved_rate": unresolved_rate,
+        "unresolved_alarm": unresolved_alarm,
+    }
 
 
 def main() -> int:
@@ -208,7 +234,17 @@ def main() -> int:
     )
     args = parser.parse_args()
     stats = lint_corpus_chunks(args.db, rebuild=args.rebuild)
-    print(f"[ok] lint_corpus: scanned {stats['scanned']}, recurrent {stats['recurrent']}")
+    print(
+        f"[ok] lint_corpus: scanned {stats['scanned']}, "
+        f"recurrent {stats['recurrent']}, "
+        f"unresolved_rate {stats['unresolved_rate']:.1%}"
+    )
+    if stats["unresolved_alarm"]:
+        print(
+            "[ALARM] has_unresolved_question rate exceeds "
+            f"{UNRESOLVED_RATE_ALARM_THRESHOLD:.0%} — extraction prompt may be "
+            "over-triggering"
+        )
     return 0
 
 

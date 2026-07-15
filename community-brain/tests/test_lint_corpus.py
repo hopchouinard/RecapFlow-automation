@@ -750,3 +750,54 @@ def test_lint_corpus_writes_only_when_state_changes(
         f"got {counter['value']}. The 5 unique chunks should not have "
         "triggered any writes since their state was already correct."
     )
+
+
+def test_unresolved_rate_alarm_triggers_above_threshold(db_path: Path, caplog):
+    import logging
+
+    rows = []
+    for i in range(10):
+        row = _make_chunk_row(
+            chunk_id=f"alarm-{i}",
+            session_id=f"s{i}",
+            embedding=_direction_vector(i),
+        )
+        row["has_unresolved_question"] = i < 6  # 60% > 50% threshold
+        rows.append(row)
+    _create_table(db_path, rows)
+
+    with caplog.at_level(logging.WARNING):
+        stats = lint_corpus_chunks(db_path)
+
+    assert stats["unresolved_rate"] == pytest.approx(0.6)
+    assert stats["unresolved_alarm"] is True
+    assert any("over-triggering" in r.message for r in caplog.records)
+
+
+def test_unresolved_rate_no_alarm_at_healthy_rate(db_path: Path):
+    rows = []
+    for i in range(10):
+        row = _make_chunk_row(
+            chunk_id=f"ok-{i}",
+            session_id=f"s{i}",
+            embedding=_direction_vector(i),
+        )
+        row["has_unresolved_question"] = i < 2  # 20%
+        rows.append(row)
+    _create_table(db_path, rows)
+
+    stats = lint_corpus_chunks(db_path)
+
+    assert stats["unresolved_rate"] == pytest.approx(0.2)
+    assert stats["unresolved_alarm"] is False
+
+
+def test_unresolved_rate_empty_corpus_no_div_by_zero(db_path: Path):
+    """An empty corpus must not raise (guards the `if rows else 0.0` path)."""
+    _create_table(db_path, [])
+
+    stats = lint_corpus_chunks(db_path)
+
+    assert stats["scanned"] == 0
+    assert stats["unresolved_rate"] == 0.0
+    assert stats["unresolved_alarm"] is False

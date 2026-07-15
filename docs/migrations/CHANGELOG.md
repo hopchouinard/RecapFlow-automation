@@ -42,6 +42,30 @@ Every schema version bump or extraction-breaking change is recorded here.
   "spoke in this chunk" from "was referenced/mentioned without speaking."
   v1 consumers should read `speakers_spoke` only.
 
+## 2026-07-12 — Retrieval v5: grounding (candidate injection + citation guard)
+
+No schema migration. Schema stays v1.1 (38 fields). No re-extract.
+
+- **Cue-driven candidate injection**: cue rules with `recruit: true` in
+  `config/query-cues.yaml` (and the speaker auto-rules) now pull targeted
+  chunks into the candidate pool before the boost pass, fixing the v4
+  pool-limit finding (date/rare-entity queries on quiet sessions missed
+  entirely). Budgets: 10 per rule, 30 total per query. Recruitment ANDs
+  the success guard and caller filters.
+- **/query response (additive)**: `score_breakdown.injected_by` lists the
+  recruitment rules that pulled a chunk into the pool (empty for
+  pool-native chunks). No other contract change.
+- **Filter citation guard**: the Open WebUI filter gained an `outlet`
+  post-processing hook verifying session dates, `[SOURCE N]` refs, and
+  chunk_id citations in the answer against the retrieved context.
+  Valve `citation_guard`: annotate (default) / strip / off.
+- **RetryConfig wired** into Stage B/C LLM calls (closes the v2 TODO):
+  chunking.yaml `retry_attempts` / `retry_backoff_seconds` now honored.
+- **lint_corpus** reports `unresolved_rate` and alarms above 50%.
+- **Speaker auto-rule last-known-good cache** (incl. resolver snapshot).
+- **Version note**: package metadata jumps 0.3.0 → 0.5.0; "0.4.0" existed
+  only as a docs/deploy label and was never bumped in pyproject.toml.
+
 ## 2026-05-03 — Retrieval v4 quality improvements (no schema migration; corpus re-extract)
 
 - Type: Retrieval-quality enhancement; one corpus re-extract; no schema_version bump.

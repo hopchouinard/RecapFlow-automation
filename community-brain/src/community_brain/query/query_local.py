@@ -12,6 +12,7 @@ import lancedb
 import ollama
 
 from community_brain.ingestion.embedding import _active_embed_model
+from community_brain.query.candidate_injection import inject_candidates
 from community_brain.query.corpus_verify import CorpusInvalidError
 from community_brain.query.cue_rules import (
     CueRule,
@@ -203,13 +204,14 @@ def search_chunks(
     """Hybrid (vector + BM25) search against the chunks table with optional
     structured filters and the success-guard.
 
-    Pipeline (spec §3.1):
+    Pipeline (spec §3.1 + v5 injection):
       1. Embed `question` via Ollama (nomic-embed-text).
       2. LanceDB hybrid query: RRF(vector, BM25 on bm25_text), oversampled
          by OVERSAMPLE_FACTOR.
       3. WHERE clause: extraction_status = 'success' AND caller's filters.
-      4. Return top (top_k * OVERSAMPLE_FACTOR) raw rows; cue boost runs
-         downstream in the caller (T10 wires that in).
+      4. v5: cue-driven candidate injection — firing recruit-enabled cue
+         rules pull targeted chunks (same WHERE) into the pool.
+      5. Cue boost re-ranks the merged pool; truncate to top_k.
 
     `_use_hybrid=False` is a test-only knob that drops the BM25 leg —
     used by the lift-validation tests in the golden query suite to prove
@@ -298,6 +300,31 @@ def search_chunks(
         row["_vector_similarity"] = 1.0 - float(row.get("_distance", 0.0))
         candidates.append(row)
 
+    # --- v5 cue-driven candidate injection (design D2) ---
+    # Rules are resolved here (moved up from the boost step) so the same
+    # rule set drives recruitment and boosting for this request.
+    rules = _resolve_cue_rules()
+
+    if _use_hybrid:
+        injected = inject_candidates(
+            question=question,
+            table=table,
+            rules=rules,
+            where_expr=where_expr,
+            existing_chunk_ids={c.get("chunk_id", "") for c in candidates},
+            query_vector=list(query_vector),
+        )
+        if injected:
+            fired = sorted(
+                {name for c in injected for name in c.get("_injected_by", [])}
+            )
+            logger.info(
+                "cue-driven injection recruited %d candidate(s) via %s",
+                len(injected),
+                fired,
+            )
+            candidates.extend(injected)
+
     # BM25-only query to capture per-candidate rank in the lexical leg.
     # This is a separate lightweight query — just FTS, no vector component —
     # so we can assign a 1-indexed rank to each candidate. ~10-20ms overhead
@@ -337,7 +364,6 @@ def search_chunks(
     for chunk in candidates:
         chunk["_rrf_score_pre_boost"] = chunk.get("_rrf_score", 0.0)
 
-    rules = _resolve_cue_rules()
     boosted = apply_cue_boosts(question, candidates, rules=rules)
 
     top_k_chunks = boosted[:top_k]
@@ -352,6 +378,7 @@ def search_chunks(
             "rrf_score": chunk.get("_rrf_score_pre_boost", 0.0),
             "cue_delta": chunk.get("_cue_delta", 0.0),
             "cue_rules_fired": chunk.get("_cue_rules_fired", []),
+            "injected_by": chunk.get("_injected_by", []),
         }
 
     # IMPORTANT: do NOT re-sync _distance from _rrf_score here.

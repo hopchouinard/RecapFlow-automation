@@ -199,6 +199,20 @@ def seed(db_path: str) -> None:
         _row(12, "f7-prior-1", "2026-04-05",
              "as referenced from a prior call during the launch retro, the onboarding flow drops off at step three",
              references_prior=True),
+        # --- v5 injection fixtures: a quiet session invisible to both
+        # hybrid legs. session_date carries the date; bm25_text deliberately
+        # holds NO date tokens and no vocabulary shared with any golden
+        # query; the embedding sits far from the constant 0.5 query vector.
+        # Pre-v5 these chunks cannot enter the candidate pool on a date
+        # query — only cue-driven recruitment can surface them.
+        _row(13, "v5-quiet-1", "2025-12-30",
+             "brief seasonal gathering with informal catch-ins on sabbatical intentions",
+             bm25_text="brief seasonal gathering informal catch-ins sabbatical intentions",
+             embedding=[0.9] * EMBEDDING_DIM),
+        _row(14, "v5-quiet-2", "2025-12-30",
+             "closing remarks regarding upcoming sabbaticals and reduced cadence",
+             bm25_text="closing remarks upcoming sabbaticals reduced cadence",
+             embedding=[0.9] * EMBEDDING_DIM),
     ]
     # Append decoys. Index offset by 100 so chunk_index is unique and easy
     # to tell apart from targets in debug output.

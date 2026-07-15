@@ -25,6 +25,7 @@ cue_rules:
       field: has_unresolved_question
       value: true
     delta: 0.040  # was 0.010 — v4 boost per spec 2026-05-03
+    recruit: true  # v5: recruit flagged chunks into the pool (design D3)
 
   - name: decisions
     cue_phrases:
@@ -88,12 +89,14 @@ cue_rules:
     match_field: session_date
     match_strategy: iso_date_equals
     delta: 0.04
+    recruit: true  # v5: recruit date-matched chunks into the pool (design D3)
 
   - name: date_month_year_match
     question_regex: '\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})\b'
     match_field: session_date
     match_strategy: month_year_overlap
     delta: 0.04
+    recruit: true  # v5: recruit date-matched chunks into the pool (design D3)
 
   # v4 hotpatch (2026-05-05): natural-language date phrasings with day-of-month.
   # Validation surfaced that "March 4th, 2026" matches NO existing date rule
@@ -105,15 +108,18 @@ cue_rules:
     match_field: session_date
     match_strategy: month_year_overlap
     delta: 0.04
+    recruit: true  # v5: recruit date-matched chunks into the pool (design D3)
 
   - name: date_relative_phrasing
     question_regex: '\b(early|mid|late)[-\s]+(January|February|March|April|May|June|July|August|September|October|November|December)(?:\s+(\d{4}))?\b'
     match_field: bm25_text
     match_strategy: token_overlap
     delta: 0.04
+    recruit: true  # v5: recruit date-matched chunks into the pool (design D3)
 
   - name: date_quarter_match
     question_regex: '\b(Q[1-4])\s+(\d{4})\b'
     match_field: bm25_text
     match_strategy: token_overlap
     delta: 0.04
+    recruit: true  # v5: recruit date-matched chunks into the pool (design D3)

@@ -10,6 +10,8 @@ Install: Copy this file's content into Open WebUI → Functions → Create Filte
 from __future__ import annotations
 
 import logging
+import re
+from collections import OrderedDict
 from typing import Optional
 
 import httpx
@@ -23,6 +25,169 @@ CONTEXT_TAG = "[COMMUNITY_BRAIN_CONTEXT]"
 # They moved to the Open WebUI custom-model system prompt
 # (community-brain-v4-gpt-oss:20b). The repo's docs/inference-guidelines.md
 # is the canonical source for that content.
+
+# --- v5 citation guard (design D8-D10) ------------------------------------
+# Deterministic post-generation verification. gpt-oss:20b demonstrably
+# ignores system-prompt verification scaffolding under specific-query /
+# weak-retrieval pressure (v4 validation Q3); these functions verify the
+# ANSWER against the retrieved context instead of trusting the model.
+
+RETRIEVED_SOURCES_MARKER = "## Retrieved Sources"
+
+_SOURCE_HEADER_RE = re.compile(r"\[SOURCE (\d+) — chunk_id: ([^\]]+)\]")
+_SOURCE_REF_RE = re.compile(r"\[SOURCE\s+(\d+)\]", re.IGNORECASE)
+_CHUNK_ID_REF_RE = re.compile(
+    r"\[(\d{4}-\d{2}-\d{2}:[a-z_]+:[A-Za-z0-9_\-.]+)\]"
+)
+_ISO_DATE_RE = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
+_TRANSCRIPT_BLOCK_RE = re.compile(
+    r"<transcript_data>.*?</transcript_data>", re.DOTALL
+)
+
+# Bounded per-chat grounding stash: outlet-side fallback for Open WebUI
+# versions that don't replay injected system messages into outlet.
+_GROUNDING_STASH_MAX = 32
+
+
+def extract_grounding_facts(context_content: str) -> dict | None:
+    """Parse grounding facts out of a retrieved-sources context message.
+
+    Returns None when the content is not a sources context (no-results
+    notice, unavailable notice, arbitrary text) — callers must skip the
+    guard in that case.
+
+    source_indices / chunk_ids come from the [SOURCE N — chunk_id: ...]
+    header lines with all <transcript_data> bodies removed first, so a
+    tag-shaped line spoken inside a transcript cannot whitelist a
+    fabricated source (position contract, docs/inference-guidelines.md).
+    dates come from the FULL context including transcript bodies — a date
+    a speaker actually said is legitimate for the model to repeat.
+    """
+    if CONTEXT_TAG not in context_content:
+        return None
+    if RETRIEVED_SOURCES_MARKER not in context_content:
+        return None
+    metadata_only = _TRANSCRIPT_BLOCK_RE.sub("", context_content)
+    source_indices: set[int] = set()
+    chunk_ids: set[str] = set()
+    for m in _SOURCE_HEADER_RE.finditer(metadata_only):
+        source_indices.add(int(m.group(1)))
+        chunk_ids.add(m.group(2).strip())
+    dates = set(_ISO_DATE_RE.findall(context_content))
+    return {
+        "source_indices": source_indices,
+        "chunk_ids": chunk_ids,
+        "dates": dates,
+    }
+
+
+def verify_answer_grounding(answer: str, facts: dict) -> dict:
+    """Check every [SOURCE N] reference, chunk_id-shaped citation, and bare
+    ISO date in `answer` against the grounding facts. Returns the sorted
+    lists of tokens that could NOT be verified."""
+    cited_sources = {int(n) for n in _SOURCE_REF_RE.findall(answer)}
+    unverified_sources = sorted(cited_sources - facts["source_indices"])
+
+    cited_chunk_ids = set(_CHUNK_ID_REF_RE.findall(answer))
+    unverified_chunk_ids = sorted(cited_chunk_ids - facts["chunk_ids"])
+
+    dates_in_answer = set(_ISO_DATE_RE.findall(answer))
+    unverified_dates = sorted(dates_in_answer - facts["dates"])
+
+    return {
+        "unverified_sources": unverified_sources,
+        "unverified_chunk_ids": unverified_chunk_ids,
+        "unverified_dates": unverified_dates,
+    }
+
+
+def apply_guard(answer: str, verdict: dict, mode: str) -> str:
+    """Apply the guard policy to an answer given a non-empty verdict.
+
+    annotate: append a delimited warning block naming the unverified tokens.
+    strip: additionally replace each unverified token in place. Chunk-id
+        citations are replaced BEFORE bare dates so a fabricated date inside
+        a fabricated citation is handled once.
+    Returns the answer unchanged when the verdict is clean.
+    """
+    lines: list[str] = []
+    if verdict["unverified_dates"]:
+        lines.append(
+            "- session dates not present in the retrieved sources: "
+            + ", ".join(verdict["unverified_dates"])
+        )
+    if verdict["unverified_sources"]:
+        lines.append(
+            "- source citations with no matching retrieved source: "
+            + ", ".join(f"SOURCE {n}" for n in verdict["unverified_sources"])
+        )
+    if verdict["unverified_chunk_ids"]:
+        lines.append(
+            "- chunk ids not in the retrieved set: "
+            + ", ".join(verdict["unverified_chunk_ids"])
+        )
+    if not lines:
+        return answer
+
+    if mode == "strip":
+        for cid in verdict["unverified_chunk_ids"]:
+            answer = answer.replace(f"[{cid}]", "[unverified source]")
+        for n in verdict["unverified_sources"]:
+            answer = re.sub(
+                rf"\[SOURCE\s+{n}\]", "[unverified source]", answer,
+                flags=re.IGNORECASE,
+            )
+        for d in verdict["unverified_dates"]:
+            answer = answer.replace(d, "[unverified date]")
+
+    warning = (
+        "\n\n---\n"
+        "**Grounding check (automated):** this answer references material "
+        "that does NOT appear in the retrieved sources and may be "
+        "fabricated:\n" + "\n".join(lines) + "\n"
+        "Treat those specific claims as unverified."
+    )
+    return answer + warning
+
+
+# --- v5 render-time injection neutralization (design D9 security) ---------
+# extract_grounding_facts() trusts two structural token shapes in the
+# rendered context: the <transcript_data>/</transcript_data> block
+# delimiters (used to carve trusted metadata from unverified transcript
+# speech) and the [SOURCE N — chunk_id: ...] header lines (the source /
+# chunk_id whitelist). Corpus-derived, attacker-influenceable fields
+# (full_text, session_title, speakers, topic, chunk_id, session_date) are
+# embedded into that context. If such a field contains a literal
+# </transcript_data> it can prematurely close the block and smuggle a
+# forged header into the trusted metadata region; if it contains a literal
+# [SOURCE N — chunk_id: ...] it forges a header directly. Both defeat the
+# guard (a fabricated citation is reported as grounded).
+#
+# We neutralize these token shapes at render time by inserting a zero-width
+# space so the parser's literal match breaks while the text stays visually
+# identical for the model. Only these exact tokens are touched: ISO dates,
+# prose, and normal ids/titles pass through byte-for-byte, so legitimate
+# dates spoken in a transcript are still collected and existing rendering
+# output is unchanged. The renderer's OWN delimiters and header line are
+# emitted from trusted structure and never routed through this function, so
+# extract_grounding_facts still sees exactly the real blocks and headers.
+
+_ZWSP = "​"
+_TRANSCRIPT_TAG_TOKEN_RE = re.compile(r"<(/?)transcript_data>")
+_SOURCE_HEADER_OPENER_RE = re.compile(r"\[SOURCE")
+
+
+def _neutralize_context_tokens(text: str) -> str:
+    """Break forged <transcript_data> delimiters and [SOURCE ...] headers in
+    untrusted, corpus-derived content so they cannot fool
+    extract_grounding_facts. Non-token content is returned unchanged."""
+    if not text:
+        return text
+    text = _TRANSCRIPT_TAG_TOKEN_RE.sub(
+        lambda m: f"<{m.group(1)}transcript_data{_ZWSP}>", text
+    )
+    text = _SOURCE_HEADER_OPENER_RE.sub(f"[{_ZWSP}SOURCE", text)
+    return text
 
 
 def _flag_tags_for_chunk(derived_metadata: dict | None) -> str:
@@ -154,6 +319,18 @@ def _render_chunk(
     topic = dm.get("topic_label") or ""
     full_text = gt.get("full_text", "")
 
+    # Neutralize forged block delimiters / source headers in every
+    # corpus-derived field before it is embedded into the parsed context
+    # (design D9 security — see _neutralize_context_tokens). Normal values
+    # are unchanged, so rendering output and legitimate dates are preserved.
+    chunk_id = _neutralize_context_tokens(chunk_id)
+    session_date = _neutralize_context_tokens(session_date)
+    session_title = _neutralize_context_tokens(session_title)
+    topic = _neutralize_context_tokens(topic)
+    full_text = _neutralize_context_tokens(full_text)
+    spoke = [_neutralize_context_tokens(s) for s in spoke]
+    mentioned = [_neutralize_context_tokens(s) for s in mentioned]
+
     spoke_str = ", ".join(spoke) if spoke else "<none>"
     mentioned_str = ", ".join(mentioned) if mentioned else "<none>"
 
@@ -249,9 +426,25 @@ class Filter:
                 "Default False (LLM-facing context stays clean)."
             ),
         )
+        citation_guard: str = Field(
+            default="annotate",
+            description=(
+                "Post-generation grounding guard: 'annotate' appends a "
+                "warning block listing session dates / [SOURCE N] refs / "
+                "chunk_ids in the answer that don't appear in the retrieved "
+                "context; 'strip' additionally replaces them with "
+                "[unverified ...] markers; 'off' disables the guard. "
+                "The guard is deterministic (regex against the retrieved "
+                "context) — no extra LLM call."
+            ),
+        )
 
     def __init__(self):
         self.valves = self.Valves()
+        # Per-chat grounding stash (v5 D8): fallback for outlet when the
+        # injected system message is not replayed in the outlet body.
+        # ok -> facts dict; no_results/error -> None (clears stale facts).
+        self._grounding_by_chat: "OrderedDict[str, dict | None]" = OrderedDict()
 
     def _strip_prior_context(self, messages: list[dict]) -> list[dict]:
         """Remove any prior Community Brain context messages."""
@@ -379,6 +572,20 @@ class Filter:
             logger.error("Unexpected retrieval error: %s", e)
             return "error", [], None
 
+    @staticmethod
+    def _chat_id_of(body: dict) -> str:
+        return str(
+            body.get("chat_id")
+            or (body.get("metadata") or {}).get("chat_id")
+            or "default"
+        )
+
+    def _stash_grounding(self, chat_id: str, facts: dict | None) -> None:
+        self._grounding_by_chat[chat_id] = facts
+        self._grounding_by_chat.move_to_end(chat_id)
+        while len(self._grounding_by_chat) > _GROUNDING_STASH_MAX:
+            self._grounding_by_chat.popitem(last=False)
+
     def inlet(self, body: dict, __user__: Optional[dict] = None) -> dict:
         """Pre-process: inject retrieved transcript context into the message list."""
         if not self.valves.enabled:
@@ -392,6 +599,10 @@ class Filter:
         # Build retrieval query from recent conversation context
         user_messages = [m for m in messages if m.get("role") == "user"]
         if not user_messages:
+            # No retrieval this turn (title-gen / regenerate / non-user-turn
+            # call shape). Clear any stale facts so outlet fails OPEN instead
+            # of verifying against a prior turn's context (v5 D8).
+            self._stash_grounding(self._chat_id_of(body), None)
             body["messages"] = messages
             return body
 
@@ -412,9 +623,64 @@ class Filter:
         else:
             context_content = self._build_unavailable_message()
 
+        # Stash grounding facts for outlet (v5 D8). Non-ok statuses stash
+        # None so a previous turn's facts can't leak into this turn's guard.
+        chat_id = self._chat_id_of(body)
+        if status == "ok":
+            self._stash_grounding(chat_id, extract_grounding_facts(context_content))
+        else:
+            self._stash_grounding(chat_id, None)
+
         # Insert context at position 0
         context_message = {"role": "system", "content": context_content}
         messages.insert(0, context_message)
+
+        body["messages"] = messages
+        return body
+
+    def outlet(self, body: dict, __user__: Optional[dict] = None) -> dict:
+        """Post-generation grounding guard (v5 D8-D10).
+
+        Verifies session dates, [SOURCE N] references, and chunk_id-shaped
+        citations in the assistant's answer against the retrieved context.
+        Fails OPEN: when no grounding context is available the answer
+        passes through untouched (the guard is defense-in-depth, not a
+        gate). When the context message for this turn is a no-sources or
+        unavailable notice, the guard skips — the model was explicitly
+        told to answer generally or refuse.
+        """
+        mode = (self.valves.citation_guard or "annotate").strip().lower()
+        if mode == "off" or not self.valves.enabled:
+            return body
+
+        messages = body.get("messages", [])
+
+        facts: dict | None = None
+        context_found = False
+        for m in messages:
+            if m.get("role") == "system" and CONTEXT_TAG in (m.get("content") or ""):
+                context_found = True
+                facts = extract_grounding_facts(m.get("content") or "")
+                break
+
+        if context_found and facts is None:
+            # This turn's context is a no-sources/unavailable notice.
+            return body
+        if not context_found:
+            facts = self._grounding_by_chat.get(self._chat_id_of(body))
+        if not facts:
+            logger.warning(
+                "citation guard: no grounding context available; failing open"
+            )
+            return body
+
+        for m in reversed(messages):
+            if m.get("role") == "assistant":
+                answer = m.get("content") or ""
+                verdict = verify_answer_grounding(answer, facts)
+                if any(verdict.values()):
+                    m["content"] = apply_guard(answer, verdict, mode)
+                break
 
         body["messages"] = messages
         return body
