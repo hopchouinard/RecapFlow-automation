@@ -44,6 +44,36 @@ _TRANSCRIPT_BLOCK_RE = re.compile(
     r"<transcript_data>.*?</transcript_data>", re.DOTALL
 )
 
+# Answering models routinely render dates with typographic dashes rather
+# than ASCII hyphen-minus — gpt-oss:20b spontaneously wrote "2025‑12‑15"
+# (U+2011 NON-BREAKING HYPHEN) while fabricating a whole session summary in
+# the 2026-07-25 pre-deploy baseline eval, and the guard scored it CLEAN
+# because _ISO_DATE_RE only matches ASCII. This is ordinary model output,
+# not an adversarial payload, so date and chunk_id comparisons must be made
+# modulo dash codepoint.
+_DASH_CHARS = "-‐‑‒–—―−﹘﹣－"
+_DASH_CLASS = "[" + re.escape(_DASH_CHARS) + "]"
+_DASH_RE = re.compile(_DASH_CLASS)
+
+
+def _normalize_dashes(text: str) -> str:
+    """Map every Unicode dash/hyphen codepoint to ASCII hyphen-minus.
+
+    Used ONLY for token extraction and comparison, never for rendering the
+    answer back to the user. MUST NOT be applied to text whose structural
+    markers themselves contain a dash: the [SOURCE N — chunk_id: ...] header
+    separator is an em dash, so normalizing before header parsing would
+    silently empty the source/chunk_id whitelist and disable the guard.
+    """
+    return _DASH_RE.sub("-", text)
+
+
+def _dash_tolerant_re(token: str) -> re.Pattern:
+    """Compile a pattern matching `token` with ANY dash codepoint wherever it
+    carries an ASCII hyphen, so strip mode redacts the token as the model
+    actually wrote it rather than only its normalized form."""
+    return re.compile(_DASH_CLASS.join(re.escape(p) for p in token.split("-")))
+
 # Bounded per-chat grounding stash: outlet-side fallback for Open WebUI
 # versions that don't replay injected system messages into outlet.
 _GROUNDING_STASH_MAX = 32
@@ -73,7 +103,7 @@ def extract_grounding_facts(context_content: str) -> dict | None:
     for m in _SOURCE_HEADER_RE.finditer(metadata_only):
         source_indices.add(int(m.group(1)))
         chunk_ids.add(m.group(2).strip())
-    dates = set(_ISO_DATE_RE.findall(context_content))
+    dates = set(_ISO_DATE_RE.findall(_normalize_dashes(context_content)))
     return {
         "source_indices": source_indices,
         "chunk_ids": chunk_ids,
@@ -88,10 +118,12 @@ def verify_answer_grounding(answer: str, facts: dict) -> dict:
     cited_sources = {int(n) for n in _SOURCE_REF_RE.findall(answer)}
     unverified_sources = sorted(cited_sources - facts["source_indices"])
 
-    cited_chunk_ids = set(_CHUNK_ID_REF_RE.findall(answer))
+    normalized_answer = _normalize_dashes(answer)
+
+    cited_chunk_ids = set(_CHUNK_ID_REF_RE.findall(normalized_answer))
     unverified_chunk_ids = sorted(cited_chunk_ids - facts["chunk_ids"])
 
-    dates_in_answer = set(_ISO_DATE_RE.findall(answer))
+    dates_in_answer = set(_ISO_DATE_RE.findall(normalized_answer))
     unverified_dates = sorted(dates_in_answer - facts["dates"])
 
     return {
@@ -131,14 +163,16 @@ def apply_guard(answer: str, verdict: dict, mode: str) -> str:
 
     if mode == "strip":
         for cid in verdict["unverified_chunk_ids"]:
-            answer = answer.replace(f"[{cid}]", "[unverified source]")
+            answer = _dash_tolerant_re(f"[{cid}]").sub(
+                "[unverified source]", answer
+            )
         for n in verdict["unverified_sources"]:
             answer = re.sub(
                 rf"\[SOURCE\s+{n}\]", "[unverified source]", answer,
                 flags=re.IGNORECASE,
             )
         for d in verdict["unverified_dates"]:
-            answer = answer.replace(d, "[unverified date]")
+            answer = _dash_tolerant_re(d).sub("[unverified date]", answer)
 
     warning = (
         "\n\n---\n"

@@ -378,3 +378,131 @@ def test_outlet_fails_open_after_no_retrieval_turn():
     out = f.outlet(_outlet_body(None, "On 2099-01-01 the group met.", chat_id="c8"))
     # Fail open: no grounding context -> answer untouched (no stale-fact guard).
     assert out["messages"][-1]["content"] == "On 2099-01-01 the group met."
+
+
+# --- v5 follow-up: Unicode dash evasion of the date/chunk_id checks -------
+# Discovered by the 2026-07-25 pre-deploy v4 baseline eval: the
+# nonexistent-session probe fabricated a whole session summary for
+# 2025-12-15 and scored CLEAN, because gpt-oss:20b spontaneously renders
+# dates with U+2011 NON-BREAKING HYPHEN while _ISO_DATE_RE matched ASCII
+# hyphen-minus only. Typographic dashes are normal model output, not an
+# adversarial payload.
+
+_NB_HYPHEN = "‑"   # ‑ NON-BREAKING HYPHEN (what gpt-oss:20b emitted)
+_FIG_DASH = "‒"    # ‒ FIGURE DASH
+_EN_DASH = "–"     # – EN DASH
+_MINUS = "−"       # − MINUS SIGN
+
+
+def test_verify_flags_fabricated_date_written_with_unicode_hyphen():
+    from community_brain.openwebui.community_brain_filter import (
+        extract_grounding_facts,
+        verify_answer_grounding,
+    )
+
+    ctx = _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello"),
+    ])
+    facts = extract_grounding_facts(ctx)
+    answer = f"**2025{_NB_HYPHEN}12{_NB_HYPHEN}15 – AI Developer Accelerator Weekly Call**"
+    verdict = verify_answer_grounding(answer, facts)
+    assert verdict["unverified_dates"] == ["2025-12-15"]
+
+
+def test_verify_flags_fabricated_date_across_dash_variants():
+    from community_brain.openwebui.community_brain_filter import (
+        extract_grounding_facts,
+        verify_answer_grounding,
+    )
+
+    ctx = _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello"),
+    ])
+    facts = extract_grounding_facts(ctx)
+    for dash in (_NB_HYPHEN, _FIG_DASH, _EN_DASH, _MINUS):
+        answer = f"The 2025{dash}12{dash}15 session covered pricing."
+        verdict = verify_answer_grounding(answer, facts)
+        assert verdict["unverified_dates"] == ["2025-12-15"], f"dash {dash!r} evaded"
+
+
+def test_verify_flags_fabricated_chunk_id_written_with_unicode_hyphen():
+    from community_brain.openwebui.community_brain_filter import (
+        extract_grounding_facts,
+        verify_answer_grounding,
+    )
+
+    ctx = _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello"),
+    ])
+    facts = extract_grounding_facts(ctx)
+    answer = f"See [2025{_NB_HYPHEN}12{_NB_HYPHEN}15:transcript:004]."
+    verdict = verify_answer_grounding(answer, facts)
+    assert verdict["unverified_chunk_ids"] == ["2025-12-15:transcript:004"]
+
+
+def test_verify_does_not_flag_grounded_date_repeated_with_unicode_hyphen():
+    """No false positives: a REAL retrieved date the model happens to render
+    with a typographic dash must still verify as grounded."""
+    from community_brain.openwebui.community_brain_filter import (
+        extract_grounding_facts,
+        verify_answer_grounding,
+    )
+
+    ctx = _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello"),
+    ])
+    facts = extract_grounding_facts(ctx)
+    answer = f"In the 2026{_EN_DASH}02{_EN_DASH}25 session [SOURCE 1], Patrick said hello."
+    verdict = verify_answer_grounding(answer, facts)
+    assert verdict["unverified_dates"] == []
+
+
+def test_extract_facts_collects_unicode_dashed_date_spoken_in_transcript():
+    """A date spoken with a typographic dash inside the transcript is still a
+    legitimate date for the model to repeat."""
+    from community_brain.openwebui.community_brain_filter import extract_grounding_facts
+
+    ctx = _context_for([
+        _make_chunk(
+            "2026-02-25:transcript:008",
+            "2026-02-25",
+            f"[12:00:00] P: back on 2025{_EN_DASH}11{_EN_DASH}04 we agreed",
+        ),
+    ])
+    facts = extract_grounding_facts(ctx)
+    assert "2025-11-04" in facts["dates"]
+
+
+def test_extract_facts_still_parses_em_dash_source_headers():
+    """Regression guard: the [SOURCE N — chunk_id: ...] header separator IS an
+    em dash. Dash normalization must not be applied where headers are parsed,
+    or the whole source/chunk_id whitelist silently empties."""
+    from community_brain.openwebui.community_brain_filter import extract_grounding_facts
+
+    ctx = _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello"),
+        _make_chunk("2026-03-24:post:main", "2026-03-24", "we shipped"),
+    ])
+    facts = extract_grounding_facts(ctx)
+    assert facts["source_indices"] == {1, 2}
+    assert facts["chunk_ids"] == {
+        "2026-02-25:transcript:008",
+        "2026-03-24:post:main",
+    }
+
+
+def test_apply_guard_strip_removes_unicode_dashed_date():
+    """strip mode must redact the token as the model actually wrote it, not
+    only its ASCII-normalized form."""
+    from community_brain.openwebui.community_brain_filter import apply_guard
+
+    verdict = {
+        "unverified_sources": [],
+        "unverified_chunk_ids": [],
+        "unverified_dates": ["2025-12-15"],
+    }
+    answer = f"The 2025{_NB_HYPHEN}12{_NB_HYPHEN}15 call decided X."
+    out = apply_guard(answer, verdict, "strip")
+    body = out.split("Grounding check")[0]
+    assert f"2025{_NB_HYPHEN}12{_NB_HYPHEN}15" not in body
+    assert "[unverified date]" in body

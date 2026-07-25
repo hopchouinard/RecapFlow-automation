@@ -39,11 +39,18 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_QUERIES = REPO_ROOT / "scripts" / "eval" / "fabrication-queries.yaml"
 DEFAULT_SYSTEM_PROMPT = REPO_ROOT / "docs" / "inference-guidelines.md"
 
-# NOTE: refusal detection is a substring heuristic — it can misclassify
-# hedged answers and misses phrasings not listed here (e.g. "not mentioned
-# in the sources"). It skews fabrication_rate (refused answers are excluded
-# from that denominator) and refusal_correctness. Operators should sanity-
-# check per-query `answer` text and tune these patterns for their model.
+# NOTE: refusal detection is a substring heuristic — it can still misclassify
+# hedged answers. It skews fabrication_rate (refused answers are excluded from
+# that denominator) and refusal_correctness, so operators should sanity-check
+# per-query `answer` text and tune these patterns for their model.
+#
+# The 2026-07-25 v4 baseline scored refusal_correctness = 0.0 partly on a
+# FALSE NEGATIVE: the fictitious-speaker probe refused correctly with "I
+# couldn't locate any reference to … None of the sessions contain …", which
+# matched nothing in the original pattern list. Patterns must stay narrow
+# enough not to fire on substantive prose — "locate" alone would match "the
+# team decided to locate the service in the EU region", so the locate/find
+# forms are anchored to their negations.
 REFUSAL_PATTERNS = (
     "don't see",
     "do not see",
@@ -54,11 +61,31 @@ REFUSAL_PATTERNS = (
     "cannot answer",
     "can't answer",
     "don't have",
+    "couldn't locate",
+    "could not locate",
+    "unable to locate",
+    "couldn't find",
+    "could not find",
+    "unable to find",
+    "didn't find",
+    "did not find",
+    "don't find",
+    "do not find",
+    "none of the sessions",
+    "none of the retrieved",
+    "not mentioned in",
+    "no mention of",
+    "no reference to",
 )
+
+# Models emit typographic apostrophes (U+2019), so "don't see" written as
+# "don’t see" would miss every ASCII-apostrophe pattern above. Same class of
+# defect as the Unicode-dash bypass of the citation guard's date check.
+_APOSTROPHES = str.maketrans({"’": "'", "‘": "'", "ʼ": "'", "＇": "'"})
 
 
 def looks_like_refusal(answer: str) -> bool:
-    lowered = answer.lower()
+    lowered = answer.lower().translate(_APOSTROPHES)
     return any(p in lowered for p in REFUSAL_PATTERNS)
 
 
