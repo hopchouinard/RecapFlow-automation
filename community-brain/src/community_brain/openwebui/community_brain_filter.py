@@ -78,6 +78,40 @@ def _dash_tolerant_re(token: str) -> re.Pattern:
     actually wrote it rather than only its normalized form."""
     return re.compile(_DASH_CLASS.join(re.escape(p) for p in token.split("-")))
 
+
+# Models also reach for typographic BRACKETS: gpt-oss:20b cited "【source 1】"
+# with U+3010/U+3011 in the 2026-07-25 post-deploy eval while _SOURCE_REF_RE
+# matched ASCII only, so a citation of a nonexistent source would evade the
+# guard. Third bypass of this kind (dashes -> apostrophes -> brackets).
+_OPEN_BRACKETS = "[【［〔"
+_CLOSE_BRACKETS = "]】］〕"
+_OPEN_CLASS = "[" + re.escape(_OPEN_BRACKETS) + "]"
+_CLOSE_CLASS = "[" + re.escape(_CLOSE_BRACKETS) + "]"
+_BRACKET_TRANS = str.maketrans("【［〔】］〕", "[[[]]]")
+
+
+def _normalize_answer_tokens(text: str) -> str:
+    """Normalize confusable punctuation in an ANSWER before citation
+    extraction: dashes (dates, chunk ids) and bracket pairs (source refs).
+
+    Deliberately NOT applied to the retrieved context. The renderer emits
+    real `[SOURCE N — chunk_id: ...]` headers in ASCII, so the context never
+    needs bracket normalization — and applying it there would let a fullwidth
+    header forged inside transcript speech normalize into a genuine-looking
+    one, whitelisting a fabricated source. That would turn this fix into a
+    new bypass. Pinned by
+    test_fullwidth_header_inside_transcript_is_not_whitelisted.
+    """
+    return _normalize_dashes(text).translate(_BRACKET_TRANS)
+
+
+def _source_ref_tolerant_re(n: int) -> re.Pattern:
+    """Match `[SOURCE n]` with any bracket pair and any spacing, for strip
+    mode, so redaction removes what the model actually wrote."""
+    return re.compile(
+        rf"{_OPEN_CLASS}\s*SOURCE\s+{n}\s*{_CLOSE_CLASS}", re.IGNORECASE
+    )
+
 # Bounded per-chat grounding stash: outlet-side fallback for Open WebUI
 # versions that don't replay injected system messages into outlet.
 _GROUNDING_STASH_MAX = 32
@@ -119,10 +153,10 @@ def verify_answer_grounding(answer: str, facts: dict) -> dict:
     """Check every [SOURCE N] reference, chunk_id-shaped citation, and bare
     ISO date in `answer` against the grounding facts. Returns the sorted
     lists of tokens that could NOT be verified."""
-    cited_sources = {int(n) for n in _SOURCE_REF_RE.findall(answer)}
-    unverified_sources = sorted(cited_sources - facts["source_indices"])
+    normalized_answer = _normalize_answer_tokens(answer)
 
-    normalized_answer = _normalize_dashes(answer)
+    cited_sources = {int(n) for n in _SOURCE_REF_RE.findall(normalized_answer)}
+    unverified_sources = sorted(cited_sources - facts["source_indices"])
 
     cited_chunk_ids = set(_CHUNK_ID_REF_RE.findall(normalized_answer))
     unverified_chunk_ids = sorted(cited_chunk_ids - facts["chunk_ids"])
@@ -171,10 +205,7 @@ def apply_guard(answer: str, verdict: dict, mode: str) -> str:
                 "[unverified source]", answer
             )
         for n in verdict["unverified_sources"]:
-            answer = re.sub(
-                rf"\[SOURCE\s+{n}\]", "[unverified source]", answer,
-                flags=re.IGNORECASE,
-            )
+            answer = _source_ref_tolerant_re(n).sub("[unverified source]", answer)
         for d in verdict["unverified_dates"]:
             answer = _dash_tolerant_re(d).sub("[unverified date]", answer)
 

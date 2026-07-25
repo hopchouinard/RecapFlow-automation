@@ -188,7 +188,23 @@ def evaluate_query(q: dict, args) -> dict:
         args.ollama_url, args.model, args.system_prompt_text, context,
         q["question"], args.temperature,
     )
-    result["answer"] = answer
+    result.update(score_answer(q, answer, context))
+    return result
+
+
+def score_answer(q: dict, answer: str, context: str) -> dict:
+    """Pure scoring of one answer against the context it was given.
+
+    Split out of evaluate_query (which does network I/O and so could not be
+    unit-tested) and returns `context` per D20, so a later change to the
+    verifier can be re-scored offline against saved runs instead of
+    requiring a re-baseline the deployed stack can no longer produce.
+    """
+    result: dict = {
+        "answer": answer,
+        "context": context,
+        "expect_refusal": bool(q.get("expect_refusal")),
+    }
     result["refused"] = looks_like_refusal(answer)
     result["refusal_correct"] = (
         result["refused"] if q.get("expect_refusal") else None
@@ -217,6 +233,69 @@ def evaluate_query(q: dict, args) -> dict:
         or result["forbidden_date_hits"]
     )
     return result
+
+
+def probe_passed(r: dict) -> bool:
+    """A probe passes a run when it did not fabricate and, where a refusal
+    was expected, actually refused."""
+    if r.get("fabricated"):
+        return False
+    if r.get("expect_refusal"):
+        return bool(r.get("refused"))
+    return True
+
+
+def summarize_runs(runs: list[list[dict]]) -> dict:
+    """Aggregate N repeated runs of the probe set (D19).
+
+    A probe counts as passing only if it passes in EVERY run. Unanimity, not
+    majority: a probe that refuses 3 times in 5 has not been fixed, and
+    averaging hides exactly the instability that matters. The 2026-07-25
+    eval reported refusal_correctness 0.5 -> 0.0 off a single run; a
+    replicate disconfirmed it, with 11 of 12 probes identical and one probe
+    flipping at temperature 0.
+    """
+    per_probe: dict[str, dict] = {}
+    for run in runs:
+        for r in run:
+            e = per_probe.setdefault(
+                r["id"],
+                {"runs": 0, "passes": 0, "fabricated_count": 0, "refused_count": 0},
+            )
+            e["runs"] += 1
+            if probe_passed(r):
+                e["passes"] += 1
+            if r.get("fabricated"):
+                e["fabricated_count"] += 1
+            if r.get("refused"):
+                e["refused_count"] += 1
+    for e in per_probe.values():
+        e["pass_rate"] = (e["passes"] / e["runs"]) if e["runs"] else 0.0
+        e["unanimous"] = e["runs"] > 0 and e["passes"] == e["runs"]
+
+    aggregates: dict = {}
+    per_run = [aggregate(run, True) for run in runs]
+    for key in (
+        "mean_target_recall",
+        "fabrication_rate",
+        "refusal_correctness",
+        "queries_with_injection",
+    ):
+        vals = [a[key] for a in per_run if a.get(key) is not None]
+        if vals:
+            aggregates[key] = {
+                "mean": sum(vals) / len(vals),
+                "min": min(vals),
+                "max": max(vals),
+            }
+    return {
+        "runs": len(runs),
+        "per_probe": per_probe,
+        "aggregates": aggregates,
+        "all_unanimous": bool(per_probe) and all(
+            e["unanimous"] for e in per_probe.values()
+        ),
+    }
 
 
 def aggregate(per_query: list[dict], answered: bool) -> dict:
@@ -281,6 +360,12 @@ def main() -> int:
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--out", type=Path, default=Path("eval-fabrication.json"))
     parser.add_argument("--compare", nargs=2, type=Path, metavar=("BASELINE", "CURRENT"))
+    parser.add_argument(
+        "--runs", type=int, default=1,
+        help="repeat the probe set N times and summarize (D19: acceptance "
+             "requires N>=5 with per-probe unanimity; a single run is not "
+             "evidence for the answer phase)",
+    )
     args = parser.parse_args()
 
     if args.compare:
@@ -290,28 +375,53 @@ def main() -> int:
     args.system_prompt_text = args.system_prompt.read_text(encoding="utf-8")
     queries = load_queries(args.queries)
 
-    per_query = []
-    for q in queries:
-        print(f"[eval] {q['id']} ...", file=sys.stderr)
-        try:
-            per_query.append(evaluate_query(q, args))
-        except Exception as exc:
-            print(f"[eval] {q['id']} FAILED: {exc}", file=sys.stderr)
-            per_query.append({"id": q["id"], "error": str(exc)})
+    runs: list[list[dict]] = []
+    for run_index in range(max(1, args.runs)):
+        if args.runs > 1:
+            print(f"[eval] === run {run_index + 1}/{args.runs} ===", file=sys.stderr)
+        per_query = []
+        for q in queries:
+            print(f"[eval] {q['id']} ...", file=sys.stderr)
+            try:
+                per_query.append(evaluate_query(q, args))
+            except Exception as exc:
+                print(f"[eval] {q['id']} FAILED: {exc}", file=sys.stderr)
+                per_query.append({"id": q["id"], "error": str(exc)})
+        runs.append(per_query)
 
+    clean = [[r for r in run if "error" not in r] for run in runs]
     report = {
         "server": args.server,
         "top_k": args.top_k,
         "answer_phase": bool(args.answer),
         "model": args.model if args.answer else None,
         "temperature": args.temperature if args.answer else None,
-        "per_query": per_query,
-        "aggregates": aggregate(
-            [r for r in per_query if "error" not in r], args.answer
-        ),
+        "runs_requested": args.runs,
+        "per_query": runs[-1],
+        "aggregates": aggregate(clean[-1], args.answer),
     }
+    if args.runs > 1:
+        report["all_runs"] = runs
+        report["summary"] = summarize_runs(clean)
     args.out.write_text(json.dumps(report, indent=2), encoding="utf-8")
-    print(json.dumps(report["aggregates"], indent=2))
+    if args.runs > 1:
+        s = report["summary"]
+        print(json.dumps(s["aggregates"], indent=2))
+        flaky = sorted(
+            pid for pid, e in s["per_probe"].items() if not e["unanimous"]
+        )
+        print(f"[eval] runs={s['runs']}  all_unanimous={s['all_unanimous']}")
+        for pid in flaky:
+            e = s["per_probe"][pid]
+            print(f"[eval]   NOT unanimous: {pid} ({e['passes']}/{e['runs']} passed)")
+    else:
+        print(json.dumps(report["aggregates"], indent=2))
+        if args.answer:
+            print(
+                "[eval] WARNING: single run — per D19 this is NOT acceptance "
+                "evidence for the answer phase; use --runs 5 or more.",
+                file=sys.stderr,
+            )
     print(f"[eval] wrote {args.out}", file=sys.stderr)
     return 0
 

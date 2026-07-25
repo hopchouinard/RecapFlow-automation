@@ -46,3 +46,7 @@ backups/
 
 # Bytecode from importlib-loaded scripts (tests/test_eval_fabrication_refusal.py)
 scripts/__pycache__/
+
+# LanceDB pre-deploy snapshots — local rollback artifacts, not repo content
+# (19M+ binaries; the VM is canonical and keeps them on disk)
+community-brain/lancedb-backups/
