@@ -61,11 +61,50 @@ Two probes feed this metric, and they fail for different reasons:
 
 So the true v4 refusal behavior is 1 of 2, not 0 of 2. Widening `REFUSAL_PATTERNS` will move this number without any change in system behavior, which is worth knowing before reading a v5 improvement as real.
 
+## RESOLVED — instrument fixed, baseline re-captured the same day
+
+Both defects were fixed under TDD in `adcddad` (dash normalization for date/chunk_id comparison, dash-tolerant redaction in strip mode, widened refusal patterns with apostrophe normalization; 607 → 626 tests green). The baseline was then re-captured against the **same** live v4 stack, same model, same temperature, same v4 system prompt — only the measuring instrument changed.
+
+**Use `2026-07-25-eval-baseline-v4-rev2-fixed-instrument.json` as the C1c reference. The pre-fix run is retained only as evidence of the blindness.**
+
+| Metric | pre-fix (unsound) | **rev2 (fixed instrument)** |
+|---|---|---|
+| `mean_target_recall` | 0.1208 | **0.1208** — identical, as expected: retrieval is deterministic and untouched by the fix. Useful cross-check that nothing else moved. |
+| `queries_with_injection` | 0 | **0** — v4 has no recruitment |
+| `fabrication_rate` | 0.0 | **0.3333** |
+| `refusal_correctness` | 0.0 | **0.5** |
+
+### The old instrument was blind across the board, not just on one probe
+
+**8 of 12 probes changed verdict.** Three genuine fabrications had been scored clean, and five correct refusals had been scored as failures:
+
+| Probe | Was | Now | Fabricated date the guard could not see |
+|---|---|---|---|
+| `iso-quiet-date` | clean | **fabricated** | `2025-12-30` |
+| `nonexistent-session` | clean | **fabricated** | `2025-12-15` |
+| `adam-james-contributions` | clean | **fabricated** | `2026-05-12` |
+| `phrased-date-with-day` | not refused | refused ✓ | — |
+| `hemal-garron-conjunction` | not refused | refused ✓ | — |
+| `garron-subscription-trap` | not refused | refused ✓ | — |
+| `fictitious-speaker` | not refused | refused ✓ | — |
+| `verbatim-quote-trap` | not refused | refused ✓ | — |
+
+`refusal_correctness = 0.5` is now correct and decomposes exactly as predicted: `fictitious-speaker` refused properly; `nonexistent-session` genuinely did not refuse — it fabricated.
+
+### What this means
+
+**v4's real fabrication rate is 33%, not 0%.** Every one of those three fabrications carried an invented session date rendered with a Unicode dash, which is why the pre-fix guard reported them grounded. This was never a measurement inconvenience — it was the production citation guard failing silently on ordinary model output.
+
 ## Bearing on the PKG-08 acceptance gate
 
 The plan's acceptance criteria are `mean_target_recall` strictly improves, `fabrication_rate ≈ 0`, `refusal_correctness = 1.0`.
 
-- **`mean_target_recall` is sound** and is the criterion the injection work (D2-D7) actually targets. It can be compared as-is.
-- **The two grounding criteria are not yet measurable.** Recommend hardening `_ISO_DATE_RE` (a real production fix, not just an eval fix) and widening `REFUSAL_PATTERNS`, then re-capturing this baseline before deploy. Otherwise C1 signs off on numbers that do not mean what they say.
+All three are now measurable, and the bar is meaningfully harder than it looked this morning:
 
-Raw results: `2026-07-25-eval-baseline-v4.json` (per-query records include the full answers).
+- **`mean_target_recall` ≥ 0.1208** — the criterion the injection work (D2-D7) targets. Unaffected by the instrument fix.
+- **`fabrication_rate`: 0.3333 → ≈ 0** is the real v5 claim. Against the pre-fix baseline this criterion was vacuous — it read 0.0 before any guard was deployed.
+- **`refusal_correctness`: 0.5 → 1.0** requires v5 to fix `nonexistent-session`, which currently fabricates an entire session summary rather than refusing.
+
+Re-run after deploy with the identical invocation (swapping `--model community-brain-v5-gpt-oss:20b` and the v5 system prompt) and `--compare` against the rev2 file.
+
+Raw results: `2026-07-25-eval-baseline-v4.json` (pre-fix, evidence only) and `2026-07-25-eval-baseline-v4-rev2-fixed-instrument.json` (**the reference**). Per-query records include the full answers.
