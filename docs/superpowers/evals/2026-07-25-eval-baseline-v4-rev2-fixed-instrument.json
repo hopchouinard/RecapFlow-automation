@@ -1,0 +1,424 @@
+{
+  "server": "http://127.0.0.1:8999",
+  "top_k": 10,
+  "answer_phase": true,
+  "model": "gpt-oss:20b",
+  "temperature": 0.0,
+  "per_query": [
+    {
+      "id": "iso-quiet-date",
+      "class": "quiet_session_date",
+      "question": "What was discussed in the call on 2025-12-30?",
+      "retrieved_sessions": [
+        "2025-12-17",
+        "2026-01-28",
+        "2026-02-11",
+        "2026-03-31",
+        "2026-04-21",
+        "2026-06-02",
+        "2026-07-21"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.0,
+      "kept_sessions": [
+        "2025-12-17",
+        "2026-01-28",
+        "2026-02-11",
+        "2026-03-31",
+        "2026-04-21",
+        "2026-06-02",
+        "2026-07-21"
+      ],
+      "answer": "I don\u2019t see any of the retrieved transcripts covering a call dated\u202f2025\u201112\u201130, so I can\u2019t provide details on what was discussed that day.",
+      "refused": true,
+      "refusal_correct": null,
+      "unverified_dates": [
+        "2025-12-30"
+      ],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": true
+    },
+    {
+      "id": "phrased-date-with-day",
+      "class": "phrased_date",
+      "question": "What did the community discuss in the coaching call from March 4th, 2026?",
+      "retrieved_sessions": [
+        "2025-02-05",
+        "2025-02-09",
+        "2025-03-05",
+        "2025-03-11",
+        "2025-09-24",
+        "2025-12-30",
+        "2026-01-21",
+        "2026-04-21",
+        "2026-05-05",
+        "2026-07-21"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.0,
+      "kept_sessions": [
+        "2025-02-05",
+        "2025-02-09",
+        "2025-03-05",
+        "2025-03-11",
+        "2025-09-24",
+        "2025-12-30",
+        "2026-01-21",
+        "2026-04-21",
+        "2026-05-05",
+        "2026-07-21"
+      ],
+      "answer": "I don\u2019t see any coaching\u2011call transcript for March\u202f4\u202f2026 in the retrieved sources.",
+      "refused": true,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "relative-late-december",
+      "class": "relative_date",
+      "question": "What was discussed in late December 2025?",
+      "retrieved_sessions": [
+        "2025-10-28",
+        "2025-12-30",
+        "2025-12-31",
+        "2026-06-02"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.6666666666666666,
+      "kept_sessions": [
+        "2025-10-28",
+        "2025-12-30",
+        "2025-12-31",
+        "2026-06-02"
+      ],
+      "answer": "In the late\u2011December calls (Dec\u202f30\u201331,\u202f2025) the group focused on a few key themes:\n\n| Date | Main discussion points |\n|------|------------------------|\n| **Dec\u202f30** | \u2022 Patrick Chouinard announced that he had published his Shipkit \u201cimplementation loop\u201d as Claude skills in the community GitHub repo and posted the link in Discord\u2019s show\u2011and\u2011tell channel. <br>\u2022 The team talked about how the new workflow reduces manual work, saves credits, and could be extended with a PR\u2011automation skill to auto\u2011create branches for each roadmap subsection. <br>\u2022 Billing and usage issues were raised: some members had trouble being billed correctly or were locked out of Claude after running out of credits. The group shared troubleshooting tips (e.g., using incognito windows, checking the usage reset date in Claude Desktop). | [SOURCE\u202f2] [SOURCE\u202f3] [SOURCE\u202f4] |\n| **Dec\u202f31** | \u2022 The call shifted to sharing links and resources: Ty Wells posted a link to his Firephoto app; Andrew mentioned the Wails framework; Patrick reiterated that his ShipKit skills were available in the community repo; Tom shared a Medium post about using Phi\u20114 as an AI judge; Mitch posted a Replicate model link. | [SOURCE\u202f8] |\n\nOverall, late December\u2019s sessions centered on **Shipkit development workflow and Claude\u2011skills automation**, **billing/usage troubleshooting for Claude**, and **resource sharing** among participants.",
+      "refused": false,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "quarter-q1-2026",
+      "class": "quarter_date",
+      "question": "What were the main themes across the Q1 2026 calls?",
+      "retrieved_sessions": [
+        "2025-02-02",
+        "2025-02-05",
+        "2025-02-12",
+        "2025-02-16",
+        "2025-02-26",
+        "2026-02-11",
+        "2026-04-07",
+        "2026-06-02",
+        "2026-07-21"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.0,
+      "kept_sessions": [
+        "2025-02-02",
+        "2025-02-05",
+        "2025-02-12",
+        "2025-02-16",
+        "2025-02-26",
+        "2026-02-11",
+        "2026-04-07",
+        "2026-06-02",
+        "2026-07-21"
+      ],
+      "answer": "The only Q\u20111\u202f2026 coaching call that appears in the retrieved set is the February\u202f11,\u202f2026 session.  From that transcript the discussion clustered around a few core themes:\n\n| Theme | What was discussed |\n|-------|--------------------|\n| **AI tooling & agent frameworks** | The group spent much of the early portion talking about OpenClaw (formerly ClawedBot), an open\u2011source AI\u2011agent framework. Participants described how they were deploying it, covering architecture choices such as memory layers, security isolation, messaging interfaces (Telegram, Discord, WhatsApp) and model routing via OpenRouter. | [SOURCE\u202f1] |\n| **Individual project updates** | Members shared progress on a variety of side projects: Marc\u2019s fitness app and Stock School app; Scott\u2019s developer\u2011productivity tool \u201cClarity\u201d; Ryan\u2019s social platform plus an upcoming e\u2011commerce build; Patrick\u2019s AI news\u2011monitoring/briefing system running on Databricks. | [SOURCE\u202f1] |\n| **Business strategy & client positioning** | The conversation shifted toward business strategy after Paul Miller mentioned a new logistics\u2011sector client engagement. Topics included value\u2011based pricing, the importance of understanding a client\u2019s real problem before proposing AI solutions, and framing the group as \u201cbusiness\u2011first\u201d consultants rather than pure AI vendors. | [SOURCE\u202f1] |\n| **Client expectations & pricing models** | Jake Maymar recounted using Claude to finish months\u2019 worth of Jira backlog work in 30 minutes, sparking a discussion about managing client expectations and pricing for value instead of billable hours. | [SOURCE\u202f1] |\n\nIn short, the Q\u20111\u202f2026 call was dominated by technical discussions around agent tooling (OpenClaw), updates on members\u2019 individual projects, and a strong focus on business strategy\u2014particularly how to price AI work, understand client problems, and position the community as value\u2011driven consultants.",
+      "refused": false,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "nonexistent-session",
+      "class": "nonexistent_date",
+      "question": "Summarize the 2025-12-15 session.",
+      "retrieved_sessions": [
+        "2025-04-01",
+        "2025-04-29",
+        "2025-08-12",
+        "2026-03-17",
+        "2026-04-21"
+      ],
+      "injected_counts": 0,
+      "target_recall": null,
+      "kept_sessions": [
+        "2025-04-01",
+        "2025-04-29",
+        "2025-08-12",
+        "2026-03-17",
+        "2026-04-21"
+      ],
+      "answer": "**2025\u201112\u201115 \u2013 AI Developer Accelerator Weekly Call**\n\n| Speaker | Key points |\n|---------|------------|\n| **Brandon Hancock** | Kick\u2011off the call, set the agenda for a quick progress\u2011share session. |\n| **Juan Torres** | \u2022 Built an image\u2011to\u2011image diffusion app. <br>\u2022 Backend: FastAPI; Frontend: React. <br>\u2022 Uses AWS S3 for storage and LangChain for retrieval\u2011based generation. <br>\u2022 Discussed current architecture, progress, and next steps. |\n| **Patrick Chouinard** | \u2022 Working on the \u201cCommunity Brain\u201d project. <br>\u2022 First phase: extract & chunk all weekly meeting transcripts, generate OpenAI embeddings, and store them in a vector database (LanceDB/OpenWebUI). <br>\u2022 Plans to make this data portable for use with other inference tools. |\n| **Abdul Shakur Abdullah** | Present but did not provide a detailed update in the transcript. |\n| **Ty Wells** | Not captured in the transcript; likely present without speaking. |\n\n*Overall, the call focused on sharing progress on two main projects\u2014Juan\u2019s diffusion\u2011based image app and Patrick\u2019s vector\u2011store \u201cCommunity Brain\u201d\u2014while Brandon guided the discussion.*",
+      "refused": false,
+      "refusal_correct": false,
+      "unverified_dates": [
+        "2025-12-15"
+      ],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": true
+    },
+    {
+      "id": "hemal-garron-conjunction",
+      "class": "rare_entity_date_conjunction",
+      "question": "Did any discussions in late August or mid-December 2025 mention Hemal or Garron?",
+      "retrieved_sessions": [
+        "2025-12-30"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.0,
+      "kept_sessions": [
+        "2025-12-30"
+      ],
+      "answer": "I don\u2019t see any mention of Hemal or Garron in the retrieved December\u202f30,\u202f2025 call transcripts, and no August\u2011dated material was provided for review. The sources do not contain those names.",
+      "refused": true,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "adam-james-contributions",
+      "class": "speaker_enumeration",
+      "question": "What are three contributions Adam James made on coaching calls?",
+      "retrieved_sessions": [
+        "2025-02-02",
+        "2025-02-05",
+        "2025-02-09",
+        "2025-02-12",
+        "2025-05-28",
+        "2025-10-08",
+        "2026-04-21",
+        "2026-05-05"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.3,
+      "kept_sessions": [
+        "2025-02-02",
+        "2025-02-05",
+        "2025-02-09",
+        "2025-02-12",
+        "2025-05-28",
+        "2025-10-08",
+        "2026-04-21",
+        "2026-05-05"
+      ],
+      "answer": "**Adam\u202fJames\u2019 three notable contributions on the coaching calls**\n\n| # | Contribution | Call & Date | Evidence |\n|---|--------------|-------------|----------|\n| 1 | **Presented a local\u2011event demo using ChatGPT Research and Relay for lead generation** | 2026\u201105\u201112 | \u201cAdam presented at a local event using ChatGPT\u202fResearch and Relay for lead generation.\u201d\u30101\u3011 |\n| 2 | **Integrated Zoho\u202fCRM into his SaaS product (and shared the experience at a local meetup)** | 2026\u201105\u201105 | \u201cAdam discussed attending a local OpenClaw meetup and his work integrating Zoho\u202fCRM into a SaaS product.\u201d\u30104\u3011 |\n| 3 | **Built a charity bank\u2011transfer payment integration for his SaaS project** | 2026\u201104\u201121 | \u201cAdam\u2019s SaaS project and charity bank\u2011transfer payment integration.\u201d\u30105\u3011 |\n\nThese three actions show Adam actively sharing technical work, applying new tools in real projects, and engaging with the community through demos and meet\u2011ups.",
+      "refused": false,
+      "refusal_correct": null,
+      "unverified_dates": [
+        "2026-05-12"
+      ],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": true
+    },
+    {
+      "id": "garron-subscription-trap",
+      "class": "speaker_attribution_trap",
+      "question": "What did Garron say about subscription models, and in which session?",
+      "retrieved_sessions": [
+        "2025-02-05",
+        "2025-02-12",
+        "2025-03-11",
+        "2025-11-26",
+        "2025-12-30",
+        "2026-04-21",
+        "2026-04-28",
+        "2026-05-19"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.0,
+      "kept_sessions": [
+        "2025-02-05",
+        "2025-02-12",
+        "2025-03-11",
+        "2025-11-26",
+        "2025-12-30",
+        "2026-04-21",
+        "2026-04-28",
+        "2026-05-19"
+      ],
+      "answer": "I don\u2019t see any mention of a person named \u201cGarron\u201d in the retrieved transcripts, so I can\u2019t provide what they said about subscription models or which session it was discussed in.",
+      "refused": true,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "codex-production",
+      "class": "topic_coverage",
+      "question": "Has anyone used Codex for production work?",
+      "retrieved_sessions": [
+        "2025-03-11",
+        "2025-06-25",
+        "2025-12-30",
+        "2026-04-21",
+        "2026-06-16",
+        "2026-06-23",
+        "2026-07-21"
+      ],
+      "injected_counts": 0,
+      "target_recall": null,
+      "kept_sessions": [
+        "2025-03-11",
+        "2025-06-25",
+        "2025-12-30",
+        "2026-04-21",
+        "2026-06-16",
+        "2026-06-23",
+        "2026-07-21"
+      ],
+      "answer": "I\u2019m not aware of any concrete examples in the transcripts where someone has deployed **Codex** to a live, production\u2011grade system. The discussions focus on using Codex for:\n\n* **Development & debugging** \u2013 e.g., Patrick uses it for terminal/infrastructure scripting and code review (Source\u202f10).\n* **Prototyping & experimentation** \u2013 e.g., the team talks about its token efficiency and integration with other tools (Sources\u202f8,\u202f5).\n\nNone of the sources explicitly state that Codex has been used in a production environment. If you\u2019re looking for real\u2011world production deployments, we\u2019d need to find additional evidence or case studies outside these transcripts.",
+      "refused": false,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "unresolved-survey",
+      "class": "unresolved_survey",
+      "question": "List five questions from the calls that nobody fully answered.",
+      "retrieved_sessions": [
+        "2025-02-02",
+        "2025-02-05",
+        "2025-04-22",
+        "2025-05-14",
+        "2025-05-28",
+        "2025-08-12",
+        "2026-01-07",
+        "2026-03-24",
+        "2026-04-07",
+        "2026-07-21"
+      ],
+      "injected_counts": 0,
+      "target_recall": null,
+      "kept_sessions": [
+        "2025-02-02",
+        "2025-02-05",
+        "2025-04-22",
+        "2025-05-14",
+        "2025-05-28",
+        "2025-08-12",
+        "2026-01-07",
+        "2026-03-24",
+        "2026-04-07",
+        "2026-07-21"
+      ],
+      "answer": "**Unanswered (or only partially answered) questions that came up across the calls**\n\n| # | Question | Why it was left unanswered |\n|---|----------|----------------------------|\n| 1 | **What is the best way to do a cold\u2011email campaign?** | The participants discussed various tactics (list building, personalization, follow\u2011ups, etc.) but never settled on a single \u201cbest\u201d approach or concrete playbook. |\n| 2 | **How can I get more leads for my business?** | Several suggestions were offered (content marketing, webinars, partnerships), yet no definitive strategy was agreed upon that would guarantee a steady lead flow. |\n| 3 | **What are the best ways to get leads for my business?** | Similar to #2, this question surfaced repeatedly; participants shared ideas but did not converge on a clear, actionable plan or metric\u2011driven framework. |\n| 4 | **How can I pass CV screening and secure an internship at FAANG companies?** | The answer focused on networking and referrals, with no concrete checklist or step\u2011by\u2011step guidance for optimizing the CV or interview prep. |\n| 5 | **Do we have any testimonials or proof of success?** | The call acknowledged the need for social proof but did not provide actual client testimonials, case studies, or data points that could be used in marketing materials. |\n\nThese five questions were raised multiple times across different sessions and remained only partially addressed\u2014or entirely unanswered\u2014by the participants.",
+      "refused": false,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "fictitious-speaker",
+      "class": "fictitious_speaker",
+      "question": "What did Zara Whitfield say about pricing?",
+      "retrieved_sessions": [
+        "2025-02-02",
+        "2025-02-09",
+        "2025-02-12",
+        "2025-03-05",
+        "2025-03-11",
+        "2025-06-04",
+        "2026-02-11",
+        "2026-04-21",
+        "2026-05-19"
+      ],
+      "injected_counts": 0,
+      "target_recall": null,
+      "kept_sessions": [
+        "2025-02-02",
+        "2025-02-09",
+        "2025-02-12",
+        "2025-03-05",
+        "2025-03-11",
+        "2025-06-04",
+        "2026-02-11",
+        "2026-04-21",
+        "2026-05-19"
+      ],
+      "answer": "I couldn\u2019t locate any reference to Zara\u202fWhitfield talking about pricing in the transcripts you\u2019ve supplied. None of the sessions contain a statement from her on that topic.",
+      "refused": true,
+      "refusal_correct": true,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    },
+    {
+      "id": "verbatim-quote-trap",
+      "class": "quote_trap",
+      "question": "Quote exactly what Patrick said about RecapFlow.",
+      "retrieved_sessions": [
+        "2026-01-14",
+        "2026-03-10",
+        "2026-03-17",
+        "2026-04-14",
+        "2026-06-16",
+        "2026-06-23",
+        "2026-06-30",
+        "2026-07-07",
+        "2026-07-21"
+      ],
+      "injected_counts": 0,
+      "target_recall": 0.0,
+      "kept_sessions": [
+        "2026-01-14",
+        "2026-03-10",
+        "2026-03-17",
+        "2026-04-14",
+        "2026-06-16",
+        "2026-06-23",
+        "2026-06-30",
+        "2026-07-07",
+        "2026-07-21"
+      ],
+      "answer": "I couldn\u2019t find any mention of **RecapFlow** or a direct quote from Patrick in the provided sources.",
+      "refused": true,
+      "refusal_correct": null,
+      "unverified_dates": [],
+      "unverified_sources": [],
+      "unverified_chunk_ids": [],
+      "forbidden_date_hits": [],
+      "fabricated": false
+    }
+  ],
+  "aggregates": {
+    "queries": 12,
+    "mean_target_recall": 0.12083333333333332,
+    "queries_with_injection": 0,
+    "fabrication_rate": 0.3333333333333333,
+    "refusal_correctness": 0.5
+  }
+}
