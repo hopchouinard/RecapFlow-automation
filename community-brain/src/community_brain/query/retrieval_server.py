@@ -251,6 +251,8 @@ class ScoreBreakdown(BaseModel):
     - rrf_score: post-fusion score before cue boost
     - cue_delta: additive delta from cue boost (sum of fired rules)
     - cue_rules_fired: names of rules that fired for this chunk
+    - injected_by: names of v5 recruitment rules that pulled this chunk
+      into the candidate pool (empty for pool-native chunks)
 
     For operator-side debug + answering-LLM citation hygiene.
     Not currently rendered in the LLM-facing context (filter valve
@@ -262,6 +264,7 @@ class ScoreBreakdown(BaseModel):
     rrf_score: float
     cue_delta: float = 0.0
     cue_rules_fired: list[str] = Field(default_factory=list)
+    injected_by: list[str] = Field(default_factory=list)
 
 
 class QueryChunkResult(BaseModel):
@@ -430,6 +433,7 @@ def query(req: QueryRequestV2, _key: str | None = Depends(_verify_api_key)):
             rrf_score=_sb_data.get("rrf_score", 0.0),
             cue_delta=_sb_data.get("cue_delta", 0.0),
             cue_rules_fired=_sb_data.get("cue_rules_fired") or [],
+            injected_by=_sb_data.get("injected_by") or [],
         )
         chunks.append(QueryChunkResult(
             ground_truth=ground,

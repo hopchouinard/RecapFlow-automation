@@ -21,9 +21,6 @@ rows for the session_id are deleted before the new chunks are added. This cleans
 orphan rows left by prior prompt versions that produced more chunks than the
 current version.  Use force_reextract=True as the explicit "clean up orphans"
 trigger when the prompt template or chunking logic changes.
-
-TODO(v2): wire RetryConfig into Stage B/C LLM calls to honor configured
-retry_attempts and retry_backoff_seconds.
 """
 
 from __future__ import annotations
@@ -181,10 +178,10 @@ def ingest_session(
         for path_str in request.artifact_paths.values():
             _validate_artifact_path(path_str, artifact_root)
 
-    # Note: RetryConfig from chunking.yaml is loaded for schema compatibility
-    # but NOT yet wired into Stage B/C calls in v1. Retries use call_llm's
-    # built-in 3-attempt policy. Plumbing is planned for v2.
-    chunking_cfg, _retry_cfg = load_chunking_config(config_dir / "chunking.yaml")
+    # RetryConfig from chunking.yaml is wired into Stage B/C LLM calls (v5):
+    # retry_attempts + retry_backoff_seconds override call_llm's built-in
+    # 3-attempt exponential default.
+    chunking_cfg, retry_cfg = load_chunking_config(config_dir / "chunking.yaml")
     extraction_cfg = load_extraction_config(config_dir / "extraction-config.yaml")
     speaker_reg = load_speaker_registry(config_dir / "speaker-aliases.yaml")
     entity_reg = load_entity_registry(config_dir / "entity-registry.yaml")
@@ -299,6 +296,7 @@ def ingest_session(
         input_text=session_input,
         model=extraction_cfg.session_themes_model,
         prompt_template=session_themes_prompt,
+        retry_config=retry_cfg,
     )
     if themes_result.status not in ("success", "skipped"):
         logger.warning(
@@ -327,6 +325,7 @@ def ingest_session(
             model=extraction_cfg.chunk_extraction_model,
             prompt_template=chunk_extraction_prompt,
             speakers_spoke=chunk.speakers_spoke or [],
+            retry_config=retry_cfg,
         )
         chunk.extraction_model = extraction_cfg.chunk_extraction_model
         chunk.extraction_prompt_version = chunk_prompt_version

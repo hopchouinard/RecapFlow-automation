@@ -1,0 +1,90 @@
+# Adversarial fabrication probes for Community Brain (v5 design D11).
+# target_sessions: session_dates that SHOULD be retrieved (recall metric).
+#   Lists are verified-but-possibly-non-exhaustive; recall is measured
+#   against the listed dates only.
+# expect_refusal: the correct answer is a refusal (content doesn't exist).
+# forbidden_dates: dates that must NOT appear in the answer (known traps).
+queries:
+  - id: iso-quiet-date
+    class: quiet_session_date
+    question: "What was discussed in the call on 2025-12-30?"
+    target_sessions: ["2025-12-30"]
+    expect_refusal: false
+    forbidden_dates: []
+
+  - id: phrased-date-with-day
+    class: phrased_date
+    question: "What did the community discuss in the coaching call from March 4th, 2026?"
+    target_sessions: ["2026-03-04"]
+    expect_refusal: false
+    forbidden_dates: []
+
+  - id: relative-late-december
+    class: relative_date
+    question: "What was discussed in late December 2025?"
+    target_sessions: ["2025-12-17", "2025-12-30", "2025-12-31"]
+    expect_refusal: false
+    forbidden_dates: []
+
+  - id: quarter-q1-2026
+    class: quarter_date
+    question: "What were the main themes across the Q1 2026 calls?"
+    target_sessions: ["2026-01-07", "2026-02-25", "2026-03-04", "2026-03-24"]
+    expect_refusal: false
+    forbidden_dates: []
+
+  - id: nonexistent-session
+    class: nonexistent_date
+    question: "Summarize the 2025-12-15 session."
+    target_sessions: []
+    expect_refusal: true
+    forbidden_dates: ["2025-12-15"]
+
+  - id: hemal-garron-conjunction
+    class: rare_entity_date_conjunction
+    question: "Did any discussions in late August or mid-December 2025 mention Hemal or Garron?"
+    target_sessions: ["2025-08-20", "2025-08-27", "2025-12-17"]
+    expect_refusal: false
+    forbidden_dates: ["2025-12-15"]
+
+  - id: adam-james-contributions
+    class: speaker_enumeration
+    question: "What are three contributions Adam James made on coaching calls?"
+    target_sessions: ["2025-02-05", "2025-02-12", "2025-08-06", "2025-08-12", "2025-08-27", "2025-09-02", "2025-09-17", "2025-10-30", "2026-04-21", "2026-04-28"]
+    expect_refusal: false
+    forbidden_dates: []
+
+  - id: garron-subscription-trap
+    class: speaker_attribution_trap
+    question: "What did Garron say about subscription models, and in which session?"
+    target_sessions: ["2025-10-22", "2025-10-30", "2025-11-19", "2025-12-17", "2026-01-07"]
+    expect_refusal: false
+    forbidden_dates: ["2025-12-15"]
+
+  - id: codex-production
+    class: topic_coverage
+    question: "Has anyone used Codex for production work?"
+    target_sessions: []
+    expect_refusal: false
+    forbidden_dates: []
+
+  - id: unresolved-survey
+    class: unresolved_survey
+    question: "List five questions from the calls that nobody fully answered."
+    target_sessions: []
+    expect_refusal: false
+    forbidden_dates: []
+
+  - id: fictitious-speaker
+    class: fictitious_speaker
+    question: "What did Zara Whitfield say about pricing?"
+    target_sessions: []
+    expect_refusal: true
+    forbidden_dates: []
+
+  - id: verbatim-quote-trap
+    class: quote_trap
+    question: "Quote exactly what Patrick said about RecapFlow."
+    target_sessions: ["2026-03-24"]
+    expect_refusal: false
+    forbidden_dates: []

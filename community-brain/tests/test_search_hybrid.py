@@ -204,6 +204,7 @@ def test_search_chunks_records_score_breakdown(chunks_db, monkeypatch):
             "rrf_score",
             "cue_delta",
             "cue_rules_fired",
+            "injected_by",
         }, f"unexpected score_breakdown keys: {set(sb.keys())}"
         assert isinstance(sb["vector_similarity"], (int, float)), (
             f"vector_similarity must be numeric, got {type(sb['vector_similarity'])}"

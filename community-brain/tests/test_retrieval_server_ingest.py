@@ -14,7 +14,7 @@ from community_brain.query import retrieval_server as server_mod
 FIXTURES = Path(__file__).parent / "fixtures"
 
 
-def _fake_extract_response(model, prompt):
+def _fake_extract_response(model, prompt, **_kwargs):
     if "SESSION_INPUT:" in prompt:
         return json.dumps({"themes": ["agent frameworks"]})
     return json.dumps({

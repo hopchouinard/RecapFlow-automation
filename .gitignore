@@ -43,3 +43,6 @@ restore-staging/
 
 # VM backup snapshots (contains encryption key + encrypted credentials — never commit)
 backups/
+
+# Bytecode from importlib-loaded scripts (tests/test_eval_fabrication_refusal.py)
+scripts/__pycache__/

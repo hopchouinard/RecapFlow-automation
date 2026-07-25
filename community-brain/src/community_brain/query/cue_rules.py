@@ -186,6 +186,17 @@ def _refresh_speaker_resolver(path: str | Path) -> dict[str, list[str]]:
     return aliases_map
 
 
+# Last-known-good cache for the speaker auto-rules, keyed by resolved path.
+# Stores (rule_pair, name_to_canonical snapshot, casefold snapshot) so a
+# transient partial-write window on speaker-aliases.yaml cannot degrade
+# speaker boosts/recruitment to never-match sentinels for that request
+# (v5 D12; mirrors _LAST_GOOD_RULES semantics for the YAML loader).
+_LAST_GOOD_SPEAKER_RULES: dict[
+    str,
+    tuple[tuple["CueRule", "CueRule"], dict[str, str], dict[str, str]],
+] = {}
+
+
 def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
     """Synthesize the speaker auto-rules from the alias registry.
 
@@ -198,8 +209,22 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
 
     Both use match_strategy='name_resolve_then_check' which respects the
     match_field -- only checks that one field for the canonical's group.
+
+    Resilience (v5 D12): when a previously-good path loads empty (missing,
+    unparseable, or transiently truncated), the last-known-good rule pair
+    is returned and the module-level resolver dicts are restored from the
+    cached snapshot. First-time-empty registries still return never-match
+    sentinels and cache nothing.
     """
+    global _SPEAKER_NAME_TO_CANONICAL, _SPEAKER_CASEFOLD_LOOKUP
+
     aliases_map = _refresh_speaker_resolver(path)
+    p = Path(path)
+    # Key unconditionally on the resolved path (strict=False works on
+    # nonexistent paths) so a transient DELETE keys the SAME as the prior good
+    # load -- otherwise a relative/symlinked path would miss the cache and
+    # degrade to never-match sentinels (v5 D12 follow-up).
+    cache_key = str(p.resolve())
 
     # Collect ALL names (canonicals + aliases)
     name_to_canonical: dict[str, str] = {}
@@ -209,18 +234,31 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
             name_to_canonical[alias] = canonical
 
     if not name_to_canonical:
-        # Empty registry -- return two rules that never match.
-        # Never-match sentinel for empty-registry case.
+        cached = _LAST_GOOD_SPEAKER_RULES.get(cache_key)
+        if cached is not None:
+            rules, cached_names, cached_casefold = cached
+            _SPEAKER_NAME_TO_CANONICAL = dict(cached_names)
+            _SPEAKER_CASEFOLD_LOOKUP = dict(cached_casefold)
+            logger.warning(
+                "speaker-aliases load returned empty for %s; using "
+                "last-known-good speaker auto-rules (%d names)",
+                path,
+                len(cached_names),
+            )
+            return rules
+        # First-time empty registry -- never-match sentinels, nothing cached.
         never_match = r"(?!x)x"
         spoke = CueRule(
             name="speaker_auto_spoke", cue_phrases=(), target_predicate=None,
             delta=0.04, question_regex=never_match,
             match_field="speakers_spoke", match_strategy="name_resolve_then_check",
+            recruit=True,
         )
         mentioned = CueRule(
             name="speaker_auto_mentioned", cue_phrases=(), target_predicate=None,
             delta=0.02, question_regex=never_match,
             match_field="speakers_mentioned", match_strategy="name_resolve_then_check",
+            recruit=True,
         )
         return (spoke, mentioned)
 
@@ -237,6 +275,7 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
         question_regex=pattern,
         match_field="speakers_spoke",
         match_strategy="name_resolve_then_check",
+        recruit=True,
     )
     mentioned = CueRule(
         name="speaker_auto_mentioned",
@@ -246,6 +285,12 @@ def build_speaker_auto_rule(path: str | Path) -> tuple["CueRule", "CueRule"]:
         question_regex=pattern,
         match_field="speakers_mentioned",
         match_strategy="name_resolve_then_check",
+        recruit=True,
+    )
+    _LAST_GOOD_SPEAKER_RULES[cache_key] = (
+        (spoke, mentioned),
+        dict(_SPEAKER_NAME_TO_CANONICAL),
+        dict(_SPEAKER_CASEFOLD_LOOKUP),
     )
     return (spoke, mentioned)
 
@@ -266,6 +311,11 @@ class CueRule:
     question_regex: str | None = None
     match_field: str | None = None
     match_strategy: str | None = None
+    # v5 additions (design D3): recruitment opt-in + the raw YAML
+    # target_predicate mapping, preserved so candidate_injection can derive
+    # a WHERE clause from the same definition the boost predicate uses.
+    recruit: bool = False
+    predicate_spec: dict | None = None
 
 
 def _has_unresolved_question(chunk: dict) -> bool:
@@ -482,7 +532,11 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
     Skips individual malformed rules with ERROR; continues with the rest.
     """
     p = Path(path)
-    cache_key = str(p.resolve()) if p.exists() else str(p)
+    # Key unconditionally on the resolved path (strict=False works on
+    # nonexistent paths) so a transient DELETE keys the SAME as the prior good
+    # load -- otherwise a relative/symlinked path would miss the cache and
+    # degrade to empty (v5 D12 follow-up; harmonized with the speaker cache).
+    cache_key = str(p.resolve())
 
     def _fallback_or_empty(reason: str) -> tuple[CueRule, ...]:
         cached = _LAST_GOOD_RULES.get(cache_key)
@@ -507,6 +561,7 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
         logger.error("cue rules YAML at %s missing top-level 'cue_rules' key", p)
         return _fallback_or_empty("missing 'cue_rules' top-level key")
     rules: list[CueRule] = []
+    skipped = 0
     for entry in data.get("cue_rules") or []:
         try:
             name = entry["name"]
@@ -531,6 +586,7 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                     question_regex=entry["question_regex"],
                     match_field=entry.get("match_field"),
                     match_strategy=entry["match_strategy"],
+                    recruit=bool(entry.get("recruit", False)),
                 ))
                 continue
 
@@ -562,14 +618,27 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                 cue_phrases=cue_phrases,
                 target_predicate=predicate,
                 delta=delta,
+                recruit=bool(entry.get("recruit", False)),
+                predicate_spec=dict(entry["target_predicate"]),
             ))
         except Exception as exc:
+            skipped += 1
             logger.error(
                 "skipping malformed cue rule %r: %s",
                 entry.get("name", "<unnamed>") if isinstance(entry, dict) else "<not-a-dict>",
                 exc,
             )
     out = tuple(rules)
-    if out:
+    # Refresh the last-known-good cache when the load genuinely reflects the
+    # file's intent. Two empty-result cases must NOT be collapsed:
+    #   - source list was empty and nothing was skipped -> the operator
+    #     deliberately removed all rules; cache it, or a later transient
+    #     failure resurrects boosts/recruitment they intended to delete.
+    #   - entries existed but every one was malformed -> the file is
+    #     corrupt; keep the previous good cache so a later transient
+    #     failure still has something sane to fall back to.
+    # (Hard read/parse failures never reach here; they return early via
+    # _fallback_or_empty.)
+    if out or skipped == 0:
         _LAST_GOOD_RULES[cache_key] = out
     return out
