@@ -506,3 +506,56 @@ def test_apply_guard_strip_removes_unicode_dashed_date():
     body = out.split("Grounding check")[0]
     assert f"2025{_NB_HYPHEN}12{_NB_HYPHEN}15" not in body
     assert "[unverified date]" in body
+
+
+# --- PR #6 review: unknown citation_guard valve values fail silently -------
+# Valves reset to defaults on every filter re-upload (documented v4 hazard,
+# and step 4 of the v5 deploy re-sets all four). A typo'd valve therefore
+# has a real chance of reaching production. The dangerous direction is a
+# mistyped "off": the operator believes the guard is disabled while it is
+# still annotating answers.
+
+def test_outlet_warns_and_annotates_on_unknown_citation_guard_value(caplog):
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    f = Filter()
+    f.valves.citation_guard = "of"          # meant "off"
+    ctx = _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello"),
+    ])
+    body = {
+        "messages": [
+            {"role": "system", "content": ctx},
+            {"role": "assistant", "content": "The 2025-12-15 call decided X."},
+        ]
+    }
+    with caplog.at_level("WARNING"):
+        out = f.outlet(body)
+    assert [r for r in caplog.records if "citation_guard" in r.getMessage()], (
+        "no warning logged for unknown valve value"
+    )
+    # Falls back to annotate (safe direction), NOT silently off.
+    assert "Grounding check (automated)" in out["messages"][-1]["content"]
+
+
+def test_outlet_does_not_warn_on_valid_citation_guard_values(caplog):
+    from community_brain.openwebui.community_brain_filter import Filter
+
+    ctx = _context_for([
+        _make_chunk("2026-02-25:transcript:008", "2026-02-25", "hello"),
+    ])
+    for mode in ("annotate", "strip", "off", "ANNOTATE", " strip "):
+        f = Filter()
+        f.valves.citation_guard = mode
+        body = {
+            "messages": [
+                {"role": "system", "content": ctx},
+                {"role": "assistant", "content": "The 2025-12-15 call decided X."},
+            ]
+        }
+        caplog.clear()
+        with caplog.at_level("WARNING"):
+            f.outlet(body)
+        assert not [r for r in caplog.records if "citation_guard" in r.getMessage()], (
+            f"valid mode {mode!r} logged a warning"
+        )

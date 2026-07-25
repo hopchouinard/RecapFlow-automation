@@ -308,3 +308,57 @@ def test_inject_returns_empty_when_no_rule_fires(tmp_path):
         query_vector=QUERY_VEC,
     )
     assert injected == []
+
+
+# --- PR #6 review: missing embedding must not imply a perfect match -------
+# _cosine_distance range is [0, 2] and similarity is computed downstream as
+# 1 - _distance. The defensive branch for a row without an embedding set
+# _distance = 0.0, i.e. similarity 1.0 — the BEST possible score. Such a
+# chunk then survives client-side min_score filtering and ranks top, and
+# score_breakdown reports a perfect semantic match that was never computed.
+
+def test_inject_row_without_embedding_scores_worst_not_best(tmp_path):
+    rows = [
+        _chunk_row(chunk_id="q1", session_date="2025-12-30",
+                   full_text="holiday call check-ins",
+                   bm25_text="holiday call check-ins"),
+    ]
+    rows[0]["embedding"] = None
+    table = _make_table(tmp_path, rows)
+    injected = inject_candidates(
+        question="What was discussed on 2025-12-30?",
+        table=table,
+        rules=(ISO_RULE,),
+        where_expr=SUCCESS_GUARD,
+        existing_chunk_ids=set(),
+        query_vector=QUERY_VEC,
+    )
+    assert len(injected) == 1
+    row = injected[0]
+    assert row["_vector_similarity"] == 0.0, (
+        "a chunk with no embedding must not be reported as a perfect match"
+    )
+    assert row["_distance"] == 1.0
+
+
+def test_inject_row_with_embedding_still_scores_by_cosine(tmp_path):
+    """Regression guard: the normal path must keep computing real distance."""
+    rows = [
+        _chunk_row(chunk_id="q1", session_date="2025-12-30",
+                   full_text="holiday call check-ins",
+                   bm25_text="holiday call check-ins",
+                   embedding=[0.5] * EMBEDDING_DIM),
+    ]
+    table = _make_table(tmp_path, rows)
+    injected = inject_candidates(
+        question="What was discussed on 2025-12-30?",
+        table=table,
+        rules=(ISO_RULE,),
+        where_expr=SUCCESS_GUARD,
+        existing_chunk_ids=set(),
+        query_vector=QUERY_VEC,
+    )
+    assert len(injected) == 1
+    # QUERY_VEC is [0.5]*DIM; an identical vector is cosine distance ~0.
+    assert injected[0]["_distance"] < 0.001
+    assert injected[0]["_vector_similarity"] > 0.999

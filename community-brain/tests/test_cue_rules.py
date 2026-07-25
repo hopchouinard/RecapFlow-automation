@@ -699,3 +699,73 @@ cue_rules:
     assert len(rules) == 0
     assert any("question_regex" in r.message and "match_strategy" in r.message
                for r in caplog.records)
+
+
+# --- PR #6 review: LKG cache never refreshes on an intentionally-empty file
+# `if out: _LAST_GOOD_RULES[key] = out` means a valid file that declares zero
+# rules never updates the cache, so a later transient failure resurrects the
+# PREVIOUS non-empty rule set — stale boosts/recruitment the operator
+# deliberately removed.
+#
+# The guard is not pointless, though: hard read/parse failures return early
+# via _fallback_or_empty, but a file whose entries are ALL malformed also
+# yields an empty tuple here, and caching that would discard a good cache.
+# The two cases must be distinguished, not collapsed.
+
+def test_intentionally_empty_rule_file_refreshes_last_known_good(tmp_path, clear_cue_rules_cache):
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    p = tmp_path / "cues.yaml"
+    p.write_text('''
+cue_rules:
+  - name: keep_me
+    cue_phrases: ["unresolved"]
+    delta: 0.1
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+''')
+    assert len(load_cue_rules_from_yaml(str(p))) == 1
+
+    # Operator deliberately empties the rule set.
+    p.write_text("cue_rules: []\n")
+    assert load_cue_rules_from_yaml(str(p)) == ()
+
+    # A later transient failure must NOT resurrect the removed rule.
+    p.unlink()
+    assert load_cue_rules_from_yaml(str(p)) == ()
+
+
+def test_all_entries_malformed_does_not_wipe_last_known_good(tmp_path, clear_cue_rules_cache):
+    """The counter-case: a corrupted file must not destroy the good cache."""
+    from community_brain.query.cue_rules import load_cue_rules_from_yaml
+
+    p = tmp_path / "cues.yaml"
+    p.write_text('''
+cue_rules:
+  - name: keep_me
+    cue_phrases: ["unresolved"]
+    delta: 0.1
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+''')
+    assert len(load_cue_rules_from_yaml(str(p))) == 1
+
+    # Every entry malformed (negative delta) — all skipped, out is empty.
+    p.write_text('''
+cue_rules:
+  - name: broken
+    cue_phrases: ["x"]
+    delta: -1
+    target_predicate:
+      field: has_unresolved_question
+      value: true
+''')
+    assert load_cue_rules_from_yaml(str(p)) == ()
+
+    # The good cache must survive, so a transient failure still falls back.
+    p.unlink()
+    recovered = load_cue_rules_from_yaml(str(p))
+    assert len(recovered) == 1
+    assert recovered[0].name == "keep_me"

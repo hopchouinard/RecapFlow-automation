@@ -259,7 +259,13 @@ def inject_candidates(
             if embedding:
                 row["_distance"] = _cosine_distance(query_vector, list(embedding))
             else:
-                row["_distance"] = 0.0
+                # No embedding to compare against: score the chunk as
+                # unrelated, NOT as a perfect match. similarity is computed
+                # as 1 - _distance downstream, so 0.0 here would claim a
+                # cosine similarity of 1.0 that was never measured — the
+                # chunk would then top the ranking and survive client-side
+                # min_score filtering on the strength of missing data.
+                row["_distance"] = 1.0
             row["_vector_similarity"] = 1.0 - float(row["_distance"])
             row["_injected_by"] = [rule.name]
             injected[chunk_id] = row

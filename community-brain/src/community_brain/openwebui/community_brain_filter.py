@@ -34,6 +34,10 @@ CONTEXT_TAG = "[COMMUNITY_BRAIN_CONTEXT]"
 
 RETRIEVED_SOURCES_MARKER = "## Retrieved Sources"
 
+# Accepted citation_guard valve values (D8). Anything else is an operator
+# typo and is warned about rather than silently treated as annotate.
+_CITATION_GUARD_MODES = frozenset({"annotate", "strip", "off"})
+
 _SOURCE_HEADER_RE = re.compile(r"\[SOURCE (\d+) — chunk_id: ([^\]]+)\]")
 _SOURCE_REF_RE = re.compile(r"\[SOURCE\s+(\d+)\]", re.IGNORECASE)
 _CHUNK_ID_REF_RE = re.compile(
@@ -684,6 +688,19 @@ class Filter:
         told to answer generally or refuse.
         """
         mode = (self.valves.citation_guard or "annotate").strip().lower()
+        if mode not in _CITATION_GUARD_MODES:
+            # Valves reset to defaults on every filter re-upload (documented
+            # v4 hazard), so a typo has a real chance of reaching production.
+            # The dangerous direction is a mistyped "off": the operator
+            # believes the guard is disabled while it is still annotating.
+            # Say so loudly and fall back to the safe mode.
+            logger.warning(
+                "citation_guard valve has unknown value %r; expected one of "
+                "%s — falling back to 'annotate'",
+                self.valves.citation_guard,
+                "|".join(sorted(_CITATION_GUARD_MODES)),
+            )
+            mode = "annotate"
         if mode == "off" or not self.valves.enabled:
             return body
 

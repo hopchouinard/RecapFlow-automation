@@ -561,6 +561,7 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
         logger.error("cue rules YAML at %s missing top-level 'cue_rules' key", p)
         return _fallback_or_empty("missing 'cue_rules' top-level key")
     rules: list[CueRule] = []
+    skipped = 0
     for entry in data.get("cue_rules") or []:
         try:
             name = entry["name"]
@@ -621,12 +622,23 @@ def load_cue_rules_from_yaml(path: str | Path) -> tuple[CueRule, ...]:
                 predicate_spec=dict(entry["target_predicate"]),
             ))
         except Exception as exc:
+            skipped += 1
             logger.error(
                 "skipping malformed cue rule %r: %s",
                 entry.get("name", "<unnamed>") if isinstance(entry, dict) else "<not-a-dict>",
                 exc,
             )
     out = tuple(rules)
-    if out:
+    # Refresh the last-known-good cache when the load genuinely reflects the
+    # file's intent. Two empty-result cases must NOT be collapsed:
+    #   - source list was empty and nothing was skipped -> the operator
+    #     deliberately removed all rules; cache it, or a later transient
+    #     failure resurrects boosts/recruitment they intended to delete.
+    #   - entries existed but every one was malformed -> the file is
+    #     corrupt; keep the previous good cache so a later transient
+    #     failure still has something sane to fall back to.
+    # (Hard read/parse failures never reach here; they return early via
+    # _fallback_or_empty.)
+    if out or skipped == 0:
         _LAST_GOOD_RULES[cache_key] = out
     return out

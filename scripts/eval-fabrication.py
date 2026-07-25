@@ -30,6 +30,7 @@ import yaml
 
 from community_brain.openwebui.community_brain_filter import (
     Filter,
+    _normalize_dashes,
     _recompute_metadata_summary,
     extract_grounding_facts,
     verify_answer_grounding,
@@ -87,6 +88,23 @@ _APOSTROPHES = str.maketrans({"’": "'", "‘": "'", "ʼ": "'", "＇": "'"})
 def looks_like_refusal(answer: str) -> bool:
     lowered = answer.lower().translate(_APOSTROPHES)
     return any(p in lowered for p in REFUSAL_PATTERNS)
+
+
+def find_forbidden_dates(answer: str, forbidden: list[str] | None) -> list[str]:
+    """Return the configured trap dates that appear in `answer`.
+
+    Compares modulo dash codepoint, reusing the filter's normalizer so the
+    harness and the production guard cannot drift apart. A raw substring
+    match misses "2025‑12‑15" written with U+2011 — which gpt-oss:20b does
+    spontaneously, and which cost this check a real hit on the
+    nonexistent-session probe of the 2026-07-25 v4 baseline. On the
+    no-sources path these traps are the ONLY verification available, so a
+    miss there silently undercounts fabrication.
+    """
+    if not forbidden:
+        return []
+    normalized = _normalize_dashes(answer)
+    return [d for d in forbidden if _normalize_dashes(d) in normalized]
 
 
 def load_queries(path: Path) -> list[dict]:
@@ -184,14 +202,14 @@ def evaluate_query(q: dict, args) -> dict:
         result["unverified_chunk_ids"] = verdict["unverified_chunk_ids"]
     else:
         # No sources retrieved: only explicit traps are checkable.
-        result["unverified_dates"] = [
-            d for d in (q.get("forbidden_dates") or []) if d in answer
-        ]
+        result["unverified_dates"] = find_forbidden_dates(
+            answer, q.get("forbidden_dates")
+        )
         result["unverified_sources"] = []
         result["unverified_chunk_ids"] = []
-    result["forbidden_date_hits"] = [
-        d for d in (q.get("forbidden_dates") or []) if d in answer
-    ]
+    result["forbidden_date_hits"] = find_forbidden_dates(
+        answer, q.get("forbidden_dates")
+    )
     result["fabricated"] = bool(
         result["unverified_dates"]
         or result["unverified_sources"]
