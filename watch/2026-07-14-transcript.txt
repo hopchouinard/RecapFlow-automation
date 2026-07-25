@@ -1,0 +1,1129 @@
+[00:00:02] Patrick Chouinard: Hey, how's going?
+[00:00:06] Ty Wells: Hey, good.
+[00:00:06] Ty Wells: How are you?
+[00:00:08] Patrick Chouinard: Surviving.
+[00:00:10] Ty Wells: That's good.
+[00:00:11] Ty Wells: That's good.
+[00:00:12] Ty Wells: I saw something at the beginning that came up.
+[00:00:16] Ty Wells: What was that message?
+[00:00:17] Ty Wells: What does that say?
+[00:00:17] Ty Wells: I thought it said something about something running.
+[00:00:20] Ty Wells: I don't know.
+[00:00:21] Ty Wells: I thought I saw something different.
+[00:00:23] Ty Wells: Let me quit and join back and I'll see.
+[00:00:25] Patrick Chouinard: Okay.
+[00:00:48] Ty Wells: Yeah, it must have had something to do with the note taker maybe.
+[00:00:52] Patrick Chouinard: Okay.
+[00:00:53] Ty Wells: I don't know.
+[00:00:54] Ty Wells: Well, I joined in early.
+[00:00:56] Ty Wells: Because I want...
+[00:01:00] Ty Wells: So my presentation today is like a part of the actual session.
+[00:01:11] Ty Wells: It's something I'm working on, but to do it.
+[00:01:14] Ty Wells: So what I did was I put the queue out there, right?
+[00:01:17] Ty Wells: So you should see if you click on that link.
+[00:01:21] Patrick Chouinard: Yep, I did.
+[00:01:22] Ty Wells: Okay.
+[00:01:23] Ty Wells: So on my screen, see if I can minimize this guy.
+[00:01:29] Ty Wells: So I'm trying to layer on my screen.
+[00:01:32] Ty Wells: I have the runner's page, basically when you're hosting, this would be the things that you can do.
+[00:01:38] Ty Wells: So what do you see on your screen now on that little, you have to like make a little, so it would be, you probably have multiple monitors, but I don't, I've got a laptop.
+[00:01:49] Ty Wells: That's why it's a little bit of Travis.
+[00:01:52] Patrick Chouinard: Well, if I show you that screen, that window specifically, this is what I see.
+[00:02:03] Ty Wells: Okay, that's not what I want you to see.
+[00:02:06] Ty Wells: Perfect.
+[00:02:07] Ty Wells: Well, not perfect.
+[00:02:09] Ty Wells: Oh, click on that one at the top that says go to the session view.
+[00:02:15] Ty Wells: Oh, that's if you're presenting.
+[00:02:17] Ty Wells: Yes, yes, that is supposed to be what you see.
+[00:02:19] Ty Wells: So what happened with this tool is, so I host a show and tell on Wednesdays, right?
+[00:02:25] Ty Wells: And it's showing, but if you're presenting, you basically sign up.
+[00:02:30] Ty Wells: you get an order list and you can sign up and say what you're presenting and then the me as the person running that I would, I would be able to run a clock so you could see the how much time you have left and the countdown of the time you have left for your presentation.
+[00:02:49] Ty Wells: And then you'll switch over to, you know, discussion like we do something similar to like what we do here.
+[00:02:57] Ty Wells: Okay, so if you click there to you'll switch over
+[00:03:02] Patrick Chouinard: Let me re-share, just to make sure I get the right thing, mean register to present?
+[00:03:14] Ty Wells: Yep.
+[00:03:16] Ty Wells: So let's see, whatever you're presenting on today, just put it there if you're presenting something.
+[00:03:22] Patrick Chouinard: Oh, I'm reading the call this week, so...
+[00:03:26] Ty Wells: You can still present.
+[00:03:28] Patrick Chouinard: Yeah, okay.
+[00:03:44] Ty Wells: I'll put you on the list.
+[00:03:46] Ty Wells: Don't worry about the GitHub for right now.
+[00:03:47] Patrick Chouinard: If you had one, you'd put that there.
+[00:03:48] Patrick Chouinard: No, there's none.
+[00:03:50] Ty Wells: Now hit that in the call, open live, or up above in the red, just under.
+[00:03:56] Ty Wells: Yep.
+[00:03:56] Ty Wells: Hit that guy.
+[00:03:57] Ty Wells: Yep.
+[00:04:00] Ty Wells: And then put your name.
+[00:04:06] Patrick Chouinard: Write it correctly because I'm guessing it's there.
+[00:04:11] Ty Wells: Okay, perfect.
+[00:04:12] Ty Wells: Now, so if you have this on the screen by itself, then...
+[00:04:17] Ty Wells: This meeting is being recorded.
+[00:04:19] Ty Wells: You can ask a question.
+[00:04:21] Ty Wells: That question will go out there.
+[00:04:22] Ty Wells: You can create a poll.
+[00:04:25] Patrick Chouinard: Okay.
+[00:04:26] Ty Wells: And then you...
+[00:04:27] Ty Wells: So go ahead and create a poll.
+[00:04:28] Ty Wells: Let me make sure I just sort of...
+[00:04:30] Ty Wells: Yeah, so put your poll in there and you can send it out.
+[00:04:35] Ty Wells: But I have...
+[00:04:36] Ty Wells: With me running the...
+[00:04:38] Ty Wells: Because I'm hosting the session, I can create what I call activities.
+[00:04:43] Ty Wells: And those activities that can be like multiple choice.
+[00:04:46] Ty Wells: It could be a free form.
+[00:04:47] Ty Wells: It could be all, you know, combination of things.
+[00:04:54] Ty Wells: Okay.
+[00:04:56] Ty Wells: And so you can...
+[00:05:00] Ty Wells: Yeah, because the session, what, isn't live?
+[00:05:02] Patrick Chouinard: Yeah.
+[00:05:03] Ty Wells: Oh, it should be.
+[00:05:06] Ty Wells: It's live, I'm seeing it.
+[00:05:07] Ty Wells: Well, that's why I'm testing it.
+[00:05:10] Ty Wells: Okay, let me try something else here.
+[00:05:15] Patrick Chouinard: Hey, Juan, you just jumped into a live QA session.
+[00:05:21] Juan Torres: No worries, guys.
+[00:05:23] Juan Torres: I'm observing.
+[00:05:26] Ty Wells: So like I put, so me running the screen there, I put in, hey, somebody's on the clock.
+[00:05:32] Ty Wells: And then I would, you know, I'd say you're presenting and then you'd start the clock will come down.
+[00:05:36] Ty Wells: So you can see in a separate monitor how much time you have left to present, because that's the challenge I run into.
+[00:05:42] Ty Wells: I have a lot of people who want to present, but they, you know, it can run on forever.
+[00:05:45] Ty Wells: Um, and then I can switch to just a, um, a blank screen or a wall showing different, the, the, the, um, the.
+[00:06:00] Ty Wells: Different activities that were out there.
+[00:06:02] Ty Wells: I can push an activity.
+[00:06:04] Ty Wells: I see your screen's not adjusting though.
+[00:06:06] Ty Wells: That's interesting.
+[00:06:08] Ty Wells: Oh, because it thinks the session is not live.
+[00:06:10] Ty Wells: Why does it think the session's not live?
+[00:06:15] Ty Wells: TTRB.
+[00:06:16] Ty Wells: Yeah, that's it.
+[00:06:19] Ty Wells: Interesting.
+[00:06:20] Ty Wells: Okay.
+[00:06:20] Ty Wells: I'll keep, I'll keep going with that.
+[00:06:22] Ty Wells: Hopefully we can do something with there.
+[00:07:07] Ty Wells: Hey Juan, did Patrick get kicked out?
+[00:07:12] Juan Torres: Uh, I see him there.
+[00:07:17] Ty Wells: Oh, oh, oh, Well, not anymore.
+[00:07:21] Ty Wells: Okay.
+[00:07:25] Ty Wells: I was having him test something and I may have broken him.
+[00:07:29] Juan Torres: Damn.
+[00:07:30] Ty Wells: I hope he had some crazy glue he can put himself back together.
+[00:07:36] Juan Torres: Hopefully.
+[00:07:38] Ty Wells: How you been?
+[00:07:40] Juan Torres: Good, good.
+[00:07:41] Ty Wells: Great.
+[00:07:49] Juan Torres: What are you working on now?
+[00:07:51] Ty Wells: Uh, it's, it's a session management feature.
+[00:07:57] Ty Wells: I'm trying to bolt on to any.
+[00:08:00] Ty Wells: Video conferencing, so you can conduct polls and ask questions.
+[00:08:05] Juan Torres: Oh, what I was saying.
+[00:08:07] Juan Torres: Yeah.
+[00:08:08] Juan Torres: Okay.
+[00:08:11] Ty Wells: And for presentations, when you're doing a show and tell, you've got a clock that you can see what the countdown is, how much time you have, so you can frame it in that time.
+[00:08:20] Ty Wells: Because I host something similar and everybody's always going over, so it's only an hour, and so somebody's going to get cut off and stuff, so I'm just trying to add some formality to it.
+[00:08:33] Patrick Chouinard: Yeah.
+[00:08:34] Patrick Chouinard: Sorry about that, guys.
+[00:08:35] Patrick Chouinard: It always has to be on the night I lead the call that a network issue arise.
+[00:08:42] Ty Wells: No worries.
+[00:08:44] Patrick Chouinard: Yeah.
+[00:08:44] Patrick Chouinard: It's just nothing major.
+[00:08:46] Patrick Chouinard: It's just the sky is falling around here right now.
+[00:08:50] Ty Wells: Oh, okay.
+[00:08:52] Ty Wells: What's the name of that nursery rhyme?
+[00:08:54] Patrick Chouinard: Who said that?
+[00:08:54] Patrick Chouinard: The chicken?
+[00:08:57] Ty Wells: There's a nursery rhyme that says that the sky is falling.
+[00:08:59] Ty Wells: do think of
+[00:09:01] Patrick Chouinard: No, just because it's raining, it's windy, I have hail.
+[00:09:04] Ty Wells: Oh, you mean literally the sky has fallen?
+[00:09:07] Patrick Chouinard: yeah, yeah.
+[00:09:08] Ty Wells: Okay, I gotcha.
+[00:09:10] Ty Wells: There's hail, there's like everything Really?
+[00:09:12] Ty Wells: Okay.
+[00:09:14] Ty Wells: Okay, you were speaking.
+[00:09:15] Ty Wells: I was figuratively, okay, no worries.
+[00:09:18] Patrick Chouinard: It was literal sky falling down.
+[00:09:22] Ty Wells: Yes, that is accurate.
+[00:09:28] Patrick Chouinard: Good.
+[00:09:29] Patrick Chouinard: So, let's get started.
+[00:09:37] Patrick Chouinard: I don't have a whole lot to present this week simply because let's just say that personal matter took over for the last seven days.
+[00:09:46] Patrick Chouinard: It does happen once in a while.
+[00:09:49] Patrick Chouinard: But one thing I managed to do at work that I wanted to share with you guys that I found pretty interesting.
+[00:09:56] Patrick Chouinard: I started to work on the-
+[00:10:00] Patrick Chouinard: Because as you know, I do a lot of Cloud Code and Github Copilot training in my day job, and again, I have more and more and more users, so I'm at a point where I just can't train everyone.
+[00:10:17] Patrick Chouinard: So I've started to develop training that are given by Cloud Code itself.
+[00:10:26] Patrick Chouinard: Basically, every training ends up being a skill that I share.
+[00:10:32] Patrick Chouinard: So I create the training material with Cloud Code.
+[00:10:37] Patrick Chouinard: Once I have all the material, including the trainer's guide, I ask Cloud to create a skill to actually guide the user through the entire training itself.
+[00:10:55] Patrick Chouinard: So it creates what we call the rail, basically.
+[00:10:59] Patrick Chouinard: tools, deposit have
+[00:11:00] Patrick Chouinard: It's like all the steps that it needs to go through for the training.
+[00:11:03] Patrick Chouinard: That's the workflow within the skill.
+[00:11:06] Patrick Chouinard: And it then uses all of the training material to feed that skill.
+[00:11:15] Patrick Chouinard: I developed those within a greater project that gets all of the information from all of the novelty that gets published by Entropic.
+[00:11:28] Patrick Chouinard: So whenever there's something new that gets created and clogged up a new functionality or whatever, it gets absorbed into that project.
+[00:11:37] Patrick Chouinard: And then it goes and updates each of the training that include or talk about that functionality.
+[00:11:42] Patrick Chouinard: So it's self-updating.
+[00:11:44] Patrick Chouinard: And then it guides the user through all of the exercise.
+[00:11:49] Patrick Chouinard: It has a mode that we've called basically the ready cake.
+[00:11:55] Patrick Chouinard: I took the inspiration from cooking shows.
+[00:11:58] Patrick Chouinard: Like you know, they told you, here's how you do.
+[00:12:00] Patrick Chouinard: They the recipe and then they just take out a cake already done from the from the stove so it's basically the same thing it's like everything you would go through here's what it looks finished so that's part of the the deliverable package so it's basically a small kit that you send as a zip file that people unzip on the directory it's a kind of a project that they can instantiate in blog code and it contains the skill to actually run the entire training so and people can ask questions because it has a knowledge base inside the project itself to answer questions about the training and there's a keyword that's been that is thought to people at the beginning of the training that they can get back on rail so if they start asking questions and they're off topic they just use the keyword and it brings them back to where they were and it keeps track of where the users are
+[00:13:02] Patrick Chouinard: And Ben, when you say where can I find that, it's actually a concept I've started building today in the office, so sadly, I can't share the source code simply because it's something I created for my job, but I'm just sharing the concept overall, is basically you build your training with Cloud Code, make sure that you have a trainer's guide, and then you ask Cloud to generate it as a self-deliverable package, guided by a skill that orders everything that needs, that orchestrates everything that needs to happen.
+[00:13:40] Patrick Chouinard: Works wonderfully so far.
+[00:13:43] Patrick Chouinard: So, really, I just wanted to share that with you guys, because I think it might be very useful, because you can create training even for yourself about pretty much any subject.
+[00:13:56] Patrick Chouinard: Cloud Code is becoming an insane a trainer for
+[00:14:00] Patrick Chouinard: And it's going to multiply my ability to train more people, especially when it can answer a question for me, because honestly, these days, all the question I get, I basically copy paste into Claude code or cohort and just copy paste the answer from Claude back to the user.
+[00:14:17] Patrick Chouinard: So I decided to package all of that into a self-sustaining training component.
+[00:14:25] Ty Wells: That's wonderful, Patrick.
+[00:14:27] Ty Wells: That sounds good, because I was just thinking about the fact that, like, we're taking some input, we're processing it, we're giving it back to Claude.
+[00:14:39] Ty Wells: Like, seriously, get me out of this loop, please.
+[00:14:42] Ty Wells: You know, let me wake up from this loop.
+[00:14:45] Ty Wells: And so that sounds like that's a similar concept that you're doing.
+[00:14:50] Ty Wells: Instead of you having to do it, you can have it do.
+[00:14:54] Ty Wells: Yeah, that's all on board for that good stuff, man.
+[00:14:58] Ty Wells: Every week you got me churning.
+[00:15:00] Ty Wells: No?
+[00:15:00] Ty Wells: You got stuff burning.
+[00:15:02] Patrick Chouinard: I try.
+[00:15:03] Patrick Chouinard: I mean, we went from a pilot of 250 people, and now they have decided to open it up to the entire enterprise.
+[00:15:14] Patrick Chouinard: So we're going to 3,000 people in a month from now, and there's still only two people doing training.
+[00:15:21] Patrick Chouinard: So I have to figure out how to multiply myself here.
+[00:15:24] Ty Wells: I think you just did.
+[00:15:27] Patrick Chouinard: Well, yeah.
+[00:15:29] Patrick Chouinard: It's not like I have good ideas.
+[00:15:31] Patrick Chouinard: I don't have a choice to have good idea if I want to survive, so.
+[00:15:35] Ty Wells: Yeah, this is the truth.
+[00:15:37] Ty Wells: It's like my limitless that I lost.
+[00:15:39] Ty Wells: I had no choice but to go and search for it.
+[00:15:42] Patrick Chouinard: Exactly.
+[00:15:43] Ty Wells: I was forced into it, but look what I got today.
+[00:15:46] Patrick Chouinard: I'm probably mended.
+[00:15:48] Ty Wells: It's quite blurry right now.
+[00:15:51] Ty Wells: My background is, it's my new Omni.
+[00:15:54] Patrick Chouinard: Oh, okay.
+[00:15:56] Patrick Chouinard: Omni.
+[00:15:56] Patrick Chouinard: your own device.
+[00:15:57] Ty Wells: Your own device.
+[00:15:58] Ty Wells: Well, it's...
+[00:15:59] Ty Wells: I've got...
+[00:16:00] Ty Wells: can do some things with it, obviously, because Limitless dies in September, but let me get on that.
+[00:16:05] Patrick Chouinard: Honestly, the Fieldy I've been using is doing an insane job right now.
+[00:16:15] Patrick Chouinard: I have really no complaint whatsoever.
+[00:16:18] Ty Wells: Yeah.
+[00:16:18] Ty Wells: I mean, as long as they're capturing the data that you're pushing out, that's all you really need.
+[00:16:23] Patrick Chouinard: The rest happens on the back end.
+[00:16:25] Patrick Chouinard: Actually, one neat trick, I've connected my Fieldy through a webbook to my Hermes agent.
+[00:16:35] Patrick Chouinard: And my Hermes is accessible through Tailscale from anywhere.
+[00:16:40] Patrick Chouinard: So basically, this week, I had a situation where I was in an impromptu meeting at work, and we didn't have any recording or anything, but we had a lot of content that was necessary to start a project.
+[00:16:55] Patrick Chouinard: So I said, oh, crap, what I'm going to...
+[00:16:57] Patrick Chouinard: Because Fieldy is...
+[00:16:59] Patrick Chouinard: go, phone, you can said, I'm...
+[00:16:59] Patrick Chouinard: I說 maybe, I'll
+[00:17:00] Patrick Chouinard: The AI that comes with it is not bad, but it's not really what I wanted.
+[00:17:06] Patrick Chouinard: So I simply talked to my Hermes instance that's running at home.
+[00:17:11] Patrick Chouinard: Remember here, I'm at my job.
+[00:17:13] Patrick Chouinard: I just said, can you check on my fieldy for a conversation talking about XYZ?
+[00:17:20] Patrick Chouinard: So it found it, it summarized it perfectly, like not as a transcript, but as here's exactly what you've talked about.
+[00:17:30] Patrick Chouinard: I said, cool, email it to me, just sent me to the conversation.
+[00:17:34] Patrick Chouinard: I had exactly the content I needed to give Cloud Code and say, OK, now start this project.
+[00:17:40] Ty Wells: Yeah, no, that's what I do with mine.
+[00:17:42] Ty Wells: I have a trigger word.
+[00:17:44] Ty Wells: I'm not doing a webhook.
+[00:17:45] Ty Wells: I was doing polling, but I'm definitely switching to a webhook because, well, this didn't have a webhook.
+[00:17:51] Ty Wells: That's why I couldn't use it.
+[00:17:52] Ty Wells: I don't think Limitless does, but I'm pretty sure this guy does.
+[00:17:55] Ty Wells: So, but that's what I wanted to do.
+[00:17:57] Ty Wells: I wanted it to be more of a webhook.
+[00:17:59] Ty Wells: at night.
+[00:18:00] Ty Wells: was limited.
+[00:18:00] Ty Wells: Now, I'm not.
+[00:18:02] Ty Wells: No pun intended.
+[00:18:03] Patrick Chouinard: But the nice thing is it's more than just the fieldy AI because then it's Hermes that has all of the context about what I do, where I work, what I am, who I am.
+[00:18:16] Patrick Chouinard: So when it created that conversation summary, it knew that I would feed it back to Cloud Code to start a project from.
+[00:18:25] Patrick Chouinard: So it structured it that way, right away, without me having to tell it, you know?
+[00:18:29] Patrick Chouinard: Yeah, that's full circle there.
+[00:18:31] Patrick Chouinard: Yeah.
+[00:18:32] Patrick Chouinard: So, yep, absolutely love that.
+[00:18:37] Patrick Chouinard: Good.
+[00:18:38] Patrick Chouinard: Let me grab a quick screen cap.
+[00:18:42] Patrick Chouinard: Not sure why I do that because there's only three of you with your camera.
+[00:19:00] Patrick Chouinard: So basically, Ty, you would be first.
+[00:19:13] Ty Wells: All right.
+[00:19:14] Ty Wells: Well, this is perfect timing, small audience, because what I'm presenting is what we're trying to test out.
+[00:19:23] Ty Wells: So there's a link here.
+[00:19:26] Ty Wells: I don't know if you guys got it.
+[00:19:29] Ty Wells: I was trying to bolt on.
+[00:19:32] Ty Wells: There's a tool like Slido that you can do polls and things.
+[00:19:35] Ty Wells: There are a few of them out there that bolt on to different things.
+[00:19:40] Ty Wells: But this I was trying to bolt on to anything, right?
+[00:19:45] Ty Wells: Meaning it's really just a web page.
+[00:19:47] Ty Wells: If you click on that link, there's two options there.
+[00:19:52] Ty Wells: One is to sign up if you're going to present a project like we do here.
+[00:19:57] Ty Wells: We do a show-and-tell on when
+[00:20:01] Ty Wells: So I needed more control because there's a lot of people that are, you know, run over time and so forth, and I only have an hour.
+[00:20:09] Ty Wells: So you basically sign up, you slot in, and then you can go and sign up for a presentation, or you can just join the live session.
+[00:20:18] Ty Wells: For those people, like, are off camera, like right now, they may have questions and they can put it in the chat, yes, sure, but they may have, you know, more complicated questions.
+[00:20:28] Ty Wells: So I wanted to give a little bit more in terms of pollings and so forth.
+[00:20:33] Ty Wells: So if you join the session, which is a small link at the very top, tell me what you see on your screen when you do that.
+[00:20:46] Juan Torres: I just had it myself.
+[00:20:47] Juan Torres: It's one of the presenters.
+[00:20:49] Ty Wells: Okay.
+[00:20:52] Ty Wells: Let's see here.
+[00:20:55] Ty Wells: Reload that bad boy.
+[00:20:59] Ty Wells: Okay.
+[00:21:00] Patrick Chouinard: You want to share your screen, Ty?
+[00:21:03] Ty Wells: It's like hard to do.
+[00:21:05] Ty Wells: Like I said, I'm working with this one.
+[00:21:07] Ty Wells: I'm working with one thing, but I'll share my screen.
+[00:21:10] Ty Wells: I can do it now.
+[00:21:12] Ty Wells: Let's see.
+[00:21:15] Ty Wells: One monitor is sharing is not on, but I sent the request.
+[00:21:20] Juan Torres: Yep.
+[00:21:20] Juan Torres: About marketing software and stuff.
+[00:21:23] Ty Wells: Okay.
+[00:21:24] Ty Wells: So, all right.
+[00:21:27] Ty Wells: So this is the this is the screen where I'm setting up, right?
+[00:21:34] Ty Wells: This is where my what I call my run page.
+[00:21:36] Ty Wells: So I'm running the call and I'm looking at it and, you know, doing different things.
+[00:21:41] Ty Wells: So on your screen, if you're doing a timer, I should be on it.
+[00:21:46] Ty Wells: You should have a timer on your screen right now, right?
+[00:21:48] Patrick Chouinard: Yep.
+[00:21:49] Ty Wells: Okay.
+[00:21:50] Ty Wells: And then, obviously, the walls would be just saying who's who's coming up.
+[00:21:56] Ty Wells: Here's the queue.
+[00:21:58] Ty Wells: That's where you guys would have done it.
+[00:21:59] Ty Wells: And then.
+[00:22:00] Ty Wells: And so if I'm on a timer here and I'm saying Patrick's done, then Patrick, let's see here, Patrick is in that order, so the intent is I would kick Patrick off and he would start presenting, but the timer would count down, and so he can see how much time he has to present, and then it goes off screen once we're done there.
+[00:22:26] Ty Wells: And then I can see all of that as well because that's what would be running over here.
+[00:22:31] Ty Wells: So now I can now send, like this is a, I'm pushing that to your screen, you should see on your screen my poll.
+[00:22:42] Patrick Chouinard: Yep.
+[00:22:43] Ty Wells: Okay, so you would answer the poll, and then once, I can put a timer on it to say how long you have to answer it, and then once I can see there, here's one response that came through, and so forth.
+[00:22:57] Ty Wells: So it's a polling thing.
+[00:22:57] Shakur: It was everyone supposed to
+[00:23:00] Shakur: Did the poll or just...
+[00:23:01] Ty Wells: Oh, did you get the link?
+[00:23:03] Shakur: I clicked on the link, yeah.
+[00:23:05] Ty Wells: Yeah, everyone should see the poll.
+[00:23:08] Ty Wells: Well, I haven't shown the results yet.
+[00:23:10] Ty Wells: You should get the poll and then I'll show the results.
+[00:23:13] Shakur: Did you not get it?
+[00:23:13] Juan Torres: No, I didn't get the poll.
+[00:23:17] Juan Torres: Is that the Fable development rating?
+[00:23:19] Ty Wells: Yeah.
+[00:23:20] Juan Torres: Okay.
+[00:23:22] Ty Wells: Yeah, that's it there.
+[00:23:24] Ty Wells: Is this the code that you see there on your thing?
+[00:23:31] Shakur: I don't know who said that, Dan maybe?
+[00:23:33] Shakur: No, that was me, Shakur.
+[00:23:35] Shakur: Shakur.
+[00:23:37] Shakur: I just see you're on the list number four of the four still to go.
+[00:23:43] Ty Wells: Okay.
+[00:23:44] Ty Wells: So you signed up for that.
+[00:23:45] Ty Wells: Oh, so you're not seeing the poll.
+[00:23:47] Ty Wells: You can look at the very top.
+[00:23:48] Ty Wells: There's a little link.
+[00:23:49] Ty Wells: I need to make that bigger.
+[00:23:50] Ty Wells: That says, already on a call, join the session.
+[00:23:54] Ty Wells: You see that?
+[00:23:56] Shakur: Yeah.
+[00:23:57] Ty Wells: Yeah, click that.
+[00:23:58] Ty Wells: That'll put you in the actual session.
+[00:24:00] Shakur: Now you should see the poll.
+[00:24:02] Shakur: Did you get the poll?
+[00:24:03] Shakur: Yes, now I got the poll.
+[00:24:05] Shakur: I didn't know I had to join.
+[00:24:09] Shakur: I thought putting my name in R made me join.
+[00:24:12] Ty Wells: And that's why I'm testing it because it will in the future, tonight.
+[00:24:16] Ty Wells: I'm trying to make it as frictionless as possible.
+[00:24:19] Ty Wells: So literally, this is my presentation.
+[00:24:22] Ty Wells: So once the polls come in, then I would send the results.
+[00:24:26] Ty Wells: So you should see the results on your screen, correct?
+[00:24:32] Ty Wells: Anybody?
+[00:24:34] Patrick Chouinard: Yep.
+[00:24:37] Patrick Chouinard: Yep.
+[00:24:38] Ty Wells: So there you go.
+[00:24:40] Juan Torres: I just made a poll.
+[00:24:42] Patrick Chouinard: Yeah, I just answered it.
+[00:24:45] Juan Torres: You actually said no.
+[00:24:49] Ty Wells: Who wants to skip Patrick's poll?
+[00:24:52] Ty Wells: So the poll's coming in.
+[00:24:54] Ty Wells: But you see what the intent is.
+[00:24:56] Ty Wells: And this is just one poll, one type of poll.
+[00:24:58] Ty Wells: I can create as many.
+[00:24:59] Ty Wells: see you.
+[00:24:59] Ty Wells: Good.
+[00:24:59] Ty Wells: Bye.
+[00:25:00] Ty Wells: Poles as I want, different types of poles, like yes, no, freeform, you know, typical stuff.
+[00:25:10] Ty Wells: So I think...
+[00:25:13] Ty Wells: Pretty cool.
+[00:25:14] Juan Torres: I like it.
+[00:25:15] Ty Wells: The leaderboard's not done yet, but that's not really relevant to what we do, but just to sort of keep people on track.
+[00:25:25] Ty Wells: Any questions?
+[00:25:27] Patrick Chouinard: I like the timer functionality.
+[00:25:29] Ty Wells: Yeah.
+[00:25:30] Ty Wells: Yeah.
+[00:25:31] Ty Wells: The timer is great.
+[00:25:31] Ty Wells: I needed that so bad.
+[00:25:33] Ty Wells: Because it's hard to interrupt.
+[00:25:34] Ty Wells: Oh, you got like two minutes left.
+[00:25:37] Ty Wells: And it's like, ugh.
+[00:25:39] Ty Wells: Okay.
+[00:25:39] Ty Wells: You can see the timer yourself, so we can...
+[00:25:41] Ty Wells: Self-guided presentations.
+[00:25:44] Ty Wells: All right.
+[00:25:46] Ty Wells: Um, that's me, guys.
+[00:25:49] Patrick Chouinard: Cool.
+[00:25:54] Patrick Chouinard: And if we want to use that tool, what are the protocols?
+[00:25:58] Ty Wells: Oh, um...
+[00:26:01] Juan Torres: Money subscription.
+[00:26:03] Ty Wells: So, it's gated right now for coaches, but if anybody wants to use it, I'll just make you a coach.
+[00:26:14] Ty Wells: So you can use it anytime.
+[00:26:15] Ty Wells: So yeah, it's gated for coaches.
+[00:26:17] Ty Wells: was trying to think through how I had that set up, but you could be a coach, you don't need to.
+[00:26:22] Ty Wells: So yeah, just send me your email, DM me, probably easier.
+[00:26:27] Juan Torres: You can use this space in order to stress test it.
+[00:26:30] Patrick Chouinard: Yeah.
+[00:26:31] Ty Wells: Yeah.
+[00:26:32] Ty Wells: Well, that's what I wanted to do that, but I was traveling yesterday.
+[00:26:35] Ty Wells: I got caught up and so I couldn't get it done in time.
+[00:26:37] Ty Wells: So I finished it up here just so we can test it.
+[00:26:41] Ty Wells: But I see there's a little bit of friction.
+[00:26:42] Ty Wells: So I'll fix those things.
+[00:26:44] Ty Wells: Like when you sign up, you get all the way through, you have access.
+[00:26:47] Ty Wells: It's a little clearer as to how you move about it.
+[00:26:50] Ty Wells: But other than that, I just, yeah, I wanted to test out some of the function.
+[00:26:53] Ty Wells: And you can use it.
+[00:26:54] Ty Wells: Yes, you can.
+[00:26:56] Ty Wells: It should be.
+[00:26:57] Ty Wells: I'll use it tomorrow and then maybe next week.
+[00:27:00] Ty Wells: I you can use it, you or Paul.
+[00:27:03] Patrick Chouinard: Just DM me when you have a bit of time, Ty, and we'll practice it so we can use it next week.
+[00:27:10] Ty Wells: Yep.
+[00:27:14] Patrick Chouinard: We have a question from Alina, Ty, if you heard about AWS.
+[00:27:20] Patrick Chouinard: Oh, go ahead, Alina.
+[00:27:22] Elena: No, no, I was just listening to AWS keynotes and all announcements from New York Summit.
+[00:27:29] Elena: And I remember that you were talking about talking to your requirements, talking to your ideas, like basically instead of typing it, instead of having it somewhere.
+[00:27:42] Elena: So they announced that they basically, I don't know, they already launched it, our Keyroom mobile application.
+[00:27:50] Elena: So you can basically, like, I don't know, pick your requirements, pick your DRD, and it will start and then come back home.
+[00:28:04] Ty Wells: I actually built my own that does exactly that, except it actually builds the code, you know, I don't have to wait to get, I go through the whole process of chatting with it, using my local models, it's on my ProxMux, and then I send that data off to a Cloud P session, once I've come up with the requirements, and then it builds the actual whatever it is I was trying to do.
+[00:28:31] Ty Wells: So, but I haven't heard of AWF, I mean, I haven't used it, I've heard of it, I haven't touched it or anything.
+[00:28:39] Ty Wells: Only because I have my own, that's it.
+[00:28:41] Elena: You don't need to pay for tokens then.
+[00:28:43] Ty Wells: Well, very few tokens, I use my models, and then I, you know, basically, it has my contacts, all me, and it's not going anywhere.
+[00:28:53] Ty Wells: So.
+[00:28:56] Patrick Chouinard: Hmm.
+[00:28:57] Patrick Chouinard: One other question?
+[00:28:58] Juan Torres: Yeah.
+[00:28:59] Juan Torres: Yeah.
+[00:28:59] Juan Torres: Just.
+[00:29:00] Juan Torres: I just to get a sense to which AWS Summit did Elena go to.
+[00:29:07] Juan Torres: I went to the Los Angeles one last month.
+[00:29:11] Juan Torres: It was interesting.
+[00:29:13] Juan Torres: The most surprising thing that I got from it is that DatDog has really gamified AWS, I mean, cloud architecture across the three big architecture providers.
+[00:29:25] Juan Torres: But I was surprised actually how a lot of the companies that I saw at the booths, they were offering some form of agentic DevOps offering that I felt was limited, if not passe to what I'm using right now in my agentic DevOps development.
+[00:29:50] Juan Torres: Because some of them, for example, they were like offering to do agentic FinOps, but you can do agentic FinOps through your own means.
+[00:29:59] Juan Torres: agentic if it, But I Jens, think And I uh
+[00:30:00] Juan Torres: And at the same time, can delete resources that are consuming a lot of your AWS resources.
+[00:30:07] Juan Torres: So I was not impressed by a lot of the boots that were there.
+[00:30:11] Juan Torres: They were saying, oh, you can review all your resources with this tool.
+[00:30:17] Juan Torres: And they're like, yeah, you can do that with Kero CLI.
+[00:30:20] Juan Torres: Or you could just have the right permissions, the right user, the right IAM role.
+[00:30:26] Juan Torres: And you can give the AWS CLI powers or use Terraform in order to reproduce resources, get rid of resources, review them.
+[00:30:36] Juan Torres: So it seems that there's a lot of companies that actually get acquired by big companies that make money from creating modular, save ways to do authentic DevOps.
+[00:30:52] Juan Torres: So that was, that was my take from, from going to the AWS, um, summit.
+[00:30:57] Elena: And we'll, we'll, we'll, we'll, we'll, we'll, we'll, we'll, we'll, we'll.
+[00:30:59] Elena: We'll.
+[00:30:59] Elena: We'll.
+[00:31:00] Elena: Cycops, they are either announced last year, so basically, in penetration testing, but this year, I think, I was just surprised, like, this year, looking, looking point, so, yeah, I was planning to go to Los Angeles, but I, I didn't make it, so, it was good, was it good?
+[00:31:22] Juan Torres: Yeah, I, I lived in Los Angeles for five years, and I actually lived near, um, the Pequen Union neighborhood, so I just found free parking there, um, and I did not miss the traffic or the homelessness, but, um, I did, um, find some interesting workshops, I did, uh, got good ideas to implement in my, my own projects.
+[00:31:49] Patrick Chouinard: Good, good, so, uh, Ty, did you have anything else you wanted to share, or?
+[00:31:56] Ty Wells: Um,
+[00:32:00] Ty Wells: I do have something, but it's okay.
+[00:32:05] Ty Wells: So, yeah, I do have one.
+[00:32:07] Ty Wells: I mean, somebody else can go in and come back to me.
+[00:32:10] Ty Wells: I'll wait because this wasn't something I was going to share, but I would.
+[00:32:15] Ty Wells: Did Patrick freeze again?
+[00:32:16] Ty Wells: He said he was having internet problems because they had a storm in his area, hail and wind and stuff.
+[00:32:26] Ty Wells: So I'm going to go with he probably dipped out.
+[00:32:52] Ty Wells: While we wait on Patrick, we can look at my thing.
+[00:32:55] Ty Wells: Let me find it.
+[00:33:03] Ty Wells: I have no idea where it is.
+[00:33:08] Ty Wells: Oh, here it is.
+[00:33:29] Ty Wells: Okay.
+[00:33:30] Ty Wells: I'll put the link in there.
+[00:33:38] Ty Wells: I'll let you guys look at it, and then you can see if you have a question.
+[00:33:51] Patrick Chouinard: Sorry about that, guys.
+[00:33:52] Patrick Chouinard: It might happen sometimes tonight.
+[00:33:55] Patrick Chouinard: This guy is literally falling outside here.
+[00:33:58] Patrick Chouinard: So, definitely.
+[00:34:02] Patrick Chouinard: Yeah, no worries.
+[00:34:04] Ty Wells: I just put the thing I was going to share in the chat.
+[00:34:08] Ty Wells: I'll probably have to type it again.
+[00:34:09] Ty Wells: You don't see the previous one.
+[00:34:11] Patrick Chouinard: Yeah, see it.
+[00:34:13] Ryan C: There's a thing you were talking about, Ty, that uses the data from appliances and stuff to figure out.
+[00:34:20] Ty Wells: No, no.
+[00:34:22] Ty Wells: This is completely different.
+[00:34:26] Ty Wells: That's called Q, the home Q.
+[00:34:28] Ty Wells: That's working really good.
+[00:34:31] Ty Wells: This is a box.
+[00:34:35] Ty Wells: Appliances can be a part of it because it's all a part of this Q system that I have.
+[00:34:39] Ty Wells: So you could feed that in as a signal because if you have it.
+[00:34:42] Ty Wells: But a box by itself or on a VM that's doing, you just basically, if you want it on premise and you want local models, sort of drop it in and it works on that local.
+[00:34:59] Ty Wells: go.
+[00:34:59] Ty Wells: go.
+[00:34:59] Ty Wells: Let's go.
+[00:34:59] Ty Wells: Let's
+[00:35:01] Ty Wells: Or you do a VM, where it's the same thing, except there's no local models and it's a subscription basis.
+[00:35:08] Ty Wells: So I'm doing a few clients with this that they're testing.
+[00:35:14] Ty Wells: This is a fictional clinic, but it's still the same approach where you have different roles in a clinic, right?
+[00:35:22] Ty Wells: And what they're able to access, that's sort of what you're testing in the chat piece, the inline chat But you could send it an email and, you know, sort of have it respond, send it to the email that I have set up on it.
+[00:35:37] Ty Wells: But so that would be the same thing.
+[00:35:38] Ty Wells: you go, if I go into a business, I'm going to say, hey, drop your data in, right?
+[00:35:42] Ty Wells: Here's what I need.
+[00:35:43] Ty Wells: I need, give me access to your email or hook your email in and give me your company policies and documents and then give me your CRM or your source of truth.
+[00:35:57] Ty Wells: And use that to then.
+[00:36:00] Ty Wells: And be able to find those things that should be happening that are not happening within your company.
+[00:36:05] Ty Wells: Does that make sense?
+[00:36:07] Ryan C: Yeah.
+[00:36:08] Ryan C: Because it's all digital, right?
+[00:36:12] Ty Wells: There's no reason, as long as you have the intent based on the policy and proceed to the SOPs or whatever you're able to contextualize, then you know what you should be doing versus what's actually happening, right?
+[00:36:26] Ty Wells: So I can tell you, and I have this in my company now, so I can tell you who's not doing what they should be doing, right?
+[00:36:35] Ty Wells: Like you got this invoice that's not been addressed.
+[00:36:38] Ty Wells: It's been more than 30 days overdue and nobody's done anything about it, right?
+[00:36:43] Ty Wells: So that wouldn't fall between the cracks because that's front and center.
+[00:36:47] Ty Wells: Somebody was going to do it.
+[00:36:48] Ty Wells: So it's sort of taking away the ability for tasks that should happen or procedures that should happen for our brains to remember to do them.
+[00:37:00] Ty Wells: Because when you don't do them, you're in a lot of trouble, right?
+[00:37:03] Ty Wells: For whatever reason, you lose a sale, you do whatever.
+[00:37:06] Ty Wells: So that's the intent behind this box and how it does for a business.
+[00:37:11] Ryan C: A technical question for you, because I'm literally about to do something similar, not for this reason, but how are you tapping into their emails?
+[00:37:22] Ty Wells: No, they're hooking in Google all off.
+[00:37:25] Ty Wells: They're hooking in their emails.
+[00:37:26] Ryan C: They have to be on Google.
+[00:37:27] Ty Wells: Sorry, sorry, no, we're not doing that.
+[00:37:29] Ty Wells: We're using a service token.
+[00:37:31] Ty Wells: We're using a service token.
+[00:37:32] Ty Wells: We're not doing Google off.
+[00:37:34] Ty Wells: They're hooking.
+[00:37:34] Ryan C: So they could be, they could have their emails anywhere.
+[00:37:36] Ryan C: They could have it on exchange or they could have it as a supply map or a pop or whatever.
+[00:37:40] Ty Wells: Yeah, yeah.
+[00:37:40] Ty Wells: For Google, that's a service token.
+[00:37:45] Ty Wells: And then whatever, whatever they have to integrate into, you know, like I said, their source of truth, your CRM.
+[00:37:52] Ryan C: Interfacing with it.
+[00:37:53] Ryan C: So I'm about to build something that needs to be able to just one click interface with Exchange and that pop Google.
+[00:37:59] Ty Wells: Yeah.
+[00:38:00] Ryan C: So I've got a business email on there and pull it in, because I'm building a CRM that essentially does, for state agents, that reads all their emails, builds a knowledge base of them, drives responses to all their emails and their WhatsApps through the Meta API, so it needs to have all of that and pull all of that, but it needs to obviously be able to deal and interface with whatever their business's email setup currently is.
+[00:38:19] Ryan C: So I'm trying to think of every app.
+[00:38:21] Ryan C: I haven't got to that point yet where I've actually started testing the connectors.
+[00:38:25] Ryan C: It tells me it's built it in.
+[00:38:27] Ryan C: Whether it has or not, I don't know.
+[00:38:28] Ryan C: I need to go through and actually prod around and do some testing.
+[00:38:31] Ty Wells: haven't got to that bit yet.
+[00:38:32] Ty Wells: Yeah.
+[00:38:33] Ty Wells: Well, let me know if you do get that connector built.
+[00:38:39] Ryan C: I don't really have a choice.
+[00:38:40] Ryan C: It's one of the key features.
+[00:38:42] Ty Wells: Yeah.
+[00:38:43] Ty Wells: Yeah.
+[00:38:45] Juan Torres: Ty, have you tried to use this for your own business?
+[00:38:49] Ty Wells: I have it running in two, both of my business, well, two of the three.
+[00:38:53] Ty Wells: I have it running in them, and it's telling only me at this point, right?
+[00:38:59] Ty Wells: Okay.
+[00:38:59] Ty Wells: Okay.
+[00:39:00] Ty Wells: I'm not telling them that they're doing, but that's the next step.
+[00:39:04] Ty Wells: It's already broken out, but only I can see it in both businesses because I want to determine where the gaps are first.
+[00:39:12] Ty Wells: Once I identify where the gaps are, then I'm going to, you know, see where we go from there.
+[00:39:17] Ty Wells: Like, you know, who's really not doing it?
+[00:39:18] Ty Wells: Because if I tell them, then they will start doing it, right?
+[00:39:23] Ty Wells: But I need to see the gaps right now to see.
+[00:39:27] Juan Torres: So it identifies cost gaps, and then it creates recommendations, plan of action to them.
+[00:39:35] Ty Wells: They're called queues.
+[00:39:36] Ty Wells: It creates queues as to what to do next.
+[00:39:38] Ty Wells: That's the whole concept behind it.
+[00:39:40] Juan Torres: Right.
+[00:39:41] Ty Wells: Or it queues it up.
+[00:39:42] Ty Wells: It goes both ways.
+[00:39:44] Ty Wells: Queue like queuing it up and queue as it's in a queue, because here are all the things that you have to do that are important for you to do in your business.
+[00:39:53] Ty Wells: I know like the Hermes agent, I guess you could run it in a business like that, but.
+[00:39:59] Ty Wells: absolute.
+[00:39:59] Ty Wells: But...
+[00:39:59] Ty Wells: Cues.
+[00:40:01] Ty Wells: Yeah, guess that could work to some degree.
+[00:40:04] Ty Wells: I just, I don't know.
+[00:40:06] Ty Wells: You'd have to build it and see, but yeah.
+[00:40:10] Juan Torres: Like for me, for example, a queue would be like an account.
+[00:40:15] Juan Torres: Well, I mean, and those are really interesting questions that I don't know if they're going to come up through the service.
+[00:40:22] Juan Torres: But for me, a great expense reducer is identifying the subscriptions that I haven't used in a long time.
+[00:40:30] Ty Wells: Yeah, yeah, exactly.
+[00:40:32] Juan Torres: So if it allows me to identify those subscriptions and then forces me to answer certain questions, because, you know, the conservative part of me wants to, what if I use it for this?
+[00:40:43] Juan Torres: What if I use it for that?
+[00:40:44] Juan Torres: So a cognitive map that leads me to the conclusion that, hey, maybe I don't really need it, so I should subscribe and then subscribe again when I actually need it.
+[00:40:55] Juan Torres: It's useful for the conservative consciousness.
+[00:41:00] Juan Torres: Of a lot of business people who are, you know, prone to prepare, over-prepare, you know.
+[00:41:14] Patrick Chouinard: So, if we move on, Juan, you would be next?
+[00:41:20] Juan Torres: Well, for me, well, just to recontextualize, I want to recontextualize every time I talk.
+[00:41:28] Juan Torres: I am building an AI photo booth studio application, which essentially, at this point, the main feature, what it does, is it takes pictures of the people at the event and transforms those original taking pictures with the camera into AI-generated images.
+[00:41:47] Juan Torres: That is, it's image-to-image generation, an AI image-to-image pipeline.
+[00:41:52] Juan Torres: And it's a physical AI project, so I will actually be pushing my hardware together with the software.
+[00:42:00] Juan Torres: We're into events, weddings, quinceañanas, Suic 16s, whatever events there are, and I would be trying to start, you know, developing a client based on that.
+[00:42:14] Juan Torres: Right now, and ask me any questions, if you have any questions regarding that, and so right now, I was working on just getting everything ready, and I think that everything is ready, so hopefully this weekend or next weekend, I'll get it into...
+[00:42:33] Juan Torres: Yeah, it's officially, quote unquote, ready, because I have...
+[00:42:37] Juan Torres: Last week, what I did, I stress test the environment in order to see what will happen if I...
+[00:42:43] Juan Torres: There was a load of a lot of people actually using the QR code.
+[00:42:47] Juan Torres: That was one of my main preoccupations, the networking as well, and the test went pretty well.
+[00:42:55] Juan Torres: So I think it should be fine to deploy it now into the...
+[00:43:00] Patrick Chouinard: And I'm going to tell you what I told you before, target corporate event and I know that last week we talked about weddings also, but those will finance the availability of that project for all of the other more personal type of event because you're not going to get enough funding from small personal event to feed that machine long term, but a couple of corporate events and you'll be on your way.
+[00:43:32] Patrick Chouinard: And believe me, what you've shown is something I can guarantee a lot of corporate events would be interested in.
+[00:43:41] Ryan C: Your big win, Ryan, is going to be getting yourself involved with the actual venues, because a lot of these venues have preferred supply lists.
+[00:43:50] Ryan C: So you can get yourself on a couple of those, and essentially every wedding they have, your services get offered to bride and groom.
+[00:43:56] Ryan C: They go, oh, it'd be cool to have that.
+[00:43:58] Ryan C: Yeah, it's X amount of money.
+[00:43:59] Ryan C: And then...
+[00:44:00] Ryan C: You're just getting repeat business, let's go out of fashion, and then for all the corporate stuff that happens within that hotel or within that event space or whatever it may be, that's like the best way to go about getting yourself on there.
+[00:44:12] Ryan C: I've done that with a few hotels this side, because obviously I do filming as well there for weddings, and it turns out I hated filming weddings, so I stopped doing that, but that was the kind of in that I had to get in to do those things, and it worked a treat.
+[00:44:26] Ryan C: So you've just got to go and befriend, just walk in there, literally wander in there, and say, I've got my machine, can I demo this to you, or can we look up some time in to get demoed, have a little video or something to show them, that sort of stuff.
+[00:44:37] Ryan C: Just be ballsy and face-to-face is the easiest way and the best way.
+[00:44:41] Ryan C: People buy from people.
+[00:44:43] Ryan C: So rock up and have some conversations, that would be my advice.
+[00:44:45] Juan Torres: Yeah, probably upload all my equipment into my Honda Pilot and go to the venues and be like, hey, I have my equipment here, let me show you a demo.
+[00:44:57] Ryan C: So I'd love to have a go at it and be offered to...
+[00:45:00] Ryan C: You know, to give you a trial run on for a bit of a discount on one of them, and if you love it, I'd love to be added to your vendor list, and then you just got repeat business on tap.
+[00:45:09] Juan Torres: Yeah, definitely need to build the list.
+[00:45:12] Patrick Chouinard: Basically sell it as a plus value that the venue can offer.
+[00:45:17] Patrick Chouinard: You basically become something that they can offer as a differentiator that no other venue has.
+[00:45:23] Patrick Chouinard: Yeah.
+[00:45:27] Ryan C: See, it doesn't cost them anything, right?
+[00:45:28] Ryan C: It costs whoever they're selling their package to something, and ultimately gives them a tool that other people, as Patrick said, don't have.
+[00:45:37] Ryan C: So ultimately, what they're looking for is reliability, you're going to turn up, you're going to do the job, the thing works, it's great.
+[00:45:44] Ryan C: And people are really happy when they're using it, because happy customers for them, happy customers for you, it's a win-win all around.
+[00:45:51] Juan Torres: Yeah.
+[00:45:54] Juan Torres: Yeah.
+[00:45:54] Juan Torres: So now I'm in the task of pushing the event, finding an event.
+[00:45:58] Juan Torres: I think I should be able to find
+[00:46:00] Juan Torres: I know some people in the space, and then from that, from my push, I will document the, I will engage in the process of constructive criticism to improve the whole process.
+[00:46:18] Juan Torres: That's going to be golden, just having the event, just one event and then several ones to sharpen my standard operating procedure.
+[00:46:27] Juan Torres: Cool.
+[00:46:32] Patrick Chouinard: So whenever you have the final deployable version that you're presenting to event, make sure you do a stop by here to showcase it.
+[00:46:42] Juan Torres: Oh, are you, are you a Vancouver or where are you at?
+[00:46:46] Patrick Chouinard: No, no, What I mean here, I mean here in the weekly call.
+[00:46:49] Juan Torres: Oh yeah.
+[00:46:50] Juan Torres: I mean, I, I showed you, I, I showed you guys a run-through.
+[00:46:55] Patrick Chouinard: Yeah, but I'm guessing you're fine-tuning your...
+[00:46:58] Ryan C: We, we won't, we won't,
+[00:47:00] Ryan C: A polished pitch, a widescreen webcam with the thing next to you.
+[00:47:05] Ryan C: want to see the whole thing.
+[00:47:06] Ryan C: Yeah.
+[00:47:06] Juan Torres: Well, the thing is that I do plan after the first one, after I see that it actually works and the mini PCs don't blow up or there's smoke coming out of anywhere.
+[00:47:17] Juan Torres: What I do intend to do is get someone to film the whole process to come with me.
+[00:47:25] Juan Torres: I am the AIP technician.
+[00:47:27] Juan Torres: I have the iPad.
+[00:47:28] Juan Torres: I see all the observability, right?
+[00:47:30] Juan Torres: But I explain in the camera with a person that is going to be filming me and the whole process of doing things and filming people going through the process of getting their pictures generated, right?
+[00:47:44] Juan Torres: So I do plan to do that, not only for the purposes of documentation, but for the purpose of just having an Instagram in which I consistently post, you know, transformations there and event pictures.
+[00:47:57] Juan Torres: So yeah, I will share that with you guys.
+[00:47:59] Patrick Chouinard: Yeah.
+[00:48:00] Patrick Chouinard: Yeah, basically do the pitch here and you're going to get your first response in a low stake environment.
+[00:48:07] Juan Torres: Yeah.
+[00:48:10] Patrick Chouinard: Cool.
+[00:48:11] Patrick Chouinard: Good.
+[00:48:12] Patrick Chouinard: Anything else, Juan?
+[00:48:14] Juan Torres: No.
+[00:48:16] Juan Torres: Question-wise, nothing right now, but I will pin you guys if I have any questions.
+[00:48:22] Patrick Chouinard: Good.
+[00:48:24] Patrick Chouinard: Good.
+[00:48:24] Patrick Chouinard: Next one would be Ryan.
+[00:48:28] Ryan C: What haven't I been working on?
+[00:48:30] Ryan C: See, I'm an idiot and I didn't realize that in Cursor, you could do workspaces and work on multiple things at the same time.
+[00:48:38] Ryan C: So Scott blew my mind about three weeks ago.
+[00:48:41] Ryan C: So I'm currently working on about 15 different things.
+[00:48:44] Ryan C: I've got 15 different terminal sessions open doing different things across various different projects.
+[00:48:48] Ryan C: I've got two Fable accounts at the minute, which I'm now maxed out on both of them and I get reset tomorrow on one and then the other ones after it ends.
+[00:48:56] Ryan C: But I presume they're going to continue extending it, right?
+[00:48:58] Ryan C: Because OpenAI.
+[00:48:59] Ryan C: Yeah.
+[00:49:00] Ryan C: It's putting a bunch of pressure on them because Opus 4.8 doesn't quite match up to 5.6.
+[00:49:06] Ryan C: Though I have seen that 5.6 has been deleting people's repos and their entire databases just on a whim on Twitter.
+[00:49:13] Ryan C: People have been moaning that it's just killing their entire projects because people are being stupid, I don't know.
+[00:49:19] Ryan C: But it seems quite funny.
+[00:49:22] Ryan C: So yeah, I've been working on so much.
+[00:49:26] Ryan C: The first thing I ever gave a show to you guys is this social media manager tool.
+[00:49:32] Ryan C: So Scott hooked me up with his security review thing that works every push that he really did a terrible job of showcasing because I think he was slightly inebriated on the last call that he came on.
+[00:49:45] Ryan C: So I've absolutely ripped him for that.
+[00:49:47] Ryan C: So he's going to show everyone whenever he comes on the next one properly how it works.
+[00:49:51] Ryan C: So I won't stay on his thunder on that.
+[00:49:52] Ryan C: But yeah, I tried putting it through that and it was like one of the first big things I ever made.
+[00:49:56] Ryan C: And it was, excuse my French, an absolute  show.
+[00:49:59] Ryan C: So.
+[00:49:59] Ryan C: Yeah.
+[00:50:00] Ryan C: I've just got Fable to go through the entire thing, tear it apart, and I've just redesigned it using Claude Design, looks really slick, then a full branding pass on it, and sped it up infinitely, and tightened up a load of security issues that were in there, so I wanted to have it ready for this call, but I hit a few bumps, so I'm just tightening a few things up, and I'll show it off next week, because it is night and day from what it was, and then I've got a whole bunch of other bits that I'm sort of tinkering with.
+[00:50:30] Ryan C: working with my screen stuff, I'm honing in, I've built an Android version of my screen box with a bunch of like branded stickers that sit on them on 3D printing mounts, because they're a lot cheaper than the little Windows machines, they're like £350 for a Windows machine, I can buy an Android box for £90 that does everything that I need it to do, so I can either be cheeky and continue to charge people £300, and pay £90 for the box, or I can bring the price down, and
+[00:51:00] Ryan C: Therefore, can get more screens on in the monthlies.
+[00:51:02] Ryan C: So, yeah, just working through all of that stuff, really, and I'm just finalizing, which is why you can set up a nice softbox light here.
+[00:51:09] Ryan C: I've got a test screen just running.
+[00:51:12] Ryan C: You can't see because it's blurred, but that thing there is...
+[00:51:15] Ryan C: I'm testing one of the screens because one of the mini PCs actually died, purely because I stuck it to the side of a desk where I run an HDMI cable around and then we've had a heatwave in the UK.
+[00:51:28] Ryan C: And the stuff I stuck it to the side of the desk, we've melted.
+[00:51:31] Ryan C: It fell off and smashed.
+[00:51:32] Ryan C: So, I'm going to have to afford to replace...
+[00:51:34] Ryan C: So, I'm putting an ambidroid box in there instead.
+[00:51:37] Ryan C: So, I'm just test, like, rigorously testing it to make sure it works.
+[00:51:40] Ryan C: There's a few little tweaks I'm having to make.
+[00:51:42] Ryan C: So, just doing a soap test at the minute on the latest version of that.
+[00:51:47] Ryan C: Can't think of anything else, to be honest, right now.
+[00:51:50] Ryan C: I want to show you guys this AIOS that we're building for the estate agents, but it's not quite ready to show yet because I want to get that email connected to
+[00:52:00] Ryan C: You can actually have some real data in there to show you guys because I'm currently just got dummy data in there which doesn't really show anything useful and then once I got that figured out, Ty, I'll ping you over kind of the segment of code if you want that sits within how it works and just lift and shift it if you want if that would be helpful and yeah I started building the hedge fund thing because I had a bit of spare fable left so I thought sod it I'll do all the planning for that and hedge fund expenses application I've been asked to build so I need to actually go go through and review what it's built so I haven't even looked at it So hedge fund is actually asking you to do this?
+[00:52:42] Ryan C: Yeah I'm one of my best friends is the financial director of a hedge fund in London so and he's been moaning about how  their expenses app are and there aren't any good ones specifically built and tailored for how hedge funds work so I sat down and went well I can build something for that.
+[00:53:00] Ryan C: So I need to use Banta and get it, obviously, ISO certified, because no financial institute will touch it if it isn't, so I need to go to all of those hoops and stuff, but he's willing to pay for all of that, because, you know, 10 grand is like, oh, I dropped 10, it's not even worth his time to bend down to pick it up, you know, just leave it there, so yeah, that's quite cool.
+[00:53:23] Ryan C: And then, in theory, they'll pay per user, and then he's just, once it works, and he's got using in his, it's a very small community in London, the hedge fund guys, so he's just going to go, right, I'm going to tell everyone about it.
+[00:53:33] Ryan C: So that could be a massive moneymaker if it works nicely, and that's what I want it to do, so I've just been plugging away at that.
+[00:53:40] Juan Torres: The task is to reduce expenses, right, for the hedge funds?
+[00:53:43] Ryan C: So it's like an expense management thing, so yeah, it's kind of tighten up like expense controls within their actual teams, so what expenses they're logging against particular elements, and having a management structure within that, having it integrate with accounts properly as well, so when they're pulling their own...
+[00:54:00] Ryan C: It actually integrates properly with the accounting software because it doesn't work very well with the accounting softwares that they use.
+[00:54:06] Ryan C: It's just little finicky things that he wants to improve over what their current is.
+[00:54:11] Ryan C: And obviously, all of the stuff that's built for those guys, it's so ugly as well.
+[00:54:15] Ryan C: There's this ancient design in the 90s, you know, that kind of...
+[00:54:19] Juan Torres: Yeah, you'll be surprised that finance...
+[00:54:23] Ryan C: designed something pretty slick, so I'm hoping that that will help as well.
+[00:54:27] Ryan C: But yeah, we'll see.
+[00:54:28] Ryan C: That's going to be a slow burner because he's not in any rush for it.
+[00:54:33] Ryan C: It's just as and when I get a chance because I'm not being paid to build it.
+[00:54:37] Ryan C: My opportunity is on the back end.
+[00:54:39] Ryan C: He's covering the costs of building it and doing the ISO stuff.
+[00:54:43] Ryan C: My opportunity is then on the monthly recurring because I can then sell it to all of the hedge funds, not just his.
+[00:54:50] Ryan C: There'll be a bit of a sass, I guess, from that perspective.
+[00:54:53] Patrick Chouinard: That's what they call solving rich people's problem.
+[00:54:57] Ryan C: Bingo.
+[00:54:58] Ryan C: Yeah.
+[00:54:59] Ryan C: And unfortunately,
+[00:55:00] Ryan C: Actually, it's one of those of who you know, not what you know, although it is a bit of what you know as well, but yeah, I'm lucky in that he fell out the right side of the bed, his dad was a CEO of a big insurance company, so you know, when you've got fathers that teach their kids at a young age how to navigate their way in that sort of world, then they invariably end up in that world, and you're like me, your parents don't even teach you what a credit card is until you're 18.
+[00:55:29] Ryan C: Sensational.
+[00:55:32] Ryan C: Figuring it all out by yourself.
+[00:55:35] Juan Torres: Figuring it out by Maxie now.
+[00:55:37] Ryan C: Yeah, I might have done that a few times.
+[00:55:41] Ryan C: I'm older now, so I've cleaned those mistakes up, but it's a painful couple of years.
+[00:55:48] Patrick Chouinard: Good.
+[00:55:49] Ryan C: Anyway, yeah, that's the main stuff.
+[00:55:51] Patrick Chouinard: Thank you very much, Ryan.
+[00:55:55] Patrick Chouinard: Next, Shakur, do you want to share a bit of what you've been working
+[00:56:00] Patrick Chouinard: Or do you have any questions you want to address to the group?
+[00:56:05] Shakur: I mean, I've been, like Ryan, just throwing myself at lots of different projects these last couple of weeks.
+[00:56:14] Shakur: I'm not really focused enough, trying to focus, trying to get back into the swing of buildings as I was doing other things.
+[00:56:25] Shakur: I have some stuff, it's not to a point where I'm happy with it just yet, but I'm happy to share some of the things.
+[00:56:36] Patrick Chouinard: Go ahead.
+[00:56:41] Shakur: So I tried to make kind of an AI auditing platform that just helps you, guide you through on how you work with AI.
+[00:56:56] Shakur: I'm not really happy with Hacks as well.
+[00:57:00] Shakur: As of yet, I wouldn't say that it's at a point where it would be useful for someone who's working in a day out with AI, but for people who periodically use copy and paste and improve their emails, I feel like it's currently helpful.
+[00:57:19] Shakur: That's one project that I was playing around with.
+[00:57:24] Shakur: I also have a quick dashboard, and I'm trying to make it so I click a button to find nice internet niches of websites that could be rebuilt, and it'll mail them off a postcard saying, I rebuilt you a website, love to talk and get your site up and running.
+[00:57:53] Shakur: Most of everything has been hooked, but I'm still not happy with the design and the workflow.
+[00:57:59] Shakur: Many of my analysis
+[00:58:00] Shakur: You kind of just click a button, and it will go out, find a potential client, build some prototype websites for them, get the postcard ready, and as soon as I hit, it's good, it'll mail the postcard off.
+[00:58:18] Shakur: It was fun building.
+[00:58:22] Shakur: Working on an organized app where you take a photo and it'll do an inventory of everything in the photo.
+[00:58:34] Shakur: If the photo was like your books, it'll build a library.
+[00:58:40] Shakur: Here's all the books you have in your library.
+[00:58:42] Shakur: A photo was of your kitchen.
+[00:58:46] Shakur: Tell you, hey, this is what you have in your kitchen so far.
+[00:58:50] Shakur: This is going a little low.
+[00:58:52] Shakur: You might want to restock on that.
+[00:58:56] Patrick Chouinard: If I can give that, the result of that thing to an auto...
+[00:59:00] Patrick Chouinard: But at some point that can actually organize my kitchen, I want to buy this.
+[00:59:06] Ryan C: It's like the Samsung AI fridges where the camera scans everything you put in and tells you when it's going off and that sort of thing.
+[00:59:13] Shakur: Yeah, it's pretty much similar to those things.
+[00:59:19] Shakur: I want it tied into just kitchen, so I also wanted it in the library.
+[00:59:24] Shakur: And then I have pool shed that is filled with lots of tools that sometimes gets mad if I go and buy the same tool that I already have.
+[00:59:35] Shakur: So I was trying to cover that need, too, to make sure I didn't do that.
+[00:59:41] Shakur: The workflow is still not great yet.
+[00:59:46] Ty Wells: I'm trying to get that fixed.
+[00:59:48] Ty Wells: Shakur?
+[00:59:49] Shakur: Yes.
+[00:59:50] Shakur: Sorry to interrupt you, but I just...
+[00:59:52] Shakur: No, no, please do.
+[00:59:54] Ty Wells: So I was in Walmart the other day and I was looking for...
+[01:00:00] Ty Wells: Black seed oil.
+[01:00:01] Ty Wells: And I had a picture of what it was, but I don't know if you've been, they've got so many different vitamins and stuff, like, just one thing I'm trying to find.
+[01:00:11] Ty Wells: So I took a picture of it, threw it in the GPT and said, tell me where this is on this, on this shelf.
+[01:00:18] Ty Wells: And of course it found it and pointed me over there to, luckily the label was showing.
+[01:00:23] Ty Wells: I say that for your inventory thing, take a picture of it and let it fill the inventory as opposed I having to type in everything.
+[01:00:32] Shakur: No.
+[01:00:33] Shakur: So when I add an inventory, I can take a picture of it.
+[01:00:39] Shakur: It will go through and based on the picture, put in and fill out the whole inventory.
+[01:00:47] Shakur: I can also submit a handwritten note and it'll look at that and then fill the inventory from that too.
+[01:00:55] Shakur: Um, and then it'll do a CD upload as well...
+[01:01:00] Shakur: So I tried multiple different ways, but now it was the point where I have that data, and then I wanted it usable, and then my wife was pretty upset, because I made her take a photo of all the books, and then I made the whole inventory of all our books, and it worked, but then she asked for one change, and you know, it's my own fault, I was one of those people that Ryan was talking about, ChatGPT deleted my inventory I had already made, so she was a little annoyed that everything got deleted.
+[01:01:38] Shakur: So, what else?
+[01:01:43] Shakur: I also have an SOP generator.
+[01:01:46] Shakur: You upload a video, and it then pulls out different frames from the video and the transcript, and creates an SOP on it.
+[01:01:58] Shakur: And I'm trying to...
+[01:02:02] Shakur: So the SOP generator actually kind of, they say there's a business that they want to sell, a business broker has to go through and get that ready because a lot of times it's an owner or something and they've been documenting everything because they've been the one doing most of the, so it'll quickly run them through, get everything documented and ready for them to actually sell their business.
+[01:02:30] Shakur: So that's the market I'm trying to aim for that one.
+[01:02:35] Shakur: A couple of other things I'm working on too, but I really, I need to do this more.
+[01:02:41] Shakur: I need to stop doing projects and get some of them finished.
+[01:02:46] Shakur: So that's what I'm working on.
+[01:02:50] Shakur: Honestly, getting some of them focused.
+[01:02:54] Patrick Chouinard: Well, your inventory one, I definitely see a lot of value in there.
+[01:03:00] Patrick Chouinard: could have templates like to organize kitchen, to organize a toolbox, to organize a library.
+[01:03:11] Patrick Chouinard: Organizing stuff has value to a lot of people, let's say.
+[01:03:16] Shakur: It would be nice if from the photo it would automatically link to like an Amazon or Walmart with an affiliate link to say, hey, looking at your photo and everything you have here, this shelf or this kind of toolbox, what option would be good for you to help organize what you have already there?
+[01:03:42] Shakur: So that would be an interesting extra monetary benefit.
+[01:03:47] Ryan C: There must be a way of doing that through the Amazon affiliate stuff.
+[01:03:52] Shakur: Yeah, that's what I was thinking.
+[01:03:54] Shakur: But I want to get the inventory part kind of locked down.
+[01:03:58] Shakur: A little better.
+[01:04:00] Shakur: Where it doesn't do all the books that I already inventoried.
+[01:04:03] Patrick Chouinard: But, Shakur, imagine if you couple that with something like insurance documentation.
+[01:04:12] Patrick Chouinard: You buy insurance and you want to have an inventory of your stuff.
+[01:04:15] Patrick Chouinard: Well, if you couple it with something like the Amazon service, you can have actual inventory plus pricing on everything in a picture, doing it room by room.
+[01:04:27] Patrick Chouinard: That would be an incredible amount of time saving.
+[01:04:31] Ryan C: Oh, and you just gave me a great idea there, Patrick.
+[01:04:34] Ryan C: could actually, there are like comparison websites that sell insurance.
+[01:04:39] Ryan C: So if you take a picture of something and in that picture is something really valuable, because a lot of home insurance caps like the per item expense at a certain level.
+[01:04:48] Ryan C: So figure out what the average of that is.
+[01:04:50] Ryan C: And if you, if it spots something that's worth more than that, it goes, Oh, you've got, if you notice you've got that in there, might not be covered under your home insurance.
+[01:04:57] Ryan C: Have you thought about getting some home insurance for that or a specific policy to get?
+[01:04:59] Ryan C: Yeah.
+[01:05:00] Ryan C: That includes, have a little look at this rebuke, just so many ways to monetize that.
+[01:05:06] Shakur: I mean, yeah, I like that one.
+[01:05:11] Shakur: There's also, I'm also working on where, so I have a toddler, he gets excited about certain things and if he asks me about something I want to automatically generate like a lesson plan that would help teach him that thing that he's already about with worksheets at the end that he'll go through.
+[01:05:32] Shakur: So I got the worksheets working, but only with some of the higher models and basically I don't want to pay like one thing if you're using your subscription and kind of just put a prompt in there, but I don't want to have to pay like five bucks to generate some nice worksheets and a lesson plan just if my kid's interested in it.
+[01:05:59] Shakur: So I'm trying to figure
+[01:06:00] Shakur: So out how to make that cheaper and still higher quality.
+[01:06:03] Ryan C: The best way to do that is orchestrate.
+[01:06:06] Ryan C: Top model to make the plan, lower model to do all the grunt work that actually eats the tokens.
+[01:06:12] Ryan C: The top model is doing the orchestrating and you've got...
+[01:06:17] Ryan C: What I've figured out is that Fable is fantastic at planning.
+[01:06:21] Ryan C: Actually, it overthinks a little bit on the building.
+[01:06:25] Ryan C: It ends up  stuff up and then it has to go back and redo.
+[01:06:27] Ryan C: It's just eating my...
+[01:06:28] Ryan C: It ends up with the same quality output, but it just ends up using more tokens in an inefficient way to get there, I've been finding.
+[01:06:36] Ryan C: So I'm better off doing a really solid plan with Fable and then handing it off to Claude Opus 8.5 max, thinking, and it seems to give me similar results without the huge token cost.
+[01:06:48] Shakur: I actually, I've quite a lot of my token burn because I put in some Claude instructions where any time I give a job...
+[01:07:00] Shakur: It would then farm out that job on, you know, Opus, you do this, ChatGPT, you go and do this, and then it brings everything back, it reviews it, and then keeps out on what to do.
+[01:07:21] Shakur: once I did that, my token burn dropped significantly, so I stopped kind of running up to that.
+[01:07:27] Ryan C: I'll apply the same logic to the lesson thing, I'd also look at Firecrawler, or Firecrawler it's called, they've just introduced a massive free tier, where essentially you're very unlikely to ever hit the paid bit when you go and do web research, so it can scrape a lot of web, where it's much better than the other built-in claw tool for it, and it doesn't use your claw tokens, because it goes off and does it on its own service, so that'll save you some tokens as well, when you build that in for any research or web research.
+[01:07:55] Shakur: Firecrawl.
+[01:07:57] Shakur: Firecrawler, I haven't looked at them in a while, thank you, that's a good idea.
+[01:08:03] Patrick Chouinard: Actually, let me put something in the chat.
+[01:08:06] Patrick Chouinard: This is a post from Tio from T3 chat where he shows a part of his cloud.md that does exactly what you mentioned in terms of model selection.
+[01:08:22] Shakur: That's actually where I got it from.
+[01:08:26] Shakur: So I watched his video and then I started building it.
+[01:08:31] Shakur: I like, you know what, I don't want to sit here and try to recreate everything.
+[01:08:37] Shakur: So I took the video and then the video up in the different frames and Claude looked at the different frames and tried to recreate.
+[01:08:46] Shakur: And then I just reviewed all the files it made and changed a few things here and there.
+[01:08:52] Shakur: And I've been adding to it.
+[01:08:54] Shakur: So now it actually runs Terra.
+[01:08:59] Shakur: So
+[01:09:00] Shakur: ChatGPT, Terra 5.6 on Medium, and whenever it's farming out a job to ChatGPT, so yeah, it works well.
+[01:09:13] Shakur: If anyone hasn't set it up or watched that video, I commend doing that, because it works very well.
+[01:09:24] Patrick Chouinard: Actually, I'm trying to...
+[01:09:25] Ty Wells: I was gonna say, you did it already, though.
+[01:09:28] Shakur: I did, yeah.
+[01:09:30] Ty Wells: Oh, so you want us to go do the work, then?
+[01:09:36] Ty Wells: Well, I mean, I can send you my CloudMD files, but as Theo said, he recommended it in the video.
+[01:09:48] Ty Wells: It sounded spectacular that you're, like, teasing us, and they're like, oh, okay, no.
+[01:09:53] Ty Wells: Go get it done, guys.
+[01:09:54] Ty Wells: Show your work.
+[01:09:56] Shakur: All right, let me share my CloudMD.
+[01:10:00] Shakur: I don't think there's anything in there that is two limits, so you can find it.
+[01:10:11] Shakur: Where did I put it?
+[01:10:16] Patrick Chouinard: Actually, I'm trying to build the same thing, but I want to also add another one, because it farms a lot of jobs to Codex, and that's fine, but I want to add the third one in there, and it's Antigravity CLI, specifically for web search.
+[01:10:36] Patrick Chouinard: Because, yes, Firecrawl is awesome to grab the content of a page, but to do a search, to actually do the job of researching a subject, basically Google is top of the line right now, and if you have access to it, it's extremely cheap to...
+[01:11:00] Patrick Chouinard: Do a bit of research in the back end.
+[01:11:02] Patrick Chouinard: So all of the validation, all of the terminal job goes to Codex, but anytime you ask to research something, it goes to anti-gravity CLI.
+[01:11:15] Shakur: Okay.
+[01:11:16] Juan Torres: I might add that one.
+[01:11:18] Juan Torres: Why anti-gravity CLI and not Gemini CLI?
+[01:11:21] Patrick Chouinard: Because Gemini CLI is getting deprecated and replaced by anti-gravity CLI.
+[01:11:25] Juan Torres: Ah, I see.
+[01:11:27] Shakur: There we go.
+[01:11:28] Shakur: It's very confusing that they're deprecating that, but, yeah, what's that?
+[01:11:34] Shakur: You started screen sharing, but is it just me or I have just a black screen?
+[01:11:42] Ty Wells: You should be able to see.
+[01:11:43] Ryan C: Yes, me too.
+[01:11:45] Ryan C: It's black for me.
+[01:11:46] Ty Wells: It's just.
+[01:11:46] Ty Wells: Oh, all right.
+[01:11:49] Shakur: Well, I was basically screen sharing the Cloud MD file, so maybe it's not letting me share it.
+[01:11:58] Patrick Chouinard: If you want to share it, just make.
+[01:12:00] Patrick Chouinard: Okay, gist out of it.
+[01:12:04] Shakur: All right.
+[01:12:05] Shakur: Hold on.
+[01:12:10] Patrick Chouinard: If you want to, please, if have to, but...
+[01:12:14] Shakur: I'm just going to copy the part that is most relevant, and I'll drop it in the chat for you.
+[01:12:29] Shakur: Thank you very much.
+[01:12:32] Shakur: Oh, no, I won't put it in the chat, because that's not allowed either, apparently.
+[01:12:37] Shakur: Oh, it's probably too big.
+[01:12:40] Shakur: Yeah.
+[01:12:42] Shakur: Apparently, it is too big.
+[01:12:44] Patrick Chouinard: If you have a GitHub account, you can create what they call gist.
+[01:12:49] Patrick Chouinard: There's single page or single file content.
+[01:12:54] Shakur: Mm-hmm.
+[01:12:56] Shakur: If you guys want, I will...
+[01:13:00] Shakur: I will it just a cloud.md file and share it, but overall, I will need to go and kind of change it so that the, like you said, anti-gravity and set that up.
+[01:13:19] Shakur: Yeah, so it's basically highlights of it, like I said, as it goes through and picks what to work with.
+[01:13:30] Shakur: It also goes through and it makes sure it routes to those different models.
+[01:13:42] Shakur: It has tools on how to use Terra and ChatGPT models from Claude, so we'll tell Claude, okay, you need to use Sonnet to then make a
+[01:14:00] Shakur: It's that then leads through the codex CLI, and then it also does improvements, so if I tell I did something wrong, it will go and the skill automatically to the skill.
+[01:14:17] Shakur: So those are the high of it.
+[01:14:23] Shakur: And it's kind of been set it and forget it, which has been nice.
+[01:14:31] Shakur: So yeah, let me put a note on myself to share.
+[01:14:36] Shakur: You said a gist?
+[01:14:38] Patrick Chouinard: Gist.
+[01:14:39] Patrick Chouinard: Like a gist.
+[01:14:40] Patrick Chouinard: Yeah.
+[01:14:42] Patrick Chouinard: G-I-S-T.
+[01:14:46] Patrick Chouinard: It's just a suggestion.
+[01:14:47] Patrick Chouinard: It's just the easiest way I found to share a single file easily.
+[01:14:54] Shakur: It is more than one file, though, because there's a couple of skills to make.-C-H-H-E which
+[01:15:00] Shakur: Oh, well, if you have a couple of files, then just create a repo and share the repo as is.
+[01:15:08] Shakur: Mm-hmm.
+[01:15:09] Shakur: So there's the Codex Computer Use, Codex Implementation, and Codex View were all the ones that he mentioned, plus the Claudevue file.
+[01:15:23] Shakur: So those four together, Claude, Control, ChatGP.
+[01:15:29] Shakur: So you would probably also have to create another one for anti-gravity CLI as well.
+[01:15:37] Patrick Chouinard: Mm-hmm.
+[01:15:38] Patrick Chouinard: Mm-hmm.
+[01:15:39] Patrick Chouinard: Yeah.
+[01:15:39] Patrick Chouinard: If you pulled the one you have, I'd be more than happy to see if I can adapt it to add the anti-gravity CLI.
+[01:15:49] Shakur: Okay.
+[01:15:50] Shakur: I'll do that.
+[01:15:53] Shakur: It's been a while since I posted in the group, the school platform.
+[01:16:00] Shakur: So it'll give me, push me to do a post there as well.
+[01:16:05] Patrick Chouinard: Cool.
+[01:16:08] Shakur: That's all I hope.
+[01:16:09] Patrick Chouinard: Thank you very much.
+[01:16:12] Patrick Chouinard: Talking about GIST, there's one thing I've heard a lot of mention about either Codex or Cloud Code deleting production artifact and stuff of that nature.
+[01:16:22] Patrick Chouinard: I actually questioned myself a while ago about why haven't I ever encountered any of those situations?
+[01:16:30] Patrick Chouinard: I mean, I'm not going to say that my Cloud Code or Codex never did improper or incorrect things, but never deleting an entire database, never corrupting production.
+[01:16:46] Patrick Chouinard: None of those, like, nightmarish things that many people talked about.
+[01:16:51] Patrick Chouinard: Even Brendan mentioned that.
+[01:16:53] Patrick Chouinard: And I realized that I always have a personality on top of all of my AI coder.
+[01:16:59] Patrick Chouinard: of two.
+[01:16:59] Patrick Chouinard: might it's And You You
+[01:17:00] Patrick Chouinard: There's a level of honesty definition, if I can say it like that in there, that seems to have shielded me from most of those.
+[01:17:10] Patrick Chouinard: So if you're interested, I'm going to show you the gist of that personality block.
+[01:17:20] Patrick Chouinard: So this is a block that is in my Claude.md at the user level.
+[01:17:26] Patrick Chouinard: It's in my Agents.md at the user level.
+[01:17:29] Patrick Chouinard: It's in my co-pilot instruction.md at the user level.
+[01:17:33] Patrick Chouinard: So basically that's the personality of each one of my AI coding agent.
+[01:17:38] Patrick Chouinard: You can tweak the personality and the way it talks a little bit.
+[01:17:43] Patrick Chouinard: But the important stuff is really about the fact that it gives honest opinion when they're not what the user want to hear.
+[01:17:52] Patrick Chouinard: Honesty over compliance, always non-negotiable.
+[01:17:56] Patrick Chouinard: Like, stuff like that gives the AI model instruction.
+[01:17:59] Patrick Chouinard: that's.
+[01:17:59] Patrick Chouinard: this.
+[01:17:59] Patrick Chouinard: the certificate.
+[01:17:59] Patrick Chouinard: letter.
+[01:18:00] Patrick Chouinard: It's as to, don't hide that stuff, surface it, and I find that it's a lot of time when it hides that kind of thing because its opinion differs from yours, that it will do it in an underhanded fashion because it kind of has the pull to do it no matter what.
+[01:18:17] Patrick Chouinard: Well, if you give it the opportunity to surface those things, well, then it's going to ask, it's going to talk about it, and then you have an opportunity to stop it from happening.
+[01:18:26] Patrick Chouinard: So I found that I had very good experience with that, so give it a try and see if it works for you guys.
+[01:18:36] Ryan C: Sorry, Elena had your hand raised.
+[01:18:41] Elena: You just wanted to ask, when do you load it, like, on a reach, like, when you use cloud code?
+[01:18:46] Elena: How do you invoke it, like, each personality?
+[01:18:49] Patrick Chouinard: I'm sorry?
+[01:18:50] Elena: How do you invoke it, like, when do you load it, like, into the session, this personality?
+[01:18:55] Patrick Chouinard: What's it?
+[01:18:55] Patrick Chouinard: Oh, this is in my cloud.md file under my...
+[01:18:59] Patrick Chouinard: my...
+[01:19:00] Patrick Chouinard: User folder.
+[01:19:01] Patrick Chouinard: So in your user folder, you have a .clawd directory, and in there, there's a .clawd.md file.
+[01:19:09] Elena: I put that excerpt in just put it in .clawdmd, and when you need them, like when you need to assign some particular role, you're just saying you're, for example, some kind of agent, or it all applies to every agent, right?
+[01:19:25] Patrick Chouinard: Exactly.
+[01:19:26] Patrick Chouinard: When you put it at the user level, it applies anytime you use Clawd on your machine.
+[01:19:32] Patrick Chouinard: So that's why I put that personality at that level, because the same thing for the agents.md, same thing for Copilot.
+[01:19:39] Patrick Chouinard: Like, whenever I use one of them anywhere, it will inherit at least that personality trait.
+[01:19:48] Shakur: Basically the same thing I was trying to show, but just showed the black screen.
+[01:19:55] Patrick Chouinard: But this is just the personality.
+[01:19:57] Patrick Chouinard: It doesn't have anything to do with cross-model reference.
+[01:20:00] Patrick Chouinard: But for personality-wise, this is core behavior, and it makes all the difference.
+[01:20:06] Patrick Chouinard: And on top of that, it makes me laugh all the time when I read the comment from Claude, because that one is way more interesting than the base model.
+[01:20:15] Juan Torres: I think Patrick gets onto something here, because I believe that a lot of the accidents that happen on Claude code, deleting code bases, and doing disastrous things, it's more of a personality thing of the user.
+[01:20:33] Juan Torres: And I know people who would actually go through the process.
+[01:20:38] Juan Torres: I know their personality, and they're not the most emotionally regulated people.
+[01:20:43] Juan Torres: I can see them going on a maniac spring of trying to do as much as possible without actually coming back and actually thinking about the process of creating code or managing infrastructure.
+[01:20:58] Juan Torres: Yeah.
+[01:20:59] Juan Torres: I
+[01:21:00] Juan Torres: And so what I think one of the principles here is that AI is an amplifier of your deficiencies, but also your attributes.
+[01:21:10] Juan Torres: So if you're someone that consistently like just goes, goes, goes without actually going through the process of reflecting on the process and trying to improve processes, then emerging properties, the law of diminishing returns, the law of, you know, negative returns is going to start kicking in.
+[01:21:28] Juan Torres: And then you're going to face crises, even with AI.
+[01:21:32] Juan Torres: And AI is just going to be like a gun that you're going to point in at the problem that you're trying to solve, right?
+[01:21:38] Juan Torres: Yeah.
+[01:21:39] Juan Torres: So I do feel like a lot of the stories that we hear about the deletion of code bases is a reflection of the user more than the...
+[01:21:50] Juan Torres: It's like a drunken driver.
+[01:21:52] Juan Torres: mean, if you give a drunken driver like the ability to drive, he's going to, you know, have accidents.
+[01:21:56] Juan Torres: So, yeah.
+[01:22:00] Patrick Chouinard: Yep, exactly.
+[01:22:02] Patrick Chouinard: That's what I'm trying to manage with that personality.
+[01:22:07] Patrick Chouinard: And like I said, the idea is you adapt it to your style and what best fits you, but the idea is to have a personality block at the user level in each of your interaction will do a massive change in the way you interact with those systems.
+[01:22:27] Patrick Chouinard: It definitely did for me.
+[01:22:29] Juan Torres: I don't know if anybody does this, but sometimes I create historical scenarios and I'm like, okay, I sit at the Committee of Public Safety during the French Revolution and we have an order from Robert Speer to get rid of the Girondin faction that is trying to destroy the Republic.
+[01:22:56] Juan Torres: And so I go back and forth with like, you know.
+[01:23:00] Juan Torres: We have to get rid of the remnants of the old regime, and we have to hunt down every counter-revolutionary element that is trying to destroy our code base.
+[01:23:12] Juan Torres: So that's what I try to do in order to make it fun and engaging for me.
+[01:23:20] Patrick Chouinard: Nice.
+[01:23:22] Patrick Chouinard: You would have to share some of those experiments.
+[01:23:27] Patrick Chouinard: I'd be interested in reading them.
+[01:23:30] Juan Torres: Yeah, it's really nerdy.
+[01:23:33] Juan Torres: I'm a history major.
+[01:23:34] Patrick Chouinard: Look where we are.
+[01:23:36] Juan Torres: Yeah, yeah, yeah.
+[01:23:37] Juan Torres: The biggest nerds that they are.
+[01:23:42] Juan Torres: And I actually go through the process of searching, like, if I don't recall, like, the specific position of someone in the historical narrative, I actually, like, look it up and be like, okay, this is the person that is committing us to carry out this process, blah, blah, blah, blah, blah.
+[01:23:57] Patrick Chouinard: I'm sure.
+[01:23:57] Patrick Chouinard: So...
+[01:23:57] Patrick Chouinard: you.
+[01:24:00] Patrick Chouinard: Yep.
+[01:24:01] Patrick Chouinard: You know what I do with that kind of stuff.
+[01:24:03] Patrick Chouinard: If I have that, I give it to ChatGPT and I have a chat about it.
+[01:24:13] Patrick Chouinard: Nice.
+[01:24:14] Patrick Chouinard: A couple of other things.
+[01:24:16] Patrick Chouinard: Yeah.
+[01:24:17] Patrick Chouinard: I wasn't ready for this week, but next week I'm going to try to showcase it.
+[01:24:23] Patrick Chouinard: I've created a MCP for myself.
+[01:24:29] Patrick Chouinard: I know I've mentioned it before, but now it works very well.
+[01:24:34] Patrick Chouinard: It's just not, uh, cleanly packaged to be shared yet, uh, where I installed it in ChatGPT.
+[01:24:42] Patrick Chouinard: The, the, the latest version has a plugin.
+[01:24:45] Patrick Chouinard: What it does is it allows me to save ideas as issue in a GitHub repo directly from a conversation, a, with, uh, ChatGPT.
+[01:24:57] Patrick Chouinard: So I'm verbally discussing.
+[01:25:00] Patrick Chouinard: Even with the brand new, it worked with GPT Live.
+[01:25:03] Patrick Chouinard: I've tried it.
+[01:25:05] Patrick Chouinard: So you have a chat that can be hour long and every once in a while, oh, that's a great idea.
+[01:25:12] Patrick Chouinard: Package that idea and save it to, I call it the cognitive backlog.
+[01:25:17] Patrick Chouinard: So it packages it into a JSON structure that's adapted for the GitHub issues.
+[01:25:28] Patrick Chouinard: And then it drops it in that one specific GitHub repo I created for myself.
+[01:25:34] Patrick Chouinard: So there's one app to install in Vercel and I use Auth0 to do the authentication.
+[01:25:43] Patrick Chouinard: And then you have the GitHub part.
+[01:25:47] Patrick Chouinard: So basically, I can chat, blah, blah, blah, blah, even when I'm driving and say, oh, that's a good idea.
+[01:25:54] Patrick Chouinard: Package it, save it to the cognitive backlog.
+[01:25:56] Patrick Chouinard: Package plotting.
+[01:25:57] Patrick Chouinard: Package it, save it, it, it.
+[01:26:00] Patrick Chouinard: of ideas that I want to maybe reference later or work on or whatever interactively while driving or while...
+[01:26:09] Patrick Chouinard: basically it's a hand-free way to save idea in a structured fashion.
+[01:26:15] Juan Torres: Yeah, that's really good.
+[01:26:17] Juan Torres: Have you thought of how it can be...
+[01:26:20] Juan Torres: I use Notion in order to have my tasks, you know, grouped.
+[01:26:25] Juan Torres: Have you thought of, you know, then connecting it to Task Manager?
+[01:26:30] Patrick Chouinard: Or just that Github is enough for you?
+[01:26:33] Patrick Chouinard: I...
+[01:26:34] Patrick Chouinard: honestly, I've stopped trying...
+[01:26:37] Patrick Chouinard: I've tried and tried to integrate Notion, to integrate Obsidian, to integrate all of those things.
+[01:26:42] Patrick Chouinard: I realized that Github VS Code does everything I need.
+[01:26:49] Patrick Chouinard: I don't need a layer on top because now that I send the information raw into...
+[01:26:55] Patrick Chouinard: as text into Github, now I can have any listener...
+[01:26:59] Patrick Chouinard: Or...
+[01:27:00] Patrick Chouinard: I want, including I'm already working on a LoopForge pipeline that's going to start building those ideas automatically.
+[01:27:08] Patrick Chouinard: So it's just a holding place, if you want to drop my idea into, then I can have whatever agent listening to that as an output.
+[01:27:20] Juan Torres: Yeah, makes sense.
+[01:27:22] Patrick Chouinard: And another trick that I've just realized while we were talking, sometimes I create those things and I don't even realize they're valuable until I talk to you guys, and okay, that might be useful for some of you.
+[01:27:35] Juan Torres: Yeah, that happens to me too.
+[01:27:38] Patrick Chouinard: That one, I'm also going to put it probably on the, in the thread in the community.
+[01:27:45] Patrick Chouinard: Basically, it's a skill that calls a couple of other skills, but the idea is inside any of my project, they're all using superpower right now.
+[01:27:56] Patrick Chouinard: so they all have very detailed...
+[01:28:00] Patrick Chouinard: Specs and very detailed plan.
+[01:28:02] Patrick Chouinard: So a lot of documentation.
+[01:28:04] Patrick Chouinard: So basically, I created a skill that I can invoke at any point, which is present this.
+[01:28:11] Patrick Chouinard: What that does, it reads all of the text documentation part of the repo.
+[01:28:17] Patrick Chouinard: So all of the specs, all of the plan, all of the seed ideas, like everything it could.
+[01:28:22] Patrick Chouinard: It creates a documentation, uh, container, if you want, or basically just markdown.
+[01:28:31] Patrick Chouinard: It then, uh, instantiate a standardized, uh, type of presentation in HTML based on Astro 7.
+[01:28:43] Patrick Chouinard: Builds the website.
+[01:28:46] Patrick Chouinard: Then it calls through the, uh, Wrangler CLI from, uh, Cloudflare.
+[01:28:52] Patrick Chouinard: Pushes it, uh, into a new project on Cloudflare.
+[01:28:55] Patrick Chouinard: Connect to Hostinger.
+[01:28:58] Patrick Chouinard: Create the DNS entry.
+[01:29:00] Patrick Chouinard: Point it to the Cloudflare.
+[01:29:02] Patrick Chouinard: So basically it's one call, it builds the documentation, builds the website, deploys the website, and it reports when it's live.
+[01:29:11] Juan Torres: Wow.
+[01:29:14] Juan Torres: That's like agent decoding in DevOps to some extent there.
+[01:29:19] Patrick Chouinard: Yeah, it's not really DevOps, it's just a way to say, here's a cool project, if I want to present it, well, just spawn a website about it and publish it right away.
+[01:29:30] Juan Torres: Yeah.
+[01:29:31] Juan Torres: Yeah.
+[01:29:33] Juan Torres: That's pretty great, actually.
+[01:29:35] Patrick Chouinard: Yeah.
+[01:29:35] Patrick Chouinard: So I'm probably going to try to publish that this week and put it in the community forum.
+[01:29:41] Juan Torres: That is really cool.
+[01:29:43] Juan Torres: That is really cool.
+[01:29:44] Patrick Chouinard: Yeah.
+[01:29:45] Patrick Chouinard: It requires a couple of pieces, but honestly, the only thing, if you want to push it to Vercel instead of Cloudflare, or if you don't use Hostinger for your DNS.
+[01:29:59] Juan Torres: up.
+[01:29:59] Juan Torres: the event.
+[01:29:59] Juan Torres: go
+[01:30:00] Patrick Chouinard: Just switch those pieces, but it's just calling those pieces to do their part of the job, this is the easy part, the complex part was more the orchestration of read all of the content from the website, create a standardized structure of documentation, transform it into an interactive HTML, and then publish using whatever target you want.
+[01:30:25] Juan Torres: That could have really great implications for a business that, you know, depends on presentations based on specific knowledge that you already have on your GitHub repo.
+[01:30:35] Juan Torres: I mean, think about what you can do with your DevOps team or your coding team that, you know, hey, we need to have a presentation with the executive team or the communications team.
+[01:30:45] Juan Torres: Let's actually just use this and push it forward.
+[01:30:48] Patrick Chouinard: Where do you think I got the idea?
+[01:30:50] Juan Torres: Yeah.
+[01:30:51] Juan Torres: Oh, you, you already had this implemented within your business?
+[01:30:55] Patrick Chouinard: No, I actually developed it based on a requirement.
+[01:30:59] Juan Torres: I.
+[01:31:00] Patrick Chouinard: Got from the business because my boss was always coming like, Oh, can you prepare a presentation of that thing?
+[01:31:06] Juan Torres: It looks nice.
+[01:31:08] Patrick Chouinard: Yeah.
+[01:31:09] Patrick Chouinard: Okay.
+[01:31:09] Patrick Chouinard: Now it's just, okay, present this.
+[01:31:13] Patrick Chouinard: Obviously inside the business, it's not using Cloudflare or Ostinger or things like that.
+[01:31:18] Patrick Chouinard: It's just different target, but the idea is the same.
+[01:31:22] Patrick Chouinard: Is it just, it's auto build a presentation site for the current project it's in and it pushed it to whatever target.
+[01:31:30] Juan Torres: if you want.
+[01:31:31] Juan Torres: I, I kind of did that for, um, uh, just to the point of creating the HTML for YouTube presentations using, you know, HTML, uh, code.
+[01:31:41] Juan Torres: Uh, but I didn't get to actually like hosting it on the, on the, on the cloud.
+[01:31:47] Patrick Chouinard: Yeah.
+[01:31:47] Patrick Chouinard: It would work with Cloudflare.
+[01:31:49] Patrick Chouinard: It would work with GitHub pages.
+[01:31:51] Patrick Chouinard: It would work with no matter the target.
+[01:31:54] Patrick Chouinard: You just need, it's just the, the part with Ostinger was just because I want it to be under.
+[01:32:02] Patrick Chouinard: So I just create subdomain all the time and just register them, that's it.
+[01:32:10] Juan Torres: When you're ready to open your own company, let me know.
+[01:32:14] Juan Torres: I'll be happy to be your number one employee.
+[01:32:18] Patrick Chouinard: I can tell you that's never going to happen.
+[01:32:21] Patrick Chouinard: I've been with the same consulting firm for 17 years, simply because they're basically my accountant, my lawyer, my notary public.
+[01:32:28] Patrick Chouinard: Take care of that, guys.
+[01:32:31] Patrick Chouinard: I'll do the tech stuff, you do the admin stuff.
+[01:32:36] Patrick Chouinard: But yeah, that's another one.
+[01:32:39] Patrick Chouinard: So I'm going to try to remember to publish that one because it works extremely well.
+[01:32:47] Patrick Chouinard: Basically, right now, that's my day job.
+[01:32:50] Patrick Chouinard: I encounter a point of friction, I build a skill to eliminate it.
+[01:32:55] Juan Torres: Yeah, yeah.
+[01:32:57] Juan Torres: Lean production.
+[01:33:00] Patrick Chouinard: For example, I have another one that's made me think about, I created this skill, I'm going to have to publish a whole lot of things this week, I've created another skill that I call PR Babysit, because I use Copilot, or you could use Codex, you could use Cloud Code to monitor your PR in your GitHub repo, but it takes a while.
+[01:33:28] Patrick Chouinard: So when you push a PR, it's going to take 5, 10, 15 minutes for whatever system to post its comments about, it could be CodeRabbit, it could be any one of those, but the thing is, it's an AI that posts those that needs to be answered, and a lot of time I realized that the only thing I was doing is I read the comment or the issue, copy-paste it, give it to Cloud Code, fix it, but at some point I realized, no, now I have a skill, skill, that's,
+[01:34:00] Patrick Chouinard: Every time it pushes a PR, it automatically starts a 15-minute timer where it's babysitting the PR.
+[01:34:08] Patrick Chouinard: Basically, it's polling the PR to see if there's a new comment that's been posted.
+[01:34:11] Patrick Chouinard: If there's any comment that gets posted, it replies to the comment.
+[01:34:15] Patrick Chouinard: If it's an issue, it verifies the veracity of the issue on the codebase, correct the issue if it needs to, and after 15 minutes or whatever the timer is, if it doesn't see any more comment, because when it pushes a response to the issue or a new commit, it actually tells the reviewer to review again.
+[01:34:38] Patrick Chouinard: So it's going to do that loop until it finds nothing, and when it does, then it merged the PR and the sync back.
+[01:34:46] Juan Torres: Oh wow.
+[01:34:46] Patrick Chouinard: So now I can have like 15 Git word tree independently working.
+[01:34:52] Patrick Chouinard: Whenever they close, the last step is calling the PR babysitting.
+[01:34:59] Patrick Chouinard: So it's start.
+[01:35:00] Patrick Chouinard: babysitting automatically and they stop and they start being merged automatically after all of the issues have been resolved.
+[01:35:08] Ty Wells: I got to run, guys.
+[01:35:09] Ty Wells: Have a good one.
+[01:35:10] Ty Wells: Thanks.
+[01:35:11] Patrick Chouinard: Bye, Ty.
+[01:35:13] Juan Torres: That's great.
+[01:35:14] Patrick Chouinard: Yep.
+[01:35:15] Patrick Chouinard: So another skill I'm going to...
+[01:35:19] Patrick Chouinard: You know, now I have to figure out a way how to publish individual skills because otherwise it's going to become a huge repo.
+[01:35:29] Juan Torres: Yeah.
+[01:35:32] Patrick Chouinard: That's great.
+[01:35:33] Patrick Chouinard: Yeah.
+[01:35:35] Patrick Chouinard: If there's any interest from the community, I'm going to push it into the...
+[01:35:39] Juan Torres: I'm interested.
+[01:35:41] Patrick Chouinard: Yep.
+[01:35:42] Patrick Chouinard: So I'm going to push it this week.
+[01:35:43] Patrick Chouinard: Yeah.
+[01:35:44] Patrick Chouinard: So you guys have something to sink your teeth into.
+[01:35:50] Patrick Chouinard: Good.
+[01:35:52] Patrick Chouinard: Anyone else have any other question, comment, insults?
+[01:35:57] Juan Torres: Nah.
+[01:35:57] Juan Torres: can Yeah.
+[01:36:00] Patrick Chouinard: Good.
+[01:36:01] Patrick Chouinard: So thank you very much for your presence this week and see you all guys next week.
+[01:36:06] Patrick Chouinard: Have a good one.
+[01:36:07] Patrick Chouinard: See you guys.
+[01:36:10] Patrick Chouinard: Cheers, guys.
+[01:36:11] Patrick Chouinard: Bye.

@@ -1,0 +1,198 @@
+2026-07-14 18:55:02 From Juan Torres to Everyone:
+	On other news, I got bitten by a lizard this weekend on my hike
+	unnamed.jpg
+	
+2026-07-14 18:56:03 From Patrick Chouinard to Everyone:
+	Replying to "On other news, I got bitten by a lizard this weeke...":
+	I like the energy of “here is something trying to eat me”
+	
+2026-07-14 19:04:03 From Patrick Chouinard to Everyone:
+	https://x.com/theo/status/2072482460122964067
+	
+2026-07-14 19:13:12 From Patrick Chouinard to Everyone:
+	https://gist.github.com/hopchouinard/333cc020bbdc4ccede8ea023c3b6d62c
+	
+2026-07-14 19:15:31 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	not the individual claude.md file in your project
+	
+2026-07-14 19:15:47 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	in the main claude.md file for the whole computer in the .claude folder
+	
+2026-07-14 19:16:07 From Shakur to Everyone:
+	have to jump off now
+	
+2026-07-14 19:16:16 From Shakur to Everyone:
+	thank you all
+	
+2026-07-21 17:57:37 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-07-21 18:04:01 From Alireza Mounesisohi to Everyone:
+	Agent-task.com
+	
+2026-07-21 18:31:45 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	You've gotta find the best way to communicate what problem this solves for your target audience in the most efficient way possible. Keep refining the demo, figure out what your target audiences pain points are and taylor the pitch to demo more of that.
+	Paul Miller, Patrick Chouinard:👍
+	
+2026-07-21 18:33:56 From Shakur Abdullah to Everyone:
+	Sometimes too many features is too much.
+	
+2026-07-21 18:34:07 From Paul Miller to Everyone:
+	Replying to "Sometimes too many features is too much.":
+	Yes indeed
+	
+2026-07-21 18:34:48 From Shakur Abdullah to Everyone:
+	Take the one feature that is the most impressive to you. Build out just around that one feature. Post about that one feature on X.com
+	
+2026-07-21 18:34:54 From Shakur Abdullah to Everyone:
+	See what people say
+	Paul Miller:👍
+	
+2026-07-21 18:35:24 From Shakur Abdullah to Everyone:
+	Yes
+	
+2026-07-21 18:36:54 From mdcatc to Everyone:
+	Identify two or three solid multi-step workflows of how a user would use the system. Like This is how to start a project and a couple onboarding task to get started.
+	
+2026-07-21 18:40:14 From Shakur Abdullah to Everyone:
+	Yes, that’s helped me too
+	
+2026-07-21 18:40:34 From Shakur Abdullah to Everyone:
+	Especially with AI because AI makes it so easy to add more features
+	
+2026-07-21 18:43:56 From mdcatc to Everyone:
+	@Marc Juretus what product was that?
+	
+2026-07-21 18:45:28 From Paul Miller to Everyone:
+	https://github.com/trayders/trayd-mcp
+	
+2026-07-21 18:46:13 From Alireza Mounesisohi to Everyone:
+	@Shakur Abdullah  thank you for the feedback. Can you share the link you asked others for feedback please?
+	
+2026-07-21 18:46:27 From Paul Miller to Everyone:
+	https://robinhood.com/us/en/newsroom/robinhood-presents-yes-no-event/
+	Patrick Chouinard:👍
+	
+2026-07-21 18:46:57 From Shakur Abdullah to Everyone:
+	Replying to "@Shakur Abdullah  thank you for the feedback. Can ...":
+	I just said you should use x.com to post about what you are doing
+	
+2026-07-21 18:48:00 From Ty Wells to Everyone:
+	Homecue.ai
+	
+2026-07-21 18:48:52 From Alireza Mounesisohi to Everyone:
+	Replying to "@Shakur Abdullah  thank you for the feedback. Can ...":
+	Do you have any suggestions on how to share it or what to say in the x? any example or recommendation?
+	
+2026-07-21 18:50:03 From Ty Wells to Everyone:
+	https://shef.rocksteady.ai
+	Patrick Chouinard:👍
+	
+2026-07-21 18:51:25 From Alireza Mounesisohi to Everyone:
+	I have to hop off leaving work. Thank you all for the feedback.
+	Biggi Fraley:👋
+	
+2026-07-21 18:54:13 From Shakur Abdullah to Everyone:
+	Have you tried code rabbit? How do you do the checks because the last time I tried that a little it flagged me
+	
+2026-07-21 18:57:01 From Juan Torres to Everyone:
+	Hey folks, coming in late
+	Patrick Chouinard:👍
+	
+2026-07-21 18:58:29 From Ty Wells to Everyone:
+	@Patrick Chouinard Mark that as a false positive pls
+	
+2026-07-21 18:59:12 From Patrick Chouinard to Everyone:
+	https://github.com/hopchouinard/Training-Generator
+	
+2026-07-21 19:10:54 From Biggi Fraley to Everyone:
+	I think Pocock's skill goes beyond this, as it creates training that is customized to you.
+	
+2026-07-21 19:11:47 From Patrick Chouinard to Everyone:
+	Replying to "I think Pocock's skill goes beyond this, as it cre...":
+	Do you have the like to the GitHub repo?
+	
+2026-07-21 19:12:54 From Biggi Fraley to Everyone:
+	Replying to "I think Pocock's skill goes beyond this, as it cre...":
+	Still looking for it, but here's a first note I found on it: Matt has a 15-minute video about it on Twitter (can I find it on YT? - https://www.youtube.com/watch?v=s5T5oQJcJ6U)
+	
+2026-07-21 19:13:38 From Biggi Fraley to Everyone:
+	Replying to "I think Pocock's skill goes beyond this, as it cre...":
+	Not yet GitHub, but this might lead to it: https://www.aihero.dev/skills
+	
+2026-07-21 19:14:32 From Biggi Fraley to Everyone:
+	Replying to "I think Pocock's skill goes beyond this, as it cre...":
+	https://github.com/mattpocock/skills/tree/main/skills/productivity/teach
+	Patrick Chouinard:❤️
+	
+2026-07-21 19:15:56 From Ty Wells to Everyone:
+	Replying to "I think Pocock's skill goes beyond this, as it cre...":
+	Screenshot 2026-07-21 at 6.15.10 PM.png
+	Patrick Chouinard, Biggi Fraley:❤️
+	
+2026-07-21 19:16:02 From Ty Wells to Everyone:
+	Replying to "I think Pocock's skill goes beyond this, as it cre...":
+	UX Skills
+	
+2026-07-21 19:17:33 From Biggi Fraley to Everyone:
+	Sheesh, every time I make a sexual joke in this group there's silence...the power of visuals! LOL
+	
+2026-07-21 19:18:05 From Ty Wells to Everyone:
+	lol
+	
+2026-07-21 19:18:31 From Biggi Fraley to Everyone:
+	nope
+	
+2026-07-21 19:24:40 From Marc Juretus to Everyone:
+	Replying to "Sheesh, every time I make a sexual joke in this gr...":
+	LoLoL 🤣
+	
+2026-07-21 19:35:33 From Paul Miller to Patrick Chouinard (direct message):
+	who is mdcatc I forgot his name
+	
+2026-07-21 19:38:45 From Biggi Fraley to Everyone:
+	And then again...nobody ever complained that millions of websites are using the same WordPress theme.
+	
+2026-07-21 19:39:39 From Juan Torres to Everyone:
+	Ubuntu gang!
+	
+2026-07-21 19:39:54 From Juan Torres to Everyone:
+	Ubuntu users
+	Giphy [ID:MNhQjzCptjg5ToSyVi]
+	Biggi Fraley:😂
+	
+2026-07-21 19:41:03 From mdcatc to Everyone:
+	https://class2curb.com/
+	
+2026-07-21 19:46:56 From Patrick Chouinard to Everyone:
+	Replying to "And then again...nobody ever complained that milli...":
+	There is a nuance between “accepting” and “enjoying” 😛
+	
+2026-07-21 19:47:54 From Patrick Chouinard to Paul Miller (direct message):
+	Sorry just saw your message
+	
+2026-07-21 19:50:56 From Biggi Fraley to Everyone:
+	Jeff Hunter shared this about Anthropic/Fable:
+	
+	Now...
+	The part that's genuinely surreal.
+	The replies under the announcement...
+	"Thank you for the clarity!"
+	"Appreciate the update!"
+	People are THANKING them. 
+	If you've been reading this newsletter, you watched every chapter of this circus...
+	The government freeze.
+	Three deadline extensions.
+	Rationing.
+	2am plan changes.
+	They made a mess for five straight weeks...
+	Then announced the mess is now "standard"...
+	And people are cheering.
+	This is Stockholm syndrome in real time.
+	df96a1cac1c85ccb4c8442992cd89a85.png
+	
+2026-07-21 19:51:28 From Patrick Chouinard to Everyone:
+	https://omnigent.ai/
+	
