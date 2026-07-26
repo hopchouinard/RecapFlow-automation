@@ -54,3 +54,8 @@ community-brain/lancedb-backups/
 # Eval run artifacts: persist the rendered context per D20, which means they
 # carry transcript text. Durable on the VM, never in git (PC ceiling).
 community-brain/eval-runs/
+
+# Eval reports written by scripts/eval-fabrication.py. Per D20 these embed
+# the rendered context (transcript text), so they must never reach git —
+# including the script defaults and the paths its docstring examples use.
+eval-*.json

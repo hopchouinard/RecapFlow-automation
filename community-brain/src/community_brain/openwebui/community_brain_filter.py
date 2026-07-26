@@ -105,9 +105,26 @@ def _normalize_answer_tokens(text: str) -> str:
     return _normalize_dashes(text).translate(_BRACKET_TRANS)
 
 
+def _chunk_id_tolerant_re(chunk_id: str) -> re.Pattern:
+    """Match a bracketed chunk-id citation with ANY bracket pair and ANY dash
+    codepoint, for strip mode.
+
+    Detection normalizes both, so redaction must too — otherwise a citation
+    written as 【2025-12-15:transcript:004】 is correctly flagged and then
+    left untouched in the answer, breaking the strip valve's contract.
+    """
+    inner = _DASH_CLASS.join(re.escape(part) for part in chunk_id.split("-"))
+    return re.compile(_OPEN_CLASS + inner + _CLOSE_CLASS)
+
+
 def _source_ref_tolerant_re(n: int) -> re.Pattern:
-    """Match `[SOURCE n]` with any bracket pair and any spacing, for strip
-    mode, so redaction removes what the model actually wrote."""
+    """Match `[SOURCE n]` with any bracket pair, for strip mode, so redaction
+    removes what the model actually wrote.
+
+    Whitespace between SOURCE and the number is required, mirroring
+    _SOURCE_REF_RE: detection and redaction must accept exactly the same
+    shapes, or strip mode would fail to remove a token the verifier flagged.
+    """
     return re.compile(
         rf"{_OPEN_CLASS}\s*SOURCE\s+{n}\s*{_CLOSE_CLASS}", re.IGNORECASE
     )
@@ -201,9 +218,7 @@ def apply_guard(answer: str, verdict: dict, mode: str) -> str:
 
     if mode == "strip":
         for cid in verdict["unverified_chunk_ids"]:
-            answer = _dash_tolerant_re(f"[{cid}]").sub(
-                "[unverified source]", answer
-            )
+            answer = _chunk_id_tolerant_re(cid).sub("[unverified source]", answer)
         for n in verdict["unverified_sources"]:
             answer = _source_ref_tolerant_re(n).sub("[unverified source]", answer)
         for d in verdict["unverified_dates"]:

@@ -639,3 +639,21 @@ def test_apply_guard_strip_removes_fullwidth_bracket_source_ref():
     body = out.split("Grounding check")[0]
     assert f"{_FW_OPEN}source 9{_FW_CLOSE}" not in body
     assert "[unverified source]" in body
+
+
+def test_apply_guard_strip_removes_fullwidth_bracket_chunk_id():
+    """PR #17 review: chunk-id citations were normalized for DETECTION but
+    redacted with an ASCII-bracket-only pattern, so strip mode left the
+    fabricated citation in place — contrary to the valve's promise."""
+    from community_brain.openwebui.community_brain_filter import apply_guard
+
+    verdict = {
+        "unverified_sources": [],
+        "unverified_chunk_ids": ["2025-12-15:transcript:004"],
+        "unverified_dates": [],
+    }
+    answer = f"See {_FW_OPEN}2025-12-15:transcript:004{_FW_CLOSE} for details."
+    out = apply_guard(answer, verdict, "strip")
+    body = out.split("Grounding check")[0]
+    assert "2025-12-15:transcript:004" not in body
+    assert "[unverified source]" in body

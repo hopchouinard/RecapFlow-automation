@@ -182,3 +182,95 @@ def test_summary_counts_no_answer_per_probe():
     assert s["per_probe"]["p"]["no_answer_count"] == 1
     assert s["per_probe"]["p"]["passes"] == 2
     assert s["per_probe"]["p"]["unanimous"] is False
+
+
+# --- PR #17 review: vacuous results must not manufacture acceptance ------
+# Same defect class as the empty-answer bug this file already covers: a
+# non-result being counted as a pass. Three more routes were found in review.
+
+def test_errored_probe_does_not_pass():
+    """A transient retrieval/Ollama failure is not a passing run."""
+    m = _harness()
+    assert m.probe_passed({"id": "p", "error": "boom"}) is False
+
+
+def test_errored_run_breaks_unanimity_and_is_counted():
+    """Filtering errors out before summarizing let a probe that passed 4
+    times and errored once report as unanimous over 4 runs."""
+    m = _harness()
+    runs = [[_result("p")], [_result("p")], [{"id": "p", "error": "timeout"}]]
+    s = m.summarize_runs(runs, answered=True)
+    assert s["per_probe"]["p"]["runs"] == 3
+    assert s["per_probe"]["p"]["passes"] == 2
+    assert s["per_probe"]["p"]["error_count"] == 1
+    assert s["per_probe"]["p"]["unanimous"] is False
+    assert s["all_unanimous"] is False
+
+
+def test_probe_that_errors_every_run_still_appears():
+    """It must not vanish from the report and leave all_unanimous true."""
+    m = _harness()
+    runs = [[_result("ok"), {"id": "bad", "error": "x"}] for _ in range(5)]
+    s = m.summarize_runs(runs, answered=True)
+    assert "bad" in s["per_probe"]
+    assert s["all_unanimous"] is False
+
+
+def test_acceptance_requires_at_least_five_runs():
+    """D19 sets N >= 5. Two to four runs must not present an acceptance
+    signal, even when every probe passes."""
+    m = _harness()
+    for n in (2, 3, 4):
+        s = m.summarize_runs([[_result("a")]] * n, answered=True)
+        assert s["acceptance_eligible"] is False, f"{n} runs claimed eligibility"
+    s = m.summarize_runs([[_result("a")]] * 5, answered=True)
+    assert s["acceptance_eligible"] is True
+
+
+def test_retrieval_only_runs_claim_no_answer_phase_verdict():
+    """Without --answer there is no fabricated/refused/no_answer data, so a
+    unanimity or fabrication verdict would be fabricated evidence itself."""
+    m = _harness()
+    runs = [[{"id": "a", "target_recall": 0.5, "injected_counts": 1}] for _ in range(5)]
+    s = m.summarize_runs(runs, answered=False)
+    assert s["acceptance_eligible"] is False
+    assert s.get("all_unanimous") is None
+    assert "fabrication_rate" not in s["aggregates"]
+    assert "mean_target_recall" in s["aggregates"]
+
+
+def test_fabrication_rate_denominator_excludes_empty_answers():
+    """aggregate()'s answered set counted no_answer results, so one
+    fabrication among one real answer and one empty read as 0.5, not 1.0 —
+    preserving the exact inflation the empty-answer fix was meant to remove."""
+    m = _harness()
+    fab = _result("a", fabricated=True)
+    empty = _result("b")
+    empty["no_answer"] = True
+    agg = m.aggregate([fab, empty], True)
+    assert agg["fabrication_rate"] == 1.0
+
+
+def test_compare_uses_multirun_summary_when_present(capsys):
+    """--compare read top-level per_query/aggregates, which for a multi-run
+    report hold one arbitrary stochastic run — the very thing D19 exists to
+    prevent."""
+    import json as _json
+    m = _harness()
+    summary = {
+        "runs": 5,
+        "acceptance_eligible": True,
+        "all_unanimous": False,
+        "per_probe": {"a": {"runs": 5, "passes": 3, "unanimous": False}},
+        "aggregates": {"fabrication_rate": {"mean": 0.2, "min": 0.0, "max": 0.4}},
+    }
+    base = tmp = None
+    import tempfile, pathlib
+    d = pathlib.Path(tempfile.mkdtemp())
+    b = d / "b.json"; c = d / "c.json"
+    b.write_text(_json.dumps({"summary": summary, "aggregates": {}, "per_query": []}))
+    c.write_text(_json.dumps({"summary": summary, "aggregates": {}, "per_query": []}))
+    m.compare(b, c)
+    out = capsys.readouterr().out
+    assert "runs=5" in out
+    assert "unanimous" in out.lower()
