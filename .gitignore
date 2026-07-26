@@ -50,3 +50,7 @@ scripts/__pycache__/
 # LanceDB pre-deploy snapshots — local rollback artifacts, not repo content
 # (19M+ binaries; the VM is canonical and keeps them on disk)
 community-brain/lancedb-backups/
+
+# Eval run artifacts: persist the rendered context per D20, which means they
+# carry transcript text. Durable on the VM, never in git (PC ceiling).
+community-brain/eval-runs/
