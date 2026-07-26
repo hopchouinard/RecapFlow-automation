@@ -274,3 +274,16 @@ def test_compare_uses_multirun_summary_when_present(capsys):
     out = capsys.readouterr().out
     assert "runs=5" in out
     assert "unanimous" in out.lower()
+
+
+def test_invalid_run_counts_are_rejected(monkeypatch):
+    """PR #17 second-pass (suppressed low-confidence) finding: --runs 0 ran
+    once while reporting runs_requested=0 and skipping the summary — output
+    describing a run that never happened."""
+    import sys
+    m = _harness()
+    for bad in ("0", "-1"):
+        monkeypatch.setattr(sys, "argv", ["eval-fabrication.py", "--runs", bad])
+        with pytest.raises(SystemExit) as exc:
+            m.main()
+        assert exc.value.code != 0

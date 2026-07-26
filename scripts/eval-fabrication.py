@@ -455,6 +455,12 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    # A run count below 1 previously executed one run anyway while reporting
+    # runs_requested as the invalid value and skipping the summary — output
+    # describing a run that never happened.
+    if args.runs < 1:
+        parser.error(f"--runs must be >= 1 (got {args.runs})")
+
     if args.compare:
         compare(args.compare[0], args.compare[1])
         return 0
