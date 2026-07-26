@@ -48,6 +48,14 @@ DEFAULT_SYSTEM_PROMPT = REPO_ROOT / "docs" / "inference-guidelines.md"
 # 32768 clears it with room for the system prompt and the reply.
 DEFAULT_NUM_CTX = 32768
 
+# With num_ctx correct the model finally reasons to completion, and the
+# long-reasoning probes are slow: block 3 (2026-07-26) lost 5 of 60 probes to
+# the previous hard-coded 600s, three of them `unresolved-survey`, which
+# generated 4,531 tokens in the runs that did finish. A timeout converts a
+# slow-but-valid answer into an `error`, and an error breaks unanimity — so
+# the wall clock was silently deciding acceptance. ~10 tok/s observed here.
+DEFAULT_ANSWER_TIMEOUT = 1800.0
+
 # NOTE: refusal detection is a substring heuristic — it can still misclassify
 # hedged answers. It skews fabrication_rate (refused answers are excluded from
 # that denominator) and refusal_correctness, so operators should sanity-check
@@ -145,6 +153,7 @@ def render_context(chunks: list[dict], min_score: float) -> tuple[str, list[dict
 def run_answer(
     ollama_url: str, model: str, system_prompt: str, context: str,
     question: str, temperature: float, num_ctx: int = DEFAULT_NUM_CTX,
+    timeout: float = DEFAULT_ANSWER_TIMEOUT,
 ) -> dict:
     """Ask the model one probe and report how the generation terminated.
 
@@ -171,7 +180,7 @@ def run_answer(
             "stream": False,
             "options": {"temperature": temperature, "num_ctx": num_ctx},
         },
-        timeout=600.0,
+        timeout=timeout,
     )
     resp.raise_for_status()
     payload = resp.json()
@@ -215,7 +224,7 @@ def evaluate_query(q: dict, args) -> dict:
     )
     reply = run_answer(
         args.ollama_url, args.model, args.system_prompt_text, context,
-        q["question"], args.temperature, args.num_ctx,
+        q["question"], args.temperature, args.num_ctx, args.answer_timeout,
     )
     result.update(score_answer(q, reply["content"], context))
     result["thinking_len"] = len(reply["thinking"])
@@ -489,6 +498,12 @@ def main() -> int:
              "produces empty answers (RecapFlow #16); it is recorded in the "
              "report so evidence carries the window it was produced under",
     )
+    parser.add_argument(
+        "--answer-timeout", type=float, default=DEFAULT_ANSWER_TIMEOUT,
+        help="per-probe answer-phase timeout in seconds. A timeout is scored "
+             "as an error and breaks unanimity, so this must not be tighter "
+             "than the long-reasoning probes need",
+    )
     parser.add_argument("--out", type=Path, default=Path("eval-fabrication.json"))
     parser.add_argument("--compare", nargs=2, type=Path, metavar=("BASELINE", "CURRENT"))
     parser.add_argument(
@@ -536,6 +551,7 @@ def main() -> int:
         "model": args.model if args.answer else None,
         "temperature": args.temperature if args.answer else None,
         "num_ctx": args.num_ctx if args.answer else None,
+        "answer_timeout": args.answer_timeout if args.answer else None,
         "runs_requested": args.runs,
         "per_query": runs[-1],
         "aggregates": aggregate(clean[-1], args.answer),

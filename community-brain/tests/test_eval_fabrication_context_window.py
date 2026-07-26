@@ -187,6 +187,43 @@ def test_num_ctx_is_exposed_on_the_command_line(monkeypatch, capsys):
     assert "--num-ctx" in capsys.readouterr().out
 
 
+def test_run_answer_timeout_is_configurable():
+    """Block 3 (2026-07-26, first block with num_ctx correct) lost 5 of 60
+    probes to the hard-coded 600s timeout. `unresolved-survey` generated
+    4,531 tokens and completed; the three runs that timed out needed more.
+
+    A timeout turns a slow-but-valid answer into an `error`, which breaks
+    unanimity — so an arbitrary wall-clock limit silently decides acceptance.
+    Same family as the other non-results fixed here: the harness must not
+    manufacture a verdict from its own impatience.
+    """
+    m = _harness()
+    captured = _capture_post(m, _OK)
+    m.run_answer(
+        "http://ollama", "gpt-oss:20b", "system", "context", "question", 0.0,
+        num_ctx=32768, timeout=1800.0,
+    )
+    assert captured[0]["timeout"] == 1800.0
+
+
+def test_default_answer_timeout_clears_the_observed_generation_length():
+    """Observed throughput is ~10 tok/s on this stack; 600s cut off a probe
+    that had not finished reasoning. The default must leave room for the
+    long-reasoning probes rather than scoring them as transport failures."""
+    m = _harness()
+    assert m.DEFAULT_ANSWER_TIMEOUT >= 1800.0
+
+
+def test_answer_timeout_is_exposed_on_the_command_line(monkeypatch, capsys):
+    import sys
+    m = _harness()
+    monkeypatch.setattr(sys, "argv", ["eval-fabrication.py", "--help"])
+    with pytest.raises(SystemExit) as exc:
+        m.main()
+    assert exc.value.code == 0
+    assert "--answer-timeout" in capsys.readouterr().out
+
+
 def test_default_num_ctx_covers_the_largest_observed_context(monkeypatch):
     """The largest rendered context measured on this corpus was 60,290 chars
     (~15,100 tokens) plus the system prompt and generation headroom. The
