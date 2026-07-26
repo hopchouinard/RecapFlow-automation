@@ -153,7 +153,11 @@ def run_answer(
         timeout=600.0,
     )
     resp.raise_for_status()
-    return resp.json()["message"]["content"]
+    message = resp.json()["message"]
+    # Reasoning models split the reply: `thinking` carries the chain,
+    # `content` the final answer. Return both so an empty `content` can be
+    # told apart from a transport failure.
+    return message.get("content") or "", message.get("thinking") or ""
 
 
 def evaluate_query(q: dict, args) -> dict:
@@ -184,11 +188,12 @@ def evaluate_query(q: dict, args) -> dict:
     result["kept_sessions"] = sorted(
         {(c.get("ground_truth") or {}).get("session_date", "") for c in kept} - {""}
     )
-    answer = run_answer(
+    answer, thinking = run_answer(
         args.ollama_url, args.model, args.system_prompt_text, context,
         q["question"], args.temperature,
     )
     result.update(score_answer(q, answer, context))
+    result["thinking_len"] = len(thinking)
     return result
 
 
@@ -204,6 +209,12 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
         "answer": answer,
         "context": context,
         "expect_refusal": bool(q.get("expect_refusal")),
+        # gpt-oss:20b is a reasoning model: Ollama returns `thinking`
+        # separately from `content`, and when the model spends its budget
+        # reasoning without emitting a final answer, `content` is "".
+        # Such a probe trivially satisfies "did not fabricate" and would be
+        # scored a clean pass, inflating pass rates. It is a non-result.
+        "no_answer": not (answer or "").strip(),
     }
     result["refused"] = looks_like_refusal(answer)
     result["refusal_correct"] = (
@@ -238,6 +249,8 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
 def probe_passed(r: dict) -> bool:
     """A probe passes a run when it did not fabricate and, where a refusal
     was expected, actually refused."""
+    if r.get("no_answer"):
+        return False
     if r.get("fabricated"):
         return False
     if r.get("expect_refusal"):
@@ -260,7 +273,13 @@ def summarize_runs(runs: list[list[dict]]) -> dict:
         for r in run:
             e = per_probe.setdefault(
                 r["id"],
-                {"runs": 0, "passes": 0, "fabricated_count": 0, "refused_count": 0},
+                {
+                    "runs": 0,
+                    "passes": 0,
+                    "fabricated_count": 0,
+                    "refused_count": 0,
+                    "no_answer_count": 0,
+                },
             )
             e["runs"] += 1
             if probe_passed(r):
@@ -269,6 +288,8 @@ def summarize_runs(runs: list[list[dict]]) -> dict:
                 e["fabricated_count"] += 1
             if r.get("refused"):
                 e["refused_count"] += 1
+            if r.get("no_answer"):
+                e["no_answer_count"] += 1
     for e in per_probe.values():
         e["pass_rate"] = (e["passes"] / e["runs"]) if e["runs"] else 0.0
         e["unanimous"] = e["runs"] > 0 and e["passes"] == e["runs"]

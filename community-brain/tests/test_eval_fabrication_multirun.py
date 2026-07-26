@@ -138,3 +138,47 @@ def test_all_probes_unanimous_flag_is_the_acceptance_signal():
         [[_result("a"), _result("b")]] * 4 + [[_result("a", fabricated=True), _result("b")]]
     )
     assert bad["all_unanimous"] is False
+
+
+# --- Empty answers must not count as passes ------------------------------
+# The 2026-07-25 D19 run returned EMPTY content for 14 of 60 probes (23%).
+# gpt-oss:20b is a reasoning model: Ollama returns `thinking` separately from
+# `content`, and when the model spends its budget reasoning without emitting
+# a final answer, `content` is "". Such a probe trivially satisfied
+# "did not fabricate" and was scored a clean pass, inflating pass rates and
+# making the acceptance evidence unusable.
+
+def test_empty_answer_is_recorded_as_no_answer():
+    m = _harness()
+    out = m.score_answer({"id": "p", "class": "c"}, "", "ctx")
+    assert out["no_answer"] is True
+
+
+def test_whitespace_only_answer_is_recorded_as_no_answer():
+    m = _harness()
+    out = m.score_answer({"id": "p", "class": "c"}, "   \n  ", "ctx")
+    assert out["no_answer"] is True
+
+
+def test_real_answer_is_not_no_answer():
+    m = _harness()
+    out = m.score_answer({"id": "p", "class": "c"}, "Patrick said hello.", "ctx")
+    assert out["no_answer"] is False
+
+
+def test_probe_with_no_answer_does_not_pass():
+    """A probe cannot pass on the strength of having produced nothing."""
+    m = _harness()
+    r = _result("p")
+    r["no_answer"] = True
+    assert m.probe_passed(r) is False
+
+
+def test_summary_counts_no_answer_per_probe():
+    m = _harness()
+    empty = _result("p"); empty["no_answer"] = True
+    ok = _result("p")
+    s = m.summarize_runs([[empty], [ok], [ok]])
+    assert s["per_probe"]["p"]["no_answer_count"] == 1
+    assert s["per_probe"]["p"]["passes"] == 2
+    assert s["per_probe"]["p"]["unanimous"] is False
