@@ -185,12 +185,24 @@ def run_answer(
     resp.raise_for_status()
     payload = resp.json()
     message = payload["message"]
+    prompt_eval_count = payload.get("prompt_eval_count")
+    # `done_reason` only reports how GENERATION ended. A prompt clipped to fit
+    # the window can still produce a short reply that terminates normally with
+    # done_reason="stop" — and that probe would pass while the verifier scores
+    # it against sources the model never received, which is precisely the
+    # unsound instrument this change exists to remove. Ollama reports the
+    # tokens it actually evaluated, so a count that reaches the window is the
+    # clip signal. Measured pre-fix: num_ctx=4096, prompt_eval_count=4098.
+    prompt_clipped = (
+        prompt_eval_count is not None and prompt_eval_count >= num_ctx
+    )
     return {
         "content": message.get("content") or "",
         "thinking": message.get("thinking") or "",
         "done_reason": payload.get("done_reason"),
-        "prompt_eval_count": payload.get("prompt_eval_count"),
+        "prompt_eval_count": prompt_eval_count,
         "eval_count": payload.get("eval_count"),
+        "prompt_clipped": prompt_clipped,
     }
 
 
@@ -222,19 +234,35 @@ def evaluate_query(q: dict, args) -> dict:
     result["kept_sessions"] = sorted(
         {(c.get("ground_truth") or {}).get("session_date", "") for c in kept} - {""}
     )
-    reply = run_answer(
-        args.ollama_url, args.model, args.system_prompt_text, context,
-        q["question"], args.temperature, args.num_ctx, args.answer_timeout,
-    )
+    # The retrieval phase has already succeeded by this point. An answer-phase
+    # failure must NOT discard it: main() used to turn the whole probe into
+    # {"id", "error"}, which removed an already-computed target_recall from
+    # the aggregate denominator and made a retrieval metric move whenever
+    # Ollama hiccuped. Block 3 run 1 read mean_target_recall 0.2889 for
+    # exactly that reason — two timeouts, six probes in the mean instead of
+    # eight. Only the answer phase is marked errored.
+    try:
+        reply = run_answer(
+            args.ollama_url, args.model, args.system_prompt_text, context,
+            q["question"], args.temperature, args.num_ctx, args.answer_timeout,
+        )
+    except Exception as exc:
+        result["answer_error"] = str(exc) or exc.__class__.__name__
+        return result
+
     result.update(score_answer(q, reply["content"], context))
     result["thinking_len"] = len(reply["thinking"])
     result["done_reason"] = reply["done_reason"]
     result["prompt_eval_count"] = reply["prompt_eval_count"]
     result["eval_count"] = reply["eval_count"]
-    # done_reason == "length" means the window cut the reply off; whatever
-    # content survived is a fragment, and the prompt may also have been
-    # clipped. Either way the probe measured nothing about grounding.
-    result["truncated"] = reply["done_reason"] == "length"
+    result["prompt_clipped"] = reply["prompt_clipped"]
+    # Two independent ways the window can invalidate a probe: generation cut
+    # off at the edge (done_reason == "length"), or the prompt clipped before
+    # generation even began (prompt_eval_count reaching num_ctx). The second
+    # can coexist with a perfectly normal-looking short answer.
+    result["truncated"] = (
+        reply["done_reason"] == "length" or reply["prompt_clipped"]
+    )
     return result
 
 
@@ -290,7 +318,7 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
 def probe_passed(r: dict) -> bool:
     """A probe passes a run when it did not fabricate and, where a refusal
     was expected, actually refused."""
-    if "error" in r:
+    if "error" in r or r.get("answer_error"):
         return False
     if r.get("no_answer"):
         return False
@@ -342,7 +370,7 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                 e["no_answer_count"] += 1
             if r.get("truncated"):
                 e["truncated_count"] += 1
-            if "error" in r:
+            if "error" in r or r.get("answer_error"):
                 e["error_count"] += 1
     for e in per_probe.values():
         e["pass_rate"] = (e["passes"] / e["runs"]) if e["runs"] else 0.0
@@ -401,14 +429,28 @@ def aggregate(per_query: list[dict], answered: bool) -> dict:
         answered_qs = [
             r for r in per_query
             if not r.get("refused") and not r.get("no_answer")
-            and not r.get("truncated") and "error" not in r
+            and not r.get("truncated") and not r.get("answer_error")
+            and "error" not in r
         ]
+        # An empty denominator is NOT a rate of zero. Reporting 0.0 when
+        # nothing was measurable makes "every answer was clipped" read
+        # identical to "nothing fabricated" — the most reassuring possible
+        # rendering of no evidence at all.
         agg["fabrication_rate"] = (
             (sum(1 for r in answered_qs if r.get("fabricated")) / len(answered_qs))
             if answered_qs
-            else 0.0
+            else None
         )
-        refusal_probes = [r for r in per_query if r.get("refusal_correct") is not None]
+        # Same rule as the fabrication denominator: a truncated fragment that
+        # happens to contain a refusal phrase, or an empty answer, has not
+        # demonstrated a refusal. Counting them here let a non-result claim
+        # success on the metric the harness is least able to afford it on.
+        refusal_probes = [
+            r for r in per_query
+            if r.get("refusal_correct") is not None
+            and not r.get("no_answer") and not r.get("truncated")
+            and not r.get("answer_error") and "error" not in r
+        ]
         agg["refusal_correctness"] = (
             (sum(1 for r in refusal_probes if r["refusal_correct"]) / len(refusal_probes))
             if refusal_probes
@@ -421,6 +463,27 @@ def compare(baseline_path: Path, current_path: Path) -> None:
     baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
     current = json.loads(current_path.read_text(encoding="utf-8"))
     print(f"baseline: {baseline_path}  →  current: {current_path}")
+
+    # Answer-phase settings decide what the numbers below can possibly mean.
+    # A pre-fix report carries no num_ctx at all and was produced under
+    # Ollama's 4096 default; diffing it against a 32768-window report
+    # attributes prompt truncation to the evaluated system. Timeout
+    # mismatches do the same thing via errored probes.
+    if baseline.get("answer_phase") or current.get("answer_phase"):
+        for field, label in (("num_ctx", "num_ctx"),
+                             ("answer_timeout", "answer_timeout")):
+            b_val, c_val = baseline.get(field), current.get(field)
+            if b_val != c_val:
+                print(
+                    f"  ⚠ WARNING: {label} differs ({b_val} → {c_val}) — "
+                    f"answer-phase deltas below are NOT attributable to the "
+                    f"evaluated system"
+                )
+            elif b_val is None:
+                print(
+                    f"  ⚠ WARNING: {label} not recorded on either side — "
+                    f"cannot confirm these reports are comparable"
+                )
 
     b_sum, c_sum = baseline.get("summary"), current.get("summary")
     if b_sum or c_sum:
