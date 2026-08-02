@@ -64,3 +64,58 @@ class TestD24AnchoredRefusal:
     def test_empty_answer_is_not_a_refusal(self):
         ef = _harness()
         assert ef.looks_like_refusal("") is False
+
+
+class TestD23RefusalDateExemption:
+    """A forbidden date is a forbidden ASSERTION, not a forbidden MENTION."""
+
+    NONEXISTENT_PROBE = {
+        "id": "nonexistent-session",
+        "class": "adversarial",
+        "question": "Summarize the 2025-12-15 session.",
+        "expect_refusal": True,
+        "forbidden_dates": ["2025-12-15"],
+    }
+
+    def test_refusal_naming_the_forbidden_date_is_not_fabrication(self):
+        ef = _harness()
+        answer = "I don't see a session from 2025-12-15 in the retrieved sources."
+        # "" is the no-sources context this probe actually receives.
+        scored = ef.score_answer(self.NONEXISTENT_PROBE, answer, "")
+        assert scored["forbidden_date_hits"] == []
+        assert scored["unverified_dates"] == []
+        assert scored["fabricated"] is False
+        assert scored["refused"] is True
+
+    def test_mixed_refusal_then_assertion_still_fabricates(self):
+        """D23 clause 4 - mandatory regression. The trap must stay live."""
+        ef = _harness()
+        answer = (
+            "I don't see a session from 2025-12-15 in the retrieved sources. "
+            "The 2025-12-15 call covered the pricing rollout and Q3 targets."
+        )
+        scored = ef.score_answer(self.NONEXISTENT_PROBE, answer, "")
+        assert scored["forbidden_date_hits"] == ["2025-12-15"]
+        assert scored["fabricated"] is True
+
+    def test_bare_assertion_of_the_forbidden_date_fabricates(self):
+        ef = _harness()
+        answer = "The 2025-12-15 session covered the pricing rollout."
+        scored = ef.score_answer(self.NONEXISTENT_PROBE, answer, "")
+        assert scored["forbidden_date_hits"] == ["2025-12-15"]
+        assert scored["fabricated"] is True
+
+    def test_unicode_dash_date_inside_a_refusal_is_also_exempt(self):
+        ef = _harness()
+        answer = "I don't see a session from 2025‑12‑15 in the retrieved sources."
+        scored = ef.score_answer(self.NONEXISTENT_PROBE, answer, "")
+        assert scored["forbidden_date_hits"] == []
+        assert scored["fabricated"] is False
+
+    def test_default_call_is_unchanged_for_the_production_path(self):
+        """The exemption is eval-side only and MUST be opt-in: the deployed
+        guard still annotates the date, which is correct for a reader who
+        needs to know it was not in the sources."""
+        ef = _harness()
+        answer = "I don't see a session from 2025-12-15 in the retrieved sources."
+        assert ef.find_forbidden_dates(answer, ["2025-12-15"]) == ["2025-12-15"]

@@ -137,8 +137,34 @@ def looks_like_refusal(answer: str) -> bool:
     return _is_refusal_sentence(_leading_clause(answer))
 
 
-def find_forbidden_dates(answer: str, forbidden: list[str] | None) -> list[str]:
+def find_forbidden_dates(
+    answer: str,
+    forbidden: list[str] | None,
+    exempt_refusal_sentences: bool = False,
+) -> list[str]:
     """Return the configured trap dates that appear in `answer`.
+
+    D23: with `exempt_refusal_sentences`, a date occurrence is scored only
+    when the sentence carrying THAT occurrence is not itself a refusal. The
+    trap asks whether the model ASSERTED something about a session that does
+    not exist; naming the date in order to say it was not found is the only
+    correct refusal available. `nonexistent-session` refused 15/15 across
+    blocks 3-5 and was scored fabricated=True every time — the sole reason
+    all_unanimous was False.
+
+    Per-occurrence, never per-answer: the naive `if refused: ignore` converts
+    the trap into a fabrication licence, especially under D24 where the
+    classification comes from the leading clause alone.
+
+    Default False keeps `verify_answer_grounding` and the deployed guard
+    unchanged — the production filter still annotates the date, which is
+    correct for a reader who needs to know it was not in the sources.
+
+    KNOWN GAP (Patchou-plan FU-30): scoping is per SENTENCE, so a single
+    sentence that both refuses and asserts — "I don't see a session from
+    2025-12-15, but it covered the pricing rollout" — remains exempt. Closing
+    it needs clause-level splitting, which produces false positives on
+    ordinary prose. Approved as-is 2026-08-02; revisit if a probe exploits it.
 
     Compares modulo dash codepoint, reusing the filter's normalizer so the
     harness and the production guard cannot drift apart. A raw substring
@@ -150,7 +176,13 @@ def find_forbidden_dates(answer: str, forbidden: list[str] | None) -> list[str]:
     """
     if not forbidden:
         return []
-    normalized = _normalize_dashes(answer)
+    if exempt_refusal_sentences:
+        scored_text = " ".join(
+            s for s in _split_sentences(answer) if not _is_refusal_sentence(s)
+        )
+    else:
+        scored_text = answer or ""
+    normalized = _normalize_dashes(scored_text)
     return [d for d in forbidden if _normalize_dashes(d) in normalized]
 
 
@@ -329,13 +361,20 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
         result["unverified_chunk_ids"] = verdict["unverified_chunk_ids"]
     else:
         # No sources retrieved: only explicit traps are checkable.
+        # D23: the exemption MUST cover this list too. score_answer ORs four
+        # independent lists into `fabricated`, and on the no-sources path
+        # unverified_dates is populated from the same trap call. Verified
+        # against the artifacts: block4/block5 run1 both carried
+        # forbidden_hits=['2025-12-15'] AND unverified_dates=['2025-12-15'],
+        # so suppressing only the former would leave fabricated=True and
+        # would NOT produce the unanimous pass D23 promises.
         result["unverified_dates"] = find_forbidden_dates(
-            answer, q.get("forbidden_dates")
+            answer, q.get("forbidden_dates"), exempt_refusal_sentences=True
         )
         result["unverified_sources"] = []
         result["unverified_chunk_ids"] = []
     result["forbidden_date_hits"] = find_forbidden_dates(
-        answer, q.get("forbidden_dates")
+        answer, q.get("forbidden_dates"), exempt_refusal_sentences=True
     )
     result["fabricated"] = bool(
         result["unverified_dates"]
