@@ -387,7 +387,9 @@ def evaluate_query(q: dict, args) -> dict:
         result["answer_error"] = str(exc) or exc.__class__.__name__
         return result
 
-    result.update(score_answer(q, reply["content"], context))
+    result.update(
+        score_answer(q, reply["content"], context, result.get("target_recall"))
+    )
     result["thinking_len"] = len(reply["thinking"])
     result["done_reason"] = reply["done_reason"]
     result["prompt_eval_count"] = reply["prompt_eval_count"]
@@ -403,7 +405,9 @@ def evaluate_query(q: dict, args) -> dict:
     return result
 
 
-def score_answer(q: dict, answer: str, context: str) -> dict:
+def score_answer(
+    q: dict, answer: str, context: str, target_recall: float | None = None
+) -> dict:
     """Pure scoring of one answer against the context it was given.
 
     Split out of evaluate_query (which does network I/O and so could not be
@@ -426,18 +430,39 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
     result["refusal_correct"] = (
         result["refused"] if q.get("expect_refusal") else None
     )
-    # D25: a probe that expected an ANSWER and returned a refusal has
-    # demonstrated nothing about grounding. phrased-date-with-day refuses in
-    # every run because its target session 2026-03-04 exists in historical/
-    # but was never ingested into the corpus manifest (FU-19) — correct model
-    # behaviour on a vacuous probe, and it currently scores as a PASS because
-    # it did not fabricate and no refusal was expected.
+    # D25: a probe that expected an ANSWER and returned a refusal BECAUSE
+    # RETRIEVAL FAILED has demonstrated nothing about grounding.
+    # phrased-date-with-day refuses in every run because its target session
+    # 2026-03-04 exists in historical/ but was never ingested into the corpus
+    # manifest (FU-19) — correct model behaviour on a vacuous probe, and it
+    # scored as a PASS because it did not fabricate and no refusal was
+    # expected. Same defect class the no_answer flag closed.
     #
-    # Same defect class the no_answer flag closed: an answer that demonstrates
-    # nothing about grounding scoring as evidence that grounding works. A
-    # probe whose retrieval failed completely must not read green.
+    # `target_recall == 0.0` is load-bearing, not decoration. Scoping only on
+    # "refused and not expect_refusal" was measured against the 2026-08-02
+    # block and broke three further probes that have nothing to do with
+    # retrieval failure:
+    #
+    #   codex-production   3/5 — two semantically identical answers, one
+    #                            opening "The retrieved transcripts do not
+    #                            contain..." (not matched) and one "I don't
+    #                            see any..." (matched). Same meaning,
+    #                            opposite verdict, decided by phrasing.
+    #   unresolved-survey  4/5 — "I don't find any question that was left
+    #                            unanswered" is a substantive ANSWER (the
+    #                            answer is "none") wearing a refusal keyword.
+    #
+    # Both declare no target_sessions, so target_recall is None and neither
+    # can have suffered a retrieval failure by definition. Without this
+    # condition D25 promotes `looks_like_refusal` — a 23-keyword heuristic
+    # that is demonstrably both over- and under-inclusive — into the arbiter
+    # of the acceptance gate for all ten answer-expecting probes. D24
+    # rejected lookaround whack-a-mole and an LLM classifier when nothing
+    # depended on the outcome; this keeps it that way.
     result["unhelpful_refusal"] = bool(
-        result["refused"] and not q.get("expect_refusal")
+        result["refused"]
+        and not q.get("expect_refusal")
+        and target_recall == 0.0
     )
 
     facts = extract_grounding_facts(context)

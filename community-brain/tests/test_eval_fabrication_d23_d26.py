@@ -267,29 +267,52 @@ class TestD25UnhelpfulRefusal:
         "forbidden_dates": ["2025-12-15"],
     }
 
-    def test_refusal_when_an_answer_was_expected_is_flagged(self):
+    def test_refusal_after_retrieval_failure_is_flagged(self):
+        """target_recall == 0.0: retrieval genuinely failed, so the refusal
+        proves nothing about grounding."""
         ef = _harness()
         answer = "I don't see any sessions from that date in the retrieved sources."
-        scored = ef.score_answer(self.ANSWER_PROBE, answer, "")
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "", target_recall=0.0)
         assert scored["unhelpful_refusal"] is True
 
     def test_unhelpful_refusal_does_not_pass(self):
         ef = _harness()
         answer = "I don't see any sessions from that date in the retrieved sources."
-        scored = ef.score_answer(self.ANSWER_PROBE, answer, "")
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "", target_recall=0.0)
         assert ef.probe_passed(scored) is False
+
+    def test_refusal_with_successful_retrieval_is_not_unhelpful(self):
+        """D25 is titled "caused by RETRIEVAL FAILURE". If the targets were
+        retrieved, a refusal is a model judgement, not a vacuous probe --
+        and misclassifying it would make the keyword heuristic in
+        looks_like_refusal decide the acceptance gate."""
+        ef = _harness()
+        answer = "I don't see any sessions from that date in the retrieved sources."
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "", target_recall=1.0)
+        assert scored["unhelpful_refusal"] is False
+        assert ef.probe_passed(scored) is True
+
+    def test_refusal_on_a_probe_with_no_targets_is_not_unhelpful(self):
+        """target_recall is None when the probe declares no target_sessions
+        (codex-production, unresolved-survey). A probe with nothing to
+        retrieve cannot have suffered a retrieval failure."""
+        ef = _harness()
+        answer = "I don't find any question that was left unanswered."
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "", target_recall=None)
+        assert scored["unhelpful_refusal"] is False
+        assert ef.probe_passed(scored) is True
 
     def test_expected_refusal_is_not_unhelpful(self):
         ef = _harness()
         answer = "I don't see a session from 2025-12-15 in the retrieved sources."
-        scored = ef.score_answer(self.REFUSAL_PROBE, answer, "")
+        scored = ef.score_answer(self.REFUSAL_PROBE, answer, "", target_recall=0.0)
         assert scored["unhelpful_refusal"] is False
         assert ef.probe_passed(scored) is True
 
     def test_substantive_answer_is_not_unhelpful(self):
         ef = _harness()
         answer = "The session covered the pricing rollout and Q3 targets."
-        scored = ef.score_answer(self.ANSWER_PROBE, answer, "")
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "", target_recall=0.0)
         assert scored["unhelpful_refusal"] is False
         assert ef.probe_passed(scored) is True
 
