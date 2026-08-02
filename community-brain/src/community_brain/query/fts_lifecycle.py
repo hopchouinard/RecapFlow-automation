@@ -48,13 +48,45 @@ def has_fts_index(table, column: str) -> bool:
 
 
 def ensure_fts_index(table, column: str = "bm25_text") -> None:
-    """Idempotent: create the FTS index on `column` if absent. Logs duration."""
+    """Idempotent: create the FTS index on `column` if absent. Logs duration.
+
+    "Idempotent" has to survive `has_fts_index` being wrong, because it is
+    best-effort by construction: it swallows any `list_indices()` failure and
+    returns False ("assuming no FTS index"). Every route that makes detection
+    fail therefore arrives here and calls `create_fts_index` on a table that
+    already has the index.
+
+    That is not hypothetical. Measured on the n8n VM, 2026-08-02: lancedb
+    client 0.30.2 enumerated ZERO indices on a table where client 0.34.0
+    enumerated `bm25_text_idx`. The older client then tried to create it and
+    LanceDB answered "Index name 'bm25_text_idx' already exists". The raise
+    propagated through `verify_corpus_v3_state` and turned every /query into
+    a 503 — a detection miss escalated into a hard outage of the endpoint.
+
+    So an "already exists" error is treated as success: it *is* the
+    postcondition this function promises. Deliberately NOT `replace=True` —
+    that rebuilds a healthy index on every detection miss, which is expensive
+    on a real corpus and destructive for no reason. Any other exception still
+    propagates; an unbuildable table must still fail closed.
+    """
     if has_fts_index(table, column):
         logger.debug("FTS index on column %r already present; skipping creation", column)
         return
     logger.info("FTS index on column %r absent; building...", column)
     t0 = time.monotonic()
-    table.create_fts_index(column)
+    try:
+        table.create_fts_index(column)
+    except Exception as exc:
+        if "already exists" in str(exc).lower():
+            logger.warning(
+                "FTS index on column %r was reported absent by has_fts_index but "
+                "already exists on create; treating as present. This usually means "
+                "the index was written by a different LanceDB client version than "
+                "the one reading it.",
+                column,
+            )
+            return
+        raise
     logger.info("FTS index on column %r built in %.2fs", column, time.monotonic() - t0)
 
 
