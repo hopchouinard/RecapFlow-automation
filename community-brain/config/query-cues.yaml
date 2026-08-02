@@ -104,9 +104,9 @@ cue_rules:
   # optional ordinal suffix and comma so the captures (month, year) can flow
   # through month_year_overlap unchanged.
   - name: date_phrased_with_day
-    question_regex: '\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:st|nd|rd|th)?,?\s+(\d{4})\b'
+    question_regex: '\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b'
     match_field: session_date
-    match_strategy: month_year_overlap
+    match_strategy: phrased_date_equals
     delta: 0.04
     recruit: true  # v5: recruit date-matched chunks into the pool (design D3)
 
