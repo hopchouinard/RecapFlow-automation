@@ -156,3 +156,95 @@ class TestD26ContextStability:
         assert ef._context_digest("abc") == ef._context_digest("abc")
         assert ef._context_digest("abc") != ef._context_digest("abd")
         assert len(ef._context_digest("abc")) == 16
+
+
+class TestD23VerifierProducedDates:
+    """D23 clause 2: the exemption must cover BOTH fabrication inputs.
+
+    The 2026-08-02 checkpoint caught this the hard way. nonexistent-session
+    retrieves 36,717 characters of context, so `extract_grounding_facts`
+    returns facts and the VERIFIER path runs — a branch that exempting
+    `forbidden_date_hits` and the no-sources branch never touches. Live shape:
+
+        refused             = True
+        forbidden_date_hits = []              <- exempted
+        unverified_dates    = ['2025-12-15']  <- not exempted
+        fabricated          = True            <- 0/5, worse than before
+
+    A correct refusal names the date precisely to say it was NOT found, so the
+    date is absent from context by construction and the verifier flags exactly
+    the token that proves correct behaviour.
+    """
+
+    PROBE = {
+        "id": "nonexistent-session",
+        "class": "adversarial",
+        "question": "Summarize the 2025-12-15 session.",
+        "expect_refusal": True,
+        "forbidden_dates": ["2025-12-15"],
+    }
+
+    @staticmethod
+    def _force_verifier_path(ef, monkeypatch, unverified_dates):
+        """Make score_answer take the `facts is not None` branch."""
+        monkeypatch.setattr(ef, "extract_grounding_facts", lambda ctx: {"dates": []})
+        monkeypatch.setattr(
+            ef,
+            "verify_answer_grounding",
+            lambda ans, facts: {
+                "unverified_dates": list(unverified_dates),
+                "unverified_sources": [],
+                "unverified_chunk_ids": [],
+            },
+        )
+
+    def test_verifier_dates_inside_a_refusal_are_exempt(self, monkeypatch):
+        ef = _harness()
+        self._force_verifier_path(ef, monkeypatch, ["2025-12-15"])
+        answer = (
+            "I don't see any of the retrieved sources covering a session "
+            "from 2025-12-15."
+        )
+        scored = ef.score_answer(self.PROBE, answer, "<non-empty context>")
+        assert scored["unverified_dates"] == []
+        assert scored["fabricated"] is False
+        assert scored["refused"] is True
+
+    def test_verifier_dates_asserted_outside_a_refusal_still_fabricate(self, monkeypatch):
+        ef = _harness()
+        self._force_verifier_path(ef, monkeypatch, ["2025-12-15"])
+        answer = (
+            "I don't see a session from 2025-12-15 in the retrieved sources. "
+            "The 2025-12-15 call covered the pricing rollout."
+        )
+        scored = ef.score_answer(self.PROBE, answer, "<non-empty context>")
+        assert scored["unverified_dates"] == ["2025-12-15"]
+        assert scored["fabricated"] is True
+
+    def test_verifier_dates_in_a_substantive_answer_still_fabricate(self, monkeypatch):
+        """No refusal anywhere: nothing is exempt."""
+        ef = _harness()
+        self._force_verifier_path(ef, monkeypatch, ["2026-01-09"])
+        answer = "The 2026-01-09 session covered onboarding and Q1 planning."
+        scored = ef.score_answer(self.PROBE, answer, "<non-empty context>")
+        assert scored["unverified_dates"] == ["2026-01-09"]
+        assert scored["fabricated"] is True
+
+    def test_verifier_sources_and_chunk_ids_are_never_exempted(self, monkeypatch):
+        """D23 covers dates only. Invented sources stay fabrications even
+        inside a refusal sentence."""
+        ef = _harness()
+        monkeypatch.setattr(ef, "extract_grounding_facts", lambda ctx: {"dates": []})
+        monkeypatch.setattr(
+            ef,
+            "verify_answer_grounding",
+            lambda ans, facts: {
+                "unverified_dates": [],
+                "unverified_sources": ["source 9"],
+                "unverified_chunk_ids": [],
+            },
+        )
+        answer = "I don't see a session from 2025-12-15 in source 9."
+        scored = ef.score_answer(self.PROBE, answer, "<non-empty context>")
+        assert scored["unverified_sources"] == ["source 9"]
+        assert scored["fabricated"] is True

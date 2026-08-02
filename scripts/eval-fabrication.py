@@ -186,6 +186,37 @@ def find_forbidden_dates(
     return [d for d in forbidden if _normalize_dashes(d) in normalized]
 
 
+def _dates_asserted_outside_refusals(
+    answer: str, dates: list[str] | None
+) -> list[str]:
+    """D23 clause 2, applied to VERIFIER-produced date hits.
+
+    `verify_answer_grounding` reports every date token the model emitted that
+    is absent from the rendered context. For a correct refusal the named date
+    is absent *by construction* — so the verifier flags precisely the token
+    that proves the model behaved correctly.
+
+    Measured 2026-08-02, and the reason this function exists: after exempting
+    `forbidden_date_hits` and the no-sources branch, `nonexistent-session`
+    still scored fabricated 5/5 with `forbidden_date_hits=[]` and
+    `unverified_dates=['2025-12-15']`. That probe retrieves 36,717 characters
+    of context, so `extract_grounding_facts` returns facts and this path runs
+    instead of the no-sources one. Exempting only the other two inputs is
+    insufficient for every probe that retrieves anything at all.
+
+    Same per-occurrence rule as `find_forbidden_dates`: a date survives only
+    if it appears in a sentence that is not itself a refusal. Dates only —
+    `unverified_sources` and `unverified_chunk_ids` are never exempted, since
+    an invented citation is a fabrication wherever it appears.
+    """
+    if not dates:
+        return []
+    assertive = _normalize_dashes(
+        " ".join(s for s in _split_sentences(answer) if not _is_refusal_sentence(s))
+    )
+    return [d for d in dates if _normalize_dashes(d) in assertive]
+
+
 def load_queries(path: Path) -> list[dict]:
     with path.open(encoding="utf-8") as fh:
         return yaml.safe_load(fh)["queries"]
@@ -373,7 +404,13 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
     facts = extract_grounding_facts(context)
     if facts is not None:
         verdict = verify_answer_grounding(answer, facts)
-        result["unverified_dates"] = verdict["unverified_dates"]
+        # D23 clause 2: the exemption covers BOTH fabrication inputs. This is
+        # the branch that fires whenever the probe retrieves any context at
+        # all, and it is where nonexistent-session was still scoring
+        # fabricated 5/5 after forbidden_date_hits had been exempted.
+        result["unverified_dates"] = _dates_asserted_outside_refusals(
+            answer, verdict["unverified_dates"]
+        )
         result["unverified_sources"] = verdict["unverified_sources"]
         result["unverified_chunk_ids"] = verdict["unverified_chunk_ids"]
     else:
