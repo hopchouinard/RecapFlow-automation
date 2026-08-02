@@ -46,9 +46,35 @@ DEFAULT_SYSTEM_PROMPT = REPO_ROOT / "docs" / "inference-guidelines.md"
 # 17k-60k characters (~4k-15k tokens) before the system prompt, so the default
 # silently truncated the prompt and clipped generation at the window edge —
 # RecapFlow #16's 25% empty-answer rate, and answers produced from roughly a
-# third of the retrieved context. Largest observed context is ~15,100 tokens;
-# 32768 clears it with room for the system prompt and the reply.
-DEFAULT_NUM_CTX = 32768
+# third of the retrieved context.
+#
+# 32768 was the first fix and was not enough. It sizes the window for the
+# PROMPT and leaves whatever remains for generation, which is the wrong way
+# round for a reasoning model. Measured across two independent 5-run blocks
+# (2026-08-02), `unresolved-survey` failed identically in each:
+#
+#     prompt_eval_count = 16243
+#     eval_count        = 16525   (16243 + 16525 = 32768, exactly num_ctx)
+#     done_reason       = length
+#     thinking_len      = 73861   (other runs: 11,737 - 30,364)
+#     answer            = ""
+#
+# Byte-identical counts in both blocks, so this is deterministic, not flaky.
+# The trigger is D26's retrieval nondeterminism: that probe receives three
+# distinct context variants, and the largest (16,243 prompt tokens vs ~14,600)
+# provokes runaway reasoning that then exhausts the window. One run in five
+# hits it, which puts a clean 5-run block at ~33% and two consecutive clean
+# blocks — what D19 acceptance requires — at roughly 1 in 9.
+#
+# gpt-oss:20b advertises gptoss.context_length = 131072, so 32768 was a
+# quarter of capacity. 65536 leaves ~49k tokens for generation against the
+# largest observed prompt, comfortably above the 16.5k this probe wants.
+# Verified against the live Ollama host before adoption.
+#
+# This treats the symptom. The defect is that retrieval hands the model a
+# different context per call (D26); fixing that is retrieval-package work and
+# out of scope here. Recorded because the acceptance gate now depends on it.
+DEFAULT_NUM_CTX = 65536
 
 # With num_ctx correct the model finally reasons to completion, and the
 # long-reasoning probes are slow: block 3 (2026-07-26) lost 5 of 60 probes to
