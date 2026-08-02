@@ -143,10 +143,38 @@ def _is_refusal_sentence(sentence: str) -> bool:
     return any(p in lowered for p in REFUSAL_PATTERNS)
 
 
+# A leading clause that is nothing but a negation carries the refusal's
+# SIGNAL but none of its vocabulary — the substance sits in the sentence
+# after it. Anchoring to the first sentence alone therefore loses refusals
+# that open this way: "No. I don't see that session in the retrieved
+# sources." scored not-refused, while the comma form of the same sentence
+# scored refused. One punctuation mark decided the verdict, and an
+# expect_refusal probe would have failed on a correct answer.
+_BARE_NEGATION_RE = re.compile(
+    r"^(no|none|nope|negative|not really|unfortunately|afraid not)"
+    r"[\s.!,;:—–-]*$",
+    re.IGNORECASE,
+)
+
+
 def _leading_clause(answer: str) -> str:
-    """The answer's first sentence, or its first line if that comes sooner."""
+    """The answer's first sentence, plus the next one if the first is a bare
+    negation.
+
+    Widening is capped at ONE extra sentence on purpose. The point of D24 is
+    that a refusal phrase buried deep in a substantive answer must not
+    classify it as a refusal; admitting the whole body back would undo that.
+    A bare negation is also NOT treated as a refusal on its own — "No."
+    answering "Has anyone used Codex in production?" is a grounded answer,
+    not a failure to answer.
+    """
     sentences = _split_sentences(answer)
-    return sentences[0] if sentences else ""
+    if not sentences:
+        return ""
+    lead = sentences[0]
+    if len(sentences) > 1 and _BARE_NEGATION_RE.match(lead.strip()):
+        return f"{lead} {sentences[1]}"
+    return lead
 
 
 def looks_like_refusal(answer: str) -> bool:
@@ -368,6 +396,24 @@ def evaluate_query(q: dict, args) -> dict:
     result["kept_sessions"] = sorted(
         {(c.get("ground_truth") or {}).get("session_date", "") for c in kept} - {""}
     )
+    # D25 must gate on what the model ACTUALLY SAW. `target_recall` above is
+    # computed from the unfiltered server response; render_context then drops
+    # everything below --min-score. If that filter removes every chunk from
+    # the target session, recall stays positive while the model receives a
+    # context without the target — and an honest no-source refusal would then
+    # score unhelpful_refusal=False and pass, which is exactly the
+    # vacuous-probe behaviour D25 exists to stop.
+    #
+    # Both figures are kept and they answer different questions:
+    #   target_recall       — what RETRIEVAL returned (mean_target_recall)
+    #   kept_target_recall  — what reached the MODEL (D25's gate)
+    #
+    # Latent as of 2026-08-02: 0 of 60 probe-runs diverged at min_score 0.2.
+    if targets:
+        kept_hit = len(set(targets) & set(result["kept_sessions"]))
+        result["kept_target_recall"] = kept_hit / len(targets)
+    else:
+        result["kept_target_recall"] = None
     # D26: recorded BEFORE the answer phase, so a probe that errors still
     # carries the context it was handed.
     result["context_digest"] = _context_digest(context)
@@ -388,7 +434,8 @@ def evaluate_query(q: dict, args) -> dict:
         return result
 
     result.update(
-        score_answer(q, reply["content"], context, result.get("target_recall"))
+        score_answer(q, reply["content"], context,
+                     result.get("kept_target_recall"))
     )
     result["thinking_len"] = len(reply["thinking"])
     result["done_reason"] = reply["done_reason"]
@@ -459,6 +506,9 @@ def score_answer(
     # of the acceptance gate for all ten answer-expecting probes. D24
     # rejected lookaround whack-a-mole and an LLM classifier when nothing
     # depended on the outcome; this keeps it that way.
+    # `target_recall` here is evaluate_query's kept_target_recall: what
+    # reached the model, not what retrieval returned. See the note at that
+    # call site.
     result["unhelpful_refusal"] = bool(
         result["refused"]
         and not q.get("expect_refusal")

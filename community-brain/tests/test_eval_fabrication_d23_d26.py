@@ -363,3 +363,150 @@ class TestProbeContract:
         q = self._queries()
         missing = [pid for pid, v in q.items() if "expect_refusal" not in v]
         assert missing == [], f"probes missing expect_refusal: {missing}"
+
+
+class TestD24LeadingNegation:
+    """A bare leading negation must not hide the refusal that follows.
+
+    Codex review of PR #22. "No. I don't see that session in the retrieved
+    sources." -> _leading_clause returns "No.", which matches no
+    REFUSAL_PATTERNS, so an expect_refusal probe is scored not-refused and
+    FAILS. The pre-D24 whole-body scan caught it, so D24 introduced this.
+
+    Verified against the harness before fixing: the comma form scored True
+    and the period form False. One punctuation mark decided the verdict.
+    """
+
+    @pytest.mark.parametrize("answer", [
+        "No. I don't see that session in the retrieved sources.",
+        "None. I couldn't locate any reference to that speaker.",
+        "No.\nI don't see a session from 2025-12-15.",
+        "Nope. I cannot answer that from the retrieved transcripts.",
+    ])
+    def test_bare_leading_negation_does_not_hide_the_refusal(self, answer):
+        ef = _harness()
+        assert ef.looks_like_refusal(answer) is True
+
+    def test_comma_form_still_classifies_as_a_refusal(self):
+        ef = _harness()
+        answer = "No, I don't see that session in the retrieved sources."
+        assert ef.looks_like_refusal(answer) is True
+
+    def test_a_substantive_negative_answer_is_not_a_refusal(self):
+        """"No." answering a yes/no question is an ANSWER. Widening the
+        window must not convert substantive negatives into refusals --
+        codex-production asks "Has anyone used Codex for production work?"
+        and a grounded "No" is a correct answer, not a failure to answer."""
+        ef = _harness()
+        answer = (
+            "No. Several participants discussed evaluating it, but the "
+            "transcripts record no production deployment."
+        )
+        assert ef.looks_like_refusal(answer) is False
+
+    def test_bare_negation_with_nothing_following_is_not_a_refusal(self):
+        ef = _harness()
+        assert ef.looks_like_refusal("No.") is False
+
+    def test_widening_stops_at_one_sentence(self):
+        """Only the sentence immediately after the negation is admitted; a
+        refusal phrase three sentences down must still not count."""
+        ef = _harness()
+        answer = (
+            "No. The rollout completed on schedule. It shipped in December. "
+            "I don't see any later sessions covering it."
+        )
+        assert ef.looks_like_refusal(answer) is False
+
+
+class TestD25UsesContextThatReachedTheModel:
+    """D25 must gate on what the model actually saw, not on what retrieval
+    returned before filtering.
+
+    Codex review of PR #22. `target_recall` is computed from the UNFILTERED
+    server response; `render_context` then applies --min-score. If min_score
+    drops every chunk from the target session, recall stays positive while
+    the model receives a context without the target -- so an honest
+    no-source refusal scores unhelpful_refusal=False and PASSES, which is
+    precisely the vacuous-probe behaviour D25 exists to stop.
+
+    Latent, not active: measured across the 2026-08-02 block, 0 of 60
+    probe-runs diverged at min_score 0.2. It goes live the moment min_score
+    or the score distribution moves.
+    """
+
+    @staticmethod
+    def _args():
+        import types
+        return types.SimpleNamespace(
+            server="http://s", api_key="k", top_k=10, answer=True,
+            min_score=0.2, ollama_url="http://o", model="m",
+            system_prompt_text="sys", temperature=0.0, num_ctx=65536,
+            answer_timeout=1800.0,
+        )
+
+    def _evaluate(self, ef, monkeypatch, *, retrieved, kept, answer):
+        monkeypatch.setattr(ef, "run_retrieval", lambda *a, **k: {
+            "chunks": [{"ground_truth": {"session_date": d}} for d in retrieved]
+        })
+        monkeypatch.setattr(ef, "render_context", lambda chunks, ms: (
+            "ctx", [{"ground_truth": {"session_date": d}} for d in kept]
+        ))
+        monkeypatch.setattr(ef, "run_answer", lambda *a, **k: {
+            "content": answer, "thinking": "", "done_reason": "stop",
+            "prompt_eval_count": 100, "eval_count": 100, "prompt_clipped": False,
+        })
+        q = {"id": "p", "class": "c", "question": "q",
+             "expect_refusal": False, "target_sessions": ["2026-03-04"]}
+        return ef.evaluate_query(q, self._args())
+
+    def test_target_filtered_out_makes_an_honest_refusal_unhelpful(self):
+        """Retrieval found it; min_score dropped it; the model never saw it."""
+        ef = _harness()
+        pytest.MonkeyPatch  # noqa - documents intent
+        mp = pytest.MonkeyPatch()
+        try:
+            r = self._evaluate(
+                ef, mp,
+                retrieved=["2026-03-04"],      # pre-filter: target present
+                kept=["2025-01-01"],           # post-filter: target GONE
+                answer="I don't see that session in the retrieved sources.",
+            )
+        finally:
+            mp.undo()
+        assert r["target_recall"] == 1.0, "pre-filter metric must be preserved"
+        assert r["kept_target_recall"] == 0.0
+        assert r["unhelpful_refusal"] is True
+
+    def test_target_survives_filtering_so_a_refusal_is_the_models_call(self):
+        ef = _harness()
+        mp = pytest.MonkeyPatch()
+        try:
+            r = self._evaluate(
+                ef, mp,
+                retrieved=["2026-03-04"],
+                kept=["2026-03-04"],
+                answer="I don't see that session in the retrieved sources.",
+            )
+        finally:
+            mp.undo()
+        assert r["target_recall"] == 1.0
+        assert r["kept_target_recall"] == 1.0
+        assert r["unhelpful_refusal"] is False
+
+    def test_pre_filter_recall_is_still_what_the_retrieval_metric_reports(self):
+        """mean_target_recall measures RETRIEVAL, so it must keep using the
+        unfiltered value even when D25 uses the filtered one."""
+        ef = _harness()
+        mp = pytest.MonkeyPatch()
+        try:
+            r = self._evaluate(
+                ef, mp,
+                retrieved=["2026-03-04"],
+                kept=[],
+                answer="The session covered the pricing rollout.",
+            )
+        finally:
+            mp.undo()
+        agg = ef.aggregate([r], answered=True)
+        assert agg["mean_target_recall"] == 1.0
