@@ -11,7 +11,15 @@ dependencies = [
     "python-dotenv>=1.0",
     "click>=8.1",
     "tqdm>=4.66",
-    "lancedb>=0.15",
+    # Pinned to a single minor on purpose. LanceDB's on-disk FTS index layout
+    # changed between 0.30 and 0.34: a 0.30.2 client enumerates ZERO indices on
+    # a table where 0.34.0 enumerates bm25_text_idx (measured on the n8n VM,
+    # 2026-08-02). With the previous open floor of >=0.15, the serving container
+    # (built later, got 0.34.0) and the host venv (built earlier, got 0.30.2)
+    # drifted apart while both satisfied the spec, and the older client turned a
+    # healthy corpus into a 503 on every /query. Lift this bound deliberately,
+    # and rebuild the container and every venv in the same change.
+    "lancedb>=0.34,<0.35",
     "ollama>=0.4",
     "openai>=1.50",
     "fastapi>=0.115",
