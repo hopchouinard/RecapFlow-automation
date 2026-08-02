@@ -62,6 +62,41 @@ def apply_v4_strategy(
         captured = m.group(1) if m.lastindex else m.group(0)
         return chunk.get(match_field) == captured
 
+    if match_strategy == "phrased_date_equals":
+        # Day-precision sibling of iso_date_equals, for natural-language dates.
+        # Capture groups: 1 = month name, 2 = day, 3 = year.
+        #
+        # Exists because date_phrased_with_day was a v4 hotpatch that reused
+        # month_year_overlap and deliberately did not capture the day, so a
+        # rule named "with_day" resolved only to the month. Measured live
+        # 2026-08-02: "the coaching call from March 4th, 2026" recruited ten
+        # candidates from 2026-03-17, 03-24 and 03-31 and never 2026-03-04,
+        # which is in the corpus. The ISO phrasing of the same date recruited
+        # it correctly. That is why the phrased-date-with-day eval probe sat
+        # at target_recall 0.0 in every run of every block — and it was
+        # misread as a corpus gap (FU-19) rather than a retrieval defect.
+        #
+        # Exact match, like iso_date_equals: naming a specific day and being
+        # handed a different session in the same month is worse than being
+        # handed nothing. Month-level recruitment remains available through
+        # date_month_year_match for questions that name only a month.
+        if not m.lastindex or m.lastindex < 3:
+            return False
+        month_name, day, year = m.group(1), m.group(2), m.group(3)
+        month_num = _MONTH_TO_NUM.get(str(month_name).capitalize())
+        if month_num is None:
+            return False
+        try:
+            day_num = int(day)
+        except (TypeError, ValueError):
+            return False
+        if not 1 <= day_num <= 31:
+            return False
+        # Zero-pad: "March 4" is 2026-03-04, never 2026-03-4.
+        target = f"{year}-{month_num}-{day_num:02d}"
+        session_date = chunk.get(match_field)
+        return isinstance(session_date, str) and session_date == target
+
     if match_strategy == "month_year_overlap":
         # Capture groups: 1 = month name, 2 = year
         if not m.lastindex or m.lastindex < 2:

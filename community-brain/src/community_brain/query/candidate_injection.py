@@ -88,6 +88,37 @@ def build_recruitment_query(rule: CueRule, question: str) -> RecruitmentSpec | N
                 fts_text=None,
             )
 
+        if rule.match_strategy == "phrased_date_equals":
+            # Day-precision sibling of iso_date_equals for natural-language
+            # dates. MUST stay in lockstep with cue_rules.apply_v4_strategy:
+            # that function decides whether a rule FIRES (the boost), this one
+            # decides what it RECRUITS (the pool). A strategy implemented in
+            # only one of the two silently degrades — adding it here alone
+            # would recruit without boosting; adding it there alone logs
+            # "recruitment: unknown strategy" and recruits nothing, which is
+            # exactly how this fix was caught mid-verification.
+            #
+            # Capture groups: 1 = month name, 2 = day, 3 = year.
+            if not m.lastindex or m.lastindex < 3:
+                return None
+            month_name = str(m.group(1)).capitalize()
+            day, year = m.group(2), m.group(3)
+            month_num = _cue_rules._MONTH_TO_NUM.get(month_name)
+            if month_num is None:
+                return None
+            try:
+                day_num = int(day)
+            except (TypeError, ValueError):
+                return None
+            if not 1 <= day_num <= 31:
+                return None
+            target = f"{year}-{month_num}-{day_num:02d}"
+            return RecruitmentSpec(
+                rule_name=rule.name,
+                where=f"{rule.match_field} = '{_sql_quote(target)}'",
+                fts_text=None,
+            )
+
         if rule.match_strategy == "month_year_overlap":
             if not m.lastindex or m.lastindex < 2:
                 return None
