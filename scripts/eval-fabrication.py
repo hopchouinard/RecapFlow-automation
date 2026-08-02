@@ -20,8 +20,10 @@ Run from community-brain/ with its venv, e.g.:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -101,9 +103,38 @@ REFUSAL_PATTERNS = (
 _APOSTROPHES = str.maketrans({"’": "'", "‘": "'", "ʼ": "'", "＇": "'"})
 
 
-def looks_like_refusal(answer: str) -> bool:
-    lowered = answer.lower().translate(_APOSTROPHES)
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+|\n+")
+
+
+def _split_sentences(text: str) -> list[str]:
+    """Split an answer into sentences for per-occurrence scoping (D23/D24)."""
+    return [s for s in _SENTENCE_SPLIT_RE.split(text or "") if s.strip()]
+
+
+def _is_refusal_sentence(sentence: str) -> bool:
+    """Does THIS sentence, on its own, express a refusal?"""
+    lowered = (sentence or "").lower().translate(_APOSTROPHES)
     return any(p in lowered for p in REFUSAL_PATTERNS)
+
+
+def _leading_clause(answer: str) -> str:
+    """The answer's first sentence, or its first line if that comes sooner."""
+    sentences = _split_sentences(answer)
+    return sentences[0] if sentences else ""
+
+
+def looks_like_refusal(answer: str) -> bool:
+    """D24: classify from the LEADING CLAUSE only, never the whole body.
+
+    The previous whole-body substring scan let one negative clause deep inside
+    a substantive answer flip the classification: hemal-garron-conjunction
+    opened "Yes - the mid-December call ... included both individuals" and
+    scored refused=True because "no retrieved sources" appeared two sentences
+    later. Refusals are excluded from the fabrication_rate denominator, so
+    every false refusal silently shrinks it — the same denominator defect
+    PR #17 fixed for empty answers, reached by a second route.
+    """
+    return _is_refusal_sentence(_leading_clause(answer))
 
 
 def find_forbidden_dates(answer: str, forbidden: list[str] | None) -> list[str]:
