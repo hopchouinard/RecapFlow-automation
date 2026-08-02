@@ -101,8 +101,16 @@ cue_rules:
   # v4 hotpatch (2026-05-05): natural-language date phrasings with day-of-month.
   # Validation surfaced that "March 4th, 2026" matches NO existing date rule
   # because the day is between month and year. This rule's regex tolerates an
-  # optional ordinal suffix and comma so the captures (month, year) can flow
-  # through month_year_overlap unchanged.
+  # optional ordinal suffix and comma. Captures are (month, DAY, year) and the
+  # strategy is phrased_date_equals -- day precision, the natural-language
+  # sibling of iso_date_equals.
+  #
+  # It was month precision until 2026-08-02: the original hotpatch did not
+  # capture the day so the captures could "flow through month_year_overlap
+  # unchanged", which meant "March 4th, 2026" resolved to ANY session in March
+  # 2026 and the top-k cap picked the winner. Live, it returned 2026-03-17,
+  # 03-24 and 03-31 and never 03-04. If you add a date cue, decide precision
+  # deliberately: month-level questions belong on date_month_year_match.
   - name: date_phrased_with_day
     question_regex: '\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b'
     match_field: session_date
