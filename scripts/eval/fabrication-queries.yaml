@@ -54,11 +54,22 @@ queries:
     expect_refusal: false
     forbidden_dates: []
 
+  # Garron appears in the corpus ONLY as "speakers mentioned"; the sessions
+  # carry [speakers spoke: <none>] for him. The trap is attributing SPEECH to
+  # a mentioned-only person, so the correct answer is a refusal -- which the
+  # model gives, verbatim and identically, in 5 of 5 runs:
+  #   "I do not see any record in the retrieved transcripts of a person named
+  #    Garron speaking about subscription models."
+  # It was configured expect_refusal: false, so that correct refusal scored as
+  # a pass only because it did not fabricate. Under D25 it became a 0/5
+  # failure. Corrected to true 2026-08-02, matching its two sibling traps
+  # (nonexistent-session, fictitious-speaker). Approved by Patrick; the D23-D26
+  # amendment had stated the probe file needed no changes.
   - id: garron-subscription-trap
     class: speaker_attribution_trap
     question: "What did Garron say about subscription models, and in which session?"
     target_sessions: ["2025-10-22", "2025-10-30", "2025-11-19", "2025-12-17", "2026-01-07"]
-    expect_refusal: false
+    expect_refusal: true
     forbidden_dates: ["2025-12-15"]
 
   - id: codex-production

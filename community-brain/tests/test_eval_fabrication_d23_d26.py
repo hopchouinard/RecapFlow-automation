@@ -326,3 +326,40 @@ class TestD25UnhelpfulRefusal:
         assert summary["per_probe"]["p1"]["unhelpful_refusal_count"] == 2
         assert summary["per_probe"]["p1"]["passes"] == 0
         assert summary["per_probe"]["p1"]["unanimous"] is False
+
+
+class TestProbeContract:
+    """Pins the probe file's refusal expectations.
+
+    D25 made expect_refusal decide pass/fail for every answer-expecting probe,
+    so a wrong value is no longer cosmetic. garron-subscription-trap carried
+    expect_refusal: false while being a speaker_attribution_trap whose correct
+    answer is a refusal; it read as a pass until D25 turned it into 0/5.
+    """
+
+    @staticmethod
+    def _queries():
+        ef = _harness()
+        return {q["id"]: q for q in ef.load_queries(_SCRIPT.parent / "eval" / "fabrication-queries.yaml")}
+
+    def test_the_three_traps_expect_refusal(self):
+        q = self._queries()
+        for pid in ("nonexistent-session", "fictitious-speaker",
+                    "garron-subscription-trap"):
+            assert q[pid]["expect_refusal"] is True, (
+                f"{pid} is a trap whose correct answer is a refusal"
+            )
+
+    def test_retrieval_probes_do_not_expect_refusal(self):
+        q = self._queries()
+        for pid in ("iso-quiet-date", "phrased-date-with-day",
+                    "relative-late-december", "quarter-q1-2026",
+                    "adam-james-contributions"):
+            assert q[pid]["expect_refusal"] is False, (
+                f"{pid} asks for content that exists; a refusal is a failure"
+            )
+
+    def test_every_probe_declares_expect_refusal(self):
+        q = self._queries()
+        missing = [pid for pid, v in q.items() if "expect_refusal" not in v]
+        assert missing == [], f"probes missing expect_refusal: {missing}"
