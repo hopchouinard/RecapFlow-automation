@@ -426,6 +426,19 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
     result["refusal_correct"] = (
         result["refused"] if q.get("expect_refusal") else None
     )
+    # D25: a probe that expected an ANSWER and returned a refusal has
+    # demonstrated nothing about grounding. phrased-date-with-day refuses in
+    # every run because its target session 2026-03-04 exists in historical/
+    # but was never ingested into the corpus manifest (FU-19) — correct model
+    # behaviour on a vacuous probe, and it currently scores as a PASS because
+    # it did not fabricate and no refusal was expected.
+    #
+    # Same defect class the no_answer flag closed: an answer that demonstrates
+    # nothing about grounding scoring as evidence that grounding works. A
+    # probe whose retrieval failed completely must not read green.
+    result["unhelpful_refusal"] = bool(
+        result["refused"] and not q.get("expect_refusal")
+    )
 
     facts = extract_grounding_facts(context)
     if facts is not None:
@@ -472,6 +485,9 @@ def probe_passed(r: dict) -> bool:
         return False
     if r.get("no_answer"):
         return False
+    # D25: an honest refusal caused by retrieval failure is not a pass.
+    if r.get("unhelpful_refusal"):
+        return False
     if r.get("truncated"):
         return False
     if r.get("fabricated"):
@@ -507,12 +523,15 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                     "no_answer_count": 0,
                     "truncated_count": 0,
                     "error_count": 0,
+                    "unhelpful_refusal_count": 0,
                     "context_digests": set(),
                 },
             )
             e["runs"] += 1
             if r.get("context_digest"):
                 e["context_digests"].add(r["context_digest"])
+            if r.get("unhelpful_refusal"):
+                e["unhelpful_refusal_count"] += 1
             if probe_passed(r):
                 e["passes"] += 1
             if r.get("fabricated"):

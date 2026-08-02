@@ -248,3 +248,58 @@ class TestD23VerifierProducedDates:
         scored = ef.score_answer(self.PROBE, answer, "<non-empty context>")
         assert scored["unverified_sources"] == ["source 9"]
         assert scored["fabricated"] is True
+
+
+class TestD25UnhelpfulRefusal:
+    """A probe that expected an answer and got a refusal has proved nothing."""
+
+    ANSWER_PROBE = {
+        "id": "phrased-date-with-day",
+        "class": "retrieval",
+        "question": "What was covered on Wednesday March 4th, 2026?",
+        "expect_refusal": False,
+    }
+    REFUSAL_PROBE = {
+        "id": "nonexistent-session",
+        "class": "adversarial",
+        "question": "Summarize the 2025-12-15 session.",
+        "expect_refusal": True,
+        "forbidden_dates": ["2025-12-15"],
+    }
+
+    def test_refusal_when_an_answer_was_expected_is_flagged(self):
+        ef = _harness()
+        answer = "I don't see any sessions from that date in the retrieved sources."
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "")
+        assert scored["unhelpful_refusal"] is True
+
+    def test_unhelpful_refusal_does_not_pass(self):
+        ef = _harness()
+        answer = "I don't see any sessions from that date in the retrieved sources."
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "")
+        assert ef.probe_passed(scored) is False
+
+    def test_expected_refusal_is_not_unhelpful(self):
+        ef = _harness()
+        answer = "I don't see a session from 2025-12-15 in the retrieved sources."
+        scored = ef.score_answer(self.REFUSAL_PROBE, answer, "")
+        assert scored["unhelpful_refusal"] is False
+        assert ef.probe_passed(scored) is True
+
+    def test_substantive_answer_is_not_unhelpful(self):
+        ef = _harness()
+        answer = "The session covered the pricing rollout and Q3 targets."
+        scored = ef.score_answer(self.ANSWER_PROBE, answer, "")
+        assert scored["unhelpful_refusal"] is False
+        assert ef.probe_passed(scored) is True
+
+    def test_summary_counts_unhelpful_refusals(self):
+        ef = _harness()
+        runs = [
+            [{"id": "p1", "unhelpful_refusal": True, "expect_refusal": False}],
+            [{"id": "p1", "unhelpful_refusal": True, "expect_refusal": False}],
+        ]
+        summary = ef.summarize_runs(runs, answered=True)
+        assert summary["per_probe"]["p1"]["unhelpful_refusal_count"] == 2
+        assert summary["per_probe"]["p1"]["passes"] == 0
+        assert summary["per_probe"]["p1"]["unanimous"] is False
