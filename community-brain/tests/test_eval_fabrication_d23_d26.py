@@ -119,3 +119,40 @@ class TestD23RefusalDateExemption:
         ef = _harness()
         answer = "I don't see a session from 2025-12-15 in the retrieved sources."
         assert ef.find_forbidden_dates(answer, ["2025-12-15"]) == ["2025-12-15"]
+
+
+class TestD26ContextStability:
+    """Answer-phase results are not evidence without a distinct-context count."""
+
+    def test_summarize_runs_reports_distinct_contexts(self):
+        ef = _harness()
+        runs = [
+            [{"id": "p1", "context_digest": "aaaa", "expect_refusal": False},
+             {"id": "p2", "context_digest": "cccc", "expect_refusal": False}],
+            [{"id": "p1", "context_digest": "bbbb", "expect_refusal": False},
+             {"id": "p2", "context_digest": "cccc", "expect_refusal": False}],
+        ]
+        summary = ef.summarize_runs(runs, answered=True)
+        assert summary["per_probe"]["p1"]["distinct_contexts"] == 2
+        assert summary["per_probe"]["p2"]["distinct_contexts"] == 1
+
+    def test_missing_digest_does_not_crash_the_summary(self):
+        ef = _harness()
+        runs = [[{"id": "p1", "expect_refusal": False}]]
+        summary = ef.summarize_runs(runs, answered=True)
+        assert summary["per_probe"]["p1"]["distinct_contexts"] == 0
+
+    def test_summary_stays_json_serializable(self):
+        """The digest set must not survive into the report: main() writes it
+        with json.dumps and a set is not encodable."""
+        import json as _json
+        ef = _harness()
+        runs = [[{"id": "p1", "context_digest": "aaaa", "expect_refusal": False}]]
+        summary = ef.summarize_runs(runs, answered=True)
+        _json.dumps(summary)
+
+    def test_digest_is_stable_for_identical_context(self):
+        ef = _harness()
+        assert ef._context_digest("abc") == ef._context_digest("abc")
+        assert ef._context_digest("abc") != ef._context_digest("abd")
+        assert len(ef._context_digest("abc")) == 16

@@ -269,6 +269,20 @@ def run_answer(
     }
 
 
+def _context_digest(context: str) -> str:
+    """A stable short digest of the rendered context (D26).
+
+    Retrieval returns materially different chunk sets for byte-identical
+    queries — measured at two variants sharing 4 of 10 chunks, with
+    bit-identical embeddings and one uvicorn worker, so the nondeterminism is
+    inside LanceDB hybrid search. mean_target_recall cannot see it: the
+    targets are stable, and the variance lives in the non-target chunks that
+    make up most of the context. Answer-phase results are not evidence of
+    model behaviour without this figure alongside them.
+    """
+    return hashlib.sha256((context or "").encode("utf-8")).hexdigest()[:16]
+
+
 def evaluate_query(q: dict, args) -> dict:
     result: dict = {"id": q["id"], "class": q["class"], "question": q["question"]}
 
@@ -297,6 +311,9 @@ def evaluate_query(q: dict, args) -> dict:
     result["kept_sessions"] = sorted(
         {(c.get("ground_truth") or {}).get("session_date", "") for c in kept} - {""}
     )
+    # D26: recorded BEFORE the answer phase, so a probe that errors still
+    # carries the context it was handed.
+    result["context_digest"] = _context_digest(context)
     # The retrieval phase has already succeeded by this point. An answer-phase
     # failure must NOT discard it: main() used to turn the whole probe into
     # {"id", "error"}, which removed an already-computed target_recall from
@@ -427,9 +444,12 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                     "no_answer_count": 0,
                     "truncated_count": 0,
                     "error_count": 0,
+                    "context_digests": set(),
                 },
             )
             e["runs"] += 1
+            if r.get("context_digest"):
+                e["context_digests"].add(r["context_digest"])
             if probe_passed(r):
                 e["passes"] += 1
             if r.get("fabricated"):
@@ -445,6 +465,9 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
     for e in per_probe.values():
         e["pass_rate"] = (e["passes"] / e["runs"]) if e["runs"] else 0.0
         e["unanimous"] = e["runs"] > 0 and e["passes"] == e["runs"]
+        # D26. The count is the reportable figure, and a set is not
+        # JSON-encodable — main() writes this structure with json.dumps.
+        e["distinct_contexts"] = len(e.pop("context_digests"))
 
     aggregates: dict = {}
     per_run = [aggregate(run, answered) for run in runs]
@@ -703,6 +726,20 @@ def main() -> int:
             f"[eval] runs={s['runs']}  all_unanimous={s['all_unanimous']}  "
             f"acceptance_eligible={s['acceptance_eligible']}"
         )
+        # D26: a pass verdict MUST NOT be presented without the stability
+        # figure beside it. The verdict can reproduce while the substantive
+        # answer does not.
+        unstable = sorted(
+            (pid, e["distinct_contexts"])
+            for pid, e in s["per_probe"].items()
+            if e["distinct_contexts"] > 1
+        )
+        print(
+            f"[eval] probes receiving >1 distinct context: "
+            f"{len(unstable)}/{len(s['per_probe'])}"
+        )
+        for pid, n in unstable:
+            print(f"[eval]   unstable context: {pid} ({n} distinct)")
         if not s["acceptance_eligible"]:
             reason = (
                 "answer phase not run" if not args.answer
