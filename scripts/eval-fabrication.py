@@ -40,6 +40,22 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_QUERIES = REPO_ROOT / "scripts" / "eval" / "fabrication-queries.yaml"
 DEFAULT_SYSTEM_PROMPT = REPO_ROOT / "docs" / "inference-guidelines.md"
 
+# Ollama defaults num_ctx to 4096. The rendered context on this corpus runs
+# 17k-60k characters (~4k-15k tokens) before the system prompt, so the default
+# silently truncated the prompt and clipped generation at the window edge —
+# RecapFlow #16's 25% empty-answer rate, and answers produced from roughly a
+# third of the retrieved context. Largest observed context is ~15,100 tokens;
+# 32768 clears it with room for the system prompt and the reply.
+DEFAULT_NUM_CTX = 32768
+
+# With num_ctx correct the model finally reasons to completion, and the
+# long-reasoning probes are slow: block 3 (2026-07-26) lost 5 of 60 probes to
+# the previous hard-coded 600s, three of them `unresolved-survey`, which
+# generated 4,531 tokens in the runs that did finish. A timeout converts a
+# slow-but-valid answer into an `error`, and an error breaks unanimity — so
+# the wall clock was silently deciding acceptance. ~10 tok/s observed here.
+DEFAULT_ANSWER_TIMEOUT = 1800.0
+
 # NOTE: refusal detection is a substring heuristic — it can still misclassify
 # hedged answers. It skews fabrication_rate (refused answers are excluded from
 # that denominator) and refusal_correctness, so operators should sanity-check
@@ -136,9 +152,22 @@ def render_context(chunks: list[dict], min_score: float) -> tuple[str, list[dict
 
 def run_answer(
     ollama_url: str, model: str, system_prompt: str, context: str,
-    question: str, temperature: float,
-) -> tuple[str, str]:
-    """Returns (content, thinking). Reasoning models split the reply."""
+    question: str, temperature: float, num_ctx: int = DEFAULT_NUM_CTX,
+    timeout: float = DEFAULT_ANSWER_TIMEOUT,
+) -> dict:
+    """Ask the model one probe and report how the generation terminated.
+
+    Returns content, thinking, and the termination evidence
+    (done_reason/prompt_eval_count/eval_count). Reasoning models split the
+    reply: `thinking` carries the chain, `content` the final answer.
+
+    `num_ctx` MUST be sent. Ollama's 4096 default truncates both the prompt
+    and the generation on this corpus, which produced answers grounded in a
+    third of the context the verifier scored them against, and empty
+    `content` whenever the model was still reasoning at the window edge
+    (RecapFlow #16). `done_reason` is returned so that truncation is visible
+    in the report rather than inferred from a suspiciously short answer.
+    """
     resp = httpx.post(
         f"{ollama_url}/api/chat",
         json={
@@ -149,16 +178,32 @@ def run_answer(
                 {"role": "user", "content": question},
             ],
             "stream": False,
-            "options": {"temperature": temperature},
+            "options": {"temperature": temperature, "num_ctx": num_ctx},
         },
-        timeout=600.0,
+        timeout=timeout,
     )
     resp.raise_for_status()
-    message = resp.json()["message"]
-    # Reasoning models split the reply: `thinking` carries the chain,
-    # `content` the final answer. Return both so an empty `content` can be
-    # told apart from a transport failure.
-    return message.get("content") or "", message.get("thinking") or ""
+    payload = resp.json()
+    message = payload["message"]
+    prompt_eval_count = payload.get("prompt_eval_count")
+    # `done_reason` only reports how GENERATION ended. A prompt clipped to fit
+    # the window can still produce a short reply that terminates normally with
+    # done_reason="stop" — and that probe would pass while the verifier scores
+    # it against sources the model never received, which is precisely the
+    # unsound instrument this change exists to remove. Ollama reports the
+    # tokens it actually evaluated, so a count that reaches the window is the
+    # clip signal. Measured pre-fix: num_ctx=4096, prompt_eval_count=4098.
+    prompt_clipped = (
+        prompt_eval_count is not None and prompt_eval_count >= num_ctx
+    )
+    return {
+        "content": message.get("content") or "",
+        "thinking": message.get("thinking") or "",
+        "done_reason": payload.get("done_reason"),
+        "prompt_eval_count": prompt_eval_count,
+        "eval_count": payload.get("eval_count"),
+        "prompt_clipped": prompt_clipped,
+    }
 
 
 def evaluate_query(q: dict, args) -> dict:
@@ -189,12 +234,35 @@ def evaluate_query(q: dict, args) -> dict:
     result["kept_sessions"] = sorted(
         {(c.get("ground_truth") or {}).get("session_date", "") for c in kept} - {""}
     )
-    answer, thinking = run_answer(
-        args.ollama_url, args.model, args.system_prompt_text, context,
-        q["question"], args.temperature,
+    # The retrieval phase has already succeeded by this point. An answer-phase
+    # failure must NOT discard it: main() used to turn the whole probe into
+    # {"id", "error"}, which removed an already-computed target_recall from
+    # the aggregate denominator and made a retrieval metric move whenever
+    # Ollama hiccuped. Block 3 run 1 read mean_target_recall 0.2889 for
+    # exactly that reason — two timeouts, six probes in the mean instead of
+    # eight. Only the answer phase is marked errored.
+    try:
+        reply = run_answer(
+            args.ollama_url, args.model, args.system_prompt_text, context,
+            q["question"], args.temperature, args.num_ctx, args.answer_timeout,
+        )
+    except Exception as exc:
+        result["answer_error"] = str(exc) or exc.__class__.__name__
+        return result
+
+    result.update(score_answer(q, reply["content"], context))
+    result["thinking_len"] = len(reply["thinking"])
+    result["done_reason"] = reply["done_reason"]
+    result["prompt_eval_count"] = reply["prompt_eval_count"]
+    result["eval_count"] = reply["eval_count"]
+    result["prompt_clipped"] = reply["prompt_clipped"]
+    # Two independent ways the window can invalidate a probe: generation cut
+    # off at the edge (done_reason == "length"), or the prompt clipped before
+    # generation even began (prompt_eval_count reaching num_ctx). The second
+    # can coexist with a perfectly normal-looking short answer.
+    result["truncated"] = (
+        reply["done_reason"] == "length" or reply["prompt_clipped"]
     )
-    result.update(score_answer(q, answer, context))
-    result["thinking_len"] = len(thinking)
     return result
 
 
@@ -250,9 +318,11 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
 def probe_passed(r: dict) -> bool:
     """A probe passes a run when it did not fabricate and, where a refusal
     was expected, actually refused."""
-    if "error" in r:
+    if "error" in r or r.get("answer_error"):
         return False
     if r.get("no_answer"):
+        return False
+    if r.get("truncated"):
         return False
     if r.get("fabricated"):
         return False
@@ -285,6 +355,7 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                     "fabricated_count": 0,
                     "refused_count": 0,
                     "no_answer_count": 0,
+                    "truncated_count": 0,
                     "error_count": 0,
                 },
             )
@@ -297,7 +368,9 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                 e["refused_count"] += 1
             if r.get("no_answer"):
                 e["no_answer_count"] += 1
-            if "error" in r:
+            if r.get("truncated"):
+                e["truncated_count"] += 1
+            if "error" in r or r.get("answer_error"):
                 e["error_count"] += 1
     for e in per_probe.values():
         e["pass_rate"] = (e["passes"] / e["runs"]) if e["runs"] else 0.0
@@ -349,20 +422,35 @@ def aggregate(per_query: list[dict], answered: bool) -> dict:
         1 for r in per_query if r.get("injected_counts", 0) > 0
     )
     if answered:
-        # A probe that returned nothing is not an answer: counting it in the
-        # denominator dilutes the fabrication rate with non-results, which is
-        # the same inflation the no_answer flag exists to remove.
+        # A probe that returned nothing — or was cut off at the context
+        # window — is not an answer: counting it in the denominator dilutes
+        # the fabrication rate with non-results, which is the same inflation
+        # the no_answer flag exists to remove.
         answered_qs = [
             r for r in per_query
             if not r.get("refused") and not r.get("no_answer")
+            and not r.get("truncated") and not r.get("answer_error")
             and "error" not in r
         ]
+        # An empty denominator is NOT a rate of zero. Reporting 0.0 when
+        # nothing was measurable makes "every answer was clipped" read
+        # identical to "nothing fabricated" — the most reassuring possible
+        # rendering of no evidence at all.
         agg["fabrication_rate"] = (
             (sum(1 for r in answered_qs if r.get("fabricated")) / len(answered_qs))
             if answered_qs
-            else 0.0
+            else None
         )
-        refusal_probes = [r for r in per_query if r.get("refusal_correct") is not None]
+        # Same rule as the fabrication denominator: a truncated fragment that
+        # happens to contain a refusal phrase, or an empty answer, has not
+        # demonstrated a refusal. Counting them here let a non-result claim
+        # success on the metric the harness is least able to afford it on.
+        refusal_probes = [
+            r for r in per_query
+            if r.get("refusal_correct") is not None
+            and not r.get("no_answer") and not r.get("truncated")
+            and not r.get("answer_error") and "error" not in r
+        ]
         agg["refusal_correctness"] = (
             (sum(1 for r in refusal_probes if r["refusal_correct"]) / len(refusal_probes))
             if refusal_probes
@@ -375,6 +463,27 @@ def compare(baseline_path: Path, current_path: Path) -> None:
     baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
     current = json.loads(current_path.read_text(encoding="utf-8"))
     print(f"baseline: {baseline_path}  →  current: {current_path}")
+
+    # Answer-phase settings decide what the numbers below can possibly mean.
+    # A pre-fix report carries no num_ctx at all and was produced under
+    # Ollama's 4096 default; diffing it against a 32768-window report
+    # attributes prompt truncation to the evaluated system. Timeout
+    # mismatches do the same thing via errored probes.
+    if baseline.get("answer_phase") or current.get("answer_phase"):
+        for field, label in (("num_ctx", "num_ctx"),
+                             ("answer_timeout", "answer_timeout")):
+            b_val, c_val = baseline.get(field), current.get(field)
+            if b_val != c_val:
+                print(
+                    f"  ⚠ WARNING: {label} differs ({b_val} → {c_val}) — "
+                    f"answer-phase deltas below are NOT attributable to the "
+                    f"evaluated system"
+                )
+            elif b_val is None:
+                print(
+                    f"  ⚠ WARNING: {label} not recorded on either side — "
+                    f"cannot confirm these reports are comparable"
+                )
 
     b_sum, c_sum = baseline.get("summary"), current.get("summary")
     if b_sum or c_sum:
@@ -445,6 +554,19 @@ def main() -> int:
     parser.add_argument("--model", default="gpt-oss:20b")
     parser.add_argument("--system-prompt", type=Path, default=DEFAULT_SYSTEM_PROMPT)
     parser.add_argument("--temperature", type=float, default=0.0)
+    parser.add_argument(
+        "--num-ctx", type=int, default=DEFAULT_NUM_CTX,
+        help="Ollama context window for the answer phase. Ollama's own "
+             "default (4096) truncates this corpus's rendered context and "
+             "produces empty answers (RecapFlow #16); it is recorded in the "
+             "report so evidence carries the window it was produced under",
+    )
+    parser.add_argument(
+        "--answer-timeout", type=float, default=DEFAULT_ANSWER_TIMEOUT,
+        help="per-probe answer-phase timeout in seconds. A timeout is scored "
+             "as an error and breaks unanimity, so this must not be tighter "
+             "than the long-reasoning probes need",
+    )
     parser.add_argument("--out", type=Path, default=Path("eval-fabrication.json"))
     parser.add_argument("--compare", nargs=2, type=Path, metavar=("BASELINE", "CURRENT"))
     parser.add_argument(
@@ -491,6 +613,8 @@ def main() -> int:
         "answer_phase": bool(args.answer),
         "model": args.model if args.answer else None,
         "temperature": args.temperature if args.answer else None,
+        "num_ctx": args.num_ctx if args.answer else None,
+        "answer_timeout": args.answer_timeout if args.answer else None,
         "runs_requested": args.runs,
         "per_query": runs[-1],
         "aggregates": aggregate(clean[-1], args.answer),
