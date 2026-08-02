@@ -20,8 +20,10 @@ Run from community-brain/ with its venv, e.g.:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -44,9 +46,35 @@ DEFAULT_SYSTEM_PROMPT = REPO_ROOT / "docs" / "inference-guidelines.md"
 # 17k-60k characters (~4k-15k tokens) before the system prompt, so the default
 # silently truncated the prompt and clipped generation at the window edge —
 # RecapFlow #16's 25% empty-answer rate, and answers produced from roughly a
-# third of the retrieved context. Largest observed context is ~15,100 tokens;
-# 32768 clears it with room for the system prompt and the reply.
-DEFAULT_NUM_CTX = 32768
+# third of the retrieved context.
+#
+# 32768 was the first fix and was not enough. It sizes the window for the
+# PROMPT and leaves whatever remains for generation, which is the wrong way
+# round for a reasoning model. Measured across two independent 5-run blocks
+# (2026-08-02), `unresolved-survey` failed identically in each:
+#
+#     prompt_eval_count = 16243
+#     eval_count        = 16525   (16243 + 16525 = 32768, exactly num_ctx)
+#     done_reason       = length
+#     thinking_len      = 73861   (other runs: 11,737 - 30,364)
+#     answer            = ""
+#
+# Byte-identical counts in both blocks, so this is deterministic, not flaky.
+# The trigger is D26's retrieval nondeterminism: that probe receives three
+# distinct context variants, and the largest (16,243 prompt tokens vs ~14,600)
+# provokes runaway reasoning that then exhausts the window. One run in five
+# hits it, which puts a clean 5-run block at ~33% and two consecutive clean
+# blocks — what D19 acceptance requires — at roughly 1 in 9.
+#
+# gpt-oss:20b advertises gptoss.context_length = 131072, so 32768 was a
+# quarter of capacity. 65536 leaves ~49k tokens for generation against the
+# largest observed prompt, comfortably above the 16.5k this probe wants.
+# Verified against the live Ollama host before adoption.
+#
+# This treats the symptom. The defect is that retrieval hands the model a
+# different context per call (D26); fixing that is retrieval-package work and
+# out of scope here. Recorded because the acceptance gate now depends on it.
+DEFAULT_NUM_CTX = 65536
 
 # With num_ctx correct the model finally reasons to completion, and the
 # long-reasoning probes are slow: block 3 (2026-07-26) lost 5 of 60 probes to
@@ -101,13 +129,96 @@ REFUSAL_PATTERNS = (
 _APOSTROPHES = str.maketrans({"’": "'", "‘": "'", "ʼ": "'", "＇": "'"})
 
 
-def looks_like_refusal(answer: str) -> bool:
-    lowered = answer.lower().translate(_APOSTROPHES)
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+|\n+")
+
+
+def _split_sentences(text: str) -> list[str]:
+    """Split an answer into sentences for per-occurrence scoping (D23/D24)."""
+    return [s for s in _SENTENCE_SPLIT_RE.split(text or "") if s.strip()]
+
+
+def _is_refusal_sentence(sentence: str) -> bool:
+    """Does THIS sentence, on its own, express a refusal?"""
+    lowered = (sentence or "").lower().translate(_APOSTROPHES)
     return any(p in lowered for p in REFUSAL_PATTERNS)
 
 
-def find_forbidden_dates(answer: str, forbidden: list[str] | None) -> list[str]:
+# A leading clause that is nothing but a negation carries the refusal's
+# SIGNAL but none of its vocabulary — the substance sits in the sentence
+# after it. Anchoring to the first sentence alone therefore loses refusals
+# that open this way: "No. I don't see that session in the retrieved
+# sources." scored not-refused, while the comma form of the same sentence
+# scored refused. One punctuation mark decided the verdict, and an
+# expect_refusal probe would have failed on a correct answer.
+_BARE_NEGATION_RE = re.compile(
+    r"^(no|none|nope|negative|not really|unfortunately|afraid not)"
+    r"[\s.!,;:—–-]*$",
+    re.IGNORECASE,
+)
+
+
+def _leading_clause(answer: str) -> str:
+    """The answer's first sentence, plus the next one if the first is a bare
+    negation.
+
+    Widening is capped at ONE extra sentence on purpose. The point of D24 is
+    that a refusal phrase buried deep in a substantive answer must not
+    classify it as a refusal; admitting the whole body back would undo that.
+    A bare negation is also NOT treated as a refusal on its own — "No."
+    answering "Has anyone used Codex in production?" is a grounded answer,
+    not a failure to answer.
+    """
+    sentences = _split_sentences(answer)
+    if not sentences:
+        return ""
+    lead = sentences[0]
+    if len(sentences) > 1 and _BARE_NEGATION_RE.match(lead.strip()):
+        return f"{lead} {sentences[1]}"
+    return lead
+
+
+def looks_like_refusal(answer: str) -> bool:
+    """D24: classify from the LEADING CLAUSE only, never the whole body.
+
+    The previous whole-body substring scan let one negative clause deep inside
+    a substantive answer flip the classification: hemal-garron-conjunction
+    opened "Yes - the mid-December call ... included both individuals" and
+    scored refused=True because "no retrieved sources" appeared two sentences
+    later. Refusals are excluded from the fabrication_rate denominator, so
+    every false refusal silently shrinks it — the same denominator defect
+    PR #17 fixed for empty answers, reached by a second route.
+    """
+    return _is_refusal_sentence(_leading_clause(answer))
+
+
+def find_forbidden_dates(
+    answer: str,
+    forbidden: list[str] | None,
+    exempt_refusal_sentences: bool = False,
+) -> list[str]:
     """Return the configured trap dates that appear in `answer`.
+
+    D23: with `exempt_refusal_sentences`, a date occurrence is scored only
+    when the sentence carrying THAT occurrence is not itself a refusal. The
+    trap asks whether the model ASSERTED something about a session that does
+    not exist; naming the date in order to say it was not found is the only
+    correct refusal available. `nonexistent-session` refused 15/15 across
+    blocks 3-5 and was scored fabricated=True every time — the sole reason
+    all_unanimous was False.
+
+    Per-occurrence, never per-answer: the naive `if refused: ignore` converts
+    the trap into a fabrication licence, especially under D24 where the
+    classification comes from the leading clause alone.
+
+    Default False keeps `verify_answer_grounding` and the deployed guard
+    unchanged — the production filter still annotates the date, which is
+    correct for a reader who needs to know it was not in the sources.
+
+    KNOWN GAP (Patchou-plan FU-30): scoping is per SENTENCE, so a single
+    sentence that both refuses and asserts — "I don't see a session from
+    2025-12-15, but it covered the pricing rollout" — remains exempt. Closing
+    it needs clause-level splitting, which produces false positives on
+    ordinary prose. Approved as-is 2026-08-02; revisit if a probe exploits it.
 
     Compares modulo dash codepoint, reusing the filter's normalizer so the
     harness and the production guard cannot drift apart. A raw substring
@@ -119,8 +230,45 @@ def find_forbidden_dates(answer: str, forbidden: list[str] | None) -> list[str]:
     """
     if not forbidden:
         return []
-    normalized = _normalize_dashes(answer)
+    if exempt_refusal_sentences:
+        scored_text = " ".join(
+            s for s in _split_sentences(answer) if not _is_refusal_sentence(s)
+        )
+    else:
+        scored_text = answer or ""
+    normalized = _normalize_dashes(scored_text)
     return [d for d in forbidden if _normalize_dashes(d) in normalized]
+
+
+def _dates_asserted_outside_refusals(
+    answer: str, dates: list[str] | None
+) -> list[str]:
+    """D23 clause 2, applied to VERIFIER-produced date hits.
+
+    `verify_answer_grounding` reports every date token the model emitted that
+    is absent from the rendered context. For a correct refusal the named date
+    is absent *by construction* — so the verifier flags precisely the token
+    that proves the model behaved correctly.
+
+    Measured 2026-08-02, and the reason this function exists: after exempting
+    `forbidden_date_hits` and the no-sources branch, `nonexistent-session`
+    still scored fabricated 5/5 with `forbidden_date_hits=[]` and
+    `unverified_dates=['2025-12-15']`. That probe retrieves 36,717 characters
+    of context, so `extract_grounding_facts` returns facts and this path runs
+    instead of the no-sources one. Exempting only the other two inputs is
+    insufficient for every probe that retrieves anything at all.
+
+    Same per-occurrence rule as `find_forbidden_dates`: a date survives only
+    if it appears in a sentence that is not itself a refusal. Dates only —
+    `unverified_sources` and `unverified_chunk_ids` are never exempted, since
+    an invented citation is a fabrication wherever it appears.
+    """
+    if not dates:
+        return []
+    assertive = _normalize_dashes(
+        " ".join(s for s in _split_sentences(answer) if not _is_refusal_sentence(s))
+    )
+    return [d for d in dates if _normalize_dashes(d) in assertive]
 
 
 def load_queries(path: Path) -> list[dict]:
@@ -206,6 +354,20 @@ def run_answer(
     }
 
 
+def _context_digest(context: str) -> str:
+    """A stable short digest of the rendered context (D26).
+
+    Retrieval returns materially different chunk sets for byte-identical
+    queries — measured at two variants sharing 4 of 10 chunks, with
+    bit-identical embeddings and one uvicorn worker, so the nondeterminism is
+    inside LanceDB hybrid search. mean_target_recall cannot see it: the
+    targets are stable, and the variance lives in the non-target chunks that
+    make up most of the context. Answer-phase results are not evidence of
+    model behaviour without this figure alongside them.
+    """
+    return hashlib.sha256((context or "").encode("utf-8")).hexdigest()[:16]
+
+
 def evaluate_query(q: dict, args) -> dict:
     result: dict = {"id": q["id"], "class": q["class"], "question": q["question"]}
 
@@ -234,6 +396,27 @@ def evaluate_query(q: dict, args) -> dict:
     result["kept_sessions"] = sorted(
         {(c.get("ground_truth") or {}).get("session_date", "") for c in kept} - {""}
     )
+    # D25 must gate on what the model ACTUALLY SAW. `target_recall` above is
+    # computed from the unfiltered server response; render_context then drops
+    # everything below --min-score. If that filter removes every chunk from
+    # the target session, recall stays positive while the model receives a
+    # context without the target — and an honest no-source refusal would then
+    # score unhelpful_refusal=False and pass, which is exactly the
+    # vacuous-probe behaviour D25 exists to stop.
+    #
+    # Both figures are kept and they answer different questions:
+    #   target_recall       — what RETRIEVAL returned (mean_target_recall)
+    #   kept_target_recall  — what reached the MODEL (D25's gate)
+    #
+    # Latent as of 2026-08-02: 0 of 60 probe-runs diverged at min_score 0.2.
+    if targets:
+        kept_hit = len(set(targets) & set(result["kept_sessions"]))
+        result["kept_target_recall"] = kept_hit / len(targets)
+    else:
+        result["kept_target_recall"] = None
+    # D26: recorded BEFORE the answer phase, so a probe that errors still
+    # carries the context it was handed.
+    result["context_digest"] = _context_digest(context)
     # The retrieval phase has already succeeded by this point. An answer-phase
     # failure must NOT discard it: main() used to turn the whole probe into
     # {"id", "error"}, which removed an already-computed target_recall from
@@ -250,7 +433,10 @@ def evaluate_query(q: dict, args) -> dict:
         result["answer_error"] = str(exc) or exc.__class__.__name__
         return result
 
-    result.update(score_answer(q, reply["content"], context))
+    result.update(
+        score_answer(q, reply["content"], context,
+                     result.get("kept_target_recall"))
+    )
     result["thinking_len"] = len(reply["thinking"])
     result["done_reason"] = reply["done_reason"]
     result["prompt_eval_count"] = reply["prompt_eval_count"]
@@ -266,7 +452,9 @@ def evaluate_query(q: dict, args) -> dict:
     return result
 
 
-def score_answer(q: dict, answer: str, context: str) -> dict:
+def score_answer(
+    q: dict, answer: str, context: str, target_recall: float | None = None
+) -> dict:
     """Pure scoring of one answer against the context it was given.
 
     Split out of evaluate_query (which does network I/O and so could not be
@@ -289,22 +477,72 @@ def score_answer(q: dict, answer: str, context: str) -> dict:
     result["refusal_correct"] = (
         result["refused"] if q.get("expect_refusal") else None
     )
+    # D25: a probe that expected an ANSWER and returned a refusal BECAUSE
+    # RETRIEVAL FAILED has demonstrated nothing about grounding.
+    # phrased-date-with-day refuses in every run because its target session
+    # 2026-03-04 exists in historical/ but was never ingested into the corpus
+    # manifest (FU-19) — correct model behaviour on a vacuous probe, and it
+    # scored as a PASS because it did not fabricate and no refusal was
+    # expected. Same defect class the no_answer flag closed.
+    #
+    # `target_recall == 0.0` is load-bearing, not decoration. Scoping only on
+    # "refused and not expect_refusal" was measured against the 2026-08-02
+    # block and broke three further probes that have nothing to do with
+    # retrieval failure:
+    #
+    #   codex-production   3/5 — two semantically identical answers, one
+    #                            opening "The retrieved transcripts do not
+    #                            contain..." (not matched) and one "I don't
+    #                            see any..." (matched). Same meaning,
+    #                            opposite verdict, decided by phrasing.
+    #   unresolved-survey  4/5 — "I don't find any question that was left
+    #                            unanswered" is a substantive ANSWER (the
+    #                            answer is "none") wearing a refusal keyword.
+    #
+    # Both declare no target_sessions, so target_recall is None and neither
+    # can have suffered a retrieval failure by definition. Without this
+    # condition D25 promotes `looks_like_refusal` — a 23-keyword heuristic
+    # that is demonstrably both over- and under-inclusive — into the arbiter
+    # of the acceptance gate for all ten answer-expecting probes. D24
+    # rejected lookaround whack-a-mole and an LLM classifier when nothing
+    # depended on the outcome; this keeps it that way.
+    # `target_recall` here is evaluate_query's kept_target_recall: what
+    # reached the model, not what retrieval returned. See the note at that
+    # call site.
+    result["unhelpful_refusal"] = bool(
+        result["refused"]
+        and not q.get("expect_refusal")
+        and target_recall == 0.0
+    )
 
     facts = extract_grounding_facts(context)
     if facts is not None:
         verdict = verify_answer_grounding(answer, facts)
-        result["unverified_dates"] = verdict["unverified_dates"]
+        # D23 clause 2: the exemption covers BOTH fabrication inputs. This is
+        # the branch that fires whenever the probe retrieves any context at
+        # all, and it is where nonexistent-session was still scoring
+        # fabricated 5/5 after forbidden_date_hits had been exempted.
+        result["unverified_dates"] = _dates_asserted_outside_refusals(
+            answer, verdict["unverified_dates"]
+        )
         result["unverified_sources"] = verdict["unverified_sources"]
         result["unverified_chunk_ids"] = verdict["unverified_chunk_ids"]
     else:
         # No sources retrieved: only explicit traps are checkable.
+        # D23: the exemption MUST cover this list too. score_answer ORs four
+        # independent lists into `fabricated`, and on the no-sources path
+        # unverified_dates is populated from the same trap call. Verified
+        # against the artifacts: block4/block5 run1 both carried
+        # forbidden_hits=['2025-12-15'] AND unverified_dates=['2025-12-15'],
+        # so suppressing only the former would leave fabricated=True and
+        # would NOT produce the unanimous pass D23 promises.
         result["unverified_dates"] = find_forbidden_dates(
-            answer, q.get("forbidden_dates")
+            answer, q.get("forbidden_dates"), exempt_refusal_sentences=True
         )
         result["unverified_sources"] = []
         result["unverified_chunk_ids"] = []
     result["forbidden_date_hits"] = find_forbidden_dates(
-        answer, q.get("forbidden_dates")
+        answer, q.get("forbidden_dates"), exempt_refusal_sentences=True
     )
     result["fabricated"] = bool(
         result["unverified_dates"]
@@ -321,6 +559,9 @@ def probe_passed(r: dict) -> bool:
     if "error" in r or r.get("answer_error"):
         return False
     if r.get("no_answer"):
+        return False
+    # D25: an honest refusal caused by retrieval failure is not a pass.
+    if r.get("unhelpful_refusal"):
         return False
     if r.get("truncated"):
         return False
@@ -357,9 +598,15 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                     "no_answer_count": 0,
                     "truncated_count": 0,
                     "error_count": 0,
+                    "unhelpful_refusal_count": 0,
+                    "context_digests": set(),
                 },
             )
             e["runs"] += 1
+            if r.get("context_digest"):
+                e["context_digests"].add(r["context_digest"])
+            if r.get("unhelpful_refusal"):
+                e["unhelpful_refusal_count"] += 1
             if probe_passed(r):
                 e["passes"] += 1
             if r.get("fabricated"):
@@ -375,6 +622,9 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
     for e in per_probe.values():
         e["pass_rate"] = (e["passes"] / e["runs"]) if e["runs"] else 0.0
         e["unanimous"] = e["runs"] > 0 and e["passes"] == e["runs"]
+        # D26. The count is the reportable figure, and a set is not
+        # JSON-encodable — main() writes this structure with json.dumps.
+        e["distinct_contexts"] = len(e.pop("context_digests"))
 
     aggregates: dict = {}
     per_run = [aggregate(run, answered) for run in runs]
@@ -633,6 +883,20 @@ def main() -> int:
             f"[eval] runs={s['runs']}  all_unanimous={s['all_unanimous']}  "
             f"acceptance_eligible={s['acceptance_eligible']}"
         )
+        # D26: a pass verdict MUST NOT be presented without the stability
+        # figure beside it. The verdict can reproduce while the substantive
+        # answer does not.
+        unstable = sorted(
+            (pid, e["distinct_contexts"])
+            for pid, e in s["per_probe"].items()
+            if e["distinct_contexts"] > 1
+        )
+        print(
+            f"[eval] probes receiving >1 distinct context: "
+            f"{len(unstable)}/{len(s['per_probe'])}"
+        )
+        for pid, n in unstable:
+            print(f"[eval]   unstable context: {pid} ({n} distinct)")
         if not s["acceptance_eligible"]:
             reason = (
                 "answer phase not run" if not args.answer
