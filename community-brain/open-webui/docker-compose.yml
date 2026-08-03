@@ -5,7 +5,9 @@ services:
     ports:
       - "3000:8080"
     environment:
-      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      # Must point at the inference workstation over LAN, NOT
+      # host.docker.internal -- Ollama does not run on the container host.
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://10.1.50.219:11434}
       - WEBUI_AUTH=true
     volumes:
       - open-webui-data:/app/backend/data
