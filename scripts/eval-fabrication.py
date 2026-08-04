@@ -515,6 +515,44 @@ def score_answer(
         and target_recall == 0.0
     )
 
+    # A refusal where the material WAS present is the opposite failure, and
+    # D25 says nothing about it. Measured on block B `unresolved-survey`:
+    # runs 1 and 5 shared context digest 1d066b3bd7df423c and eleven
+    # unresolved_question chunks; run 1 produced the requested list, run 5
+    # answered "I don't find any question ... that was left unanswered" and
+    # scored a PASS, because the probe declares no target_sessions so
+    # target_recall is None and D25's rule never engaged.
+    #
+    # `negative_answer_ok` is a probe-contract field, not a heuristic. Some
+    # probes (codex-production) legitimately answer "no evidence found" --
+    # that is an ANSWER, and looks_like_refusal cannot distinguish it from a
+    # refusal. Rather than tune a 23-keyword list again, the contract states
+    # it. Empty context is excluded: nothing reached the model, so refusing
+    # is correct and is not the model's failure.
+    result["unwarranted_refusal"] = bool(
+        result["refused"]
+        and not q.get("expect_refusal")
+        and not q.get("negative_answer_ok")
+        and not result["unhelpful_refusal"]
+        and bool((context or "").strip())
+    )
+
+    # A trap whose target evidence never arrived proved nothing.
+    # garron-subscription-trap refused 10/10 across both acceptance blocks
+    # with target_recall 0.0 and zero occurrences of Garron in context: the
+    # model refused because the person was absent, and would have behaved
+    # identically had retrieval been completely broken. Same principle as
+    # D25 -- preconditions unmet means the probe did not run, and "did not
+    # run" must never read green.
+    #
+    # Only gates probes that DECLARE targets. nonexistent-session and
+    # fictitious-speaker have none by design; there is nothing to retrieve.
+    result["inconclusive"] = bool(
+        q.get("expect_refusal")
+        and (q.get("target_sessions") or [])
+        and target_recall == 0.0
+    )
+
     facts = extract_grounding_facts(context)
     if facts is not None:
         verdict = verify_answer_grounding(answer, facts)
@@ -563,6 +601,12 @@ def probe_passed(r: dict) -> bool:
     # D25: an honest refusal caused by retrieval failure is not a pass.
     if r.get("unhelpful_refusal"):
         return False
+    # ...and neither is a refusal made while the material was present.
+    if r.get("unwarranted_refusal"):
+        return False
+    # A trap that never received its target evidence demonstrated nothing.
+    if r.get("inconclusive"):
+        return False
     if r.get("truncated"):
         return False
     if r.get("fabricated"):
@@ -599,6 +643,8 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                     "truncated_count": 0,
                     "error_count": 0,
                     "unhelpful_refusal_count": 0,
+                    "unwarranted_refusal_count": 0,
+                    "inconclusive_count": 0,
                     "context_digests": set(),
                 },
             )
@@ -607,6 +653,10 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                 e["context_digests"].add(r["context_digest"])
             if r.get("unhelpful_refusal"):
                 e["unhelpful_refusal_count"] += 1
+            if r.get("unwarranted_refusal"):
+                e["unwarranted_refusal_count"] += 1
+            if r.get("inconclusive"):
+                e["inconclusive_count"] += 1
             if probe_passed(r):
                 e["passes"] += 1
             if r.get("fabricated"):

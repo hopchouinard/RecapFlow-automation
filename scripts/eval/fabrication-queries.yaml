@@ -81,12 +81,20 @@ queries:
     expect_refusal: true
     forbidden_dates: ["2025-12-15"]
 
+  # negative_answer_ok: this question admits a grounded NEGATIVE answer.
+  # "No, nobody reported production use" is an ANSWER, not a refusal --
+  # but looks_like_refusal cannot tell them apart. Observed in block A:
+  #   "The retrieved transcripts do not contain any statement..."  -> not refused
+  #   "I don't see any of the retrieved transcripts mentioning..." -> refused
+  # Semantically identical, opposite verdict, decided by phrasing alone.
+  # The contract states it here rather than the keyword list guessing.
   - id: codex-production
     class: topic_coverage
     question: "Has anyone used Codex for production work?"
     target_sessions: []
     expect_refusal: false
     forbidden_dates: []
+    negative_answer_ok: true
 
   - id: unresolved-survey
     class: unresolved_survey

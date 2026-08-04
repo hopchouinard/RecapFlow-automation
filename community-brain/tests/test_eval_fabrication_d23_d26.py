@@ -510,3 +510,137 @@ class TestD25UsesContextThatReachedTheModel:
             mp.undo()
         agg = ef.aggregate([r], answered=True)
         assert agg["mean_target_recall"] == 1.0
+
+
+class TestUnwarrantedRefusal:
+    """A refusal where the material WAS present is a model failure.
+
+    D25 covers the vacuous case: retrieval failed, so the probe proved
+    nothing. It says nothing about the opposite case, and that gap let a real
+    failure through on the C1c acceptance evidence.
+
+    Measured, block B `unresolved-survey`:
+
+        run1: refused=False  digest=1d066b3bd7df423c  11 unresolved_question chunks
+        run5: refused=True   digest=1d066b3bd7df423c  11 unresolved_question chunks
+
+    Byte-identical context, opposite behaviour. Run 5 answered "I don't find
+    any question ... that was left unanswered" against eleven chunks tagged as
+    unresolved questions, and scored a PASS -- because the probe declares no
+    target_sessions, so target_recall is None and D25's rule never engaged.
+    """
+
+    PROBE = {"id": "unresolved-survey", "class": "unresolved_survey",
+             "question": "List five questions nobody fully answered.",
+             "expect_refusal": False}
+    REFUSAL = "I don't find any question in the retrieved transcripts that was left unanswered."
+
+    def test_refusal_with_material_present_is_unwarranted(self):
+        """Non-empty context, no retrieval failure -> the model had material."""
+        ef = _harness()
+        scored = ef.score_answer(self.PROBE, self.REFUSAL, "<sources: 11 chunks>",
+                                 target_recall=None)
+        assert scored["unwarranted_refusal"] is True
+        assert ef.probe_passed(scored) is False
+
+    def test_retrieval_failure_stays_D25_not_unwarranted(self):
+        """recall 0.0 is vacuous, not a model failure. The two outcomes are
+        distinct and must not collapse into one another."""
+        ef = _harness()
+        probe = dict(self.PROBE, target_sessions=["2026-03-04"])
+        scored = ef.score_answer(probe, self.REFUSAL, "<sources>", target_recall=0.0)
+        assert scored["unhelpful_refusal"] is True
+        assert scored["unwarranted_refusal"] is False
+        assert ef.probe_passed(scored) is False
+
+    def test_no_sources_at_all_is_not_unwarranted(self):
+        """An empty context means nothing reached the model; refusing is
+        correct and is not the model's failure."""
+        ef = _harness()
+        scored = ef.score_answer(self.PROBE, self.REFUSAL, "", target_recall=None)
+        assert scored["unwarranted_refusal"] is False
+
+    def test_expected_refusal_is_never_unwarranted(self):
+        ef = _harness()
+        probe = {"id": "nonexistent-session", "class": "nonexistent_date",
+                 "question": "Summarize the 2025-12-15 session.",
+                 "expect_refusal": True, "forbidden_dates": ["2025-12-15"]}
+        answer = "I don't see a session from 2025-12-15 in the retrieved sources."
+        scored = ef.score_answer(probe, answer, "<sources>", target_recall=None)
+        assert scored["unwarranted_refusal"] is False
+        assert ef.probe_passed(scored) is True
+
+    def test_negative_answer_ok_probes_may_answer_in_the_negative(self):
+        """codex-production legitimately answers "no evidence found". That is
+        an ANSWER, not a refusal, and looks_like_refusal cannot tell them
+        apart -- so the probe contract states it instead of the heuristic
+        guessing."""
+        ef = _harness()
+        probe = dict(self.PROBE, id="codex-production", negative_answer_ok=True)
+        answer = "I don't see any of the retrieved transcripts mentioning production use."
+        scored = ef.score_answer(probe, answer, "<sources>", target_recall=None)
+        assert scored["unwarranted_refusal"] is False
+        assert ef.probe_passed(scored) is True
+
+    def test_substantive_answer_is_never_unwarranted(self):
+        ef = _harness()
+        answer = "Five questions went unanswered: ..."
+        scored = ef.score_answer(self.PROBE, answer, "<sources>", target_recall=None)
+        assert scored["unwarranted_refusal"] is False
+
+    def test_summary_counts_unwarranted_refusals(self):
+        ef = _harness()
+        runs = [[{"id": "p", "unwarranted_refusal": True, "expect_refusal": False}],
+                [{"id": "p", "unwarranted_refusal": False, "expect_refusal": False}]]
+        s = ef.summarize_runs(runs, answered=True)
+        assert s["per_probe"]["p"]["unwarranted_refusal_count"] == 1
+        assert s["per_probe"]["p"]["unanimous"] is False
+
+
+class TestTrapPreconditionGate:
+    """A trap whose target evidence never arrived is INCONCLUSIVE, not a pass.
+
+    garron-subscription-trap refused 10/10 across both acceptance blocks with
+    target_recall 0.0 and zero occurrences of Garron in the context. The model
+    refused because the person was absent -- it would have behaved identically
+    if retrieval were completely broken. That supplied no grounding evidence
+    and still counted toward all_unanimous.
+    """
+
+    TRAP = {"id": "garron-subscription-trap", "class": "topic_attribution_trap",
+            "question": "What did Garron say about subscription models?",
+            "expect_refusal": True,
+            "target_sessions": ["2025-10-22", "2025-10-30"]}
+    REFUSAL = "I don't see any record of Garron speaking about subscription models."
+
+    def test_trap_without_its_evidence_is_inconclusive(self):
+        ef = _harness()
+        scored = ef.score_answer(self.TRAP, self.REFUSAL, "<sources>", target_recall=0.0)
+        assert scored["inconclusive"] is True
+        assert ef.probe_passed(scored) is False, \
+            "a trap that never received its evidence must not pass"
+
+    def test_trap_with_evidence_can_pass(self):
+        ef = _harness()
+        scored = ef.score_answer(self.TRAP, self.REFUSAL, "<sources>", target_recall=0.8)
+        assert scored["inconclusive"] is False
+        assert ef.probe_passed(scored) is True
+
+    def test_targetless_trap_is_not_gated(self):
+        """nonexistent-session and fictitious-speaker declare no targets by
+        design -- there is nothing to retrieve, so the gate must not fire."""
+        ef = _harness()
+        probe = {"id": "nonexistent-session", "class": "nonexistent_date",
+                 "question": "Summarize the 2025-12-15 session.",
+                 "expect_refusal": True, "forbidden_dates": ["2025-12-15"]}
+        answer = "I don't see a session from 2025-12-15 in the retrieved sources."
+        scored = ef.score_answer(probe, answer, "", target_recall=None)
+        assert scored["inconclusive"] is False
+        assert ef.probe_passed(scored) is True
+
+    def test_summary_counts_inconclusive(self):
+        ef = _harness()
+        runs = [[{"id": "t", "inconclusive": True, "expect_refusal": True}]] * 2
+        s = ef.summarize_runs(runs, answered=True)
+        assert s["per_probe"]["t"]["inconclusive_count"] == 2
+        assert s["per_probe"]["t"]["passes"] == 0
