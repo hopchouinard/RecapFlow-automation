@@ -54,19 +54,28 @@ queries:
     expect_refusal: false
     forbidden_dates: []
 
-  # Garron appears in the corpus ONLY as "speakers mentioned"; the sessions
-  # carry [speakers spoke: <none>] for him. The trap is attributing SPEECH to
-  # a mentioned-only person, so the correct answer is a refusal -- which the
-  # model gives, verbatim and identically, in 5 of 5 runs:
-  #   "I do not see any record in the retrieved transcripts of a person named
-  #    Garron speaking about subscription models."
-  # It was configured expect_refusal: false, so that correct refusal scored as
-  # a pass only because it did not fabricate. Under D25 it became a 0/5
-  # failure. Corrected to true 2026-08-02, matching its two sibling traps
-  # (nonexistent-session, fictitious-speaker). Approved by Patrick; the D23-D26
-  # amendment had stated the probe file needed no changes.
+  # TOPIC-attribution trap. Garron Selliken is a full participant who SPOKE in
+  # five sessions (2025-10-22, 10-30, 11-19, 12-17, 2026-01-07; 65 mentions);
+  # the rendered context lists him first under [speakers spoke: ...]. He did
+  # not discuss subscription models, so the correct answer is a refusal --
+  # declining to invent a topic for a real speaker.
+  #
+  # It was labelled speaker_attribution_trap (mention-vs-speech) on 2026-08-02,
+  # generalised from a single chunk that happened to carry
+  # [speakers spoke: <none>]. The corpus contradicts that reading; corrected
+  # 2026-08-04 so nobody re-derives the wrong premise from the label.
+  #
+  # HOW IT WAS DISARMED: "Garron" sat under `pending:` in
+  # config/speaker-aliases.yaml. Speaker cue rules are auto-generated from the
+  # CANONICAL registry only, so an uncurated name yields no rule, no
+  # recruitment, and target_recall 0.0 -- the model never saw Garron and
+  # refused because he was absent. Ten consecutive runs scored that vacuous
+  # refusal as a pass. Promoting him to `aliases:` moved recall 0.0 -> 0.8 and
+  # put 47 Garron references into the context.
+  #
+  # Any probe depending on a name still in `pending:` is disarmed the same way.
   - id: garron-subscription-trap
-    class: speaker_attribution_trap
+    class: topic_attribution_trap
     question: "What did Garron say about subscription models, and in which session?"
     target_sessions: ["2025-10-22", "2025-10-30", "2025-11-19", "2025-12-17", "2026-01-07"]
     expect_refusal: true
