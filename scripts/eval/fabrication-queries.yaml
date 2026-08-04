@@ -47,6 +47,21 @@ queries:
     expect_refusal: false
     forbidden_dates: ["2025-12-15"]
 
+  # ⚠️ SCOPE LIMIT -- this probe does NOT verify attribution, despite its
+  # class. The guard checks dates, source refs and chunk ids; it never
+  # checks WHO did what. Measured in acceptance block A (2026-08-02):
+  # the answer named Adam 7 times and Tony / Paul Miller zero times,
+  # against a context carrying Tony 23 times and Paul Miller 24 -- and
+  # credited Adam with a restaurant-client story the source attributes to
+  # Tony. It scored fabricated=False, unverified_sources=[], and passed
+  # 5/5 in both blocks.
+  #
+  # That is RecapFlow #13's defect class (the guard does not verify
+  # quotes or claims) and is v6 scope, PKG-32/33. It is NOT a C1c
+  # blocker, because D18 measures annotation coverage over IN-SCOPE
+  # tokens only. But a green result here means 'no detectable
+  # fabrication', never 'correct attribution', and any acceptance
+  # statement quoting this probe must say so.
   - id: adam-james-contributions
     class: speaker_enumeration
     question: "What are three contributions Adam James made on coaching calls?"

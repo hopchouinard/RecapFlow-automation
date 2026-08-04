@@ -933,6 +933,14 @@ def main() -> int:
             f"[eval] runs={s['runs']}  all_unanimous={s['all_unanimous']}  "
             f"acceptance_eligible={s['acceptance_eligible']}"
         )
+        # The fabrication figure means "no DETECTABLE fabrication". The guard
+        # verifies dates, source refs and chunk ids -- never who said what.
+        # Printed with the verdict so the number is never quoted bare, the
+        # same reason D26 requires the context-stability figure alongside.
+        print(
+            "[eval] scope: fabrication = dates/sources/chunk_ids only; "
+            "speaker attribution is NOT verified (RecapFlow #13, v6 scope)"
+        )
         # D26: a pass verdict MUST NOT be presented without the stability
         # figure beside it. The verdict can reproduce while the substantive
         # answer does not.
