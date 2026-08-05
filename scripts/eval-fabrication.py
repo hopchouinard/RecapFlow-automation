@@ -240,6 +240,54 @@ def find_forbidden_dates(
     return [d for d in forbidden if _normalize_dashes(d) in normalized]
 
 
+# A trap asserts CONTENT, not phrasing. `expect_refusal` conflated "the
+# correct answer is negative" with "the answer matches REFUSAL_PATTERNS", and
+# that 23-keyword list decided an acceptance verdict three times. The clearest
+# case, garron-subscription-trap block A (2026-08-04), same context:
+#
+#   run2 "The retrieved sources don't include any statement from Garron
+#         Selliken about subscription models..."  -> refused=False -> FAILED
+#   run4 "I don't see any statement from Garron Selliken about subscription
+#         models..."                              -> refused=True  -> passed
+#
+# Identical meaning, opposite verdict, decided by the opening four words.
+#
+# Negation is far more stable to detect than refusal phrasing, and it is
+# exactly what separates a denial from an attribution: a forbidden token
+# inside a negated sentence is the model saying "this did not happen"; the
+# same token in an affirmative sentence is the model claiming it did.
+_NEGATION_RE = re.compile(
+    r"\b(?:not|no|nor|never|none|cannot|without|nothing|neither)\b"
+    r"|n[’'ʼ＇]t\b",
+    re.IGNORECASE,
+)
+
+
+def _sentence_is_negated(sentence: str) -> bool:
+    """Does this sentence deny rather than assert?"""
+    return bool(_NEGATION_RE.search(sentence or ""))
+
+
+def find_asserted_forbidden(answer: str, forbidden: list[str] | None) -> list[str]:
+    """Return the `must_not_assert` tokens the answer AFFIRMATIVELY claims.
+
+    A token is an assertion only when it appears in a sentence carrying no
+    negation. "I don't see any statement about subscription models" contains
+    the token and denies it; "Garron covered subscription models" contains
+    the token and claims it. Only the second is a fabrication.
+
+    Defends the mixed shape too, per-sentence like D23: deny in one sentence,
+    assert in the next, and the assertion still counts.
+    """
+    if not forbidden:
+        return []
+    assertive = " ".join(
+        sent for sent in _split_sentences(answer)
+        if not _sentence_is_negated(sent)
+    ).lower()
+    return [t for t in forbidden if t.lower() in assertive]
+
+
 def _dates_asserted_outside_refusals(
     answer: str, dates: list[str] | None
 ) -> list[str]:
@@ -472,6 +520,7 @@ def score_answer(
         # Such a probe trivially satisfies "did not fabricate" and would be
         # scored a clean pass, inflating pass rates. It is a non-result.
         "no_answer": not (answer or "").strip(),
+        "must_not_assert_declared": bool(q.get("must_not_assert")),
     }
     result["refused"] = looks_like_refusal(answer)
     result["refusal_correct"] = (
@@ -512,6 +561,50 @@ def score_answer(
     result["unhelpful_refusal"] = bool(
         result["refused"]
         and not q.get("expect_refusal")
+        and target_recall == 0.0
+    )
+
+    # A refusal where the material WAS present is the opposite failure, and
+    # D25 says nothing about it. Measured on block B `unresolved-survey`:
+    # runs 1 and 5 shared context digest 1d066b3bd7df423c and eleven
+    # unresolved_question chunks; run 1 produced the requested list, run 5
+    # answered "I don't find any question ... that was left unanswered" and
+    # scored a PASS, because the probe declares no target_sessions so
+    # target_recall is None and D25's rule never engaged.
+    #
+    # `negative_answer_ok` is a probe-contract field, not a heuristic. Some
+    # probes (codex-production) legitimately answer "no evidence found" --
+    # that is an ANSWER, and looks_like_refusal cannot distinguish it from a
+    # refusal. Rather than tune a 23-keyword list again, the contract states
+    # it. Empty context is excluded: nothing reached the model, so refusing
+    # is correct and is not the model's failure.
+    result["unwarranted_refusal"] = bool(
+        result["refused"]
+        and not q.get("expect_refusal")
+        and not q.get("negative_answer_ok")
+        and not result["unhelpful_refusal"]
+        and bool((context or "").strip())
+    )
+
+    # A trap whose target evidence never arrived proved nothing.
+    # garron-subscription-trap refused 10/10 across both acceptance blocks
+    # with target_recall 0.0 and zero occurrences of Garron in context: the
+    # model refused because the person was absent, and would have behaved
+    # identically had retrieval been completely broken. Same principle as
+    # D25 -- preconditions unmet means the probe did not run, and "did not
+    # run" must never read green.
+    #
+    # Only gates probes that DECLARE targets. nonexistent-session and
+    # fictitious-speaker have none by design; there is nothing to retrieve.
+    # What the trap actually asserts: the model must not CLAIM the forbidden
+    # thing. Phrasing-agnostic, so a denial passes however it is worded.
+    result["asserted_forbidden"] = find_asserted_forbidden(
+        answer, q.get("must_not_assert")
+    )
+
+    result["inconclusive"] = bool(
+        q.get("expect_refusal")
+        and (q.get("target_sessions") or [])
         and target_recall == 0.0
     )
 
@@ -563,11 +656,26 @@ def probe_passed(r: dict) -> bool:
     # D25: an honest refusal caused by retrieval failure is not a pass.
     if r.get("unhelpful_refusal"):
         return False
+    # ...and neither is a refusal made while the material was present.
+    if r.get("unwarranted_refusal"):
+        return False
+    # A trap that never received its target evidence demonstrated nothing.
+    if r.get("inconclusive"):
+        return False
     if r.get("truncated"):
         return False
     if r.get("fabricated"):
         return False
+    # A declared assertion is a fabrication regardless of wording.
+    if r.get("asserted_forbidden"):
+        return False
     if r.get("expect_refusal"):
+        # Where the probe declares must_not_assert, THAT is the contract and
+        # the keyword classifier is advisory only -- it still feeds
+        # refusal_correctness, but it no longer decides pass/fail. Probes
+        # without the field keep the original behaviour unchanged.
+        if r.get("must_not_assert_declared"):
+            return True
         return bool(r.get("refused"))
     return True
 
@@ -599,6 +707,9 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                     "truncated_count": 0,
                     "error_count": 0,
                     "unhelpful_refusal_count": 0,
+                    "unwarranted_refusal_count": 0,
+                    "inconclusive_count": 0,
+                    "asserted_forbidden_count": 0,
                     "context_digests": set(),
                 },
             )
@@ -607,6 +718,12 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                 e["context_digests"].add(r["context_digest"])
             if r.get("unhelpful_refusal"):
                 e["unhelpful_refusal_count"] += 1
+            if r.get("unwarranted_refusal"):
+                e["unwarranted_refusal_count"] += 1
+            if r.get("inconclusive"):
+                e["inconclusive_count"] += 1
+            if r.get("asserted_forbidden"):
+                e["asserted_forbidden_count"] += 1
             if probe_passed(r):
                 e["passes"] += 1
             if r.get("fabricated"):
@@ -882,6 +999,14 @@ def main() -> int:
         print(
             f"[eval] runs={s['runs']}  all_unanimous={s['all_unanimous']}  "
             f"acceptance_eligible={s['acceptance_eligible']}"
+        )
+        # The fabrication figure means "no DETECTABLE fabrication". The guard
+        # verifies dates, source refs and chunk ids -- never who said what.
+        # Printed with the verdict so the number is never quoted bare, the
+        # same reason D26 requires the context-stability figure alongside.
+        print(
+            "[eval] scope: fabrication = dates/sources/chunk_ids only; "
+            "speaker attribution is NOT verified (RecapFlow #13, v6 scope)"
         )
         # D26: a pass verdict MUST NOT be presented without the stability
         # figure beside it. The verdict can reproduce while the substantive
