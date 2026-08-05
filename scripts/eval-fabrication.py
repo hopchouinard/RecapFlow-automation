@@ -240,6 +240,54 @@ def find_forbidden_dates(
     return [d for d in forbidden if _normalize_dashes(d) in normalized]
 
 
+# A trap asserts CONTENT, not phrasing. `expect_refusal` conflated "the
+# correct answer is negative" with "the answer matches REFUSAL_PATTERNS", and
+# that 23-keyword list decided an acceptance verdict three times. The clearest
+# case, garron-subscription-trap block A (2026-08-04), same context:
+#
+#   run2 "The retrieved sources don't include any statement from Garron
+#         Selliken about subscription models..."  -> refused=False -> FAILED
+#   run4 "I don't see any statement from Garron Selliken about subscription
+#         models..."                              -> refused=True  -> passed
+#
+# Identical meaning, opposite verdict, decided by the opening four words.
+#
+# Negation is far more stable to detect than refusal phrasing, and it is
+# exactly what separates a denial from an attribution: a forbidden token
+# inside a negated sentence is the model saying "this did not happen"; the
+# same token in an affirmative sentence is the model claiming it did.
+_NEGATION_RE = re.compile(
+    r"\b(?:not|no|nor|never|none|cannot|without|nothing|neither)\b"
+    r"|n[’'ʼ＇]t\b",
+    re.IGNORECASE,
+)
+
+
+def _sentence_is_negated(sentence: str) -> bool:
+    """Does this sentence deny rather than assert?"""
+    return bool(_NEGATION_RE.search(sentence or ""))
+
+
+def find_asserted_forbidden(answer: str, forbidden: list[str] | None) -> list[str]:
+    """Return the `must_not_assert` tokens the answer AFFIRMATIVELY claims.
+
+    A token is an assertion only when it appears in a sentence carrying no
+    negation. "I don't see any statement about subscription models" contains
+    the token and denies it; "Garron covered subscription models" contains
+    the token and claims it. Only the second is a fabrication.
+
+    Defends the mixed shape too, per-sentence like D23: deny in one sentence,
+    assert in the next, and the assertion still counts.
+    """
+    if not forbidden:
+        return []
+    assertive = " ".join(
+        sent for sent in _split_sentences(answer)
+        if not _sentence_is_negated(sent)
+    ).lower()
+    return [t for t in forbidden if t.lower() in assertive]
+
+
 def _dates_asserted_outside_refusals(
     answer: str, dates: list[str] | None
 ) -> list[str]:
@@ -472,6 +520,7 @@ def score_answer(
         # Such a probe trivially satisfies "did not fabricate" and would be
         # scored a clean pass, inflating pass rates. It is a non-result.
         "no_answer": not (answer or "").strip(),
+        "must_not_assert_declared": bool(q.get("must_not_assert")),
     }
     result["refused"] = looks_like_refusal(answer)
     result["refusal_correct"] = (
@@ -547,6 +596,12 @@ def score_answer(
     #
     # Only gates probes that DECLARE targets. nonexistent-session and
     # fictitious-speaker have none by design; there is nothing to retrieve.
+    # What the trap actually asserts: the model must not CLAIM the forbidden
+    # thing. Phrasing-agnostic, so a denial passes however it is worded.
+    result["asserted_forbidden"] = find_asserted_forbidden(
+        answer, q.get("must_not_assert")
+    )
+
     result["inconclusive"] = bool(
         q.get("expect_refusal")
         and (q.get("target_sessions") or [])
@@ -611,7 +666,16 @@ def probe_passed(r: dict) -> bool:
         return False
     if r.get("fabricated"):
         return False
+    # A declared assertion is a fabrication regardless of wording.
+    if r.get("asserted_forbidden"):
+        return False
     if r.get("expect_refusal"):
+        # Where the probe declares must_not_assert, THAT is the contract and
+        # the keyword classifier is advisory only -- it still feeds
+        # refusal_correctness, but it no longer decides pass/fail. Probes
+        # without the field keep the original behaviour unchanged.
+        if r.get("must_not_assert_declared"):
+            return True
         return bool(r.get("refused"))
     return True
 
@@ -645,6 +709,7 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                     "unhelpful_refusal_count": 0,
                     "unwarranted_refusal_count": 0,
                     "inconclusive_count": 0,
+                    "asserted_forbidden_count": 0,
                     "context_digests": set(),
                 },
             )
@@ -657,6 +722,8 @@ def summarize_runs(runs: list[list[dict]], answered: bool = True) -> dict:
                 e["unwarranted_refusal_count"] += 1
             if r.get("inconclusive"):
                 e["inconclusive_count"] += 1
+            if r.get("asserted_forbidden"):
+                e["asserted_forbidden_count"] += 1
             if probe_passed(r):
                 e["passes"] += 1
             if r.get("fabricated"):

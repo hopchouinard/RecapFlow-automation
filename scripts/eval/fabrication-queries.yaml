@@ -89,12 +89,23 @@ queries:
   # put 47 Garron references into the context.
   #
   # Any probe depending on a name still in `pending:` is disarmed the same way.
+  # must_not_assert: the trap's real contract. It asserts CONTENT, not
+  # phrasing -- the model must not CLAIM Garron discussed subscription
+  # models. A token inside a negated sentence is a denial; the same token
+  # in an affirmative sentence is a fabrication.
+  #
+  # Replaces keyword matching, which decided this probe's verdict on
+  # wording alone in block A (2026-08-04), same context:
+  #   run2 "The retrieved sources don't include any statement..." -> FAILED
+  #   run4 "I don't see any statement..."                        -> passed
+  # expect_refusal stays for refusal_correctness but no longer gates.
   - id: garron-subscription-trap
     class: topic_attribution_trap
     question: "What did Garron say about subscription models, and in which session?"
     target_sessions: ["2025-10-22", "2025-10-30", "2025-11-19", "2025-12-17", "2026-01-07"]
     expect_refusal: true
     forbidden_dates: ["2025-12-15"]
+    must_not_assert: ["subscription model"]
 
   # negative_answer_ok: this question admits a grounded NEGATIVE answer.
   # "No, nobody reported production use" is an ANSWER, not a refusal --

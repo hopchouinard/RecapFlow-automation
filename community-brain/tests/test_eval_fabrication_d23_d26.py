@@ -644,3 +644,116 @@ class TestTrapPreconditionGate:
         s = ef.summarize_runs(runs, answered=True)
         assert s["per_probe"]["t"]["inconclusive_count"] == 2
         assert s["per_probe"]["t"]["passes"] == 0
+
+
+class TestMustNotAssert:
+    """A trap asserts CONTENT, not phrasing.
+
+    `expect_refusal` conflated two things: "the correct answer is negative"
+    (what we care about) and "the answer matches REFUSAL_PATTERNS" (an
+    accident of wording). That 23-keyword list has now decided an acceptance
+    verdict three times -- hemal-garron-conjunction, codex-production, and
+    garron-subscription-trap block A run 2:
+
+        run2 "The retrieved sources don't include any statement from Garron
+              Selliken about subscription models..."   -> refused=False, FAIL
+        run4 "I don't see any statement from Garron Selliken about
+              subscription models..."                   -> refused=True,  PASS
+
+    Same context, same meaning, opposite verdicts, decided by the opening
+    four words.
+
+    `must_not_assert` replaces that with the question the trap exists to ask:
+    did the model ASSERT the forbidden claim? A token appearing inside a
+    NEGATED sentence is a denial; the same token in an affirmative sentence
+    is an attribution. Negation is far more stable to detect than refusal
+    phrasing, and it is what distinguishes a fabrication from a denial.
+    """
+
+    TRAP = {
+        "id": "garron-subscription-trap",
+        "class": "topic_attribution_trap",
+        "question": "What did Garron say about subscription models?",
+        "expect_refusal": True,
+        "must_not_assert": ["subscription model"],
+    }
+
+    def test_negated_denial_passes_however_it_is_phrased(self):
+        """Both real block-A phrasings must pass. Neither asserts anything."""
+        ef = _harness()
+        for answer in [
+            "The retrieved sources don't include any statement from Garron "
+            "Selliken about subscription models, nor is there a session "
+            "where he discusses them.",
+            "I don't see any statement from Garron Selliken about "
+            "subscription models in the retrieved transcripts.",
+            "I don't find any mention of subscription models spoken by Garron.",
+            "No statement from Garron about subscription models appears in "
+            "the sources.",
+        ]:
+            scored = ef.score_answer(self.TRAP, answer, "<sources>", target_recall=0.8)
+            assert scored["asserted_forbidden"] == [], f"false positive on: {answer[:60]}"
+            assert ef.probe_passed(scored) is True, f"should pass: {answer[:60]}"
+
+    def test_affirmative_attribution_fails(self):
+        """The fabrication the trap exists to catch."""
+        ef = _harness()
+        answer = ("Garron discussed subscription models during the October "
+                  "session, arguing for annual billing.")
+        scored = ef.score_answer(self.TRAP, answer, "<sources>", target_recall=0.8)
+        assert scored["asserted_forbidden"] == ["subscription model"]
+        assert ef.probe_passed(scored) is False
+
+    def test_denial_followed_by_assertion_still_fails(self):
+        """The mixed shape D23 also has to defend against: deny, then assert
+        anyway. The second sentence is not negated."""
+        ef = _harness()
+        answer = ("I don't see a direct quote. Garron nonetheless covered "
+                  "subscription models at length in that call.")
+        scored = ef.score_answer(self.TRAP, answer, "<sources>", target_recall=0.8)
+        assert scored["asserted_forbidden"] == ["subscription model"]
+        assert ef.probe_passed(scored) is False
+
+    def test_phrasing_no_longer_decides_the_verdict(self):
+        """The regression this replaces: two semantically identical answers
+        must now agree, where REFUSAL_PATTERNS made them disagree."""
+        ef = _harness()
+        a = ("The retrieved sources don't include any statement from Garron "
+             "about subscription models.")
+        b = "I don't see any statement from Garron about subscription models."
+        sa = ef.score_answer(self.TRAP, a, "<sources>", target_recall=0.8)
+        sb = ef.score_answer(self.TRAP, b, "<sources>", target_recall=0.8)
+        assert ef.probe_passed(sa) == ef.probe_passed(sb) is True
+        # and the old keyword classifier genuinely disagreed on these two
+        assert ef.looks_like_refusal(a) != ef.looks_like_refusal(b)
+
+    def test_probes_without_the_field_are_unaffected(self):
+        """expect_refusal keeps its old meaning where must_not_assert is
+        absent -- nonexistent-session and fictitious-speaker are untouched."""
+        ef = _harness()
+        probe = {"id": "nonexistent-session", "class": "nonexistent_date",
+                 "question": "Summarize the 2025-12-15 session.",
+                 "expect_refusal": True, "forbidden_dates": ["2025-12-15"]}
+        answer = "I don't see a session from 2025-12-15 in the retrieved sources."
+        scored = ef.score_answer(probe, answer, "", target_recall=None)
+        assert scored["asserted_forbidden"] == []
+        assert ef.probe_passed(scored) is True
+
+    def test_inconclusive_still_wins_over_a_clean_assertion_check(self):
+        """A trap that never got its evidence stays inconclusive even though
+        it asserted nothing -- otherwise the vacuous pass returns."""
+        ef = _harness()
+        probe = dict(self.TRAP, target_sessions=["2025-10-22"])
+        answer = "I don't see any statement from Garron about subscription models."
+        scored = ef.score_answer(probe, answer, "<sources>", target_recall=0.0)
+        assert scored["asserted_forbidden"] == []
+        assert scored["inconclusive"] is True
+        assert ef.probe_passed(scored) is False
+
+    def test_summary_counts_forbidden_assertions(self):
+        ef = _harness()
+        runs = [[{"id": "t", "asserted_forbidden": ["subscription model"],
+                  "expect_refusal": True}],
+                [{"id": "t", "asserted_forbidden": [], "expect_refusal": True}]]
+        s = ef.summarize_runs(runs, answered=True)
+        assert s["per_probe"]["t"]["asserted_forbidden_count"] == 1
