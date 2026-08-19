@@ -1,0 +1,1325 @@
+[00:00:00] Paul Miller: This meeting is being recorded.
+[00:00:02] Paul Miller: The UK needs to go back to the 1970s.
+[00:00:05] Paul Miller: That's when the economy was going really well.
+[00:00:09] Tom Welsh: Three-day week and everything.
+[00:00:11] Paul Miller: Yep, yep, yep.
+[00:00:13] Paul Miller: Hyperinflation.
+[00:00:15] Tom Welsh: I'd love a bit of three-day week, you know, if we could afford it.
+[00:00:22] Patrick Chouinard: It's really easy to get a three-day week.
+[00:00:25] Patrick Chouinard: It's a lot harder to have one that pays for everything.
+[00:00:28] Tom Welsh: Yeah, yeah, exactly.
+[00:00:31] Paul Miller: You can have three days, but we'll pay you for two.
+[00:00:36] Tom Welsh: 100%.
+[00:00:42] Paul Miller: I'll get you to run stuff today, Patrick, if that's okay.
+[00:00:47] Patrick Chouinard: Sure, no problem.
+[00:00:49] Tom Welsh: How are you, Patrick?
+[00:00:52] Patrick Chouinard: Good, good.
+[00:00:54] Tom Welsh: Keeping busy, trust.
+[00:00:57] Tom Welsh: It says it all, doesn't it?
+[00:01:00] Paul Miller: Yep.
+[00:01:01] Paul Miller: Yep, Busy is never a question for Patrick.
+[00:01:05] Tom Welsh: No.
+[00:01:05] Patrick Chouinard: We're still working on our deployment.
+[00:01:08] Patrick Chouinard: We're just a couple of weeks away to deploying Claude to around 2,000 people.
+[00:01:17] Paul Miller: Impressive.
+[00:01:18] Tom Welsh: We had a great one at work today.
+[00:01:20] Tom Welsh: So one of the end users was like, so we got co-pilot.
+[00:01:24] Tom Welsh: Like, oh, can we add Anthropic to it, please?
+[00:01:28] Tom Welsh: Won't Claude it, Claude Fable 5, whoever it is.
+[00:01:33] Tom Welsh: You do realize that's then just co-pilot front end with a Claude back end and a ridiculous costing.
+[00:01:41] Tom Welsh: And have you checked security?
+[00:01:43] Tom Welsh: Have you checked data sovereignty?
+[00:01:45] Tom Welsh: No, of course not.
+[00:01:46] Tom Welsh: They're users.
+[00:01:47] Tom Welsh: They just want to use it.
+[00:01:51] Patrick Chouinard: Yeah, specifically Fable.
+[00:01:53] Patrick Chouinard: That one is completely barred at work for security reasons.
+[00:01:58] Patrick Chouinard: Not because it's- Not because it's
+[00:02:01] Tom Welsh: Yeah, I played with Mythos Fables that came out.
+[00:02:09] Tom Welsh: I burnt 300 pounds in an evening, but boy, did it work hard.
+[00:02:16] Tom Welsh: It's pretty powerful.
+[00:02:18] Tom Welsh: Yeah, we fed a prompt and it just went, but it came out with a deployable app at the end.
+[00:02:27] Patrick Chouinard: I still prefer to use it to do my architecture, though.
+[00:02:32] Tom Welsh: Yeah, yeah, I get that.
+[00:02:34] Patrick Chouinard: Building a whole bunch of architecture and then work for weeks on creating them with Opus and Sonnet.
+[00:02:41] Tom Welsh: Yeah.
+[00:02:42] Patrick Chouinard: Just want to find something I've seen this week.
+[00:03:02] Patrick Chouinard: I don't know if you saw, there's a new video from IndieDevDan where he talked about something he called Fixing Smartass Opus 5, basically, a supplemental part of a system prompt specifically built to correct the verbosity of Opus.
+[00:03:28] Paul Miller: Nice.
+[00:03:29] Paul Miller: Yes, I saw.
+[00:03:29] Paul Miller: Have you got the link there?
+[00:03:31] Paul Miller: Where was that one?
+[00:03:32] Daniel Zivkovic: Hi.
+[00:03:34] Daniel Zivkovic: First time here.
+[00:03:35] Daniel Zivkovic: Sounds like a good topic.
+[00:03:37] Patrick Chouinard: Who is struggling Opus?
+[00:03:39] Patrick Chouinard: A YouTuber called IndieDevDan, who built a supplemental system prompt part to happen to the end of this, the plot system prompt, to rein in the verbosity of Opus.
+[00:03:53] Daniel Zivkovic: Oh, I'll share what I build, but it works for me, so.
+[00:03:56] Patrick Chouinard: No.
+[00:03:57] Patrick Chouinard: No.
+[00:03:57] Patrick Chouinard: No.
+[00:04:00] Patrick Chouinard: It works.
+[00:04:00] Patrick Chouinard: It just talks too much and consume token.
+[00:04:04] Daniel Zivkovic: Yeah, yeah.
+[00:04:05] Daniel Zivkovic: Yeah, you lose it.
+[00:04:06] Daniel Zivkovic: It's a needle in the haystack.
+[00:04:07] Daniel Zivkovic: have to read everything and then you miss important parts.
+[00:04:10] Daniel Zivkovic: Yeah, let me put the...
+[00:04:13] Patrick Chouinard: And I have no clue which community this is.
+[00:04:17] Daniel Zivkovic: It was in my calendar.
+[00:04:18] Daniel Zivkovic: said, well, let me join, see who you guys are.
+[00:04:21] Daniel Zivkovic: I'm from Toronto.
+[00:04:23] Patrick Chouinard: What's up, engineers?
+[00:04:24] Patrick Chouinard: Indy Devdan here.
+[00:04:26] Daniel Zivkovic: Indy Devdan?
+[00:04:27] Daniel Zivkovic: Where is Indy Devdan?
+[00:04:28] Tom Welsh: I'm a screen.
+[00:04:31] Patrick Chouinard: No, we're just waiting for people to join in.
+[00:04:35] Patrick Chouinard: We're going to give them another two minutes and then we'll start the call officially.
+[00:04:39] Daniel Zivkovic: But he never wanted to be online.
+[00:04:41] Daniel Zivkovic: He doesn't do, like he only records his videos.
+[00:04:44] Patrick Chouinard: How did you convince him?
+[00:04:45] Patrick Chouinard: No, no, no.
+[00:04:46] Patrick Chouinard: It's just, I was just talking about AVDOE outputted this week.
+[00:04:51] Patrick Chouinard: So I'm just putting the video link in the chat so you can take a peek because I've tried his system prompt and it works extremely well.
+[00:05:01] Daniel Zivkovic: Nice.
+[00:05:02] Daniel Zivkovic: So, let me see the chat.
+[00:05:04] Tom Welsh: David, a bit of money, didn't it, Patrick?
+[00:05:06] Tom Welsh: Oh, I take it.
+[00:05:07] Tom Welsh: When I roll out of 2,000 people, it's going to save a lot of money.
+[00:05:14] Daniel Zivkovic: I heard somewhere that changing system prompt doesn't help it because, like, it has to be reminded all the time.
+[00:05:20] Patrick Chouinard: It's not changing.
+[00:05:22] Patrick Chouinard: If you look at the video where you're talking about it, it's happening to the system prompt.
+[00:05:27] Patrick Chouinard: He's adding this part to the base system prompt.
+[00:05:33] Patrick Chouinard: There is an option in Cloud Code that's called appen system prompt file, and then you just point to where the file contains the additional part of the system prompt money.
+[00:05:43] Daniel Zivkovic: I'll take a look.
+[00:05:44] Daniel Zivkovic: I was following him religiously, like, for a year, and then he started talking about pi.dev, and I didn't care.
+[00:05:50] Daniel Zivkovic: And so I checked out.
+[00:05:55] Patrick Chouinard: Good.
+[00:05:57] Patrick Chouinard: So, let me...
+[00:06:00] Patrick Chouinard: Take a snapshot.
+[00:06:02] Juan Torres: Hey, guys.
+[00:06:03] Juan Torres: Can you hear me?
+[00:06:04] Patrick Chouinard: Yeah.
+[00:06:05] Tom Welsh: Hey, Morgan.
+[00:06:06] Juan Torres: Hey.
+[00:06:14] Patrick Chouinard: Hey, Morgan.
+[00:06:19] mdcatc: Hello, everybody.
+[00:06:21] Patrick Chouinard: Let me put the screenshot in the chat.
+[00:06:30] Patrick Chouinard: And we're going to go.
+[00:06:32] Patrick Chouinard: Actually, I've looked at the community.
+[00:06:34] Patrick Chouinard: There was no comment this week.
+[00:06:37] Patrick Chouinard: So we're just basically going to go through the list of people.
+[00:06:43] Patrick Chouinard: Let me check once more just to make absolutely certain, but I don't think we had any questions.
+[00:06:48] Patrick Chouinard: No.
+[00:06:50] Patrick Chouinard: Okay.
+[00:06:54] Patrick Chouinard: So then, the great return of Mr.
+[00:06:59] Tom Welsh: Tom.
+[00:07:00] Patrick Chouinard: What's the deal from you this week?
+[00:07:02] Tom Welsh: It's not a great return.
+[00:07:04] Tom Welsh: I just thought I was just awake and I'm thinking about going to bed, I haven't fallen asleep yet.
+[00:07:07] Tom Welsh: thought I'll keep up for you guys.
+[00:07:09] Tom Welsh: No, I'm just, I'm not really doing that much, really.
+[00:07:13] Tom Welsh: I've been playing recently with MiniMax H3, with Comfy UI, just playing with videos and stuff, making cool  for my kid, and she's loving it.
+[00:07:23] Tom Welsh: And it is, I cannot get over how powerful it is for video creation.
+[00:07:29] Tom Welsh: It is just ridiculously easy to create videos.
+[00:07:34] Tom Welsh: I created a, I can't even remember which program I used to create an image of a fantasy cat lion, and then I've made a cartoon with this in it, which I've chucked up, just a single one, but I've got four or five on it now, and I'm already thinking about merchandising the cat.
+[00:07:54] Tom Welsh: So I've got a kid's story coming, I've got a video coming, and I'm...
+[00:08:00] Tom Welsh: I about merchandising this cat, because my daughter's like, that's so cute, I want it.
+[00:08:03] Tom Welsh: I thought, well, if you want to buy it, more people will want to buy it.
+[00:08:07] Tom Welsh: And I've got friends that are in plush in the amusement trade, so I can look at that kind of stuff.
+[00:08:12] Tom Welsh: So yeah, that's kind of what I've been playing at.
+[00:08:16] Tom Welsh: My AI automation stuff's still out there in Baku, working quite happily.
+[00:08:20] Tom Welsh: My clients are quite happy there.
+[00:08:24] Tom Welsh: And yeah, I've really just been following around what's going on, dipping in and out of the community, seeing what's happening.
+[00:08:29] Tom Welsh: And yeah, that's me, really.
+[00:08:31] Patrick Chouinard: Good.
+[00:08:32] Patrick Chouinard: Actually, did you use any custom workflow in Comfy UI, or just the basic out-of-the-box workflows?
+[00:08:40] Tom Welsh: Oh, no, no, I used it.
+[00:08:41] Tom Welsh: I found a custom workflow.
+[00:08:43] Tom Welsh: I'll dig it out and post it in.
+[00:08:46] Tom Welsh: I'm still trying to work out some other stuff, because I talk about taking it end frame, using that as the beginning frame for the next one, so you can cut sequences together.
+[00:08:57] Tom Welsh: So yeah, that's this week.
+[00:09:00] Patrick Chouinard: Ben's work.
+[00:09:02] Tom Welsh: But yeah, I'm quite enjoying film photography.
+[00:09:05] Tom Welsh: think my Tolkien movie is right in my brain.
+[00:09:08] Tom Welsh: Or at least the sequence.
+[00:09:12] Patrick Chouinard: Yeah, actually, do we have?
+[00:09:15] Patrick Chouinard: No, we'll see if Ryan joins in tonight.
+[00:09:19] Tom Welsh: Yeah, yeah.
+[00:09:20] Tom Welsh: That's exactly what I was thinking.
+[00:09:22] Tom Welsh: Ryan, Scott, and Mitch.
+[00:09:26] Tom Welsh: But yeah.
+[00:09:27] Tom Welsh: But that's me.
+[00:09:28] Tom Welsh: just want to see what other people have been up to.
+[00:09:31] Patrick Chouinard: Good.
+[00:09:33] Patrick Chouinard: Then it would be Hemal.
+[00:09:38] Hemal Shah: Hello, everywhere.
+[00:09:39] Hemal Shah: How are you?
+[00:09:40] Hemal Shah: I know it's been quite some time.
+[00:09:42] Hemal Shah: I had a long summer break.
+[00:09:45] Hemal Shah: I have two questions.
+[00:09:47] Hemal Shah: First one is, I was just chatting with Paul and Tom earlier.
+[00:09:51] Hemal Shah: From the agentic framework perspective, what agentic frameworks is the recommendation now?
+[00:09:59] Hemal Shah: LinkedIn, LinkedIn,
+[00:10:05] Patrick Chouinard: I would have to say it's been a while since I've done any length, a length chain of length graph.
+[00:10:11] Patrick Chouinard: I'm mostly working in the cloud environment with the cloud SDK at the moment.
+[00:10:18] Patrick Chouinard: There's tons of them coming out, but honestly, I'm starting to use the harness as my workflow more than anything else.
+[00:10:29] Hemal Shah: And when you say harness, you're talking about concept and practice is not a tool, a specific tool, right?
+[00:10:37] Patrick Chouinard: It depends what you're doing.
+[00:10:39] Hemal Shah: I mean, do you have a use case specifically we can talk about?
+[00:10:43] Hemal Shah: Yeah, so let me jump to that.
+[00:10:45] Hemal Shah: So for one of the e-commerce sites, I am working on to create kind of an interface like AI mode, just like where you just, conversational agent, where you go in, but it needs to...
+[00:11:00] Hemal Shah: Do three things.
+[00:11:00] Hemal Shah: One is answer from knowledge corpus, you know, basic questions, your, what does your company do and FAQs and awards and static content.
+[00:11:12] Hemal Shah: The second category of information is kind of a real-time data, order status, where is, you know, where is my shipping and things like that.
+[00:11:20] Hemal Shah: And third is kind of actions that it can take, schedule an appointment and things like that.
+[00:11:27] Hemal Shah: So kind of a chat GPT-like plane interface, but it's, it's a little bit more interactive, immersive, so get understanding user's intent first, and then routing it to specific areas of knowledge base and responding.
+[00:11:42] Hemal Shah: So I'm working on that and thinking on, you know, which agentic framework to use and how do, any recommendation on this type of project.
+[00:11:54] Hemal Shah: Verbal communication or only text?
+[00:11:58] Hemal Shah: Uh, right now it is.
+[00:12:00] Hemal Shah: It's text.
+[00:12:01] Hemal Shah: Eventually, we want to also create after our voice agent that can take, you know, answer the same static knowledge base out there, answer basic things, and maybe schedule appointment.
+[00:12:13] Hemal Shah: A few of the features will scale there as well.
+[00:12:17] Hemal Shah: But right now, it starts with text through websites.
+[00:12:21] Patrick Chouinard: Daniel, do you have an answer you want to provide?
+[00:12:27] Daniel Zivkovic: Sorry if it's too loud.
+[00:12:28] Patrick Chouinard: My father-in-law doesn't hear.
+[00:12:30] Daniel Zivkovic: So, I fell in love with Algolia.
+[00:12:32] Daniel Zivkovic: Like, this is the old, like, enterprise search from, you know, before .com, and it really worked well.
+[00:12:42] Daniel Zivkovic: did Algolia Agent Studio.
+[00:12:46] Daniel Zivkovic: I just tested it on my wife's mini-website.
+[00:12:49] Daniel Zivkovic: She's in real estate, so I wanted grounded answers to only come from the corpus.
+[00:12:53] Daniel Zivkovic: They come with the widgets.
+[00:12:55] Daniel Zivkovic: I had my harness AI, like, copy that and put it.
+[00:13:00] Daniel Zivkovic: It has a widget on the website.
+[00:13:01] Daniel Zivkovic: Knock on the wood, it's working brilliantly.
+[00:13:03] Daniel Zivkovic: And I know they specialize in, like, that's not their specialty, basic websites.
+[00:13:08] Daniel Zivkovic: Specialty is e-commerce websites.
+[00:13:10] Daniel Zivkovic: Because all the examples are like CRM, like, do I give this guy a discount?
+[00:13:14] Daniel Zivkovic: Do I let him to return stuff?
+[00:13:15] Daniel Zivkovic: So you need CRM connectivity.
+[00:13:17] Daniel Zivkovic: So they do allow that as well.
+[00:13:18] Daniel Zivkovic: They are not into voice.
+[00:13:20] Daniel Zivkovic: So before Algolia, was thinking just voice channel.
+[00:13:23] Daniel Zivkovic: For that, there are companies like Thrillet, or like there are other ones.
+[00:13:26] Daniel Zivkovic: But I like Thrillet because they are CPO.
+[00:13:30] Daniel Zivkovic: Or whatever his title is, founder is really smart.
+[00:13:32] Daniel Zivkovic: And he'll give advice, like, you know, time.
+[00:13:34] Daniel Zivkovic: So you get consulting and the service for voice.
+[00:13:37] Daniel Zivkovic: I don't know how to integrate the two.
+[00:13:39] Daniel Zivkovic: I'll share with you the link that I just put, like, a couple weekends of goofing around.
+[00:13:46] Hemal Shah: Okay.
+[00:13:48] Hemal Shah: Thank you, Daniel.
+[00:13:49] Hemal Shah: So yeah, Algolia, we can go with, that is something, paid subscription on my radar.
+[00:13:54] Daniel Zivkovic: free.
+[00:13:54] Daniel Zivkovic: If it's a small one, it's free.
+[00:13:56] Hemal Shah: Okay.
+[00:13:57] Daniel Zivkovic: Okay.
+[00:13:57] Daniel Zivkovic: So if you click on AI Search, Okay.
+[00:14:00] Daniel Zivkovic: Chat mode, like I didn't even have a search on this website, like, it is Algolia index, that was one weekend, you kind of figure out how to add it, like you have AI, read the documentation, and add the search based on your articles, and then adding AI is not easy, that was like two or three weekends, like to figure, because like it starts lying, hallucinating, worst thing is to hurt the brand, so I wanted to make sure that it does answer in the voice of my wife, and answer only from the documents she wrote, and then I wanted to use it for lead generation as well, in the old days, before, before, you just had a chat bot that was trying to chase people down when they come and convert them to leads, so this is really giving the value, and then, you know, if I cannot answer, like AI cannot answer, we say, why don't you talk to her, but I have boundaries, like I have like service areas, she's not, she's only resale, so there is lots of rules, but it all comes to prompting, it's like low-code tool, talk to Algolia, it's free, like actually, play with it, and then talk to them, and I'm not their partner, I'm nothing, like, just my client is using Algolia, I had to learn it, so.
+[00:14:59] Hemal Shah: Well, don't do that.
+[00:14:59] Hemal Shah: that.
+[00:15:01] Hemal Shah: Okay.
+[00:15:01] Hemal Shah: Thank you, Daniel.
+[00:15:02] Hemal Shah: I might hit you up offline if I have more questions around that.
+[00:15:06] Hemal Shah: Thank you.
+[00:15:07] Hemal Shah: Besides Algolia, any other recommendation?
+[00:15:10] Hemal Shah: I, you know, that is something I'll definitely explore, but if I were to do a little bit, if there are any limitations in Algolia, any other recommendation from this group to?
+[00:15:23] Patrick Chouinard: Anyone else?
+[00:15:30] Patrick Chouinard: We'll keep an eye out, and I'll let you know if I stumble into anything.
+[00:15:35] Patrick Chouinard: Honestly, I'm doing less and less live agents anymore.
+[00:15:40] Hemal Shah: I want to add something here.
+[00:15:42] Daniel Zivkovic: Like, we all developers, we love to develop.
+[00:15:44] Daniel Zivkovic: And like, it takes forever until you get to tuning the prompt and figuring out, does it work?
+[00:15:48] Daniel Zivkovic: This was the first time I was really business because I sit with her.
+[00:15:51] Daniel Zivkovic: I know what she needs, how she works.
+[00:15:53] Daniel Zivkovic: So I proxied for the business.
+[00:15:55] Daniel Zivkovic: Like, on the real project, like, we are not there.
+[00:15:57] Daniel Zivkovic: Six months after, after you do all the rugged.
+[00:16:00] Daniel Zivkovic: You figure out questions, answers are not really good.
+[00:16:03] Daniel Zivkovic: So with Algolia, low-coding tools, you get instantly in the head of the business.
+[00:16:08] Hemal Shah: Thank you.
+[00:16:10] Patrick Chouinard: Good.
+[00:16:12] Patrick Chouinard: Anything else from you, Hemal?
+[00:16:14] Hemal Shah: No, that's all.
+[00:16:15] Patrick Chouinard: Thank you.
+[00:16:16] Patrick Chouinard: Perfect.
+[00:16:17] Patrick Chouinard: Now, Paul, what's new in your world?
+[00:16:22] Paul Miller: Well, thanks, Patrick.
+[00:16:24] Paul Miller: Getting to the end of this very large project that I've been doing in Australia, which is great.
+[00:16:31] Paul Miller: It's been very, very profitable.
+[00:16:34] Paul Miller: But very, a hell of a lot of work.
+[00:16:36] Paul Miller: It certainly got me efficient with having, I ended up getting an extra monitor and had to set up a kind of a way of managing multiple sessions simultaneously and churning through the work.
+[00:16:55] Paul Miller: I bought a Mac, a Mac mini so I could do.
+[00:17:00] Paul Miller: The 24-hour thing as well, but yeah, I'm getting really efficient now with still surviving just with the two $200 plan Lord Code and one Codex, but it's managing to tune through the work.
+[00:17:17] Paul Miller: But yeah, no, it's been really good.
+[00:17:20] Paul Miller: I've used the Codex to do the checking of the code, but it's Claude Fable that sort of sets the high level and Opus 5 that delivers it, then Codex that validates everything that goes through it.
+[00:17:41] Paul Miller: You're using the plugin?
+[00:17:44] Patrick Chouinard: Yeah, yeah, yeah.
+[00:17:47] Paul Miller: That plugin's been good.
+[00:17:48] Paul Miller: I've been using the Pocock skills as well, and that's keeping it nice and lean and focused and aligned, so...
+[00:18:00] Paul Miller: It's good.
+[00:18:01] Paul Miller: So how much RAM?
+[00:18:03] Paul Miller: Well, it's just really hard to get a Mac Mini at the moment.
+[00:18:07] Paul Miller: I think anywhere in the world, but I managed to get one.
+[00:18:12] Paul Miller: I just wanted something in the budget.
+[00:18:15] Paul Miller: I didn't want to do huge local models locally because I kind of think it's easier to just throw the money at third parties to do that.
+[00:18:23] Paul Miller: So I just got a 24 gig one with half a terabyte of disk with the M4 processor.
+[00:18:38] Paul Miller: And yeah, it's brilliant.
+[00:18:39] Paul Miller: Just set it all up now.
+[00:18:41] Paul Miller: And it's humming.
+[00:18:46] Patrick Chouinard: Awesome.
+[00:18:47] Patrick Chouinard: Anything else on your side?
+[00:18:51] Paul Miller: No, it's it's I'm I'm being very cautious in terms of accepting new work.
+[00:18:57] Paul Miller: I just want to get stuff done.
+[00:18:59] Paul Miller: it's been a a I
+[00:19:00] Paul Miller: And finished and delivered, it's interesting with this large project where I've delivered this whole logistics thing for this company, I'm going to be flying up to the Philippines next month to recruit an ongoing support team because as I kind of roll things out commercially, I don't want to be doing the ongoing support.
+[00:19:21] Paul Miller: I don't mind sort of being involved with taking the app to the next level, but I really want to have other people focus on user support and a lot of the DevOps stuff connected to that, so I'm going to do that through, probably through the Philippines, it kind of makes sense in the Asia Pacific region, they're on time zone in the Philippines, similar to Australia and New Zealand, and the guys work well there with the business culture.
+[00:19:52] Paul Miller: of Australia and New Zealand, probably, yeah, I just find it easier to do that than working with some
+[00:20:00] Paul Miller: Some of the Indian offshore ones that are highly technical, capable guys, but not brilliant on the support side has been one of the challenges that I found with some of the other organizations I've used in the past.
+[00:20:16] Patrick Chouinard: And I see you had a question from Shakur about what did the 24-hour setup do you mean?
+[00:20:22] Patrick Chouinard: Do you mean running your agent for 24 hours?
+[00:20:25] Paul Miller: Oh, yeah, you're running coding agents 24 hours a day.
+[00:20:28] Paul Miller: Yeah.
+[00:20:29] Paul Miller: Because, yeah, I was running everything on my laptop and, you know, how you kind of leave it open and it's not really optimized for that.
+[00:20:36] Paul Miller: So now it's all running nicely in the Mac Mini remote.
+[00:20:42] Shakur Abdullah: Every time I've tried to do that, it always just gets to a certain point.
+[00:20:45] Shakur Abdullah: It's like, no, you're done.
+[00:20:47] Shakur Abdullah: And it just stops and just keep going.
+[00:20:50] Shakur Abdullah: Finish.
+[00:20:51] Shakur Abdullah: Finish the goal.
+[00:20:53] Paul Miller: Yeah.
+[00:20:53] Shakur Abdullah: don't I don't know.
+[00:20:54] Shakur Abdullah: if I'm not, if I'm not, persuasive enough.
+[00:20:57] Paul Miller: I've kind of got a, I've set up a bit of a
+[00:21:00] Paul Miller: Harness, AIOS environment where it's always got things that trigger and keep it going and checking things, and then it reports to kind of a master project organising agent.
+[00:21:16] Paul Miller: So you kind of have, I'm combining the co-work with the Claude code to keep it all aligned and prompted.
+[00:21:25] Shakur Abdullah: I still haven't set up my, I set one up my OS, my agent OS, but I don't know.
+[00:21:34] Shakur Abdullah: It ended up just bothering me.
+[00:21:36] Shakur Abdullah: So I never use it.
+[00:21:38] Shakur Abdullah: Well, maybe I'll go back and fix it finally.
+[00:21:41] Shakur Abdullah: It's on my, it's on my to-do list.
+[00:21:43] Paul Miller: Yeah, when I first got started with it, it was asking me so many questions simultaneously, and that's what we talked about last week.
+[00:21:50] Paul Miller: Um, because I think Patrick was in the same place, and having the, the chief of, uh, chief of staff, uh, managing, managing, your agent.
+[00:22:00] Paul Miller: Regents was a great, I think we were all in the same, there's three of us that were in the same place about managing that, and the efficiency now with all of that going is great.
+[00:22:12] Paul Miller: There's always a single point you can go to with making sure that you know this is where you should be focused today, and it's my efficiencies just doubled in the last week because of it.
+[00:22:27] Paul Miller: That's me.
+[00:22:28] Patrick Chouinard: Thanks, Patrick.
+[00:22:29] Patrick Chouinard: Good.
+[00:22:30] Patrick Chouinard: Thank you.
+[00:22:32] Patrick Chouinard: Daniel, our newcomer, do you have anything you want to share, any project you're working on, any question you might want answers on?
+[00:22:41] Daniel Zivkovic: Well, it's a cool group, like you guys are geeks.
+[00:22:44] Daniel Zivkovic: I'm not alone.
+[00:22:44] Daniel Zivkovic: That feels good.
+[00:22:46] Daniel Zivkovic: I'll be back.
+[00:22:48] Daniel Zivkovic: I just shared like that was like I'm experimenting with the AI chatbots and I figured that one out.
+[00:22:55] Daniel Zivkovic: I ran serverless Toronto community in Toronto, Ontario.
+[00:22:59] Daniel Zivkovic: Vivo.
+[00:23:00] Daniel Zivkovic: Like real meetups until COVID, and then I figured it's easier to do it online.
+[00:23:04] Daniel Zivkovic: Around 6,000 members once a month meetup, so I was just bored.
+[00:23:08] Daniel Zivkovic: Emptiness, there's nothing to do, just be on computer and ride the AI.
+[00:23:14] Patrick Chouinard: Good.
+[00:23:14] Patrick Chouinard: Actually, if Ryan ever joins in, I saw that you're in real estate.
+[00:23:20] Daniel Zivkovic: My wife is.
+[00:23:21] Daniel Zivkovic: I'm just kind of analyst.
+[00:23:25] Patrick Chouinard: No, Ryan has built a bunch of real estate AI applications before, so.
+[00:23:32] Daniel Zivkovic: He's from Australia.
+[00:23:34] Patrick Chouinard: Ryan, I think he's from London.
+[00:23:37] Daniel Zivkovic: I'm not sure.
+[00:23:38] Daniel Zivkovic: Okay.
+[00:23:39] Patrick Chouinard: I know he's in the UK, but I wouldn't.
+[00:23:42] Daniel Zivkovic: Looking forward.
+[00:23:43] Patrick Chouinard: assume we're in the UK.
+[00:23:47] Patrick Chouinard: Good.
+[00:23:48] Patrick Chouinard: Well, whenever you want to join, if you have any projects or question of any of an AI nature, feel free to come back.
+[00:23:57] Patrick Chouinard: You're always welcome.
+[00:23:58] Daniel Zivkovic: Thank you.
+[00:23:59] Patrick Chouinard: you.
+[00:24:00] Patrick Chouinard: We're going to continue with a friend of Juan.
+[00:24:03] Patrick Chouinard: How's the application deployment going?
+[00:24:11] Juan Torres: Say Juan?
+[00:24:13] Patrick Chouinard: Yeah.
+[00:24:13] Juan Torres: Okay, cool.
+[00:24:15] Juan Torres: Good.
+[00:24:15] Juan Torres: I think I have an event this weekend.
+[00:24:18] Juan Torres: I got to check, double check.
+[00:24:20] Juan Torres: That's the case.
+[00:24:22] Juan Torres: So just for people that haven't been on the call, I developed kind of like when you have a party, you have a photo booth, you know, and people take pictures.
+[00:24:32] Juan Torres: They get printed pictures.
+[00:24:33] Juan Torres: So this is kind of like an AI photo booth service in which pictures are taken, but then they're transformed accordingly to styles that you prompt and you use diffusion models in order to create an image to image pipeline.
+[00:24:51] Juan Torres: So that's what I've developed.
+[00:24:53] Juan Torres: And so far, people, at least here in San Diego, seem to really like it.
+[00:24:58] Juan Torres: So what I've.
+[00:25:00] Juan Torres: In trying to do, well, aside from getting events, is just developing more styles, at least 30, just because of the interface allows for 30.
+[00:25:11] Juan Torres: So I'm just concentrating on developing more transformations for people to select and also to maintain some of the, to try to outkeep my Instagram, because I think the Instagram that I just created last week, is going to be a good way to showcase some of the transformations.
+[00:25:34] Juan Torres: So I'm just going to share the Instagram that I have so far, which only has about what, 10 posts, but hopefully I'll be able to continue the development of my posting here.
+[00:25:51] Juan Torres: So yeah, that that's, that's what I've been working on.
+[00:25:58] Juan Torres: I still have.
+[00:26:00] Juan Torres: Fathom content from the last event that I had that I haven't really had a chance to materialize into a video, into more content, just because I'm trying to focus, trying to have an iterative relationships between deployment and development, deployment and development, so as to be able to not just go into action, but also reflect, review, improve, and deploy.
+[00:26:30] Juan Torres: As a means to be more dialectical in the process of my engineering.
+[00:26:38] Patrick Chouinard: Good.
+[00:26:39] Patrick Chouinard: And question for you, how do you see the next step going on?
+[00:26:44] Patrick Chouinard: Because now you're improving the platform, but it's dependent on hardware and you being with the hardware.
+[00:26:51] Patrick Chouinard: How do you see the expansion of the solution beyond what you're going to be able to be present for?
+[00:26:58] Juan Torres: Yeah, that's-
+[00:27:00] Juan Torres: That's the question of hiring help, particularly an AI boot technician that is going to help me transform to help me install and deploy.
+[00:27:13] Juan Torres: So that's the thing that I haven't even systematized.
+[00:27:18] Juan Torres: I mean, you could say that there's even improvements in some of the hardware that more than anything, the network aspect.
+[00:27:27] Juan Torres: But that's something that that I still have to to go along so I can focus on on the engineering aspect.
+[00:27:35] Juan Torres: Right.
+[00:27:36] Juan Torres: Although there is the benefit that if I stay within the field, I'm going to be able to get immediate feedback and reactions.
+[00:27:46] Juan Torres: So that's why I haven't really looked into detaching myself from the field.
+[00:27:52] Juan Torres: I have I still want to be in the field and see people's reactions and.
+[00:27:59] Juan Torres: first, we'll screen.
+[00:28:00] Juan Torres: You know, and see how they're vibing with the service, with the application.
+[00:28:07] Patrick Chouinard: And I would not recommend getting out of the field, but adding other member using it without your baggage of knowledge of the platform might get you some feedback that you're not getting right now because you can resolve them in your head.
+[00:28:24] Juan Torres: Right.
+[00:28:26] Juan Torres: There's a possibility for to do it in an incipient form through there's this girl that helps me out with my social media that I hire once in a while for presentations.
+[00:28:41] Juan Torres: So I need to actually get in touch with her so she can help me not only take photos, videos of the whole experience, but also ask her as she seems to have, you know, a good sense of, of.
+[00:29:01] Juan Torres: So she could help me sauce out the vibe of the event.
+[00:29:07] Juan Torres: So that's a very good recommendation.
+[00:29:09] Juan Torres: I didn't even thought about actually contacting her for this weekend's event.
+[00:29:13] Juan Torres: Yeah, that's it.
+[00:29:14] Juan Torres: That's good.
+[00:29:16] Patrick Chouinard: Tom, you had a comment, question?
+[00:29:20] Tom Welsh: Yeah, I was literally just going to say, I think it's important not to get out the field too early, because like you say, you'll pick up valid user feedback, you won't get back from your employee.
+[00:29:30] Tom Welsh: But, as Patrick says, the employee will actually show you stuff that you just gloss over because you know which buttons to press, you know, and you'll be like, oh, because the best test is somebody that just picks their mouse up and goes click, click, click, click, click, no, you're not meant to do that, because that's why I'm doing it.
+[00:29:49] Tom Welsh: But yeah, people hate me.
+[00:29:51] Tom Welsh: But yeah, that's basically what I was saying, just it's important with a new product to be in the field to get proper user feedback at the time.
+[00:30:00] Tom Welsh: And as the project matures, and you can take yourself a bit more out, because the other people will get more into it and more feedback.
+[00:30:07] Juan Torres: Tom, sorry, could you just summarize what you meant?
+[00:30:11] Juan Torres: It was really, it was my mistake.
+[00:30:13] Juan Torres: I didn't hear it that well.
+[00:30:14] Tom Welsh: You know, I was just saying, I think it's important that you stay in the field for a while, because you get important user feedback to yourself.
+[00:30:24] Tom Welsh: You can ask the, you get feedback, you can ask the customer a more about the feedback they're giving them, as opposed to, you have your technician in the field, who's the technician, knows the product, doesn't know the backstory and where it's going.
+[00:30:38] Tom Welsh: I think you need to be in the field, in and out of the field, not as much as you are currently, by at least one in four visits or whatever, until actually, until you get to where you need to be.
+[00:30:49] Juan Torres: Yeah.
+[00:30:50] Juan Torres: Yeah.
+[00:30:54] Tom Welsh: Yeah.
+[00:30:55] Tom Welsh: That's me.
+[00:30:57] Patrick Chouinard: Anything else you wanted to add, Juan?
+[00:31:00] Juan Torres: No, no.
+[00:31:02] Juan Torres: Yeah, I'm good for now.
+[00:31:06] Patrick Chouinard: Good.
+[00:31:08] Patrick Chouinard: Let's keep going.
+[00:31:10] Patrick Chouinard: Morgan, how are things going in the land of the solution to problem nobody thought about before you did?
+[00:31:20] mdcatc: So I've spent a good chunk of this last week actually doing construction projects, but I did spend some time rewriting the class to curb in Convex and it wasn't, it's not a direct translation because the Convex model and concepts simplified a lot of things actually and made some of the things that I really wanted to do with the MVP possible that I pushed out of my previous MVP.
+[00:31:58] mdcatc: song.
+[00:32:00] mdcatc: It's been a nice little journey.
+[00:32:02] mdcatc: I haven't got my head completely wrapped around the entire stack of Convex, but it's pretty clean from the design perspective of what I had originally in mind.
+[00:32:16] mdcatc: Tom, you had a question?
+[00:32:18] Tom Welsh: I would say, remind me what it was, was that the screen thing you were talking about?
+[00:32:22] Tom Welsh: Was it the screen thing you were doing?
+[00:32:25] mdcatc: That's a different project.
+[00:32:27] Tom Welsh: That's what I thought.
+[00:32:28] Tom Welsh: Is this the graveyard one?
+[00:32:30] mdcatc: I have like four or five projects right now.
+[00:32:33] mdcatc: So back to Paul's statement about, we'd just like to finish something.
+[00:32:40] mdcatc: I would like to finish something.
+[00:32:43] mdcatc: SignPy is still going well.
+[00:32:48] mdcatc: I have it deployed at three different sites right now.
+[00:32:51] mdcatc: And I'm working on the front end so that the site administrators can just simply upload and do their content.
+[00:33:00] mdcatc: So what SignPy does is it's basically like a lobby sign with digital content that shows up on it, but the content has a lot of rules that are automatic, like if there's something that is advertising some event, it has an expiration date.
+[00:33:17] mdcatc: So once that event passes, that image no longer shows up, and this is a mechanism that I kind of shared a bit with Juan in the concept of this would be a great way to just have a thing running that automatically displays, and maybe SignPy isn't the right tool for that, but it's a concept that goes well with what Juan was doing with his project for the photo booth.
+[00:33:42] mdcatc: So a good way to just have it like automatically show a bunch of pictures that the audience of your your team or your event are engaged in, right?
+[00:33:54] Juan Torres: So like a slideshow?
+[00:33:57] mdcatc: Kind of like a slideshow.
+[00:34:00] mdcatc: As the new images are processed, they automatically pop up there and randomly change as new stuff comes in.
+[00:34:08] mdcatc: So it makes it communal, right?
+[00:34:11] mdcatc: It brings your photo thing communal and to the event, real time, is the concept.
+[00:34:22] mdcatc: So the way that's being used with the places that I have a distributor right now is that it's in a, two of them are in a transitional home.
+[00:34:32] mdcatc: So a lot of the people in these homes don't have proper access, so some of that is informational for them about where to get benefits and those kind of things, right?
+[00:34:45] mdcatc: And it is a way for the administrators to post messages that are distributed to the people that are in these homes.
+[00:34:55] mdcatc: And the other place that it's going to be deployed soon.
+[00:35:00] mdcatc: The same client for the cemetery is the cemetery, and they have a – the cemetery is controlled by the county and is controlled by the county parks in this specific instance.
+[00:35:18] mdcatc: So county parks takes care of all of the actual parks as well as the cemetery.
+[00:35:22] mdcatc: And the parks has several conference rooms that are – that they can rent out and events and different – you know, all of the parks within the county are part of it.
+[00:35:36] mdcatc: So they wanted some – a lobby screen that has information about what – any upcoming events and, you know, photos and things of their construction projects, their park projects, where things stand.
+[00:35:51] mdcatc: And so they're going to take advantage of that too.
+[00:35:55] mdcatc: And they want to – so this is first real client request.
+[00:36:00] mdcatc: The is they want a way for their out-of-office people, the people out in the field, to be able to take pictures and upload it and have it clean it up and present it for the slideshow.
+[00:36:18] mdcatc: So it's similar to what Juan is doing.
+[00:36:20] mdcatc: There's an automated AI piece behind it, which takes whatever garbage you put into it and makes it presentable on the slideshow.
+[00:36:30] mdcatc: And if it's got a skin behind it that can match, then it'll match it up with the skin so that all of the slides look cohesive and the information in them is accurate.
+[00:36:41] mdcatc: If there's any kind of date or anything, it'll put an iCal barcode so you can just scan it and pop it onto your calendar right there off the sign.
+[00:36:50] mdcatc: Any kind of locations, like, you know, there's an event at this address, then it'll pop the address in a QR code so you can scan that and drag it straight to your map.
+[00:36:59] mdcatc: All that stuff.
+[00:37:00] mdcatc: Fathom automated from the input of the rough stuff.
+[00:37:05] mdcatc: You can take a picture of scribbles on a piece of paper and it will create a nice looking sign out of it.
+[00:37:12] Patrick Chouinard: Juan, you had a question or comment?
+[00:37:14] Juan Torres: Yeah.
+[00:37:15] Juan Torres: Do you have a demo of your app?
+[00:37:19] mdcatc: No.
+[00:37:19] mdcatc: Right now, the part that I'm working on is the front end that the user would submit to for the ones that I have deployed.
+[00:37:28] mdcatc: So they're deployed on a Raspberry Pi.
+[00:37:30] mdcatc: Hold on a second.
+[00:37:31] mdcatc: Like just a regular Raspberry Pi and it, the Raspberry Pi is standalone.
+[00:37:43] mdcatc: The part of that piece is so that it doesn't have to rely on any of the local network that is put on.
+[00:37:48] mdcatc: You just needed, you just need a Wi-Fi access point out.
+[00:37:53] mdcatc: Right.
+[00:37:54] mdcatc: So the only thing you'd have to set up is an actual Wi-Fi configuration on the Pi.
+[00:38:00] mdcatc: And then after it's running, if the network is lost, then it still has all the content on the Raspberry Pi from the last update, and it'll sit there and rebuild forever or recycle forever.
+[00:38:12] mdcatc: It has a bunch of random content that will randomize the information, so it's not cohesive, but some of the elements or slides are ordered.
+[00:38:22] mdcatc: Like if you have a quiz kind of thing, know, just a mental quiz thing, you know, what's the, you know, who played first base in the last Red Sox game or whatever, and then it'll give you A, B, C, and D, and then the next slide actually shows the answer kind of thing.
+[00:38:39] mdcatc: So just an entertainment kind of quiz things.
+[00:38:43] mdcatc: So the process then is that the Pi will contact the server to see if there's anything new to be updated.
+[00:38:51] mdcatc: And then from the other side of it, the user's input is processed and put into a queue so that the Pi can pick it up.
+[00:38:59] mdcatc: So...
+[00:39:00] mdcatc: It's kind of like a Dropbox hot folder that it, if it can access it, it'll update.
+[00:39:04] mdcatc: If not, it just continues on with what it's got.
+[00:39:09] mdcatc: That's the whole concept of that.
+[00:39:10] mdcatc: So what I'm working on right now for that piece is the front end of the client-side web app that they upload the content to.
+[00:39:21] Patrick Chouinard: So basically you figured out how to do garbage in, nice thing out?
+[00:39:25] mdcatc: Yeah, I did that all manually through Claude and just had a bunch of, went through maybe six or, I don't know, there have been several sessions of processing different slides that I have been presented with.
+[00:39:38] mdcatc: One of them, one of my clients, actually, this is for the one that actually runs it right now, has probably 6,000 slides of, you know, like meeting slides of, you know, this is the loop, but they're all in normal portrait mode instead of horizontal.
+[00:40:00] mdcatc: Landscape.
+[00:40:01] mdcatc: And so what it does is it takes that slide and picks all the color and graphical information out of it and then restructures it so it can be landscaped.
+[00:40:12] mdcatc: And that's a huge process.
+[00:40:15] mdcatc: Otherwise, you end up with a nice monitor that has big black bars down both sides.
+[00:40:22] Patrick Chouinard: And Tom, I was asking the version of the Pi you're using.
+[00:40:29] mdcatc: I built it on Raspberry Pi 5 and then I went and quantified it on Raspberry 4 because I wanted to see it on a cheaper model.
+[00:40:37] mdcatc: The Raspberry 4 is workable, but if you really want the graphic animation to be really crisp, then you should use a Raspberry 5.
+[00:40:49] mdcatc: Each slide is actually, it's not just a pick.
+[00:40:52] mdcatc: It's an HTML with, it's a self-contained HTML.
+[00:40:55] mdcatc: And so every slide has its own, all of its own content, all
+[00:41:00] mdcatc: It's on JavaScript.
+[00:41:00] mdcatc: It's all self-contained.
+[00:41:01] mdcatc: It doesn't access anything outside of its one page so that it doesn't have any kind of network restrictions on things I can't control.
+[00:41:14] mdcatc: It's not trying to go out and pick something up off of a server that's not available and then crashes the whole thing.
+[00:41:21] mdcatc: It's all local and self-contained.
+[00:41:26] mdcatc: So that's the Raspberry Pi.
+[00:41:29] mdcatc: And Shakur was asking about the cost of the Pi.
+[00:41:33] mdcatc: Well, that keeps changing.
+[00:41:35] mdcatc: Right now, everything in the chip industry is so much in flux.
+[00:41:40] mdcatc: The Raspberry Pi 5 was $250 and the Raspberry 4 was like $190 or $880.
+[00:41:49] mdcatc: I looked at going with a Fire Stick, but they've changed their interface.
+[00:41:57] mdcatc: And so it makes it...
+[00:41:59] mdcatc: It
+[00:42:00] mdcatc: They want you to go through their actual server to install the app and everything before you used to be able to install it straight to the Firestick, but now you have to get it published.
+[00:42:12] mdcatc: they're going after the Apple model where you have to publish it through them and they're going to take a piece, but the Firestick would have been nice because it's only, it's, it's got the video driver that is needed for the animation, but it's only like 40, 50 bucks for, for a decent Firestick.
+[00:42:32] mdcatc: Tom?
+[00:42:33] mdcatc: Tom?
+[00:42:34] Tom Welsh: Tom?
+[00:42:34] Tom Welsh: Is that a eight gig raspberry pie?
+[00:42:37] mdcatc: Tom?
+[00:42:37] mdcatc: What's that?
+[00:42:38] Tom Welsh: The pie, the pie five, is that an eight gig raspberry pie?
+[00:42:41] mdcatc: Tom?
+[00:42:42] mdcatc: Yeah.
+[00:42:43] Tom Welsh: Hmm.
+[00:42:44] Tom Welsh: There are 165 pounds in the UK.
+[00:42:47] mdcatc: What's that?
+[00:42:48] Tom Welsh: There are 165 pounds in the UK, which is pretty close.
+[00:42:55] Patrick Chouinard: Yeah.
+[00:42:56] mdcatc: So I, it fluctuates that, like...
+[00:43:00] mdcatc: And you might find a site that has some that are cheaper or whatever, and they were cheap for a while, like they were down well below $200 before all the chip manufacturers started refocusing.
+[00:43:17] mdcatc: Other projects I'm working on, a couple of weeks ago I mentioned I had this old printer sitting here that I couldn't get drivers for for the new OSs, and so I spent the time to just have AI rewrite the driver format for it.
+[00:43:35] mdcatc: for the modern OS, so that was a nice little experiment to, you know, drive this little label printer.
+[00:43:47] mdcatc: Took about half a day to run through that, it was just a USB printer, so, and then whatever happened from your scanner work out, out of that.
+[00:44:00] mdcatc: Patrick?
+[00:44:00] Patrick Chouinard: Yeah, was caught in other priority, that's it.
+[00:44:05] mdcatc: The playtime shriveled, did it?
+[00:44:08] Patrick Chouinard: Oh, if only.
+[00:44:10] mdcatc: Right.
+[00:44:11] Patrick Chouinard: We're getting too close to go live for me to have any playtime anymore.
+[00:44:18] mdcatc: Just, you know, it was a concept on the fact that writing the code is, you know, it doesn't cost too much.
+[00:44:29] mdcatc: I mean, there's a cost to it, but it doesn't cost as much in both money and time as it used to research.
+[00:44:35] mdcatc: And to be able to research it with the AI doing most of the heavy lifting, you know, made it real quick to rewrite the driver for that printer.
+[00:44:46] mdcatc: And it's not something that I had previous, you know, knowledge on about writing a driver.
+[00:44:54] mdcatc: It's just now possible to teach yourself quite quickly on how to do something.
+[00:45:07] Patrick Chouinard: Yeah, you're making me think that it might be a very good use case, actually, for a slash goal with Fable because it's easily testable.
+[00:45:21] Patrick Chouinard: So you can figure out pretty easily if it works or not.
+[00:45:25] mdcatc: Right.
+[00:45:26] mdcatc: Well, and that's the thing is the process was it found the API and the API was pretty complete.
+[00:45:35] mdcatc: So it wrote some tests, printed out a label.
+[00:45:39] mdcatc: I just took a picture of it, the label, and sent it back to Cloud and it made adjustments from there.
+[00:45:45] mdcatc: was a closed loop for it, right?
+[00:45:47] mdcatc: I didn't have to, I wasn't sitting there describing all of the problems with it.
+[00:45:50] mdcatc: I took pictures, let it look at the picture.
+[00:45:54] mdcatc: So I see this is off.
+[00:45:58] mdcatc: So it was, it was kind of cool.
+[00:45:59] mdcatc: cool.
+[00:45:59] mdcatc: So.
+[00:46:00] mdcatc: Cool little fun task.
+[00:46:02] mdcatc: So the other project is the Heritage Plot.
+[00:46:06] mdcatc: Heritage Plot is a cemetery management system, and that's on hold or pending the county getting off their lazy laurels.
+[00:46:18] mdcatc: I can't do much more with that, and I don't want to spend a lot more time on there until I have their buy-in and have their feedback of what they need changed, right?
+[00:46:30] mdcatc: So what I have in place now is actually usable and demonstratable, and if I get a little bit more time, then I might start doing that as a marketing campaign to other cemeteries instead of the one that actually requested it in the first place.
+[00:46:50] mdcatc: Plastic Curve is up and running, and that's the end of school day carpool issue.
+[00:47:01] mdcatc: That's working pretty good.
+[00:47:02] mdcatc: I don't have any users on it at this point, but I didn't want to push it because I wanted to rewrite it using Convex.
+[00:47:11] mdcatc: And so, and enough of that has changed now that I really don't want anybody to necessarily subscribe right now.
+[00:47:20] mdcatc: Um, on the cemetery stuff, Daniel, you asked the question in text.
+[00:47:26] mdcatc: Um, I got onto that because, one of the individuals at the county that runs the cemetery for that county has a, uh, a government requirement.
+[00:47:38] mdcatc: This is in a specific state.
+[00:47:40] mdcatc: They have a, uh, it's like a FOIA request where you have to have a Freedom of Information Act kind of request to get certain information out of the system.
+[00:47:48] mdcatc: and none of the, uh, none of the current cemetery software supports what that state is requiring by law.
+[00:47:55] mdcatc: And so that's the, the moat around the whole thing.
+[00:48:01] mdcatc: Apparently, they're not experiencing enough pain yet with that, but as soon as they start getting fined because they can't provide the information or because the information they provided was not supposed to be provided, that's when they're really going to start looking.
+[00:48:16] mdcatc: And it's not just one cemetery, it's every government-operated cemetery.
+[00:48:23] mdcatc: Private-operated cemeteries don't fall under the rule, but the government-operated cemeteries do, and there are plenty of counties that require that.
+[00:48:36] mdcatc: So I do have a list of all of the cemeteries in that specific state that our county ran and their contact info.
+[00:48:45] mdcatc: All of that is public information.
+[00:48:47] mdcatc: And so when I get ready to start that, I will go down that path of, you know, having people make requests for it.
+[00:48:58] mdcatc: Juan?
+[00:49:03] Juan Torres: Yeah.
+[00:49:03] Juan Torres: So, I mean, I know I, like, already said this before, but, and I'm saying it because from experience, it has worked because I used to work for labor unions here in the United States.
+[00:49:17] mdcatc: Yeah.
+[00:49:18] Juan Torres: And what they would do is that they would start, like, a political campaign to basically go and pressure the board of supervisors of a county or the city council, right, to basically, I mean, they had a sophisticated campaign because they actually brought workers, you know, and gave testimonies, right?
+[00:49:39] mdcatc: Right.
+[00:49:41] Juan Torres: but that was one of the, like, pressure points that, uh, those advocacy groups were making in order to, to pressure, uh, and it was kind of the same, uh, discussion I had with Brandon last time because he's trying to pressurize middle tier bureaucracy.
+[00:50:00] Juan Torres: What meant bureaucracy into adopting a technology that they know they're going to need, but because of the conservative nature of human consciousness, unless they're faced by the Darwinian survival struggle of decimation, of course, they're going to delay the process of adopting technology that they need, right?
+[00:50:20] Juan Torres: So one of the ways that I saw unions advocacy groups basically creating that pressure environment is by going to the bosses of the directors of departments, which including the county.
+[00:50:36] Juan Torres: So, I mean, I know that can be intimidating, but I mean, I think it could be also like a great experience in terms of postulating or articulating the premises of the value of your application.
+[00:50:54] mdcatc: Yeah.
+[00:50:55] mdcatc: And I remember you mentioning this before as well.
+[00:50:59] mdcatc: And it was.
+[00:51:00] mdcatc: Very good points that were well taken.
+[00:51:03] mdcatc: I have a bandwidth issue right now, as it is, so I'm not trying to create a problem that I would really like to solve, but it might end up that way anyways.
+[00:51:20] mdcatc: And this is a state not in the state that I'm in, so me to drive it is a little bit difficult.
+[00:51:26] mdcatc: I need to get somebody from that state to drive it.
+[00:51:29] mdcatc: And the person that I have in that state is the county member, and there's a conflict of interest for me to have him go do that, to start a political campaign against his own office.
+[00:51:46] mdcatc: So there will be, there'll be some, something will happen here soon.
+[00:51:50] mdcatc: I guarantee that.
+[00:51:52] mdcatc: One other thing that I wanted to mention to Paul, listening, Paul, you brought up the.
+[00:52:00] mdcatc: And the, I just like to get something finished.
+[00:52:02] mdcatc: And I have that same kind of mindset.
+[00:52:04] mdcatc: I like to get something finished.
+[00:52:05] mdcatc: There's a great book called The Infinite Game.
+[00:52:09] mdcatc: And it talks about, we think about a lot of things in life as a finite game.
+[00:52:16] mdcatc: Like a football game is a finite game.
+[00:52:19] mdcatc: There's a beginning, there's a quarter, there's a halftime, you know, extra.
+[00:52:22] mdcatc: And at some point, there's a final, and we know who won or lost.
+[00:52:25] mdcatc: And I think the infinite part of this is life is not finite.
+[00:52:32] mdcatc: It's, it's a cyclical process, right?
+[00:52:35] mdcatc: We never actually, there's not a beginning, there's not a finish.
+[00:52:38] mdcatc: There may be milestones, there may be versions, but things don't often have a set structure of here's the beginning, here's the end, we know exactly what we're doing, we're going to go here, we're going to stop, right?
+[00:52:52] mdcatc: That doesn't happen in the business world.
+[00:52:54] mdcatc: The business world is always about renegotiating the next.
+[00:53:00] mdcatc: The next cycle, renegotiating the next contract, whatever it is.
+[00:53:05] mdcatc: So having that, just changing that mindset of it's not, there's no completion, right?
+[00:53:12] mdcatc: It's just what is the next cycle really helps you, helps me get past those anxiety of, oh, I just really want to get something finished.
+[00:53:23] mdcatc: It's like we're finishing stuff every day.
+[00:53:25] mdcatc: They're just smaller tasks and processes in the big scheme of things.
+[00:53:29] Paul Miller: Yeah, it's a challenge.
+[00:53:31] Paul Miller: And I think part of the challenge with it is what is finished.
+[00:53:39] mdcatc: Exactly.
+[00:53:40] Paul Miller: So what's the metric that you're working to?
+[00:53:43] Paul Miller: What's the metric in the mindset of the client you're working to?
+[00:53:48] Paul Miller: I think always for me, the biggest pain is their perception of what they believe they wanted finished.
+[00:53:57] mdcatc: Yeah.
+[00:53:58] Paul Miller: And it's, it's,
+[00:54:00] Paul Miller: Sometimes in my mindset, I'm thinking, oh, it could be better.
+[00:54:03] Paul Miller: We could do this phase versus this phase, and it just keeps going.
+[00:54:07] Paul Miller: But you need to be able to have those clear lines where you can say, all right, I've got to this point.
+[00:54:13] Paul Miller: Or just for the benefit of getting a stage finished and saying, look, this week, we're going to complete this.
+[00:54:23] mdcatc: And then clear line in the sand.
+[00:54:26] Paul Miller: Now we're on to this next phase.
+[00:54:28] Paul Miller: And there's a term in cricket because you're not that into cricket in the United States, but it all comes out of test cricket because test cricket is played over five days and you can potentially have a draw even after playing for five days.
+[00:54:53] Paul Miller: But it's, you look at, you look at the game and you say, well, everything you focus on in innings.
+[00:55:00] Paul Miller: And what you can achieve in that innings over those five days and kind of eating the elephant one bite at a time, that kind of methodology that I was getting a bit disconnected with having a clear roadmap.
+[00:55:17] Paul Miller: And once I had that sort of head of software kind of head of staff saying, look, we have to have clear deliverables, we have to be aligned to the project side, and we need to work to that and need to shut down the scope changes, then life became so much better.
+[00:55:40] mdcatc: Cool.
+[00:55:41] mdcatc: All right.
+[00:55:41] mdcatc: One last thing and then I'll be done.
+[00:55:44] mdcatc: Patrick?
+[00:55:45] Patrick Chouinard: Yep.
+[00:55:46] mdcatc: You had mentioned last week about your sarcastic client rules to help Opus not be silver.
+[00:55:55] Patrick Chouinard: last week was just my traditional system prompt that I've copied everywhere.
+[00:56:00] Patrick Chouinard: That makes it more manageable, but honestly, what IndieDevDan published this week takes that to a whole new level.
+[00:56:09] mdcatc: Who published?
+[00:56:11] Patrick Chouinard: IndieDevDan.
+[00:56:13] Patrick Chouinard: I've actually shared the video at the beginning.
+[00:56:15] Patrick Chouinard: I can reshare it.
+[00:56:17] Daniel Zivkovic: Can you summarize it?
+[00:56:19] Daniel Zivkovic: Can you summarize it, like, for us?
+[00:56:21] Patrick Chouinard: Yeah, yeah, yeah.
+[00:56:23] Patrick Chouinard: Just let me do the link.
+[00:56:26] Patrick Chouinard: So basically, what you propose is, with Cloud Code, there is an option you can use that's called Appen System Prompt File.
+[00:56:36] Patrick Chouinard: And it appens whatever file content or whatever markdown content you use there, it will appen it at the end of its own system prompt.
+[00:56:47] Patrick Chouinard: So it is not part of the user prompt.
+[00:56:49] Patrick Chouinard: It's not part of ingested context.
+[00:56:51] Patrick Chouinard: So from a perspective of importance, it is higher in the iRocky.
+[00:56:57] Patrick Chouinard: It's at the same height as the System Prompt.
+[00:56:59] Patrick Chouinard: So that's iRocky.
+[00:56:59] Patrick Chouinard: So.
+[00:56:59] Patrick Chouinard: Nice.
+[00:57:00] Patrick Chouinard: So even higher than the claw.md.
+[00:57:03] Patrick Chouinard: So whatever you put in there will be also reposted as is the system prompt, you know, because if you put something in your claw.md after 20 turns, it's really, really far in the context, but the system prompt gets reposted at every turn.
+[00:57:21] Patrick Chouinard: So it's always, always fresh.
+[00:57:24] Patrick Chouinard: And he's putting first a set of instruction to make it concise.
+[00:57:30] Patrick Chouinard: But after that, he has a list of do's and don'ts.
+[00:57:34] Patrick Chouinard: So real example of, or instruction that you, the system must follow some that they must never, the mdash are in there, the, all of the traditional stuff that you want to get rid of in the, in the verbosity.
+[00:57:46] Patrick Chouinard: He has examples.
+[00:57:49] Patrick Chouinard: But one of the things I found absolutely amazing is, is concept of aliases.
+[00:57:55] Patrick Chouinard: He happens to put a table of alias in this.
+[00:58:00] Patrick Chouinard: This happen file where, for example, he states to the model, like whenever you see the short three-letter term Eli, E-L-I, okay?
+[00:58:13] Patrick Chouinard: I want you to see that as an alias of a longer concept, which is explain it to me like I am a 12-year-old.
+[00:58:25] Patrick Chouinard: And every time you see that, you expand Eli into the full command.
+[00:58:29] Patrick Chouinard: So basically, he has inserted some kind of a basic skill within the system prompt itself.
+[00:58:39] mdcatc: Yeah, that's cool.
+[00:58:42] mdcatc: That's like Hocock's context vocabulary.
+[00:58:47] Patrick Chouinard: Yeah, he put it in the system prompt instead of as a skill, you know?
+[00:58:52] Patrick Chouinard: And on top of that, he's also adding the concept of reference.
+[00:59:00] Patrick Chouinard: Every risk is named R1, R2, R3, R4, every finding is F1, F2, F3, F4, meaning that then you can refer to by their reference number, so you don't have, if something is way back in the context, you don't have to state, oh, when you mention the risk about blah, blah, no, no, when you mention R1, here's what I want you to do about it, or talk to me in detail about R3, or things of that nature.
+[00:59:29] Daniel Zivkovic: R3, R4, loved his work before, but he complicates things.
+[00:59:33] Daniel Zivkovic: Is this Matthew Pig the legend that he took?
+[00:59:37] Daniel Zivkovic: Like he over engineers sometimes, that's what I say.
+[00:59:40] mdcatc: It looks like over engineering from your point of view when you're sitting, but when he has gone through the week of processing a problem of his own, then that's what it is, it comes out with a result that looks like it's too much, but it's too much for maybe the problem you have, the problem he was.
+[01:00:00] mdcatc: He trying to solve, he solved it with this one thing.
+[01:00:03] mdcatc: And, you know, I get that he sometimes also, yeah, I agree with you.
+[01:00:07] mdcatc: He over-engineers, but I like it.
+[01:00:10] Daniel Zivkovic: No, I like it too.
+[01:00:11] Daniel Zivkovic: I paid the course when he started.
+[01:00:13] Daniel Zivkovic: But he's like, you take off from him and go your way.
+[01:00:15] Daniel Zivkovic: So he's good at a certain point in your life.
+[01:00:18] Patrick Chouinard: But honestly, I've been using it for a couple of days now, and I saw my consumption drop dramatically.
+[01:00:26] Patrick Chouinard: I've seen a significant drop in my token usage, while I actually produce just as much, if not more, than I used to.
+[01:00:34] Patrick Chouinard: And honestly, all of the shorthands in there, they became muscle memory within a day.
+[01:00:42] mdcatc: Right.
+[01:00:43] mdcatc: Cool.
+[01:00:44] Patrick Chouinard: Yeah.
+[01:00:45] Daniel Zivkovic: I'll try it.
+[01:00:47] Patrick Chouinard: And obviously, I'm going to improve.
+[01:00:49] Patrick Chouinard: I'm going to not improve it.
+[01:00:50] Patrick Chouinard: I wouldn't dare say that I'm going to improve on the work, but I am going to personalize it, make it mine.
+[01:00:58] Daniel Zivkovic: I want his aid.
+[01:01:00] Daniel Zivkovic: Of course, of course, since before, like Claude Goat, that was, I hope.
+[01:01:06] Patrick Chouinard: So, yeah, I'm not taking everything.
+[01:01:08] Patrick Chouinard: I'm not going to build a C-suite of agents just yet.
+[01:01:12] Patrick Chouinard: I'm more than happy with just my chief of staff.
+[01:01:15] Patrick Chouinard: But there are definitely pieces of what he creates that I chit with him.
+[01:01:20] Patrick Chouinard: I pick a little bit of everything.
+[01:01:22] Patrick Chouinard: Like, I pick a bit of him, a bit of Matt Pocock, a bit of Superpower.
+[01:01:31] Patrick Chouinard: With Opus 5, a little less, honestly.
+[01:01:35] Patrick Chouinard: More and more towards the grill me with ducks.
+[01:01:40] Daniel Zivkovic: Yeah.
+[01:01:41] Daniel Zivkovic: I use compound engineering.
+[01:01:43] Daniel Zivkovic: I don't know if you guys use it.
+[01:01:45] Daniel Zivkovic: It's like niche wine.
+[01:01:46] Daniel Zivkovic: Not too many people know it, but it's really good.
+[01:01:49] Daniel Zivkovic: And it resonates with the older folks in software engineering.
+[01:01:52] Daniel Zivkovic: So I did not have to adjust anything.
+[01:01:54] Daniel Zivkovic: Everything was there.
+[01:01:55] Daniel Zivkovic: It's expensive on tokens.
+[01:01:56] Daniel Zivkovic: I can even burn my max plan and go into timeout.
+[01:02:00] Daniel Zivkovic: I don't have to worry, like parallel ages, checking, validating, and then I run it at night before I go to sleep, I have a small rep on top of compound engineering, I call it dark factory, and I just tell it kind of, okay, I'm out, let Codex proxy for me.
+[01:02:15] Daniel Zivkovic: If you have a question, talk to Codex.
+[01:02:16] Daniel Zivkovic: If you two cannot agree, you know, like approximate, ask me in the morning.
+[01:02:20] Daniel Zivkovic: So it's like a night shift with compound engineering.
+[01:02:26] Patrick Chouinard: It works well with subscription, but I always have to keep in mind that I'm doing that for an enterprise as well, so when I go to my day job, there's no subscription, it's, we pay for every token, so if something consumes an enormous amount, I'm gonna have, I always have to think about how I can make the most with whatever, or a token I, I spend, basically.
+[01:02:50] Patrick Chouinard: Uh, Shakur, do you want to, uh, say something before you leave, or?
+[01:03:02] Shakur Abdullah: Yeah, started working on a few projects.
+[01:03:06] Shakur Abdullah: finally got the drop a link in, and within a reasonable time frame, gives me back some usable designs.
+[01:03:17] Shakur Abdullah: So that was good.
+[01:03:18] Shakur Abdullah: I sent that off to a couple people.
+[01:03:20] Shakur Abdullah: were pleasantly pleased and happy about that.
+[01:03:26] Shakur Abdullah: My wife asked me if we could have a better system than using Apple Notes for our shared shopping list because it just keeps dropping and not linking anymore.
+[01:03:40] Shakur Abdullah: So, and then I thought about all the different shopping apps that we use and basically smashed them all together and streamlined them into one app.
+[01:03:49] Shakur Abdullah: So I got her using that now.
+[01:03:52] Shakur Abdullah: And it seems like it's, it's working all right.
+[01:03:55] Shakur Abdullah: So we go through and scan whatever we're, uh...
+[01:04:00] Shakur Abdullah: Looking at in the store, it'll tell us if there's any ingredients that we don't like, similar to yuca.
+[01:04:07] Shakur Abdullah: It'll let us know if it's on any boycott list similar to a different app.
+[01:04:12] Shakur Abdullah: It'll let us know if there's any dietary restrictions on it, too.
+[01:04:20] Shakur Abdullah: And it syncs between both of us like a grocery shopping list, too.
+[01:04:25] Shakur Abdullah: Well, I thought that was fun.
+[01:04:29] Shakur Abdullah: Then Morgan got me thinking about a project I wanted to do, but I kind of put on the back burner, where I saw on Twitter, well, X or whatever, a couple of weeks back, where someone built it for their kid, where they can just push a button and it lets them talk to their grandparent without having a screen or anything like that.
+[01:04:54] Shakur Abdullah: And we're trying to go very low screen for our house.
+[01:04:59] Shakur Abdullah: aliásただ, goods...
+[01:04:59] Shakur Abdullah: Probach, well.
+[01:04:59] Shakur Abdullah: Cres.
+[01:04:59] Shakur Abdullah: Thank
+[01:05:00] Shakur Abdullah: And I thought it was a cool concept, but I was like, my son needs to talk to more than just one grandparent.
+[01:05:07] Shakur Abdullah: So can I, can I put like a dial on it?
+[01:05:10] Shakur Abdullah: So I went back and forth with Claude and asked them if, if we could make it cheaper and we could make it also allow us to, to decide who we're going to send the message to.
+[01:05:25] Shakur Abdullah: And it came out with some good stuff, but it was, it was relying on the Raspberry Pi.
+[01:05:30] Shakur Abdullah: And now that I know it's so expensive, that's, it's just, it's a sad time.
+[01:05:36] mdcatc: Yeah.
+[01:05:37] mdcatc: You're, you're, uh, you might be able to use the Arduino or I'll take a look.
+[01:05:45] mdcatc: Those are, those are both, uh, Lauren and for you, for your no screen, but I want to be able to have a button, just get a little, uh, a little nine, nine by nine pad, USB pad, you know, a little color patterns.
+[01:06:00] mdcatc: It's that you could have the actual key, physical key on the keyboard that is connected.
+[01:06:07] Shakur Abdullah: What was the second one you said?
+[01:06:09] Shakur Abdullah: Gum what?
+[01:06:10] mdcatc: It's called Gumstick.
+[01:06:12] mdcatc: G-U-M-S-T-Y-X.
+[01:06:19] mdcatc: It's literally the size of a gumstick.
+[01:06:25] Shakur Abdullah: I'll check those out because I don't think I need too much processing.
+[01:06:29] Shakur Abdullah: needs to be Wi-Fi enabled, send messages.
+[01:06:34] mdcatc: The Wi-Fi is nice because it's got a lot of support behind it, but it also handles a full install of the OS.
+[01:06:43] mdcatc: But if you're willing to spend the time in Arduino, Arduino is a basic language and it compiles to and it flashes to the device itself.
+[01:06:55] mdcatc: So it makes it a little bit more, it's smaller, you know.
+[01:07:00] mdcatc: It's dedicated to your one process.
+[01:07:02] Shakur Abdullah: It's not trying to run a whole OS.
+[01:07:03] Shakur Abdullah: It's just running your process.
+[01:07:07] mdcatc: So, and they have a lot, the Arduino has, they call them hats, but they're stackable.
+[01:07:12] mdcatc: So they're just boards that stack on top of each other.
+[01:07:15] mdcatc: And you can, each board has a different function set that it adds to the Arduino itself.
+[01:07:23] mdcatc: So it's pretty, pretty extendable and has a lot of reach in it.
+[01:07:33] mdcatc: Juan, you had a question?
+[01:07:34] Juan Torres: It was not related to this.
+[01:07:37] Juan Torres: This is more of creation of a NASA, so I'll wait.
+[01:07:43] Shakur Abdullah: Well, I'm finished up on my end.
+[01:07:46] mdcatc: And then, Shakur, that's the way to do it, is to find problems of your own that you want to solve.
+[01:07:52] mdcatc: And that's what creates the apps.
+[01:07:55] mdcatc: My whole class of the curve thing was a problem that I had with my charter school.
+[01:08:02] Patrick Chouinard: Just one note, Morgan, I think for Gumstick, I take a look and I think they just went out of business at the end of 2025.
+[01:08:11] mdcatc: Oh, really?
+[01:08:12] Patrick Chouinard: Yeah.
+[01:08:13] mdcatc: Wow.
+[01:08:14] mdcatc: I haven't looked at their stuff for a while.
+[01:08:17] Patrick Chouinard: I just went and take a look.
+[01:08:19] mdcatc: I'm exhibiting my age by my references.
+[01:08:23] Shakur Abdullah: As of August 13th, 2025.
+[01:08:26] Shakur Abdullah: Yeah.
+[01:08:26] Shakur Abdullah: So a year ago.
+[01:08:28] Patrick Chouinard: Yeah.
+[01:08:29] Juan Torres: Have you tried to get those devices from Facebook Marketplace or OfferUp?
+[01:08:39] Juan Torres: Because I'm pretty sure you can find something cheaper for a cheaper price than buying a brand new.
+[01:08:49] mdcatc: Yeah.
+[01:08:49] mdcatc: That's another suggestion for you, Shakur.
+[01:08:53] Shakur Abdullah: I was kind of thinking like, is there some cheap thing already that I could just pull by and then pull the chip off?
+[01:08:59] Shakur Abdullah: Oh,
+[01:09:00] Patrick Chouinard: that and use that and get the AI to rewrite everything I mean if you don't need a lot of power uh the the uh pi zero is still a possibility well it looks like the arduino you know r4 is only 25 maybe anything else for core no that's it thanks guys thank you have a good night have a good night uh i think okay yeah it's fun you guys are cool uh thai mr golf uh i saw you sneak in anything uh to report this week nope i think he's really
+[01:10:00] Patrick Chouinard: He's just looking this week.
+[01:10:04] Ty Wells: Hi, guys.
+[01:10:05] Juan Torres: I'm on the course.
+[01:10:06] Ty Wells: Yeah.
+[01:10:08] Ty Wells: I remembered.
+[01:10:09] Ty Wells: I was going to join at 5, and then I saw it was 5.48, and it was a little late, so I'm unprepared, to say the least.
+[01:10:17] Paul Miller: You're in the rough, Ty.
+[01:10:19] Ty Wells: What happened?
+[01:10:20] Ty Wells: Well, I'm about to tee off.
+[01:10:21] Paul Miller: I'm just standing in the rough.
+[01:10:22] Paul Miller: I haven't teed off.
+[01:10:26] Paul Miller: All right, guys.
+[01:10:27] Ty Wells: I'll watch the video later.
+[01:10:28] Patrick Chouinard: No problem.
+[01:10:29] Paul Miller: Very well.
+[01:10:30] mdcatc: Watch it there, Ty.
+[01:10:31] Ty Wells: Thanks.
+[01:10:34] Patrick Chouinard: Good.
+[01:10:35] Patrick Chouinard: So, on my end, as I mentioned during the call, I've been looking at what IndieDevDan created, simply because it was part of some of the work I had to do at my client.
+[01:10:51] Patrick Chouinard: We're working on enterprise instructions, so basically the cloud code at the enterprise level that will affect everything.
+[01:11:00] Patrick Chouinard: Everything.
+[01:11:01] Patrick Chouinard: And I've started to think also about how I would integrate the knowledge of TechStack to recommend, because I think I mentioned it quickly last week, but one of the situations we're facing is we're having a bunch of non-technical people talking with Claude all day, and they do a lot of dashboards and HTML reports and things of that nature.
+[01:11:26] Patrick Chouinard: And now they want to integrate interaction in it.
+[01:11:30] Patrick Chouinard: So I said, oh, but how do I share that with my colleague?
+[01:11:33] Patrick Chouinard: And how can I make that interaction live in whatever I'm going to send to my friends?
+[01:11:39] Patrick Chouinard: And then it starts to recommend stuff like, oh, do you have, you need an API key for Entropic, and you need a Vercel account, and you need a Superbase account.
+[01:11:49] Patrick Chouinard: All fun, but not in the enterprise.
+[01:11:51] Patrick Chouinard: So we need a way to recommend the proper TechStack to non-technical user.
+[01:11:57] Patrick Chouinard: So I'm starting.
+[01:12:00] Patrick Chouinard: To build a list of skills that will read our technology stack.
+[01:12:07] Patrick Chouinard: So I have to make this skill understand the list of technology we're leveraging internally.
+[01:12:15] Patrick Chouinard: So whatever has been homologated by the business and also what those technology do, because for some, it's really simple.
+[01:12:23] Patrick Chouinard: If we're saying like, whenever you develop something, it has to be Angular, for example, but don't need a whole lot of background for that.
+[01:12:30] Patrick Chouinard: But as soon as we fall into technology that are a little bit more specific, I need to provide a background of what those does so it can recommend them at the right point in user conversation without making this skill humongous.
+[01:12:45] Patrick Chouinard: So that's one of my, my challenge this week.
+[01:12:49] Patrick Chouinard: And the other one is I am building what we call a level zero support skill.
+[01:12:55] Patrick Chouinard: So basically, I, we've done a pilot with Claudeco for the past three.
+[01:13:00] Patrick Chouinard: With about 200 users.
+[01:13:02] Patrick Chouinard: And during the pilot, I answered pretty much every single support question using cowork.
+[01:13:09] Patrick Chouinard: Okay, so it built an awful and incredible amount of knowledge about the type of question and the type of answer we provide.
+[01:13:18] Patrick Chouinard: I use that knowledge base to generate a support skill that has all of that knowledge base in the background.
+[01:13:27] Patrick Chouinard: So basically now, once we activate the 2000 users, the level zero support will be done by Claude itself.
+[01:13:36] Patrick Chouinard: So basically, you're going to be able to ask Claude and not get entropic answer, but get entropic answer with the filter of our answer on top of it.
+[01:13:46] Patrick Chouinard: Like how we do things, who they need to contact, what they need to try, solution we've already found.
+[01:13:52] Patrick Chouinard: All of that within the Claude desktop and Claude code installation.
+[01:13:58] Patrick Chouinard: Claude Matteo, Jr.: Yeah.
+[01:13:59] Patrick Chouinard: I into
+[01:14:00] Patrick Chouinard: Yeah, you had a question, Daniel?
+[01:14:02] Daniel Zivkovic: Yeah, so there are so many ways to install Claude at the enterprise.
+[01:14:05] Daniel Zivkovic: Are you using it in AWS, in Vertex AI, in Azure Foundry, or you're paying subscription to Anthropic for the enterprise license?
+[01:14:14] Patrick Chouinard: Right now, we are, well, I have to be careful about the contractual stuff, but we're using AWS, we're using Bedrock.
+[01:14:22] Daniel Zivkovic: Okay, so they have problems like a sharing, like it's not well sorted out, like how to organize teams from one, like share skills between teams.
+[01:14:34] Patrick Chouinard: Actually, they just released the functionality this week with the ability to actually, not only with skills, actually, it's with a marketplace.
+[01:14:43] Patrick Chouinard: Now, even the Claude AI, the desktop, can leverage plugins marketplace from the same one used for co-work.
+[01:14:51] Daniel Zivkovic: Nice.
+[01:14:51] Patrick Chouinard: But on top of that, connectors can now be released to individual sub-team, it doesn't have to be enterprise.
+[01:15:01] Daniel Zivkovic: Okay, that's new, because we decided to wait for Microsoft license co-work, and it's now in the part of the, like this beta, I don't know, foresight or some forefront frontier.
+[01:15:13] Daniel Zivkovic: And like when it comes, it's going to be really co-work with the Microsoft, and you'll have all the sharing.
+[01:15:18] Patrick Chouinard: We've tried it, we have both.
+[01:15:20] Patrick Chouinard: Honestly, what they call co-work, it's not bad, but it's certainly not at the level of entropic co-work.
+[01:15:29] Daniel Zivkovic: Okay, thank you for sharing.
+[01:15:32] Patrick Chouinard: Yeah, it's a good tool, it brings a lot, and honest, I have to be honest with the co-pilot folks, they did do a lot of improvement lately.
+[01:15:41] Patrick Chouinard: They're catching up, but they're still the third player.
+[01:15:47] Patrick Chouinard: So, they're not at the top, but they're not as far as they used to be.
+[01:15:50] Daniel Zivkovic: And how do you integrate, in your office, in the enterprise, how do you integrate skills from Entropic that are run in AWS to Shepard?
+[01:15:59] Daniel Zivkovic: Have great job.
+[01:16:00] Daniel Zivkovic: Everybody's using Microsoft Office, and it's so easy with GitHub, not GitHub, Microsoft Copilot to interact.
+[01:16:06] Daniel Zivkovic: They have only been connected, but how do you merge the two?
+[01:16:09] Daniel Zivkovic: That's my problem.
+[01:16:10] Patrick Chouinard: Honestly, the M365 connectors in the cloud environment is pretty insane.
+[01:16:17] Daniel Zivkovic: That's what powers my chief of staff.
+[01:16:20] Daniel Zivkovic: cloud environment?
+[01:16:21] Daniel Zivkovic: I did not know that it exists.
+[01:16:22] Daniel Zivkovic: Is it the one by AWS, or can you share the link to the cloud?
+[01:16:25] Patrick Chouinard: by Microsoft.
+[01:16:26] Patrick Chouinard: It's built into the platform.
+[01:16:28] Daniel Zivkovic: You don't have to download it.
+[01:16:30] Daniel Zivkovic: Come on.
+[01:16:30] Daniel Zivkovic: Nobody knows that's where I work.
+[01:16:32] Patrick Chouinard: Yep.
+[01:16:33] Daniel Zivkovic: Thank you.
+[01:16:34] Patrick Chouinard: It is part of the platform.
+[01:16:35] Patrick Chouinard: There is a M365 connectors that allows you read-only access to SharePoint, Teams, Outlook, email, and Calendar.
+[01:16:45] Daniel Zivkovic: Okay, okay.
+[01:16:46] Daniel Zivkovic: That's from M365, but how about Anthropic Skills?
+[01:16:50] Daniel Zivkovic: How do you get your results from Anthropic Skills serviced as input to the agents that other people are using in Microsoft Copilot?
+[01:16:57] Daniel Zivkovic: They all have all business people.
+[01:16:59] Daniel Zivkovic: no.
+[01:17:00] Daniel Zivkovic: They need context, and you generate the context for them.
+[01:17:03] Patrick Chouinard: No, those are completely separate.
+[01:17:07] Patrick Chouinard: There is no integration.
+[01:17:09] Patrick Chouinard: No, and it's just because they're not using the same principle.
+[01:17:13] Patrick Chouinard: When you work in Copilot, they're using what they call agents, which are really skills and sub-agents in the Claude world.
+[01:17:26] Patrick Chouinard: But Claude is actually a better agent writer than Copilot.
+[01:17:31] Patrick Chouinard: So if you tell Claude, like, I want to create a system prompt for a Copilot agent, it will create a better system prompt than Copilot would for itself.
+[01:17:41] Daniel Zivkovic: And you have up-to-date version.
+[01:17:44] Daniel Zivkovic: We are so behind.
+[01:17:45] Daniel Zivkovic: And mine is like Opus 4.7.
+[01:17:49] Daniel Zivkovic: Like, I'm so behind.
+[01:17:50] Daniel Zivkovic: Like, it's useless.
+[01:17:51] Daniel Zivkovic: I'm using Visual Studio Code with GitHub Copilot.
+[01:17:54] Patrick Chouinard: Oh,- Is your enterprise in sync with the releases?
+[01:17:57] Patrick Chouinard: Yeah, it's not that the enterprise- Yeah,
+[01:18:00] Patrick Chouinard: It's not in sync.
+[01:18:01] Patrick Chouinard: It's that your enterprise administrator hasn't activated the latest model.
+[01:18:05] Daniel Zivkovic: Yes.
+[01:18:06] Daniel Zivkovic: This is a Solonite.
+[01:18:07] Patrick Chouinard: Okay.
+[01:18:08] Patrick Chouinard: Thank you.
+[01:18:08] Patrick Chouinard: Yeah.
+[01:18:09] Patrick Chouinard: But you have to be careful because model release and Cloud Code version are not in sync.
+[01:18:16] Patrick Chouinard: Basically, when Opus 5 got released, for example, it was working with 2.1.219 of Cloud Code.
+[01:18:27] Patrick Chouinard: The problem is that was on the latest branch, not on the stable branch.
+[01:18:32] Patrick Chouinard: The stable branch caught up about three weeks later.
+[01:18:37] Patrick Chouinard: So, yeah, we had a lot of people like, hey, they announced Opus 5.
+[01:18:41] Patrick Chouinard: Where is it?
+[01:18:41] Patrick Chouinard: Where is it?
+[01:18:42] Patrick Chouinard: It's not on the stable branch yet.
+[01:18:44] Daniel Zivkovic: Wow.
+[01:18:45] Daniel Zivkovic: Thank you.
+[01:18:46] Daniel Zivkovic: I'll need you for work.
+[01:18:49] Patrick Chouinard: Yeah.
+[01:18:52] Patrick Chouinard: We're preparing the release to the entire company.
+[01:18:55] Patrick Chouinard: So, it's quite a bit of planning, let's say.
+[01:19:00] Patrick Chouinard: We're still within the also good or fun challenges of, oh, but we want to test co-work, but not deploy it to everyone because it's too dangerous.
+[01:19:11] Patrick Chouinard: It can do a bunch of things, but we're deploying Cloud Code to pretty much anyone who asks it.
+[01:19:16] Patrick Chouinard: Okay, so the hammer's too dangerous, but the AK-47, no problem.
+[01:19:21] Patrick Chouinard: Okay, good idea.
+[01:19:22] Patrick Chouinard: Yeah, but sometimes there are the hills that are worth it to die on, some are not, so I'm just going to wait, it's going to open up anyway.
+[01:19:40] Patrick Chouinard: But yeah, the big idea is to make sure that Claude stops recommending stuff that is not allowed in our environment.
+[01:19:49] Patrick Chouinard: I've debated if we were to make that global instruction, but realize it would end up being far too big, and global instruction do not...
+[01:20:00] Patrick Chouinard: Not support sequential discovery, so you can't put links to external file in the global instructions, so the only way that we can make it work is through skills, and the nice part is the folks working on cloud code will be able to use that skill or decide not to if they have a right reason to deviate, but the people who vibe code, meaning they only work within the desktop application, will not be able to deactivate.
+[01:20:30] Patrick Chouinard: The idea is everybody uses the same criteria to go to prod, but citizen developer that works in the desktop application just have more restriction into how they get there, they're going to be, we're going to handhold them a lot more than the developer, which are going to have a little bit more leniency in the way they get to, but the goal is that everybody needs to get to the same place to go to production.
+[01:21:00] Patrick Chouinard: Yes, Morgan?
+[01:21:01] mdcatc: Could you solve that problem by using a hook?
+[01:21:07] Patrick Chouinard: The hook would work extremely well in Cloud Code, but extremely bad in Cloud Desktop.
+[01:21:14] mdcatc: Oh, yeah, yeah, yeah, okay.
+[01:21:16] Patrick Chouinard: Because remember, it's an executive assistant that are asking for Vercel accounts.
+[01:21:21] mdcatc: Yeah.
+[01:21:22] mdcatc: I was going to say, make it off by default, and then allow the hook to add it back in for the ones who have Cloud Code.
+[01:21:35] Patrick Chouinard: Again, yeah, if the problem was the Cloud Code user, wouldn't be an issue.
+[01:21:39] mdcatc: Yeah.
+[01:21:41] Patrick Chouinard: It's the non-Cloud Code user that get those nice recommendations from Cloud.
+[01:21:45] Patrick Chouinard: Just give me an Entropic API.
+[01:21:48] Patrick Chouinard: Yeah, yeah, no.
+[01:21:51] Patrick Chouinard: I'm not getting the VP Secretary and API key for the Entropic backend.
+[01:21:57] mdcatc: Right.
+[01:21:58] Patrick Chouinard: So, yeah.
+[01:21:59] Patrick Chouinard: Yeah.
+[01:21:59] Patrick Chouinard: Let's
+[01:22:00] Patrick Chouinard: That's why I'm thinking we're going with the skill.
+[01:22:04] Patrick Chouinard: So basically, any time they're going to request to say, oh, how could I share this or things of that nature, anything that would result into a recommendation of an API key or an app platform would call the skill.
+[01:22:22] Patrick Chouinard: And that's probably where I want to test having the skill being referenced in the global instruction.
+[01:22:33] Patrick Chouinard: Nice problems.
+[01:22:36] Elijah Stambaugh: Patrick.
+[01:22:37] Patrick Chouinard: Yep.
+[01:22:38] Elijah Stambaugh: Are you then, so if I'm understanding you correctly, you are implementing Claude Desktop.
+[01:22:46] Patrick Chouinard: Yep.
+[01:22:47] Elijah Stambaugh: And behind that are the connections to Microsoft and everything else that you're doing within the organization.
+[01:22:54] Patrick Chouinard: Yes.
+[01:22:55] Elijah Stambaugh: Okay.
+[01:22:57] Elijah Stambaugh: And is a library.
+[01:23:00] Elijah Stambaugh: Are the skills that you're developing going to be available to anyone, or is that proprietary to this particular client?
+[01:23:06] Patrick Chouinard: Well, this is built on client time, so that's going to be...
+[01:23:11] Patrick Chouinard: I can share the general idea to get you guys to create your prompt to spawn instances of it, but I can't share the source code for it, though.
+[01:23:28] Elijah Stambaugh: And does the organization that you are working with, if you're able to share, are they buying, like, the $20 plan, or is it some sort of a corporate deal across the company?
+[01:23:41] Elijah Stambaugh: Like, how much does Claude Desktop cost for an enterprise implementation?
+[01:23:49] Patrick Chouinard: Well, it's enterprise license, so basically that's a corporate deal that are made with their supplier.
+[01:23:55] Patrick Chouinard: know their, their, the acquisition is done through their...
+[01:24:02] Patrick Chouinard: So I have no idea about the cost.
+[01:24:05] Patrick Chouinard: The only thing I know is that we pay per token.
+[01:24:08] Patrick Chouinard: There is no concept of subscription in the enterprise world.
+[01:24:10] Patrick Chouinard: So that's why we have to be careful about the tokens.
+[01:24:14] Patrick Chouinard: But I know they have also some deals in terms of caching prices and the rebate that they have, but there's nothing financial that trickled down to poor little me, except use less tokens.
+[01:24:30] Elijah Stambaugh: And then when you say AWS, how does AWS fit into this if it's Claude Desktop?
+[01:24:38] Patrick Chouinard: Oh, yeah.
+[01:24:40] Patrick Chouinard: Actually, all of the Claude model, the base supplier for them is AWS.
+[01:24:45] Patrick Chouinard: So they're the vendor of the entrance and they're also a reseller of the Claude licenses.
+[01:24:55] Patrick Chouinard: So you could talk to Antropic directly, but AWS is a reseller.
+[01:25:01] Patrick Chouinard: Okay.
+[01:25:04] Elijah Stambaugh: And is that, does AWS offer a better deal or like, is it, what's, what is, what makes it beneficial for the company to work?
+[01:25:14] Patrick Chouinard: They reply for one, Entropic, we've tried to get a rep to call us back.
+[01:25:20] Patrick Chouinard: And mind you, we're, we're a pension fund with a $600 million investment value.
+[01:25:28] Patrick Chouinard: It's not like it's a mom and pop shop and we've never got a call back from any rep from Entropic.
+[01:25:35] Patrick Chouinard: So we just called AWS and we had someone at our office, in our office about 20 minutes later.
+[01:25:47] Elijah Stambaugh: Interesting.
+[01:25:48] Elijah Stambaugh: Yeah.
+[01:25:49] Elijah Stambaugh: Yeah.
+[01:25:50] Elijah Stambaugh: I've been, and, and, and the benefit of using quad desktop is just that easy.
+[01:26:00] Elijah Stambaugh: Front end interface versus, you know, I know you're talking about a larger corporate installation, but versus like a Victor or something like that, that lives in Slack, it's in your mind, just going right to the source, like Claude is giving people a better tool.
+[01:26:21] Elijah Stambaugh: And then you don't have to worry about that harness because, know, it's a good one.
+[01:26:26] Patrick Chouinard: Not only that, first, we're not using Slack, we're using Teams, so a lot of people are asking for tag, but it's Slack only for now.
+[01:26:38] Patrick Chouinard: We're going to see when it becomes available in Teams.
+[01:26:40] Patrick Chouinard: But again, the desktop environment has evolved a whole lot lately.
+[01:26:46] Patrick Chouinard: And first, if you want co-work, that's the only place where you can have it.
+[01:26:51] Patrick Chouinard: It's not in the Plot.ai web interface yet.
+[01:26:55] Patrick Chouinard: And it's not available through any other harness.
+[01:26:59] Patrick Chouinard: So.
+[01:27:00] Patrick Chouinard: So co-work lives in the cloud desktop.
+[01:27:03] Patrick Chouinard: And there's also integration for theaters.
+[01:27:07] Elijah Stambaugh: I didn't mean to cut you off there.
+[01:27:08] Elijah Stambaugh: was just parenthetically inside there.
+[01:27:10] Elijah Stambaugh: The benefit of co-work is because you can access everything on their machine.
+[01:27:17] Elijah Stambaugh: Is that a question?
+[01:27:19] Patrick Chouinard: We have the ability to limit what it accesses on the machine, which is a good thing.
+[01:27:24] Patrick Chouinard: So we can restrict it to one root directory and everything under it, but not let it navigate sideways on the machine.
+[01:27:35] Patrick Chouinard: So that's one of the, but also it's, you know, that co-work, it's basically cloud code and address.
+[01:27:42] Patrick Chouinard: It's cloud code with a harness on top of it to limit some of its ability and also optimize it for knowledge work.
+[01:27:51] Patrick Chouinard: But essentially it's the engine of cloud code behind the scene.
+[01:27:58] Elijah Stambaugh: So.
+[01:28:00] Elijah Stambaugh: I understand this is for this particular implementation, but theoretically, you know, you see all these harnesses coming out and Claude, obviously, Anthropic builds it.
+[01:28:11] Elijah Stambaugh: So, you know, it's going to be one of the best, if not, right, the model underneath it is, but, you know, why not consider like your own front end harness?
+[01:28:23] Elijah Stambaugh: What are, you know, what is, what are the drawbacks outside of like maintaining and building it, but then you can get a lot more context control.
+[01:28:32] Patrick Chouinard: Support.
+[01:28:34] Patrick Chouinard: There's no support contract with a Pi or a Omnigen or all of those are really nice, but they don't come with a support contract.
+[01:28:44] Patrick Chouinard: Claude Code, Claude Desktop, and Claude Cowork come with an enterprise support contract.
+[01:28:50] Patrick Chouinard: Corporation level support contract are everything.
+[01:28:53] Patrick Chouinard: If your tool cannot be supported by the supplier, it doesn't get into the enterprise.
+[01:28:57] Patrick Chouinard: Corporation level support.
+[01:29:03] Elijah Stambaugh: That makes sense.
+[01:29:04] Elijah Stambaugh: Thank you.
+[01:29:05] Patrick Chouinard: No problem.
+[01:29:08] Patrick Chouinard: So yeah, guys, that's basically what has been the burning times in my week trying to figure out how to make LODs say the right thing to the right people internally.
+[01:29:20] Patrick Chouinard: It's not because the model is wrong.
+[01:29:22] Patrick Chouinard: What it recommends would work.
+[01:29:23] Patrick Chouinard: It just would not work in our environment.
+[01:29:28] Patrick Chouinard: And that's going to eventually link with what we're thinking about corporate intelligence and corporate memory.
+[01:29:34] Patrick Chouinard: How do we manage memory at a corporation level?
+[01:29:38] Patrick Chouinard: So yes, everybody has its own personal wiki of information, but now we have to bring that knowledge at a team level, eventually assemble it at a corporate level.
+[01:29:51] Patrick Chouinard: So memory layering is going to be my next challenge for the next couple of months.
+[01:29:57] Patrick Chouinard: So anybody who...
+[01:30:00] Patrick Chouinard: Who's worked with hierarchical AI memory, your comments are welcome.
+[01:30:09] Elijah Stambaugh: Are you thinking of, are you going to store that information in a database right now?
+[01:30:14] Elijah Stambaugh: And do you plan to store or like in GitHub repos?
+[01:30:19] Elijah Stambaugh: And then how do you expect or like what is the path for the agent to be able to read and understand that information?
+[01:30:30] Patrick Chouinard: Actually, you're right.
+[01:30:32] Patrick Chouinard: The one we're looking at is using Git as, and not Git necessarily in terms of GitHub or Azure DevOps, although that's probably where it's going to end up, but just the concept of Git itself.
+[01:30:45] Patrick Chouinard: So the memory can be a version, can be rolled back, can be just the source management capability of that memory.
+[01:30:57] Patrick Chouinard: Basically, a lot of what we're doing right now is we're training.
+[01:31:00] Patrick Chouinard: In our case, Azure DevOps, but GitHub would be the exact same thing.
+[01:31:04] Patrick Chouinard: We're transforming it from a development support platform to a data publishing platform.
+[01:31:11] Patrick Chouinard: The actual production system is the Git repo because we're managing data that doesn't live well in a database.
+[01:31:23] Patrick Chouinard: But everything we need to manage that data lives already in Git, especially because it's memory that's going to be affected by many people concurrently.
+[01:31:35] Patrick Chouinard: So you want to have the reconciliation capability of Git behind it with the ability of the model to manage all of the Git complexity out of the way of the user.
+[01:31:45] Patrick Chouinard: So basically, the user will get all the benefit of having a Git back memory without having to learn what Git does.
+[01:31:55] Elijah Stambaugh: And what tool are you looking at for that?
+[01:31:58] Patrick Chouinard: Skills.
+[01:32:00] Elijah Stambaugh: Oh, just skills.
+[01:32:01] Elijah Stambaugh: So like, you remember, like a month ago, Google did OKF, the open knowledge format.
+[01:32:09] Elijah Stambaugh: Is that what you're thinking about doing something like that?
+[01:32:11] Elijah Stambaugh: But how would you, so are you, when you're doing the Git, sorry, this is just very applicable to what I'm doing right now.
+[01:32:18] Elijah Stambaugh: So thank you.
+[01:32:19] Elijah Stambaugh: But when you're doing the, are you thinking of actually using GitHub and then storing the repo and the knowledge on there?
+[01:32:30] Elijah Stambaugh: And then if you are like, can you give an example, like, say there's a profile.
+[01:32:36] Elijah Stambaugh: So one of my clients wants to, they want to profile all their employees so that they can basically match skills to jobs, right?
+[01:32:45] Elijah Stambaugh: Right now, they just throw warm bodies at jobs.
+[01:32:47] Elijah Stambaugh: It's in the construction field.
+[01:32:49] Elijah Stambaugh: Um, but some guys do things better than others, or some people have different skills than others.
+[01:32:54] Elijah Stambaugh: And so I'm trying to figure out, like, do I do a markdown file on each person, but.
+[01:33:00] Elijah Stambaugh: Then there's data fields as well, right, that will encompass, like, if they have a credential or certification.
+[01:33:08] Elijah Stambaugh: So, sorry, I don't know if you want to answer that right now, but that's, I'm trying to understand how you're thinking about it, because this is exactly a problem I'm trying to solve.
+[01:33:16] Patrick Chouinard: Yeah, basically, we're working with Markdown, but Markdown with Frontmatter headers, and we basically developed a file structure, a context file structure.
+[01:33:30] Patrick Chouinard: So, we have what we're going to categorize, like, contacts, ideas, projects, info, decisions, they all have their own Markdown files, but when we start to work at the team level, they start to get too large.
+[01:33:50] Patrick Chouinard: So, the initial file, all becomes a table of content with links that will point to more detailed articles.
+[01:34:00] Patrick Chouinard: So let's just say for projects, you would have a project.md file that would contain a list of link to individual project memory files.
+[01:34:11] Patrick Chouinard: And if the project becomes too large, we could decompose even further.
+[01:34:16] Patrick Chouinard: But the idea is that the model would actually walk the relationship until it gets to the information.
+[01:34:24] Patrick Chouinard: So it loads as little in context as it can in order to answer the question of the user.
+[01:34:33] Patrick Chouinard: Does that answer your That makes sense, yeah.
+[01:34:36] Daniel Zivkovic: Yeah.
+[01:34:37] Daniel Zivkovic: So it sounds like Knowledge Graphs or these G-brains or second brains.
+[01:34:45] Patrick Chouinard: It's inspired by a lot of those things, but we're tweaking it so it fits within our corporate infrastructure.
+[01:34:54] Patrick Chouinard: But yeah, I've stolen a little bit from Knowledge Graphs, a little bit from LLM Wiki, a little bit from...
+[01:35:01] Patrick Chouinard: Basically, it changes so fast that I'm not waiting on one solution to solve everything.
+[01:35:09] Patrick Chouinard: I'm picking and choosing the functionality of whatever fits what we have as a requirement.
+[01:35:17] Daniel Zivkovic: So you're the information architect.
+[01:35:19] Patrick Chouinard: You're modeling it.
+[01:35:21] Patrick Chouinard: Among other things.
+[01:35:23] Daniel Zivkovic: Cool.
+[01:35:24] Patrick Chouinard: Yeah, basically, the way I describe it is whenever it's not the problem of anyone, it's mine.
+[01:35:36] Daniel Zivkovic: So it's your pension plan.
+[01:35:39] Daniel Zivkovic: Yeah, I wish.
+[01:35:43] Patrick Chouinard: But yeah, it's basically if it doesn't fall on the desk of anyone, it falls on mine.
+[01:35:50] Daniel Zivkovic: They're lucky to have you.
+[01:35:51] Daniel Zivkovic: True.
+[01:35:53] Patrick Chouinard: I mean, I've been doing this for 30 years, and let's say the past 15, I've always
+[01:36:00] Patrick Chouinard: It's got the desk that catch everything that falls between chairs.
+[01:36:08] Patrick Chouinard: Good.
+[01:36:09] Patrick Chouinard: Any other questions, comments before we close for the week?
+[01:36:16] Elijah Stambaugh: When you do your initial implementation within the organization, do you, I know we talked about this one time a couple weeks ago, but do you have like a stock curriculum or resource that you go in?
+[01:36:32] Elijah Stambaugh: Do you do group training with the organization or do you do one-on-ones?
+[01:36:36] Elijah Stambaugh: You said like the VP secretary.
+[01:36:39] Elijah Stambaugh: So how does she get up to speed on Claude code?
+[01:36:42] Patrick Chouinard: Do you give her Claude?
+[01:36:44] Patrick Chouinard: Well, the secretary doesn't get Claude code.
+[01:36:46] Patrick Chouinard: She gets Claude AI.
+[01:36:48] Patrick Chouinard: Thank God.
+[01:36:51] Patrick Chouinard: But no, for training, I've built something that I call the training generator.
+[01:36:59] Patrick Chouinard: It's
+[01:37:00] Patrick Chouinard: Basically, it's a plugin, it's a set of skill that will inspect any curriculum or data source.
+[01:37:07] Patrick Chouinard: It can be a repo, it can be a document corpus, and it generates a self-sustaining training out of it.
+[01:37:16] Patrick Chouinard: So basically, it's a training that provides itself, and you just ask whichever question.
+[01:37:22] Patrick Chouinard: The nice thing is just because it's clawed behind the scene, which means whatever question you ask, if it has the answer within the repo, it will answer it that way.
+[01:37:31] Patrick Chouinard: If you go on a tangent, it has the ability to do web search, so it can go sideways and answer whatever tangential question you might have.
+[01:37:40] Patrick Chouinard: And I've built in a couple of keywords where you can ask the training skill that's been generated to get back to where it is because it has a progress file that keeps up to date to where you are within the training.
+[01:37:56] Patrick Chouinard: So whenever you're telling it to get back to training, it will go back to.
+[01:38:00] Patrick Chouinard: to point where it left off when you went on a tangent.
+[01:38:03] Patrick Chouinard: So that's the only way I can manage to train 2,000 people with three trainers.
+[01:38:10] Elijah Stambaugh: Makes sense.
+[01:38:11] Elijah Stambaugh: Thank you.
+[01:38:15] Daniel Zivkovic: Elijah, what do you do?
+[01:38:17] Daniel Zivkovic: It sounds interesting.
+[01:38:17] Daniel Zivkovic: You ask good questions.
+[01:38:18] Elijah Stambaugh: So we are now curious about your job.
+[01:38:22] Elijah Stambaugh: Well, I work with companies to help them implement AI.
+[01:38:28] Daniel Zivkovic: We all do that.
+[01:38:30] Daniel Zivkovic: specific.
+[01:38:30] Elijah Stambaugh: Yeah.
+[01:38:32] Elijah Stambaugh: Well, that's what I tell everybody else.
+[01:38:35] Elijah Stambaugh: Nobody's asking me any more than that.
+[01:38:36] Elijah Stambaugh: So thank you.
+[01:38:37] Daniel Zivkovic: No, no.
+[01:38:38] Daniel Zivkovic: Dig deeper.
+[01:38:39] Elijah Stambaugh: Yeah.
+[01:38:40] Elijah Stambaugh: No.
+[01:38:41] Elijah Stambaugh: So right now I'm just working with a handful of companies I'm building.
+[01:38:45] Elijah Stambaugh: I'm trying to build the kind of the context layer for the organization, right?
+[01:38:52] Elijah Stambaugh: Second brain for the company.
+[01:38:55] Elijah Stambaugh: Yeah.
+[01:38:56] Elijah Stambaugh: And the agent side.
+[01:38:58] Elijah Stambaugh: So, you know.
+[01:39:03] Elijah Stambaugh: So I'm building a way to kind of, you know, actually, similar to GrokBot and Buzz, you see these things coming out, but it's a way for the people to manage what the agents are doing on their behalf.
+[01:39:17] Daniel Zivkovic: Question, did you sell any?
+[01:39:20] Elijah Stambaugh: Yeah, well, yeah.
+[01:39:20] Elijah Stambaugh: Do you have plans?
+[01:39:22] Elijah Stambaugh: Yes.
+[01:39:22] Elijah Stambaugh: Well, right now I'm in the consulting implementation phase on, right?
+[01:39:28] Elijah Stambaugh: I'm really like, I am the agent.
+[01:39:32] Elijah Stambaugh: You know, that's what I'm doing right now, but I'm trying to build the thing that will replace myself, if that makes sense.
+[01:39:40] Elijah Stambaugh: It does.
+[01:39:41] Elijah Stambaugh: But right now I'm doing all the work and clog code and building the apps and building the tools and, you know, so I'm sitting in the meetings and analyzing the transcripts and I'm basically a business analyst.
+[01:39:56] Elijah Stambaugh: And then I've got a couple of people that are working with me and I turn around and say.
+[01:40:03] Elijah Stambaugh: So I'm building a way to kind of, you know, actually, similar to GrokBot and Buzz, you see these things coming out, but it's a way for the people to manage what the agents are doing on their behalf.
+[01:40:17] Elijah Stambaugh: Question, did you sell any?
+[01:40:20] Elijah Stambaugh: Yeah, well, yeah.
+[01:40:20] Elijah Stambaugh: Do you have plans?
+[01:40:22] Elijah Stambaugh: Yes.
+[01:40:22] Elijah Stambaugh: Well, right now I'm in the consulting implementation phase on, right?
+[01:40:28] Elijah Stambaugh: I'm really like, I am the agent.
+[01:40:32] Elijah Stambaugh: You know, that's what I'm doing right now, but I'm trying to build the thing that will replace myself, if that makes sense.
+[01:40:40] Elijah Stambaugh: It does.
+[01:40:41] Elijah Stambaugh: But right now I'm doing all the work and clog code and building the apps and building the tools and, you know, so I'm sitting in the meetings and analyzing the transcripts and I'm basically a business analyst.
+[01:40:56] Elijah Stambaugh: And then I've got a couple of people that are working with me and I turn around and say.
+[01:41:00] Elijah Stambaugh: All right, this is what we need to build.
+[01:41:02] Elijah Stambaugh: This is so, you know, and most of the time people want sales.
+[01:41:05] Elijah Stambaugh: So I'm basically building the kind of like a couple of lead processes, lead agents, if you will.
+[01:41:14] Elijah Stambaugh: But hopefully over the next two weeks or so, that'll transition because we have it dialed in from me doing the work to the agent actually doing the work.
+[01:41:24] Elijah Stambaugh: And then my goal is to move on to the next project within the organization.
+[01:41:31] Elijah Stambaugh: So what I've done is I've got like a six month contract with them.
+[01:41:36] Elijah Stambaugh: And the six month contract is a lower dollar amount.
+[01:41:41] Elijah Stambaugh: And my goal is within that six months to basically build the things that the company needs and help them to see the value in it.
+[01:41:51] Elijah Stambaugh: And then at the end of the six months, price it in a way that's probably not significantly more money per se.
+[01:42:00] Elijah Stambaugh: Okay, but just not as much of my time, because the things will be in there doing the work already.
+[01:42:07] Elijah Stambaugh: And then I'll reprice it to like, here's the agents that are running into business, we can do more of them for a similar price.
+[01:42:15] Elijah Stambaugh: And you can build them now because there's some tools that I'm implementing.
+[01:42:19] Elijah Stambaugh: But then also, you know, if you want my time to continue, that's a different, that's a different process.
+[01:42:28] Elijah Stambaugh: And then over the next six months or a year after this, my goal is to basically like cohort it.
+[01:42:34] Elijah Stambaugh: Because one of the challenges that I see is, just like this call, there's just not a lot of people that understand what we're talking about.
+[01:42:42] Daniel Zivkovic: You know, and I think more and more people will understand certain parts of it.
+[01:42:46] Daniel Zivkovic: But like my one client said the other day, he said, we were on a call with Jitterbit.
+[01:42:50] Daniel Zivkovic: Jitterbit just come out with their own Jitterbit AI, because they have a no code CRM that they built inside this company, no code local.
+[01:42:58] Daniel Zivkovic: code CRM
+[01:43:00] Daniel Zivkovic: And the CEO of the company was on a call and he just goes, he goes, look, guys, I don't need to understand how the car is made.
+[01:43:05] Patrick Chouinard: I just want a smooth ride, you know, and he's willing to pay for a smooth ride.
+[01:43:12] Daniel Zivkovic: So I don't, some people just aren't, you know, they're interested as much as it will help their business.
+[01:43:18] Elijah Stambaugh: And so I think the role that we are all sitting in is going to continue, even if the big guys do amazing products and services.
+[01:43:28] Elijah Stambaugh: Like there's still this implementation layer.
+[01:43:30] Elijah Stambaugh: I think we can ride the wave for a few years at least.
+[01:43:35] Elijah Stambaugh: And then we'll see what happens after that.
+[01:43:37] Elijah Stambaugh: Everything's going to be automated.
+[01:43:38] Elijah Stambaugh: The world will be different.
+[01:43:40] Elijah Stambaugh: I have a silly question.
+[01:43:41] Elijah Stambaugh: Like now that we can code anything, the hardest part is selling it because everybody feels like they have wins.
+[01:43:47] Elijah Stambaugh: They can do it.
+[01:43:48] Elijah Stambaugh: Like everything's stalled in Canada, at least.
+[01:43:50] Daniel Zivkovic: Nobody's buying anything because they can do everything.
+[01:43:53] Daniel Zivkovic: How do you sell the service?
+[01:43:54] Elijah Stambaugh: That's the hardest part.
+[01:43:56] Elijah Stambaugh: But like for me, coding is like running away from the reality.
+[01:43:59] Elijah Stambaugh: I have three products.
+[01:44:00] Elijah Stambaugh: I go to the client, I find something, write it, repackage it.
+[01:44:03] Elijah Stambaugh: Nobody buys it.
+[01:44:04] Elijah Stambaugh: Move on to the next thing.
+[01:44:06] Elijah Stambaugh: The code is not the value anymore.
+[01:44:08] Elijah Stambaugh: It's not what to build.
+[01:44:10] Elijah Stambaugh: How do we sell?
+[01:44:11] Elijah Stambaugh: How did you find your clients, Elijah?
+[01:44:13] Elijah Stambaugh: Sometimes you sound like a contractor like me, so you paid by hour and develop something, hope you're going to sell it.
+[01:44:18] Elijah Stambaugh: But you say multiple clients, how do you multiply yourself?
+[01:44:22] Elijah Stambaugh: Or Morgan, how do you find, like you explain.
+[01:44:24] Elijah Stambaugh: I guess it's, yeah.
+[01:44:25] Elijah Stambaugh: And I guess what, what I'm finding is that there's probably an ICP that is not, I don't want to say not skilled, but like I said, like the company that I'm working, you know, these companies that I'm working with, like they're, they're not, their desire is not necessarily to be technical.
+[01:44:49] Elijah Stambaugh: You know what I mean?
+[01:44:50] Daniel Zivkovic: There is also, what do they do?
+[01:44:52] Elijah Stambaugh: Like I'm looking for chicken farmers.
+[01:44:54] Elijah Stambaugh: construction, you know, construction companies.
+[01:44:57] Elijah Stambaugh: Um, one is doing, you
+[01:45:00] Elijah Stambaugh: Another one is, you know, like hotel, like luxury hotel management stuff.
+[01:45:08] Daniel Zivkovic: And so these are these folks, they've got teams, they've got people, but they're not necessarily like software development companies.
+[01:45:17] Elijah Stambaugh: Right.
+[01:45:18] Elijah Stambaugh: And they're not interested in building up their own.
+[01:45:23] Elijah Stambaugh: They're interested in automation and what it can do for them.
+[01:45:26] Elijah Stambaugh: But to a certain extent, they're not going to like dive into some of this in the same way.
+[01:45:31] Elijah Stambaugh: Now, that may change over time, but like that's the persona that I'm trying to connect with companies that are growing.
+[01:45:38] Elijah Stambaugh: They have money and they have a need, but they're not necessarily going to fulfill that internally with their current structure, even, you know, with a couple hundred people.
+[01:45:51] Elijah Stambaugh: Right.
+[01:45:52] Elijah Stambaugh: They're still like they don't they can't see the forest for the trees.
+[01:45:55] Elijah Stambaugh: That's why I'm asking everything from Patrick, because he's got a pretty clear picture on.
+[01:46:00] Elijah Stambaugh: Like, how do you implement this in enterprise, which is, you know, the next layer of difficulty that we're facing.
+[01:46:08] Elijah Stambaugh: That's beautiful.
+[01:46:09] Elijah Stambaugh: I'm like a gladiator competing with other IT guys.
+[01:46:12] Elijah Stambaugh: So that's the problem.
+[01:46:15] Elijah Stambaugh: Yeah.
+[01:46:15] Elijah Stambaugh: So like, I don't go near, I try not to go near some of that because like you said, if they can vibe code, all of a sudden they think they'll figure it out, which I, you know, I have a couple of clients.
+[01:46:28] Elijah Stambaugh: That's, that's part of what I'm doing is actually just helping their team think like, learn like, okay, did you guys do this?
+[01:46:37] Daniel Zivkovic: Have you thought about this?
+[01:46:38] Elijah Stambaugh: Have you seen this?
+[01:46:39] Elijah Stambaugh: But those are real low dollar, you know, contracts where I'm getting paid for, you know, an hour meeting a week type thing just to kind of bump their team along because they want to stay interested.
+[01:46:51] Elijah Stambaugh: I'm not building stuff for them.
+[01:46:53] Elijah Stambaugh: I'm just educating them and keeping them abreast of the space.
+[01:46:57] Elijah Stambaugh: But Dave, some of these guys have taken it and run with it.
+[01:47:00] Daniel Zivkovic: One of my clients, he dug in, he's built out a whole operating system for his company, he's built out all this data system, they do indoor farming, so they have microgreens and lettuces, and I mean, it's unreal, like he has just taken it with anti-gravity, right, so I'm like, I was talking to him at Christmas, I'm like, you need to think about this stuff.
+[01:47:23] mdcatc: I had him implement a database last year, but then since then, he's just taken it and just gone ballistic, and revamped the whole entire organization, so it's beautiful, like it is absolutely beautiful, and it's all vibe coded, because it's not corporate, it's not frontward facing, you know, it's all his internal infrastructure, so, you know, for him to try to pay somebody to do it, he paid a guy $25,000 a couple years ago, just to basically mock up this idea, that he had for one tool in his company, so now he's working with anti-gravity, yeah, he's losing sleep.
+[01:48:00] mdcatc: But he's building the crap out of, you know, which is changing his whole organization.
+[01:48:04] mdcatc: It's pretty phenomenal.
+[01:48:06] mdcatc: Amazing.
+[01:48:08] mdcatc: So I'm all the guy, like last wave was serverless.
+[01:48:11] mdcatc: That's how I named the group.
+[01:48:12] mdcatc: But among all of us, people became Amazon heroes, community builders, got good contracts.
+[01:48:17] mdcatc: Only one guy got rich, Joe Emerson.
+[01:48:20] mdcatc: He's an insurance guy.
+[01:48:20] mdcatc: He completely left.
+[01:48:22] mdcatc: He was serverless tech to build like a cross-state insurance company.
+[01:48:27] mdcatc: He's the only smart, and we remain being gladiators.
+[01:48:30] mdcatc: Morgan, you wanted to add something that you have.
+[01:48:33] mdcatc: I was going to say, got to, some of it is convincing the client that writing the software is not what their business is about.
+[01:48:42] mdcatc: And the other side of that is software development and writing code are two different things.
+[01:48:50] mdcatc: And that's where the vibe coders get stuck is they'll get a lot.
+[01:48:54] mdcatc: They can get a demo done that has some functionality and looks like it works well.
+[01:49:00] mdcatc: But you start getting to any of the edge cases and any of this the security and those kind of things that it really starts to break down for them, and they don't know how to engineer around it.
+[01:49:11] mdcatc: So that's the part of that is, is, this is what Brandon had had kind of, you don't know who Brandon is, I guess maybe but Brandon taught us that look, the one thing you got to really do with, because code is cheap, is you got to find something that you can moat.
+[01:49:29] mdcatc: What you're trying to, to build, you have to have a moat around what you're trying to build.
+[01:49:34] mdcatc: What is the moat for your application that makes it valuable to the client, right.
+[01:49:43] mdcatc: For example, in my heritage plot one for the cemetery, the moat is the fact that this is the only application right now that supports the government requirement for the Freedom of Information Act.
+[01:49:58] Patrick Chouinard: Mm hmm.
+[01:49:59] Patrick Chouinard: Mm
+[01:50:00] Patrick Chouinard: And for that state, it's a very specific one.
+[01:50:02] Patrick Chouinard: It's called Gramma.
+[01:50:02] Patrick Chouinard: And so that's the thing is you've got to find the moat that protects your piece of it, especially when you're dealing with any of the competing against any of the other larger SaaS type companies.
+[01:50:17] Patrick Chouinard: You know, if they are using legacy code and legacy coding practices, then you can leapfrog them pretty easily.
+[01:50:24] Patrick Chouinard: And that's what by providing the features that the customers need that they can't provide in a timely fashion, because it's a cost to move off of one system onto something else.
+[01:50:37] Patrick Chouinard: There's always a cost involved with that.
+[01:50:39] Patrick Chouinard: And so you have to be, I mean, I'm not there with this one because I clearly can't convert this one client, but I think I'll get there eventually for sure.
+[01:50:53] Patrick Chouinard: And if not, there are plenty of others out there that are going to need it.
+[01:50:56] Patrick Chouinard: So, and.
+[01:51:00] Patrick Chouinard: And on my side, I'm on the consulting side, and on the consulting side, I think it's pretty straightforward, actually.
+[01:51:07] Patrick Chouinard: I warn my client when they're going into a wall.
+[01:51:11] Patrick Chouinard: I wait for them to ignore it, do it anyway, and then I charge double to get them back up.
+[01:51:18] Patrick Chouinard: You can do that?
+[01:51:19] Patrick Chouinard: You can change your rate?
+[01:51:22] Daniel Zivkovic: I'm making it as a joke, but I'm going to get a whole lot more hours by solving a problem that they decided to ignore.
+[01:51:30] Daniel Zivkovic: When I warn them ahead of time, and once, and the thing is, people will be really reluctant if you try to impose a way.
+[01:51:39] Elijah Stambaugh: I'm not imposing anything, just telling you, like, the way you're doing, where you're going, in a week, a month, six months, you're going to face that problem, and it's going to completely destroy your process.
+[01:51:55] Elijah Stambaugh: Like, no, no, no, I know what I'm doing.
+[01:51:56] Elijah Stambaugh: Okay, fine, no problem.
+[01:51:59] Elijah Stambaugh: Three months from
+[01:52:02] Elijah Stambaugh: So, how it is with the problem that you generated, like, oh yeah, I think, so since you told me that, I mean, I guess you can help me out of it.
+[01:52:12] Elijah Stambaugh: Absolutely.
+[01:52:13] Elijah Stambaugh: And then I have another three months worth of contract work to do with it.
+[01:52:16] Patrick Chouinard: And believe me, there are more than enough people driving at top speed straight into walls to keep you safe for the next 10 years.
+[01:52:23] Patrick Chouinard: Yes, AI amplifies stupidity as much as it amplifies intelligence.
+[01:52:28] Elijah Stambaugh: They gave me, so I wanted to share, like, at Siemens, they gave me a nickname, Mr.
+[01:52:33] mdcatc: Winston Wolf, based on the Pulp Fiction.
+[01:52:35] mdcatc: I was always picking up, like, when they destroyed stuff around.
+[01:52:38] mdcatc: But it doesn't scale.
+[01:52:39] mdcatc: It's only me, and I'm getting older.
+[01:52:41] mdcatc: So that's why I like what Eli and Morgan are doing.
+[01:52:45] Elijah Stambaugh: Morgan, did you, did you leave there?
+[01:52:48] Elijah Stambaugh: I was gonna ask Patrick, is there, is there, is there anybody, is there anybody, um, in the, in the group?
+[01:52:55] Daniel Zivkovic: So, I have a small project that I'm doing with Shipkit.
+[01:52:58] Elijah Stambaugh: Is there anybody that,
+[01:53:00] Daniel Zivkovic: That you would recommend that could do just like a security audit.
+[01:53:03] Daniel Zivkovic: It's not a big project.
+[01:53:04] Daniel Zivkovic: It's not a lot of money.
+[01:53:06] Patrick Chouinard: So I can't go heavy on it.
+[01:53:08] Daniel Zivkovic: But it's built with ShipKit.
+[01:53:10] Patrick Chouinard: My son's building some of it with me.
+[01:53:13] mdcatc: He's 18.
+[01:53:15] Patrick Chouinard: I don't know if anybody could do like a small ship.
+[01:53:18] Daniel Zivkovic: I would definitely reach out to Ty because he built an application that does the full security audit on the Vibcoded applications.
+[01:53:28] Daniel Zivkovic: Got it.
+[01:53:29] Daniel Zivkovic: That's good.
+[01:53:29] Patrick Chouinard: Okay.
+[01:53:30] Patrick Chouinard: Thank you.
+[01:53:30] Patrick Chouinard: I appreciate that.
+[01:53:31] Patrick Chouinard: From the client's surface area, too.
+[01:53:34] Daniel Zivkovic: So he ran it on a couple of mine and showed a couple of things.
+[01:53:38] Daniel Zivkovic: It's a really nice tool.
+[01:53:40] Patrick Chouinard: I was going to mention the same thing.
+[01:53:42] Patrick Chouinard: He's got a core.
+[01:53:44] Patrick Chouinard: Thanks, guys.
+[01:53:45] Patrick Chouinard: Appreciate that.
+[01:53:47] Patrick Chouinard: I got to drop off, but always, always, always thankful every time I get a chance to join.
+[01:53:53] Daniel Zivkovic: So thank you so much for doing this.
+[01:53:55] Daniel Zivkovic: Always good to have you, Leica.
+[01:53:57] Patrick Chouinard: Bye, Leica.
+[01:54:02] Patrick Chouinard: Good.
+[01:54:02] Patrick Chouinard: All right, cool.
+[01:54:03] Patrick Chouinard: So how often do you meet?
+[01:54:04] Patrick Chouinard: Like, I just randomly click on the school?
+[01:54:06] Patrick Chouinard: Every week.
+[01:54:07] Patrick Chouinard: Every Tuesday and Thursday.
+[01:54:08] Patrick Chouinard: time.
+[01:54:09] Patrick Chouinard: Yep.
+[01:54:09] Patrick Chouinard: I'll be back.
+[01:54:13] Patrick Chouinard: I think I missed, like, one in a year and a half, two years now.
+[01:54:21] Daniel Zivkovic: Really?
+[01:54:21] Patrick Chouinard: I've only missed one or two in the last year.
+[01:54:25] Patrick Chouinard: Yep.
+[01:54:27] Patrick Chouinard: Cool.
+[01:54:28] Patrick Chouinard: That's cool.
+[01:54:28] Daniel Zivkovic: Looking forward to the next one.
+[01:54:30] Patrick Chouinard: Yeah.
+[01:54:31] Patrick Chouinard: uh, no.
+[01:54:33] Daniel Zivkovic: No, don't.
+[01:54:35] mdcatc: Not next week.
+[01:54:36] mdcatc: The week after, I think.
+[01:54:38] Daniel Zivkovic: So he's the organizer.
+[01:54:39] Patrick Chouinard: He's the boss of the group, huh?
+[01:54:41] Daniel Zivkovic: Well, he used to run it every week, but now he's in a, on a, uh, contract.
+[01:54:46] Daniel Zivkovic: He's deploying an EMS application.

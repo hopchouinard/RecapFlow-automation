@@ -1,0 +1,233 @@
+2026-08-11 19:26:15 From Biggi Fraley to Everyone:
+	@Patrick Chouinard So, sounds like you would recommend Honcho. You like it, correct?
+	
+2026-08-11 19:27:17 From Bastian Venegas Arevalo to Everyone:
+	@Juan Torres check this channel. It’s from an US-based psychiatrist. He does a ton of ADHD stuff and they have a coaching plantform https://www.youtube.com/@HealthyGamerGG
+	
+2026-08-11 19:28:03 From Biggi Fraley to Everyone:
+	Replying to "@Patrick Chouinard So, sounds like you would recom...":
+	How many months now on $25? Also, do you have to tell Honcho everything you want it to remember, or does it handle that automatically?
+	
+2026-08-11 19:29:05 From Patrick Chouinard to Everyone:
+	Replying to "@Patrick Chouinard So, sounds like you would recom...":
+	3 months on 27$
+	
+2026-08-11 19:29:56 From Paul Miller to Everyone:
+	https://www.diamandis.com/podcast
+	
+2026-08-11 19:31:23 From Biggi Fraley to Everyone:
+	Replying to "@Patrick Chouinard So, sounds like you would recom...":
+	@Patrick Chouinard Still got a moment to answer: Do you have to tell Honcho everything you want it to remember, or does it handle that automatically?
+	
+2026-08-11 19:31:30 From Bastian Venegas Arevalo to Everyone:
+	Replying to "https://www.diamandis.com/podcast":
+	Added to the watch list!
+	
+2026-08-11 19:31:59 From Paul Miller to Everyone:
+	https://www.youtube.com/@MoonshotsClips
+	
+2026-08-11 19:32:08 From Juan Torres to Everyone:
+	I meant like this one: https://www.youtube.com/@aiDotEngineer
+	
+2026-08-11 19:32:42 From Bastian Venegas Arevalo to Everyone:
+	If you like AI Engineer, check https://www.youtube.com/@alejandro_ao 
+	
+	I believe he’s the head of AIE. In any case, his videos are dope and he dives into implementation in a very practical way
+	
+2026-08-11 19:32:50 From Paul Miller to Everyone:
+	is it this one?
+	Screenshot2026_08_12_113247.jpg
+	
+2026-08-11 19:32:50 From Alex to Everyone:
+	https://youtu.be/Q6PTLG71NGc?si=2andoe95E8p2e1hV
+	
+2026-08-11 19:33:18 From Bastian Venegas Arevalo to Everyone:
+	Replying to "I meant like this one: https://www.youtube.com/@ai...":
+	I wouldn’t say they share the same space as AIE
+	
+2026-08-11 19:34:05 From Juan Torres to Everyone:
+	Giphy [ID:xTiTnqUxyWbsAXq7Ju]
+	
+2026-08-18 17:57:18 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-08-18 18:02:02 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/watch?v=S_QdQ1G4GlU
+	
+2026-08-18 18:04:05 From Patrick Chouinard to Everyone:
+	Screenshot2026_08_18_180359.jpg
+	
+2026-08-18 18:05:32 From Daniel Zivkovic to Everyone:
+	Sorry, i don't remember how I found you  - what is the link to the "community"?
+	
+2026-08-18 18:06:00 From Paul Miller to Everyone:
+	Replying to "Sorry, i don't remember how I found you  - what is...":
+	https://www.skool.com/ai-developer-accelerator
+	
+2026-08-18 18:09:53 From Shakur Abdullah to Everyone:
+	There was a new harness from Deepseek that I just heard about. Anyone play with that yet?
+	
+2026-08-18 18:10:36 From Patrick Chouinard to Everyone:
+	Replying to "There was a new harness from Deepseek that I just ...":
+	Not yet, just started Pi.Dev this weekend
+	
+2026-08-18 18:11:13 From Paul Miller to Everyone:
+	https://www.algolia.com/
+	
+2026-08-18 18:11:26 From Daniel Zivkovic to Everyone:
+	 https://jasminahomes.ca/search-ai/
+	
+2026-08-18 18:12:32 From Shakur Abdullah to Everyone:
+	What is she selling @Daniel Zivkovic ?
+	
+2026-08-18 18:12:52 From Daniel Zivkovic to Everyone:
+	real estate agent in toronto
+	Shakur Abdullah:👍
+	
+2026-08-18 18:14:49 From Shakur Abdullah to Everyone:
+	@Paul Miller did you get the 24hour setup?
+	
+2026-08-18 18:14:55 From Tom Welsh to Everyone:
+	how much ram in the mac mini Paul?
+	
+2026-08-18 18:17:03 From Tom Welsh to Everyone:
+	Nice. I was considering a mac studio x 5 but it was £50k, and I thought if im spending that I would be cheaper using online service/api
+	
+2026-08-18 18:21:16 From Shakur Abdullah to Everyone:
+	They are 50k now!
+	
+2026-08-18 18:21:20 From Paul Miller to Everyone:
+	Replying to "Nice. I was considering a mac studio x 5 but it wa...":
+	Yes, that’s crazy money. With that, you can subscribe to online services to get tokens and processing. I just wanting processing that could go 24/7
+	
+2026-08-18 18:21:23 From Shakur Abdullah to Everyone:
+	That’s crazy
+	
+2026-08-18 18:21:36 From Tom Welsh to Everyone:
+	I was looking at buying 5 at £10k a pop
+	
+2026-08-18 18:21:56 From Shakur Abdullah to Everyone:
+	Oh man I read that wrong and almost got a heart attack
+	
+2026-08-18 18:22:42 From Tom Welsh to Everyone:
+	I had a hear attack at £10k, then watchd a few videos and decided I needed 5
+	
+2026-08-18 18:23:07 From Shakur Abdullah to Everyone:
+	If you get them let me know how it goes
+	
+2026-08-18 18:23:15 From Juan Torres to Everyone:
+	https://www.instagram.com/ai.booth.studio/
+	
+2026-08-18 18:23:16 From Tom Welsh to Everyone:
+	run any frontier model locally in reciculous amounts of ram
+	
+2026-08-18 18:23:31 From Daniel Zivkovic to Everyone:
+	This is the meetup group I run since 2018: https://www.meetup.com/serverless-toronto/ our recorded events are here: 
+	https://youtube.serverlesstoronto.org/
+	Biggi Fraley, Patrick Chouinard:👍
+	
+2026-08-18 18:24:08 From Shakur Abdullah to Everyone:
+	Juan look at Postforme. That looked really cheap and good at running social
+	
+2026-08-18 18:29:31 From Juan Torres to Everyone:
+	Replying to "Juan look at Postforme. That looked really cheap a...":
+	Nice, will check it out
+	
+2026-08-18 18:35:34 From Tom Welsh to Everyone:
+	what pi vrsion 2,3,4?
+	
+2026-08-18 18:37:54 From Tom Welsh to Everyone:
+	@Morgan My client uses this for managing their customer information screens - https://build.signagelive.com/platform-services/ 
+	
+	Which is driven by a hardware device from a company called brightsign
+	
+2026-08-18 18:38:41 From Shakur Abdullah to Everyone:
+	How much did the pie cost you?
+	
+2026-08-18 18:43:19 From Tom Welsh to Everyone:
+	This makes me want to use Ai to build a commadore 64 emulator. yes there are some already but hey ho. 6502 here we come
+	Daniel Zivkovic, Shakur Abdullah:❤️
+	
+2026-08-18 18:44:25 From Shakur Abdullah to Everyone:
+	I want to build a call grandparents box that I saw on twitter
+	Biggi Fraley:❤️
+	
+2026-08-18 18:44:45 From Daniel Zivkovic to Everyone:
+	How did you get into "cemetery business" @Morgan?
+	Shakur Abdullah:👍
+	
+2026-08-18 18:45:49 From Shakur Abdullah to Everyone:
+	You should start getting people to make request for you
+	
+2026-08-18 18:46:22 From Shakur Abdullah to Everyone:
+	Want me to call them and make request?
+	
+2026-08-18 18:46:41 From Tom Welsh to Everyone:
+	I love Perplexity, Looks like c64 emulator is my new 'project'
+	
+	o the safest plan is to build in phases:
+	Phase 1: 6510/6502 core + RAM/ROM mapping.
+	Phase 2: KERNAL/BASIC boot support and memory banking.
+	Phase 3: VIC-II timing and raster interrupts.
+	Phase 4: CIA timers/keyboard/joystick.
+	Phase 5: SID audio.
+	Phase 6: Disk/tape and cycle-accuracy improvements.ebay+2
+	
+2026-08-18 18:49:22 From Juan Torres to Everyone:
+	Morgan be like:
+	Giphy [ID:Onz7Kbh3TlY6GVHp2q]
+	
+2026-08-18 18:50:49 From Juan Torres to Everyone:
+	Focus on the process
+	Paul Miller:👍
+	
+2026-08-18 18:51:00 From Patrick Chouinard to Everyone:
+	https://www.amazon.com/The-Infinite-Game-Simon-Sinek-audiobook/dp/B07DKHFTB7/ref=sr_1_1?crid=1K4X4NZQ83GMY&dib=eyJ2IjoiMSJ9.6jcz2yYyk8R60iB47O71aEQoB81woo6uQMfxzFyEE30ll7QgWWINoXNAPygCP0ldmNcenFc9f2wvCCCexKh1z7J7gQmIDi--3fjuGIBViRedGBqr3renpQLfvxEDcwuwVUQjGzKh-2UF0InoAf_9iZxY5n3PFV5BMbQc41lAx_sFe2elQY5GW7BcZ0HmKcF3cTXTMQiIP-lVyI6iQgJhF6R5HZSZONfFoAjHKr85bdI.PJtRp-FM58yvEg_ZHgTExDtP2ueHDzmKDLEwfpYcV4Y&dib_tag=se&keywords=the+infinite+game&qid=1787093439&sprefix=the+infinite+game%2Caps%2C137&sr=8-1
+	
+2026-08-18 18:53:58 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/watch?v=S_QdQ1G4GlU
+	
+2026-08-18 18:58:29 From Tom Welsh to Everyone:
+	I have to drop. I need to go examine the inside of my eye lids.
+	
+	Good to be back
+	Biggi Fraley, Shakur Abdullah:👋
+	Juan Torres:😢
+	
+2026-08-18 18:59:15 From Tom Welsh to Everyone:
+	nighty night
+	Shakur Abdullah, Paul Miller:🎉
+	
+2026-08-18 19:00:21 From Shakur Abdullah to Everyone:
+	I’m going to have to jump off too soon. Have a good time all
+	
+2026-08-18 19:01:25 From Daniel Zivkovic to Everyone:
+	This is my AI-assisted SDLC @Patrick Chouinard: https://every.to/guides/compound-engineering
+	Patrick Chouinard:🔥
+	
+2026-08-18 19:05:09 From Patrick Chouinard to Everyone:
+	@Morgan sadly I think gumstix is no more “As of August 13, 2025, the Last Time Buy period for the Gumstix Overo Series has officially elapsed. Final deliveries are being completed by December 31, 2025, after which all Gumstix operations will be permanently closed.”
+	
+2026-08-18 19:07:27 From Juan Torres to Everyone:
+	thanks
+	Giphy [ID:5gXYzsVBmjIsw]
+	
+2026-08-18 19:13:04 From Ty Wells to Everyone:
+	Did u guys discuss @skills ?
+	
+2026-08-18 19:21:25 From Paul Miller to Everyone:
+	Replying to "Did u guys discuss @skills ?":
+	no
+	
+2026-08-18 19:29:30 From Juan Torres to Everyone:
+	Gotta go folks
+	
+2026-08-18 19:31:53 From Daniel Zivkovic to Everyone:
+	You guys are a cool group! If you want to connect outside of this event I'm at https://www.linkedin.com/in/magmainc/
+	
+2026-08-18 19:41:16 From Paul Miller to Everyone:
+	sorry need to go have a great week
+	Patrick Chouinard:👍
+	
