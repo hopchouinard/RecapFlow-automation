@@ -22,4 +22,4 @@ https://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1
 📅 WHEN
 Tuesday August 25th at 6PM ET
 
-Looking forward to seeing you on the call!
+Looking forward to seeing you on the call!latet
