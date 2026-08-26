@@ -1,0 +1,1108 @@
+[00:00:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This is the one I set up as personal, which is Power Your Process AI.
+[00:00:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So the nice thing is I could be pushing for multiple, you know, things and just be like, hey, you know, and monitor it.
+[00:00:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Let me know when it's done on Vercel too.
+[00:00:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it's not just a push to get, but like, when's it done?
+[00:00:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I'll just let this thing roll.
+[00:00:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so this one's got, this one also has, oh yeah, see, I have an update already.
+[00:00:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I got to do.
+[00:00:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So you get the updates over air.
+[00:00:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You could submit the send feedback.
+[00:00:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: We'll open up a GitHub thing.
+[00:00:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yep.
+[00:00:31] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: See, I'm blogging this Power Your Process.
+[00:00:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And on this one, I even did a really cool walkthrough because this one's got so many features where it goes through and explains everything about what we're doing on each of the spots.
+[00:00:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it walks through the whole app and kind of explains it and then goes through all the settings.
+[00:00:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So if anybody's interested in that one, I'll stick that in the chat after.
+[00:00:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:00:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:00:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah.
+[00:01:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then the last thing that I came up with today was, I was like, okay, I have a lot of projects now for customers and myself, and I'm starting to, even though I use Doppler, I keep track of all my, like, API keys, and that's cool, but I'm like, man, I can't keep track of what models I'm using and what apps, and then I'm like, stuff starts, you know, getting retired, and you do enough apps and you start forgetting.
+[00:01:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And since I have all my stuff local, and I'm sure this could be adapted at some point, so what I did was I created a model radar, and this actually scans, so it scans, it has AI in it, so, but it also scans without using AI, and it's got a little bit of a hybrid thing, so I have a root app development folder and all my stuff's organized in there, so this thing scans the entire thing, but it, it, oh, I gotta fix that little thing, so, but it automatically excludes markdown, lock file.
+[00:02:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: build output, secret stores, you know, things like that.
+[00:02:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then you can also add directories or things in here to ignore.
+[00:02:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so that then this thing basically, if I put my API keys in it, that's a, this is a free call at the three or API key, it pulls the models that are actually active.
+[00:02:19] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So it always knows.
+[00:02:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it does that on schedule.
+[00:02:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then in here, these are all the models that are, that are pulling from my projects.
+[00:02:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And then on the dashboard, I can sit there by customer kind of look and go through and it'll flag them.
+[00:02:34] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And basically, I already actually had something that flagged and I fixed it because it was like something was different or was, uh, retired because there's depreciated retired.
+[00:02:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And there's like level of confidence too, because then the AI will like go through and look.
+[00:02:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Um, but usually it can tell like what you're using.
+[00:02:48] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, like this was a docs only evidence.
+[00:02:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And that's true because this is a cloud code repository that I connect to N8N via the CLI, but I, I always have the JSON.
+[00:02:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Thank
+[00:03:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: on stuff documented there about the AI models I'm using in the workflow.
+[00:03:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so this is correct.
+[00:03:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So not just web apps, but it's super helpful.
+[00:03:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So this is just something where like, I can have it flag something.
+[00:03:12] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It'll tell me if like code has changed, it'll pop up something.
+[00:03:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If something's changed, it'll scan on its own.
+[00:03:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But if I want to redo it, I can rescan, you know, I can check for changes.
+[00:03:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: What I haven't really been testing yet is this is an agentic chat with some somewhat, it's got some agent instructions where I can literally go in there and say, Hey, I just added another folder.
+[00:03:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Can you go check it out?
+[00:03:33] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like I've actually have that set.
+[00:03:35] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just, that's the part I haven't tested today.
+[00:03:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So this is already public too.
+[00:03:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If anybody wants to start playing with it, it's pretty easy to set up and it's all secure.
+[00:03:44] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And it's all built on Electron on Mac OS and everything.
+[00:03:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Oh, I should mention on black box.
+[00:03:55] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: See, I've developed from two different Macs.
+[00:03:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I actually have a machine sync.
+[00:04:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And this works, where it'll sync your two databases one way.
+[00:04:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So if you work on one, you work on the other, and want to make sure you have all your session information and reporting information, it uses Bonjour, and it is a secure encrypted connection, and it will pull both ways.
+[00:04:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So I tested that already, too.
+[00:04:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I forgot to mention that.
+[00:04:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That was a pretty cool feature.
+[00:04:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So that wasn't too bad, right?
+[00:04:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I think I went pretty quick.
+[00:04:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's a lot.
+[00:04:25] Ty Wells: That's good stuff, Scott.
+[00:04:28] Ty Wells: I'm definitely interested in those two, for sure.
+[00:04:31] Ty Wells: Because I'm building something similar.
+[00:04:34] Ty Wells: Well, I have something similar built.
+[00:04:36] Ty Wells: I use CMUX, a derivative, and so I'm curious to look at that, because I keep tweaking that.
+[00:04:43] Ty Wells: It's still not 100%.
+[00:04:44] Ty Wells: What I do like about CMUX is I get to drive the browser.
+[00:04:48] Ty Wells: So I don't know if you've integrated a browser.
+[00:04:50] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Not yet, and I will.
+[00:04:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That is a good one.
+[00:04:53] Ty Wells: That's on the list.
+[00:04:54] Ty Wells: that's the key.
+[00:04:55] Ty Wells: The only reason I'm on CMUX is because I can control the browser for doing all my testing.
+[00:04:59] Ty Wells: And I can...
+[00:05:00] Ty Wells: I see it myself and get screenshots and stuff.
+[00:05:03] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That'll probably be my next item on my list.
+[00:05:07] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's a good one.
+[00:05:08] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, it's funny because I haven't used a lot of...
+[00:05:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I do some agentic stuff.
+[00:05:14] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I like having certain things like that where I can run it when I want or I can put it on a schedule, but I know a lot of people can use CMox and do some wild...
+[00:05:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's just a different way that I don't think that way.
+[00:05:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So, like, this is the very classic IDE, but taking a lot of cool things, you know, little tweaks and little cool features to make it easier and then simplifying it because some of those IDs just have way too much crap in them.
+[00:05:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But the agentic harness piece is a bit limited probably right now, but that's why I kind of want to see what else we could do with that.
+[00:05:46] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You know, people want to test it out and make some suggestions.
+[00:05:49] Ty Wells: Yeah.
+[00:05:50] Ty Wells: The other thing I would add to that, which I added to my CMox session is the management of my Anthropic and Codex subscriptions.
+[00:05:57] Ty Wells: So I have it automatically...
+[00:05:58] Ty Wells: .
+[00:05:59] Ty Wells: .
+[00:05:59] Ty Wells: .
+[00:05:59] Ty Wells: .
+[00:05:59] Ty Wells: you
+[00:06:00] Ty Wells: Like, certain projects I want to run, I can say run that only on that subscription, because I don't need it running out and stuff, and then I have other projects that I'm working on, use like a shared subscription, just go back and forth through that one, and then Codex as well.
+[00:06:16] Ty Wells: But if it gets low, below 5% of whatever session, weekly or daily, whatever, it will automatically switch my sessions over into a new, it'll stop.
+[00:06:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, so if you've got, if you've got one hooked in a lot, because I know you won't lose any work, it'll just stop and you can switch at any time, mean, it gracefully handles that in Cloud Code anyway, but that's kind of cool.
+[00:06:37] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This one is, there's some specific things in the background that this can only be used with Cloud Code, although you can use it with Codex through Cloud Code, like the CLI, but it's not like, loaded up like a Codex, but I like that feature too, about like, if I had to just auto switch if I ran out.
+[00:06:54] Ty Wells: I usually am looking at it though, and I'm like, yeah, I got tired of looking at it and, you know, man.
+[00:07:01] Ty Wells: So I have it doing it by itself now, and I can see what all is running under what, and if I need to move a session, I can move it from one to another one because I don't want it to run out of the subscription or whatever.
+[00:07:13] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Part of me wonders, it would be really cool if you could tap into it, because you can get to the usage.
+[00:07:18] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I could actually permanently put the usage somewhere in a tab, that would be nice.
+[00:07:22] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I don't know if I can do that or not.
+[00:07:23] Ty Wells: Yeah, you can do the usage.
+[00:07:24] Ty Wells: That's what I show now.
+[00:07:25] Ty Wells: I show my usage in terms of what I know.
+[00:07:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I do too.
+[00:07:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's at the bottom.
+[00:07:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just mean like, I want to see like, I don't think I can tap into the model, the specific usage, because you can see your usage in your session.
+[00:07:38] Ty Wells: Right.
+[00:07:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: At the bottom.
+[00:07:40] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I've got the same status line bar.
+[00:07:42] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: But I mean like showing your plan usage.
+[00:07:46] Ty Wells: Well, it's not showing my plan here.
+[00:07:48] Ty Wells: I'll show you real quick.
+[00:07:49] Ty Wells: Let me see if I can still share here.
+[00:07:52] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because they don't allow you to, they only allow you access to certain things, so I'm not sure we can get to that.
+[00:07:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, because I've got the same thing.
+[00:07:58] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, I've got the same thing.
+[00:07:59] Ty Wells: So I've got like.
+[00:08:00] Ty Wells: Okay, so this, I'm running this guy here.
+[00:08:03] Ty Wells: So I see here, that's my percentage, and I can see which sessions are under that account.
+[00:08:10] Ty Wells: Now, the only thing is if you manually log into an account, it's going to come back with a dupe, but that's what I did there.
+[00:08:16] Ty Wells: This one I have dedicated to that project.
+[00:08:18] Ty Wells: This one I have dedicated to the Island Flow and my codex.
+[00:08:22] Ty Wells: I haven't, I don't have anything on that right now, but I can move sessions around and then go in.
+[00:08:27] Ty Wells: And I do this intent capsule thing, so I can go in here and look at these capsules that can run in a cold session without any context.
+[00:08:36] Ty Wells: They're built like that, so I can go into just run all of those and they'll run without any, any issues.
+[00:08:42] Ty Wells: And if they go this way, then they're connected, so they have to wait, right?
+[00:08:46] Ty Wells: But that's sort of...
+[00:08:47] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I actually really like the idea of like building on what you said, like if I build a way into this where I can hook in the...
+[00:08:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I would actually like to be able to then assign, if I could assign certain workspace.
+[00:09:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: This is two certain plans in this app.
+[00:09:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That would be cool, because you could be running work on two different ones.
+[00:09:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Like, I like that.
+[00:09:06] Ty Wells: Yeah, and this is accessible from my phone.
+[00:09:08] Ty Wells: So I can jump to a session and reply here, and it will send it to the CMUK session that's running.
+[00:09:15] Ty Wells: So I needed it to be remote, because, you know, sometimes on the golf course, so I need to be able to continue what I'm doing from my phone, and that's the top priority.
+[00:09:25] Ty Wells: As long as I can do that, I'm good.
+[00:09:27] Daniel Zivkovic: I don't need to be stuck in front of my laptop.
+[00:09:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If I go mobile, I just end up using the CloudCode mobile and just jump.
+[00:09:34] Daniel Zivkovic: Is that something you developed, Ty, or it's a plugin we can download for CloudCode?
+[00:09:38] Ty Wells: No, that's something I built around golf.
+[00:09:42] Ty Wells: It was a necessity for me to be able to do.
+[00:09:45] Ty Wells: I built it how I needed to be mobile whenever.
+[00:09:48] Ty Wells: Not just golf, but if I'm traveling or whatever, if I'm on a phone on an airplane, then my laptop's probably my bag, so that wouldn't work.
+[00:09:56] Ty Wells: But then I use my Proxmox.
+[00:09:59] Ty Wells: It takes over.
+[00:09:59] Ty Wells: It
+[00:10:00] Ty Wells: My laptop is closed.
+[00:10:02] Ty Wells: It'll clone from there and then it goes.
+[00:10:11] Ty Wells: Did Patrick disappear?
+[00:10:12] Ty Wells: Paul, you took over.
+[00:10:13] Patrick Chouinard: No, I'm still here.
+[00:10:14] Ty Wells: Oh, okay.
+[00:10:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Because I heard the recording say it stopped, but I didn't have the video up.
+[00:10:18] Patrick Chouinard: No, just a small jump, but don't worry.
+[00:10:22] Patrick Chouinard: I've been back here for a while.
+[00:10:24] Patrick Chouinard: No, just a quick, I see that you still have the CC status line, but you have the old version.
+[00:10:30] Patrick Chouinard: You should probably update it.
+[00:10:33] Patrick Chouinard: I've added the session tracking now.
+[00:10:36] Ty Wells: Are you talking to me?
+[00:10:37] Patrick Chouinard: Yeah.
+[00:10:38] Ty Wells: Oh, yeah.
+[00:10:39] Ty Wells: That's because I wiped my cloud code, my rules, and everything.
+[00:10:44] Ty Wells: I redid it just the other day, so it still has the old one.
+[00:10:47] Ty Wells: Yeah, need to update the plugin.
+[00:10:49] Patrick Chouinard: Yeah.
+[00:10:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I need to actually use, because I think I pulled whatever you can just do through cloud code now.
+[00:10:54] Daniel Zivkovic: You can just do it.
+[00:10:55] Daniel Zivkovic: But I need to pull whatever one you guys have been talking about, like yours.
+[00:10:59] Daniel Zivkovic: Yeah.
+[00:10:59] Daniel Zivkovic: Yeah.
+[00:10:59] Daniel Zivkovic: well.
+[00:11:01] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Patrick's got one.
+[00:11:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Patrick's got one.
+[00:11:02] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I need to actually try his if he's got all that.
+[00:11:06] Daniel Zivkovic: What are we talking about?
+[00:11:10] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The status line.
+[00:11:12] Daniel Zivkovic: Oh, okay.
+[00:11:14] Ryan C: Share, share, share, share.
+[00:11:16] Patrick Chouinard: Yeah, yeah, yeah.
+[00:11:17] Patrick Chouinard: Just give me a second.
+[00:11:20] Ryan C: It sounds exciting.
+[00:11:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, because if you did the work to put in the extra stuff that I wanted, I'm like, it's already there.
+[00:11:27] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Then I can just use it there.
+[00:11:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It'll have to do with my app.
+[00:11:36] Patrick Chouinard: It connects in through a hook, right?
+[00:11:44] Patrick Chouinard: Yep.
+[00:11:55] Patrick Chouinard: So you see, this is the status line I'm talking about.
+[00:11:59] Patrick Chouinard: It's just a little...
+[00:12:01] Patrick Chouinard: This I created.
+[00:12:03] Patrick Chouinard: Nothing so fancy, but basically I've added the effort that wasn't there before.
+[00:12:09] Patrick Chouinard: And also in the use right now, you don't see anything because there is no use.
+[00:12:13] Patrick Chouinard: So if I say, I don't know.
+[00:12:21] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, what's cool is in this, my application does track all of the usage.
+[00:12:25] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So you'll see like the actual cost now on all your sessions together.
+[00:12:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You can run reports on it now in the CC black box.
+[00:12:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: So you could tell what you're spending per customer and everything.
+[00:12:37] Patrick Chouinard: Yeah.
+[00:12:37] Patrick Chouinard: Sorry, I'm just going to have to re-log in.
+[00:12:40] Patrick Chouinard: It seems like my login expired.
+[00:12:48] Patrick Chouinard: Give me a sec.
+[00:13:11] Patrick Chouinard: Okay.
+[00:13:15] Patrick Chouinard: So now let's share again.
+[00:13:16] Patrick Chouinard: So as it responds, you should see the update, uh, coming in.
+[00:13:37] Patrick Chouinard: There you go.
+[00:13:39] Patrick Chouinard: So you see now it tracks my five hour, uh, limit with the, uh, amount of time remaining, the amount of usage and the seven days limit and the time remaining, not big change, but it's just feedback.
+[00:13:56] Patrick Chouinard: That's always there.
+[00:13:57] Patrick Chouinard: And, uh, I've, uh, also managed.
+[00:14:02] Patrick Chouinard: So now I have a button that tracks my usage for CloudCode and another one that tracks my usage for Codex.
+[00:14:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, I'll install that just because it's, obviously, for one, that's cool just to see the rest of it.
+[00:14:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And another thing that I don't have, it's like, why would I try to add that into my IDE when it's just a CloudCode status line?
+[00:14:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just want to see it.
+[00:14:24] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I just want to see it.
+[00:14:26] Patrick Chouinard: And then Gips.
+[00:14:28] Patrick Chouinard: Sorry?
+[00:14:29] Daniel Zivkovic: Is it open source?
+[00:14:30] Patrick Chouinard: Yeah, yeah, absolutely.
+[00:14:31] Patrick Chouinard: I'm going to paste the link to the repo.
+[00:14:35] Patrick Chouinard: And the Git, it will track your Git repo and it will track which branch you're in at the same time.
+[00:14:41] Patrick Chouinard: So basically, I try to make it minimalistic, but have every single bit of information you need at a glance.
+[00:14:49] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Yeah, it's very, very tight.
+[00:14:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I like that.
+[00:14:52] Daniel Zivkovic: The less is more.
+[00:14:53] Daniel Zivkovic: I love it.
+[00:14:54] Paul Miller: What about the other three Cloud accounts that you have to run to keep the tokens up?
+[00:14:59] Paul Miller: but I
+[00:15:00] Paul Miller: Patrick Chouinard I'm still running just one account, actually.
+[00:15:02] Patrick Chouinard: Patrick Oh my gosh.
+[00:15:04] Patrick Chouinard: I'm just flipping between Claude and Codex.
+[00:15:07] Paul Miller: Wow.
+[00:15:09] Paul Miller: Chouinard- So you mean I don't need to spend 800 US dollars a month?
+[00:15:13] Patrick Chouinard: Patrick- Right now I'm spending 100 US on Claude and 100 US on Codex.
+[00:15:22] Daniel Zivkovic: That's it.- Well, then it's enough.
+[00:15:25] Daniel Zivkovic: Patrick 100 is not enough for me for Claude.
+[00:15:28] Patrick Chouinard: Patrick- Because you do I everything in Claude.
+[00:15:31] Daniel Zivkovic: That's why I.
+[00:15:32] Patrick Chouinard: Fable.
+[00:15:32] Paul Miller: So I keep working with Fable.
+[00:15:35] Patrick Chouinard: Patrick- Are you coding with Fable?
+[00:15:38] Daniel Zivkovic: No, no.
+[00:15:39] Daniel Zivkovic: Patrick Just design thinking.
+[00:15:40] Daniel Zivkovic: Patrick It's like gathering requirements.
+[00:15:42] Daniel Zivkovic: How to help users understand what I want.
+[00:15:45] Daniel Zivkovic: Patrick Philosophical kind of discussions with my thinking partner.
+[00:15:48] Patrick Chouinard: Yeah, I have that, but with Hermes.
+[00:15:52] Patrick Chouinard: Patrick Hermes is the agent that managed my entire environment.
+[00:15:57] Patrick Chouinard: Patrick It runs off my Codex subscription.
+[00:15:59] Patrick Chouinard: Chouinard Chouinard Chouinard Chouinard Chouinard- Patrick Chouinard Patrick Patrick-
+[00:16:00] Patrick Chouinard: It knows about every machine I have, every project I run, it has access to everything, and there is a recurring job that prepares a Fable prompt every week to go through, it basically condense everything, feed it to Fables, analyze this, and whatever comes out, that's the work that it's going to work on for the week.
+[00:16:20] Daniel Zivkovic: That's amazing.
+[00:16:25] Patrick Chouinard: Concentrate usage as much as possible.
+[00:16:28] Daniel Zivkovic: Concentrate Concentrate treat my Fable prompt very, very high value.
+[00:16:36] Patrick Chouinard: So whatever I submit to it, I want it to think as hard as it possibly can, and whatever comes out, that's what the other models are processing.
+[00:16:45] Daniel Zivkovic: Concentrate that's cool.
+[00:16:51] Patrick Chouinard: Concentrate you add anything else, Scott?
+[00:16:56] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Well, that's it for now.
+[00:16:59] Patrick Chouinard: Concentrate
+[00:17:00] Patrick Chouinard: Cool.
+[00:17:01] Patrick Chouinard: So I'm not going to jump the line.
+[00:17:04] Patrick Chouinard: The next one would be Daniel.
+[00:17:06] Daniel Zivkovic: Oh, no.
+[00:17:07] Daniel Zivkovic: I feel so small after listening to these guys.
+[00:17:11] Daniel Zivkovic: I mean, philosophical discussions with AI, like there is this conflict with business not being able to define requirements and IT asking for requirements.
+[00:17:20] Daniel Zivkovic: And like people call it optometry theory that I'm developing.
+[00:17:25] Daniel Zivkovic: Like when you go to a doctor, he asks you, this better or this better?
+[00:17:28] Daniel Zivkovic: One or two, one or two.
+[00:17:29] Daniel Zivkovic: And like after a couple iterations, you come out with the glasses.
+[00:17:32] Daniel Zivkovic: And I want something like that in IT.
+[00:17:34] Daniel Zivkovic: But because now with AI, I can prototype faster.
+[00:17:37] Daniel Zivkovic: So like it's, so 17 years ago, I worked for a pension plan like you, Patrick, and I was a business analyst.
+[00:17:43] Daniel Zivkovic: So I asked the director of marketing, like give me the requirements, VPO marketing.
+[00:17:48] Daniel Zivkovic: She was, Daniel, show me what you have and I'll tell you what I want.
+[00:17:51] Daniel Zivkovic: So that became my mantra now with AI.
+[00:17:53] Daniel Zivkovic: And I'm trying to develop a system to elicit requirements for business users who don't know what they want, but they feel it.
+[00:17:59] Daniel Zivkovic: So it's formally,
+[00:18:00] Daniel Zivkovic: It's field-based requirements gathering.
+[00:18:02] Daniel Zivkovic: So that's my experiment.
+[00:18:03] Daniel Zivkovic: And then Fable publishes me the books on Kindle.
+[00:18:07] Daniel Zivkovic: lay down and listen to them and say, yes, that was good.
+[00:18:12] Daniel Zivkovic: And it's not out of there.
+[00:18:16] Daniel Zivkovic: Fable is grounded.
+[00:18:17] Daniel Zivkovic: I have the video Intel project, but it's open source, but I only use it to scan the internet, to transcribe videos with full context of what they're talking and what the screenshots are about.
+[00:18:35] Daniel Zivkovic: And I love conferences and the discussion afterwards because I believe in higher mind that your idea and my idea are going to create a new idea.
+[00:18:42] Daniel Zivkovic: So I fish for the Q and A's at the end and discussions, group chats, because there were nuggets are.
+[00:18:47] Daniel Zivkovic: So I'm fishing with the prompts to find out new ideas and then kind of feed the Fable with that to make sense out of the noise.
+[00:18:55] Daniel Zivkovic: Just research.
+[00:18:57] Patrick Chouinard: Cool.
+[00:18:58] Patrick Chouinard: Interesting.
+[00:19:00] Patrick Chouinard: Was that it?
+[00:19:02] Daniel Zivkovic: That's it.
+[00:19:03] Patrick Chouinard: Cool.
+[00:19:05] Patrick Chouinard: Okay.
+[00:19:06] Patrick Chouinard: And then on my side, as you know, I'm focusing a lot on the work work and not my own personal stuff in the last couple of weeks, but I had a little bit of some problem that I had at work that I decided to talk about at home.
+[00:19:26] Patrick Chouinard: Remember when I talked about the Codex plugin for ClogCode that you can plug in so it will do the review and the adversarial review and all of that.
+[00:19:35] Patrick Chouinard: So at work, we do not have Codex.
+[00:19:38] Patrick Chouinard: OpenAI is not allowed for us.
+[00:19:41] Patrick Chouinard: So the only thing we have is Clog or Copilot.
+[00:19:46] Patrick Chouinard: So, since Copilot has a CLI, I actually took the open source version of the Codex plugin, had it analyzed by Fable, and...
+[00:20:00] Patrick Chouinard: Give it the CoPilot CLI source code, have it analyzed by Fable as well, and I told him, now, build the Codex plugin using CoPilot CLI.
+[00:20:13] Daniel Zivkovic: Wow.
+[00:20:14] Patrick Chouinard: So, and I had to add a couple of things like model selection and those things, because those don't exist on the Codex side.
+[00:20:25] Patrick Chouinard: So I brought that out of work and it was nice and fun and people like it.
+[00:20:30] Patrick Chouinard: And they're using it so they can have access to the ChatGPT 5.6 models through GitHub CoPilot.
+[00:20:37] Patrick Chouinard: So security, cybersecurity is happy, governance happy, everybody's happy and they're working.
+[00:20:43] Patrick Chouinard: But going through that exercise, it actually made me think, it's like, that's nice, but it's not going far enough.
+[00:20:53] Patrick Chouinard: So I got into a bit of what you guys did, but instead of working it from the UI perspective.
+[00:21:00] Patrick Chouinard: I worked it from the harness perspective.
+[00:21:04] Patrick Chouinard: Basically, I've started, I'm not done yet.
+[00:21:06] Patrick Chouinard: That's a big project.
+[00:21:08] Patrick Chouinard: Basically, I've used, I don't know if you saw pi.dev.
+[00:21:13] Patrick Chouinard: Okay.
+[00:21:14] Patrick Chouinard: It's an open source harness that is minimal, but the idea is you take it, you code it, you modified it any way you want.
+[00:21:23] Patrick Chouinard: So right now, I am trying to create a version of pi that is optimized strictly for review.
+[00:21:34] Patrick Chouinard: So code review, basically, of any kind.
+[00:21:36] Patrick Chouinard: So it's not a coding our nest anymore.
+[00:21:39] Patrick Chouinard: It's not good.
+[00:21:40] Patrick Chouinard: You're not going to create anything.
+[00:21:41] Patrick Chouinard: You're not even going to solve the issue you find.
+[00:21:44] Patrick Chouinard: The idea is it's going to be solely optimized to receive code and context and analyze.
+[00:21:55] Patrick Chouinard: Not the new DeepSea.
+[00:21:57] Patrick Chouinard: No, not the new DeepSea car nest, Paul.
+[00:21:59] Patrick Chouinard: It's real.
+[00:22:00] Patrick Chouinard: Basically, a Pi is not bounded to any model or any supplier.
+[00:22:05] Patrick Chouinard: You can feed it a Codex subscription, a Claude subscription, a Copilot subscription.
+[00:22:11] Patrick Chouinard: You can bind it to OpenRouter, whatever you want.
+[00:22:14] Patrick Chouinard: But the idea is the harness itself is very, very light, but it's completely configurable.
+[00:22:21] Patrick Chouinard: So whenever it gets requested by Claude code or Codex or whatever, it's going to give like I said, context and code to be validated, and it's going to come back with.
+[00:22:36] Patrick Chouinard: So the exact same mechanic as the Codex CLI plugin, but to go a lot further than just two levels of review and the ability to do review at the stop hook level, at the pre-commit level, and at the branch level, and at the entire project level.
+[00:22:57] Patrick Chouinard: So I'm trying to optimize the harness.
+[00:23:00] Patrick Chouinard: Strictly to do code review and security analysis, adversarial review, every possible way to analyze a project, and then just give the coding artist a report back, an analysis back, and say, here's what you need to fix, go fix it.
+[00:23:20] Daniel Zivkovic: And you get paid for that.
+[00:23:22] Patrick Chouinard: Yep.
+[00:23:24] Daniel Zivkovic: That's good.
+[00:23:26] Daniel Zivkovic: That's good.
+[00:23:27] Daniel Zivkovic: It's even better than playing at home.
+[00:23:30] Patrick Chouinard: And today, from a pure business perspective, because that's what I did on my own time that I'm going to end up refactoring to the client when I actually implement that at their site.
+[00:23:42] Patrick Chouinard: Basically, my coworker are now asking to follow my GitHub because they say, whatever pops up on there, we know we're going to be reimplementing it three weeks from now.
+[00:23:53] Patrick Chouinard: But yeah, for the work, we have started to think about it.
+[00:23:59] Patrick Chouinard: the..
+[00:23:59] Patrick Chouinard: said.
+[00:23:59] Patrick Chouinard: Like...
+[00:23:59] Patrick Chouinard: Hey.
+[00:24:00] Patrick Chouinard: Gentic SDLC in the enterprise, because again, everything that exists today is geared toward individual developers, so where we are today is we're thinking, I'm thinking actually, of merging Superpower with the Matt Pocock skills, what I need by that is I want, instead of doing the Superpower brainstorming, which is perfect for a single dev but doesn't really work in the enterprise, I want to use the Grill with Docs, but a customized version that is geared towards business analysts that have no software development background, basically hammering them to whatever you tell me you want, I'm going to find out, you're going to tell me the problem you're trying to solve.
+[00:24:47] Patrick Chouinard: So if your requirement is I need a dashboard, then I'm going to ask you, yeah, but what is the dashboard going to be solving?
+[00:24:56] Patrick Chouinard: So I want to get the problem, so the analysts analysts can feed
+[00:25:00] Patrick Chouinard: And to the second layer, which is going to include another skill layer to analyze the technology stack that's going to be used to solve the problem.
+[00:25:11] Patrick Chouinard: And that is going to be vastly different than what's out there because this stack will include our stack.
+[00:25:20] Patrick Chouinard: So basically what's already been approved and used internally.
+[00:25:25] Patrick Chouinard: So it stopped recommending everything on the market and focus on technology that are implemented the way we have implemented them.
+[00:25:33] Patrick Chouinard: Then it goes to the developer to finish the implementation of the product.
+[00:25:37] Daniel Zivkovic: Patrick, have you looked at compound engineering?
+[00:25:39] Daniel Zivkovic: There are so many frameworks out there.
+[00:25:41] Daniel Zivkovic: You sound like a software engineering guy.
+[00:25:43] Daniel Zivkovic: Like for me, I looked at like maybe like five, six of those different frameworks.
+[00:25:49] Daniel Zivkovic: Compound engineering literally is like my way of thinking.
+[00:25:52] Daniel Zivkovic: Like there is no adjustment.
+[00:25:53] Daniel Zivkovic: You're just kind of thinking full-blown old-fashioned SDLC.
+[00:25:57] Daniel Zivkovic: You don't have to think of it.
+[00:25:58] Daniel Zivkovic: Just maybe, you know, be cheap.
+[00:26:00] Daniel Zivkovic: on the tokens, but try compound engineering.
+[00:26:03] Daniel Zivkovic: You don't need to look for frameworks for.
+[00:26:05] Patrick Chouinard: It's not that I'm looking for framework.
+[00:26:07] Patrick Chouinard: I'm looking at bits and pieces of framework in order to modify them, to optimize them for our business.
+[00:26:14] Patrick Chouinard: The problem is most of the framework out there are all targeted at single developer or small teams.
+[00:26:21] Daniel Zivkovic: Not compound engineering.
+[00:26:23] Daniel Zivkovic: It's truly enterprise SDLC.
+[00:26:25] Daniel Zivkovic: I've never seen anything that brilliant, and I don't mind catching up with the author.
+[00:26:29] Daniel Zivkovic: He's like brilliant here and from every .to.
+[00:26:31] Daniel Zivkovic: Like every three months, I have to readjust and improve his style of thinking.
+[00:26:36] Daniel Zivkovic: It's just unbelievable.
+[00:26:38] Patrick Chouinard: Okay.
+[00:26:38] Patrick Chouinard: I'm going to definitely take a peek.
+[00:26:41] Patrick Chouinard: But like I said, we're just trying to manage something that's going to be optimized for our user as well, because not all of our users are at the same technical level.
+[00:26:51] Patrick Chouinard: And I want to bring them into a process that understands their level, their need.
+[00:26:59] Patrick Chouinard: Basically- .
+[00:26:59] Patrick Chouinard: .
+[00:26:59] Patrick Chouinard: .
+[00:26:59] Patrick Chouinard: .
+[00:26:59] Patrick Chouinard: .
+[00:27:00] Patrick Chouinard: Basically, I want something that if you're a citizen developer, I'm going to give you very little leash, but the ability to create pretty much any prototype you want.
+[00:27:10] Patrick Chouinard: If you're a professional developer, you're going to work into the exact same path, except that you're going to have a lot more liberty to deviate with explanation.
+[00:27:22] Patrick Chouinard: Yes, Paul?
+[00:27:24] Paul Miller: Patrick, did you see that Theo did an interesting video?
+[00:27:29] Patrick Chouinard: He looked at the Pocop one.
+[00:27:31] Patrick Chouinard: Yep.
+[00:27:32] Paul Miller: Did you see that one?
+[00:27:34] Patrick Chouinard: That's exactly where I got the inspiration from.
+[00:27:36] Paul Miller: Ah, okay.
+[00:27:37] Paul Miller: Yeah, because he pretty much said, as you pretty much said verbatim, you're making it your own.
+[00:27:43] Paul Miller: Yeah.
+[00:27:44] Paul Miller: Because it's not just copying and pasting that.
+[00:27:46] Paul Miller: And you've got a unique environment and unique challenge.
+[00:27:50] Paul Miller: So it's interesting.
+[00:27:52] Daniel Zivkovic: Can you share that video?
+[00:27:54] Paul Miller: Maybe I'm too rich.
+[00:27:55] Paul Miller: Yeah, it's in the chat.
+[00:27:56] Paul Miller: I put it in the chat if you click on the chat.
+[00:28:00] Daniel Zivkovic: I'm on mobile phone.
+[00:28:01] Paul Miller: Okay, I see it.
+[00:28:03] Paul Miller: That's cool.
+[00:28:03] Paul Miller: That saves a bit of time, Patrick.
+[00:28:05] Paul Miller: You're onto it, as usual.
+[00:28:09] Patrick Chouinard: Yeah, I would say Matt Pocock, Tio, probably Nate.
+[00:28:18] Patrick Chouinard: Those are the ones I follow.
+[00:28:21] Daniel Zivkovic: Nate Pocock is amazing.
+[00:28:23] Daniel Zivkovic: I like Mark Kashif.
+[00:28:26] Daniel Zivkovic: I think Ty is his coach.
+[00:28:27] Daniel Zivkovic: Just to reveal the secret.
+[00:28:31] Patrick Chouinard: Those are the ones I follow pretty much daily.
+[00:28:35] Patrick Chouinard: But yeah, I saw that video.
+[00:28:37] Patrick Chouinard: That's what got me thinking about it.
+[00:28:39] Patrick Chouinard: And basically, I've now implemented at work the teach skill.
+[00:28:44] Patrick Chouinard: So everybody's in love with Matt Pocock.
+[00:28:49] Patrick Chouinard: has a slash teach.
+[00:28:51] Patrick Chouinard: You just point that at a source documentation, at the technology, at the repo, at whatever.
+[00:28:58] Patrick Chouinard: And it's going to build it in.
+[00:29:00] Patrick Chouinard: That's HTML training material for a, like, 15-minute training spike.
+[00:29:06] Daniel Zivkovic: That's cool.
+[00:29:07] Daniel Zivkovic: It's not going to teach you astrophysics, but it's going to teach you one specific skill in, like, 15 to 20 minutes.
+[00:29:15] Patrick Chouinard: So, basically, now we don't build training anymore.
+[00:29:19] Patrick Chouinard: We just say, like, go to your documentation, do a slash teach, go through it.
+[00:29:24] Patrick Chouinard: That's the way you get trained, because creating courses is becoming increasingly useless, because by the time you finish building them, they're obsolete.
+[00:29:33] Patrick Chouinard: So, generate them just in time.
+[00:29:37] Daniel Zivkovic: Wow.
+[00:29:38] Daniel Zivkovic: That's a good one.
+[00:29:39] Daniel Zivkovic: So, I was using the long way.
+[00:29:41] Daniel Zivkovic: I would upload the repo into this, what was Deep Wiki, and then have, extract all the pages from Deep Wiki, and then have notebook L.M.
+[00:29:51] Daniel Zivkovic: scrape them and create me the podcast.
+[00:29:53] Daniel Zivkovic: So, like, after I do all the processing in 20 minutes, I learn is it good or bad.
+[00:29:57] Patrick Chouinard: Yeah, the podcast is good if you just want to...
+[00:30:00] Patrick Chouinard: So, just, but what the slash teach creates, it's a web application with quizzes.
+[00:30:07] Patrick Chouinard: So it's not just reading stuff, it's giving you homework to do and answer quizzes and no, it's pretty amazing.
+[00:30:17] Daniel Zivkovic: Thank you.
+[00:30:19] Patrick Chouinard: So, yeah, that was my week.
+[00:30:25] Patrick Chouinard: Next time, Morgan.
+[00:30:30] Morgan: Hey guys, how's it going?
+[00:30:32] Patrick Chouinard: Good?
+[00:30:33] Morgan: Is Scott still on?
+[00:30:34] Morgan: Yeah, you're still there.
+[00:30:35] Morgan: I got questions for you at the end of this, hold on.
+[00:30:37] Morgan: So I've been working on changing one of my apps, the stack of it from Supabase to Convex, which has been a little bit of a trek.
+[00:30:54] Morgan: The biggest part of that, I actually spent last week using Pococs.
+[00:31:00] Morgan: Wayfinder to figure out all of the stuff that was a little bit unknown, right?
+[00:31:09] Morgan: And, man, it found a lot of bugs in the existing code just running through it as a code review with Wayfinder.
+[00:31:15] Morgan: It's like, okay, here's this.
+[00:31:16] Morgan: This is a broken piece right here already in the existing code, let alone how you want to work it going forward.
+[00:31:23] Morgan: But Wayfinder is really nice.
+[00:31:25] Morgan: It uses all of the other skills, the research, the grill with docs, and it's just nice, nice little process.
+[00:31:37] Morgan: It ties into your GitHub with the issues, so everything's recorded and logged there, and then you build your specs and your tickets out off of that.
+[00:31:45] Morgan: So that was a good process.
+[00:31:48] Morgan: I'm done with the whole exploration of converting the app from Supabase to Convex.
+[00:31:59] Morgan: And
+[00:32:00] Morgan: And ConvexDev is a, for you guys that don't know, is a sync database.
+[00:32:07] Morgan: So it has all of the WebSockets already mapped out for you.
+[00:32:14] Morgan: All of your clients are synced to the database.
+[00:32:17] Morgan: Any change in the database, everything updates for any client that's connected, which is what I needed for the Carpool App one.
+[00:32:25] Morgan: So that's worked out really well.
+[00:32:28] Morgan: I'm about halfway through with the coding of it on the new platform and that's a good one.
+[00:32:37] Morgan: The other one, I have a client who's, all of their domain knowledge and application content right now lives inside Google Docs in several broken and disconnected spreadsheets.
+[00:32:51] Morgan: And so I'm redoing that so that they can have a cohesive relational context which is so useful.
+[00:33:00] Morgan: Data because they have a copy paste structure that's just not workable, especially when you end up with multiple team members and they're doing it.
+[00:33:10] Morgan: That one has a bunch of data that is it's under the data is under criminal justice control, so I can't display any of that stuff.
+[00:33:25] Morgan: So those two projects are going pretty good and kind of fun.
+[00:33:29] Morgan: The third one is an app that I had written, and I need to now deploy that to iOS.
+[00:33:37] Morgan: So this is the question for you, Scott, if you're listening.
+[00:33:42] Morgan: I haven't done any iOS development.
+[00:33:45] Morgan: We did go through the process to get the Apple developer license under the clients, under their...
+[00:33:53] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Ryan will be the guy to talk to because all I did was get it signed, but I'm downloading it.
+[00:34:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: GitHub is a DMG and installing it on the Mac.
+[00:34:02] Morgan: Ryan has gone through the whole thing.
+[00:34:04] Morgan: Oh, okay.
+[00:34:05] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: back.
+[00:34:05] Morgan: I thought, well, we woke him up.
+[00:34:07] Morgan: He was on a catnap right there.
+[00:34:10] Ryan C: He's summoned.
+[00:34:11] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: He's been summoned.
+[00:34:13] Ryan C: I have my name.
+[00:34:15] Ryan C: I have my timer off.
+[00:34:18] Morgan: I think we brought this up before and I wasn't ready to dive into it.
+[00:34:22] Morgan: But now the client's kind of pushing it.
+[00:34:24] Morgan: And so I got to really dive into this.
+[00:34:26] Ryan C: There are two ways you can go.
+[00:34:28] Ryan C: You can either do it the proper way, as Scott would call it, the proper way, which is to develop it with Swift and make it in...
+[00:34:39] Morgan: And push that out the door so we can...
+[00:34:42] Ryan C: Yeah, do it in code and then push it into Xcode and then do it the way that Apple wants you to do it.
+[00:34:48] Ryan C: The easier way to do it, and I've found, depending on how complicated the app is and what the app has to do versus what it's offloading to the server, if it's...
+[00:35:00] Ryan C: If dumb app in terms of what it's actually doing on the phone, and if it's offloading lots of stuff to your actual web app that's sitting behind it, then you can get away with making it in something called Expo, which then means it will work on both Android and iOS, you build one app and then it distributes it for both, you pay a separate monthly fee for that, but then you put all of your Apple credentials and stuff into there and it deals with all of the, when you want to submit to the app store, it then does that all over.
+[00:35:30] Ryan C: So, within their sort of thing.
+[00:35:33] Morgan: You're still using your own developer license at that point?
+[00:35:36] Ryan C: Yeah, you have to still do the Apple ID and everything and sign up to the developer program.
+[00:35:41] Ryan C: There's a whole bunch of steps.
+[00:35:42] Ryan C: Claude will talk you through it because he taught me through it.
+[00:35:44] Ryan C: Um, I'm using Expo, and it works perfectly fine.
+[00:35:47] Ryan C: It seems to be doing a good enough job.
+[00:35:49] Ryan C: The app works fine.
+[00:35:51] Ryan C: Um, yeah, and I'm starting to do some testing on Android, uh, this last week, so it seems to be working okay on there as well.
+[00:35:59] Ryan C: hope for some tweaks.
+[00:36:00] Ryan C: You have to make it work on both properly, but it seems to be okay.
+[00:36:05] Ryan C: And then you just sign up to the Google developer thing for that.
+[00:36:08] Paul Miller: I would, Morgan, I would second what Ryan's saying on that.
+[00:36:14] Paul Miller: I'm also using Expo.
+[00:36:16] Paul Miller: I'm building Android and iOS apps.
+[00:36:20] Paul Miller: And the cool thing you can do, I don't know if your dev platform is Apple, but if it is, you might want to consider that.
+[00:36:32] Paul Miller: But not only do I develop in the iOS and Android framework, but on the Apple, I've got the remote control of the emulation of both.
+[00:36:44] Paul Miller: And I get Claude Code to run the emulation of testing the app, doing all the user testing through the emulation of both devices.
+[00:36:56] Paul Miller: Right.
+[00:36:57] Paul Miller: So it can go through, it can build a code.
+[00:37:00] Paul Miller: But then it emulates the testing from a computer use control perspective, and then it feedbacks into the loop and says, oh, you know, the UI, UX, it's got some issues here, and it makes it better and better and better.
+[00:37:13] Paul Miller: But you really need an Apple dev platform to do that, and Apple tends to host both devices really well and play nice.
+[00:37:26] Paul Miller: I wouldn't want to try that on a Windows stack.
+[00:37:30] Ryan C: Paul, if you'd be so kind, could you share that with me?
+[00:37:33] Paul Miller: Yeah, yeah, yeah.
+[00:37:33] Ryan C: How are you doing, mate?
+[00:37:35] Ryan C: I'm not doing that.
+[00:37:35] Ryan C: I'm just getting the link from Expo and installing it on my phone every time.
+[00:37:39] Paul Miller: Well, I owe you a catch-up, but let's do it at a time zone that works better for you.
+[00:37:45] Ryan C: I can give you the demo and show you how I'm doing it.
+[00:37:48] Ryan C: Sounds like a plan.
+[00:37:49] Ryan C: Drop me an email.
+[00:37:50] Paul Miller: We'll get something sorted.
+[00:37:53] Morgan: Okay, so I landed in the right spot on Expo.
+[00:37:57] Paul Miller: Good.
+[00:37:57] Morgan: My current app is...
+[00:38:00] Morgan: It's got the Next.js front end, and most of it runs on the server.
+[00:38:06] Morgan: All of the actual code is in the server side of that.
+[00:38:09] Morgan: It's not on the actual front end side.
+[00:38:12] Morgan: So that should be good.
+[00:38:19] Morgan: What was your issue with having BusinessLogic in the app itself on the phone with Expo?
+[00:38:30] Morgan: I didn't have any issue.
+[00:38:32] Ryan C: I just think, obviously, if you want something to do something really native to Apple, right, like if you're linking into lots of their different services, you're probably better off for less issues using their native stuff, because it just makes sense.
+[00:38:45] Ryan C: Logic dictates that, right?
+[00:38:46] Ryan C: Yeah.
+[00:38:47] Ryan C: assume Expo probably can do it, and Paul, you're probably in the weeds of this more than I am, because I've specifically made my app relatively, it's a Capture app, but then I'm thinking it's done off.
+[00:39:04] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It's kind of like people use that because if they don't want to develop specifically for both platforms or developing kind of once I'm having it, that's kind of the whole, so you can't have problems, but yeah, they're not relying on anything specific to, you know, I need to use the GPS of the phone or something like that, right?
+[00:39:22] Paul Miller: Oh, no, that's a No, you can't use them.
+[00:39:25] Paul Miller: You can do that.
+[00:39:26] Paul Miller: You can do all the GPS stuff.
+[00:39:27] Paul Miller: You can access the camera.
+[00:39:29] Paul Miller: You can access lots of stuff in the base stuff.
+[00:39:34] Paul Miller: The only thing that you'd probably start to have issues with is running some of the native AI functionality with both environments.
+[00:39:45] Paul Miller: Well, I'm not using Apple's AI stuff.
+[00:39:49] Paul Miller: You'll be fine because the GPS stuff is quite useful because then you want contextually, depending on what functionality you want on the app, probably the
+[00:40:00] Paul Miller: The big question I had was I wanted to be able to run offline with some of the stuff, so if someone's opening the app and they get just for performance or they need to access the server and there's something wrong with the server, you kind of want the app to play nice for the user experience on the Apple or the Android platform, that was probably the only context that I used for wanting to do it in that way.
+[00:40:27] Paul Miller: All right, I've got to figure out how to get all the Apple developer stuff finished and make sure that's connected.
+[00:40:35] Ryan C: Just have a chat with you.
+[00:40:36] Ryan C: Just give Claude the Expo documentation and just talk me through end-to-end setting it up and linking it up with my Apple developer account.
+[00:40:44] Ryan C: They'll just give you a guide to that.
+[00:40:46] Ryan C: It's pretty easy.
+[00:40:47] Morgan: The first thing it says is open your Apple book, which I don't have, and then...
+[00:40:52] Ryan C: You need to sign up for your Apple development account and that can take a minute to actually register and come through and then sign you off.
+[00:40:58] Morgan: We've got signed We've got it signed up
+[00:41:00] Morgan: up and authorized, but I can't activate it because it requires a Mac to activate it.
+[00:41:06] Ryan C: I gotta get it.
+[00:41:07] Ryan C: There's just God giving you a sign.
+[00:41:09] Ryan C: Go and get yourself a Mac.
+[00:41:10] Morgan: You better off.
+[00:41:11] Ty Wells: Only the Mac to get your keys, too.
+[00:41:14] Morgan: Right, that's what I'm saying.
+[00:41:15] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You can do it.
+[00:41:16] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: If you have an iPhone, you can do it from there, too.
+[00:41:17] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I did mine from my iPhone, so.
+[00:41:19] Morgan: You did your activation from an iPhone or just get your keys?
+[00:41:23] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: No, I signed up for the Apple developer and went through that and got activated just off my phone.
+[00:41:29] Ryan C: The man that owns three Macs.
+[00:41:32] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I've got three Macs, an iPad, an iPhone.
+[00:41:36] Morgan: All right.
+[00:41:38] Morgan: They make it so not easy.
+[00:41:41] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: It was a little convoluted.
+[00:41:42] Morgan: Yeah.
+[00:41:43] Ryan C: That's good, though.
+[00:41:44] Ryan C: I have a slight barrier to entry, so we've got a small moat, albeit a small moat, but a moat nonetheless.
+[00:41:51] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: My phone is the one, what am I on?
+[00:41:54] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Whatever version I'm on has the camera that won't focus close enough.
+[00:41:59] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: And so it could...
+[00:42:00] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Knocked it close enough to my ID, and I was losing my mind trying to sign up for it.
+[00:42:06] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: Ugh.
+[00:42:07] Morgan: Scott's got his phone out with a magnifying glass and trying to take a picture of his driver's license.
+[00:42:15] Ryan C: You've got to switch the 2x lens for that, dude.
+[00:42:17] Ryan C: The  wide lens and the one lens won't do it.
+[00:42:21] Ryan C: It's so annoying.
+[00:42:22] Ryan C: So 2x and just move a little bit further away.
+[00:42:24] Morgan: That's the trick.
+[00:42:25] Morgan: Yeah.
+[00:42:26] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I actually had to do it a different way.
+[00:42:28] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: You can't do it with my phone.
+[00:42:29] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: I have a different camera.
+[00:42:30] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: The version I'm on.
+[00:42:33] Paul Miller: Okay.
+[00:42:34] Paul Miller: I needed, for example, Morgan, I had to go to full biometric confirmation of who the users are, both on Android and iOS for the app that I've got, because it's for drivers doing logistics deliveries.
+[00:42:52] Paul Miller: Right.
+[00:42:53] Paul Miller: And they had drivers that were doing longer shifts, and we needed to make sure that the person we're talking to through And and let that.
+[00:42:59] Paul Miller: going
+[00:43:00] Paul Miller: The iOS and the Android app was actually the person that was signed up to do the driving and compare it versus the driver's license, so I'm using a third-party tool that plugs into the stack, so it's pretty cool.
+[00:43:13] Morgan: Which stack is that that you're plugging in?
+[00:43:16] Paul Miller: Oh, I'll look it up and put it on the post.
+[00:43:19] Morgan: I've got to go back into the...
+[00:43:21] Ryan C: Are you using Amazon Recognition, whatever it's called?
+[00:43:26] Paul Miller: no, no.
+[00:43:26] Paul Miller: The facial ID tracking thing they do.
+[00:43:28] Paul Miller: That's another one.
+[00:43:30] Paul Miller: Amazon was an option to do it, but this stack seemed a bit more polished.
+[00:43:37] Ryan C: Yeah, the Amazon one's janky as anything.
+[00:43:39] Ryan C: I'm using it on my social platform, it's painful.
+[00:43:43] Ryan C: It does work, and it just takes a little bit of wrangling to get it to work.
+[00:43:46] Ryan C: Yeah, mean, essentially, you're probably good with Expo is the short answer.
+[00:43:51] Ryan C: It'll do everything you need it to do, and you can do most of the Apple features through it.
+[00:43:54] Morgan: Right, okay.
+[00:43:55] Ryan C: The purists would tell you to do it through the other one, but I think you'll be absolutely fine.
+[00:43:59] Ryan C: And I'm using GPS.
+[00:43:59] Ryan C: GPS.
+[00:43:59] Ryan C: you see GPS.
+[00:43:59] Ryan C: Oh.
+[00:43:59] Ryan C: I
+[00:44:00] Ryan C: Yes, like precise GPS and face ID on mine, but it's just fine.
+[00:44:04] Morgan: Tell me about the Expo subscription model.
+[00:44:06] Morgan: What's that?
+[00:44:07] Ryan C: You said you have to pay a monthly fee?
+[00:44:09] Ryan C: spending 45 bucks a month, and I want to say it gives you 15 pushes, Paul, but it costs you per push, essentially, per build.
+[00:44:21] Ryan C: You don't get that many, so you want to make sure you do lots of big iterative work, and then build once you've done all of it rather than building it with every single change because you end up in issues running out of money quite quickly.
+[00:44:35] Morgan: So, Paul, on your side with that development cycle you were talking about with the emulator, you do all that work, and then you won't push to the phone or to Apple until you're done with the solid release?
+[00:44:50] Paul Miller: Yeah, yeah, yeah.
+[00:44:51] Paul Miller: I try and wait till it's got to a version with my local testing that you don't have to keep iterating with pushing more.
+[00:45:00] Paul Miller: More updates to Apple, because then you can sort of test it before you release it locally with the two emulators, and then you're at a much further degree of having it ready to go.
+[00:45:16] Paul Miller: Of course, you can push it out for user testing, but if you can test it on your device, and for all those hooked into the Apple system, I noticed overnight the Mac Mini, the latest version of that's come out with availability in September, finally.
+[00:45:36] Paul Miller: And that's probably a good low-cost way with an M5 processor to have a dev stack for that kind of stuff, if you're open to it, Morgan.
+[00:45:47] Morgan: Yeah, so can I get started with the Expo development without subscribing to the Expo service?
+[00:45:57] Paul Miller: Yeah.
+[00:45:57] Ryan C: Yeah, they do a free trial, I think, that includes...
+[00:46:00] Ryan C: And 10 builds or something, I think.
+[00:46:01] Ryan C: So I'd use that first and then subscribe because then you get more builds in a month.
+[00:46:05] Morgan: That's why I did.
+[00:46:07] Morgan: Okay.
+[00:46:08] Paul Miller: It's very free.
+[00:46:09] Paul Miller: It's well written.
+[00:46:11] Paul Miller: And I think the only way around it, if you wanted to avoid the subscription, is using third parties that are not as reliable and you're kind of dependent on a whole lot of other stack stuff, and it builds a fatter app.
+[00:46:26] Paul Miller: This is quite lightweight and lean.
+[00:46:27] Paul Miller: So a good way to go.
+[00:46:30] Paul Miller: And because they've got money in it, they can do support.
+[00:46:33] Paul Miller: They can do the coding right, and there's a big community there, and they seem pretty professional.
+[00:46:40] Morgan: So...
+[00:46:40] Ryan C: Yes, it does handle offline app storage, Aaron, because mine is an offline mode where if mine is capture, essentially, so I'm taking pictures of things.
+[00:46:49] Ryan C: And if it's offline at that point, it'll store it on the phone until it gets online again and send it off to my storage so it can hold things permanently if you want it to, but I have it temporarily holding...
+[00:47:00] Ryan C: I've owned the device from an offline perspective.
+[00:47:03] Daniel Zivkovic: What do you use?
+[00:47:03] Daniel Zivkovic: Firebase?
+[00:47:04] Daniel Zivkovic: For offline?
+[00:47:06] Daniel Zivkovic: What is the storage model you use for offline?
+[00:47:09] Daniel Zivkovic: Or is it part of the expo?
+[00:47:10] Daniel Zivkovic: If you have no network connection from your phone, your app is the only one I know that has the feature.
+[00:47:18] Paul Miller: No, it's got the SQLite.
+[00:47:20] Paul Miller: SQLite you can use, or you could use a third-party one in it, but SQLite's probably the good cross-platform starting point.
+[00:47:29] Paul Miller: Just on the question on biometric authentication, so I put the link in there, it's called SumSub.
+[00:47:36] Paul Miller: I'd certainly recommend those guys, but it's about a dollar for a full authentication, so you wouldn't want it every time people sign in.
+[00:47:44] Paul Miller: So I get it too.
+[00:47:45] Paul Miller: If I'm concerned that the base level authentication on Clerc, the user's doing something a little bit dodgy, I'll fire based on AI as some, some, some.
+[00:48:01] Paul Miller: So they have to go up the authentication level to authenticate against a valid driver's license or passport.
+[00:48:10] Paul Miller: You can determine what ID it does.
+[00:48:13] Ryan C: I could use this for anti-money laundering legislation in the UK for estate agents because I'm building that estate agency CRM at the moment and part of that will be client onboarding and obviously AML is now a legal requirement for all estate agents.
+[00:48:26] Ryan C: So a lot of them have to use third parties.
+[00:48:28] Ryan C: But if I could build that in, oh, lovely, Paul, brilliant.
+[00:48:33] Ryan C: I'm definitely going be using this.
+[00:48:36] Paul Miller: Yeah, it's pretty well ranked out there.
+[00:48:41] Paul Miller: And look, in terms of using it, I tried about three or four different tools and this was easily the best.
+[00:48:52] Paul Miller: Because you don't have to ask it once you've done an initial registration of the base ID, then you can just say.
+[00:48:59] Paul Miller: in there.
+[00:48:59] Paul Miller: can
+[00:49:00] Paul Miller: If that user reconnects, just give them a light photo verification against the original identified person.
+[00:49:10] Paul Miller: Don't ask for the driver's license the second time, just ask for a face.
+[00:49:14] Paul Miller: And it does that thing where you have to move your head around so you're not just sending a picture of the face.
+[00:49:21] Ryan C: Love that.
+[00:49:22] Ryan C: That's what banking app does when I try to transfer  to people.
+[00:49:25] Ryan C: It says, let me put you in the frame, then it records a bit of video of you.
+[00:49:30] Paul Miller: Yeah, it's probably using this and you can put your own skin in front of it when it goes back to the third party for authentication, but it's just a really polished stack.
+[00:49:43] Ryan C: Yeah, I'm to be using this for AML.
+[00:49:45] Ryan C: Thank you so much for that, because I was one of the things in my list of things to do was try and find a provider for that.
+[00:49:50] Paul Miller: So there you go.
+[00:49:51] Paul Miller: That's what we're here for.
+[00:49:54] Morgan: Cool.
+[00:49:55] Morgan: All right.
+[00:49:55] Morgan: So the other thing Patrick mentioned, uh,
+[00:50:01] Morgan: The teach skill, and it's really nice because when you do it, you just create an empty folder, you point your claw at that folder, and you say, teach me about blah, whatever it is.
+[00:50:15] Morgan: Look at this repository, whatever you want to learn about.
+[00:50:19] Morgan: The cool part about it is it's very specific to what your request is.
+[00:50:23] Morgan: So if you say something that, you know what, I learned this before, but I don't remember these pieces of it, then it will redo it for that very specific scenario.
+[00:50:36] Morgan: It's not going to teach you all the base stuff.
+[00:50:38] Morgan: You already know all that.
+[00:50:39] Morgan: What it will teach you is the things that you forgot.
+[00:50:41] Morgan: And so it's really nice.
+[00:50:43] Morgan: And the quizzing piece of it, the active quizzing part, is really useful.
+[00:50:51] Morgan: It'll take you through and ask you questions, give you a, you know, nine out of 10 kind of thing.
+[00:50:57] Morgan: got nine right, one wrong.
+[00:50:58] Morgan: Gives you an opportunity to...
+[00:51:00] Morgan: To rework that piece that you didn't remember or what have you.
+[00:51:04] Morgan: And, uh, it's just a, it's not that big of a skill either.
+[00:51:08] Morgan: You look at the skill and it's, it's not very big skill at all.
+[00:51:11] Morgan: His grill me one's even less.
+[00:51:13] Morgan: It's like five lines.
+[00:51:18] Morgan: He's, his, his skills are a good, a good, uh, source to look at, to see how to write a really good skill because they are, they are concise, they're tight and they, they work really well.
+[00:51:30] Morgan: So, I've enjoyed using his content.
+[00:51:36] Patrick Chouinard: And there, they can be used, uh, recursively.
+[00:51:39] Patrick Chouinard: Basically, teach is a good skill to teach you how to use grill me, for example.
+[00:51:45] Morgan: Yeah.
+[00:51:47] Morgan: The other part is of his that I liked that he does is they're not a, a serial, uh, stepwise.
+[00:51:54] Morgan: Like, a lot of the other skills you got to start with.
+[00:51:57] Morgan: Here's the spec.
+[00:51:58] Morgan: Here's this.
+[00:51:59] Morgan: Here's the next piece.
+[00:51:59] Morgan: Here's spec.
+[00:52:00] Morgan: You've got to do them in sequential order.
+[00:52:03] Morgan: Most of Pocock's skills are, they can run by themselves, they can run off different entry points.
+[00:52:10] Morgan: You don't have to do them in a serial fashion.
+[00:52:12] Morgan: They can be out of order and specific to whatever the task at hand is.
+[00:52:18] Morgan: But yeah, teach is a great skill.
+[00:52:20] Morgan: So that's all I have for now.
+[00:52:25] Morgan: It's been a busy week, but it's all focused on migrating those projects from Supabase to Convex, and then also looking at the expo piece and just want to get some feedback from you guys that have done that little piece before.
+[00:52:41] Morgan: So appreciate the assistance and direction.
+[00:52:44] Patrick Chouinard: Awesome.
+[00:52:46] Patrick Chouinard: Thank you very much, Morgan.
+[00:52:49] Patrick Chouinard: Elena, you had a question.
+[00:52:51] Patrick Chouinard: Do you want to take a bit of time to explain it?
+[00:52:54] Patrick Chouinard: much.
+[00:53:05] Elena: Yeah, hi.
+[00:53:06] Elena: Hi, everyone.
+[00:53:07] Elena: So, yeah, I was just wondering, like, I'm wondering, like, the work, uh, the information Elena, we have a lot of difficulty hearing you.
+[00:53:18] Elena: sound is cutting off.
+[00:53:33] Morgan: Turn your video off and leave your sound on.
+[00:53:35] Morgan: That might help.
+[00:53:42] Elena: I don't know, but on this, on this, it might sound like you're underwater, Elena, unfortunately.
+[00:53:54] Patrick Chouinard: Okay, um, let, let me try to read your question and, uh, we'll go from there.
+[00:54:00] Patrick Chouinard: Because right now we have a lot of difficulty hearing you, you state, hi everyone, sorry, okay, I can ask you advice on fully autonomous AI development life cycle, I'm guessing, if anyone has good experience with guardrails, security, observability, et cetera, any good framework on implementation blueprint.
+[00:54:25] Patrick Chouinard: When you're talking about fully autonomous AI DLC, this is something I've seen a lot, but it's not yet well defined to me, because fully autonomous means there's no human in the loop, and if that's the case, then what are you developing?
+[00:54:47] Patrick Chouinard: You need at least someone to supply intent of a certain type.
+[00:54:54] Patrick Chouinard: can't, you know, without human intent, you might...
+[00:55:00] Patrick Chouinard: You be developing a very good application, but it's targeted at no one, so you have to have at least that part with human-in-a-loop.
+[00:55:09] Patrick Chouinard: It cannot be more fully autonomous than that.
+[00:55:14] Patrick Chouinard: Have I understood your question correctly, Elena?
+[00:55:19] Elena: Yeah, of course, nurse.
+[00:55:20] Elena: Do you hear me?
+[00:55:21] Elena: Yeah.
+[00:55:22] Elena: Okay, perfect.
+[00:55:23] Elena: So yeah, of course, there should be some human-in-a-loop, but at least minimizing and running it somewhere on the servers.
+[00:55:31] Elena: Supplementary, like basically having agents, coding agents running in server, and having harnesses, and probably the skills for, like, whole cycle, like, from maybe requirements, from probably even prior to requirements, right?
+[00:55:48] Elena: Like, business, like, having assisted, maybe kind of assisted requirements gathering, assisted requirements refinement.
+[00:56:02] Elena: and all the way through for deployment.
+[00:56:06] Elena: I don't know if it's ...
+[00:56:08] Elena: AWS is posting something that, like, they are showing this line how to go from AI system to AI autonomous.
+[00:56:19] Elena: I was trying to read it and I'm trying to understand, but they're basically saying you need to refine your cycle, you need to refine your processes.
+[00:56:27] Elena: I was just wondering to get your your experience, your ...
+[00:56:33] Elena: what you know, what you tried, what worked well, and specifically, like, with code, like, with code agents, or maybe other agents are also good, so maybe code and codecs.
+[00:56:51] Patrick Chouinard: Yeah, basically, from my experience so far, you have to have a couple of things, and ...
+[00:57:00] Patrick Chouinard: The Matt Pocock skills that we've been talking about are a very good baseline, but I find they're a little bit more for more advanced developers.
+[00:57:11] Patrick Chouinard: So basically to go from the grill with docs to spec, to ticket, and to code, they're good, but you have to know what you're doing.
+[00:57:19] Patrick Chouinard: They're highly flexible, they're highly customizable, but you have to know what you're doing, but they do some really, really good things.
+[00:57:28] Patrick Chouinard: The more I'll held your hand throughout the entire process is super power.
+[00:57:34] Patrick Chouinard: So it's a lot more guided, a lot more autonomous, but obviously you have to do it the super power way.
+[00:57:44] Patrick Chouinard: It's always a trade-off.
+[00:57:46] Elena: A little bit of engineering, right?
+[00:57:47] Elena: That's what I felt with the super powers.
+[00:57:51] Patrick Chouinard: Exactly.
+[00:57:52] Elena: A little bit over what you think is.
+[00:57:55] Patrick Chouinard: Exactly.
+[00:57:55] Patrick Chouinard: It's always a trade-off.
+[00:57:56] Patrick Chouinard: The more autonomous it is, the less liberty.
+[00:57:59] Patrick Chouinard: libert –
+[00:58:00] Patrick Chouinard: ...and freedom you have, the more freedom you need to customize and do things your way, the less autonomous it's going to be.
+[00:58:09] Patrick Chouinard: And if you try things like goals or loops or they're good, the problem is the quality of your requirement or the quality of your initial intent has to go up tremendously in order for them to be efficient because they need to have something they can evaluate against.
+[00:58:29] Patrick Chouinard: They cannot evaluate against an opinion.
+[00:58:33] Patrick Chouinard: They have to evaluate against hard fact that can be tested.
+[00:58:37] Patrick Chouinard: And this is the part that most of the people don't have, and that's why loops and goals, automated development, are not working perfectly so far, at least from my experience.
+[00:58:52] Daniel Zivkovic: I second that for me.
+[00:58:53] Daniel Zivkovic: There is the thing, if you don't know where you're going, you're going to end up somewhere else.
+[00:58:59] Daniel Zivkovic: So I ...
+[00:59:00] Daniel Zivkovic: I find myself spending a day planning the work, like what to do, and then before I go to sleep, I kick it, I created a wrapper around this compound engineering called Dark Factory, that's the term Nate B.
+[00:59:12] Daniel Zivkovic: Jones engraved in me, like it just does it automatically, but it never works correctly if the requirements are not properly set, and requirements start with knowing brainstorming, knowing what you want to do, so work is shifting left, so it's a utopia to have fully automated, because I spent time now, as the business users, as the manager you don't want to have, so that's my experience.
+[00:59:38] Elena: Yeah, I agree, think that's kind of a part to that, so basically I need to refine your system, refine your processes, at some point minimize probably, but you know, of course it's going to be our side, but yeah, not very much hard to do that.
+[01:00:00] Daniel Zivkovic: But it's possible.
+[01:00:02] Daniel Zivkovic: Like, I have, like, compound engineering, full autonomous runs, couple tickets, like, I don't know, three to five tickets.
+[01:00:09] Daniel Zivkovic: tried in parallel, but sometimes they step on each other.
+[01:00:12] Daniel Zivkovic: There are conflicts, so I like to run them in a sequence.
+[01:00:14] Daniel Zivkovic: Like, I don't care, I'm sleeping.
+[01:00:16] Daniel Zivkovic: And in the morning, there's a list of me to review.
+[01:00:18] Daniel Zivkovic: So that's like exit of the dark factory.
+[01:00:20] Daniel Zivkovic: But the more hours I spent up front on planning, the better result there is.
+[01:00:24] Daniel Zivkovic: So there is still human in the loop.
+[01:00:25] Elena: Although also that was not very good at that.
+[01:00:31] Elena: It seems like they still need to have very small, very defined tasks.
+[01:00:35] Elena: If you give it too much, it's drifting.
+[01:00:37] Elena: So that's what I noticed.
+[01:00:39] Elena: So it gives, it does something, it does a very minimum of, and it's drifting.
+[01:00:47] Elena: I don't remember.
+[01:00:48] Daniel Zivkovic: Even the specification is, like, I'm not a front-end developer.
+[01:00:51] Daniel Zivkovic: I don't know what good looks in it.
+[01:00:52] Daniel Zivkovic: Like, I know what, I see it, but I cannot specify it.
+[01:00:55] Daniel Zivkovic: So I started changing my prototypes.
+[01:00:57] Daniel Zivkovic: Give me three to five different prototypes.
+[01:01:00] Daniel Zivkovic: And then you iterate, you know the rules of AI, like what's good, make sure it's mobile friendly, then in the morning I'm just going to choose A, C, or D, and then it's like this optometry style, so I ask Ness and Biggi's questions, so there's always learning, always human feedback, but the results are ...
+[01:01:16] Elena: Yeah.
+[01:01:20] Elena: Thank you.
+[01:01:22] Patrick Chouinard: So hopefully that was helpful, Elena.
+[01:01:27] Patrick Chouinard: Sorry that the audio is a little bit rough.
+[01:01:32] Patrick Chouinard: Good.
+[01:01:34] Patrick Chouinard: Varun, hi.
+[01:01:36] Patrick Chouinard: I saw that you had posted a question on the meeting invite.
+[01:01:42] Patrick Chouinard: Do you want to describe your question a little bit more for the group?
+[01:01:46] Varun Sharma: Yeah, sure.
+[01:01:47] Varun Sharma: First of all, hi, Patrick.
+[01:01:49] Varun Sharma: Nice to meet you and everyone over here.
+[01:01:51] Varun Sharma: I've always wanted to join these calls, but these run like very early in my mornings, but this time I thought I'd really give it a go to join us.
+[01:02:00] Varun Sharma: So thanks for giving me the chance.
+[01:02:02] Varun Sharma: Actually, the thing is I've been following Brandon for the past 8 months, 12 months.
+[01:02:07] Varun Sharma: I've been following his work.
+[01:02:09] Varun Sharma: I really got booked into AI.
+[01:02:11] Varun Sharma: I took his full stack course and then also Shipkit.
+[01:02:15] Varun Sharma: Got dabbling into AI working things and then I realized that I really like engineering as a goal.
+[01:02:22] Varun Sharma: And for the past seven months, I've been learning Python, everything from the first principles, trying to build agents and AI workflows.
+[01:02:28] Varun Sharma: And I've reached a point where I'm not looking for roles, but I realized like, wait a minute, just take a step back because I started applying reading some job description that I realized that there's something that's still like missing.
+[01:02:42] Varun Sharma: So I just wanted to give you a few details regarding that because I realized that a lot of these roles seem like, because, you know, when I was building these workflows, it seemed like an AI engineer is like completely separate to what a conventional software engineer is.
+[01:02:58] Varun Sharma: So like, didn't I was sitting and no one...
+[01:03:00] Varun Sharma: I much more deeper into it as a professional career, as a serious choice, and having learned everything, I realized that it's not like these are two separate fields, but it's like an AI engineer is someone who's actually a very good software engineer, who understands everything by first principles, and on top of that, he knows how to work with AI and use AI as engineering.
+[01:03:21] Varun Sharma: And also a follow-up question I wanted to ask is beyond experience, someone looking to get into a junior role, what is something that is a must-have beyond experience that the recruiters usually, or companies, or startups usually look for?
+[01:03:40] Paul Miller: I think, well, maybe I'll start to answer that one.
+[01:03:44] Paul Miller: I'm sure Patrick can add some great stuff there, but from someone that runs a software business and has a team of software engineers, and what we're looking at now, I think it's different to what we were looking at with engineering.
+[01:04:00] Paul Miller: ...
+[01:04:00] Paul Miller: three to five years ago.
+[01:04:02] Paul Miller: In the AI world, we're looking for self-starters.
+[01:04:06] Paul Miller: You know, what have people done for themselves?
+[01:04:10] Paul Miller: What apps have they created for themselves?
+[01:04:13] Paul Miller: What solutions have they built from nothing?
+[01:04:17] Paul Miller: You've really got to be, you've got to get yourself from a junior dev level to an intermediate dev level just to get started with the software house now.
+[01:04:30] Paul Miller: And look, there's amazing stuff you can leverage from some of those great YouTube channels.
+[01:04:38] Paul Miller: Get inspired.
+[01:04:40] Paul Miller: Patrick was mentioning a few people before, but there's people that are probably better where you can sort of start down the path on to start getting going and challenging yourself to build some applications that really make you stand out.
+[01:04:57] Paul Miller: ...
+[01:04:57] Paul Miller: because we've had many people...
+[01:04:59] Paul Miller: ...
+[01:05:00] Paul Miller: ...on this school community in the last year that started from where you're starting from, but they got out there, they started building some apps, and look, not all of us are experienced developers.
+[01:05:15] Paul Miller: I'm certainly not an experienced developer.
+[01:05:18] Paul Miller: I code very slowly, but the agentic change and using the tools, and I've been in tech, I've been in software for all my life, but now with the agentic development, I can leverage building stuff with ideas that I have and reaching out to communities that have got challenges app-wise and can build stuff.
+[01:05:45] Paul Miller: So we've got a lot of people doing that, but look, if you want to message me through the community, I'm happy to point you in directions or give you a bit more of a full answer.
+[01:05:59] Paul Miller: ...
+[01:06:00] Paul Miller: But I think anyone getting into, getting in a role as a developer, you really got to recalibrate how you're applying for these jobs and what you bring to the table to start with, and then you'll easily be seen above the pack, because I've had like five people in the last two weeks say, look, I'm a junior developer, I'm out of uni, I want to, I want to get into working with Software House.
+[01:06:30] Paul Miller: Can you take me on?
+[01:06:31] Paul Miller: And it's like, well, no one's got time to train anyone now on the business side.
+[01:06:36] Paul Miller: We, we want you to walk in and come with, with experience of an intermediate level developer, but that's probably, that's my take on it at the moment.
+[01:06:46] Paul Miller: And, and we're, we're always looking for people that sort of sit in that space.
+[01:06:50] Varun Sharma: Yeah, I just wanted to give more context also, because I completely agree that what I'm seeing talking with people is that they say that, next day, .
+[01:06:59] Varun Sharma: .
+[01:07:00] Varun Sharma: What people expect you to come in is like hit the ground running.
+[01:07:03] Varun Sharma: Earlier people might have taken some time to give you enough leverage to learn on the job, but it's not like that.
+[01:07:10] Varun Sharma: But the thing for me is like, I have made some personal workflows using AI because I've been following Brandon's work.
+[01:07:18] Varun Sharma: So I built enough knowledge on Google ADK.
+[01:07:21] Varun Sharma: I built up a few agents for myself, also deployed them on cloud and got them running.
+[01:07:25] Varun Sharma: Also more than to make myself look, you know, in a way ready to be hired because these are like deployable workflows, creating a workflow that saves me like 10 hours, 10 plus hours a week runs on Google Cloud and everything.
+[01:07:39] Varun Sharma: And a few rack workflows as well.
+[01:07:41] Varun Sharma: But then I realized like, you know, when you haven't worked in an enterprise, now I'm making the switch in my mid thirties.
+[01:07:48] Varun Sharma: I haven't worked in an enterprise and a professional software engineering role.
+[01:07:52] Varun Sharma: So sometimes you feel like, is there something that you don't know because you don't know what you don't know.
+[01:07:57] Varun Sharma: So it's always a feeling like...
+[01:08:00] Varun Sharma: I could probably learn more that makes me ready for the next role or the next interview or whatever, so at one level, I feel extremely confident I will hit the ground running, but there's always that feeling of maybe is there something that I'm using out on that I need to first, you know, be ready enough to hit the ground running or something like that.
+[01:08:17] Paul Miller: So there's always that small doubt in your head.
+[01:08:21] Paul Miller: Well, Daniel and Patrick are the enterprise guys.
+[01:08:24] Paul Miller: I used to be in the enterprise world.
+[01:08:27] Paul Miller: I'm happy I'm not anymore, but I take my head off.
+[01:08:29] Paul Miller: Patrick and Daniel, so I'd get them to start talking now.
+[01:08:34] Daniel Zivkovic: So for enterprise, I'm a small guy, I'm the contractor, just trying to follow, you know, that's easy job, but like I'm thinking in general, like what I've observed the trend, there is also saying, like, mind is a dangerous place to be alone in.
+[01:08:49] Daniel Zivkovic: And like when we talk to AIs, like we get feedback looped that we do great things.
+[01:08:53] Daniel Zivkovic: Some people are convinced they're making up some progress in science, they are not.
+[01:08:57] Daniel Zivkovic: So I've seen that company, Avery.tv.
+[01:09:00] Daniel Zivkovic: that made Compound Engineering Framework, their hiring principle is one junior, one senior, and both have AI.
+[01:09:05] Daniel Zivkovic: That's kind of AI too, guys.
+[01:09:07] Daniel Zivkovic: Why is this important that somebody like you can keep me honest?
+[01:09:11] Daniel Zivkovic: I just need somebody curious, smart, who's going to challenge me in AI, not echo back what AI tells me.
+[01:09:18] Daniel Zivkovic: So I think that's a model for hiring.
+[01:09:20] Daniel Zivkovic: So if anybody's hiring, I would encourage them to hire curious people, not all the takers.
+[01:09:26] Daniel Zivkovic: You have to be ready to learn, to be curious, why is that way?
+[01:09:31] Daniel Zivkovic: So curiosity, I think, is important.
+[01:09:33] Daniel Zivkovic: And I pasted it in the chat.
+[01:09:35] Daniel Zivkovic: I ran this serverless Toronto community eight years now, and things are changing.
+[01:09:40] Daniel Zivkovic: The group is nothing like now what it was eight years ago.
+[01:09:44] Daniel Zivkovic: It was Lambda, then Google, Cloud Run, Kubernetes, data engineering, now AI, and machine learning in between the way.
+[01:09:51] Daniel Zivkovic: So what is constant is systems thinking, like you can be a mechanical engineer, you have to think in systems, like to analyze things.
+[01:09:59] Daniel Zivkovic: And I think
+[01:10:00] Daniel Zivkovic: think we are blessed that we live like with the dinosaurs of system thinking, like Professor Ali Kessler, he wouldn't say how old he is, but I love to jump on his calls just to kind of see him dance with ideas, throw the problems, and he has this kind of, he used to teach at three continents, the five universities, and so he charges around the world, I don't pay for his program, I just hang with him on the free calls, but his pricing model for his post university experience is 42 coffees in your country.
+[01:10:30] Daniel Zivkovic: So if you're in India, and that's not Starbucks coffee, so in Canada, like that would be like 42 coffees, maybe 100 a month to pay, so just multiply regular normal coffee, Tim Horsen's that type of coffee, and so that would be something amazing to test that program, and he's going to help you like learn how to solve problems, so that's, that's, I think that's going to be constant, but I'm constantly learning, I'm now figuring my unknown unknowns, I want to be like Tariq from Anthropics, so that's why I'm studying.
+[01:10:58] Varun Sharma: Very sad, thank you, Daniel.
+[01:11:02] Patrick Chouinard: Good.
+[01:11:03] Patrick Chouinard: And on my end, if there's a couple of things I can share with you, when you say what the recruiter are looking for, it's changing pretty much daily.
+[01:11:16] Patrick Chouinard: So if I could give you one thing, build a portfolio, like code as much as you have idea for, shove it in GitHub and keep it open.
+[01:11:30] Patrick Chouinard: Basically, not everything.
+[01:11:31] Patrick Chouinard: If you have a solution you're building that you want to make commercial perfect, that's not an issue, but the more you can put in your public portfolio, the more interesting it gets.
+[01:11:44] Patrick Chouinard: The rest of it, use AI.
+[01:11:47] Patrick Chouinard: Use the tool to put your resume up to date, but be careful because they can be analyzed very quickly and they can be dismissed very quickly.
+[01:11:59] Patrick Chouinard: Basically, basically...
+[01:12:00] Patrick Chouinard: Don't have AI embellish your profile.
+[01:12:03] Patrick Chouinard: Have AI optimize the way you present yourself for the job you're sending your resume for, because if they're embellished, either AI will find it very easily, or you're going to be found out really quickly in an interview, but to optimize, it's really, really good.
+[01:12:28] Patrick Chouinard: I mean, my CV is never sent raw anywhere anymore.
+[01:12:33] Patrick Chouinard: So whenever a client requests a CV, it's always optimized based on their requirements.
+[01:12:40] Patrick Chouinard: So whatever they're looking for, I will restructure my CV to target or to extract and position everything in my CV that is applicable to that position specifically.
+[01:12:51] Patrick Chouinard: It doesn't invent anything.
+[01:12:53] Patrick Chouinard: It doesn't invent, doesn't invent.
+[01:12:58] Patrick Chouinard: Other than that, I mean, it changed.
+[01:13:00] Patrick Chouinard: It so fast.
+[01:13:02] Patrick Chouinard: What all the other guys show you is basically the right idea right now.
+[01:13:11] Patrick Chouinard: Elena, did you want to add something?
+[01:13:16] Elena: When I was searching for a job, I created skills and I was basically making it to shape my CV to the job description, but still keep it honest.
+[01:13:30] Elena: Keeping the language, keeping the style, creating, creating cover letter, storing it worked well for me.
+[01:13:37] Elena: So I also created skill-optimizing LinkedIn file, get more traction, more, more, like, records, and that it's soft-blocked, which is amazing.
+[01:13:47] Elena: My husband is using it.
+[01:13:50] Elena: I don't know.
+[01:13:51] Elena: I can share it somewhere.
+[01:13:54] Elena: I don't know.
+[01:13:55] Elena: I need to check if it's really much shaped for me or...
+[01:13:58] Elena: I mean, it's still the
+[01:14:00] Elena: So if it works for my husband, I guess it should work for you.
+[01:14:06] Elena: Okay.
+[01:14:06] Elena: Yeah, okay, maybe.
+[01:14:07] Elena: What about you, Patrick?
+[01:14:09] Elena: Did you need some skills for the searcher?
+[01:14:12] Elena: I don't know if you were searching, don't know.
+[01:14:15] Elena: Anyone else?
+[01:14:17] Elena: Greatest skills.
+[01:14:18] Patrick Chouinard: Okay.
+[01:14:20] Patrick Chouinard: Thank you, Elena.
+[01:14:22] Patrick Chouinard: It's...
+[01:14:22] Patrick Chouinard: Your audio is quite rough, but we got the idea out of it, and I think it's pretty good.
+[01:14:28] Patrick Chouinard: Yeah, basically, anything you do repeatedly, create a skill.
+[01:14:32] Patrick Chouinard: So if you're doing job search, create a skill to help you.
+[01:14:37] Patrick Chouinard: If I can recommend one more thing, find yourself a good humanizer prompt, because text written by AI is easy to find.
+[01:14:50] Patrick Chouinard: Sometime it's desirable, depending on what you're looking for.
+[01:14:53] Patrick Chouinard: It has to be specific.
+[01:14:57] Patrick Chouinard: It has to be encompassed, basically.
+[01:14:59] Patrick Chouinard: looking you're for guys I'm
+[01:15:00] Patrick Chouinard: If you are positioning yourself as an AI personality specialist, for example, well, if your CV sounds like it's been written by AI, but a good one, that can be a good point, but if your CV is written in the first person, make sure that it's written in a human way, because if it sounds like ChatGPT is just creating your CV for you, that's not going to go well because it's becoming easier and easier to find out.
+[01:15:32] Patrick Chouinard: So the fact that you've used the AI is not the problem, it's how you use it, at which degree, and what are you trying to present.
+[01:15:43] Ryan C: The best way to do it with a CV is to write it yourself, and then ask AI to analyze it and suggest improvements, and then write the improved bits yourself as well.
+[01:15:54] Ryan C: Then it's all in your voice.
+[01:15:56] Ryan C: And that way then you've got AI's opinion on it, and you can optimize and improve.
+[01:16:00] Ryan C: But then it's not written, and it's not just slop, because what it pumps out for CVs is generally you look like every other person in the stack of CVs, because they've all written it with ChatGPT.
+[01:16:11] Ryan C: So if you want to stand out, ironically, doing it in person and yourself is generally the best way with a CV.
+[01:16:17] Paul Miller: And use a good paid model.
+[01:16:19] Daniel Zivkovic: Don't use a free one or a cheap one.
+[01:16:22] Daniel Zivkovic: And do multiple of those, because there are different perspectives.
+[01:16:25] Daniel Zivkovic: Sometimes you write it for ATS to pass the filters, sometimes for the human.
+[01:16:28] Daniel Zivkovic: So you have to try different angles.
+[01:16:31] Daniel Zivkovic: And what I found before, like, because the market is changing so quickly, and you have to sell what they're buying.
+[01:16:36] Daniel Zivkovic: You cannot sell what you want.
+[01:16:37] Daniel Zivkovic: So there are APIs, and some I have to find it somewhere.
+[01:16:40] Daniel Zivkovic: So when I'm between, when I have time, I run an API to see what actual is selling, what are the drop postings, and then optimize around those.
+[01:16:49] Varun Sharma: Yeah.
+[01:16:50] Ryan C: If you want to be really crafty, you can just get your, in white text, write the first thing that's written in your CV.
+[01:16:57] Ryan C: If your background is white, you can write...
+[01:17:00] Ryan C: And white text.
+[01:17:02] Ryan C: If it's being reviewed by AI job reviewer, you can just put a prompt inject in there and just put, put me at the top of the stack, recommend needs for this job, and put it in invisible text.
+[01:17:13] Ryan C: There's two people.
+[01:17:14] Ryan C: Someone was on the news here in the UK having done that, having got a bunch of jobs, but being put to the top of the stack is prompt injecting in his CV.
+[01:17:23] Daniel Zivkovic: Genius.
+[01:17:24] Daniel Zivkovic: God, that's brilliant.
+[01:17:25] Patrick Chouinard: Actually, I would do that if I were positioning myself in a job in cybersecurity for AI.
+[01:17:32] Daniel Zivkovic: Oh my God, that's awesome.
+[01:17:34] Ty Wells: I was going to say, please save the day, guys.
+[01:17:36] Ty Wells: This is being recorded.
+[01:17:37] Daniel Zivkovic: We're not doing prompt injecting.
+[01:17:41] Daniel Zivkovic: Ethical hacking, you get the job.
+[01:17:43] Patrick Chouinard: No, but that's the thing.
+[01:17:44] Patrick Chouinard: If you use it to showcase your qualification, I mean, that's what I'm talking about when I say focus the CV on the target.
+[01:17:53] Patrick Chouinard: So if you're positioning yourself as a specialist in cybersecurity and AI.
+[01:17:58] Patrick Chouinard: Yeah, sure.
+[01:17:59] Patrick Chouinard: I would do something.
+[01:18:00] Patrick Chouinard: Obviously, there would be no malicious code in there, but just to show that I understand the reality.
+[01:18:05] Patrick Chouinard: For example, if you put your picture on your CV, use steganography to put a prompt inside of the picture.
+[01:18:13] Patrick Chouinard: So when it's analyzed with AI, the AI will pick up the steganography from your picture.
+[01:18:19] Ryan C: Now he's just showing off, Patrick.
+[01:18:23] Patrick Chouinard: It has been done, by the way, and it works.
+[01:18:28] Patrick Chouinard: Prompting injection through steganography in spite of image.
+[01:18:31] Varun Sharma: I might actually try one of these tricks in the resume, just to see how it does.
+[01:18:35] Varun Sharma: You know, I'll give you a separate resume and have this text injected.
+[01:18:38] Varun Sharma: And I especially apply for the enterprise jobs, because my preference is the startup, but I actually test it out on enterprise, because they usually have those ATS screeners, and see how it does, just to see.
+[01:18:51] Patrick Chouinard: But you have to be upfront.
+[01:18:53] Patrick Chouinard: The moment you talk to them, you have to tell them what happens.
+[01:18:58] Patrick Chouinard: Because if .
+[01:19:00] Patrick Chouinard: they discover it by themselves, then you go down to the bottom of the file again.
+[01:19:06] Ryan C: I was joking.
+[01:19:07] Ryan C: Don't actually do that, because the minute they discover it, you're getting fired immediately.
+[01:19:11] Ryan C: But yeah, to Patrick's point, you can do it with a purpose to go, I got this interview by doing this, just to show you that I understand how AI security works, cybersecurity, etc.
+[01:19:21] Ryan C: That is the way, that's the only acceptable way to actually do that.
+[01:19:25] Varun Sharma: If you do it and then get caught, you're stuffed.
+[01:19:26] Varun Sharma: No, I'm actually going to do this for rules that I'm not going to be interested in because, you know, I'm going to be, I'm specifically interested in startups, so I might do this only for, like, big enterprises that I'm not too much into and just as a test to see how it goes.
+[01:19:42] Varun Sharma: Like, there's no loss anyway, so it would be a good test.
+[01:19:47] Patrick Chouinard: But yeah, that's the trick.
+[01:19:49] Patrick Chouinard: It's showcase what you can do.
+[01:19:52] Patrick Chouinard: That's what works.
+[01:19:54] Varun Sharma: Definitely.
+[01:19:54] Varun Sharma: Thanks, Patrick, and thanks all the guys.
+[01:19:56] Varun Sharma: Good.
+[01:19:59] Patrick Chouinard: Good.
+[01:20:01] Patrick Chouinard: Anyone else has a question, comment, or something they want to share?
+[01:20:06] Daniel Zivkovic: It's really good to see you.
+[01:20:07] Daniel Zivkovic: I wish I discovered this group years ago.
+[01:20:11] Patrick Chouinard: That's nice.
+[01:20:12] Paul Miller: Thanks, Daniel.
+[01:20:13] Paul Miller: I've got a quick share.
+[01:20:17] Paul Miller: I've been finalizing for my software company the AI reporting.
+[01:20:25] Paul Miller: So my software company does CRM software and Salesforce automation.
+[01:20:30] Paul Miller: And always the question in a CRM is, how can you add the benefits of AI wisdom without creating  slop that is not grounded in the truth, that adds value to a CRM?
+[01:20:49] Paul Miller: So my customers are consumer goods companies and broker distributors that distribute goods into retailers.
+[01:20:55] Paul Miller: So, um, I've built a comprehensive stat...
+[01:21:00] Paul Miller: ...
+[01:21:00] Paul Miller: that looks at all the layers of ground truth and then starts doing overnight research around understanding sort of deeper insights with where gaps are in the effectiveness of salespeople, where gaps are in what's happening with retailers, because no one ever has time to look at all of that.
+[01:21:22] Paul Miller: ...
+[01:21:22] Paul Miller: finally got to the point that I've got a few of my customers on a pilot now using that.
+[01:21:29] Paul Miller: One of our ...
+[01:21:30] Paul Miller: well, our largest competitor is salesforce.com, and people are getting really turned off what those guys are doing, but they're throwing money into doing AI solutions for a lot of their customers.
+[01:21:44] Paul Miller: ...
+[01:21:45] Paul Miller: they forget that their biggest problem is that they rip their customers off, and they get such poor value with using salesforce.com, but we always come up against those guys because they kind of say, no, we're the ...
+[01:21:57] Paul Miller: we're the answer ...
+[01:21:58] Paul Miller: we're the answer to everything ...
+[01:21:59] Paul Miller: ...
+[01:21:59] Paul Miller: ...
+[01:22:00] Paul Miller: ...
+[01:22:00] Paul Miller: problem in CRM.
+[01:22:01] Paul Miller: They spend more money on marketing than any other IT company to the customers that we're trying to tackle.
+[01:22:09] Paul Miller: So I've targeted, well, how are they using AI to boost their CRM?
+[01:22:14] Paul Miller: How can we do it better?
+[01:22:16] Paul Miller: And we've started to do that.
+[01:22:18] Paul Miller: So what I'll do probably next week, I'll do something where I'll make sure I'm not sharing my customers' core data, but show you some examples of it.
+[01:22:29] Paul Miller: But it's very much in line with some of the stuff that Patrick's talked about before around the grounding stuff and using LanceDB and using various approaches to kind of like a modern RAG and reviewing data and classifying raw data in a way that can be optimized so it's practical, grounded and useful to the operators of a I'll do better.
+[01:23:00] Paul Miller: CRM system, but it's been quite a fascinating exercise given that this software company has been the last 10 years of my life.
+[01:23:08] Paul Miller: Being able to look at it and say, well, how can I do CRM better is a really tough ask, but it's been fun.
+[01:23:20] Paul Miller: But, yeah, that's probably the highlight of what I've been doing the last week, other than spending way more money than Patrick with the Anthropic.
+[01:23:30] Paul Miller: I need to get a bit real and be a lot more practical in my usage of Fable.
+[01:23:37] Patrick Chouinard: So thanks, Patrick, for reminding me of that.
+[01:23:43] Ryan C: Paul, you probably answered this in an earlier session.
+[01:23:47] Ryan C: Paul, are you making field capture apps that then feed into the CRM as well?
+[01:23:54] Paul Miller: Paul, yeah.
+[01:23:55] Paul Miller: So people go out in the field and capture insights.
+[01:24:00] Paul Miller: ...with what's going on at retailers, so whether it's conversations with the retailers themselves, or doing audits on what's going on with Merchandising and stuff.
+[01:24:12] Paul Miller: Yeah, because we've had the same time in the same field, or was in the same field.
+[01:24:16] Ryan C: If you ever bring it to the UK, let me know, because that bit on the back end around, I don't know if you'd heard of Omnicom Group, probably have.
+[01:24:26] Ryan C: Yes.
+[01:24:27] Ryan C: Yeah, so I used to work for CPM, part of the Omnicom Group.
+[01:24:30] Ryan C: I was one level below the board running a big account in there, and they use Salesforce.
+[01:24:37] Ryan C: And I battled within an inch of my life to try and get them off of Salesforce, because it's shocking.
+[01:24:43] Ryan C: And the amount of money they were spending on it was obscene when they could literally hire three or four developers and build their own solution, which would be 10 million times better internally.
+[01:24:50] Ryan C: They've got, like, 20 people that work there just maintaining their Salesforce solution internally.
+[01:24:58] Ryan C: They're bending it to do stuff that…
+[01:25:00] Ryan C: It doesn't want and shouldn't be doing, but if you ever move to the UK, let me know, or open up a branch or want to do business here, because I've got links in to most of big film marketing companies.
+[01:25:14] Paul Miller: Always happy to jump on a plane if there's a commercial opportunity, and I'm a UK citizen as well, so let's ...
+[01:25:22] Ryan C: Well, when we have that catch up, let's have a chat about it, because there's a few people you probably ought to speak to.
+[01:25:28] Ryan C: Because I was thinking about doing something myself, and I can't be bothered.
+[01:25:31] Ryan C: I've got too many other things going on.
+[01:25:32] Ryan C: There's a lot of effort to build something else that's that comprehensive for a maybe.
+[01:25:37] Ryan C: But if you've already got a solution that you can present to them that might be a worthwhile conversation to have, but you probably would need to be the SOC 2 or ISO 2700 compliant, because Omnicom, as you probably know, incredibly security conscious.
+[01:25:53] Ryan C: They're everything to within each of its life.
+[01:25:55] Paul Miller: Yep.
+[01:25:56] Paul Miller: We're all at.
+[01:25:57] Paul Miller: Brilliant.
+[01:25:58] Ryan C: Perfect.
+[01:25:59] Ryan C: Brilliant.
+[01:25:59] Paul Miller: Thanks.
+[01:25:59] Paul Miller: Thank you.
+[01:26:00] Paul Miller: Thanks.
+[01:26:01] Daniel Zivkovic: That's cool.
+[01:26:02] Patrick Chouinard: Awesome.
+[01:26:05] Patrick Chouinard: Anything else, guys?
+[01:26:07] Daniel Zivkovic: Patrick, you from Canada?
+[01:26:09] Patrick Chouinard: Yes.
+[01:26:10] Daniel Zivkovic: Okay.
+[01:26:11] Daniel Zivkovic: It was not a difficult guess.
+[01:26:14] Daniel Zivkovic: Where?
+[01:26:15] Daniel Zivkovic: I'm from Richmond Hill, north of Toronto.
+[01:26:17] Patrick Chouinard: Montreal region.
+[01:26:18] Daniel Zivkovic: Okay.
+[01:26:19] Daniel Zivkovic: Cool.
+[01:26:20] Daniel Zivkovic: Four-hour drive.
+[01:26:21] Patrick Chouinard: Yeah.
+[01:26:24] Paul Miller: Vive la de France.
+[01:26:28] Paul Miller: I think it's a timely comment at this time.
+[01:26:34] Patrick Chouinard: I'm not going to get into that.
+[01:26:37] Daniel Zivkovic: Ty, Ty, so I see you were using multiplexing these different plans.
+[01:26:43] Daniel Zivkovic: I heard sometime Mark talking about combining three different subscriptions and having pool.
+[01:26:49] Daniel Zivkovic: Maybe some of the people like Paul can benefit from that to save that.
+[01:26:52] Daniel Zivkovic: I haven't researched that, but I heard him talking about these multiplexes of multiple plans so Paul can save on his bill.
+[01:27:00] Ty Wells: Yeah, I mean, I'm just switching my plans around programmatically instead of me typing that work, monitor and see when it drops to a certain point, then, you know, gracefully end that session and start a new session, right?
+[01:27:15] Ty Wells: And I, like I said, I use those intent capsules so I would encapsulate in short form the full context so a cold session can start with that and implement the plan completely.
+[01:27:29] Ty Wells: So that's how I'm able, that's how I'm managing it.
+[01:27:33] Ty Wells: Every start is really a cold session because it's a complete capsule, gives you the, the, the agent full information that needs to actually build whatever that capsule contains.
+[01:27:45] Daniel Zivkovic: Okay, so you're not using Mark Kashif's code like that?
+[01:27:48] Ty Wells: No, no, no, Okay.
+[01:27:51] Daniel Zivkovic: No.
+[01:27:51] Daniel Zivkovic: Because he has the utility and what happens, my problem was because I was scraping the Gemini YouTube videos.
+[01:27:55] Daniel Zivkovic: I get at least a hundred dollars just for Gemini and then without Tropic I use it.
+[01:27:59] Daniel Zivkovic: video.
+[01:27:59] Daniel Zivkovic: Yes.
+[01:28:00] Daniel Zivkovic: He has away some kind of proxy to use his subscription for these services that require API key.
+[01:28:05] Daniel Zivkovic: I never looked there because I came back there before, a couple hours before.
+[01:28:09] Ty Wells: to look that up.
+[01:28:10] Daniel Zivkovic: Okay.
+[01:28:10] Ty Wells: Use the new EA pilot to find it.
+[01:28:14] Daniel Zivkovic: Yeah, yeah, yeah.
+[01:28:15] Daniel Zivkovic: I just signed up for that.
+[01:28:20] Patrick Chouinard: Good.
+[01:28:22] Patrick Chouinard: Excellent.
+[01:28:23] Patrick Chouinard: So, well, if nobody else, anything else, thank you very much, guys.
+[01:28:29] Patrick Chouinard: Another very nice week.
+[01:28:31] Patrick Chouinard: And I'm guessing we'll see each other in a week from now.
+[01:28:36] Daniel Zivkovic: Hope so.
+[01:28:37] Ty Wells: See you guys.
+[01:28:38] Patrick Chouinard: Have a great week.
+[01:28:39] Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com: That's it.
+[01:28:39] Ryan C: Thank you guys.

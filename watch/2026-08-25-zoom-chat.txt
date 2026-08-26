@@ -1,0 +1,244 @@
+2026-08-18 18:53:58 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/watch?v=S_QdQ1G4GlU
+	
+2026-08-18 18:58:29 From Tom Welsh to Everyone:
+	I have to drop. I need to go examine the inside of my eye lids.
+	
+	Good to be back
+	
+2026-08-18 18:59:15 From Tom Welsh to Everyone:
+	nighty night
+	
+2026-08-18 19:00:21 From Shakur Abdullah to Everyone:
+	I’m going to have to jump off too soon. Have a good time all
+	
+2026-08-18 19:01:25 From Daniel Zivkovic to Everyone:
+	This is my AI-assisted SDLC @Patrick Chouinard: https://every.to/guides/compound-engineering
+	
+2026-08-18 19:05:09 From Patrick Chouinard to Everyone:
+	@Morgan sadly I think gumstix is no more “As of August 13, 2025, the Last Time Buy period for the Gumstix Overo Series has officially elapsed. Final deliveries are being completed by December 31, 2025, after which all Gumstix operations will be permanently closed.”
+	
+2026-08-18 19:07:27 From Juan Torres to Everyone:
+	thanks
+	Giphy [ID:5gXYzsVBmjIsw]
+	
+2026-08-18 19:13:04 From Ty Wells to Everyone:
+	Did u guys discuss @skills ?
+	
+2026-08-18 19:21:25 From Paul Miller to Everyone:
+	Replying to "Did u guys discuss @skills ?":
+	no
+	
+2026-08-18 19:29:30 From Juan Torres to Everyone:
+	Gotta go folks
+	
+2026-08-18 19:31:53 From Daniel Zivkovic to Everyone:
+	You guys are a cool group! If you want to connect outside of this event I'm at https://www.linkedin.com/in/magmainc/
+	
+2026-08-18 19:41:16 From Paul Miller to Everyone:
+	sorry need to go have a great week
+	
+2026-08-25 17:57:11 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-08-25 18:02:38 From Patrick Chouinard to Everyone:
+	Screenshot2026_08_25_180235.jpg
+	
+2026-08-25 18:10:41 From Daniel Zivkovic to Everyone:
+	On Opus5 topic, I’ve published my output optimization (and methodology behind it) https://lnkd.in/p/gTQAAjrS
+	
+2026-08-25 18:11:02 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Sorry i'm late!
+	
+2026-08-25 18:11:30 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Bugger off Ryan 😂
+	
+2026-08-25 18:18:23 From Paul Miller to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com are you coding via xcode?
+	
+2026-08-25 18:41:23 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	No I am coding with anthropic in claude code in vscode - now instead of vscode transitioning over to my cc blackbox ide/agent harness.  Same as I do for my web apps
+	
+2026-08-25 18:41:38 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	I built it on electron
+	
+2026-08-25 18:41:47 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	And it sends it out to apple to my dev account to sign and get’s it back
+	
+2026-08-25 18:44:03 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	This is my ide / simple agent harness for Mac:
+	
+2026-08-25 18:44:05 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	https://github.com/scott-rippey/cc-blackbox-app
+	
+2026-08-25 18:44:18 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Full features and user guide is on the repo
+	Biggi Fraley:❤️
+	
+2026-08-25 18:45:05 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	If anyone has any ideas submit some feedback.  Especially the agent harness.  It’s early for that.  I do need to actually work on the reporting features / robustness like I said.  But the data is there.
+	
+2026-08-25 18:47:52 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	The model radar is really if you have a lot of app code folders organized locally you can point it too and you need to manage and have some visibility into models used in your apps and when they need to be changed
+	
+2026-08-25 18:47:54 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	https://github.com/scott-rippey/model-radar-app
+	
+2026-08-25 18:48:07 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	It will be going through a lot of updates but it’s functional now.
+	
+2026-08-25 18:49:30 From Biggi Fraley to Everyone:
+	👍
+	
+2026-08-25 18:49:43 From Aaron Ferrell to Everyone:
+	It’s nice
+	
+2026-08-25 18:50:01 From Paul Miller to Everyone:
+	@Patrick Chouinard not the new Deepseek Harness?
+	
+2026-08-25 18:50:09 From Aaron Ferrell to Everyone:
+	different
+	
+2026-08-25 18:50:21 From Biggi Fraley to Everyone:
+	Why not use Deepseek harness to make it yours? (was already typing this LOL)
+	
+2026-08-25 18:52:15 From Biggi Fraley to Everyone:
+	Now I have to ask a dumb question...how is a single purpose harness different from an app?
+	
+2026-08-25 18:53:24 From Paul Miller to Everyone:
+	@Patrick Chouinard did you see https://www.youtube.com/watch?v=0oXOOlqVu5M&pp=ygULVGhlbyBwb2NvY2s%3D
+	
+2026-08-25 18:53:36 From Paul Miller to Everyone:
+	Theo T3 on pocock
+	
+2026-08-25 18:53:50 From Biggi Fraley to Everyone:
+	Replying to "Theo T3 on pocock":
+	I saw it. Loved it.
+	
+2026-08-25 19:00:11 From Patrick Chouinard to Everyone:
+	https://github.com/hopchouinard/CC-StatusLine
+	Biggi Fraley, Daniel Zivkovic, Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:❤️
+	
+2026-08-25 19:00:39 From Patrick Chouinard to Everyone:
+	https://github.com/hopchouinard/patchoutech-plugins
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:❤️
+	
+2026-08-25 19:04:36 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Replying to "https://github.com/hopchouinard/CC-StatusLine":
+	Yesssss
+	
+2026-08-25 19:07:45 From Daniel Zivkovic to Everyone:
+	@Morgan a friend of mine is using Flutter for iPhone and Android app development
+	
+2026-08-25 19:14:37 From Aaron Ferrell to Everyone:
+	Does it handle offline app storage?
+	
+2026-08-25 19:15:12 From Paul Miller to Everyone:
+	https://sumsub.com/pricing/
+	
+2026-08-25 19:15:19 From Aaron Ferrell to Everyone:
+	Nice, do you have to use anything else other than expo?
+	
+2026-08-25 19:15:38 From Aaron Ferrell to Everyone:
+	Oh nice
+	
+2026-08-25 19:18:08 From Elena to Everyone:
+	Hi everyone! Sorry I didn't think to submit question, but now thinking maybe I can ask your advice on fully authonomous AI-DLC if anyone has good experience with guardrails security observability and etc? any good frameworks and implementation blueprints?
+	
+2026-08-25 19:18:29 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Patrick holy status line is now installed 😅
+	Ty Wells:🔥
+	Patrick Chouinard:😂
+	
+2026-08-25 19:20:18 From Daniel Zivkovic to Everyone:
+	Thank for the tips on /teach skill
+	Patrick Chouinard:👍
+	
+2026-08-25 19:21:44 From Paul Miller to Everyone:
+	Replying to "Hi everyone! Sorry I didn't think to submit questi...":
+	sound issues hearing you
+	
+2026-08-25 19:23:05 From Elena to Everyone:
+	or very minimum
+	
+2026-08-25 19:26:47 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Rubrics!
+	
+2026-08-25 19:27:09 From Elena to Everyone:
+	https://github.com/awslabs/aidlc-workflows
+	
+2026-08-25 19:31:19 From Paul Miller to Patrick Chouinard (direct message):
+	I have a little update if there is time to cover it
+	
+2026-08-25 19:33:11 From Daniel Zivkovic to Everyone:
+	@Varun, you need to master Systems Thinking and for that I recommend taking courses from prof Joseph Eli Kasser: https://therightrequirement.com/
+	
+2026-08-25 19:35:01 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@t3dotgg
+	
+2026-08-25 19:35:10 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@mattpocockuk
+	
+2026-08-25 19:35:24 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@indydevdan
+	
+2026-08-25 19:35:34 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@NetworkChuck
+	
+2026-08-25 19:35:44 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@BuildingwithReason
+	
+2026-08-25 19:35:53 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@unsupervised-learning
+	
+2026-08-25 19:36:03 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@AndrejKarpathy
+	
+2026-08-25 19:36:12 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@NateBJones
+	
+2026-08-25 19:37:18 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Patrick put gold in here (except for that building with reason guy 😂)
+	Ryan C (One Stop Creative Agency - UK):👀
+	
+2026-08-25 19:37:45 From Patrick Chouinard to Everyone:
+	Replying to "Patrick put gold in here (except for that building...":
+	I just listed my daily follow
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com, Biggi Fraley:❤️
+	Ryan C (One Stop Creative Agency - UK):😂
+	
+2026-08-25 19:38:56 From Patrick Chouinard to Paul Miller (direct message):
+	Are you good or you still have something you want to share?
+	
+2026-08-25 19:39:40 From Elena to Everyone:
+	what about FDE?
+	
+2026-08-25 19:39:59 From Daniel Zivkovic to Everyone:
+	Replying to "what about FDE?":
+	Just added it to my resume :)
+	Elena:🙂
+	
+2026-08-25 19:40:29 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Make a cool portfolio website https://www.zalak-patel.com/
+	
+2026-08-25 19:42:30 From Morgan to Everyone:
+	I really like poteto's unslop it has really cleaned up Opus responses https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md
+	Patrick Chouinard:🔥
+	
+2026-08-25 19:42:57 From Morgan to Everyone:
+	And also matts /wait-what is good as well.
+	
+2026-08-25 19:43:00 From Paul Miller to Patrick Chouinard (direct message):
+	yes i will share
+	
+2026-08-25 19:44:16 From Elena to Everyone:
+	also optimize Linkedin profile - ask Claude to do that
+	Patrick Chouinard:👍
+	
+2026-08-25 19:51:26 From Daniel Zivkovic to Everyone:
+	Nice to hear I’m not the only LanceDB user here 🤓
+	Paul Miller:👍
+	Patrick Chouinard:🔥
+	
