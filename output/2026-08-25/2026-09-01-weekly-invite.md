@@ -1,3 +1,6 @@
+!!! THIS IS A BRANDON WEEK !!!
+Make sure to join us on the call!
+
 Between Ty's "intent capsules" enabling cold agent sessions from your phone and Scott's Model Radar scanning for deprecated AI models across Macs via Bonjour sync, last week proved the future of agentic work is both mobile and meticulously tracked. We even saw Patrick rebuilding Codex reviews on banned networks using GitHub Copilot CLI—because no corporate firewall should stand between you and your autonomous workflows.
 
 📞 HOW THE CALLS WORK
