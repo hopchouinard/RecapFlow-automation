@@ -25,6 +25,7 @@
 #   VM_COMPOSE_DIR          (default: /home/pchouinard/n8n)
 #   OUTPUT_DIR              (default: /tmp/corpus-release)
 #   COMMUNITY_BRAIN_VENV    (default: ./community-brain/.venv)
+#   RSYNC_REMOTE_PATH       (default: sudo -n rsync)
 #
 # Exit codes:
 #   0 — success
@@ -56,6 +57,11 @@ VM_USER="${VM_USER:-pchouinard}"
 VM_LANCEDB_PATH="${VM_LANCEDB_PATH:-/home/pchouinard/n8n/community-brain/lancedb}"
 VM_COMPOSE_DIR="${VM_COMPOSE_DIR:-/home/pchouinard/n8n}"
 OUTPUT_DIR="${OUTPUT_DIR:-/tmp/corpus-release}"
+# The live LanceDB is written by the root-running retrieval-server container
+# as mode 0600 root:root, so the remote rsync must be elevated to read it.
+# VM_USER needs NOPASSWD sudo for rsync; -n fails loudly instead of hanging
+# on a password prompt over a BatchMode connection.
+RSYNC_REMOTE_PATH="${RSYNC_REMOTE_PATH:-sudo -n rsync}"
 COMMUNITY_BRAIN_VENV="${COMMUNITY_BRAIN_VENV:-$(pwd)/community-brain/.venv}"
 
 PYTHON="${COMMUNITY_BRAIN_VENV}/bin/python"
@@ -96,7 +102,15 @@ mkdir -p "${STAGING_LOCAL}/lancedb"
 # files on the VM host are root-owned. A non-root operator's rsync -a
 # would exit 23 trying to preserve ownership. We don't need original
 # ownership/groups on the staging copy — only file contents and timestamps.
+#
+# --rsync-path: those same container-written files are mode 0600 root:root,
+# so ${VM_USER} cannot even READ them and the sender fails every file with
+# "Permission denied (13)" — also exit 23, but a different cause that
+# --no-owner/--no-group does not address (that pair fixes preservation on
+# the receiver; this fixes access on the sender). Elevate the remote rsync.
+# Override RSYNC_REMOTE_PATH=rsync if the corpus is ever operator-owned.
 rsync -a --no-owner --no-group \
+    --rsync-path="${RSYNC_REMOTE_PATH}" \
     "${VM_USER}@${VM_HOST}:${VM_LANCEDB_PATH}/" \
     "${STAGING_LOCAL}/lancedb/"
 
