@@ -1,7 +1,10 @@
-!!! THIS IS A BRANDON WEEK !!!
-Make sure to join us on the call!
+It looks like last week's community post didn't come through — that section is empty. Since the opening hook and flavor bridge need to reference real highlights and open questions from that call (and I'm not supposed to invent details), I need that post to finish this properly.
 
-Between Ty's "intent capsules" enabling cold agent sessions from your phone and Scott's Model Radar scanning for deprecated AI models across Macs via Bonjour sync, last week proved the future of agentic work is both mobile and meticulously tracked. We even saw Patrick rebuilding Codex reviews on banned networks using GitHub Copilot CLI—because no corporate firewall should stand between you and your autonomous workflows.
+Paste it in and I'll fill in the flavor. Meanwhile, here's the post with everything I *can* lock in now:
+
+---
+
+**[OPENING HOOK — needs last week's post]**
 
 📞 HOW THE CALLS WORK
 The calls can run 2+ hours.
@@ -17,7 +20,7 @@ If you can't make the call but want your question answered, drop it in the comme
 
 The goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.
 
-Scott is cooking up browser-control integration for CC Blackbox and Patrick is stress-testing the compound engineering framework for enterprise teams—perfect timing to bring your own agent-harness questions. And since Elena's AWS AI-DLC workflows question is still wide open, consider this your invitation to help us figure out where "fully autonomous" actually ends and human intent begins.
+**[FLAVOR BRIDGE — needs last week's post]**
 
 🔗 ZOOM LINK (save this)
 https://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1
@@ -26,3 +29,7 @@ https://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1
 Tuesday September 1st at 6PM ET
 
 Looking forward to seeing you on the call!
+
+---
+
+Drop in the community post and I'll write the hook and bridge to match this week's date and keep it fresh.

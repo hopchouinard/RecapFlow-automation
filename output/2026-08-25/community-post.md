@@ -1,122 +1,84 @@
 📝 SUMMARY
 
-This week's call featured a rotating show-and-tell covering personal agent harnesses, enterprise AI adaptation strategies, and mobile deployment tactics. Members demoed custom tools for tracking AI model usage across projects, automating subscription management, and running agentic workflows from mobile devices. Discussions ranged from rebuilding Codex functionality on banned networks to hiring philosophies for the AI-augmented era, with deep dives into cross-platform mobile stacks and biometric verification services.
+This week's call was a show-and-tell round robin: members demoed the agent harnesses and workflows they've been building — Scott Rippey's CC BlackBox IDE and Model Radar, Ty Wells' remotely-controlled agent setup, Patrick Chouinard's review-only harness and enterprise "Agentic SDLC" thinking, and Daniel Zivkovic's overnight "Dark Factory" runs. Morgan shared his Supabase-to-Convex migration and got in-depth advice on iOS deployment. The back half tackled two big audience questions: how to build a fully autonomous AI development lifecycle, and how to break into an AI/software engineering career — with candid, practical answers from the group.
 
 💡 KEY INSIGHTS
 
-Scott Rippey demonstrated that hybrid-scanning local project folders alongside provider APIs can create a "Model Radar" to track which AI models are active versus deprecated across multiple client apps. He also showed how machine-to-machine sync via Bonjour keeps session databases consistent across multiple Macs.
-
-Ty Wells revealed an automation setup that switches between Claude and Codex subscriptions based on remaining usage percentage, preventing work loss from hitting quotas. His "intent capsules" concept—self-contained context bundles—allows cold agent sessions to execute plans without prior conversation history, enabling remote work continuation from anywhere including mobile devices.
-
-Patrick Chouinard explained how to recreate Codex review mechanics on GitHub Copilot CLI when OpenAI tools are banned at work, satisfying security requirements while maintaining access to frontier models. He emphasized that fully autonomous AI development is a misnomer because human intent is always required, and that goal-based automation only works with hard, testable facts rather than opinions. He also highlighted that just-in-time training via composable skills beats static courses, which become obsolete before completion.
-
-Daniel Zivkovic shared that requirements elicitation works better as an iterative "optometry" process (showing prototypes and asking "this or that") rather than upfront specification. He noted that running multiple AI-generated implementations in parallel causes conflicts, while sequential overnight runs create a morning review queue without collisions.
-
-On hiring, the group agreed that curiosity is now the primary signal—pairing AI-augmented juniors with seniors keeps both honest, while candidates who merely echo AI output blend into the "AI slop." Paul Miller added that companies now expect junior candidates to perform at intermediate levels, making self-built apps and demonstrated initiative more valuable than credentials.
-
-For mobile development, Expo was recommended as sufficient for most cross-platform needs (GPS, camera, biometrics) unless deep native integrations are required, with costs charged per build push so batching changes saves money.
+• Autonomy vs. flexibility trade-off (Patrick): the more autonomous a system or skill is, the less customization freedom you have. Fully autonomous "goal/loop" automation only works when initial requirement quality is very high — agents can only evaluate against hard, testable facts, not opinions.
+• Separate coding from reviewing (Patrick): instead of one harness doing both, he's building a review-only agent (based on pi.dev) whose sole job is adversarial code/security review at multiple checkpoints, handing a report to a separate agent to act on.
+• Overnight autonomy works — with caveats (Daniel): his "Dark Factory" runs tickets unattended overnight, but parallel tickets can conflict; sequential runs avoid collisions, and better up-front planning means better unattended output.
+• Keep agent tasks small (Elena): autonomous agents drift unless tasks are tightly defined — too much scope and they wander off-target.
+• "Intent capsules" (Ty): self-contained context bundles let a cold session start with zero prior context and still fully execute a plan — the key to gapless switching between Claude/Codex subscriptions when usage limits hit.
+• Write skills like Matt Pocock (Morgan/Patrick): short, modular, non-sequential skills that can be invoked independently are the model for good skill design.
+• Just-in-time training beats static courses (Patrick): Pocock's /teach builds an interactive, quiz-based mini-course scoped to exactly what you don't know — replacing internal training that's obsolete by the time it's finished.
+• Hiring has shifted (Paul): companies want self-starters who've already built and shipped personal projects — a visible portfolio beats promised ramp-up time.
+• Curiosity is the real value of a second person (Daniel, citing Avery.tv): pair a junior with a senior, both using AI — the point is someone who challenges your AI-assisted conclusions rather than echoing them.
+• AI-written CVs: optimize, don't embellish (Patrick/Ryan): restructure real experience for the specific job. Write it yourself first, have AI critique it, then rewrite the improvements yourself to keep a human voice. Daniel adds: pull live job-posting data to see which skills and keywords are actually in demand.
 
 ❓ KEY Q&A
 
-Q: For iOS deployment, should one use Swift/Xcode natively or is there an easier path?
-A: If the app offloads logic to a server, Expo builds for both iOS and Android while handling Apple credentials and app-store submission. Native development offers more control for deep native features but requires more effort.
+Q: Can you run a fully autonomous AI development lifecycle — what about guardrails, security, observability? (Elena)
+A: "Fully autonomous" is a misnomer — a human always supplies intent. Matt Pocock's skills are a strong baseline for advanced developers; Superpower is more guided/autonomous but requires following its process. Goal/loop systems only work when requirements are high quality and testable.
 
-Q: What is Expo's pricing model?
-A: Approximately $45 per month for roughly 15 build pushes, charged per build. Batch changes before building rather than pushing every iteration.
+Q: What's a must-have for breaking into a junior AI/software engineering role beyond experience? (Varun)
+A: Be a self-starter with visible, self-driven projects. Aim to reach an "intermediate dev" level before applying — companies no longer have time to train juniors from scratch.
 
-Q: Does Expo handle offline storage?
-A: Yes. SQLite or third-party options work well for cross-platform offline storage, syncing when connectivity returns.
+Q: For iOS, do I need to build properly in Swift/Xcode, or is there an easier path? (Morgan)
+A: Expo lets you build once and deploy to both iOS and Android — sufficient if most logic lives on a backend. It supports GPS, camera, and most native features; the caveat is deeper platform-specific functionality.
 
-Q: Which stack handles biometric verification?
-A: SumSub, costing roughly $1 per full authentication with lighter face-only re-verification for returning users. It was rated more polished than alternatives like Amazon's service.
+Q: What does Expo cost?
+A: About $45/month including a limited number of builds and pushes. Batch your changes and build only when work is more complete, since each build draws down your quota.
 
-Q: What guardrails exist for fully autonomous AI development lifecycles?
-A: "Fully autonomous" is misleading since human intent is always required. Matt Pocock's skills require developer expertise while Superpower offers more guidance but less flexibility. Goal-based automation only works with hard, testable requirements, not opinions.
+Q: What's the storage model for offline app functionality?
+A: SQLite for cross-platform offline storage, layered independently of Expo.
 
-Q: What do recruiters seek in junior AI/software engineering candidates?
-A: Companies expect self-starters who have already built apps and operate at intermediate levels. Curiosity is the key trait—pairing juniors with seniors (both AI-augmented) prevents echoing AI output. Build a public GitHub portfolio and optimize (don't embellish) resumes per job description.
+Q: Is Ty's mobile/remote session control a plugin?
+A: No — custom-built around a personal need. It uses Proxmox so sessions clone over and keep running remotely when his laptop closes, accessible from his phone.
 
-Q: How can candidates avoid "AI slop" in resumes?
-A: Write the CV yourself, have AI critique it, then rewrite improvements in your own voice. This avoids the sameness that makes candidates blend together.
+Q: How many AI subscriptions does Patrick run?
+A: One Claude account and one Codex account, about $100/month each, flipping between them as needed.
 
 🛠️ TOOLS AND CONCEPTS MENTIONED
 
-Power Your Process AI: Scott Rippey's personal app project with automated build notifications.
-
-CC Blackbox: Mac-native Electron IDE and agent harness built around Claude Code, tracking usage and cost per session.
-
-Model Radar: Tool scanning local project folders to track active versus deprecated AI models across client apps.
-
-CMUX: Ty Wells' agent harness for driving browsers during testing and accessing sessions remotely from mobile devices.
-
-Intent Capsules: Self-contained context bundles allowing cold agent sessions to execute plans without conversation history.
-
-CC-StatusLine: Patrick Chouinard's open-source plugin tracking Claude Code usage, time remaining, and git state.
-
-Pi.dev: Open-source, model-agnostic agent harness being customized for review-only workflows.
-
-GitHub Copilot CLI: Used to recreate Codex review functionality in environments where OpenAI tools are banned.
-
-Superpower and Matt Pocock Skills: Frameworks including Grill with Docs, /teach, Wayfinder, and unslop for brainstorming, code review, and just-in-time training.
-
-Fable: AI thinking partner for requirements discussion and task planning.
-
-Convex: Sync database handling WebSockets automatically, used for migrating away from Supabase.
-
-Expo: Cross-platform mobile framework for iOS/Android deployment with managed app store submission.
-
-SumSub: Biometric identity verification service for driver authentication and re-verification.
-
-Compound Engineering Framework: Enterprise-ready AI-assisted SDLC methodology from every.to.
-
-Dark Factory: Daniel Zivkovic's wrapper for overnight sequential ticket implementation runs.
-
-LanceDB: Vector database for grounding and RAG work.
-
-Doppler: API key management across projects.
+• CC BlackBox — Scott's Electron-based Claude Code IDE/agent harness for Mac, with cross-machine sync and usage/cost reporting.
+• Model Radar — Scott's hybrid AI/rule-based scanner tracking which AI models are active vs. deprecated across local project folders.
+• pi.dev — open-source, model-agnostic agent harness Patrick is customizing into a review-only harness.
+• Matt Pocock skills — /teach (just-in-time quiz-based training), /grill-me (requirements grilling), Wayfinder (code review), /wait-what, and "unslop" (cleans up AI response slop).
+• Superpower — agentic skill framework; more guided/autonomous but less flexible than Pocock's skills.
+• Compound engineering (every.to) — framework behind Daniel's "Dark Factory" overnight ticket runs; also cited for its junior+senior+AI hiring model.
+• Intent capsules — Ty's self-contained context bundles enabling cold-start sessions and automatic subscription switching.
+• CMUX — base for Ty's custom agent harness with browser control for testing.
+• Claude Code / Codex / GitHub Copilot CLI — core coding agent CLIs; Patrick ported a Codex-style review plugin to Copilot CLI for work.
+• CC-StatusLine — Patrick's open-source Claude Code status line plugin (session usage, time remaining, git branch).
+• Convex — sync database with WebSockets built in; Morgan's migration target from Supabase.
+• Expo + SQLite — cross-platform mobile deployment and offline storage.
+• SumSub / Clerk — biometric ID verification (escalated from Clerk's base-level auth) for driver/AML use cases.
+• LanceDB — vector DB used by Daniel and Paul for RAG/grounding work.
+• Fable + Hermes — Patrick's AI "thinking partner" for requirements and prompt work, plus the custom agent that manages his dev environment and preps weekly Fable prompts.
 
 📎 SHARED RESOURCES
 
-https://www.youtube.com/watch?v=S_QdQ1G4GlU
-
-https://every.to/guides/compound-engineering
-
-https://lnkd.in/p/gTQAAjrS
-
-https://github.com/scott-rippey/cc-blackbox-app
-
-https://github.com/scott-rippey/model-radar-app
-
-https://github.com/hopchouinard/CC-StatusLine
-
-https://github.com/hopchouinard/patchoutech-plugins
-
-https://www.youtube.com/watch?v=0oXOOlqVu5M
-
-https://sumsub.com/pricing/
-
-https://github.com/awslabs/aidlc-workflows
-
-https://therightrequirement.com/
-
-https://www.youtube.com/@t3dotgg
-
-https://www.zalak-patel.com/
-
-https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md
-
-https://www.linkedin.com/in/magmainc/
+• CC BlackBox repo (Scott): https://github.com/scott-rippey/cc-blackbox-app
+• Model Radar repo (Scott): https://github.com/scott-rippey/model-radar-app
+• CC-StatusLine plugin (Patrick): https://github.com/hopchouinard/CC-StatusLine
+• Patrick's plugins repo: https://github.com/hopchouinard/patchoutech-plugins
+• Compound engineering guide: https://every.to/guides/compound-engineering
+• Theo (T3.gg) video on Matt Pocock's skills: https://www.youtube.com/watch?v=0oXOOlqVu5M
+• AWS AI-DLC workflows (shared by Elena): https://github.com/awslabs/aidlc-workflows
+• Prof. Joseph Eli Kasser's systems-thinking course: https://therightrequirement.com/
+• SumSub biometric verification pricing: https://sumsub.com/pricing/
+• "unslop" skill (recommended by Morgan): https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md
+• Example developer portfolio site (shared by Ryan C): https://www.zalak-patel.com/
+• Daniel's output-optimization methodology: https://lnkd.in/p/gTQAAjrS
+• Daniel's LinkedIn (for networking): https://www.linkedin.com/in/magmainc/
+• Patrick's daily YouTube follows: t3dotgg, mattpocockuk, indydevdan, NetworkChuck, BuildingwithReason, unsupervised-learning, AndrejKarpathy, NateBJones
 
 🔄 FOLLOW-UPS WORTH EXPLORING
 
-Scott Rippey will share the Power Your Process AI walkthrough video and plans to add browser-control integration to CC Blackbox.
-
-Patrick Chouinard will continue building his Pi-based review harness and investigate the compound engineering framework for enterprise use.
-
-Paul Miller will demo his AI-driven CRM reporting capabilities next week and coordinate with Ryan C on Expo emulator testing strategies.
-
-Daniel Zivkovic will research Mark Kashif's subscription-multiplexing utility for API-key services.
-
-Varun Sharma will test prompt-injection techniques in resumes applied to non-target enterprise jobs as an experiment.
-
-Elena's question about AWS AI-DLC workflows and fully autonomous frameworks remains open for deeper technical discussion in future calls.
+• Scott will share the full walkthrough/blog content for "Power Your Process AI" and is adding browser-control integration to CC BlackBox next.
+• Paul Miller will demo his AI-powered CRM reporting next week (customer-data-safe version).
+• Paul and Ryan are scheduling a separate call to demo Ryan's Apple/Android emulator testing setup.
+• Patrick is continuing his pi.dev-based review-only harness and his combined Superpower + Pocock enterprise "Agentic SDLC" skill layer.
+• Morgan's open thread: Convex migration progress and the Expo vs. native Swift decision.
+• Varun may test a prompt-injection/steganography trick against ATS screeners — only for large enterprises he's not seriously pursuing. Results could be worth sharing.
+• Elena's autonomous-DLC exploration via AWS's aidlc-workflows is worth revisiting.
