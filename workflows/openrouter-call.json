@@ -19,12 +19,42 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify(Object.assign({ model: $json.model, max_tokens: $json.maxTokens, temperature: $json.temperature, messages: [ { role: 'system', content: $json.system }, { role: 'user', content: $json.user } ] }, $json.reasoningEffort ? { reasoning_effort: $json.reasoningEffort } : {})) }}",
+        "options": { "timeout": 1800000, "response": { "response": { "neverError": true } } }
+      },
+      "id": "0e000000-0000-4000-8000-00000000e003",
+      "name": "HTTP: OpenRouter",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 0],
+      "credentials": { "openRouterApi": { "id": "PLACEHOLDER", "name": "OpenRouter account" } }
+    },
+    {
+      "parameters": {
+        "jsCode": "const CANON = ['general', 'insights', 'qa', 'tools', 'links', 'decisions'];\n\nfunction parseSections(md) {\n  const re = /^#{1,3}[ \\t]+([a-z]+)[ \\t]*$/gm;\n  const found = []; let m;\n  while ((m = re.exec(md)) !== null) found.push(m[1]);\n  return found.filter((s) => CANON.includes(s));\n}\n\nfunction structureOk(expect, text) {\n  if (!expect || expect === 'none') return true;\n  if (expect === 'prep.chunk') {\n    const opens = (text.match(/<!--SEGMENT/g) || []).length;\n    const closes = (text.match(/-->/g) || []).length;\n    return opens > 0 && opens === closes;\n  }\n  if (expect === 'signal.map') return parseSections(text).length > 0;\n  if (expect === 'signal.reduce') {\n    const found = parseSections(text);\n    return CANON.every((s) => found.includes(s));\n  }\n  if (expect === 'post.section') {\n    return !/^\\s*#{1,6}\\s/m.test(text) && !/\\*\\*/.test(text) && !/^\\s*[-*]\\s+/m.test(text);\n  }\n  return true;\n}\n\nconst requests = $('Code: Normalize').all().map((i) => i.json);\n\nreturn $input.all().map((item, idx) => {\n  const req = requests[idx] || requests[0];\n  const body = item.json || {};\n  const choice = (body.choices || [])[0] || {};\n  const usage = body.usage || {};\n  const details = usage.completion_tokens_details || {};\n  const text = (choice.message && choice.message.content) || '';\n  const finishReason = choice.finish_reason || null;\n\n  let failureKind = null;\n  if (body.error || (!body.choices && !text)) {\n    failureKind = 'api_error';\n  } else if (text.trim() === '') {\n    failureKind = 'reasoning_burn';\n  } else if (finishReason !== 'stop') {\n    failureKind = 'content_truncated';\n  } else if (!structureOk(req.expect, text)) {\n    failureKind = 'structure';\n  }\n\n  return {\n    json: {\n      chunkIndex: req.chunkIndex,\n      stepName: req.stepName,\n      text,\n      ok: failureKind === null,\n      failureKind,\n      finishReason,\n      attempts: req.attempt,\n      usage: {\n        promptTokens: usage.prompt_tokens || 0,\n        completionTokens: usage.completion_tokens || 0,\n        reasoningTokens: details.reasoning_tokens || 0,\n        cost: usage.cost || 0,\n      },\n      model: req.model, maxTokens: req.maxTokens, reasoningEffort: req.reasoningEffort,\n      temperature: req.temperature, system: req.system, user: req.user,\n      ceiling: req.ceiling, expect: req.expect,\n      errorMessage: (body.error && body.error.message) || null,\n    },\n  };\n});"
+      },
+      "id": "0e000000-0000-4000-8000-00000000e004",
+      "name": "Code: Classify",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 0]
     }
   ],
   "connections": {
     "When Executed by Another Workflow": {
       "main": [[{ "node": "Code: Normalize", "type": "main", "index": 0 }]]
-    }
+    },
+    "Code: Normalize": { "main": [[{ "node": "HTTP: OpenRouter", "type": "main", "index": 0 }]] },
+    "HTTP: OpenRouter": { "main": [[{ "node": "Code: Classify", "type": "main", "index": 0 }]] }
   },
   "settings": { "executionOrder": "v1" }
 }
