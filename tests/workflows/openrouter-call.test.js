@@ -121,3 +121,66 @@ test('classify rejects an unclosed SEGMENT header in prep output', () => {
   assert.strictEqual(out[0].json.ok, false);
   assert.strictEqual(out[0].json.failureKind, 'structure');
 });
+
+const classified = (over = {}) => ({
+  json: {
+    chunkIndex: 0, stepName: 'prep', text: '', ok: false, failureKind: 'reasoning_burn',
+    finishReason: 'length', attempts: 1, model: 'z-ai/glm-5.3-flash', maxTokens: 32768,
+    temperature: 0.3, system: 's', user: 'u', ceiling: 131072, expect: 'none',
+    usage: { promptTokens: 0, completionTokens: 0, reasoningTokens: 0, cost: 0 }, ...over,
+  },
+});
+
+test('escalate forces low reasoning effort and 1.5x budget on attempt 2', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Escalate', { items: [classified()] });
+  assert.strictEqual(out.length, 1);
+  assert.strictEqual(out[0].json.attempt, 2);
+  assert.strictEqual(out[0].json.reasoningEffort, 'low');
+  assert.strictEqual(out[0].json.maxTokens, Math.floor(32768 * 1.5));
+});
+
+test('escalate goes minimal and 2x on attempt 3', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Escalate', {
+    items: [classified({ attempts: 2 })],
+  });
+  assert.strictEqual(out[0].json.attempt, 3);
+  assert.strictEqual(out[0].json.reasoningEffort, 'minimal');
+  assert.strictEqual(out[0].json.maxTokens, 32768 * 2);
+});
+
+test('escalate never exceeds the model ceiling', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Escalate', {
+    items: [classified({ attempts: 2, maxTokens: 100000, ceiling: 131072 })],
+  });
+  assert.strictEqual(out[0].json.maxTokens, 131072);
+});
+
+test('escalate emits nothing once attempts are exhausted', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Escalate', {
+    items: [classified({ attempts: 3 })],
+  });
+  assert.strictEqual(out.length, 0);
+});
+
+test('escalate passes over items that already succeeded', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Escalate', {
+    items: [classified({ ok: true, failureKind: null, text: 'fine' })],
+  });
+  assert.strictEqual(out.length, 0);
+});
+
+test('collect orders by chunkIndex and keeps the best attempt per chunk', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Collect', {
+    items: [
+      classified({ chunkIndex: 1, ok: true, failureKind: null, text: 'second', attempts: 2 }),
+      classified({ chunkIndex: 0, ok: true, failureKind: null, text: 'first' }),
+      classified({ chunkIndex: 1, ok: false, text: '' }),
+    ],
+  });
+  // Array.from: runCodeNode's vm.runInNewContext returns a cross-realm array;
+  // deepStrictEqual on a cross-realm Array.prototype.map() result throws a
+  // spurious "same structure but not reference-equal" error even when the
+  // primitive contents match. Rehoming into the test's own realm avoids it.
+  assert.deepStrictEqual(Array.from(out.map((i) => i.json.text)), ['first', 'second']);
+  assert.strictEqual(out[1].json.ok, true);
+});
