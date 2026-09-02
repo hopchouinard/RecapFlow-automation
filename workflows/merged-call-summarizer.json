@@ -82,7 +82,7 @@
           "messageValues": [
             {
               "type": "SystemMessagePromptTemplate",
-              "message": "You are analysing a merged coaching-call transcript (chat log + spoken transcript). Extract the signal \u2014 the information that would help a future reader understand what was discussed, who said what, and what artefacts or resources were referenced.\n\nEmit a markdown document with exactly six H2 sections, in the order listed below. Every heading must be the literal lowercase single-word slug shown. Do not invent new sections. Omit a section entirely if there is no content for it.\n\n## general\n\nA 2\u20134 paragraph narrative overview of what the session covered. Factual, not promotional. Capture the main throughline, which projects/topics came up, and who presented.\n\n## insights\n\nBullet points of the most valuable takeaways, patterns, or heuristics surfaced during the call. Each bullet is self-contained (understandable without the surrounding context). Attribute the speaker when it matters.\n\n## qa\n\nPairs of questions and answers. Format:\n**Q (Questioner):** ...\n**A (Answerer):** ...\n\nInclude only Q/A exchanges where both sides had real content \u2014 skip throwaway clarifying questions.\n\n## tools\n\nBullet list of tools, products, frameworks, platforms, or services that were mentioned or demonstrated. One line per tool. Include a 5\u201315 word note on the context in which it came up.\n\n## links\n\nBullet list of URLs, repositories, documents, or external resources shared during the call. One line per resource. Include a brief descriptor.\n\n## decisions\n\nBullet list of commitments, action items, or decisions made during the call \u2014 things someone said they would do, or that the group agreed on. Phrase each as an actor + action.\n\nCRITICAL: output the sections in EXACTLY this order: general, insights, qa, tools, links, decisions. Do not re-order, do not merge, do not rename. Use lowercase single-word slugs as shown."
+              "message": "You are analysing a merged coaching-call transcript (chat log + spoken transcript). Extract the signal — the information that would help a future reader understand what was discussed, who said what, and what artefacts or resources were referenced.\n\nEmit a markdown document with exactly six H2 sections, in the order listed below. Every heading must be the literal lowercase single-word slug shown. Do not invent new sections. Omit a section entirely if there is no content for it.\n\n## general\n\nA 2–4 paragraph narrative overview of what the session covered. Factual, not promotional. Capture the main throughline, which projects/topics came up, and who presented.\n\n## insights\n\nBullet points of the most valuable takeaways, patterns, or heuristics surfaced during the call. Each bullet is self-contained (understandable without the surrounding context). Attribute the speaker when it matters.\n\n## qa\n\nPairs of questions and answers. Format:\n**Q (Questioner):** ...\n**A (Answerer):** ...\n\nInclude only Q/A exchanges where both sides had real content — skip throwaway clarifying questions.\n\n## tools\n\nBullet list of tools, products, frameworks, platforms, or services that were mentioned or demonstrated. One line per tool. Include a 5–15 word note on the context in which it came up.\n\n## links\n\nBullet list of URLs, repositories, documents, or external resources shared during the call. One line per resource. Include a brief descriptor.\n\n## decisions\n\nBullet list of commitments, action items, or decisions made during the call — things someone said they would do, or that the group agreed on. Phrase each as an actor + action.\n\nCRITICAL: output the sections in EXACTLY this order: general, insights, qa, tools, links, decisions. Do not re-order, do not merge, do not rename. Use lowercase single-word slugs as shown."
             }
           ]
         }
@@ -142,7 +142,7 @@
           "messageValues": [
             {
               "type": "SystemMessagePromptTemplate",
-              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nCRITICAL: You MUST output sections in EXACTLY this order \u2014 do not rearrange them:\n\n1. \ud83d\udcdd SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n2. \ud83d\udca1 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n3. \u2753 KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n4. \ud83d\udee0\ufe0f TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n5. \ud83d\udcce SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n6. \ud83d\udd04 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\nRules:\n- Output PLAIN TEXT only \u2014 no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Output sections in the numbered order above \u2014 never reorder them\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
+              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nCRITICAL: You MUST output sections in EXACTLY this order — do not rearrange them:\n\n1. 📝 SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n2. 💡 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n3. ❓ KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n5. 📎 SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\nRules:\n- Output PLAIN TEXT only — no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Output sections in the numbered order above — never reorder them\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
             }
           ]
         }
@@ -202,7 +202,7 @@
           "messageValues": [
             {
               "type": "SystemMessagePromptTemplate",
-              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nCRITICAL: You MUST preserve the section order EXACTLY as it appears in the input \u2014 do not rearrange sections:\n1. \ud83d\udcdd SUMMARY\n2. \ud83d\udca1 KEY INSIGHTS\n3. \u2753 KEY Q&A\n4. \ud83d\udee0\ufe0f TOOLS AND CONCEPTS MENTIONED\n5. \ud83d\udcce SHARED RESOURCES\n6. \ud83d\udd04 FOLLOW-UPS WORTH EXPLORING\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n- preserve the section order listed above\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
+              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nCRITICAL: You MUST preserve the section order EXACTLY as it appears in the input — do not rearrange sections:\n1. 📝 SUMMARY\n2. 💡 KEY INSIGHTS\n3. ❓ KEY Q&A\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\n5. 📎 SHARED RESOURCES\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n- preserve the section order listed above\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
             }
           ]
         }
@@ -275,7 +275,7 @@
           "messageValues": [
             {
               "type": "SystemMessagePromptTemplate",
-              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) \u2014 A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section \u2014 Copy EXACTLY as written below, including the emoji:\n\n\ud83d\udcde HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n\ud83d\udc49 Reply to this post with your questions before the call\n\ud83d\udc49 If you submit a question and you're on the call, you go first\n\ud83d\udc49 We work through questions in the order they came in\n\ud83d\udc49 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) \u2014 Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section \u2014 Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n\ud83d\udd17 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n\ud83d\udcc5 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic \u2014 like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read \u2014 not a wall of text"
+              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) — A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section — Copy EXACTLY as written below, including the emoji:\n\n📞 HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n👉 Reply to this post with your questions before the call\n👉 If you submit a question and you're on the call, you go first\n👉 We work through questions in the order they came in\n👉 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) — Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section — Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n🔗 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n📅 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic — like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read — not a wall of text"
             }
           ]
         }
@@ -341,53 +341,6 @@
       }
     },
     {
-      "id": "e1000000-0000-4000-8000-000000000020",
-      "name": "LLM: Prep-Prompt",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.9,
-      "position": [
-        3750,
-        300
-      ],
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Code: Validate and Check Partner').item.json.transcriptText }}",
-        "hasOutputParser": false,
-        "messages": {
-          "messageValues": [
-            {
-              "type": "SystemMessagePromptTemplate",
-              "message": "You are preparing a meeting transcript for embedding in a semantic knowledge base. Transform the raw transcript into an enriched, topic-segmented document that will produce high-quality, independently retrievable chunks when split.\n\n## Speaker Name Normalization\n\nApply the speaker alias map supplied in the `SPEAKER_ALIASES` context block below. If you encounter a speaker whose raw name is NOT in that map, do NOT guess a canonical form \u2014 pass the name through unchanged AND list it under \"=== UNRESOLVED SPEAKERS ===\" at the end of your output.\n\n{{ $('HTTP Request: Get Speaker Aliases').item.json.data }}\n\n## Pass 1 \u2014 Clean the transcript\n\n- Apply speaker normalization above\n- Fix obvious transcription artifacts: \"gpt four\" \u2192 \"GPT-4\", \"llm\" \u2192 \"LLM\", \"open a i\" \u2192 \"OpenAI\"\n- Remove pure filler (stutters, \"um\", \"uh\") only when they add no meaning\n- Preserve all timestamps and speaker attribution exactly\n\n## Pass 2 \u2014 Segment by topic\n\nDivide the transcript into coherent topic blocks. Start a new segment when the conversation meaningfully shifts subject. For each segment, prepend a structured header:\n\n<!--SEGMENT\ntopic: <2\u20135 word label>\nspeakers: <comma-separated list of speakers who contribute>\nkeywords: <8\u201312 terms: tools, models, concepts, companies, people explicitly mentioned>\nsummary: <2\u20133 sentence description of what this segment covers and why it matters>\n-->\n\nTarget 300\u2013500 words per segment body. If a topic recurs later, open a new segment \u2014 do not merge non-contiguous discussion.\n\n## Pass 3 \u2014 Inline annotations\n\nWithin each segment body, mark key moments:\n\n- When a tool, service, model, or product is named: append `[tool:name]` after first mention\n- When someone asks a question: wrap with `<Q>` ... `</Q>`\n- When someone answers it: wrap with `<A>` ... `</A>`\n- When a URL or resource is shared: append `[link:url-or-description]`\n- When a sentence contains a concrete recommendation or takeaway: prefix with `\u25b6`\n\n## Output format\n\nStart with a `=== SESSION ===` header block (date, duration_estimate, main_themes), then segments, then an optional `=== UNRESOLVED SPEAKERS ===` block if any speakers were not in the alias map.\n\n## Quality constraints\n\n- Do not invent or infer content not present in the source\n- Every segment must be independently understandable\n- Segment header `keywords` and `summary` are what get embedded \u2014 make them precise and information-dense\n- Prefer 8 focused segments over 4 sprawling ones"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "e1000000-0000-4000-8000-000000000021",
-      "name": "OpenRouter Chat Model 5",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        3750,
-        500
-      ],
-      "parameters": {
-        "model": "z-ai/glm-5.3-flash",
-        "options": {
-          "maxTokens": 32768,
-          "temperature": 0.3,
-          "timeout": 600000
-        }
-      },
-      "credentials": {
-        "openRouterApi": {
-          "id": "PLACEHOLDER",
-          "name": "OpenRouter account"
-        }
-      }
-    },
-    {
       "id": "e1000000-0000-4000-8000-000000000022",
       "name": "Code: Save prepared-transcript.md",
       "type": "n8n-nodes-base.code",
@@ -397,7 +350,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst preparedText = $json.text;\nif (!preparedText) {\n  throw new Error('Prep-prompt produced no content; refusing to write empty prepared-transcript.md');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, preparedText, 'utf8');\nreturn { json: { preparedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst preparedText = $json.preparedTranscript;\nif (!preparedText) {\n  throw new Error('Prep-prompt produced no content; refusing to write empty prepared-transcript.md');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, preparedText, 'utf8');\nreturn { json: { preparedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
     },
     {
@@ -470,6 +423,53 @@
         120,
         0
       ]
+    },
+    {
+      "id": "ee000000-0000-4000-8000-0000000000e2",
+      "name": "Code: Split Prep",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3620,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Code: Pipeline Config').first().json.steps.prep;\nconst src = $('Code: Validate and Check Partner').first().json.transcriptText;\nconst halving = $input.first().json.halving || 0;\nconst target = Math.floor(cfg.chunkTargetTokens / Math.pow(2, halving));\n\nconst estimateTokens = (s) => Math.ceil(s.length / 3.6);\n\nfunction splitTranscriptByLines(text, targetTokens) {\n  const lines = text.split('\\n');\n  const chunks = [];\n  let buf = [], bufTokens = 0;\n  for (const line of lines) {\n    const t = estimateTokens(line) + 1;\n    if (bufTokens + t > targetTokens && buf.length > 0) {\n      chunks.push(buf.join('\\n'));\n      buf = []; bufTokens = 0;\n    }\n    buf.push(line); bufTokens += t;\n  }\n  if (buf.length && buf.join('\\n').trim()) chunks.push(buf.join('\\n'));\n  return chunks;\n}\n\nconst aliases = $('HTTP Request: Get Speaker Aliases').first().json.data || '';\nconst SYSTEM = `You are preparing a meeting transcript for embedding in a semantic knowledge base. Transform the raw transcript into an enriched, topic-segmented document that will produce high-quality, independently retrievable chunks when split.\n\n## Speaker Name Normalization\n\nApply the speaker alias map supplied in the \\`SPEAKER_ALIASES\\` context block below. If you encounter a speaker whose raw name is NOT in that map, do NOT guess a canonical form — pass the name through unchanged AND list it under \"=== UNRESOLVED SPEAKERS ===\" at the end of your output.\n\n${aliases}\n\n## Pass 1 — Clean the transcript\n\n- Apply speaker normalization above\n- Fix obvious transcription artifacts: \"gpt four\" → \"GPT-4\", \"llm\" → \"LLM\", \"open a i\" → \"OpenAI\"\n- Remove pure filler (stutters, \"um\", \"uh\") only when they add no meaning\n- Preserve all timestamps and speaker attribution exactly\n\n## Pass 2 — Segment by topic\n\nDivide the transcript into coherent topic blocks. Start a new segment when the conversation meaningfully shifts subject. For each segment, prepend a structured header:\n\n<!--SEGMENT\ntopic: <2–5 word label>\nspeakers: <comma-separated list of speakers who contribute>\nkeywords: <8–12 terms: tools, models, concepts, companies, people explicitly mentioned>\nsummary: <2–3 sentence description of what this segment covers and why it matters>\n-->\n\nTarget 300–500 words per segment body. If a topic recurs later, open a new segment — do not merge non-contiguous discussion.\n\n## Pass 3 — Inline annotations\n\nWithin each segment body, mark key moments:\n\n- When a tool, service, model, or product is named: append \\`[tool:name]\\` after first mention\n- When someone asks a question: wrap with \\`<Q>\\` ... \\`</Q>\\`\n- When someone answers it: wrap with \\`<A>\\` ... \\`</A>\\`\n- When a URL or resource is shared: append \\`[link:url-or-description]\\`\n- When a sentence contains a concrete recommendation or takeaway: prefix with ▶\n\n## Output format\n\nThis is ONE PART of a longer transcript. Emit segments for the portion you are given. Include a \\`=== SESSION ===\\` header block (date, duration_estimate, main_themes) and, if any speakers were not in the alias map, a trailing \\`=== UNRESOLVED SPEAKERS ===\\` block. Both are merged across parts downstream.\n\n## Quality constraints\n\n- Do not invent or infer content not present in the source\n- Every segment must be independently understandable\n- Segment header \\`keywords\\` and \\`summary\\` are what get embedded — make them precise and information-dense\n- Prefer 8 focused segments over 4 sprawling ones`;\n\nreturn splitTranscriptByLines(src, target).map((chunk, i) => ({\n  json: {\n    stepName: 'prep',\n    model: cfg.model,\n    maxTokens: cfg.maxTokens,\n    reasoningEffort: cfg.reasoningEffort,\n    expect: 'prep.chunk',\n    chunkIndex: i,\n    system: SYSTEM,\n    user: chunk,\n  },\n}));"
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "openrouterCall",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Call"
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "ee000000-0000-4000-8000-0000000000e1",
+      "name": "Execute: Prep via OpenRouter",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        3750,
+        300
+      ]
+    },
+    {
+      "id": "ee000000-0000-4000-8000-0000000000e3",
+      "name": "Code: Aggregate Prep",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3880,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const items = $input.all().map((i) => i.json);\nconst failed = items.filter((i) => !i.ok);\nif (failed.length) {\n  const f = failed[0];\n  throw new Error(\n    `Prep step failed on chunk ${f.chunkIndex} after ${f.attempts} attempts ` +\n    `(failureKind=${f.failureKind}, finishReason=${f.finishReason}). No artifact written.`\n  );\n}\n\nfunction reassemblePrep(texts) {\n  const SESSION_RE = /===\\s*SESSION\\s*===[\\s\\S]*?(?=\\n<!--SEGMENT|\\n===|$)/;\n  const UNRES_RE = /===\\s*UNRESOLVED SPEAKERS\\s*===([\\s\\S]*)$/;\n  let header = null;\n  const bodies = [], unresolved = new Set();\n  for (const raw of texts) {\n    let t = raw;\n    const u = t.match(UNRES_RE);\n    if (u) {\n      u[1].split('\\n').map((l) => l.trim()).filter((l) => l.startsWith('-')).map((l) => l.replace(/\\s+/g, ' ')).forEach((l) => unresolved.add(l));\n      t = t.slice(0, u.index);\n    }\n    const h = t.match(SESSION_RE);\n    if (h) { if (header === null) header = h[0].trim(); t = t.slice(0, h.index) + t.slice(h.index + h[0].length); }\n    if (t.trim()) bodies.push(t.trim());\n  }\n  let out = (header ? header + '\\n\\n' : '') + bodies.join('\\n\\n');\n  if (unresolved.size) out += '\\n\\n=== UNRESOLVED SPEAKERS ===\\n' + [...unresolved].join('\\n');\n  return out;\n}\n\nconst ordered = items.slice().sort((a, b) => a.chunkIndex - b.chunkIndex);\nreturn [{\n  json: {\n    preparedTranscript: reassemblePrep(ordered.map((i) => i.text)),\n    chunkCount: ordered.length,\n    totalCost: ordered.reduce((s, i) => s + ((i.usage && i.usage.cost) || 0), 0),\n  },\n}];"
+      }
     }
   ],
   "connections": {
@@ -675,18 +675,7 @@
       "main": [
         [
           {
-            "node": "LLM: Prep-Prompt",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "LLM: Prep-Prompt": {
-      "main": [
-        [
-          {
-            "node": "Code: Save prepared-transcript.md",
+            "node": "Code: Split Prep",
             "type": "main",
             "index": 0
           }
@@ -715,22 +704,44 @@
         ]
       ]
     },
-    "OpenRouter Chat Model 5": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "LLM: Prep-Prompt",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Code: Pipeline Config": {
       "main": [
         [
           {
             "node": "Code: Validate and Check Partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Split Prep": {
+      "main": [
+        [
+          {
+            "node": "Execute: Prep via OpenRouter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute: Prep via OpenRouter": {
+      "main": [
+        [
+          {
+            "node": "Code: Aggregate Prep",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Aggregate Prep": {
+      "main": [
+        [
+          {
+            "node": "Code: Save prepared-transcript.md",
             "type": "main",
             "index": 0
           }
