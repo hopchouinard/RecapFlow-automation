@@ -1,99 +1,102 @@
 {
-  "updatedAt": "2026-09-02T19:14:42.516Z",
-  "createdAt": "2026-03-08T21:49:19.942Z",
   "id": "5",
   "name": "Merged Call Summarizer",
-  "description": null,
-  "active": false,
-  "isArchived": false,
   "nodes": [
     {
-      "parameters": {},
       "id": "e1000000-0000-4000-8000-000000000001",
       "name": "Manual Trigger",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         0,
-        304
-      ]
+        300
+      ],
+      "parameters": {}
     },
     {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst watchDir = '/home/node/watch';\n\n// Find all date prefixes that have both a chat and transcript file\nconst files = fs.readdirSync(watchDir);\nconst dateMap = {};\nfor (const f of files) {\n  const m = f.match(/^(\\d{4}-\\d{2}-\\d{2})/);\n  if (!m) continue;\n  const date = m[1];\n  if (!dateMap[date]) dateMap[date] = {};\n  if (f.includes('-zoom-chat') && f.endsWith('.txt')) dateMap[date].chat = f;\n  if (f.includes('-transcript') && f.endsWith('.txt')) dateMap[date].transcript = f;\n}\n\n// Pick the most recent date that has both files\nconst complete = Object.entries(dateMap)\n  .filter(([, v]) => v.chat && v.transcript)\n  .sort(([a], [b]) => b.localeCompare(a));\n\nif (complete.length === 0) {\n  throw new Error('No complete file pairs found in watch directory (need both YYYY-MM-DD-zoom-chat.txt and YYYY-MM-DD-transcript.txt)');\n}\n\nconst [datePrefix, { chat, transcript }] = complete[0];\nconst chatFile = `${watchDir}/${chat}`;\nconst transcriptFile = `${watchDir}/${transcript}`;\n\nconst chatText = fs.readFileSync(chatFile, 'utf8');\nconst transcriptText = fs.readFileSync(transcriptFile, 'utf8');\n\nreturn {\n  json: {\n    datePrefix,\n    chatText,\n    transcriptText,\n    chatFile,\n    transcriptFile\n  }\n};"
-      },
       "id": "e1000000-0000-4000-8000-000000000002",
       "name": "Code: Validate and Check Partner",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        256,
-        304
-      ]
+        250,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst watchDir = '/home/node/watch';\n\n// Find all date prefixes that have both a chat and transcript file\nconst files = fs.readdirSync(watchDir);\nconst dateMap = {};\nfor (const f of files) {\n  const m = f.match(/^(\\d{4}-\\d{2}-\\d{2})/);\n  if (!m) continue;\n  const date = m[1];\n  if (!dateMap[date]) dateMap[date] = {};\n  if (f.includes('-zoom-chat') && f.endsWith('.txt')) dateMap[date].chat = f;\n  if (f.includes('-transcript') && f.endsWith('.txt')) dateMap[date].transcript = f;\n}\n\n// Pick the most recent date that has both files\nconst complete = Object.entries(dateMap)\n  .filter(([, v]) => v.chat && v.transcript)\n  .sort(([a], [b]) => b.localeCompare(a));\n\nif (complete.length === 0) {\n  throw new Error('No complete file pairs found in watch directory (need both YYYY-MM-DD-zoom-chat.txt and YYYY-MM-DD-transcript.txt)');\n}\n\nconst [datePrefix, { chat, transcript }] = complete[0];\nconst chatFile = `${watchDir}/${chat}`;\nconst transcriptFile = `${watchDir}/${transcript}`;\n\nconst chatText = fs.readFileSync(chatFile, 'utf8');\nconst transcriptText = fs.readFileSync(transcriptFile, 'utf8');\n\nreturn {\n  json: {\n    datePrefix,\n    chatText,\n    transcriptText,\n    chatFile,\n    transcriptFile\n  }\n};"
+      }
     },
     {
-      "parameters": {
-        "jsCode": "const mergedText = `# MEETING TRANSCRIPT\\n\\n${$json.transcriptText}\\n\\n# ZOOM CHAT LOG\\n\\n${$json.chatText}`;\n\nreturn {\n  json: {\n    ...$json,\n    mergedText\n  }\n};"
-      },
       "id": "e1000000-0000-4000-8000-000000000003",
       "name": "Code: Merge Content",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        512,
-        304
-      ]
+        500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const mergedText = `# MEETING TRANSCRIPT\\n\\n${$json.transcriptText}\\n\\n# ZOOM CHAT LOG\\n\\n${$json.chatText}`;\n\nreturn {\n  json: {\n    ...$json,\n    mergedText\n  }\n};"
+      }
     },
     {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst datePrefix = $json.datePrefix;\nconst outputDir = `/home/node/output/${datePrefix}`;\nif (!fs.existsSync(outputDir)) {\n  fs.mkdirSync(outputDir, { recursive: true });\n}\nreturn { json: { ...$json, outputDir } };"
-      },
       "id": "e1000000-0000-4000-8000-000000000004",
       "name": "Code: Create Output Folder",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        752,
-        304
-      ]
+        750,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst datePrefix = $json.datePrefix;\nconst outputDir = `/home/node/output/${datePrefix}`;\nif (!fs.existsSync(outputDir)) {\n  fs.mkdirSync(outputDir, { recursive: true });\n}\nreturn { json: { ...$json, outputDir } };"
+      }
     },
     {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir;\nfs.writeFileSync(`${outputDir}/transcript.txt`, $json.transcriptText, 'utf8');\nreturn { json: { ...$json } };"
-      },
       "id": "e1000000-0000-4000-8000-000000000005",
       "name": "Code: Save transcript.txt",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1008,
-        304
-      ]
+        1000,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir;\nfs.writeFileSync(`${outputDir}/transcript.txt`, $json.transcriptText, 'utf8');\nreturn { json: { ...$json } };"
+      }
     },
     {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.mergedText }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "You are analysing a merged coaching-call transcript (chat log + spoken transcript). Extract the signal \u2014 the information that would help a future reader understand what was discussed, who said what, and what artefacts or resources were referenced.\n\nEmit a markdown document with exactly six H2 sections, in the order listed below. Every heading must be the literal lowercase single-word slug shown. Do not invent new sections. Omit a section entirely if there is no content for it.\n\n## general\n\nA 2\u20134 paragraph narrative overview of what the session covered. Factual, not promotional. Capture the main throughline, which projects/topics came up, and who presented.\n\n## insights\n\nBullet points of the most valuable takeaways, patterns, or heuristics surfaced during the call. Each bullet is self-contained (understandable without the surrounding context). Attribute the speaker when it matters.\n\n## qa\n\nPairs of questions and answers. Format:\n**Q (Questioner):** ...\n**A (Answerer):** ...\n\nInclude only Q/A exchanges where both sides had real content \u2014 skip throwaway clarifying questions.\n\n## tools\n\nBullet list of tools, products, frameworks, platforms, or services that were mentioned or demonstrated. One line per tool. Include a 5\u201315 word note on the context in which it came up.\n\n## links\n\nBullet list of URLs, repositories, documents, or external resources shared during the call. One line per resource. Include a brief descriptor.\n\n## decisions\n\nBullet list of commitments, action items, or decisions made during the call \u2014 things someone said they would do, or that the group agreed on. Phrase each as an actor + action.\n\nCRITICAL: output the sections in EXACTLY this order: general, insights, qa, tools, links, decisions. Do not re-order, do not merge, do not rename. Use lowercase single-word slugs as shown."
-            }
-          ]
-        },
-        "batching": {}
-      },
       "id": "e1000000-0000-4000-8000-000000000006",
       "name": "LLM: Extract Signal",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        1264,
-        304
+        1250,
+        300
       ],
-      "retryOnFail": true
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.mergedText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are analysing a merged coaching-call transcript (chat log + spoken transcript). Extract the signal \u2014 the information that would help a future reader understand what was discussed, who said what, and what artefacts or resources were referenced.\n\nEmit a markdown document with exactly six H2 sections, in the order listed below. Every heading must be the literal lowercase single-word slug shown. Do not invent new sections. Omit a section entirely if there is no content for it.\n\n## general\n\nA 2\u20134 paragraph narrative overview of what the session covered. Factual, not promotional. Capture the main throughline, which projects/topics came up, and who presented.\n\n## insights\n\nBullet points of the most valuable takeaways, patterns, or heuristics surfaced during the call. Each bullet is self-contained (understandable without the surrounding context). Attribute the speaker when it matters.\n\n## qa\n\nPairs of questions and answers. Format:\n**Q (Questioner):** ...\n**A (Answerer):** ...\n\nInclude only Q/A exchanges where both sides had real content \u2014 skip throwaway clarifying questions.\n\n## tools\n\nBullet list of tools, products, frameworks, platforms, or services that were mentioned or demonstrated. One line per tool. Include a 5\u201315 word note on the context in which it came up.\n\n## links\n\nBullet list of URLs, repositories, documents, or external resources shared during the call. One line per resource. Include a brief descriptor.\n\n## decisions\n\nBullet list of commitments, action items, or decisions made during the call \u2014 things someone said they would do, or that the group agreed on. Phrase each as an actor + action.\n\nCRITICAL: output the sections in EXACTLY this order: general, insights, qa, tools, links, decisions. Do not re-order, do not merge, do not rename. Use lowercase single-word slugs as shown."
+            }
+          ]
+        }
+      }
     },
     {
+      "id": "e1000000-0000-4000-8000-000000000007",
+      "name": "OpenRouter Chat Model 1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1250,
+        500
+      ],
       "parameters": {
         "model": "anthropic/claude-sonnet-5",
         "options": {
@@ -102,14 +105,6 @@
           "timeout": 600000
         }
       },
-      "id": "e1000000-0000-4000-8000-000000000007",
-      "name": "OpenRouter Chat Model 1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        1264,
-        512
-      ],
       "credentials": {
         "openRouterApi": {
           "id": "PLACEHOLDER",
@@ -118,42 +113,50 @@
       }
     },
     {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.text;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
-      },
       "id": "e1000000-0000-4000-8000-000000000008",
       "name": "Code: Save extracted-signal.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1504,
-        304
-      ]
+        1500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.text;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
     },
     {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.signalText }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nCRITICAL: You MUST output sections in EXACTLY this order \u2014 do not rearrange them:\n\n1. \ud83d\udcdd SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n2. \ud83d\udca1 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n3. \u2753 KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n4. \ud83d\udee0\ufe0f TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n5. \ud83d\udcce SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n6. \ud83d\udd04 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\nRules:\n- Output PLAIN TEXT only \u2014 no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Output sections in the numbered order above \u2014 never reorder them\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
-            }
-          ]
-        },
-        "batching": {}
-      },
       "id": "e1000000-0000-4000-8000-000000000009",
       "name": "LLM: Community Post",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        1760,
-        304
+        1750,
+        300
       ],
-      "retryOnFail": true
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.signalText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nCRITICAL: You MUST output sections in EXACTLY this order \u2014 do not rearrange them:\n\n1. \ud83d\udcdd SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n2. \ud83d\udca1 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n3. \u2753 KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n4. \ud83d\udee0\ufe0f TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n5. \ud83d\udcce SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n6. \ud83d\udd04 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\nRules:\n- Output PLAIN TEXT only \u2014 no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Output sections in the numbered order above \u2014 never reorder them\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
+            }
+          ]
+        }
+      }
     },
     {
+      "id": "e1000000-0000-4000-8000-000000000010",
+      "name": "OpenRouter Chat Model 2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1750,
+        500
+      ],
       "parameters": {
         "model": "z-ai/glm-5.3-flash",
         "options": {
@@ -162,14 +165,6 @@
           "timeout": 600000
         }
       },
-      "id": "e1000000-0000-4000-8000-000000000010",
-      "name": "OpenRouter Chat Model 2",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        1760,
-        512
-      ],
       "credentials": {
         "openRouterApi": {
           "id": "PLACEHOLDER",
@@ -178,115 +173,50 @@
       }
     },
     {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst communityPostText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post.md`, communityPostText, 'utf8');\nreturn { json: { communityPostText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
-      },
       "id": "e1000000-0000-4000-8000-000000000011",
       "name": "Code: Save community-post.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
         2000,
-        304
-      ]
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst communityPostText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post.md`, communityPostText, 'utf8');\nreturn { json: { communityPostText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
     },
     {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.communityPostText }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nCRITICAL: You MUST preserve the section order EXACTLY as it appears in the input \u2014 do not rearrange sections:\n1. \ud83d\udcdd SUMMARY\n2. \ud83d\udca1 KEY INSIGHTS\n3. \u2753 KEY Q&A\n4. \ud83d\udee0\ufe0f TOOLS AND CONCEPTS MENTIONED\n5. \ud83d\udcce SHARED RESOURCES\n6. \ud83d\udd04 FOLLOW-UPS WORTH EXPLORING\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n- preserve the section order listed above\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
-            }
-          ]
-        },
-        "batching": {}
-      },
       "id": "e1000000-0000-4000-8000-000000000012",
       "name": "LLM: Compress Post",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        2256,
-        304
+        2250,
+        300
       ],
-      "retryOnFail": true
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.communityPostText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nCRITICAL: You MUST preserve the section order EXACTLY as it appears in the input \u2014 do not rearrange sections:\n1. \ud83d\udcdd SUMMARY\n2. \ud83d\udca1 KEY INSIGHTS\n3. \u2753 KEY Q&A\n4. \ud83d\udee0\ufe0f TOOLS AND CONCEPTS MENTIONED\n5. \ud83d\udcce SHARED RESOURCES\n6. \ud83d\udd04 FOLLOW-UPS WORTH EXPLORING\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n- preserve the section order listed above\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
+            }
+          ]
+        }
+      }
     },
     {
-      "parameters": {
-        "model": "z-ai/glm-5.3-flash",
-        "options": {
-          "maxTokens": 32768,
-          "temperature": 0.3,
-          "timeout": 600000
-        }
-      },
       "id": "e1000000-0000-4000-8000-000000000013",
       "name": "OpenRouter Chat Model 3",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        2256,
-        512
+        2250,
+        500
       ],
-      "credentials": {
-        "openRouterApi": {
-          "id": "PLACEHOLDER",
-          "name": "OpenRouter account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst compressedText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post-compressed.md`, compressedText, 'utf8');\nreturn { json: { compressedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
-      },
-      "id": "e1000000-0000-4000-8000-000000000014",
-      "name": "Code: Save community-post-compressed.md",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2512,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const datePrefix = $json.datePrefix;\nconst callDate = new Date(datePrefix + 'T12:00:00Z');\nconst dayOfWeek = callDate.getDay();\nconst daysUntilTuesday = (2 - dayOfWeek + 7) % 7 || 7;\nconst nextTuesday = new Date(callDate);\nnextTuesday.setDate(callDate.getDate() + daysUntilTuesday);\n\nconst months = ['January','February','March','April','May','June','July','August','September','October','November','December'];\nconst day = nextTuesday.getUTCDate();\nconst suffix = day === 1 || day === 21 || day === 31 ? 'st' : day === 2 || day === 22 ? 'nd' : day === 3 || day === 23 ? 'rd' : 'th';\nconst formattedDate = `${months[nextTuesday.getUTCMonth()]} ${day}${suffix}`;\nconst inviteDate = `${nextTuesday.getUTCFullYear()}-${String(nextTuesday.getUTCMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;\n\nreturn {\n  json: {\n    compressedText: $json.compressedText,\n    outputDir: $json.outputDir,\n    formattedDate,\n    inviteDate,\n    datePrefix\n  }\n};"
-      },
-      "id": "e1000000-0000-4000-8000-000000000015",
-      "name": "Code: Calculate Next Tuesday",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2752,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ 'Next call date: Tuesday ' + $json.formattedDate + ' at 6PM ET\\n\\nHere is last week\\'s community post:\\n\\n' + $json.compressedText }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) \u2014 A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section \u2014 Copy EXACTLY as written below, including the emoji:\n\n\ud83d\udcde HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n\ud83d\udc49 Reply to this post with your questions before the call\n\ud83d\udc49 If you submit a question and you're on the call, you go first\n\ud83d\udc49 We work through questions in the order they came in\n\ud83d\udc49 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) \u2014 Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section \u2014 Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n\ud83d\udd17 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n\ud83d\udcc5 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic \u2014 like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read \u2014 not a wall of text"
-            }
-          ]
-        },
-        "batching": {}
-      },
-      "id": "e1000000-0000-4000-8000-000000000016",
-      "name": "LLM: Weekly Invite",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.9,
-      "position": [
-        3008,
-        304
-      ],
-      "retryOnFail": true
-    },
-    {
       "parameters": {
         "model": "z-ai/glm-5.3-flash",
         "options": {
@@ -295,14 +225,6 @@
           "timeout": 600000
         }
       },
-      "id": "e1000000-0000-4000-8000-000000000017",
-      "name": "OpenRouter Chat Model 4",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        3008,
-        512
-      ],
       "credentials": {
         "openRouterApi": {
           "id": "PLACEHOLDER",
@@ -311,20 +233,102 @@
       }
     },
     {
+      "id": "e1000000-0000-4000-8000-000000000014",
+      "name": "Code: Save community-post-compressed.md",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2500,
+        300
+      ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir || $('Code: Create Output Folder').item.json.outputDir;\nconst inviteDate = $('Code: Calculate Next Tuesday').item.json.inviteDate;\nconst inviteText = $json.text;\nfs.writeFileSync(`${outputDir}/${inviteDate}-weekly-invite.md`, inviteText, 'utf8');\nreturn { json: { inviteText, outputDir, inviteDate } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst compressedText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post-compressed.md`, compressedText, 'utf8');\nreturn { json: { compressedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000015",
+      "name": "Code: Calculate Next Tuesday",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2750,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const datePrefix = $json.datePrefix;\nconst callDate = new Date(datePrefix + 'T12:00:00Z');\nconst dayOfWeek = callDate.getDay();\nconst daysUntilTuesday = (2 - dayOfWeek + 7) % 7 || 7;\nconst nextTuesday = new Date(callDate);\nnextTuesday.setDate(callDate.getDate() + daysUntilTuesday);\n\nconst months = ['January','February','March','April','May','June','July','August','September','October','November','December'];\nconst day = nextTuesday.getUTCDate();\nconst suffix = day === 1 || day === 21 || day === 31 ? 'st' : day === 2 || day === 22 ? 'nd' : day === 3 || day === 23 ? 'rd' : 'th';\nconst formattedDate = `${months[nextTuesday.getUTCMonth()]} ${day}${suffix}`;\nconst inviteDate = `${nextTuesday.getUTCFullYear()}-${String(nextTuesday.getUTCMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;\n\nreturn {\n  json: {\n    compressedText: $json.compressedText,\n    outputDir: $json.outputDir,\n    formattedDate,\n    inviteDate,\n    datePrefix\n  }\n};"
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000016",
+      "name": "LLM: Weekly Invite",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        3000,
+        300
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ 'Next call date: Tuesday ' + $json.formattedDate + ' at 6PM ET\\n\\nHere is last week\\'s community post:\\n\\n' + $json.compressedText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) \u2014 A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section \u2014 Copy EXACTLY as written below, including the emoji:\n\n\ud83d\udcde HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n\ud83d\udc49 Reply to this post with your questions before the call\n\ud83d\udc49 If you submit a question and you're on the call, you go first\n\ud83d\udc49 We work through questions in the order they came in\n\ud83d\udc49 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) \u2014 Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section \u2014 Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n\ud83d\udd17 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n\ud83d\udcc5 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic \u2014 like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read \u2014 not a wall of text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e1000000-0000-4000-8000-000000000017",
+      "name": "OpenRouter Chat Model 4",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        3000,
+        500
+      ],
+      "parameters": {
+        "model": "z-ai/glm-5.3-flash",
+        "options": {
+          "maxTokens": 32768,
+          "temperature": 0.3,
+          "timeout": 600000
+        }
       },
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
       "id": "e1000000-0000-4000-8000-000000000018",
       "name": "Code: Save weekly-invite.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3264,
-        304
-      ]
+        3250,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir || $('Code: Create Output Folder').item.json.outputDir;\nconst inviteDate = $('Code: Calculate Next Tuesday').item.json.inviteDate;\nconst inviteText = $json.text;\nfs.writeFileSync(`${outputDir}/${inviteDate}-weekly-invite.md`, inviteText, 'utf8');\nreturn { json: { inviteText, outputDir, inviteDate } };"
+      }
     },
     {
+      "id": "e1000000-0000-4000-8000-000000000019",
+      "name": "HTTP Request: Get Speaker Aliases",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3500,
+        300
+      ],
       "parameters": {
+        "method": "GET",
         "url": "http://retrieval-server:8999/speaker-aliases-block",
         "options": {
           "response": {
@@ -334,56 +338,48 @@
           },
           "timeout": 10000
         }
-      },
-      "id": "e1000000-0000-4000-8000-000000000019",
-      "name": "HTTP Request: Get Speaker Aliases",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        3504,
-        304
-      ]
+      }
     },
     {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Code: Validate and Check Partner').item.json.transcriptText }}",
-        "messages": {
-          "messageValues": [
-            {
-              "message": "You are preparing a meeting transcript for embedding in a semantic knowledge base. Transform the raw transcript into an enriched, topic-segmented document that will produce high-quality, independently retrievable chunks when split.\n\n## Speaker Name Normalization\n\nApply the speaker alias map supplied in the `SPEAKER_ALIASES` context block below. If you encounter a speaker whose raw name is NOT in that map, do NOT guess a canonical form \u2014 pass the name through unchanged AND list it under \"=== UNRESOLVED SPEAKERS ===\" at the end of your output.\n\n{{ $('HTTP Request: Get Speaker Aliases').item.json.data }}\n\n## Pass 1 \u2014 Clean the transcript\n\n- Apply speaker normalization above\n- Fix obvious transcription artifacts: \"gpt four\" \u2192 \"GPT-4\", \"llm\" \u2192 \"LLM\", \"open a i\" \u2192 \"OpenAI\"\n- Remove pure filler (stutters, \"um\", \"uh\") only when they add no meaning\n- Preserve all timestamps and speaker attribution exactly\n\n## Pass 2 \u2014 Segment by topic\n\nDivide the transcript into coherent topic blocks. Start a new segment when the conversation meaningfully shifts subject. For each segment, prepend a structured header:\n\n<!--SEGMENT\ntopic: <2\u20135 word label>\nspeakers: <comma-separated list of speakers who contribute>\nkeywords: <8\u201312 terms: tools, models, concepts, companies, people explicitly mentioned>\nsummary: <2\u20133 sentence description of what this segment covers and why it matters>\n-->\n\nTarget 300\u2013500 words per segment body. If a topic recurs later, open a new segment \u2014 do not merge non-contiguous discussion.\n\n## Pass 3 \u2014 Inline annotations\n\nWithin each segment body, mark key moments:\n\n- When a tool, service, model, or product is named: append `[tool:name]` after first mention\n- When someone asks a question: wrap with `<Q>` ... `</Q>`\n- When someone answers it: wrap with `<A>` ... `</A>`\n- When a URL or resource is shared: append `[link:url-or-description]`\n- When a sentence contains a concrete recommendation or takeaway: prefix with `\u25b6`\n\n## Output format\n\nStart with a `=== SESSION ===` header block (date, duration_estimate, main_themes), then segments, then an optional `=== UNRESOLVED SPEAKERS ===` block if any speakers were not in the alias map.\n\n## Quality constraints\n\n- Do not invent or infer content not present in the source\n- Every segment must be independently understandable\n- Segment header `keywords` and `summary` are what get embedded \u2014 make them precise and information-dense\n- Prefer 8 focused segments over 4 sprawling ones"
-            }
-          ]
-        },
-        "batching": {}
-      },
       "id": "e1000000-0000-4000-8000-000000000020",
       "name": "LLM: Prep-Prompt",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        3760,
-        304
+        3750,
+        300
       ],
-      "retryOnFail": true
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Code: Validate and Check Partner').item.json.transcriptText }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "You are preparing a meeting transcript for embedding in a semantic knowledge base. Transform the raw transcript into an enriched, topic-segmented document that will produce high-quality, independently retrievable chunks when split.\n\n## Speaker Name Normalization\n\nApply the speaker alias map supplied in the `SPEAKER_ALIASES` context block below. If you encounter a speaker whose raw name is NOT in that map, do NOT guess a canonical form \u2014 pass the name through unchanged AND list it under \"=== UNRESOLVED SPEAKERS ===\" at the end of your output.\n\n{{ $('HTTP Request: Get Speaker Aliases').item.json.data }}\n\n## Pass 1 \u2014 Clean the transcript\n\n- Apply speaker normalization above\n- Fix obvious transcription artifacts: \"gpt four\" \u2192 \"GPT-4\", \"llm\" \u2192 \"LLM\", \"open a i\" \u2192 \"OpenAI\"\n- Remove pure filler (stutters, \"um\", \"uh\") only when they add no meaning\n- Preserve all timestamps and speaker attribution exactly\n\n## Pass 2 \u2014 Segment by topic\n\nDivide the transcript into coherent topic blocks. Start a new segment when the conversation meaningfully shifts subject. For each segment, prepend a structured header:\n\n<!--SEGMENT\ntopic: <2\u20135 word label>\nspeakers: <comma-separated list of speakers who contribute>\nkeywords: <8\u201312 terms: tools, models, concepts, companies, people explicitly mentioned>\nsummary: <2\u20133 sentence description of what this segment covers and why it matters>\n-->\n\nTarget 300\u2013500 words per segment body. If a topic recurs later, open a new segment \u2014 do not merge non-contiguous discussion.\n\n## Pass 3 \u2014 Inline annotations\n\nWithin each segment body, mark key moments:\n\n- When a tool, service, model, or product is named: append `[tool:name]` after first mention\n- When someone asks a question: wrap with `<Q>` ... `</Q>`\n- When someone answers it: wrap with `<A>` ... `</A>`\n- When a URL or resource is shared: append `[link:url-or-description]`\n- When a sentence contains a concrete recommendation or takeaway: prefix with `\u25b6`\n\n## Output format\n\nStart with a `=== SESSION ===` header block (date, duration_estimate, main_themes), then segments, then an optional `=== UNRESOLVED SPEAKERS ===` block if any speakers were not in the alias map.\n\n## Quality constraints\n\n- Do not invent or infer content not present in the source\n- Every segment must be independently understandable\n- Segment header `keywords` and `summary` are what get embedded \u2014 make them precise and information-dense\n- Prefer 8 focused segments over 4 sprawling ones"
+            }
+          ]
+        }
+      }
     },
     {
-      "parameters": {
-        "model": "z-ai/glm-5.3-flash",
-        "options": {
-          "maxTokens": 32768,
-          "temperature": 0.3,
-          "timeout": 1800000
-        }
-      },
       "id": "e1000000-0000-4000-8000-000000000021",
       "name": "OpenRouter Chat Model 5",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3760,
-        512
+        3750,
+        500
       ],
+      "parameters": {
+        "model": "z-ai/glm-5.3-flash",
+        "options": {
+          "maxTokens": 32768,
+          "temperature": 0.3,
+          "timeout": 600000
+        }
+      },
       "credentials": {
         "openRouterApi": {
           "id": "PLACEHOLDER",
@@ -392,19 +388,27 @@
       }
     },
     {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst preparedText = $json.text;\nif (!preparedText) {\n  throw new Error('Prep-prompt produced no content; refusing to write empty prepared-transcript.md');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, preparedText, 'utf8');\nreturn { json: { preparedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
-      },
       "id": "e1000000-0000-4000-8000-000000000022",
       "name": "Code: Save prepared-transcript.md",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
         4000,
-        304
-      ]
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst preparedText = $json.text;\nif (!preparedText) {\n  throw new Error('Prep-prompt produced no content; refusing to write empty prepared-transcript.md');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, preparedText, 'utf8');\nreturn { json: { preparedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+      }
     },
     {
+      "id": "e1000000-0000-4000-8000-000000000023",
+      "name": "HTTP Request: POST /ingest",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4250,
+        300
+      ],
       "parameters": {
         "method": "POST",
         "url": "http://retrieval-server:8999/ingest",
@@ -412,36 +416,33 @@
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({\n  session_id: $('Code: Create Output Folder').item.json.datePrefix,\n  session_date: $('Code: Create Output Folder').item.json.datePrefix,\n  session_title: 'Weekly call ' + $('Code: Create Output Folder').item.json.datePrefix,\n  artifact_paths: {\n    prepared_transcript: '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/prepared-transcript.md',\n    extracted_signal:    '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/extracted-signal.md',\n    community_post:      '/data/output/' + $('Code: Create Output Folder').item.json.datePrefix + '/community-post.md'\n  },\n  force_reextract: false\n}) }}",
         "options": {
+          "timeout": 1800000,
           "response": {
             "response": {
               "responseFormat": "json"
             }
           },
-          "timeout": 1800000
+          "retryOnFailure": {
+            "retryOnFailure": true,
+            "maxTries": 2,
+            "waitBetweenTries": 60000
+          }
         }
       },
-      "id": "e1000000-0000-4000-8000-000000000023",
-      "name": "HTTP Request: POST /ingest",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        4256,
-        304
-      ],
       "onError": "continueRegularOutput"
     },
     {
-      "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst datePrefix = $('Code: Create Output Folder').item.json.datePrefix;\nconst body = $input.first().json;\n// When /ingest succeeds, body is the chunks-written response and error is absent.\nif (body && typeof body.chunks_written === 'number') {\n  return { json: { ...body, ingest_status: 'ok', datePrefix, outputDir } };\n}\n// Otherwise treat as failure. n8n puts errors on $input.first().error when\n// onError=continueRegularOutput; the shape varies by n8n version, so cover both.\nconst err = ($input.first().error) || { message: 'Non-success response', response: body };\nconst ts = new Date().toISOString();\nconst report = `[${ts}] /ingest failed after retry\\nstatus: ${err.httpCode || 'n/a'}\\nmessage: ${err.message || JSON.stringify(err)}\\nresponse: ${JSON.stringify(err.response || body || {}, null, 2)}\\n`;\nfs.writeFileSync(`${outputDir}/ingest-error.log`, report, 'utf8');\nreturn { json: { ingest_status: 'failed', ingest_error: err.message || 'unknown', datePrefix, outputDir } };"
-      },
       "id": "e1000000-0000-4000-8000-000000000024",
       "name": "Code: Log Ingest Error",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4512,
-        304
-      ]
+        4500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst datePrefix = $('Code: Create Output Folder').item.json.datePrefix;\nconst body = $input.first().json;\nconst err = $input.first().error;\nconst ts = new Date().toISOString();\nconst logPath = `${outputDir}/ingest-error.log`;\n\n// Case 1: HTTP-level failure (non-2xx after retry exhaustion, surfaced by\n// onError=continueRegularOutput).\nif (err) {\n  const report = `[${ts}] /ingest failed after retry\\n` +\n                 `status: ${err.httpCode || 'n/a'}\\n` +\n                 `message: ${err.message || JSON.stringify(err)}\\n` +\n                 `response: ${JSON.stringify(err.response || body || {}, null, 2)}\\n`;\n  fs.writeFileSync(logPath, report, 'utf8');\n  return { json: { ingest_status: 'failed', ingest_error: err.message || 'unknown', datePrefix, outputDir } };\n}\n\n// Case 2: HTTP 2xx but the body is not the expected ingest-response shape.\nif (!body || typeof body.chunks_written !== 'number') {\n  const report = `[${ts}] /ingest returned unexpected response shape\\n` +\n                 `body: ${JSON.stringify(body || {}, null, 2)}\\n`;\n  fs.writeFileSync(logPath, report, 'utf8');\n  return { json: { ingest_status: 'failed', ingest_error: 'unexpected response shape', datePrefix, outputDir } };\n}\n\n// Case 3: HTTP 2xx with partial failure. /ingest returns 200 even when\n// chunks_failed > 0 because per-chunk Stage C/B LLM failures do not abort\n// the session. Surface them as a partial-success log so the operator\n// notices and can re-run with force_reextract=true when the upstream\n// issue is resolved.\nif ((body.chunks_failed || 0) > 0) {\n  const warnings = body.warnings || [];\n  const warningsText = warnings.length ? ('\\n  - ' + warnings.join('\\n  - ')) : ' (none)';\n  const report = `[${ts}] /ingest partial failure\\n` +\n                 `chunks_written:  ${body.chunks_written}\\n` +\n                 `chunks_failed:   ${body.chunks_failed}\\n` +\n                 `chunks_skipped:  ${body.chunks_skipped_idempotent}\\n` +\n                 `chunks_by_type:  ${JSON.stringify(body.chunks_by_type || {})}\\n` +\n                 `warnings:${warningsText}\\n\\n` +\n                 `Partial failures typically mean LLM retry exhaustion for\\n` +\n                 `individual chunks. Re-run with force_reextract=true once\\n` +\n                 `the underlying rate-limit or API issue resolves.\\n`;\n  fs.writeFileSync(logPath, report, 'utf8');\n  return { json: { ...body, ingest_status: 'partial', datePrefix, outputDir } };\n}\n\n// Case 4: clean success. Remove any stale ingest-error.log left by a prior\n// failed or partial run so the output directory accurately reflects the\n// current state (empty log would confuse operators; no log == success).\nif (fs.existsSync(logPath)) {\n  fs.unlinkSync(logPath);\n}\nreturn { json: { ...body, ingest_status: 'ok', datePrefix, outputDir } };\n"
+      }
     }
   ],
   "connections": {
@@ -699,59 +700,10 @@
       ]
     }
   },
+  "active": false,
   "settings": {
-    "executionOrder": "v1",
-    "binaryMode": "separate"
+    "executionOrder": "v1"
   },
-  "staticData": null,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
-  "nodeGroups": [],
-  "pinData": {
-    "Manual Trigger": [
-      {
-        "json": {
-          "datePrefix": "2026-05-05",
-          "transcriptFile": "/home/node/watch/2026-05-05-transcript.txt",
-          "chatFile": "/home/node/watch/2026-05-05-zoom-chat.txt",
-          "bothPresent": true,
-          "formatted": "[00:00:25] Patrick Chouinard: Hey, Marc.\n[00:00:31] Patrick Chouinard: Give a sec.\n[00:00:32] Patrick Chouinard: I think I have an audio issue.\n[00:00:36] Patrick Chouinard: Give me a second.\n[00:00:41] Marc Juretus: Hey, what's up, man?\n[00:00:42] Marc Juretus: That was me.\n[00:00:43] Patrick Chouinard: Okay.\n[00:00:45] Marc Juretus: Oh, like the backdrop.\n[00:00:47] Marc Juretus: I assume that's not your residence.\n[00:00:48] Patrick Chouinard: Would that be correct?\n[00:00:50] Patrick Chouinard: I would love it to be mine.\n[00:00:53] Marc Juretus: You know what?\n[00:00:54] Marc Juretus: I honestly would, too.\n[00:00:55] Paul Miller: I don't know if I would need forward in there, but outside of that, I'm in.\n[00:00:59] Patrick Chouinard: Actually, the only thing I would like to have is the board.\n[00:01:02] Marc Juretus: A chalkboard?\n[00:01:04] Marc Juretus: Wow, okay.\n[00:01:07] Marc Juretus: I'm not with you on that one, brother.\n[00:01:13] Patrick Chouinard: Hey, guys.\n[00:01:14] Marc Juretus: Oh, there we go.\n[00:01:16] Marc Juretus: Tiger Woods is at it again, I see.\n[00:01:19] Ty Wells: This is a hacking opportunity for me.\n[00:01:21] Patrick Chouinard: I'm going to try to hack this ball out of the rough.\n[00:01:24] Paul Miller: What's your handicap, Ty?\n[00:01:27] Marc Juretus: Ten.\n[00:01:28] Paul Miller: Oh, okay.\n[00:01:30] Paul Miller: Well, you need to be working on it.\n[00:01:32] Ty Wells: You need to get into those single digits.\n[00:01:34] Ty Wells: Absolutely.\n[00:01:35] Ty Wells: Well, that's hard to maintain, though.\n[00:01:36] Paul Miller: don't know if I'm going to do that.\n[00:01:38] Paul Miller: A lot of golf.\n[00:01:39] Ty Wells: Yeah.\n[00:01:41] Ty Wells: Well, due to the pressure of it.\n[00:01:43] Ty Wells: I'll be in and out, guys.\n[00:01:46] Patrick Chouinard: No problem.\n[00:01:54] Patrick Chouinard: Based on last week, Tyken out-designed us while golfing.\n[00:01:58] Paul Miller: So .\n[00:02:00] Paul Miller: I think, I think there's some secret sauce somehow in there.\n[00:02:04] Patrick Chouinard: My golfing is terrible though.\n[00:02:08] Patrick Chouinard: Honestly, the only thing I've done in golf is the driving range and I can get the ball really far.\n[00:02:14] Patrick Chouinard: I just have no direction whatsoever.\n[00:02:17] Paul Miller: Oh, yeah, man.\n[00:02:18] Paul Miller: That's a problem.\n[00:02:20] Marc Juretus: I'm actually a fairly good athlete.\n[00:02:26] Marc Juretus: Don't feel bad.\n[00:02:27] Marc Juretus: I can't golf at all.\n[00:02:28] Marc Juretus: All I would do is the driving range.\n[00:02:29] Marc Juretus: I could never do that or skate growing up.\n[00:02:32] Marc Juretus: That was the best.\n[00:02:39] Patrick Chouinard: Hi, Adam.\n[00:02:42] Adam: That's going to be fun this week.\n[00:02:53] Patrick Chouinard: I'm going to be able to give a more complete demo of my community.\n[00:03:02] Patrick Chouinard: I've learned more doing that about RAG than I've learned doing any other project.\n[00:03:13] Paul Miller: Wow, okay.\n[00:03:15] Patrick Chouinard: Filtering conversational data is brutally hard.\n[00:03:24] Paul Miller: Yeah, I'm just doing a project now with that.\n[00:03:27] Paul Miller: It's a project that I attempted a year ago, and it's always harder than you think.\n[00:03:34] Patrick Chouinard: Well, figure out a couple of tricks if you ever want to discuss about it.\n[00:03:41] Patrick Chouinard: I mean, I've had many, many, many hundreds of thousands of tokens thrown at the issue.\n[00:03:47] Paul Miller: Okay, no, that would be good.\n[00:03:52] Ty Wells: I realized last week I put the, or the last couple, maybe a couple of weeks ago, we did this shot.\n[00:03:59] Ty Wells: I mean, of\n[00:04:00] Ty Wells: The traditional first T-hole shot and it was on camera.\n[00:04:03] Ty Wells: So I couldn't do that again this week.\n[00:04:05] Patrick Chouinard: I forgot it was being recorded.\n[00:04:07] Patrick Chouinard: So we did.\n[00:04:09] Ty Wells: We did it already.\n[00:04:10] Ty Wells: Just so you know, we got it out of the way.\n[00:04:12] Paul Miller: Okay.\n[00:04:12] Paul Miller: Did you make power?\n[00:04:15] Ty Wells: I'm waiting on my buddy.\n[00:04:16] Ty Wells: He's probably going to shank his off to the left.\n[00:04:18] Paul Miller: Oh, okay.\n[00:04:27] Juan Torres: Hey, folks.\n[00:04:28] Juan Torres: Can you hear me?\n[00:04:29] Paul Miller: This meeting is being recorded.\n[00:04:37] Juan Torres: Sweet, sweet, sweet.\n[00:04:40] Juan Torres: Patrick, I got the the app.\n[00:04:43] Juan Torres: So I can show it to you guys.\n[00:04:45] Patrick Chouinard: Oh, good.\n[00:04:46] Patrick Chouinard: Good.\n[00:04:50] Patrick Chouinard: Yeah.\n[00:04:50] Patrick Chouinard: Sorry about my late post for the primer for this week.\n[00:04:55] Patrick Chouinard: Meaning I completely forgot about it and then remembered it that like midnight.\n[00:04:59] Patrick Chouinard: like.\n[00:05:00] Juan Torres: No worries, you're always keeping up with the group.\n[00:05:03] Patrick Chouinard: Thank you for that.\n[00:05:05] Paul Miller: Given how busy your awakens are, I'm not surprised.\n[00:05:08] Juan Torres: Yeah.\n[00:05:10] Patrick Chouinard: Well, it's just that this week was the big go-live for Claude in the Enterprise for us, so let's just say I'm the sole trainer for Claude Code.\n[00:05:24] Patrick Chouinard: And just in the pilot, I have a hundred people, so we're kind of busy.\n[00:05:29] Paul Miller: It's a big pilot.\n[00:05:34] Patrick Chouinard: And the fun part is we have people, pure dev, and we have business user with Claude Code.\n[00:05:41] Paul Miller: Those are fun.\n[00:05:44] Paul Miller: Yeah, that's scary.\n[00:05:49] Patrick Chouinard: It's like, oh, we're not going to give co-work right now, it's too dangerous.\n[00:05:53] Patrick Chouinard: Okay, so no hammer, but AK-47, no problem.\n[00:05:57] Patrick Chouinard: Okay.\n[00:06:01] Patrick Chouinard: But it allowed me to learn how to do configuration hardening for cloud code.\n[00:06:14] Juan Torres: How do you do that?\n[00:06:16] Patrick Chouinard: Actually, you can deploy a setting.json at the organizational level that supersedes the personal one.\n[00:06:26] Patrick Chouinard: And for my pilot user, I also included a seeded cloud.md that constrained them even more, but actually explained to them why they're constrained.\n[00:06:37] Patrick Chouinard: So they're not just trying to bypass it.\n[00:06:40] Patrick Chouinard: It's something that tells them, no, no, that's, we want that behavior for these reasons.\n[00:06:49] Patrick Chouinard: So yeah, quite not really easy, but really, really interesting to do.\n[00:07:11] Patrick Chouinard: That's where you learn that those tools in the enterprise is very different than VibeCoding.\n[00:07:23] Paul Miller: Have we got a quorum here?\n[00:07:27] Paul Miller: We'll just wait another minute.\n[00:07:32] Marc Juretus: Learning a new word.\n[00:07:33] Marc Juretus: What's a quorum?\n[00:07:34] Paul Miller: got to look that up.\n[00:07:37] Paul Miller: Minimum viable number of participants in the meeting.\n[00:07:41] Juan Torres: In order to make a vote.\n[00:07:43] Paul Miller: Yeah, yeah.\n[00:07:44] Marc Juretus: Big words.\n[00:07:45] Marc Juretus: 400, Alex, please.\n[00:07:48] Juan Torres: Well, wouldn't quorum come from the Latin word of cuatro, which is four?\n[00:07:54] Juan Torres: So you need four people at least in the meeting in order to make constitutional amendments.\n[00:07:59] Paul Miller: Yep.\n[00:08:00] Marc Juretus: So we're supposed to analyze prefixes.\n[00:08:02] Marc Juretus: I got you, right?\n[00:08:04] Juan Torres: The advantages of knowing Spanish.\n[00:08:06] Juan Torres: It's a combination of Latin and a little bit of Arab.\n[00:08:11] Marc Juretus: Mine used to be a lot better, my Spanish.\n[00:08:18] Marc Juretus: Hey Tom.\n[00:08:24] Paul Miller: Okay.\n[00:08:25] Paul Miller: Right, shall we...\n[00:08:29] Paul Miller: I'll just take a screenshot.\n[00:08:31] Paul Miller: Okay.\n[00:08:47] Paul Miller: We have a cool order, but Patrick, did we have any questions ahead or specific things that people were going to demonstrate this week?\n[00:08:59] Patrick Chouinard: No, nothing.\n[00:09:00] Patrick Chouinard: I and again, most probably my fault because I posted it pretty late this week.\n[00:09:05] Patrick Chouinard: Sorry about that.\n[00:09:10] Paul Miller: Good.\n[00:09:11] Paul Miller: Given you are first, did you want to start?\n[00:09:15] Patrick Chouinard: Why not?\n[00:09:17] Patrick Chouinard: Let's get this ball rolling.\n[00:09:19] Patrick Chouinard: What I wanted to show this week is I've kept on working on my recap flow slash community brain.\n[00:09:30] Patrick Chouinard: So basically digesting all of the transcript of the past two and a half years worth of this community.\n[00:09:37] Patrick Chouinard: A big thank you to our Brandon to have supplied me with all the historical transcript that I didn't yet have.\n[00:09:48] Patrick Chouinard: It's actually impressive.\n[00:09:49] Patrick Chouinard: Doing all of the pre-treatment of the information, plus the chunking, plus the summarizing and the...\n[00:10:00] Patrick Chouinard: Embedding, I've used a lot of open router model to do that, and a lot of the pre-treatment used a quite big model.\n[00:10:10] Patrick Chouinard: I used a lot of Sonnet 4.6 and Kimike 2.5 because for the pre-treatment, I need to digest the entire two and a half hours worth of transcript at once to understand the order and the topic being addressed.\n[00:10:26] Patrick Chouinard: And even that said, treating 65 sessions, or 68 sessions, sorry, so that's over 130 hours worth of transcript, it costs total, total, total, like 30 bucks worth of token.\n[00:10:48] Patrick Chouinard: So pretty impressed on that front.\n[00:10:52] Patrick Chouinard: And I also realized building that, that the chunk and the embedding are...\n[00:10:59] Patrick Chouinard: are...\n[00:10:59] Patrick Chouinard: are...\n[00:10:59] Patrick Chouinard: are...\n[00:10:59] Patrick Chouinard: are...\n[00:11:00] Patrick Chouinard: The most worthless part of the whole project, the real value is in the pre-process data, pre-chunking, pre-embedding, because the chunking and embedding, honestly, re-summarizing all of the chunks cost 75 cents for the whole 68 session out of the 30 bucks.\n[00:11:22] Patrick Chouinard: So, that can be redone easily.\n[00:11:26] Patrick Chouinard: And I've done also a lot of tests with multiple embedding models.\n[00:11:30] Patrick Chouinard: I've tossed, obviously, I'm still using Gnomic 1.5, the one that comes with Olama.\n[00:11:37] Patrick Chouinard: I've tried the latest Gnomic 2.\n[00:11:40] Patrick Chouinard: I tried the new one from Google, the Gemini Embedding V2.\n[00:11:48] Patrick Chouinard: Honestly, found almost no gain as long as I had very solid prep work done on my data.\n[00:11:57] Patrick Chouinard: So, a lot of...\n[00:12:00] Patrick Chouinard: Very interesting conclusion I got out of that process.\n[00:12:04] Patrick Chouinard: I'm using an hybrid retrieval method with both BM25 keyword search plus the vector embedding.\n[00:12:12] Patrick Chouinard: I've done a lot of metadata insertion.\n[00:12:15] Patrick Chouinard: So let me show you guys what it looks like.\n[00:12:19] Patrick Chouinard: I'm not able to share it just yet because I haven't packaged it.\n[00:12:22] Patrick Chouinard: But the goal is to eventually package the completely processed LensDB vector database for anybody to download and use, as well as the raw prepared material.\n[00:12:41] Patrick Chouinard: So anyone who wants to build on top of or re-embed it in their own application or run it under ChromaDB or Pinecone or whatever, I'm going to share everything because it's our content.\n[00:12:55] Patrick Chouinard: It's basically everything we've said over the past two and a half years.\n[00:12:58] Paul Miller: So they're designed.\n[00:13:02] Patrick Chouinard: So you see, I'm running it in OpenWeb UI, so it's a local container that connects to my local Olamo instance.\n[00:13:13] Patrick Chouinard: And the model you see here, community brain, it's basically just GPT OSS with a system prompt specifically made to interrogate that database.\n[00:13:26] Juan Torres: Nice.\n[00:13:27] Juan Torres: So you download the whole model together with the repo?\n[00:13:30] Patrick Chouinard: Yeah.\n[00:13:33] Patrick Chouinard: Well, actually, you don't need to.\n[00:13:36] Patrick Chouinard: I'm packaging it right now.\n[00:13:38] Patrick Chouinard: It's going to be a deployment instruction because the only thing that that is, is once you have GPT OSS, the standard model, you just go here and edit the configuration and you just insert a custom system prompt and save it.\n[00:13:57] Patrick Chouinard: That's it.\n[00:14:00] Patrick Chouinard: And in OpenWebUI, there's one more thing that you need to configure.\n[00:14:06] Patrick Chouinard: It's a filter function that you just copy and paste.\n[00:14:14] Patrick Chouinard: So that's just Python code to connect to the retrieval server that interrogates the LensDB.\n[00:14:24] Patrick Chouinard: And there's a bit of configuration, so basically where it is, your API key.\n[00:14:30] Patrick Chouinard: I don't care about sharing it.\n[00:14:32] Patrick Chouinard: This is local, so, and your top K and your timeout.\n[00:14:39] Patrick Chouinard: That's it.\n[00:14:42] Juan Torres: Really cool.\n[00:14:43] Patrick Chouinard: Yeah.\n[00:14:44] Patrick Chouinard: So that said, you just, I had an example here or for example.\n[00:14:53] Patrick Chouinard: So this is across all coaching call.\n[00:14:55] Patrick Chouinard: What are the most consistently discussed topic about agentic AI development?\n[00:15:00] Patrick Chouinard: This extremely hard.\n[00:15:01] Patrick Chouinard: I had to redo the database multiple times to get to answer such basic cases, not find me the latest point where this was discussed.\n[00:15:12] Patrick Chouinard: It's analyze all of the chunks across all the calls and tell me the top discussion scenario.\n[00:15:22] Patrick Chouinard: So you have all the teams, why it showed up in every round table and the calls themselves that keep talking about it.\n[00:15:32] Patrick Chouinard: So interesting.\n[00:15:37] Patrick Chouinard: Exactly.\n[00:15:37] Patrick Chouinard: So you have a bunch of like voice to CPU, what Adam's Jane talked about across the coaching call, pick three of the most substantial contribution.\n[00:15:47] Patrick Chouinard: There you go.\n[00:15:52] Patrick Chouinard: Oops.\n[00:15:53] Patrick Chouinard: And that's it.\n[00:16:03] Patrick Chouinard: That's the little prompts that are saved.\n[00:16:05] Patrick Chouinard: I want to put a little more meat behind them, so they give follow-up prompts that are a little bit more interesting.\n[00:16:16] Patrick Chouinard: But yeah, basically.\n[00:16:17] Patrick Chouinard: And what's nice is to look at the thinking of OSS, how it actually drilled inside of the content.\n[00:16:24] Patrick Chouinard: It's not perfect yet, but I did a test with CloudCode where I asked Opus to basically do a test where it uses the same system prompt as it gave to OSS, and do the retrieval itself, and then compare its answer with the one that OSS gave me.\n[00:16:50] Patrick Chouinard: And we're about 80% of the performance for 1% of the size.\n[00:17:00] Patrick Chouinard: So, GPT-OSS is giving me results that are approximately 75% as good as Opus.\n[00:17:08] Patrick Chouinard: So we see that the retrieval server does a load of job to bypass the short of the model.\n[00:17:18] Paul Miller: Have you looked at Gemma 4 yet?\n[00:17:21] Patrick Chouinard: I've tried Gemma 4, honestly.\n[00:17:24] Patrick Chouinard: It's actually what does my summarizing at the chunk level.\n[00:17:28] Patrick Chouinard: So for that, it's awesome.\n[00:17:30] Patrick Chouinard: But for retrieval logic, it could not follow instruction to save its life.\n[00:17:38] Paul Miller: Wow, interesting.\n[00:17:40] Patrick Chouinard: It does very good function call.\n[00:17:42] Patrick Chouinard: So function calling is awesome.\n[00:17:44] Patrick Chouinard: But following complex logic, I even tried the Gemma 4 30B, the biggest one.\n[00:17:51] Juan Torres: Oh, interesting.\n[00:17:53] Patrick Chouinard: Maybe half as good as OSS.\n[00:18:00] Juan Torres: You know, Patrick, I tested GPT OSS 20 billion parameters for the extraction of entities in the general ledgers, the issue that I was working with, and it was actually doing pretty well.\n[00:18:17] Juan Torres: was reaching 85% accuracy, but given the tax purposes of the clients, I did have to use a bigger model.\n[00:18:27] Juan Torres: So, but yeah, I do agree.\n[00:18:30] Juan Torres: I've seen the 80% to 20% health difference, and it really depends on your specific needs.\n[00:18:38] Juan Torres: The tolerance level, for example, in this case, you know, it allows for that 80%.\n[00:18:44] Patrick Chouinard: Yeah, but again, we're talking about the hardest possible data to query because it has to map meaning across years of transcript.\n[00:18:57] Patrick Chouinard: I clean it up, but it stays dead.\n[00:18:59] Patrick Chouinard: dead.\n[00:19:00] Patrick Chouinard: And the original content is a bunch of conversation with, I'm not sure, let me think about it, you know, a lot of site information that's not necessary.\n[00:19:11] Patrick Chouinard: So the cleaning up has to do a lot of legwork.\n[00:19:16] Patrick Chouinard: I realized that what I was doing for RecapFlow, you know, to create the detailed summary after each call was already very valuable preprocessing.\n[00:19:26] Patrick Chouinard: So I'm leveraging that on top of reclassifying the entire transcript itself.\n[00:19:34] Patrick Chouinard: all of that together is, I'm really anxious to actually package it in a deployable fashion to share it with everyone.\n[00:19:45] Patrick Chouinard: But at this point, my version four of the specs are, at a degree, I'm ready to start packaging it for deployment.\n[00:19:53] Patrick Chouinard: So hopefully, if everything goes well, I should have a package version next week to share with all of you guys.\n[00:20:00] Juan Torres: Nice.\n[00:20:03] Patrick Chouinard: And is there any questions?\n[00:20:12] Patrick Chouinard: Yeah, about superpower, I might have a little something to talk about there, not in the context of ShipKit, but in the context of superpower in and of itself.\n[00:20:24] Patrick Chouinard: As you might know, we're deploying at my work cloud code in the enterprise, and we decided to push superpower as the SDD framework by default for everyone.\n[00:20:39] Patrick Chouinard: So I'm going to have a lot of data pretty soon on its usability at scale in a pretty constrained corporate environment.\n[00:20:52] Paul Miller: Yeah, that would be helpful.\n[00:20:54] Patrick Chouinard: Yep.\n[00:20:55] Patrick Chouinard: Yeah, because it's always fun when you're an admin on your station.\n[00:21:00] Patrick Chouinard: And you configure anything any way you want, but when it's time to make that work with corporate cybersecurity department and network department and sysadmin, it's another ballgame.\n[00:21:15] Paul Miller: Indeed.\n[00:21:18] Paul Miller: Okay.\n[00:21:19] Paul Miller: Thank you, Patrick.\n[00:21:21] Paul Miller: Cool stuff.\n[00:21:23] Paul Miller: So, Marc, how are things going, Marc?\n[00:21:28] Marc Juretus: Can you hear me?\n[00:21:29] Paul Miller: Yep.\n[00:21:30] Marc Juretus: All right.\n[00:21:31] Marc Juretus: Let's check it.\n[00:21:31] Marc Juretus: Nothing really new to report.\n[00:21:33] Marc Juretus: I'm kind of all wrapped up in, this one guy that I follow, he's got agents actually investing for him.\n[00:21:40] Marc Juretus: So there's an API called Alpaca that you can, it'll give you $100,000 if you start out, obviously play money.\n[00:21:48] Marc Juretus: So I've built some agents that are just, an agent is basically investing.\n[00:21:54] Marc Juretus: What I'm more into is I love the lessons it learns each day on its own, and it writes\n[00:22:00] Marc Juretus: Back to a JSON lessons file, and it's kind of interesting to read, so it's up $3,000 already, but I just keep tweaking it a little bit each day, so I'm curious to see where it is in about two months, and that I actually may give it some money and see what it can do.\n[00:22:16] Marc Juretus: So, I'm going to get it off of my PC I saw, which you guys obviously probably know, there's those routines in Claude where it'll pull from the repo, my code, and run it, so instead of me running like jobs on the AP schedule or locally, I think I'm going to look into doing that, but it's pretty interesting where we're at right now, but I'm kind of into the guy that I followed, I guess he's got another guy in this space, and they basically have a bet on whose agent's going to earn more money in two months.\n[00:22:44] Marc Juretus: So, it's kind of cool, I'm kind of into that, but like I said, nothing real of note, I'm in, we're doing a co-pilot studio, co-pilot agent with all kinds of service now connectors, so I'm having a whole lot of fun with that.\n[00:23:00] Marc Juretus: If you did not have a sarcasm, but you know, that's where we're at right now.\n[00:23:04] Marc Juretus: That's what I'm up to.\n[00:23:06] Marc Juretus: So nothing to report really.\n[00:23:09] Paul Miller: Cool.\n[00:23:12] Marc Juretus: Oh, man, dude, it's, it's, it sucks, man.\n[00:23:16] Marc Juretus: It's, it is what it is, man.\n[00:23:18] Marc Juretus: It's what we're using.\n[00:23:19] Marc Juretus: So we're connecting to SharePoint, but it's like a six second lag time till you get it in context.\n[00:23:26] Marc Juretus: So we've got to, we've got to move it up to Azure for an AI search that indexes it.\n[00:23:33] Marc Juretus: You know, it's just stuff like that.\n[00:23:35] Marc Juretus: It's the service now connector.\n[00:23:37] Marc Juretus: You can, you can submit incidents, but the requests, you can't do it that way.\n[00:23:42] Marc Juretus: And they, well, we want an agent that they can submit an incident request.\n[00:23:45] Marc Juretus: Well, incident is pretty much out of the box.\n[00:23:47] Paul Miller: This request is a different beast.\n[00:23:49] Paul Miller: So a lot of fun.\n[00:23:51] Paul Miller: Yeah.\n[00:23:51] Paul Miller: Now we, we use Zoho help desk and we were getting a.\n[00:24:00] Paul Miller: I tiresome customer, just putting lots of terrible support tickets through the helpdesk and then following up with email, but I built a reporting system out of Claude that analyzed the Zoho helpdesks, the ticket nature, and all the emails and categorized every one of them about their appropriateness and are they taking advantage of our helpdesk?\n[00:24:30] Paul Miller: helpdesk team because everyone's starting to get really antsy with that customer, but there's some great stats and insights you can get from that and see the trends of, well, are you actually responding in a positive way or not, or is that customer taking the proverbial?\n[00:24:48] Marc Juretus: Yeah, one of our biggest problems is, and the other guy on my team, I feel bad for him because he's been tasked with, we're using a third-party CMS called Unile, and the whole, aw.\n[00:25:00] Marc Juretus: Authentication of the agent running in a widget in it where you need to pass your credentials over is not playing nice with a token.\n[00:25:07] Marc Juretus: So we're working through stuff like that.\n[00:25:10] Marc Juretus: Like you just don't look forward to work every day, if you will.\n[00:25:13] Marc Juretus: I'll put it that way, man.\n[00:25:15] Marc Juretus: Yeah.\n[00:25:17] Paul Miller: Yeah.\n[00:25:18] Paul Miller: Yeah.\n[00:25:18] Paul Miller: I hear you.\n[00:25:20] Paul Miller: Cool.\n[00:25:21] Paul Miller: Thank you, Marc.\n[00:25:24] Paul Miller: Juan, how's it going?\n[00:25:26] Juan Torres: Good.\n[00:25:27] Juan Torres: Good.\n[00:25:27] Juan Torres: I just wonder who's going to get their private yacht first.\n[00:25:30] Paul Miller: Either Brandon or Marc.\n[00:25:33] Paul Miller: The what?\n[00:25:34] Juan Torres: Private yacht.\n[00:25:36] Paul Miller: The private yacht.\n[00:25:39] Marc Juretus: Yeah.\n[00:25:40] Marc Juretus: Hey, man.\n[00:25:40] Marc Juretus: The some of these semiconductors you're running with the little investment I do on my own.\n[00:25:44] Marc Juretus: My God, man.\n[00:25:45] Marc Juretus: Like you could just invest in anything.\n[00:25:47] Marc Juretus: It just goes up right now because of all this AI stuff.\n[00:25:50] Juan Torres: But anyways, sorry Juan.\n[00:25:52] Juan Torres: That's right.\n[00:25:53] Juan Torres: Invest in the AI bubble before it burst.\n[00:25:56] Marc Juretus: Exactly.\n[00:25:57] Marc Juretus: Exactly.\n[00:25:58] Marc Juretus: Exactly, yo.\n[00:25:59] Paul Miller: I agree.\n[00:26:00] Paul Miller: I'm looking for the second wave with the tulip bubble.\n[00:26:04] Paul Miller: All right, guys.\n[00:26:05] Juan Torres: I want to just show what I did for the front end.\n[00:26:09] Juan Torres: A couple of weeks ago, I was just presenting the data web application that just was kind of a testing, diffusion, prompt engineering ground for me to be able to create the prompts for one of the each styles that I'm creating.\n[00:26:30] Juan Torres: For an app that essentially transforms a picture into an AI-style generated image, right?\n[00:26:40] Juan Torres: And this is an idea for its deployment as an AI booth studio on the field on, you know, social events.\n[00:26:49] Juan Torres: So I'm going to share what I did for the front end.\n[00:26:53] Juan Torres: Send request.\n[00:26:59] Juan Torres: Okay.\n[00:27:00] Juan Torres: I'm going to share screen number four.\n[00:27:06] Juan Torres: Can you guys see my screen?\n[00:27:08] Paul Miller: Yep.\n[00:27:09] Juan Torres: All right.\n[00:27:09] Juan Torres: So this is basically the first screen that I intend the guests to be able to see.\n[00:27:17] Juan Torres: And so I'm going to touch because this is an actual touch screen.\n[00:27:21] Juan Torres: So this is on the side of my, all right.\n[00:27:28] Paul Miller: Yep.\n[00:27:31] Juan Torres: And then the guests are able to pick a couple of styles.\n[00:27:35] Juan Torres: What do you guys want me to pick?\n[00:27:39] Paul Miller: Disney.\n[00:27:41] Juan Torres: Disney.\n[00:27:42] Juan Torres: All right.\n[00:27:43] Juan Torres: Two more.\n[00:27:47] Juan Torres: There's also other ones around here.\n[00:27:50] Juan Torres: classic oil painting, classical oil painting.\n[00:27:55] Juan Torres: All right.\n[00:27:55] Morgan Cook: What else?\n[00:27:57] Morgan Cook: Akira.\n[00:27:57] Juan Torres: Yeah.\n[00:27:58] Juan Torres: All right.\n[00:27:58] Paul Miller: All right.\n[00:27:59] Paul Miller: Yeah.\n[00:28:00] Juan Torres: So now it's going to go through the process of sending this to the inference engine.\n[00:28:06] Juan Torres: And we're going to see right now, it's going to take about a minute and a half in order to transform the images.\n[00:28:15] Juan Torres: In the meantime, I'm going to show you this is what I have for the backend transformation.\n[00:28:22] Juan Torres: So this is my test, right?\n[00:28:24] Juan Torres: I can basically go into each one of the styles that I have right here.\n[00:28:32] Juan Torres: and edit them if I want to, right?\n[00:28:36] Juan Torres: And this basically gets saved into a database, specifically a table that has the prompt test.\n[00:28:44] Juan Torres: And I have a couple of transformations here as well that I have made just to, and I, you know, I have this on the database and organized by an event in order to have a different.\n[00:29:00] Juan Torres: And the capacity to be able to test them and group them per event so that people can then have them later on.\n[00:29:19] Juan Torres: So this is the transformation, right?\n[00:29:49] Juan Torres: And you can actually get this through a new QR code.\n[00:29:54] Juan Torres: So I have my phone here.\n[00:29:57] Juan Torres: And actually, you guys might be able to actually do this.\n[00:30:01] Juan Torres: So I'm going to pull out my phone.\n[00:30:05] Juan Torres: And now, as you can see my screen right here, that's all my transformations.\n[00:30:19] Juan Torres: And I can save it on my phone.\n[00:30:26] Juan Torres: And I can click Save Images or post them in my Instagram or whatever it is.\n[00:30:33] Tom Welsh: Cool.\n[00:30:34] Juan Torres: Yeah.\n[00:30:35] Juan Torres: So this is what I have.\n[00:30:37] Juan Torres: If you guys have questions, constructive criticism.\n[00:30:43] Marc Juretus: That's cool, man.\n[00:30:44] Marc Juretus: I like that.\n[00:30:44] Paul Miller: Yeah, that's neat stuff.\n[00:30:48] Juan Torres: Thank you.\n[00:30:52] Morgan Cook: Juan, this is meant to be used at social events like weddings and bar mitzvahs or whatever, right?\n[00:31:00] Juan Torres: Yeah, I've got ideas for you to share later.\n[00:31:06] Juan Torres: Please do.\n[00:31:08] Juan Torres: I'm going share my LinkedIn on the chat so you can send me a message.\n[00:31:14] Morgan Cook: No, I just met later in today's meeting.\n[00:31:16] Juan Torres: Oh, okay.\n[00:31:17] Juan Torres: Gotcha.\n[00:31:21] Patrick Chouinard: Is it publicly available?\n[00:31:22] Juan Torres: No.\n[00:31:25] Juan Torres: It's authenticated with clerk.\n[00:31:28] Juan Torres: It says staging because I specifically choose the domain staging.\n[00:31:35] Juan Torres: Let me show you again.\n[00:31:36] Juan Torres: So what I'm doing here, so as you can see right here, it has staging right here because this is the staging environment.\n[00:31:51] Juan Torres: I haven't placed it in an out-of-scale group yet.\n[00:31:54] Juan Torres: So it's just an EC2 instance, right?\n[00:31:57] Juan Torres: So, um...\n[00:32:00] Juan Torres: I'm going to do a couple of tests in the field with the staging environment because right now I don't think it's necessary because the current egress IO network data is being processed by CloudFront, not by the EC2 instance, at least for the front-end application.\n[00:32:19] Juan Torres: So I don't think it's going to get overwhelmed, but later on if I try to have several events, I do think I'm going to have to out-of-scale it.\n[00:32:31] Patrick Chouinard: Because we might be 20 version in the future by that time, but this is the type of thing that my boss would actually love for the Christmas party.\n[00:32:42] Juan Torres: I don't know where you are, you're in Canada, right?\n[00:32:44] Patrick Chouinard: Yeah.\n[00:32:45] Juan Torres: Damn, I don't know how I can reach you.\n[00:32:51] Patrick Chouinard: Well, if it's ever available online, it would definitely be a service you would be ready to pay for.\n[00:32:58] Juan Torres: You know, maybe...\n[00:33:00] Juan Torres: Maybe if it picks up from a field thing to license in it, you know, maybe that's a thing that I can do in the future.\n[00:33:10] Juan Torres: But for now, Christmas party, you have a bit of time.\n[00:33:14] Juan Torres: We'll see.\n[00:33:22] Paul Miller: Oh, great stuff, Juan.\n[00:33:24] Juan Torres: Thank you.\n[00:33:25] Paul Miller: That's been fun.\n[00:33:27] Paul Miller: What's the end game for you with that project?\n[00:33:30] Paul Miller: Where do you want to take it?\n[00:33:33] Juan Torres: Well, I was trying to really deploy an application, a functional application that can be tested on the field on my own just to also exercise my DevOps capacity.\n[00:33:50] Juan Torres: And, you know, it's a test of my capacity to actually create AI applications for when I start applying.\n[00:34:00] Paul Miller: Time for jobs.\n[00:34:02] Juan Torres: And then test it on the field and see how popular it gets and see if people like it.\n[00:34:12] Paul Miller: Brilliant.\n[00:34:12] Paul Miller: Thanks, Juan.\n[00:34:15] Paul Miller: Adam, how's it going?\n[00:34:22] Adam: Pretty good.\n[00:34:23] Adam: We had over here an open claw meetup.\n[00:34:28] Adam: One of the people in town met, organized a bunch of people to go meet up and turned out to be an 80s bar.\n[00:34:35] Paul Miller: So that was kind of fun.\n[00:34:39] Adam: Mostly talked about, I don't know, it seemed like a lot of us were doing our own thing and just kind of got there and complained about big corporations and how, you know, it's better to be on your own and not have to deal with all the inefficiencies and just kind of talking about how, like...\n[00:35:00] Adam: Like, yeah, just being small and nimble.\n[00:35:04] Adam: Well, of course, we're all biased, right?\n[00:35:06] Adam: But we're all thinking that all these small companies are going to be coming out and taking a big chunk out of the bigger organizations.\n[00:35:17] Paul Miller: What was the general mood about where OpenClaw is now that it's under the OpenAI umbrella?\n[00:35:27] Adam: Well, it turned out most people were just talking about agents in general, not necessarily OpenClaw, and how AI wasn't impacting basically the economy as more of a whole, it seemed like.\n[00:35:44] Adam: Yeah, the conversation very quickly changed from OpenClaw-specific to just more general, because, I mean, I played around with OpenClaw, but I don't use it, and that's how most of the people were there.\n[00:35:58] Paul Miller: Have you got into...\n[00:36:00] Paul Miller: We're doing the Hermes one, Hermes, the Hermes agent instead, sounds better.\n[00:36:09] Adam: No, I'm just mostly working on the SaaS product today, integrating the, I decided to go with Zoho CRM, integrating that in, and to my surprise, it didn't just work, so just trying to debug what's going on.\n[00:36:25] Paul Miller: There's a great API with Zoho CRM, and they do have an MCP that's worth doing, I've had a deep play with that, because that's our CRM tool.\n[00:36:38] Adam: Okay.\n[00:36:39] Adam: The MCP, is that for development, or for getting at customer data?\n[00:36:46] Paul Miller: More development, but I'd probably start with the API.\n[00:36:50] Paul Miller: First, it does expose quite a lot, but it's got tokens, token limits is the only challenge you might have to top up for tokens that you're able to pull.\n[00:37:00] Paul Miller: Pulled through us from the API.\n[00:37:01] Adam: Yeah.\n[00:37:04] Adam: All right.\n[00:37:05] Adam: Thanks.\n[00:37:07] Paul Miller: Cool.\n[00:37:08] Paul Miller: Anything else?\n[00:37:09] Paul Miller: Any other updates?\n[00:37:11] Adam: Any other cool things on the horizon?\n[00:37:14] Adam: Well, not work-related, or not, I guess, AI-related, but yeah, my son's graduating Saturday, so heading out there for that.\n[00:37:23] Paul Miller: Far more exciting this week.\n[00:37:25] Adam: Yes.\n[00:37:27] Paul Miller: Cool.\n[00:37:28] Paul Miller: Okay.\n[00:37:29] Patrick Chouinard: Yep.\n[00:37:30] Patrick Chouinard: And I just realized now that I will have to do a search and replace in the transcript, because if I give this transcript to Claude Code, it's going to want to charge me out of the subscription.\n[00:37:41] Adam: Oh, yeah.\n[00:37:43] Patrick Chouinard: It's not a joke.\n[00:37:44] Patrick Chouinard: I found one where we pronounced the word, and it actually jumped out of the subscription token.\n[00:37:51] Paul Miller: Yep.\n[00:37:52] Paul Miller: Oh, God.\n[00:37:53] Paul Miller: I'm quite paranoid about it.\n[00:37:55] Paul Miller: Yeah.\n[00:37:56] Paul Miller: It's not a bad word in Claude Code.\n[00:37:58] Paul Miller: Let's do a search and replace.\n[00:37:59] Paul Miller: replace.\n[00:38:00] Patrick Chouinard: Nice.\n[00:38:01] Paul Miller: We can't even talk about certain subjects?\n[00:38:03] Paul Miller: Isn't that freaking?\n[00:38:06] Patrick Chouinard: It's not that we can talk about it.\n[00:38:08] Patrick Chouinard: Since I processed the transcript, now I have to add a pre-processed step where I need to remove it because if Cloud Code sees that name, it's going to jump all the processing out of subscription and go into token mode.\n[00:38:23] Morgan Cook: Yeah, that's crazy.\n[00:38:26] Patrick Chouinard: Yep.\n[00:38:30] Paul Miller: All right.\n[00:38:31] Paul Miller: Thanks, Adam.\n[00:38:34] Paul Miller: Ty, are you between shots at the moment?\n[00:38:41] Paul Miller: How's the round going?\n[00:38:45] Paul Miller: We might have to come back to Ty.\n[00:38:47] Paul Miller: could be getting pretty scary on the course.\n[00:38:52] Paul Miller: Tom, are you still there, Tom?\n[00:38:59] Paul Miller: All\n[00:39:00] Paul Miller: And still wanting to jump on?\n[00:39:03] Tom Welsh: I was.\n[00:39:04] Tom Welsh: I was speaking.\n[00:39:05] Tom Welsh: I thought I'd unmuted myself.\n[00:39:07] Tom Welsh: Yeah, I'm still working on my membership system for my military association.\n[00:39:11] Tom Welsh: And we've got into system engineering stuff now.\n[00:39:15] Tom Welsh: And because being military, you think we'd be organized, but there's about 30,000 blinking cooks in this place.\n[00:39:23] Tom Welsh: So we have a web system, a website, obviously, where we can play our memberships in through, which then goes off to a back end.\n[00:39:31] Tom Welsh: Zerto, or Xero, accounting system.\n[00:39:35] Tom Welsh: And then we've got my system, which is taking the original system of 5,000 users and exposing it and making it work.\n[00:39:42] Tom Welsh: So we're just trying to tie it all back in together.\n[00:39:45] Tom Welsh: So the websites run on WordPress.\n[00:39:47] Tom Welsh: So I'm looking at WordPress APIs for that.\n[00:39:49] Tom Welsh: I'm looking at the API for Xero to pull stuff in.\n[00:39:53] Tom Welsh: And no one can agree on the mechanism for who creates the membership number where.\n[00:40:00] Tom Welsh: Which is obviously a very big question once you try to bill people, because we've got billing coming in.\n[00:40:06] Tom Welsh: We can't attribute it to anybody.\n[00:40:08] Tom Welsh: Like, well, that's just ridiculous to start with.\n[00:40:12] Tom Welsh: So this is what I'm working with currently.\n[00:40:14] Tom Welsh: And it's, I wouldn't say challenging, but entertaining more than anything.\n[00:40:20] Paul Miller: Have you got the Xero API?\n[00:40:22] Paul Miller: Because it's got quite a few different hooks.\n[00:40:24] Tom Welsh: Yeah.\n[00:40:24] Tom Welsh: Yeah.\n[00:40:25] Tom Welsh: I've got, I've got, I've got that now.\n[00:40:26] Tom Welsh: Yeah.\n[00:40:26] Tom Welsh: It's just, I was laid out in Excalage Auditor yesterday saying, look, it comes in this way, then it spurs off from, so we take, we take payment for the association through Stripe.\n[00:40:40] Tom Welsh: Yeah.\n[00:40:40] Tom Welsh: And Stripe pushes to Xero.\n[00:40:44] Tom Welsh: So I can, I can see that.\n[00:40:45] Tom Welsh: I can see them coming in.\n[00:40:46] Tom Welsh: It's just trying to then, but Xero's got no membership numbers.\n[00:40:50] Tom Welsh: So I'm going to look, well, I can, I can match all this up.\n[00:40:53] Tom Welsh: We just put another field in here.\n[00:40:55] Tom Welsh: Let's get these linked.\n[00:40:57] Paul Miller: So yeah.\n[00:40:58] Tom Welsh: Let's just try and get the account.\n[00:41:00] Tom Welsh: And the secretary of the association to agree that this is what needs to be done.\n[00:41:05] Tom Welsh: But apart from that, nothing overly exciting for me.\n[00:41:10] Paul Miller: Cool.\n[00:41:13] Paul Miller: All right.\n[00:41:14] Paul Miller: Who have got next?\n[00:41:15] Paul Miller: Morgan.\n[00:41:17] Paul Miller: How's things going with you?\n[00:41:21] Morgan Cook: Going good.\n[00:41:21] Morgan Cook: Really busy.\n[00:41:22] Morgan Cook: I've got a little movement on the heritage plot.\n[00:41:26] Morgan Cook: So the client is on board, just a slow process.\n[00:41:31] Morgan Cook: So I just got to push through it.\n[00:41:35] Morgan Cook: I've got a client that I'm helping with a book right now that she wants to push out to Kindle Direct Print.\n[00:41:45] Morgan Cook: And then the foundation is requesting, one of the foundations is requesting a display unit that they can have in their lobbies and display content.\n[00:41:58] Morgan Cook: And so...\n[00:41:59] Morgan Cook: so...\n[00:42:00] Morgan Cook: I did a bunch of research.\n[00:42:01] Morgan Cook: He had originally suggested he had a bunch of old iPads, and I'm like, man, that's not really going to work all that well.\n[00:42:11] Morgan Cook: I mean, it can, but it's a pain in the butt to update.\n[00:42:15] Morgan Cook: And so this last weekend, I thought, you know what, I'm going to build this.\n[00:42:18] Morgan Cook: I've thought about this several times before about having a kiosk, you know, slideshow kind of display that shows information and updates as it goes.\n[00:42:29] Morgan Cook: And, Juan, if you're paying attention, this is what I'm talking about for you.\n[00:42:33] Morgan Cook: So in the background of my video, if you guys maximize my screen, I can't share it because it's actually running, is one of the kiosks.\n[00:42:42] Morgan Cook: And this runs on a Raspberry Pi, and it self-boots and recovers from any kind of failure.\n[00:42:52] Morgan Cook: Is it a touchscreen, or is that?\n[00:42:56] Paul Miller: No, it's just a big, like, 40-inch key.\n[00:43:03] Morgan Cook: And so it runs in a Raspberry Pi, and it runs, it's connected through Wi-Fi off the network, but it doesn't rely on the network at all for the content.\n[00:43:13] Morgan Cook: So what it does is it's a push and pull process, the Raspberry Pi does.\n[00:43:18] Morgan Cook: So it'll check and check a manifest, and if there's something new, it'll go pull all the new content, and then just runs locally.\n[00:43:25] Morgan Cook: So if it can't find anything new, it just runs with whatever you have on there.\n[00:43:28] Morgan Cook: For you, the thought that came to my mind with your project was, at an event, you could have a couple of these set up where the pictures that people are taking end up rotating out to the public, you know, so everybody can see the information going on, right?\n[00:43:47] Morgan Cook: As well as other content that would be relative.\n[00:43:50] Morgan Cook: If it was like a wedding or something, you know, they could have some wedding information and different content shown throughout the event.\n[00:43:58] Morgan Cook: So just...\n[00:44:01] Juan Torres: So you're saying that use a Raspberry Pi as the computational unit to then project in the screen the rotation of the image is transformed?\n[00:44:11] Morgan Cook: So everything's running off this right here.\n[00:44:13] Juan Torres: Yeah.\n[00:44:14] Morgan Cook: The little Pi, just on the HDMI.\n[00:44:17] Morgan Cook: It boots Chrome up into a, not a headless state, but a skinless state, right?\n[00:44:24] Morgan Cook: So it's maximized full screen, no mouse, no keyboard, no dialogues ever pop up.\n[00:44:30] Morgan Cook: It just boots right into Chrome basically.\n[00:44:32] Morgan Cook: And then sits and rotates every, it's got a manifest and the manifest for my specific situation has each slide has a specific time.\n[00:44:45] Morgan Cook: There's a default time.\n[00:44:46] Morgan Cook: And then every slide has its own time.\n[00:44:48] Morgan Cook: If you need one that has a lot of content, you want to have a little on there a little longer and then has expiration dates.\n[00:44:55] Morgan Cook: So for the foundation, there's some of the things that they put.\n[00:44:59] Morgan Cook: treffen.\n[00:45:00] Morgan Cook: Those are like job fairs that have a time, and they'll count down.\n[00:45:07] Morgan Cook: And so the timer, as soon as that's in the past, historically, it'll just stop displaying that slide altogether.\n[00:45:15] Juan Torres: You modulated this Raspberry Pi in order to do all of this?\n[00:45:20] Morgan Cook: Yeah, it's running on the Raspberry Pi OS.\n[00:45:25] Juan Torres: Nice.\n[00:45:26] Morgan Cook: And then it's just a couple of scripts, really, that does it.\n[00:45:31] Morgan Cook: So when it boots, it boots into the script, the script loads everything, and it starts running.\n[00:45:36] Morgan Cook: Nice.\n[00:45:38] Paul Miller: Cool.\n[00:45:39] Morgan Cook: So going back to my plan for it, what I want to do with the next step, what I tested this last weekend was just the engine.\n[00:45:46] Morgan Cook: Make sure I can get the Raspberry Pi engine working, and I can push files to it, and it'll update.\n[00:45:52] Morgan Cook: So I don't have to do anything with that.\n[00:45:53] Morgan Cook: I could push a couple files out there, and in five minutes, this next cycle, it would update and start.\n[00:46:00] Morgan Cook: displaying new slides.\n[00:46:02] Morgan Cook: For my purpose on the foundation, what I want to do is the front end of that then is to allow the administrator, all those slides that you're seeing is AI generated from some simple markdown.\n[00:46:16] Morgan Cook: So it takes the markdown, the AI generates this content, that's a countdown to a scheduled event that's going to happen, right?\n[00:46:27] Morgan Cook: It has a QR code that you could scan to register for the event, those kind of things.\n[00:46:33] Morgan Cook: So the AI on the back side of it is going to allow the non-technical user to say, okay, I've got this event, here's the generic information, just as simple as possible, right?\n[00:46:48] Morgan Cook: In a markdown kind of JSON, just the name, content, everything.\n[00:46:53] Morgan Cook: And then it'll build the slide to the perfect size with the nice color, the boxes and everything.\n[00:46:59] Morgan Cook: interesting.\n[00:47:00] Morgan Cook: And push it out to the device.\n[00:47:04] Morgan Cook: So that's the next phase is to build that for what I'm doing with it, for what you would have, same kind of thing.\n[00:47:10] Morgan Cook: You've already got the front end side of it done, taking the picture, generating the image.\n[00:47:15] Morgan Cook: And then all you got to do is push it to a folder, a hot folder, and let the hot folder sync it with the devices.\n[00:47:22] Morgan Cook: And then that would be a cool, cool little event display, you know, added thing to the whole event.\n[00:47:30] Morgan Cook: You know, I think that'd be cool.\n[00:47:32] Juan Torres: Yeah.\n[00:47:34] Juan Torres: Great.\n[00:47:34] Juan Torres: Yeah.\n[00:47:35] Juan Torres: I got to think about that.\n[00:47:38] Morgan Cook: Well, I'll have no problem sharing what I'm doing with this.\n[00:47:42] Morgan Cook: We're on two different paths as far as that goes, but I'll share what I have with the Raspberry Pi.\n[00:47:48] Morgan Cook: It's real simple.\n[00:47:49] Morgan Cook: I've got a whole setup script and a duplication for the ISO image.\n[00:47:54] Morgan Cook: So you can just duplicate it to create as many as you wanted.\n[00:47:58] Morgan Cook: And then you just smack it on the back.\n[00:48:01] Morgan Cook: And there's plenty of those all over the place.\n[00:48:03] Morgan Cook: So, especially at event centers now, they usually have at least one or two hanging around, or you could bring a couple and set them up.\n[00:48:11] Juan Torres: For sure.\n[00:48:13] Morgan Cook: Do you have LinkedIn?\n[00:48:15] Morgan Cook: LinkedIn?\n[00:48:16] Juan Torres: Yeah.\n[00:48:16] Juan Torres: Do I have you on LinkedIn?\n[00:48:17] Juan Torres: I'm not even sure.\n[00:48:21] Morgan Cook: Do I have a link to what?\n[00:48:23] Morgan Cook: No, LinkedIn.\n[00:48:23] Morgan Cook: asking?\n[00:48:24] Morgan Cook: I do have a LinkedIn account.\n[00:48:26] Juan Torres: Okay.\n[00:48:27] Juan Torres: I'll add you.\n[00:48:28] Juan Torres: I'll send you mine in private chat.\n[00:48:30] Morgan Cook: Okay.\n[00:48:33] Paul Miller: I'll DM you as well, Morgan, because I've got a conference that I sponsor, and we've got a few screens there.\n[00:48:43] Paul Miller: And it's always that last minute rush to chuck up a few slides, and it's usually quite messy in the way that we manage the screens.\n[00:48:50] Paul Miller: Right.\n[00:48:51] Paul Miller: If we can have a little pie box and have it nicely managed, that would be really cool.\n[00:48:58] Morgan Cook: Yeah.\n[00:48:59] Morgan Cook: So, that's the .\n[00:49:00] Morgan Cook: The moat on this whole thing is the PiBox is the engine that drives it, and it will communicate back to the SaaS environment where the user is editing the content and pushing it, right?\n[00:49:11] Morgan Cook: So that's where you control the moat of this specific SaaS environment is through the Pi and the engine that drives it.\n[00:49:19] Morgan Cook: There's a bunch of different types of these things out there.\n[00:49:30] Morgan Cook: You know, I'm not saying this is the first kind of push of this content, but it was just nice to be able to throw it together on a weekend and prove the concept and lock it down a little bit, you know?\n[00:49:46] Paul Miller: Hardware and software, too, which is always fun.\n[00:49:49] Morgan Cook: What's that?\n[00:49:50] Paul Miller: Hardware and software, which is always fun to have something a bit more tangible.\n[00:49:56] Morgan Cook: Exactly.\n[00:50:00] Paul Miller: That's cool.\n[00:50:02] Morgan Cook: Somebody sent some stuff in the chat, I can't quite see it.\n[00:50:09] Bastian Venegas: Yeah, I sent something.\n[00:50:11] Bastian Venegas: It's an alternative to Playwright that, instead of running Chrome, uses something based in SIG and uses like one-tenth of the memory.\n[00:50:20] Bastian Venegas: It can be useful for some automations that access to the browser.\n[00:50:29] Morgan Cook: Cool, I appreciate that.\n[00:50:31] Morgan Cook: Yeah, I just went with Chrome because it was one that I knew and that I knew I could run headless, or not headless, but as a kiosk with no inputs and frames or scrolling or any of that kind of stuff, you know?\n[00:50:49] Bastian Venegas: Yeah, JavaScript.\n[00:50:52] Morgan Cook: Yeah.\n[00:50:56] Morgan Cook: So it handles garbage as well.\n[00:50:59] Morgan Cook: Like if somebody puts a\n[00:51:00] Morgan Cook: A bunch of stuff in there that's not formatted properly or whatever, it'll ignore those slides or images or any of that kind of stuff.\n[00:51:11] Morgan Cook: The engine looks for any kind of injection in JavaScript and all that.\n[00:51:15] Morgan Cook: So it's actually pretty cool.\n[00:51:19] Morgan Cook: I've been running it for about three days now, and so we'll see how it goes.\n[00:51:28] Morgan Cook: But I'll send you some information.\n[00:51:30] Morgan Cook: I think it would be cool for your project, Juan.\n[00:51:32] Juan Torres: Thank you.\n[00:51:33] Juan Torres: That would be great.\n[00:51:36] Morgan Cook: And that's about all I have, really, for this week.\n[00:51:39] Morgan Cook: I've been quite busy.\n[00:51:41] Morgan Cook: I've got a lot of work to do still on the AppScript for automating the other stuff for that foundation.\n[00:51:51] Morgan Cook: And we'll see how that pans out.\n[00:51:53] Morgan Cook: I haven't really started it yet, but I did one little test run to see how complicated it's going to be.\n[00:51:59] Morgan Cook: It seems like it will be okay.\n[00:52:00] Morgan Cook: All right.\n[00:52:00] Morgan Cook: I just got to learn the environment.\n[00:52:05] Juan Torres: Got to respect hardware engineering.\n[00:52:09] Morgan Cook: Yeah.\n[00:52:11] Morgan Cook: Well, that's the thing.\n[00:52:12] Morgan Cook: Some of the limitations on this is right now I have no real transitions.\n[00:52:17] Morgan Cook: There is a bunch of transitions I can apply, but the pie, if it has to do any kind of repaint in the transition, then that's going to create a jittery thing.\n[00:52:26] Morgan Cook: If it's just a transition or transpose, like, you know, start at minus 100 and move X to zero for like a slide in effect or something like that.\n[00:52:36] Morgan Cook: Those are smooth because it's not a repaint function.\n[00:52:38] Morgan Cook: It's just a, it's just repositioning the actual image bits.\n[00:52:43] Morgan Cook: It can handle those pretty good or fade in and fade out.\n[00:52:46] Morgan Cook: Also, let just create two, two interfaces and have one hidden and then show the other one over the top.\n[00:52:52] Morgan Cook: Right.\n[00:52:52] Morgan Cook: So there's some stuff I can enhance there for the transitions, but you can't put too much load on it.\n[00:53:00] Morgan Cook: It's, you know, the memory and limitations on the graphics inside the Raspberry Pi is what we're limited to.\n[00:53:07] Juan Torres: Have you thought of utilizing touchscreens together with your setup, especially when they have to input data, I don't know, or forms?\n[00:53:16] Juan Torres: I mean, I don't know.\n[00:53:17] Juan Torres: It's just lights right now, but maybe forms in the future.\n[00:53:21] Morgan Cook: Yeah, this device is meant to be, and from where I'm going with it, display only.\n[00:53:26] Morgan Cook: No kind of input whatsoever.\n[00:53:30] Morgan Cook: So think about it as something that's, you know, 10, 15 feet up in the air on the side of a wall or something that's not meant to be interacted with at that level.\n[00:53:42] Morgan Cook: The interaction is through QR code.\n[00:53:47] Morgan Cook: You follow the link after that.\n[00:53:52] Paul Miller: Cool.\n[00:53:53] Paul Miller: Thanks, Morgan.\n[00:53:54] Paul Miller: That's really neat stuff.\n[00:53:56] Tom Welsh: Sorry, I'm just going to jump in there a minute.\n[00:53:58] Tom Welsh: It's just literally just when she's\n[00:54:00] Tom Welsh: 15 feet in the air, half the train companies I work for around the country here have these custom information screens just sit there displaying this stuff.\n[00:54:09] Tom Welsh: can just see this being perfect, that kind of operation, you know, host the managed ones and just push content to them daily because all the CIS screens are just HTML.\n[00:54:20] Morgan Cook: Right, this supports any kind of graphics, so the graphics that are being generated are generated to the, you know, 69 ratio, but then the HTML, it'll generate, the AI piece generates one static HTML with built in JavaScript to do whatever needs to be done on that specific page, and those are all loaded into an iframe inside the content.\n[00:54:49] Morgan Cook: So the next phase is to create, you know, a slide folder for one slide, it might have an actual folder with the HTML and its associated resources.\n[00:55:00] Morgan Cook: You know, any, any graphics and JavaScript or CSS that it needs to display that one slide.\n[00:55:06] Tom Welsh: Yeah.\n[00:55:07] Morgan Cook: And so there can be some decent animation and graphics and some of this stuff it's, you can't see it through the video, but it's, it's pulsating and, you know, it's not just a dead static image.\n[00:55:19] Morgan Cook: has animation in it a little bit.\n[00:55:23] Paul Miller: Yeah, that, that, that could be a winner for you, Tom.\n[00:55:30] Tom Welsh: Yeah, exactly what I was thinking.\n[00:55:36] Paul Miller: Yeah, Morgan will jump on a plane.\n[00:55:38] Paul Miller: He'll do the London, he'll do the London thing.\n[00:55:41] Paul Miller: As long as you put him up at a good hotel in Mayfair and get it, pick him up in a, in a fancy car at the airport, but a business class pipe.\n[00:55:51] Paul Miller: He's there.\n[00:55:51] Paul Miller: You're out of, you're out of it now, Paul.\n[00:55:53] Tom Welsh: The place to be now is Raffles on Whitehall.\n[00:55:56] Paul Miller: Oh, okay.\n[00:55:57] Tom Welsh: Stay there one night.\n[00:55:59] Tom Welsh: Three thousand.\n[00:56:02] Paul Miller: I used to stay at Raffles because it was the company hotel when I worked for Insta Young, which it seemed an utterly ridiculous place to have as a company hotel, but certainly wasn't that much per night.\n[00:56:17] Tom Welsh: This is in Whitehall, which is basically our government area, and I was sitting in the bar one day and watching all these government drones come in, having meetings, drinking really expensive coffee and really expensive biscuits, and going, I'm going, this is taxpayers' money you're spending.\n[00:56:35] Paul Miller: Yeah, all over that.\n[00:56:38] Paul Miller: Don't worry.\n[00:56:41] Paul Miller: Yeah, scary stuff.\n[00:56:46] Paul Miller: Okay.\n[00:56:48] Paul Miller: Thanks, Morgan.\n[00:56:50] Paul Miller: Does anyone else want to jump on?\n[00:56:54] Paul Miller: Adam, did you want to?\n[00:56:55] Paul Miller: I don't think we covered you earlier.\n[00:56:58] Paul Miller: Anyone else want\n[00:57:00] Paul Miller: Were there any questions?\n[00:57:03] Paul Miller: We did have some questions on where people's thinking's at with using the superpowers versus, and we did cover off a question a few weeks ago around sort of how are things evolving with using ShipKit now.\n[00:57:24] Paul Miller: But did anyone want to talk about where their thinking is at at the moment with superpowers and Claude, or superpowers and Codex for that matter?\n[00:57:37] Patrick Chouinard: Yeah, actually, I think that's the nice thing about Superpower is they're bridging the gap with Codex because I was always afraid to switch to Codex full time.\n[00:57:50] Patrick Chouinard: I use it for debugging and for certain tasks, but to switch it for full development process was more of all of the nicety that I\n[00:58:04] Patrick Chouinard: So basically it's not as much as I was attached to the model as I was attached to the harness, but now with superpower that exists on boat harness, basically blurs the line.\n[00:58:15] Patrick Chouinard: And to be quite honest, by next month, I'm thinking of shutting down my Claude Max and flipping to Codex Max that now has a $100 a month tier in between the $20 and $200.\n[00:58:31] Patrick Chouinard: And it's vastly more generous than Claude Limit, so if I have superpower on the other side, I have my full development harness there.\n[00:58:46] Patrick Chouinard: And superpower, it's really, and they work everywhere.\n[00:58:49] Patrick Chouinard: They work in GitHub Copilot, they work on Claude Co, they work on Codex.\n[00:58:56] Patrick Chouinard: And honestly, they're getting better every single month.\n[00:58:59] Patrick Chouinard: They've added.\n[00:59:01] Patrick Chouinard: So yeah, really, really a big fan of using it, even in brownfield projects, so not just for the greenfield projects, but even doing a new additional functionality in an existing application or anything of that sort, going very, very good.\n[00:59:27] Paul Miller: It's interesting you're saying that, and I think from my own experience, I'm finding Claude a bit, getting a bit distracted at the moment.\n[00:59:38] Paul Miller: It's the token limits are being reached much more.\n[00:59:42] Paul Miller: I've been on the $200 plan, and for the first time yesterday, I nearly maxed it out in a week, and I'm kind of thinking, well, I'm not happy with the results that are coming out of it.\n[00:59:54] Paul Miller: And I'm spending, spending a lot of tokens.\n[00:59:57] Paul Miller: So yeah, I think if it's, if it's...\n[01:00:00] Paul Miller: If you guys have made the jump, you've gone for Codex, but you're doing it with superpowers as well, that would be an easier transition from my perspective.\n[01:00:10] Patrick Chouinard: The only sad thing to me is the fact that there's not yet any remote control or mobile Codex application.\n[01:00:18] Paul Miller: Okay.\n[01:00:19] Patrick Chouinard: That's something that's very, very nice with Cloud Code, honestly, to keep a process going while you're in the gym or on the road.\n[01:00:28] Patrick Chouinard: It's really powerful.\n[01:00:30] Paul Miller: Yep.\n[01:00:31] Paul Miller: Yep.\n[01:00:32] Paul Miller: Yep.\n[01:00:32] Patrick Chouinard: All right.\n[01:00:33] Paul Miller: Well, I think it sounds worth doing.\n[01:00:38] Paul Miller: Yeah, no, I'm going to make the move.\n[01:00:41] Paul Miller: I've spent a week trying to fix my little nav map, and Claude's got to a point where it just can't fix it.\n[01:00:51] Paul Miller: I think I need to hand it to Codex and maybe put the superpowers in there and get it to re-look at it.\n[01:00:57] Patrick Chouinard: the We'll have do Here you're end You're going corner.\n[01:01:00] Patrick Chouinard: Actually, you know that if you use the Codex plugin for CloudCode, you can call Codex Rescue.\n[01:01:07] Patrick Chouinard: So basically, it flips the work to Codex, but with all of the contexts that you had in CloudCode.\n[01:01:15] Patrick Chouinard: So everything Cloud tried to debug that didn't work, it passed it on to Codex, and then Codex Rescue CloudCode by fixing the issue for all.\n[01:01:24] Paul Miller: I'll have to give it another go, because I tried it the other day, and I had some weird error loading up the Codex Claude variant.\n[01:01:35] Paul Miller: I'll reinstall it and try and resolve what the technical issue was, but there was some weird error with it.\n[01:01:42] Paul Miller: But is it pretty stable from your perspective, adding that?\n[01:01:47] Patrick Chouinard: Well, I've been using it, it's been my current harness is running the Codex plugin in auto-review mode.\n[01:01:56] Patrick Chouinard: So basically, every time it completes a coding...\n[01:02:01] Patrick Chouinard: Iteration, sends everything to be reviewed by Codex, sends it back, correct whatever it finds, and it loops until it finds nothing.\n[01:02:09] Patrick Chouinard: So, so far, it artificially makes it look like CloudCode is doing good work, but I realized that CloudCode is wasting a whole lot of token being corrected by Codex.\n[01:02:22] Patrick Chouinard: That's what showed me that the quality seemed to be dripping, even though I didn't feel it because Codex rescued it all the time, but yeah.\n[01:02:33] Morgan Cook: Does anybody notice the slowdown of Sonnet?\n[01:02:37] Morgan Cook: Like, it's just really slow.\n[01:02:40] Patrick Chouinard: Yep.\n[01:02:40] Ty Wells: They're all slow.\n[01:02:41] Ty Wells: They've got a compute problem.\n[01:02:43] Ty Wells: They just can't keep up.\n[01:02:46] Patrick Chouinard: And I'd be very curious to hear Bastian talk about, because yeah, I, you, I love the idea of using Codex with T3 code for remote work.\n[01:02:58] Ty Wells: Did you?\n[01:02:59] Bastian Venegas: I'm\n[01:03:00] Bastian Venegas: I'm two screenshots in the chat, so you can see it visually, but you can connect with a QR code if you're on the same network, or you can SSH into your computer.\n[01:03:15] Bastian Venegas: I've heard you can use Telscale as well.\n[01:03:21] Bastian Venegas: Yeah, so that's what most people use for their open cloud, for example, or a lot of people.\n[01:03:26] Bastian Venegas: I don't know if most, but, so it's pretty common stack to connect.\n[01:03:32] Bastian Venegas: They build their own custom thing, but you can connect in those ways.\n[01:03:37] Ty Wells: Did you guys discuss the, did you discuss the government speaking with the Frontier Labs about possibly some sort of regulation?\n[01:03:52] Paul Miller: No, no.\n[01:03:53] Paul Miller: What was that about?\n[01:03:55] Ty Wells: What's that?\n[01:03:57] Paul Miller: Does anyone know about that one?\n[01:03:59] Paul Miller: I don't know.\n[01:04:00] Ty Wells: Yeah, they had a conversation with those guys to sort of give them a heads up, like, you know, which models get released, maybe government preview, purview, sorry, they have to look at and decide, I guess, what they're going to release.\n[01:04:22] Ty Wells: Or that's a possibility.\n[01:04:23] Ty Wells: I'm just saying they gave them a heads up.\n[01:04:25] Patrick Chouinard: Oh, , who hit that phone?\n[01:04:26] Patrick Chouinard: Oh, sorry, guys.\n[01:04:30] Patrick Chouinard: That smells of export control.\n[01:04:35] Paul Miller: Well, maybe whichever, I'm sorry to tinge on the political, it's like, well, whoever's going to donate to that ballroom, their models can get approved.\n[01:04:51] Tom Welsh: Yeah, yeah, 100%.\n[01:04:53] Paul Miller: Sorry, as a non-American, I don't want to really tread on that, I suppose, but.\n[01:05:00] Tom Welsh: Yeah, I think that'll be interesting.\n[01:05:02] Tom Welsh: So that almost seems like going back to SSL and crypto and like export controls out of the US for stuff like that.\n[01:05:10] Tom Welsh: Yeah, I mean, they're already doing that with China for chips and this, that, and the other.\n[01:05:16] Paul Miller: Challenges, what is dangerous?\n[01:05:21] Paul Miller: China's not going to stop.\n[01:05:22] Paul Miller: They're going to keep going on.\n[01:05:24] Tom Welsh: Europe's going for it.\n[01:05:25] Tom Welsh: Yeah, 100%.\n[01:05:26] Paul Miller: You've got the different AI houses in America all doing different approaches and amazing things.\n[01:05:32] Paul Miller: You've got hardware-based models that are doing things cleverly and all really fast instead of really smart.\n[01:05:42] Paul Miller: Can you really stop that?\n[01:05:45] Paul Miller: Now it's gone.\n[01:05:46] Tom Welsh: Well, I mean, think there's, I think there was a story a couple of weeks back, maybe months now, where I think it was Anthropic wasn't going to open the models up to the government and the government was basically going to say, well, you, you won't be on any, any news on Anthropic won't be on the proofs.\n[01:06:01] Tom Welsh: You know, so using that kind of leverage against stuff, you know, it just seems like they're trying to jerry-rig or backdoor everything.\n[01:06:13] Paul Miller: It's a challenge.\n[01:06:14] Paul Miller: And you let that genie out of the bottle too.\n[01:06:16] Paul Miller: And just from a security, that stuff around the security stuff that Claude model was finding, that's a worry once that's out there.\n[01:06:27] Paul Miller: There's already a lot of the open source libraries that are being, people are finding source code and coming up with hacks very frequently.\n[01:06:39] Patrick Chouinard: Yeah, but you have to take into consideration also that there's a lot there that is made to be sensational for the news cycle.\n[01:06:48] Patrick Chouinard: Because, yeah, Mythos is able to find those when it's unbounded and unleashed with no compute cap.\n[01:06:58] Patrick Chouinard: And because because-\n[01:07:00] Patrick Chouinard: The part they don't say is, yeah, it found a bug that was there hidden for 18 years.\n[01:07:06] Patrick Chouinard: But how much did that single thing cost in token?\n[01:07:13] Patrick Chouinard: It's a couple of thousand dollars.\n[01:07:16] Patrick Chouinard: It's multiple thousand dollars.\n[01:07:17] Patrick Chouinard: So it's the type of agentic loop that you as a consumer, even with infinite money, would not be allowed because you would reach the rate limiting of enterprise.\n[01:07:30] Patrick Chouinard: Tropic before you could do something like that.\n[01:07:32] Patrick Chouinard: yeah, internally the model is capable, but it's not being, it's never going to be released in such an unbridled form.\n[01:07:42] Patrick Chouinard: So, because on an intelligent perspective, GPT 5.5 is right up there with it right now.\n[01:07:49] Patrick Chouinard: The only reason it's not capping the same benchmark, it's because they benchmarked it in its guardrail version.\n[01:08:00] Paul Miller: So, yeah, it's a risk.\n[01:08:04] Patrick Chouinard: I'm not downplaying the fact that it is, but it's not the existential doomsday risk that they're playing for the new cycle either.\n[01:08:17] Paul Miller: Cool.\n[01:08:19] Paul Miller: On that scary note, is there anything else that anyone wants to raise?\n[01:08:26] Paul Miller: Any new cool projects or big questions you'd like to put to the team?\n[01:08:32] Patrick Chouinard: One little thing I found this week that I want to share with you guys, this link, if you take a look, it's all of the preferred tech stack by CloudCode.\n[01:08:44] Patrick Chouinard: And it's basically very similar to Codex as well.\n[01:08:48] Patrick Chouinard: It's basically what the model learned.\n[01:08:50] Patrick Chouinard: So whenever you don't give it a tech stack selection, what it will tend to recommend.\n[01:08:56] Patrick Chouinard: And it's really interesting.\n[01:08:58] Patrick Chouinard: They're going in.\n[01:09:00] Patrick Chouinard: Not just, oh, it's going to do Vercel and Supabase.\n[01:09:03] Patrick Chouinard: It goes way, way further than that.\n[01:09:06] Patrick Chouinard: Going to talk about feature flag authentication, authorization, observability, email, real-time, form validation, like every tech choice of the model.\n[01:09:18] Patrick Chouinard: And honestly, it's basically all of the tech stack that you see now performing.\n[01:09:23] Patrick Chouinard: It's the one listed there.\n[01:09:25] Patrick Chouinard: So this is the new SEO.\n[01:09:27] Patrick Chouinard: If your technology is not referenced by the model by default, you basically don't exist anymore.\n[01:09:37] Patrick Chouinard: So, yeah, brutal, but very interesting read, if you want to take a peek.\n[01:09:45] Paul Miller: Excellent.\n[01:09:47] Patrick Chouinard: Yep.\n[01:09:48] Patrick Chouinard: And you see clearly that it was created by Opus, but still.\n[01:09:53] Morgan Cook: I like the term at the top of some\n[01:10:00] Morgan Cook: Near Monopoly.\n[01:10:01] Paul Miller: Yeah.\n[01:10:02] Patrick Chouinard: It is.\n[01:10:04] Patrick Chouinard: Except what I was looking up.\n[01:10:09] Patrick Chouinard: It's definitely what it is.\n[01:10:15] Paul Miller: Cool.\n[01:10:16] Paul Miller: Okay.\n[01:10:17] Paul Miller: Is there anything else before we wrap up?\n[01:10:25] Paul Miller: No.\n[01:10:26] Paul Miller: Okay.\n[01:10:27] Paul Miller: Well, have a wonderful week, guys.\n[01:10:30] Paul Miller: Enjoy the modeling.\n[01:10:31] Paul Miller: I'm jumping into Codex because I've wasted four days of not delivering.\n[01:10:40] Paul Miller: Thank you for putting up with my hosting, Patrick.\n[01:10:45] Paul Miller: Guys, cool stuff.\n[01:10:49] Paul Miller: Hopefully, the golf game is going right for Ty.\n[01:10:56] Ty Wells: I just won this hole.\n[01:10:57] Ty Wells: So, yes.\n[01:10:58] Paul Miller: Thank you for that.\n[01:10:58] Paul Miller: that's good.\n[01:10:59] Paul Miller: That's\n[01:11:00] Paul Miller: Good, but how's the round, though?\n[01:11:02] Paul Miller: Are you up on the round?\n[01:11:03] Ty Wells: We're only discussing this whole.\n[01:11:06] Paul Miller: Oh, okay, okay.\n[01:11:08] Paul Miller: Let's not get contingency.\n[01:11:11] Ty Wells: Thanks, Keith.\n[01:11:12] Ty Wells: Thanks, Paul.\n[01:11:12] Paul Miller: All the best.\n[01:11:13] Paul Miller: Have a good week.\n[01:11:14] Ty Wells: All right.\n[01:11:15] Ty Wells: See you, guys.\n[01:11:15] Ty Wells: Bye.\n[01:11:16] Ty Wells: See you."
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
-  "versionId": "dda9157b-9341-4b1c-a97e-7a9c986df3ea",
-  "activeVersionId": null,
-  "versionCounter": 65,
-  "triggerCount": 1,
-  "sourceWorkflowId": null,
-  "tags": [],
-  "shared": [
-    {
-      "updatedAt": "2026-03-08T21:49:19.942Z",
-      "createdAt": "2026-03-08T21:49:19.942Z",
-      "role": "workflow:owner",
-      "workflowId": "5",
-      "projectId": "b8UDtA4INIC1b3zQ",
-      "project": {
-        "updatedAt": "2025-05-25T03:27:52.452Z",
-        "createdAt": "2025-05-25T03:27:06.239Z",
-        "id": "b8UDtA4INIC1b3zQ",
-        "name": "Patrick Chouinard <chouinpa@hotmail.com>",
-        "type": "personal",
-        "icon": null,
-        "description": null,
-        "customTelemetryTags": [],
-        "creatorId": "a8d3966b-3445-4cc1-b06a-15c2fb24b008"
-      }
-    }
-  ],
-  "versionMetadata": {
-    "name": null,
-    "description": null
-  }
+  "pinData": {},
+  "tags": []
 }
