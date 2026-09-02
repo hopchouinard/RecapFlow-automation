@@ -127,6 +127,33 @@ test('W2 aggregate signal throws when a required section is missing', () => {
   }), /missing required section/i);
 });
 
+test('W2: Code: Save extracted-signal.md forwards signalText to Code: Split Post Sections', () => {
+  // Ruling N regression seam: Code: Save extracted-signal.md must forward
+  // signalText alongside the session context it spreads from Code: Read
+  // Transcript, because Code: Split Post Sections reads $input.first().json.signalText
+  // directly. Feed Split Post Sections the ACTUAL return value of the save
+  // node (not a hand-written stub) so this seam is covered rather than assumed.
+  const fsMock = makeFsMock();
+  const saved = runCodeNode('transcript-only-summarizer.json', 'Code: Save extracted-signal.md', {
+    items: [{ json: { signalText } }],
+    nodes: { 'Code: Read Transcript': { outputDir: '/tmp/out/2025-09-01', session_id: '2025-09-01' } },
+    fsMock,
+  });
+  assert.strictEqual(saved.json.signalText, signalText,
+    'Code: Save extracted-signal.md must forward signalText downstream, not just spread session context');
+  assert.strictEqual(saved.json.outputDir, '/tmp/out/2025-09-01',
+    'the session fields already being spread must still be present');
+
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Split Post Sections', {
+    items: [saved],
+    nodes: { 'Code: Pipeline Config': cfg },
+  });
+  assert.strictEqual(out.length, 6,
+    'Split Post Sections must produce all six sections when fed the real Save-node output');
+  assert.deepStrictEqual(Array.from(out, (i) => i.json.section),
+    ['general', 'insights', 'qa', 'tools', 'links', 'decisions']);
+});
+
 test('W2 splits the real extracted-signal into six section requests', () => {
   const out = runCodeNode('transcript-only-summarizer.json', 'Code: Split Post Sections', {
     items: [{ json: { signalText } }],

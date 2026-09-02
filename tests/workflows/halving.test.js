@@ -35,4 +35,28 @@ for (const file of ['merged-call-summarizer.json', 'transcript-only-summarizer.j
       /No artifact written/,
     );
   });
+
+  // Ruling O: Code: Split Post Sections splits by semantic section, not by a
+  // token target, so a caller-level "halving" retry cannot produce different
+  // chunks — it would just resubmit the identical input. The post variant of
+  // Check Chunks must therefore throw on the very first failure, at
+  // halving=0, rather than ever emitting a retry item.
+  test(`${file}: post step throws immediately on failure instead of requesting a halving`, () => {
+    assert.throws(
+      () => runCodeNode(file, 'Code: Check Chunks (Post)', {
+        items: [bad(0)],
+        nodes: { 'Code: Pipeline Config': cfg, 'Code: Split Post Sections': { halving: 0 } },
+      }),
+      /No artifact written/,
+    );
+  });
+
+  test(`${file}: post step passes results through when every section succeeded`, () => {
+    const out = runCodeNode(file, 'Code: Check Chunks (Post)', {
+      items: [ok(0), ok(1)],
+      nodes: { 'Code: Pipeline Config': cfg, 'Code: Split Post Sections': { halving: 0 } },
+    });
+    assert.strictEqual(out.length, 2);
+    assert.strictEqual(out[0].json.retry, false);
+  });
 }
