@@ -1,0 +1,30 @@
+{
+  "id": "openrouterCall",
+  "name": "OpenRouter Call",
+  "nodes": [
+    {
+      "parameters": { "workflowInputs": { "values": [] } },
+      "id": "0e000000-0000-4000-8000-00000000e001",
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const CEILINGS = {\n  'z-ai/glm-5.3-flash': 131072,\n  'anthropic/claude-sonnet-5': 128000,\n};\nconst DEFAULT_CEILING = 32768;\nconst REQUIRED = ['stepName', 'model', 'system', 'user', 'maxTokens'];\n\nreturn $input.all().map((item, i) => {\n  const j = item.json;\n  for (const f of REQUIRED) {\n    if (j[f] === undefined || j[f] === null || j[f] === '') {\n      throw new Error(`missing required field '${f}' on item ${i} (stepName=${j.stepName})`);\n    }\n  }\n  return {\n    json: {\n      ...j,\n      chunkIndex: j.chunkIndex === undefined ? i : j.chunkIndex,\n      temperature: j.temperature === undefined ? 0.3 : j.temperature,\n      attempt: 1,\n      ceiling: CEILINGS[j.model] || DEFAULT_CEILING,\n    },\n  };\n});"
+      },
+      "id": "0e000000-0000-4000-8000-00000000e002",
+      "name": "Code: Normalize",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [[{ "node": "Code: Normalize", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" }
+}
