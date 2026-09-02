@@ -3,7 +3,7 @@
   "name": "OpenRouter Call",
   "nodes": [
     {
-      "parameters": { "workflowInputs": { "values": [] } },
+      "parameters": { "inputSource": "passthrough" },
       "id": "0e000000-0000-4000-8000-00000000e001",
       "name": "When Executed by Another Workflow",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
