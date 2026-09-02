@@ -66,50 +66,84 @@
       }
     },
     {
-      "id": "e1000000-0000-4000-8000-000000000006",
-      "name": "LLM: Extract Signal",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.9,
+      "id": "ef000000-0000-4000-8000-0000000000f1",
+      "name": "Code: Split Signal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
         1250,
         300
       ],
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.mergedText }}",
-        "hasOutputParser": false,
-        "messages": {
-          "messageValues": [
-            {
-              "type": "SystemMessagePromptTemplate",
-              "message": "You are analysing a merged coaching-call transcript (chat log + spoken transcript). Extract the signal — the information that would help a future reader understand what was discussed, who said what, and what artefacts or resources were referenced.\n\nEmit a markdown document with exactly six H2 sections, in the order listed below. Every heading must be the literal lowercase single-word slug shown. Do not invent new sections. Omit a section entirely if there is no content for it.\n\n## general\n\nA 2–4 paragraph narrative overview of what the session covered. Factual, not promotional. Capture the main throughline, which projects/topics came up, and who presented.\n\n## insights\n\nBullet points of the most valuable takeaways, patterns, or heuristics surfaced during the call. Each bullet is self-contained (understandable without the surrounding context). Attribute the speaker when it matters.\n\n## qa\n\nPairs of questions and answers. Format:\n**Q (Questioner):** ...\n**A (Answerer):** ...\n\nInclude only Q/A exchanges where both sides had real content — skip throwaway clarifying questions.\n\n## tools\n\nBullet list of tools, products, frameworks, platforms, or services that were mentioned or demonstrated. One line per tool. Include a 5–15 word note on the context in which it came up.\n\n## links\n\nBullet list of URLs, repositories, documents, or external resources shared during the call. One line per resource. Include a brief descriptor.\n\n## decisions\n\nBullet list of commitments, action items, or decisions made during the call — things someone said they would do, or that the group agreed on. Phrase each as an actor + action.\n\nCRITICAL: output the sections in EXACTLY this order: general, insights, qa, tools, links, decisions. Do not re-order, do not merge, do not rename. Use lowercase single-word slugs as shown."
-            }
-          ]
-        }
+        "jsCode": "const cfg = $('Code: Pipeline Config').first().json.steps.signalMap;\nconst src = $('Code: Validate and Check Partner').first().json.transcriptText;\nconst halving = $input.first().json.halving || 0;\nconst target = Math.floor(cfg.chunkTargetTokens / Math.pow(2, halving));\n\nconst estimateTokens = (s) => Math.ceil(s.length / 3.6);\n\nfunction splitTranscriptByLines(text, targetTokens) {\n  const lines = text.split('\\n');\n  const chunks = [];\n  let buf = [], bufTokens = 0;\n  for (const line of lines) {\n    const t = estimateTokens(line) + 1;\n    if (bufTokens + t > targetTokens && buf.length > 0) {\n      chunks.push(buf.join('\\n'));\n      buf = []; bufTokens = 0;\n    }\n    buf.push(line); bufTokens += t;\n  }\n  if (buf.length && buf.join('\\n').trim()) chunks.push(buf.join('\\n'));\n  return chunks;\n}\n\nconst SYSTEM = `You are analysing ONE PART of a longer coaching-call transcript. Extract the signal from this part only — the information that would help a future reader understand what was discussed, who said what, and what artefacts or resources were referenced.\n\nEmit a markdown document using H2 headings drawn from exactly these six lowercase slugs, in this order: general, insights, qa, tools, links, decisions. Omit a section entirely if this part contains nothing for it. Do not invent new sections.\n\n## general\nA short narrative of what this part covered. Factual, not promotional.\n\n## insights\nBullet points of the most valuable takeaways surfaced in this part. Each bullet self-contained. Attribute the speaker when it matters.\n\n## qa\nPairs of questions and answers, formatted:\n**Q (Questioner):** ...\n**A (Answerer):** ...\nInclude only exchanges where both sides had real content.\n\n## tools\nBullet list of tools, products, frameworks, platforms or services mentioned. One line each, with a 5–15 word note on context.\n\n## links\nBullet list of URLs, repositories, documents or resources shared. One line each with a brief descriptor.\n\n## decisions\nBullet list of commitments, action items or decisions. Phrase each as actor + action.\n\nDo not invent content not present in this part. Results from all parts are merged downstream.`;\n\nreturn splitTranscriptByLines(src, target).map((chunk, i) => ({\n  json: {\n    stepName: 'signal.map',\n    model: cfg.model,\n    maxTokens: cfg.maxTokens,\n    reasoningEffort: cfg.reasoningEffort,\n    expect: 'signal.map',\n    chunkIndex: i,\n    system: SYSTEM,\n    user: chunk,\n  },\n}));"
       }
     },
     {
-      "id": "e1000000-0000-4000-8000-000000000007",
-      "name": "OpenRouter Chat Model 1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        1250,
-        500
-      ],
       "parameters": {
-        "model": "anthropic/claude-sonnet-5",
+        "workflowId": {
+          "__rl": true,
+          "value": "openrouterCall",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Call"
+        },
         "options": {
-          "maxTokens": 32768,
-          "temperature": 0.3,
-          "timeout": 600000
+          "waitForSubWorkflow": true
         }
       },
-      "credentials": {
-        "openRouterApi": {
-          "id": "PLACEHOLDER",
-          "name": "OpenRouter account"
+      "id": "ef000000-0000-4000-8000-0000000000f2",
+      "name": "Execute: Signal Map via OpenRouter",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1400,
+        300
+      ]
+    },
+    {
+      "id": "ef000000-0000-4000-8000-0000000000f3",
+      "name": "Code: Build Signal Reduce",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1550,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Code: Pipeline Config').first().json.steps.signalReduce;\nconst items = $input.all().map((i) => i.json);\nconst failed = items.filter((i) => !i.ok);\nif (failed.length) {\n  const f = failed[0];\n  throw new Error(`Signal map failed on chunk ${f.chunkIndex} after ${f.attempts} attempts (failureKind=${f.failureKind}). No artifact written.`);\n}\n\nconst chatText = $('Code: Validate and Check Partner').first().json.chatText || '';\nconst ordered = items.slice().sort((a, b) => a.chunkIndex - b.chunkIndex);\nconst parts = ordered.map((i, n) => `### PART ${n + 1}\\n\\n${i.text}`).join('\\n\\n');\n\nconst SYSTEM = `You are merging per-part signal extractions from a single coaching call into one consolidated document, and folding in the call's chat log.\n\nEmit a markdown document with exactly six H2 sections, using these literal lowercase slugs in this order:\n\n## general\n## insights\n## qa\n## tools\n## links\n## decisions\n\nRules:\n- general: write a 2–4 paragraph narrative covering the WHOLE call, synthesized across all parts — not a concatenation of the per-part summaries.\n- insights, qa, decisions: merge across parts, preserving chronological order and dropping duplicates.\n- tools and links: the chat log is the primary source for these. Merge chat-log entries with those found in the parts, and DEDUPE aggressively — the same URL or tool must appear once.\n- Omit a section entirely if there is genuinely no content for it.\n- Do not invent content that is not present in the parts or the chat log.\n\nSIZE BUDGET: the complete document must not exceed approximately ${cfg.budgetTokens} tokens (roughly ${cfg.budgetTokens * 4} characters). If the material exceeds that, cut the weakest insights and least-useful Q&A first. Never cut links or tools to fit.\n\nCRITICAL: output the sections in EXACTLY the order listed above. Do not re-order, merge or rename them.`;\n\nreturn [{\n  json: {\n    stepName: 'signal.reduce',\n    model: cfg.model,\n    maxTokens: cfg.maxTokens,\n    reasoningEffort: cfg.reasoningEffort,\n    expect: 'signal.reduce',\n    chunkIndex: 0,\n    system: SYSTEM,\n    user: `# PER-PART EXTRACTIONS\\n\\n${parts}\\n\\n# ZOOM CHAT LOG\\n\\n${chatText}`,\n  },\n}];"
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "openrouterCall",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Call"
+        },
+        "options": {
+          "waitForSubWorkflow": true
         }
+      },
+      "id": "ef000000-0000-4000-8000-0000000000f4",
+      "name": "Execute: Signal Reduce via OpenRouter",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1700,
+        300
+      ]
+    },
+    {
+      "id": "ef000000-0000-4000-8000-0000000000f5",
+      "name": "Code: Aggregate Signal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1850,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const CANON = ['general', 'insights', 'qa', 'tools', 'links', 'decisions'];\nconst items = $input.all().map((i) => i.json);\nconst failed = items.filter((i) => !i.ok);\nif (failed.length) {\n  const f = failed[0];\n  throw new Error(`Signal reduce failed after ${f.attempts} attempts (failureKind=${f.failureKind}). No artifact written.`);\n}\n\n// Normalize heading level to H2 (spec 4.6: the model emits H1 on roughly half of runs).\nlet md = items[0].text.replace(/^#{1,3}[ \\t]+([a-z]+)[ \\t]*$/gm, (m, slug) =>\n  CANON.includes(slug) ? `## ${slug}` : m);\n\nconst found = [];\nconst re = /^##[ \\t]+([a-z]+)[ \\t]*$/gm;\nlet m;\nwhile ((m = re.exec(md)) !== null) if (CANON.includes(m[1])) found.push(m[1]);\nconst missing = CANON.filter((s) => !found.includes(s));\nif (missing.length) {\n  throw new Error(`extracted-signal is missing required section(s): ${missing.join(', ')}. No artifact written.`);\n}\n\nreturn [{ json: { signalText: md, totalCost: items.reduce((s, i) => s + ((i.usage && i.usage.cost) || 0), 0) } }];"
       }
     },
     {
@@ -122,7 +156,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.text;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.signalText;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
     },
     {
@@ -521,18 +555,7 @@
       "main": [
         [
           {
-            "node": "LLM: Extract Signal",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "LLM: Extract Signal": {
-      "main": [
-        [
-          {
-            "node": "Code: Save extracted-signal.md",
+            "node": "Code: Split Signal",
             "type": "main",
             "index": 0
           }
@@ -611,17 +634,6 @@
           {
             "node": "Code: Save weekly-invite.md",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model 1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "LLM: Extract Signal",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -742,6 +754,61 @@
         [
           {
             "node": "Code: Save prepared-transcript.md",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Split Signal": {
+      "main": [
+        [
+          {
+            "node": "Execute: Signal Map via OpenRouter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute: Signal Map via OpenRouter": {
+      "main": [
+        [
+          {
+            "node": "Code: Build Signal Reduce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Build Signal Reduce": {
+      "main": [
+        [
+          {
+            "node": "Execute: Signal Reduce via OpenRouter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute: Signal Reduce via OpenRouter": {
+      "main": [
+        [
+          {
+            "node": "Code: Aggregate Signal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Aggregate Signal": {
+      "main": [
+        [
+          {
+            "node": "Code: Save extracted-signal.md",
             "type": "main",
             "index": 0
           }
