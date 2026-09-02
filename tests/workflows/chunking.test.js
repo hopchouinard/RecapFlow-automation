@@ -52,3 +52,11 @@ test('reassembles prep chunks with one header and merged unresolved speakers', (
   assert.strictEqual((out.match(/- Ryan C/g) || []).length, 1, 'duplicate speaker not deduped');
   assert.ok(out.includes('- Prem'));
 });
+
+test('dedupes unresolved speakers that differ only by internal whitespace', () => {
+  const { reassemblePrep } = loadLib();
+  const a = '=== SESSION ===\ndate: x\n\n<!--SEGMENT\ntopic: a\n-->\nbody A\n\n=== UNRESOLVED SPEAKERS ===\n- Ryan C (appears 5 times)';
+  const b = '=== SESSION ===\ndate: x\n\n<!--SEGMENT\ntopic: b\n-->\nbody B\n\n=== UNRESOLVED SPEAKERS ===\n-  Ryan C   (appears 5 times)';
+  const out = reassemblePrep([a, b]);
+  assert.strictEqual((out.match(/Ryan C/g) || []).length, 1, 'whitespace-variant duplicate not deduped');
+});
