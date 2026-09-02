@@ -169,18 +169,88 @@ test('escalate passes over items that already succeeded', () => {
   assert.strictEqual(out.length, 0);
 });
 
-test('collect orders by chunkIndex and keeps the best attempt per chunk', () => {
+// Code: Collect no longer reads $input.all() — the loop-back edge was deleted (Controller
+// Ruling J) so it reconstructs the full result set by reaching back into each Classify
+// stage via $('Code: Classify[ N]').all(). A stage that never ran on this execution is
+// simply absent from the `nodes` stub map, which makes the harness's `$` throw
+// `unstubbed $('...')` — the same shape of failure real n8n raises for a node that hasn't
+// executed (verified live: ExpressionError "Node '...' hasn't been executed"). Collect's
+// try/catch must swallow that.
+
+test('collect: only stage 1 ran (single-attempt success)', () => {
   const out = runCodeNode('openrouter-call.json', 'Code: Collect', {
-    items: [
-      classified({ chunkIndex: 1, ok: true, failureKind: null, text: 'second', attempts: 2 }),
-      classified({ chunkIndex: 0, ok: true, failureKind: null, text: 'first' }),
-      classified({ chunkIndex: 1, ok: false, text: '' }),
-    ],
+    items: [],
+    nodes: {
+      'Code: Classify': [classified({ chunkIndex: 0, ok: true, failureKind: null, text: 'only' }).json],
+    },
   });
-  // Array.from: runCodeNode's vm.runInNewContext returns a cross-realm array;
-  // deepStrictEqual on a cross-realm Array.prototype.map() result throws a
-  // spurious "same structure but not reference-equal" error even when the
-  // primitive contents match. Rehoming into the test's own realm avoids it.
-  assert.deepStrictEqual(Array.from(out.map((i) => i.json.text)), ['first', 'second']);
+  assert.strictEqual(out.length, 1);
+  assert.strictEqual(out[0].json.text, 'only');
+  assert.strictEqual(out[0].json.ok, true);
+});
+
+test('collect: stages 1+2 ran, chunk succeeds on retry', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Collect', {
+    items: [],
+    nodes: {
+      'Code: Classify': [classified({ chunkIndex: 0, ok: false, text: '', attempts: 1 }).json],
+      'Code: Classify 2': [
+        classified({ chunkIndex: 0, ok: true, failureKind: null, text: 'retried', attempts: 2 }).json,
+      ],
+    },
+  });
+  assert.strictEqual(out.length, 1);
+  assert.strictEqual(out[0].json.text, 'retried');
+  assert.strictEqual(out[0].json.ok, true);
+  assert.strictEqual(out[0].json.attempts, 2);
+});
+
+test('collect: all three stages ran, best result kept', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Collect', {
+    items: [],
+    nodes: {
+      'Code: Classify': [classified({ chunkIndex: 0, ok: false, text: '', attempts: 1 }).json],
+      'Code: Classify 2': [classified({ chunkIndex: 0, ok: false, text: '', attempts: 2 }).json],
+      'Code: Classify 3': [
+        classified({ chunkIndex: 0, ok: true, failureKind: null, text: 'final', attempts: 3 }).json,
+      ],
+    },
+  });
+  assert.strictEqual(out.length, 1);
+  assert.strictEqual(out[0].json.text, 'final');
+  assert.strictEqual(out[0].json.ok, true);
+  assert.strictEqual(out[0].json.attempts, 3);
+});
+
+// Regression test for the Critical finding: a mixed batch where chunk 0 succeeds on
+// attempt 1 (never revisits Escalate/Classify 2/3) and chunk 1 only succeeds on attempt 3
+// must yield BOTH chunks, ordered by chunkIndex. Under the old loop-back graph, chunk 0
+// would flow into `Code: Escalate` alongside chunk 1's retries (the IF condition is
+// batch-aggregate) and be silently dropped since Escalate filters to `!ok`; Collect would
+// only ever see whichever pass ran last. This test asserts the fix: reconstruction from
+// each Classify stage by reference means chunk 0's single successful attempt (visible only
+// in stage 1's output) is never lost, independent of how many retries chunk 1 needed.
+test('collect: mixed batch — chunk succeeds attempt 1, sibling only succeeds attempt 3 (regression for dropped-item Critical)', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Collect', {
+    items: [],
+    nodes: {
+      'Code: Classify': [
+        classified({ chunkIndex: 0, ok: true, failureKind: null, text: 'fast-success', attempts: 1 }).json,
+        classified({ chunkIndex: 1, ok: false, text: '', attempts: 1 }).json,
+      ],
+      'Code: Classify 2': [
+        classified({ chunkIndex: 1, ok: false, text: '', attempts: 2 }).json,
+      ],
+      'Code: Classify 3': [
+        classified({ chunkIndex: 1, ok: true, failureKind: null, text: 'slow-success', attempts: 3 }).json,
+      ],
+    },
+  });
+  assert.strictEqual(out.length, 2);
+  assert.strictEqual(out[0].json.chunkIndex, 0);
+  assert.strictEqual(out[0].json.text, 'fast-success');
+  assert.strictEqual(out[0].json.ok, true);
+  assert.strictEqual(out[1].json.chunkIndex, 1);
+  assert.strictEqual(out[1].json.text, 'slow-success');
   assert.strictEqual(out[1].json.ok, true);
 });

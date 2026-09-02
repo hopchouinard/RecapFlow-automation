@@ -3,12 +3,17 @@
   "name": "OpenRouter Call",
   "nodes": [
     {
-      "parameters": { "inputSource": "passthrough" },
+      "parameters": {
+        "inputSource": "passthrough"
+      },
       "id": "0e000000-0000-4000-8000-00000000e001",
       "name": "When Executed by Another Workflow",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
-      "position": [0, 0]
+      "position": [
+        0,
+        0
+      ]
     },
     {
       "parameters": {
@@ -18,7 +23,10 @@
       "name": "Code: Normalize",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [220, 0]
+      "position": [
+        220,
+        0
+      ]
     },
     {
       "parameters": {
@@ -29,14 +37,29 @@
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify(Object.assign({ model: $json.model, max_tokens: $json.maxTokens, temperature: $json.temperature, messages: [ { role: 'system', content: $json.system }, { role: 'user', content: $json.user } ] }, $json.reasoningEffort ? { reasoning_effort: $json.reasoningEffort } : {})) }}",
-        "options": { "timeout": 1800000, "response": { "response": { "neverError": true } } }
+        "options": {
+          "timeout": 1800000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
       },
       "id": "0e000000-0000-4000-8000-00000000e003",
       "name": "HTTP: OpenRouter",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [440, 0],
-      "credentials": { "openRouterApi": { "id": "PLACEHOLDER", "name": "OpenRouter account" } }
+      "position": [
+        440,
+        0
+      ],
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -46,17 +69,28 @@
       "name": "Code: Classify",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [660, 0]
+      "position": [
+        660,
+        0
+      ]
     },
     {
       "parameters": {
         "conditions": {
-          "options": { "caseSensitive": true, "version": 2 },
-          "conditions": [{
-            "leftValue": "={{ $input.all().filter(i => !i.json.ok && i.json.attempts < 3).length }}",
-            "rightValue": 0,
-            "operator": { "type": "number", "operation": "gt" }
-          }],
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $input.all().filter(i => !i.json.ok && i.json.attempts < 3).length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
           "combinator": "and"
         }
       },
@@ -64,7 +98,10 @@
       "name": "IF: Needs Retry",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
-      "position": [880, 0]
+      "position": [
+        880,
+        0
+      ]
     },
     {
       "parameters": {
@@ -74,33 +111,308 @@
       "name": "Code: Escalate",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1100, -120]
+      "position": [
+        1100,
+        -220
+      ]
     },
     {
       "parameters": {
-        "jsCode": "const best = new Map();\nfor (const item of $input.all()) {\n  const j = item.json;\n  const prev = best.get(j.chunkIndex);\n  // Prefer a successful attempt; otherwise keep the latest attempt for its error detail.\n  if (!prev || (j.ok && !prev.ok) || (j.ok === prev.ok && j.attempts > prev.attempts)) {\n    best.set(j.chunkIndex, j);\n  }\n}\nreturn [...best.values()]\n  .sort((a, b) => a.chunkIndex - b.chunkIndex)\n  .map((json) => ({ json }));"
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify(Object.assign({ model: $json.model, max_tokens: $json.maxTokens, temperature: $json.temperature, messages: [ { role: 'system', content: $json.system }, { role: 'user', content: $json.user } ] }, $json.reasoningEffort ? { reasoning_effort: $json.reasoningEffort } : {})) }}",
+        "options": {
+          "timeout": 1800000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "0e000000-0000-4000-8000-00000000e008",
+      "name": "HTTP: OpenRouter 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        -220
+      ],
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const CANON = ['general', 'insights', 'qa', 'tools', 'links', 'decisions'];\n\nfunction parseSections(md) {\n  const re = /^#{1,3}[ \\t]+([a-z]+)[ \\t]*$/gm;\n  const found = []; let m;\n  while ((m = re.exec(md)) !== null) found.push(m[1]);\n  return found.filter((s) => CANON.includes(s));\n}\n\nfunction structureOk(expect, text) {\n  if (!expect || expect === 'none') return true;\n  if (expect === 'prep.chunk') {\n    const opens = (text.match(/<!--SEGMENT/g) || []).length;\n    const closes = (text.match(/-->/g) || []).length;\n    return opens > 0 && opens === closes;\n  }\n  if (expect === 'signal.map') return parseSections(text).length > 0;\n  if (expect === 'signal.reduce') {\n    const found = parseSections(text);\n    return CANON.every((s) => found.includes(s));\n  }\n  if (expect === 'post.section') {\n    return !/^\\s*#{1,6}\\s/m.test(text) && !/\\*\\*/.test(text) && !/^\\s*[-*]\\s+/m.test(text);\n  }\n  return true;\n}\n\nconst requests = $('Code: Escalate').all().map((i) => i.json);\n\nreturn $input.all().map((item, idx) => {\n  const req = requests[idx] || requests[0];\n  const body = item.json || {};\n  const choice = (body.choices || [])[0] || {};\n  const usage = body.usage || {};\n  const details = usage.completion_tokens_details || {};\n  const text = (choice.message && choice.message.content) || '';\n  const finishReason = choice.finish_reason || null;\n\n  let failureKind = null;\n  if (body.error || (!body.choices && !text)) {\n    failureKind = 'api_error';\n  } else if (text.trim() === '') {\n    failureKind = 'reasoning_burn';\n  } else if (finishReason !== 'stop') {\n    failureKind = 'content_truncated';\n  } else if (!structureOk(req.expect, text)) {\n    failureKind = 'structure';\n  }\n\n  return {\n    json: {\n      chunkIndex: req.chunkIndex,\n      stepName: req.stepName,\n      text,\n      ok: failureKind === null,\n      failureKind,\n      finishReason,\n      attempts: req.attempt,\n      usage: {\n        promptTokens: usage.prompt_tokens || 0,\n        completionTokens: usage.completion_tokens || 0,\n        reasoningTokens: details.reasoning_tokens || 0,\n        cost: usage.cost || 0,\n      },\n      model: req.model, maxTokens: req.maxTokens, reasoningEffort: req.reasoningEffort,\n      temperature: req.temperature, system: req.system, user: req.user,\n      ceiling: req.ceiling, expect: req.expect,\n      errorMessage: (body.error && body.error.message) || null,\n    },\n  };\n});"
+      },
+      "id": "0e000000-0000-4000-8000-00000000e009",
+      "name": "Code: Classify 2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $input.all().filter(i => !i.json.ok && i.json.attempts < 3).length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "0e000000-0000-4000-8000-00000000e010",
+      "name": "IF: Needs Retry 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const LADDER = { 2: { effort: 'low', factor: 1.5 }, 3: { effort: 'minimal', factor: 2 } };\n\nreturn $input.all()\n  .filter((i) => !i.json.ok && i.json.attempts < 3)\n  .map((i) => {\n    const j = i.json;\n    const nextAttempt = j.attempts + 1;\n    const rung = LADDER[nextAttempt];\n    const raised = Math.floor(j.maxTokens * rung.factor);\n    return {\n      json: {\n        stepName: j.stepName, model: j.model, system: j.system, user: j.user,\n        chunkIndex: j.chunkIndex, temperature: j.temperature, expect: j.expect,\n        ceiling: j.ceiling, attempt: nextAttempt,\n        reasoningEffort: rung.effort,\n        maxTokens: Math.min(raised, j.ceiling),\n      },\n    };\n  });"
+      },
+      "id": "0e000000-0000-4000-8000-00000000e011",
+      "name": "Code: Escalate 2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify(Object.assign({ model: $json.model, max_tokens: $json.maxTokens, temperature: $json.temperature, messages: [ { role: 'system', content: $json.system }, { role: 'user', content: $json.user } ] }, $json.reasoningEffort ? { reasoning_effort: $json.reasoningEffort } : {})) }}",
+        "options": {
+          "timeout": 1800000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "0e000000-0000-4000-8000-00000000e012",
+      "name": "HTTP: OpenRouter 3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        -440
+      ],
+      "credentials": {
+        "openRouterApi": {
+          "id": "PLACEHOLDER",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const CANON = ['general', 'insights', 'qa', 'tools', 'links', 'decisions'];\n\nfunction parseSections(md) {\n  const re = /^#{1,3}[ \\t]+([a-z]+)[ \\t]*$/gm;\n  const found = []; let m;\n  while ((m = re.exec(md)) !== null) found.push(m[1]);\n  return found.filter((s) => CANON.includes(s));\n}\n\nfunction structureOk(expect, text) {\n  if (!expect || expect === 'none') return true;\n  if (expect === 'prep.chunk') {\n    const opens = (text.match(/<!--SEGMENT/g) || []).length;\n    const closes = (text.match(/-->/g) || []).length;\n    return opens > 0 && opens === closes;\n  }\n  if (expect === 'signal.map') return parseSections(text).length > 0;\n  if (expect === 'signal.reduce') {\n    const found = parseSections(text);\n    return CANON.every((s) => found.includes(s));\n  }\n  if (expect === 'post.section') {\n    return !/^\\s*#{1,6}\\s/m.test(text) && !/\\*\\*/.test(text) && !/^\\s*[-*]\\s+/m.test(text);\n  }\n  return true;\n}\n\nconst requests = $('Code: Escalate 2').all().map((i) => i.json);\n\nreturn $input.all().map((item, idx) => {\n  const req = requests[idx] || requests[0];\n  const body = item.json || {};\n  const choice = (body.choices || [])[0] || {};\n  const usage = body.usage || {};\n  const details = usage.completion_tokens_details || {};\n  const text = (choice.message && choice.message.content) || '';\n  const finishReason = choice.finish_reason || null;\n\n  let failureKind = null;\n  if (body.error || (!body.choices && !text)) {\n    failureKind = 'api_error';\n  } else if (text.trim() === '') {\n    failureKind = 'reasoning_burn';\n  } else if (finishReason !== 'stop') {\n    failureKind = 'content_truncated';\n  } else if (!structureOk(req.expect, text)) {\n    failureKind = 'structure';\n  }\n\n  return {\n    json: {\n      chunkIndex: req.chunkIndex,\n      stepName: req.stepName,\n      text,\n      ok: failureKind === null,\n      failureKind,\n      finishReason,\n      attempts: req.attempt,\n      usage: {\n        promptTokens: usage.prompt_tokens || 0,\n        completionTokens: usage.completion_tokens || 0,\n        reasoningTokens: details.reasoning_tokens || 0,\n        cost: usage.cost || 0,\n      },\n      model: req.model, maxTokens: req.maxTokens, reasoningEffort: req.reasoningEffort,\n      temperature: req.temperature, system: req.system, user: req.user,\n      ceiling: req.ceiling, expect: req.expect,\n      errorMessage: (body.error && body.error.message) || null,\n    },\n  };\n});"
+      },
+      "id": "0e000000-0000-4000-8000-00000000e013",
+      "name": "Code: Classify 3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const stages = ['Code: Classify', 'Code: Classify 2', 'Code: Classify 3'];\nconst seen = [];\nfor (const s of stages) {\n  try {\n    for (const it of $(s).all()) seen.push(it.json);\n  } catch (e) {\n    // stage never executed on this run \u2014 expected when fewer than 3 attempts were needed\n  }\n}\nconst best = new Map();\nfor (const j of seen) {\n  const prev = best.get(j.chunkIndex);\n  if (!prev || (j.ok && !prev.ok) || (j.ok === prev.ok && j.attempts > prev.attempts)) {\n    best.set(j.chunkIndex, j);\n  }\n}\nreturn [...best.values()].sort((a, b) => a.chunkIndex - b.chunkIndex).map((json) => ({ json }));"
       },
       "id": "0e000000-0000-4000-8000-00000000e007",
       "name": "Code: Collect",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1100, 120]
+      "position": [
+        2640,
+        0
+      ]
     }
   ],
   "connections": {
     "When Executed by Another Workflow": {
-      "main": [[{ "node": "Code: Normalize", "type": "main", "index": 0 }]]
-    },
-    "Code: Normalize": { "main": [[{ "node": "HTTP: OpenRouter", "type": "main", "index": 0 }]] },
-    "HTTP: OpenRouter": { "main": [[{ "node": "Code: Classify", "type": "main", "index": 0 }]] },
-    "Code: Classify": { "main": [[{ "node": "IF: Needs Retry", "type": "main", "index": 0 }]] },
-    "IF: Needs Retry": {
       "main": [
-        [{ "node": "Code: Escalate", "type": "main", "index": 0 }],
-        [{ "node": "Code: Collect", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Code: Normalize",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
-    "Code: Escalate": { "main": [[{ "node": "HTTP: OpenRouter", "type": "main", "index": 0 }]] }
+    "Code: Normalize": {
+      "main": [
+        [
+          {
+            "node": "HTTP: OpenRouter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP: OpenRouter": {
+      "main": [
+        [
+          {
+            "node": "Code: Classify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Classify": {
+      "main": [
+        [
+          {
+            "node": "IF: Needs Retry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF: Needs Retry": {
+      "main": [
+        [
+          {
+            "node": "Code: Escalate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code: Collect",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Escalate": {
+      "main": [
+        [
+          {
+            "node": "HTTP: OpenRouter 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP: OpenRouter 2": {
+      "main": [
+        [
+          {
+            "node": "Code: Classify 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Classify 2": {
+      "main": [
+        [
+          {
+            "node": "IF: Needs Retry 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF: Needs Retry 2": {
+      "main": [
+        [
+          {
+            "node": "Code: Escalate 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code: Collect",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Escalate 2": {
+      "main": [
+        [
+          {
+            "node": "HTTP: OpenRouter 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP: OpenRouter 3": {
+      "main": [
+        [
+          {
+            "node": "Code: Classify 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Classify 3": {
+      "main": [
+        [
+          {
+            "node": "Code: Collect",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
   },
-  "settings": { "executionOrder": "v1" }
+  "settings": {
+    "executionOrder": "v1"
+  }
 }
