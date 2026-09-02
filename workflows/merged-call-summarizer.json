@@ -457,6 +457,19 @@
         600
       ],
       "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    steps: {\n      prep:         { model: 'z-ai/glm-5.3-flash',        maxTokens: 32768, reasoningEffort: 'low', chunkTargetTokens: 15000 },\n      signalMap:    { model: 'anthropic/claude-sonnet-5', maxTokens: 16384, chunkTargetTokens: 15000 },\n      signalReduce: { model: 'anthropic/claude-sonnet-5', maxTokens: 32768, budgetTokens: 8000 },\n      postSection:  { model: 'z-ai/glm-5.3-flash',        maxTokens: 16384, reasoningEffort: 'low' },\n      compress:     { model: 'z-ai/glm-5.3-flash',        maxTokens: 16384, reasoningEffort: 'low' },\n      invite:       { model: 'z-ai/glm-5.3-flash',        maxTokens: 16384, reasoningEffort: 'low' },\n    },\n    retry: { componentAttempts: 3, callerHalvings: 2 },\n  },\n}];"
+      },
+      "id": "cf000000-0000-4000-8000-0000000000cf",
+      "name": "Code: Pipeline Config",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        120,
+        0
+      ]
     }
   ],
   "connections": {
@@ -464,7 +477,7 @@
       "main": [
         [
           {
-            "node": "Code: Validate and Check Partner",
+            "node": "Code: Pipeline Config",
             "type": "main",
             "index": 0
           }
@@ -708,6 +721,17 @@
           {
             "node": "LLM: Prep-Prompt",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Pipeline Config": {
+      "main": [
+        [
+          {
+            "node": "Code: Validate and Check Partner",
+            "type": "main",
             "index": 0
           }
         ]

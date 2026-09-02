@@ -351,6 +351,19 @@
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst path = '/home/node/n8n-state/backfill-state.json';\n\nlet state = { schema_version: '1', last_updated: null, completed: [], failed: [] };\nlet existed = false;\nif (fs.existsSync(path)) {\n  existed = true;\n  try {\n    state = JSON.parse(fs.readFileSync(path, 'utf8'));\n  } catch (e) {\n    return { json: {\n      summary: `Backfill run complete. State file at ${path} was unparseable: ${e.message}`,\n      totalCompleted: 0, totalFailed: 0, error: e.message\n    } };\n  }\n}\n\nconst totalCompleted = (state.completed || []).length;\nconst totalFailed = (state.failed || []).length;\nconst recentFailures = (state.failed || [])\n  .slice(-5)\n  .map(f => `  - ${f.session_id}: ${f.reason}`)\n  .join('\\n') || '  (none)';\n\nconst fileNote = existed ? '' : '\\n(NOTE: state file did not exist -- workflow may not have processed any sessions)';\n\nconst summary = `Backfill run complete.${fileNote}\n\nCompleted (cumulative): ${totalCompleted}\nFailed (cumulative):    ${totalFailed}\nLast-updated:           ${state.last_updated}\n\nRecent failures:\n${recentFailures}\n`;\nconsole.log(summary);\nreturn { json: { summary, totalCompleted, totalFailed, stateFileExisted: existed } };"
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    steps: {\n      prep:         { model: 'anthropic/claude-sonnet-5', maxTokens: 32768, chunkTargetTokens: 15000 },\n      signalMap:    { model: 'anthropic/claude-sonnet-5', maxTokens: 16384, chunkTargetTokens: 15000 },\n      signalReduce: { model: 'anthropic/claude-sonnet-5', maxTokens: 32768, budgetTokens: 8000 },\n      postSection:  { model: 'z-ai/glm-5.3-flash',        maxTokens: 16384, reasoningEffort: 'low' },\n      compress:     { model: 'z-ai/glm-5.3-flash',        maxTokens: 16384, reasoningEffort: 'low' },\n      invite:       { model: 'z-ai/glm-5.3-flash',        maxTokens: 16384, reasoningEffort: 'low' },\n    },\n    retry: { componentAttempts: 3, callerHalvings: 2 },\n  },\n}];"
+      },
+      "id": "cf000000-0000-4000-8000-0000000000cf",
+      "name": "Code: Pipeline Config",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        120,
+        0
+      ]
     }
   ],
   "connections": {
@@ -358,7 +371,7 @@
       "main": [
         [
           {
-            "node": "Code: Load State File",
+            "node": "Code: Pipeline Config",
             "type": "main",
             "index": 0
           }
@@ -565,6 +578,17 @@
           {
             "node": "LLM: Community Post (W2)",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Pipeline Config": {
+      "main": [
+        [
+          {
+            "node": "Code: Load State File",
+            "type": "main",
             "index": 0
           }
         ]
