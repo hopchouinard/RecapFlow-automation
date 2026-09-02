@@ -1,0 +1,476 @@
+2026-08-25 19:36:03 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@AndrejKarpathy
+	
+2026-08-25 19:36:12 From Patrick Chouinard to Everyone:
+	https://www.youtube.com/@NateBJones
+	
+2026-08-25 19:37:18 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Patrick put gold in here (except for that building with reason guy 😂)
+	
+2026-08-25 19:37:46 From Patrick Chouinard to Everyone:
+	Replying to "Patrick put gold in here (except for that building...":
+	I just listed my daily follow
+	
+2026-08-25 19:39:40 From Elena to Everyone:
+	what about FDE?
+	
+2026-08-25 19:39:59 From Daniel Zivkovic to Everyone:
+	Replying to "what about FDE?":
+	Just added it to my resume :)
+	
+2026-08-25 19:40:29 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Make a cool portfolio website https://www.zalak-patel.com/
+	
+2026-08-25 19:42:30 From Morgan to Everyone:
+	I really like poteto's unslop it has really cleaned up Opus responses https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md
+	
+2026-08-25 19:42:57 From Morgan to Everyone:
+	And also matts /wait-what is good as well.
+	
+2026-08-25 19:44:16 From Elena to Everyone:
+	also optimize Linkedin profile - ask Claude to do that
+	
+2026-08-25 19:51:26 From Daniel Zivkovic to Everyone:
+	Nice to hear I’m not the only LanceDB user here 🤓
+	
+2026-09-01 17:42:59 From Patchou's Fathom Notetaker to Patrick Chouinard (direct message):
+	Fathom is taking notes and summarizing this meeting.
+	You can change your Fathom settings by going to https://fathom.video/customize.
+	Reply "leave" to remove Fathom from the meeting.
+	
+2026-09-01 18:00:35 From Juan Torres to Everyone:
+	Accountability through observability
+	
+2026-09-01 18:01:14 From Brandon Hancock to Everyone:
+	Screenshot 2026-09-01 at 6.01.04 PM.png
+	
+2026-09-01 18:02:00 From Fireflies.ai Notetaker Andy to Everyone:
+	Andy invited Fireflies.ai here to record & take notes.
+	By continuing, you agree to https://fireflies.ai/privacy
+	
+	Type:
+	'/ff pause' - pause recording
+	'/ff leave' - to stop recording
+	
+	View Realtime notes here: https://app.fireflies.ai/live/01M1C54AFS5JHJ0THTGHXW40XZ?ref=live_chat
+	
+2026-09-01 18:07:16 From Paul Miller to Everyone:
+	Total addressible market number 1 on journey
+	Alex Wilson:💜
+	
+2026-09-01 18:07:28 From Shakur to Everyone:
+	What if it’s a cheap throw away thing you could build?
+	
+2026-09-01 18:08:35 From Patrick Chouinard to Everyone:
+	@Brandon Hancock If you go back to ShipKit it would be ripe for a skill conversion
+	Paul Miller, Alex Wilson:👍
+	
+2026-09-01 18:09:44 From Paul Miller to Everyone:
+	@Brandon Hancock Hipa via Bedrock AWS for chinese models?
+	
+2026-09-01 18:10:03 From Daniel Zivkovic to Everyone:
+	or openrouter is good too
+	
+2026-09-01 18:10:19 From Paul Miller to Everyone:
+	Replying to "or openrouter is good too":
+	not Hippa compliant?
+	
+2026-09-01 18:12:04 From Patrick Chouinard to Everyone:
+	Actually Harvey (this legal AI tool) is actually using a customized version of Kimi K3, so Chinese models are slowly moving in more “secure” environment, it is more about the inference provider then the models.
+	
+2026-09-01 18:14:06 From Daniel Zivkovic to Everyone:
+	I had no idea this is your group Brandon, you have a cool bunch in here! I'm curious how you got into EMR/EHR business - I would never dare to compete with Epic or Cerner or Microsoft of Google HDR hospitals use.  Who is you healthcare ICP???
+	Brandon Hancock:❤️
+	
+2026-09-01 18:14:34 From Brandon Hancock to Everyone:
+	Screenshot 2026-09-01 at 6.14.12 PM.png
+	
+2026-09-01 18:15:29 From Shakur to Everyone:
+	@Patrick Chouinard please let me know how it goes as I want to do that soon too
+	Patrick Chouinard:👍
+	
+2026-09-01 18:15:35 From Shakur to Everyone:
+	I’m loving T3 code
+	
+2026-09-01 18:16:17 From Brandon Hancock to Everyone:
+	Replying to "I had no idea this is your group Brandon, you have...":
+	Hey Daniel! Would love to elaborate in just a second when we get to you!
+	Daniel Zivkovic:❤️
+	
+2026-09-01 18:17:51 From Elijah Stambaugh's Sembly Agent to Everyone:
+	Hi, this is Elijah Stambaugh's Sembly Agent. This meeting is being recorded.
+	
+2026-09-01 18:18:27 From Shakur to Everyone:
+	I went a different route
+	
+2026-09-01 18:21:55 From Shakur to Everyone:
+	I also did a Patrick this week too
+	
+2026-09-01 18:23:15 From Shakur to Everyone:
+	Oh I just added something  like that this week too
+	
+2026-09-01 18:23:29 From Juan Torres to Everyone:
+	Giphy [ID:Um3ljJl8jrnHy]
+	Brandon Hancock:😂
+	
+2026-09-01 18:23:42 From Morgan to Everyone:
+	sssf IndyDevDan
+	Juan Torres:👍
+	
+2026-09-01 18:24:01 From Brandon Hancock to Everyone:
+	Replying to "Oh I just added something  like that this week too":
+	Hell yea!! That’s awesome!
+	
+2026-09-01 18:25:44 From Alex Wilson to Everyone:
+	My assistant is kind of built this way, but it is from the ground up.  Not using Hermes or open cloud or anything like that.
+	Brandon Hancock:🔥
+	
+2026-09-01 18:31:51 From Ty Wells to Everyone:
+	No Dashboard is the way I went also
+	
+2026-09-01 18:32:13 From Ty Wells to Everyone:
+	Well sorta
+	
+2026-09-01 18:32:50 From Ty Wells to Everyone:
+	I do it all the time
+	
+2026-09-01 18:33:14 From Ty Wells to Everyone:
+	Ran a query the other day, some things I build 3 times and got trends as to when this was happening
+	
+2026-09-01 18:33:19 From Juan Torres to Everyone:
+	Observability, specially with non-deterministic systems, always pays off
+	
+2026-09-01 18:33:21 From Morgan to Everyone:
+	Graphic interface is observabilty
+	
+2026-09-01 18:33:24 From Ty Wells to Everyone:
+	Usually late and night and some drinks involved
+	Daniel Zivkovic:💯
+	
+2026-09-01 18:35:46 From Juan Torres to Everyone:
+	God dam, I feel like this is the work of Santiago Calatrava
+	
+2026-09-01 18:36:13 From Bastian Venegas Arevalo to Everyone:
+	ACS for Hermes? do you mean ACP @Patrick Chouinard ? I have a PR ready for that for T3Code. It’s working locally 🙂
+	
+2026-09-01 18:39:15 From Patrick Chouinard to Everyone:
+	Replying to "ACS for Hermes? do you mean ACP @Patrick Chouinard...":
+	Yes, sorry ACP
+	
+2026-09-01 18:39:58 From Patrick Chouinard to Everyone:
+	Replying to "ACS for Hermes? do you mean ACP @Patrick Chouinard...":
+	I would be very interested in the content of that PR if you were open to sharing
+	
+2026-09-01 18:40:54 From Bastian Venegas Arevalo to Everyone:
+	Replying to "ACS for Hermes? do you mean ACP @Patrick Chouinard...":
+	Yes of course. Give me your github email or user and I’ll invite you to a repo with the PR
+	Patrick Chouinard:❤️
+	
+2026-09-01 18:44:17 From Daniel Zivkovic to Everyone:
+	love Brandon's approach - iterate from the "begin with the end in mind" starting point
+	
+2026-09-01 18:45:18 From Patrick Chouinard to Everyone:
+	Replying to "ACS for Hermes? do you mean ACP @Patrick Chouinard...":
+	Hopchouinard is my GitHub user
+	Bastian Venegas Arevalo:👍
+	
+2026-09-01 18:45:34 From Daniel Zivkovic to Everyone:
+	3.7 flash is AMAZING
+	
+2026-09-01 18:47:12 From Patrick Chouinard to Everyone:
+	BTW @Brandon Hancock RecapFlow now run on GLM 5.3 Flash and the cost of compilation of 1 call, went from 1.50$ to about 0.15$
+	
+2026-09-01 18:50:18 From Bastian Venegas Arevalo to Everyone:
+	Replying to "BTW @Brandon Hancock RecapFlow now run on GLM 5.3 ...":
+	Yup I was reading that Fireworks is serving it too. Hosted in the US.
+	Screenshot2026_09_01_185008.jpg
+	
+2026-09-01 18:51:18 From Brandon Hancock to Everyone:
+	Replying to "BTW @Brandon Hancock RecapFlow now run on GLM 5.3 ...":
+	That’s crazy!!!
+	
+2026-09-01 18:51:29 From Brandon Hancock to Everyone:
+	Replying to "BTW @Brandon Hancock RecapFlow now run on GLM 5.3 ...":
+	I can’t wait for it to get deployed to GCP!!!
+	Paul Miller, Daniel Zivkovic:👍
+	
+2026-09-01 18:51:34 From Brandon Hancock to Everyone:
+	Replying to "BTW @Brandon Hancock RecapFlow now run on GLM 5.3 ...":
+	My wallet can’t either lol
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:😂
+	
+2026-09-01 18:54:32 From Shakur to Everyone:
+	I’ve been too scared to run the debug mode because of cost
+	
+2026-09-01 18:57:24 From Juan Torres to Everyone:
+	Pauland
+	
+2026-09-01 18:58:08 From Daniel Zivkovic to Everyone:
+	@Hemal Shah, start simple as Brandon and Anthropic recommend:  https://www.anthropic.com/engineering/building-effective-agents
+	
+2026-09-01 18:58:14 From Juan Torres to Everyone:
+	AWS gang!
+	
+2026-09-01 18:59:01 From Morgan to Everyone:
+	Are you playing monopoly @Brandon Hancock 
+	Juan Torres, Shakur:😂
+	
+2026-09-01 18:59:11 From Patrick Chouinard to Everyone:
+	Replying to "I’ve been too scared to run the debug mode because...":
+	So far I was always able to do everything within my 2, 100$ max subscriptions (one Codex, one Claude). But I would try PI.dev using GLM 5.3 from OpenRouter, with what I saw so far, the cost should be manageable
+	
+2026-09-01 18:59:13 From Ryan C (One Stop Creative Agency - UK) to Everyone:
+	Was painful with AWS Rekognition as well!
+	
+2026-09-01 18:59:55 From Shakur to Everyone:
+	Replying to "I’ve been too scared to run the debug mode because...":
+	Okay I’m going to try then
+	
+2026-09-01 19:03:54 From Shakur to Everyone:
+	If he wants to invest I will take some
+	Brandon Hancock:😂
+	
+2026-09-01 19:12:59 From Daniel Zivkovic to Everyone:
+	@Paul Miller: i use both LanceDB and DuckDB but not that 3rd thing: "Sarabase" for ux ?
+	
+2026-09-01 19:13:28 From Brandon Hancock to Everyone:
+	https://www.cerebras.ai/infcamp?gad_campaignid=22913298711&gbraid=0AAAAA-1Vm3tU-an4UyV0Sl80v8wJ_Y8II 
+	
+	I think this
+	
+2026-09-01 19:15:28 From Daniel Zivkovic to Everyone:
+	FYI: @Brandon Hancock, here is how I use DuckDB as "intelligence layer" ontop of LanceDB https://github.com/dzivkovi/video-intel/blob/7559be71fa6d57f44e9937111f730b1751f1ed7b/docs/intelligence-layer.md?plain=1#L13
+	
+2026-09-01 19:17:29 From Ty Wells to Everyone:
+	Love it Juan
+	Daniel Zivkovic, Juan Torres:👍
+	
+2026-09-01 19:17:49 From Ty Wells to Everyone:
+	I smell a promo video
+	Juan Torres:🔥
+	
+2026-09-01 19:18:02 From Brandon Hancock to Everyone:
+	This is insane!!!! Please send me the video!!
+	Juan Torres:🔥
+	
+2026-09-01 19:18:59 From Morgan to Everyone:
+	Very cool! @Juan Torres 
+	Biggi Fraley:🎉
+	Daniel Zivkovic, Juan Torres:💯
+	
+2026-09-01 19:19:01 From Patrick Chouinard to Everyone:
+	@Juan Torres  Superbowl publicity 😜
+	
+2026-09-01 19:20:20 From Paul Miller to Everyone:
+	rock star Juan
+	Daniel Zivkovic, Juan Torres:💯
+	
+2026-09-01 19:24:50 From Brandon Hancock to Everyone:
+	https://youtu.be/c9WCcD4fH6c?si=MV-pyT3zxG9b2bIa
+	Daniel Zivkovic:🙏
+	
+2026-09-01 19:25:24 From Paul Miller to Everyone:
+	@Juan Torres Use serpai and get google place data for your total addressible market. Cheaper that google api keys
+	
+2026-09-01 19:25:47 From Paul Miller to Everyone:
+	golf and other venues, weddings etc
+	
+2026-09-01 19:26:04 From Paul Miller to Everyone:
+	Get Grokbot to build for you
+	
+2026-09-01 19:26:07 From Daniel Zivkovic to Everyone:
+	@Juan Torres, my info is 10-15years old but take a look at Dean Jackson's ILoveMarketing.com site for email ideas
+	Juan Torres:👍
+	
+2026-09-01 19:27:34 From Paul Miller to Everyone:
+	Replying to "@Juan Torres Use serpai and get google place data ...":
+	https://serpapi.com/
+	
+2026-09-01 19:29:44 From Ty Wells to Everyone:
+	ChatGPT Image Sep 1, 2026 at 07_29_15 PM.png
+	Paul Miller, Biggi Fraley, Patrick Chouinard:😂
+	
+2026-09-01 19:29:45 From Brandon Hancock to Everyone:
+	https://www.youtube.com/@InstantlyAI/videos
+	
+2026-09-01 19:31:29 From Ty Wells to Everyone:
+	No business card, use QR Code
+	Patrick Chouinard, Juan Torres, Daniel Zivkovic, Paul Miller:❤️
+	
+2026-09-01 19:31:37 From Ty Wells to Everyone:
+	They can scan and go
+	Juan Torres:👍
+	
+2026-09-01 19:31:56 From Ty Wells to Everyone:
+	Shown from your homepage
+	
+2026-09-01 19:32:06 From Ty Wells to Everyone:
+	Home screen
+	
+2026-09-01 19:32:46 From Daniel Zivkovic to Everyone:
+	@Brandon Hancock, is this another channel you mentioned? https://www.youtube.com/@Itssssss_Jack
+	
+2026-09-01 19:33:03 From Brandon Hancock to Everyone:
+	Replying to "@Brandon Hancock, is this another channel you ment...":
+	Yes! He had some really good videos on claude design over the past week
+	Daniel Zivkovic:🙏
+	
+2026-09-01 19:40:12 From Brandon Hancock to Everyone:
+	https://apply.tinyseed.com/
+	Daniel Zivkovic:❤️
+	
+2026-09-01 19:40:43 From Brandon Hancock to Everyone:
+	https://www.clerky.com/welcome?gad_campaignid=1454350749&gbraid=0AAAAADwetcVLyo7aDWUOlvT90XI9JpN6T
+	
+2026-09-01 19:40:48 From Brandon Hancock to Everyone:
+	Setup an c corp ^
+	
+2026-09-01 19:42:49 From Daniel Zivkovic to Everyone:
+	Replying to "https://apply.tinyseed.com/":
+	never heard of these guys, but seeing April Dunford as one of their coaches gives them TONS of credibility, thank you @Brandon Hancock!
+	
+2026-09-01 19:45:06 From Brandon Hancock to Everyone:
+	Replying to "https://apply.tinyseed.com/":
+	That is who we used to raise money for our startup
+	
+2026-09-01 19:47:05 From Daniel Zivkovic to Everyone:
+	FYI @Brandon Hancock: There's a BIG warning against Delaware C-corps in this video by Lean Startup book author: https://youtu.be/7VKliOQXQ9M?si=80_0wYiaU91lwqJa  (disclaimer - I'm from Canada and clueless about US rules, but hearing that that legal papers like that kicked out Twilio founder out of his own company was SCARY to me)
+	
+2026-09-01 19:50:44 From Brandon Hancock to Everyone:
+	Screenshot 2026-09-01 at 6.14.12 PM(1).png
+	
+2026-09-01 19:51:08 From Juan Torres to Everyone:
+	Replying to "This is insane!!!! Please send me the video!!":
+	Wii do
+	
+2026-09-01 19:52:32 From Juan Torres to Everyone:
+	Replying to "@Juan Torres Use serpai and get google place data ...":
+	Aweomse, this is what I was looking for to look for my potential clients
+	
+2026-09-01 19:53:11 From Juan Torres to Everyone:
+	Replying to "golf and other venues, weddings etc":
+	Gold and Country Clubs are awesome places as clients
+	
+2026-09-01 19:54:08 From Juan Torres to Everyone:
+	Replying to "No business card, use QR Code":
+	Maybe booth?
+	Paul Miller:👍
+	
+2026-09-01 19:54:15 From Fireflies.ai Notetaker Andy to Everyone:
+	Attention: Recording will stop in 2 minutes. You can re-invite to continue recording.
+	
+2026-09-01 19:55:02 From Brandon Hancock to Everyone:
+	https://www.instagram.com/alyssamcelheny/?hl=en
+	
+2026-09-01 19:56:53 From Juan Torres to Everyone:
+	Replying to "https://www.instagram.com/alyssamcelheny/?hl=en":
+	Dam, that's 10% body fat or less
+	Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com:😂
+	
+2026-09-01 20:12:49 From Varun Sharma to Everyone:
+	@Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com  BEAUTIFUL. how much did you cost in API costs? or all on claude sub?
+	Daniel Zivkovic:💯
+	
+2026-09-01 20:18:12 From Varun Sharma to Everyone:
+	https://github.com/ccusage/ccusage
+	
+2026-09-01 20:18:22 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	https://github.com/scott-rippey/cc-blackbox-app
+	
+2026-09-01 20:18:39 From Scott Rippey | @scottmichaelmedia | scottmichaelmedia.com to Everyone:
+	Thanks guys!  I gotta run but there’s the repo
+	Patrick Chouinard, Varun Sharma:👍
+	
+2026-09-01 20:19:36 From Morgan to Everyone:
+	@Brandon Hancock I took your challenge from the begging of this call, And have a list of 450 prospects for Class2Curb.com that I found while participating in this call.
+	I've got to go, Its always good to see all of you look forward to our next call
+	bye!
+	Biggi Fraley, Brandon Hancock, Paul Miller:❤️
+	
+2026-09-01 20:21:24 From Varun Sharma to Patrick Chouinard (direct message):
+	Hey Pat, hello. And nice to see you. Sorry gotta say again haha, but fan of your beard 🙌🏻
+	Patrick Chouinard:👍
+	
+2026-09-01 20:22:03 From Patrick Chouinard to Varun Sharma (direct message):
+	Thanks buddy
+	
+2026-09-01 20:27:15 From Varun Sharma to Everyone:
+	@Shakur this would be really useful for local businesses esp
+	
+2026-09-01 20:36:50 From Daniel Zivkovic to Everyone:
+	Why does everyone call "it" a LOOP? such an ugly name for traditional SDLC "iterative process" and old DevOps loops (just my 2c)
+	
+2026-09-01 20:38:13 From Juan Torres to Everyone:
+	Replying to "Why does everyone call "it" a LOOP? such an ugly n...":
+	It's not like the good old days
+	
+2026-09-01 20:39:34 From Daniel Zivkovic to Everyone:
+	Replying to "Why does everyone call "it" a LOOP? such an ugly n...":
+	i know but calling something "loop engineering" is just silly (to me)
+	
+2026-09-01 20:42:08 From Ty Wells to Everyone:
+	https://lnkd.in/p/g8e5p6cH
+	Daniel Zivkovic:👍
+	
+2026-09-01 20:42:28 From Brandon Hancock to Everyone:
+	Letting my dogs out but I am still listening!
+	Patrick Chouinard:👍
+	
+2026-09-01 20:42:28 From Ty Wells to Everyone:
+	My presentation
+	
+2026-09-01 20:44:59 From Daniel Zivkovic to Everyone:
+	@Shakur: "imitate before innovate"
+	Shakur, Juan Torres:👍
+	
+2026-09-01 20:45:22 From Juan Torres to Everyone:
+	Replying to "@Shakur: "imitate before innovate"":
+	Yes, standardization before optimization
+	
+2026-09-01 20:46:32 From Brandon Hancock to Everyone:
+	https://youtu.be/W4EwfEU8CGA?si=8r3awarUJJEING4w
+	
+2026-09-01 20:47:07 From Daniel Zivkovic to Everyone:
+	Replying to "@Shakur: "imitate before innovate"":
+	That's step one of Toyota's Kaizen production system
+	
+2026-09-01 20:50:51 From Juan Torres to Everyone:
+	Replying to "@Shakur: "imitate before innovate"":
+	Yes,  the Japanese industrial technique, specifically from Toyota, is superb
+	
+2026-09-01 20:51:15 From Shakur to Everyone:
+	When are you coming back on YT?
+	
+2026-09-01 20:52:10 From Juan Torres to Everyone:
+	Replying to "When are you coming back on YT?":
+	yess
+	
+2026-09-01 20:53:50 From Juan Torres to Everyone:
+	Brandon spitting facts
+	
+2026-09-01 20:54:05 From Daniel Zivkovic to Everyone:
+	@Brandon Hancock how do you search for outliers like that (for specific topics) on YT - is there an tool or skill or dashboard for that?
+	Alex Wilson:🔥
+	
+2026-09-01 20:56:01 From Juan Torres to Everyone:
+	Gotta go folks, great talk
+	
+2026-09-01 20:57:38 From Daniel Zivkovic to Everyone:
+	this one https://chromewebstore.google.com/detail/vidiq-vision-for-youtube/pachckjkecffpdphbpmfolblodfkgbhl?hl=en&pli=1 🙏
+	
+2026-09-01 20:58:09 From Ty Wells to Everyone:
+	I’ve got to run too guys, check the linkedIn article I posted in the chat:https://lnkd.in/p/g8e5p6cH
+	Daniel Zivkovic, Patrick Chouinard:👍
+	
+2026-09-01 20:59:33 From Brandon Hancock to Everyone:
+	https://www.shipkit.ai/
+	
+2026-09-01 20:59:52 From Daniel Zivkovic to Everyone:
+	kk, thanks
+	
+2026-09-01 21:06:31 From Alex Wilson to Everyone:
+	Nope, all good here.  Good to see you!
+	
+2026-09-01 21:06:36 From Biggi Fraley to Everyone:
+	All good. Thanks, Brandon. ❤️
+	
