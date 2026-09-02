@@ -201,8 +201,8 @@ Step-level rather than per-chunk re-splitting is deliberate: it needs one loop-b
 | `expect` | Check |
 |---|---|
 | `prep.chunk` | Every `<!--SEGMENT` opened is closed by `-->`; body is non-trivial |
-| `signal.map` | Output parses as markdown H2 sections drawn from the six canonical slugs |
-| `signal.reduce` | **All six** headings present, in canonical order: `general`, `insights`, `qa`, `tools`, `links`, `decisions` |
+| `signal.map` | Output parses into sections drawn from the six canonical slugs (see §4.6 on heading levels) |
+| `signal.reduce` | **All six** headings present, in canonical order: `general`, `insights`, `qa`, `tools`, `links`, `decisions`; heading level normalized to H2 on write |
 | `post.section` | Non-empty, no markdown syntax (Skool constraint) |
 | `none` | Non-empty only |
 
@@ -216,6 +216,21 @@ The escalation ladder caps `maxTokens` at the model's advertised completion limi
 | `anthropic/claude-sonnet-5` | 1000000 | **128000** |
 
 Both are far above any budget this pipeline needs, so the ladder never saturates in practice. The component holds these as a lookup keyed by model slug, defaulting to 32768 for an unrecognised slug so that a newly configured model degrades safely rather than sending an out-of-range `max_tokens`.
+
+### 4.6 Heading-level tolerance in `extracted-signal.md`
+
+The Extract Signal prompt specifies H2 (`## general`), but the model does not reliably comply. Surveyed 2026-09-02 across committed artifacts:
+
+| Session | Heading level emitted |
+|---|---|
+| `2026-09-01` | `# general` (H1) |
+| `2026-08-25` | `## general` (H2) |
+| `2026-08-18` | `# general` (H1) |
+| `2026-07-28` | `## general` (H2) |
+
+The six canonical **slugs** are stable; the **level** is not. Any parser keyed strictly to `^## ` fails on roughly half of real sessions — including 2026-09-01, the session this design exists to fix.
+
+Therefore: all section parsing matches `/^#{1,3}[ \t]+([a-z]+)[ \t]*$/m`, and the reduce step normalizes headings to H2 when writing `extracted-signal.md`. This matters most for §5.3, where Community Post chunking depends on parsing those sections; a level-strict parser would silently yield zero sections and produce an empty post.
 
 ## 5. Chunking strategies
 
