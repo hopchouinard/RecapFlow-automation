@@ -160,50 +160,50 @@
       }
     },
     {
-      "id": "e1000000-0000-4000-8000-000000000009",
-      "name": "LLM: Community Post",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.9,
+      "id": "ef000000-0000-4000-8000-0000000000f6",
+      "name": "Code: Split Post Sections",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
         1750,
         300
       ],
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.signalText }}",
-        "hasOutputParser": false,
-        "messages": {
-          "messageValues": [
-            {
-              "type": "SystemMessagePromptTemplate",
-              "message": "You are preparing a polished community post based on extracted insights from a weekly AI community call (transcript and chat log combined).\n\nYour audience is community members who may not have attended live but want the most useful value from the call.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Instead use emoji for section headers and visual structure.\n\nTurn the extracted material below into a concise, polished, community-friendly post.\n\nCRITICAL: You MUST output sections in EXACTLY this order — do not rearrange them:\n\n1. 📝 SUMMARY\nWrite one short paragraph summarizing the overall value and themes of the call.\n\n2. 💡 KEY INSIGHTS\nSummarize the strongest practical or strategic takeaways.\n\n3. ❓ KEY Q&A\nPresent the most useful question-and-answer pairs clearly and concisely.\n\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\nList important tools, frameworks, and concepts with short explanations.\n\n5. 📎 SHARED RESOURCES\nPresent the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.\n\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\nList open questions or topics worth revisiting if relevant.\n\nRules:\n- Output PLAIN TEXT only — no markdown formatting whatsoever\n- Use emoji for section headers (as shown above)\n- Output sections in the numbered order above — never reorder them\n- Use line breaks and spacing for readability\n- Keep the post concise and skimmable\n- Preserve only the strongest value\n- Use polished, natural, professional language\n- Do not invent any information not present in the extracted analysis\n- Omit any section that has little or no useful content\n- Make the result feel ready to copy-paste and post with minimal editing\n\nHere is the extracted analysis:"
-            }
-          ]
-        }
+        "jsCode": "const cfg = $('Code: Pipeline Config').first().json.steps.postSection;\nconst md = $input.first().json.signalText;\n\nconst CANON = ['general', 'insights', 'qa', 'tools', 'links', 'decisions'];\nfunction splitSignalIntoSections(src) {\n  const out = {};\n  const re = /^#{1,3}[ \\t]+([a-z]+)[ \\t]*$/gm;\n  let m; const marks = [];\n  while ((m = re.exec(src)) !== null) marks.push({ slug: m[1], start: m.index, bodyStart: re.lastIndex });\n  for (let i = 0; i < marks.length; i++) {\n    const end = i + 1 < marks.length ? marks[i + 1].start : src.length;\n    const body = src.slice(marks[i].bodyStart, end).trim();\n    if (CANON.includes(marks[i].slug) && body) out[marks[i].slug] = body;\n  }\n  return out;\n}\n\nconst BRIEF = {\n  general:   'Write ONE short paragraph summarizing the overall value and themes of the call.',\n  insights:  'Summarize the strongest practical or strategic takeaways as short lines, one per takeaway.',\n  qa:        'Present the most useful question-and-answer pairs clearly and concisely, one exchange per block.',\n  tools:     'List the important tools, frameworks and concepts with a short explanation each, one per line.',\n  links:     'Present the most useful links and resources in a clean, easy-to-scan way. Write URLs as plain text.',\n  decisions: 'List the open questions, follow-ups and commitments worth revisiting, one per line.',\n};\n\nconst sections = splitSignalIntoSections(md);\nreturn CANON.filter((s) => sections[s]).map((slug, i) => ({\n  json: {\n    stepName: `post.section.${slug}`,\n    section: slug,\n    model: cfg.model,\n    maxTokens: cfg.maxTokens,\n    reasoningEffort: cfg.reasoningEffort,\n    expect: 'post.section',\n    chunkIndex: i,\n    system: `You are writing ONE section of a polished community post about a weekly AI community call, for members who may not have attended live.\n\n${BRIEF[slug]}\n\nIMPORTANT: This post is published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use #, **bold**, - bullets, or [links](url). Use line breaks and spacing for readability.\n\nOutput ONLY this section's body text. Do NOT write a heading — the heading is added automatically. Do not invent information not present in the input. Keep it concise, skimmable and ready to copy-paste.`,\n    user: sections[slug],\n  },\n}));"
       }
     },
     {
-      "id": "e1000000-0000-4000-8000-000000000010",
-      "name": "OpenRouter Chat Model 2",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        1750,
-        500
-      ],
       "parameters": {
-        "model": "z-ai/glm-5.3-flash",
+        "workflowId": {
+          "__rl": true,
+          "value": "openrouterCall",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Call"
+        },
         "options": {
-          "maxTokens": 32768,
-          "temperature": 0.3,
-          "timeout": 600000
+          "waitForSubWorkflow": true
         }
       },
-      "credentials": {
-        "openRouterApi": {
-          "id": "PLACEHOLDER",
-          "name": "OpenRouter account"
-        }
+      "id": "ef000000-0000-4000-8000-0000000000f7",
+      "name": "Execute: Post Sections via OpenRouter",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1875,
+        300
+      ]
+    },
+    {
+      "id": "ef000000-0000-4000-8000-0000000000f8",
+      "name": "Code: Assemble Post",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const HEADERS = {\n  general:   '📝 SUMMARY',\n  insights:  '💡 KEY INSIGHTS',\n  qa:        '❓ KEY Q&A',\n  tools:     '🛠️ TOOLS AND CONCEPTS MENTIONED',\n  links:     '📎 SHARED RESOURCES',\n  decisions: '🔄 FOLLOW-UPS WORTH EXPLORING',\n};\nconst ORDER = ['general', 'insights', 'qa', 'tools', 'links', 'decisions'];\n\nconst items = $input.all().map((i) => i.json);\nconst failed = items.filter((i) => !i.ok);\nif (failed.length) {\n  const f = failed[0];\n  throw new Error(`Community post section '${f.section}' failed after ${f.attempts} attempts (failureKind=${f.failureKind}). No artifact written.`);\n}\n\nconst bySection = new Map(items.map((i) => [i.section, i.text.trim()]));\nconst post = ORDER\n  .filter((s) => bySection.has(s) && bySection.get(s))\n  .map((s) => `${HEADERS[s]}\\n\\n${bySection.get(s)}`)\n  .join('\\n\\n\\n');\n\nreturn [{\n  json: {\n    communityPostText: post,\n    totalCost: items.reduce((sum, i) => sum + ((i.usage && i.usage.cost) || 0), 0),\n  },\n}];"
       }
     },
     {
@@ -221,49 +221,49 @@
     },
     {
       "id": "e1000000-0000-4000-8000-000000000012",
-      "name": "LLM: Compress Post",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.9,
+      "name": "Code: Build Compress Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
         2250,
         300
       ],
       "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.communityPostText }}",
-        "hasOutputParser": false,
-        "messages": {
-          "messageValues": [
-            {
-              "type": "SystemMessagePromptTemplate",
-              "message": "Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nCRITICAL: You MUST preserve the section order EXACTLY as it appears in the input — do not rearrange sections:\n1. 📝 SUMMARY\n2. 💡 KEY INSIGHTS\n3. ❓ KEY Q&A\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\n5. 📎 SHARED RESOURCES\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n- preserve the section order listed above\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:"
-            }
-          ]
-        }
+        "jsCode": "const cfg = $('Code: Pipeline Config').first().json.steps.compress;\nconst communityPostText = $input.first().json.communityPostText;\n\nconst SYSTEM = `Condense the community post below by about 30 to 40 percent while preserving all high-value information.\n\nIMPORTANT: This post will be published on Skool, which does NOT render markdown. Output PLAIN TEXT only. Do NOT use markdown syntax like # headers, ** bold **, - bullet lists, or [links](url). Keep the same emoji-based section headers and plain text formatting as the input.\n\nCRITICAL: You MUST preserve the section order EXACTLY as it appears in the input — do not rearrange sections:\n1. 📝 SUMMARY\n2. 💡 KEY INSIGHTS\n3. ❓ KEY Q&A\n4. 🛠️ TOOLS AND CONCEPTS MENTIONED\n5. 📎 SHARED RESOURCES\n6. 🔄 FOLLOW-UPS WORTH EXPLORING\n\nGoals:\n- make it easier to skim\n- remove repetition\n- keep links, useful Q&A, and strongest insights\n- preserve a professional, community-friendly tone\n- maintain plain text formatting with emoji section headers\n- preserve the section order listed above\n\nDo not remove important resources or key takeaways.\n\nHere is the draft post:`;\n\nreturn [{\n  json: {\n    stepName: 'compress',\n    model: cfg.model,\n    maxTokens: cfg.maxTokens,\n    reasoningEffort: cfg.reasoningEffort,\n    expect: 'none',\n    chunkIndex: 0,\n    system: SYSTEM,\n    user: communityPostText,\n  },\n}];"
       }
     },
     {
-      "id": "e1000000-0000-4000-8000-000000000013",
-      "name": "OpenRouter Chat Model 3",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        2250,
-        500
-      ],
       "parameters": {
-        "model": "z-ai/glm-5.3-flash",
+        "workflowId": {
+          "__rl": true,
+          "value": "openrouterCall",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Call"
+        },
         "options": {
-          "maxTokens": 32768,
-          "temperature": 0.3,
-          "timeout": 600000
+          "waitForSubWorkflow": true
         }
       },
-      "credentials": {
-        "openRouterApi": {
-          "id": "PLACEHOLDER",
-          "name": "OpenRouter account"
-        }
+      "id": "e1000000-0000-4000-8000-000000000013",
+      "name": "Execute: Compress via OpenRouter",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2375,
+        300
+      ]
+    },
+    {
+      "id": "ee000000-0000-4000-8000-0000000000e5",
+      "name": "Code: Unwrap Compress",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2450,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const items = $input.all().map((i) => i.json);\nconst failed = items.filter((i) => !i.ok);\nif (failed.length) {\n  const f = failed[0];\n  throw new Error(`Step ${f.stepName} failed after ${f.attempts} attempts (failureKind=${f.failureKind}). No artifact written.`);\n}\nreturn [{ json: { text: items[0].text, totalCost: (items[0].usage && items[0].usage.cost) || 0 } }];"
       }
     },
     {
@@ -294,49 +294,49 @@
     },
     {
       "id": "e1000000-0000-4000-8000-000000000016",
-      "name": "LLM: Weekly Invite",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.9,
+      "name": "Code: Build Invite Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
         3000,
         300
       ],
       "parameters": {
-        "promptType": "define",
-        "text": "={{ 'Next call date: Tuesday ' + $json.formattedDate + ' at 6PM ET\\n\\nHere is last week\\'s community post:\\n\\n' + $json.compressedText }}",
-        "hasOutputParser": false,
-        "messages": {
-          "messageValues": [
-            {
-              "type": "SystemMessagePromptTemplate",
-              "message": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) — A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section — Copy EXACTLY as written below, including the emoji:\n\n📞 HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n👉 Reply to this post with your questions before the call\n👉 If you submit a question and you're on the call, you go first\n👉 We work through questions in the order they came in\n👉 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) — Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section — Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n🔗 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n📅 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic — like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read — not a wall of text"
-            }
-          ]
-        }
+        "jsCode": "const cfg = $('Code: Pipeline Config').first().json.steps.invite;\nconst compressedText = $input.first().json.compressedText;\nconst formattedDate = $input.first().json.formattedDate;\n\nconst SYSTEM = `You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) — A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section — Copy EXACTLY as written below, including the emoji:\n\n📞 HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n👉 Reply to this post with your questions before the call\n👉 If you submit a question and you're on the call, you go first\n👉 We work through questions in the order they came in\n👉 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) — Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section — Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n🔗 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n📅 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic — like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read — not a wall of text`;\n\nreturn [{\n  json: {\n    stepName: 'invite',\n    model: cfg.model,\n    maxTokens: cfg.maxTokens,\n    reasoningEffort: cfg.reasoningEffort,\n    expect: 'none',\n    chunkIndex: 0,\n    system: SYSTEM,\n    user: `Next call date: Tuesday ${formattedDate} at 6PM ET\\n\\nHere is last week's community post:\\n\\n${compressedText}`,\n  },\n}];"
       }
     },
     {
-      "id": "e1000000-0000-4000-8000-000000000017",
-      "name": "OpenRouter Chat Model 4",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
-      "typeVersion": 1,
-      "position": [
-        3000,
-        500
-      ],
       "parameters": {
-        "model": "z-ai/glm-5.3-flash",
+        "workflowId": {
+          "__rl": true,
+          "value": "openrouterCall",
+          "mode": "list",
+          "cachedResultName": "OpenRouter Call"
+        },
         "options": {
-          "maxTokens": 32768,
-          "temperature": 0.3,
-          "timeout": 600000
+          "waitForSubWorkflow": true
         }
       },
-      "credentials": {
-        "openRouterApi": {
-          "id": "PLACEHOLDER",
-          "name": "OpenRouter account"
-        }
+      "id": "e1000000-0000-4000-8000-000000000017",
+      "name": "Execute: Invite via OpenRouter",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        3125,
+        300
+      ]
+    },
+    {
+      "id": "ee000000-0000-4000-8000-0000000000e6",
+      "name": "Code: Unwrap Invite",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3200,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const items = $input.all().map((i) => i.json);\nconst failed = items.filter((i) => !i.ok);\nif (failed.length) {\n  const f = failed[0];\n  throw new Error(`Step ${f.stepName} failed after ${f.attempts} attempts (failureKind=${f.failureKind}). No artifact written.`);\n}\nreturn [{ json: { text: items[0].text, totalCost: (items[0].usage && items[0].usage.cost) || 0 } }];"
       }
     },
     {
@@ -566,14 +566,36 @@
       "main": [
         [
           {
-            "node": "LLM: Community Post",
+            "node": "Code: Split Post Sections",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "LLM: Community Post": {
+    "Code: Split Post Sections": {
+      "main": [
+        [
+          {
+            "node": "Execute: Post Sections via OpenRouter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute: Post Sections via OpenRouter": {
+      "main": [
+        [
+          {
+            "node": "Code: Assemble Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Assemble Post": {
       "main": [
         [
           {
@@ -588,14 +610,36 @@
       "main": [
         [
           {
-            "node": "LLM: Compress Post",
+            "node": "Code: Build Compress Request",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "LLM: Compress Post": {
+    "Code: Build Compress Request": {
+      "main": [
+        [
+          {
+            "node": "Execute: Compress via OpenRouter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute: Compress via OpenRouter": {
+      "main": [
+        [
+          {
+            "node": "Code: Unwrap Compress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Unwrap Compress": {
       "main": [
         [
           {
@@ -621,52 +665,41 @@
       "main": [
         [
           {
-            "node": "LLM: Weekly Invite",
+            "node": "Code: Build Invite Request",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "LLM: Weekly Invite": {
+    "Code: Build Invite Request": {
+      "main": [
+        [
+          {
+            "node": "Execute: Invite via OpenRouter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute: Invite via OpenRouter": {
+      "main": [
+        [
+          {
+            "node": "Code: Unwrap Invite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Unwrap Invite": {
       "main": [
         [
           {
             "node": "Code: Save weekly-invite.md",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model 2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "LLM: Community Post",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model 3": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "LLM: Compress Post",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter Chat Model 4": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "LLM: Weekly Invite",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
