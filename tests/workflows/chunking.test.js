@@ -53,6 +53,14 @@ test('reassembles prep chunks with one header and merged unresolved speakers', (
   assert.ok(out.includes('- Prem'));
 });
 
+test('does not swallow a chunk body when it has no SEGMENT marker or trailing block', () => {
+  const { reassemblePrep } = loadLib();
+  const a = '=== SESSION ===\ndate: x\n\n<!--SEGMENT\ntopic: a\n-->\nbody A';
+  const b = '=== SESSION ===\ndate: x\n\nbody B survives with no segment marker';
+  const out = reassemblePrep([a, b]);
+  assert.ok(out.includes('body B survives'), 'chunk body swallowed by SESSION header regex');
+});
+
 test('dedupes unresolved speakers that differ only by internal whitespace', () => {
   const { reassemblePrep } = loadLib();
   const a = '=== SESSION ===\ndate: x\n\n<!--SEGMENT\ntopic: a\n-->\nbody A\n\n=== UNRESOLVED SPEAKERS ===\n- Ryan C (appears 5 times)';

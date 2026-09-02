@@ -64,6 +64,15 @@ test('aggregate joins chunks, hoists one header, merges unresolved speakers', ()
   assert.ok(Math.abs(out[0].json.totalCost - 0.03) < 1e-9);
 });
 
+test('aggregate does not swallow a chunk body when it has no SEGMENT marker or trailing block', () => {
+  const items = [
+    { json: { chunkIndex: 0, ok: true, text: '=== SESSION ===\ndate: x\n\n<!--SEGMENT\ntopic: a\n-->\nbody A', usage: { cost: 0.01 } } },
+    { json: { chunkIndex: 1, ok: true, text: '=== SESSION ===\ndate: x\n\nbody B survives with no segment marker', usage: { cost: 0.02 } } },
+  ];
+  const out = runCodeNode('merged-call-summarizer.json', 'Code: Aggregate Prep', { items });
+  assert.ok(out[0].json.preparedTranscript.includes('body B survives'), 'chunk body swallowed by SESSION header regex');
+});
+
 test('aggregate throws when any chunk failed, so nothing is written', () => {
   const items = [
     { json: { chunkIndex: 0, ok: true, text: 'fine', usage: { cost: 0 } } },
