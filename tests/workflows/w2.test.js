@@ -179,3 +179,122 @@ test('moonshotai/kimi is gone from W2 entirely', () => {
   const serialized = JSON.stringify(wf);
   assert.ok(!/moonshotai|kimi/i.test(serialized), 'kimi must not appear anywhere in W2');
 });
+
+// --- Controller Ruling M: chunked-node failures must reach the existing per-session
+// failure path (state.failed) and let the backfill loop continue, instead of aborting
+// the whole manual-trigger run. ---
+
+function makeFsMock(initialState) {
+  const files = {};
+  if (initialState !== undefined) {
+    files['/home/node/n8n-state/backfill-state.json'] = JSON.stringify(initialState);
+  }
+  return {
+    existsSync: (p) => files[p] !== undefined,
+    readFileSync: (p) => files[p],
+    writeFileSync: (p, content) => { files[p] = content; },
+    renameSync: (a, b) => { files[b] = files[a]; delete files[a]; },
+    unlinkSync: (p) => { delete files[p]; },
+    _files: files,
+  };
+}
+
+test('W2: Aggregate Prep, Aggregate Signal, and Assemble Post are wired to continueErrorOutput', () => {
+  const wf = loadWorkflow('transcript-only-summarizer.json');
+  const byName = Object.fromEntries(wf.nodes.map((n) => [n.name, n]));
+  for (const name of ['Code: Aggregate Prep', 'Code: Aggregate Signal', 'Code: Assemble Post']) {
+    assert.strictEqual(byName[name].onError, 'continueErrorOutput', `${name} must route its throw to the error output`);
+    const targets = wf.connections[name].main;
+    assert.strictEqual(targets.length, 2, `${name} must declare both a normal and an error output`);
+    assert.ok(targets[1].length >= 1, `${name}'s error output must be wired somewhere`);
+  }
+});
+
+test('W2: the three chunked nodes still throw on failure (errors are routed, not suppressed)', () => {
+  assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Prep', {
+    items: [{ json: { chunkIndex: 0, ok: false, failureKind: 'structure', attempts: 3, finishReason: 'length', text: '' } }],
+  }), /failed/i);
+  assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Signal', {
+    items: [{ json: { chunkIndex: 0, ok: false, failureKind: 'structure', attempts: 3, text: '' } }],
+  }), /failed/i);
+  assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Assemble Post', {
+    items: [{ json: { chunkIndex: 0, ok: false, section: 'general', failureKind: 'structure', attempts: 3, text: '' } }],
+  }), /failed/i);
+});
+
+test('W2: Code: Record Pipeline Failure shapes a native error-output item into pipelineFailureMessage', () => {
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Record Pipeline Failure', {
+    items: [{ json: {}, error: { message: 'Signal reduce failed after 3 attempts (failureKind=structure). No artifact written.' } }],
+  });
+  assert.strictEqual(out.json.pipelineFailureMessage, 'Signal reduce failed after 3 attempts (failureKind=structure). No artifact written.');
+});
+
+test('W2: Code: Record Pipeline Failure falls back to a generic message when no error is captured', () => {
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Record Pipeline Failure', {
+    items: [{ json: {} }],
+  });
+  assert.ok(out.json.pipelineFailureMessage.length > 0);
+});
+
+test('W2 CRITICAL: a chunked-pipeline failure lands in state.failed and NOT in state.completed', () => {
+  const fsMock = makeFsMock({ schema_version: '1', last_updated: null, completed: [], failed: [] });
+  const shaped = runCodeNode('transcript-only-summarizer.json', 'Code: Record Pipeline Failure', {
+    items: [{ json: {}, error: { message: 'Prep step failed on chunk 2 after 3 attempts (failureKind=structure, finishReason=stop). No artifact written.' } }],
+  });
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Update State File', {
+    items: [shaped],
+    nodes: {
+      'Code: Parse Session Meta': { session_id: '2025-09-01' },
+      'Code: Read Transcript': { outputDir: '/tmp/out/2025-09-01' },
+    },
+    fsMock,
+  });
+  assert.strictEqual(out.json.ingest_status, 'pipeline_failed');
+
+  const state = JSON.parse(fsMock._files['/home/node/n8n-state/backfill-state.json']);
+  assert.strictEqual(state.failed.length, 1, 'the session must be recorded as failed');
+  assert.strictEqual(state.failed[0].session_id, '2025-09-01');
+  assert.ok(state.failed[0].reason.includes('Prep step failed on chunk 2'), 'the failure reason must preserve which chunk and failureKind caused it');
+  assert.strictEqual(state.completed.length, 0, 'a failed session must NEVER be recorded as completed');
+  assert.ok(!state.completed.some((c) => c.session_id === '2025-09-01'), 'a failed session must NEVER be recorded as completed');
+});
+
+test('W2 CRITICAL: a pipeline failure does not clobber an unrelated already-completed session', () => {
+  const fsMock = makeFsMock({
+    schema_version: '1',
+    last_updated: null,
+    completed: [{ session_id: '2025-01-01', completed_at: 't0', chunks_written: 10 }],
+    failed: [],
+  });
+  const shaped = runCodeNode('transcript-only-summarizer.json', 'Code: Record Pipeline Failure', {
+    items: [{ json: {}, error: { message: 'Community post section \'qa\' failed after 3 attempts (failureKind=structure). No artifact written.' } }],
+  });
+  runCodeNode('transcript-only-summarizer.json', 'Code: Update State File', {
+    items: [shaped],
+    nodes: {
+      'Code: Parse Session Meta': { session_id: '2025-09-08' },
+      'Code: Read Transcript': { outputDir: '/tmp/out/2025-09-08' },
+    },
+    fsMock,
+  });
+  const state = JSON.parse(fsMock._files['/home/node/n8n-state/backfill-state.json']);
+  assert.strictEqual(state.completed.length, 1);
+  assert.strictEqual(state.completed[0].session_id, '2025-01-01');
+  assert.strictEqual(state.failed.length, 1);
+  assert.strictEqual(state.failed[0].session_id, '2025-09-08');
+});
+
+test('W2: the loop-back edge to Split In Batches is intact from the error path', () => {
+  const wf = loadWorkflow('transcript-only-summarizer.json');
+  const conns = wf.connections;
+  // Trace: Code: Aggregate Prep (error) / Code: Aggregate Signal (error) / Code: Assemble Post
+  // (error) -> Code: Record Pipeline Failure -> Code: Update State File -> Wait: Inter-session
+  // Delay -> Split In Batches (same as the pre-existing success/ingest-failure path).
+  for (const src of ['Code: Aggregate Prep', 'Code: Aggregate Signal', 'Code: Assemble Post']) {
+    const errorTargets = conns[src].main[1].map((c) => c.node);
+    assert.deepStrictEqual(errorTargets, ['Code: Record Pipeline Failure']);
+  }
+  assert.deepStrictEqual(conns['Code: Record Pipeline Failure'].main[0].map((c) => c.node), ['Code: Update State File']);
+  assert.deepStrictEqual(conns['Code: Update State File'].main[0].map((c) => c.node), ['Wait: Inter-session Delay']);
+  assert.deepStrictEqual(conns['Wait: Inter-session Delay'].main[0].map((c) => c.node), ['Split In Batches']);
+});
