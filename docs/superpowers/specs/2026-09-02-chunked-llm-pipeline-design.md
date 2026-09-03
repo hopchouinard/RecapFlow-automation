@@ -338,3 +338,32 @@ Criterion 5 is the one that matters most: it is the exact failure that went unde
 ## Appendix A — Probe methodology
 
 All §2 findings were produced by temporary probe workflows imported via `docker exec n8n n8n import:workflow`, executed with `N8N_RUNNERS_BROKER_PORT=5680 N8N_RUNNERS_AUTH_TOKEN=foo` (operator memory: avoids a port-5679 collision with the live container), and deleted afterward. The decrypted credential file used for direct API probes was removed from the container. Post-probe state verified: 6 workflows, `git status` clean.
+
+
+---
+
+## Addendum — implementation rulings (2026-09-03)
+
+Execution surfaced defects in this design. The build differs from the text above in these ways; the build is authoritative.
+
+**Ruling J — the retry ladder is UNROLLED, not a loop (supersedes §4.2's graph).**
+§4.2 described a single HTTP/Classify pair with a loop-back edge from `Code: Escalate`. That is wrong twice over. First, the `IF: Needs Retry` condition was a batch aggregate (`$input.all().filter(...)`), which never references `$json`; n8n's IfV2 evaluates per item but a constant expression routes the WHOLE batch down one branch, so in a mixed batch of [succeeded, needs-retry] the succeeded item was routed into `Code: Escalate`, filtered out by its `!ok` guard, and silently dropped. Second, a per-item IF would not have fixed it: with a loop-back edge, items reach `Code: Collect` on different passes, so Collect executes once per pass with partial data and the sub-workflow returns only its last run.
+
+W3 therefore has three explicit stages — `HTTP: OpenRouter` / `Code: Classify` / `IF: Needs Retry`, then `Code: Escalate` → `HTTP: OpenRouter 2` / `Code: Classify 2` / `IF: Needs Retry 2`, then `Code: Escalate 2` → `HTTP: OpenRouter 3` / `Code: Classify 3` — all converging on `Code: Collect`, which reconstructs results from all three Classify stages by `$()` reference inside try/catch (a non-executed node's `$().all()` throws). Each Classify runs at most once, so references are unambiguous; Collect runs exactly once because the two IFs are mutually exclusive. The 3-attempt cap is now structural rather than arithmetic.
+
+**Ruling R — W3 preserves caller metadata (amends §4.1's output contract).**
+`Code: Classify` and `Code: Escalate` originally rebuilt their output from an explicit field whitelist, which silently dropped caller-supplied fields. `Code: Split Post Sections` tags each request with `section`; W3 stripped it; `Code: Assemble Post` then matched nothing and produced an empty post. Both nodes now spread the incoming object before applying their own computed fields, so arbitrary caller metadata survives the round trip including across retries.
+
+**Ruling Q — every save node guards its content.**
+A save node handed `undefined` produced `ERR_INVALID_ARG_TYPE`, not a legible error. Every `fs.writeFileSync` for an artifact now asserts a non-empty string first and throws naming the artifact. This is §3's goal applied to the pipeline's own last mile.
+
+**Ruling O — the post step does not halve.**
+`Code: Split Post Sections` splits by semantic section, so a caller retry resubmits identical input. Its `Code: Check Chunks (Post)` throws immediately instead of requesting a halving; prep and signal, which split by token target, retain halving.
+
+**Ruling M — W2 records a failed session and continues.**
+W2's chunked nodes carry `onError: continueErrorOutput`, routing failures to `Code: Record Pipeline Failure` → `Code: Update State File` → `Wait` → `Split In Batches`. Without this, one failing session aborted the entire backfill, breaking the documented resume-safe contract.
+
+**Ruling P — `openrouterCall` must remain ACTIVE.**
+n8n 2.36.8's `getPublishedWorkflowData` refuses to execute a workflow whose Execute Workflow node targets an inactive sub-workflow. W3 has no autonomous trigger, so being active costs nothing — but re-importing it silently DEACTIVATES it, so every redeploy must be followed by re-activation.
+
+**§8 criterion 2 was miscalibrated.** The 0.6-0.7 prepared-transcript ratio was derived from 2026-07-14 (0.67), an outlier. The recent norm is 0.46-0.48 (08-18: 0.46, 08-25: 0.47, 09-01: 0.48). Completeness, not ratio, is the meaningful check: the 2026-09-01 rebuild spans [00:00:00]-[03:15:32] of a call ending [03:15:43], with 43 segments and none unclosed.

@@ -188,6 +188,43 @@ test('W2 assemble post throws when a section failed', () => {
   assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Assemble Post', { items }), /failed/i);
 });
 
+// Controller Ruling Q: the 2026-09-01 live run of W1 proved that hand-written stubs miss
+// field-name mismatches between a producing node and its consuming save node (Assemble Post
+// emits communityPostText; the W1 save node had been reading $json.text). W2's save node was
+// already correct, but nothing chained the real output through the harness to prove it and
+// guard against regression. Do that here for W2 too.
+test('Ruling Q: W2 Code: Assemble Post output chains into Code: Save community-post.md and is written verbatim', () => {
+  const items = [
+    { json: { chunkIndex: 0, ok: true, section: 'general', text: 'w2 summary body', usage: { cost: 0.001 } } },
+    { json: { chunkIndex: 1, ok: true, section: 'insights', text: 'w2 insight body', usage: { cost: 0.002 } } },
+  ];
+  const assembled = runCodeNode('transcript-only-summarizer.json', 'Code: Assemble Post', { items });
+
+  const fsMock = makeFsMock();
+  const saved = runCodeNode('transcript-only-summarizer.json', 'Code: Save community-post.md', {
+    items: assembled,
+    nodes: { 'Code: Read Transcript': { outputDir: '/tmp/out/2025-09-01', session_id: '2025-09-01' } },
+    fsMock,
+  });
+
+  const written = fsMock._files['/tmp/out/2025-09-01/community-post.md'];
+  assert.strictEqual(typeof written, 'string', 'community-post.md must be written as a string, not undefined');
+  assert.ok(written.length > 0, 'community-post.md must not be written empty');
+  assert.ok(written.includes('w2 summary body') && written.includes('w2 insight body'));
+  assert.strictEqual(saved.json.outputDir, '/tmp/out/2025-09-01');
+});
+
+test('Ruling Q: W2 Code: Save community-post.md refuses to write when handed no content', () => {
+  const fsMock = makeFsMock();
+  assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Save community-post.md', {
+    items: [{ json: {} }],
+    nodes: { 'Code: Read Transcript': { outputDir: '/tmp/out/2025-09-01', session_id: '2025-09-01' } },
+    fsMock,
+  }), /community-post\.md: refusing to write empty content/);
+  assert.strictEqual(fsMock._files['/tmp/out/2025-09-01/community-post.md'], undefined,
+    'no file should be written when content is missing');
+});
+
 // Controller Ruling B: the "no model slug leaks outside the config node" assertion,
 // deferred out of Task 7, belongs here — this task deletes the last lmChatOpenRouter
 // sub-nodes in W2.

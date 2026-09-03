@@ -122,6 +122,22 @@ test('classify rejects an unclosed SEGMENT header in prep output', () => {
   assert.strictEqual(out[0].json.failureKind, 'structure');
 });
 
+// Controller Ruling R: Code: Classify used to rebuild its output from an explicit field
+// whitelist, silently dropping any caller-supplied metadata (e.g. Code: Split Post Sections'
+// `section` field) that wasn't on the list. This is exactly the pattern from Ruling N and
+// Ruling Q — a node rebuilding an object instead of forwarding what it didn't need to touch.
+// Prove a caller-supplied field (and an arbitrary second one) survives the round trip.
+test('Ruling R: classify preserves caller-supplied fields not on its own whitelist', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse('post body', 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ section: 'insights', someArbitraryKey: 'keep-me' })] },
+  });
+  assert.strictEqual(out[0].json.section, 'insights',
+    'Code: Classify must not drop caller-supplied fields like section');
+  assert.strictEqual(out[0].json.someArbitraryKey, 'keep-me',
+    'Code: Classify must forward ANY caller-supplied field, not just known ones');
+});
+
 const classified = (over = {}) => ({
   json: {
     chunkIndex: 0, stepName: 'prep', text: '', ok: false, failureKind: 'reasoning_burn',
@@ -167,6 +183,19 @@ test('escalate passes over items that already succeeded', () => {
     items: [classified({ ok: true, failureKind: null, text: 'fine' })],
   });
   assert.strictEqual(out.length, 0);
+});
+
+// Controller Ruling R: Code: Escalate has the same whitelist-rebuild hole as Code: Classify —
+// a retry would silently lose caller-supplied metadata like `section`.
+test('Ruling R: escalate preserves caller-supplied fields not on its own whitelist', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Escalate', {
+    items: [classified({ section: 'qa', someArbitraryKey: 'keep-me' })],
+  });
+  assert.strictEqual(out.length, 1);
+  assert.strictEqual(out[0].json.section, 'qa',
+    'Code: Escalate must not drop caller-supplied fields like section on retry');
+  assert.strictEqual(out[0].json.someArbitraryKey, 'keep-me',
+    'Code: Escalate must forward ANY caller-supplied field, not just known ones');
 });
 
 // Code: Collect no longer reads $input.all() — the loop-back edge was deleted (Controller

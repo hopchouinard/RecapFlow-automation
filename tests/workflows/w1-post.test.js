@@ -121,3 +121,51 @@ test('zero chainLlm or lmChatOpenRouter nodes remain in W1', () => {
   const bad = wf.nodes.filter((n) => n.type.includes('chainLlm') || n.type.includes('lmChatOpenRouter'));
   assert.deepStrictEqual(bad.map((n) => n.name), []);
 });
+
+// Controller Ruling Q: the 2026-09-01 live run proved that hand-written stubs miss field-name
+// mismatches between a producing node and its consuming save node. Chain Code: Assemble Post's
+// REAL output straight into Code: Save community-post.md through the harness — no stub — so a
+// regression here (e.g. Save reading $json.text again instead of $json.communityPostText)
+// throws a TypeError from fs.writeFileSync or fails the assertion, instead of silently writing
+// undefined.
+function makeFsMock() {
+  const files = {};
+  return {
+    existsSync: (p) => files[p] !== undefined,
+    readFileSync: (p) => files[p],
+    writeFileSync: (p, content) => { files[p] = content; },
+    _files: files,
+  };
+}
+
+test('Ruling Q: Code: Assemble Post output chains into Code: Save community-post.md and is written verbatim', () => {
+  const items = [
+    { json: { chunkIndex: 0, ok: true, section: 'general', text: 'summary body', usage: { cost: 0.001 } } },
+    { json: { chunkIndex: 1, ok: true, section: 'insights', text: 'insight body', usage: { cost: 0.002 } } },
+  ];
+  const assembled = runCodeNode('merged-call-summarizer.json', 'Code: Assemble Post', { items });
+
+  const fsMock = makeFsMock();
+  const saved = runCodeNode('merged-call-summarizer.json', 'Code: Save community-post.md', {
+    items: assembled,
+    nodes: { 'Code: Create Output Folder': { outputDir: '/tmp/out/2026-09-01', datePrefix: '2026-09-01' } },
+    fsMock,
+  });
+
+  const written = fsMock._files['/tmp/out/2026-09-01/community-post.md'];
+  assert.strictEqual(typeof written, 'string', 'community-post.md must be written as a string, not undefined');
+  assert.ok(written.length > 0, 'community-post.md must not be written empty');
+  assert.ok(written.includes('summary body') && written.includes('insight body'));
+  assert.strictEqual(saved.json.communityPostText, written);
+});
+
+test('Ruling Q: Code: Save community-post.md refuses to write when handed no content', () => {
+  const fsMock = makeFsMock();
+  assert.throws(() => runCodeNode('merged-call-summarizer.json', 'Code: Save community-post.md', {
+    items: [{ json: {} }],
+    nodes: { 'Code: Create Output Folder': { outputDir: '/tmp/out/2026-09-01', datePrefix: '2026-09-01' } },
+    fsMock,
+  }), /community-post\.md: refusing to write empty content/);
+  assert.strictEqual(fsMock._files['/tmp/out/2026-09-01/community-post.md'], undefined,
+    'no file should be written when content is missing');
+});

@@ -62,7 +62,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir;\nfs.writeFileSync(`${outputDir}/transcript.txt`, $json.transcriptText, 'utf8');\nreturn { json: { ...$json } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir;\nconst transcriptText = $json.transcriptText;\nif (typeof transcriptText !== 'string' || transcriptText.trim() === '') {\n  throw new Error('transcript.txt: refusing to write empty content');\n}\nfs.writeFileSync(`${outputDir}/transcript.txt`, transcriptText, 'utf8');\nreturn { json: { ...$json } };"
       }
     },
     {
@@ -156,7 +156,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.signalText;\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst signalText = $json.signalText;\nif (typeof signalText !== 'string' || signalText.trim() === '') {\n  throw new Error('extracted-signal.md: refusing to write empty content');\n}\nfs.writeFileSync(`${outputDir}/extracted-signal.md`, signalText, 'utf8');\nreturn { json: { signalText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
     },
     {
@@ -216,7 +216,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst communityPostText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post.md`, communityPostText, 'utf8');\nreturn { json: { communityPostText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst communityPostText = $json.communityPostText;\nif (typeof communityPostText !== 'string' || communityPostText.trim() === '') {\n  throw new Error('community-post.md: refusing to write empty content');\n}\nfs.writeFileSync(`${outputDir}/community-post.md`, communityPostText, 'utf8');\nreturn { json: { communityPostText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
     },
     {
@@ -276,7 +276,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst compressedText = $json.text;\nfs.writeFileSync(`${outputDir}/community-post-compressed.md`, compressedText, 'utf8');\nreturn { json: { compressedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst compressedText = $json.text;\nif (typeof compressedText !== 'string' || compressedText.trim() === '') {\n  throw new Error('community-post-compressed.md: refusing to write empty content');\n}\nfs.writeFileSync(`${outputDir}/community-post-compressed.md`, compressedText, 'utf8');\nreturn { json: { compressedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
     },
     {
@@ -349,7 +349,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir || $('Code: Create Output Folder').item.json.outputDir;\nconst inviteDate = $('Code: Calculate Next Tuesday').item.json.inviteDate;\nconst inviteText = $json.text;\nfs.writeFileSync(`${outputDir}/${inviteDate}-weekly-invite.md`, inviteText, 'utf8');\nreturn { json: { inviteText, outputDir, inviteDate } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $json.outputDir || $('Code: Create Output Folder').item.json.outputDir;\nconst inviteDate = $('Code: Calculate Next Tuesday').item.json.inviteDate;\nconst inviteText = $json.text;\nif (typeof inviteText !== 'string' || inviteText.trim() === '') {\n  throw new Error('weekly-invite.md: refusing to write empty content');\n}\nfs.writeFileSync(`${outputDir}/${inviteDate}-weekly-invite.md`, inviteText, 'utf8');\nreturn { json: { inviteText, outputDir, inviteDate } };"
       }
     },
     {
@@ -384,7 +384,7 @@
         300
       ],
       "parameters": {
-        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst preparedText = $json.preparedTranscript;\nif (!preparedText) {\n  throw new Error('Prep-prompt produced no content; refusing to write empty prepared-transcript.md');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, preparedText, 'utf8');\nreturn { json: { preparedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
+        "jsCode": "const fs = require('fs');\nconst outputDir = $('Code: Create Output Folder').item.json.outputDir;\nconst preparedText = $json.preparedTranscript;\nif (typeof preparedText !== 'string' || preparedText.trim() === '') {\n  throw new Error('prepared-transcript.md: refusing to write empty content');\n}\nfs.writeFileSync(`${outputDir}/prepared-transcript.md`, preparedText, 'utf8');\nreturn { json: { preparedText, outputDir, datePrefix: $('Code: Create Output Folder').item.json.datePrefix } };"
       }
     },
     {
