@@ -5,6 +5,14 @@ const { runCodeNode, loadWorkflow } = require('./harness');
 
 const transcript = fs.readFileSync('/repo/output/2026-09-01/transcript.txt', 'utf8');
 const signalText = fs.readFileSync('/repo/output/2026-09-01/extracted-signal.md', 'utf8');
+// Finding D: W1's fixture above is `[HH:MM:SS] Speaker: text` (one line per utterance) --
+// W2's real historical transcripts are turn BLOCKS (`HH:MM:SS - Speaker` header line +
+// utterance lines + a blank-line separator). Use a REAL historical transcript for W2's
+// splitter tests so they exercise the actual format, not W1's.
+const historicalTranscript = fs.readFileSync(
+  '/repo/historical/2026-01-14-ai-developer-accelerator-weekly-support-call-r114039427/transcript.md',
+  'utf8',
+);
 
 const cfg = {
   steps: {
@@ -37,7 +45,7 @@ test('W2 splits a transcript into prep requests against Code: Read Transcript', 
     items: [{ json: { halving: 0 } }],
     nodes: {
       'Code: Pipeline Config': cfg,
-      'Code: Read Transcript': { transcriptText: transcript },
+      'Code: Read Transcript': { transcriptText: historicalTranscript },
       'HTTP Request: Get Speaker Aliases': { data: '' },
     },
   });
@@ -56,7 +64,7 @@ test('W2 split prep halves the chunk target on a retry pass', () => {
     items: [{ json: { halving: 0 } }],
     nodes: {
       'Code: Pipeline Config': cfg,
-      'Code: Read Transcript': { transcriptText: transcript },
+      'Code: Read Transcript': { transcriptText: historicalTranscript },
       'HTTP Request: Get Speaker Aliases': { data: '' },
     },
   });
@@ -64,11 +72,72 @@ test('W2 split prep halves the chunk target on a retry pass', () => {
     items: [{ json: { halving: 1 } }],
     nodes: {
       'Code: Pipeline Config': cfg,
-      'Code: Read Transcript': { transcriptText: transcript },
+      'Code: Read Transcript': { transcriptText: historicalTranscript },
       'HTTP Request: Get Speaker Aliases': { data: '' },
     },
   });
   assert.ok(twice.length > once.length, 'halving must produce more, smaller chunks');
+});
+
+// Finding D: W2 reused W1's line-based splitter, which assumes one utterance per line.
+// W2's real transcripts are turn BLOCKS (`HH:MM:SS - Speaker` header + utterance lines +
+// blank-line separator) -- a line-based cut could land between a header and its body,
+// leaving the next chunk starting with an unattributed utterance. Prove against a REAL
+// historical transcript that (a) no chunk ends with a dangling speaker-header line, and
+// (b) the concatenated chunks reproduce the source exactly (no content lost or duplicated).
+const TURN_HEADER_RE = /^\d{2}:\d{2}:\d{2} - .+$/;
+
+test('Finding D: W2 Split Prep chunks a real historical transcript on whole turn blocks only', () => {
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Split Prep', {
+    items: [{ json: { halving: 0 } }],
+    nodes: {
+      'Code: Pipeline Config': cfg,
+      'Code: Read Transcript': { transcriptText: historicalTranscript },
+      'HTTP Request: Get Speaker Aliases': { data: '' },
+    },
+  });
+  assert.ok(out.length >= 2, `expected multiple chunks for a 258KB transcript, got ${out.length}`);
+  for (const item of out) {
+    const trimmed = item.json.user.replace(/\s+$/, '');
+    const lastLine = trimmed.split('\n').pop();
+    assert.ok(!TURN_HEADER_RE.test(lastLine),
+      `chunk must not end with a dangling speaker header: "${lastLine}"`);
+  }
+  const reassembled = out.map((i) => i.json.user).join('');
+  assert.strictEqual(reassembled, historicalTranscript,
+    'concatenated chunks must reproduce the source transcript exactly');
+});
+
+test('Finding D: W2 Split Signal chunks a real historical transcript on whole turn blocks only', () => {
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Split Signal', {
+    items: [{ json: { halving: 0 } }],
+    nodes: {
+      'Code: Pipeline Config': cfg,
+      'Code: Read Transcript': { transcriptText: historicalTranscript },
+    },
+  });
+  assert.ok(out.length >= 2, `expected multiple chunks for a 258KB transcript, got ${out.length}`);
+  for (const item of out) {
+    const trimmed = item.json.user.replace(/\s+$/, '');
+    const lastLine = trimmed.split('\n').pop();
+    assert.ok(!TURN_HEADER_RE.test(lastLine),
+      `chunk must not end with a dangling speaker header: "${lastLine}"`);
+  }
+  const reassembled = out.map((i) => i.json.user).join('');
+  assert.strictEqual(reassembled, historicalTranscript,
+    'concatenated chunks must reproduce the source transcript exactly');
+});
+
+// W1's splitter is format-appropriate for its own line-per-utterance transcripts and must
+// NOT be touched by Finding D -- assert W2's turn-block splitter never appears in W1.
+test('Finding D: W1 Split Prep / Split Signal are untouched -- they still use splitTranscriptByLines, not the W2 turn-block splitter', () => {
+  const wf = loadWorkflow('merged-call-summarizer.json');
+  const byName = Object.fromEntries(wf.nodes.map((n) => [n.name, n]));
+  for (const name of ['Code: Split Prep', 'Code: Split Signal']) {
+    const code = byName[name].parameters.jsCode;
+    assert.ok(code.includes('splitTranscriptByLines'), `${name} in W1 must keep its line-based splitter`);
+    assert.ok(!code.includes('splitTranscriptByTurnBlocks'), `${name} in W1 must not adopt W2's turn-block splitter`);
+  }
 });
 
 test('W2 aggregate prep throws when a chunk failed', () => {
