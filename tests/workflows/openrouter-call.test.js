@@ -348,6 +348,29 @@ test('R3-G: classify accepts a post section with a plain-text URL', () => {
   assert.strictEqual(out[0].json.ok, true);
 });
 
+// R3-H: the reduce check was membership-only -- a response with all six headings and NO
+// bodies used to be accepted and written, and Code: Split Post Sections would then emit
+// zero items, silently terminating the run with no post/invite/prepared-transcript/ingest.
+test('R3-H: classify rejects a signal.reduce response with a heading that has no body at all', () => {
+  const noBody = ['general', 'insights', 'qa', 'tools', 'links', 'decisions']
+    .map((s) => `## ${s}`).join('\n\n');
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(noBody, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a heading with no body at all must be rejected');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('R3-H: classify accepts the prescribed _None._ sentinel as a valid (non-empty) body', () => {
+  const withSentinel = sixHeadings((s) => (s === 'links' ? '_None._' : 'body'));
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(withSentinel, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true, '_None._ is the prescribed way to say "nothing here" and must be accepted');
+});
+
 test('Finding 3: the prep.chunk structureOk logic is byte-identical across Classify, Classify 2 and Classify 3', () => {
   const { loadWorkflow } = require('./harness');
   const wf = loadWorkflow('openrouter-call.json');
