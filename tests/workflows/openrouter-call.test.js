@@ -128,9 +128,14 @@ test('classify rejects an unclosed SEGMENT header in prep output', () => {
 // ingestion parser. The validator must also require a non-trivial body per segment.
 const longBody = 'x'.repeat(60); // well over the 50-non-whitespace-char threshold
 
+// Full four-field header matching community_brain.ingestion.parser._SEGMENT_HEADER_RE
+// exactly: topic, speakers, keywords, summary, in that order.
+const fullHeader = (topic) =>
+  `<!--SEGMENT\ntopic: ${topic}\nspeakers: A, B\nkeywords: k1, k2\nsummary: a summary\n-->`;
+
 test('classify rejects a well-formed SEGMENT header with an empty body (Finding 3)', () => {
   const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
-    items: [mkResponse('<!--SEGMENT\ntopic: x\n-->\n', 'stop', 5)],
+    items: [mkResponse(`${fullHeader('x')}\n`, 'stop', 5)],
     nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
   });
   assert.strictEqual(out[0].json.ok, false);
@@ -139,7 +144,7 @@ test('classify rejects a well-formed SEGMENT header with an empty body (Finding 
 
 test('classify rejects a SEGMENT header with only whitespace/punctuation after it (Finding 3)', () => {
   const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
-    items: [mkResponse('<!--SEGMENT\ntopic: x\n-->\n\n   ...\n', 'stop', 5)],
+    items: [mkResponse(`${fullHeader('x')}\n\n   ...\n`, 'stop', 5)],
     nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
   });
   assert.strictEqual(out[0].json.ok, false);
@@ -148,14 +153,14 @@ test('classify rejects a SEGMENT header with only whitespace/punctuation after i
 
 test('classify accepts a SEGMENT header followed by a real transcript body (Finding 3)', () => {
   const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
-    items: [mkResponse(`<!--SEGMENT\ntopic: x\n-->\n${longBody}\n`, 'stop', 5)],
+    items: [mkResponse(`${fullHeader('x')}\n${longBody}\n`, 'stop', 5)],
     nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
   });
   assert.strictEqual(out[0].json.ok, true);
 });
 
 test('classify rejects a multi-segment response when only one segment has a real body (Finding 3)', () => {
-  const text = `<!--SEGMENT\ntopic: a\n-->\n${longBody}\n<!--SEGMENT\ntopic: b\n-->\n`;
+  const text = `${fullHeader('a')}\n${longBody}\n${fullHeader('b')}\n`;
   const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
     items: [mkResponse(text, 'stop', 5)],
     nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
@@ -165,7 +170,40 @@ test('classify rejects a multi-segment response when only one segment has a real
 });
 
 test('classify accepts a multi-segment response when every segment has a real body (Finding 3)', () => {
-  const text = `<!--SEGMENT\ntopic: a\n-->\n${longBody}\n<!--SEGMENT\ntopic: b\n-->\n${longBody}\n`;
+  const text = `${fullHeader('a')}\n${longBody}\n${fullHeader('b')}\n${longBody}\n`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(text, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true);
+});
+
+// Finding A: the parser's _SEGMENT_HEADER_RE requires topic/speakers/keywords/summary,
+// in that exact order, or the whole segment is silently dropped at ingestion. The old
+// validator only counted markers and body length — a header missing a field, or with
+// fields reordered, used to sail through. It must now be rejected.
+test('classify rejects a SEGMENT header missing the keywords field (Finding A)', () => {
+  const text = `<!--SEGMENT\ntopic: x\nspeakers: A, B\nsummary: a summary\n-->\n${longBody}\n`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(text, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a header missing a required field must not pass');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('classify rejects a SEGMENT header with fields out of order (Finding A)', () => {
+  const text = `<!--SEGMENT\ntopic: x\nkeywords: k1, k2\nspeakers: A, B\nsummary: a summary\n-->\n${longBody}\n`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(text, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a header with fields out of order must not pass — the parser requires the exact order');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('classify accepts a full four-field SEGMENT header in the exact parser order (Finding A)', () => {
+  const text = `${fullHeader('x')}\n${longBody}\n`;
   const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
     items: [mkResponse(text, 'stop', 5)],
     nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
