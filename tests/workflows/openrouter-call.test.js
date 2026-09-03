@@ -104,6 +104,23 @@ test('classify accepts H1 headings for signal.reduce', () => {
   assert.strictEqual(out[0].json.ok, true, 'H1 headings must be accepted (spec 4.6)');
 });
 
+// Finding B: community_brain.ingestion.parser.parse_extracted_signal RAISES on ANY
+// non-canonical heading. The old validator called parseSections, which FILTERS
+// non-canonical slugs before checking CANON.every(...), so a document with all six
+// canonical headings PLUS a stray seventh used to pass here and then fail /ingest
+// every single time. The validator must require EXACTLY the six canonical slugs.
+test('classify rejects signal.reduce output with all six canonical headings plus an extra non-canonical one (Finding B)', () => {
+  const good = ['general', 'insights', 'qa', 'tools', 'links', 'decisions']
+    .map((s) => `## ${s}\n\nbody`).join('\n\n');
+  const withExtra = `${good}\n\n## bonus\n\nan extra section the model was not asked for`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(withExtra, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'an extra heading must be rejected, not silently stripped');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
 test('classify rejects markdown in a post section', () => {
   const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
     items: [mkResponse('- **bold** bullet', 'stop', 5)],

@@ -66,6 +66,17 @@ test('aggregate throws when the reduce output is missing sections', () => {
   );
 });
 
+test('Finding B: aggregate throws naming the offending heading when the reduce output has all six sections plus an extra one', () => {
+  const withExtra = ['general', 'insights', 'qa', 'tools', 'links', 'decisions', 'bonus']
+    .map((s) => `## ${s}\n\nbody`).join('\n\n');
+  assert.throws(
+    () => runCodeNode('merged-call-summarizer.json', 'Code: Aggregate Signal', {
+      items: [{ json: { chunkIndex: 0, ok: true, text: withExtra, usage: { cost: 0 } } }],
+    }),
+    /non-canonical section heading\(s\): bonus/i,
+  );
+});
+
 test('Finding 2: reduce prompt requires all six headings always, not omission, so it cannot contradict the reduce validator', () => {
   const mapped = [
     { json: { chunkIndex: 0, ok: true, text: '## general\n\npart one', usage: { cost: 0.01 } } },

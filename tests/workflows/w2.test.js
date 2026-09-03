@@ -184,6 +184,17 @@ test('W2 aggregate signal throws when a required section is missing', () => {
   }), /missing required section/i);
 });
 
+test('Finding B: W2 aggregate signal throws naming the offending heading when the reduce output has all six sections plus an extra one', () => {
+  const withExtra = ['general', 'insights', 'qa', 'tools', 'links', 'decisions', 'bonus']
+    .map((s) => `## ${s}\n\nbody`).join('\n\n');
+  assert.throws(
+    () => runCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Signal', {
+      items: [{ json: { chunkIndex: 0, ok: true, text: withExtra, usage: { cost: 0 } } }],
+    }),
+    /non-canonical section heading\(s\): bonus/i,
+  );
+});
+
 test('W2: Code: Save extracted-signal.md forwards signalText to Code: Split Post Sections', () => {
   // Ruling N regression seam: Code: Save extracted-signal.md must forward
   // signalText alongside the session context it spreads from Code: Read
