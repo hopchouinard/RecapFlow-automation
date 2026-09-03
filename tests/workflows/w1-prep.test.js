@@ -6,7 +6,7 @@ const { runCodeNode } = require('./harness');
 const transcript = fs.readFileSync('/repo/output/2026-09-01/transcript.txt', 'utf8');
 const cfg = {
   steps: { prep: { model: 'z-ai/glm-5.3-flash', maxTokens: 32768, reasoningEffort: 'low', chunkTargetTokens: 15000 } },
-  retry: { componentAttempts: 3, callerHalvings: 2 },
+  retry: { callerHalvings: 2 },
 };
 
 test('split emits one W3 request per chunk with prep config applied', () => {

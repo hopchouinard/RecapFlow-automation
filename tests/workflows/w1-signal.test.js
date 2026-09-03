@@ -9,7 +9,7 @@ const cfg = {
     signalMap:    { model: 'anthropic/claude-sonnet-5', maxTokens: 16384, chunkTargetTokens: 15000 },
     signalReduce: { model: 'anthropic/claude-sonnet-5', maxTokens: 32768, budgetTokens: 8000 },
   },
-  retry: { componentAttempts: 3, callerHalvings: 2 },
+  retry: { callerHalvings: 2 },
 };
 const nodes = {
   'Code: Pipeline Config': cfg,

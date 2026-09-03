@@ -15,7 +15,7 @@ const cfg = {
     compress:     { model: 'z-ai/glm-5.3-flash',         maxTokens: 16384, reasoningEffort: 'low' },
     invite:       { model: 'z-ai/glm-5.3-flash',         maxTokens: 16384, reasoningEffort: 'low' },
   },
-  retry: { componentAttempts: 3, callerHalvings: 2 },
+  retry: { callerHalvings: 2 },
 };
 
 test('W2 config retires kimi and keeps sonnet for prep and signal', () => {

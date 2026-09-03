@@ -2,7 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert');
 const { runCodeNode } = require('./harness');
 
-const cfg = { steps: {}, retry: { componentAttempts: 3, callerHalvings: 2 } };
+const cfg = { steps: {}, retry: { callerHalvings: 2 } };
 const ok = (i) => ({ json: { chunkIndex: i, ok: true, text: 'fine', attempts: 1, usage: { cost: 0 } } });
 const bad = (i) => ({ json: { chunkIndex: i, ok: false, failureKind: 'content_truncated', attempts: 3, text: '', usage: { cost: 0 } } });
 

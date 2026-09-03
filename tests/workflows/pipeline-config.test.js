@@ -16,6 +16,18 @@ for (const file of ['merged-call-summarizer.json', 'transcript-only-summarizer.j
     assert.strictEqual(cfg.retry.callerHalvings, 2);
   });
 
+  // Finding C: componentAttempts was inert -- W3 never read it, both callers never passed
+  // it, and both IF: Retry Step nodes plus Code: Escalate/Escalate 2 hardcode a 3-attempt
+  // ceiling (three explicitly unrolled OpenRouter stages). Removed rather than wired up:
+  // the ladder is structural, so a value above 3 couldn't be honoured and honouring only
+  // values below 3 would be more confusing than not offering the knob at all.
+  test(`${file}: componentAttempts is not present on the retry config (Finding C)`, () => {
+    const out = runCodeNode(file, 'Code: Pipeline Config', {});
+    const cfg = out[0].json;
+    assert.strictEqual(cfg.retry.componentAttempts, undefined,
+      'componentAttempts must be removed, not just left unread -- it was dead configuration');
+  });
+
   test(`${file}: kimi is retired from the config node`, () => {
     const wf = loadWorkflow(file);
     const cfgCode = wf.nodes.find((n) => n.name === 'Code: Pipeline Config').parameters.jsCode;
