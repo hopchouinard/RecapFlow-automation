@@ -362,3 +362,59 @@ test('W2: the loop-back edge to Split In Batches is intact from the error path',
   assert.deepStrictEqual(conns['Code: Update State File'].main[0].map((c) => c.node), ['Wait: Inter-session Delay']);
   assert.deepStrictEqual(conns['Wait: Inter-session Delay'].main[0].map((c) => c.node), ['Split In Batches']);
 });
+
+test('Finding 1: W2 Check Chunks nodes are wired to continueErrorOutput, routed to Code: Record Pipeline Failure', () => {
+  const wf = loadWorkflow('transcript-only-summarizer.json');
+  const byName = Object.fromEntries(wf.nodes.map((n) => [n.name, n]));
+  for (const name of ['Code: Check Chunks', 'Code: Check Chunks (Signal)', 'Code: Check Chunks (Post)']) {
+    assert.strictEqual(byName[name].onError, 'continueErrorOutput', `${name} must route its throw to the error output, or a single failing session aborts the whole backfill`);
+    const targets = wf.connections[name].main;
+    assert.strictEqual(targets.length, 2, `${name} must declare both a normal and an error output`);
+    const errorTargets = targets[1].map((c) => c.node);
+    assert.deepStrictEqual(errorTargets, ['Code: Record Pipeline Failure'], `${name}'s error output must reach the backfill failure path`);
+  }
+});
+
+test('Finding 1: W2 Check Chunks nodes still throw on exhausted retries (errors are routed, not suppressed)', () => {
+  assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Check Chunks', {
+    items: [{ json: { chunkIndex: 0, ok: false, failureKind: 'structure', attempts: 3, finishReason: 'length' } }],
+    nodes: {
+      'Code: Pipeline Config': cfg,
+      'Code: Split Prep': { halving: 2 },
+    },
+  }), /failed/i);
+  assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Check Chunks (Signal)', {
+    items: [{ json: { chunkIndex: 0, ok: false, failureKind: 'structure', attempts: 3, finishReason: 'length' } }],
+    nodes: {
+      'Code: Pipeline Config': cfg,
+      'Code: Split Signal': { halving: 2 },
+    },
+  }), /failed/i);
+  assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Check Chunks (Post)', {
+    items: [{ json: { chunkIndex: 0, ok: false, failureKind: 'structure', attempts: 3, finishReason: 'length' } }],
+    nodes: {
+      'Code: Pipeline Config': cfg,
+      'Code: Split Post Sections': { halving: 0 },
+    },
+  }), /failed/i);
+});
+
+test('Finding 1: W2 loop-back edge to Split In Batches is intact from the Check Chunks error path', () => {
+  const wf = loadWorkflow('transcript-only-summarizer.json');
+  const conns = wf.connections;
+  for (const src of ['Code: Check Chunks', 'Code: Check Chunks (Signal)', 'Code: Check Chunks (Post)']) {
+    const errorTargets = conns[src].main[1].map((c) => c.node);
+    assert.deepStrictEqual(errorTargets, ['Code: Record Pipeline Failure']);
+  }
+  assert.deepStrictEqual(conns['Code: Record Pipeline Failure'].main[0].map((c) => c.node), ['Code: Update State File']);
+  assert.deepStrictEqual(conns['Code: Update State File'].main[0].map((c) => c.node), ['Wait: Inter-session Delay']);
+  assert.deepStrictEqual(conns['Wait: Inter-session Delay'].main[0].map((c) => c.node), ['Split In Batches']);
+});
+
+test('Finding 1: W1 Check Chunks nodes are NOT given onError routing (single-run abort is intended)', () => {
+  const wf = loadWorkflow('merged-call-summarizer.json');
+  const byName = Object.fromEntries(wf.nodes.map((n) => [n.name, n]));
+  for (const name of ['Code: Check Chunks', 'Code: Check Chunks (Signal)', 'Code: Check Chunks (Post)']) {
+    assert.notStrictEqual(byName[name].onError, 'continueErrorOutput', `${name} in W1 must keep throwing unrouted — a single run should abort on failure`);
+  }
+});
