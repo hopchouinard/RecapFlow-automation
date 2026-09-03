@@ -17,7 +17,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const CEILINGS = {\n  'z-ai/glm-5.3-flash': 131072,\n  'anthropic/claude-sonnet-5': 128000,\n};\nconst DEFAULT_CEILING = 32768;\nconst REQUIRED = ['stepName', 'model', 'system', 'user', 'maxTokens'];\n\nreturn $input.all().map((item, i) => {\n  const j = item.json;\n  for (const f of REQUIRED) {\n    if (j[f] === undefined || j[f] === null || j[f] === '') {\n      throw new Error(`missing required field '${f}' on item ${i} (stepName=${j.stepName})`);\n    }\n  }\n  return {\n    json: {\n      ...j,\n      chunkIndex: j.chunkIndex === undefined ? i : j.chunkIndex,\n      temperature: j.temperature === undefined ? 0.3 : j.temperature,\n      attempt: 1,\n      ceiling: CEILINGS[j.model] || DEFAULT_CEILING,\n    },\n  };\n});"
+        "jsCode": "const CEILINGS = {\n  'z-ai/glm-5.3-flash': 131072,\n  'anthropic/claude-sonnet-5': 128000,\n};\nconst DEFAULT_CEILING = 32768;\nconst REQUIRED = ['stepName', 'model', 'system', 'user', 'maxTokens'];\n\nreturn $input.all().map((item, i) => {\n  const j = item.json;\n  for (const f of REQUIRED) {\n    if (j[f] === undefined || j[f] === null || j[f] === '') {\n      throw new Error(`missing required field '${f}' on item ${i} (stepName=${j.stepName})`);\n    }\n  }\n  return {\n    json: {\n      ...j,\n      chunkIndex: j.chunkIndex === undefined ? i : j.chunkIndex,\n      temperature: j.temperature === undefined ? 0.3 : j.temperature,\n      attempt: 1,\n      ceiling: CEILINGS[j.model] || DEFAULT_CEILING,\n      baseMaxTokens: j.maxTokens,\n    },\n  };\n});"
       },
       "id": "0e000000-0000-4000-8000-00000000e002",
       "name": "Code: Normalize",
@@ -105,7 +105,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const LADDER = { 2: { effort: 'low', factor: 1.5 }, 3: { effort: 'minimal', factor: 2 } };\n\nreturn $input.all()\n  .filter((i) => !i.json.ok && i.json.attempts < 3)\n  .map((i) => {\n    const j = i.json;\n    const nextAttempt = j.attempts + 1;\n    const rung = LADDER[nextAttempt];\n    const raised = Math.floor(j.maxTokens * rung.factor);\n    return {\n      json: {\n        ...j,\n        stepName: j.stepName, model: j.model, system: j.system, user: j.user,\n        chunkIndex: j.chunkIndex, temperature: j.temperature, expect: j.expect,\n        ceiling: j.ceiling, attempt: nextAttempt,\n        reasoningEffort: rung.effort,\n        maxTokens: Math.min(raised, j.ceiling),\n      },\n    };\n  });"
+        "jsCode": "const LADDER = { 2: { effort: 'low', factor: 1.5 }, 3: { effort: 'minimal', factor: 2 } };\n\nreturn $input.all()\n  .filter((i) => !i.json.ok && i.json.attempts < 3)\n  .map((i) => {\n    const j = i.json;\n    const nextAttempt = j.attempts + 1;\n    const rung = LADDER[nextAttempt];\n    const raised = Math.floor(j.baseMaxTokens * rung.factor);\n    return {\n      json: {\n        ...j,\n        stepName: j.stepName, model: j.model, system: j.system, user: j.user,\n        chunkIndex: j.chunkIndex, temperature: j.temperature, expect: j.expect,\n        ceiling: j.ceiling, attempt: nextAttempt,\n        reasoningEffort: rung.effort,\n        baseMaxTokens: j.baseMaxTokens,\n        maxTokens: Math.min(raised, j.ceiling),\n      },\n    };\n  });"
       },
       "id": "0e000000-0000-4000-8000-00000000e006",
       "name": "Code: Escalate",
@@ -193,7 +193,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const LADDER = { 2: { effort: 'low', factor: 1.5 }, 3: { effort: 'minimal', factor: 2 } };\n\nreturn $input.all()\n  .filter((i) => !i.json.ok && i.json.attempts < 3)\n  .map((i) => {\n    const j = i.json;\n    const nextAttempt = j.attempts + 1;\n    const rung = LADDER[nextAttempt];\n    const raised = Math.floor(j.maxTokens * rung.factor);\n    return {\n      json: {\n        ...j,\n        stepName: j.stepName, model: j.model, system: j.system, user: j.user,\n        chunkIndex: j.chunkIndex, temperature: j.temperature, expect: j.expect,\n        ceiling: j.ceiling, attempt: nextAttempt,\n        reasoningEffort: rung.effort,\n        maxTokens: Math.min(raised, j.ceiling),\n      },\n    };\n  });"
+        "jsCode": "const LADDER = { 2: { effort: 'low', factor: 1.5 }, 3: { effort: 'minimal', factor: 2 } };\n\nreturn $input.all()\n  .filter((i) => !i.json.ok && i.json.attempts < 3)\n  .map((i) => {\n    const j = i.json;\n    const nextAttempt = j.attempts + 1;\n    const rung = LADDER[nextAttempt];\n    const raised = Math.floor(j.baseMaxTokens * rung.factor);\n    return {\n      json: {\n        ...j,\n        stepName: j.stepName, model: j.model, system: j.system, user: j.user,\n        chunkIndex: j.chunkIndex, temperature: j.temperature, expect: j.expect,\n        ceiling: j.ceiling, attempt: nextAttempt,\n        reasoningEffort: rung.effort,\n        baseMaxTokens: j.baseMaxTokens,\n        maxTokens: Math.min(raised, j.ceiling),\n      },\n    };\n  });"
       },
       "id": "0e000000-0000-4000-8000-00000000e011",
       "name": "Code: Escalate 2",

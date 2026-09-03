@@ -210,6 +210,7 @@ const classified = (over = {}) => ({
   json: {
     chunkIndex: 0, stepName: 'prep', text: '', ok: false, failureKind: 'reasoning_burn',
     finishReason: 'length', attempts: 1, model: 'z-ai/glm-5.3-flash', maxTokens: 32768,
+    baseMaxTokens: 32768,
     temperature: 0.3, system: 's', user: 'u', ceiling: 131072, expect: 'none',
     usage: { promptTokens: 0, completionTokens: 0, reasoningTokens: 0, cost: 0 }, ...over,
   },
@@ -234,7 +235,7 @@ test('escalate goes minimal and 2x on attempt 3', () => {
 
 test('escalate never exceeds the model ceiling', () => {
   const out = runCodeNode('openrouter-call.json', 'Code: Escalate', {
-    items: [classified({ attempts: 2, maxTokens: 100000, ceiling: 131072 })],
+    items: [classified({ attempts: 2, maxTokens: 100000, baseMaxTokens: 100000, ceiling: 131072 })],
   });
   assert.strictEqual(out[0].json.maxTokens, 131072);
 });
@@ -253,6 +254,28 @@ test('escalate passes over items that already succeeded', () => {
   assert.strictEqual(out.length, 0);
 });
 
+// Finding 5: attempt 3's budget must be 2x the ORIGINAL requested budget, not 2x of
+// attempt 2's already-1.5x-inflated maxTokens (which would silently make it 3x). Run the
+// ladder end-to-end from a 32768 base, exactly as the caller experiences it: Normalize sets
+// baseMaxTokens once, then each Escalate call reads maxTokens from the PRIOR attempt's output.
+test('Finding 5: attempt-2 and attempt-3 budgets are 1.5x and 2x of the ORIGINAL base, not compounding (32768 -> 49152 -> 65536)', () => {
+  const normalized = runCodeNode('openrouter-call.json', 'Code: Normalize', {
+    items: [{ json: { stepName: 'prep', model: 'z-ai/glm-5.3-flash', system: 's', user: 'u', maxTokens: 32768 } }],
+  })[0].json;
+  assert.strictEqual(normalized.baseMaxTokens, 32768, 'Normalize must capture the caller\'s original budget');
+
+  const attempt1Failed = { ...normalized, ok: false, failureKind: 'reasoning_burn', attempts: 1 };
+  const attempt2 = runCodeNode('openrouter-call.json', 'Code: Escalate', { items: [{ json: attempt1Failed }] })[0].json;
+  assert.strictEqual(attempt2.attempt, 2);
+  assert.strictEqual(attempt2.maxTokens, 49152, 'attempt 2 must be 1.5x the base (32768 * 1.5)');
+  assert.strictEqual(attempt2.baseMaxTokens, 32768, 'baseMaxTokens must survive unchanged into attempt 2');
+
+  const attempt2Failed = { ...attempt2, ok: false, failureKind: 'reasoning_burn', attempts: 2 };
+  const attempt3 = runCodeNode('openrouter-call.json', 'Code: Escalate', { items: [{ json: attempt2Failed }] })[0].json;
+  assert.strictEqual(attempt3.attempt, 3);
+  assert.strictEqual(attempt3.maxTokens, 65536, 'attempt 3 must be 2x the ORIGINAL base (32768 * 2), not 3x from compounding on attempt 2\'s 49152');
+});
+
 // Controller Ruling R: Code: Escalate has the same whitelist-rebuild hole as Code: Classify —
 // a retry would silently lose caller-supplied metadata like `section`.
 test('Ruling R: escalate preserves caller-supplied fields not on its own whitelist', () => {
@@ -264,6 +287,13 @@ test('Ruling R: escalate preserves caller-supplied fields not on its own whiteli
     'Code: Escalate must not drop caller-supplied fields like section on retry');
   assert.strictEqual(out[0].json.someArbitraryKey, 'keep-me',
     'Code: Escalate must forward ANY caller-supplied field, not just known ones');
+});
+
+test('Finding 5: Code: Escalate and Code: Escalate 2 are byte-identical', () => {
+  const { getCodeNode } = require('./harness');
+  const a = getCodeNode('openrouter-call.json', 'Code: Escalate');
+  const b = getCodeNode('openrouter-call.json', 'Code: Escalate 2');
+  assert.strictEqual(a, b, 'Code: Escalate and Code: Escalate 2 must stay byte-identical');
 });
 
 // Code: Collect no longer reads $input.all() — the loop-back edge was deleted (Controller
