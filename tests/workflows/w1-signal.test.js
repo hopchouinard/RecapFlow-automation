@@ -127,3 +127,48 @@ test('R3-F: aggregate still accepts the six canonical headings in the correct or
   });
   assert.ok(out[0].json.signalText.includes('## general'));
 });
+
+// R3-I: Code: Build Signal Reduce used to concatenate every map part plus the whole chat
+// log into ONE request with no size guard. Use a small configured contextLimit so we don't
+// need megabyte-sized fixtures to exercise the guard.
+test('R3-I: build signal reduce throws loudly when the assembled input exceeds the configured context-limit fraction', () => {
+  const tinyLimitNodes = {
+    ...nodes,
+    'Code: Pipeline Config': {
+      steps: {
+        signalReduce: { model: 'anthropic/claude-sonnet-5', maxTokens: 32768, budgetTokens: 8000, contextLimit: 1000 },
+      },
+      retry: { callerHalvings: 2 },
+    },
+  };
+  // contextLimit 1000 * 0.5 fraction = 500 allowed tokens ~= 1800 chars. Force well past it.
+  const huge = 'x'.repeat(5000);
+  const mapped = [{ json: { chunkIndex: 0, ok: true, text: `## general\n\n${huge}`, usage: { cost: 0 } } }];
+  assert.throws(
+    () => runCodeNode('merged-call-summarizer.json', 'Code: Build Signal Reduce', { items: mapped, nodes: tinyLimitNodes }),
+    /too large.*estimated.*tokens.*claude-sonnet-5.*1000-token context/is,
+  );
+});
+
+test('R3-I: build signal reduce passes with large headroom for realistic call-sized material against the real production contextLimit', () => {
+  // The real 2026-09-01 transcript plus a modest chat log, against claude-sonnet-5's
+  // actual configured contextLimit (1,000,000, matching Code: Pipeline Config) and the
+  // default 0.5 fraction -- this is the shape of material the guard must NOT block.
+  const realLimitNodes = {
+    ...nodes,
+    'Code: Pipeline Config': {
+      steps: {
+        signalReduce: { model: 'anthropic/claude-sonnet-5', maxTokens: 32768, budgetTokens: 8000, contextLimit: 1000000 },
+      },
+      retry: { callerHalvings: 2 },
+    },
+  };
+  const mapped = [
+    { json: { chunkIndex: 0, ok: true, text: `## general\n\n${transcript.slice(0, 8000)}`, usage: { cost: 0 } } },
+  ];
+  const out = runCodeNode('merged-call-summarizer.json', 'Code: Build Signal Reduce', { items: mapped, nodes: realLimitNodes });
+  assert.strictEqual(out.length, 1, 'realistic material must not trip the guard');
+  const estimated = Math.ceil((out[0].json.system.length + out[0].json.user.length) / 3.6);
+  const allowed = Math.floor(1000000 * 0.5);
+  assert.ok(estimated < allowed, `expected well under the ${allowed}-token allowance, got ~${estimated}`);
+});
