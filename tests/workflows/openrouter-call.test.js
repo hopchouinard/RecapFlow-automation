@@ -283,6 +283,29 @@ test('R3-B: classify rejects a signal.reduce response with a multi-word extra he
   assert.strictEqual(out[0].json.failureKind, 'structure');
 });
 
+// R3-C: parse_prepared_transcript strips '=== UNRESOLVED SPEAKERS ===' from a segment body
+// BEFORE testing whether the body is empty, and skips empty segments. The old
+// MIN_BODY_CHARS check counted that footer, so a final segment with no transcript but a
+// long unresolved-speaker list passed here and was then silently dropped by the parser.
+test('R3-C: classify rejects a SEGMENT whose only body content is the unresolved-speakers footer', () => {
+  const text = `${fullHeader('x')}\n\n=== UNRESOLVED SPEAKERS ===\n- Speaker Nine\n- Speaker Ten\n- Speaker Eleven\n`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(text, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a body that is only the unresolved-speakers footer must not pass');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('R3-C: classify accepts a SEGMENT with a real body even when followed by the unresolved-speakers footer', () => {
+  const text = `${fullHeader('x')}\n${longBody}\n\n=== UNRESOLVED SPEAKERS ===\n- Speaker Nine\n`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(text, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true, 'real body content before the footer must still be counted');
+});
+
 test('Finding 3: the prep.chunk structureOk logic is byte-identical across Classify, Classify 2 and Classify 3', () => {
   const { loadWorkflow } = require('./harness');
   const wf = loadWorkflow('openrouter-call.json');
