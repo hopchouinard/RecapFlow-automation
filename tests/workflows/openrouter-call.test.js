@@ -269,6 +269,20 @@ test('R3-A: classify still accepts an unfenced signal.reduce response with all s
   assert.strictEqual(out[0].json.ok, true);
 });
 
+// R3-B: parseAllHeadingSlugs used to require the ENTIRE heading line be one lowercase
+// word ('^#{1,3}[ \t]+([a-z]+)[ \t]*$'), so '## Appendix Notes' was invisible to it --
+// the count stayed at 6 and the response was accepted, then the parser split on every
+// '##', lowercased the first word, and raised on 'appendix'.
+test('R3-B: classify rejects a signal.reduce response with a multi-word extra heading the old regex could not see', () => {
+  const withHiddenExtra = `${sixHeadings()}\n\n## Appendix Notes\n\nsome extra content`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(withHiddenExtra, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a multi-word extra heading must be caught, not invisible to the count');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
 test('Finding 3: the prep.chunk structureOk logic is byte-identical across Classify, Classify 2 and Classify 3', () => {
   const { loadWorkflow } = require('./harness');
   const wf = loadWorkflow('openrouter-call.json');
