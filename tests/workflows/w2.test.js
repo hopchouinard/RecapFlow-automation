@@ -640,3 +640,73 @@ test('Finding 1: W1 Check Chunks nodes are NOT given onError routing (single-run
     assert.notStrictEqual(byName[name].onError, 'continueErrorOutput', `${name} in W1 must keep throwing unrouted — a single run should abort on failure`);
   }
 });
+
+// R3-E: all four W2 Execute nodes (each wraps a call into openrouter-call.json / W3) had
+// onError: None and a single output. If W3 itself throws before returning classified items
+// -- credential resolution failure, connection error, HTTP timeout -- the throw is an
+// n8n execution-level event inside a sub-workflow call, which this jsCode-only harness
+// cannot simulate (there is no jsCode to run -- the whole Execute Workflow node throws).
+// Substituting the same graph-level structural assertion used for Check Chunks above:
+// onError must be continueErrorOutput, with a second output wired to
+// Code: Record Pipeline Failure, so a single session's W3 failure records that session as
+// failed and lets the backfill loop continue instead of aborting the entire manual-trigger
+// run for every remaining session.
+test('R3-E: all four W2 Execute nodes are wired to continueErrorOutput, routed to Code: Record Pipeline Failure', () => {
+  const wf = loadWorkflow('transcript-only-summarizer.json');
+  const byName = Object.fromEntries(wf.nodes.map((n) => [n.name, n]));
+  const execNodes = [
+    'Execute: Prep via OpenRouter',
+    'Execute: Signal Map via OpenRouter',
+    'Execute: Signal Reduce via OpenRouter',
+    'Execute: Post Sections via OpenRouter',
+  ];
+  for (const name of execNodes) {
+    assert.ok(byName[name], `expected node ${name} to exist in W2`);
+    assert.strictEqual(byName[name].onError, 'continueErrorOutput',
+      `${name} must route a thrown W3 failure to the error output, or one session's failure aborts the whole backfill`);
+    const targets = wf.connections[name].main;
+    assert.strictEqual(targets.length, 2, `${name} must declare both a normal and an error output`);
+    const errorTargets = targets[1].map((c) => c.node);
+    assert.deepStrictEqual(errorTargets, ['Code: Record Pipeline Failure'],
+      `${name}'s error output must reach the backfill failure path`);
+  }
+});
+
+test('R3-E: W2 Execute nodes still reach their normal downstream target on output 0 (error routing is additive, not a replacement)', () => {
+  const wf = loadWorkflow('transcript-only-summarizer.json');
+  const conns = wf.connections;
+  assert.deepStrictEqual(conns['Execute: Prep via OpenRouter'].main[0].map((c) => c.node), ['Code: Check Chunks']);
+  assert.deepStrictEqual(conns['Execute: Signal Map via OpenRouter'].main[0].map((c) => c.node), ['Code: Check Chunks (Signal)']);
+  assert.deepStrictEqual(conns['Execute: Signal Reduce via OpenRouter'].main[0].map((c) => c.node), ['Code: Aggregate Signal']);
+  assert.deepStrictEqual(conns['Execute: Post Sections via OpenRouter'].main[0].map((c) => c.node), ['Code: Check Chunks (Post)']);
+});
+
+test('R3-E: the loop-back edge to Split In Batches is intact from every W2 Execute node error path', () => {
+  const wf = loadWorkflow('transcript-only-summarizer.json');
+  const conns = wf.connections;
+  // Trace: each Execute node's error output (index 1) -> Code: Record Pipeline Failure ->
+  // Code: Update State File -> Wait: Inter-session Delay -> Split In Batches, same as the
+  // pre-existing Check Chunks / Aggregate / Assemble error paths.
+  for (const src of [
+    'Execute: Prep via OpenRouter',
+    'Execute: Signal Map via OpenRouter',
+    'Execute: Signal Reduce via OpenRouter',
+    'Execute: Post Sections via OpenRouter',
+  ]) {
+    const errorTargets = conns[src].main[1].map((c) => c.node);
+    assert.deepStrictEqual(errorTargets, ['Code: Record Pipeline Failure']);
+  }
+  assert.deepStrictEqual(conns['Code: Record Pipeline Failure'].main[0].map((c) => c.node), ['Code: Update State File']);
+  assert.deepStrictEqual(conns['Code: Update State File'].main[0].map((c) => c.node), ['Wait: Inter-session Delay']);
+  assert.deepStrictEqual(conns['Wait: Inter-session Delay'].main[0].map((c) => c.node), ['Split In Batches']);
+});
+
+test('R3-E: W1 Execute nodes are NOT given onError routing (single-run abort is intended)', () => {
+  const wf = loadWorkflow('merged-call-summarizer.json');
+  const execNodes = wf.nodes.filter((n) => n.name.startsWith('Execute:'));
+  assert.ok(execNodes.length >= 6, 'expected W1 to have its full set of Execute nodes');
+  for (const n of execNodes) {
+    assert.notStrictEqual(n.onError, 'continueErrorOutput',
+      `${n.name} in W1 must keep throwing unrouted — W1 has no backfill loop, and a single run should abort on failure`);
+  }
+});

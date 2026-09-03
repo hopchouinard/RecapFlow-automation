@@ -256,7 +256,8 @@
       "position": [
         2000,
         300
-      ]
+      ],
+      "onError": "continueErrorOutput"
     },
     {
       "id": "w2000000-0000-4000-8000-000000000003",
@@ -304,7 +305,8 @@
       "position": [
         3000,
         300
-      ]
+      ],
+      "onError": "continueErrorOutput"
     },
     {
       "id": "w2000000-0000-4000-8000-000000000006",
@@ -338,7 +340,8 @@
       "position": [
         3500,
         300
-      ]
+      ],
+      "onError": "continueErrorOutput"
     },
     {
       "id": "w2000000-0000-4000-8000-000000000008",
@@ -386,7 +389,8 @@
       "position": [
         4500,
         300
-      ]
+      ],
+      "onError": "continueErrorOutput"
     },
     {
       "id": "w2000000-0000-4000-8000-00000000000b",
@@ -697,6 +701,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Code: Record Pipeline Failure",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -737,6 +748,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Code: Record Pipeline Failure",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -756,6 +774,13 @@
         [
           {
             "node": "Code: Aggregate Signal",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code: Record Pipeline Failure",
             "type": "main",
             "index": 0
           }
@@ -796,6 +821,13 @@
         [
           {
             "node": "Code: Check Chunks (Post)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code: Record Pipeline Failure",
             "type": "main",
             "index": 0
           }
