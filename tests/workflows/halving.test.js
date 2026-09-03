@@ -1,0 +1,62 @@
+const { test } = require('node:test');
+const assert = require('node:assert');
+const { runCodeNode } = require('./harness');
+
+const cfg = { steps: {}, retry: { callerHalvings: 2 } };
+const ok = (i) => ({ json: { chunkIndex: i, ok: true, text: 'fine', attempts: 1, usage: { cost: 0 } } });
+const bad = (i) => ({ json: { chunkIndex: i, ok: false, failureKind: 'content_truncated', attempts: 3, text: '', usage: { cost: 0 } } });
+
+for (const file of ['merged-call-summarizer.json', 'transcript-only-summarizer.json']) {
+  test(`${file}: passes results through when every chunk succeeded`, () => {
+    const out = runCodeNode(file, 'Code: Check Chunks', {
+      items: [ok(0), ok(1)],
+      nodes: { 'Code: Pipeline Config': cfg, 'Code: Split Prep': { halving: 0 } },
+    });
+    assert.strictEqual(out.length, 2);
+    assert.strictEqual(out[0].json.retry, false);
+  });
+
+  test(`${file}: requests a halving when a chunk failed and budget remains`, () => {
+    const out = runCodeNode(file, 'Code: Check Chunks', {
+      items: [ok(0), bad(1)],
+      nodes: { 'Code: Pipeline Config': cfg, 'Code: Split Prep': { halving: 0 } },
+    });
+    assert.strictEqual(out.length, 1);
+    assert.strictEqual(out[0].json.retry, true);
+    assert.strictEqual(out[0].json.halving, 1);
+  });
+
+  test(`${file}: throws once halvings are exhausted`, () => {
+    assert.throws(
+      () => runCodeNode(file, 'Code: Check Chunks', {
+        items: [bad(0)],
+        nodes: { 'Code: Pipeline Config': cfg, 'Code: Split Prep': { halving: 2 } },
+      }),
+      /No artifact written/,
+    );
+  });
+
+  // Ruling O: Code: Split Post Sections splits by semantic section, not by a
+  // token target, so a caller-level "halving" retry cannot produce different
+  // chunks — it would just resubmit the identical input. The post variant of
+  // Check Chunks must therefore throw on the very first failure, at
+  // halving=0, rather than ever emitting a retry item.
+  test(`${file}: post step throws immediately on failure instead of requesting a halving`, () => {
+    assert.throws(
+      () => runCodeNode(file, 'Code: Check Chunks (Post)', {
+        items: [bad(0)],
+        nodes: { 'Code: Pipeline Config': cfg, 'Code: Split Post Sections': { halving: 0 } },
+      }),
+      /No artifact written/,
+    );
+  });
+
+  test(`${file}: post step passes results through when every section succeeded`, () => {
+    const out = runCodeNode(file, 'Code: Check Chunks (Post)', {
+      items: [ok(0), ok(1)],
+      nodes: { 'Code: Pipeline Config': cfg, 'Code: Split Post Sections': { halving: 0 } },
+    });
+    assert.strictEqual(out.length, 2);
+    assert.strictEqual(out[0].json.retry, false);
+  });
+}

@@ -1,126 +1,285 @@
 📝 SUMMARY
 
-This week's builder/founder coaching call, led by Brandon Hancock, packed in cost-optimization strategy, agentic architecture patterns, and hands-on go-to-market playbooks. Brandon shared updates on EMS SOAP (slow enterprise sales, active fundraising, aggressive LLM cost-cutting) and his new 30-day challenge project Listio, while Patrick Chouinard gave a deep tour of his personal "agentic OS" built on Proxmox, Hermes, and a markdown-based knowledge graph. The rest of the call was hands-on peer coaching: architecture advice for Hemal's e-commerce AI co-pilot, a full GTM and fundraising playbook for Juan's AI photo booth, cold-outreach troubleshooting for Shakur, and career-positioning strategy for Varun.
+This extended five-part session worked as an open coaching/mastermind call where members shared parallel work across agentic infrastructure, go-to-market execution, and career strategy. The recurring theme was "agentic OS" architecture — Patrick Chouinard's home-lab walkthrough (chief-of-staff agent, knowledge graph, full observability stack) sparked a friendly dashboard-vs-simplicity debate with Shakur and Ty Wells, while Scott Rippey showed his custom-built "Blackbox" Mac IDE, including a 3D database visualizer, all built by prompting AI rather than hand-coding. On the business side, Juan Torres got iterative GTM coaching from Brandon Hancock on ICP databases and cold email, plus guidance weighing VC funding against self-funded growth; Scott pitched a HYROX-training SaaS partnership, Daniel Zivkovic sought distribution for his EMS documentation startup, and Paul Miller shared his pivot to a VC-backed AI dev-studio model. A strong throughline was experimentation discipline: build evaluation sets before choosing architectures, log everything, use cheap models for scale and premium models only where needed, and treat falling model costs as a strategic margin reset (RecapFlow dropped from $1.50 to $0.15/call). The call closed on career and content strategy — Brandon advising Varun Sharma to build a public challenge-video case study instead of vendor positioning — plus informal tool recommendations, a live promo video demo, and a cautionary note on Delaware C-Corp incorporation risk.
+
 
 💡 KEY INSIGHTS
 
-• Treat falling model costs as a strategic weapon: when a model gets 10x cheaper, reinvest the savings into 10x more product value (integrity checks, live QA) rather than pocketing margin. Expect this reset cycle every 6–8 months.
+Patrick Chouinard structures his Hermes agent as a chief-of-staff delegating to specialized sub-agents (researcher, operator, coder), each carrying only the tools/knowledge needed to keep the main agent's context light.
 
-• Model swaps can deliver 100x savings: Brandon ran the same classification task on DeepSeek v4 Flash for $3 vs. $350 on a frontier model — same intelligence, fraction of the cost.
+His T3 code setup aggregates Claude Code and Codex sessions per project across remote Proxmox VMs, with a custom dashboard tracking ~35 packages across 7 projects via a skill that reads every commit and PR merge.
 
-• A true agent reasons and acts in a loop; a pipeline of sequential LLM calls that just streams an answer is not "agentic." The distinction matters for architecture decisions.
+His InfraKnowledge project is markdown-only documentation of infra inventory, roles, and dependencies, compiled into a knowledge graph to sequence and parallelize work.
 
-• Adversarial test sets first: before building any conversational system, generate ~100 adversarial synthetic conversations (easy, confusing, prompt-injection) with expected outcomes. Hemal lost two weeks skipping this step.
+He argues a dashboard becomes necessary once you run many parallel tools/CLIs/MCPs with limited daily engagement — otherwise you silently rebuild the same functionality twice.
 
-• Start with the simplest architecture (one agent, many tools), measure failure modes, and only add orchestrators/sub-agents when failure data justifies the complexity.
+He proposes a dedicated Pydantic AI-based review/red-team harness instead of having a coding model review itself — a distinct "debugging specialist."
 
-• Loop engineering: run agents through repeated cycles of hypothesis → experiment → analyze → fix → retest, journaling every experiment to a markdown file so context survives compaction. Review early cycles yourself, then let it run autonomously overnight.
+Brandon Hancock: enterprise sales cycles run ~5 months, so line up committed customers before finishing compliance work (SOC 2/HIPAA), not after.
 
-• Use cheap Chinese models (GLM, DeepSeek, Qwen) for internal experimentation; reserve American models (GPT-5.5, Gemini) for production-facing or HIPAA-regulated work.
+Switching a classification task to DeepSeek v4 Flash cut cost 100x ($350 to $3) at equivalent quality — rapid AI cost deflation is a strategic lever.
 
-• Specialize sub-agents and keep the chief-of-staff lean: the main agent should know the user deeply and delegate execution to specialists who carry their own tools and knowledge.
+For multi-capability agents, don't guess architecture: generate ~100 adversarial synthetic conversations bucketed by user type to build an eval set before choosing single-agent vs orchestrator-plus-sub-agents.
 
-• Emulation before innovation: when directing AI on unfamiliar tasks like outreach copy, have it copy a proven playbook almost verbatim instead of "being creative."
+His "loop engineering": manually run plan → critique → execute → review 2-3 times, log every experiment to a markdown journal (survives context compaction), then let it run autonomously overnight (one run cost ~$400).
 
-• VCs now explicitly test whether a competitor could clone your app in a weekend. Physical products, proprietary datasets, and domain-expert judgment are far harder to clone — and judgment-at-scale across thousands of edge cases is still AI's moat gap.
+Model strategy: cheap flash/Chinese models (Gemini 3.6, GLM) for large-scale experimentation; GPT-5.5 no-thinking for fast production-facing responses; Claude/Opus on AWS Bedrock is throttled with painful support at scale.
 
-• For engineers, public content is the highest-leverage career move: one viral in-public challenge video can outperform thousands of job applications.
+Terminology matters: an LLM with tool calls is not an agent — a true agent reasons and acts autonomously in an unsupervised loop.
+
+For long-running autonomous work, break goals into "gates" with self-determined success criteria; the agent loops plan → critique → act → review within each gate before advancing, preventing premature "I'm done" claims.
+
+His current Shipkit SDLC pipeline: Claude plan mode → task-template skill → adversarial "poke holes" review skill → execution → completion-review skill — every stage is its own skill with a persistent artifact.
+
+His ICP database method: use Grok to find 10-20 leads per city, manually apply judgment 3-5 times per city to train the tool, then codify a rulebook (Apify, scraping sub-agents) to scale.
+
+Cold outreach: never use a primary domain — use burner domains with a 2-week warmup via Instantly; keep copy to one screen with exactly one CTA.
+
+A/B test subject lines first to isolate open-rate issues, then test 20+ copy variants to isolate reply-rate issues.
+
+Capital becomes the bottleneck within 4-6 months for hardware-scaling businesses (manufacturing cost, not CAC, constrains growth) — apply early to TinySeed/YC; a Delaware C-Corp via Clerky (~$800-1000) is essentially mandatory for VC funding.
+
+VC alternative: pre-order/deposit model (first 100 customers pay unit cost to jump the line) plus referral incentives (20-30% profit share for 6 months) to self-fund growth.
+
+Before any partnership or revenue split, ask: "if this goes perfectly, what does it look like at the limit?"
+
+Shakur deliberately skipped a graphical dashboard for his agent OS, using a JSON file plus a daily email digest instead — simplicity first.
+
+Juan Torres proposed a lightweight Flask/Docker observability app logging each agent's row-by-row input/output for non-deterministic pipelines, with an optional debug mode surfacing unused reasoning tokens.
+
+Paul Miller: enterprise AI dev costs haven't dropped like consumer/prototype costs — heavy onboarding and edge cases remain the moat, reshaping how VCs assess defensibility ("can this be cloned over a weekend?").
+
+Scott Rippey: the ideal startup trifecta is builder + domain expert + distribution/audience partner; and visualizing a DB schema as an interactive 3D model (Claude → Fathom Design) beats reading schema text.
+
+Scott also recommends turning on point-in-time recovery before real customers hit a Supabase DB, with dev/staging/prod mirrored via a manual promotion pipeline.
+
+Daniel Zivkovic: domain expertise in unsexy, bureaucratic industries (EMS/healthcare documentation) is a strong wedge because incumbent software quality is poor.
+
+Varun Sharma: "the money is in the follow-up" — expect 4-5 follow-ups per lead; seed AI outreach prompts with voice-transcribed personal examples to avoid a robotic tone.
+
+Brandon's career tip: a single well-executed public technical case study (~2hr video, 800K views) can outweigh thousands of job applications — frame content around the AI/code/business overlap.
+
+He uses vidIQ "outlier" analysis to detect overperforming video formats and repurposes them intentionally — "imitate before innovate."
+
+From chat: Harvey (legal AI) runs a customized Kimi K3, suggesting Chinese models are entering more "secure" inference environments — it's about the inference provider, not just the model.
+
 
 ❓ KEY Q&A
 
-Q: For a multi-capability AI co-pilot (Q&A, buy, search), should I use an orchestrator with sub-agents or a planner/executor?
-A (Brandon): Don't decide up front. Generate ~100 adversarial test conversations, start with one agent and many tools, run the eval set, identify failure modes, then iteratively test more complex architectures — using cheap models for the loop and strong models for production.
+Q&A Highlights
 
-Q: Which models for the experiment loop if I'm limited to American models?
-A (Brandon): Use a strong thinking model (Opus/5.6-tier) for the orchestrating agent — slower is fine since it runs overnight — and the cheapest fast model (Gemini 3.6 Flash or GPT-5.5 no-thinking) for the user-facing responder.
+Q (Brandon Hancock): How many parallel projects does your dashboard track?
+A (Patrick Chouinard): 35 packages across 7 underlying projects, including Hermes.
 
-Q: Is "loop engineering" just a prompt that keeps going until a criterion is met?
-A (Brandon): Yes. Review the first few cycles to correct its judgment, then let it run autonomously, logging every experiment to a markdown file so it can recover context after compaction.
+Q (Elijah Stambaugh): Is your "knowledge spine" just Hermes stripped down, and is it markdown or a database?
+A (Patrick Chouinard): No — Hermes is multi-profile; the knowledge spine is a separate project (InfraKnowledge) made entirely of markdown files, loaded into a knowledge graph to sequence work.
 
-Q: Big visual dashboard vs. a simple JSON file plus daily email for a personal OS?
-A (Patrick): Simple is fine if you're just managing email and meetings. But once many sub-tools, CLIs, and MCPs run on infrastructure you don't touch daily, you need visualization just to remember what exists. Build the GUI last — it's purely an aggregator/launcher.
+Q (Juan Torres): Are logs/observability visible via artifacts from each agent in the pipeline?
+A (Patrick Chouinard): Yes — a full Prometheus/Grafana/Loki stack, fed by every application and exposed to AgentOps, runs on just a few mini PCs.
 
-Q: How do you observe non-deterministic agent pipelines?
-A (Juan/Brandon/Hemal): Build a lightweight containerized test client: register each adversarial input as a row, capture each agent-to-agent output, with an optional debug mode showing full reasoning. Connect it to the same database and toggle it on for dev/test only.
+Q (Shakur): What's the actual benefit of a big dashboard versus a simple JSON file + email digest?
+A (Patrick Chouinard): For simple email/meeting management a simple approach suffices, but with many parallel tools/CLIs/MCPs and limited daily engagement, visualization prevents silently rebuilding the same functionality twice.
 
-Q: Is DuckDB a vector store?
-A (Paul/Daniel): No — it's a columnar, file-based query layer that sits on top of LanceDB for fast structured queries, used to pre-format data per metric category for agentic querying.
+Q (Hemal Shah): Orchestrator+sub-agents or planner/executor for a multi-capability e-commerce co-pilot?
+A (Brandon Hancock): Don't decide upfront — build a 100-conversation adversarial eval set, start with the simplest architecture, and iterate toward complexity based on measured failure rates.
 
-Q: My automated outreach is getting zero replies — what's wrong?
-A (Brandon/Daniel/Varun): Check whether the offer delivers obvious ROI, increase follow-ups (the money is in the follow-up), make AI copy sound human by feeding it voice-transcribed natural phrasing, and A/B test subject lines and copy to isolate whether email, offer, or volume is broken.
+Q (Hemal Shah): Model recommendations if I want American models instead of Chinese?
+A (Brandon Hancock): Use a strong thinking model overnight for research; for production, use GPT-5.5 (no-thinking) if it must be American, or Gemini 3.6/Flash if cost/speed matters more.
 
-Q: Should I pivot away from specializing in the Google stack for my job search?
-A (Brandon): Keep the direction, change the tactic — build public "challenge" videos proving skill through a transparent problem-solving journey (e.g., "handle 1,000 customer queries with AI for under a dollar"), give away all code, and treat it as a repeatable, time-boxed format.
+Q (Brandon Hancock): Is DuckDB a vector store, and are you running two vector stores?
+A (Paul Miller): No — DuckDB is a file-based columnar query layer on top of LanceDB, which handles vector/word content.
 
-Q: Can I replicate deep self-reflection thinking in a single prompt within ShipKit task templates?
-A (Brandon): No shortcut — break the SDLC into discrete skills/artifacts: plan mode → detailed task template → a "poke holes" critique skill → execution → review, with each step saving an artifact.
+Q (Juan Torres): What's the methodology to carry out an ICP outreach campaign?
+A (Brandon Hancock): Use Grok to find 10-20 ICPs per city, apply manual judgment 3-5 times per city, codify a rulebook, then scale via Instantly with burner domains.
+
+Q (Juan Torres): Why pursue VC funding if they don't take shareholding here?
+A (Paul Miller): The VC prep process (TAM, differentiation, cost structure) is valuable even outside direct investment, e.g., for negotiating with manufacturing partners.
+
+Q (Brandon Hancock, to Scott): If the HYROX app goes perfectly, what does it look like at the limit?
+A (Scott Rippey): ~1,000 users = ~$40k/month (~$500k/yr); profits split evenly three ways after costs, between Scott, Joe, and Alyssa.
+
+Q (Scott Rippey): Are you using Supabase — what's your setup?
+A (Brandon Hancock/Scott Rippey): Yes — turn on point-in-time recovery before going live, and keep separate dev/staging/prod environments.
+
+Q (Brandon Hancock, re: Google review auto-reply offer): What's the actual financial impact of answering every Google review?
+A (Shakur): Honestly unsure — hadn't validated the ROI before building the offer.
+
+Q (Brandon Hancock): How do I get "loop deep work" (gated autonomous looping) working instead of my agent saying "I'm done" prematurely?
+A (Brandon Hancock, self-answer): Break goals into gates with self-determined success/failure criteria; loop plan-critique-act-review within each gate, and feed back corrections when it falsely claims completion.
+
+Q (Varun Sharma): For the review step, do you use a different model, or is it adversarial?
+A (Shakur): Currently the same model with a dedicated review prompt for simplicity; long-term plan is a different model (e.g., Claude calling Codex) for adversarial review.
+
+Q (Varun Sharma): I've positioned around the Google/Gemini stack, but Google lags frontier labs — should I pivot?
+A (Brandon Hancock): Stack positioning still works, but the real leverage is public proof of skill — do a scalable technical "challenge" video modeled on a viral AWS case study.
+
+Q (Varun Sharma): Is there a way to get deep self-reflection within a single prompt like Shipkit's task templates?
+A (Brandon Hancock): No — every SDLC step (plan, task template, adversarial review, execution, completion review) is its own dedicated skill/prompt, not combined into one.
+
 
 🛠️ TOOLS AND CONCEPTS MENTIONED
 
-• T3 Code — interface aggregating Claude Code and Codex sessions across machines; Patrick and Shakur are heavy users
-• Hermes — Patrick's multi-profile agent framework (chief-of-staff default plus specialist sub-agents)
-• InfraKnowledge — Patrick's markdown knowledge graph tracking infra inventory, policy, and dependencies
-• Prometheus / Grafana / Loki — Patrick's self-hosted observability stack
-• GLM 5.3 / DeepSeek v4 Flash — cheap Chinese models Brandon uses for classification and experimentation
-• Instantly — cold email platform central to the group's outreach (rule of thumb: 1 domain + 5 accounts ≈ 150 sends/day, ~2-week warm-up)
-• LanceDB + DuckDB — vector store plus columnar query "intelligence layer" powering Paul and Daniel's BI systems
-• Cerebras — fast hosted inference Paul uses for real-time chat over BI data
-• Claude Design — rapid UI/landing page generation from backend specs
-• ShipKit — Brandon's product teaching agent-driven rapid app development
-• Blackbox — Scott's open-source Mac IDE/agent harness with agentic browser, iOS simulator, and phone companion app
-• vidIQ — Chrome extension for spotting outlier/viral YouTube videos
-• ccusage — CLI for tracking daily token usage across Codex/Claude/Grok
-• Key concepts: loop engineering, adversarial test-set-first development, the chief-of-staff pattern, emulation before innovation, and Brandon's "1,000 customers before a single line of code" rule
+T3 code – harness aggregating Claude Code/Codex sessions by project, run remotely via VM.
+
+Hermes – Patrick's multi-profile "chief of staff" agent framework.
+
+CMUX / Cursor – prior IDE tools; Cursor canceled after SpaceX acquisition.
+
+Grok / GrokBot (4.6) – used for ICP research, lead-list building, LinkedIn data pulls.
+
+Instantly (instantly.ai) – cold outreach platform; requires burner domains, ~2-week warmup.
+
+listio.ai / Listio – Brandon's YouTube lead-magnet SaaS side project.
+
+GLM 5.3 / 5.3 Flash – low-cost model; cut Patrick's RecapFlow cost from $1.50 to $0.15/call; also cited for EMS Soap cost reset.
+
+DeepSeek v4 Flash – 100x cost reduction for classification tasks.
+
+Luna model (Google) – considered, then replaced by DeepSeek.
+
+OpenRouter – alternative inference provider; compliance/HIPAA constraints discussed (AWS Bedrock raised as HIPAA-compliant alternative for Chinese models).
+
+Kimi K (K3) – Chinese model; noted as basis for Harvey's legal AI via a secure inference provider.
+
+ShipKit / Shipkit.ai – Brandon's task-template/skill-based SDLC workflow system.
+
+Prometheus, Grafana, Loki – observability stack in Patrick's home lab.
+
+AgentOps – CLI/MCP exposing infra to the agent framework.
+
+InfraKnowledge – markdown-based infra knowledge graph project.
+
+Proxmox – VM virtualization backend.
+
+Pydantic AI – open-source framework Patrick plans to customize for review/red-teaming.
+
+ACP (Agent Client Protocol) – Bastian has a working PR for T3 code integration; offered to share repo with Patrick.
+
+LanceDB – vector/word-content DB (Paul Miller's reporting stack; also used by Daniel Zivkovic).
+
+DuckDB – columnar query layer atop LanceDB ("intelligence layer"); Daniel shared his own implementation via GitHub.
+
+Cerebras – fast-hosted inference for real-time chat front end (link: cerebras.ai/infcamp).
+
+RunPod – GPU hosting for backend model processing.
+
+Postgres – master data store feeding Paul's stack.
+
+GPT-5.5 (no-thinking) – fast, affordable American production model.
+
+Gemini 3.6 / 3.6 Flash / 3.7 Flash – used for classification/quick tasks; 3.7 Flash praised in chat.
+
+Claude / Opus (AWS Bedrock) – criticized for rate limits/throttling.
+
+DaVinci Resolve – used by Juan Torres to edit his promo video.
+
+Flask / Docker – proposed for an observability/test web app.
+
+EMSO – Brandon's expert-judgment-extraction project (moat example).
+
+TryAIBooth / AIBooth – burner-domain service for outreach.
+
+Vercel – fast landing-page deployment.
+
+Calendly – single CTA link on outreach/landing pages.
+
+SerpAPI (serpapi.com) – pulls Google Places data for lead lists (cheaper than Google API keys).
+
+Clerky – Delaware C-Corp/cap-table setup service (~$800-1000).
+
+TinySeed – pre-seed accelerator (batch opens Sept 1-9).
+
+Y Combinator (YC) – alternative funding, more capital, later disbursement.
+
+Fable – multi-model orchestration (Opus, Sonnet 5.5, Sol) with global rules, used by Scott Rippey.
+
+Supabase – DB backend; point-in-time recovery and dev/staging/prod separation discussed.
+
+Fathom Design – used with Claude to generate 3D DB visualization.
+
+Blackbox – Scott Rippey's custom Mac IDE/agent harness (agentic browser, iOS simulator, SQLite usage tracking); GitHub repo shared (cc-blackbox-app).
+
+TestFlight – testing Scott's companion iOS app.
+
+Cloudflare – secure sync between IDE and iOS app.
+
+CC Usage (ccusage) – tracks daily token usage across Claude/Codex/Grok; GitHub link shared.
+
+PureMail – cheap email service for Shakur's cold-outreach tool.
+
+vidIQ – YouTube outlier/viral-format analysis plugin (Chrome extension link shared).
+
+Google ADK / Gemini API / Google Cloud – referenced re: Varun's technical stack positioning.
+
+Fireflies.ai / Fathom / Sembly – meeting notetaker bots present in the call.
+
+poteto's "unslop" skill / matt's "/wait-what" – Claude/Cursor plugin skills shared in chat for cleaning up Opus responses.
+
 
 📎 SHARED RESOURCES
 
-Anthropic's Building Effective Agents guide (agent architecture starting point):
-https://www.anthropic.com/engineering/building-effective-agents
+Links & Resources from the Call
 
-Scott Rippey's Blackbox repo (free and open to test):
-https://github.com/scott-rippey/cc-blackbox-app
-
-ccusage token usage tracker:
-https://github.com/ccusage/ccusage
-
-Daniel's write-up on DuckDB as an intelligence layer atop LanceDB:
-https://github.com/dzivkovi/video-intel/ (see intelligence-layer.md)
-
-"Unslop" skill for cleaning up Opus responses:
-https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md
-
-Instantly's YouTube channel (cold email best practices):
-https://www.youtube.com/@InstantlyAI/videos
-
-SerpAPI (cheap Google Place data for lead lists):
-https://serpapi.com/
-
-vidIQ Chrome extension:
-https://chromewebstore.google.com/detail/vidiq-vision-for-youtube/
-
-Tiny Seed accelerator application:
-https://apply.tinyseed.com/
-
-Clerky (Delaware C-Corp setup):
-https://www.clerky.com/
-
-Video warning against standard Delaware C-Corp structures (Twilio founder example):
-https://youtu.be/7VKliOQXQ9M
-
-ShipKit:
-https://www.shipkit.ai/
-
-Daily-follow YouTube channels recommended by Patrick:
+YouTube channels to follow (Patrick's daily picks):
 https://www.youtube.com/@AndrejKarpathy
 https://www.youtube.com/@NateBJones
 
+Portfolio & content examples:
+https://www.zalak-patel.com/ — portfolio website example shared by Ryan C.
+https://youtu.be/W4EwfEU8CGA — AWS scalability "challenge video" case study, referenced as the model for public technical proof-of-skill content (Brandon Hancock)
+https://www.youtube.com/@Itssssss_Jack — YouTube channel with Claude Design videos (Daniel Zivkovic / Brandon Hancock)
+https://chromewebstore.google.com/detail/vidiq-vision-for-youtube/... — vidIQ Chrome extension (Daniel Zivkovic)
+
+AI tools & engineering:
+https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md — "unslop" skill for cleaning Opus responses (Morgan)
+https://www.anthropic.com/engineering/building-effective-agents — Anthropic's "start simple" agent guidance (Daniel Zivkovic, for Hemal Shah)
+https://www.cerebras.ai/infcamp — Cerebras inference platform (Brandon Hancock)
+https://github.com/dzivkovi/video-intel/blob/.../intelligence-layer.md — Daniel Zivkovic's DuckDB-as-intelligence-layer implementation
+https://github.com/ccusage/ccusage — CC Usage token-tracking tool (Varun Sharma)
+https://github.com/scott-rippey/cc-blackbox-app — Scott Rippey's Blackbox IDE repo
+https://youtu.be/c9WCcD4fH6c — video shared by Brandon Hancock during Juan Torres's segment
+
+Sales & outreach:
+https://serpapi.com/ — Google Places data tool for ICP research (Paul Miller)
+https://www.youtube.com/@InstantlyAI/videos — Instantly's YouTube channel, cited as the cold-outreach "bible"
+
+Startup & fundraising:
+https://apply.tinyseed.com/ — TinySeed application link (Brandon Hancock)
+https://www.clerky.com/welcome — Clerky C-Corp setup (Brandon Hancock)
+https://youtu.be/7VKliOQXQ9M — Y Combinator / Lean Startup author video warning against Delaware C-Corps (Daniel Zivkovic)
+
+Other:
+https://www.shipkit.ai/ — Brandon Hancock's Shipkit product
+https://lnkd.in/p/g8e5p6cH — Ty Wells's LinkedIn article/presentation (posted twice)
+https://www.instagram.com/alyssamcelheny/ — HYROX athlete / marketing partner reference (Brandon Hancock)
+
+
 🔄 FOLLOW-UPS WORTH EXPLORING
 
-• Brandon and Patrick are meeting Thursday to explore Patrick's multi-model code-review cycle for potential use in EMS SOAP's SDLC
-• Bastian's ACP integration PR for T3 Code — Patrick will be invited to the repo
-• Juan is executing the full GTM playbook: burner domains + Instantly campaigns, a landing page via Claude Design + Vercel, and Tiny Seed/YC applications with a C-Corp via Clerky
-• Varun is publishing his first public "challenge" YouTube video within roughly three weeks
-• Shakur is revamping his Google-review-reply offer (lower price, dashboard, more volume, manual control) after zero replies
-• Scott is releasing his iOS companion app via TestFlight, formalizing his HYROX partnership agreement, and keeping his Blackbox repo free/open
-• Morgan is building a 450-lead prospect list for Class2Curb.com using the outreach method discussed on the call
-• Brandon will share EMS SOAP fundraising updates and, once funded, resume regular YouTube content and update ShipKit with newer techniques
+Patrick Chouinard: build a new T3 code server modeled on his home-lab infra (Proxmox VMs + thin Mac client), then demo his Grafana-based observability app to Juan Torres once production-ready.
+
+Shakur: set up additional Linux laptops linked into T3 code as separate machines; Patrick to share progress with Shakur.
+
+Brandon Hancock and Patrick Chouinard: hold a follow-up call to discuss the Pydantic-based review/red-teaming harness idea.
+
+Brandon Hancock: 13-day deadline to launch v1 of listio.ai, then a one-week wait to gauge Instantly campaign traffic before further development.
+
+Bastian Venegas Arevalo: invite Patrick Chouinard to a GitHub repo containing his ACP integration PR for T3 code.
+
+Hemal Shah: build a 100+ conversation adversarial eval set before finalizing his co-pilot's architecture, and report results back in the community.
+
+Juan Torres: send Brandon the AI Boots Studio promo video, purchase 3-5 burner domains and begin email warmup, build ICP-specific contact lists (~1,000 per ICP), set up Instantly, build a landing page (Claude + Vercel + Calendly), pursue TinySeed/YC applications, set up a Delaware C-Corp via Clerky, and consider a referral/deposit pre-funding model.
+
+Paul Miller: keep the group posted on his upcoming product launch and new VC-backed dev-studio arrangement.
+
+Scott Rippey and partners (Joe, Alyssa): finalize a formal partnership agreement for the HYROX SaaS product ("Acceler8 Training") before/during a 2-3 week build trip in Michigan.
+
+Scott Rippey: release his GitHub repo/library for the 3D DB visualization tool and Blackbox IDE, ship the companion iOS app after TestFlight testing, and keep both free for the community.
+
+Shakur: reclaim manual control of send limits on his Google-review-reply tool, lower its price, and add a user-facing dashboard.
+
+Daniel Zivkovic and co-founder Raul: continue pursuing a distribution partnership for their EMS documentation product.
+
+Varun Sharma: revamp the AI cold-outreach experiment (follow-up cadence, tone) and produce a first "challenge video" within ~3 weeks per Brandon's advice.
+
+Patrick Chouinard and Daniel Zivkovic: schedule a Thursday-afternoon call, with Daniel to watch the YC Delaware incorporation-risk video first.
