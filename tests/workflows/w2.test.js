@@ -174,6 +174,26 @@ test('Finding 4: W2 session header is built deterministically from the session d
   assert.ok(md.includes('body A') && md.includes('body B'), 'chunk bodies must survive header replacement');
 });
 
+// Finding E: W2's real transcripts use unbracketed `HH:MM:SS - Speaker` timestamps, not
+// W1's bracketed `[HH:MM:SS]`. The duration regex only matched the bracketed form, so
+// formatDurationEstimate returned 'unknown' for the entire historical backfill. Prove
+// against a real historical transcript (last turn header `03:34:45 - Brandon Hancock`)
+// that the unbracketed format is now picked up.
+test('Finding E: W2 session header computes duration from a real historical transcript\'s unbracketed HH:MM:SS timestamps', () => {
+  const items = [
+    { json: { chunkIndex: 0, ok: true, usage: { cost: 0.01 }, text: '<!--SEGMENT\ntopic: a\n-->\nbody A' } },
+  ];
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Prep', {
+    items,
+    nodes: {
+      'Code: Read Transcript': { session_date: '2026-01-14', transcriptText: historicalTranscript },
+    },
+  });
+  const md = out[0].json.preparedTranscript;
+  assert.ok(md.includes('duration_estimate: 3h 34m'),
+    'duration must be computed from the last unbracketed HH:MM:SS timestamp (03:34:45), not "unknown"');
+});
+
 const signalNodes = {
   'Code: Pipeline Config': cfg,
   'Code: Read Transcript': { transcriptText: transcript },
