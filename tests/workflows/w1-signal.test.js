@@ -65,3 +65,31 @@ test('aggregate throws when the reduce output is missing sections', () => {
     /section/i,
   );
 });
+
+test('Finding 2: reduce prompt requires all six headings always, not omission, so it cannot contradict the reduce validator', () => {
+  const mapped = [
+    { json: { chunkIndex: 0, ok: true, text: '## general\n\npart one', usage: { cost: 0.01 } } },
+  ];
+  const out = runCodeNode('merged-call-summarizer.json', 'Code: Build Signal Reduce', { items: mapped, nodes });
+  const system = out[0].json.system;
+  assert.ok(
+    /Always emit all six headings.*even when a section has no content/s.test(system),
+    'reduce prompt must instruct the model to always emit all six headings',
+  );
+  assert.ok(/_None\./.test(system), 'reduce prompt must give the model an explicit empty-section marker');
+  assert.ok(
+    !/Omit a section entirely if there is genuinely no content for it/.test(system),
+    'reduce prompt must not contradict the CANON.every() reduce validator by telling the model it may omit a heading',
+  );
+});
+
+test('Finding 2: map prompt is unaffected — it may still omit a section, since its validator only requires one canonical heading', () => {
+  const out = runCodeNode('merged-call-summarizer.json', 'Code: Split Signal', {
+    items: [{ json: { halving: 0 } }], nodes,
+  });
+  const system = out[0].json.system;
+  assert.ok(
+    /Omit a section entirely if this part contains nothing for it/.test(system),
+    'map prompt legitimately keeps its omit-if-empty instruction',
+  );
+});
