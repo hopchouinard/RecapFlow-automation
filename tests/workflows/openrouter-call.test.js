@@ -306,6 +306,28 @@ test('R3-C: classify accepts a SEGMENT with a real body even when followed by th
   assert.strictEqual(out[0].json.ok, true, 'real body content before the footer must still be counted');
 });
 
+// R3-F: the reduce check used to be membership + count only (CANON.every(includes) plus
+// found.length === CANON.length), not order. All six headings in the wrong order used to
+// pass and get written to disk as-is.
+test('R3-F: classify rejects a signal.reduce response with all six canonical headings in the wrong order', () => {
+  const wrongOrder = ['insights', 'general', 'qa', 'tools', 'links', 'decisions']
+    .map((s) => `## ${s}\n\nbody`).join('\n\n');
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(wrongOrder, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'headings out of order must be rejected');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('R3-F: classify accepts the six canonical headings in the exact canonical order', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(sixHeadings(), 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true);
+});
+
 test('Finding 3: the prep.chunk structureOk logic is byte-identical across Classify, Classify 2 and Classify 3', () => {
   const { loadWorkflow } = require('./harness');
   const wf = loadWorkflow('openrouter-call.json');

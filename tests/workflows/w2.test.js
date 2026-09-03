@@ -284,6 +284,19 @@ test('Finding B: W2 aggregate signal throws naming the offending heading when th
   );
 });
 
+// R3-F: Code: Aggregate Signal used to check membership + count only, not order. All six
+// headings present but in the wrong order used to pass and get written as-is.
+test('R3-F: W2 aggregate throws when all six headings are present but out of order', () => {
+  const wrongOrder = ['insights', 'general', 'qa', 'tools', 'links', 'decisions']
+    .map((s) => `## ${s}\n\nbody`).join('\n\n');
+  assert.throws(
+    () => runCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Signal', {
+      items: [{ json: { chunkIndex: 0, ok: true, text: wrongOrder, usage: { cost: 0 } } }],
+    }),
+    /order|insights, general, qa/i,
+  );
+});
+
 test('W2: Code: Save extracted-signal.md forwards signalText to Code: Split Post Sections', () => {
   // Ruling N regression seam: Code: Save extracted-signal.md must forward
   // signalText alongside the session context it spreads from Code: Read

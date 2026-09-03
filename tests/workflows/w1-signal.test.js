@@ -104,3 +104,26 @@ test('Finding 2: map prompt is unaffected — it may still omit a section, since
     'map prompt legitimately keeps its omit-if-empty instruction',
   );
 });
+
+// R3-F: Code: Aggregate Signal used to check membership + count only (CANON.every(includes)
+// plus found.length === CANON.length), not order. All six headings in the wrong order used
+// to pass and get written as the extracted-signal artifact as-is.
+test('R3-F: aggregate throws naming the actual order received when headings are all present but out of order', () => {
+  const wrongOrder = ['insights', 'general', 'qa', 'tools', 'links', 'decisions']
+    .map((s) => `## ${s}\n\nbody`).join('\n\n');
+  assert.throws(
+    () => runCodeNode('merged-call-summarizer.json', 'Code: Aggregate Signal', {
+      items: [{ json: { chunkIndex: 0, ok: true, text: wrongOrder, usage: { cost: 0 } } }],
+    }),
+    /order|insights, general, qa/i,
+  );
+});
+
+test('R3-F: aggregate still accepts the six canonical headings in the correct order', () => {
+  const rightOrder = ['general', 'insights', 'qa', 'tools', 'links', 'decisions']
+    .map((s) => `## ${s}\n\nbody`).join('\n\n');
+  const out = runCodeNode('merged-call-summarizer.json', 'Code: Aggregate Signal', {
+    items: [{ json: { chunkIndex: 0, ok: true, text: rightOrder, usage: { cost: 0 } } }],
+  });
+  assert.ok(out[0].json.signalText.includes('## general'));
+});
