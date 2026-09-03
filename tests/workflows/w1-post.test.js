@@ -36,6 +36,26 @@ test('omits sections absent from the input', () => {
   assert.strictEqual(out[0].json.section, 'general');
 });
 
+// R3-D: '_None._' is the mandated empty-section sentinel (Code: Build Signal Reduce's
+// prompt tells the model to write it when a section genuinely has nothing). It is truthy,
+// so it used to be treated as real content and sent to a paid post-section LLM call.
+test('R3-D: a section whose body is only the _None._ sentinel produces no post-section request', () => {
+  const out = runCodeNode('merged-call-summarizer.json', 'Code: Split Post Sections', {
+    items: [{ json: { signalText: '## general\n\nreal content\n\n## links\n\n_None._' } }],
+    nodes: { 'Code: Pipeline Config': cfg },
+  });
+  assert.strictEqual(out.length, 1, 'the _None._ section must not produce a request');
+  assert.deepStrictEqual(Array.from(out, (i) => i.json.section), ['general']);
+});
+
+test('R3-D: the _None._ sentinel is treated as absent regardless of surrounding whitespace or case', () => {
+  const out = runCodeNode('merged-call-summarizer.json', 'Code: Split Post Sections', {
+    items: [{ json: { signalText: '## general\n\nreal content\n\n## links\n\n  _NONE._  \n' } }],
+    nodes: { 'Code: Pipeline Config': cfg },
+  });
+  assert.deepStrictEqual(Array.from(out, (i) => i.json.section), ['general']);
+});
+
 test('assembles sections in fixed order with the right emoji headers', () => {
   const items = [
     { json: { chunkIndex: 2, ok: true, section: 'qa', text: 'qa body', usage: { cost: 0 } } },
