@@ -328,6 +328,26 @@ test('R3-F: classify accepts the six canonical headings in the exact canonical o
   assert.strictEqual(out[0].json.ok, true);
 });
 
+// R3-G: structureOk('post.section') rejected headings, bold markers and bullet prefixes,
+// but not Markdown link syntax -- Skool renders no Markdown and both post prompts require
+// plain URLs.
+test('R3-G: classify rejects a post section containing a Markdown link', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse('Check out this tool: [CoolTool](https://example.com/cooltool)', 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'post.section' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a Markdown link must be rejected');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('R3-G: classify accepts a post section with a plain-text URL', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse('Check out this tool: https://example.com/cooltool', 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'post.section' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true);
+});
+
 test('Finding 3: the prep.chunk structureOk logic is byte-identical across Classify, Classify 2 and Classify 3', () => {
   const { loadWorkflow } = require('./harness');
   const wf = loadWorkflow('openrouter-call.json');
