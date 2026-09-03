@@ -76,6 +76,35 @@ test('W2 aggregate prep throws when a chunk failed', () => {
   assert.throws(() => runCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Prep', { items }), /failed/i);
 });
 
+test('Finding 4: W2 session header is built deterministically from the session date and last transcript timestamp, not trusted from chunk 1', () => {
+  const items = [
+    {
+      json: {
+        chunkIndex: 0, ok: true, usage: { cost: 0.01 },
+        text: '=== SESSION ===\ndate: unspecified\nduration_estimate: ~45 minutes\nmain_themes: opening topic, shared topic\n\n---\n\n<!--SEGMENT\ntopic: a\n-->\nbody A',
+      },
+    },
+    {
+      json: {
+        chunkIndex: 1, ok: true, usage: { cost: 0.02 },
+        text: '=== SESSION ===\ndate: also wrong\nduration_estimate: ~10 minutes\nmain_themes: shared topic, later topic\n\n<!--SEGMENT\ntopic: b\n-->\nbody B',
+      },
+    },
+  ];
+  const out = runCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Prep', {
+    items,
+    nodes: {
+      'Code: Read Transcript': { session_date: '2026-09-01', transcriptText: transcript },
+    },
+  });
+  const md = out[0].json.preparedTranscript;
+  assert.strictEqual((md.match(/=== SESSION ===/g) || []).length, 1, 'exactly one session header');
+  assert.ok(md.includes('date: 2026-09-01'), 'date must come from the known session date, not chunk 1');
+  assert.ok(md.includes('duration_estimate: 3h 15m'), 'duration must be computed from the transcript\'s last [HH:MM:SS] timestamp (03:15:43), not trusted from any chunk');
+  assert.ok(md.includes('main_themes: opening topic; shared topic; later topic'), 'main_themes must merge and de-duplicate themes across all chunk headers, not just chunk 1\'s');
+  assert.ok(md.includes('body A') && md.includes('body B'), 'chunk bodies must survive header replacement');
+});
+
 const signalNodes = {
   'Code: Pipeline Config': cfg,
   'Code: Read Transcript': { transcriptText: transcript },

@@ -68,3 +68,48 @@ test('dedupes unresolved speakers that differ only by internal whitespace', () =
   const out = reassemblePrep([a, b]);
   assert.strictEqual((out.match(/Ryan C/g) || []).length, 1, 'whitespace-variant duplicate not deduped');
 });
+
+test('Finding 4: reassemblePrep accepts a headerOverride and uses it verbatim instead of chunk 1\'s own header', () => {
+  const { reassemblePrep } = loadLib();
+  const a = '=== SESSION ===\ndate: wrong-from-chunk-1\n\n<!--SEGMENT\ntopic: a\n-->\nbody A';
+  const b = '=== SESSION ===\ndate: also-wrong\n\n<!--SEGMENT\ntopic: b\n-->\nbody B';
+  const override = '=== SESSION ===\ndate: 2026-09-01\nduration_estimate: 3h 15m\nmain_themes: x; y';
+  const out = reassemblePrep([a, b], override);
+  assert.strictEqual((out.match(/=== SESSION ===/g) || []).length, 1);
+  assert.ok(out.startsWith(override), 'override header must be used verbatim, not chunk 1\'s own header');
+  assert.ok(!out.includes('wrong-from-chunk-1') && !out.includes('also-wrong'));
+  assert.ok(out.includes('body A') && out.includes('body B'));
+});
+
+test('Finding 4: reassemblePrep falls back to chunk 1\'s header when no override is given (backward compatible)', () => {
+  const { reassemblePrep } = loadLib();
+  const a = '=== SESSION ===\ndate: 2026-09-01\n\n<!--SEGMENT\ntopic: a\n-->\nbody A';
+  const out = reassemblePrep([a]);
+  assert.ok(out.includes('date: 2026-09-01'));
+});
+
+test('Finding 4: reassemblePrep is byte-identical across Code: Chunk Lib, W1 Code: Aggregate Prep, and W2 Code: Aggregate Prep', () => {
+  const { getCodeNode } = require('./harness');
+  const extractFn = (code, fname) => {
+    const start = code.indexOf(`function ${fname}(`);
+    assert.ok(start > -1, `${fname} not found`);
+    let depth = 0, i = start, started = false;
+    while (i < code.length) {
+      if (code[i] === '{') { depth += 1; started = true; }
+      else if (code[i] === '}') {
+        depth -= 1;
+        if (started && depth === 0) return code.slice(start, i + 1);
+      }
+      i += 1;
+    }
+    throw new Error('unbalanced braces');
+  };
+  const lib = getCodeNode('merged-call-summarizer.json', 'Code: Chunk Lib');
+  const w1 = getCodeNode('merged-call-summarizer.json', 'Code: Aggregate Prep');
+  const w2 = getCodeNode('transcript-only-summarizer.json', 'Code: Aggregate Prep');
+  const libFn = extractFn(lib, 'reassemblePrep');
+  const w1Fn = extractFn(w1, 'reassemblePrep');
+  const w2Fn = extractFn(w2, 'reassemblePrep');
+  assert.strictEqual(libFn, w1Fn, 'Chunk Lib and W1 Aggregate Prep reassemblePrep must be byte-identical');
+  assert.strictEqual(w1Fn, w2Fn, 'W1 and W2 Aggregate Prep reassemblePrep must be byte-identical');
+});
