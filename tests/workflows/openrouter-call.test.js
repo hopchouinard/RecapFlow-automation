@@ -122,6 +122,74 @@ test('classify rejects an unclosed SEGMENT header in prep output', () => {
   assert.strictEqual(out[0].json.failureKind, 'structure');
 });
 
+// Finding 3: a well-formed SEGMENT header with no real transcript body after it used to
+// pass structureOk (opens > 0 && opens === closes), get written as a successful prepared
+// transcript, and then have that portion of the call silently dropped downstream by the
+// ingestion parser. The validator must also require a non-trivial body per segment.
+const longBody = 'x'.repeat(60); // well over the 50-non-whitespace-char threshold
+
+test('classify rejects a well-formed SEGMENT header with an empty body (Finding 3)', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse('<!--SEGMENT\ntopic: x\n-->\n', 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false);
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('classify rejects a SEGMENT header with only whitespace/punctuation after it (Finding 3)', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse('<!--SEGMENT\ntopic: x\n-->\n\n   ...\n', 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false);
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('classify accepts a SEGMENT header followed by a real transcript body (Finding 3)', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(`<!--SEGMENT\ntopic: x\n-->\n${longBody}\n`, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true);
+});
+
+test('classify rejects a multi-segment response when only one segment has a real body (Finding 3)', () => {
+  const text = `<!--SEGMENT\ntopic: a\n-->\n${longBody}\n<!--SEGMENT\ntopic: b\n-->\n`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(text, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false);
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('classify accepts a multi-segment response when every segment has a real body (Finding 3)', () => {
+  const text = `<!--SEGMENT\ntopic: a\n-->\n${longBody}\n<!--SEGMENT\ntopic: b\n-->\n${longBody}\n`;
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(text, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'prep.chunk' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true);
+});
+
+test('Finding 3: the prep.chunk structureOk logic is byte-identical across Classify, Classify 2 and Classify 3', () => {
+  const { loadWorkflow } = require('./harness');
+  const wf = loadWorkflow('openrouter-call.json');
+  const byName = Object.fromEntries(wf.nodes.map((n) => [n.name, n]));
+  const extractStructureOk = (code) => {
+    const start = code.indexOf('function structureOk');
+    const end = code.indexOf('\n\nconst requests');
+    assert.ok(start > -1 && end > start, 'structureOk function must be present and locatable');
+    return code.slice(start, end);
+  };
+  const a = extractStructureOk(byName['Code: Classify'].parameters.jsCode);
+  const b = extractStructureOk(byName['Code: Classify 2'].parameters.jsCode);
+  const c = extractStructureOk(byName['Code: Classify 3'].parameters.jsCode);
+  assert.strictEqual(a, b, 'Classify and Classify 2 structureOk must be byte-identical');
+  assert.strictEqual(b, c, 'Classify 2 and Classify 3 structureOk must be byte-identical');
+});
+
 // Controller Ruling R: Code: Classify used to rebuild its output from an explicit field
 // whitelist, silently dropping any caller-supplied metadata (e.g. Code: Split Post Sections'
 // `section` field) that wasn't on the list. This is exactly the pattern from Ruling N and
