@@ -228,6 +228,47 @@ test('classify accepts a full four-field SEGMENT header in the exact parser orde
   assert.strictEqual(out[0].json.ok, true);
 });
 
+// ---------------------------------------------------------------------------
+// Round-3 Codex review findings (labeled R3-A .. R3-I to avoid colliding with
+// the pre-existing "Finding A"/"Finding B" labels from earlier rounds, which
+// name different bugs).
+// ---------------------------------------------------------------------------
+
+const sixHeadings = (bodyFor = (s) => 'body') =>
+  ['general', 'insights', 'qa', 'tools', 'links', 'decisions']
+    .map((s) => `## ${s}\n\n${bodyFor(s)}`).join('\n\n');
+
+// R3-A: parser._strip_fenced_code runs BEFORE splitting on '##', so a reducer/map
+// response wrapped whole in a ```fence``` still looks structurally valid to a naive
+// heading scan, but the parser strips the fence first and finds ZERO sections.
+test('R3-A: classify rejects signal.reduce output wrapped whole in a code fence', () => {
+  const fenced = '```markdown\n' + sixHeadings() + '\n```';
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(fenced, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a fenced reduce response must be rejected, not silently unwrapped');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('R3-A: classify rejects signal.map output wrapped whole in a code fence', () => {
+  const fenced = '```markdown\n## general\n\nbody\n```';
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(fenced, 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.map' })] },
+  });
+  assert.strictEqual(out[0].json.ok, false, 'a fenced map response must be rejected, not silently unwrapped');
+  assert.strictEqual(out[0].json.failureKind, 'structure');
+});
+
+test('R3-A: classify still accepts an unfenced signal.reduce response with all six headings', () => {
+  const out = runCodeNode('openrouter-call.json', 'Code: Classify', {
+    items: [mkResponse(sixHeadings(), 'stop', 5)],
+    nodes: { 'Code: Normalize': [req({ expect: 'signal.reduce' })] },
+  });
+  assert.strictEqual(out[0].json.ok, true);
+});
+
 test('Finding 3: the prep.chunk structureOk logic is byte-identical across Classify, Classify 2 and Classify 3', () => {
   const { loadWorkflow } = require('./harness');
   const wf = loadWorkflow('openrouter-call.json');
