@@ -1,3 +1,4 @@
+const { repoPath } = require('./harness');
 const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('node:fs');
@@ -11,7 +12,7 @@ function loadLib() {
   return module.exports;
 }
 
-const transcript = fs.readFileSync('/repo/output/2026-09-01/transcript.txt', 'utf8');
+const transcript = fs.readFileSync(repoPath('output/2026-09-01/transcript.txt'), 'utf8');
 
 test('splits the real 247KB transcript into 4-7 chunks under target', () => {
   const { splitTranscriptByLines, estimateTokens } = loadLib();
@@ -34,7 +35,7 @@ test('splitting loses no content and cuts only on line boundaries', () => {
 test('parses signal sections regardless of heading level (H1 or H2)', () => {
   const { splitSignalIntoSections } = loadLib();
   for (const d of ['2026-09-01', '2026-08-25', '2026-08-18', '2026-07-28']) {
-    const md = fs.readFileSync(`/repo/output/${d}/extracted-signal.md`, 'utf8');
+    const md = fs.readFileSync(repoPath(`output/${d}/extracted-signal.md`), 'utf8');
     const s = splitSignalIntoSections(md);
     assert.strictEqual(Object.keys(s).length, 6, `${d} parsed ${Object.keys(s).length} sections`);
     assert.deepStrictEqual(Object.keys(s).sort(), ['decisions', 'general', 'insights', 'links', 'qa', 'tools']);

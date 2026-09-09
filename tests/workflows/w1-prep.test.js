@@ -1,9 +1,10 @@
+const { repoPath } = require('./harness');
 const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('node:fs');
 const { runCodeNode } = require('./harness');
 
-const transcript = fs.readFileSync('/repo/output/2026-09-01/transcript.txt', 'utf8');
+const transcript = fs.readFileSync(repoPath('output/2026-09-01/transcript.txt'), 'utf8');
 const cfg = {
   steps: { prep: { model: 'z-ai/glm-5.3-flash', maxTokens: 32768, reasoningEffort: 'low', chunkTargetTokens: 15000 } },
   retry: { callerHalvings: 2 },
