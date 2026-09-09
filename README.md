@@ -1,5 +1,7 @@
 # n8n Automation Stack
 
+For the current Forge development migration, start with the [development handoff](docs/migrations/forge-development-handoff.md). The deployment descriptions below describe the existing n8n installation.
+
 This repository runs a self-hosted n8n instance with PostgreSQL using Docker Compose. It is focused on automating post-call content generation from Zoom chat logs and Fathom transcripts.
 
 The primary workflow watches for two files that share the same `YYYY-MM-DD` prefix:

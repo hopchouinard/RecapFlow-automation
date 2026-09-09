@@ -1,5 +1,17 @@
 # AGENTS.md
 
+## Forge development handoff (2026-09-09)
+
+For development location, migration implementation, preservation evidence, or
+production-change scope, read [the migration handoff](docs/migrations/forge-development-handoff.md)
+before acting. It supersedes older VM-only development instructions below.
+The canonical migration checkout is `/home/t3code/projects/RecapFlow-automation`
+on Forge. This phase authorizes preservation, repository reconciliation, and
+preparation only. Production deploy, cutover, secret rotation, and service
+retirement require a separately authorized phase. Use `scripts/verify-forge.sh`
+for the current credential-free development baseline.
+
+
 This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## What This Is

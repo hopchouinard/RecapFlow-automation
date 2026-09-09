@@ -1,5 +1,17 @@
 # CLAUDE.md
 
+## Forge development handoff (2026-09-09)
+
+For development location, migration implementation, preservation evidence, or
+production-change scope, read [the migration handoff](docs/migrations/forge-development-handoff.md)
+before acting. It supersedes older VM-only development instructions below.
+The canonical migration checkout is `/home/t3code/projects/RecapFlow-automation`
+on Forge. This phase authorizes preservation, repository reconciliation, and
+preparation only. Production deploy, cutover, secret rotation, and service
+retirement require a separately authorized phase. Use `scripts/verify-forge.sh`
+for the current credential-free development baseline.
+
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## What This Is
@@ -10,7 +22,11 @@ n8n is a workflow automation tool (similar to Zapier/Make) with a visual editor 
 
 ## Development model
 
-All RecapFlow-automation development happens on the n8n VM (`n8n-automation.patchoutech.lab`) at `~/n8n/`. Code edits, git commits, Claude Code sessions, and PR creation all originate there. A second clone exists at `/Volumes/NVMe_2TB_Work/Development/RecapFlow-automation` on the Mac Mini but is a read-only mirror — updated only via `git fetch` / `git pull`, never edited locally.
+Migration development now happens on Forge at
+`/home/t3code/projects/RecapFlow-automation`, branch
+`migration/community-brain-forge-handoff`. The existing n8n VM checkout remains
+an unchanged production source reference. Its old instruction that all edits
+and commits originate on that VM is superseded by the dated handoff above.
 
 The Mac Mini still has an operational role as the Zoom host: after a call, chat logs are **manually** copied to the VM's `watch/` directory (see "Mac-Side File Copy" below). The previous Automator + rsync automation was retired as too fragile. `scripts/` contains the legacy sync script kept for reference; it isn't wired up.
 

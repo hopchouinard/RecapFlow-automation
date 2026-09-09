@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-09",
+  "phase": "preservation-and-forge-handoff",
+  "source_commit": "b6f1aa46996d4ab7ccbbaed567864cc2d71f433a",
+  "source_branch": "feat/chunked-llm-pipeline",
+  "forge_branch": "migration/community-brain-forge-handoff",
+  "archive_manifest_sha256": "1d873beab28d5d9309dcc6ed74dda31431b6e354b9b436edf097cbc32c9876ba",
+  "archive_file_count": 14,
+  "durable_file_count": 2693,
+  "archive_bytes": 1919792408,
+  "pbs_archive": "pbs:backup/vm/101/2026-09-09T16:08:13Z",
+  "pbs_consistency": "crash-consistent; guest freeze disabled; logical DB copies supplement it",
+  "full_restore_tested": false,
+  "production_cutover": false,
+  "secrets_onboarded_to_infisical": false,
+  "validation": {
+    "workflow_tests_passed": 150,
+    "python_tests_passed": 771,
+    "python_deprecation_warnings": 70,
+    "archive_checks_verified_on_source": 14,
+    "archive_checks_verified_on_mac": 14
+  }
+}
