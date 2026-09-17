@@ -1,0 +1,794 @@
+AI Developer Accelerator — Coaching Call - September 15
+VIEW RECORDING - 83 mins (No highlights): https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg
+
+---
+
+0:01 - Patrick Chouinard (chouinpa@gmail.com)
+  This meeting is being recorded. Hey, Juan.
+
+0:07 - Juan Torres
+  Hey, Patrick.
+
+0:14 - Patrick Chouinard (chouinpa@gmail.com)
+  It's going to be a little different this week.
+
+0:17 - Juan Torres
+  Oh, yeah?
+
+0:18 - Patrick Chouinard (chouinpa@gmail.com)
+  I'm doing everything I can to host, but I have the flu since yesterday.
+
+0:26 - Juan Torres
+  Ah.
+
+0:27 - Patrick Chouinard (chouinpa@gmail.com)
+  So I have to mute sometime for a fit of cough and don't be too worried.
+
+0:31 - Juan Torres
+  Nah, okay. As long as you, you know, you're okay.
+
+0:38 - Patrick Chouinard (chouinpa@gmail.com)
+  I might talk a little bit less than usual, but I'll survive. That's good. And me, Paul has the same thing.
+
+0:47 - Juan Torres
+  Wow. I didn't know that September was a flu season.
+
+0:51 - Patrick Chouinard (chouinpa@gmail.com)
+  Well, remember, here it's the beginning of fall. For him, it's the end of the winter.
+
+0:59 - Juan Torres
+  Hmm. Okay. I've never been to Canada. I've been wanting to. Before the pandemic, as the pandemic was starting off, I did have the plans to go to Vancouver because I was living in Seattle back in 2020.
+
+1:19 - Patrick Chouinard (chouinpa@gmail.com)
+  Pretty much the same weather.
+
+1:22 - Juan Torres
+  Okay.
+
+1:24 - Patrick Chouinard (chouinpa@gmail.com)
+  Pretty different than here.
+
+1:27 - Juan Torres
+  Oh, really?
+
+1:29 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah. We're in the south of Quebec here. We have minus 40 in the winter and plus... In Fahrenheit, what, 110 in the summer for some time?  Oh, wow. Not every day, but those are the two extremes we can get to.
+
+1:46 - Juan Torres
+  Yeah.
+
+1:48 - Patrick Chouinard (chouinpa@gmail.com)
+  Let's say that most of the summer is spent around 80 Fahrenheit and most of the winter is spent around 0, minus 5, minus 10.
+
+1:57 - Juan Torres
+  Okay. Let's still... Pretty cool.
+
+2:03 - Patrick Chouinard (chouinpa@gmail.com)
+  We are lucky enough to be impervious to pretty much any kind of weather anywhere in the world because we have all of them.
+
+2:10 - Juan Torres
+  Yeah. Yeah. You were tough enough.
+
+2:15 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah. Our winter can be the same thing as the middle of the Arctic and the summer can be the middle of daily.
+
+2:22 - Juan Torres
+  The middle of the Arctic. That is insane. Oh, man.
+
+2:29 - Patrick Chouinard (chouinpa@gmail.com)
+  Hey, Ty.
+
+2:30 - Ty Wells
+  Hey, guys. How's it going?
+
+2:33 - Patrick Chouinard (chouinpa@gmail.com)
+  Trying to survive.
+
+2:36 - Ty Wells
+  That's all we can do.
+
+2:38 - Patrick Chouinard (chouinpa@gmail.com)
+  No, it's just the flu decided that today was a good day.
+
+2:42 - Ty Wells
+  Oh, one of those days.
+
+2:44 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah.
+
+2:45 - Ty Wells
+  No bueno.
+
+2:51 - Juan Torres
+  Can you get the flu through a Zoom call?
+
+2:53 - Patrick Chouinard (chouinpa@gmail.com)
+  No.
+
+2:55 - Ty Wells
+  You can try.
+
+2:59 - Patrick Chouinard (chouinpa@gmail.com)
+  Oh, people don't. They me to work from home today. They did not tell me to not work. So I'm guessing I cannot be contagious.
+
+3:09 - Juan Torres
+  If I get the flu, I'm going to blame you.
+
+3:25 - Patrick Chouinard (chouinpa@gmail.com)
+  I'm going to give people a couple of minutes to join in.
+
+3:37 - Paul Miller
+  Hey, Patrick.
+
+3:38 - Patrick Chouinard (chouinpa@gmail.com)
+  Hey, Paul.
+
+3:41 - Paul Miller
+  We've all got the bloomin' lurgy. At least we're in the wintertime down here. You're in the summer having to put up with that.  Or the end of the summer.
+
+3:49 - Patrick Chouinard (chouinpa@gmail.com)
+  Yep.
+
+3:49 - Paul Miller
+  In the fall.
+
+3:53 - Patrick Chouinard (chouinpa@gmail.com)
+  Yes, summer flu is always the worst.
+
+4:06 - Rod Morrison
+  So you're in Australia right?
+
+4:09 - Patrick Chouinard (chouinpa@gmail.com)
+  No, Quebec.
+
+4:13 - Paul Miller
+  The North American Australia.
+
+4:18 - Rod Morrison
+  I love Quebec, great food, it's a great food town.
+
+4:30 - Patrick Chouinard (chouinpa@gmail.com)
+  Sorry I'm trying to save my breath so I don't start a coughing fit.
+
+4:36 - Paul Miller
+  So we're gonna do tag team today, so hey Ty.
+
+4:49 - Ty Wells
+  Hey Paul, how's it going?
+
+4:51 - Paul Miller
+  Good, how are you?
+
+4:52 - Ty Wells
+  Good, I just realized that when I changed my background for my presentation I had earlier today. I guess it's permanent in all meetings, it looks like, so I'm going to have to get that up.
+
+5:06 - Paul Miller
+  Is this your ERP pitch?
+
+5:09 - Ty Wells
+  Yeah, I had it this morning at 10.
+
+5:13 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah, we're waiting for a recap of how that went, actually.
+
+5:20 - Ty Wells
+  Yeah, well, it was a webinar, so questions only came in online, so it was just mostly talking. But yes, I will definitely give an update there.
+
+5:34 - Patrick Chouinard (chouinpa@gmail.com)
+  Cool.
+
+5:35 - Ty Wells
+  I just had to take a 30-minute nap to recover.
+
+5:38 - Patrick Chouinard (chouinpa@gmail.com)
+  Wait for Paul to come back in. Tonight, if everyone is okay, I'll start just because I still... We'll have a voice, I don't know if I'm still going to have it two hours later.  Okay, good. So it's sad because the last two weeks I was in vacation burning tokens, so I would have loved to show a lot of stuff.  But basically, the one thing I would love to show you guys, you know, I have a research agent I call Beacon that searched the web every day.  to find news that I find interesting. And it basically adapts to the subject that I chat with every day, the project I have ongoing.  It's highly contextualized to everything I do with AI. But it sends me a report, basically a newsletter every day.  So it was fun, but... I I think I can optimize that even further. So I decided that Beacon basically has no knowledge of me.  He knows exactly what my projects are, what the subjects are, but I don't interact with it. I always interact with the main agent that I call Clara, and the main agent knows everything there is to know about me.  So basically, Beacon does the research, he gets a raw report out of it, then he feeds it to Clara, that contextualize everything based on what I want to know and what's important for me, okay?  And I asked Clara to reformat the content to be basically a monologue. So I told her, make it as if you were getting into my office in the morning and telling me the news.  Instead of just giving you a report. And then I went a step further, and I've sent that to a TTS model, and send me the audio through Discord, and now, what I just finished a couple of seconds ago, is an internal site that resides on the Hermes VM, which is the full archive of the transcript, plus the actual audio.
+  SCREEN SHARING: Patrick started screen sharing - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=519.654363  So, I'm gonna share that. And you're seeing this literally, like, 15 seconds after I did. There you go. So, Beacon Morning Briefing.  I have the audio here. I don't... Let me check if I can activate the audio. Wait, I'm gonna... Stop sharing and re-sharing.
+  SCREEN SHARING: Patrick started screen sharing - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=548.909779  I just want to make sure I can share the audio, share something. Okay, go. And this is this morning meeting, this morning briefing.  Patrick, the useful signal this morning is not another local model release. It's that Perplexity is packaging the entire agent operating loop for Windows, Model, Harness, Orchestrator, Scheduler, Local Tools, and Local MCP servers all running on a supported NVIDIA workstation with permissioned escalation to search or frontier models.  That architecture lands directly in our territory. It supports the idea that a capable agent environment can keep routine execution local, while treating cloud intelligence as an explicit escalation path, rather than surrendering the control plane by default.  I'm going to listen to the entire thing, but as you can see, it's highly contextualized for what I work on.  And it's of the other. The project I work on, and you see this is the transcript of what Clara says, and this is the original evidence from Beacon itself, okay?  And it evens identified a source and a generation detail. The idea behind that is that I can now copy and paste those two, give them to ChatGPT, and have a chat with ChatGPT about what was discussed, what's my impression, what I like, what I dislike.  And then take the output from that discussion and feed it back into this system to optimize tomorrow's briefing. So I have a continuously improving loop for the morning briefing, and I have also the archive of all my...  As you can see, it's quite new, but I'm going to have the archive of everything that was generated before.
+  ACTION ITEM: Expose Beacon Morning Briefing archive via Traefik + Tailscale - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=654.9999  And this I'm going to make available to me externally because it's going to be behind my Trafic Reverse Web Proxy and exposed through TailScale.  So I'm going to be able to listen to it on the road, have access to it on mobile. So...
+
+11:20 - Ty Wells
+  You're feeding the beast.
+
+11:21 - Patrick Chouinard (chouinpa@gmail.com)
+  Yep.
+
+11:23 - Ty Wells
+  Nice. I like it.
+
+11:25 - Patrick Chouinard (chouinpa@gmail.com)
+  Yep. Just a sec. The other thing I'm working on is revamping my own personal website. Uh, because I created a website where I publish all of my, basically my resume plus all of my portfolio of projects.  So, uh, it was ancient. It was about six months old. So I, uh, fed it into, uh, a, um, an Astra loop where Astra rebuild it from scratch.  It's not finished yet, so it's not completely deployed, but I have a staging deployment. ahead and get I'm waiting, but basically I ran out of tokens, but as soon as they replenish this Thursday, I'm going to complete that, but this one is impressive because the re-formatting of the website was planned with Astra, but then Astra was instructed to lead the development team, so basically dispatch sub-agents for tasks, but being the one operating it, and only validating with me when there was a subject that needed me, and it was able to go about 17 hours straight before it actually ran out of tokens, and the last one is I built myself a training application to show me how to leverage Claude design using Fable 5.1, and this one I also ran out of tokens before it failed.  I'm but I'm, let's say, about halfway there. Yes, Juan?
+
+13:10 - Juan Torres
+  I did create an agentic system for the creation of a news generation, and the next step for that project, which I left, was to actually contextualize past news reports, right?  At what point do you see, once you accumulate enough news, right, at what point do you see maybe the limitations of the context of your model, or because the context is so wide right now for some of the models, you're thinking of using the big guns in order for it to not run out of context?
+
+13:44 - Patrick Chouinard (chouinpa@gmail.com)
+  No, actually, the execution is done with Luna. So the execution is dirt cheap, because it's news aggregation. So yeah, and Luna has a 900k, or basically a million token.  Possibility to configure it when you use it in Hermes, because all of that is driven by Hermes.
+
+14:08 - Juan Torres
+  I was talking not about the generation of the news report, but rather once you have several reports, I can imagine, I don't know, know, days worth of generations on a daily basis, right?  It just creates, you know, a bigger amount of context that, or, you know, maybe you can limit the parameters perhaps to one week or tag it on, you know, so that basically focuses on specific news generations, but I'm just thinking about scale.
+
+14:40 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah, maybe I could, but the idea is not as much to reanalyze because it's news. So that's a year old, the value is pretty limited short of when was that presented in the news, which can be done by a simple crawling.  It doesn't require a lot of reasoning.
+
+14:59 - Juan Torres
+  Sure.
+
+15:00 - Patrick Chouinard (chouinpa@gmail.com)
+  I don't need to vectorize this. It's more, I wanted the archive just so I could replay the audio.
+
+15:13 - Paul Miller
+  Cool stuff, Patrick.
+
+15:16 - Ty Wells
+  When is the podcast coming out of that data? That's the next step. It's really a podcast with you fighting against the, well, not fighting, but interacting with, you know, the topic of the day.
+
+15:32 - Patrick Chouinard (chouinpa@gmail.com)
+  I try to keep something as a surprise, but you keep finding me out. That's another project I'm working on right now, actually, where I'm building a browser extension that will allow me to download entire conversation with ChatGPT as a raw JSONL.  So I'm going to be able to feed a website with a reformatted output of the conversation. without hiding the fact that it was a conversation between an AI and a human.  So I don't want to post the transcript, but I want to post basically the story that explains what has been discussed and explain each point of view separately and really show the collaboration.  After that, I could most probably feed that into the TTS system the same way and have it as a podcast.  But yeah, I need more tokens. I've upgraded to the $200 on both sides and ran out of token in a week.
+
+16:40 - Ty Wells
+  Yeah, I've been token maxing. I ran out of my Astra and my three resets in like two days.
+
+16:47 - Patrick Chouinard (chouinpa@gmail.com)
+  It was crazy. And I'm just running Astra medium, not even Astra high.
+
+16:52 - Ty Wells
+  I was running light and I was running medium and I had to move down to light because this thing was disappearing too fast.
+
+16:58 - Patrick Chouinard (chouinpa@gmail.com)
+  I went through I think it's four reset, plus there was a global reset in the mid-time, because Tebow on the 6th, I believe, made a global reset, so, and I got caught in the, you know, they had a couple of token situation in the last week or so where you were jumping from 1% usage to 80%, some other got from 90% down to 20%, I'm lucky I got the 90% down to 20%, so, not a full reset, but a little bit more capacity.  So, yeah, that's it for me.
+
+17:44 - Rod Morrison
+  So, Patrick, what made you spend the extra money? Were you running out the day after your new token allocation, or...?
+
+17:52 - Patrick Chouinard (chouinpa@gmail.com)
+  Well, not necessarily the day after, and I haven't run out for the full month, I just run out of the week.  So, as of Thursday, my... My limit's going to reset, but no, it's just because I was on vacation, so I was basically generating all day long.  So I had like four sessions running in P3 code, plus a Claude code running, plus Hermes at the same time.
+
+18:21 - Paul Miller
+  It's amazing what happens to your token usage when you don't have lots of corporate meetings that you have to attend.  Yep.
+
+18:30 - Patrick Chouinard (chouinpa@gmail.com)
+  I wanted to go back to work to diminish my token consumption.
+
+18:39 - Juan Torres
+  I wonder if there's a GenTech workflow to pretend to be in the meetings of your clients, and the AI agent like strokes the ego of your client.  So like your engineering mind doesn't like make your food, your food in your mouth. And it's just tells them, yes, yes.
+
+18:58 - Patrick Chouinard (chouinpa@gmail.com)
+  At this point. Bye. I could probably send an agent and they wouldn't see the difference because it wrote most of what I'm going to tell them anyway.
+
+19:07 - Juan Torres
+  Yeah, I feel that would be the most agentic useful tool for me right now.
+
+19:13 - Patrick Chouinard (chouinpa@gmail.com)
+  So, Juan, do you want to tell us what you created this week?
+
+19:18 - Juan Torres
+  Oh, not much. This week, what I've been doing is to strategize. I mean, I was saying this last weekend, but I've been really trying to grind down into trying to create a campaign of reaching to high-end venues here in San Diego and trying to just get more.  Because I've been concentrating on actually deploying my application. And just a context to people, the application that I have been developing is nothing more than a photo booth application with the addition of AI transformations through the use of the Fusion models.  So that's what I've been doing. And so far, from the research that I have been doing, My image-to-image pipeline, and I've been doing some research on some major providers of image-to-image transformation, is really good compared to even their pipeline.  And that's because I've been focusing on that. There are providers who have FX AI segmentation, which is really great.  I haven't gotten there. I've heard of some of them maybe even having image-to-video pipeline wise. But I haven't seen it being, you know, edified into an actual pipeline.  And some of the photo boot apps that say that they have AI in their Instagram, I don't see any image-to-image transformations.  Or if I see them, they're pretty bland and, you know, not that imaginative per se, right? So in terms of the image-to-image transformation, I do believe that I'm somewhat...  ... But then again, you know, there's so many facets that I have to do, like, productionalizations. But right now, what I'm going to do just to start getting revenue from my investment is to focus on just deploying it.
+  ACTION ITEM: Create bespoke image-to-image style for target venue; then email venue director w/ demo + offer free pilot - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=1277.9999  haven't focused on reaching out to people. There's two people that I could reach out right now and see if, you know, there's any opportunities.  At the same time, what I'm going to be doing is create a bespoke transformation for the, you know, bourgeois venues by basically trying to create a style that takes, you know, one of their symbolic places and their brand and trying to appeal to them through a bespoke transformation and be like, Hey, you know, let me deploy in your venue.
+  ACTION ITEM: Build photo booth landing page - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=1316.9999  For the first one, it's on me. But, you know, just want you to... See the experience that your clients are getting, just because they feel confident that they're going to get a great experience.  So I'm going to be working on that, and I'm going to be working on the landing page. I don't have a landing page.  And those are, yeah, those are my two priorities. I haven't done much engineering or max token because I have been doing a lot of strategizing, uh, operational, uh, uh, decisions, media work, um, AI engineering, uh, work, which is more like prompt engineering work.  Um, but yeah, that's, that's, think my three, uh, main focuses that I'm going to be, uh, doing right now.
+
+22:50 - Patrick Chouinard (chouinpa@gmail.com)
+  Good.
+
+22:51 - Juan Torres
+  Oh yeah. And Ryan, I am, I am planning on going to the venue. So my strategy is to send the email.  Oh. And, you know, their bespoke transformation. Then my plan is to give them a call to see if they're interested in me giving them a rundown.  And then the third step is to actually go to the venue, try to talk to the director of the country clubs.
+  ACTION ITEM: Identify and join local country club/venue networks - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=1401.9999  And then, fourthly, my fourth attempt will be just the last email to see if they're going to be down to do anything.  I mean, it doesn't mean that it's going to be the last thing. I'm going to try to join the networks that have these people around.
+  ACTION ITEM: Prepare portable demo kit (phone + iPad) and pre-recorded demo for venue visits - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=1421.9999  So I have to identify them first, right? So yeah, that's what I'm thinking of doing. I'm, you know, having an escalation plan that I plan to implement.  Yes, that's a really good suggestion, Paul. An iPad. My, you know... That's what I'm thinking of doing is actually have the transformation on the iPad, as when I go visit, if I have the possibility to go to their office, have the iPad, two iPads, I guess, one for taking the picture, the other one for how they, how the transformation, how they're going to see the display, right, because my system is a two screen system, one for taking the images, for taking the pictures, and the other one for displaying and acquiring their images.  So, you know, it's not, I'm not going to be able to bring the whole thing, but modularizing into a smaller scale is, is the right, the right path here.
+
+24:41 - Paul Miller
+  Yeah, you're right, Paul. Maybe use your phone to be part of it, rather than two iPads. So the phone for the video, for the camera capture, and the iPad for the demo, but always have a offline, pre-recorded demo and just say, look, he,  Here's it running on the iPad, kind of, that would be my suggestion. The other benefit, if you jump into using the OpenAI tool, it's very good for making a native, building a native app version of what you're doing, maybe for the iPad, or if you're using an Android tablet, you could get it to create the Android version as well.
+
+25:27 - Juan Torres
+  Oh, gotcha. Yeah. Okay. That tool. Oh, to create the phone application version of it, you mean?
+
+25:36 - Paul Miller
+  Yeah, a phone version of it. So, I think, in terms of prioritization for selling the thing, the more slick presentation you can do in person with the guys in a portable format, the more you're going to be able to get them excited at that point of sale.
+
+25:58 - Juan Torres
+  Gotcha. Gotcha. Yeah. Yeah, and for the, I guess, the physical notion of the setup, I do have a small reel that I just linked, that this, the display, yeah, well, that was more of the reel on the last event, but this one is more like the physical display and how the workflow goes, so I do plan to use that one in order to basically, hey, this is how it's going to look in your event.  On the creation of the application itself, yeah, maybe, I'm just hesitant on that one because I'm a, you know, because it's a phone application or iPad application, I don't know if it's going to take more time for me to do it, and so what I want to just hurry up on is just getting, starting to get clients on, to get the application.  To get, the application, but the service on their venues. But yeah, that's a step that I do eventually want to do, and also have printing capabilities, and then maybe, and then add the image to video pipeline.  But yeah.
+
+27:19 - Paul Miller
+  Okay, cool.
+
+27:24 - Patrick Chouinard (chouinpa@gmail.com)
+  Anything else you wanted to share?
+
+27:26 - Juan Torres
+  No, no. Any questions that I have? No, I will hit you guys up if I have any questions.
+
+27:37 - Patrick Chouinard (chouinpa@gmail.com)
+  Cool. Um, let's shake up the order a little bit. Mr. Rod.
+
+27:50 - Rod Morrison
+  Yes, it's been a while. sneak in and sneak out. Thank you, Patrick. Good to see everybody. Yeah, so, my life has been chaos.  And... A number of ways, and the reason I was asking about the tokens, Patrick, is, so I've had a heavy build week the last couple of weeks, you know, we're on a final push for a release, so I'm a player coach, if you will, meaning I lead a team, but I also build, and, you know, well, I guess my first question is, anybody still using ShipKit?  I mean, the reason we're all together?
+
+28:33 - Patrick Chouinard (chouinpa@gmail.com)
+  Not necessarily to build from, but to generate skill from, yes, a lot. A lot of my internal skill are actually reformatted template from ShipKit.
+
+28:48 - Rod Morrison
+  How so, Patrick? Can you walk me through that at a high level a little bit?
+
+28:52 - Patrick Chouinard (chouinpa@gmail.com)
+  Well, the template themselves are nothing more than basic... What? Yeah. And prompt, and so basic skill. So there's not a lot of modification to do to one of them to make them into a skill.  It's just, sometime I decompose them because they were quite long. So I would decompose the sections, having the, a, a uber skill that orchestrate the use of all of them underneath.  You add all of the YAML front matter data for each of them, define which one are callable, which one you have to use the slash command to call, you know, all of the, uh, plumbing to create the skill, but essentially the content is there.  It's just maybe tweaking some of the technology because that's something else that I've created for myself. I now have a permanent tech stack that I maintain that lives at my account level.  So basically Claude stops remending weird technology every single time and recommends every, exactly what I would Want to use and have somewhat of a coherent ecosystem, but yeah, the skill know when to go and check that, but yeah, that's it.  I have transformed it into a list of skill and I know that Brendan is working on something similar. So hopefully we're going to see a Shipkit skill version at some point.
+
+30:22 - Rod Morrison
+  Yeah. No, and the reason I ask is, I mean, look, first off, that's what got us all together, right?  You know, and you know, it's funny because, uh, you know, you brought up your, your website was dated six months ago.  I mean, geez, what I, I got Shipkit, I think October of last year, and that seems like a millennial way.  It's just crazy, um, but you know, not for me, um, you know, so I, I was able to sell Claude in my organization.  Uh, we're using it as a team, uh, but operationalizing it is, is. Chaos, right? Because, you know, I have business people.  And I mean, look, what everybody's doing is great. I took some of your tips about looking at PRs versus activity on GitHub.  You know, what I've been leaning into is the Matt Pocock skills a little bit, and that methodology, because for me and what I'm doing, it's simple, right?  You know, because I've got a bunch of really smart people on my team, know, a bunch of data scientists, right?  And they're bought into the concept. But they're skeptical, which I need data scientists to be. But on the other hand, how do I make it easy for them?  And we don't just talk about things versus doing, you know, basically, yeah, basically, you have to be
+
+32:00 - Patrick Chouinard (chouinpa@gmail.com)
+  Build infrastructure to help the skill from Matt have a bunch of its question already answered. That's exactly why I build the tech stack, and now I'm working on the development standard, I'm working also on the infrastructure layout, because once you have that, the grill, and we are building a proprietary version of Grill with Docs.  So basically, it will have 90% of the answer already. So it's not going to be a hundred questions cycle every single time, because it's going to know the technology it can use, it's going to know where it has to be deployed, it's going to know which protocol we're using, it's going to know everything that already exists that it can leverage that it doesn't have to recode.  Like, it's all of that business context that then makes it extremely more effective when you get them into the end of the developer, because the only thing they need to phish is the actual thing the application needs to do.
+
+33:01 - Rod Morrison
+  Yeah, last time you had mentioned, you know, four skills, if you will, right? Hey, I want to create a project, right?  You use this skill. Are you hosting those in Cloud or on GitHub? you have your own marketplace, internal marketplace on GitHub?
+
+33:17 - Patrick Chouinard (chouinpa@gmail.com)
+  Well, we have our own internal marketplace on Azure DevOps. We are migrating eventually to GitHub, but for now we're still on the ADO.  So, but yeah, it's a private repository. It works for Cloud Code. It works for GitHub Copilot. Sadly, it just doesn't work for Cowork and the Cloud AI that requires a GitHub repo, but we are configuring that because we also have a GitHub organization.  There's just no code in it yet. So those are becoming the first repository to be migrated to GitHub. And we're also working on department memory.  Basically, we're going to do memory management at the department level inside of Git repository, but I'll manage through skills.  So people will be responsible to manage their own piece of the memory, meaning there's going to be one that's going to manage the org chart, another one's going to manage the procedure, another one.  So the document they're going to manage are context document to be hosted in a GitHub repo and sync on everyone's machine every morning.  So whenever you ask something out of a co-work, it always does it with the latest information about your department, plus the memory you build personally.
+
+34:40 - Rod Morrison
+  With Claude?
+
+34:41 - Patrick Chouinard (chouinpa@gmail.com)
+  Yes.
+
+34:42 - Rod Morrison
+  With co-work. That's relatively new, right? You know, because, so you're not using Obsidian or anything like that. I, I, I, don't want to see things pop up in, in the Claude releases.
+
+34:53 - Patrick Chouinard (chouinpa@gmail.com)
+  But, but that's the thing. It's not the same. Obsidian is the, the, famous second brain. Yeah. It's, it's fun.  Right. Personally, it doesn't. It doesn't work at organization scale, so you have to have a way to synchronize that and to have a diff and to be able to roll back and all of those things, so that's why we're maintaining that into a repo, we're using Git, but from the user perspective, they don't feel or see Git, everything is automated in the back end, they just have that information available.
+
+35:21 - Rod Morrison
+  And look, the reason I'm asking this is because I'm seeing a lot of traction. I would love to build a product, but it seems like my utility is consulting, right, because I'm a fractional COO on, you know, two SMBs here in Houston, Texas.  And, you know, part of this is to operationalize AI in their organization. And I think that that might be a product, to a certain extent.
+
+35:55 - Patrick Chouinard (chouinpa@gmail.com)
+  Definitely. Literally. It's just, it's built for a client, so I can't, I can't... Talk about it functionally, but I can't.
+
+36:03 - Rod Morrison
+  Yeah, totally get it. Yeah, and, you know, look, I realized that you can have an orchestrator and a farm of agents to talk to each other.  That burns a lot of tokens, you know, so really finding those types of efficiencies.
+
+36:20 - Patrick Chouinard (chouinpa@gmail.com)
+  Well, we've seen it burns a lot of tokens, yes and no, because I don't know if you ever saw an investment banker talking to an agent, but they can waste a truckload of tokens asking it like, can you reanalyze those 300, 600-page PDF at once and then tell me if I should buy?  I mean, that wastes a tremendous amount of tokens instead of, please go analyze this for me and have a structured, organized agent swarm doing the tasks that they've been programmed to do instead of having one agent trying to figure out what the hell it needs to do with this.  This incredibly vague request aimed at an incredibly hard background.
+
+37:07 - Rod Morrison
+  Well, you're way above my level, right? What I'm talking about is, okay, so, you know, I'm following the Pocock process where I have, you know, issues that I need to implement, right?  So use the implement skill, use a lower end model to do that, and then maybe have Fable monitoring, right?  And then have them chatting back and forth together.
+
+37:31 - Patrick Chouinard (chouinpa@gmail.com)
+  Yep.
+
+37:31 - Rod Morrison
+  That seems to have burned a ton of tokens over the last week.
+
+37:36 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah, because the skill you're using are the out-of-the-box skill from Pocock. One thing you're going to find with those skills is as you use them, you end up always answering the same question over and over again.  So if you provide that context upfront, its token cycle they don't have to get through because it doesn't have to answer.  It already has. You know? With a C We custom version of Grille with docs, with as much context as we could put in it, not to overwhelm it.  We went from easy 70, 80 question to get to a spec to 15, 20. So those 50 cycles you don't have to go through, it's a lot of token you're saving.
+
+38:26 - Rod Morrison
+  But what about on the post side of like the implement, right? Once you have that spec developed, you know, because what I found is if I just run straight implement, sometimes it's a lot of slop.
+
+38:40 - Patrick Chouinard (chouinpa@gmail.com)
+  And that's why I never go to implement. I always go from, but actually we start from Wayfinder more than Grille with docs.  So it splits it into phases. So it has a process file that knows exactly what needs to be done.  And, and it, uh, split your problem. ...project in smaller contexts that can run within the context window of one session, instead of creating a huge context window that resends a ton of information, and you have to make sure that your orchestrator, the one running Fable, has the least amount of content or context given to it.  It's not supposed to do anything, it's just supposed to look at all of the other agents and what they are doing.  So, it's context window should be pretty small, and then you leave the large context window to a Sonnet or an Opus, depending on the complexity.
+
+39:39 - Rod Morrison
+  Got it. So, to do that work, what models are people using? You know, just ask in the team, for the most part.  Once you have a well-defined spec, I mean, a Sonnet running high, you know, this is Claude...
+
+39:55 - Patrick Chouinard (chouinpa@gmail.com)
+  It's not, it's not a one-stop shop. That's what I have Fable evaluate. The complexity. Because if it's just writing, I don't know, a REST endpoint, I don't need Opus to do that.  Sonnet could do that with its eyes closed. If it's implementing a complex route within the backend of the system, and it's crucial to connecting six different systems together, yeah, I'm going to run that for Opus.
+
+40:24 - Rod Morrison
+  Yeah, I saw Ryan, you know, Fable plans, Opus builds. I...
+
+40:32 - Patrick Chouinard (chouinpa@gmail.com)
+  To a degree, but Sonnet builds a whole lot, actually.
+
+40:37 - Rod Morrison
+  Right.
+
+40:38 - Patrick Chouinard (chouinpa@gmail.com)
+  If you split the work in small enough entity, there's a lot that... Sonnet is not a bad model, actually.  It can do pretty interesting development. It just... It won't build a 300-page worth of material in one shot, but...  If you split the work correctly, yeah.
+
+40:59 - Rod Morrison
+  So... What about incorporating, you know, so I've been incorporating Simplify, that's an out-of-the-box skill with Claude, right, you know, so it'll go, Implement will go through its run, and then I'll run Simplify, if it's over 300-line diff, right, and then I'll have Fable do a code review, you know, just kind of the checks and balances.
+
+41:23 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah, and I'm going to do the code review with the GPT model, simply because I know that I've built with Claude.  So I just want to do the code review with a different model than the one that built it. It's not that there's one that's better, it's if I build with Astra, I'm going to validate with Opus, if I build with Opus, I'm going to validate with Sol or Astra or something like that.
+
+41:48 - Rod Morrison
+  That's awesome. Yeah, I don't want to take up all the time, but I could talk about this all day.  Any operate, you know, and look, I'm, more and more places are... Adopting these tools, but they have, you know, no idea how to, how to deploy it, right?
+  ACTION ITEM: Evaluate GLM 5.3 on OpenRouter; set Claude benchmarks; run OpenRouter tests - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=2523.9999  How to operationalize it. And that's what I'm trying to figure out. Yeah, hire Patrick.
+
+42:11 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah, that's a good one. And just before I pass the mic to Paul, look at GLM 5.3 on the open router.  I find it does a marvelous job. It's basically between Sonnet and Opus. So, and it costs like a fraction of what IQ costs, so.
+
+42:37 - Paul Miller
+  Thank you, Patrick.
+
+42:39 - Patrick Chouinard (chouinpa@gmail.com)
+  Go ahead.
+
+42:40 - Paul Miller
+  One of the things you may want to do, Rod, and I've been doing as well, is get the good models from Claude to set a benchmark, and then get the code to run through, comparing it with a whole bunch of open router models.  And look at some effective ones like the GLM one that Patrick mentioned, of course you can just go with what's, I don't know what your preferred cloud vendor is, but if you wanted to keep it nice and secure, not just based in the US, but based where it's using Bedrock and it's firewalling client data types, you could then just pick through whatever the cheapest open source models are with those providers.  Uh, until you get a match to the benchmark that your Claude model does.
+
+43:37 - Rod Morrison
+  Yeah. And, uh, thank you, Paul. Uh, one thing I, you know, so Google startup, so I'm GCP all in, um, Google startup school started today.  If you all don't know about that, you can sign up with it, sign up with them. they, they are funding small companies, right?  Google recognizes that they missed the cloud wave. Even though 40% of all the internet traffic goes through their network, their cloud presence is 11% market share or something like that.  So if you have a good idea, Google's there. Juan, do you have a question for me?
+
+44:16 - Juan Torres
+  It was for Patrick, because I've been thinking of going to the route of using Open Router just to really experiment with other models other than the cursor provides and cloud code.  So I wanted to ask Patrick if he uses Hermes and then Umpa Router to combine both in order to do a lot of his work outside of his work.
+
+44:44 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah, I'm a big Open Router user, not because I don't want to work with AWS. We use it at work.  It's just a lot more complicated of a backend to configure if you want to just fiddle with it in the weekend, you know?  Yeah. And actually, Hermes is also insanely good at operating the Open Router API, so configuring, so having my operator being able to set up all of those things, because it creates the API key, it stores them into physical internally as my secret database, it takes care of all of that, so yeah, that's why.  And having it, working with AWS, there's all kinds of token regeneration, and a lot of things that are not that agent friendly in there.
+
+45:35 - Juan Torres
+  Yeah, I'm thinking of actually just leaving my cursor subscription, and start using Hermes with Open Router, in order to do a lot of my work.  Maybe leave my 100 subscription with Claude, just to have a powerful one. But I mean, wouldn't you have the ability to use, well, guess not.  Open Router wouldn't... Have the ability to use the most advanced models of Claude, It can, but you're going to pay through the nose because you're not using your subscription.  Ah, yeah.
+
+46:13 - Rod Morrison
+  So is that for personal projects, Patrick, or corporate stuff, right? Because I just got three questionnaires this week about what tools are you using for AI?  What's happening with our data? The whole compliance thing is starting to come into play.
+
+46:29 - Patrick Chouinard (chouinpa@gmail.com)
+  Well, on the personal side, I'm using OpenRouter plus a Codex and a Claude subscription. And for work, I'm using Claude and Copilot with an AWS back-end.
+
+46:48 - Rod Morrison
+  Not Codex. Or not OpenRouter. Not OpenRouter at work.
+
+46:52 - Patrick Chouinard (chouinpa@gmail.com)
+  No, no. Well, it's a financial institution, so...
+
+46:55 - Rod Morrison
+  Yeah. Yeah, Of course.
+
+46:58 - Patrick Chouinard (chouinpa@gmail.com)
+  And they already are... They a full AWS client, so the infrastructure is there, the configuration is there, they have the API gateway that's implemented, and now they want to work with the MCP gateway as well, so it's all back-end technology that is, yes, easier to work with in AWS when you have 30-person working in your infrastructure department.  Sadly, I have Hermes, so...
+
+47:29 - Rod Morrison
+  Sorry, Paul. Didn't mean to...
+
+47:33 - Paul Miller
+  No, all good. No, I was just trying to step in to protect Patrick's voice.
+
+47:40 - Juan Torres
+  Nah.
+
+47:43 - Paul Miller
+  Shall we move on to Ty? Yep.
+
+47:47 - Ty Wells
+  Guys, so today was launch day. I'm going to share the presentation I delivered. Sending a request...
+
+48:04 - Rod Morrison
+  Your pitch deck, your pitch deck.
+  SCREEN SHARING: Ty started screen sharing - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=2891.133309
+
+48:07 - Ty Wells
+  Yeah, my pitch deck, except the pitch deck came in the form of an application itself. You can see this screen?  You guys can see it okay?
+
+48:24 - Paul Miller
+  Yep. Yep.
+
+48:25 - Ty Wells
+  So I turned, the pitch was one thing, but slides is obviously, that's not the way for me to go.  So I built, of course, an app to deliver the presentation because it became, it's a part of the platform itself.  So customers can go in and read all about, you know, exactly what the features are and so forth without actual access to the app.  They get access to the app, to the platform tomorrow. But today, basically, don't I'm to They drove through the slides.  As you can see, there's 31 of them, and they talked to different parts of the application and sort of giving an explanation of the different features and how it would fall into what they're doing, right?  A customer waiting on a quote, waiting for somebody to get back. So I'll paste the link in here. You guys can go through and look at it if you want to, all the specific features, and then you can obviously go in and look at all of the features of the platform.  And they can come in here and work their way through as much as they want. But I delivered this in 45 minutes, and then we had Q&A, and that was it.  So that was the platform delivery. me copy that URL. If anybody wants to take a peek. And so I had one last bit of testing this weekend on the UI, so I don't know what you guys are running for testing, UI testing, but I did a, what I call it is the UI in reverse.  So, basically, because, you know, got access to the source code, I checked the source code and whatever the requirements are on that screen without actually pulling up the UI, and then I just try to meet those contracts that are set in the UI, that are defined in the UI for them to pass.  And then I have an adversarial session that then just loops through to confirm what, before it's marked done, basically, a complete set.  And that's, that's where all of those Astro tokens went. So, basically, about five hours I... I went through about seven agents and like 1,400 screens, but the concept in there is that I would create a UI, period, this is the long-term, create a UI with buttons and whatever, right, just mock it up, if you will, and then apply the same thing, UI in reverse, to actually write the code.  So if the UI looks good, then build, make it work, so run this UI in reverse process through the UI that you agree, and so like if you're meeting with a client, and you know, going back and forth, and you're iterating, and setting the UI, this is what I want it to look like, this is how I want it to work, there's nothing behind that code.  Then the agent goes and builds that code to make it work how the UI looks. and then the adversarial checks the code that was built.  So it's like sort of the reverse, I guess. But I guess that's what you typically do. would, you know, mock up screens and wire diagrams and so forth, except literally building on the fly and then it takes and runs and builds the code behind it to make it to prove that the contracts work.  So that was my weekend.
+
+52:28 - Paul Miller
+  So what, what were the responses like?
+  ACTION ITEM: Run ERP launch postmortem w/ team - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=3152.9999
+
+52:32 - Ty Wells
+  Oh, it was pretty good. Yeah, it was pretty good. We've got calls coming in. People are ready to sign up.  We knew that we was for, we were building demand. So I was so tired. I didn't even do a postmortem.  going to do that in the morning with the team. Um, but, uh, yep, it's, it's, been good so far.  We've got calls have been coming in. People wanting more information and, um, you know, wanting to set up a walkthrough of there.
+
+53:02 - Paul Miller
+  So were you able, with that interactive screen stuff, did that sort of precede requirements in the funnel by customers, so you know that, well, you had X number of people on the session, X number were clicking through these?
+
+53:20 - Ty Wells
+  Oh, It's still up. They're still clicking it. I'm watching.
+
+53:23 - Paul Miller
+  Oh, of course I'm capturing those analogies. Come on, Paul.
+
+53:26 - Ty Wells
+  Yeah.
+
+53:26 - Paul Miller
+  This is why I'm building it.
+
+53:29 - Ty Wells
+  Okay. No, that's why I built it into an app rather than a slideshow, because I've got nothing coming out of that, right?
+
+53:35 - Paul Miller
+  Yeah.
+
+53:36 - Ty Wells
+  And that's why I have that copy feature link in there. If they ship that off, that link is tracked.  Who clicked it? Who opened it? Blah, blah, blah. You know, the whole work. I wanted the analytics to come back from, so that's why I turned it into an actual app.  And I used the UI in reverse design to create that, so that didn't take much time, but yeah.
+
+53:58 - Paul Miller
+  Okay.
+
+54:00 - Ty Wells
+  That's it, guys. I have a question.
+
+54:07 - Lisa Jetton
+  I'm sorry. I'm new. My name is Lisa. Hi, welcome. I mean, hi, everyone. Sorry for interrupting here. But I'm looking at your app.  I think it's pretty cool, Ty. I'm just curious. You probably already have expressed the fuller vision here to everyone here.  It seems like you guys are very familiar with each other's projects. So I'm sorry if I'm making you repeat anything here.  But I'm just looking at this and I'm wondering, like, what the broader vision is. Like, ours is meant to be more like a brokerage space where people could come in who, you know, you have, like, customers that are your business clients who you've kind of set up with different infrastructure.  You know, you've used AI scripts to help build that infrastructure in a way that could be, you know, automated.  And then you're also helping them pair with potential clients through helping AI create better funnels. Or, like, what is...  And, like, I'm clicking on some of the different things. It almost looks like you can create, like, an a la carte kind of tab here.  So I'm, like, wondering, like, what is your... What's, like, the main reference that you're using for AI here? And, like, what's your...  What's goal with this site?
+
+55:02 - Ty Wells
+  Well, if you go through the slides, so this is for one of my companies in the Bahamas. It will be for both, but we replace 50,000 in subscriptions from five to eight different separate projects, separate subs.  So I just basically boil it into one, and then today was the launch date to release that same platform to our clients.
+
+55:30 - Lisa Jetton
+  So what we do business with. Got you, got you, got you. Okay, cool. Hence the name, The Island, too.
+
+55:36 - Ty Wells
+  That's a lot of that.
+
+55:37 - Lisa Jetton
+  I was like, where is this tying in? That makes a lot of sense now.
+
+55:42 - Ty Wells
+  Very cool. Yeah, and it's specific for the regulatory compliance needs here in the Bahamas. That's why it doesn't exist.  You know, you have US-based, some European-based, and a lot of Canadian-based software that's used here, but none of them.  of great, Meet the mold in terms of what we use daily and monthly, so.
+
+56:05 - Lisa Jetton
+  That's your niche. That's your specific kind of market place. Okay.
+
+56:08 - Ty Wells
+  Very cool. Yeah.
+
+56:10 - Lisa Jetton
+  Thank you. I appreciate that. Great job, by the way. Awesome.
+
+56:16 - Ty Wells
+  Thank you.
+
+56:20 - Patrick Chouinard (chouinpa@gmail.com)
+  Actually, Lisa, did you have any project you would like to share or questions you would like to ask the team?
+
+56:29 - Lisa Jetton
+  I mean, I'll just do a quick intro. This is my first meeting that I've joined personally. But yeah, so my name is Lisa.  I live in Austin, Texas. I am a full-stack software engineer. I've been in the industry for the past eight years.  Mostly have worked in distributed computing and P2P, kind of building out systems that are adjacent to blockchain, but not blockchain itself.  If you guys are familiar with blockchain, I'll just say instead of it being like a 1D hash chain, it's a 2D hash graph that we've been building on a technology called Holochain.  But I recently left my job a few months ago to help build out back-end systems for my husband's construction company, so my whole focus now is basically building out agentic systems and helping abstract that into, you know, a service that I could actually use for local companies, small to medium-sized companies here, so that's where, yeah, that's where my aim is, so that's why I'm joining these different communities on school, kind of trying to find the people that are anchored in, you know, enough technology, like, to understand what they're building and why they're building it, rather than just, there's a lot of hype, of course, that I'm sure everyone's seen, so I'm, that's why I was attracted to this particular community, because it has the, the developer tagline, I should say, and, you people that are, we'll say, obviously stakeholders in those kind of industries, so it seems like you guys have the business formation and the tech, you know, understanding to build out, so yeah, so that's me.  I recently basically just changed OS's, I'm actually trying to build from the ground up on one of my devices, my devices,  Um, because it was just a long search. I don't know if you guys are into, like, Linux systems, but I basically exclusively work on Linux.  Um, and so one of, you know, the Arc Linux ecosystem has now been joined by Omarki, which, you know, a lot of people are excited about, but it makes me concerned because it's just going to add a lot of, I think, noise to the ecosystem that is already not very vetted.  Um, and so I'm leaving the ecosystem. Um, I was on cache EOS, so now I'm just joining basically Fedora build, um, and I'm trying to consider my best ways of actually reconstructing, you know, how tightly coupled I want my AI systems integrated into that.  So that's, that's my focus, basically, the next few days.
+
+58:42 - Patrick Chouinard (chouinpa@gmail.com)
+  Cool.
+
+58:43 - Lisa Jetton
+  Excellent.
+
+58:44 - Patrick Chouinard (chouinpa@gmail.com)
+  Well, then...
+
+58:45 - Lisa Jetton
+  And I'm also slightly sick, so I otherwise would have my camera on at this hour. So I join you in that, Patrick.  The North American bug is real.
+
+58:52 - Patrick Chouinard (chouinpa@gmail.com)
+  I don't know. No worries. But, uh, yeah, that's, uh, very interesting. There's something I... I might discuss when I have regained my voice completely, but I'm running a small little platform here personally to have fun with.  I have three Proxmox server that running a list of Linux VM and also LXC containers on it. So I don't try to attach to a single OS platform.  The only thing I no longer have at home is Windows, so it's now Mac is the workstation, and Linux is my backend running on multiple Proxmox server.
+
+59:41 - Lisa Jetton
+  Nice. Cool.
+
+59:43 - Patrick Chouinard (chouinpa@gmail.com)
+  And all of that operated by an Hermes agent.
+
+59:47 - Lisa Jetton
+  Okay. Yes. Yeah. Hermes is like a must for me. I love Hermes. So yeah. Yeah. I'd be interested to hear other people's opinions on that, but yeah, I was very happy to have found her a few months ago.
+
+1:00:01 - Paul Miller
+  I've jumped into using managing Pi from my AI DevStack because my mother has a whole lot of old videos and CDs, and I wanted to be able to create an easy way that she could play that from her smart television.  So I set up a little Pi to be a router and route that back to one of the servers that I'm hosting, but it's remotely managing the Pi in her network, so I can do remote support without having to drive around the house and fix stuff all the time.  But controlling that Pi stack has been quite cool with the AI Dev side, but it's a nice little side project that's on the list.
+
+1:00:57 - Lisa Jetton
+  Absolutely. I've been hearing a lot more about Pi. Thank you. I'm sure that's very handy in your setup. That's a cool configuration you have for your mom like that, yeah.
+
+1:01:08 - Paul Miller
+  Beautiful. Now, anything more, Lisa? Any questions you want to put? Normally, the kind of format that we do each week is we give everyone a bit of an update with where we're at, with the projects that we want to share, and we kind of ask the other guys if we've got any questions.  Or if people have tried anything that we're looking at doing to save us sort of going down a dead end with looking at technology that might be a waste of time.
+
+1:01:41 - Lisa Jetton
+  Okay.
+
+1:01:42 - Paul Miller
+  Any questions you have?
+
+1:01:46 - Lisa Jetton
+  I mean, really, yeah, I mean, I'm just curious what harnesses people use, like what setups. For me, as I'm saying, I'm really trying to build from a ground up my smart, like, because previous to this, of course, I was building on OS as I already had running.  So I'm really want to leverage the opportunity here to build from it. So I would be open to feedback on what people have found as far as their favorite harnesses, like harness toolkits, maybe even ECC, or like you're saying, and how you plug ways that you've found efficiencies to navigate their different competencies and their different coordinations.  Feedback along those lines is what I would be very open to right now, because I'm literally at the perfect intersection for implementing those things.
+
+1:02:28 - Paul Miller
+  So, yeah. Well, a lot of us have been using, and part of that earlier discussion was some of the Shipkit product that was, it seems like a generation ago, it was about last year.  Every month seems like a year in AI. So true. A lot of us built a lot of understanding of skills from following that path, because that was kind of made up with a whole lot of markdown data.
+
+1:02:59 - Lisa Jetton
+  Okay.
+
+1:03:00 - Paul Miller
+  We've all been converting across, but I know from my own journey, I'm using T3 stack now, I'm loving it because I've got multiple Claude subscriptions and open AI, and using that simultaneously with having orchestrators that manage my program of work of all the applications, and then have a project.  That drives the project focus on what each application is supposed to achieve, and then have a separate focus for that application stack that I set up then in T3, but that's helping me, because I've just got so many projects going on concurrently, keeping them all aligned, and then able to sort of step back, do the testing, has been a challenge, but yeah, no, good on
+  ACTION ITEM: Evaluate T3 stack, Hermes, OpenRouter; then report back to group - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=3837.9999  Good on Theo with T3 Chat, that's certainly made things a lot easier with having the multiple subscriptions going.
+
+1:04:08 - Lisa Jetton
+  Sweet. That's great. I'll look into T3Sec.
+  ACTION ITEM: Deploy T3 code servers on Mac Mini + Linux server - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=3852.9999
+
+1:04:11 - Patrick Chouinard (chouinpa@gmail.com)
+  Thank you. Yeah, actually, I'm also a fan of T3 code. Also, Paul, did you deploy some of the T3 code servers, or you just have it installed on your workstation?
+
+1:04:23 - Paul Miller
+  I'm about to, because I've got my Mac mini going, and I've got my Linux server, home servers, and I kind of want to get those going.  So I'll do my day stuff on my Mac, and then I kind of want to process overnight things or slower tasks that I assign to a box that's got a GPU on it.
+
+1:04:44 - Patrick Chouinard (chouinpa@gmail.com)
+  Actually, what I've done is I've split the security frontier of each. So I have a T3 code server for the dev environment, or one for the staging environment, and one for prod.  And they can't... Work against each other. So the only thing they can do is talk to each other. So my dev server job can talk to a session running on staging in order for it to deploy from, uh, GitHub and same thing.  When the staging has finished its work, it can call up the session running on prod to do the deployment, but the, uh, server instance are completely walled in from each other, but everything works through T3 code on my Mac.
+
+1:05:28 - Paul Miller
+  So. They're a harness for harnesses.
+
+1:05:30 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah, that's right.
+
+1:05:31 - Lisa Jetton
+  That's right.
+
+1:05:32 - Patrick Chouinard (chouinpa@gmail.com)
+  And each of them have both cloud code and codex. And, uh, I'm starting to play with PI in order to make it a specialized RNS since it's completely open source, so you can modify it any way you want.  So I want to make it a specialized harness for code review across the board.
+
+1:05:53 - Lisa Jetton
+  Have you dabbled with ECC and compared that with PI at all?
+
+1:05:58 - Patrick Chouinard (chouinpa@gmail.com)
+  No, I haven't.
+
+1:06:00 - Lisa Jetton
+  I with ECC yet. Okay. Okay. Yeah. I've heard... People usually, I feel like, do one or the other, and I'm just wanting to find someone that's done both to get across comparison.  That's fine. But cool. Okay. Great, great, great.
+
+1:06:12 - Patrick Chouinard (chouinpa@gmail.com)
+  Yeah. And obviously there's Hermes that's there also coordinating everything and doing basically the chief of staff work of the daily organization of everything and making sure that everything is available to me when I'm in or away from the office.
+
+1:06:28 - Lisa Jetton
+  Mm-hmm. Mm-hmm. Have you guys played with configuring or changing any of the, I guess, the skills that Hermes has implicitly about its learning techniques or self-adopting techniques?  Basically, obviously, all the context that it acquires from whatever you write in and what it's trying to learn from what you write without explicit orders to adapt or learn.  Of course, that's one of the benefits is that it is always... It is configured to pay attention to those, you know, details about how many times you're asking and what kind of queries.  Yeah. Yeah. I guess sometimes I feel like it can lead to a little bit of bloat if you're doing, like, things, I would say, very focused tasks in sequence, but they're not necessarily in, like, you know, they could be, like, ephemeral tasks, you know?  So it's like, I guess, have you guys tried to play around with that, or are you just happy with the default settings and it's not really a priority?
+
+1:07:20 - Patrick Chouinard (chouinpa@gmail.com)
+  No, actually, I've used the OnShow as my dynamic memory layer. Okay. it has the basic memory, but it also uses OnShow, and honestly, I know it's a paid service, but when I created my account, it gave me $100 worth of tokens, and that's, what, six months ago, and I think I still have $79.
+
+1:07:39 - Lisa Jetton
+  Oh, wow. Okay, nice.
+
+1:07:40 - Patrick Chouinard (chouinpa@gmail.com)
+  It's really dirt cheap, and it's running every single day nonstop almost, so.
+
+1:07:45 - Lisa Jetton
+  Okay.
+
+1:07:46 - Patrick Chouinard (chouinpa@gmail.com)
+  That's a refreshing moment by comparison to everything else. Yeah, absolutely. Absolutely. And on top of that, I've created an add-on that I call Agent Ops.  That's basically a full plug-in. But not just, it has API, it has a full documentation of my entire infrastructure, plus a couple of MCP server in there, plus tons of skills to leverage those MCP server to basically monitor everything that's going on.  It's my network operator.
+
+1:08:19 - Lisa Jetton
+  Yeah, yeah, that's well thought out. Very cool. Thank you for sharing that. Thanks to both of you. thank you, Paul, yeah, so for the overview.  mean, that's, this is my, I guess, point of entry, so I don't really have any other reflections at the moment.  But I will be back with some feedback next week on what I chose to go with. So it'd be great.
+
+1:08:38 - Paul Miller
+  Good to have you in the group.
+
+1:08:39 - Lisa Jetton
+  Thanks, Lisa. Glad to be here.
+
+1:08:41 - Patrick Chouinard (chouinpa@gmail.com)
+  Thank you. And by the way, once a month, we have Brendan Hancock, the original creator of the group that joins us.  He just, he's not there full time right now because he's starting a business, but he tries to be here at least once a month.  And there's normally a lot more people on these days.
+
+1:08:58 - Lisa Jetton
+  Oh, I bet. Okay. Very cool. And that's next week, you're saying?
+
+1:09:02 - Patrick Chouinard (chouinpa@gmail.com)
+  I think so. I'm sorry.
+
+1:09:05 - Lisa Jetton
+  That's fine.
+
+1:09:05 - Patrick Chouinard (chouinpa@gmail.com)
+  I'm sure it's on the calendar. No worries. I always put it in the weekly information on the chat, on the board.
+
+1:09:15 - Lisa Jetton
+  Understood. Okay, perfect. Awesome.
+
+1:09:17 - Paul Miller
+  Thank you. Ryan, how's things going? I know your camera's not working.
+
+1:09:24 - Ryan C (One Stop Creative Agency - UK)
+  I'd love for my video to be working, but my only option is OBS camera, which is entirely useless. Yeah, I've just been churning away, really.  I've blasted through all my Fable usage on both of my accounts, and I'm back to having to downgrade myself to 4.8, because I just can't get on with 5 at all.  I've tried changing skills. It's just dumb. I hate it. So I'm back on 4.8, and it seems to be working fine for me.  All of the usual projects that we talk about are still kind of on. I launched an estate agency website with a full back-end that acts a bit like a CRM for them to manage their properties in, and it's been ranking above estate agents SEO-wise that have been around for 100-plus years.  I don't know if you guys have saddles in your countries, but Paul, you might, because they're an international brand, they're huge.  I've managed to get them above them for the local area already within a week or two of being launched, which is quite good.  So they're very happy and they're getting leads coming through already versus their old website, which was getting them nothing.  So that's a pro. And then I've just been refining the Hermes stuff. So Scott and I have added telephone ability to our Hermes agents, so I can now make calls to people and organise my life for me, which is quite cool.  It seems to work outside. Seventus.com else. It's so that we're on My dad by getting her to ring him, and yeah, it was an entertaining listen to the phone recording after that, and then I decided that I probably needed to get back into shape, so I went to the gym for the first time two weeks ago and then thought, I've completely forgotten what I'm actually doing, can I be bothered to go and look at a bunch of YouTube stuff?  No, what would be quite cool is can I make myself a full application that teaches me how to do that, takes all the best practices, and so I built a Mac, iPhone, and watch application that should all track everything, including meals, food, it's going to have a thing where you can literally take a picture of what you're eating and it will guesstimate from what I can see, calories, all that kind of crap, so I'm about three quarters of way through building that, which has been the last week, and I've not been to the gym since, so it's great, it's great, it's really well.
+
+1:11:57 - Paul Miller
+  What a geek solution to our... Yeah, fitness and well-being.
+
+1:12:02 - Ryan C (One Stop Creative Agency - UK)
+  Exactly, but I thought, you know, it might actually get me in the gym if I bothered to put all this time into building something that's going to help me get fit.  So, yeah, we'll see how that goes. I'll share it once I've completely finished it, but it looks really nice anyway.  But I've been using, I think Scott showed his CC black box thing last week, his new IDE. So I've been using that, it's got all the simulators built in, which is quite good, so it can drive the simulator within the thing.  So that's been quite cool. And I think he's open-sourced that, so he's got a little website going now, ccblackbox.app, I think it is.  Might be worth checking that out if any of you wanted, it's Mac only, but if anybody wanted to drive and do their clawed stuff off a Mac, it's quite good.  It's a better view, and it looks nicer, and it feels a bit nicer to play around in and be in than your cursors or your VS codes.  Yeah, that's the main thing, really. I've just had an app. Absolutely avalanche of video and photo stuff, because it's a busy season for a stage agent, so trying to put two hats on and not sleeping very well, I've got to get up at 5am to go to a business breakfast that my lovely fiancée booked for me, and it's an hour away, so I've got to get up at 5am to get there for 7, shoot me now, to do small talk, I can't wait.
+
+1:13:28 - Paul Miller
+  That's what it's all about, gets the funnel loaded.
+
+1:13:31 - Ryan C (One Stop Creative Agency - UK)
+  Yeah, I will have some stuff to show at some point, but I've just been kind of like plodding along on the same things you guys have all seen before, so I won't bother sharing the same old crap each week, it's a bit boring for you and me.  But once I have something shiny for the fitness thing, I'll show you that, and it's been playing around with Higgsfield as well, on the video generation and image generation side.  Yeah, I think that's about it.
+
+1:13:57 - Paul Miller
+  think that's Ryan. Morgan. How's it going?
+
+1:14:04 - mdcatc
+  It's going good, guys. How's everybody doing?
+
+1:14:07 - Paul Miller
+  Good. Good.
+
+1:14:09 - mdcatc
+  Really busy.
+
+1:14:10 - Paul Miller
+  Patrick's losing his voice, so we're doing tag team because I'm losing my voice as well.
+
+1:14:17 - mdcatc
+  Something's in the air. It's called fall. Fall is upon us. Maybe spring for you down there, Paul.
+
+1:14:26 - Paul Miller
+  Oh, very much winter still.
+
+1:14:30 - mdcatc
+  For me, I've just been really busy with my clients' work, so I don't really have any new stuff to talk about or show or anything of that nature, but I have been enjoying Fable 5.  That's been kind of nice. It's amazing. Some of the stuff that it does, and then on every once in a while, it's like, what happened?
+
+1:14:53 - Paul Miller
+  You just turned retarded.
+
+1:14:56 - mdcatc
+  So I think we could, we could, we could call that.
+
+1:15:00 - Ryan C (One Stop Creative Agency - UK)
+  Pat Morgan at having a touch of the opuses.
+
+1:15:04 - mdcatc
+  It's still got a little opus DNA in it.
+
+1:15:09 - Paul Miller
+  Are you dancing with the GPT-6 as well?
+
+1:15:13 - mdcatc
+  No, not yet. I need to pull that up. I don't have a $100 subscription, but I do have the $20 pro subscription.  So I was going to play with it for some small stuff and see what it can do for me, but I haven't done anything with it yet.
+
+1:15:30 - Patrick Chouinard (chouinpa@gmail.com)
+  You should be able to say hi to it.
+
+1:15:33 - mdcatc
+  And then that'll be $20? Yeah. So that's the only thing right now is I only have the one subscription that I'm working with, so I'm just kind of making use of it.  And I'm not burning through the whole thing yet just because I have so many other things on my plate that I don't have time to spend right here in front of the computer driving the AI.  And I don't have all my processes in place for agentic work, you know, away from keyboard work. Still slowly building that stuff up, but having a great time doing it.
+
+1:16:16 - Paul Miller
+  Right.
+
+1:16:17 - mdcatc
+  I had a friend who I talked to about every six months or so. He said, what you been doing?  And I started listing off all the projects and send them all the links to all my little websites and stuff.  he said, damn, you've been busy. He said, oh yeah, but that's not even, that's not even all of it.  You know, that's just the stuff that's visible. There's a lot of, a lot of work that's been done that's already been thrown away.  You know, the speed of this stuff is so, so, so far past where we were five years ago, even.
+
+1:16:55 - Paul Miller
+  Oh yeah. Yeah. That rapid prototyping. They're just, yeah, nothing's a...
+
+1:17:00 - mdcatc
+  Rapid Prototype, Rapid Trash. Oh, yep, that doesn't work. Let's move on. So it's been kind of interesting to see how things have changed in this industry for sure and the world in general.
+  ACTION ITEM: Clean up and update personal projects portal - WATCH: https://fathom.video/share/sTLHaj9eU9y5J4Uhc492BZpG1PCE6kyg?timestamp=4634.9999
+
+1:17:17 - Patrick Chouinard (chouinpa@gmail.com)
+  You need to create the World of Morgan portal so we can see all of your work in a single place.
+
+1:17:25 - mdcatc
+  Yeah, you know, I have it. I don't even want to say it because the portal that's out there right now is not is not anything I want to have looked at.  I got to get it cleaned up, but I do have one. And so I'll, I'll, I'll, I'll work on that because that's been on my mind for like the past month and a half now is just to, to get my...
+
+1:17:52 - Patrick Chouinard (chouinpa@gmail.com)
+  Tell Claude to use design to give it a facelift.
+
+1:17:58 - mdcatc
+  Not a bad idea. So I'm sorry I missed last week. was with a client doing some work off site, so I wasn't able to call in.  And by the time I got to it, just like today, it's like, I'm already an hour late, I think, back in my hair or so.
+
+1:18:21 - Patrick Chouinard (chouinpa@gmail.com)
+  But it's good.
+
+1:18:22 - mdcatc
+  I like this group a lot. It's been very useful for me, and I hope I've contributed something to the guys there.
+
+1:18:29 - Paul Miller
+  Oh, yes. Yes. Yep. Yep. No, I think it's the collective, um, realizing that we're all, um, we all get faced with, um, challenging, challenging issues with certain parts of the technology, whether it's just keeping track of how much we're trying to do or, um, what, what the tools can do.  Um, it, keeps it real.
+
+1:18:52 - mdcatc
+  Yeah.
+
+1:18:55 - Patrick Chouinard (chouinpa@gmail.com)
+  Yep. There's too much for a single person to, uh, be aware of all the time. So this group is basically how I do my Context Upgrade every week.
+
+1:19:08 - Paul Miller
+  Thanks, Morgan.
+
+1:19:10 - mdcatc
+  You bet.
+
+1:19:14 - Paul Miller
+  Just on my side, my update. I've been working away at a software project for pretty much the last 12 years.  It came out of an initiative I did with a very large cola manufacturer based in the eastern side of the United States that has a red logo.  That's more about as much as I can say, but the core part of what they do in a lot of companies in the consumer goods space is visual shelf recognition in supermarkets and retailers of what products are on.  Shelves. And the technology is more machine learning than AI. Well, machine learning is an aspect of AI, but it's technology that I'd partnered with an Israeli company to use their technology with that customer.  But now we're in a position that there's so much open source content out there in the visual learning, machine learning side of things that if you mix it up with using the LLN models, I'm able to get it to retune and use some of the visual LLN models to look at how I can automate the fine tuning process and the gathering process of doing the training.  Because in the past, what you would do with visual machine learning training is get people in sort of low cost countries to help to make-as  They you program the image models and they would use identification tools that would submit images for training, but now you can throw cheap visual models, visual LLM models to do all of that work and self-train it with an orchestrator.  So I've been doing that in the past week and my goodness, it's pretty impressive. It's been able to come up with much more advanced machine learning models for shelf recognition, purely off an open source stack, and then compare all the different models with how good they are, and then find ways to do all the fine tuning, whether it's running on my Mac Mini, my spare Mac Mini, or throwing it up on a GPU pod in the cloud.  So it's been really fun, working with that stuff. It's a project that I've been doing over the last 12 years.  It's been quite a good one to try and reinvent without having to pay these third-party vendors. That's me.
+
+1:22:17 - Patrick Chouinard (chouinpa@gmail.com)
+  Yep. You're still there?
+
+1:22:22 - Paul Miller
+  Yep.
+
+1:22:25 - Patrick Chouinard (chouinpa@gmail.com)
+  Good. So anyone else has anything wants to contribute? Any questions before we call it the day for today? Going once, going twice.  Sold. Thank you very much, everyone, and thank you to have kept up with your two handicap moderators today. We're going to try to be in better shape next week.  Thanks, Patrick. Thanks, guys. Thanks, guys. Bye. Bye. Bye.
