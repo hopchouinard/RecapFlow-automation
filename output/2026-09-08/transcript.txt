@@ -1,0 +1,1196 @@
+[00:00:22] Paul Miller: Hey, Patrick.
+[00:00:23] Paul Miller: I'm happy to host today, so if you want me to do that.
+[00:00:28] Patrick Chouinard: Paul?
+[00:00:29] Patrick Chouinard: Paul?
+[00:00:30] Paul Miller: Let's turn this off.
+[00:00:32] Patrick Chouinard: Hey, Hemal.
+[00:00:34] Hemal Shah: Hey, Patrick.
+[00:00:35] Hemal Shah: Hey, Paul.
+[00:00:36] Hemal Shah: How are you?
+[00:00:37] Hemal Shah: How was a long weekend?
+[00:00:38] Hemal Shah: I don't know if Canada and New Zealand was long, but sorry.
+[00:00:43] Patrick Chouinard: Yeah, but we have the same Labor Day here.
+[00:00:45] Hemal Shah: Oh, okay.
+[00:00:47] Patrick Chouinard: But since I'm in vacation, it doesn't change a whole lot for me.
+[00:00:53] Hemal Shah: Still working, huh?
+[00:00:55] Patrick Chouinard: Hmm?
+[00:00:56] Hemal Shah: How do you...?
+[00:00:58] Patrick Chouinard: I'm burning more tokens.
+[00:01:04] Hemal Shah: It's so hard to get off of the computer, you know, once things are going, you constantly want to see the progress and...
+[00:01:14] Patrick Chouinard: I mean, I'm on the 100 bucks max account for Codex, and I've burned through three weekly reset yesterday.
+[00:01:25] Paul Miller: Oh, no.
+[00:01:27] Paul Miller: I was going to ask, where are all your tokens burning at the moment, Patrick?
+[00:01:34] Patrick Chouinard: You're going to see that.
+[00:01:37] Paul Miller: Okay, cool.
+[00:01:38] Paul Miller: I won't preempt it then.
+[00:01:43] Paul Miller: Interesting times.
+[00:01:46] Paul Miller: It's great having two big fancy models out there now to lay off against each other.
+[00:02:03] Patrick Chouinard: Yeah, but they're definitely not the same at all.
+[00:02:06] Paul Miller: Oh, no.
+[00:02:08] Paul Miller: Yeah.
+[00:02:08] Paul Miller: And thank goodness for that.
+[00:02:10] Paul Miller: Because they can do complementary things, theoretically.
+[00:02:17] Hemal Shah: I use Fable.
+[00:02:20] Hemal Shah: So I have $100 max plan for Claude.
+[00:02:23] Hemal Shah: I use Fable 5.1 for one of the query.
+[00:02:27] Hemal Shah: And I think I put it on the effort was high.
+[00:02:30] Hemal Shah: Within five minutes, it consumed my entire five hours limit.
+[00:02:35] Hemal Shah: So how do you guys use Fable whenever you want to try it out?
+[00:02:42] Patrick Chouinard: Single run.
+[00:02:44] Patrick Chouinard: Not long run.
+[00:02:45] Patrick Chouinard: Because I try to avoid filling its context window.
+[00:02:49] Patrick Chouinard: Because that's what consumes your limit.
+[00:02:54] Patrick Chouinard: If you keep on talking when you have 500, 600, 800,000 tokens, well remember
+[00:03:00] Patrick Chouinard: Remember that every time it talks back, it sends back those eight to a hundred thousand tokens every time.
+[00:03:06] Hemal Shah: Wow.
+[00:03:07] Patrick Chouinard: If you ask it to do architecture as one shot as possible, that's not too bad.
+[00:03:16] Patrick Chouinard: But if you leave it working, it's going to burn through your limit.
+[00:03:20] Hemal Shah: All right.
+[00:03:21] Hemal Shah: Yeah.
+[00:03:21] Hemal Shah: Because it was making multiple web search calls and things like that.
+[00:03:25] Hemal Shah: So I think that explains it.
+[00:03:28] Ty Wells: okay.
+[00:03:30] Ty Wells: That's what we're talking about.
+[00:03:32] Ty Wells: Six or 5.1?
+[00:03:35] Paul Miller: Using both, making sure that we don't burn through the Fable tokens and Patrick's been burning through OpenAI tokens.
+[00:03:44] Paul Miller: But have you been getting into OpenAI and GPC?
+[00:03:48] Ty Wells: You know, I started doing some work on Codex two days ago.
+[00:03:54] Ty Wells: When did it come out?
+[00:03:56] Ty Wells: I started a couple of days ago and I'm still on it.
+[00:03:59] Ty Wells: What When didn't
+[00:04:00] Ty Wells: Like, CMUX has seen me maybe an hour over the last few days.
+[00:04:08] Ty Wells: Yeah, it's been working out well for me for what I've been doing.
+[00:04:11] Ty Wells: I've really been doing it for, I've been using it only really for computer use, but it also, so it feeds back into my queue any issues it finds, and then Claude fixes them.
+[00:04:25] Ty Wells: So I've got this little loop going here that I'm just watching TikTok and other stuff.
+[00:04:32] Paul Miller: Brilliant.
+[00:04:33] Paul Miller: And what about the golf?
+[00:04:34] Paul Miller: How's the golf going?
+[00:04:36] Ty Wells: I haven't golfed in a few days, but I'm on a sabbatical.
+[00:04:42] Paul Miller: Okay.
+[00:04:42] Paul Miller: Just got to watch the handicap.
+[00:04:44] Ty Wells: Yeah.
+[00:04:45] Ty Wells: Well, if we don't do anything, it won't move.
+[00:04:47] Ty Wells: Okay.
+[00:04:48] Paul Miller: Yeah.
+[00:04:49] Paul Miller: Not when you're not playing.
+[00:04:53] Daniel Zivkovic: Hello.
+[00:04:55] Paul Miller: Hello, Daniel.
+[00:04:55] Ty Wells: Hey Daniel.
+[00:04:56] Patrick Chouinard: Daniel.
+[00:04:57] Patrick Chouinard: Hello, good to see you.
+[00:05:01] Daniel Zivkovic: Let's wait for a few.
+[00:05:03] Paul Miller: How are we going?
+[00:05:04] Paul Miller: We're out for a couple of minutes before we kick off for today.
+[00:05:10] Daniel Zivkovic: I apologize if there is any background noise.
+[00:05:13] Daniel Zivkovic: My father-in-law doesn't hear well, so I haven't think so long.
+[00:05:19] Patrick Chouinard: He also eats with a hammer, doesn't he, Daniel?
+[00:05:36] Daniel Zivkovic: Yes, you would.
+[00:05:37] Ty Wells: Another call.
+[00:05:40] Ty Wells: I took, I did a GPT-2 image of it in that call, but I couldn't get it to drop the picture in there.
+[00:05:49] Ty Wells: Let me see if I can find it.
+[00:05:50] Ty Wells: But I did create an image of it during the call.
+[00:05:55] Daniel Zivkovic: So, he's a widow, so my wife brings him over, she cooks for him.
+[00:05:59] Daniel Zivkovic: So, in one of
+[00:06:00] Daniel Zivkovic: The calls in another group, he was across from me and I was talking, and like with his spoon cutting, he doesn't use pork enough.
+[00:06:07] Daniel Zivkovic: He wants food to be so soft that he can use spoon, but it sounded like a hammer.
+[00:06:13] Ty Wells: Yeah, I remember.
+[00:06:15] Ty Wells: Yeah, that's funny.
+[00:06:20] Daniel Zivkovic: Mark made fun of it.
+[00:06:34] Daniel Zivkovic: Hey, Shakur.
+[00:06:41] Paul Miller: Just give a couple more minutes to build a joint.
+[00:07:23] Daniel Zivkovic: Why is everybody so quiet?
+[00:07:25] Paul Miller: We were just waiting for everyone to join, but I think we can probably kick things off.
+[00:07:37] Paul Miller: So for anyone that's new on the call, I think, Kris, you're a new chap.
+[00:07:45] Paul Miller: We have a bit of a go-round where then everyone can give us an update of where they're at and if they've got any questions.
+[00:07:55] Paul Miller: Before we get into doing that, Patrick, were there any questions ahead of the call?
+[00:08:00] Paul Miller: Is that people wanted to cover off?
+[00:08:02] Patrick Chouinard: Hemal we had one, but I don't see the person in the call yet, so I'm going to wait.
+[00:08:07] Patrick Chouinard: And if I see him join, we can jump on the question.
+[00:08:13] Paul Miller: Okay.
+[00:08:13] Paul Miller: Brilliant.
+[00:08:14] Paul Miller: Let's start with you, Hemal.
+[00:08:16] Paul Miller: How's it going?
+[00:08:20] Hemal Shah: So I'll, based on last week's discussion, I continue experimenting with loop engineering for AI co-pilot.
+[00:08:28] Hemal Shah: Some of the ideas that Brandon suggested.
+[00:08:33] Hemal Shah: One, so I tried using Chinese models.
+[00:08:38] Hemal Shah: And one interesting issue I'm finding is that I tried using GLM 5.3 for my drag agent.
+[00:08:49] Hemal Shah: And for some reason, when the test harness is going through, there are like 50 questions.
+[00:08:55] Hemal Shah: Each iteration, it flips its answer to a level where...
+[00:09:00] Hemal Shah: The test harness fails, so a coding agent is recommending me to use some different Chinese models instead of GLM 503, and I wanted to check with this group if there is any good recommendation, which model could be better for a rag agent that I can try.
+[00:09:25] Daniel Zivkovic: Maybe your rag is broken.
+[00:09:27] Daniel Zivkovic: How do you know you're returning relevant content to the present?
+[00:09:30] Daniel Zivkovic: You know, junk in, junk out.
+[00:09:32] Daniel Zivkovic: How do you know the rag itself is good that your AI is reasoning against?
+[00:09:35] Daniel Zivkovic: Did it work with more expensive models before?
+[00:09:39] Hemal Shah: So, it went through 10 iterations, and each iteration, it was flipping the answers on some of the test cases.
+[00:09:49] Hemal Shah: Out of 50 test cases in the harness, it will respond with different variations to that.
+[00:09:55] Hemal Shah: And that is how it is saying it is, you know, the test.
+[00:10:00] Hemal Shah: Annes is saying it is flipping too much to narrow down and come up with a proper solution.
+[00:10:07] Hemal Shah: I'm using QUENT for LM as a judge, so it is a non-deterministic judge who is trying to gauge what agent is responding.
+[00:10:19] Hemal Shah: But I have not tried with Gemini.
+[00:10:21] Hemal Shah: I started with Gemini or the expensive model, but it was too expensive.
+[00:10:29] Daniel Zivkovic: You have to go with the baseline, like you pay first time to get the good numbers, then you optimize the price.
+[00:10:35] Daniel Zivkovic: If it never worked, you will not know.
+[00:10:37] Hemal Shah: have two variables to test.
+[00:10:39] Daniel Zivkovic: Bad model or bad drag or bad prompt.
+[00:10:42] Daniel Zivkovic: Like it's just too ambiguous.
+[00:10:43] Daniel Zivkovic: started with the smartest one.
+[00:10:45] Daniel Zivkovic: So what I learned to save on Fable was just to take it to medium thinking.
+[00:10:49] Daniel Zivkovic: But I'm not programming now.
+[00:10:51] Daniel Zivkovic: I'm restraining myself.
+[00:10:52] Daniel Zivkovic: I'm thinking how to kind of develop business.
+[00:10:56] Daniel Zivkovic: So you start with the smartest.
+[00:10:59] Daniel Zivkovic: Get the
+[00:11:00] Daniel Zivkovic: The baseline you want, then you optimize by cost.
+[00:11:03] Daniel Zivkovic: That's my opinion about everybody's free.
+[00:11:07] Hemal Shah: So I started with, not Fable, but I started with one of the smarter version of Gemini, but it cost me $100 just before I finished a couple of loops to really get to...
+[00:11:22] Daniel Zivkovic: Did you get good results?
+[00:11:23] Daniel Zivkovic: Did you get good results for the 100 bucks?
+[00:11:26] Hemal Shah: No, it was still going through...
+[00:11:28] Daniel Zivkovic: So it's not the problem with AI, you can throw it, you have junk in.
+[00:11:32] Daniel Zivkovic: You have to...
+[00:11:33] Daniel Zivkovic: So I don't know how you start your project, but I normally try to have my clients define what good looks like.
+[00:11:37] Daniel Zivkovic: They have to give me example of a good answer, and then I work backward to get that answer through AI.
+[00:11:44] Hemal Shah: Yeah.
+[00:11:45] Hemal Shah: So I have like 50 test harnesses with good answers, good question and good answers, and trying to come up with that ideal solution.
+[00:12:00] Hemal Shah: These test cases pass sales, but with expensive model, like I'm saying, it was not able to go through all the things because it already hit $100 cap that I put down.
+[00:12:12] Hemal Shah: So I might have to increase that cap to really see that.
+[00:12:15] Daniel Zivkovic: What is your ag?
+[00:12:16] Daniel Zivkovic: What is behind the scene?
+[00:12:17] Daniel Zivkovic: What do you use?
+[00:12:18] Hemal Shah: What vector database?
+[00:12:19] Hemal Shah: What index?
+[00:12:20] Hemal Shah: What type of questions?
+[00:12:22] Hemal Shah: It's all type of questions, adversarial questions, like random was saying, confuse Christy and good happy case scenario, more contradictory follow ups, five turn questions, things like that.
+[00:12:39] Hemal Shah: It's very comprehensive test suite.
+[00:12:46] Daniel Zivkovic: Sorry, I can't help.
+[00:12:48] Daniel Zivkovic: I don't know.
+[00:12:50] Hemal Shah: Okay.
+[00:12:52] Hemal Shah: But...
+[00:12:55] Paul Miller: Hemal, maybe you just want to put a post in the forum.
+[00:13:00] Paul Miller: And we can have a look at it offline with what you're trying to do.
+[00:13:04] Hemal Shah: Yeah, sure.
+[00:13:05] Hemal Shah: Just from the Chinese model's perspective, QAN versus GLM 5.3, any recommendation on that for good agentic one that anybody has good success or result?
+[00:13:18] Paul Miller: What I tend to do with vetting them, if you go into Open Router, Open Router's got an index of where they rate the best ones for different tasks.
+[00:13:28] Paul Miller: Start with that, because then you can identify, you know, what currently is the best for base agentic or what's good for programming or start with that.
+[00:13:38] Paul Miller: That's quite a good independent list.
+[00:13:41] Hemal Shah: Okay.
+[00:13:42] Patrick Chouinard: Sounds good.
+[00:13:42] Hemal Shah: Thank you.
+[00:13:43] Ty Wells: Hemal, I would say you definitely have to get that first pass through on whatever model you choose to use, Gemini versus Gemini.
+[00:13:52] Ty Wells: You've got to get at least one, because without that, it's going to be hard to, you really have no, you know, no.
+[00:14:00] Ty Wells: Because you said it didn't get all the way through, right?
+[00:14:02] Hemal Shah: Yes.
+[00:14:03] Ty Wells: But the data that you, the results you were getting were somewhat off.
+[00:14:07] Ty Wells: They were not correct in the runs that did make it through?
+[00:14:13] Hemal Shah: Yeah.
+[00:14:13] Hemal Shah: Yes, Ty.
+[00:14:14] Hemal Shah: So the whole idea that I was experimenting with was I didn't want to give it a specific architecture.
+[00:14:19] Hemal Shah: I just gave it technology stack to use Python and a few things so it doesn't keep on bouncing around.
+[00:14:25] Hemal Shah: So I gave very minimal technology stack and let it, idea was to let it run loose on based on my test, harness and evals, you know, come up with the ideal solution.
+[00:14:37] Ty Wells: Yeah, no, I understand.
+[00:14:38] Ty Wells: But yeah, the money is probably running through there, right?
+[00:14:41] Ty Wells: And you're not, you're not sure how far it's going to go.
+[00:14:43] Hemal Shah: Understood.
+[00:14:44] Ty Wells: But I, I mean, if I really had high confidence in that approach, I would let it run to, I mean, you know, it's like a one shot if you, if you, what if you get to the end, right?
+[00:14:58] Ty Wells: But you'll, you'll never know unless you, unless you.
+[00:15:00] Ty Wells: You'd let it run all the way through, but I like that approach though, it's interesting.
+[00:15:05] Hemal Shah: Okay.
+[00:15:07] Patrick Chouinard: If I had to say something about the Chinese model, if there's one I can recommend, I've been using GLM 5.3 Flash a lot recently, and I'm very happy with the result.
+[00:15:20] Patrick Chouinard: Okay.
+[00:15:21] Patrick Chouinard: Actually, Recap Flow has now moved completely on GLM 5.3, and I went from, it was about between 80 cents and $1.10 per run.
+[00:15:34] Patrick Chouinard: So to do all the Recap and the Recap Flow post and all of the integration with the LensDB in the background.
+[00:15:41] Patrick Chouinard: And now that I moved entirely to GLM, it's like 9 cents.
+[00:15:47] Patrick Chouinard: Wow.
+[00:15:48] Patrick Chouinard: that's one, even if it's not absolutely the top tier Fable class type of model, you can leave it to run for a day or two and you're not going to get another model.
+[00:16:00] Hemal Shah: Yeah, it only cost me $1.
+[00:16:04] Hemal Shah: I let it run for a couple of nights versus Gemini was $100.
+[00:16:08] Hemal Shah: So yes, it is super cheap.
+[00:16:11] Patrick Chouinard: And the results are very nice, actually.
+[00:16:14] Patrick Chouinard: I don't have any complaint on the result I got so far.
+[00:16:18] Hemal Shah: Okay.
+[00:16:18] Hemal Shah: All right.
+[00:16:19] Hemal Shah: Thank you, Patrick.
+[00:16:22] Hemal Shah: I'll check that.
+[00:16:24] Hemal Shah: Thank you, Paul.
+[00:16:28] Paul Miller: Cool.
+[00:16:29] Paul Miller: Thanks, Patrick.
+[00:16:32] Paul Miller: Thanks, Hemal.
+[00:16:33] Paul Miller: Patrick, did you want to go now or should we go around a few others first?
+[00:16:38] Patrick Chouinard: Oh, sure.
+[00:16:39] Patrick Chouinard: I can show a little bit of what I've done.
+[00:16:44] Patrick Chouinard: Let's say I've overused Astra in the last two, three days.
+[00:16:50] Patrick Chouinard: Like I was telling Paul earlier, just yesterday I went through a three-weekly reset in a single day.
+[00:16:59] Patrick Chouinard: That's
+[00:17:00] Patrick Chouinard: So yeah, and actually what I came up with, let me share it, I decided that I had too many harnessed at the same time and it was getting harder and harder to keep track on what was doing what where and what needed my attention, so I created this guy called AgentDeck.
+[00:17:30] Patrick Chouinard: So basically it monitors all of my live agents, it tracks my usage on each of them, token use, as you can see I've been using codecs a little bit more than the others.
+[00:17:45] Patrick Chouinard: That's just a day, by the way.
+[00:17:49] Paul Miller: So is this, you mentioned last week that you were going to look at using the PI agent, is this with PI agent or what?
+[00:17:58] Patrick Chouinard: Nope.
+[00:17:59] Patrick Chouinard: it.
+[00:17:59] Patrick Chouinard: Let's Let's do Let's you.
+[00:18:00] Patrick Chouinard: This is simply, I just gave the task to Astra at a high level, and I wanted to have a monitoring or an observability surface for all of my agents.
+[00:18:11] Patrick Chouinard: So Claude, Codex, Hermes, and including running Claude and Codex inside of T3 code.
+[00:18:20] Patrick Chouinard: So now they're all monitored, and whenever each and every one of them has something for me, a question, a notification, it stopped and it needs my attention.
+[00:18:32] Patrick Chouinard: I see it here.
+[00:18:33] Patrick Chouinard: It shows in my inbox, but right now there's nothing, but it should, just give me a sec, and it will pop.
+[00:18:44] Patrick Chouinard: I see the, what right now you see I only have four finish and two interrupted, but if I go in the harnessed section themselves, I'll see the session.
+[00:19:00] Patrick Chouinard: You can see I've been abusing her codex a little bit lately, and those sessions are all completed, but I know where they are, I know how many tokens were consumed, I know which branch they were working on, and if there's no unresolved attention, but if there were, it would pop up, so I could actually see the unresolved attention requirement, and I could reply directly in it, and you see here I have two hosts, because those are not on the same machine.
+[00:19:31] Patrick Chouinard: Codex and the Cloud Code are on my main machine, but Hermes is running on a Linux VM, so they are configured independently, and I have all my settings, so I can decide for each Arnest what functionality is activated or not, the hosts that are activated, and what Arnest reside on each host, notification.
+[00:20:00] Patrick Chouinard: integration status.
+[00:20:02] Patrick Chouinard: Basically, I wanted...
+[00:20:04] Patrick Chouinard: This is not a harness to replace anything.
+[00:20:08] Patrick Chouinard: It's an observability surface to see everything going on in the sea of a harness and agent working in the background.
+[00:20:19] Patrick Chouinard: Yes, Juan?
+[00:20:22] Juan Torres: Hey, this is great.
+[00:20:23] Juan Torres: One of the things that I wanted to ask is why Hermes doesn't have the weekly bar of percentage of usage.
+[00:20:32] Patrick Chouinard: Oh, because it's not a...
+[00:20:34] Patrick Chouinard: Well, it is using my codex subscription, but it's the Hermes harness itself doesn't show the subscription consumption, but I see it through the codex.
+[00:20:45] Juan Torres: Ah, I see.
+[00:20:48] Patrick Chouinard: And otherwise, if it's not on subscription, it's using GLM and that's direct open router API connection.
+[00:20:58] Juan Torres: So there's no subscription.
+[00:21:01] Patrick Chouinard: But yeah, Hermes there is more of the operator of my infrastructure, and CloudCode and Codex are the builder, but I'm having Fable 5.1 working on a large upgrade to the capacity of Hermes in the backend.
+[00:21:22] Patrick Chouinard: And, you know, I've talked before on Agent Ops.
+[00:21:26] Patrick Chouinard: Well, right now it's churning all of...
+[00:21:30] Patrick Chouinard: The reason why you don't see a lot in CloudCode, it's simply because I'm running...
+[00:21:35] Patrick Chouinard: Every time my session reset, I restart a run with Fable, and I'm just like, keep on, continue, continue, continue, continue.
+[00:21:43] Patrick Chouinard: It's just racking up using the entire available token.
+[00:21:51] Patrick Chouinard: So probably in a day or two, I'm going to see a more complete result, let's say.
+[00:21:59] Juan Torres: Yeah.
+[00:21:59] Juan Torres: There's...
+[00:22:00] Juan Torres: That's great.
+[00:22:00] Juan Torres: And honestly, I feel like a lot of businesses could benefit from having a tool just like this in order to actually create token observability.
+[00:22:13] Juan Torres: And I haven't seen, I mean, a lot of businesses are not implementing AI in their modus operandi, but I feel like this is something that, even if you're home lab, you benefit from having a degree of observability.
+[00:22:30] Patrick Chouinard: Yeah.
+[00:22:31] Patrick Chouinard: And it actually accumulate the history.
+[00:22:33] Patrick Chouinard: So I'm eventually going to be able to have a full observability dashboard with full tracking of token consumption, not only per harness, but per harness, per installation, because I'm probably going to be running, I'm running cloud code installation on a lot of the VM in my environment.
+[00:22:54] Juan Torres: So right now the monitor is my main machine, but I'm adding more and more.
+[00:23:00] Patrick Chouinard: I'm in there, so it's going to be able to monitor my entire harnessed operation wherever they may live in my home environment.
+[00:23:09] Juan Torres: Have you thought of combining that observability with a Prometheus observability of your computer, computational environments?
+[00:23:17] Patrick Chouinard: Actually, there is an alert manager and there is a Prometheus server monitoring all of that and also a low-key log server.
+[00:23:29] Juan Torres: Gotcha.
+[00:23:32] Ty Wells: Sysd to the rescue?
+[00:23:34] Patrick Chouinard: Sorry?
+[00:23:35] Ty Wells: Sysd to the rescue?
+[00:23:37] Ty Wells: Syslog, sorry?
+[00:23:38] Patrick Chouinard: Oh.
+[00:23:39] Ty Wells: No, actually, all my logs about syslog, but it's aggregated through a low-key log server.
+[00:23:46] Ty Wells: Okay.
+[00:23:50] Patrick Chouinard: Yeah, I'm trying to aggregate as much as possible.
+[00:23:52] Patrick Chouinard: So basically the backend is Prometheus, alert manager, low-key, Grafana.
+[00:24:00] Patrick Chouinard: Canada, Nats, and Authentic and Trafic.
+[00:24:08] Ty Wells: That's a solid setup.
+[00:24:11] Ty Wells: Why do I even build things?
+[00:24:14] Patrick Chouinard: Just wait for Patrick to build it and then...
+[00:24:16] Juan Torres: Yeah.
+[00:24:17] Paul Miller: Exactly.
+[00:24:17] Paul Miller: That's why we're all here.
+[00:24:20] Patrick Chouinard: Yeah, but you're finishing and you're putting the nice touch on top of the rough idea I created.
+[00:24:31] Paul Miller: I can't say that I've seen a rough idea that you've presented ever.
+[00:24:37] Ty Wells: Your version of rough is like polished, right?
+[00:24:42] Paul Miller: It comes out of the box polished.
+[00:24:45] Ty Wells: Yeah.
+[00:24:45] Ty Wells: It comes out of the box rough.
+[00:24:47] Ty Wells: White gloves and everything.
+[00:24:49] Ty Wells: Thanks, Patrick.
+[00:24:50] Patrick Chouinard: Thank you, guys.
+[00:24:52] Paul Miller: Did you end up doing anything with the pie stuff you talked about last week?
+[00:24:59] Patrick Chouinard: No, not this week.
+[00:25:00] Patrick Chouinard: let's just say that I was token maxing both Astra and Fable, so...
+[00:25:06] Paul Miller: Yeah, it's a bit hard when GPT-6 came out, Astra.
+[00:25:12] Paul Miller: You weren't going to switch to looking at Pi in the weekend when you got that on the table.
+[00:25:17] Patrick Chouinard: Well, it's probably going to be built by the whole custom harness and the whole connectivity to leverage it from Claude code and from Codex through T3 code.
+[00:25:30] Patrick Chouinard: It's probably going to be built by Astra in reality.
+[00:25:34] Patrick Chouinard: Yeah.
+[00:25:34] Patrick Chouinard: It's just...
+[00:25:35] Patrick Chouinard: I have just so many weekly reset to burn through.
+[00:25:42] Paul Miller: Cool.
+[00:25:43] Paul Miller: Thanks, Patrick.
+[00:25:45] Paul Miller: Now let's use my little...
+[00:25:50] Paul Miller: So, Daniel, what's happening in your world?
+[00:25:54] Juan Torres: Okay.
+[00:25:55] Daniel Zivkovic: So, good to see everyone.
+[00:25:57] Daniel Zivkovic: Last week, I declared I'm gonna...
+[00:26:00] Daniel Zivkovic: I the addiction of coding because I started feeling like alcoholic or chain smoker, it's time to start selling.
+[00:26:06] Daniel Zivkovic: My contract ends in three months, and market is not easy what I hear from my friends, so I'm kind of preparing my fishing nets for the next big one, and so what I was researching, so it's AI-assisted research, and I just put the post on my website, all big companies are talking about forward-deployment engineering, they're ramping their teams, but it's hard to change the mindset of the developers who just like to develop, cannot talk to business, and so I'm trying to position myself as somebody who talks to business people, gets what they need, but helps them visualize that, because I no longer need Figma, I no longer need to be front-end developer, I can quickly prototype things with AI and tell them, what do you like more, A or B?
+[00:26:50] Daniel Zivkovic: Because they often cannot vocalize the right requirements, what they want, so this is like a long haul fishing trip, but I'm positioning myself as somebody who's going to work with
+[00:27:00] Daniel Zivkovic: Big consulting companies, and I like to work from companies from India because nobody shows up in the office, I can sit here same day, all day, and not be kind of having to go to office three days a week.
+[00:27:10] Daniel Zivkovic: So not coding, but using Fable 5.1 on a medium, that's what I didn't finish.
+[00:27:15] Daniel Zivkovic: So I'm able to sustain without maxing my Fable usage by tuning it down to medium thinking, and I still get good results, and Fable is very creative.
+[00:27:24] Daniel Zivkovic: I find, sees my blind spot, unknown unknowns, think I haven't figured out.
+[00:27:29] Daniel Zivkovic: Like, if you watch Anthropic Tariq, he has really good talks about finding your unknown unknowns, like the territory where you're going.
+[00:27:36] Daniel Zivkovic: And also, like this known unknowns, this is something when you see it, you will know it.
+[00:27:42] Daniel Zivkovic: So I'm trying to apply this principle where I'm developing different prototypes, and then figuring out which one rhymes with me.
+[00:27:50] Daniel Zivkovic: So, no coding, just contemplating planning my fishing trips for the next big customer when this one runs out.
+[00:27:59] Paul Miller: did you have
+[00:28:00] Paul Miller: Did play with looking at OpenAI's new model?
+[00:28:05] Daniel Zivkovic: No, I didn't because they really, so I followed everything.
+[00:28:08] Daniel Zivkovic: I don't know if I shared with you, have this video Intel skill.
+[00:28:12] Daniel Zivkovic: Everybody has something like that.
+[00:28:13] Daniel Zivkovic: So I just have like my skill, watch YouTube videos every weekend, transcribed using Gemini.
+[00:28:20] Daniel Zivkovic: But it's using a background, it's using screen, so I see what's happening behind.
+[00:28:24] Daniel Zivkovic: And then I run different briefings, I have nuggets.
+[00:28:27] Daniel Zivkovic: I'll share that one with you as well.
+[00:28:28] Daniel Zivkovic: And it resurfaces what's important.
+[00:28:30] Daniel Zivkovic: So the consensus among the people who use Astra is that it's amazing for coding, for landing pages, but not for thinking.
+[00:28:37] Daniel Zivkovic: Fable 5.1 at medium pairs with Astra.
+[00:28:41] Daniel Zivkovic: So why spend the money?
+[00:28:42] Daniel Zivkovic: So I always use codecs, any models like GPT 5.6 and any soul at high thinking for reviews.
+[00:28:49] Daniel Zivkovic: So even if I have the good idea with Fable, I would like a peer review for the blind spot from GPT.
+[00:28:57] Daniel Zivkovic: I'm not coding this week, so I haven't tried it.
+[00:28:59] Daniel Zivkovic: this.
+[00:29:00] Daniel Zivkovic: But people who said they love it, but not for thinking.
+[00:29:03] Daniel Zivkovic: It overdo it.
+[00:29:03] Daniel Zivkovic: That's a consensus.
+[00:29:06] Daniel Zivkovic: Yeah, interesting.
+[00:29:09] Paul Miller: Oh, Patrick, did you want to talk and can you give me, or you've shared the access as well?
+[00:29:15] Patrick Chouinard: Already gave it, approved it.
+[00:29:18] Patrick Chouinard: And just to answer Daniel, actually there's one thing I've done with Astra this week that I found it did better than Fable in the thinking aspect.
+[00:29:31] Patrick Chouinard: I have some finance stuff to be doing and taxes stuff to be doing because my mom passed away.
+[00:29:39] Patrick Chouinard: Anyway, long story short, there's a lot of admin stuff that required drilling down into government website, finding forms, figuring out which form to send to which department.
+[00:29:50] Patrick Chouinard: Then basically I explained the problem to Astra, gave it to the computer and say, go for it, find me all of the forms.
+[00:29:59] Patrick Chouinard: And wonderful.
+[00:30:00] Patrick Chouinard: Everyone I need to contact, whatever I need to do in order to get this specific thing done for the finance of the succession, it worked for about three hours, and it gave me, like, here's step one, two, three, four, five, what you need, here's the form, here's how you need to fill them, like, pretty much everything done.
+[00:30:21] Daniel Zivkovic: That's nice, but to me, that's accounting, that's still not thinking.
+[00:30:24] Daniel Zivkovic: For me, thinking is creative thinking, when I don't know what I want.
+[00:30:27] Daniel Zivkovic: I just, with me, most problems start with gut feeling.
+[00:30:31] Daniel Zivkovic: I have a pain, I have frustration, and I don't know, like, I just feel it.
+[00:30:35] Daniel Zivkovic: So, so that's where Fable kicks in to uncover my feeling and map into requirements, but then, I like that accounting precision.
+[00:30:42] Daniel Zivkovic: They're like, boring, short, like, like accountant personality, really.
+[00:30:47] Daniel Zivkovic: Precise to the point.
+[00:30:48] Daniel Zivkovic: You need it, but it's sending at the end, for me.
+[00:30:50] Paul Miller: you.
+[00:30:52] Paul Miller: Well, Theo, just the screen I'm sharing.
+[00:30:55] Paul Miller: So Theo did a GPT-6 versus five.
+[00:30:59] Paul Miller: Thank Thank much.
+[00:31:00] Paul Miller: He's been having a good play with and pretty outspoken in terms of what he likes and dislikes.
+[00:31:05] Paul Miller: He had a very interesting slide before this one, this is at the very end of the presentation, that he pretty much said GPT-6 can have moments of brilliance from a coding perspective, but comes up with lots of real dumbass things along the way, while Fable is consistently good at the top level for coding.
+[00:31:28] Paul Miller: And this is kind of where he was at with, because I think like you, Daniel, I look at what other people have done, let them do all their usual experiments against their own code base before I go and risk my coding stack on it.
+[00:31:46] Paul Miller: But yeah, I was fascinated to see Theo's feedback and yeah, it seems pretty good and it's pretty confident in the way it responds, but the quality of some of the outcomes a bit.
+[00:31:59] Paul Miller: feel comfortable?
+[00:31:59] Paul Miller: Yeah, what
+[00:32:00] Ty Wells: I can tell you for sure that at least for me, the computer use is, that's really, really good.
+[00:32:07] Ty Wells: Like I said, I've been running that for the last three days.
+[00:32:10] Ty Wells: I was just telling my wife, I don't think the guy I just hired, I don't think I need him.
+[00:32:14] Ty Wells: He's a QA.
+[00:32:16] Ty Wells: And I really don't need him for what he's doing in terms of QA-ing the UI, because this thing is, this thing, not only is it capable of, not only is it doing that, but it's also coming up with potential fix, which, like I said, I'm then giving off to, to Opus 5 to implement, to, to vet and implement.
+[00:32:41] Ty Wells: But, you know, if you have a UI, that's, you know, that's, this is, this is my dream team right here.
+[00:32:46] Paul Miller: Really.
+[00:32:47] Paul Miller: Well, I, I found it pretty good with 5.6 Sol doing that computer use.
+[00:32:52] Paul Miller: That was really good.
+[00:32:53] Paul Miller: And now this seems to go on another level.
+[00:32:55] Paul Miller: And Patrick, he's saying it sort of went off at three hours and did stuff.
+[00:32:59] Paul Miller: Like,
+[00:33:00] Daniel Zivkovic: So, I just pasted the chat in the group.
+[00:33:04] Daniel Zivkovic: So, like, I do let AI watch videos for me, but there is one group I pay to be a member of.
+[00:33:11] Daniel Zivkovic: This is private video for their paid sessions for the paid members.
+[00:33:14] Daniel Zivkovic: This is every.to company.
+[00:33:16] Daniel Zivkovic: I follow them because three years ago, the founder, Dan Shipper, he wasn't even a programmer.
+[00:33:22] Daniel Zivkovic: He was just a writer, a really good writer.
+[00:33:24] Daniel Zivkovic: He got me in and then he hired great developers.
+[00:33:28] Daniel Zivkovic: Kieran is the guy who created Compound Engineering Framework.
+[00:33:31] Daniel Zivkovic: The one I religiously use for coding.
+[00:33:34] Daniel Zivkovic: So, anything you develop goes to full-grown SDLC.
+[00:33:36] Daniel Zivkovic: So, they have early access to Fable, to ChartGP, to anything.
+[00:33:41] Daniel Zivkovic: And they play a couple weeks and then give their surveys.
+[00:33:43] Daniel Zivkovic: So, this is one of those sessions that I attended recently.
+[00:33:46] Daniel Zivkovic: So, that is kind of my human check, human in the loop validation for.
+[00:33:51] Paul Miller: Brilliant.
+[00:33:52] Paul Miller: It's always good to have a good benchmark.
+[00:33:54] Paul Miller: Yeah, because you could watch hundreds of videos that many of the people are.
+[00:34:01] Daniel Zivkovic: But they're meaning me, me too.
+[00:34:02] Paul Miller: They're competing for clicks.
+[00:34:04] Daniel Zivkovic: Like, now I'm converging, I'm subscribing because they're figuring they say the same thing.
+[00:34:07] Daniel Zivkovic: And mostly what they do, they go to Tariq from Anthropic, they go for Anthropic, like Boris's post, and they tell you the story.
+[00:34:15] Daniel Zivkovic: I can do that too.
+[00:34:17] Paul Miller: Yeah, good point.
+[00:34:19] Paul Miller: Nice.
+[00:34:20] Paul Miller: Thanks for sharing.
+[00:34:22] Paul Miller: Ty, how's it going in your world?
+[00:34:26] Ty Wells: Oh, it's a little crazy here, but I'm working my way through.
+[00:34:30] Ty Wells: Like I was saying, really haven't been doing any development really, well, not an actual development, not that anybody's doing that.
+[00:34:41] Ty Wells: Maybe I've just been the human in the loop, because like I said, I'm taking the computer use output, creating my intent capsules, and Opus 5 is just picking them up and implementing them.
+[00:34:55] Ty Wells: So, really, I'm just sort of monitoring them and really watching.
+[00:35:00] Ty Wells: Computer use, you know, use my Chrome, and, you know, I see the error come up, and I just move over, that's why I need Patrick's Agent Ops, because I can move over and see that it went to Fable, and then, you know, or Opus, and then Process in there.
+[00:35:15] Ty Wells: I've got something similar, but probably not as polished as Patrick's.
+[00:35:21] Ty Wells: But really, that's it.
+[00:35:23] Ty Wells: I'm launching to clients on the 15th.
+[00:35:27] Ty Wells: That's when I have my webinar.
+[00:35:30] Ty Wells: So that is where I'm at, right?
+[00:35:32] Ty Wells: I'm just just polishing, really, you know, with computer use, just polishing the UI for what we're going to.
+[00:35:39] Ty Wells: But one thing that this ERP is doing differently is for a new person getting in business, it's actually the process of understanding what it is that you're trying to and do as a business is vetted before.
+[00:35:59] Ty Wells: pouco
+[00:36:00] Ty Wells: You even get into the software, okay?
+[00:36:03] Ty Wells: So, hey, I want to start a new business, okay?
+[00:36:06] Ty Wells: Yes, you can go to ChatGPT and you can do all of that, but if you've got the back-end already built, a full ERP, this is just the front-end.
+[00:36:14] Ty Wells: So you could sort of vet yourself and see if this is even going to make sense for you.
+[00:36:18] Ty Wells: So it's a business advisor for onboarding a new business because they have nothing, they have no data, they've got no accounting set up.
+[00:36:27] Ty Wells: For an existing business, the business advisor is, okay, I see your data, I brought it in, this is where I think you could use some help.
+[00:36:36] Ty Wells: What's your goal, first of all, because that's just like we do development.
+[00:36:39] Ty Wells: What's your goal?
+[00:36:40] Ty Wells: Once I have that goal, now let me look at your numbers to see what needs to move to shift the needle to accomplish that goal.
+[00:36:46] Ty Wells: So that advisor is built in from the ground up off of the data.
+[00:36:51] Ty Wells: So, obviously, the advice will be different and, you know, relative to the business if it's new.
+[00:36:57] Ty Wells: And then it'll, you know, like a new business.
+[00:36:59] Ty Wells: you the
+[00:37:00] Ty Wells: They would be required to get certain information to vet, basically the vetting process.
+[00:37:06] Ty Wells: Will this idea work?
+[00:37:07] Ty Wells: Will this business work?
+[00:37:08] Ty Wells: And it'll be there every step of the way as they make changes, as the numbers, whatever their goals are, which can change.
+[00:37:15] Ty Wells: If they change, then the numbers have to reflect.
+[00:37:19] Ty Wells: And how do they reflect?
+[00:37:20] Ty Wells: Well, you've got to go get more sales.
+[00:37:22] Ty Wells: So, okay, what do I do there?
+[00:37:23] Ty Wells: Okay, I need to go off to whatever.
+[00:37:25] Ty Wells: You see what I'm saying?
+[00:37:26] Ty Wells: So that business advice is built in from day one.
+[00:37:30] Ty Wells: So there's no, it has a full understanding of business and the numbers don't lie.
+[00:37:35] Ty Wells: So that's what the new point, unless you guys know of, you know, any software working that way now out of the box, most ERPs are old school built on, this is what you get, take it or leave it, right?
+[00:37:51] Ty Wells: And the 80-20 rule rarely applies to the usability of the software, the actual use of it.
+[00:38:00] Ty Wells: So I'm starting for that loop to continue all along, advising the business from day one.
+[00:38:07] Ty Wells: So that's where we're at.
+[00:38:10] Paul Miller: How do you deal with a customer that sort of rocks up and says, and usually it's got, they've got some accountant that say, oh, you know, this is the way I set up new businesses or from a setting up in the accounting part of the ERP?
+[00:38:26] Ty Wells: Yeah, so they would, depending on what kind of business it is, would, your chart of accounts would be, you know, you'd need your different chart of accounts for setting up this pipe, depending on the type of business that they've described.
+[00:38:38] Ty Wells: This is going to be a home cleaning business.
+[00:38:42] Ty Wells: This is going to be a whatever business.
+[00:38:44] Ty Wells: I'm going to be doing a barbershop.
+[00:38:46] Ty Wells: I could be doing a restaurant.
+[00:38:47] Ty Wells: So based on what you're trying to do, it's, it's assisting you through the process.
+[00:38:53] Ty Wells: So let's say you did the same thing in chat, which you can do, right?
+[00:38:56] Ty Wells: And GPT or Claude, you talk back and forth.
+[00:38:59] Ty Wells: You're just coming up with.
+[00:39:00] Ty Wells: The requirements for the business, but nothing's built.
+[00:39:04] Ty Wells: You have no back-end, you have nothing.
+[00:39:07] Ty Wells: You have an understanding of the business.
+[00:39:09] Ty Wells: This is the front-end, but the back-end's already built.
+[00:39:12] Ty Wells: It is just modified.
+[00:39:14] Ty Wells: It basically covers everything that you need.
+[00:39:17] Ty Wells: You just don't know what you need yet.
+[00:39:18] Ty Wells: So help me understand what your business you're trying to do, and the business advisor will guide you through.
+[00:39:24] Ty Wells: The platform's already there.
+[00:39:25] Ty Wells: Forget about the data.
+[00:39:26] Ty Wells: That's the easy part.
+[00:39:27] Ty Wells: It's that stuff up front.
+[00:39:31] Paul Miller: Nice.
+[00:39:32] Paul Miller: Yeah.
+[00:39:32] Paul Miller: Can you just work in some front-end so it works with SAP as well?
+[00:39:37] Paul Miller: A few customers I can forward you to.
+[00:39:39] Ty Wells: Trust me, I'm thinking about that simply because a lot of businesses, you know, will resist, you know, the internal fighting.
+[00:39:48] Ty Wells: Like, we want to stick with this because it does that.
+[00:39:51] Ty Wells: So it's not just going to be price.
+[00:39:52] Ty Wells: That's the determining factor.
+[00:39:54] Ty Wells: So actually, we have, so I have about 50 kiosks that-
+[00:40:00] Ty Wells: We managed for this mobile, this other business, Mobile Recharge, and these are in like gas stations and stuff, food stores, but remote management of them is crazy, right, because you need some sort of MDM, something, so, and I switched the software that we originally had on there, of course I couldn't take that, so I'm rewriting my own, I've rewritten it already, but I ended up having to put a Rust agent on the device, right, so I was thinking about the concept of building some sort of agent that sits on the company's network to see the data, not necessarily, they can still continue to use what they use, but sort of to aggregate that data, and then bring it into this business advisory type thing, and I know data warehousing stuff, but for those people that, like, hey, we have this specific piece of software, it doesn't really work, okay, can I get any data out of it?
+[00:40:53] Ty Wells: If I can, then I can work with it, and the business advisor can advise you, right, but it has to see data, it only works on data.
+[00:41:00] Ty Wells: And what your goal is to make those two, you know, to make a match there.
+[00:41:05] Ty Wells: So, but that's, that's where I'm at, guys.
+[00:41:08] Ty Wells: Hopefully I'll, after, well, it's next Tuesday, I may be able, yeah, I'll be able to present because it's at 10 a.m.
+[00:41:15] Ty Wells: in the morning.
+[00:41:16] Ty Wells: So you guys will hear all about it after next Tuesday, the 15th.
+[00:41:21] Paul Miller: Brilliant.
+[00:41:21] Paul Miller: That's, that's an interesting journey.
+[00:41:24] Paul Miller: It's, yep, I've done a few lousy appy installs and to do it with AI, gosh, if only I had that back then.
+[00:41:31] Ty Wells: I know, right?
+[00:41:33] Paul Miller: Cool.
+[00:41:35] Patrick Chouinard: Thanks, Ty.
+[00:41:36] Patrick Chouinard: Paul, before you go, we have Tim that asked a question that joined the, the call.
+[00:41:42] Patrick Chouinard: So I don't know if we want to address this question.
+[00:41:46] Paul Miller: Tim, what was the question?
+[00:41:52] Patrick Chouinard: Can you hear me?
+[00:41:53] Patrick Chouinard: Yes.
+[00:41:54] Patrick Chouinard: Yep.
+[00:41:58] Patrick Chouinard: Yep.
+[00:41:58] Patrick Chouinard: Yep.
+[00:41:58] Patrick Chouinard: Go ahead.
+[00:42:01] Patrick Chouinard: Go ahead, Tim.
+[00:42:07] Tim Hildenbrandt: Okay.
+[00:42:07] Tim Hildenbrandt: Sorry.
+[00:42:08] Tim Hildenbrandt: I'm making a program for basically document search and kind of like RAG, but faster.
+[00:42:19] Tim Hildenbrandt: The problem is I'm not really a programmer, so I need someone to look at it.
+[00:42:25] Tim Hildenbrandt: But I keep running into this.
+[00:42:28] Tim Hildenbrandt: ChatGPT keeps saying, you know what, you've got 10% of the code is ship's kit.
+[00:42:33] Tim Hildenbrandt: And you don't, I don't know if I can show it to someone so they can give me help with it.
+[00:42:41] Tim Hildenbrandt: Because I know I'm not supposed to be sharing the code.
+[00:42:46] Paul Miller: Well, look, I don't know if you, I'm assuming that you've got access to the forum.
+[00:42:53] Paul Miller: You can do posts, but maybe not share the code through there.
+[00:42:57] Paul Miller: But what, so Bye.
+[00:42:59] Paul Miller: Bye.
+[00:43:00] Paul Miller: Are you using Claude code or codex to help write the code?
+[00:43:05] Paul Miller: And it sounds like you're using ShipKit, the ShipKit library to help you develop it.
+[00:43:12] Paul Miller: Is that the case?
+[00:43:14] Paul Miller: Or how are you writing the code?
+[00:43:18] Tim Hildenbrandt: So for the most part, I was using Claude, actually.
+[00:43:22] Tim Hildenbrandt: And I don't know if you guys are familiar with it, but I've been using Jcodemunch, which has cut my code.
+[00:43:30] Tim Hildenbrandt: It's down significantly, so it's produced the amount of usage, so I'm getting a lot more use out of it.
+[00:43:38] Tim Hildenbrandt: So I used one of the ShipKit repos, and I think I cut most of it out anyways.
+[00:43:45] Tim Hildenbrandt: But I'm basically making something that I can use.
+[00:43:49] Tim Hildenbrandt: It'll be like a local-only rag setup that uses a llama and a model, like a small model.
+[00:43:58] Tim Hildenbrandt: And it's open Able
+[00:44:00] Tim Hildenbrandt: So basically I'm kind of doing help desk and document search for university students, and I've been able to cut search time down to like a tenth of what it was, and it'll get them references and original posts and like the files that came from, and it's turned out pretty good, but I've been doing all the, like I've basically just given them text in text out on my web interface, and I'm not really going to post it as a program until I've done some security testing on it, but I can't really do that well.
+[00:44:37] Paul Miller: Okay.
+[00:44:38] Paul Miller: Okay.
+[00:44:38] Paul Miller: So, so, um, have you, have you asked, um, your Claude subscription as to how you can host it in a way that can be secure and what approach it will, it suggests you use with the security or where have you got to with that?
+[00:44:55] Paul Miller: Because it, starting with asking questions might be a good start.
+[00:44:59] Tim Hildenbrandt: I, I, I, I, I,
+[00:45:00] Tim Hildenbrandt: I've tried that, but the problem is I'm getting conflicting answers.
+[00:45:05] Tim Hildenbrandt: So I tried it with, what am I using now?
+[00:45:10] Tim Hildenbrandt: Not the top tier, Opus.
+[00:45:11] Tim Hildenbrandt: So I tried it with Opus and I was getting different results than when I tried Fable.
+[00:45:16] Tim Hildenbrandt: So it gave me different answers and it tried to fix different things that made a conflict somewhere else, but it never really fixed the original problem it told me I had.
+[00:45:27] Paul Miller: Sorry.
+[00:45:30] Paul Miller: Ryan, did you want to jump on?
+[00:45:33] Ryan C: Hey, Tim.
+[00:45:36] Ryan C: I've pinged you over my email.
+[00:45:38] Ryan C: If you wanted to ping me an email, then we can have a further chat.
+[00:45:42] Ryan C: So obviously I've got Scott's CC security review suite that I could run it through that is a pretty advanced security and performance package essentially.
+[00:45:56] Ryan C: I'm obviously going to have a further chat about it because I've been doing this for a little while.
+[00:45:59] Ryan C: we're
+[00:46:04] Ryan C: Before I could make videos or do any other stuff that my business does, so I just put my email address and a message to you on the chat, so feel free to reach out if you wanted something to take a look at it, I would more than happy to help.
+[00:46:19] Tim Hildenbrandt: I'm kind of on the road right now, will the chat be saved somewhere I can look at it later?
+[00:46:25] Patrick Chouinard: Yeah, actually, we do say, well, not the chat in its integrality, but we do a summarized recap that includes material in the chat, but actually, Ryan, what I recommend, you probably should message Tim directly on the community board and that way it's going to be easy for him to try.
+[00:46:49] Ryan C: I was going to say, I'm assuming you're in the board somewhere, so I should try and dig you out on the board and send you a message.
+[00:46:55] Paul Miller: A direct message.
+[00:46:57] Tim Hildenbrandt: Thank you.
+[00:46:59] Paul Miller: Yeah.
+[00:47:00] Paul Miller: That's probably a good start, Tim, because it's the sort of questions I would have as well is making sure that when you're using Claude for Claude coding, you're giving it the full context of the total library.
+[00:47:14] Paul Miller: So when you're asking the model that it has got the full context, are you using a paid Claude subscription to analyze it as well?
+[00:47:25] Tim Hildenbrandt: Yeah, so I've got, actually, I have a Claude and Codex subscription.
+[00:47:30] Tim Hildenbrandt: I find that Claude works better, and I'm using Codex kind of as a sanity check.
+[00:47:35] Tim Hildenbrandt: I'll just ask it a question every once in a while to see if Claude's thrown me astray.
+[00:47:41] Paul Miller: Okay.
+[00:47:41] Paul Miller: Well, that sounds good.
+[00:47:43] Paul Miller: Yeah, that's the right mix that most of us are using.
+[00:47:48] Paul Miller: Okay.
+[00:47:49] Patrick Chouinard: From a security perspective, though, I found that Astra is, let's say, a little bit less picky.
+[00:47:57] Patrick Chouinard: About what it's validating.
+[00:48:02] Patrick Chouinard: You can't ask it to develop hacks or anything, but in terms of security auditing, I find that it stops a lot less often than Fable does.
+[00:48:19] Tim Hildenbrandt: Okay.
+[00:48:20] Tim Hildenbrandt: Thanks.
+[00:48:21] Tim Hildenbrandt: I'll give that a shot.
+[00:48:23] Ryan C: I can't message you on school because you're not the right level.
+[00:48:26] Ryan C: You have to be level two to be able to chat, apparently.
+[00:48:29] Paul Miller: So maybe if you message Ryan C in the community.
+[00:48:37] Ryan C: I think I'm on there as One Stop Creative Agency.
+[00:48:40] Ryan C: No, I'm on as Ryan Cook.
+[00:48:41] Ryan C: Fine.
+[00:48:42] Tim Hildenbrandt: Yeah.
+[00:48:45] Tim Hildenbrandt: Yeah.
+[00:48:46] Tim Hildenbrandt: Thanks.
+[00:48:47] Paul Miller: Okay.
+[00:48:48] Paul Miller: No, thanks for that.
+[00:48:49] Paul Miller: Kris, how's it going?
+[00:48:55] Kris Larson: Oh, hi.
+[00:48:59] Kris Larson: So...
+[00:49:00] Kris Larson: Yeah, I joined the community like a few months ago and then I got distracted over the summer with a bunch of just outside stuff and felt really bad today, I'm reading a post on LinkedIn where they're talking about how people aren't sleeping because they're so productive with the vibe coding that it's like, and the quote that grabbed me, he goes, the opportunity cost of sleeping is too high, and it's like, dude, I've been sleeping for like three months.
+[00:49:41] Paul Miller: Yeah.
+[00:49:43] Kris Larson: So, yeah, I mean, so part of it is like, you know, I've been a developer for a really long, long time, and I'm just, you know, now getting into, you know, with AI and just trying to figure out on do.
+[00:49:59] Kris Larson: .
+[00:49:59] Kris Larson: .
+[00:49:59] Kris Larson: .
+[00:49:59] Kris Larson: .
+[00:49:59] Kris Larson: Thank
+[00:50:00] Kris Larson: You know, where I can fit in in this whole ecosystem, you know, there's people that are selling small businesses, there's people that are, you know, Fortune 500, there's people that, I mean, you know, there's just a million things to do, and so I'm just here to kind of, you know, get some ideas, maybe share some ideas if, you know, I was thinking too, like if there was anybody here that said, hey, you know, I'm, you know, I want to do a thing with AI, but, you know, I don't really have like a lot of software development shops to, to be able to really do it yet, and I would say, hey, you know, I, you know what, you know, if you want to like, you know, partner up and just, we can kind of, you know, we can kind of pair program the thing or whatever.
+[00:50:46] Daniel Zivkovic: Kris, is this a hobby, or you need to make money, like what they're trying to do?
+[00:50:49] Kris Larson: Um, okay, so, I'd like to make money, let's, let's put it that way, I, and, and, and what I'm struggling with, Dan,
+[00:51:00] Daniel Zivkovic: Daniel is where, you know, where is the best opportunity to fit in, and it's like, oh, it is, like I said, it's I mean, it's over-crowded, it's over-crowded, like, I'm like 38 years in this, and I'm lost, like, I keep running to stay at the same place, and at the top, so it's really crowded, so if you have a hobby, go for it, it's like addictive, like, testing whiskeys or vines.
+[00:51:29] Kris Larson: Daniel, you're not giving me any warm fuzzies here.
+[00:51:32] Daniel Zivkovic: There is nothing warm and fuzzy.
+[00:51:34] Kris Larson: I don't sleep.
+[00:51:35] Daniel Zivkovic: I wake up to go to washroom, and my brain is active, what should I do next?
+[00:51:40] Daniel Zivkovic: And there is no money, you just kind of keep producing products that you cannot sell.
+[00:51:44] Paul Miller: A slightly different view, Kris.
+[00:51:48] Paul Miller: I've got more people asking me to do stuff than I've got time to do it.
+[00:51:54] Paul Miller: I think if you, probably the question is, in terms of your
+[00:52:00] Paul Miller: Your business network community and the sort of areas of contacts you have, if you've got a parallel industry connection rather than the pure I can code connection, there are niche opportunities because kind of like what Daniel was saying, there are a lot of people that are getting into programming, know, vibe coding on steroids with this kind of stuff, experienced developers that know what you shouldn't be doing with this code that are there, but they are, it's how you're connected with the people that have the problem and the concern and can leverage those communities.
+[00:52:45] Paul Miller: Because I think each of us sit within different communities, but you know, that would be my perspective.
+[00:52:51] Paul Miller: I wouldn't be pessimistic about it, but you have to, it has to be based on a deep connection to a connection to that actually wants to.
+[00:53:00] Paul Miller: It's to spend the money because if you're going down the technical path, that's really not there.
+[00:53:06] Paul Miller: But Patrick, did you want to say something on that?
+[00:53:10] Patrick Chouinard: Yeah, actually, I would say I would take my inspiration on that front from Morgan.
+[00:53:16] Patrick Chouinard: Like, find a niche market that nobody does and go for it.
+[00:53:23] Patrick Chouinard: I mean, for example, he built an application for cemeteries.
+[00:53:27] Patrick Chouinard: If there's a market nobody thinks about doing AI for, that would be it.
+[00:53:32] Patrick Chouinard: But he's successful because he's the only one doing it.
+[00:53:36] Patrick Chouinard: So this is really where you have to find a market that nobody associated with AI.
+[00:53:42] Patrick Chouinard: Because today, if you're doing SEO, marketing, financial dashboard, forget about it.
+[00:53:47] Patrick Chouinard: There's 3 million people doing it.
+[00:53:49] Patrick Chouinard: and, and a lot.
+[00:53:52] Patrick Chouinard: that nobody touches then that's where the opportunity and the money is
+[00:54:00] Patrick Chouinard: And go from your own, like Paul was saying, go from your own knowledge, side knowledge outside of IT, like what do you know that you know you never talk about IT with, that's going to be where your opportunities are going to lie.
+[00:54:15] Ty Wells: Also, what I would add to that is if you, you have to look at the opportunity as something that was restrictive in the past.
+[00:54:30] Ty Wells: When, first, if you understand the technology of what it can deliver by building, right, and just, just thinking from that perspective, okay, what, and this is sort of like leading to the same thing with the cemetery, like you wouldn't think about it, but this is a thing.
+[00:54:49] Ty Wells: So what was restrictive before, and does the model, its knowledge, unlock that block?
+[00:55:01] Ty Wells: If you can put in your own experience, and that goes to what Paul's saying, know, things around your own experience which you're comfortable with, but during that time, I'm sure there were some blockers, like, I wish, and you got to think back, like, remember when I was working here and used to do this, and why did you do this?
+[00:55:18] Ty Wells: You question that.
+[00:55:19] Ty Wells: Okay, actually, there's a great solution to that.
+[00:55:22] Ty Wells: With AI now, you don't have to do that.
+[00:55:24] Ty Wells: I think I gave you guys this example a couple weeks ago, like all of our inventory items, they had these cryptic part names and numbers, right?
+[00:55:34] Ty Wells: And nobody would change the names.
+[00:55:36] Ty Wells: So I built a resolve layer that translates that into something that is manageable.
+[00:55:42] Ty Wells: So when it goes on a quote, it's clear what it is.
+[00:55:45] Ty Wells: The customer doesn't have to call back and say, what is part XY7326?
+[00:55:49] Ty Wells: You know, it may have some description, but it's a customer friendly facing description.
+[00:55:54] Ty Wells: Well, no one did it before because it was not cost effective to go and change these.
+[00:55:58] Ty Wells: You couldn't go back and change.
+[00:55:59] Ty Wells: All interred Nerdy's
+[00:56:00] Ty Wells: The name on a skew, that would be, you know, like crazy, who would do that?
+[00:56:04] Ty Wells: But now you can easily do that.
+[00:56:06] Ty Wells: So what I'm saying is I took that bad experience and actually feedback from customers, looking at the trend there of emails coming in saying, can somebody call me to explain what this quote is about, what this means, what that doesn't make any sense.
+[00:56:19] Ty Wells: So those types of connections releases the opportunities.
+[00:56:24] Ty Wells: Don't tell anyone, guys.
+[00:56:26] Paul Miller: Thanks, Ty.
+[00:56:27] Daniel Zivkovic: Tim, you had something and then we'll go to Daniel.
+[00:56:29] Daniel Zivkovic: Daniel.
+[00:56:30] Daniel Zivkovic: No, no.
+[00:56:31] Tim Hildenbrandt: I'm sorry.
+[00:56:33] Tim Hildenbrandt: Oh, the two Tims?
+[00:56:35] Tim Hildenbrandt: Sorry.
+[00:56:35] Tim Hildenbrandt: I was just going to say, I've, just from businesses I know, companies have a lot of user, like this company specific programs that they use internally, and most of them haven't been updated since the late 90s, and changing them isn't that hard, and I don't know what I'm doing.
+[00:56:57] Tim Hildenbrandt: So if, if you know some businesses.
+[00:57:00] Tim Hildenbrandt: Even factories or small franchises, they've got tons of outdated software that they're paying someone to just translate into modern functionality while they're still trying to use them.
+[00:57:14] Daniel Zivkovic: Exactly.
+[00:57:18] Kris Larson: You know, there's some guy that I'm following on X, can't remember, this name's not coming to me, but Chris Koerner interviewed him and, you know, he's one of these, oh, Brandon Godosi, that's who it is, Brandon Godosi.
+[00:57:37] Kris Larson: So he's like, oh, yeah, you know, I was kind of, you know, I pivoted to AI and within five months I was making 80K a month.
+[00:57:48] Kris Larson: And it's just like, all right, I mean, see, this must go to the deep network that you're talking about.
+[00:57:55] Kris Larson: Because, you know, quite honestly, I don't really have that.
+[00:57:59] Kris Larson: I don't really have
+[00:58:00] Kris Larson: And a lot of, you know, like, industry connections are mostly, you know, all the IT industry connections, so it's like, you know, and this guy, this guy, he just says, well, you just, you go find some, go find somebody that has a problem.
+[00:58:22] Kris Larson: You it's, it's the, like, like the kind of stuff just gets so, so oversimplified.
+[00:58:30] Kris Larson: And it's like, you know, there, there has to be, I'm, I don't know, I'm, I'm, I'm trying to navigate through this.
+[00:58:40] Daniel Zivkovic: You are really observing the problem that exists.
+[00:58:44] Daniel Zivkovic: What I'm noticing, because like, I've been in this business for a long time, 38 years ago, we were like, saving the companies, we were like Pathfinder, and then it became bureaucratic, specialized niche.
+[00:58:57] Daniel Zivkovic: Now, it's getting polarized again, if you want.
+[00:59:00] Daniel Zivkovic: If introvert liking your CICDs, coding, your job's gone.
+[00:59:04] Daniel Zivkovic: So you have to have another passion, understanding of business to be able to map their needs into IT.
+[00:59:10] Daniel Zivkovic: So whoever had the extra hobby anywhere, like with mine for real estate or marketing, it's good now, I'll survive.
+[00:59:17] Daniel Zivkovic: But if the only thing you liked is coding, that's gone, goodbye to that.
+[00:59:20] Daniel Zivkovic: But we would need more people like Paul with connections that they can start building referrals, maybe recruiting agencies, passing like, I don't mind paying commission, that's why I'm after big guys.
+[00:59:31] Daniel Zivkovic: Like if Accenture makes hundreds of dollars, half of that is still hundreds of dollars.
+[00:59:35] Daniel Zivkovic: So it doesn't have to be product-based, it can be service-based.
+[00:59:40] Daniel Zivkovic: If you like it, you're like a tailor, enjoying customers in the store, fitting the suits for them.
+[00:59:45] Daniel Zivkovic: So I think I'm finding that I have to learn to sell, which is hard at this age.
+[00:59:51] Daniel Zivkovic: So we are all becoming salespeople, or we are looking for good salespeople to sell us and pay their commission.
+[00:59:58] Kris Larson: Yes.
+[01:00:00] Paul Miller: Ryan, anything you can add to Kris?
+[01:00:04] Ryan C: I think you've also just got to be a little bit careful of the kind of Instagrammification of these people going on podcasts and going, ah, they did this, this, and this, they make a million pound a month.
+[01:00:16] Ryan C: There's a lot more to it than that.
+[01:00:18] Ryan C: Sometimes it's complete  as well.
+[01:00:21] Ryan C: You look on Instagram, you see all the good bits of somebody's life, but you don't actually see they're going through a divorce, their kids hate them, and their partner's cheating on them with 15 different people.
+[01:00:28] Ryan C: You know, they don't, they don't, they leave all that other stuff out because it doesn't look great to the public, you know, so I wouldn't get too demoralized by people going on podcasts and talking a load of nonsense in half the case, and sometimes showing off, you know, and sometimes people get lucky, and other times people have vast networks, and loads of people they can tap straight into, um, you've got to build those networks over time, especially if you're pivoting from something else.
+[01:00:53] Kris Larson: That's, that's what I figured was the case with this one guy.
+[01:00:55] Kris Larson: He just, he seemed like he'd been around, like, you know, this, is.
+[01:00:59] Kris Larson: huge, huge.
+[01:00:59] Kris Larson: Thank you.
+[01:01:00] Kris Larson: Like, you know, he'd be in fractional, CX, you know, whatever you want to call it.
+[01:01:05] Kris Larson: So I think he already had a lot of people that, you know, it was businesses that are big enough where they're like, you know, our investors are asking us, what are we doing with AI?
+[01:01:17] Kris Larson: We need to do something with AI just so we can tell our investors we're doing something with AI.
+[01:01:23] Kris Larson: I mean, so here's what I can say about myself.
+[01:01:30] Kris Larson: I spent a good deal of my career doing, like, contract work, what they, what they euphemistically call consulting, and the biggest thing I took away from that, because I, I worked in a lot of different verticals, so the biggest thing I took away from that is just, you, you, you know, business is still business, you, somebody provides some value and the other person gives them some money, and, and it's like, you know, looking at the business and seeing how,
+[01:02:00] Kris Larson: And that works, I mean, so that's something that I'm, you know, like I'm familiar with, in other words, coming into a situation and saying, okay, you know, how does a business work?
+[01:02:15] Kris Larson: Understanding it all, and then what I want somebody to tell me is that, yeah, they have this business, and I have this problem that's costing me $10,000 a month, so I'm going to pay somebody pretty nicely who can figure out how to fix it.
+[01:02:30] Paul Miller: Have you, Kris, one of the things that we've had on the call previously with similar people looking for work, especially in the physical area that they might be, have you ever thought about being part of a business association or your local chamber of commerce and go along to like a morning drink, morning coffee session, or a barbecue, or whatever they've got going?
+[01:02:58] Kris Larson: Um, yes.
+[01:02:59] Kris Larson: And, and.
+[01:03:00] Kris Larson: You know, that is like an excellent suggestion.
+[01:03:02] Kris Larson: I went to, you know, so the things that are like easier to get access to would be like these smaller, like say the towns, you know, like a smaller community.
+[01:03:15] Kris Larson: I live in Rochester, New York, which is, it's an upstate community.
+[01:03:19] Kris Larson: It's on Lake America.
+[01:03:24] Kris Larson: Um, so, uh, you know, there, there is a Rochester Chamber of Commerce and, and, and there's certainly something I could go into, but it's like now that's harder to get access to.
+[01:03:37] Kris Larson: They cost more money.
+[01:03:38] Kris Larson: Um, there's, and I've, I found there's already somebody in there essentially trying to do what, uh, you know, what I'm doing.
+[01:03:47] Kris Larson: So, uh, yeah, uh, so yeah, just trying to correct the code here.
+[01:03:53] Paul Miller: Yeah.
+[01:03:54] Paul Miller: Yeah.
+[01:03:55] Paul Miller: Well, look, I think you need to get out there.
+[01:03:58] Paul Miller: Um, Pat, Patrick, in.
+[01:04:00] Paul Miller: Any thoughts from your side?
+[01:04:01] Patrick Chouinard: Yep, just again, it sounds probably really simple, but that's where a lot of my ideas are coming from.
+[01:04:10] Patrick Chouinard: Now, a lot of people will tell you in the chat that I have a lot of ideas.
+[01:04:15] Patrick Chouinard: Well, that's not a miracle.
+[01:04:19] Patrick Chouinard: It's I chat with ChatGPT every single day verbally.
+[01:04:25] Patrick Chouinard: And not about, oh, here I have an idea, let's talk about it.
+[01:04:29] Patrick Chouinard: No, I just chat with ChatGPT.
+[01:04:32] Patrick Chouinard: And sometimes it's just, I have, I experienced this today and it's frustrating or, and the more context I give it now, sometimes it will just surface, well, that reminds me about this project we worked on together.
+[01:04:47] Patrick Chouinard: Maybe if we use that project in order to solve that issue, we wouldn't be so much of a problem.
+[01:04:52] Patrick Chouinard: it's surface a ton of ideas because I just tell it everything I live through.
+[01:04:59] Kris Larson: it's true.
+[01:04:59] Kris Larson: I
+[01:05:01] Patrick Chouinard: Exactly.
+[01:05:02] Patrick Chouinard: It finds like out of the frustration and the stuff that don't work well, that I don't even think sometimes of solving with AI, it surfaces at, hey, that could be solved with AI.
+[01:05:15] Kris Larson: Right.
+[01:05:16] Patrick Chouinard: That's where you find the idea that nobody thought about because it is not the run-of-the-mill SaaS suggestion.
+[01:05:25] Kris Larson: Okay.
+[01:05:26] Kris Larson: Yeah, I mean...
+[01:05:27] Paul Miller: I'm sure you've had a few previous projects, Kris, that you were involved with in your development day, that you look back and you say, gosh, if I'd had the access to the AI development stack that I've got now, how would you redo that app better?
+[01:05:44] Kris Larson: Yeah.
+[01:05:45] Kris Larson: It just, it's like, you know, even for the AI though, the businesses themselves have really changed substantially.
+[01:05:56] Kris Larson: That's It's the, you know, the core of it is like...
+[01:05:59] Kris Larson: the
+[01:06:00] Kris Larson: The core of it is pretty much the same.
+[01:06:02] Kris Larson: So I guess where I really consider I have a strength is going in and understanding.
+[01:06:06] Kris Larson: If somebody, you know, if a business person comes to me and says, you know, hey, I'm struggling with X, Y, Z, it's like I feel like where my strength is, is coming in and understanding their business and then seeing where, you know, where you apply the leverage to fix that.
+[01:06:28] Daniel Zivkovic: Yes, that's exactly why I published the article, Forward Deploying Engineering, because I want to come across as educator, all these companies are struggling to, to build up departments of FDs, they advertise that right now, they don't hire you and me to do that actually.
+[01:06:43] Kris Larson: Yeah, and I think that's another part of it is, you always have to work on your personal brand, too.
+[01:06:48] Kris Larson: And that's something that I'm, you know, again, in the process of getting that ramped up, but a lot of people talk about that, you know, the personal branding is like you are putting yourself out.
+[01:07:00] Kris Larson: He's there as an expert, and again, on LinkedIn, there was one guy, he said that he had more, from the personal brain, he had more inbound, like his leads, like he had more inbound leads than he had, like the outbound, you know, like sending emails and stuff.
+[01:07:21] Daniel Zivkovic: He actually had inbound leads just coming takes lots of effort.
+[01:07:24] Daniel Zivkovic: That's not easy.
+[01:07:25] Daniel Zivkovic: Absolutely.
+[01:07:26] Daniel Zivkovic: I ran serverless Toronto community almost nine years, like not too many videos, once a month, so like, all I got was easier job interview, nothing else, because people say, you know, he knows what he's doing, so they don't question me because it's publicly shown, but there is no money, like it's not easy, it's hamster wheel, and why these people are doing that, like advertising and bragging, because they get involved leads, and I heard in another paid community, even the people who have 80,000 followers, 100,000 this summer, this quality of inbound leads dropped out, so it's getting.
+[01:08:00] Daniel Zivkovic: Really, really saturated.
+[01:08:01] Daniel Zivkovic: So I want to find people who have the need and work with them or for them, like Paul.
+[01:08:07] Daniel Zivkovic: So you're welcome to pass extra overflow business you cannot service.
+[01:08:14] Kris Larson: Yeah.
+[01:08:16] Paul Miller: Brilliant.
+[01:08:16] Paul Miller: Well, thanks, Kris, and keep posting on there.
+[01:08:20] Paul Miller: I think it would be good for some of the established members of the community maybe to share back some of those war stories we've had before where people have gone down that path.
+[01:08:31] Paul Miller: One of the things that I've found quite useful for refreshing my lead funnel is getting, I'm enjoying using the GrokBot.
+[01:08:43] Paul Miller: It's got a fabulous connector into LinkedIn that doesn't get blocked by LinkedIn and assign a couple of GrokBot tasks to look at what's the top five things that are discussed.
+[01:09:00] Paul Miller: Just in the big, in small to medium-sized businesses around, I wish I could talk to someone about doing something, get that to coincide with your skill set and your location, and then shortlist, say, okay, here's five areas, I'm going to build some basic projects that solves that, and then I'm going to put it on my website and have a couple of YouTube videos.
+[01:09:27] Paul Miller: So you start with credibility that's about you, and it's topical by the people that are in your LinkedIn network.
+[01:09:36] Kris Larson: Yeah.
+[01:09:38] Kris Larson: Great stuff.
+[01:09:39] Paul Miller: Okay.
+[01:09:40] Paul Miller: Well, there's some homework.
+[01:09:41] Paul Miller: But yes, stick questions up on the forum.
+[01:09:45] Paul Miller: We've all been there.
+[01:09:46] Paul Miller: I certainly didn't have the leads when I started.
+[01:09:50] Paul Miller: I'm in this strange situation now.
+[01:09:52] Paul Miller: I've got some good, high-paying clients.
+[01:09:55] Paul Miller: Everyone wants to talk to you about this kind of stuff, and you want the ones that pay the bills.
+[01:09:59] Paul Miller: and all of them,
+[01:10:00] Paul Miller: That's probably the other thing, and so everyone wants to grab your time.
+[01:10:04] Paul Miller: I've got one very large drinks company with a red colour, very similar to what our maple leaf person has.
+[01:10:14] Paul Miller: Every time they see me, they want to extract free knowledge out of me.
+[01:10:19] Kris Larson: Show me the money.
+[01:10:21] Paul Miller: Yeah, show me the money.
+[01:10:23] Paul Miller: So, yep, that's where things are at.
+[01:10:26] Paul Miller: Thanks for the question, Kris.
+[01:10:29] Kris Larson: Yeah, and thanks for everybody's comments.
+[01:10:31] Kris Larson: I really do appreciate that.
+[01:10:34] Paul Miller: You're welcome.
+[01:10:36] Paul Miller: Shakur, what's the latest for you?
+[01:10:38] Paul Miller: Are you still there?
+[01:10:41] Paul Miller: There you are.
+[01:10:42] Shakur: Yep, still here.
+[01:10:44] Shakur: Still here, hiding in the background.
+[01:10:48] Shakur: So, latest for me is, I've pretty much given up on the AI running the Uh..
+[01:11:00] Shakur: Make money on the side without me touching or doing anything, it's just maybe my plan wasn't as clear, I thought it was clear, go and make money on the side without me doing anything, but it keeps asking me to do stuff, so I gave up on that one, started really focusing on how I can improve my workflow further, decided I finally do need some form of visualization or something, maybe I should use a CRM or something to manage all my outreach and contacts, I don't know, I'm still not sold on the agentic OS being useful for me, so, but maybe, you know, if I had Patrick's super polished one, I'd be ready to go and head off with it.
+[01:12:00] Shakur: So that's all about on my end is just, you know, seeing how I can optimize my outreach and what else?
+[01:12:12] Shakur: I did some more work on my get past CAPTCHA skill that kind of automatically goes, but I haven't been able to solve the Cloudflare one yet to the point where when I tried to do it, even manually, Cloudflare is now flagging me.
+[01:12:30] Shakur: So I had to go to a different browser.
+[01:12:38] Shakur: Yeah.
+[01:12:39] Shakur: So that's, that's my, nothing, nothing too exciting on my end, but you know, if, if Paul wants to send some of his high paying customers, uh, me and Kris's way and Daniel too, we're, yeah, Juan too.
+[01:12:58] Shakur: He has this cup out also.
+[01:13:02] Daniel Zivkovic: 30% cut.
+[01:13:06] Shakur: Paul, I'm not greedy.
+[01:13:07] Shakur: I'll take 30.
+[01:13:09] Shakur: I'll take 30.
+[01:13:10] Shakur: You can have 70.
+[01:13:18] Patrick Chouinard: Are you still with us, Paul?
+[01:13:23] Shakur: He ran off to protect his clients.
+[01:13:30] Juan Torres: You guys were too thirsty.
+[01:13:36] Patrick Chouinard: Okay, so I'll take over while Paul is coming back with his client safe.
+[01:13:46] Patrick Chouinard: Juan, I think you didn't get a chance to go yet.
+[01:13:51] Patrick Chouinard: So, have you invented or published a new platform for picture automation in all new venues?
+[01:14:00] Patrick Chouinard: Do have throughout North America yet?
+[01:14:02] Juan Torres: I wish.
+[01:14:05] Juan Torres: I mean, at least Napoleon Bonaparte had competent marshals under him.
+[01:14:09] Juan Torres: But no, I haven't had that because I'm doing everything.
+[01:14:17] Juan Torres: I guess one of the non-technical aspects that I wanted to go over, I was talking to Claude on Friday.
+[01:14:28] Juan Torres: One of the things that I started to really look into was offer the service for free for middle class, petty bourgeois, and maybe bourgeois country club places.
+[01:14:50] Juan Torres: Just so they can see the service, the app in the field, because it seems to sell by itself.
+[01:14:59] Juan Torres: know, thing, you but Do I think
+[01:15:00] Juan Torres: When people actually see it in the field, and so what I'm going to be doing soon is I'm going to try to carry an outreach strategy infiltrating, I was going to say infiltrating, but just going to events of venue planners and start an email campaign and slash visiting the places after the email campaign, right, to actually try to talk to the operations managers the event coordinators of this middle class petty bourgeois venues and country clubs and just try to make an offer that they can't deny of just having the service for free so they can see it and create content and from the content share that content so they can share it with their stakeholders and that share they're very,
+[01:16:03] Juan Torres: So that way I solve rich people's problems and, you know, get some degree of accessibility, get my food on the door.
+[01:16:17] Juan Torres: You know, there's the question of whether I should have printing capabilities, because right now everything is digital before I try to do so, or just go with the digital capabilities that I have right now.
+[01:16:29] Juan Torres: So that's a good question to have.
+[01:16:32] Juan Torres: And I guess that's a more strategic question, business strategy, right?
+[01:16:37] Juan Torres: Because right now the application is not productionalized per se.
+[01:16:42] Juan Torres: It's an EC2 instance that hasn't been transferring to an out-of-scale group with an out-of-low balancer.
+[01:16:52] Juan Torres: That's something I have to do.
+[01:16:54] Juan Torres: And then if I add the printing capabilities, of course, basically I control.
+[01:16:59] Juan Torres: Do.
+[01:17:00] Juan Torres: I have a really sharp edge in the sense that it's not only digital, but it has the capabilities of printing, which is something that one of the venue coordinators told me last time is that it will be good to have printing capabilities, which I don't think it's hard to really materialize, but I'm going to plan my strategy for outreach, create a list, and start trying to offer, make the offer that they they can't deny, essentially.
+[01:17:37] Juan Torres: So I think that's what I'm going to be doing.
+[01:17:41] Patrick Chouinard: Actually, Juan, I had an idea for your project.
+[01:17:46] Patrick Chouinard: Have you thought, think about talking with the venues to see if you could plug in your system directly into their social media feed before the event whenever you're there?
+[01:18:00] Patrick Chouinard: So all of the pictures that get generated could be either fed directly or moderated by one of their employees, but basically feed what you generate straight into their social media to help their brand, but also powered by your system.
+[01:18:22] Juan Torres: And you mean direct link to their social media funnel in which sense?
+[01:18:31] Juan Torres: Like it gets uploaded?
+[01:18:33] Patrick Chouinard: The venue probably has an Instagram account or Facebook or whatever type of social media and whenever you're at a venue for an event, during the event you could feed into their social media account directly.
+[01:18:52] Patrick Chouinard: Just so that social media is showing the picture of the event generated by your system live during the event.
+[01:19:00] Juan Torres: Yeah, that is a great idea.
+[01:19:02] Juan Torres: That will probably be a step once I gain the trust, because I don't think they're going to give me access to their social media accounts just yet.
+[01:19:11] Juan Torres: But it's a great segue into, because I already have an email capability, so I just add not only the people that pay for the venue, but also I add the planner or social media person for that event, so they can receive all the images, all the transform images.
+[01:19:33] Juan Torres: And aside from the fact that I'm creating the social media myself, you know, I basically share my edits, so they can basically use whatever they see most fit for their social media campaign.
+[01:19:43] Juan Torres: But yeah, that's a good idea.
+[01:19:48] Patrick Chouinard: More visibility, more money.
+[01:19:50] Juan Torres: Yeah.
+[01:19:51] Juan Torres: Yeah.
+[01:19:54] Juan Torres: So yeah, that's what I'm planning to do.
+[01:20:00] Juan Torres: So we'll see.
+[01:20:01] Juan Torres: I'll probably use one of my computers right here to just create a list, small database with a small list of potential people that I can reach out to.
+[01:20:16] Juan Torres: But we'll see how that goes.
+[01:20:19] Patrick Chouinard: Awesome.
+[01:20:21] Patrick Chouinard: Thank you, Juan.
+[01:20:24] Patrick Chouinard: Ryan, did you want to share something with us this week?
+[01:20:30] Ryan C: I haven't really got anything world-breaking that I can share.
+[01:20:36] Ryan C: I've got a few things that I'm set in the midst of setting up, but I'm not allowed to share them for various reasons, annoyingly.
+[01:20:44] Ryan C: So, and then the rest of it's all just been sort of maintenance.
+[01:20:47] Ryan C: I launched an estate agent's website that links directly into their CRM.
+[01:20:52] Ryan C: That's a bunch of stuff, both push and pull.
+[01:20:57] Ryan C: But it's quite nice.
+[01:20:59] Ryan C: It's been quite well.
+[01:20:59] Ryan C: It's
+[01:21:00] Ryan C: Got it ranking on quite a couple of competitive keywords in my local area on day two above estate agents that have been established for nearly 100 years in some cases, which is quite good.
+[01:21:17] Ryan C: Outside of that, no, nothing massive.
+[01:21:19] Ryan C: I keep seeing people doing this computer use with the new ChatGPT model, and I'm sitting here editing a video as we speak, thinking, I really should install that and see whether it can do this for me, because that would, one, save me a load of money on editors, and two, save me a load of time when I have to bother editing things to not have to bother doing this.
+[01:21:41] Ryan C: So, yeah, I'm going to give that a go, I think, because I've people claim to put things together, but it's edited, and I'm looking and going, that's not that bad.
+[01:21:50] Ryan C: I could pass that on some of the things I'm having to edit.
+[01:21:54] Ryan C: Not as simple as stuff, so, yeah.
+[01:21:57] Ryan C: I'm going give that a go.
+[01:21:58] Ryan C: If anybody has had a go at that, let me know.
+[01:22:00] Patrick Chouinard: I'd be very curious to see if it's really more economical, though, to have Astra editing your video, depending on the quality of editor you have.
+[01:22:11] Ryan C: Oh, yeah, I have an incredibly good editor, but I'm thinking more for just, like, basic stuff because I do the occasional one where I, like, cut up podcasts and stuff like that.
+[01:22:19] Ryan C: That's easy.
+[01:22:20] Ryan C: just, you know, depending on the person who's talking, that kind of stuff it should be able to do.
+[01:22:25] Ryan C: But then I want to, I'm going to test it and see if it can do the advanced edits, because I've seen some people do some stuff in After Effects with it, supposedly, that it was quite good, but we'll see.
+[01:22:36] Patrick Chouinard: Because what I found it to be really good at is figuring out how to do something.
+[01:22:41] Patrick Chouinard: Like, not necessarily, like, here's a process that is fully established, go do it for me.
+[01:22:48] Patrick Chouinard: It will, but I find it's, you're paying a whole lot to do something that is almost deterministic, but when you don't know how to do something, and you
+[01:23:00] Patrick Chouinard: You launch it at it and figure out what needs to be done.
+[01:23:04] Patrick Chouinard: Like the example I gave you earlier on, like figure out which form I need to fill for this tax thing that I need to take care of.
+[01:23:14] Patrick Chouinard: mean, going through an entire government website and figure out the exact thing that needs to be filled in order for something to happen without any prior knowledge of how it's done, that's what I find it's actually amazing at doing.
+[01:23:29] Patrick Chouinard: Because I don't know what to tell it, I just tell it like, the result is this, the base problem is that, and figure out how I go from the problem to the solution, that it's pretty insane.
+[01:23:44] Ryan C: Yeah, I'm going to give it a go, see what it does.
+[01:23:48] Ryan C: I'm always reticent to give Sam Altman money, but he keeps coming out with quite cool products, so I have to do a little bit of that.
+[01:23:54] Ryan C: And I'm already giving him a little bit, obviously, to power my Hermes agency.
+[01:23:58] Patrick Chouinard: It's all right.
+[01:23:59] Patrick Chouinard: Down.
+[01:24:02] Ryan C: What's £80 more, I guess?
+[01:24:04] Patrick Chouinard: Yeah.
+[01:24:05] Patrick Chouinard: Oh, and by the way, Astra low effort is absolutely insane to power Hermes.
+[01:24:15] Patrick Chouinard: And it's not too broadly expensive.
+[01:24:18] Patrick Chouinard: Like, obviously, if you put it in high, like, half a minute, then you're done, but...
+[01:24:23] Ryan C: Can I keep it on the $20 plan, or I'm going to need to go up to the $100 plan if move it to Astra?
+[01:24:30] Patrick Chouinard: No, if you touch Astra, yes, it's going to have to be the $100 plan for sure.
+[01:24:34] Ryan C: I'm currently getting away doing the $20, and I'm not going to get to do a huge amount at the moment, but it is ticking away.
+[01:24:41] Ryan C: We've added phone capability to it now, and I had to call my dad the other day, and he was like, what the hell's going on?
+[01:24:49] Patrick Chouinard: It's quite convincing.
+[01:24:52] Patrick Chouinard: Honestly, what I figured out is that for the day-to-day interaction with Hermes, 5.6...
+[01:25:00] Patrick Chouinard: So Luna, absolutely marvelous, very cheap, but that's my operator, like the dispatcher basically, and whenever I require more intelligence for a task, Luna is going to be the one deciding, you know what, this I'm going to give to a coding profile or designing an architect profile, whatever additional Hermes profile I have, that then will leverage an astral level intelligence.
+[01:25:30] Patrick Chouinard: for that specific task, but it will do it without the entire context of my Hermes agent.
+[01:25:36] Patrick Chouinard: So the default agent that knows me, that has all of the base memory, plus all of the on-show memory, plus like everything that has a huge context basically, that runs on Luna.
+[01:25:49] Patrick Chouinard: But whenever it has a specific task, when I can trim the context to the bare minimum, then I'm going to give it an astral low, for example.
+[01:25:58] Patrick Chouinard: example, the actual, doesn't absolutely
+[01:26:02] Ryan C: Makes sense.
+[01:26:03] Ryan C: Also, appreciate the t-shirt.
+[01:26:07] Ryan C: As an Englishman whose second language is sarcasm, very much appreciate that.
+[01:26:13] Patrick Chouinard: Yeah.
+[01:26:18] Ryan C: That's it.
+[01:26:18] Ryan C: We'll have some cool stuff for sure at some point, but the rest of it has just been maintenance and just tinkering with all the bits and bobs that folks have already seen in here.
+[01:26:26] Ryan C: So don't bore everybody with just the tweaks and refinements and a few redesigns on some bits.
+[01:26:34] Ryan C: Yeah.
+[01:26:35] Ryan C: Apart from that, nothing major.
+[01:26:38] Patrick Chouinard: Okay.
+[01:26:39] Patrick Chouinard: If I can maybe...
+[01:26:41] Patrick Chouinard: Actually, I'm going to post another YouTube video in the chat.
+[01:26:46] Patrick Chouinard: This is Nate B.
+[01:26:49] Patrick Chouinard: Jones' latest video on Astra.
+[01:26:51] Patrick Chouinard: Go take a look.
+[01:26:52] Patrick Chouinard: Very, very interesting.
+[01:26:54] Patrick Chouinard: And the way he prompts Astra is extremely interesting.
+[01:26:58] Patrick Chouinard: His concept...
+[01:26:59] Ryan C: I think I see...
+[01:27:00] Ryan C: some clips of this on doing circulation on Twitter, but yes, I'll give it a full watch.
+[01:27:04] Patrick Chouinard: Yeah, the concept of recipe card that he came up with, extremely interesting, and that's how I actually got the idea for doing the tax research using Astra.
+[01:27:18] Patrick Chouinard: So, highly recommended.
+[01:27:21] Ryan C: Awesome.
+[01:27:22] Ryan C: Thank you.
+[01:27:25] Patrick Chouinard: Good.
+[01:27:28] Patrick Chouinard: Anything else from anyone?
+[01:27:31] Patrick Chouinard: Any questions, comments?
+[01:27:34] Patrick Chouinard: Anything that I brought up?
+[01:27:36] Patrick Chouinard: Okay.
+[01:27:38] Patrick Chouinard: Before I let you go, guys, again, coming back to Kris's comment earlier, another way to have an idea, as you know, I use a Fieldy AI note taker.
+[01:27:51] Patrick Chouinard: So, it's basically a note taker that records me all the time, all day long, and it doesn't record the audio, it just tracks the trends.
+[01:27:59] Patrick Chouinard: that's, and a
+[01:28:00] Patrick Chouinard: But analyzing that is also an insanely powerful way to figure out new AI solution that you need to build because this is listening to your entire day and at the end of the day you can create, I actually have a job running every day on Hermes, like go and look at my Fieldy transcript and extract any idea that would be useful to work on based on everything you already know about.
+[01:28:30] Patrick Chouinard: about me and all about my projects and what I like, like you know me, so based on what you know about me and what you've heard today, just surface the new solution I can work on.
+[01:28:44] Patrick Chouinard: A lot of what I show you guys every week comes from idea that Hermes came up based on my Fieldy recording.
+[01:28:52] Daniel Zivkovic: What is Fieldy device or what is Fieldy?
+[01:28:55] Patrick Chouinard: Yeah, it's just a little device, it's a recorder, I don't have it on it's post-delete.
+[01:29:00] Patrick Chouinard: Yeah.
+[01:29:01] Ty Wells: It's like this, Daniel.
+[01:29:04] Daniel Zivkovic: Just a little device.
+[01:29:05] Daniel Zivkovic: How do you spell it?
+[01:29:06] Daniel Zivkovic: Like, I need something.
+[01:29:07] Ty Wells: I normally take notes on the phone or chat GPT without answering.
+[01:29:12] Ty Wells: I have, I use OMI, O-M-I.
+[01:29:16] Ty Wells: That's one.
+[01:29:19] Ty Wells: Limitless is about to expire here on the 25th.
+[01:29:23] Ty Wells: But, so I won't give you that one.
+[01:29:25] Ty Wells: And fieldy is F-E-L-D-Y, I think, right?
+[01:29:28] Patrick Chouinard: .AI?
+[01:29:29] Patrick Chouinard: Yep.
+[01:29:31] Patrick Chouinard: Well, I'm not sure.
+[01:29:32] Daniel Zivkovic: There will be girlfriends and wives who are going to appreciate you carrying those.
+[01:29:36] Daniel Zivkovic: They can follow you.
+[01:29:40] Ty Wells: Hey, you can also respond.
+[01:29:43] Ty Wells: I'm going to check the records.
+[01:29:46] Patrick Chouinard: Actually.
+[01:29:46] Ty Wells: I've used that before.
+[01:29:49] Patrick Chouinard: The funny thing is I don't normally use the AI functionality.
+[01:29:56] Patrick Chouinard: I use it more as a pure note-taker.
+[01:29:59] Patrick Chouinard: .
+[01:30:00] Patrick Chouinard: And I let Hermes sift through all of the material.
+[01:30:04] Patrick Chouinard: But you don't know how many times in the day I had a discussion that's like, oh, crap, what did I do exactly?
+[01:30:11] Patrick Chouinard: It's like, Hermes, go connect to MyFieldly because there's a WebSocket.
+[01:30:16] Patrick Chouinard: So you can have an agent connect.
+[01:30:19] Daniel Zivkovic: Is it like voice notes?
+[01:30:21] Daniel Zivkovic: Like you talk to it and just?
+[01:30:22] Patrick Chouinard: No, it's a pendant.
+[01:30:23] Daniel Zivkovic: What is it?
+[01:30:24] Patrick Chouinard: It's a pendant.
+[01:30:25] Patrick Chouinard: So I have it as a necklace, and it just records continuously.
+[01:30:28] Daniel Zivkovic: Nobody knows you're recording them.
+[01:30:31] Patrick Chouinard: Oh, yeah, they know.
+[01:30:32] Patrick Chouinard: They know, they know, they know.
+[01:30:32] Patrick Chouinard: Yeah.
+[01:30:33] Patrick Chouinard: It looks a little bit like that.
+[01:30:35] Daniel Zivkovic: Whoa.
+[01:30:36] Daniel Zivkovic: You are fully armed.
+[01:30:39] Patrick Chouinard: It's, and honestly, I find it's not too expensive.
+[01:30:43] Patrick Chouinard: I mean, it's, well, I think 150 bucks a year for unlimited reporting or something.
+[01:30:51] Patrick Chouinard: So, and like I said, I will ask Hermes during the day, like, oh, I've talked about X in my last meeting 10 minutes ago.
+[01:30:59] Patrick Chouinard: Can you go?
+[01:30:59] Patrick Chouinard: go?
+[01:31:00] Patrick Chouinard: And send me the summary by email.
+[01:31:03] Ty Wells: I do that all the time.
+[01:31:05] Ty Wells: Like, I mean, I don't even care if I remember or if I don't remember because I know there's one route to remember.
+[01:31:12] Patrick Chouinard: Yep.
+[01:31:13] Ty Wells: Just ask, right?
+[01:31:14] Ty Wells: What was it?
+[01:31:15] Ty Wells: So, yeah, I do all day long.
+[01:31:17] Ty Wells: I'm like, what did we talk about?
+[01:31:19] Ty Wells: Where we're at?
+[01:31:20] Ty Wells: Where did we leave off?
+[01:31:22] Ty Wells: But so that's the part.
+[01:31:24] Ty Wells: My proper core.
+[01:31:25] Ty Wells: I send other signals too.
+[01:31:27] Ty Wells: So, obviously, you have that tied in Hermes.
+[01:31:30] Ty Wells: My emails, my screen records my Chrome sessions because I've built an add-on for that extension.
+[01:31:40] Ty Wells: So, it pushes all that together.
+[01:31:41] Ty Wells: So, when it's looking at it, has to have the right context.
+[01:31:44] Ty Wells: Otherwise, it can't advise me appropriately.
+[01:31:46] Ty Wells: So, if I cut a piece out or don't, then it's useless.
+[01:31:50] Ty Wells: Just the recording for me, I have to add the other things.
+[01:31:53] Ty Wells: What am I looking at?
+[01:31:54] Ty Wells: What am I ingest my TikTok feed?
+[01:31:57] Ty Wells: I mean, this is what I'm looking at.
+[01:31:59] Daniel Zivkovic: So, where do I go from in tell Blaborer
+[01:32:00] Ty Wells: Every feed I have coming in, I ingest, and then I use that to synthesize the next plate.
+[01:32:08] Daniel Zivkovic: Does it know when it's you talking or somebody else, like speaker two, speaker three?
+[01:32:12] Daniel Zivkovic: Because theorization is always the biggest problem.
+[01:32:15] Daniel Zivkovic: That's where I waste time transcribing calls who said what, not me, somebody else.
+[01:32:21] Patrick Chouinard: After a while, for me at least, it's not necessarily gonna detect every speaker, but it's gonna differentiate when I talk, when someone else talk, and when it's media I consume.
+[01:32:32] Patrick Chouinard: So if I listen to a YouTube video, it knows like, oh, this is the media consumption.
+[01:32:37] Patrick Chouinard: This is Patrick listening to YouTube.
+[01:32:39] Ty Wells: Right.
+[01:32:40] Daniel Zivkovic: Wow.
+[01:32:41] Daniel Zivkovic: Thank you.
+[01:32:42] Daniel Zivkovic: It was worth visiting it tonight.
+[01:32:45] Ty Wells: Yeah, I also add cues too.
+[01:32:47] Ty Wells: Like I would say, oh, this is a great video on YouTube.
+[01:32:50] Ty Wells: I never, I haven't seen this before.
+[01:32:52] Ty Wells: Or yeah, that's a funny TikTok video.
+[01:32:54] Ty Wells: I add cues in there just to help it out along the way, because then I'm sort of tagging.
+[01:32:59] Ty Wells: us.
+[01:32:59] Ty Wells: tell you, invite
+[01:33:00] Ty Wells: If you will, because it's in context now, that was a YouTube video, that was in a speaker, I was in on a call, those type things.
+[01:33:08] Ty Wells: So that helps in the process.
+[01:33:10] Ty Wells: And what you're doing, like, hey, I'm driving to work or okay, well, that means anything that comes there, he's obviously not working.
+[01:33:17] Ty Wells: He's not, you know, dictating or whatever.
+[01:33:19] Ty Wells: So I add context clues and it adds great value.
+[01:33:25] Patrick Chouinard: Exactly.
+[01:33:27] Daniel Zivkovic: And which system do you recommend?
+[01:33:28] Daniel Zivkovic: Because you try multiple.
+[01:33:29] Patrick Chouinard: If I had to choose one, which one would it be?
+[01:33:32] Patrick Chouinard: Well, personally, I've tried Plod and I tried Fieldy and right now Fieldy is the one I prefer because it's ambient recording.
+[01:33:40] Patrick Chouinard: I've seen the granola, the pocket, all of those, but you have to trigger them.
+[01:33:48] Patrick Chouinard: What I love about Fieldy is it records 24-7.
+[01:33:52] Patrick Chouinard: So I don't have to think about it, I just have to wear the necklace and everything I see is recorded and that's it.
+[01:33:58] Ty Wells: Yep.
+[01:33:59] Daniel Zivkovic: Thank you.
+[01:34:00] Patrick Chouinard: And the other trick I can give, I've started doing, especially with ChatGPT, not necessarily Astra, just the ChatGPT interface.
+[01:34:14] Patrick Chouinard: I've started to have a scheduled task every morning.
+[01:34:18] Patrick Chouinard: I have a news radar, but I know everybody did a news radar before.
+[01:34:22] Patrick Chouinard: It's like, give me the news about X subject.
+[01:34:25] Patrick Chouinard: I decided to go away from that.
+[01:34:27] Patrick Chouinard: Instead of telling it like X subject, I said, based on everything you know about me, based on everything we discuss daily, like figure out the news that are going to interest me every morning, that are important for me every morning.
+[01:34:42] Patrick Chouinard: The idea is I have that inside of a ChatGPT conversation.
+[01:34:47] Patrick Chouinard: Okay.
+[01:34:47] Patrick Chouinard: Because that's when the task execute in the morning, it has a wall of text.
+[01:34:53] Patrick Chouinard: So I'll play it out loud and then I'll just have a verbal conversation with ChatGPT.
+[01:34:59] Patrick Chouinard: next
+[01:35:00] Patrick Chouinard: about the news that it came up with.
+[01:35:02] Patrick Chouinard: It's like, oh, yeah, that thing's really interesting.
+[01:35:04] Patrick Chouinard: And I think that would connect with my project from yesterday.
+[01:35:07] Patrick Chouinard: Oh, yes, it does.
+[01:35:09] Patrick Chouinard: And then we drill into, so the conversation thread is basically not a monologue of news every morning.
+[01:35:20] Patrick Chouinard: It's a constant discussion thread about the news every morning.
+[01:35:24] Patrick Chouinard: I love that.
+[01:35:27] Daniel Zivkovic: That's amazing.
+[01:35:28] Patrick Chouinard: And right now, for example, Quebec, it's election season.
+[01:35:33] Patrick Chouinard: So I have it track the election.
+[01:35:36] Patrick Chouinard: But also, I gave it, like, my goal in this election is to have that kind of government because I want to go this way and have this.
+[01:35:45] Patrick Chouinard: So basically analyze every day what would be the strategic vote in order to get to the point I want to, like, don't tell me who to vote for.
+[01:35:53] Patrick Chouinard: Tell me, like, if you want the government to be constituted that way, what would be the best?
+[01:36:00] Patrick Chouinard: That's way in my circumscription where I need to, you know, do the hard analysis.
+[01:36:05] Patrick Chouinard: So every day I have a feed and I can talk about it.
+[01:36:09] Patrick Chouinard: And when I talk about it, the next day uses the discussion we had in order to have a better news on the day the following day.
+[01:36:17] Daniel Zivkovic: Is that just a memory or some kind of skill that you can install?
+[01:36:21] Patrick Chouinard: Nothing.
+[01:36:22] Patrick Chouinard: It's just scheduled tasks.
+[01:36:23] Kris Larson: Do you keep it yourself from that?
+[01:36:26] Patrick Chouinard: That's brilliant.
+[01:36:27] Patrick Chouinard: So because I talk with it, because I, it's not just, if I just accumulate a feed of information every day and I never interact with it.
+[01:36:35] Patrick Chouinard: Yeah.
+[01:36:36] Patrick Chouinard: It's after three days going to be crap.
+[01:36:38] Patrick Chouinard: But if you do interact with the result every day, then it builds its memory.
+[01:36:44] Patrick Chouinard: And also remember that the way I've created it, it's based on everything, know, about me based on the project or for the political one.
+[01:36:53] Patrick Chouinard: It's based on my view, based on the goal I want that can be created.
+[01:36:58] Patrick Chouinard: Here's what I want you to work.
+[01:36:59] Patrick Chouinard: It
+[01:37:01] Daniel Zivkovic: That's amazing.
+[01:37:02] Daniel Zivkovic: I have that personalization built into my video skill because it builds over time my preferences, and they change over time.
+[01:37:09] Daniel Zivkovic: So when it's giving me briefings, it's related to what I like from all the videos it watches.
+[01:37:14] Daniel Zivkovic: But it's weekly, and I have to go to Cloud Code to run the project to see it.
+[01:37:18] Daniel Zivkovic: What I like with your idea, ChurchGPT is the only AI that doesn't have a problem with my weird accent, that can fully understand me.
+[01:37:25] Daniel Zivkovic: So it would be amazing that if I can, like the whisper is behind.
+[01:37:29] Daniel Zivkovic: So that would be amazing to copy if you can.
+[01:37:33] Daniel Zivkovic: That's really good.
+[01:37:34] Patrick Chouinard: Thank you.
+[01:37:34] Patrick Chouinard: And there's no skill, there's no building.
+[01:37:37] Patrick Chouinard: It's just something I told ChatGPT to do, and now it does it every day.
+[01:37:41] Patrick Chouinard: And basically, as soon as I get out of the office, I sit in the car, I go somewhere, I'm chatting with ChatGPT.
+[01:37:50] Patrick Chouinard: Every single moment that I have, I'm always talking with ChatGPT.
+[01:37:55] Daniel Zivkovic: When Maif is not around too, but I look like a crazy person.
+[01:37:59] Daniel Zivkovic: When...
+[01:38:00] Daniel Zivkovic: She's around to judge me.
+[01:38:02] Patrick Chouinard: Oh, don't worry, there's a lot of people.
+[01:38:03] Ty Wells: There's no judging here.
+[01:38:05] Daniel Zivkovic: I know, that's why I'm here.
+[01:38:07] Daniel Zivkovic: Alcoholics Anonymous.
+[01:38:12] Patrick Chouinard: But yeah, the more context you give it, the best result you're going to get out of it.
+[01:38:19] Patrick Chouinard: Yeah, just like when you're building something, it's the same thing, right?
+[01:38:22] Ty Wells: If you give it a bad plan, garbage in, garbage out, still rules the world.
+[01:38:26] Ty Wells: You have no context, it's going to give you, you know, what it gives you, but the more context you add to it.
+[01:38:33] Ty Wells: One thing I want to add, Patrick, sorry for interrupting, but I, the same process, except in my feed, my news feed, is the anthesis of what I need to know.
+[01:38:48] Ty Wells: Give me the 10 things I should know, but I don't know, based on what you know about me.
+[01:38:55] Ty Wells: So it's a learning, I flip it and get a little bit of learning with it in between.
+[01:38:59] Ty Wells: ...
+[01:38:59] Ty Wells: ...
+[01:38:59] Ty Wells: ...
+[01:38:59] Ty Wells: ...
+[01:38:59] Ty Wells: ...
+[01:39:00] Ty Wells: Yeah, because I found that if I didn't do that, then you end up in a tunnel vision, because you're just feeding the beast, right?
+[01:39:08] Ty Wells: And so I get the opposite.
+[01:39:11] Ty Wells: And some of those things actually send off a tangent, sometimes good, sometimes bad.
+[01:39:17] Ty Wells: Mostly good, though.
+[01:39:18] Ty Wells: But you see what I'm saying?
+[01:39:20] Ty Wells: I'm just sort of giving it something to work with that's the anti-pattern, so that I'm just not, you know, it's not just a yes man.
+[01:39:31] Patrick Chouinard: Oh yeah, sure, that's the base system prompt that every single AI I talk to you, you have, is like, be annoying, like, be confrontational, like, never agree with it.
+[01:39:43] Daniel Zivkovic: Don't be my yes man.
+[01:39:44] Daniel Zivkovic: I need the thinking partner.
+[01:39:46] Patrick Chouinard: No, exactly, exactly.
+[01:39:47] Daniel Zivkovic: And I configure them to be brutal with me.
+[01:39:52] Daniel Zivkovic: Patrick, what you do daily, I do weekly, but I like Toronto Star and Paper.
+[01:39:55] Daniel Zivkovic: So on Friday evening, I would create this curation, I get lists of the e
+[01:40:00] Daniel Zivkovic: Yeah, because I found that if I didn't do that, then you end up in a tunnel vision, because you're just feeding the beast, right?
+[01:40:08] Daniel Zivkovic: And so I get the opposite.
+[01:40:11] Daniel Zivkovic: And some of those things actually send off a tangent, sometimes good, sometimes bad.
+[01:40:17] Patrick Chouinard: Mostly good, though.
+[01:40:18] Patrick Chouinard: But you see what I'm saying?
+[01:40:20] Patrick Chouinard: I'm just sort of giving it something to work with that's the anti-pattern, so that I'm just not, you know, it's not just a yes man.
+[01:40:31] Patrick Chouinard: Oh yeah, sure, that's the base system prompt that every single AI I talk to you, you have, is like, be annoying, like, be confrontational, like, never agree with it.
+[01:40:43] Patrick Chouinard: Don't be my yes man.
+[01:40:44] Patrick Chouinard: I need the thinking partner.
+[01:40:46] Patrick Chouinard: No, exactly, exactly.
+[01:40:47] Patrick Chouinard: And I configure them to be brutal with me.
+[01:40:52] Daniel Zivkovic: Patrick, what you do daily, I do weekly, but I like Toronto Star and Paper.
+[01:40:55] Patrick Chouinard: So on Friday evening, I would create this curation, I get lists of the e
+[01:41:00] Patrick Chouinard: And I can read them, and I can have Kindle read them to me.
+[01:41:03] Daniel Zivkovic: So that briefing from that skill converts into something that's my weekend paper.
+[01:41:09] Patrick Chouinard: So I would like to go to DailyBase, not have to wait for Saturday and Sunday to enjoy the news from the videos I didn't watch.
+[01:41:18] Patrick Chouinard: I mean, in the morning now, when I wake up, first thing I go, I open ChatGPT, look at the news and have it read it out to me, and I have a chat with it.
+[01:41:27] Patrick Chouinard: That's my morning news paper is having ChatGPT telling me about what's new and interesting.
+[01:41:34] Patrick Chouinard: Blog about that.
+[01:41:35] Patrick Chouinard: That's good for your branding.
+[01:41:36] Patrick Chouinard: It's unique.
+[01:41:37] Patrick Chouinard: I've never had any influence to say that.
+[01:41:40] Patrick Chouinard: Yeah, actually, I have a chat with ChatGPT about building my own publishing platform using Cloudflare.
+[01:41:50] Patrick Chouinard: To be able to push directly from discussion to...
+[01:41:53] Patrick Chouinard: Yes, yes.
+[01:41:56] Patrick Chouinard: Awesome.
+[01:41:56] Patrick Chouinard: It's in the work.
+[01:42:00] Patrick Chouinard: Any down time is idea time to me.
+[01:42:06] Patrick Chouinard: And it's going to know a whole bunch of things.
+[01:42:09] Patrick Chouinard: And you'd be impressed what it comes up with when you have not only very serious, detailed discussion, but when you start to have even silly discussion with it, the level of insight it can have is impressive.
+[01:42:25] Ty Wells: I mean, I remember at some point, it was recommending me because it knows that I do a lot of work on local models and local inference and privacy work.
+[01:42:36] Ty Wells: So it was, oh, there's a new Apple Studio M5 Ultra with 512 gig of RAM that's coming up this fall.
+[01:42:49] Ty Wells: It's like, yeah, okay, cool.
+[01:42:52] Ty Wells: Thanks.
+[01:42:52] Ty Wells: But I'm not looking for selling a kidney or something.
+[01:42:57] Ty Wells: And now off.
+[01:43:00] Ty Wells: Often it will come up like, oh, there's this new piece of tech that got out that you might want to think about, but I know it's in the kidney type of zone of pricing, so maybe not right now.
+[01:43:14] Patrick Chouinard: And it keeps those things, and that's the thing, is that you have to feed the beast in order for the beast to be good.
+[01:43:24] Patrick Chouinard: And it's good.
+[01:43:25] Patrick Chouinard: It's like having your own genius in your pocket, right?
+[01:43:28] Patrick Chouinard: If you could connect the dots, oh my god, it's crazy.
+[01:43:32] Patrick Chouinard: You know, getting those dots connected.
+[01:43:34] Patrick Chouinard: And the capability is there.
+[01:43:36] Patrick Chouinard: It's just a matter, you need, you're the bridge.
+[01:43:39] Patrick Chouinard: We are the bridge to get it all connected.
+[01:43:43] Patrick Chouinard: Because think about it, information from all around the world, all of a sudden, you can put it together.
+[01:43:50] Patrick Chouinard: And so now you can put it together.
+[01:43:52] Patrick Chouinard: If you're able to put it together, that is the key.
+[01:43:55] Patrick Chouinard: If you're able to put, but there's no way it's going to come together on its own.
+[01:44:00] Patrick Chouinard: But if you were able to put it together, there you go.
+[01:44:03] Patrick Chouinard: So our own intelligence is our limitation.
+[01:44:06] Patrick Chouinard: We are our limitation.
+[01:44:06] Patrick Chouinard: It's not the area anymore.
+[01:44:10] Patrick Chouinard: Right.
+[01:44:11] Patrick Chouinard: It's how far we could go.
+[01:44:12] Patrick Chouinard: Yeah, absolutely.
+[01:44:13] Patrick Chouinard: HGI, not AGI.
+[01:44:14] Patrick Chouinard: H-G-I.
+[01:44:16] Patrick Chouinard: Human.
+[01:44:17] Patrick Chouinard: Human to call intelligence.
+[01:44:18] Patrick Chouinard: Yeah.
+[01:44:20] Patrick Chouinard: Actually, you know the agent deck that I showed earlier?
+[01:44:23] Patrick Chouinard: The way I presented that to Astra, to code it, it's like, I told it, like, all the other harnests are a way for human to leverage or give tasks to AI system.
+[01:44:42] Patrick Chouinard: It's the bridge from human to AI.
+[01:44:44] Patrick Chouinard: I want Agent Dex to be basically the way for AI to talk to us.
+[01:44:52] Patrick Chouinard: I want it to be the harnessed for human for agents, like basically the other way around.
+[01:45:00] Patrick Chouinard: How do you expose the human tokens to the AI system?
+[01:45:06] Patrick Chouinard: Because if you talk in its own speech, in its own way of thinking, I find it works a lot better.
+[01:45:15] Daniel Zivkovic: So basically I tell it, like, you have astral-level intelligence, you have fable-level intelligence, you have opus, you have sonnet, you have all of those.
+[01:45:23] Patrick Chouinard: Well, the human in the loop is another cognitive subsystem that has very, very, very expensive token, that has not a lot of parallel capability, it's really, really single-driven, so you use it only when it's absolutely necessary and you need its input and its judgment.
+[01:45:45] Daniel Zivkovic: Otherwise, take care of it.
+[01:45:49] Daniel Zivkovic: We have to become an inference layer that it can understand.
+[01:45:57] Daniel Zivkovic: Mm-hmm.
+[01:46:00] Patrick Chouinard: And that's how it built Agent Deck.
+[01:46:03] Kris Larson: Basically, it built a UI that was targeted at making the most efficient usage of my own cognitive token for the job the AI was trying to achieve.
+[01:46:17] Kris Larson: Less is more.
+[01:46:19] Patrick Chouinard: So before writing was difficult, now reading is difficult.
+[01:46:23] Patrick Chouinard: So we have to ask to reduce cognitive load on us.
+[01:46:27] Patrick Chouinard: Yep, exactly.
+[01:46:31] Kris Larson: Perfect.
+[01:46:32] Patrick Chouinard: Thank you from the Lake of Ontario.
+[01:46:38] Patrick Chouinard: Sorry, Kris.
+[01:46:43] Patrick Chouinard: No worries.
+[01:46:44] Patrick Chouinard: I'm sure they're good.
+[01:46:45] Patrick Chouinard: We understand each other.
+[01:46:46] Patrick Chouinard: We'll translate.
