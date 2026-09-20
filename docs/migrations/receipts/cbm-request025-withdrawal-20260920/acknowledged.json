@@ -1,0 +1,9 @@
+{
+  "request_id": "CBM-RENEWAL-DEVELOPMENT-20260920-025",
+  "actor": "Forge",
+  "acknowledged_at": "2026-09-20T03:27:56.506128+00:00",
+  "state": "consumed",
+  "disposition": "withdrawal acknowledged before execution",
+  "receipt_sha256": "db9b426d59e82a32ad481e465d4c759876fd820d983c5dcd1ffeb63ec250cfa7",
+  "withdrawal_sha256": "c1a18d86c6e4418939dd63a2ee25a7a070a8b7d88476fe1e5574114c19f13e4b"
+}

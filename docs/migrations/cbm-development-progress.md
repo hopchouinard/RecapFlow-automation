@@ -728,3 +728,11 @@ was withdrawn with a shared stop notice before any response. Its candidate is
 retained only as an unpromoted source/evidence archive; no legacy credential or
 runtime was changed. Continue with replacement OpenWebUI acceptance on VM108,
 production migration, and removal of legacy serving/renewal dependencies.
+
+## September20 — Request026 posted
+
+Verified home.servers acknowledged Request025 withdrawal before execution; no
+development or production action occurred there. Consumed the receipt and posted
+[Request026](cbm-openwebui-migration-request.md): read-only OpenWebUI migration
+inventory, isolated VM108 acceptance, and coherent rollout/rollback preparation.
+The old VM remains recovery-only; production changes are outside this request.

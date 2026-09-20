@@ -47,6 +47,8 @@ updated, no old service was restarted, and production holds remain unchanged.
    backup does not need to retain an active production service identity; recovery
    must obtain appropriately scoped fresh authority through the managed procedure.
 
-A replacement relay request follows acknowledgment of Request025's withdrawal.
+Home.servers acknowledged Request025's withdrawal before execution. Forge verified
+and consumed that receipt and posted [Request026](cbm-openwebui-migration-request.md)
+for the migration inventory and isolated VM108 rehearsal.
 The last known service-token expiry remains September22 20:53:07 UTC. No renewal,
 processing resume, actual weekly cycle, model call or publication is claimed here.

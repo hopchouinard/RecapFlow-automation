@@ -27,8 +27,9 @@ traffic or renewal writes. Confirm no production scheduler, monitoring or consum
 requires the legacy host, then close the existing retirement evidence gates.
 
 The stopped-consumer renewal candidate was archived without promotion. Request025
-was withdrawn before any response; a migration-focused handoff replaces that direction
-after home.servers acknowledges the withdrawal. See
+was withdrawn before execution. Home.servers acknowledged the withdrawal and Forge
+consumed it. [Request026](cbm-openwebui-migration-request.md) is now posted for the
+migration inventory, VM108 rehearsal and production rollout preparation. See
 [the diagnosis and corrected direction](cbm-renewal-development-results.md).
 
 ## Accepted development-first policy — September 20
