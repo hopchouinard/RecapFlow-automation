@@ -768,3 +768,15 @@ production descriptor/worker execution validation and protected restore/browser
 acceptance. Preserve the reported r020 extra bytecode file for reconciliation.
 See [management results](cbm-management-integration-results.md). No production
 runtime, ingress or legacy recovery state was changed by Forge.
+
+## September20 — deterministic packet and selected-worker execution
+
+Fixed packet serialization, passed seven boundary tests locally and on VM108,
+and matched packet-v8 manifest hashes across hosts. The selected-worker adapter
+completed five stages/two synthetic meetings with 16 indexed rows. Providers,
+allowance and queue binding were fixtures. Forty source files matched. Disposable
+containers removed; existing development services and production preserved.
+Read-only r020 bytecode and production mount/resource inspection identified the
+remaining concrete bindings. [Request028](cbm-successor-bindings-request.md) is now
+posted with source/evidence for home.servers' full VM108 host/management validation.
+See [results](cbm-successor-validation-results.md).

@@ -18,6 +18,16 @@ still needs deterministic serialization and production/worker bindings validated
 on VM108. The table below retains the original preparation checklist; the linked
 results establish which development tests have since passed. Production is unchanged.
 
+## Successor follow-up — Request028
+
+[Forge validation](cbm-successor-validation-results.md) closed cross-filesystem
+packet reproducibility and exercised selected-worker execution with synthetic
+providers and real development DB/queue/index state. Full host launcher, scoped
+transport/budget, production-equivalent mounts and resource bindings remain open.
+Request028 carries the actual source/runtime differences to home.servers for the
+complete VM108 integration. Protected real restore/browser and promotion gates
+remain unchanged.
+
 ## Accepted source and evidence
 
 The exact seven-file rehearsal source from agent-ops commit

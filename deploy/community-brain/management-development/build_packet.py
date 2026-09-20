@@ -24,8 +24,8 @@ def build(output,revision,image_files,monitor_images):
  value.update(postgres_image='sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280',monitor_images={k:v['development_image'] for k,v in monitor_images.items()})
  value.update(worker_image=value['api_image'],boot_launcher=DEV_ROOT+'/'+revision+'/automatic_host.py',recovery_images=sorted(set([value['api_image'],value['webui_image'],value['postgres_image'],*value['monitor_images'].values()])))
  value['helper_files']={str(p.relative_to(output)):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in output.rglob('*') if p.is_file()}
- (output/'descriptor.json').write_text(json.dumps(value,indent=2)+'\n')
- (output/'identity-specs.json').write_text(json.dumps(SPECS,indent=2)+'\n')
+ (output/'descriptor.json').write_text(json.dumps(value,sort_keys=True,indent=2)+'\n')
+ (output/'identity-specs.json').write_text(json.dumps(SPECS,sort_keys=True,indent=2)+'\n')
  identity=seal(output);verify(output,identity)
  return identity
 

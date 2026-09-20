@@ -1,0 +1,57 @@
+# Disposable VM108 validation only. Internal network, no live credentials or data.
+name: cbm-successor-validation
+services:
+  postgres:
+    image: sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280
+    environment:
+      POSTGRES_USER: fixture
+      POSTGRES_DB: cbm_stabilization
+      POSTGRES_HOST_AUTH_METHOD: trust
+    tmpfs:
+      - /var/lib/postgresql
+    mem_limit: 512m
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U fixture -d cbm_stabilization"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+    networks:
+      default:
+        aliases: [cbm-auto-pg]
+  nats:
+    image: nats:2.10.27
+    command: [-js, -sd, /data]
+    tmpfs: [/data]
+    mem_limit: 128m
+    networks:
+      default:
+        aliases: [cbm-auto-nats]
+  check:
+    image: sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b
+    read_only: true
+    user: "10001:10001"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1200m
+    cpus: 1.5
+    tmpfs:
+      - /tmp:uid=10001,gid=10001
+      - /state:uid=10001,gid=10001,mode=0700
+    volumes:
+      - ../../..:/workspace:ro
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture@cbm-auto-pg/cbm_stabilization
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_ROOT: /state/corpus
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPATH: /workspace/deploy/community-brain/management-development/workers:/workspace/deploy/community-brain/automatic-rehearsal
+    depends_on:
+      postgres:
+        condition: service_healthy
+      nats:
+        condition: service_started
+    command: [python, /workspace/deploy/community-brain/successor-validation/check.py]
+networks:
+  default:
+    internal: true

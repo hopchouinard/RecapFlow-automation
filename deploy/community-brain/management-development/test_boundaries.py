@@ -3,6 +3,7 @@ import copy
 import tempfile
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 from authority import Authority, PROJECT, ENVIRONMENT, DEVELOPMENT_PATH
 from successor import API_IMAGE, descriptor, render, seal, verify
 
@@ -12,6 +13,27 @@ class Boundaries(unittest.TestCase):
         return descriptor({'image': API_IMAGE, 'files': {
             '/app/community-brain/jobs/api.py': {'bytes': 1, 'sha256': 'fixture'},
             '/app/web/dist/index.html': {'bytes': 1, 'sha256': 'fixture'}}}, {})
+
+    def test_packet_bytes_ignore_filesystem_and_input_mapping_order(self):
+        from build_packet import build
+        image_files = {'image': API_IMAGE, 'files': self.value()['image_files']}
+        monitors = {'kuma': {'development_image': 'sha256:fixture-kuma'},
+                    'prometheus': {'development_image': 'sha256:fixture-prometheus'}}
+        original = Path.rglob
+        def reversed_walk(path, pattern):
+            return iter(reversed(list(original(path, pattern))))
+        with tempfile.TemporaryDirectory() as temp:
+            first, second = Path(temp)/'first', Path(temp)/'second'
+            expected = build(first, 'packet-v8', image_files, monitors)
+            image_files['files'] = dict(reversed(list(image_files['files'].items())))
+            with patch.object(Path, 'rglob', reversed_walk):
+                actual = build(second, 'packet-v8', image_files,
+                               dict(reversed(list(monitors.items()))))
+            self.assertEqual(actual, expected)
+            for path in first.rglob('*'):
+                if path.is_file():
+                    self.assertEqual(path.read_bytes(),
+                                     (second/path.relative_to(first)).read_bytes())
 
     def test_only_explicitly_authorized_development_folder_accepted(self):
         Authority(PROJECT, ENVIRONMENT, DEVELOPMENT_PATH, None)

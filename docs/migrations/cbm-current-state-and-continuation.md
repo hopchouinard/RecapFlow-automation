@@ -67,6 +67,23 @@ restore/browser and rollout acceptance, then the separately authorized productio
 phase. The handoff records hostname/DNS/TLS authorization when ready, not production
 source/data/signing transfer or cutover authorization. Production remains unchanged.
 
+## Request028 — successor validation and remaining bindings
+
+[Forge's follow-up](cbm-successor-validation-results.md) fixed deterministic packet
+serialization and passed seven tests on Forge/VM108 with identical packet-v8 hashes.
+The actual selected-worker execute adapter completed five synthetic stages across
+two meetings with real PostgreSQL/JetStream/LanceDB. External providers, allowance
+and queue binding were fixtures; host/production budget acceptance remains open.
+Read-only r020 bytecode metadata dates the extra file to September17 and matches
+its source header, without proving who created it. Recovery state is preserved.
+
+Actual production inspection and source review found differing mounts/resources
+and a production-only queue binding inherited by the development worker.
+[Request028](cbm-successor-bindings-request.md) is posted for home.servers to complete
+that contract and exercise the full host/management integration on VM108. It includes
+the tested source, safe evidence and exact outstanding checks. No production phase
+was executed; protected restoration, browser acceptance and rollout remain gated.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation
