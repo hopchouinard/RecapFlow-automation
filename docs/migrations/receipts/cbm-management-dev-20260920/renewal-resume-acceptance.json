@@ -1,0 +1,47 @@
+{
+  "state": "completed",
+  "cycle": "9ff979a4-a49d-4588-8ace-bee8e967a668",
+  "expires_at": 1790544437,
+  "next_due": 1790285237,
+  "subjects": [
+    "community-brain-openwebui",
+    "community-brain-prod-mac-collector",
+    "community-brain-prod-manual-operator",
+    "community-brain-prod-read-probe",
+    "community-brain-prod-metrics-probe"
+  ],
+  "passed": true,
+  "authority": "actual Infisical",
+  "same_generation_resume": true,
+  "old_and_new_overlap_verified": true,
+  "old_credentials_rejected": true,
+  "actual_monitor_consumers": true,
+  "api_recreations": [
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": "961cf7d822860c3b9084b5133c607d07bcc81527cdcd33f3c51e41041e292cbd",
+        "automation/attention.json": "aa37a91825db1a4d39028cae256bba74315b72b10809ed702f9fc42936e0d630",
+        "automation/boot-state.json": "b9cb05513e5c6db931e61d69ac22f3e362a1dffa9fd3238e6a03534ff0e8c14e"
+      }
+    },
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": "961cf7d822860c3b9084b5133c607d07bcc81527cdcd33f3c51e41041e292cbd",
+        "automation/attention.json": "aa37a91825db1a4d39028cae256bba74315b72b10809ed702f9fc42936e0d630",
+        "automation/boot-state.json": "b9cb05513e5c6db931e61d69ac22f3e362a1dffa9fd3238e6a03534ff0e8c14e"
+      }
+    }
+  ],
+  "production_changes": false,
+  "limits": [
+    "Synthetic corpus and embedding/model-list fixture",
+    "Collector configuration and authenticated scope probes; no desktop intake or upload exercised",
+    "Earlier interrupted attempt retained overlap after stale Kuma heartbeat"
+  ]
+}

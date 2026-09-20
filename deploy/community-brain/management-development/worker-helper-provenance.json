@@ -1,0 +1,30 @@
+{
+  "manual_host.py": {
+    "original_sha256": "2ed08b947d0fef39447925e526fec78fdca09641460823e5c7febaaff63e108b",
+    "candidate_sha256": "012f76a699e46a9fb98b5fe5d795ea8315c07157dced6d2e59b875dde5e4d2fa"
+  },
+  "automatic_host.py": {
+    "original_sha256": "b4f437ea0ea58fad5d708d96b674ba28f276c022ec55e6cba72d3f081f0cdf9f",
+    "candidate_sha256": "27ea692a25c383811507d9f9d0f32eff35aaaa0986e95816837c4c376eda669a"
+  },
+  "manual_worker.py": {
+    "original_sha256": "7bb8467e08849287486e2281e043e7223bcf415609c631a405aa1cdc15ec15f0",
+    "candidate_sha256": "7bb8467e08849287486e2281e043e7223bcf415609c631a405aa1cdc15ec15f0"
+  },
+  "bounded_worker.py": {
+    "original_sha256": "dee7265d7a316d632e621cb2557fe8802c510bf67df04a6b6f2ebc051b8d04bd",
+    "candidate_sha256": "dee7265d7a316d632e621cb2557fe8802c510bf67df04a6b6f2ebc051b8d04bd"
+  },
+  "selected_fathom.py": {
+    "original_sha256": "eb38d5afd638f3c65372b93193f65dc3f1d4eaa00d87a1f2140c1dfe1a5afeba",
+    "candidate_sha256": "eb38d5afd638f3c65372b93193f65dc3f1d4eaa00d87a1f2140c1dfe1a5afeba"
+  },
+  "scan.py": {
+    "original_sha256": "a83c0200604068725929058ef08b36999ad71dfeeda38272fec9cc40d7a9f18c",
+    "candidate_sha256": "a83c0200604068725929058ef08b36999ad71dfeeda38272fec9cc40d7a9f18c"
+  },
+  "indexing_budget.py": {
+    "original_sha256": "932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7",
+    "candidate_sha256": "932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7"
+  }
+}

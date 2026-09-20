@@ -51,6 +51,22 @@ complete two-meeting pipeline process. Infisical authority and other management
 consumers remain simulated; Request027 covers their actual development integration
 and the coherent successor renderer. No production change occurred.
 
+## Request027 consumed — September20
+
+Actual development Infisical, Mac/SSH leases, API/WebUI consumer renewal and
+Kuma/Prometheus acceptance passed. Forge verified the returned artifacts and the
+34-member live VM108 packet, imported unchanged source and acknowledged receipt.
+[Management integration results](cbm-management-integration-results.md) supersede
+those pending items above. Worker execution and production bindings remain open.
+An independent Forge rebuild found filesystem-dependent descriptor ordering;
+fix and validate reproducible rendering before sealing the next packet. Read-only
+r020 evidence also found an extra bytecode file; preserve and reconcile that drift.
+
+Next: close those source/worker/configuration gates on VM108, complete protected
+restore/browser and rollout acceptance, then the separately authorized production
+phase. The handoff records hostname/DNS/TLS authorization when ready, not production
+source/data/signing transfer or cutover authorization. Production remains unchanged.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

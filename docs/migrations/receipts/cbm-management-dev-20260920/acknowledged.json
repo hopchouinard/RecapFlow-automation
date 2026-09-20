@@ -1,0 +1,11 @@
+{
+  "request_id": "CBM-MANAGEMENT-INTEGRATION-20260920-027",
+  "actor": "Forge",
+  "acknowledged_at": "2026-09-20T22:00:12.100262+00:00",
+  "state": "consumed",
+  "verified_artifacts": 27,
+  "independently_verified_packet_members": 34,
+  "packet_manifest_sha256": "19c85b5cbece351f9c9c09606ab3ccaa35065fd4bcee35f65e8ab2cb502d08a9",
+  "receipt_sha256": "206c213667407c9e8b6285e3ac129008d10f5049e2fae1c6c69e026877cd4081",
+  "production_promotion_ready": false
+}

@@ -1,0 +1,17 @@
+{
+  "real_ssh": true,
+  "isolated_scheduler_mutex_exclusion": true,
+  "ordered_remote_locks_held": [
+    "automation/runner.lock",
+    "files/.manual-worker.lock",
+    "files/.submission.lock"
+  ],
+  "lost_effect_response_detected": true,
+  "effect_reconciled_without_replay": true,
+  "remote_effect_executions": 1,
+  "lost_lease_fails_closed": true,
+  "limits": [
+    "Dedicated development lock files; application lock participation not yet tested.",
+    "No credential delivery, renewal, Infisical or monitor acceptance claimed."
+  ]
+}

@@ -756,3 +756,15 @@ passed on Forge and VM108. Integration services are stopped; private fixture and
 evidence retained. See [results](cbm-openwebui-integration-results.md). Request027
 requests actual development Infisical/consumer/lease and successor-renderer work.
 Production and the legacy recovery VM remain unchanged.
+
+## September20 — Request027 accepted; production gates reconciled
+
+Verified 27 artifacts and independently matched all 34 live VM108 packet members.
+Imported unchanged management source and passed six local boundary tests. Actual
+Infisical/leases/consumer monitoring renewal passed on development. Forge acknowledged
+the response. A local rebuild found equivalent descriptor contents but different
+serialization order and packet hash; deterministic rendering remains open alongside
+production descriptor/worker execution validation and protected restore/browser
+acceptance. Preserve the reported r020 extra bytecode file for reconciliation.
+See [management results](cbm-management-integration-results.md). No production
+runtime, ingress or legacy recovery state was changed by Forge.

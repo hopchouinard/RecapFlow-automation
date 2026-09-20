@@ -11,8 +11,12 @@ actual Community Brain retrieval through WebUI, the five-identity policy with
 real API recreation/WebUI delivery and simulated authority/other consumer bundles,
 fresh-volume/Chroma restore, and extended load across a complete synthetic pipeline.
 The earlier pending-test statements below describe the Request026 checkpoint.
-Actual Infisical/monitoring/collector/lease integration and the coordinated production
-renderer remain pending Request027. Production remains unchanged.
+Request027 subsequently passed actual development Infisical, consumer monitoring
+and lease integration. See [management results](cbm-management-integration-results.md)
+for accepted evidence and current remaining gates. The imported development renderer
+still needs deterministic serialization and production/worker bindings validated
+on VM108. The table below retains the original preparation checklist; the linked
+results establish which development tests have since passed. Production is unchanged.
 
 ## Accepted source and evidence
 
