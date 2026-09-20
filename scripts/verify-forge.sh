@@ -10,3 +10,8 @@ fi
 node --test "$REPO/tests/workflows/"*.test.js
 cd "$REPO/community-brain"
 "$REPO/community-brain/.venv/bin/python" -m pytest tests -q
+"$REPO/community-brain/.venv/bin/python" -m pytest "$REPO/tests/cbm" -q
+cd "$REPO/web"
+npm test
+npm run build
+npm run test:e2e

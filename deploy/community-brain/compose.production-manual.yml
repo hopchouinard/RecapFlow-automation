@@ -1,0 +1,9 @@
+# Merge only with compose.production-staging.yml after the approved manual gate.
+# The API accepts scoped uploads; corpus/config remain read-only to the API.
+services:
+  api:
+    environment:
+      COMMUNITY_BRAIN_CUE_RULES_PATH: /state/config/query-cues.yaml
+      COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH: /state/config/speaker-aliases.yaml
+    volumes:
+      - /srv/community-brain/files:/state/files:rw

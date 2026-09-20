@@ -171,3 +171,26 @@ def test_call_llm_default_backoff_is_exponential(monkeypatch):
     monkeypatch.setattr(_httpx, "post", _fake_post)
     call_llm("hi", model="m", retries=3)
     assert sleeps == [1, 2]
+
+
+@pytest.mark.parametrize('failure', ['timeout', 'http500', 'malformed'])
+def test_durable_context_stops_uncertain_request_without_retry(monkeypatch, failure):
+    from community_brain.llm import LLMOutcomeUnknown, stop_uncertain_outcomes
+    from unittest.mock import Mock
+    import httpx
+
+    monkeypatch.setattr('community_brain.llm._get_api_key', lambda: 'fixture')
+    if failure == 'timeout':
+        post = Mock(side_effect=httpx.ReadTimeout('uncertain'))
+    else:
+        post = Mock(return_value=httpx.Response(
+            500 if failure == 'http500' else 200,
+            json={} if failure == 'malformed' else {'error': 'fixture'},
+            request=httpx.Request('POST', 'https://fixture.invalid'),
+        ))
+    monkeypatch.setattr('community_brain.llm.httpx.post', post)
+    with stop_uncertain_outcomes(), pytest.raises(LLMOutcomeUnknown):
+        call_llm('fixture', retries=3)
+    assert post.call_count == 1
+    from community_brain.llm import _stop_uncertain
+    assert _stop_uncertain.get() is False

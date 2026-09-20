@@ -1,0 +1,64 @@
+# Development-reviewed deployment candidate. Never merged with root production Compose.
+name: community-brain-next
+x-runtime: &runtime
+  CB_DATABASE_URL: ${CB_DATABASE_URL:?Infisical database credential required}
+  CB_STORAGE_ROOT: /state/files
+  CB_CORPUS_ROOT: /state/corpus
+  CB_CORPUS_SCOPE: ${CB_CORPUS_SCOPE:?application access scope required}
+  CB_PIPELINE_CONFIG_DIR: /state/config
+  OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:?reviewed inference endpoint required}
+  CB_SERVICE_IDENTITIES: ${CB_SERVICE_IDENTITIES:?Infisical service identity hashes required}
+x-service: &service
+  image: ${CB_IMAGE:?immutable reviewed image reference required}
+  build:
+    context: ../..
+    dockerfile: deploy/community-brain/Dockerfile
+  user: "10001:10001"
+  restart: unless-stopped
+  read_only: true
+  tmpfs: [/tmp]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  stop_grace_period: 240s
+  volumes:
+    - ${CB_STATE_DIR:?managed state directory required}:/state
+services:
+  api:
+    <<: *service
+    ports: ["${CB_API_BIND:-127.0.0.1}:8090:8090"]
+    volumes:
+      - ${CB_STATE_DIR:?managed state directory required}/files:/state/files
+      - ${CB_STATE_DIR:?managed state directory required}/corpus:/state/corpus:ro
+      - ${CB_STATE_DIR:?managed state directory required}/config:/app/community-brain/config:ro
+    environment:
+      <<: *runtime
+      CB_PIPELINE_CONFIG_DIR: /app/community-brain/config
+      CB_OIDC_ISSUER: ${CB_OIDC_ISSUER:?Authentik issuer required}
+      CB_OIDC_AUDIENCE: ${CB_OIDC_AUDIENCE:?Authentik audience required}
+      CB_OIDC_JWKS_URL: ${CB_OIDC_JWKS_URL:?Authentik JWKS URL required}
+      CB_OIDC_CLIENT_ID: ${CB_OIDC_CLIENT_ID:?Authentik SPA client ID required}
+      CB_ENABLE_RETRIEVAL: "true"
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: "true"
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health', timeout=5)"]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+  worker:
+    <<: *service
+    command: [python, -m, community_brain.jobs.runtime]
+    profiles: [processing]
+    environment:
+      <<: *runtime
+      CB_ENABLE_MODEL_CALLS: ${CB_ENABLE_MODEL_CALLS:-false}
+      CB_OPENROUTER_API_KEY: ${CB_OPENROUTER_API_KEY:?Infisical model credential required}
+      CB_FATHOM_API_KEY: ${CB_FATHOM_API_KEY:-}
+      CB_NATS_URL: ${CB_NATS_URL:?Infisical JetStream credential required}
+      CB_NATS_STREAM: ${CB_NATS_STREAM:?reviewed stream required}
+      CB_NATS_SUBJECT: ${CB_NATS_SUBJECT:?reviewed subject required}
+      CB_ENABLE_NETWORK_PUBLICATION: ${CB_ENABLE_NETWORK_PUBLICATION:-false}
+      CB_GIT_REMOTE: ${CB_GIT_REMOTE:-}
+      CB_DISTRIBUTION_REPO: ${CB_DISTRIBUTION_REPO:-hopchouinard/community-brain-distribution}
+      CB_DISTRIBUTION_COMMIT: ${CB_DISTRIBUTION_COMMIT:-}
+      CB_GITHUB_TOKEN: ${CB_GITHUB_TOKEN:-}

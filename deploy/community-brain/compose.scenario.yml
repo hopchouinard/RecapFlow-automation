@@ -1,0 +1,340 @@
+# Simulated providers; real durable worker, ingestion, retrieval and recovery.
+name: cbm-scenario
+services:
+  postgres:
+    image: postgres:18.6
+    environment:
+      POSTGRES_USER: fixture
+      POSTGRES_PASSWORD: fixture
+      POSTGRES_DB: cbm_rehearsal
+    volumes:
+    - database:/var/lib/postgresql
+    mem_limit: 768m
+    cpus: 1
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U fixture -d cbm_rehearsal
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  nats:
+    image: nats:2.10.27
+    command:
+    - -js
+    - -sd
+    - /data
+    volumes:
+    - jetstream:/data
+    mem_limit: 256m
+    cpus: 0.5
+  migrate:
+    image: community-brain:rehearsal
+    build: &id001
+      context: ../..
+      dockerfile: deploy/community-brain/Dockerfile
+    user: 10001:10001
+    read_only: true
+    tmpfs:
+    - /tmp
+    - /state:uid=10001,gid=10001,mode=0700
+    cap_drop: &id002
+    - ALL
+    security_opt: &id003
+    - no-new-privileges:true
+    mem_limit: 1536m
+    cpus: 1.5
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+    command:
+    - alembic
+    - upgrade
+    - head
+    depends_on:
+      postgres:
+        condition: service_healthy
+  api:
+    image: community-brain:rehearsal
+    build: *id001
+    user: 10001:10001
+    read_only: true
+    tmpfs:
+    - /tmp
+    cap_drop: *id002
+    security_opt: *id003
+    mem_limit: 1536m
+    cpus: 1.5
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /app/community-brain/config
+      CB_CORPUS_SCOPE: cbm-rehearsal
+      CB_ENABLE_RETRIEVAL: 'true'
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_OIDC_ISSUER: https://fixture.invalid
+      CB_OIDC_JWKS_URL: https://fixture.invalid/jwks
+      CB_OIDC_AUDIENCE: cbm-rehearsal
+      CB_OIDC_CLIENT_ID: cbm-rehearsal
+      CB_SERVICE_IDENTITIES: '[{"sha256": "5ebd255380f57d52bec17794603b291fb494b30b4f221c0567b499a6ddb7a09e",
+        "subject": "fixture", "scope": "cbm-rehearsal", "permissions": ["jobs:read",
+        "jobs:submit", "jobs:retry", "jobs:reconcile", "sources:upload", "artifacts:read",
+        "retrieval:read", "corpus:publish"], "expires_at": 4102444800}]'
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: 'true'
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://embedding:11434
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      initialize:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health',
+        timeout=3)
+      interval: 3s
+      timeout: 4s
+      retries: 30
+    volumes:
+    - files:/state/files
+    - corpus:/state/corpus:ro
+    - config:/app/community-brain/config:ro
+  initialize:
+    image: community-brain:rehearsal
+    build:
+      context: ../..
+      dockerfile: deploy/community-brain/Dockerfile
+    user: 0:0
+    read_only: true
+    tmpfs:
+    - /tmp
+    cap_drop: []
+    security_opt:
+    - no-new-privileges:true
+    mem_limit: 1g
+    cpus: 1.5
+    volumes:
+    - ./rehearsal:/checks:ro
+    - files:/state/files
+    - corpus:/state/corpus
+    - config:/state/config
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_SCOPE: cbm-rehearsal
+      CB_ENABLE_RETRIEVAL: 'true'
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_OIDC_ISSUER: https://fixture.invalid
+      CB_OIDC_JWKS_URL: https://fixture.invalid/jwks
+      CB_OIDC_AUDIENCE: cbm-rehearsal
+      CB_OIDC_CLIENT_ID: cbm-rehearsal
+      CB_SERVICE_IDENTITIES: '[{"sha256": "5ebd255380f57d52bec17794603b291fb494b30b4f221c0567b499a6ddb7a09e",
+        "subject": "fixture", "scope": "cbm-rehearsal", "permissions": ["jobs:read",
+        "jobs:submit", "jobs:retry", "jobs:reconcile", "sources:upload", "artifacts:read",
+        "retrieval:read", "corpus:publish"], "expires_at": 4102444800}]'
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: 'true'
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://embedding:11434
+    command:
+    - python
+    - /checks/fixture_runtime.py
+    - init
+    cap_add:
+    - CHOWN
+  provision:
+    image: community-brain:rehearsal
+    build:
+      context: ../..
+      dockerfile: deploy/community-brain/Dockerfile
+    user: 10001:10001
+    read_only: true
+    tmpfs:
+    - /tmp
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    mem_limit: 1g
+    cpus: 1.5
+    volumes:
+    - ./rehearsal:/checks:ro
+    - files:/state/files
+    - corpus:/state/corpus
+    - config:/state/config
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_SCOPE: cbm-rehearsal
+      CB_ENABLE_RETRIEVAL: 'true'
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_OIDC_ISSUER: https://fixture.invalid
+      CB_OIDC_JWKS_URL: https://fixture.invalid/jwks
+      CB_OIDC_AUDIENCE: cbm-rehearsal
+      CB_OIDC_CLIENT_ID: cbm-rehearsal
+      CB_SERVICE_IDENTITIES: '[{"sha256": "5ebd255380f57d52bec17794603b291fb494b30b4f221c0567b499a6ddb7a09e",
+        "subject": "fixture", "scope": "cbm-rehearsal", "permissions": ["jobs:read",
+        "jobs:submit", "jobs:retry", "jobs:reconcile", "sources:upload", "artifacts:read",
+        "retrieval:read", "corpus:publish"], "expires_at": 4102444800}]'
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: 'true'
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://embedding:11434
+    command:
+    - python
+    - /checks/fixture_runtime.py
+    - provision
+    depends_on:
+      nats:
+        condition: service_started
+  embedding:
+    image: community-brain:rehearsal
+    build:
+      context: ../..
+      dockerfile: deploy/community-brain/Dockerfile
+    user: 10001:10001
+    read_only: true
+    tmpfs:
+    - /tmp
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    mem_limit: 512m
+    cpus: 1.5
+    volumes:
+    - ./rehearsal:/checks:ro
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_SCOPE: cbm-rehearsal
+      CB_ENABLE_RETRIEVAL: 'true'
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_OIDC_ISSUER: https://fixture.invalid
+      CB_OIDC_JWKS_URL: https://fixture.invalid/jwks
+      CB_OIDC_AUDIENCE: cbm-rehearsal
+      CB_OIDC_CLIENT_ID: cbm-rehearsal
+      CB_SERVICE_IDENTITIES: '[{"sha256": "5ebd255380f57d52bec17794603b291fb494b30b4f221c0567b499a6ddb7a09e",
+        "subject": "fixture", "scope": "cbm-rehearsal", "permissions": ["jobs:read",
+        "jobs:submit", "jobs:retry", "jobs:reconcile", "sources:upload", "artifacts:read",
+        "retrieval:read", "corpus:publish"], "expires_at": 4102444800}]'
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: 'true'
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://embedding:11434
+    command:
+    - python
+    - /checks/fixture_runtime.py
+    - embedding
+  worker:
+    image: community-brain:rehearsal
+    build:
+      context: ../..
+      dockerfile: deploy/community-brain/Dockerfile
+    user: 10001:10001
+    read_only: true
+    tmpfs:
+    - /tmp
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    mem_limit: 1g
+    cpus: 1.5
+    volumes:
+    - ./rehearsal:/checks:ro
+    - files:/state/files
+    - corpus:/state/corpus
+    - config:/state/config
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_SCOPE: cbm-rehearsal
+      CB_ENABLE_RETRIEVAL: 'true'
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_OIDC_ISSUER: https://fixture.invalid
+      CB_OIDC_JWKS_URL: https://fixture.invalid/jwks
+      CB_OIDC_AUDIENCE: cbm-rehearsal
+      CB_OIDC_CLIENT_ID: cbm-rehearsal
+      CB_SERVICE_IDENTITIES: '[{"sha256": "5ebd255380f57d52bec17794603b291fb494b30b4f221c0567b499a6ddb7a09e",
+        "subject": "fixture", "scope": "cbm-rehearsal", "permissions": ["jobs:read",
+        "jobs:submit", "jobs:retry", "jobs:reconcile", "sources:upload", "artifacts:read",
+        "retrieval:read", "corpus:publish"], "expires_at": 4102444800}]'
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: 'true'
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://embedding:11434
+    command:
+    - python
+    - /checks/fixture_runtime.py
+    - worker
+    depends_on:
+      initialize:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+      provision:
+        condition: service_completed_successfully
+      embedding:
+        condition: service_started
+  scenario:
+    image: community-brain:rehearsal
+    build:
+      context: ../..
+      dockerfile: deploy/community-brain/Dockerfile
+    user: 10001:10001
+    read_only: true
+    tmpfs:
+    - /tmp
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    mem_limit: 1g
+    cpus: 1.5
+    volumes:
+    - ./rehearsal:/checks:ro
+    - files:/state/files
+    - corpus:/state/corpus
+    - config:/state/config
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_SCOPE: cbm-rehearsal
+      CB_ENABLE_RETRIEVAL: 'true'
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_OIDC_ISSUER: https://fixture.invalid
+      CB_OIDC_JWKS_URL: https://fixture.invalid/jwks
+      CB_OIDC_AUDIENCE: cbm-rehearsal
+      CB_OIDC_CLIENT_ID: cbm-rehearsal
+      CB_SERVICE_IDENTITIES: '[{"sha256": "5ebd255380f57d52bec17794603b291fb494b30b4f221c0567b499a6ddb7a09e",
+        "subject": "fixture", "scope": "cbm-rehearsal", "permissions": ["jobs:read",
+        "jobs:submit", "jobs:retry", "jobs:reconcile", "sources:upload", "artifacts:read",
+        "retrieval:read", "corpus:publish"], "expires_at": 4102444800}]'
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: 'true'
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://embedding:11434
+    command:
+    - python
+    - /checks/scenario.py
+    - submit
+    profiles:
+    - check
+networks:
+  default:
+    internal: true
+volumes:
+  database: {}
+  jetstream: {}
+  files: {}
+  corpus: {}
+  config: {}

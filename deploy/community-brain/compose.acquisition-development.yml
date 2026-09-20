@@ -1,0 +1,29 @@
+# Explicit one-shot acquisition overlay; never loaded by normal stack startup.
+services:
+  acquisition-worker:
+    image: community-brain:rehearsal
+    profiles: [acquisition]
+    user: 10001:10001
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 768m
+    cpus: 1
+    networks: [default, oidc]
+    volumes:
+    - files:/state/files
+    - config:/state/config:ro
+    - ./live-development:/checks:ro
+    - /etc/ssl/certs/ca-certificates.crt:/run/certs/ca-bundle.pem:ro
+    environment:
+      CB_DATABASE_URL: ${CB_LIVE_DATABASE_URL:?}
+      CB_NATS_URL: ${CB_LIVE_NATS_URL:?}
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_FATHOM_API_KEY: ${CB_FATHOM_API_KEY:?Private Fathom delivery required}
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      SSL_CERT_FILE: /run/certs/ca-bundle.pem
+      REQUESTS_CA_BUNDLE: /run/certs/ca-bundle.pem
+    entrypoint: [python, /checks/acquisition_worker.py]

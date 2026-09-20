@@ -1,5 +1,19 @@
 # AGENTS.md
 
+## Development VM authorization (2026-09-09)
+
+For development VM access, container deployment or rehearsal, read
+[the ready VM handoff](docs/migrations/cbm-development-vm-handoff.md).
+Patrick explicitly authorized Forge administration and disposable development
+workloads on PVE1 VM 108. This supersedes older preparation-only restrictions
+for that VM. Production deployment and cutover remain prohibited.
+
+
+For read-only Proxmox or network inspection, including an empty SSH agent or
+missing connector, read [Forge infrastructure access](docs/migrations/forge-infrastructure-access.md).
+Use the installed `forge-infra-read` command; it requires no developer credentials.
+
+
 ## Forge development handoff (2026-09-09)
 
 For development location, migration implementation, preservation evidence, or
@@ -162,3 +176,21 @@ Key files on Mac:
 - **NEVER** change `N8N_ENCRYPTION_KEY` after credentials have been saved in n8n
 - The `data/` directory must be preserved and backed up — it contains runtime state
 - `.env` contains plaintext secrets — do not commit to public repositories
+
+<!-- BEGIN patchou-bootstrap: managed block, edits are overwritten by `patchou-bootstrap sync` -->
+
+## Technology standard
+
+This project follows the Patchou personal technology standard.
+
+- **Before introducing any** framework, library, database, host, auth provider,
+  message bus, scheduler, test tool, or dependency — load the `tech-stack` skill
+  (`.agents/skills/tech-stack/SKILL.md`).
+- **Record in [`STACK-DECISIONS.md`](STACK-DECISIONS.md)**: this project's profile,
+  every Deferred family it resolves, and every exception it takes. Nothing is
+  decided silently.
+- The standard is *preferred*, not absolute. An exception needs a concrete,
+  expressible, describable reason. "Simpler for now" and expected future growth
+  are not reasons.
+
+<!-- END patchou-bootstrap -->

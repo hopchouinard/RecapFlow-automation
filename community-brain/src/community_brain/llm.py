@@ -6,6 +6,8 @@ Default model: google/gemini-3.1-flash-lite-preview
 
 from __future__ import annotations
 
+from contextlib import contextmanager
+from contextvars import ContextVar
 import json
 import logging
 import os
@@ -25,6 +27,23 @@ CONFIG_DIR = Path(__file__).resolve().parent.parent.parent / "config"
 
 class LLMError(Exception):
     """Raised when an LLM call fails."""
+
+
+class LLMOutcomeUnknown(RuntimeError):
+    """A durable caller must reconcile before repeating an uncertain request."""
+
+
+_stop_uncertain = ContextVar("stop_uncertain_llm_outcomes", default=False)
+
+
+@contextmanager
+def stop_uncertain_outcomes():
+    """Opt-in job boundary; retain legacy retries outside this context."""
+    token = _stop_uncertain.set(True)
+    try:
+        yield
+    finally:
+        _stop_uncertain.reset(token)
 
 
 def _get_api_key() -> str | None:
@@ -83,19 +102,40 @@ def call_llm(
                 json=payload,
                 timeout=120.0,
             )
+            if _stop_uncertain.get():
+                try:
+                    response.raise_for_status()
+                    data = response.json()
+                    content = data["choices"][0]["message"]["content"]
+                    if not isinstance(content, str):
+                        raise ValueError("missing completion content")
+                    return content
+                except (
+                    httpx.HTTPError,
+                    ValueError,
+                    KeyError,
+                    IndexError,
+                    TypeError,
+                ) as exc:
+                    raise LLMOutcomeUnknown(
+                        "provider outcome requires reconciliation"
+                    ) from exc
             if response.status_code >= 500:
                 if attempt < retries - 1:
                     if backoff_schedule is not None and attempt < len(backoff_schedule):
                         backoff = backoff_schedule[attempt]
                     else:
-                        backoff = 2 ** attempt
+                        backoff = 2**attempt
                     logger.warning(
                         "LLM API error %d, retrying in %ds",
-                        response.status_code, backoff,
+                        response.status_code,
+                        backoff,
                     )
                     time.sleep(backoff)
                     continue
-                raise LLMError(f"LLM API error after {retries} retries: {response.status_code}")
+                raise LLMError(
+                    f"LLM API error after {retries} retries: {response.status_code}"
+                )
 
             response.raise_for_status()
             data = response.json()
@@ -111,15 +151,21 @@ def call_llm(
             return data["choices"][0]["message"]["content"]
 
         except httpx.HTTPError as e:
+            if _stop_uncertain.get():
+                raise LLMOutcomeUnknown(
+                    "provider outcome requires reconciliation"
+                ) from e
             if attempt < retries - 1:
                 if backoff_schedule is not None and attempt < len(backoff_schedule):
                     backoff = backoff_schedule[attempt]
                 else:
-                    backoff = 2 ** attempt
+                    backoff = 2**attempt
                 logger.warning("LLM request failed (%s), retrying in %ds", e, backoff)
                 time.sleep(backoff)
             else:
-                raise LLMError(f"LLM request failed after {retries} retries: {e}") from e
+                raise LLMError(
+                    f"LLM request failed after {retries} retries: {e}"
+                ) from e
 
     raise LLMError("Exhausted retries")
 
@@ -146,4 +192,6 @@ def call_llm_json(
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError as e:
-        raise LLMError(f"Failed to parse LLM response as JSON: {e}\nResponse: {text[:200]}") from e
+        raise LLMError(
+            f"Failed to parse LLM response as JSON: {e}\nResponse: {text[:200]}"
+        ) from e

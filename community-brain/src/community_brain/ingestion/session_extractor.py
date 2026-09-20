@@ -29,7 +29,7 @@ from community_brain.ingestion.parser import (
     SignalSection,
     TranscriptSegment,
 )
-from community_brain.llm import call_llm
+from community_brain.llm import LLMOutcomeUnknown, call_llm
 
 logger = logging.getLogger(__name__)
 
@@ -121,6 +121,8 @@ def extract_session_themes(
             )
         else:
             raw = _call_llm(model=model, prompt=prompt)
+    except LLMOutcomeUnknown:
+        raise
     except Exception as exc:
         logger.warning("Stage B LLM failed: %s", exc)
         return SessionThemesResult(
