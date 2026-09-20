@@ -1,0 +1,49 @@
+{
+  "recorded_at": "2026-09-20T02:27:57.951069+00:00",
+  "source_commit": "a6766eb",
+  "forge_verification": {
+    "command": "./scripts/verify-forge.sh",
+    "passed": true,
+    "workflow_tests": 150,
+    "application_tests": 1005,
+    "postgresql_jetstream_tests": 70,
+    "frontend_unit_tests": 6,
+    "browser_tests": 6,
+    "total": 1237,
+    "typescript_vite_build_passed": true
+  },
+  "vm108_browser": {
+    "passed": 6,
+    "ui_served_from": "community-brain-dev:127.0.0.1:5178",
+    "browser_location": "Forge",
+    "api_routes": "mocked fixtures; actual HTTP API tested separately in VM108 runtime check"
+  },
+  "application_image_id": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+  "log_sha256": {
+    "cbm-stabilization-forge-final.log": "5796289b05b7abe51dec19f9c72e2d2de1b1f17d081835653cfa95869c07bcc5",
+    "cbm-stabilization-dev-browser-final.log": "2398f5a6eb7e1687d3ed4673352c3eab7fd655a6f6306ea7380a400a68aa8a43",
+    "cbm-stabilization-dev-validation.log": "b4b273e7ddc43f6e8372ddb9d9b6c416a2b82a0dcc9077d1e266e92ab82475f3"
+  },
+  "baseline": {
+    "source_commit": "f60a30c",
+    "files": {
+      "api.py": "5bc6f91db520ec5b603d44b3252ed5cc910c4a9d066cb7dcb2be5c179b481445",
+      "automatic_host.py": "b4f437ea0ea58fad5d708d96b674ba28f276c022ec55e6cba72d3f081f0cdf9f"
+    }
+  },
+  "cleanup": {
+    "disposable_compose_project_removed": true,
+    "disposable_browser_removed": true,
+    "ssh_browser_tunnel_stopped": true,
+    "retained": "candidate images, source and validation logs",
+    "existing_dev_containers_running": [
+      "cbm-collector-development-proxy-1",
+      "cbm-live-development-api-1",
+      "cbm-live-development-nats-1",
+      "cbm-live-development-postgres-1"
+    ]
+  },
+  "production_deployed": false,
+  "management_request": "CBM-STABILIZATION-DIAGNOSIS-20260920-024",
+  "management_response_received": false
+}

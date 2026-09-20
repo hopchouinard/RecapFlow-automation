@@ -37,6 +37,16 @@ applies to the immediate S-01/S-02/S-03 work and does not reopen the stopped Mac
 permission task or unrelated migration scope. Production weekly-cycle evidence
 must still come from actual operation after the development gate passes.
 
+## Implementation follow-up — September 20
+
+Patrick instructed implementation after accepting the development-first rule.
+[The first stabilization batch](cbm-stabilization-development-results.md) is
+implemented and tested on VM108: safe readiness/UI, scanner diagnostics,
+read-only inspection and a fresh-image build correction. Production is not yet
+changed or resumed. Request024 awaits the management owner's current renewal
+source/diagnosis; those integration changes must also pass VM108 before rollout.
+The audit findings below remain historical observations, not deployment receipts.
+
 ## Decision summary
 
 The application serves existing meetings correctly in the exercised checks, and

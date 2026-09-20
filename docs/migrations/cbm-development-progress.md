@@ -696,3 +696,19 @@ state. Safe evidence: receipts/cbm-first-publication-023/. Shared Request023 is
 acknowledged. No automatic weekly publication, retirement, CBM09 or final CBM10
 phase was activated. Next decision is whether publication should remain manually
 approved per release or enter a separately scoped automatic-publication phase.
+
+## September20 — development-first stabilization implemented
+
+Patrick accepted the live assessment and required every change to pass VM108
+validation before production. Source a6766eb adds safe runner/readiness visibility,
+truthful queued-save behavior, PostgreSQL-enforced read-only diagnosis, safe
+scanner errors and an unprivileged-image build correction discovered on VM108.
+Both synthetic intake paths passed real DB/queue/ingestion checks there; the
+actual API factory and six VM108-served browser tests passed. Final Forge suite
+passed150 workflow/1005 application/70 DB-queue/6 frontend-unit/6 browser tests.
+See cbm-stabilization-development-results.md and its bound receipts.
+
+Production holds remain; no deployment, rotation or paid call occurred. Request024
+asks home.servers for current management source and read-only OpenWebUI/renewal
+diagnosis. The actual renewal repair, renderer/image-pin integration and controlled
+resume still require development validation and management execution.

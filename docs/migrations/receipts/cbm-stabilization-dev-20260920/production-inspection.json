@@ -1,0 +1,192 @@
+{
+  "read_only": true,
+  "automatic_jobs": [
+    "744d0f3f-8da7-4c12-bc15-5ec0a046518d"
+  ],
+  "completed": [
+    "744d0f3f-8da7-4c12-bc15-5ec0a046518d"
+  ],
+  "stages": [
+    {
+      "id": "ffb70586-a238-401c-91fd-df00c11c0d15",
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "acquisition",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "5a2c31a8-8c1c-46a4-a480-6362aacbf5cc",
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "git",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "c589ba61-ffd6-434a-abcc-ede2b1f38092",
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "distribution",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "fc03bb76-4567-42ea-b185-23b4abfac294",
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "acquisition",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "1a2be095-8c46-44d9-8fff-9c3c9ffdce33",
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "48dc6dc1-732d-45c8-a31b-963230dd748c",
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "git",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "f1adff6f-53bb-4ac2-9aae-fe36c71f9ecc",
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "distribution",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "23408d9e-40d0-43ce-8327-dfcae9b15230",
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "indexing",
+      "state": "queued",
+      "generation": 1,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "7caa9561-db7c-4668-959a-b740689dbd34",
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "24574e37-3d93-45f3-b88e-faf2f5fdfcf9",
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "indexing",
+      "state": "queued",
+      "generation": 1,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "18a15005-5ac7-407c-b12c-a44190bfb185",
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "0f08945d-3533-4038-a8f3-1889232a0925",
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "indexing",
+      "state": "queued",
+      "generation": 1,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "e1533a0e-671d-46ec-bed7-c61629e40506",
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "git",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "ba827ef2-e33d-472f-ad30-fa295f7e76e1",
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "distribution",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null
+    },
+    {
+      "id": "c5d17809-e499-4980-aa13-6ca5f609168e",
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "indexing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "55517fd6-5070-4ef2-bbcb-d803271c861e",
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "acquisition",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "ffe7a609-c870-447a-aebc-75a427c9bdcb",
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "acquisition",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "70704c44-065f-410e-af98-8113d431dc77",
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "git",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "a17a8ff6-2e1c-4cdd-99a2-1e0af384970a",
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "distribution",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    },
+    {
+      "id": "c6964a14-23ad-459f-b116-97e78ad35417",
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null
+    }
+  ],
+  "unresolved_model_calls": 0
+}
