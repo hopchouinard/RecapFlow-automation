@@ -1,5 +1,15 @@
 # Development VM handoff: ready
 
+## Standing validation rule (2026-09-20)
+
+Every subsequent application or operational change must pass validation on this
+VM before promotion to production VM109. This includes preprocessing, processing,
+external test inputs, pipeline evaluation and operational recovery/identity changes.
+Forge remains the source checkout; local tests supplement the mandatory VM run.
+Promote the exact tested version and retain validation evidence and rollback steps.
+See [the accepted continuation policy](cbm-current-state-and-continuation.md#accepted-development-first-policy--september-20).
+The original provisioning record below is historical.
+
 Patrick explicitly approved provisioning and Forge administration of this isolated
 development VM on 2026-09-09. This supersedes the earlier inspection-only and
 preparation-only restriction for **VM 108 only**. Production deployment and

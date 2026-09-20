@@ -1,5 +1,26 @@
 # AGENTS.md
 
+## Mandatory development-first validation (2026-09-20)
+
+Patrick accepted the [current assessment and continuation plan](docs/migrations/cbm-current-state-and-continuation.md)
+with this standing requirement for all subsequent work:
+
+- Develop in the canonical Forge checkout and validate every application or
+  operational change on **community-brain-dev, PVE1 VM108**, before production.
+  Local tests supplement this VM validation; they do not replace it.
+- This includes preprocessing, processing, pipeline mechanics, evaluations,
+  external-data acquisition/import used in tests, configuration, recovery,
+  scheduling, identity-renewal mechanics and deployment changes.
+- Reproduce production problems and test their fixes in development first.
+  Use isolated development state and scoped identities; keep external test data
+  private and preserve its provenance. Existing spending limits still apply.
+- Promote only the tested source/image/configuration version to
+  **community-brain-prod, PVE1 VM109**, with recorded development results and a
+  rollback path. Any subsequent change must pass development validation again.
+- Read-only production diagnosis and post-deployment verification are permitted;
+  production is not a test environment. Historical development receipts do not
+  validate a new change. This rule does not reopen unrelated stopped work.
+
 ## Development VM authorization (2026-09-09)
 
 For development VM access, container deployment or rehearsal, read

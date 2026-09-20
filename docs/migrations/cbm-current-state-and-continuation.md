@@ -10,6 +10,33 @@ and a live assessment before deciding the next project phase. This assessment
 does not authorize restarting processing, rotating credentials, deploying code,
 publishing another release, rewriting historical meetings, or retiring services.
 
+## Accepted development-first policy — September 20
+
+Patrick reviewed and accepted this assessment and the recommended continuation
+order, with a mandatory development-first requirement for all subsequent changes.
+This supersedes the earlier awaiting-decision wording for that direction; the
+runtime observations below remain the September 20 audit snapshot.
+
+1. Develop the change in Forge and exercise it on **community-brain-dev (VM108)**.
+   This applies to application/configuration changes, preprocessing, processing,
+   pipeline mechanics, evaluations, external data needed for tests, and operational
+   fixes such as recovery, scheduling and identity-renewal behavior.
+2. Use isolated development state and scoped identities. Include representative
+   external inputs where needed, preserve their provenance and privacy, and remain
+   within existing spending limits. Reproduce failures and validate recovery in
+   development rather than experimenting on production.
+3. Record the tested source commit/image/configuration, inputs, results and rollback
+   procedure. Local tests alone do not satisfy the development-VM gate.
+4. Only after successful development validation may the exact tested change be
+   deployed to **community-brain-prod (VM109)**. Changes after testing must be
+   validated again. Production checks verify the deployment and real operation;
+   they do not substitute for development testing.
+
+Read-only production inspection remains available for diagnosis. This policy also
+applies to the immediate S-01/S-02/S-03 work and does not reopen the stopped Mac
+permission task or unrelated migration scope. Production weekly-cycle evidence
+must still come from actual operation after the development gate passes.
+
 ## Decision summary
 
 The application serves existing meetings correctly in the exercised checks, and
@@ -153,7 +180,7 @@ runtime code. Staged application whitespace checks pass. Historical `.patch`
 context lines and two Markdown hard breaks in a hashed receipt are intentionally
 preserved rather than rewritten solely to silence `git diff --check`.
 
-## Revised continuation plan — awaiting Patrick's decision
+## Revised continuation plan — accepted, subject to development-first validation
 
 1. **Restore operational readiness (S-01/S-02).** Inspect the original runner
    failure, current boot and durable job/queue outcomes; reconcile through the
