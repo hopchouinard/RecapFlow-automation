@@ -1,0 +1,23 @@
+{
+  "subject": "community-brain-openwebui",
+  "scope": "community-brain",
+  "permissions": [
+    "retrieval:read"
+  ],
+  "expiry_utc": "2026-09-17T03:52:50+00:00",
+  "authority": "homelab/prod /applications/community-brain",
+  "token_secret": "CB_OPENWEBUI_RETRIEVAL_TOKEN",
+  "expiry_secret": "CB_OPENWEBUI_RETRIEVAL_EXPIRES_AT",
+  "render": {
+    "existing_identities_preserved": 2,
+    "backup": "/var/backups/community-brain-retrieval-preflight/api.env",
+    "runtime": "/etc/community-brain-production/api.env"
+  },
+  "staging": {
+    "private_token_path": "/var/lib/community-brain-retrieval-preflight/openwebui-token",
+    "active_valves_unchanged": true,
+    "temporary_token_removed_after_test": true
+  },
+  "renewal_owner": "Mac management; rotate Infisical token and hash map, reload API, coordinate private client refresh before expiry",
+  "probe_expiry_unchanged": "2026-09-11T02:05:38Z"
+}

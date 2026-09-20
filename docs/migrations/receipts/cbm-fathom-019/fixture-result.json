@@ -1,0 +1,138 @@
+{
+  "actual_launcher_worker_mounts": [
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019:/helpers:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/manual.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/manual.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/store.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/worker.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/automatic.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/acquisition.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/acquisition.py:ro"
+  ],
+  "changed_packet_files": [
+    "jobs/acquisition.py",
+    "manual_host.py",
+    "selected_fathom.py"
+  ],
+  "extraction_config_sha256": "008a6b15d4dd617c2bdf170714e086574ed996ed61534cdd2bb3e8c54de09de1",
+  "fixture": {
+    "actual_import_path": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/acquisition.py",
+    "cases": [
+      {
+        "identity": "821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": -601,
+        "rejected": true
+      },
+      {
+        "identity": "821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": -600,
+        "rejected": false
+      },
+      {
+        "identity": "821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": 0,
+        "rejected": false
+      },
+      {
+        "identity": "821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": 600,
+        "rejected": false
+      },
+      {
+        "identity": "821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": 601,
+        "rejected": true
+      },
+      {
+        "identity": "https://fathom.video/calls/821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": -601,
+        "rejected": true
+      },
+      {
+        "identity": "https://fathom.video/calls/821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": -600,
+        "rejected": false
+      },
+      {
+        "identity": "https://fathom.video/calls/821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": 0,
+        "rejected": false
+      },
+      {
+        "identity": "https://fathom.video/calls/821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": 600,
+        "rejected": false
+      },
+      {
+        "identity": "https://fathom.video/calls/821559116",
+        "match": "url",
+        "metadata_pages": 1,
+        "offset_seconds": 601,
+        "rejected": true
+      },
+      {
+        "identity": "183401214",
+        "match": "unrelated",
+        "metadata_pages": 1,
+        "offset_seconds": 0,
+        "rejected": false
+      },
+      {
+        "identity": "821559116",
+        "match": "share_url",
+        "metadata_pages": 1,
+        "offset_seconds": 0,
+        "rejected": false
+      },
+      {
+        "identity": "821559116",
+        "match": "unrelated",
+        "metadata_pages": 1,
+        "offset_seconds": 0,
+        "rejected": true
+      },
+      {
+        "identity": "821559116",
+        "match": "url",
+        "metadata_pages": 5,
+        "offset_seconds": 0,
+        "rejected": false
+      },
+      {
+        "identity": "821559116",
+        "match": "url",
+        "metadata_pages": 5,
+        "offset_seconds": 0,
+        "rejected": true
+      }
+    ],
+    "identity_mismatch_checks": 2,
+    "network": "none",
+    "no_credentials": true,
+    "passed": true,
+    "request_guard_checks": 3
+  },
+  "frontend": "/srv/community-brain/workspaces/cbm-fathom-20260917-frontend",
+  "frontend_files": 15,
+  "frontend_sha256": "0a08992b6c77668fce774bf609d4b92897ee9d4eb59a6adda4b5f165939e1599",
+  "image": "community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+  "packet": "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019",
+  "packet_sha256": "f5e7afe55d4034a1723b6df27584a35db7e3bba9b9ae9b8e7fced8ae047710eb",
+  "preserved_assets": 13
+}

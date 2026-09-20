@@ -1,0 +1,60 @@
+{
+  "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+  "checked_at": "2026-09-17T00:32:52.758382+00:00",
+  "ordered_quiet_locks_held": true,
+  "marker": {
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "requested_at": "2026-09-15T23:48:08.067324+00:00",
+    "policy": "new-meeting-full-loop-v1",
+    "requires": "paired DB/files/corpus/config/archive/runtime checkpoint"
+  },
+  "manifest_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e",
+  "database_live_verification": {
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "operation": "verify",
+    "passed": true
+  },
+  "files_live_verification": {
+    "differences": [
+      {
+        "path": "srv/community-brain/automation/execution.log",
+        "change": "modified"
+      },
+      {
+        "path": "srv/community-brain/automation/execution.log.1.gz",
+        "change": "added"
+      },
+      {
+        "path": "srv/community-brain/automation/management-attention.json",
+        "change": "added"
+      },
+      {
+        "path": "srv/community-brain/automation/status.json",
+        "change": "modified"
+      }
+    ],
+    "corpus_matches": true,
+    "rows": 1924,
+    "sessions": 88,
+    "fts_unindexed": 0
+  },
+  "host_controls_match": true,
+  "auth_controls_match": true,
+  "restore_receipts": {
+    "database-restore.json": {
+      "disposable_database_removed": true,
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "queue_or_application_started": false,
+      "references_verified": 72,
+      "schema_owners_grants_rows_sequences_match": true
+    },
+    "files-restore.json": {
+      "files_verified": 921,
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "network_disabled": true,
+      "references_verified": 72,
+      "temporary_restore_removed": true
+    }
+  },
+  "checkpoint_acknowledged": false
+}

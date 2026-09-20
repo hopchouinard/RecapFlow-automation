@@ -1,0 +1,35 @@
+{
+  "artifacts": {
+    "2026-09-22-weekly-invite.md": "d37f9b70c3dc5c89bcba2ba02f869d25598a27218ad71c24f1b848ad18444b96",
+    "community-post-compressed.md": "5edf64bc5c54a671101d8b90e70e85fef90b80a302a668d98b703358c8ec2e27",
+    "community-post.md": "f9068d793ee347b2c21f9d5eee4d8e6543b42818e04d7c5f828c9475f3536ff8",
+    "extracted-signal.md": "88500ecab862881bb5c40fbf434d055f61c30a9f2c27402fb861f36f93b4933a",
+    "prepared-transcript.md": "4685bd4027a1c6acc85b74b269fec11d68d5d069a2baf897ff9fb7ea7c0ba7f9",
+    "transcript.txt": "558c713fc4fc89d30c9c42b3355db70c0c58b7a69b9ca232fab85240775bd5dc"
+  },
+  "assets": {
+    "corpus-manifest.json": "f2073718e83eacb27f455cf1151aacb99572311206883bf0d1d8a2f94b259127",
+    "corpus-v1.2.0.tar.gz": "783466593d3077b227d715c0efe8ac9266db7e28a745251d24c0dd2148d0b109",
+    "sha256sum.txt": "f9e2b2a7431d261a1cd0fbae84952601c0ea8093d06595efc051179b84044420"
+  },
+  "checkpoint_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e",
+  "consumer": {
+    "base": "a192f7832e70d60a10de838aa4136b5f3432f15b",
+    "branch": "main",
+    "commit": "e2eca50575571a23657192163842c02331c85c96",
+    "repository": "hopchouinard/community-brain-distribution"
+  },
+  "identity_sha256": "6386432a322ea7248b32b89371710e71a09092ebd8a7748f09cc1745deca75ba",
+  "installer_sha256": "9ac73b43573a082d47023accca2cfa6175e7344a4b0db5b8040ecb23cff035c9",
+  "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+  "local_date": "2026-09-15",
+  "operator": {
+    "base": "dd29e82aa21f3e52d0ea7a96561f8dec9af28055",
+    "branch": "main",
+    "commit": "82167b30b2d72ae8ebb9a64a557991b30be442c3",
+    "repository": "hopchouinard/RecapFlow-automation"
+  },
+  "prepared_at": "2026-09-17T13:47:41+00:00",
+  "scope": "community-brain",
+  "version": "v1.2.0"
+}

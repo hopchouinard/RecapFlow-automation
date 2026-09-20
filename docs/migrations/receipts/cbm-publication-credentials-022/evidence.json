@@ -1,0 +1,141 @@
+{
+  "pre_provision_read_only_checks": {
+    "checked_at": "2026-09-17T13:24:42.133943+00:00",
+    "management_identity": "hopchouinard",
+    "management_credential_type": "GitHub CLI OAuth (gho_)",
+    "management_scopes": [
+      "gist",
+      "read:org",
+      "repo",
+      "workflow"
+    ],
+    "management_credential_reused": false,
+    "publisher_credential_created": false,
+    "write_tests_performed": false,
+    "repositories": {
+      "hopchouinard/RecapFlow-automation": {
+        "id": 1176379254,
+        "default_branch": "main",
+        "head_sha": "dd29e82aa21f3e52d0ea7a96561f8dec9af28055",
+        "protected": false,
+        "protection": {
+          "ok": false,
+          "data": {
+            "message": "Branch not protected",
+            "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+            "status": "404"
+          }
+        },
+        "rulesets": {
+          "ok": true,
+          "data": []
+        },
+        "effective_rules": {
+          "ok": true,
+          "data": []
+        }
+      },
+      "hopchouinard/community-brain-distribution": {
+        "id": 1249770482,
+        "default_branch": "main",
+        "head_sha": "a192f7832e70d60a10de838aa4136b5f3432f15b",
+        "protected": false,
+        "protection": {
+          "ok": false,
+          "data": {
+            "message": "Branch not protected",
+            "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+            "status": "404"
+          }
+        },
+        "rulesets": {
+          "ok": true,
+          "data": []
+        },
+        "effective_rules": {
+          "ok": true,
+          "data": []
+        }
+      }
+    },
+    "preservation": {
+      "credential_files_count": 19,
+      "all_credential_files_equal": true,
+      "container_identity_image_start_environment_controls_equal": true,
+      "sorted_mount_observations_equal": true,
+      "note": "Initial mount digest used Docker list order and differed; repeated observations sorted by mount destination matched. No infrastructure mutation was performed."
+    }
+  },
+  "completed_identity": {
+    "app_id": 4978270,
+    "app_slug": "community-brain-publication",
+    "installation_id": 162488086,
+    "owner": "hopchouinard",
+    "repository_selection": "selected",
+    "permissions": {
+      "contents": "write",
+      "metadata": "read"
+    },
+    "infisical_path": "/applications/community-brain-publication",
+    "infisical_environment": "prod",
+    "key_names": [
+      "CB_PUBLISHER_GITHUB_APP_ID",
+      "CB_PUBLISHER_GITHUB_INSTALLATION_ID",
+      "CB_PUBLISHER_GITHUB_PRIVATE_KEY_BASE64",
+      "CB_PUBLISHER_GITHUB_REPOSITORY_IDS"
+    ],
+    "existing_application_secrets_unchanged": true
+  },
+  "completed_token_checks": {
+    "checked_at": "2026-09-17T13:33:45.642440+00:00",
+    "app_id": 4978270,
+    "installation_id": 162488086,
+    "permissions": {
+      "contents": "write",
+      "metadata": "read"
+    },
+    "repositories": [
+      {
+        "id": 1176379254,
+        "full_name": "hopchouinard/RecapFlow-automation",
+        "default_branch": "main",
+        "main_sha": "dd29e82aa21f3e52d0ea7a96561f8dec9af28055",
+        "protected": false
+      },
+      {
+        "id": 1249770482,
+        "full_name": "hopchouinard/community-brain-distribution",
+        "default_branch": "main",
+        "main_sha": "a192f7832e70d60a10de838aa4136b5f3432f15b",
+        "protected": false
+      }
+    ],
+    "repository_listing_verified": true,
+    "expires_at": "2026-09-17T14:33:43Z",
+    "runtime_bundle": {
+      "path": "/etc/community-brain-production/publication.env",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0600",
+      "readback_verified": true
+    },
+    "write_tests_performed": false,
+    "publication_enabled": false,
+    "signing_key_delivered_to_runtime": false
+  },
+  "completed_preservation_checks": {
+    "verified_at": "2026-09-17T13:34:21.698443+00:00",
+    "existing_private_files_unchanged": 19,
+    "container_identity_image_start_environment_mounts_unchanged": true,
+    "new_file_only": "/etc/community-brain-production/publication.env",
+    "network_publication": "false",
+    "model_calls": "false",
+    "running_containers_checked": 2,
+    "publisher_variables_or_bundle_mounts_found": false,
+    "temporary_key_absent": true,
+    "download_key_absent": true,
+    "active_signing_key_fingerprint": "SHA256:8vviABYPgwVoYmEN+ijoAHTaa0SpTUWT5JaypQ2Eyno=",
+    "github_key_count_ui": 1,
+    "obsolete_key_absent_ui": true
+  }
+}

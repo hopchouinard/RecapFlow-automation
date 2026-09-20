@@ -1,0 +1,8 @@
+{
+  "allowance.json": "0a89d498468c958e47ebf86dde646829ed8d1319b218a3019f92711ce9a1240c",
+  "api-artifact-verification.json": "2df23319afdfbce732143388227b2bd52d96aacbeabfd81f5e9bd293220f3bdb",
+  "durable-audit.json": "da2ec5c0abd14a1c0fe09d6b5fee1999e223d861245f631912db51a0b49eb9e4",
+  "job.json": "b8aa07ac4a6ea0cb27bb4c84ee42150b0369c6c169388f9f5c4151734828655a",
+  "managed-state-manifest.json": "693bda0bbbd31599bb4f9f55c624f3225663b925f0330fcc297bc9c9cf39bddf",
+  "manual-runtime-state-manifest.json": "2145983767079323656b22c5ed19a4f21b51dd32a487a97a541d0f8a3cfe9c69"
+}

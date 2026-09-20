@@ -1,0 +1,19 @@
+{
+  "source": {
+    "observed_source": "10.1.30.10",
+    "destination": "10.1.10.100:443"
+  },
+  "trust": {
+    "default_requests_bundle": "/usr/local/lib/python3.11/site-packages/certifi/cacert.pem",
+    "persistent_bundle": "/app/backend/data/community-brain-trust/ca-bundle.pem",
+    "original_bundle": "/app/backend/data/community-brain-trust/certifi-original.pem",
+    "bundle_sha256": "7d005db5384eb661f4e56983d482ec28608bba7567fd09738ba5e7c72176435a",
+    "restart": false,
+    "recreation_requires_trust_reapplication": true
+  },
+  "route": {
+    "added_source": "10.1.30.10/32",
+    "backup": "/var/backups/community-brain-retrieval-preflight/community-brain-production.yml",
+    "guest_ingress_unchanged": true
+  }
+}

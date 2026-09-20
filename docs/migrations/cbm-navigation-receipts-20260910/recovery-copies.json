@@ -1,0 +1,31 @@
+{
+  "request_id": "CBM-NAVIGATION-20260910-010",
+  "checked_at": "2026-09-10T17:52:17.043047+00:00",
+  "vm109_archive": {
+    "path": "/srv/community-brain/artifacts/cbm-navigation-20260910/controls-and-static.tar.gz",
+    "sha256": "5f426bd1a764cf1b90d96bbe129cd28b00575284c3ac43ba9e7466df9ba51330",
+    "bytes": 735203
+  },
+  "offhost_copies": [
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/navigation-010/controls-and-static.tar.gz",
+      "sha256": "5f426bd1a764cf1b90d96bbe129cd28b00575284c3ac43ba9e7466df9ba51330",
+      "bytes": 735203,
+      "mode": "0o600",
+      "uid": 0
+    },
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/navigation-010/mac-and-authentik-controls.tar.gz",
+      "sha256": "aa6350fc609ffc4dd77715dbbf8bba6226ec1930b1b17c59b9805c85ea49cff7",
+      "bytes": 7242,
+      "mode": "0o600",
+      "uid": 0
+    }
+  ],
+  "mac_originals": "/Users/pchouinard/.local/state/community-brain-management/navigation-010-before",
+  "current_mac_helper_sha256": "3f2585765bb8f442d69592f6f6a0295412d1bed3a419c24f28eea70a2e80fef9",
+  "recovery_inventory_sha256": "290551f96823cb7561baec3af48501636182e174536854d7684bed096c9a4d17",
+  "prior_checkpoints_retained": true
+}

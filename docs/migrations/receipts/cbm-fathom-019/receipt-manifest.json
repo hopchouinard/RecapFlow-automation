@@ -1,0 +1,17 @@
+{
+  "request_id": "CBM-FATHOM-20260917-019",
+  "files": {
+    "receipt.md": "27204a519a493d27e596745de552d982f904b2cdc01cf7ad5ed819f0afada53d",
+    "rollback.md": "54becb8389aedbcab9e805281a6643d50060015c2a9f919d8d90b15fb9787378",
+    "effective-pins.json": "778bf5c7c7e85bd2ef4cf0e3d58736ba2151560763be17a30ed524df0338c84c",
+    "fixture-result.json": "cd411d3ef2364e6152762d116552037e7c37f74d56fc101b6283bcfa1376560e",
+    "https-checks.json": "497cfbe7c71fd1881d0dbfda0a00302ab8101b63b740073d836aeb5e8c3e6b4f",
+    "auth-checks.json": "26b2da840589fcfbd2f440482d93126e31181bc150620fdf40a2a49d9fb1fb6c",
+    "preservation-checks.json": "77811be5e0e5441918f32391c93aac5228898d28c5f46e506a0877c02f767687",
+    "changed-controls.json": "70c99bdb0183cef359a22b3d88085ca40650401f520c8979b39fad0f577620b9",
+    "before-receipt.json": "bc180130330aecfa8dd3f9d23c4887c2ccf39209de115e74fc038adcf91169a5",
+    "after-receipt.json": "01faf55b8f3e89db2a15f4108374e4cfcc20d6b0990cb142eb998e1f1cbe1461",
+    "deployment.json": "fc4579e4fba74c696d25d36fcb3dddd6e60839636a26a2ef92c284a8f2fe1e2d",
+    "runner-final.json": "8c1dea5b7af84f8ed09ddad86d15d07d7a0abc2a9ae6a4aa1de9ec99453b2e3c"
+  }
+}

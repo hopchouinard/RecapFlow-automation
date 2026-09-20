@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-09-10T18:29:41.119314+00:00",
+  "vm": "PVE1 VM108",
+  "image": "community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+  "passed": true,
+  "stages": [
+    "processing",
+    "indexing",
+    "acquisition",
+    "processing",
+    "indexing"
+  ],
+  "meetings": 2,
+  "searchable_rows": 16,
+  "fts": {
+    "num_indexed_rows": 16,
+    "num_unindexed_rows": 0
+  },
+  "old_outbox_untouched": true,
+  "first_meeting_unchanged": true,
+  "external_calls": 0,
+  "disposable_services_removed": true,
+  "canonical_checks": {
+    "node": 150,
+    "python": 907,
+    "postgres_jetstream": 41,
+    "frontend": 4,
+    "browser": 3
+  },
+  "manifest_sha256": "e5ae39ce6bd7f1a5656dc97a09e97b249135bf9eeb6c4b02e0d78e3ceabb6d9b",
+  "note": "Final launcher import/check=False cleanup separately passed its unit tests; VM functional path unchanged."
+}

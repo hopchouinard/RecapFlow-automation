@@ -1,0 +1,17 @@
+{
+  "request_id": "CBM-MANUAL-ACTIVATE-20260910-005",
+  "verification": "Each response copied and compared with a second remote SHA256 read; no receiver manifest supplied.",
+  "files": {
+    "api-activation.json": "8dab3ba48f3f0593e49cb9e1ef4d00b1dd6afe3cc17087ba2ca0d70e284c9b4c",
+    "api-checks.json": "f0ed5a64b781787b9fb2959d1e3d067761283d7ca85182731cfefe7d5a2d440f",
+    "collector-activation.json": "978c8d7637bcd39bcbbfdea91781425a24eb0ae3a3a642cda5665566265c125e",
+    "corpus-checks.json": "b50cc5b180c2b52b7e4120964ea661f53af4980914a54226ee00f2e4657282b0",
+    "deduplication.json": "66dd5e019b59d3c01cda716f6f7bef7a2d8a3bf509dd84352bfd783cd2cdd316",
+    "fathom-delivery.json": "335915e3bfbdf2e10239efdeb6e2920917dc8259869c3f0913ee47c2e854af27",
+    "post-upload-counts.json": "bef9ec59ccb65361214d9d9ea43942365fb5353eb3f7df731a471991a59ed03b",
+    "receipt.md": "c4101b346a4db5faf90f867d68f59961d61ea16f60708d89bb6495149fe3451d",
+    "retained-controls.json": "44d9249de547612f73a197c7e6224d36b1f33f1274aca058cd2981958f746cc4",
+    "selected-upload.json": "66dd5e019b59d3c01cda716f6f7bef7a2d8a3bf509dd84352bfd783cd2cdd316",
+    "status.json": "0cddb8c9beca1d3aa772700c3940c5f9f9de625fa369020574f1a79c3d3deb97"
+  }
+}

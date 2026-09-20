@@ -1,0 +1,43 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "phase": "superseded",
+  "deadline_utc": "2026-09-11T01:30:00+00:00",
+  "hold_started_at": "2026-09-10T04:38:52.955400+00:00",
+  "guard_active": true,
+  "rollback_verified": null,
+  "mac_resume_allowed": false,
+  "ownership": {
+    "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+    "accepted_recovery_receipt_sha256": "3172c4c082c7cce4f5bba5952ec4549bb91a40f806e861c3b8f6d125ede2bd67",
+    "committed_at": "2026-09-10T06:55:45.048581+00:00",
+    "legacy_writers_disabled": true,
+    "readiness": {
+      "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+      "accepted_recovery_receipt_sha256": "3172c4c082c7cce4f5bba5952ec4549bb91a40f806e861c3b8f6d125ede2bd67",
+      "checked_at": "2026-09-10T06:55:43.798519+00:00",
+      "checks": {
+        "maintenance_tests": true,
+        "health_metrics_live": true,
+        "calendar_installed": true,
+        "corpus_unchanged": true,
+        "post_job_procedure": true,
+        "live_copy_rehearsal": true,
+        "expiry_metadata_verified": true,
+        "paired_checkpoint_verified": true,
+        "mac_hook_installed": true,
+        "controller_tests": true,
+        "database_unchanged": true,
+        "webui_verified": true
+      },
+      "test_cases": 18,
+      "maintenance_failure_cases": 16,
+      "post_job_procedure_sha256": "2a5b64d3afa9faf4067931308e61d2e70da45c152b92a6160684d5870a8b5eaa",
+      "control_hashes": {
+        "ownership_control.py": "445befe4064e56d41a3be7cd09723df62842add92934120c153018f0f13a0733",
+        "window-control.py": "2f9952f84bf725cab566209d3c81971bc6fb8b0cae906e7108b4035e01288bb3",
+        "mac_intake_policy.py": "7bf08d4374f6e190cb4f7f34780d802e03488aed512a7b6111103e8e87f18adf",
+        "mac-intake.py": "b31bfd3d7784666154c8830d776d468ff75d7099f5f392cec599eb2a67dea442"
+      }
+    }
+  }
+}

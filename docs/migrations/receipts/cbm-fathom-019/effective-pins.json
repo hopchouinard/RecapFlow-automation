@@ -1,0 +1,28 @@
+{
+  "request_id": "CBM-FATHOM-20260917-019",
+  "actual_launcher_worker_mounts": [
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019:/helpers:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/manual.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/manual.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/store.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/worker.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/automatic.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py:ro",
+    "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019/jobs/acquisition.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/acquisition.py:ro"
+  ],
+  "changed_packet_files": [
+    "jobs/acquisition.py",
+    "manual_host.py",
+    "selected_fathom.py"
+  ],
+  "extraction_config_sha256": "008a6b15d4dd617c2bdf170714e086574ed996ed61534cdd2bb3e8c54de09de1",
+  "frontend": "/srv/community-brain/workspaces/cbm-fathom-20260917-frontend",
+  "frontend_files": 15,
+  "frontend_sha256": "0a08992b6c77668fce774bf609d4b92897ee9d4eb59a6adda4b5f165939e1599",
+  "image": "community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+  "packet": "/srv/community-brain/workspaces/cbm-fathom-20260917-effective-r019",
+  "packet_sha256": "f5e7afe55d4034a1723b6df27584a35db7e3bba9b9ae9b8e7fced8ae047710eb",
+  "preserved_assets": 13,
+  "runtime_sha256": "a77105d642729ecb70843f71be35ec8288eac7dcce829381eb6a6bd44813ca43",
+  "compose_sha256": "43ba00cfac282a75543c4fd24265c7c123438da2fdce08890ea13506f6841067",
+  "boot_guard_sha256": "81fe3cb7c6921060a31d74e5ba3e40970451f299ff8525dce16a5379fe9d3b35",
+  "recovery_inventory_sha256": "a89c6188bb798bdbbcd2606935569100c60a0ff047a75df35445bd648ec74e48"
+}

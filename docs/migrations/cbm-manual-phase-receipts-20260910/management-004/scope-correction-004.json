@@ -1,0 +1,24 @@
+{
+  "request_id": "CBM-COLLECTOR-SCOPE-20260910-004",
+  "corrected_at": "2026-09-10T05:12:17.007683+00:00",
+  "subject": "community-brain-prod-mac-collector",
+  "scope": "community-brain",
+  "permissions": [
+    "sources:upload:chat"
+  ],
+  "token_expiry_and_other_authority_values_preserved": true,
+  "infisical_pending_map": "CB_MANUAL_PREP_SERVICE_IDENTITIES",
+  "vm_delivery": {
+    "pending_paths": [
+      "/etc/community-brain-production/manual-preparation/server-identities.json",
+      "/etc/community-brain-production/manual-preparation/api.env.pending"
+    ],
+    "active_api_env_unchanged": true,
+    "private_file_mode": "0600"
+  },
+  "mac_config_unchanged_and_disabled": true,
+  "api_restarted": false,
+  "activated": false,
+  "rollback_start_utc": "2026-09-11T01:25:00Z",
+  "hard_deadline_utc": "2026-09-11T01:30:00Z"
+}

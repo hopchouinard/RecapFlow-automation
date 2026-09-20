@@ -1,0 +1,15 @@
+{
+  "consumer_commit": "a192f7832e70d60a10de838aa4136b5f3432f15b",
+  "consumer_installer_sha256": "23854cf9a21a984f9219e90289606da4f8b231ef4b57f04a9256f7222ca2472b",
+  "fixture_sessions": 2,
+  "fixture_rows": 3,
+  "schema": "1.1",
+  "candidate_sha256": "04856ced1b1da10765d189d46d221821a569deccbdfe51d8aa22fc8ebded8c34",
+  "fresh_consumer_install_verified": true,
+  "corrupt_download_preserved_installed_corpus": true,
+  "method": "Actual consumer installer with fixture checksum substitution and local gh download stub; no GitHub writes/downloads in rehearsal",
+  "production_data_used": false,
+  "model_calls": 0,
+  "remote_publication": false,
+  "local_workdir": "/tmp/cbm-publication-consumer-t6s32yx0"
+}

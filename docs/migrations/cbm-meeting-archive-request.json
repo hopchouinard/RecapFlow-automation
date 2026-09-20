@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-10T16:58:11.571478+00:00",
+  "title": "Expose87 preserved meetings and hide synthetic rehearsal jobs",
+  "authorization": "Patrick requested surfacing all historical Markdown files and removing synthetic meetings from workspace. Read-only archive deployment and synthetic API hiding; no database deletion, processing, corpus write, publication or retirement.",
+  "entry_document": "cbm-meeting-archive-management-handoff.md",
+  "document_sha256": {
+    "cbm-meeting-archive-management-handoff.md": "33456415928f1be9bb770f84d1b9f3171cc23807c12f529de2295a9d703b771b",
+    "cbm-meeting-archive-build.json": "d59aca24874c61b6926c539b8100ef9b0b7724039e809032acf6dd4c10f6b613",
+    "cbm-archive-ui-manifest.json": "49fae827e451c22ef94c8a45b3c71936b859741e7d63900de8d14f17f4d7df87"
+  },
+  "response_directory": "responses/CBM-MEETING-ARCHIVE-20260910-009"
+}

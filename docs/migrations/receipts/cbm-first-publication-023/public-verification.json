@@ -1,0 +1,69 @@
+{
+  "anonymous_verification": true,
+  "repositories": {
+    "operator": {
+      "repository": "hopchouinard/RecapFlow-automation",
+      "main_sha": "82167b30b2d72ae8ebb9a64a557991b30be442c3"
+    },
+    "consumer": {
+      "repository": "hopchouinard/community-brain-distribution",
+      "main_sha": "e2eca50575571a23657192163842c02331c85c96"
+    }
+  },
+  "artifacts": {
+    "2026-09-22-weekly-invite.md": {
+      "sha256": "d37f9b70c3dc5c89bcba2ba02f869d25598a27218ad71c24f1b848ad18444b96",
+      "bytes": 1504
+    },
+    "community-post-compressed.md": {
+      "sha256": "5edf64bc5c54a671101d8b90e70e85fef90b80a302a668d98b703358c8ec2e27",
+      "bytes": 11278
+    },
+    "community-post.md": {
+      "sha256": "f9068d793ee347b2c21f9d5eee4d8e6543b42818e04d7c5f828c9475f3536ff8",
+      "bytes": 16029
+    },
+    "extracted-signal.md": {
+      "sha256": "88500ecab862881bb5c40fbf434d055f61c30a9f2c27402fb861f36f93b4933a",
+      "bytes": 20079
+    },
+    "prepared-transcript.md": {
+      "sha256": "4685bd4027a1c6acc85b74b269fec11d68d5d069a2baf897ff9fb7ea7c0ba7f9",
+      "bytes": 35522
+    },
+    "transcript.txt": {
+      "sha256": "558c713fc4fc89d30c9c42b3355db70c0c58b7a69b9ca232fab85240775bd5dc",
+      "bytes": 73733
+    }
+  },
+  "assets": {
+    "corpus-manifest.json": {
+      "id": 570478254,
+      "sha256": "f2073718e83eacb27f455cf1151aacb99572311206883bf0d1d8a2f94b259127",
+      "bytes": 4153,
+      "url": "https://github.com/hopchouinard/community-brain-distribution/releases/download/v1.2.0/corpus-manifest.json"
+    },
+    "corpus-v1.2.0.tar.gz": {
+      "id": 570478167,
+      "sha256": "783466593d3077b227d715c0efe8ac9266db7e28a745251d24c0dd2148d0b109",
+      "bytes": 13313291,
+      "url": "https://github.com/hopchouinard/community-brain-distribution/releases/download/v1.2.0/corpus-v1.2.0.tar.gz"
+    },
+    "sha256sum.txt": {
+      "id": 570478272,
+      "sha256": "f9e2b2a7431d261a1cd0fbae84952601c0ea8093d06595efc051179b84044420",
+      "bytes": 87,
+      "url": "https://github.com/hopchouinard/community-brain-distribution/releases/download/v1.2.0/sha256sum.txt"
+    }
+  },
+  "tag_commit": "e2eca50575571a23657192163842c02331c85c96",
+  "release": {
+    "id": 390814260,
+    "html_url": "https://github.com/hopchouinard/community-brain-distribution/releases/tag/v1.2.0",
+    "tag_name": "v1.2.0",
+    "target_commitish": "e2eca50575571a23657192163842c02331c85c96",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-09-17T14:55:51Z"
+  }
+}

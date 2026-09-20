@@ -1,0 +1,9 @@
+{
+  "request_id": "CBM-SEPT15-RECOVERY-20260915-017",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-17T00:38:34.764030+00:00",
+  "summary": "Existing September15 PBS checkpoint reconciled and acknowledged under quiet locks. Database/files/corpus/offhost and PBS evidence verified. Runner and management idle; attention/pending false. Narrow PBS CLI parser fix installed; four tests passed. Request016 permission work untouched.",
+  "receipt": "receipt.md",
+  "receipt_sha256": "663ff03f51110b4b9220a1bf5df54595a51b7dbebe05d98cbba5add89916c09d"
+}

@@ -1,0 +1,26 @@
+{
+  "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+  "acquisition_attempts": 1,
+  "processing_attempts": 1,
+  "selected_model_requests": 15,
+  "selected_model_states": {
+    "succeeded": 15
+  },
+  "selected_response_cost_usd": 0.34060376600000003,
+  "artifacts": 6,
+  "all_database_file_references_verified": 50,
+  "counts": {
+    "cb_jobs": 3,
+    "cb_sources": 6,
+    "cb_stages": 15,
+    "cb_model_calls": 29,
+    "cb_artifacts": 15,
+    "cb_outbox": 7
+  },
+  "unsent_outbox": 3,
+  "indexing_attempts": 0,
+  "publication": false,
+  "prompt_snapshot_unchanged": true,
+  "original_53_files_unchanged": true,
+  "existing_session_selection_denied": true
+}

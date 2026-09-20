@@ -1,0 +1,17 @@
+[
+  {
+    "path": "index.html",
+    "sha256": "2324d91145e4b3b46a3f1275c9b913b97c30e5cbb841b19ba5ebee56c22ed34d",
+    "https_verified": true
+  },
+  {
+    "path": "assets/index-ZIhBB68-.js",
+    "sha256": "33056fd7ac0f1b2f7ad1dce31115f17ebcd2e67161a75589fc85814ab0891dfa",
+    "https_verified": true
+  },
+  {
+    "path": "assets/index-DMxDA5pK.css",
+    "sha256": "5044106a99a94d26eb7b010929518baaba8864d58ee0511342c70202f2ffd9d0",
+    "https_verified": true
+  }
+]

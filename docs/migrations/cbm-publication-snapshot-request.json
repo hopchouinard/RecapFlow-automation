@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-PUBLICATION-PREP-20260917-021",
+  "actor": "Forge",
+  "target": "home.servers",
+  "created_at": "2026-09-17T03:08:30.324707+00:00",
+  "deadline": null,
+  "authorization": "Preparation and private data-only snapshot only. All six canonical files approved. Remote publication, credentials, deployment and stage mutation prohibited.",
+  "documents": {
+    "cbm-publication-consumer-container-receipt.json": "6434275540588be90a6087239dd4de89aef079c386bf4c63c47a5474e3e9419b",
+    "cbm-publication-file-scope.json": "ac1075000c80aa1c4629932848995342c86dd499152f0eb01bd84579b796fce6",
+    "cbm-publication-phase-proposal.md": "efa04d2b14ca35d55d321e12a608256a2bfafe2e90115631a089a112df6fedee",
+    "cbm-publication-snapshot-management-handoff.md": "28472b8046a7c077a8313509657b02b84af84f4a6b7788d679112d40ca6c1512"
+  }
+}

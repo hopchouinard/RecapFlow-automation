@@ -1,0 +1,19 @@
+{
+  "archive_sha256": "f2193e6b2e4578668829b98f7a7c62fa33fe595b747afe4a72f1fc3e7d56f2dc",
+  "files": {
+    "production-staging/run.py": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d",
+    "production-staging/bounded_worker.py": "dd9d90dfde1c201ae9fbd9715f30c7ed9f63077652bbe91c73f741b2ed9a0c4b",
+    "production-staging/manual_worker.py": "06ceea4cdc404a06c4575546466de1f8e5adc6bd8942bc60dcc90fab7ba00968",
+    "production-staging/manual_host.py": "1b379cd448a9dacf53c6e0ebb4f1c7d90e5d3640d9210a8e99f31846bd9ee1c3",
+    "production-staging/manual_image_checks.py": "a4a5045a68a11abd005ac04e94cbda458b0f8a42a586f65dabdac771d0717e15",
+    "production-staging/selected_fathom.py": "6c5841fa760dc4699cd696f7d4b8f2bf7d78ce74191de0b23d01a8a7a5fa0d6d",
+    "production-staging/indexing_budget.py": "6a88265b155f558f60cecb2534173c8443a2dae9728326e8c1beac702b28304d",
+    "production-staging/disposable_index.py": "69b3a8ee6ad3067e2587bd8f336cdee2fdefd35044c82a680f1cba3600301761",
+    "production-staging/disposable_index_host.py": "5fdb5d5a93525dd26b440740f4bfa1c274556acdde60d7c0b6bf53760f03d12e",
+    "production-staging/jobs/manual.py": "9e0cf550d0dc32acaecadcb3bec8ca9c2390467e78614afb4b35264852cf43fa",
+    "production-staging/jobs/store.py": "e2bcf8d799180caf3784943b49f9bcf1c7af463c07c6e2fabf7fe6b60e5179af",
+    "production-staging/jobs/worker.py": "f6f69884c8aa39c7a4b7746bcc97f3212a8ddd218af27914b4f0462e18cca652",
+    "compose.production-staging.yml": "c57ed8718e27ae6431ff309660e67d62fa2dba096ff37f91f16c719d474a206e",
+    "compose.production-manual.yml": "1fda19bc9f38b9e810fcb8d805664860505971560e76a55d524e2938f25c07dc"
+  }
+}

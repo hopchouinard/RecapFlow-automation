@@ -1,0 +1,20 @@
+{
+  "request_id": "CBM-MANUAL-ACTIVATE-20260910-005",
+  "checked_at": "2026-09-10T05:47:10.528029+00:00",
+  "live_webui": {
+    "live_app_process": true,
+    "effective_url": "https://community-brain.patchoutech.lab/retrieval/query",
+    "retrieval_status": "ok",
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "context_emitted": true,
+    "source_count": 10
+  },
+  "guarded_inodes": 2867,
+  "legacy_writers_held": true,
+  "legacy_cron_held": true,
+  "timer_active": true,
+  "rollback_start_utc": "2026-09-11T01:25:00Z",
+  "hard_deadline_utc": "2026-09-11T01:30:00Z",
+  "mac_folder_action_disabled": true,
+  "legacy_launchagent_unloaded": true
+}

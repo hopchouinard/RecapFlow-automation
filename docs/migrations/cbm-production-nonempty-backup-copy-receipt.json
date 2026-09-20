@@ -1,0 +1,9 @@
+{
+  "off_host_path": "/srv/community-brain/db-backups/20260910T033129Z.dump",
+  "sha256": "9543dbb6eeb49ab7c8a6b37420e0514a2461e24f3924a6ce3f0cc7cf2bb1c60b",
+  "bytes": 52127,
+  "verified": true,
+  "pbs_capture": "Completed; contains nonempty dump, pinned managed-state archive and paired recovery manifest",
+  "retention_copies": 14,
+  "pbs_snapshot": "pbs:backup/vm/109/2026-09-10T03:32:39Z"
+}

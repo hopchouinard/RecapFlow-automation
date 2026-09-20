@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-PUBLICATION-CREDENTIALS-20260917-022",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-17T13:36:04.984301+00:00",
+  "summary": "Scoped GitHub App 4978270 / installation 162488086 verified for exactly two repositories with contents write and metadata read. Signing material stored in Infisical; root:root0600 publisher-only token bundle prepared. Existing runtime unchanged. Token expires 2026-09-17T14:33:43Z; publication remains disabled and write operations untested.",
+  "receipt": "receipt.md"
+}

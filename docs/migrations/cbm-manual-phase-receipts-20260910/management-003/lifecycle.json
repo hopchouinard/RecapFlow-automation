@@ -1,0 +1,19 @@
+{
+  "request_id": "CBM-MANUAL-PREP-20260910-003",
+  "checked_at": "2026-09-10T05:05:42.074712+00:00",
+  "expiries": {
+    "CB_PROBE_EXPIRES_AT": "2026-09-11T02:05:38+00:00",
+    "CB_OPENWEBUI_RETRIEVAL_EXPIRES_AT": "2026-09-17T03:52:50+00:00",
+    "CB_PROD_MAC_COLLECTOR_EXPIRES_AT": "2026-09-17T05:03:42+00:00",
+    "CB_PROD_MANUAL_OPERATOR_EXPIRES_AT": "2026-09-17T05:03:42+00:00"
+  },
+  "automatic_token_renewal": false,
+  "authority": "Infisical homelab/prod /applications/community-brain",
+  "maintenance_status": {
+    "provision-nats-tls.py": "passed",
+    "renew-app-tls.py": "passed",
+    "copy-backup.py": "passed",
+    "checked_utc": "2026-09-10T04:25:39.311791+00:00"
+  },
+  "no_renewal_performed": true
+}

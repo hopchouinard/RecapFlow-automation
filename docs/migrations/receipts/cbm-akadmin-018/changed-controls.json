@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+    "sha256": "5207dd70d5f8b3276fdbd86d9cdc80732b40538edaabb76d654633387de0bb0e"
+  },
+  {
+    "path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/human_access.py",
+    "sha256": "c90264128dd82d53fa8ee52c310931c12056c410cde27d7dbe4e70e1eacafbcb"
+  },
+  {
+    "path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+    "sha256": "5207dd70d5f8b3276fdbd86d9cdc80732b40538edaabb76d654633387de0bb0e"
+  },
+  {
+    "path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/human_access.py",
+    "sha256": "c90264128dd82d53fa8ee52c310931c12056c410cde27d7dbe4e70e1eacafbcb"
+  },
+  {
+    "path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/integrations/provision-auth.py",
+    "sha256": "017e1eb520479b8881d4e21ae8fa665c8402988c5c1561401e10c4d2b394c71c"
+  },
+  {
+    "path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-dev/identity/provision-auth.py",
+    "sha256": "31264f4d94877e9e1f0c79ab9340e6a62bfbb428b301d00eba138b757cf316ab"
+  },
+  {
+    "path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/integrations/public-settings.json",
+    "sha256": "3cd6f5c494af004dadcec8f56a3a75c7df1785540129a66671c6191de17fbe49"
+  },
+  {
+    "path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-dev/identity/public-settings.json",
+    "sha256": "b08a52eaa4982eda1d12fb02acea786cfdc513c8d068794944b3eecb31272113"
+  }
+]

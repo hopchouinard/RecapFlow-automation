@@ -1,0 +1,63 @@
+{
+  "request_id": "CBM-MANUAL-PREP-20260910-003",
+  "prepared_at": "2026-09-10T05:03:43.684416+00:00",
+  "infisical_authority": "homelab/prod /applications/community-brain",
+  "new_secret_names": [
+    "CB_PROD_MAC_COLLECTOR_TOKEN",
+    "CB_PROD_MAC_COLLECTOR_EXPIRES_AT",
+    "CB_PROD_MANUAL_OPERATOR_TOKEN",
+    "CB_PROD_MANUAL_OPERATOR_EXPIRES_AT",
+    "CB_MANUAL_PREP_SERVICE_IDENTITIES"
+  ],
+  "existing_authority_values_preserved": true,
+  "live_identity_map_unchanged": true,
+  "pending_identity_map": "CB_MANUAL_PREP_SERVICE_IDENTITIES",
+  "existing_identity_count": 3,
+  "new_identities": [
+    {
+      "subject": "community-brain-prod-mac-collector",
+      "scope": "community-brain",
+      "permissions": [
+        "sources:upload"
+      ],
+      "expires_at": 1789621422
+    },
+    {
+      "subject": "community-brain-prod-manual-operator",
+      "scope": "community-brain",
+      "permissions": [
+        "sources:upload",
+        "jobs:submit",
+        "jobs:read",
+        "artifacts:read"
+      ],
+      "expires_at": 1789621422
+    }
+  ],
+  "expiry_utc": {
+    "community-brain-prod-mac-collector": "2026-09-17T05:03:42+00:00",
+    "community-brain-prod-manual-operator": "2026-09-17T05:03:42+00:00"
+  },
+  "initial_lifetime": "7 days, explicit Mac-managed rotation; no automatic renewal",
+  "vm_delivery": {
+    "private_directory": "/etc/community-brain-production/manual-preparation",
+    "files": [
+      "api.env.pending",
+      "server-identities.json",
+      "collector-client.env",
+      "operator-client.env"
+    ],
+    "owner": "root:root",
+    "directory_mode": "0700",
+    "file_modes": "0600",
+    "active_api_env_unchanged": true,
+    "services_restarted": false
+  },
+  "mac_pending_configuration": "/Users/pchouinard/Library/Application Support/CommunityBrainProduction/collector.pending.json",
+  "mac_owner_uid": 501,
+  "mac_mode": "0600",
+  "development_configuration_unchanged": true,
+  "activated": false,
+  "uploads": 0,
+  "collector_guard_blocker": "sources:upload is broad; existing proxy does not enforce chat kind. Resolve before activation."
+}

@@ -1,0 +1,34 @@
+{
+  "runtime": {
+    "automatic_processing": true,
+    "api_worker_keys_absent": true,
+    "database": {
+      "cb_jobs": 3,
+      "cb_stages": 15,
+      "cb_outbox": 7,
+      "cb_model_calls": 29,
+      "cb_sources": 6,
+      "cb_artifacts": 15
+    },
+    "eligible_jobs": 0,
+    "old_unsent_events": 3,
+    "sessions": 87,
+    "rows": 1901,
+    "fts_indexed_rows": 1901
+  },
+  "data": {
+    "unchanged": true
+  },
+  "database": {
+    "unchanged": true
+  },
+  "verified_at": "2026-09-10T20:38:28.899418+00:00",
+  "request_id": "CBM-AUTOMATIC-20260910-011",
+  "forge_decision": "Implementation and production activation verified; no further Forge approval is pending.",
+  "https_verified": true,
+  "current_assets_match_build": true,
+  "cron_installed": true,
+  "boot_reconciled": true,
+  "runner_state": "idle",
+  "management_receipt_pending": true
+}

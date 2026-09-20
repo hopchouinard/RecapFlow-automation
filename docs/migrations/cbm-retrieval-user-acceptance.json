@@ -1,0 +1,9 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "accepted_at": "2026-09-10T04:51:07.688484+00:00",
+  "evidence": "Patrick confirmed that a familiar question in his usual Open WebUI session returns meeting context/sources without a retrieval or authorization error.",
+  "user_message": "It does, you can move forward",
+  "retrieval_user_acceptance": "passed",
+  "deadline_cancellation_authorized": false,
+  "new_processing_authorized": false
+}

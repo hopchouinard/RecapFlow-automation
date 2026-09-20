@@ -1,0 +1,24 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "pure_policy_tests": [
+    "summer_or_winter_window_2026-09-10T00:45:00+00:00",
+    "summer_or_winter_window_2026-12-10T01:45:00+00:00",
+    "stale_dump",
+    "source_drift",
+    "copy_mismatch",
+    "late_finish",
+    "late_start",
+    "future_dump",
+    "expiry_expired",
+    "expiry_critical_24h",
+    "expiry_warning_72h",
+    "expiry_ok"
+  ],
+  "production_backups_modified_by_tests": false,
+  "isolated_script_failure_tests": [
+    "unreachable_source",
+    "missing_dump",
+    "copy_timeout",
+    "source_drift"
+  ]
+}

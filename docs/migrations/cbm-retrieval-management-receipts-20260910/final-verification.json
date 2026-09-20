@@ -1,0 +1,57 @@
+{
+  "checked_utc": "2026-09-10T03:57:37.490111+00:00",
+  "webui": {
+    "filter_source_valves_enablement_exactly_unchanged": true,
+    "active_url": "http://10.1.30.10:8999/query",
+    "temporary_token_removed": true
+  },
+  "api": {
+    "image_id": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+    "image_reference": "community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+    "model_calls": "false",
+    "network_publication": "false",
+    "identities": [
+      {
+        "subject": "community-brain-prod-read-probe",
+        "permissions": [
+          "jobs:read",
+          "artifacts:read",
+          "retrieval:read"
+        ],
+        "expires_at": 1789092338
+      },
+      {
+        "subject": "community-brain-prod-metrics-probe",
+        "permissions": [
+          "metrics:read"
+        ],
+        "expires_at": 1789092338
+      },
+      {
+        "subject": "community-brain-openwebui",
+        "permissions": [
+          "retrieval:read"
+        ],
+        "expires_at": 1789617170
+      }
+    ],
+    "mounts": [
+      {
+        "destination": "/state/corpus",
+        "read_write": false
+      },
+      {
+        "destination": "/run/certs/ca-bundle.pem",
+        "read_write": false
+      },
+      {
+        "destination": "/state/files",
+        "read_write": false
+      },
+      {
+        "destination": "/state/config",
+        "read_write": false
+      }
+    ]
+  }
+}

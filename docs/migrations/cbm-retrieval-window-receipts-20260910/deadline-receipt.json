@@ -1,0 +1,13 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "files": {
+    "/usr/local/lib/community-brain-window/window-control.py": "577401d435a853d9fe0a65832bf68918fd2dcab6bd13eed4ba38599b0f5b704b",
+    "/var/lib/community-brain-retrieval-preflight/webui-control.py": "8dfcbd298e2610ad7ce8ddda86dc2943d6ae6ed0fef9930ab9c8ddbb528b6cd5",
+    "/etc/systemd/system/cbm-retrieval-deadline.timer": "9fa4ef63769bc710c48fe05fc5e6d9a85216ccfa1f6eb08365859eadd51b2332",
+    "/etc/systemd/system/cbm-retrieval-deadline.service": "c3f9e91dae45d406378ceda5113bd37a6e5dd43e8e3ac4d09b421ce4e1244b27"
+  },
+  "timer": "NextElapseUSecRealtime=Fri 2026-09-11 01:25:00 UTC\nPersistent=yes\nActiveState=active\n",
+  "enabled": "enabled",
+  "hard_deadline_utc": "2026-09-11T01:30:00Z",
+  "rollback_start_utc": "2026-09-11T01:25:00Z"
+}

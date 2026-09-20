@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-09-10T20:02:00.918645+00:00",
+  "method": "sorted relative path, size, SHA256 JSON array; exclude submission/manual-worker lock files",
+  "data": {
+    "files": {
+      "files": 52,
+      "bytes": 587534,
+      "manifest_sha256": "2db27888fd4689a6a9515e54b4a42966a399026d8b290a3f2298695c83e1b3a2"
+    },
+    "config": {
+      "files": 13,
+      "bytes": 53082,
+      "manifest_sha256": "a54228a3a26128f438138aa2cec12c360608f9b1736b3d63d874aa5d1aba1ea2"
+    },
+    "corpus": {
+      "files": 13,
+      "bytes": 19636866,
+      "manifest_sha256": "624c7004d6eec28f73b7213f98115d0051bff050f551732e0c6aabdcf67c2f1f"
+    },
+    "meeting-archive-20260910": {
+      "files": 482,
+      "bytes": 22233251,
+      "manifest_sha256": "4c6cf3872c8980383c9ddd79d5d0b32baad63aab335ae7420daec1766d2b9d0d"
+    }
+  }
+}

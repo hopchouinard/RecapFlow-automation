@@ -1,0 +1,16 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "checked_at": "2026-09-10T07:04:42.336254+00:00",
+  "terminal_noops": 3,
+  "state_unchanged": true,
+  "legacy_writers_held": true,
+  "immutable_inodes": 2867,
+  "cron_held": true,
+  "timer_and_service": "inactive/masked",
+  "core_sha256": "0815f77faa1abb19b763f7d8947f4c74c34695d5ef9fa18e997506cdbdb9bf1f",
+  "mac_intake_state": "superseded",
+  "mac_exact_folder_action_disabled": true,
+  "old_mac_launchagent_unloaded": true,
+  "controller_policy_tests": 19,
+  "maintenance_tests": 16
+}

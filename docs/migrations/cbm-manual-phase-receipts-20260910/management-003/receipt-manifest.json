@@ -1,0 +1,10 @@
+{
+  "request_id": "CBM-MANUAL-PREP-20260910-003",
+  "files": {
+    "receipt.md": "20570377aacf26db813967b093e30516bda4e3c98a55686d2bba286dd166439d",
+    "identity-preparation.json": "26561995a0fd52c3274f27290d6026e483dab83c694d1ab7b28142c3042a5108",
+    "lifecycle.json": "006522f4cd3082e2e6237b7f698fbb5e2592ef18e0699c7e48ba410db004b291",
+    "collector-preparation.json": "5ade54bbc38fce15ea9b64120aa93b3088fefaa821add456124aab0562eb2444",
+    "collector-guard-finding.md": "23f2fb9d3845661b6c333cacaae77439e7b2d40a44125704add0d2b9a540b02d"
+  }
+}

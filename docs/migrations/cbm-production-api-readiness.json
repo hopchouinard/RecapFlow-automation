@@ -1,0 +1,22 @@
+{
+  "status": "api-staging-acceptance-complete",
+  "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+  "health": "healthy",
+  "rows": 1901,
+  "sessions": 87,
+  "fts_indexed_rows": 1901,
+  "fts_unindexed_rows": 0,
+  "post_query_corpus_config_hashes_match": true,
+  "private_files_empty": true,
+  "readonly_state_mounts": true,
+  "provider_credentials_absent": true,
+  "model_calls": false,
+  "publication": false,
+  "worker_started": false,
+  "browser_login": "passed \u2014 Patrick confirmed Authentik login without errors and empty workspace on 2026-09-10",
+  "monitoring_activation": "passed \u2014 Mac receipt 2026-09-10T02:53:16Z",
+  "post_migration_db_restore": "passed \u2014 10 table definitions, grants, owners and row counts match; migrated empty jobs database",
+  "cutover": false,
+  "retirement": false,
+  "browser_login_evidence": "user confirmation; no browser credentials or session tokens collected"
+}

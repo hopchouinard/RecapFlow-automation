@@ -1,0 +1,15 @@
+{
+  "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+  "checkpoint_verified": true,
+  "paired_manifest_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e",
+  "runner": {
+    "state": "idle",
+    "checked_at": "2026-09-17T00:40:05.448960+00:00"
+  },
+  "stop_markers": [],
+  "processing": "succeeded",
+  "artifacts": "ready",
+  "indexing": "complete",
+  "meeting_count": 88,
+  "automatic_processing": true
+}

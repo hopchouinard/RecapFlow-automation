@@ -1,0 +1,19 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "files": {
+    "database-inert.json": "9ca9538a014d0ccf19b683675ae864d1b34fcaf7c9645c8a1d188b928059863f",
+    "target-verification.json": "067fba922e40243dab84e648c824a16172521326147c2cb805347bc86c792a0e",
+    "receipt.md": "461eeaad7c3f28d5b6ab0a7058131070a267b103ec60a67197a22c7642e9e2e8",
+    "state.json": "f4c6eeb25305c626e69a03c21c717d97b449f7e3cf39157da8d814ad460e5f62",
+    "switch-receipt.json": "29fd986b41053f0746790ee45ab806f6b88b98531d0e4c3ad716c4d1f7a2f841",
+    "monitoring-final.json": "be15d598f089536114f86c3a47baee9abb9478b6d7142ad05815ee5750d93b1a",
+    "deadline-receipt.json": "58abc96a72753ed0123452ede950fc5b84ea7b09666ae66f0b71466824c05af4",
+    "source-held-after.json": "86e41903b85f0c8428a32fc441e9aa35e94adc3d4db52ff7420e8dd5df4b9040",
+    "rollback-test.json": "211b7038768351257753e197028b5ca377583a0151c916dea716154ce1ad0118",
+    "writers-before-hold.json": "e8acc718be6c7a5b2f34e91db496f9ba7f7a827d07e266727c98b4d4a7e26532",
+    "source-checkpoint.json": "4e3286e009234b3ba190e3f1ad162cb1dd5c48bf580fc3bd2fa44996aa245ec0",
+    "target-final.json": "660f947b7754ff0605c597572555020ef3a3b7b91f2c6fbcab0df72f7e3efcd5",
+    "source-held-before.json": "9d396e41985e8fb340fc1297dd92c339d00154a8be40e43ce60c7a9e242bec4e",
+    "old-read-under-guard.json": "d7d23f7a1e014ccc05d8db2848ea9ee43f8f48ab0296321a8fddc104425c7dd1"
+  }
+}

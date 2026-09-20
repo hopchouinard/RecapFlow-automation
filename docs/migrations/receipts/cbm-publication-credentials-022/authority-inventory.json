@@ -1,0 +1,30 @@
+{
+  "inspected_paths": [
+    "/",
+    "/applications",
+    "/applications/community-brain",
+    "/automation",
+    "/automation/n8n",
+    "/development",
+    "/development/community-brain-dev",
+    "/operators",
+    "/operators/codex",
+    "/operators/hermes",
+    "/operators/hermes/agentops",
+    "/platform",
+    "/platform/authentik",
+    "/platform/homepage",
+    "/platform/infisical",
+    "/platform/intel-admin",
+    "/platform/loki",
+    "/platform/nats",
+    "/platform/postgres",
+    "/platform/uptime-kuma",
+    "/platform/wikijs"
+  ],
+  "matching_key_names": {
+    "/platform/wikijs": [
+      "WIKIJS_DOCS_PUBLISHER_API_TOKEN"
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "label": "com.patchoutech.sync-zoom-chats",
+    "loaded": false,
+    "watch_paths": [
+      "/Users/pchouinard/Documents/zoom"
+    ],
+    "queue_directories": null,
+    "run_at_load": null,
+    "scripts": [
+      "/Users/pchouinard/scripts/sync-zoom-chats.sh"
+    ],
+    "status_lines": [],
+    "operations": [
+      "if rsync -az \"$file\" \"${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}/${dest_name}\"; then"
+    ]
+  },
+  {
+    "label": "com.patchoutech.recapflow-pull",
+    "loaded": true,
+    "watch_paths": null,
+    "queue_directories": null,
+    "run_at_load": false,
+    "scripts": [
+      "/Users/pchouinard/Library/Scripts/recapflow/recapflow-pull.sh"
+    ],
+    "status_lines": [
+      "state = not running",
+      "runs = 1",
+      "last exit code = 0",
+      "state = active",
+      "state = active"
+    ],
+    "operations": [
+      "# Pulls the VM's latest snapshot via rsync into local staging on the boot volume.",
+      "rsync -avz --delete \\",
+      "echo \"ERROR: ${LOCAL_STAGING}/latest is not a symlink (rsync did not preserve it?)\" >&2"
+    ]
+  },
+  {
+    "label": "com.patchoutech.recapflow-freshness",
+    "loaded": true,
+    "watch_paths": null,
+    "queue_directories": null,
+    "run_at_load": false,
+    "scripts": [
+      "/Users/pchouinard/Library/Scripts/recapflow/recapflow-freshness-check.sh"
+    ],
+    "status_lines": [
+      "state = not running",
+      "runs = 1",
+      "last exit code = 0",
+      "state = active",
+      "state = active"
+    ],
+    "operations": []
+  }
+]

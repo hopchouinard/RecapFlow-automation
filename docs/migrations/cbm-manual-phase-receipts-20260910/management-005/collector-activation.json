@@ -1,0 +1,26 @@
+{
+  "request_id": "CBM-MANUAL-ACTIVATE-20260910-005",
+  "completed_at": "2026-09-10T05:45:39.263127+00:00",
+  "selected_upload": {
+    "bytes": 6804,
+    "id": "dcba207e-92be-4661-995f-c48194a8f9af",
+    "sha256": "5300e1d44b776254042f955493de9a88545e64b10a05cf014d0123a4224d6084"
+  },
+  "selected_meeting": "181075701",
+  "kind": "chat",
+  "deduplication_identical": true,
+  "database_reconciliation_passed": true,
+  "manual_upload_invocations": 2,
+  "new_unique_sources": 1,
+  "jobs": 2,
+  "model_calls": 14,
+  "sources": 4,
+  "unsent_outbox": 2,
+  "active_configuration": "/Users/pchouinard/Library/Application Support/CommunityBrainProduction/collector.json",
+  "private_selection": "/Users/pchouinard/Library/Application Support/CommunityBrainProduction/selection.json",
+  "old_folder_action_disabled": true,
+  "old_launchagent_unloaded": true,
+  "automatic_intake": false,
+  "job_submission": false,
+  "verification_note": "First upload returned successful id/hash/bytes receipt. Wrapper expected absent kind/meeting fields; exact persisted row verified read-only before the single authorized deduplication request."
+}

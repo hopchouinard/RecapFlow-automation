@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-RECOVERY-20260917-020",
+  "canonicalization": "JSON sort_keys=True, separators comma colon for data and corpus; exact file bytes for database",
+  "before": {
+    "managed_data_sha256": "b7cd389b23db9c7fa7baa164cca0d32e15ab471bfaa00d5697145b8342d32446",
+    "corpus_sha256": "d189c3bf5bb018dbb9d39145726ef4bb47ab89b98fec51004c745a13ff354ce9",
+    "database_sha256": "3c62db05420ce1642f92faf21c48313ac0dea25df1db2d7a793b759517eee010"
+  },
+  "after": {
+    "managed_data_sha256": "b7cd389b23db9c7fa7baa164cca0d32e15ab471bfaa00d5697145b8342d32446",
+    "corpus_sha256": "d189c3bf5bb018dbb9d39145726ef4bb47ab89b98fec51004c745a13ff354ce9",
+    "database_sha256": "3c62db05420ce1642f92faf21c48313ac0dea25df1db2d7a793b759517eee010"
+  }
+}

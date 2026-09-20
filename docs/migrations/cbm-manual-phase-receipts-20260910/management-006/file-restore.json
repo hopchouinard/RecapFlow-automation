@@ -1,0 +1,33 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "before_at": "2026-09-10T06:18:36.284880+00:00",
+  "checked_utc": "2026-09-10T06:18:38.465056+00:00",
+  "archives": [
+    {
+      "archive_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/managed-state.tar.gz",
+      "sha256": "28c782fe46711eae3bf4132a7df37ff0e963abddefb1259438c4d7b2e39cd824",
+      "files_verified": 79,
+      "manifest_sha256": "693bda0bbbd31599bb4f9f55c624f3225663b925f0330fcc297bc9c9cf39bddf"
+    },
+    {
+      "archive_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/manual-runtime-state.tar.gz",
+      "sha256": "b8a9c65a18f52f9e9b34371f177592a89196878087db10d3e9a260152582e3ba",
+      "files_verified": 42,
+      "manifest_sha256": "2145983767079323656b22c5ed19a4f21b51dd32a487a97a541d0f8a3cfe9c69"
+    }
+  ],
+  "references_verified": 50,
+  "live_managed_runtime_state_unchanged": true,
+  "temporary_extraction_removed": true,
+  "temporary_container_removed": true,
+  "network_disabled": true,
+  "queue_provider_credentials_absent": true,
+  "restored_corpus": {
+    "rows": 1901,
+    "sessions": 87,
+    "fts_indexed": 1901,
+    "fts_unindexed": 0,
+    "dimensions": 768
+  },
+  "consistency_limit": "Quiescent before/after hashes and exact DB comparison; not a simultaneous cross-host snapshot."
+}

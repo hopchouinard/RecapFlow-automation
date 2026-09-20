@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-FIRST-PUBLICATION-20260917-023",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-17T15:05:48.499163+00:00",
+  "summary": "Approved recap commit and consumer v1.2.0 commit/tag/release390814260 published and independently hash-verified. Six commands passed once; durable git complete/distribution released. Actual installer/API checks and isolated restores passed; post-publication pair verified off-host. Runtime preserved, API healthy, runner idle, routine publication disabled.",
+  "receipt": "receipt.md"
+}

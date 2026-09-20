@@ -1,0 +1,131 @@
+{
+  "container": {
+    "controls": {
+      "CB_ENABLE_AUTOMATIC_PROCESSING": null,
+      "CB_ENABLE_MODEL_CALLS": "false",
+      "CB_ENABLE_NETWORK_PUBLICATION": "false"
+    },
+    "env_sha256": "e9d512e2a981d45d273016960186533607fcceaaf516fdf683fec55f4d323880",
+    "id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+    "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+    "mounts_sha256": "d7f8d468fbac077093021347e49f65dea3ef861909fe9e25578b6b8f648a5ba4",
+    "started_at": "2026-09-17T02:40:55.561635167Z"
+  },
+  "files": {
+    "/etc/community-brain-production/acquisition.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "b5483031c886858186f086465d55f94bc6be5dc8660575bc2814d53ab015a912",
+      "uid": 0
+    },
+    "/etc/community-brain-production/api.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "851b96542a342f211ff8b932feb631c31b7d9a9ae2696cd4971c2f7d80ba0fe1",
+      "uid": 0
+    },
+    "/etc/community-brain-production/bounded-model.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "8b75662fe223d5965ab37578f6a413a3cedc9bc218bf69df3ae075d64dd8fa5b",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-activation-005/api.env.before": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "8e750204e0ff7c1d7b85cfbe10b7b7d03c7e71b05745b987357e06a64a41a7ad",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-activation-005/compose.before.yml": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "c57ed8718e27ae6431ff309660e67d62fa2dba096ff37f91f16c719d474a206e",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-activation-005/container.before.json": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "26aae4335e00307e388768bbf7e4e417681497821020860b0a6e64e071a47e9d",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-activation-005/identities.before.json": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "8ef8b48d669ded49eace42d0bb954cf8c84ffc92f6739bf938714438d64eefcf",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-activation-005/rollback-api.py": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "9674bf6b33cb1a15127f0d69aa09bc327082b7e95797b855e5cae1eed8026eb1",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-preparation/api.env.pending": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "15612dfd41b92fff1a686bc67269ea5b2bad30c65de82a8ef7e2b5758f317ed6",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-preparation/collector-client.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "7199faad55b813863f13441987a23fa5ce4c412da63545b50465f6a0c284fb6a",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-preparation/operator-client.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "98aea57e27751139bebe5b638bea372fd3ec093233c251c0a770c13754387dd0",
+      "uid": 0
+    },
+    "/etc/community-brain-production/manual-preparation/server-identities.json": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "78d955b6b311bd5eb4c099ba17c59125346a1c4162e185b2310dca8d70f70a4b",
+      "uid": 0
+    },
+    "/etc/community-brain-production/migration.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "f838fb766f2cf8b38acfaa8368dcef1336920f7cf7429866c6b8278863b96b8f",
+      "uid": 0
+    },
+    "/etc/community-brain-production/probe-renewal-006/api.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "15612dfd41b92fff1a686bc67269ea5b2bad30c65de82a8ef7e2b5758f317ed6",
+      "uid": 0
+    },
+    "/etc/community-brain-production/probe-renewal-006/probes.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "ab8159ae1e68a9b98a99cfcf5e22c3ab293e172e1083a72d92cbd0d36aa1b1a7",
+      "uid": 0
+    },
+    "/etc/community-brain-production/probes.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "ebc82a939b283f1ff38967e3c5b2c56ca515d572b0843f55fbafa5ed76912034",
+      "uid": 0
+    },
+    "/etc/community-brain-production/rehearsal-api.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "3f0df45b81a7fd8845666193988c3a3d0f9850e866f383bb295ea5d4f9ba9c61",
+      "uid": 0
+    },
+    "/etc/community-brain-production/rehearsal-client.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "84115cf2ee3d12d8bae47a43b52d5c0093a66c5eb8d70cad2641a2ae2193bfea",
+      "uid": 0
+    },
+    "/etc/community-brain-production/worker.env": {
+      "gid": 0,
+      "mode": "0o600",
+      "sha256": "b37b665e13539f1ad7a51dc38a096e3694ff9f5de6a388051f242bd4c90db0a3",
+      "uid": 0
+    }
+  },
+  "publisher_bundle_exists": false
+}

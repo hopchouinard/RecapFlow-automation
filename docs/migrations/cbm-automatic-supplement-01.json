@@ -1,0 +1,19 @@
+{
+  "request_id": "CBM-AUTOMATIC-20260910-011",
+  "supplement": "01",
+  "created_at": "2026-09-10T18:44:10.915974+00:00",
+  "purpose": "Resolve read-only retrieval during checkpoint and label scanner for quiet-window supervision; same approved phase. Original request and packet unchanged.",
+  "files": {
+    "api.py": {
+      "sha256": "86e0a15ce3eeeb4cebb3b2c15627ed3cc9e62b93854b88ac233a30c262500ba4",
+      "bytes": 16869,
+      "original_sha256": "afebdca229aa51255aefd0db752f4ec3bf1e3a81053202e37e87676a8149c9c0"
+    },
+    "automatic_host.py": {
+      "sha256": "e6ffdfb624a91dea4cfd96c59e0a3408eadf3168282f6d37d805da7e8a188e5f",
+      "bytes": 7142,
+      "original_sha256": "859bcf394c3007d931e2f499a107919546d3d6247cffc4858589d950c497994f"
+    }
+  },
+  "tests": "Six private PG/NATS automatic tests and four host tests passed; retrieval POST stays available under exclusive submission lock, source writes get503, scanner has only PG credential and supervised label."
+}

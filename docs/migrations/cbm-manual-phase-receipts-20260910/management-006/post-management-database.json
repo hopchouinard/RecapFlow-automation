@@ -1,0 +1,71 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "checked_at": "2026-09-10T06:32:21.685908+00:00",
+  "database_state_unchanged_after_management": true,
+  "individual_required_grants": [
+    {
+      "tablename": "cb_artifacts",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_attempts",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_jobs",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_model_calls",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_operations",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_outbox",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_rejected_events",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_sources",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    },
+    {
+      "tablename": "cb_stages",
+      "can_select": true,
+      "can_insert": true,
+      "can_update": true,
+      "can_delete": true
+    }
+  ],
+  "restored_schema_equals_current_grants": true
+}

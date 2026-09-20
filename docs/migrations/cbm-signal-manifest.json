@@ -1,0 +1,16 @@
+{
+  "files": {
+    "assets/index-Cb5I8vd_.js": {
+      "bytes": 476719,
+      "sha256": "cae7be15e7108e731e5db0ce7d0436850a946c8c3edf50825de3218cff6ffcb6"
+    },
+    "assets/index-D-8kfH5H.css": {
+      "bytes": 28153,
+      "sha256": "df1fa7d86d340fdf4d1d661a736d2309c7d328afb6fcabfc46d42ee702b419db"
+    },
+    "index.html": {
+      "bytes": 400,
+      "sha256": "b112f7168cdc7ab45c70fe144c75c91ae10ef16520956412bc02d5458478e785"
+    }
+  }
+}

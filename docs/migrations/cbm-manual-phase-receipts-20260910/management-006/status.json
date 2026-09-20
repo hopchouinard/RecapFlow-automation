@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T06:35:36.178667+00:00",
+  "summary": "Exact paired restore and50 references verified;79 managed/42 runtime files copied off-host and PBS checkpoint completed. Read/metrics probes renewed through2026-09-17T06:22:56Z; all scopes and live monitoring verified. Ownership proposal prepared with scheduling/renewal gaps explicit. Deadline remains armed.",
+  "receipt": "receipt.md"
+}

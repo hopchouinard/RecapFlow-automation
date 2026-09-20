@@ -1,0 +1,18 @@
+{
+  "monitors": [
+    {
+      "name": "community-brain-production-health",
+      "id": 30,
+      "paused": true,
+      "tls_verification": true
+    },
+    {
+      "name": "community-brain-production-retrieval",
+      "id": 31,
+      "paused": true,
+      "tls_verification": true
+    }
+  ],
+  "activation": "After Forge API readiness",
+  "secrets_printed": false
+}

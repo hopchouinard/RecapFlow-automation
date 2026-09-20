@@ -1,0 +1,21 @@
+--- pbs_adapter.py.before
++++ pbs_adapter.py
+@@ -17,6 +17,18 @@
+     result = subprocess.run(["pvesh", *args, "--output-format", "json"], capture_output=True, timeout=90)
+     if result.returncode:
+         raise RuntimeError("PBS management call failed; reconcile durable intent")
++    if args[:2] == ("create", "/nodes/pve1/vzdump"):
++        # pvesh runs CLI workers synchronously and streams their log before
++        # emitting the final JSON result. Never replay on a missing task ID.
++        lines = result.stdout.rstrip().splitlines()
++        if not lines:
++            raise ValueError("PBS submission returned no task identity")
++        upid = json.loads(lines[-1])
++        if not isinstance(upid, str) or not re.fullmatch(
++            r"UPID:pve1:[0-9A-Fa-f]+:[0-9A-Fa-f]+:[0-9A-Fa-f]+:vzdump:109:[^:]+:", upid
++        ):
++            raise ValueError("PBS submission returned an unexpected task identity")
++        return upid
+     return json.loads(result.stdout)
+ 
+ 

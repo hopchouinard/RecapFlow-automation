@@ -1,0 +1,41 @@
+{
+  "observed_at": "2026-09-10T20:02:29.014047+00:00",
+  "tables": {
+    "cb_jobs": {
+      "rows": 3,
+      "sha256": "777d2b4df5ee0238402d417fa26cf7181451af92c52b71fa033fae511a8fb4f8"
+    },
+    "cb_rejected_events": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "cb_sources": {
+      "rows": 6,
+      "sha256": "6630688540acfab3753fb93d64ec33fed3699f06e4aa1b519d548137aec1d212"
+    },
+    "cb_model_calls": {
+      "rows": 29,
+      "sha256": "a01f7662b111d0707f51a7680870fc941ab779fcd6b9d1ecc4d194147ff67122"
+    },
+    "cb_operations": {
+      "rows": 3,
+      "sha256": "0e3ed4ca18c7a2b0d9fb7f25bbe28208122e010b4d5ad1459e78b0262dd2cf69"
+    },
+    "cb_stages": {
+      "rows": 15,
+      "sha256": "21fcb6eb1ae406886852ef322f4f815877e4f2f6c985fb59da174c9df0e2528e"
+    },
+    "cb_artifacts": {
+      "rows": 15,
+      "sha256": "6d5fccb66b9825ee3eaa7e173a48660cf2646e0065ada4f8f1d9742bd9361eb5"
+    },
+    "cb_attempts": {
+      "rows": 4,
+      "sha256": "504791c35ab4f657b355f4c78b782b1e50d806c1fbaa24b1efd4bb7ceb3ad13c"
+    },
+    "cb_outbox": {
+      "rows": 7,
+      "sha256": "57fdb9d1f251acc3fc825ef8c0bf547e5fb67d0487630f9a8298ee928186d10a"
+    }
+  }
+}

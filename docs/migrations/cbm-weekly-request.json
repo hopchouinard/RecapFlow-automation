@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-WEEKLY-20260911-015",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-11T19:48:06.098417+00:00",
+  "title": "Approved weekly budget, token renewal and runner reconciliation",
+  "authorization": "Patrick explicitly approved US$5/week with automatic token renewal instead of permanent tokens and resolving runner readiness for one-click weekly operation. No model calls or new meeting selection.",
+  "entry_document": "cbm-weekly-management-handoff.md",
+  "document_sha256": {
+    "cbm-weekly-management-handoff.md": "51a7a8699ca39af0c9aeddb4352ede893aee9593569df36069540374276be941",
+    "cbm-weekly-manifest.json": "305fea2ee4b86d4eae975d8099ad138e7a88904c6e5f5cd46efe4c189a32c1a0"
+  },
+  "response_directory": "responses/CBM-WEEKLY-20260911-015"
+}

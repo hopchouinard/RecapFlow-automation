@@ -1,0 +1,86 @@
+{
+  "request_id": "CBM-NAVIGATION-20260910-010",
+  "created_at": "2026-09-10T17:55:53.215169+00:00",
+  "files": {
+    "POST-MANUAL-JOB.md": {
+      "bytes": 8405,
+      "sha256": "290551f96823cb7561baec3af48501636182e174536854d7684bed096c9a4d17"
+    },
+    "api-checks.json": {
+      "bytes": 2046,
+      "sha256": "ff92599d78965b5e34221de0407055a1d35c790b9f7643fda11b45d5d0b38a5c"
+    },
+    "archive-checks.json": {
+      "bytes": 556,
+      "sha256": "b0ee2520b98026be899cb61fecf21fd54421f8dc43b7b002d1a38e842fc978b3"
+    },
+    "auth-checks.json": {
+      "bytes": 2334,
+      "sha256": "aab4207f745800484e0754a946b462f7b2e8ab27e6f4de9314725f1ea1964113"
+    },
+    "auth-inspection.json": {
+      "bytes": 1228,
+      "sha256": "ca2c683125adf053659c1c1a309a7df86cd55ae3cf29f712ea6c697db234c082"
+    },
+    "backup-checks.json": {
+      "bytes": 318,
+      "sha256": "3915f6e1c3c89ea287307785455f49573e922e87b6a244b36a96ece5946eba6e"
+    },
+    "backup-host.py": {
+      "bytes": 901,
+      "sha256": "75fce25ed991ef4ed9c421999abbf4b84fca21faf68e3b52ed93378beb93ebd8"
+    },
+    "database-after.json": {
+      "bytes": 2145,
+      "sha256": "151bcff9fb06afc576ec0d06f8d90df46f104e8caf42a0165309eaad2138b0a1"
+    },
+    "database-before.json": {
+      "bytes": 2145,
+      "sha256": "151bcff9fb06afc576ec0d06f8d90df46f104e8caf42a0165309eaad2138b0a1"
+    },
+    "hidden-artifact-checks.json": {
+      "bytes": 168,
+      "sha256": "91be8d30074e45ec324e4ec2db7dd4311e8b68b2d33274c10db803c712ed2141"
+    },
+    "hidden-artifacts.json": {
+      "bytes": 525,
+      "sha256": "1ac0d497b2d180c5ef41e420b16563beb5af8f16fde2810a65ff5a016b957bd1"
+    },
+    "host-checks.json": {
+      "bytes": 366,
+      "sha256": "79f933ed38bd37ae7602d52c7939a4c42daa5d369d96ba20d9e2ccdce289a838"
+    },
+    "http-checks.json": {
+      "bytes": 1742,
+      "sha256": "0d01611ec46a72385ed59fff47cfc9997be3b44a1576bbe83cb5e53350384662"
+    },
+    "monitoring-checks.json": {
+      "bytes": 1323,
+      "sha256": "d1c7d67bb600e866f69308bc63259e9c0d413797e13e60c0791d342ff18640fa"
+    },
+    "ownership-webui-checks.json": {
+      "bytes": 592,
+      "sha256": "6d6423773181bafc00602f9f2fd19917842ef2f2e57b4e518f54d9454dc2125f"
+    },
+    "preparation.json": {
+      "bytes": 3437,
+      "sha256": "1e2f250019bec3e9161902f7137d43788f500cdd8fdf7c2704e29cc61d447d1f"
+    },
+    "prepare-host.py": {
+      "bytes": 3523,
+      "sha256": "5962e6815d133b67b87c4bb9c43f6dedc0714f88dd9196d44602de22cd7300d8"
+    },
+    "receipt.md": {
+      "bytes": 6623,
+      "sha256": "1c05a1f4c75138e2d0eff97ed3465d73e26fa16546c63b628d8d1beaebe82d2f"
+    },
+    "recovery-copies.json": {
+      "bytes": 1246,
+      "sha256": "9f5d0ab8166f357d7e1d73d995b8084e6f0bd0b184acaf1eae29c04fc7efebf5"
+    },
+    "verify-host.py": {
+      "bytes": 1768,
+      "sha256": "350a9536582beb10d0ec631cf08a47538b15f0e3bca88242900f7ed1300e23d2"
+    }
+  }
+}

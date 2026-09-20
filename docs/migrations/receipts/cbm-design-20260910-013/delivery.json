@@ -1,0 +1,35 @@
+{
+  "files": 178,
+  "source_bytes": 27771442,
+  "excluded": [
+    {
+      "path": ".DS_Store",
+      "reason": "metadata, secret filename, symlink or nonregular file"
+    },
+    {
+      "path": "components/.DS_Store",
+      "reason": "metadata, secret filename, symlink or nonregular file"
+    },
+    {
+      "path": "templates/.DS_Store",
+      "reason": "metadata, secret filename, symlink or nonregular file"
+    }
+  ],
+  "delivery": {
+    "manifest.json": {
+      "bytes": 27716,
+      "sha256": "1371905a3f7403f3b176552776095bd3c85ffdd1269080fd0751145984dce100"
+    },
+    "design-reference.tar.gz": {
+      "bytes": 26724078,
+      "sha256": "211fc14aec32a5f8210d59ca6165c626ebd03f6c4914ecce32b866f5dc4fd094"
+    }
+  },
+  "verification": {
+    "verified_as": "cbmdev",
+    "files": 178,
+    "archive_members_verified": true,
+    "directory": "/srv/dev-data/artifacts/cbm-design-reference-20260910",
+    "permissions": "0700 directory /0600 files"
+  }
+}

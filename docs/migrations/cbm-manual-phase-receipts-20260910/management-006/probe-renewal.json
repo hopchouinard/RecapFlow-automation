@@ -1,0 +1,28 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "renewed_utc": "2026-09-10T06:27:01.554468+00:00",
+  "new_expiry_utc": "2026-09-17T06:22:56+00:00",
+  "lifetime_days": 7,
+  "subjects": [
+    "community-brain-prod-metrics-probe",
+    "community-brain-prod-read-probe"
+  ],
+  "scopes_unchanged": true,
+  "final_identity_count": 5,
+  "other_authority_values_preserved": true,
+  "old_tokens_denied": true,
+  "negative_scope_checks_passed": true,
+  "transition": "Old/new overlap verified before consumer updates; atomic private file replacements; old grants removed after both consumers switched. Two controlled manual-overlay API recreations.",
+  "kuma": {
+    "monitor_id": 31,
+    "credential_updated": true,
+    "active": true,
+    "other_settings_preserved": true,
+    "private_backup": "/app/data/cbm-probe-renewal-006.before.json"
+  },
+  "prometheus": "Existing token file atomically replaced, promtool passed, HUP reload",
+  "api_recipe": "manual_api_runtime.py through existing Mac Infisical renderer; verifies14 asset hashes and runs manual_host.py api-up",
+  "renewal_owner": "Mac management; explicit renewal before new expiry, no automatic extension added",
+  "private_rotation_journal": "/Users/pchouinard/.local/state/community-brain-management/probe-renewal-006.json",
+  "worker_hold_and_deadline_unchanged": true
+}

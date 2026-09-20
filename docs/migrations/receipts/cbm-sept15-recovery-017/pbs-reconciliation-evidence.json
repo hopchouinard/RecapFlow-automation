@@ -1,0 +1,26 @@
+{
+  "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+  "manifest_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e",
+  "original_operation_state": "intent",
+  "original_operation_has_upid": false,
+  "matching_task": "UPID:pve1:001E1CBC:0FED0E1D:6AA9D98C:vzdump:109:root@pam:",
+  "task_status": "OK",
+  "snapshot": "pbs:backup/vm/109/2026-09-15T23:49:32Z",
+  "snapshot_notes_match": true,
+  "checkpoint_task_remove_zero": true,
+  "included_disks": [
+    "scsi0",
+    "scsi1"
+  ],
+  "guest_freeze_thaw": true,
+  "task_log_sha256": "7a9da99e6bb89c7ae013b28c363b84ff16b697140c80830106639d9fe6c6accd",
+  "prior_snapshots_now_missing": [
+    "pbs:backup/vm/109/2026-09-10T03:32:39Z",
+    "pbs:backup/vm/109/2026-09-10T06:28:34Z"
+  ],
+  "existing_preservation_guard_passes": false,
+  "later_retention_task": "UPID:pve1:001EC6D1:0FF38372:6AA9EA15:vzdump:109:root@pam:",
+  "later_retention_status": "OK",
+  "later_retention_pruned_two": true,
+  "later_retention_log_sha256": "0b589fa85bb7c3072bec47cb95b69699c3d9e1df84063ff01a890bc749fc7f8a"
+}

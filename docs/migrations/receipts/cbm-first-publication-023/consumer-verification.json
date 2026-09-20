@@ -1,0 +1,17 @@
+{
+  "sessions": 88,
+  "rows": 1924,
+  "health_status": 200,
+  "query_results": 3,
+  "write_routes_absent": true,
+  "corpus_unchanged": true,
+  "model_calls": 0,
+  "embedding": "fixture zero vector",
+  "network": "none",
+  "tokenizer_cache": "read-only",
+  "image": "sha256:ceb3b08de5947b3c0c9e458ce50c8d28111b4df1d818ad1fabb0add5d39765c4",
+  "scope": "Package and API compatibility; no semantic ranking or full Open WebUI certification",
+  "installed_file_hashes_match_mac_install": true,
+  "actual_published_installer_ran_on_mac": true,
+  "actual_published_asset_downloads": true
+}

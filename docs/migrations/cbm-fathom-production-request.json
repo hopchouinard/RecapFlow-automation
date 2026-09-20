@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-FATHOM-20260917-019",
+  "sender": "Forge",
+  "target": "home.servers",
+  "created_at": "2026-09-17T01:55:34.997059+00:00",
+  "title": "Deploy approved Fathom URL and ten-minute tolerance fix",
+  "authorization": "Patrick explicitly approved production deployment after successful isolated live acquisition. No production reprocessing.",
+  "entry_document": "cbm-fathom-production-handoff.md",
+  "document_sha256": {
+    "cbm-fathom-production-handoff.md": "5eef3dbef365eb036a6ff52521b90f9c93dc9d00c22de658f37da8fe8843d777",
+    "cbm-fathom-production-manifest.json": "aca79fadd981927ef6860a2f27e3b3d5bfc1ca96cea1ac69b9272d678d51bd49"
+  },
+  "response_directory": "responses/CBM-FATHOM-20260917-019"
+}

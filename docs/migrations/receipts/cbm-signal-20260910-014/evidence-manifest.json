@@ -1,0 +1,12 @@
+{
+  "receipt.md": "2de191930e5f5c8d0495d3b71fada51575dc07a26cbae551414d1e4374a79333",
+  "deployment.json": "6d7f2a288a48307ba3d06e7d430277c51a95517e14010b09eae1ede7ba876bc9",
+  "offhost-before.json": "76fd1c45b6475c1e1d7ea6507f14cb9fab585ae15189a8c4f791f356a2ebd6b7",
+  "offhost-after.json": "e9d82b1311c4e02210c55fbcdb9702a63c93f4b606e19133e97e6ea4d7750469",
+  "adapter.json": "7be0851391e539a52fac4f0089389c1da130740f8f51ade7f5ec751190eacdae",
+  "verification.json": "ea9e5488fe8d5737f5b022691ecb4483b860d2f3f7e6a1bb66fa3ccd58e4714b",
+  "live-controls.json": "75daf001e03b9adcc0fe70889eb982d12da9106d0d2378f9d5529c7de03f1558",
+  "api-checks.json": "be86b4ff2b7160a597affb47027e8d769c757207392fd1504dcf54fb18aa90a5",
+  "content-checks.json": "65fd94d312b606df51513a5df8e7a04c9d59531596a2c448df52e357c5cfb40f",
+  "automatic-recovery-operations.md": "e3fbfb8d0d826101d315ad7367e5a8c4e782d0564a4403f0232161a1911a7998"
+}

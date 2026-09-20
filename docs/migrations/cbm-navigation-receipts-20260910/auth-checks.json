@@ -1,0 +1,89 @@
+{
+  "request_id": "CBM-NAVIGATION-20260910-010",
+  "stable_user_pk": 6,
+  "stable_uuid_sha256": "cb4198fb055f603c5cb065b62d39d7861377fe665bb50519285a95be765d6f26",
+  "before_permissions": [
+    "jobs:read",
+    "artifacts:read",
+    "retrieval:read"
+  ],
+  "after_permissions": [
+    "jobs:read",
+    "artifacts:read",
+    "retrieval:read",
+    "jobs:submit",
+    "sources:upload"
+  ],
+  "expression_cases": {
+    "patrick_member": {
+      "cb_scope": "community-brain",
+      "cb_permissions": [
+        "jobs:read",
+        "artifacts:read",
+        "retrieval:read",
+        "jobs:submit",
+        "sources:upload"
+      ]
+    },
+    "actual_nonmember": {},
+    "nonpatrick_member": {
+      "cb_scope": "community-brain",
+      "cb_permissions": [
+        "jobs:read",
+        "artifacts:read",
+        "retrieval:read"
+      ]
+    },
+    "patrick_nonmember": {},
+    "wrong_uuid": {
+      "cb_scope": "community-brain",
+      "cb_permissions": [
+        "jobs:read",
+        "artifacts:read",
+        "retrieval:read"
+      ]
+    },
+    "inactive_patrick": {
+      "cb_scope": "community-brain",
+      "cb_permissions": [
+        "jobs:read",
+        "artifacts:read",
+        "retrieval:read"
+      ]
+    }
+  },
+  "actual_provider_previews": {
+    "6": {
+      "access_passing": true,
+      "claims": {
+        "cb_scope": "community-brain",
+        "cb_permissions": [
+          "jobs:read",
+          "artifacts:read",
+          "retrieval:read",
+          "jobs:submit",
+          "sources:upload"
+        ],
+        "aud": "community-brain",
+        "iss": "https://auth.patchoutech.lab/application/o/community-brain/"
+      }
+    },
+    "5": {
+      "access_passing": false,
+      "claims": {
+        "aud": "community-brain",
+        "iss": "https://auth.patchoutech.lab/application/o/community-brain/"
+      }
+    }
+  },
+  "exclusive_provider_id": 8,
+  "application_binding_unchanged": true,
+  "provider_unchanged": true,
+  "only_mapping_expression_changed": true,
+  "no_login_minted": true,
+  "human_signin_acceptance_pending": true,
+  "before_expression_sha256": "1549b87cbcfc43a7427b0557155bf677f3477a76480e1b7be902284f5d967fc2",
+  "after_expression_sha256": "f1ad8f91c3a4219b49b00858597df176b934783e9f036616d31662527bff0a71",
+  "checked_at": "2026-09-10T17:54:07.612484+00:00",
+  "committed_mapping_rechecked": true
+}

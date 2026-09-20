@@ -1,0 +1,98 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "created_at": "2026-09-10T07:07:07.970252+00:00",
+  "files": {
+    "POST-MANUAL-JOB.md": {
+      "bytes": 6103,
+      "sha256": "2a5b64d3afa9faf4067931308e61d2e70da45c152b92a6160684d5870a8b5eaa"
+    },
+    "api-checks.json": {
+      "bytes": 2052,
+      "sha256": "313a718918e7f77377d281d83d3f59fef8dfe56f3881e623174f955faccbe8a3"
+    },
+    "control-recovery-copies.json": {
+      "bytes": 1205,
+      "sha256": "3312c93986b73d00a4b7a5b474eac19336866483280868e8bf4669e975b4e72f"
+    },
+    "controller-install.json": {
+      "bytes": 741,
+      "sha256": "9fe72e6cfebd711f3870b58a8219f9601b249e75935039175eb9e8f8791b3f83"
+    },
+    "corpus-preflight.json": {
+      "bytes": 422,
+      "sha256": "d0f12ac0cb473e071b87857d8e6fb9211582cad5239a5284b58697549ca241e9"
+    },
+    "database-preflight.json": {
+      "bytes": 90,
+      "sha256": "82a0644f2165d76055233f0b47266ff2b40898a6c82dd455ac8b0675167c407a"
+    },
+    "deadline-supersession.json": {
+      "bytes": 693,
+      "sha256": "a4be9f262fa42084d5961fee31eb9c8c8feae12b8cb5e6d45fc94589a7698fe4"
+    },
+    "final-checks.json": {
+      "bytes": 545,
+      "sha256": "ce23c32216e188f33f79321e06bd441130234d039d087216fa4f413860478cf5"
+    },
+    "mac-install.json": {
+      "bytes": 527,
+      "sha256": "c1a80bc0ae4f7f0ba39b9c681257308ec7311b91c928cd4cc1b1232f5f406590"
+    },
+    "mac-intake.py": {
+      "bytes": 2534,
+      "sha256": "b31bfd3d7784666154c8830d776d468ff75d7099f5f392cec599eb2a67dea442"
+    },
+    "mac_intake_policy.py": {
+      "bytes": 1477,
+      "sha256": "7bf08d4374f6e190cb4f7f34780d802e03488aed512a7b6111103e8e87f18adf"
+    },
+    "maintain.py": {
+      "bytes": 1129,
+      "sha256": "a04fb24f40408232d004f9f44bface672eccf286156f5bf8dc4daf6380104166"
+    },
+    "maintenance-tests.json": {
+      "bytes": 582,
+      "sha256": "fc44e2819d5d78ce908bb43de4464e882277a148b9edcf1ea93ba77a51194805"
+    },
+    "monitoring-checks.json": {
+      "bytes": 1329,
+      "sha256": "9a2d2872636d9edf1a09812cbd62d4eea64960649589409d7775ca6743a02f54"
+    },
+    "monitoring-install.json": {
+      "bytes": 293,
+      "sha256": "19cf25f5755010e4fd8b930191b9bd314e55499f3385bc35e1cfadc2fde88149"
+    },
+    "ownership_control.py": {
+      "bytes": 4374,
+      "sha256": "0815f77faa1abb19b763f7d8947f4c74c34695d5ef9fa18e997506cdbdb9bf1f"
+    },
+    "prometheus-management.rules.yml": {
+      "bytes": 1989,
+      "sha256": "f475aa99c9626c93d0a448eadeab56b78d3a9adea7304a95240c5f666afcdfb6"
+    },
+    "readiness.json": {
+      "bytes": 1177,
+      "sha256": "87107076106c97bc35b9824a6fab8d6163455b06d91f6c5a08d1631107795093"
+    },
+    "receipt.md": {
+      "bytes": 6325,
+      "sha256": "e5d2f1ec770706cd3c250e6d31ca9daa10ceca1de4331ee4be534527d870a1c9"
+    },
+    "terminal-record.json": {
+      "bytes": 1842,
+      "sha256": "f6a33663dca3b20d10dbfa4f6a1ca4321006fec328fd05731de0f8ac8eaa6711"
+    },
+    "test_controls.py": {
+      "bytes": 8119,
+      "sha256": "e7c5b5c725f549aaefc40c650203de7e6c41f72bb2feae7044fd388ded5dd8fe"
+    },
+    "webui-preflight.json": {
+      "bytes": 259,
+      "sha256": "bf81c802fe01dcd35d782623b94880b01d63a00d601956c5294aa778e12b737e"
+    },
+    "window-control.py": {
+      "bytes": 1524,
+      "sha256": "2f9952f84bf725cab566209d3c81971bc6fb8b0cae906e7108b4035e01288bb3"
+    }
+  }
+}

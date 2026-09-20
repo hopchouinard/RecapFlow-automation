@@ -1,0 +1,19 @@
+{
+  "OPERATIONS.md": "c99ae6889c23ceacb46bb1efa40036eeb0b884b175169f8918791ff804efffaf",
+  "api-checks.json": "b6181c547c4c343d3a8f357016a4d7d096739258f570b3d1a0fceb1e00b54315",
+  "database-restore.json": "fb1e6187762df0753cf97a8bb26a76ae4559a7b99d0baf96947405096627931c",
+  "file-restore.json": "d35bfefc9ceea0da6e8515044aa44fb186835f57e843032fe121647b2fb0b43b",
+  "kuma-renewal.json": "763c71c8ff1503800c65a005a9a9b21ceb079bff2fbeb9ea0e3634605e874c0e",
+  "monitoring-checks.json": "71f0d6a8a116a278df87399aa244b14e017bbc3ed8c93be6c81d73f12ad410b7",
+  "off-host-copy.json": "f8f04386b97bda5defec13dd793632f05f26e348bb32ca1d54e2bccbe7f4fca6",
+  "operations-checks.json": "334f7ed36cfb003eb0d4520e14f7d7cd999f10ca26c362497f1805a090b46884",
+  "ownership-supersession-proposal.md": "a30cd87d6127b92526e63f723ea3c7ea42ab28485f8df02fae7a6aa8802810e0",
+  "paired-recovery-manifest.json": "58dadeb9b019b2b97ce756beda819fbd2b90c632ddc2e6b99d842a5ca680ebc1",
+  "pbs-checkpoint.json": "ca975936e466341d1ec9d2da9ef854325b563d03b9b21589720d25880bde8cee",
+  "post-management-database.json": "c8656211ef63072b0783f05c075f0974504cfe73c7fee3e7897c5dd48b7fba5d",
+  "probe-renewal.json": "e831bc882ad61491d116c57578be527383ac48582f0a3b68628b71f2667021a3",
+  "receipt.md": "3172c4c082c7cce4f5bba5952ec4549bb91a40f806e861c3b8f6d125ede2bd67",
+  "response-files.json": "9c213b4acfcfd19070178a183aa8003f930f236076d458ba456ba2a6718b2a20",
+  "retained-controls.json": "251fdf2da57f7b70060d5f6ffbf4ff17ff8eecd0475af9dd6e3724f8295deb91",
+  "status.json": "e566902ebc4819e5516e202992aaea95d91bf5bbd3a63e4cd15e64338625f677"
+}

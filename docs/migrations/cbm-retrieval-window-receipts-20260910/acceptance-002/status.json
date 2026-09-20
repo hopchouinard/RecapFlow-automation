@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-ACCEPTANCE-20260910-002",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T04:56:33.731001+00:00",
+  "summary": "Real user acceptance recorded as passed. Writer hold and independent rollback unchanged; no new phase authorized.",
+  "receipt": "receipt.md"
+}

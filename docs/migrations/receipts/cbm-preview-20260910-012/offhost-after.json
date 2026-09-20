@@ -1,0 +1,26 @@
+{
+  "directory": "/var/backups/community-brain/preview-deployment-012-after",
+  "files": {
+    "deployment-controls.tar.gz": {
+      "bytes": 1338037,
+      "sha256": "20c71a8177c103c87ec4060dbf1e07edf90036aacc9b8cf92f757e1e7019b36a"
+    },
+    "host-controls.json": {
+      "bytes": 3614,
+      "sha256": "f02c343d30e6652f07d76c94a655a9c3f50b7d7921a11039c0217a3d9419825e"
+    },
+    "management-controls.json": {
+      "bytes": 5746,
+      "sha256": "19a6be2b7e454d1a9bb4e722223e0002cf7c13b03fa3133785e50dbfdaa397fa"
+    },
+    "management-controls.tar.gz": {
+      "bytes": 38185,
+      "sha256": "637ae0bb9971ba4c269c1e7e1541faff8b45987ed5c5b63cd817f3990b961b73"
+    }
+  },
+  "vm_archive": {
+    "path": "/srv/community-brain/artifacts/cbm-preview-20260910-012/after/deployment-controls.tar.gz",
+    "bytes": 1338037,
+    "sha256": "20c71a8177c103c87ec4060dbf1e07edf90036aacc9b8cf92f757e1e7019b36a"
+  }
+}

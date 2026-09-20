@@ -1,0 +1,102 @@
+{
+  "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+  "checked_at": "2026-09-17T00:36:25.546120+00:00",
+  "ordered_quiet_locks_held": true,
+  "marker": {
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "requested_at": "2026-09-15T23:48:08.067324+00:00",
+    "policy": "new-meeting-full-loop-v1",
+    "requires": "paired DB/files/corpus/config/archive/runtime checkpoint"
+  },
+  "manifest_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e",
+  "database_live_verification": {
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "operation": "verify",
+    "passed": true
+  },
+  "files_live_verification": {
+    "differences": [
+      {
+        "path": "srv/community-brain/automation/execution.log",
+        "change": "modified"
+      },
+      {
+        "path": "srv/community-brain/automation/execution.log.1.gz",
+        "change": "added"
+      },
+      {
+        "path": "srv/community-brain/automation/management-attention.json",
+        "change": "added"
+      },
+      {
+        "path": "srv/community-brain/automation/status.json",
+        "change": "modified"
+      }
+    ],
+    "corpus_matches": true,
+    "rows": 1924,
+    "sessions": 88,
+    "fts_unindexed": 0
+  },
+  "host_controls_match": true,
+  "auth_controls_match": true,
+  "restore_receipts": {
+    "database-restore.json": {
+      "disposable_database_removed": true,
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "queue_or_application_started": false,
+      "references_verified": 72,
+      "schema_owners_grants_rows_sequences_match": true
+    },
+    "files-restore.json": {
+      "files_verified": 921,
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "network_disabled": true,
+      "references_verified": 72,
+      "temporary_restore_removed": true
+    }
+  },
+  "operational_state_reconciliation": {
+    "attention": {
+      "reason": "checkpoint_management_failed_requires_reconciliation",
+      "checked_at": "2026-09-15T23:49:44.517298+00:00"
+    },
+    "volatile_files": {
+      "execution.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "execution.log.1.gz": "080577cf2b43bb63de26732e306e1c4f57da4626d85d7ebcdd4d51c3efa9426f",
+      "management-attention.json": "70201da8de0a3890ec683b4c81e245c40f6ed7ef402808d83d7d091a03699ea8",
+      "status.json": "0bc46468bd744d3ca55d49a569acffd19bac75c669eec84a117ce6c63edc54db"
+    }
+  },
+  "pbs": {
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "manifest_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e",
+    "status": "OK",
+    "upid": "UPID:pve1:001E1CBC:0FED0E1D:6AA9D98C:vzdump:109:root@pam:",
+    "snapshot": "pbs:backup/vm/109/2026-09-15T23:49:32Z",
+    "guest_freeze_thaw": true,
+    "included_disks": [
+      "scsi0",
+      "scsi1"
+    ],
+    "existing_backups_pruned": false,
+    "log_sha256": "7a9da99e6bb89c7ae013b28c363b84ff16b697140c80830106639d9fe6c6accd",
+    "reconciliation": {
+      "request_id": "CBM-SEPT15-RECOVERY-20260915-017",
+      "no_new_backup_submitted": true,
+      "subsequent_retention_task": "UPID:pve1:001EC6D1:0FF38372:6AA9EA15:vzdump:109:root@pam:",
+      "subsequent_retention_log_sha256": "0b589fa85bb7c3072bec47cb95b69699c3d9e1df84063ff01a890bc749fc7f8a",
+      "prior_snapshots_now_missing": [
+        "pbs:backup/vm/109/2026-09-10T03:32:39Z",
+        "pbs:backup/vm/109/2026-09-10T06:28:34Z"
+      ],
+      "retention_attribution": "Later independent retention task logged two prunes; checkpoint task explicitly used remove=0 and logged no prune."
+    },
+    "consistency_limit": "Logical DB/files restore verified separately. No full guest restore or PITR claim."
+  },
+  "acceptance": {
+    "acknowledged": true,
+    "attention_archived": true
+  },
+  "checkpoint_acknowledged": true
+}

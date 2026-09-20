@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-DARK-MODE-20260910-008",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-10T16:16:10.433162+00:00",
+  "title": "Deploy requested dark-mode switch; hold subsequent migration phases",
+  "authorization": "Patrick explicitly requested dark mode with switch before next step; small frontend-only production update, no processing/publication/retirement.",
+  "entry_document": "cbm-dark-mode-management-handoff.md",
+  "document_sha256": {
+    "cbm-dark-mode-management-handoff.md": "4bac5d032e961297a3da12a515f4c69f725cb21cedb26e06cc27fe02f033b715",
+    "cbm-dark-mode-manifest.json": "52f8ddc2df556ab7f40342152ceaff941b18037dfb0df796a5fea460cabe6e96"
+  },
+  "response_directory": "responses/CBM-DARK-MODE-20260910-008"
+}

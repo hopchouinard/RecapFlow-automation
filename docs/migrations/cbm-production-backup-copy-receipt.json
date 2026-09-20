@@ -1,0 +1,9 @@
+{
+  "off_host_path": "/srv/community-brain/db-backups/20260910T024826Z.dump",
+  "sha256": "24c9ee9cd8e05b416bdb24a5c42549ff1cb774418349f1b4638253150f495bc2",
+  "bytes": 45680,
+  "verified": true,
+  "pbs_capture": "Completed; includes verified post-migration dump",
+  "retention_copies": 14,
+  "pbs_snapshot": "pbs:backup/vm/109/2026-09-10T02:51:58Z"
+}

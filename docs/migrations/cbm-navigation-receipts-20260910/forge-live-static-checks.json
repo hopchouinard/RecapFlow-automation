@@ -1,0 +1,17 @@
+[
+  {
+    "path": "index.html",
+    "sha256": "ec2ef6d971d198d3fb64ac3fdf60ef2e2ee520fb92035e8b3143f329407910b0",
+    "https_verified": true
+  },
+  {
+    "path": "assets/index-DGlm7DKD.js",
+    "sha256": "0d6f07f0f3910b52f4e2e9d2da34df11a666ea058f4753c76300b50b7cac7624",
+    "https_verified": true
+  },
+  {
+    "path": "assets/index-Cu5foeHo.css",
+    "sha256": "c4b49dee27483bf7ef0e638c3a70a67851dd4bbe441053b9cfcb1dc40c02ad35",
+    "https_verified": true
+  }
+]

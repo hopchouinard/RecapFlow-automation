@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-09-17T13:33:45.642440+00:00",
+  "app_id": 4978270,
+  "installation_id": 162488086,
+  "permissions": {
+    "contents": "write",
+    "metadata": "read"
+  },
+  "repositories": [
+    {
+      "id": 1176379254,
+      "full_name": "hopchouinard/RecapFlow-automation",
+      "default_branch": "main",
+      "main_sha": "dd29e82aa21f3e52d0ea7a96561f8dec9af28055",
+      "protected": false
+    },
+    {
+      "id": 1249770482,
+      "full_name": "hopchouinard/community-brain-distribution",
+      "default_branch": "main",
+      "main_sha": "a192f7832e70d60a10de838aa4136b5f3432f15b",
+      "protected": false
+    }
+  ],
+  "repository_listing_verified": true,
+  "expires_at": "2026-09-17T14:33:43Z",
+  "runtime_bundle": {
+    "path": "/etc/community-brain-production/publication.env",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0600",
+    "readback_verified": true
+  },
+  "write_tests_performed": false,
+  "publication_enabled": false,
+  "signing_key_delivered_to_runtime": false
+}

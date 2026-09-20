@@ -1,0 +1,10 @@
+{
+  "api-checks.json": "84be35ca6420e60c7e492b17f1a35c8fb7081519d4fade51dd70f47b67a4dfa5",
+  "content-checks.json": "b89655bacd36bd75b417c50a98d47e374d9ffa1300c8425d024f4cb6857cfa81",
+  "deployment.json": "fc9bbafc8c9de5f366801b56e042e34b00c64376e92ca885db7049352042372e",
+  "offhost-before.json": "e81543279dd40c604b983b401f7be5c5a8468265920331e3a11c152abb67cdd2",
+  "offhost-after.json": "32cc0a2adab6fce19f3a856da20109e4a1c26f82c51132b4fb4bcef7641ad682",
+  "adapter.json": "9ce01457fa427da6e2e1e442948c223cf7b3e023ce3c5b156d3f51e1fb830c04",
+  "verification.json": "2239a9c24d07080d3cd854908d4c4ab4d4fd5aa4f9209a9d6f7fc42a0543342d",
+  "automatic-recovery-operations.md": "26d38db02e22629b5a002ba0e172323b8fddc339ac3935ead3dccaff163adfd0"
+}

@@ -1,0 +1,16 @@
+{
+  "request_id": "CBM-FIRST-PUBLICATION-20260917-023",
+  "actor": "Forge",
+  "target": "home.servers",
+  "created_at": "2026-09-17T13:57:14.225736+00:00",
+  "deadline": null,
+  "authorization": "Patrick approved the first manual publication phase: exact September15 six-file recap commit, consumer v1.2.0 pin commit/tag/three release assets, fresh scoped token and paired verification. No automatic publication, other meetings, model work, retirement or force rewrites.",
+  "documents": {
+    "cbm-first-publication-management-handoff.md": "13bc1266da9a85d502c7afc5bd141f69d3a7f63c062004ab957bfd773fb194dc",
+    "cbm-first-publication-packet-manifest.json": "b896f297a5f83ddf34af8931b9270e10977c96043716cb2a9c9d95f448899b01",
+    "cbm-first-publication-phase-proposal.md": "01cb68bca0a09d5ce5801a892709871af140642ebbeb704bb9c019f375a1a6ef",
+    "cbm-first-publication-plan.json": "3d58625754a86557c1a60e1c6a0106f2327e929902799747a4954717cc55f409",
+    "cbm-publication-consumer-v1.2.0.patch": "8633e3fc668977eec705f571eeb919e98864e1212eace23353367b016530c216",
+    "cbm-publication-v1.2.0-manifest.json": "f2073718e83eacb27f455cf1151aacb99572311206883bf0d1d8a2f94b259127"
+  }
+}

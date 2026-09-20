@@ -1,0 +1,106 @@
+{
+  "archive_members": 31,
+  "artifacts": 6,
+  "checkpoint": {
+    "acknowledged_at": "2026-09-17T00:36:42.985634+00:00",
+    "checkpoint_created_at": "2026-09-15T23:49:22.318559+00:00",
+    "corpus_receipt_sha256": "81735036c84a10cca5412b1aaafaad158fe31b6cec1b933acac3d05174c303c9",
+    "current_corpus_files_match": true,
+    "current_database_match": true,
+    "current_selected_artifacts_match": true,
+    "database_capture_sha256": "5c647fe9db37e3c38eb8f75d04aae8d503dc623fb4ba502544c450b4731b0224",
+    "files_capture_sha256": "703106801d34cd424bbe483ae6a7b592d0747efe19ee136c1d85ad2d33fad5f7",
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "manifest_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e"
+  },
+  "checkpoint_offhost_pair_verified": true,
+  "corpus": {
+    "dimensions": 768,
+    "embedding_model": "nomic-embed-text",
+    "fts_indexed": 1924,
+    "fts_unindexed": 0,
+    "lancedb_version": "0.34.0",
+    "rows": 1924,
+    "schema_version": "1.1",
+    "sessions": 88
+  },
+  "corpus_files": 24,
+  "database_after_sha256": "1ba32dd2d2b405c0bbfa7697c4ad4678a2cee370dc3b58c40855da6b669eae4c",
+  "database_before_sha256": "1ba32dd2d2b405c0bbfa7697c4ad4678a2cee370dc3b58c40855da6b669eae4c",
+  "database_unchanged": true,
+  "destination": {
+    "archive_members_verified": 31,
+    "checksums_verified": true,
+    "data_only": true,
+    "destination": "/srv/dev-data/artifacts/cbm-publication-candidate-20260917",
+    "private_permissions_verified": true
+  },
+  "files": {
+    "SHA256SUMS": {
+      "bytes": 163,
+      "sha256": "636bb526627ab8870519cfd6f58c3be0f86361f32b92fdf5ef78a8ece65680c6"
+    },
+    "data-only.tar.gz": {
+      "bytes": 13363566,
+      "sha256": "e57da389e18a5a7bb87fdc75222273c4e8b3f87612dddce63d6097637380908f"
+    },
+    "manifest.json": {
+      "bytes": 11325,
+      "sha256": "7cc9963032cb7d13bb922a98582ae323b4f6292612b1bc2996c479ff036a3ad4"
+    }
+  },
+  "job_status": {
+    "artifacts": "ready",
+    "distribution": "not_requested",
+    "git": "not_requested",
+    "id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "indexing": "complete",
+    "mode": "weekly",
+    "processing": "succeeded"
+  },
+  "production_mutations": false,
+  "publication_authorized": false,
+  "request_id": "CBM-PUBLICATION-PREP-20260917-021",
+  "source_after_delivery_sha256": "b7cd389b23db9c7fa7baa164cca0d32e15ab471bfaa00d5697145b8342d32446",
+  "source_after_sha256": "b7cd389b23db9c7fa7baa164cca0d32e15ab471bfaa00d5697145b8342d32446",
+  "source_before_sha256": "b7cd389b23db9c7fa7baa164cca0d32e15ab471bfaa00d5697145b8342d32446",
+  "source_directory": "/srv/community-brain/artifacts/cbm-publication-prep-20260917-021",
+  "stages": [
+    {
+      "attempts": 1,
+      "generation": 1,
+      "id": "ffe7a609-c870-447a-aebc-75a427c9bdcb",
+      "name": "acquisition",
+      "state": "succeeded"
+    },
+    {
+      "attempts": 0,
+      "generation": 0,
+      "id": "a17a8ff6-2e1c-4cdd-99a2-1e0af384970a",
+      "name": "distribution",
+      "state": "blocked"
+    },
+    {
+      "attempts": 0,
+      "generation": 0,
+      "id": "70704c44-065f-410e-af98-8113d431dc77",
+      "name": "git",
+      "state": "blocked"
+    },
+    {
+      "attempts": 1,
+      "generation": 1,
+      "id": "c5d17809-e499-4980-aa13-6ca5f609168e",
+      "name": "indexing",
+      "state": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "generation": 1,
+      "id": "c6964a14-23ad-459f-b116-97e78ad35417",
+      "name": "processing",
+      "state": "succeeded"
+    }
+  ],
+  "uncompressed_bytes": 22070017
+}

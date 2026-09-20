@@ -1,0 +1,14 @@
+{
+  "index.html": {
+    "bytes": 400,
+    "sha256": "ec2ef6d971d198d3fb64ac3fdf60ef2e2ee520fb92035e8b3143f329407910b0"
+  },
+  "assets/index-DGlm7DKD.js": {
+    "bytes": 321106,
+    "sha256": "0d6f07f0f3910b52f4e2e9d2da34df11a666ea058f4753c76300b50b7cac7624"
+  },
+  "assets/index-Cu5foeHo.css": {
+    "bytes": 22203,
+    "sha256": "c4b49dee27483bf7ef0e638c3a70a67851dd4bbe441053b9cfcb1dc40c02ad35"
+  }
+}

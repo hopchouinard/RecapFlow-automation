@@ -1,0 +1,11 @@
+{
+  "added_alerts": [
+    "CommunityBrainManagementStale",
+    "CommunityBrainBackupCopyUnverified",
+    "CommunityBrainIdentityExpiresSoon",
+    "CommunityBrainIdentityExpiryCritical"
+  ],
+  "original_alerts_preserved": 2,
+  "promtool_passed": true,
+  "node_exporter_restart_needed": false
+}

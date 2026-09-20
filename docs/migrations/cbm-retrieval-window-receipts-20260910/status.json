@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T04:46:04.013689+00:00",
+  "summary": "Conditional retrieval switch completed and live cached filter verified. Legacy writers held; rollback independently starts Sep 11 01:25 UTC before 01:30 hard deadline. User acceptance pending; no new phase authorized.",
+  "receipt": "receipt.md"
+}

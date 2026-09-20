@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "installed_at": "2026-09-10T06:52:32.173170+00:00",
+  "mac_hook_installed_first": true,
+  "terminal_state_not_yet_committed": true,
+  "hashes": {
+    "mac_intake_policy.py": "7bf08d4374f6e190cb4f7f34780d802e03488aed512a7b6111103e8e87f18adf",
+    "mac-intake.py": "b31bfd3d7784666154c8830d776d468ff75d7099f5f392cec599eb2a67dea442"
+  },
+  "tests": {
+    "controller_and_policy_cases": 18,
+    "real_process_lock_contention": true,
+    "ui_exact_path_read_checks": 2
+  }
+}

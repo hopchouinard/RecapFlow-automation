@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "name": "transcript.txt",
+      "bytes": 73733,
+      "sha256": "558c713fc4fc89d30c9c42b3355db70c0c58b7a69b9ca232fab85240775bd5dc"
+    },
+    {
+      "name": "prepared-transcript.md",
+      "bytes": 35522,
+      "sha256": "4685bd4027a1c6acc85b74b269fec11d68d5d069a2baf897ff9fb7ea7c0ba7f9"
+    },
+    {
+      "name": "extracted-signal.md",
+      "bytes": 20079,
+      "sha256": "88500ecab862881bb5c40fbf434d055f61c30a9f2c27402fb861f36f93b4933a"
+    },
+    {
+      "name": "community-post.md",
+      "bytes": 16029,
+      "sha256": "f9068d793ee347b2c21f9d5eee4d8e6543b42818e04d7c5f828c9475f3536ff8"
+    },
+    {
+      "name": "community-post-compressed.md",
+      "bytes": 11278,
+      "sha256": "5edf64bc5c54a671101d8b90e70e85fef90b80a302a668d98b703358c8ec2e27"
+    },
+    {
+      "name": "2026-09-22-weekly-invite.md",
+      "bytes": 1504,
+      "sha256": "d37f9b70c3dc5c89bcba2ba02f869d25598a27218ad71c24f1b848ad18444b96"
+    }
+  ],
+  "sessions": 88,
+  "rows": 1924,
+  "new_meeting_rows": 23,
+  "fts_indexed": 1924,
+  "fts_unindexed": 0
+}

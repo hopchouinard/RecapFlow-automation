@@ -1,0 +1,17 @@
+{
+  "packet": "cbm-first-publication-20260917",
+  "files": {
+    "bounded_worker.py": "dd9d90dfde1c201ae9fbd9715f30c7ed9f63077652bbe91c73f741b2ed9a0c4b",
+    "git-askpass.py": "8b5669ba514b70cff607fc096e8a3633027fd2cdee62bf230ff281dd1d76d25e",
+    "jobs/github_release.py": "17bd745fc9d2b10e2cf660baa0cbf21f9d440cf2deaf846e8c88c85f0d1a6223",
+    "jobs/manual.py": "d8c98fc514580b315d7728c6b35fc3ea88c6d1bfd9f456467326b7b0619bafa4",
+    "jobs/prepared_publication.py": "6cb2dd1c2864a71e54ecc9294b280e677b47fa3b3db658806d953c158623f7be",
+    "jobs/publication.py": "a6f7fc17b07bcdf7a342b679a49fc676c367e96213bbba958a093254ce25e7c6",
+    "jobs/publication_selection.py": "7b9e0dc1f80e21e442617ab56bdfad09aadd9c138334d0a98387f00f725ad2fb",
+    "jobs/store.py": "cf8b32ce17a1eb58a1a6c70234844cf01969e0315be61d5d654fbd0f4dcfe4d2",
+    "jobs/worker.py": "66557de0327c3cefced2fd1844148eab96d255009955acad323dca874e2e6d0e",
+    "plan.json": "3d58625754a86557c1a60e1c6a0106f2327e929902799747a4954717cc55f409",
+    "publisher_host.py": "67f4992cc73e33186eb38d8b9506129688aefccf2343332634f879650e548bdf",
+    "publisher_worker.py": "44df318a0dd25dae9ec0cc54177b727475b03c3ca3a2673a940b4f174af4a7aa"
+  }
+}

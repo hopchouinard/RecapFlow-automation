@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-MANUAL-PREP-20260910-003",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T05:08:15.372301+00:00",
+  "summary": "Scoped credentials and inactive collector preparation completed. Activation gate: requested sources:upload lacks chat-only restriction in existing proxy; resolve enforcement or request narrower permission. No API restart, upload, processing, hold or deadline change.",
+  "receipt": "receipt.md"
+}

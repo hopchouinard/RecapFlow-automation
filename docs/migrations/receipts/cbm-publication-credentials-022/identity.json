@@ -1,0 +1,20 @@
+{
+  "app_id": 4978270,
+  "app_slug": "community-brain-publication",
+  "installation_id": 162488086,
+  "owner": "hopchouinard",
+  "repository_selection": "selected",
+  "permissions": {
+    "contents": "write",
+    "metadata": "read"
+  },
+  "infisical_path": "/applications/community-brain-publication",
+  "infisical_environment": "prod",
+  "key_names": [
+    "CB_PUBLISHER_GITHUB_APP_ID",
+    "CB_PUBLISHER_GITHUB_INSTALLATION_ID",
+    "CB_PUBLISHER_GITHUB_PRIVATE_KEY_BASE64",
+    "CB_PUBLISHER_GITHUB_REPOSITORY_IDS"
+  ],
+  "existing_application_secrets_unchanged": true
+}

@@ -1,0 +1,17 @@
+{
+  "archive_sha256": "85e6e814786ae201a1aa3b13c3d4708cb8b5f9776047477c6d58b2009b7074ad",
+  "files": {
+    "index.html": {
+      "bytes": 400,
+      "sha256": "2324d91145e4b3b46a3f1275c9b913b97c30e5cbb841b19ba5ebee56c22ed34d"
+    },
+    "assets/index-ZIhBB68-.js": {
+      "bytes": 313429,
+      "sha256": "33056fd7ac0f1b2f7ad1dce31115f17ebcd2e67161a75589fc85814ab0891dfa"
+    },
+    "assets/index-DMxDA5pK.css": {
+      "bytes": 21396,
+      "sha256": "5044106a99a94d26eb7b010929518baaba8864d58ee0511342c70202f2ffd9d0"
+    }
+  }
+}

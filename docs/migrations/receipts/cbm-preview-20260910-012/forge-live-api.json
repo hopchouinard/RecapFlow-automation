@@ -1,0 +1,10 @@
+{
+  "automatic_processing": true,
+  "meetings": 87,
+  "archive_files": 481,
+  "visible_jobs": 1,
+  "runner": {
+    "state": "idle",
+    "checked_at": "2026-09-10T21:10:05.546935+00:00"
+  }
+}

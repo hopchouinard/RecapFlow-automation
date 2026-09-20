@@ -1,0 +1,9 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "checkpoint": "/var/lib/community-brain-window/CBM-RETRIEVAL-20260910-001/source-checkpoint.tar",
+  "manifest": "/var/lib/community-brain-window/CBM-RETRIEVAL-20260910-001/source-checkpoint-manifest.json",
+  "files": 2627,
+  "bytes": 112691200,
+  "sha256": "a043726758eb1e8783bdb7406ee0d38914104d8aeefcb51d2a7036635568beba",
+  "created_at": "2026-09-10T04:39:22.398340+00:00"
+}

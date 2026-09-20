@@ -160,6 +160,7 @@ Each ticket is development-only until its separate deployment gate is authorized
 | CBM-07 | Reviewed deployment packet | VM/Compose configuration, shared DB/JetStream resources, Infisical secret inventory/identity bootstrap, OIDC, ingress, observability and DB+files+queue restore procedures; concrete cutover and rollback packet ready for authorization. |
 | CBM-08 | Authorized deployment, rehearsal and cutover | Restore on new VM, compare representative calls/queries, drain old work, final sync, one intake owner, Open WebUI endpoint update, both output paths verified; retain old VM through two successful weekly cycles and restore rehearsal. |
 | CBM-09 | Separate pgvector transition | Measured hybrid retrieval equivalence, canonical record/provenance mapping, compatible LanceDB export, reversible read-path switch. |
+| CBM-10 | Final output-quality review — always last | Address [the explicit quality backlog](cbm-final-quality-backlog.md) after all migration work, including CBM-08 stabilization and CBM-09. Preserve v1 during migration; close each finding with validated evidence or Patrick’s explicit acceptance before declaring the whole migration complete. |
 
 ## Boundaries that must survive the handoff
 
@@ -172,6 +173,12 @@ Each ticket is development-only until its separate deployment gate is authorized
 
 ## Primary references
 
+Development follow-on (2026-09-09): Patrick separately authorized beginning
+CBM-01 with isolated dependencies. See
+[CBM-01 contracts and test harness](cbm-01-job-artifact-contracts.md) for the
+development decisions, verification setup and limits of the test-only probes.
+The preparation evidence above and production gates remain unchanged.
+
 - [n8n Server CLI](https://docs.n8n.io/deploy/host-n8n/configure-n8n/use-the-command-line)
 - [n8n encryption key](https://docs.n8n.io/deploy/host-n8n/configure-n8n/basic-configuration/configuration-examples/set-a-custom-encryption-key)
 - [Fathom meeting listing](https://developers.fathom.ai/api-reference/meetings/list-meetings)
@@ -180,3 +187,11 @@ Each ticket is development-only until its separate deployment gate is authorized
 - [Infisical Universal Auth](https://infisical.com/docs/documentation/platform/identities/universal-auth)
 - [uv installation](https://docs.astral.sh/uv/getting-started/installation/)
 - [uv managed Python](https://docs.astral.sh/uv/guides/install-python/)
+
+## Continued development (2026-09-09)
+
+Patrick subsequently authorized CBM-02 and later development tickets until
+intervention is needed. See [development progress](cbm-development-progress.md)
+and the [CBM-07 deployment packet](cbm-07-deployment-packet.md). This authorization
+does not permit production deployment, cutover, secret migration or publication.
+The image build/boot awaits an isolated Docker-capable environment.

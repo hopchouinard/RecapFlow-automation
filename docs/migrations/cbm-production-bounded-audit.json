@@ -1,0 +1,1 @@
+{"jobs": 2, "sources": 3, "artifacts": 9, "model_calls": 14, "calls_per_job": {"f6e9abed-e862-4eb7-a231-e98467adcaba": 8, "91d77409-afed-4625-97cb-748c8b637991": 6}, "model_states": {"succeeded": 14}, "saved_response_cost_usd": 0.04381715, "all_referenced_hashes_verified": true, "processing_attempts_each": 1, "nonprocessing_attempts": 0, "preserved_corpus_config_unchanged": true}

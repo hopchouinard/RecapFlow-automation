@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-RECOVERY-20260917-020",
+  "recorded_at": "2026-09-17T02:55:20.052773+00:00",
+  "user_response": "yes",
+  "browser_progress_indicators_accepted": true,
+  "production_recovery_exercised": false,
+  "whole_migration_complete": false
+}

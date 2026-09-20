@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-ACCEPTANCE-20260910-002",
+  "user_acceptance": "passed",
+  "recorded_at": "2026-09-10T04:56:07.565987+00:00",
+  "management_state": "/var/lib/community-brain-window/CBM-RETRIEVAL-20260910-001/state.json",
+  "hold_active": true,
+  "legacy_n8n_stopped": true,
+  "legacy_retrieval_paused": true,
+  "deadline_timer_active": true,
+  "rollback_start_utc": "2026-09-11T01:25:00Z",
+  "hard_deadline_utc": "2026-09-11T01:30:00Z",
+  "original_switch_receipt_unchanged": true,
+  "new_phase_authorized": false
+}

@@ -1,0 +1,87 @@
+{
+  "bootstrap_credentials_included": false,
+  "control_capture_id": "5a870d6e-0c6d-4ff0-b4b2-17cb2cbbc545",
+  "extraction_config": {
+    "bytes": 987,
+    "sha256": "008a6b15d4dd617c2bdf170714e086574ed996ed61534cdd2bb3e8c54de09de1"
+  },
+  "historical_checkpoint_evidence_unchanged": true,
+  "local": "/Users/pchouinard/.local/state/community-brain-management/request018/current-recovery",
+  "offhost_verified": {
+    "pchouinard@10.1.10.50": {
+      "directory": "/var/backups/community-brain/akadmin-018/current-controls",
+      "files": {
+        "applied.json": {
+          "bytes": 11078,
+          "sha256": "8311cbb6194d3e691d78486fc7ddf01a003c5f694aaa6e41463e4fde6d2098dc"
+        },
+        "auth-controls-after.json": {
+          "bytes": 5770,
+          "sha256": "a08393c080e98cdbce8de4a1d73379252a72f8584b7ff94dcef2c90ce87dfbe3"
+        },
+        "before.json": {
+          "bytes": 6474,
+          "sha256": "a89aa40730c47651777d046892d6cdc5d0673ea2db94ae4d1b7cee856c6d3b47"
+        },
+        "changed-controls.json": {
+          "bytes": 1454,
+          "sha256": "86360102216a85465dc52eade934fdb09fe51444236e7140ad7e90e2bf88cc38"
+        },
+        "extraction-config.yaml": {
+          "bytes": 987,
+          "sha256": "008a6b15d4dd617c2bdf170714e086574ed996ed61534cdd2bb3e8c54de09de1"
+        },
+        "host-controls.json": {
+          "bytes": 8682,
+          "sha256": "65c1fb4850c9593e7d981029f9b7f4e8d29584770bc2441aceee1168501b5f34"
+        },
+        "management-controls.json": {
+          "bytes": 6965,
+          "sha256": "8bf788f6387aa6e1d02ce0a3377b05ac9760c22ebc5f9ee76f64a9234de21f18"
+        },
+        "management-controls.tar.gz": {
+          "bytes": 49708,
+          "sha256": "07b48bb21ba447b261fd4eb59305d969452fa23431770ff6e9116e14b58910bd"
+        }
+      }
+    },
+    "pchouinard@10.1.30.21": {
+      "directory": "/srv/community-brain/artifacts/cbm-akadmin-20260917-018/current-controls",
+      "files": {
+        "applied.json": {
+          "bytes": 11078,
+          "sha256": "8311cbb6194d3e691d78486fc7ddf01a003c5f694aaa6e41463e4fde6d2098dc"
+        },
+        "auth-controls-after.json": {
+          "bytes": 5770,
+          "sha256": "a08393c080e98cdbce8de4a1d73379252a72f8584b7ff94dcef2c90ce87dfbe3"
+        },
+        "before.json": {
+          "bytes": 6474,
+          "sha256": "a89aa40730c47651777d046892d6cdc5d0673ea2db94ae4d1b7cee856c6d3b47"
+        },
+        "changed-controls.json": {
+          "bytes": 1454,
+          "sha256": "86360102216a85465dc52eade934fdb09fe51444236e7140ad7e90e2bf88cc38"
+        },
+        "extraction-config.yaml": {
+          "bytes": 987,
+          "sha256": "008a6b15d4dd617c2bdf170714e086574ed996ed61534cdd2bb3e8c54de09de1"
+        },
+        "host-controls.json": {
+          "bytes": 8682,
+          "sha256": "65c1fb4850c9593e7d981029f9b7f4e8d29584770bc2441aceee1168501b5f34"
+        },
+        "management-controls.json": {
+          "bytes": 6965,
+          "sha256": "8bf788f6387aa6e1d02ce0a3377b05ac9760c22ebc5f9ee76f64a9234de21f18"
+        },
+        "management-controls.tar.gz": {
+          "bytes": 49708,
+          "sha256": "07b48bb21ba447b261fd4eb59305d969452fa23431770ff6e9116e14b58910bd"
+        }
+      }
+    }
+  },
+  "request_id": "CBM-AKADMIN-20260917-018"
+}

@@ -1,0 +1,90 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "switch_started_at": "2026-09-10T04:41:18.868048+00:00",
+  "accepted_at": "2026-09-10T04:41:20.336612+00:00",
+  "deadline_utc": "2026-09-11T01:30:00+00:00",
+  "deadline_armed": true,
+  "live_filter": {
+    "live_app_process": true,
+    "effective_url": "https://community-brain.patchoutech.lab/retrieval/query",
+    "retrieval_status": "ok",
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "context_emitted": true,
+    "source_count": 10,
+    "sources": [
+      {
+        "chunk_id": "2026-02-18:signal:general",
+        "session_id": "2026-02-18",
+        "source_file": "/data/output/2026-02-18/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-04-14:signal:general",
+        "session_id": "2026-04-14",
+        "source_file": "/data/output/2026-04-14/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-11-26:transcript:001",
+        "session_id": "2025-11-26",
+        "source_file": "/data/output/2025-11-26/prepared-transcript.md"
+      },
+      {
+        "chunk_id": "2026-05-26:signal:general",
+        "session_id": "2026-05-26",
+        "source_file": "/data/output/2026-05-26/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-02-19:signal:general",
+        "session_id": "2025-02-19",
+        "source_file": "/data/output/2025-02-19/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-04-14:signal:decisions",
+        "session_id": "2026-04-14",
+        "source_file": "/data/output/2026-04-14/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-08-12:signal:general",
+        "session_id": "2025-08-12",
+        "source_file": "/data/output/2025-08-12/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-07-21:signal:general",
+        "session_id": "2026-07-21",
+        "source_file": "/data/output/2026-07-21/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-05-12:signal:general",
+        "session_id": "2026-05-12",
+        "source_file": "/data/output/2026-05-12/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-05-05:signal:general",
+        "session_id": "2026-05-05",
+        "source_file": "/data/output/2026-05-05/extracted-signal.md"
+      }
+    ]
+  },
+  "https_auth_checks": [
+    {
+      "case": "valid",
+      "status": 200,
+      "tls_verified": true
+    },
+    {
+      "case": "missing",
+      "status": 401,
+      "tls_verified": true
+    },
+    {
+      "case": "invalid",
+      "status": 401,
+      "tls_verified": true
+    }
+  ],
+  "legacy_n8n_stopped": true,
+  "legacy_retrieval_paused": true,
+  "guard_inodes": 2867,
+  "checkpoint_archive_contents_verified": 2627,
+  "user_acceptance": "pending",
+  "secret_copy": "stdin only; no new raw token file"
+}

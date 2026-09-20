@@ -1,0 +1,21 @@
+{
+  "request_id": "CBM-SIGNAL-20260910-014",
+  "checked_at": "2026-09-10T23:52:34.630278+00:00",
+  "signal_deployed": true,
+  "receipt_files_verified": 10,
+  "assets": {
+    "assets/index-Cb5I8vd_.js": "cae7be15e7108e731e5db0ce7d0436850a946c8c3edf50825de3218cff6ffcb6",
+    "assets/index-D-8kfH5H.css": "df1fa7d86d340fdf4d1d661a736d2309c7d328afb6fcabfc46d42ee702b419db",
+    "index.html": "b112f7168cdc7ab45c70fe144c75c91ae10ef16520956412bc02d5458478e785"
+  },
+  "api": {
+    "automatic_processing": true,
+    "meetings": 87,
+    "archive_files": 481,
+    "visible_jobs": 1,
+    "runner": {
+      "state": "idle",
+      "checked_at": "2026-09-10T23:52:05.158637+00:00"
+    }
+  }
+}

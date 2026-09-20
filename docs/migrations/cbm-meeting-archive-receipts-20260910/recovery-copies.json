@@ -1,0 +1,31 @@
+{
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "checked_at": "2026-09-10T17:05:05.275494+00:00",
+  "vm109_archive": {
+    "path": "/srv/community-brain/artifacts/cbm-meeting-archive-20260910/archive-and-controls.tar.gz",
+    "sha256": "2e6c9fb68dfd6e2bdd73dc3e11b16d4d3b2ff97bdf23fb513f71e56b33f4e7fd",
+    "bytes": 7608445
+  },
+  "offhost_copies": [
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/meeting-archive-009/archive-and-controls.tar.gz",
+      "sha256": "2e6c9fb68dfd6e2bdd73dc3e11b16d4d3b2ff97bdf23fb513f71e56b33f4e7fd",
+      "bytes": 7608445,
+      "mode": "0o600",
+      "uid": 0
+    },
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/meeting-archive-009/mac-recreation-controls.tar.gz",
+      "sha256": "eb6d1a8913299be918a4f02c76ee9579d4d0ef1249909590d42adaa57e5bae5a",
+      "bytes": 5357,
+      "mode": "0o600",
+      "uid": 0
+    }
+  ],
+  "mac_original": "/Users/pchouinard/.local/state/community-brain-management/meeting-archive-009-before/manual_api_runtime.py",
+  "current_mac_helper_sha256": "139ef8b7454b78c9bd92bd23b28e90d1dc9b432144a8ae89dea177e14afb5fdd",
+  "recovery_inventory_sha256": "51fcdbfb3433cad075981c5749b606a1cfd3fec35635090a7b1d7526c3c22900",
+  "prior_paired_checkpoint_retained": true
+}

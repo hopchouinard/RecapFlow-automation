@@ -1,0 +1,118 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "created_utc": "2026-09-10T06:20:03.095226+00:00",
+  "database_dump": {
+    "platform_db_path": "/var/backups/community-brain/20260910T061730Z.dump",
+    "vm109_path": "/srv/community-brain/db-backups/20260910T061730Z.dump",
+    "sha256": "3937db5e4f88b3c508bbbac5feac84f0443071b0d7d5709fa490397b53d973cd",
+    "bytes": 56658
+  },
+  "archives": [
+    {
+      "archive_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/managed-state.tar.gz",
+      "sha256": "28c782fe46711eae3bf4132a7df37ff0e963abddefb1259438c4d7b2e39cd824",
+      "files_verified": 79,
+      "manifest_sha256": "693bda0bbbd31599bb4f9f55c624f3225663b925f0330fcc297bc9c9cf39bddf"
+    },
+    {
+      "archive_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/manual-runtime-state.tar.gz",
+      "sha256": "b8a9c65a18f52f9e9b34371f177592a89196878087db10d3e9a260152582e3ba",
+      "files_verified": 42,
+      "manifest_sha256": "2145983767079323656b22c5ed19a4f21b51dd32a487a97a541d0f8a3cfe9c69"
+    }
+  ],
+  "database_state": {
+    "tables": [
+      {
+        "tablename": "alembic_version",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_artifacts",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_attempts",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_jobs",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_model_calls",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_operations",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_outbox",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_rejected_events",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_sources",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "tablename": "cb_stages",
+        "tableowner": "cbm_prod_migration"
+      }
+    ],
+    "counts": {
+      "alembic_version": 1,
+      "cb_artifacts": 15,
+      "cb_attempts": 4,
+      "cb_jobs": 3,
+      "cb_model_calls": 29,
+      "cb_operations": 3,
+      "cb_outbox": 7,
+      "cb_rejected_events": 0,
+      "cb_sources": 6,
+      "cb_stages": 15
+    },
+    "row_hashes": {
+      "alembic_version": "f1c78d3b93abc2933e2a388bd531ec78f6f080106e632df91726f8b7f50e7d46",
+      "cb_artifacts": "e2da5a249f0e83d4dcab40cb3772d29785aef16481b5829d6c0e090e16b01b20",
+      "cb_attempts": "3b0f9dbd2c57db4ceac1d01248b68208d6fa7c9ddade22c6c151b90d01cb84bb",
+      "cb_jobs": "cb821086b2cc367348536802268912022b4d675f9a3a1fb1e147f369e770a98b",
+      "cb_model_calls": "61211194d150021d443417d974aee98942eebe77cf44a2cf1342dd324c053dbd",
+      "cb_operations": "26e0bee16b49a3acbb91227cf4afa9ee6978410f60b3a9dd5304372167ffe518",
+      "cb_outbox": "451dfab6ea97463e4e9bdbfa11f8533e202a8e66b7711e38e1c10c2c44340a11",
+      "cb_rejected_events": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cb_sources": "cba706def3222f15bd90ad678e989d9b0618e9fb6d45e96ca50d34a0e24768d8",
+      "cb_stages": "49df6b62fa148a0c52db55e5e9e9eeb8d9ac31db4c9c837012d24bdf1dce012b"
+    },
+    "schema_sha256": "778987c45a9e796a4787edc667264473e6640335dfd261a5a15df08ff30f3b1b"
+  },
+  "reference_counts": {
+    "source": 6,
+    "artifact": 15,
+    "response": 29
+  },
+  "all_50_references_verified": true,
+  "runtime_approval_files_verified": 42,
+  "managed_files_verified": 79,
+  "restored_corpus": {
+    "rows": 1901,
+    "sessions": 87,
+    "fts_indexed": 1901,
+    "fts_unindexed": 0,
+    "dimensions": 768
+  },
+  "sources_unchanged_across_capture_restore": true,
+  "disposable_resources_removed": true,
+  "previous_checkpoint_retained": true,
+  "unsent_indexing_events_inert": 3,
+  "consistency_limit": "Quiescent before/after hashes and exact DB comparison; not a simultaneous cross-host snapshot.",
+  "pitr_claimed": false,
+  "full_guest_restore_claimed": false,
+  "off_host_destination": "platform-db:/var/backups/community-brain/manual-20260910-006/",
+  "rollback_start_utc": "2026-09-11T01:25:00Z",
+  "hard_deadline_utc": "2026-09-11T01:30:00Z"
+}

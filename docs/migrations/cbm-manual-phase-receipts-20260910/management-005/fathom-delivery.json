@@ -1,0 +1,17 @@
+{
+  "request_id": "CBM-MANUAL-ACTIVATE-20260910-005",
+  "delivered_at": "2026-09-10T05:43:12.920908+00:00",
+  "authority": "Infisical homelab/development /applications/community-brain CB_FATHOM_API_KEY",
+  "private_runtime_path": "/etc/community-brain-production/acquisition.env",
+  "only_entry": "CB_FATHOM_API_KEY",
+  "owner": "root:root",
+  "file_mode": "0600",
+  "directory_mode": "0700",
+  "selected_call": "812746883",
+  "selected_recording": "181075701",
+  "existing_key_reused": true,
+  "rotated": false,
+  "n8n_extraction": false,
+  "provider_requests": 0,
+  "api_collector_processing_indexing_delivery": false
+}

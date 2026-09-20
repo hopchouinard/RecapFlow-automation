@@ -1,0 +1,170 @@
+{
+  "request_id": "CBM-AKADMIN-20260917-018",
+  "native_checks": {
+    "community-brain": {
+      "pchouinard": {
+        "access": true,
+        "claims": {
+          "cb_scope": "community-brain",
+          "cb_permissions": [
+            "jobs:read",
+            "artifacts:read",
+            "retrieval:read",
+            "jobs:submit",
+            "sources:upload"
+          ]
+        }
+      },
+      "pchouinard-inactive": {
+        "access": false,
+        "claims": {}
+      },
+      "pchouinard-uuid-mismatch": {
+        "access": false,
+        "claims": {}
+      },
+      "pchouinard-nonmember": {
+        "access": false,
+        "claims": {}
+      },
+      "akadmin": {
+        "access": true,
+        "claims": {
+          "cb_scope": "community-brain",
+          "cb_permissions": [
+            "jobs:read",
+            "artifacts:read",
+            "retrieval:read",
+            "jobs:submit",
+            "sources:upload"
+          ]
+        }
+      },
+      "akadmin-inactive": {
+        "access": false,
+        "claims": {}
+      },
+      "akadmin-uuid-mismatch": {
+        "access": false,
+        "claims": {}
+      },
+      "akadmin-nonmember": {
+        "access": false,
+        "claims": {}
+      },
+      "unrelated-active-user": {
+        "pk": 1,
+        "access": false,
+        "claims": {}
+      }
+    },
+    "community-brain-dev": {
+      "pchouinard": {
+        "access": true,
+        "claims": {
+          "cb_scope": "community-brain-dev",
+          "cb_permissions": [
+            "jobs:read",
+            "jobs:submit",
+            "jobs:retry",
+            "jobs:rerun",
+            "jobs:reconcile",
+            "sources:upload",
+            "artifacts:read",
+            "retrieval:read"
+          ]
+        }
+      },
+      "pchouinard-inactive": {
+        "access": false,
+        "claims": {}
+      },
+      "pchouinard-uuid-mismatch": {
+        "access": false,
+        "claims": {}
+      },
+      "pchouinard-nonmember": {
+        "access": false,
+        "claims": {}
+      },
+      "akadmin": {
+        "access": true,
+        "claims": {
+          "cb_scope": "community-brain-dev",
+          "cb_permissions": [
+            "jobs:read",
+            "jobs:submit",
+            "jobs:retry",
+            "jobs:rerun",
+            "jobs:reconcile",
+            "sources:upload",
+            "artifacts:read",
+            "retrieval:read"
+          ]
+        }
+      },
+      "akadmin-inactive": {
+        "access": false,
+        "claims": {}
+      },
+      "akadmin-uuid-mismatch": {
+        "access": false,
+        "claims": {}
+      },
+      "akadmin-nonmember": {
+        "access": false,
+        "claims": {}
+      },
+      "unrelated-active-user": {
+        "pk": 1,
+        "access": false,
+        "claims": {}
+      }
+    }
+  },
+  "unrelated_account_checks": {
+    "unrelated_active_accounts": 3,
+    "evaluations": [
+      {
+        "user_id": 1,
+        "app": "community-brain",
+        "access": false,
+        "claims": {}
+      },
+      {
+        "user_id": 1,
+        "app": "community-brain-dev",
+        "access": false,
+        "claims": {}
+      },
+      {
+        "user_id": 2,
+        "app": "community-brain",
+        "access": false,
+        "claims": {}
+      },
+      {
+        "user_id": 2,
+        "app": "community-brain-dev",
+        "access": false,
+        "claims": {}
+      },
+      {
+        "user_id": 5,
+        "app": "community-brain",
+        "access": false,
+        "claims": {}
+      },
+      {
+        "user_id": 5,
+        "app": "community-brain-dev",
+        "access": false,
+        "claims": {}
+      }
+    ]
+  },
+  "browser_acceptance": {
+    "confirmed_by": "Patrick",
+    "statement": "I confirm browser login worked correctly"
+  }
+}
