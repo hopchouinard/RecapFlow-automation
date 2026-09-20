@@ -8,6 +8,7 @@ if [[ -f "$REPO/.env" || -f "$REPO/community-brain/config/.env" ]]; then
   exit 1
 fi
 node --test "$REPO/tests/workflows/"*.test.js
+python3 -m unittest discover -s "$REPO/deploy/community-brain/openwebui-integration" -p 'test_*.py'
 cd "$REPO/community-brain"
 "$REPO/community-brain/.venv/bin/python" -m pytest tests -q
 "$REPO/community-brain/.venv/bin/python" -m pytest "$REPO/tests/cbm" -q

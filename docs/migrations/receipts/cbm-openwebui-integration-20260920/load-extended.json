@@ -1,0 +1,431 @@
+{
+  "passed": true,
+  "concurrent_clients": 3,
+  "request_pairs": 316,
+  "max_pair_seconds": 1.5944086919989786,
+  "samples": [
+    {
+      "available_kib": 2155728,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "186.3MiB / 900MiB",
+          "CPUPerc": "61.85%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.3MiB / 1.5GiB",
+          "CPUPerc": "29.97%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2040208,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "185.9MiB / 900MiB",
+          "CPUPerc": "47.21%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.2MiB / 1.5GiB",
+          "CPUPerc": "32.19%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1987788,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "186.5MiB / 900MiB",
+          "CPUPerc": "40.08%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.2MiB / 1.5GiB",
+          "CPUPerc": "17.09%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1871320,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "187.9MiB / 900MiB",
+          "CPUPerc": "35.93%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.3MiB / 1.5GiB",
+          "CPUPerc": "24.38%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1825632,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188.1MiB / 900MiB",
+          "CPUPerc": "52.00%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.4MiB / 1.5GiB",
+          "CPUPerc": "23.13%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1818044,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188MiB / 900MiB",
+          "CPUPerc": "59.90%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.5MiB / 1.5GiB",
+          "CPUPerc": "29.23%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1816380,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188.3MiB / 900MiB",
+          "CPUPerc": "64.38%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.6MiB / 1.5GiB",
+          "CPUPerc": "27.18%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1791060,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188.8MiB / 900MiB",
+          "CPUPerc": "53.47%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.2MiB / 1.5GiB",
+          "CPUPerc": "23.31%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1742468,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188.5MiB / 900MiB",
+          "CPUPerc": "66.51%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.8MiB / 1.5GiB",
+          "CPUPerc": "23.00%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1871764,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188.8MiB / 900MiB",
+          "CPUPerc": "70.98%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.5MiB / 1.5GiB",
+          "CPUPerc": "22.74%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1837132,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188.7MiB / 900MiB",
+          "CPUPerc": "49.64%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.7MiB / 1.5GiB",
+          "CPUPerc": "24.32%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1827912,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "188.7MiB / 900MiB",
+          "CPUPerc": "61.45%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.2MiB / 1.5GiB",
+          "CPUPerc": "29.09%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1808000,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "189.2MiB / 900MiB",
+          "CPUPerc": "57.01%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.3MiB / 1.5GiB",
+          "CPUPerc": "27.04%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1744928,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "189.3MiB / 900MiB",
+          "CPUPerc": "39.13%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.6MiB / 1.5GiB",
+          "CPUPerc": "20.10%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1828920,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "189.9MiB / 900MiB",
+          "CPUPerc": "46.78%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.6MiB / 1.5GiB",
+          "CPUPerc": "20.95%"
+        }
+      ]
+    },
+    {
+      "available_kib": 1742508,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "189.8MiB / 900MiB",
+          "CPUPerc": "52.11%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.9MiB / 1.5GiB",
+          "CPUPerc": "21.17%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2120892,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "190.1MiB / 900MiB",
+          "CPUPerc": "53.20%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894MiB / 1.5GiB",
+          "CPUPerc": "20.24%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2175748,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "190.1MiB / 900MiB",
+          "CPUPerc": "75.88%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "896.4MiB / 1.5GiB",
+          "CPUPerc": "30.23%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2179772,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "190.1MiB / 900MiB",
+          "CPUPerc": "67.65%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894MiB / 1.5GiB",
+          "CPUPerc": "27.27%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2147644,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "191.8MiB / 900MiB",
+          "CPUPerc": "67.58%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.1MiB / 1.5GiB",
+          "CPUPerc": "28.14%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2163612,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193.1MiB / 900MiB",
+          "CPUPerc": "74.75%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "893.9MiB / 1.5GiB",
+          "CPUPerc": "30.86%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2149236,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193.2MiB / 900MiB",
+          "CPUPerc": "77.94%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.2MiB / 1.5GiB",
+          "CPUPerc": "31.54%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2158032,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193.2MiB / 900MiB",
+          "CPUPerc": "74.83%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894MiB / 1.5GiB",
+          "CPUPerc": "29.82%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2156956,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193.3MiB / 900MiB",
+          "CPUPerc": "71.23%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.3MiB / 1.5GiB",
+          "CPUPerc": "28.12%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2164428,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193MiB / 900MiB",
+          "CPUPerc": "63.32%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.4MiB / 1.5GiB",
+          "CPUPerc": "27.06%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2159448,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193.2MiB / 900MiB",
+          "CPUPerc": "71.82%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.5MiB / 1.5GiB",
+          "CPUPerc": "29.58%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2173616,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193.3MiB / 900MiB",
+          "CPUPerc": "56.46%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.8MiB / 1.5GiB",
+          "CPUPerc": "28.40%"
+        }
+      ]
+    },
+    {
+      "available_kib": 2169088,
+      "containers": [
+        {
+          "Name": "cbm-integration-dev-api-1",
+          "MemUsage": "193.1MiB / 900MiB",
+          "CPUPerc": "0.16%"
+        },
+        {
+          "Name": "cbm-integration-dev-webui-1",
+          "MemUsage": "894.5MiB / 1.5GiB",
+          "CPUPerc": "2.17%"
+        }
+      ]
+    }
+  ],
+  "oom_killed": false,
+  "scope": "synthetic retrieval/filter load; pipeline overlap recorded separately",
+  "production_scale_or_provider_latency_certified": false
+}

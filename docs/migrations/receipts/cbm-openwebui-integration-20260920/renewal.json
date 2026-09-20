@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "subjects": 5,
+  "lost_delivery_acknowledgment": true,
+  "overlap_retained_and_verified": true,
+  "same_generation_resumed": true,
+  "old_credentials_rejected": true,
+  "api_recreations": 3,
+  "stabilization_image_and_unoverlaid_modules_preserved": true,
+  "new_cache_after_restart": true,
+  "authority": "private development file fixture; not Infisical",
+  "other_consumers": "development credential bundles; not actual Kuma/Prometheus/Mac collector",
+  "production_renderer_validated": false,
+  "production_changes": false
+}

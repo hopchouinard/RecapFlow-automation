@@ -1,0 +1,19 @@
+{
+  "request_id": "CBM-MANAGEMENT-INTEGRATION-20260920-027",
+  "target": "home.servers",
+  "created_at": "2026-09-20T18:07:29.732755+00:00",
+  "deadline": "2026-09-21T20:00:00Z",
+  "authorization": "Patrick explicitly authorized continuing the accepted VM108-first integration/recovery plan. Existing relay and development administration. n8n-automation is recovery-only.",
+  "scope": "development management integration and source/rollout preparation only; no production mutations",
+  "documents": {
+    "candidate-manifest.json": "b55b07851ec91978d1f9d4e30ae0657618326429cb757d92b8c4d8bf394bc1a2",
+    "cbm-management-integration-request.md": "32bcf287b2137491d975276d635055a49c17295fae8a2d53602bc7ff82845d1a",
+    "cbm-openwebui-integration-results.md": "861c43493733ebc9b4a8bc37b1c77daf3921f604d6aec1e194841f7df4331f53",
+    "cleanup.json": "29439995e1ce8616ab2ed863acff77b42757a4f0966a2a03d38d8701236dce3a",
+    "integration-candidate.tar.gz": "d6cf642a306a43229eb42da33aa7b6807e5bd99311f39d4b6be5028e335e34ff",
+    "renewal.json": "cef069125dd71c68d3fad94276128d37b6b0bba0e14e0eb2d516673ad3dd6d49",
+    "restore.json": "3c7f0591df188646d664cc2af6485a2334af07d9d876780ca3a09076242f23c4",
+    "verification.json": "4f33f22b0f700f03a169d2751e32fe854e52fdd649d0600d3d495cd417c40619",
+    "workload.json": "bc143a97e10de6ac83ad1786038dddcf65a92a1fc8dfb77a3b7a4050e954711a"
+  }
+}

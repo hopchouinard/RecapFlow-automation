@@ -4,6 +4,16 @@ Date: September20. Status: **development baseline accepted; not deployable yet**
 Request026 has been verified and acknowledged. This document reconciles its
 findings with the accepted continuation; it is not a production execution script.
 
+## Integration follow-up — September20
+
+[The subsequent VM108 integration](cbm-openwebui-integration-results.md) passed
+actual Community Brain retrieval through WebUI, the five-identity policy with
+real API recreation/WebUI delivery and simulated authority/other consumer bundles,
+fresh-volume/Chroma restore, and extended load across a complete synthetic pipeline.
+The earlier pending-test statements below describe the Request026 checkpoint.
+Actual Infisical/monitoring/collector/lease integration and the coordinated production
+renderer remain pending Request027. Production remains unchanged.
+
 ## Accepted source and evidence
 
 The exact seven-file rehearsal source from agent-ops commit

@@ -42,6 +42,15 @@ identifies remaining real-backend/renewal integration, fresh-volume restore,
 capacity, ingress and coordinated renderer/host changes. Production is unchanged.
 The effective WebUI signing key is outside its volume and must be preserved.
 
+## Real backend and recovery integration — September20
+
+The [next VM108 batch](cbm-openwebui-integration-results.md) passed real backend
+retrieval through WebUI, five-identity policy recovery across actual API recreation,
+fresh-volume and Chroma restoration, and316 concurrent request pairs covering the
+complete two-meeting pipeline process. Infisical authority and other management
+consumers remain simulated; Request027 covers their actual development integration
+and the coherent successor renderer. No production change occurred.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

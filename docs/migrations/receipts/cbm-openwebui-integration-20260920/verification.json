@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-09-20T18:06:20.621588+00:00",
+  "vmid": 108,
+  "source_files_verified": 15,
+  "focused_recovery_tests": {
+    "forge_passed": 3,
+    "vm108_passed": 3
+  },
+  "syntax_and_focused_ruff_passed": true,
+  "real_retrieval_passed": true,
+  "five_identity_policy_with_real_api_webui_passed": true,
+  "fresh_volume_and_chroma_restore_passed": true,
+  "extended_load_and_two_meeting_pipeline_passed": true,
+  "actual_infisical_integration": false,
+  "actual_monitoring_collector_adapters": false,
+  "production_renderer_validated": false,
+  "production_mutations": false,
+  "private_data_or_credentials_exported": false,
+  "cleanup": "cleanup.json"
+}

@@ -745,3 +745,14 @@ OpenWebUI development harness. Real login/cache/credential changes and restart
 persistence passed with synthetic retrieval. Fresh restore, full renewal, actual
 backend, capacity and production rollout remain pending. See the
 [successor packet](cbm-openwebui-successor-packet.md).
+
+## September20 — real WebUI/backend integration, renewal and restore
+
+Actual VM108 API/LanceDB/filter integration passed. The unchanged five-identity
+policy retained overlap after a lost delivery acknowledgment and resumed the same
+generation across3 API recreations. Fresh-volume/Chroma restore and316 concurrent
+request pairs across the full two-meeting pipeline passed;3 focused recovery tests
+passed on Forge and VM108. Integration services are stopped; private fixture and
+evidence retained. See [results](cbm-openwebui-integration-results.md). Request027
+requests actual development Infisical/consumer/lease and successor-renderer work.
+Production and the legacy recovery VM remain unchanged.
