@@ -32,6 +32,16 @@ consumed it. [Request026](cbm-openwebui-migration-request.md) is now posted for 
 migration inventory, VM108 rehearsal and production rollout preparation. See
 [the diagnosis and corrected direction](cbm-renewal-development-results.md).
 
+## Request026 consumed — September20
+
+The real OpenWebUI development baseline passed and its source is reconciled into
+Forge. Login, live filter/cache, development credential changes and persistence
+across restarts are verified. Retrieval/model-list responses were synthetic.
+The [successor packet preparation record](cbm-openwebui-successor-packet.md)
+identifies remaining real-backend/renewal integration, fresh-volume restore,
+capacity, ingress and coordinated renderer/host changes. Production is unchanged.
+The effective WebUI signing key is outside its volume and must be preserved.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

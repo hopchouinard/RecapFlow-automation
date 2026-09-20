@@ -52,3 +52,7 @@ and consumed that receipt and posted [Request026](cbm-openwebui-migration-reques
 for the migration inventory and isolated VM108 rehearsal.
 The last known service-token expiry remains September22 20:53:07 UTC. No renewal,
 processing resume, actual weekly cycle, model call or publication is claimed here.
+
+Request026 subsequently completed and was consumed. Its actual OpenWebUI baseline
+and remaining integration gates are recorded in the
+[successor packet](cbm-openwebui-successor-packet.md). No production change occurred.

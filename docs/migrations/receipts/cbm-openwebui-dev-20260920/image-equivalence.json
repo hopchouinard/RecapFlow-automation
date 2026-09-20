@@ -1,0 +1,69 @@
+{
+  "images": [
+    {
+      "host": "n8n-automation",
+      "id": "sha256:ea51ab128ef7f7e1e5d9a6e2cd8bbea2336e6ad408ad185c1e796525c97d9c52",
+      "rootfs": {
+        "Type": "layers",
+        "Layers": [
+          "sha256:9eb9a78eeb101ab215acf43ffb2a709d5fca9ca2a22178564c7ee5cc30774c60",
+          "sha256:f3098f2e4408e57b4f0787f1e18511cd06ddecfad252a0f51f478088fe0052df",
+          "sha256:da331f07f3e9fb1214ced70513485eefe47e1d0a647b4af8fa5afb176b40b2a7",
+          "sha256:f108605b29eebcf199a536318658e173a8b1eb01172bdef33740acc5e50ee9ef",
+          "sha256:631a71c1829866bc99bdbe4480b33697d5c91cd6919be29122860ce7593f99f1",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:86ef5b02a564da77d35192e737c11a32d3112fc97f24c200b6d62e9e694a67a0",
+          "sha256:c3a351e8d777d19bcedaf4198c32bda9a7eb7e44141543904701934250cd3191",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:00fa9c42cd121584b9c66fe668d069b79e915a384f990e3708cce345bad51673",
+          "sha256:d450d63f6280efc164d7bfd702f65fd74627a75433d155025652a175c5f2b092",
+          "sha256:ff7178b67a29c317c12418f31361fe716de17a03b9d35c8bc35ea0ccf50cd8bb",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:a11cbfbcc51fcf5d0ec1319c3a1892a972e1a177e0ba175283667da1475c7cee",
+          "sha256:301987f4d3177b6e9419a9c9fa5779f431c97134b201e65df6829be70cc61735",
+          "sha256:a76cdcf110daa7e367941e7f1250b9b84fe7beac5e5a64b6d6ae064cedeffb11",
+          "sha256:ae4dad9f9fea46b397ba134b80bc8cdae640a45193bafc2371d980bc3f134d0b",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+        ]
+      },
+      "config_sha256": "73ed52a0fc0f8cbd74619f62a079f0363682b9ec1c5b13752037048c40995d51",
+      "architecture": "amd64",
+      "os": "linux",
+      "created": "2026-03-27T00:30:59.45297665Z"
+    },
+    {
+      "host": "pchouinard@10.1.30.20",
+      "id": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "rootfs": {
+        "Type": "layers",
+        "Layers": [
+          "sha256:9eb9a78eeb101ab215acf43ffb2a709d5fca9ca2a22178564c7ee5cc30774c60",
+          "sha256:f3098f2e4408e57b4f0787f1e18511cd06ddecfad252a0f51f478088fe0052df",
+          "sha256:da331f07f3e9fb1214ced70513485eefe47e1d0a647b4af8fa5afb176b40b2a7",
+          "sha256:f108605b29eebcf199a536318658e173a8b1eb01172bdef33740acc5e50ee9ef",
+          "sha256:631a71c1829866bc99bdbe4480b33697d5c91cd6919be29122860ce7593f99f1",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:86ef5b02a564da77d35192e737c11a32d3112fc97f24c200b6d62e9e694a67a0",
+          "sha256:c3a351e8d777d19bcedaf4198c32bda9a7eb7e44141543904701934250cd3191",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:00fa9c42cd121584b9c66fe668d069b79e915a384f990e3708cce345bad51673",
+          "sha256:d450d63f6280efc164d7bfd702f65fd74627a75433d155025652a175c5f2b092",
+          "sha256:ff7178b67a29c317c12418f31361fe716de17a03b9d35c8bc35ea0ccf50cd8bb",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:a11cbfbcc51fcf5d0ec1319c3a1892a972e1a177e0ba175283667da1475c7cee",
+          "sha256:301987f4d3177b6e9419a9c9fa5779f431c97134b201e65df6829be70cc61735",
+          "sha256:a76cdcf110daa7e367941e7f1250b9b84fe7beac5e5a64b6d6ae064cedeffb11",
+          "sha256:ae4dad9f9fea46b397ba134b80bc8cdae640a45193bafc2371d980bc3f134d0b",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+        ]
+      },
+      "config_sha256": "73ed52a0fc0f8cbd74619f62a079f0363682b9ec1c5b13752037048c40995d51",
+      "architecture": "amd64",
+      "os": "linux",
+      "created": "2026-03-27T00:30:59.45297665Z"
+    }
+  ],
+  "rootfs_equal": true,
+  "config_equal": true,
+  "architecture_equal": true
+}

@@ -736,3 +736,12 @@ development or production action occurred there. Consumed the receipt and posted
 [Request026](cbm-openwebui-migration-request.md): read-only OpenWebUI migration
 inventory, isolated VM108 acceptance, and coherent rollout/rollback preparation.
 The old VM remains recovery-only; production changes are outside this request.
+
+## September20 — Request026 accepted and source reconciled
+
+Verified21 receipt artifacts and7 source files; independently matched6 Python
+files to VM108 and confirmed its retained fixture is stopped. Imported the exact
+OpenWebUI development harness. Real login/cache/credential changes and restart
+persistence passed with synthetic retrieval. Fresh restore, full renewal, actual
+backend, capacity and production rollout remain pending. See the
+[successor packet](cbm-openwebui-successor-packet.md).

@@ -1,0 +1,30 @@
+{
+  "chroma_sqlite_present": true,
+  "path": "/var/lib/docker/volumes/open-webui-data/_data/vector_db/chroma.sqlite3",
+  "bytes": 18399232,
+  "sha256": "b8cf5d156750cbcbb1679219a48de9216872b911a9c5510f3f124e6152ef124e",
+  "table_counts": {
+    "acquire_write": 42,
+    "collection_metadata": 113,
+    "collections": 113,
+    "databases": 1,
+    "embedding_fulltext_search": 1555,
+    "embedding_fulltext_search_config": 1,
+    "embedding_fulltext_search_content": 1555,
+    "embedding_fulltext_search_data": 746,
+    "embedding_fulltext_search_docsize": 1555,
+    "embedding_fulltext_search_idx": 706,
+    "embedding_metadata": 12434,
+    "embedding_metadata_array": 0,
+    "embeddings": 1555,
+    "embeddings_queue": 1563,
+    "embeddings_queue_config": 1,
+    "maintenance_log": 0,
+    "max_seq_id": 113,
+    "migrations": 18,
+    "segment_metadata": 0,
+    "segments": 226,
+    "tenants": 1
+  },
+  "wal_present": false
+}

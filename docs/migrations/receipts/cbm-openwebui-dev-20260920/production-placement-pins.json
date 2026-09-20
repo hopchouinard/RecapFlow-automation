@@ -1,0 +1,157 @@
+{
+  "capacity": {
+    "disk": {
+      "total": 67049664512,
+      "used": 2208780288,
+      "free": 61388136448
+    },
+    "memory": [
+      "MemTotal:        4004576 kB",
+      "MemFree:         1207528 kB",
+      "MemAvailable:    3026712 kB"
+    ]
+  },
+  "pin_references": [
+    {
+      "path": "/srv/community-brain/workspaces/manual-20260910/compose.production-staging.yml",
+      "sha256": "c57ed8718e27ae6431ff309660e67d62fa2dba096ff37f91f16c719d474a206e",
+      "matches": [
+        {
+          "line": 5,
+          "text": "image: ${CB_IMAGE:?reviewed immutable image required}"
+        }
+      ]
+    },
+    {
+      "path": "/srv/community-brain/workspaces/manual-20260910/compose.production-manual.yml",
+      "sha256": "fd4f21aa5e818ec867586cd3b239b2cb01e5e03cc362319833b09d3a3b564d87",
+      "matches": [
+        {
+          "line": 19,
+          "text": "- /srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/api.py:ro"
+        },
+        {
+          "line": 20,
+          "text": "- /srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/runtime.py:ro"
+        },
+        {
+          "line": 21,
+          "text": "- /srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/archive.py:ro"
+        },
+        {
+          "line": 22,
+          "text": "- /srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py:ro"
+        },
+        {
+          "line": 23,
+          "text": "- /srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py:ro"
+        },
+        {
+          "line": 24,
+          "text": "- /srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py:/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py:ro"
+        }
+      ]
+    },
+    {
+      "path": "/srv/community-brain/workspaces/manual-20260910/production-staging/disposable_index_host.py",
+      "sha256": "5fdb5d5a93525dd26b440740f4bfa1c274556acdde60d7c0b6bf53760f03d12e",
+      "matches": [
+        {
+          "line": 12,
+          "text": "IMAGE = \"sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449\""
+        }
+      ]
+    },
+    {
+      "path": "/srv/community-brain/workspaces/manual-20260910/production-staging/run.py",
+      "sha256": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d",
+      "matches": [
+        {
+          "line": 10,
+          "text": "IMAGE = \"community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449\""
+        }
+      ]
+    },
+    {
+      "path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/run.py",
+      "sha256": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d",
+      "matches": [
+        {
+          "line": 10,
+          "text": "IMAGE = \"community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449\""
+        }
+      ]
+    }
+  ],
+  "api": {
+    "image_id": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+    "configured_image": "community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+    "mounts": [
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/archive.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-frontend/dist",
+        "Destination": "/app/web/dist",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/automation-public",
+        "Destination": "/state/automation-public",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/config",
+        "Destination": "/state/config",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/meeting-archive-20260910",
+        "Destination": "/state/meeting-archive",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/api.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/runtime.py",
+        "RW": false
+      },
+      {
+        "Source": "/etc/ssl/certs/ca-certificates.crt",
+        "Destination": "/run/certs/ca-bundle.pem",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/corpus",
+        "Destination": "/state/corpus",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/files",
+        "Destination": "/state/files",
+        "RW": true
+      }
+    ]
+  }
+}

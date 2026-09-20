@@ -1,0 +1,128 @@
+{
+  "observed_at": "2026-09-20T03:52:59.700891+00:00",
+  "traefik": [
+    {
+      "path": "/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-production.yml",
+      "matches": [
+        {
+          "line": 3,
+          "text": "community-brain-production:"
+        },
+        {
+          "line": 4,
+          "text": "rule: Host(`community-brain.patchoutech.lab`)"
+        },
+        {
+          "line": 6,
+          "text": "service: community-brain-production"
+        },
+        {
+          "line": 7,
+          "text": "middlewares: [community-brain-private]"
+        },
+        {
+          "line": 12,
+          "text": "community-brain-private:"
+        },
+        {
+          "line": 14,
+          "text": "sourceRange: [10.1.50.219/32, 10.1.10.60/32, 10.1.10.56/32, 10.1.10.30/32, 10.1.30.10/32]"
+        },
+        {
+          "line": 16,
+          "text": "community-brain-production:"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/HDD_2TB_Main/traefik/dynamic/services.yml",
+      "matches": [
+        {
+          "line": 344,
+          "text": "- url: http://10.1.10.30:3000"
+        },
+        {
+          "line": 366,
+          "text": "- url: http://10.1.30.10:5678"
+        },
+        {
+          "line": 370,
+          "text": "- url: http://10.1.10.41:3000"
+        },
+        {
+          "line": 374,
+          "text": "- url: http://10.1.20.122:3000"
+        },
+        {
+          "line": 406,
+          "text": "- url: http://10.1.10.53:3000"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-tls.yml",
+      "matches": [
+        {
+          "line": 3,
+          "text": "- certFile: /etc/traefik/dynamic/community-brain-private/fullchain.pem"
+        },
+        {
+          "line": 4,
+          "text": "keyFile: /etc/traefik/dynamic/community-brain-private/key.pem"
+        }
+      ]
+    }
+  ],
+  "prometheus": [
+    {
+      "path": "/opt/monitoring-stack/config/prometheus/prometheus.yml",
+      "matches": [
+        {
+          "line": 58,
+          "text": "- 10.1.30.10:9100"
+        },
+        {
+          "line": 61,
+          "text": "instance: n8n-automation"
+        },
+        {
+          "line": 152,
+          "text": "- job_name: community-brain-prod-api"
+        }
+      ]
+    },
+    {
+      "path": "/opt/monitoring-stack/config/prometheus/rules/recapflow-alerts.yml",
+      "matches": [
+        {
+          "line": 43,
+          "text": "# n8n-automation stops publishing, RecapflowSnapshotStale goes quiet -- and"
+        },
+        {
+          "line": 63,
+          "text": "runbook: \"On n8n-automation: sudo ls -la /var/lib/node_exporter/textfile/ and check recapflow_snapshot*.prom are present. Then systemctl show node_exporter --property=ExecStart --value must contain --collector.textfile.directory; if it does not, re-run monitoring-stack scripts/install-node-exporter.sh, which now writes that flag.\""
+        }
+      ]
+    }
+  ],
+  "kuma": [
+    {
+      "id": 30,
+      "name": "community-brain-production-health",
+      "type": "http",
+      "url": "https://community-brain.patchoutech.lab/health",
+      "hostname": null,
+      "port": null,
+      "active": 1
+    },
+    {
+      "id": 31,
+      "name": "community-brain-production-retrieval",
+      "type": "http",
+      "url": "https://community-brain.patchoutech.lab/retrieval/query",
+      "hostname": null,
+      "port": null,
+      "active": 1
+    }
+  ]
+}

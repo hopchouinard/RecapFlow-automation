@@ -1,0 +1,10 @@
+{
+  "data_root": "/var/lib/docker/volumes/open-webui-data/_data",
+  "files": 683,
+  "bytes": 2339432112,
+  "tree_sha256": "fba31234abac78042a95d998a1650971c8133e4383637994b8ba9b5760ee5d25",
+  "tree_algorithm": "sha256 of compact JSON sorted [relative_path,bytes,sha256] entries; names and contents not exported",
+  "database_sha256": "c4d3953ee249c642be9e0ffb7e7ed8e48adb14ad22531761f038b7ebd71b2b54",
+  "container_status": "exited",
+  "finished_at": "2026-09-19T04:20:05.394478381Z"
+}

@@ -1,0 +1,59 @@
+{
+  "retained_workspace": "/srv/dev-data/workspaces/cbm-openwebui-migration-20260920",
+  "retained_volume": "cbm-r026-synthetic-data",
+  "contains_real_user_data": false,
+  "private_modes": {
+    "control.json": "0o600",
+    "data-test-started": "0o600",
+    "webui.env": "0o600",
+    "relay.json": "0o600",
+    "relay.log": "0o600",
+    "synthetic-records.json": "0o600",
+    "test-started": "0o600",
+    "credentials.json": "0o600"
+  },
+  "containers": {
+    "cbm-r026-webui": {
+      "status": "exited",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "oom_killed": false
+    },
+    "cbm-r026-fixture": {
+      "status": "exited",
+      "image": "sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534",
+      "oom_killed": false
+    }
+  },
+  "existing_dev_services": [
+    {
+      "name": "cbm-collector-development-proxy-1",
+      "image": "sha256:72ba65eb42c10344912a84ff42408db7d34f2feb642204570ab8fc5ffd29f1d3",
+      "started_at": "2026-09-20T00:36:03.623525112Z",
+      "status": "running"
+    },
+    {
+      "name": "cbm-live-development-api-1",
+      "image": "sha256:b3a1284201f42ef7cb603ff9866c999ba084350a9ae9e65a122f5a36ad95aedc",
+      "started_at": "2026-09-20T00:35:58.249267745Z",
+      "status": "running"
+    },
+    {
+      "name": "cbm-live-development-nats-1",
+      "image": "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e",
+      "started_at": "2026-09-20T00:35:48.404137004Z",
+      "status": "running"
+    },
+    {
+      "name": "cbm-live-development-postgres-1",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "started_at": "2026-09-20T00:35:46.779542855Z",
+      "status": "running"
+    }
+  ],
+  "disk": {
+    "total": 67049664512,
+    "used": 22153183232,
+    "free": 41443733504
+  },
+  "listeners": "State Recv-Q Send-Q Local Address:Port Peer Address:Port\n"
+}

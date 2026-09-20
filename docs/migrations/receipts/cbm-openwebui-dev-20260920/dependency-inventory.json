@@ -1,0 +1,52 @@
+{
+  "collected_at": "2026-09-20T03:50:00.307579+00:00",
+  "current_management_references": [
+    {
+      "path": "/Users/pchouinard/.local/lib/community-brain-management/mac-intake.py",
+      "sha256": "50bdfd78990cc77a6b3f5becb5fb8b4073229f57e4f15ebba22d395e243ee60d",
+      "matches": [
+        {
+          "line": 44,
+          "text": "r=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=8','n8n-automation','sudo python3 /usr/local/lib/community-brain-window/window-control.py status'],capture_output=True,text=True,timeout=15)"
+        }
+      ]
+    },
+    {
+      "path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/service_renewal_live.py",
+      "sha256": "6ccc4e6ef07c24a1e3357f114221772fd4cb8b267fcc789612103b5022059f5f",
+      "matches": [
+        {
+          "line": 112,
+          "text": "info = json.loads(remote('n8n-automation',webui))"
+        },
+        {
+          "line": 153,
+          "text": "result=json.loads(remote('n8n-automation',outer,{'mode':'set','url':BASE+'/retrieval/query','token':new['CB_OPENWEBUI_RETRIEVAL_TOKEN']}))"
+        }
+      ]
+    },
+    {
+      "path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/renewal_webui_control.py",
+      "sha256": "8dfcbd298e2610ad7ce8ddda86dc2943d6ae6ed0fef9930ab9c8ddbb528b6cd5",
+      "matches": [
+        {
+          "line": 29,
+          "text": "assert args['url'] in ['http://10.1.30.10:8999/query','https://community-brain.patchoutech.lab/retrieval/query']"
+        }
+      ]
+    },
+    {
+      "path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/files_adapter.py",
+      "sha256": "8a4546272cafaccb5e4f291161424527e3d93ac580aaea6d7755f083e6bc6168",
+      "matches": [
+        {
+          "line": 14,
+          "text": "IMAGE = \"community-brain@sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449\""
+        }
+      ]
+    }
+  ],
+  "mac_legacy_intake_phase": "superseded",
+  "legacy_writers_disabled": true,
+  "scope": "Installed management Python/shell source; current Traefik dynamic files; Kuma monitor endpoints; Prometheus config. Historical backup references are not production consumers."
+}

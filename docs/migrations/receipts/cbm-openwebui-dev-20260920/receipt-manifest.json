@@ -1,0 +1,29 @@
+{
+  "sha256": {
+    "acceptance.json": "c34d1e56c12921587a8a5c68dccc560effcdb925833d8a41858c617775857570",
+    "acknowledged.json": "add0d5807c4525a368d8b9221e2853667c666db7e51b4b909271168f720ea4eb",
+    "candidate-source.tar.gz": "cbe30028424647ff25b5c30750b281e05a9c380910e92ee647b04757460252f5",
+    "candidate.patch": "a2ae536804081c62f3ea36616802d8cbaf9923ec590e185319ecc1b0691340b1",
+    "data-recovery-acceptance.json": "2c7a7ce844590f986e60b785bb31f6750541c88c5680ebebc5f9a94cf513ebd6",
+    "dependency-inventory.json": "b4ff24922bfd3e9c798437442e02283458d1509f99570c40988ce7d0743f3411",
+    "forge-vm108-verification.json": "e62515dc49bb35f47fb296d317033147a680dfbdf01f75098c5e229939599ad2",
+    "identity-phase.json": "dab0efd02104ffe98abc425b86f9c9029ffef0e14578a2e82be1613f5d7d87f9",
+    "image-equivalence.json": "04194cd0c7693f10043ffff82f710e8d0523ec818b15805270dc302ef8e92dd2",
+    "image-transfer.json": "536076443e05f9b243eb1946b7239bd91790bd59eef4b3fd34ee04272f1886a6",
+    "ingress-monitoring-inventory.json": "edebabe63a3bc6961ffc3cb83e24b82fa8408f97b368b267bb0210dcc7b46639",
+    "isolation-verification.json": "6585856da99864735c431e5adeda3e29a46422efb205ee2b42acb5021cc9fb68",
+    "legacy-pbs-inventory.json": "61dadfaa5faa45041a023ae71926c2d8b3ec5c569ea4f23b431f77c77944a4b4",
+    "legacy-preservation-verification.json": "63fd83ec18a46249c0e54d1413690f78f81112726498bc56e224bbd2e40b1e6d",
+    "old-auth-model-inventory.json": "ebfc0b8b05a8bcf87863ae5ab09dcfc84a55cc8c5ebeb48421a4bcaf0d06b938",
+    "old-installation-inventory.json": "68ca5ca7c03ad1b1f6dcb23cd037ed1dc41fc9e06b773d86cf6620c6c4c21733",
+    "production-placement-pins.json": "cd3912bdd5136428bec8a4c825d44e79ed3bbc39e0a48da7a9565659fd596475",
+    "production-preserved.json": "ae42a39c576c2917bc8364557589a1e077fab120f7e60c43b6bb85f24318fcc5",
+    "receipt.md": "c14864f239852abab4eb3af46728972d9a607f9be1235bebd1777c6044b26a79",
+    "retained-fixture.json": "6652bf07b2a6cb3af1a44a3fcb637b21486c4061a0e8d0103e30217bb60301fc",
+    "source-image-manifest.json": "9d17b1f76581f1621edfb87acd96db229f70044425b6732659581fa6ef85fe8e",
+    "source-safety.json": "cefb552b03466e3f3f5a2570ebf4de0bea50c4aa8f5b5a1afc9017970b78a35b",
+    "status.json": "32359f015607fc57a2ed85106b34b22f08badbf430204ea193a85bf8b512ce9d",
+    "vector-storage-inventory.json": "ca836a737f704b1ebb33bc6b35b605f6722aba8b3fd82d04014534d73e268997",
+    "verification-receipts.json": "406298b8794ee91aa302c93265c8b42696bfe42f4985f2df3924e1ffa8c3208e"
+  }
+}

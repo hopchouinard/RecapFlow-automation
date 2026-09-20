@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-OPENWEBUI-MIGRATION-20260920-026",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-20T03:55:46.925641+00:00",
+  "summary": "Read-only inventory and isolated VM108 real-application rehearsal passed. Candidate source and migration inputs delivered; fixture stopped and retained. Production unchanged; migration and full renewal integration remain gated.",
+  "receipt": "receipt.md"
+}

@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-09-20T03:32:34.256737+00:00",
+  "journal_phase": "completed",
+  "expiry_fields": {
+    "CB_OPENWEBUI_RETRIEVAL_EXPIRES_AT": "1790110387",
+    "CB_PROBE_EXPIRES_AT": "1790110387",
+    "CB_PROD_MAC_COLLECTOR_EXPIRES_AT": "1790110387",
+    "CB_PROD_MANUAL_OPERATOR_EXPIRES_AT": "1790110387"
+  },
+  "identity_count": 5,
+  "production_expiry_utc": "2026-09-22T20:53:07+00:00"
+}
