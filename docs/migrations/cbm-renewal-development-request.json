@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-RENEWAL-DEVELOPMENT-20260920-025",
+  "target": "home.servers",
+  "created_at": "2026-09-20T03:13:53.046401+00:00",
+  "deadline": "2026-09-21T20:00:00Z",
+  "authorization": "Accepted stabilization implementation and mandatory VM108-first validation; existing authorized relay and disposable development administration. No production repair or activation in this request.",
+  "scope": "development-only actual WebUI rehearsal; read-only production/source review",
+  "documents": {
+    "candidate-manifest.json": "e2fce606a8b625599c8ff91ed285ce9f6c8f385b5e0d3475721f9d4ca32deb67",
+    "cbm-renewal-development-request.md": "a631b771ff48499a410e4d811bec94b28a2022f3f6a92f2a97ecc7d781638c76",
+    "renewal-candidate.tar.gz": "54088d0ce645f6b4f9fce8be779384091d82198397dc0ad021886eee63f9f53d",
+    "verification.json": "e05dab9b1f052f74adf2ebffd119fa5f2fb6483776bfbb7f24211de1ba272357",
+    "vm108-docker-results.json": "1213f0b2d9d8df9425c2051095cedb6a84de4f80b483d06aa829671a1a7876c9"
+  }
+}

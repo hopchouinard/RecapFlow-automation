@@ -1,0 +1,22 @@
+{
+  "sha256": {
+    "candidate-manifest.json": "e2fce606a8b625599c8ff91ed285ce9f6c8f385b5e0d3475721f9d4ca32deb67",
+    "renewal-candidate.tar.gz": "54088d0ce645f6b4f9fce8be779384091d82198397dc0ad021886eee63f9f53d",
+    "request024/acknowledged.json": "45c97c808df4c83ac0bbf700f30006a12fec5d77019f076334b4cb6f2e8dbaa8",
+    "request024/journal-phase.json": "2679587c4c399940282a69edb60c099cf6e9dfb821d2d70566da1ddc14095a92",
+    "request024/management-source.tar.gz": "f5553d0742d7d16f112f16c6d41c0ce182b77d0f71efee3d399fdf803cbcaa98",
+    "request024/old-vm-database.json": "b259fe654e8003e818cc88273bf6836f40fdcbc8a6aa7c15c630f06c449e725e",
+    "request024/old-vm-inspection.json": "6eafdc863ce7d96cfd9093d018618232bb563964dcddcd75594cbe4dea208eda",
+    "request024/receipt.md": "a46886f11146e175de4986245cb49e880e086b478eddf651440e06315549f57a",
+    "request024/renewal-reproduction.json": "1b579727b1b4d6293b0f408609699879f79f79f2ccb865be0bdf9bba30ef8a3b",
+    "request024/runner-evidence.json": "1b0256fbfb26f3573ae92bb8e62159c36b1a6875574be117bb22b49afdc110db",
+    "request024/scheduler-evidence.json": "9cb14d58f584dbf1cb7ab8a031d721a56979f20b289b119da6194e208c7484b2",
+    "request024/source-manifest.json": "d3eb1bd38a937f2e5a3fe597c895119d26fad2d18e0083aacd71d82824d16349",
+    "request024/source-safety-check.json": "77b39d231d5d220eb2a7da9834682bc51fd0de68df2cc086026653cee283f07d",
+    "request024/status.json": "cb3f55c275d76fb4b5336d02d70bc910a59b1e10070f7cb9cfc49a931ab30037",
+    "request024/verification-receipts.json": "39a0f47deecf47ae4ff1661ebffb25ed51aa332aaece74dddd3b557e3dce2b46",
+    "request025-withdrawal.json": "c1a18d86c6e4418939dd63a2ee25a7a070a8b7d88476fe1e5574114c19f13e4b",
+    "verification.json": "fd97ab61057c04853d113fcf3e8c16b051c6220de61f7a88d3a28acbd4ffb71a",
+    "vm108-docker-results.json": "1213f0b2d9d8df9425c2051095cedb6a84de4f80b483d06aa829671a1a7876c9"
+  }
+}

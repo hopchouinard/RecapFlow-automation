@@ -4,6 +4,11 @@ Current continuation entry point: [September 20 live assessment and plan](cbm-cu
 The preparation status and restrictions below describe the original September 9
 phase; later authorized work and today's runtime findings are recorded there.
 
+September20 scope clarification: OpenWebUI must also migrate off `n8n-automation`.
+That VM is now recovery-only pending retirement. The historical temporary live
+OpenWebUI placement below is superseded; it must not remain a production renewal
+or serving dependency. See the current continuation plan.
+
 Date: 2026-09-09. Owner: Patrick Chouinard.
 Status: preservation and development preparation complete; application implementation and production cutover are not authorized by this preparation phase.
 

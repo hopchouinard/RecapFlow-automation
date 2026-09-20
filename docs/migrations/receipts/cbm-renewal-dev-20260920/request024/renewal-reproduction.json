@@ -1,0 +1,11 @@
+{
+  "operation": "Exact deployed OpenWebUI read-only inventory snippet",
+  "source_line": 108,
+  "host": "n8n-automation",
+  "returncode": 1,
+  "exception_classes": [
+    "AssertionError"
+  ],
+  "stdout_present": false,
+  "ssh_transport_error": false
+}

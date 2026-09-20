@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-09-20T03:12:07.911799+00:00",
+  "forge_tests_passed": 20,
+  "vm108_tests_passed": 20,
+  "vm108_unit_log_sha256": "11ab49fa9685f9c680e0123b627bba44860fa2982cf589130eb540237d0ec8fb",
+  "vm108_source_files_verified": 8,
+  "vm108_source_matches_forge": true,
+  "docker_fixture_removed": true,
+  "docker_volume_removed": true,
+  "live_webui_acceptance_pending": true,
+  "production_mutations": false,
+  "scope": "renewal candidate only; application pipeline evidence remains in prior receipt",
+  "disposition": "withdrawn from promotion; legacy VM is recovery-only",
+  "candidate_source_location": "renewal-candidate.tar.gz",
+  "production_changes": false
+}

@@ -1,5 +1,17 @@
 # AGENTS.md
 
+## Legacy VM is recovery-only; OpenWebUI must migrate (2026-09-20)
+
+Patrick explicitly confirmed that OpenWebUI is included in migration off
+`n8n-automation`. That VM is retained only as a temporary functionality/recovery
+backup pending retirement; it must not remain a required production consumer,
+credential-renewal target, scheduler dependency or serving component. Preserve
+its recovery state. Validate the replacement OpenWebUI and its integrations on
+VM108, then migrate through the controlled production rollout and remove legacy
+production dependencies. Do not restart or update the dormant stack merely to
+make production renewal pass. Historical instructions to retain live OpenWebUI
+there temporarily are superseded. Retirement itself still requires its evidence.
+
 ## Mandatory development-first validation (2026-09-20)
 
 Patrick accepted the [current assessment and continuation plan](docs/migrations/cbm-current-state-and-continuation.md)

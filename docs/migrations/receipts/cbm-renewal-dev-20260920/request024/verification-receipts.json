@@ -1,0 +1,44 @@
+{
+  "request_id": "CBM-STABILIZATION-DIAGNOSIS-20260920-024",
+  "verified_at": "2026-09-20T02:53:24.278130+00:00",
+  "artifacts": {
+    "management-source.tar.gz": {
+      "sha256": "f5553d0742d7d16f112f16c6d41c0ce182b77d0f71efee3d399fdf803cbcaa98",
+      "bytes": 52793
+    },
+    "source-manifest.json": {
+      "sha256": "d3eb1bd38a937f2e5a3fe597c895119d26fad2d18e0083aacd71d82824d16349",
+      "bytes": 52336
+    },
+    "source-safety-check.json": {
+      "sha256": "77b39d231d5d220eb2a7da9834682bc51fd0de68df2cc086026653cee283f07d",
+      "bytes": 68
+    },
+    "renewal-reproduction.json": {
+      "sha256": "1b579727b1b4d6293b0f408609699879f79f79f2ccb865be0bdf9bba30ef8a3b",
+      "bytes": 253
+    },
+    "old-vm-inspection.json": {
+      "sha256": "6eafdc863ce7d96cfd9093d018618232bb563964dcddcd75594cbe4dea208eda",
+      "bytes": 653
+    },
+    "old-vm-database.json": {
+      "sha256": "b259fe654e8003e818cc88273bf6836f40fdcbc8a6aa7c15c630f06c449e725e",
+      "bytes": 210
+    },
+    "runner-evidence.json": {
+      "sha256": "1b0256fbfb26f3573ae92bb8e62159c36b1a6875574be117bb22b49afdc110db",
+      "bytes": 2530
+    },
+    "scheduler-evidence.json": {
+      "sha256": "9cb14d58f584dbf1cb7ab8a031d721a56979f20b289b119da6194e208c7484b2",
+      "bytes": 1420
+    },
+    "journal-phase.json": {
+      "sha256": "2679587c4c399940282a69edb60c099cf6e9dfb821d2d70566da1ddc14095a92",
+      "bytes": 43
+    }
+  },
+  "runtime_mutations": false,
+  "repairs_validated_on_vm108": false
+}

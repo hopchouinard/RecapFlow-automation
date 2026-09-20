@@ -1,0 +1,1 @@
+{"docker_exec_returncode": 1, "error_category": "container_not_running", "database_exists": true, "database_size": 4829184, "database_mode": "0o644", "filter_row_present": true, "filter_active_global": [1, 1]}

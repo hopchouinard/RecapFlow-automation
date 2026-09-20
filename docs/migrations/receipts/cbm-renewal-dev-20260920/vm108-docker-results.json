@@ -1,0 +1,1 @@
+{"passed": true, "baseline_stopped_docker_exec_exit": 1, "real_docker_volume_and_sqlite": true, "stored_credential_rotated": true, "idempotent_delivery": true, "container_state_unchanged": true, "other_data_preserved": true, "sqlite_integrity": "ok", "live_webui_validated": false, "external_calls": 0, "production_mutations": 0}

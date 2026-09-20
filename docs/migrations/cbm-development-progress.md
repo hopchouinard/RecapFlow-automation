@@ -712,3 +712,19 @@ Production holds remain; no deployment, rotation or paid call occurred. Request0
 asks home.servers for current management source and read-only OpenWebUI/renewal
 diagnosis. The actual renewal repair, renderer/image-pin integration and controlled
 resume still require development validation and management execution.
+
+## September20 — Request024 consumed; renewal development candidate
+
+Verified and acknowledged all Request024 artifacts/source. Implemented stopped
+WebUI credential delivery without restarting the consumer, retaining overlap and
+live-cache checks. Twenty tests and a real Docker/SQLite fixture passed on VM108.
+Request025 requests exact-image development acceptance and rollout-source review;
+production remains unchanged. See [results](cbm-renewal-development-results.md).
+
+### Scope correction: legacy VM is recovery-only
+
+Patrick explicitly included OpenWebUI in migration off n8n-automation. Request025
+was withdrawn with a shared stop notice before any response. Its candidate is
+retained only as an unpromoted source/evidence archive; no legacy credential or
+runtime was changed. Continue with replacement OpenWebUI acceptance on VM108,
+production migration, and removal of legacy serving/renewal dependencies.

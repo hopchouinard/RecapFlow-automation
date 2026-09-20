@@ -1,0 +1,59 @@
+{
+  "automatic-scheduler.json": {
+    "last_hourly_attempt": 1789872390.1159182
+  },
+  "automatic-maintenance-status.json": {
+    "automatic": {
+      "state": "paused"
+    },
+    "checked_at": "2026-09-20T02:50:52.915959+00:00",
+    "hourly": "not_due",
+    "monitoring": {
+      "attention": true,
+      "enabled": true,
+      "paused": true,
+      "pending": false
+    }
+  },
+  "maintenance-status.json": {
+    "pre-pbs-copy": "passed",
+    "legacy-intake-ownership": "passed",
+    "renew-service-tokens.py": "failed: inspect private management status",
+    "provision-nats-tls.py": "passed",
+    "renew-app-tls.py": "passed",
+    "copy-backup.py": "passed",
+    "management-health.py": "failed: inspect private management status",
+    "checked_utc": "2026-09-20T02:46:45.923813+00:00"
+  },
+  "service-renewal-status.json": {
+    "checked_at": 1789872395.529483,
+    "error_class": "RuntimeError",
+    "frames": [
+      {
+        "file": "renew-service-tokens.py",
+        "line": 47
+      },
+      {
+        "file": "renew-service-tokens.py",
+        "line": 40
+      },
+      {
+        "file": "service_renewal_policy.py",
+        "line": 53
+      },
+      {
+        "file": "service_renewal_live.py",
+        "line": 65
+      },
+      {
+        "file": "service_renewal_live.py",
+        "line": 112
+      },
+      {
+        "file": "secret_store.py",
+        "line": 26
+      }
+    ],
+    "state": "failed"
+  }
+}

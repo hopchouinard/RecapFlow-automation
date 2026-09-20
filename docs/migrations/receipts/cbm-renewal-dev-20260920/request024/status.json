@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-STABILIZATION-DIAGNOSIS-20260920-024",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-20T02:53:59.470884+00:00",
+  "summary": "Read-only diagnosis and 42-file current source package delivered. Renewal blocked by stopped OpenWebUI; runner cause not retained. No repair or resume; VM108 validation required.",
+  "receipt": "receipt.md"
+}

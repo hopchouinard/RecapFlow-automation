@@ -4,6 +4,9 @@ Date: 2026-09-20. Source commit: `a6766eb`.
 Authorization: Patrick accepted the continuation plan, required development-VM
 validation before production changes, and instructed “Start implementing.”
 
+Follow-up: [Request024 consumed and renewal candidate tested](cbm-renewal-development-results.md).
+The pending-response statements below describe the earlier implementation checkpoint.
+
 ## Implemented
 
 - **S-03:** `/api/v1/me` now separates configured automatic eligibility from

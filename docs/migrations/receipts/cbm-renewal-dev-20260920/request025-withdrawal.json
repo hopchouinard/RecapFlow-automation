@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-RENEWAL-DEVELOPMENT-20260920-025",
+  "actor": "Forge",
+  "state": "withdrawn",
+  "updated_at": "2026-09-20T03:14:24.837808+00:00",
+  "reason": "Patrick clarified n8n-automation is a recovery fallback only. OpenWebUI must migrate off it; the stopped legacy consumer must not be restored as a production renewal dependency.",
+  "instruction": "Stop Request025 before further work. Preserve any completed development evidence. Do not update legacy WebUI credentials or runtime. Acknowledge this withdrawal with a safe response; Forge will issue a migration-focused replacement after acknowledgment."
+}

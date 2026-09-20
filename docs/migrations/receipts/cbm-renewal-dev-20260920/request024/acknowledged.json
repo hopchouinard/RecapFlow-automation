@@ -1,0 +1,10 @@
+{
+  "request_id": "CBM-STABILIZATION-DIAGNOSIS-20260920-024",
+  "actor": "Forge",
+  "acknowledged_at": "2026-09-20T03:05:03.742474+00:00",
+  "state": "consumed",
+  "receipt_sha256": "a46886f11146e175de4986245cb49e880e086b478eddf651440e06315549f57a",
+  "verified_artifacts": 9,
+  "verified_source_files": 42,
+  "production_changes": false
+}

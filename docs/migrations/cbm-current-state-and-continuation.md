@@ -10,6 +10,27 @@ and a live assessment before deciding the next project phase. This assessment
 does not authorize restarting processing, rotating credentials, deploying code,
 publishing another release, rewriting historical meetings, or retiring services.
 
+## Confirmed complete migration scope — September20
+
+OpenWebUI must migrate off `n8n-automation` too. Patrick clarified that the old VM
+is retained only as a functionality/recovery backup before retirement, with no
+required production role. Its stopped WebUI must not be renewed or restarted as
+an ongoing production consumer. The renewal failure exposes an obsolete production
+dependency, not a reason to reactivate that backup.
+
+Validate the replacement OpenWebUI on VM108, including authentication, persisted
+configuration, retrieval, credential delivery/renewal and restart recovery. Prepare
+its production migration with protected user-data/configuration preservation and
+rollback. Update the production consumer inventory and management transport to the
+replacement after acceptance; preserve the old recovery copy without production
+traffic or renewal writes. Confirm no production scheduler, monitoring or consumer
+requires the legacy host, then close the existing retirement evidence gates.
+
+The stopped-consumer renewal candidate was archived without promotion. Request025
+was withdrawn before any response; a migration-focused handoff replaces that direction
+after home.servers acknowledges the withdrawal. See
+[the diagnosis and corrected direction](cbm-renewal-development-results.md).
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation
@@ -46,6 +67,13 @@ read-only inspection and a fresh-image build correction. Production is not yet
 changed or resumed. Request024 awaits the management owner's current renewal
 source/diagnosis; those integration changes must also pass VM108 before rollout.
 The audit findings below remain historical observations, not deployment receipts.
+
+## Renewal implementation follow-up — September20
+
+Request024 confirmed the stopped OpenWebUI inventory dependency. A candidate
+passed 20 tests and real Docker/SQLite validation on VM108, then was withdrawn
+from promotion because the old VM is recovery-only. Production remains unchanged;
+OpenWebUI migration and removal of the legacy dependency are required. See [the renewal development result](cbm-renewal-development-results.md).
 
 ## Decision summary
 
