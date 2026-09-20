@@ -24,6 +24,24 @@ const dimensions = [
   "backup",
 ] as const;
 const label = (s: string) => s.replaceAll("_", " ");
+type Readiness = { state: string; ready: boolean };
+const unavailable: Readiness = { state: "unavailable", ready: false };
+const readinessMessage = (state: string) =>
+  (
+    ({
+      paused:
+        "Automatic processing is paused. You can save a meeting for processing after the service is restored.",
+      attention_required:
+        "Automatic processing needs administrator review. You can save a meeting, but processing will wait.",
+      credentials_require_review:
+        "Processing access needs administrator attention. You can save a meeting, but processing may be delayed.",
+      awaiting_checkpoint:
+        "Processing is waiting for a backup check. New meetings will wait in the queue.",
+      needs_input:
+        "Processing is waiting for missing input or a recovery action. New meetings will wait in the queue.",
+    }) as Record<string, string>
+  )[state] ??
+  "Processing status is unavailable. You can save a meeting, but processing may be delayed.";
 const recoveryMessage = (code: string) =>
   (
     ({
@@ -66,6 +84,7 @@ export function App({ api, logout }: { api: Api; logout: () => void }) {
     [notice, setNotice] = useState(""),
     [busy, setBusy] = useState(false);
   const [automatic, setAutomatic] = useState(false);
+  const [readiness, setReadiness] = useState<Readiness>(unavailable);
   const [provider, setProvider] = useState("manual");
   const [mode, setMode] = useState("weekly");
   const [creating, setCreating] = useState(false),
@@ -73,6 +92,23 @@ export function App({ api, logout }: { api: Api; logout: () => void }) {
     [permissions, setPermissions] = useState<string[]>([]);
   const [cursor, setCursor] = useState<string | null>(null);
   const can = (permission: string) => permissions.includes(permission);
+  async function refreshService() {
+    try {
+      const me = await api.request<{
+        permissions: string[];
+        automatic_processing?: boolean;
+        processing_readiness?: Readiness;
+      }>("/me");
+      setPermissions(me.permissions);
+      setAutomatic(me.automatic_processing === true);
+      const status = me.processing_readiness ?? unavailable;
+      setReadiness(status);
+      return { automatic: me.automatic_processing === true, readiness: status };
+    } catch (error) {
+      setReadiness(unavailable);
+      throw error;
+    }
+  }
   async function refresh(more = false) {
     const response = await api.request<{
       items: Job[];
@@ -108,18 +144,14 @@ export function App({ api, logout }: { api: Api; logout: () => void }) {
   }
   useEffect(() => {
     void action(async () => {
-      const me = await api.request<{
-        permissions: string[];
-        automatic_processing?: boolean;
-      }>("/me");
-      setPermissions(me.permissions);
-      setAutomatic(me.automatic_processing === true);
+      await refreshService();
       await refresh();
     });
   }, [api]);
   useEffect(() => {
     const timer = setInterval(() => {
       if (!busy) {
+        void refreshService().catch(() => {});
         void refresh().catch(() => {});
         if (job) void select(job.id, true).catch(() => {});
       }
@@ -138,8 +170,11 @@ export function App({ api, logout }: { api: Api; logout: () => void }) {
     ).id;
   }
   async function submit(form: HTMLFormElement) {
-    const data = new FormData(form),
-      meetingInput = String(data.get("meeting")).trim();
+    // Snapshot inputs before awaiting: the busy fieldset becomes disabled while
+    // readiness is refreshed, and FormData omits disabled controls.
+    const data = new FormData(form);
+    const service = await refreshService();
+    const meetingInput = String(data.get("meeting")).trim();
     const selectedProvider = String(data.get("provider"));
     const callUrl =
       /^https:\/\/fathom\.video\/calls\/(\d+)\/?(?:[?#].*)?$/.exec(
@@ -195,6 +230,9 @@ export function App({ api, logout }: { api: Api; logout: () => void }) {
     setView("runs");
     await refresh();
     await select(response.id);
+    if (service.automatic && !service.readiness.ready) {
+      setNotice("Meeting saved. Check its run status for processing progress.");
+    }
   }
   async function download() {
     if (!preview) return;
@@ -246,6 +284,15 @@ export function App({ api, logout }: { api: Api; logout: () => void }) {
         {error && (
           <div role="alert" className="alert">
             {error}
+          </div>
+        )}
+        {automatic && !readiness.ready && (
+          <div
+            role="status"
+            className="notice"
+            aria-label="Processing availability"
+          >
+            {readinessMessage(readiness.state)}
           </div>
         )}
         {notice && (
@@ -343,16 +390,20 @@ export function App({ api, logout }: { api: Api; logout: () => void }) {
                 />
               </label>
               <p>
-                {automatic
-                  ? "Saving starts processing automatically: fetch the selected transcript if needed, generate your recap files, and add the meeting to search. Nothing is published remotely."
-                  : "Your uploads and meeting details are saved together. Processing is started separately; uploading does not run models or publish anything."}
+                {automatic && !readiness.ready
+                  ? "Your files and meeting details will be saved. Processing will wait for the service to become ready."
+                  : automatic
+                    ? "Saving starts processing automatically: fetch the selected transcript if needed, generate your recap files, and add the meeting to search. Nothing is published remotely."
+                    : "Your uploads and meeting details are saved together. Processing is started separately; uploading does not run models or publish anything."}
               </p>
               <Button type="submit" disabled={busy}>
                 {busy
                   ? "Saving meeting…"
-                  : automatic
-                    ? "Save and process meeting"
-                    : "Save meeting"}
+                  : automatic && !readiness.ready
+                    ? "Save for later processing"
+                    : automatic
+                      ? "Save and process meeting"
+                      : "Save meeting"}
               </Button>
               <Button
                 type="button"

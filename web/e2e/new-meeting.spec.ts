@@ -29,6 +29,7 @@ test("manual weekly upload preserves files and explicit meeting metadata", async
       json: path.endsWith("/me")
         ? {
             automatic_processing: true,
+            processing_readiness: { state: "ready", ready: true },
             permissions: [
               "jobs:read",
               "artifacts:read",

@@ -199,11 +199,14 @@ def create_app(
 
     @app.get("/api/v1/me")
     def me(p=Depends(permission("jobs:read"))):
+        from .readiness import processing_readiness
+
         return {
             "subject": p.subject,
             "scope": p.scope,
             "permissions": sorted(p.permissions),
             "automatic_processing": automatic,
+            "processing_readiness": processing_readiness(automation_root, automatic),
         }
 
     @app.post("/api/v1/sources", status_code=201)

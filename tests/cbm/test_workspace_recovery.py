@@ -245,3 +245,50 @@ def test_fathom_failure_surfaces_safe_code_without_response_details(
     acquisition = next(s for s in data["stages"] if s["name"] == "acquisition")
     assert acquisition["error"] == expected and acquisition["safe_retryable"]
     assert "private" not in json.dumps(data)
+
+
+def test_readiness_api_reports_host_hold_without_exposing_markers(store, tmp_path):
+    from datetime import datetime, timezone
+
+    value = {
+        "runner": "idle",
+        "checked_at": datetime.now(timezone.utc).isoformat(),
+        "paused": True,
+        "attention": False,
+        "boot_reconciled": True,
+        "checkpoint_pending": False,
+        "management_attention": False,
+        "credentials_expired": False,
+    }
+    (tmp_path / "checkpoints.json").write_text(
+        json.dumps({"processing": value, "private": "secret"})
+    )
+    response = client(store, tmp_path).get("/api/v1/me").json()
+    assert response["automatic_processing"] is True
+    assert response["processing_readiness"] == {"state": "paused", "ready": False}
+    assert "secret" not in json.dumps(response)
+
+
+def test_read_only_diagnosis_never_fences_expired_work(store):
+    from datetime import datetime, timedelta, timezone
+    from community_brain.jobs.automatic import inspect_state
+
+    job_id = accept(store, request(store))
+    item = next_stage(store, "community-brain")
+    from uuid import UUID
+
+    stage_id = UUID(item["stage_id"])
+    store.claim(stage_id, "fixture")
+    with Session(store.engine) as s, s.begin():
+        stage = s.get(Stage, stage_id)
+        stage.lease_until = datetime.now(timezone.utc) - timedelta(seconds=5)
+        before = (stage.state, stage.fence, stage.attempts)
+    snapshot = inspect_state(store, "community-brain")
+    assert snapshot["read_only"] and str(job_id) in snapshot["automatic_jobs"]
+    assert (
+        next(s for s in snapshot["stages"] if s["id"] == str(stage_id))["state"]
+        == "running"
+    )
+    with Session(store.engine) as s:
+        stage = s.get(Stage, stage_id)
+        assert (stage.state, stage.fence, stage.attempts) == before

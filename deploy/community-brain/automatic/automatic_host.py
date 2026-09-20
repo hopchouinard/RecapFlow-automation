@@ -1,10 +1,12 @@
 """Cron tick: one automatic stage at a time, selected through durable job state."""
 
 import fcntl
+import hashlib
 import json
 import os
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -17,14 +19,44 @@ PACKAGES = (
 )
 
 
+class ScanFailure(RuntimeError):
+    """Safe diagnostic metadata, never command arguments or provider output."""
+
+    def __init__(self, code, result=None):
+        super().__init__(code)
+        self.diagnostic = {"code": code}
+        if result is not None:
+            self.diagnostic.update(
+                returncode=result.returncode,
+                stdout_sha256=hashlib.sha256(result.stdout or b"").hexdigest(),
+                stderr_sha256=hashlib.sha256(result.stderr or b"").hexdigest(),
+            )
+            try:
+                detail = json.loads(result.stderr)
+                # Only accept a scanner-owned fixed diagnostic code. Hash all
+                # other Docker/Python output without exporting its contents.
+                if detail.get("code") == "automatic_scan_failed":
+                    import re
+
+                    name = detail.get("error_class", "")
+                    if re.fullmatch(r"[A-Za-z_][A-Za-z_0-9]{0,79}", name):
+                        self.diagnostic["scanner_error_class"] = name
+            except (ValueError, TypeError, AttributeError):
+                pass
+
+
 def atomic(path, value):
     raw = (json.dumps(value, indent=2) + "\n").encode()
-    temporary = path.with_suffix(".tmp")
-    with temporary.open("wb") as stream:
-        stream.write(raw)
-        stream.flush()
-        os.fsync(stream.fileno())
-    os.replace(temporary, path)
+    descriptor, temporary = tempfile.mkstemp(dir=path.parent, prefix="." + path.name)
+    try:
+        with os.fdopen(descriptor, "wb") as stream:
+            stream.write(raw)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
     fd = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
     try:
         os.fsync(fd)
@@ -43,11 +75,13 @@ def record_attention(error=None):
     }
     if error is not None:
         value["error_class"] = type(error).__name__
+        if isinstance(error, ScanFailure):
+            value["diagnostic"] = error.diagnostic
     atomic(path, value)
 
 
-def publish_checkpoint_status():
-    """Export only backup acknowledgement fields for the unprivileged API."""
+def publish_checkpoint_status(runner_state="checking"):
+    """Export backup state and bounded readiness, never private diagnostics."""
     import re
     from uuid import UUID
 
@@ -68,14 +102,65 @@ def publish_checkpoint_status():
             checkpoints[job_id] = "verified" if valid else "requires_review"
         except (ValueError, OSError, TypeError):
             continue
+
+    def read_object(path):
+        try:
+            value = json.loads(path.read_text())
+            return value if isinstance(value, dict) else {}
+        except (ValueError, OSError):
+            return {}
+
+    boot = read_object(STATE / "boot-state.json")
+    management = read_object(ROOT / "management-status/maintenance.json")
+    renewal = management.get("renewal")
+    renewal = renewal if isinstance(renewal, dict) else {}
+    identities = management.get("service_identities")
+    identities = identities if isinstance(identities, list) else []
+    now = datetime.now(timezone.utc)
+    expired = not identities or any(
+        not isinstance(i, dict)
+        or type(i.get("expires_at")) not in (int, float)
+        or not (now.timestamp() < i["expires_at"] < now.timestamp() + 8 * 86400)
+        for i in identities
+    )
     atomic(
         public / "checkpoints.json",
         {
             "checkpoints": checkpoints,
             "management_attention": (STATE / "management-attention.json").exists(),
+            "processing": {
+                "checked_at": now.isoformat(),
+                "runner": runner_state,
+                "paused": (STATE / "paused").exists(),
+                "attention": (STATE / "attention.json").exists(),
+                "boot_reconciled": boot.get("reconciled") is True,
+                "checkpoint_pending": (STATE / "checkpoint-needed.json").exists(),
+                "management_attention": (STATE / "management-attention.json").exists(),
+                "credentials_expired": expired,
+                "renewal": renewal.get("state")
+                if renewal.get("state") in {"completed", "not_due", "failed"}
+                else "unknown",
+                "management_checked_at": management.get("checked_at")
+                if isinstance(management.get("checked_at"), str)
+                and len(management["checked_at"]) < 40
+                else None,
+            },
         },
     )
     (public / "checkpoints.json").chmod(0o644)
+
+
+def publish_busy_status():
+    """A locked cron tick refreshes read-only visibility during long calls."""
+    try:
+        running = subprocess.check_output(
+            ["docker", "ps", "-q", "--filter", "label=cbm.automatic-stage=true"],
+            stderr=subprocess.DEVNULL,
+            timeout=10,
+        ).strip()
+    except (OSError, subprocess.SubprocessError):
+        running = b""
+    publish_checkpoint_status("worker_running" if running else "checking")
 
 
 def scan(*operation):
@@ -123,10 +208,21 @@ def scan(*operation):
         if key != "PATH":
             args += ["-e", key]
     args += [IMAGE, "python", "/helpers/scan.py", *operation]
-    result = subprocess.run(args, env=env, capture_output=True, timeout=90, check=False)
+    try:
+        result = subprocess.run(
+            args, env=env, capture_output=True, timeout=90, check=False
+        )
+    except subprocess.TimeoutExpired:
+        raise ScanFailure("automatic_scan_timeout") from None
     if result.returncode:
-        raise RuntimeError("automatic state inspection failed")
-    return json.loads(result.stdout)
+        raise ScanFailure("automatic_scan_exit", result)
+    try:
+        value = json.loads(result.stdout)
+        if not isinstance(value, dict):
+            raise ValueError()
+        return value
+    except (ValueError, TypeError):
+        raise ScanFailure("automatic_scan_invalid_response", result) from None
 
 
 def tick():
@@ -244,6 +340,7 @@ if __name__ == "__main__":
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
+            publish_busy_status()
             sys.exit(0)
         try:
             publish_checkpoint_status()
@@ -257,6 +354,7 @@ if __name__ == "__main__":
             STATE / "status.json",
             {"state": status, "checked_at": datetime.now(timezone.utc).isoformat()},
         )
+        publish_checkpoint_status(status)
         print(json.dumps({"state": status}))
         if status == "attention_required":
             sys.exit(1)

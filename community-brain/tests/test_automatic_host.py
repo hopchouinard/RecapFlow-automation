@@ -176,3 +176,112 @@ def test_backup_projection_requires_matching_receipt_and_excludes_private_paths(
         and "manifest_sha256" not in public.read_text()
     )
     assert public.stat().st_mode & 0o777 == 0o644
+
+
+def test_readiness_projection_keeps_independent_boot_and_attention_holds(host):
+    from datetime import datetime, timedelta, timezone
+
+    now = datetime.now(timezone.utc)
+    (host.STATE / "boot-state.json").write_text(
+        json.dumps({"reconciled": False, "boot_id": "private"})
+    )
+    (host.STATE / "paused").write_text("private operational details")
+    host.record_attention(RuntimeError("secret"))
+    management = host.ROOT / "management-status"
+    management.mkdir()
+    (management / "maintenance.json").write_text(
+        json.dumps(
+            {
+                "checked_at": now.isoformat(),
+                "renewal": {"state": "failed", "private": "secret"},
+                "service_identities": [
+                    {
+                        "expires_at": (now + timedelta(days=2)).timestamp(),
+                        "token": "secret",
+                    }
+                ],
+            }
+        )
+    )
+    host.publish_checkpoint_status("attention_required")
+    raw = (host.ROOT / "automation-public/checkpoints.json").read_text()
+    value = json.loads(raw)["processing"]
+    assert value["paused"] and value["attention"] and not value["boot_reconciled"]
+    assert value["renewal"] == "failed" and not value["credentials_expired"]
+    assert "secret" not in raw and "boot_id" not in raw
+
+
+def test_scan_failure_preserves_safe_root_class_and_first_event(host, monkeypatch):
+    monkeypatch.setattr(host, "read_env", lambda _: {"CB_DATABASE_URL": "secret"})
+    monkeypatch.setattr(
+        host.subprocess,
+        "run",
+        lambda *_a, **_k: SimpleNamespace(
+            returncode=1,
+            stdout=b"",
+            stderr=b'{"code":"automatic_scan_failed","error_class":"OperationalError"}',
+        ),
+    )
+    with pytest.raises(host.ScanFailure) as error:
+        host.scan("next")
+    host.record_attention(error.value)
+    value = json.loads((host.STATE / "attention.json").read_text())
+    assert value["diagnostic"]["scanner_error_class"] == "OperationalError"
+    assert value["diagnostic"]["returncode"] == 1
+    assert "secret" not in json.dumps(value)
+    first = (host.STATE / "attention.json").read_bytes()
+    host.record_attention(RuntimeError("later"))
+    assert (host.STATE / "attention.json").read_bytes() == first
+
+
+def test_raw_docker_errors_never_leak_into_diagnostics(host, monkeypatch):
+    monkeypatch.setattr(host, "read_env", lambda _: {"CB_DATABASE_URL": "secret"})
+    monkeypatch.setattr(
+        host.subprocess,
+        "run",
+        lambda *_a, **_k: SimpleNamespace(
+            returncode=125,
+            stdout=b"private stdout",
+            stderr=b"password=private stderr",
+        ),
+    )
+    with pytest.raises(host.ScanFailure) as error:
+        host.scan("next")
+    assert "private" not in json.dumps(error.value.diagnostic)
+    assert error.value.diagnostic["returncode"] == 125
+
+
+def test_scan_timeout_is_not_retried(host, monkeypatch):
+    monkeypatch.setattr(host, "read_env", lambda _: {"CB_DATABASE_URL": "secret"})
+    calls = []
+
+    def timeout(*args, **kwargs):
+        calls.append(args)
+        raise host.subprocess.TimeoutExpired(["secret-command"], 90, stderr=b"secret")
+
+    monkeypatch.setattr(host.subprocess, "run", timeout)
+    with pytest.raises(host.ScanFailure) as error:
+        host.scan("next")
+    assert error.value.diagnostic == {"code": "automatic_scan_timeout"}
+    assert len(calls) == 1
+
+
+def test_busy_tick_refreshes_status_without_scanning_or_running_work(host, monkeypatch):
+    monkeypatch.setattr(host, "scan", lambda *_: pytest.fail("read-only heartbeat"))
+    monkeypatch.setattr(host.subprocess, "check_output", lambda *_a, **_k: b"worker")
+    host.publish_busy_status()
+    p = host.ROOT / "automation-public/checkpoints.json"
+    assert json.loads(p.read_text())["processing"]["runner"] == "worker_running"
+    (host.STATE / "paused").touch()
+    host.publish_busy_status()
+    assert json.loads(p.read_text())["processing"]["paused"] is True
+
+
+def test_atomic_projection_writers_never_share_a_temporary_file(host):
+    from concurrent.futures import ThreadPoolExecutor
+
+    path = host.STATE / "concurrent.json"
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        list(pool.map(lambda i: host.atomic(path, {"value": i}), range(20)))
+    assert json.loads(path.read_text())["value"] in range(20)
+    assert not list(host.STATE.glob(".concurrent.json*"))

@@ -2,13 +2,51 @@
 
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.orm import Session
 
-from .models import Attempt, Job, Stage
+from .models import Attempt, Job, ModelCall, Stage
 
 POLICY = "new-meeting-full-loop-v1"
 STAGES = ("acquisition", "processing", "indexing")
+
+
+def inspect_state(store, scope):
+    """PostgreSQL-enforced read-only diagnosis; unlike next_stage, never fence."""
+    with Session(store.engine) as session, session.begin():
+        session.execute(text("SET TRANSACTION READ ONLY"))
+        jobs = session.scalars(select(Job).where(Job.scope == scope)).all()
+        ids = [job.id for job in jobs]
+        stages = session.scalars(select(Stage).where(Stage.job_id.in_(ids))).all()
+        intents = session.scalars(
+            select(ModelCall.id).where(
+                ModelCall.job_id.in_(ids),
+                ModelCall.state.not_in(["succeeded", "failed"]),
+            )
+        ).all()
+        return {
+            "read_only": session.execute(text("SHOW transaction_read_only")).scalar()
+            == "on",
+            "automatic_jobs": [str(job.id) for job in jobs if eligible(job)],
+            "completed": [
+                str(job.id)
+                for job in jobs
+                if eligible(job) and job.indexing == "complete"
+            ],
+            "stages": [
+                {
+                    "id": str(s.id),
+                    "job_id": str(s.job_id),
+                    "name": s.name,
+                    "state": s.state,
+                    "generation": s.generation,
+                    "attempts": s.attempts,
+                    "lease_until": s.lease_until.isoformat() if s.lease_until else None,
+                }
+                for s in stages
+            ],
+            "unresolved_model_calls": len(intents),
+        }
 
 
 def eligible(job):
