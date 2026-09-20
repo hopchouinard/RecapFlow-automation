@@ -1,0 +1,24 @@
+{
+  "source": "Forge",
+  "trust": "CA bundle read over existing authenticated production SSH; TLS verification enabled",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "7b3fdcae6b148cf2fe3294ee2c4a04d8f1b6f3d7cc0f94e98d4a3081efc37c6e",
+      "matches_local_build": true
+    },
+    {
+      "path": "/assets/index-CKtnCJVT.js",
+      "status": 200,
+      "sha256": "ca54d8add33562e842bd92f776090189aca7f67fcab3cdf60219608f15536421",
+      "matches_local_build": true
+    },
+    {
+      "path": "/assets/index-D-8kfH5H.css",
+      "status": 200,
+      "sha256": "df1fa7d86d340fdf4d1d661a736d2309c7d328afb6fcabfc46d42ee702b419db",
+      "matches_local_build": true
+    }
+  ]
+}

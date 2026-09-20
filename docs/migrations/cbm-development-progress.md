@@ -1,5 +1,9 @@
 # Community Brain application development
 
+Current status: [September 20 live assessment and continuation plan](cbm-current-state-and-continuation.md).
+The entries below are chronological history. In particular, September 17's idle
+runner observation is superseded by the live pause/attention and renewal findings.
+
 Authorization: on 2026-09-09 Patrick instructed continued development through
 CBM-02 and subsequent tickets until intervention is needed. Production deployment,
 cutover, secret migration and publication remain separately gated by the handoff.

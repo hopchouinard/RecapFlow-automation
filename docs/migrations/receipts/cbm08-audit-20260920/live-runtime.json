@@ -1,0 +1,317 @@
+{
+  "observed_at": "2026-09-20T01:13:28.631604+00:00",
+  "runner": {
+    "state": "attention_required",
+    "checked_at": "2026-09-20T01:13:01.534600+00:00"
+  },
+  "attention": {
+    "reason": "automatic_execution_requires_review",
+    "checked_at": "2026-09-18T19:46:24.714428+00:00",
+    "error_class": "RuntimeError"
+  },
+  "pause": {
+    "boot_id": "ae3dbc5a-f4f8-4cc5-a310-7da689feb410",
+    "reason": "boot_or_restore_requires_explicit_reconciliation"
+  },
+  "boot": {
+    "boot_id": "ae3dbc5a-f4f8-4cc5-a310-7da689feb410",
+    "reconciled": false
+  },
+  "checkpoints": {
+    "checkpoints": {
+      "744d0f3f-8da7-4c12-bc15-5ec0a046518d": "verified"
+    },
+    "management_attention": false
+  },
+  "maintenance": {
+    "checked_at": "2026-09-20T00:45:20.179275+00:00",
+    "service_identities": [
+      {
+        "subject": "community-brain-openwebui",
+        "expires_at": 1790110387,
+        "expires_utc": "2026-09-22T20:53:07+00:00",
+        "state": "warning_72h",
+        "owner": "Mac management; automatic seven-day Infisical renewal"
+      },
+      {
+        "subject": "community-brain-prod-mac-collector",
+        "expires_at": 1790110387,
+        "expires_utc": "2026-09-22T20:53:07+00:00",
+        "state": "warning_72h",
+        "owner": "Mac management; automatic seven-day Infisical renewal"
+      },
+      {
+        "subject": "community-brain-prod-manual-operator",
+        "expires_at": 1790110387,
+        "expires_utc": "2026-09-22T20:53:07+00:00",
+        "state": "warning_72h",
+        "owner": "Mac management; automatic seven-day Infisical renewal"
+      },
+      {
+        "subject": "community-brain-prod-read-probe",
+        "expires_at": 1790110387,
+        "expires_utc": "2026-09-22T20:53:07+00:00",
+        "state": "warning_72h",
+        "owner": "Mac management; automatic seven-day Infisical renewal"
+      },
+      {
+        "subject": "community-brain-prod-metrics-probe",
+        "expires_at": 1790110387,
+        "expires_utc": "2026-09-22T20:53:07+00:00",
+        "state": "warning_72h",
+        "owner": "Mac management; automatic seven-day Infisical renewal"
+      }
+    ],
+    "backup": {
+      "state": "verified",
+      "next_due_epoch": 1789952100.0,
+      "checked_at": "2026-09-20T00:45:07.095088+00:00",
+      "failure": null
+    },
+    "mac_offline_detection": "Prometheus metadata age alert after2h; overdue pre-PBS freshness alert before next window",
+    "automatic_renewal": true,
+    "renewal": {
+      "checked_at": 1789865111.582179,
+      "error_class": "RuntimeError",
+      "frames": [
+        {
+          "file": "renew-service-tokens.py",
+          "line": 47
+        },
+        {
+          "file": "renew-service-tokens.py",
+          "line": 40
+        },
+        {
+          "file": "service_renewal_policy.py",
+          "line": 53
+        },
+        {
+          "file": "service_renewal_live.py",
+          "line": 65
+        },
+        {
+          "file": "service_renewal_live.py",
+          "line": 112
+        },
+        {
+          "file": "secret_store.py",
+          "line": 26
+        }
+      ],
+      "state": "failed"
+    }
+  },
+  "probe_key_names": [
+    "CB_METRICS_PROBE_TOKEN",
+    "CB_PROBE_EXPIRES_AT",
+    "CB_READ_PROBE_TOKEN"
+  ],
+  "api_checks": [
+    {
+      "base": "http://10.1.30.21:8090",
+      "path": "/health",
+      "authenticated": false,
+      "status": 200,
+      "json_type": "dict"
+    },
+    {
+      "base": "http://10.1.30.21:8090",
+      "path": "/api/v1/jobs",
+      "authenticated": false,
+      "status": 401
+    },
+    {
+      "base": "http://10.1.30.21:8090",
+      "path": "/api/v1/jobs",
+      "authenticated": true,
+      "status": 200,
+      "job_count": 2
+    },
+    {
+      "base": "http://10.1.30.21:8090",
+      "path": "/api/v1/meetings",
+      "authenticated": true,
+      "status": 200,
+      "json_type": "dict"
+    },
+    {
+      "base": "http://10.1.30.21:8090",
+      "path": "/retrieval/sessions",
+      "authenticated": true,
+      "status": 200,
+      "json_type": "dict"
+    },
+    {
+      "base": "http://10.1.30.21:8090",
+      "path": "/retrieval/query",
+      "authenticated": true,
+      "status": 200,
+      "results": 3,
+      "session_ids": [
+        "2026-09-15"
+      ],
+      "successful_extractions": true,
+      "bm25_hits": 3,
+      "vector_hits": 3
+    },
+    {
+      "base": "https://community-brain.patchoutech.lab",
+      "path": "/health",
+      "authenticated": false,
+      "status": 403
+    },
+    {
+      "base": "https://community-brain.patchoutech.lab",
+      "path": "/api/v1/jobs",
+      "authenticated": false,
+      "status": 403
+    },
+    {
+      "base": "https://community-brain.patchoutech.lab",
+      "path": "/api/v1/jobs",
+      "authenticated": true,
+      "status": 403
+    },
+    {
+      "base": "https://community-brain.patchoutech.lab",
+      "path": "/api/v1/meetings",
+      "authenticated": true,
+      "status": 403
+    },
+    {
+      "base": "https://community-brain.patchoutech.lab",
+      "path": "/retrieval/sessions",
+      "authenticated": true,
+      "status": 403
+    },
+    {
+      "base": "https://community-brain.patchoutech.lab",
+      "path": "/retrieval/query",
+      "authenticated": true,
+      "status": 403
+    }
+  ],
+  "container": {
+    "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+    "started_at": "2026-09-19T21:21:38.872407149Z",
+    "restart_count": 0,
+    "health": "healthy",
+    "mounts": [
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-frontend/dist",
+        "Destination": "/app/web/dist",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/automation-public",
+        "Destination": "/state/automation-public",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/config",
+        "Destination": "/state/config",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/meeting-archive-20260910",
+        "Destination": "/state/meeting-archive",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/api.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/runtime.py",
+        "RW": false
+      },
+      {
+        "Source": "/etc/ssl/certs/ca-certificates.crt",
+        "Destination": "/run/certs/ca-bundle.pem",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/corpus",
+        "Destination": "/state/corpus",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/files",
+        "Destination": "/state/files",
+        "RW": true
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/archive.py",
+        "RW": false
+      },
+      {
+        "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py",
+        "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py",
+        "RW": false
+      }
+    ]
+  },
+  "controls": {
+    "CB_AUTOMATIC_PROCESSING": "true",
+    "CB_ENABLE_NETWORK_PUBLICATION": "false",
+    "CB_ENABLE_MODEL_CALLS": "false",
+    "COMMUNITY_BRAIN_CUE_RULES_PATH": "/state/config/query-cues.yaml",
+    "COMMUNITY_BRAIN_SPEAKER_ALIASES_PATH": "/state/config/speaker-aliases.yaml"
+  },
+  "service_identities": [
+    {
+      "subject": "community-brain-openwebui",
+      "expires_at": 1790110387,
+      "permissions": [
+        "retrieval:read"
+      ]
+    },
+    {
+      "subject": "community-brain-prod-mac-collector",
+      "expires_at": 1790110387,
+      "permissions": [
+        "sources:upload:chat"
+      ]
+    },
+    {
+      "subject": "community-brain-prod-manual-operator",
+      "expires_at": 1790110387,
+      "permissions": [
+        "sources:upload",
+        "jobs:submit",
+        "jobs:read",
+        "artifacts:read"
+      ]
+    },
+    {
+      "subject": "community-brain-prod-read-probe",
+      "expires_at": 1790110387,
+      "permissions": [
+        "jobs:read",
+        "artifacts:read",
+        "retrieval:read"
+      ]
+    },
+    {
+      "subject": "community-brain-prod-metrics-probe",
+      "expires_at": 1790110387,
+      "permissions": [
+        "metrics:read"
+      ]
+    }
+  ]
+}
