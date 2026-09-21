@@ -1,0 +1,16 @@
+{
+  "request_id": "CBM-SHARED-ADMISSION-20260921-032",
+  "target": "home.servers",
+  "created_at": "2026-09-21T16:53:38.110487+00:00",
+  "deadline": "2026-09-22T16:00:00Z",
+  "authorization": "Patrick instructed proceeding with next development task; existing read-only administration, VM108 synthetic development and relay only. No production or protected transfer phase.",
+  "scope": "Integrate common admission across actual candidate entry points; synthetic startup/finalizer recovery and production-shaped database evidence; return exact tested proposal.",
+  "documents": {
+    "cbm-shared-admission-development-results.md": "b51a02893825672c2dc905fbda5116434cf06b2e1e7a0290ca25063e3ebe754b",
+    "cbm-shared-admission-integration-request.md": "b0f7071fd9915bedaae8f34416b9bc6c7d8bb9a28672445aee4325fc1b6307f6",
+    "forge-shared-admission-source.tar.gz": "ecfd0147b9b7ad4e09dcf8f7fee0e8ff609e7bd4dcabd6852e9ce54c43816a68",
+    "source-manifest.json": "05c61890fe39d9411fb3035ca4b8dad04067a6c04de07a3667e4d2d1c617acb0",
+    "vm108-rehearsal.json": "060b6c75e15ad08928804968941285ebd388ef09b006fd076e2b625631ed0b92",
+    "vm108-tests.txt": "df9561bfe4b17e0102bbeffafe70223d77966f4af2e504901a54e57f0c10732e"
+  }
+}

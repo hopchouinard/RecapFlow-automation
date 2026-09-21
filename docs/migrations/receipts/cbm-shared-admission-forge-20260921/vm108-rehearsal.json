@@ -1,0 +1,1 @@
+{"blocked_entry_points": ["scheduler", "manual", "capture"], "resolved_after_readback": true, "observation_source": "synthetic fixture; no container or service effects", "production_execution": false}

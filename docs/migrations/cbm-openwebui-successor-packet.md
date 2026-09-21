@@ -155,3 +155,11 @@ checks passed. Source imported unchanged; Forge49 tests pass. Native Mac fixture
 have five metadata errors. Next is shared scheduler/manual/capture admission and a
 production-shaped synthetic database validator, including unresolved recovery.
 Production remains disabled; protected transfer is not yet ready for authorization.
+
+## Shared admission increment — September21
+
+[Forge shared admission core](cbm-shared-admission-development-results.md) passed
+nine tests on VM108, including actual owner kill and cross-entry-point blocking.
+[Request032](cbm-shared-admission-integration-request.md) covers installation into
+candidate scheduler/manual/capture paths, authoritative recovery and the remaining
+production-shaped synthetic database validator. Production remains disabled.
