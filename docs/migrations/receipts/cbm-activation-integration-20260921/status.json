@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-21T02:54:01.835835+00:00",
+  "summary": "Serving activation/compiler and Mac mutex/SSH integrated. VM108 actual SSH loss/readback, held workers, health failures, duplicate, same-container rollback, retained WebUI write, auth/filter, fresh monitors, paired restore and development renewal passed. 30 Mac and 30 VM108 boundary tests plus 293 parent tests pass. Twelve fixtures stopped and retained; production unchanged; template not deployable.",
+  "receipt": "receipt.md"
+}

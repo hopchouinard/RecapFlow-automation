@@ -1,0 +1,10 @@
+{
+  "vm_locks_released": [
+    "automation/runner.lock",
+    "files/.manual-worker.lock",
+    "files/.submission.lock"
+  ],
+  "detached_controller_workers_remaining": [],
+  "mac_mutex": "available after Request029; a transient intervening holder had already released it",
+  "pending_transport_outcome": false
+}

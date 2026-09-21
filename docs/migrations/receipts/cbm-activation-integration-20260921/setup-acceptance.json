@@ -1,0 +1,9 @@
+{
+  "api_ready": true,
+  "webui_started": true,
+  "holds": {
+    "automation/paused": "0917d95aac7b1ef17c92893f5fadad0c79314df701c7dd8ad805f098818eb81b",
+    "automation/attention.json": "8513af51ab890cefaaa0a6aa651b69cc9de79c717871e2a1b88accfbd05c71ef",
+    "automation/boot-state.json": "581191e81df5f7d4f9b0a95d5756682497537eb1e0de372bec23d0eef8e13ff2"
+  }
+}

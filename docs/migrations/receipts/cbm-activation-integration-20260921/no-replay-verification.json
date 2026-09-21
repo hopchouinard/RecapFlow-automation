@@ -1,0 +1,9 @@
+{
+  "actual_ssh_loss_reconciled_without_recreation": true,
+  "duplicate_activation_no_recreation": true,
+  "same_ids_created_started_restart_oom_state": true,
+  "candidate_ids": {
+    "cbm-r029-normal-api": "f970ebeb0d2f43a63fb31cb752411a2f980153847b8f09e653c8c84e477c2bce",
+    "cbm-r029-normal-webui": "7e2ac1184c85124dab9c4cbe15b7e995dab6107071d4f2ac47ceed81ca7bdbd2"
+  }
+}

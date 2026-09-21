@@ -1,0 +1,11 @@
+{
+  "command": "python3 -B -m unittest discover -s tooling -p test_*.py",
+  "cwd": "/Users/pchouinard/.t3/worktrees/Home.servers/t3code-c0c50357",
+  "exit_code": 0,
+  "tests": 293,
+  "observed_output": "Ran 293 tests in 2.641s; OK",
+  "parent_dirty_state_preserved": [
+    " M agent-ops",
+    " m lab-architecture"
+  ]
+}

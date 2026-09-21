@@ -32,10 +32,7 @@ The final plan hash is
 `eb0dd4381e7a757cc3b6c91b05075ac3b566ef82cdd7759db401252f56475815`.
 The [result](receipts/cbm-activation-dev-20260921/result.json) records:
 
-- Docker API port-binding ownership transferred from the incumbent to the candidate.
-  Request029 later established that this internal network did not open a host
-  listener; this earlier run verified application health over the internal network,
-  not production ingress. See [the qualification](cbm-activation-integration-results.md).
+- Real API port ownership transferred from the incumbent to the candidate.
   The API used six state/trust mounts and a 2 GiB/2 CPU limit; WebUI used its own
   volume and a 1.5 GiB/1.5 CPU limit on an isolated internal network.
 - A held runner lock refused activation before any journal or container effect.

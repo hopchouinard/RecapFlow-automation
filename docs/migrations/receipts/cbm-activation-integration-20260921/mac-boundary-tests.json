@@ -1,0 +1,29 @@
+[
+  {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "activation",
+      "-p",
+      "test_*.py"
+    ],
+    "exit_code": 0,
+    "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.013s\n\nOK\n"
+  },
+  {
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "test_activation_integration",
+      "test_successor_boundaries"
+    ],
+    "exit_code": 0,
+    "output": "...................\n----------------------------------------------------------------------\nRan 19 tests in 0.077s\n\nOK\n"
+  }
+]

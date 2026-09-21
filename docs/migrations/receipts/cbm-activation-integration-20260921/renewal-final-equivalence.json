@@ -1,0 +1,25 @@
+{
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "renewal_executed_packet": "packet-v3",
+  "recovery_executed_packet": "packet-v4",
+  "final_controller_packet": "packet-v6",
+  "management_recreation_and_policy_sources_unchanged": {
+    "manager.py": "cb02f67efce67b20a8aa2f8d313965b1cc578f08cf0850dac8034911f5b82ba5",
+    "host.py": "1434fd644b1df2dcc96912fd8da686e804786280c7fd908768c194f5628a3f4a",
+    "profiles.py": "fb48d00f6e379b71fd1d974f20861a56bb4e9a56d98fc7c5b93da2ae3937d4fb",
+    "consumers.py": "863bded1592cbf97a2b15eef4346cb850209ca80ab29f2da0c9c96754614c665",
+    "incumbent/service_renewal_policy.py": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c",
+    "incumbent/transport.py": "d115340d063131197738042599177231363c16d7698b069a9eba4d69c896135a",
+    "runtime_contract.py": "a040758c1aa70331ef654704605812b5e1096e6f579db529b2756473f710fbf8"
+  },
+  "provider_uses_bound_packet_v3": true,
+  "original_recovery_packet_v4_bound": true,
+  "differences_since_renewal": [
+    "activation/activate.py",
+    "activation/plan.py",
+    "activation/rehearsal.py",
+    "activation/test_activate.py",
+    "descriptor.json",
+    "production-descriptor.json"
+  ]
+}

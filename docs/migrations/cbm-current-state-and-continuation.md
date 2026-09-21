@@ -113,6 +113,22 @@ VM108. The host-local controller is implemented; production deployment is not
 executed or ready merely because this rehearsal passed. Protected real restore,
 browser/session, capacity/provider and separately authorized production gates remain.
 
+## Request029 consumed — September21
+
+[Activation integration results](cbm-activation-integration-results.md) close the
+recorded development Mac/SSH/compiler gap. Actual connection loss, locks, readiness
+failure, duplicate calls, same-container rollback, retained WebUI chat, fresh
+monitoring and renewal passed. Forge verified 72 artifacts, 58 live packet members,
+255 bound files per plan, byte-identical reconstruction and 30 local tests. Source
+is reconciled and the response acknowledged; all 12 request containers are stopped.
+
+The production template remains non-deployable with 21 evidence slots. Next is the
+protected real-data/signing restore and acceptance packet, remaining development
+capacity/provider checks, then fresh production bindings and its authorized phase.
+The production compiler/controller and worker loader are disabled. Actual dev
+endpoint proof used a labelled loopback relay; Docker PortBindings alone did not
+establish a host listener. This supersedes earlier pending Request029 statements.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

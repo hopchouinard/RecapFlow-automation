@@ -1,0 +1,293 @@
+{
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "files": {
+    "README.md": {
+      "bytes": 5558,
+      "sha256": "ad5e6163eeb95b7e8933050e9b4fedc20263cacf93447aee45449cfbaa575ce2"
+    },
+    "ROLLOUT.md": {
+      "bytes": 4003,
+      "sha256": "0606c539c1863a9c083e89721557d9e1bff42c3105c604276ef7ec9ef4e75f57"
+    },
+    "activation-integration.diff": {
+      "bytes": 32054,
+      "sha256": "bc1746341f9692dda9e6f3a85ae9d6670356a3ff190f079f1496c10b9469907d"
+    },
+    "active-management-guard.json": {
+      "bytes": 146,
+      "sha256": "68da1ad8a4f9153676bd2c775bcfb9ff5431fc951a0b59f09a87b617f6c44d18"
+    },
+    "authority-acceptance.json": {
+      "bytes": 536,
+      "sha256": "9fcea6852fe60cb19e79b9ffbe42e3e273fa2ebd74888380976ea817735fe0e5"
+    },
+    "baseline-preservation.json": {
+      "bytes": 382,
+      "sha256": "035a22faf0a7d79765358dad8bf1b58d78a318d4691995dec31629ff69f1b2c5"
+    },
+    "build-verification.json": {
+      "bytes": 689,
+      "sha256": "8f9dec5a25459a3d03a1b4a90f2fec82d6d9c1f42bf5eb1236511c14527df034"
+    },
+    "busy-locks.json": {
+      "bytes": 2645,
+      "sha256": "2d9c653d4f9f5c83724d09c6d24c45efc4ccb6868bcf7d0eb072a24cc104cbf4"
+    },
+    "candidate-source.diff": {
+      "bytes": 334455,
+      "sha256": "125a6fd8768a6de2ac74badb7ba78fc84ed1f59c564297072c9f16f4b9df9e78"
+    },
+    "candidate-source.tar.gz": {
+      "bytes": 97026,
+      "sha256": "25126133b356d277e8d1437f151458f6d8fa3d5366c9d2887bb57234eeb00706"
+    },
+    "cbm-activation-development-results.md": {
+      "bytes": 5843,
+      "sha256": "04b910df736c3b8ee9f9a35eab632d946b23b2f71804bd820fbf6b4d0a421c5c"
+    },
+    "cbm-activation-integration-request.md": {
+      "bytes": 3510,
+      "sha256": "5905939d6706e0850a93c2dad9149dd2dbee2554ccfed2d22b078c37798ea6ad"
+    },
+    "check-normal-active.json": {
+      "bytes": 870,
+      "sha256": "6fc0925e40e85f3de84c5a4561c4dc228b5e012a381e3d0c0190d7c53eea00df"
+    },
+    "check-normal-rolled_back.json": {
+      "bytes": 874,
+      "sha256": "80e118a10747bd12a1ee645657d45e2720f7cf1cc0dad647e31bfaaee3b3c417"
+    },
+    "check-partial-rolled_back.json": {
+      "bytes": 875,
+      "sha256": "a1d14f8b68ddf6b4a0c016d377b169ec5af68f01c80b0656fcb5b1c6770d9de4"
+    },
+    "cleanup-acceptance.json": {
+      "bytes": 1449,
+      "sha256": "00399cdf5b62bac065f4c6facff302712dea142bacbd38ede9589ff1f6f719db"
+    },
+    "database-preservation.json": {
+      "bytes": 146,
+      "sha256": "d0336c960a09884f7561ed47025a870eeaa58245843d8338304a517e9d3ab463"
+    },
+    "descriptor.json": {
+      "bytes": 17641,
+      "sha256": "dc9c00467755c40f75a26a2f1bf3b3a06a477afdcf045c2350f796db5464ad28"
+    },
+    "development-after.json": {
+      "bytes": 13224,
+      "sha256": "98ddf0b570877d082c0f632a5dbd144680dde2274082219305ca6069f8b91b81"
+    },
+    "development-before.json": {
+      "bytes": 13224,
+      "sha256": "03b1ea998c2c62ee5cbc7b3df7848b85b01391c42591c1b035a68cb560680ef1"
+    },
+    "development-normal-plan.json": {
+      "bytes": 53732,
+      "sha256": "69f0eef62aea1e29a34e3ffe2700e1b1cbb4d25ca616cbb934c47260197afeec"
+    },
+    "development-partial-plan.json": {
+      "bytes": 53734,
+      "sha256": "fa3284c6422fd9ba58328152b314b7c4eaf965459cf880a90d274ba88d22ca73"
+    },
+    "development-readiness-plan.json": {
+      "bytes": 53749,
+      "sha256": "d5880b73dfe9f3659062f9871987d7fa80423a3700eb7b764acdc5e08e79d2cc"
+    },
+    "early-failures.json": {
+      "bytes": 1647,
+      "sha256": "8551436b3247fd11c6a4f7dd890aa26b98a7fd76f8775ee20c339a0ca3267882"
+    },
+    "endpoint-normal-active.json": {
+      "bytes": 196,
+      "sha256": "9981a8a0ef4a13bae420166b3846605fb97c6ffe3eb33d4a88df3a1bc18c1285"
+    },
+    "endpoint-normal-rollback.json": {
+      "bytes": 196,
+      "sha256": "5de98940010d9f15f80290268f7248081bcc2c0954e56254a6b2c39d2b725b2d"
+    },
+    "endpoint-partial-rollback.json": {
+      "bytes": 196,
+      "sha256": "5de98940010d9f15f80290268f7248081bcc2c0954e56254a6b2c39d2b725b2d"
+    },
+    "endpoint-readiness-rollback.json": {
+      "bytes": 196,
+      "sha256": "5de98940010d9f15f80290268f7248081bcc2c0954e56254a6b2c39d2b725b2d"
+    },
+    "failure-journal-observation.json": {
+      "bytes": 708,
+      "sha256": "bac3e60fda794e50ed18fda90b8ad5c8974c9723ba4144e5b9bb4f481b6e86ec"
+    },
+    "forge-activation-source.tar.gz": {
+      "bytes": 11276,
+      "sha256": "15803f3f7ce89a4983fcd97b3e8ca1b3f334ec58890012ba9be7c9d3754cfd07"
+    },
+    "held-boot-attention.json": {
+      "bytes": 183,
+      "sha256": "e53777e0f5817da4dcc380e1a6a48376ce8746f57b75a17887ab437df7527338"
+    },
+    "install-acceptance.json": {
+      "bytes": 76,
+      "sha256": "f939872ccdb33db028ed6b4bc499cb52c27f4cf5f9ad1f2a61a793314d9c71bb"
+    },
+    "lock-release.json": {
+      "bytes": 311,
+      "sha256": "855b399c8f8d31a540d6cb5f550caef189e0dec64da8197c547725cd3292bd77"
+    },
+    "mac-boundary-tests.json": {
+      "bytes": 760,
+      "sha256": "a8c9339449992a18bbaf4f015e2369c58b5f9c3c6c28dda1bf789cc285d3a0ad"
+    },
+    "monitors-setup-acceptance.json": {
+      "bytes": 184,
+      "sha256": "b3479b9a34e8e9b6734c83f6b339a3ea45ffac61c1f85e6ce10012299718bf61"
+    },
+    "negative-plans.json": {
+      "bytes": 214,
+      "sha256": "e39857db9bc53a7073c99354217dd6b7cab29ba1b26e487fcc205b75208b4e84"
+    },
+    "no-replay-verification.json": {
+      "bytes": 377,
+      "sha256": "60066853cf1610598e36ee1c3ba5ecb89567c9f2674af1589ed58852457e74aa"
+    },
+    "normal-duplicate-receipt.json": {
+      "bytes": 641,
+      "sha256": "7c373a8c56740ccde918646f5d170912023ea9a4ca96a9b8d9643d35781aa089"
+    },
+    "normal-observation-active.json": {
+      "bytes": 732,
+      "sha256": "4e44cbdca22ec20547e4ec4106f46befa1871f169404a39aae571b8fb880920e"
+    },
+    "normal-observation-duplicate.json": {
+      "bytes": 732,
+      "sha256": "4e44cbdca22ec20547e4ec4106f46befa1871f169404a39aae571b8fb880920e"
+    },
+    "normal-observation-during-ssh-loss.json": {
+      "bytes": 732,
+      "sha256": "4e44cbdca22ec20547e4ec4106f46befa1871f169404a39aae571b8fb880920e"
+    },
+    "normal-rollback-receipt.json": {
+      "bytes": 685,
+      "sha256": "69b4b8b7981216da66c26e1ebb6b2d507b40fcc288d2228901f4d0e414710319"
+    },
+    "normal-ssh-loss-receipt.json": {
+      "bytes": 641,
+      "sha256": "2673d32299e6fae5177a2ac0d482b5040bc5fceada5c417987d13a3d34419ef4"
+    },
+    "normal-terminal-refusal-receipt.json": {
+      "bytes": 740,
+      "sha256": "44fa3f8419036ccbf0980e2bdb1a7955db4c4fbbea158acb0dd04c71e0d02b4d"
+    },
+    "packet-identity.json": {
+      "bytes": 275,
+      "sha256": "8bb7dc9266d962fd2c9b6e4aaca131d723bba5f514f16056e91e9927140684f1"
+    },
+    "packet-manifest.json": {
+      "bytes": 7759,
+      "sha256": "c9326fd4bf149b68fcbc40fb7ab49a2ce23b4c7711a36ea9a5a99e8b41ebbb76"
+    },
+    "parent-tests.json": {
+      "bytes": 321,
+      "sha256": "7514cee6d9d3b0629422814a8073da5305a68d00eb0149618e7efebadde7a62a"
+    },
+    "partial-failure-receipt.json": {
+      "bytes": 802,
+      "sha256": "2ae38b967a7cadfc91af8c29dee2e9e1c002e94ffa0f092607db77db4019c085"
+    },
+    "partial-rollback-receipt.json": {
+      "bytes": 686,
+      "sha256": "6c93c654714bcf9d6398c965bd7f10db344837ed9f6ea348c73223d0131397a8"
+    },
+    "preservation-verification.json": {
+      "bytes": 1313,
+      "sha256": "cb7411cf3377476a85d5b66d0522b3abc427425109249eae1e07bc806facc1ca"
+    },
+    "production-after.json": {
+      "bytes": 1641,
+      "sha256": "0b29b9218f7ef4d9723e42ccd49bb4e327cd656351e1809f9615c4b48c6d6c7c"
+    },
+    "production-before.json": {
+      "bytes": 1641,
+      "sha256": "1b8fb0a1092d555d443805bb2ef3373134604230bde9601931c8089348ae412d"
+    },
+    "production-descriptor.json": {
+      "bytes": 16842,
+      "sha256": "2a647c48925afe0e19c7149897f43a4cbdaa20ca5680b79e244dc8fb65345bc9"
+    },
+    "production-expiry-metadata.json": {
+      "bytes": 377,
+      "sha256": "3c1020d2c9793e655b90213dd0080d33a78f7f080ea4be072dda35f4cc4d75ed"
+    },
+    "production-serving-plan.template.json": {
+      "bytes": 5990,
+      "sha256": "3813710de19baec833b3021925230a3d004ca4095c8089e810766c7b0034ceea"
+    },
+    "provenance.json": {
+      "bytes": 14493,
+      "sha256": "c9b20431a141383d1dd3168691e82949efda2ffc41db75301b506356c637d887"
+    },
+    "readiness-failure-receipt.json": {
+      "bytes": 806,
+      "sha256": "3ce788d7d7d655c84293abae2e4a4b88744751dad3291db854642cc88e83f8f7"
+    },
+    "readiness-failure-v6-receipt.json": {
+      "bytes": 806,
+      "sha256": "b53d30ca958fdae4974a8c45d8ef7f09c9dd675b8f8ef8d357ac642bc3ec50c6"
+    },
+    "readiness-rollback-receipt.json": {
+      "bytes": 693,
+      "sha256": "69020e8e8f0375ff923f337008cbeade9db0bbfc0d90b88a33e590625d719a5d"
+    },
+    "receipt.md": {
+      "bytes": 9352,
+      "sha256": "3882732d4ee73d78682b6d0c4c80b0c9a5ab305f29522ec6a58ad04b4bd59597"
+    },
+    "renewal-acceptance.json": {
+      "bytes": 7208,
+      "sha256": "336f65960f9862c21e51fa46564d5acc1be8d95ccffaf38d48ff7b2ab5e6607f"
+    },
+    "renewal-final-equivalence.json": {
+      "bytes": 1201,
+      "sha256": "1e47ca35570c38234619218c7794804b0377994cad9326449e2733e3a249463f"
+    },
+    "request.json": {
+      "bytes": 1164,
+      "sha256": "99f25c72940837d978c98e1abdc1ae90a68a90c296a4d8086f58d41bc8d2a7f1"
+    },
+    "retained-normal.json": {
+      "bytes": 141,
+      "sha256": "de15f0f36813b96cea8f2b4b897ff945cff075248760a052bd83e502de94a7d1"
+    },
+    "safety-verification.json": {
+      "bytes": 267,
+      "sha256": "b2cd9b4d790182ca95566c7c23fd404e9604f97f5486e4f0b52d0225aee61479"
+    },
+    "setup-acceptance.json": {
+      "bytes": 362,
+      "sha256": "867bcd7a8da9fc9f2dbbd3d5281eb38fb05367a0f8cca1d7d946c1a90599437b"
+    },
+    "source-commit-verification.json": {
+      "bytes": 149,
+      "sha256": "be35f24ef4a9c30f2f7c34a620462afa1bd39b8b76f1e95b9bcc7011cf963965"
+    },
+    "ssh-loss-live-locks.json": {
+      "bytes": 353,
+      "sha256": "f886ce51fe78fda8052a899edcd9bc2f9bd818bc3fb0b58986ab98c452edf0aa"
+    },
+    "validate-recovery-acceptance.json": {
+      "bytes": 285,
+      "sha256": "9e7ec2a27e47ea8c74926bb7e363dc28c662c12df4237037a0bbbd72e10e01e5"
+    },
+    "verification-receipts.json": {
+      "bytes": 3779,
+      "sha256": "2754e7f140ebb2a250c72bc6f50f5a380687bf614ea5eb7c16fbbe8333e92ca2"
+    },
+    "vm108-boundary-tests.json": {
+      "bytes": 938,
+      "sha256": "3baa3d07cffb9f491989f4f4da5e24de513f6f29f3163556c5e656993239c2f5"
+    },
+    "vm108-safe-evidence.tar": {
+      "bytes": 430080,
+      "sha256": "8199244eabeba89b724ef7400def5078790f48f3fbae0ab5efc5374fdca7c36d"
+    }
+  }
+}

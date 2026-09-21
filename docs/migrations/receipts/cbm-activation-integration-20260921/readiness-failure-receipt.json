@@ -1,0 +1,29 @@
+{
+  "error_type": "ValueError",
+  "finished_at": 1789957843.4576602,
+  "frames": [
+    {
+      "file": "remote.py",
+      "line": 34
+    },
+    {
+      "file": "activate.py",
+      "line": 213
+    },
+    {
+      "file": "activate.py",
+      "line": 205
+    }
+  ],
+  "request": {
+    "journal": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-journals/readiness.json",
+    "operation": "activate",
+    "plan": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-readiness-packet-v5/plan.json",
+    "sha256": "6683665b1bbc592d306b1eabee23085a9a719143b9360f38b56f0af6c0b6ccc7"
+  },
+  "state": "reconciliation_required",
+  "actual_ssh_terminated": false,
+  "effect_replayed": false,
+  "started_at": 1789957838.173332,
+  "returned_at": 1789957844.4074318
+}

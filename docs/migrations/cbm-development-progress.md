@@ -801,3 +801,14 @@ Docker mount-order drift was fixed and regression-tested. Failed attempts were
 preserved and reconciled before the passing plan-v3. See
 [results](cbm-activation-development-results.md). Request029 now carries source and
 evidence for real Mac/SSH/full-successor integration. Production remains unchanged.
+
+## September21 — Request029 accepted
+
+Verified 72 artifacts, 58 VM108 packet members and 255 bound files in each of
+three plans. Independent rebuild matches; all 30 local tests pass. Imported exact
+source and acknowledged the handoff. Actual Mac/SSH activation/rollback and monitor/
+renewal integration passed within the recorded development limits. All 12 request
+containers are stopped. Production template remains disabled with 21 evidence
+slots; protected restoration/acceptance preparation and workload checks are next.
+See [results](cbm-activation-integration-results.md), including the internal-network
+loopback-relay qualification and retained-write rollback limits.

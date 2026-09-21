@@ -1,0 +1,611 @@
+--- forge/activate.py
++++ request029/activate.py
+@@ -43,7 +43,7 @@
+ 
+ class Docker:
+     def inspect(self, name):
+-        result = subprocess.run(['docker', 'inspect', name], capture_output=True, timeout=20)
++        result = subprocess.run(['docker', 'inspect', '--type', 'container', name], capture_output=True, timeout=20)
+         if result.returncode:
+             # Distinguish an absent container from a failed Docker daemon/query.
+             command(['docker', 'info', '--format', '{{.ID}}'])
+@@ -89,6 +89,12 @@
+     if not row or row['Image'] != target['image']:
+         raise ValueError('unexpected runtime image')
+     host = row['HostConfig']
++    if 'environment_sha256' in target:
++        actual_env = digest(json.dumps(sorted(row['Config']['Env'])).encode())
++        if actual_env != target['environment_sha256']:
++            raise ValueError('runtime environment differs from bound configuration')
++        if host['CapDrop'] != target['cap_drop'] or host['SecurityOpt'] != target['security_opt']:
++            raise ValueError('runtime security settings changed')
+     actual = {
+         'memory': host['Memory'], 'nano_cpus': host['NanoCpus'],
+         'read_only_root': host['ReadonlyRootfs'], 'user': row['Config']['User'],
+@@ -119,7 +125,7 @@
+     if digest(raw) != expected:
+         raise ValueError('plan identity mismatch')
+     value = json.loads(raw)
+-    if value['schema'] != 1 or value['phase'] != 'serving-only':
++    if value['schema'] != 2 or value['phase'] != 'serving-only':
+         raise ValueError('unsupported activation phase')
+     if value['hostname'] not in ('community-brain-dev', 'community-brain-prod'):
+         raise ValueError('unsupported target host')
+@@ -127,8 +133,7 @@
+         raise ValueError('target host/root mismatch')
+     root = Path(value['state_root'])
+     if value['hostname'] == 'community-brain-prod':
+-        if str(root) != '/srv/community-brain':
+-            raise ValueError('production state boundary mismatch')
++        raise ValueError('Request029 production serving execution is disabled')
+     elif not root.is_relative_to('/srv/dev-data/workspaces'):
+         raise ValueError('development state boundary mismatch')
+     locks = [str(root/'automation/runner.lock'), str(root/'files/.manual-worker.lock'), str(root/'files/.submission.lock')]
+@@ -154,6 +159,10 @@
+         for env in spec.get('env_file', []):
+             if env not in value['files']:
+                 raise ValueError('private environment not bound')
++    if value['schema'] == 2:
++        from plan import validate_bindings
++        validate_bindings(value)
++        return value
+     recovery = json.loads(Path(value['recovery_receipt']).read_text())
+     if recovery.get('verified') is not True or recovery.get('state_root') != str(root):
+         raise ValueError('paired recovery receipt required')
+@@ -185,6 +194,8 @@
+ 
+     def begin(self):
+         if self.state: return
++        if self.plan.get('schema') == 2 and preserved(self.plan) != self.plan['hold_bindings']:
++            raise ValueError('compiled hold state drift')
+         row = self.engine.inspect(self.plan['incumbent']['container'])
+         if not row or row['Id'] != self.plan['incumbent']['id'] or not row['State']['Running']:
+             raise ValueError('incumbent before-state mismatch')
+@@ -264,6 +275,7 @@
+             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+             if os.fstat(fd).st_ino != os.stat(name).st_ino:
+                 raise ValueError('lock inode changed')
++        plan = validate_plan(args.plan, args.expected_plan_sha256)
+         controller = Activation(plan, args.expected_plan_sha256, args.journal)
+         print(json.dumps(getattr(controller, args.operation)()))
+ 
+--- forge/management.py
++++ request029/management.py
+@@ -0,0 +1,105 @@
++"""Mac scheduler mutex + existing SSH transport, without a nested quiet lease."""
++from contextlib import contextmanager
++import fcntl
++import json
++import os
++from pathlib import Path
++import shlex
++import subprocess
++import time
++from uuid import uuid4
++
++SCHEDULER = Path.home()/'.local/state/community-brain-management/scheduler.lock'
++_owns_mutex = False
++
++
++@contextmanager
++def mutex():
++    global _owns_mutex
++    with SCHEDULER.open('a') as stream:
++        fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
++        _owns_mutex = True
++        try:
++            yield
++        finally:
++            _owns_mutex = False
++
++
++def unresolved(directory, *, allow_active=False):
++    pointer = Path(directory)/'activation-pending.json'
++    if not pointer.exists():
++        return False
++    intent = Path(json.loads(pointer.read_text())['intent'])
++    result = intent.with_name(intent.name+'.result.json')
++    if not result.exists():
++        return True
++    value = json.loads(result.read_text())
++    if value.get('state') not in ('completed', 'reconciliation_required'):
++        return True
++    return not allow_active and value.get('result', {}).get('phase') == 'active'
++
++
++def command(host, remote, mode, directory):
++    return ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8',
++            '-o', 'ServerAliveInterval=5', '-o', 'ServerAliveCountMax=2', host,
++            shlex.join(['sudo', '-n', 'python3', '-B', remote, mode, directory])]
++
++
++def readback(host, remote, directory):
++    result = subprocess.run(command(host, remote, 'readback', directory),
++                            capture_output=True, timeout=30)
++    if result.returncode:
++        raise RuntimeError('SSH readback unavailable; keep uncertainty, never replay')
++    return json.loads(result.stdout)
++
++
++def invoke(host, remote, directory, request, local_intent, *, lose_ssh=False):
++    """Caller owns mutex. Each intent is single use, even when no response arrives."""
++    path = Path(local_intent)
++    if not _owns_mutex:
++        raise RuntimeError('existing Mac scheduler mutex must be owned')
++    if unresolved(path.parent, allow_active=True):
++        raise RuntimeError('prior transport outcome unresolved; readback required')
++    with path.open('x') as stream:
++        os.fchmod(stream.fileno(), 0o600)
++        json.dump({'state': 'intended', 'remote': directory, 'request': request}, stream)
++        stream.flush(); os.fsync(stream.fileno())
++    pointer = path.parent/'activation-pending.json'
++    temporary = pointer.with_suffix('.tmp')
++    with temporary.open('x') as stream:
++        os.fchmod(stream.fileno(), 0o600)
++        json.dump({'intent': str(path)}, stream); stream.flush(); os.fsync(stream.fileno())
++    os.replace(temporary, pointer)
++    process = subprocess.Popen(command(host, remote, 'dispatch', directory),
++                               stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
++    process.stdin.write(json.dumps(request).encode()); process.stdin.close(); process.stdin = None
++    interrupted = False
++    deadline = time.monotonic() + 950
++    if lose_ssh:
++        # Actual SSH client termination after the remote worker has started.
++        for _ in range(80):
++            observed = readback(host, remote, directory)
++            if observed.get('started'):
++                process.terminate(); interrupted = True; break
++            if observed['state'] == 'completed':
++                raise RuntimeError('operation finished before transport-loss injection')
++            time.sleep(0.1)
++        if not interrupted:
++            raise RuntimeError('remote start not observed; reconcile')
++    try:
++        stdout, stderr = process.communicate(timeout=max(1, deadline-time.monotonic()))
++    except subprocess.TimeoutExpired:
++        process.kill(); process.communicate(); interrupted = True
++    # Whether SSH returned success, failed or timed out, read the same operation.
++    # The mutex is retained during bounded readback. No effect command is retried.
++    while time.monotonic() < deadline:
++        observed = readback(host, remote, directory)
++        if observed['state'] in ('completed', 'reconciliation_required'):
++            result = dict(observed, actual_ssh_terminated=interrupted, effect_replayed=False)
++            result_path = path.with_name(path.name + '.result.json')
++            with result_path.open('x') as stream:
++                os.fchmod(stream.fileno(), 0o600); json.dump(result, stream, indent=2)
++                stream.flush(); os.fsync(stream.fileno())
++            return result
++        time.sleep(1)
++    raise RuntimeError('remote outcome still uncertain; retain intent, read back without dispatch')
+--- forge/plan.py
++++ request029/plan.py
+@@ -0,0 +1,140 @@
++"""Compile complete bindings from existing evidence; never infer restore success."""
++import json
++from pathlib import Path
++import time
++from activate import digest, preserved, fingerprint, Docker, atomic
++
++
++def packet_files(root, expected):
++    root = Path(root)
++    manifest = root / 'packet-manifest.json'
++    if root.is_symlink() or digest(manifest.read_bytes()) != expected:
++        raise ValueError('sealed packet identity mismatch')
++    entries = json.loads(manifest.read_text())
++    actual = {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()}
++    if actual != set(entries) | {'packet-manifest.json'}:
++        raise ValueError('sealed packet file set mismatch')
++    result = {str(manifest): expected}
++    for name, item in entries.items():
++        p = root / name
++        if p.is_symlink() or not p.resolve().is_relative_to(root.resolve()):
++            raise ValueError('unsafe packet member')
++        if p.stat().st_size != item['bytes'] or digest(p.read_bytes()) != item['sha256']:
++            raise ValueError('sealed packet bytes changed')
++        result[str(p)] = item['sha256']
++    return result
++
++
++def evidence_files(path, state_root, packet_sha):
++    """Accept the actual paired-restore schema, not a caller-supplied true flag."""
++    path = Path(path)
++    receipt = json.loads(path.read_text())
++    required = ('restore_equal', 'webui_restore_integrity')
++    if any(receipt.get(k) is not True for k in required):
++        raise ValueError('actual paired restore evidence missing')
++    if receipt.get('packet_manifest') != packet_sha or not receipt.get('restored_files'):
++        raise ValueError('recovery packet/state binding missing')
++    trees = ('files','config','corpus','meeting-archive','automation','automation-public','manual-approvals')
++    for base in (Path(state_root), path.parent/'restored'):
++        actual = {str(p.relative_to(base)) for name in trees for p in (base/name).rglob('*') if p.is_file()}
++        if actual != set(receipt['restored_files']):
++            raise ValueError('recovery state file set changed')
++    files = {str(path): digest(path.read_bytes())}
++    for name, sha in receipt['restored_files'].items():
++        for base in (Path(state_root), path.parent / 'restored'):
++            p = base / name
++            if p.is_symlink() or not p.resolve().is_relative_to(base.resolve()) or digest(p.read_bytes()) != sha:
++                raise ValueError('recovery state drift')
++            files[str(p)] = sha
++    db = path.parent / 'database.sql'
++    if digest(db.read_bytes()) != receipt['database_sha256']:
++        raise ValueError('recovery database artifact drift')
++    for name in ('database.sql', 'state.tar', 'private-runtime.tar', 'webui.tar',
++                 'before.json', 'restored-observation.json'):
++        p = path.parent / name
++        files[str(p)] = digest(p.read_bytes())
++    before = json.loads((path.parent / 'before.json').read_text())
++    after = json.loads((path.parent / 'restored-observation.json').read_text())
++    for value in (before, after):
++        for job in value['jobs']:
++            job['stages'].sort(key=lambda stage: stage['name'])
++    if before != after:
++        raise ValueError('restored database observation differs')
++    return files
++
++
++def compile_plan(spec, output):
++    """Spec is operator-reviewed metadata. Private values never enter the plan."""
++    if Path(output).exists():
++        raise ValueError('plan is immutable; use a fresh name')
++    if spec['hostname'] != 'community-brain-dev':
++        raise ValueError('production compilation disabled pending protected evidence')
++    files = packet_files(spec['packet'], spec['packet_sha256'])
++    for packet, expected in spec.get('additional_packets', {}).items():
++        files.update(packet_files(packet, expected))
++    recovery_packet = spec.get('recovery_packet_sha256', spec['packet_sha256'])
++    if recovery_packet not in {spec['packet_sha256'], *spec.get('additional_packets', {}).values()}:
++        raise ValueError('original recovery packet must remain sealed and bound')
++    files.update(evidence_files(spec['recovery_receipt'], spec['state_root'], recovery_packet))
++    receipt = json.loads(Path(spec['recovery_receipt']).read_text())
++    signing = Path(spec['state_root']).parent/'private/webui.env'
++    if digest(signing.read_bytes()) != receipt['signing_environment_sha256']:
++        raise ValueError('external signing environment changed since recovery')
++    compose = json.loads(Path(spec['compose']).read_text())
++    inputs = {spec['compose'], *spec['configuration_files']}
++    for target in spec['candidates']:
++        service = compose['services'][target['service']]
++        inputs.update(service.get('env_file', []))
++        for mount in service.get('volumes', []):
++            if isinstance(mount, dict) and mount['type'] == 'bind' and Path(mount['source']).is_file():
++                inputs.add(mount['source'])
++    for name in inputs:
++        p = Path(name)
++        if not p.is_absolute() or p.is_symlink() or not p.is_file():
++            raise ValueError('missing configuration binding')
++        files[name] = digest(p.read_bytes())
++    engine = Docker()
++    from activate import command
++    resolved = json.loads(command(['docker', 'compose', '-f', spec['compose'], 'config', '--format', 'json']))
++    spec = json.loads(json.dumps(spec))
++    for target in spec['candidates']:
++        image = json.loads(command(['docker', 'image', 'inspect', target['image']]))[0]
++        environment = dict(item.split('=', 1) for item in image['Config'].get('Env', []))
++        environment.update(resolved['services'][target['service']].get('environment', {}))
++        target['environment_sha256'] = digest(json.dumps(sorted(k+'='+str(v) for k,v in environment.items())).encode())
++        target['cap_drop'] = ['ALL']
++        target['security_opt'] = ['no-new-privileges:true']
++    row = engine.inspect(spec['incumbent']['container'])
++    if not row or not row['State']['Running']:
++        raise ValueError('running incumbent required')
++    value = dict(spec, schema=2, phase='serving-only', files=files,
++                 created_at=time.time(), expires_at=min(time.time()+4*3600, spec['deadline_epoch']))
++    value['incumbent'] = dict(spec['incumbent'], id=row['Id'], fingerprint=fingerprint(row))
++    value['hold_bindings'] = preserved(value)
++    # Explicit volume identity and actual restored content are required.
++    volumes = {}
++    for name in spec['external_webui_volumes']:
++        info = json.loads(command(['docker', 'volume', 'inspect', name]))[0]
++        volumes[name] = digest(json.dumps(info, sort_keys=True).encode())
++    if not volumes:
++        raise ValueError('external WebUI volume binding required')
++    value['volume_bindings'] = volumes
++    atomic(output, value)
++    return digest(Path(output).read_bytes())
++
++
++def validate_bindings(value):
++    if time.time() >= value['expires_at']:
++        raise ValueError('plan is stale; review current state')
++    bound = packet_files(value['packet'], value['packet_sha256'])
++    for packet, expected in value.get('additional_packets', {}).items():
++        bound.update(packet_files(packet, expected))
++    if any(value['files'].get(p) != sha for p, sha in bound.items()):
++        raise ValueError('incomplete packet bindings')
++    if preserved(value) != value['hold_bindings']:
++        raise ValueError('compiled processing holds changed')
++    from activate import command
++    for name, expected in value['volume_bindings'].items():
++        row = json.loads(command(['docker', 'volume', 'inspect', name]))[0]
++        if digest(json.dumps(row, sort_keys=True).encode()) != expected:
++            raise ValueError('external WebUI volume identity changed')
+--- forge/rehearsal.py
++++ request029/rehearsal.py
+@@ -0,0 +1,187 @@
++"""Fresh Request029 host fixture; all content and authority are development-only."""
++import copy
++import hashlib
++import json
++import os
++from pathlib import Path
++import shlex
++import sqlite3
++import subprocess
++import sys
++import tarfile
++import time
++sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++import host
++from activate import Docker, atomic, command, digest, fingerprint, preserved
++from plan import compile_plan
++
++ROOT = host.ROOT
++PACKET = host.PACKET
++ENGINE = Docker()
++
++
++def case_dir(case):
++    return ROOT/('activation-'+case+'-'+PACKET.name)
++
++
++def safe_link(target, linkname, root):
++    if Path(linkname).is_absolute() or not (target.parent/linkname).resolve().is_relative_to(root.resolve()):
++        raise ValueError('recovery symlink escapes disposable volume')
++    target.parent.mkdir(parents=True,exist_ok=True)
++    target.symlink_to(linkname)
++
++
++def runtime(spec, service, network, volume):
++    mounts = spec.get('volumes', [])
++    binds = sorted([{'source': m['source'], 'target': m['target'], 'read_only': m['read_only']}
++                    for m in mounts if isinstance(m, dict) and m['type'] == 'bind'], key=lambda m:m['target'])
++    volumes = [] if service == 'api' else [{'name': volume, 'target': '/app/backend/data', 'read_only':False}]
++    ports = {'8090/tcp':[{'HostIp':'127.0.0.1','HostPort':'19930'}]} if service == 'api' else {}
++    return {'service':service,'container':spec['container_name'],'image':spec['image'],
++            'network':network,'probe_port':8090 if service=='api' else 8080,'health_timeout':600 if service=='webui' else 90,
++            'runtime':{'memory':spec['mem_limit'],'nano_cpus':int(spec['cpus']*1000000000),
++                       'read_only_root':spec.get('read_only',False),'user':spec.get('user','0:0'),
++                       'command':spec.get('command',['bash','start.sh']),'ports':ports,
++                       'binds':binds,'volumes':volumes}}
++
++
++def prepare(case):
++    if case not in ('normal','readiness','partial'):
++        raise ValueError('unknown disposable case')
++    directory=case_dir(case);directory.mkdir(mode=0o700)
++    descriptor=json.loads((PACKET/'descriptor.json').read_text())
++    volume='cbm-r029-'+case+'-webui-'+PACKET.name
++    command(['docker','volume','create','--label','cbm.request=029',volume])
++    mountpoint=Path(json.loads(command(['docker','volume','inspect',volume]))[0]['Mountpoint'])
++    # Restore the verified stopped-volume backup into a NEW external volume.
++    with tarfile.open(ROOT/'paired-recovery/webui.tar') as archive:
++        for member in archive:
++            relative=Path(member.name).relative_to('webui')
++            target=mountpoint/relative
++            if member.isdir():target.mkdir(exist_ok=True,parents=True)
++            elif member.isfile():
++                target.parent.mkdir(parents=True,exist_ok=True)
++                target.write_bytes(archive.extractfile(member).read());os.chmod(target,member.mode)
++            elif member.issym():safe_link(target,member.linkname,mountpoint)
++            else:raise ValueError('unsupported recovery member')
++    with sqlite3.connect('file:'+str(mountpoint/'webui.db')+'?mode=ro',uri=True) as db:
++        assert db.execute('pragma integrity_check').fetchone()==('ok',)
++    actual=copy.deepcopy(json.loads((ROOT/'compose.json').read_text()))
++    compose={'name':'cbm-r029-'+case,'services':{},'networks':{'default':{'external':True,'name':descriptor['network']}},
++             'volumes':{'webui':{'external':True,'name':volume}}}
++    for service in ('api','webui'):
++        spec=copy.deepcopy(actual['services'][service])
++        spec['container_name']='cbm-r029-'+case+'-'+service
++        spec['networks']={'default':{'aliases':[service]}}
++        if service=='webui':
++            spec['user']='0:0'
++            spec['volumes']=[{'type':'volume','source':'webui','target':'/app/backend/data','read_only':False}]
++        compose['services'][service]=spec
++    compose_path=directory/'compose.json';atomic(compose_path,compose)
++    (ROOT/'activation-operations').mkdir(mode=0o700,exist_ok=True)
++    (ROOT/'activation-journals').mkdir(mode=0o700,exist_ok=True)
++    spec={'hostname':'community-brain-dev','state_root':str(ROOT/'state'),
++          'packet':str(PACKET),'packet_sha256':os.environ['CBM_PACKET_SHA256'],
++          'compose':str(compose_path),'recovery_receipt':str(ROOT/'paired-recovery/manifest.json'),
++          'configuration_files':[str(p) for p in sorted((ROOT/'private').rglob('*')) if p.is_file()
++                                 and p.suffix in ('.env','.pem','.crt','.conf')],
++          'locks':[str(ROOT/'state'/n) for n in ('automation/runner.lock','files/.manual-worker.lock','files/.submission.lock')],
++          'holds':[str(ROOT/'state/automation'/n) for n in ('paused','attention.json','boot-state.json')],
++          'incumbent':{'container':'cbm-r029-api','network':descriptor['network'],'probe_port':8090},
++          'candidates':[runtime(compose['services'][s],s,descriptor['network'],volume) for s in ('api','webui')],
++          'external_webui_volumes':[volume],'deadline_epoch':1790020800}
++    provider_packet=Path(actual['services']['provider']['volumes'][0].split(':')[0]).parent
++    spec['additional_packets']={str(provider_packet):digest((provider_packet/'packet-manifest.json').read_bytes())}
++    recovery_sha=json.loads((ROOT/'paired-recovery/manifest.json').read_text())['packet_manifest']
++    recovery_packets=[p for p in ROOT.glob('packet-v*') if p.is_dir() and digest((p/'packet-manifest.json').read_bytes())==recovery_sha]
++    if len(recovery_packets)!=1:raise ValueError('original recovery packet unavailable')
++    spec['additional_packets'][str(recovery_packets[0])]=recovery_sha
++    spec['recovery_packet_sha256']=recovery_sha
++    spec['configuration_files'] += [str(ROOT/'compose.json'),str(ROOT/'development-loopback.py')]
++    if case=='readiness':
++        spec['candidates'][0].update(probe_port=9,health_timeout=2)
++    if case=='partial':
++        spec['candidates'][1].update(probe_port=9,health_timeout=2)
++    plan=directory/'plan.json'
++    identity=compile_plan(spec,plan)
++    value={'case':case,'plan':str(plan),'sha256':identity,'journal':str(ROOT/'activation-journals'/(case+'.json')),
++           'restored_external_webui_volume':volume,'source_packet':spec['packet_sha256']}
++    atomic(directory/'identity.json',value)
++    return value
++
++
++def check(case, phase, after):
++    from consumers import verify
++    value=json.loads((case_dir(case)/'plan.json').read_text())
++    original_container=host.container
++    if phase=='active':
++        def container(service):
++            return next((x['container'] for x in value['candidates'] if x['service']==service),original_container(service))
++        host.container=container
++    elif phase!='rolled_back':raise ValueError('unknown phase')
++    # Actual authenticated app/filter calls read credentials privately on VM108.
++    env=lambda name:dict(x.split('=',1) for x in shlex.split((ROOT/'private'/name).read_text()))
++    read=env('probes.env');operator=env('operator-client.env');collector=env('collector-client.env')
++    m=host.lib();credentials=json.loads((ROOT/'private/credentials.json').read_text());token=m.login(credentials)
++    valves=m.api('GET','/api/v1/functions/id/community_brain_filter/valves',token=token)
++    values={**read,'CB_PROD_MANUAL_OPERATOR_TOKEN':operator['CB_MANUAL_OPERATOR_TOKEN'],
++            'CB_PROD_MANUAL_OPERATOR_EXPIRES_AT':operator['CB_MANUAL_OPERATOR_EXPIRES_AT'],
++            'CB_PROD_MAC_COLLECTOR_TOKEN':collector['CB_COLLECTOR_TOKEN'],
++            'CB_PROD_MAC_COLLECTOR_EXPIRES_AT':collector['CB_COLLECTOR_EXPIRES_AT'],
++            'CB_OPENWEBUI_RETRIEVAL_TOKEN':valves['api_key']}
++    tokens=host.verify_tokens(values)
++    assert host.call('/api/v1/me')[0]==401
++    assert m.probe(token,values['CB_OPENWEBUI_RETRIEVAL_TOKEN'])['source_count']==1
++    # Existing global filter and real application process, no synthetic cache substitution.
++    monitor=verify({'values':values,'after':after})
++    assert preserved(value)==value['hold_bindings']
++    current=ENGINE.inspect(host.container('api'))
++    assert current['HostConfig']['PortBindings']=={'8090/tcp':[{'HostIp':'127.0.0.1','HostPort':'19930'}]}
++    result={'case':case,'phase':phase,'authenticated_subjects':tokens,'anonymous_rejected':True,
++            'live_openwebui_filter':True,'synthetic_source_count':1,'monitors':monitor,
++            'monitor_after':after,'holds_preserved':True,'api_container_id':current['Id'],
++            'port_binding':current['HostConfig']['PortBindings'],'packet_sha256':value['packet_sha256']}
++    atomic(case_dir(case)/(phase+'-acceptance.json'),result)
++    return result
++
++
++def write_webui(case):
++    value=json.loads((case_dir(case)/'plan.json').read_text())
++    name=value['candidates'][1]['container']
++    # Use the actual application API for a retained chat write.
++    old=host.container
++    host.container=lambda service:name if service=='webui' else old(service)
++    m=host.lib();token=m.login(json.loads((ROOT/'private/credentials.json').read_text()))
++    chat=m.api('POST','/api/v1/chats/new',{'chat':{'title':'Request029 synthetic retained write','messages':[]}},token)
++    chat_id=chat['id']
++    result={'chat_id':chat_id,'synthetic_only':True,'volume':value['external_webui_volumes'][0]}
++    atomic(case_dir(case)/'new-write.json',result)
++    return result
++
++
++def retained(case):
++    value=json.loads((case_dir(case)/'plan.json').read_text())
++    info=json.loads(command(['docker','volume','inspect',value['external_webui_volumes'][0]]))[0]
++    write=json.loads((case_dir(case)/'new-write.json').read_text())
++    with sqlite3.connect('file:'+str(Path(info['Mountpoint'])/'webui.db')+'?mode=ro',uri=True) as db:
++        assert db.execute('pragma integrity_check').fetchone()==('ok',)
++        assert db.execute('select id from chat where id=?',(write['chat_id'],)).fetchone()==(write['chat_id'],)
++    incumbent=ENGINE.inspect(value['incumbent']['container'])
++    assert incumbent['Id']==value['incumbent']['id'] and incumbent['State']['Running']
++    assert fingerprint(incumbent)==value['incumbent']['fingerprint']
++    result={'actual_new_webui_chat_retained':True,'same_incumbent_id':True,'same_incumbent_configuration':True,
++            'holds_preserved':preserved(value)==value['hold_bindings']}
++    atomic(case_dir(case)/'retained-write.json',result)
++    return result
++
++
++if __name__=='__main__':
++    from runtime_contract import load
++    load(os.environ['CBM_PACKET_SHA256'])
++    mode,case=sys.argv[1:3]
++    if mode=='prepare':result=prepare(case)
++    elif mode=='check':result=check(case,sys.argv[3],float(sys.argv[4]))
++    elif mode=='write':result=write_webui(case)
++    elif mode=='retained':result=retained(case)
++    else:raise ValueError('unknown rehearsal operation')
++    print(json.dumps(result))
+--- forge/remote.py
++++ request029/remote.py
+@@ -0,0 +1,82 @@
++"""Durable target-host operation with independent lifetime and read-only readback.
++
++SSH loss does not kill the controller or release its locks. Never launch a second
++operation for an uncertain invocation. Read back this operation's durable result.
++"""
++from contextlib import ExitStack
++import fcntl
++import json
++import os
++from pathlib import Path
++import subprocess
++import sys
++import time
++import traceback
++from activate import Activation, atomic, validate_plan
++
++
++def execute(operation_dir):
++    root = Path(operation_dir)
++    request = json.loads((root / 'request.json').read_text())
++    # Atomic mkdir is the at-most-once dispatch boundary, including concurrent SSH.
++    (root / 'started').mkdir(mode=0o700)
++    try:
++        plan = validate_plan(request['plan'], request['sha256'])
++        with ExitStack() as stack:
++            for name in plan['locks']:
++                fd = os.open(name, os.O_RDWR | os.O_NOFOLLOW)
++                stack.callback(os.close, fd)
++                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
++                if (os.fstat(fd).st_dev, os.fstat(fd).st_ino) != (os.stat(name).st_dev, os.stat(name).st_ino):
++                    raise ValueError('lock inode changed')
++            # Recheck everything after locks, before any effect.
++            plan = validate_plan(request['plan'], request['sha256'])
++            result = getattr(Activation(plan, request['sha256'], request['journal']), request['operation'])()
++        value = {'state': 'completed', 'result': result}
++    except Exception as error:
++        value = {'state': 'reconciliation_required', 'error_type': type(error).__name__,
++                 'frames': [{'file': Path(f.filename).name, 'line': f.lineno}
++                            for f in traceback.extract_tb(error.__traceback__)]}
++    atomic(root / 'result.json', dict(value, finished_at=time.time(), request=request))
++
++
++def readback(root):
++    root = Path(root)
++    if not root.exists():
++        return {'state': 'absent'}
++    if (root / 'result.json').exists():
++        return json.loads((root / 'result.json').read_text())
++    return {'state': 'uncertain', 'started': (root / 'started').exists(),
++            'request': json.loads((root / 'request.json').read_text())}
++
++
++def main():
++    mode, directory = sys.argv[1:3]
++    root = Path(directory)
++    if mode == 'worker':
++        execute(root)
++        return
++    if mode == 'dispatch':
++        request = json.load(sys.stdin)
++        plan = validate_plan(request['plan'], request['sha256'])
++        if not root.is_relative_to(Path(plan['state_root']).parent / 'activation-operations'):
++            raise ValueError('operation directory outside workspace')
++        if Path(request['journal']).parent != root.parent.parent / 'activation-journals':
++            raise ValueError('journal outside workspace')
++        root.mkdir(mode=0o700)  # never overwrite or re-dispatch
++        atomic(root / 'request.json', request)
++        with (root / 'private.log').open('xb') as log:
++            subprocess.Popen([sys.executable, '-B', __file__, 'worker', str(root)],
++                             stdin=subprocess.DEVNULL, stdout=log, stderr=log,
++                             start_new_session=True, close_fds=True)
++        deadline = time.monotonic() + 900
++        while not (root / 'result.json').exists() and time.monotonic() < deadline:
++            time.sleep(0.25)
++    elif mode != 'readback':
++        raise ValueError('unknown mode')
++    print(json.dumps(readback(root)))
++
++
++if __name__ == '__main__':
++    os.umask(0o077)
++    main()
+--- forge/test_activate.py
++++ request029/test_activate.py
+@@ -44,6 +44,11 @@
+                 self.assertIsNone(Docker().inspect('fixture'))
+         with patch('activate.subprocess.run', return_value=SimpleNamespace(returncode=1, stderr=b'daemon unavailable')), patch('activate.command', side_effect=RuntimeError('offline')):
+             with self.assertRaises(RuntimeError): Docker().inspect('fixture')
++
++    def test_volume_name_collision_is_not_a_container(self):
++        with patch('activate.subprocess.run', return_value=SimpleNamespace(returncode=1, stderr=b'no such container')) as run, patch('activate.command', return_value=b'engine'):
++            self.assertIsNone(Docker().inspect('volume-only'))
++            self.assertEqual(run.call_args.args[0], ['docker', 'inspect', '--type', 'container', 'volume-only'])
+ 
+     def test_docker_mount_order_does_not_invent_drift(self):
+         first = row('old')

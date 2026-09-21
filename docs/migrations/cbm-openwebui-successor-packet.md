@@ -46,6 +46,16 @@ and all processing holds. Request029 integrates the actual Mac/SSH transport and
 complete production plan bindings on VM108. This does not close protected real
 restoration, browser, capacity/provider or production-phase gates.
 
+## Request029 accepted — September21
+
+[Actual Mac/SSH activation integration](cbm-activation-integration-results.md) passed
+and its source/packet/plans are independently verified. The 21 production evidence
+slots remain open, grouped into protected restoration/browser acceptance, workload
+checks, fresh deployment bindings and the separately authorized production phase.
+The production compiler/controller remains disabled; serving success will not clear
+processing holds. The next preparation task is the protected real-data/signing
+restore packet. Retained WebUI writes are not automatically visible in the old UI.
+
 ## Accepted source and evidence
 
 The exact seven-file rehearsal source from agent-ops commit
