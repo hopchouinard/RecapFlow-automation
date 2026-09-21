@@ -790,3 +790,14 @@ TLS queue, uncertainty/checkpoint, restore and renewal evidence passed with the
 recorded revision/equivalence limits. Production loader remains disabled. See
 [results and next implementation](cbm-successor-bindings-results.md). No production
 or legacy runtime was changed; seven request containers are stopped.
+
+## September21 — serving activation and retained-write rollback
+
+Implemented a plan-pinned, journaled host controller with ordered locks and exact
+hold/runtime checks. Ten tests pass on Forge/VM108. The actual image rehearsal
+passed API/WebUI handoff, lost acknowledgment without recreation, duplicate calls,
+authentication and rollback preserving a replacement WebUI write and incumbent ID.
+Docker mount-order drift was fixed and regression-tested. Failed attempts were
+preserved and reconciled before the passing plan-v3. See
+[results](cbm-activation-development-results.md). Request029 now carries source and
+evidence for real Mac/SSH/full-successor integration. Production remains unchanged.

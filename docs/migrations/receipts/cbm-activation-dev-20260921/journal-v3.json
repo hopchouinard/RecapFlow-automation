@@ -1,0 +1,33 @@
+{
+  "candidate_ids": {
+    "cbm-activation-validation-api-v3": "5bd7c172752557f1650757c505f67091c4a9e8dad5bb76e6e8229bc97f383ad0",
+    "cbm-activation-validation-webui-v3": "7c78cbfe1f4a329dc3adf3e5d09c98bf37c442436db0fe99df8eb3e916bca4c1"
+  },
+  "candidate_intents": {
+    "cbm-activation-validation-api-v3": true,
+    "cbm-activation-validation-webui-v3": true
+  },
+  "holds": {
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation/attention.json": {
+      "device": 2064,
+      "inode": 695543,
+      "mode": 384,
+      "sha256": "818be941f065babf64e6f419c3d45fd338b55f6417ee5069ce0456d3be1e0812"
+    },
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation/boot-state.json": {
+      "device": 2064,
+      "inode": 695544,
+      "mode": 384,
+      "sha256": "818be941f065babf64e6f419c3d45fd338b55f6417ee5069ce0456d3be1e0812"
+    },
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation/paused": {
+      "device": 2064,
+      "inode": 695542,
+      "mode": 384,
+      "sha256": "818be941f065babf64e6f419c3d45fd338b55f6417ee5069ce0456d3be1e0812"
+    }
+  },
+  "incumbent_fingerprint": "8fc5963ed11e2a99c39f2bf5d27435f10689244447c53331263f23703c6193af",
+  "phase": "rolled_back",
+  "plan_sha256": "eb0dd4381e7a757cc3b6c91b05075ac3b566ef82cdd7759db401252f56475815"
+}

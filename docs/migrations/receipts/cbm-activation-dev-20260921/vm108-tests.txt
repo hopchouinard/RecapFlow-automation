@@ -1,0 +1,15 @@
+test_absent_container_is_distinct_from_daemon_failure (test_activate.Tests.test_absent_container_is_distinct_from_daemon_failure) ... ok
+test_absent_uncertain_candidate_is_not_recreated (test_activate.Tests.test_absent_uncertain_candidate_is_not_recreated) ... ok
+test_activation_and_duplicate_do_not_repeat_effects (test_activate.Tests.test_activation_and_duplicate_do_not_repeat_effects) ... ok
+test_changed_incumbent_is_not_restarted (test_activate.Tests.test_changed_incumbent_is_not_restarted) ... ok
+test_docker_mount_order_does_not_invent_drift (test_activate.Tests.test_docker_mount_order_does_not_invent_drift) ... ok
+test_foreign_plan_cannot_resume_journal (test_activate.Tests.test_foreign_plan_cannot_resume_journal) ... ok
+test_hold_drift_refuses_further_actions (test_activate.Tests.test_hold_drift_refuses_further_actions) ... ok
+test_lost_create_ack_reconciles_existing_container (test_activate.Tests.test_lost_create_ack_reconciles_existing_container) ... ok
+test_rollback_retains_candidate_and_restarts_original_id (test_activate.Tests.test_rollback_retains_candidate_and_restarts_original_id) ... ok
+test_unknown_candidate_is_not_adopted (test_activate.Tests.test_unknown_candidate_is_not_adopted) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.010s
+
+OK

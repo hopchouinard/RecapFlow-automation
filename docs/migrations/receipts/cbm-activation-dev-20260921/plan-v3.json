@@ -1,0 +1,130 @@
+{
+  "candidates": [
+    {
+      "container": "cbm-activation-validation-api-v3",
+      "health_timeout": 180,
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "network": "cbm-activation-validation",
+      "probe_port": 8090,
+      "runtime": {
+        "binds": [
+          {
+            "read_only": true,
+            "source": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/private/ca.pem",
+            "target": "/run/certs/ca-bundle.pem"
+          },
+          {
+            "read_only": true,
+            "source": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation-public",
+            "target": "/state/automation-public"
+          },
+          {
+            "read_only": true,
+            "source": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/config",
+            "target": "/state/config"
+          },
+          {
+            "read_only": true,
+            "source": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/corpus",
+            "target": "/state/corpus"
+          },
+          {
+            "read_only": false,
+            "source": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/files",
+            "target": "/state/files"
+          },
+          {
+            "read_only": true,
+            "source": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/meeting-archive",
+            "target": "/state/meeting-archive"
+          }
+        ],
+        "command": [
+          "python",
+          "-B",
+          "-m",
+          "uvicorn",
+          "community_brain.jobs.runtime:app",
+          "--factory",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8090",
+          "--no-access-log"
+        ],
+        "memory": 2147483648,
+        "nano_cpus": 2000000000,
+        "ports": {
+          "8090/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "19929"
+            }
+          ]
+        },
+        "read_only_root": true,
+        "user": "10001:10001",
+        "volumes": []
+      },
+      "service": "api"
+    },
+    {
+      "container": "cbm-activation-validation-webui-v3",
+      "health_timeout": 180,
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "network": "cbm-activation-validation",
+      "probe_port": 8080,
+      "runtime": {
+        "binds": [],
+        "command": [
+          "bash",
+          "start.sh"
+        ],
+        "memory": 1610612736,
+        "nano_cpus": 1500000000,
+        "ports": {},
+        "read_only_root": false,
+        "user": "0:0",
+        "volumes": [
+          {
+            "name": "cbm-activation-validation-webui-data",
+            "read_only": false,
+            "target": "/app/backend/data"
+          }
+        ]
+      },
+      "service": "webui"
+    }
+  ],
+  "compose": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/candidate-v3.json",
+  "files": {
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/candidate-v3.json": "08683a84598f7dd290d435998d084592adc95d6eaae18add82c6b24415c140f1",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/private/api.env": "879abcbb36c28ed9b667807f337254aca656a445b8057c41ebed703ae123ad49",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/private/ca.pem": "3fc8ce9b69ff00cbf591c47e09c1473c60658120d803c6d7b83588bef3e41860",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/private/webui.env": "a65fe50041c11d31b99085621407a3495f6de350217bbc2cfa6548aa8d61cb63",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/recovery/receipt.json": "2ca751eee8a4746d92e7cd2bdceeed8d3c5ba96fd122f78d9a628455d807f2a2",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/source/activate.py": "3e78e5fbca7420fbfee2fc0fec2a6bbf318ca4ff2e6da38005437e876cfda238"
+  },
+  "holds": [
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation/paused",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation/attention.json",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation/boot-state.json"
+  ],
+  "hostname": "community-brain-dev",
+  "incumbent": {
+    "container": "cbm-activation-validation-incumbent",
+    "fingerprint": "8fc5963ed11e2a99c39f2bf5d27435f10689244447c53331263f23703c6193af",
+    "id": "127f1945eef421b9a66008ba9da8f0725f74f1cbd29b7f67bd4b39ec8a81f69e",
+    "network": "cbm-activation-validation",
+    "probe_port": 8090
+  },
+  "locks": [
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/automation/runner.lock",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/files/.manual-worker.lock",
+    "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state/files/.submission.lock"
+  ],
+  "phase": "serving-only",
+  "recovery_receipt": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/recovery/receipt.json",
+  "schema": 1,
+  "state_root": "/srv/dev-data/workspaces/cbm-activation-validation-20260921/state"
+}

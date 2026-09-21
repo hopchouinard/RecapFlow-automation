@@ -99,6 +99,20 @@ protected real restoration, browser and capacity/provider acceptance before the
 separately authorized production phase. This supersedes the pending Request028
 statements above; it does not establish production readiness or reopen processing.
 
+## Serving activation/rollback implemented — September21
+
+[The next Forge batch](cbm-activation-development-results.md) passed a real API/
+OpenWebUI port handoff on VM108, lost-acknowledgment reconciliation, duplicate
+invocation, authentication, preserved replacement writes and rollback to the same
+incumbent container. Ten boundary tests pass. Holds remain unchanged; all six
+fixture containers are stopped and retained, and the four existing dev services run.
+
+[Request029](cbm-activation-integration-request.md) is posted for actual Mac mutex/
+SSH integration, complete plan binding and full successor/monitor acceptance on
+VM108. The host-local controller is implemented; production deployment is not
+executed or ready merely because this rehearsal passed. Protected real restore,
+browser/session, capacity/provider and separately authorized production gates remain.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

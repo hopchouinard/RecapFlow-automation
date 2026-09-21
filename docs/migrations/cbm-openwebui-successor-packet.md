@@ -38,6 +38,14 @@ production execution. Controlled activation/rollback implementation with VM108
 validation is next, followed by protected real restoration, browser and capacity/
 provider gates. Earlier pending integration statements describe prior checkpoints.
 
+## Serving activation rehearsal — Request029
+
+[Forge's controller](cbm-activation-development-results.md) passed real development
+API/WebUI activation and same-incumbent rollback while retaining new WebUI writes
+and all processing holds. Request029 integrates the actual Mac/SSH transport and
+complete production plan bindings on VM108. This does not close protected real
+restoration, browser, capacity/provider or production-phase gates.
+
 ## Accepted source and evidence
 
 The exact seven-file rehearsal source from agent-ops commit

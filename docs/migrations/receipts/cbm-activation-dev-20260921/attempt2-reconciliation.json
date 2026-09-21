@@ -1,0 +1,8 @@
+{
+  "cause": "fixture default WebUI user mismatch; exact pinned image default is 0:0",
+  "failed_journal_preserved": true,
+  "holds_unchanged": true,
+  "request_candidates_stopped": true,
+  "runtime_only_difference_verified": true,
+  "same_incumbent_restarted": true
+}

@@ -1,0 +1,23 @@
+{
+  "activation": {
+    "phase": "active",
+    "processing_holds_preserved": true
+  },
+  "actual_api_authentication": true,
+  "actual_webui_health": true,
+  "anonymous_api_denied": true,
+  "duplicate_activation_no_recreate": true,
+  "lost_acknowledgment_no_recreate": true,
+  "passed": true,
+  "plan_sha256": "eb0dd4381e7a757cc3b6c91b05075ac3b566ef82cdd7759db401252f56475815",
+  "post_activation_webui_write_preserved": true,
+  "production_changed": false,
+  "rollback": {
+    "phase": "rolled_back",
+    "processing_holds_preserved": true,
+    "replacement_data_retained": true
+  },
+  "runner_lock_exclusion": true,
+  "same_incumbent_container_restored": true,
+  "synthetic_data_only": true
+}
