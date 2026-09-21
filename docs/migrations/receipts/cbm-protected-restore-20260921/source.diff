@@ -1,0 +1,1727 @@
+diff --git a/platform-services/community-brain-prod/protected-restore-030/ACCEPTANCE-PLAN.md b/platform-services/community-brain-prod/protected-restore-030/ACCEPTANCE-PLAN.md
+new file mode 100644
+index 0000000..0c8090b
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/ACCEPTANCE-PLAN.md
+@@ -0,0 +1,143 @@
++# Acceptance cases and limits
++
++Every case records request/capture ID, UTC interval, source/image/manifest hashes,
++actual observations, scope, operator and a pass/fail/blocked outcome. A missing
++result is null or blocked. A synthetic result never fills a protected production
++slot. The safe relay sees aggregate counts/digests and private evidence pointers;
++raw rows, prompts, uploads, credentials, responses and signing bytes stay private.
++
++## Evidence completed in Request030
++
++- Fresh synthetic PostgreSQL18.6 source and independent restore server, network
++  `none`, no published ports: canonical row digests for seven representative
++  tables, unknown attempt, sent/pending outbox, relationships and FTS query match.
++  An attempted INSERT times out under the actual exported-snapshot SHARE fence.
++- File/private-manifest transport and restore: empty required tree, synthetic
++  upload/vector bytes, SQLite relationship and integrity, relative contained link,
++  numeric ownership/mode/mtime, all controls/locks preserved. Repeated restore into
++  an existing target is refused and new writes remain. Corruption, incomplete
++  copies, traversal, linked ancestors, hard links, devices, extra members and
++  wrong scope/hash are negative cases. No checkpoint acknowledgement or worker.
++- Actual pinned WebUI image, newly created account/chat and synthetic signing key:
++  old session and login accepted after restoration; chat retained; persisted signup
++  disabled; anonymous and signup refused; wrong key refuses the old session.
++  Source remains stopped and unchanged; each restored runtime uses network `none`.
++- Inherited budget helper tested with synthetic transport: exhausted/nonfinite/
++  wrong-policy allowance, allowance timeout, wrong endpoint, request ceiling,
++  rechecked allowance and unknown-response journal/reopening refusal. Real calls0.
++
++These fixtures do not reproduce the production job schema or certify production
++LanceDB/Chroma counts, real upload relationships, provider behavior or browser UI.
++The HTTP session exercise is not a rendered browser test. Actual real signing is
++never a development credential.
++
++## Protected offline recovery acceptance, next authorized transfer phase
++
++1. Restore from the verified PBS private copy, not from the source staging bundle.
++   All parent/component/blob hashes and exact sets, ownership, modes, empty trees,
++   links and signing digest match. Separate preservation originals from any clone.
++2. PostgreSQL: pg_restore exits0 into an independently identified fresh server.
++   Compare schema, table/sequence observations, jobs/stages/attempts/operations,
++   model-call journals, sent/unsent outbox, sources/artifacts and rejected events.
++   No new attempt, changed unknown outcome, duplicate publication or provider call.
++   Compare canonical records, not pg_dump file equality across independently taken
++   dumps. Confirm every durable file reference resolves within the restored roots.
++3. Corpus: compare LanceDB schema/version, rows, embedding dimensions and vector
++   bytes, session/source provenance and FTS indexed/unindexed counts. Query a fixed
++   private acceptance set read-only using the pinned runtime; no re-embedding or
++   FTS rebuilding to make the result pass.
++4. WebUI: SQLite `integrity_check` and declared plus logical relationships for
++   user/auth/chat/messages/files/knowledge/models/prompts/functions; upload file
++   resolution/bytes; Chroma collection/embedding totals and fixed query results.
++   Refresh the baseline, do not force it to match old counts. Check valid cache
++   links resolve within the preserved component. Do not execute retained functions.
++5. External signing: exact original bytes/digest verified only in private storage.
++   No session/browser claim yet: the offline enclave has no application startup.
++6. Controls: before/after source hold and lock hashes/modes/inodes/devices match.
++   Recovery control files live only under the enclave. Any failure retains all
++   originals/partial targets and leaves production processing held.
++
++## Browser/session acceptance, later staged deployment
++
++Operator: Patrick performs the real-account browser checks; home.servers records
++safe receipts. No user password or session cookie enters Forge, source or relay.
++Before ingress admission, on the authorized staged replacement:
++
++- Effective startup AND persisted signup setting false; anonymous data APIs refused.
++- Existing real session from before migration remains valid with the original key;
++  a fresh intended-user login works. Compare identity and retained chat count without
++  exposing account identifiers or content in the safe receipt.
++- Open selected retained chats/files, retrieve known private provenance, verify
++  effective filter endpoint/credential and no obsolete VM101 serving dependency.
++- A failed real session requires explicit reconciliation; no silent key rotation,
++  forced account creation or data overwrite. Wrong-key rejection is already tested
++  synthetically and must never be tested by changing the active production key.
++
++Rendered synthetic browser behavior remains a distinct unperformed case. It can
++be run next on a fresh fixture through a bounded loopback-only path with a new
++synthetic account; no current fixture needs reactivation to pretend it was tested.
++
++## Capacity proposal
++
++VM108 currently has4,004,576KiB RAM (about3.82GiB) and approximately29.8GiB free
++on `/srv/dev-data`. Existing profile maxima: API2GiB/2CPU, worker1,572,864,000bytes/
++2CPU, WebUI1.5GiB/1.5CPU. Those three memory limits total about4.96GiB before the
++OS, monitors and restore server. Sequential small-fixture success is insufficient
++for simultaneous acceptance on this4GiB host.
++
++Proposed bounded capacity phase: approved VM1088GiB sizing (or a separate8GiB
++isolated development guest), at least4vCPU and20GiB free after preserving existing
++fixtures. No resize/reboot occurred in Request030. Confirm this sizing/window
++before mutation. Keep existing service limits initially; restore PostgreSQL512MiB.
++Use new synthetic content only and deny external provider/queue/publication egress.
++
++Workload: restore a2.5GiB WebUI-shaped dataset with111 uploads and at least1,555
++synthetic vector records while the API handles4 concurrent read/retrieval clients,
++WebUI handles2 logged-in readers, and one synthetic worker processes one newly
++identified synthetic job. Run30minutes after warmup, including one full restore
++and controlled candidate rollback retaining one new chat/file. No production or
++previous completed/uncertain meeting is eligible.
++
++Proposed acceptance thresholds, requiring owner agreement: zero OOM/restarts,
++zero lost writes,0.1% maximum request failure rate (expected denials excluded),
++read API p95<=2s, retrieval p95<=5s with synthetic provider, WebUI p95<=3s, restore
++<=10minutes. Sample cgroup current/peak memory, CPU throttling, IO, host memory and
++disk each second; maintain at least1GiB host MemAvailable and20% disk free.
++Abort at<512MiB available or<10GiB free, any OOM, unexpected external connection,
++changed prior fixture or missing journal. Report observed thresholds separately
++from approval. The first Request030 WebUI120-check readiness timeout is retained;
++its successful1.5CPU retry took about302s across three sequential startups and
++verification. Neither result establishes steady-state capacity.
++
++## Real-provider and intake proposal
++
++No scoped paid development identity/spend authorization was bound to Request030.
++The production US$5 weekly key must not be reused. Do not fetch it to investigate.
++Use new scoped identities under
++`/development/community-brain-dev/protected-acceptance/<approved-id>` and a new
++synthetic meeting ID; no production identity, meeting replay or desktop-intake
++configuration change.
++
++Proposed paid allowance: a dedicated non-management OpenRouter key with the
++existing helper's exact US$5 weekly policy and BYOK included; request this policy
++explicitly rather than weakening the helper. Separately bound this exercise to
++**at most3 model requests and US$0.10 total estimated maximum**, one-at-a-time,
++<=512 input and128 output tokens per call, no automatic retry. Before approval,
++select one available model and bind its current primary-source price/token limits
++and permitted endpoint to prove that ceiling. No model selection or price claim
++is made by this packet. Reduce the call count/limits if the verified bound cannot
++fit. Owner may instead decline all paid tests; the production slot remains absent.
++
++Cases: valid allowance and one successful synthetic request; provider denial with
++no job advance; locally injected response loss after intent recording, leaving
++`outcome_unknown` and preventing replay. Actual quota exhaustion/foreign endpoint
++and unknown outcome negative cases should use the tested synthetic transport to
++avoid unnecessary paid calls. Record allowance before each real request and actual
++usage/response privately, plus safe journal hashes. If a provider cannot enforce a
++bounded request cost or allowance read fails, abort before the call.
++
++Intake: use a dedicated dev acquisition identity restricted to one synthetic test
++meeting; read only that fixture, then verify duplicate idempotency and response-loss
++reconciliation. If the provider cannot scope that access, return a new bounded
++approval proposal. Never expose the production Fathom key or reconfigure live Mac
++intake. No live paid/acquisition call ran in Request030.
+diff --git a/platform-services/community-brain-prod/protected-restore-030/OPERATOR-PROPOSAL.md b/platform-services/community-brain-prod/protected-restore-030/OPERATOR-PROPOSAL.md
+new file mode 100644
+index 0000000..474e66b
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/OPERATOR-PROPOSAL.md
+@@ -0,0 +1,209 @@
++# Bounded protected capture and independent restore proposal
++
++Status: reviewable preparation; **no capture/transfer authority granted or used**.
++Request030 deadline is2026-09-21T20:00:00Z. A later request must name its own capture
++ID, authorization and deadline. Expiry is not permission to skip these gates.
++
++## Exact bindings
++
++Current Community Brain is VM109, `pchouinard@10.1.30.21`,
++`community-brain-prod`. Incumbent API container ID is
++`766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6`.
++The application consumes `CB_DATABASE_URL`; its authority source is Infisical
++project `a508e594-7686-43a1-9b0f-cafa8b348ad4`, environment `prod`, path
++`/applications/community-brain`, key `CB_RUNTIME_DATABASE_URL`. The deployed
++`integrations/manual_api_runtime.py` explicitly maps those names.
++The current database is `community_brain_prod`, server
++`platform-db.patchoutech.lab` (`10.1.10.50:5432`), PostgreSQL18.6,
++runtime role `cbm_prod_runtime`; public table owner is `cbm_prod_migration`.
++Use existing `pchouinard@10.1.10.50` plus `sudo -n -u postgres` for the logical
++backup/fence. This avoids exporting a database credential into a new store.
++No role, grant, authority value or service identity changes are proposed.
++
++VM109 trees: `/srv/community-brain/{files,config,corpus,meeting-archive-20260910,
++automation,automation-public,manual-approvals}`. Private runtime configuration is
++`/etc/community-brain-production` (nine existing0600 files). Runtime/management
++source includes the exact mounted `workspaces/cbm-workspace-recovery-20260917-effective-r020`,
++`workspaces/cbm-workspace-recovery-20260917-frontend`,
++`workspaces/manual-20260910` and its Compose overlays, and Mac
++`/Users/pchouinard/.local/lib/community-brain-management` plus the corresponding
++LaunchAgent plist. Preserve existing bytecode as data; do not import the packet
++while inventorying it. Record image IDs and all mounted source hashes.
++
++Dormant WebUI source is the **stopped container**, not a powered-off guest:
++VM101 (`n8n-automation`, `pchouinard@10.1.30.10`) still hosts other services.
++Container `open-webui`, ID
++`83358b76e0544437bd8947ba9a7be94d9fba59559a6dc56bd3c1c0110fb8a33c`,
++uses `open-webui-data` at `/var/lib/docker/volumes/open-webui-data/_data`.
++It has stayed exited since2026-09-19T04:20:05.394478381Z. Never start it, reboot
++VM101 or change its other services. Signing bytes are outside the volume at
++`/app/backend/.webui_secret_key`; the17-byte file has SHA256
++`7638e389c27761152e8c894b9fff5b328e78964225e51c9514f3273dde931ef5`.
++Request030 hashed it in memory on the source host and returned only metadata.
++No signing value was transferred or saved to a new store.
++
++Existing backup anchors: VM109's
++`/srv/community-brain/db-backups/20260921T003017Z.dump` (62,548bytes), and PBS
++`pbs:backup/vm/101/2026-09-21T01:00:01Z`. The protected September9 VM101 snapshot
++remains listed. Neither a listing nor the existing DB dump establishes a paired
++current restoration. PBS datastore is `PBS1` at `/mnt/datastore/PBS1`, server
++`10.1.60.10`; retain its managed snapshots and pruning settings unchanged.
++
++Proposed new off-host location is **outside the managed PBS datastore**:
++`root@10.1.60.10:/var/lib/proxmox-backup/cbm-protected-recovery/<capture-id>`.
++The root filesystem has about414GiB available. It is an access-controlled private
++SSH destination, not a claim of new at-rest encryption or automatic PBS coverage.
++Create parent/attempt directories root:root0700; every transport object0600.
++Do not write arbitrary files inside `/mnt/datastore/PBS1`.
++The Mac internal volume has only about3.9GiB available; it is not a staging target.
++The encrypted external NVMe has ownership disabled and is not the selected target.
++
++Proposed independent restore is VM108
++`/srv/dev-data/protected-restores/<capture-id>` (root:root0700), with
++fresh container `cbm-private-restore-<capture-id>` and a new PostgreSQL18.6
++server/database on network `none`, no published ports, restart `no`.
++This is a **private offline recovery enclave**, not an application development
++clone. No WebUI, model, worker, scheduler or provider starts against the real data.
++Protected content/signing may enter this enclave only if the next authorization
++explicitly names it. Otherwise this step remains unperformed. The proposed source
++capture locations are `/var/backups/cbm-protected-capture/<capture-id>` on VM109
++and VM101, and `/var/lib/postgresql/cbm-protected-capture/<capture-id>` on the DB
++host. They have not been created.
++
++## Selected scope and limits
++
++Request the following single phase: one consistent current CB database/state pair,
++one stopped WebUI volume/signing pair, preservation of exact runtime/control
++sources, private off-host copy, and independent offline restore/verification.
++Do not include real-data application startup, sanitization for development,
++production installation, ingress, rotation, provider calls or processing resume.
++Preservation copies retain original content and configuration. **Permitted real
++content in ordinary development fixtures: none.** A future sanitized real-data
++clone requires a separately named destination, field-level transformation manifest
++and authority. An environment variable alone cannot neutralize persisted WebUI
++provider URLs, API keys, function valves, tools or OAuth/API sessions.
++
++Use a new ID such as `cbm-protected-20260921-approval01` only after authorization;
++reserve it atomically on each host. The private parent manifest names all component
++submanifests and their hashes. Never assemble components from different IDs or
++attempts. Every failed attempt keeps its own intent, partial objects and disposition.
++
++## Ordered operation and concrete command forms
++
++These are **future operator commands**, not commands executed by Request030.
++The operator binds the approved ID/hash/deadline in a private0600 specification.
++The source library archive must match the delivered SHA before installation. Its
++CLI remains synthetic-only; a reviewed operator wrapper calls the library with
++explicit `scope='authorized-private-preservation'`. Do not weaken the CLI guard.
++
++1. Acquire the existing Mac scheduler mutex
++   `/Users/pchouinard/.local/state/community-brain-management/scheduler.lock`.
++   Refuse unresolved management/pending activation intents. Hold it through the
++   complete capture/readback interval. Open existing VM109 locks in order:
++   `automation/runner.lock`, `files/.manual-worker.lock`, `files/.submission.lock`.
++   Bind inode/device and all three paused/attention/boot marker identities from a
++   fresh read. Root remains held. Also freeze Mac intake writes for this bounded
++   interval through its existing mutex; no live desktop-intake configuration change.
++2. Record a durable intent with incumbent ID/config and rollback owner before the
++   separately approved maintenance stop. Execute `docker stop --time 30
++   766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6` on VM109.
++   This stops only the current API writer; Alloy stays running. Verify no other
++   worker/container binds the seven source trees read-write and no unreviewed DB
++   client remains. VM101 WebUI must already be stopped; never stop/start its other
++   services. Abort if its ID or stopped state changed.
++3. On platform-db, keep one existing-admin `psql -X -qAt -v ON_ERROR_STOP=1
++   -d community_brain_prod` session open under `sudo -n -u postgres`. Issue:
++
++   ```sql
++   BEGIN ISOLATION LEVEL REPEATABLE READ;
++   SET LOCAL lock_timeout='5s';
++   LOCK TABLE public.alembic_version, public.cb_artifacts, public.cb_attempts,
++     public.cb_jobs, public.cb_model_calls, public.cb_operations, public.cb_outbox,
++     public.cb_rejected_events, public.cb_sources, public.cb_stages IN SHARE MODE;
++   SELECT pg_export_snapshot();
++   ```
++
++   Recheck this is the complete current public table set; unexpected schema aborts.
++   Keep the transaction open through the DB dump and VM109 tree capture. Capture
++   canonical schema/table/sequence/relationship observations inside this interval.
++   No DDL is allowed by the writer inventory. The returned snapshot ID is metadata,
++   not a credential. In a second existing-admin process, run:
++
++   ```text
++   sudo -n -u postgres pg_dump -d community_brain_prod -Fc --no-owner --no-acl --snapshot <exported-snapshot> --file /var/lib/postgresql/cbm-protected-capture/<capture-id>/database.dump
++   ```
++
++   The wrapper creates the attempt directory postgres:postgres0700 before this
++   command and verifies pg_dump18.6. VM109 has no host pg_dump; do not assume it does.
++   Transfer the dump privately into the matching VM109 attempt's database component,
++   comparing byte length and SHA at both ends. No password appears in arguments.
++4. Still inside the writer-free interval, call `recovery.capture(components,
++   destination, capture_id, evidence, scope='authorized-private-preservation')`.
++   `components` binds the seven exact VM109 trees, `/etc/community-brain-production`,
++   the exact runtime sources, and the staged database component. Each component is
++   a distinct nonoverlapping directory. Preserve numeric uid/gid/mode/mtime and
++   empty roots. Preflight largest file versus memory and ACL/xattr/hard-link needs;
++   this version must refuse unsupported metadata. Include the held lock files in
++   recovery data but never restore them onto active source filesystems.
++5. On VM101, use `docker cp
++   83358b76e0544437bd8947ba9a7be94d9fba59559a6dc56bd3c1c0110fb8a33c:/app/backend/.webui_secret_key -`
++   **only into a private in-process tar reader**, never stdout/log capture at the
++   orchestration boundary. Require exactly the expected regular member; save its
++   bytes as0600 in the new private signing component. Retain original metadata in
++   its private manifest. Capture the stopped volume as a separate component with
++   the library, together with signing. Verify the source key digest, SQLite/WAL
++   state, counts and container stopped state before and after. No Infisical write
++   or key rotation is involved: this is preservation, not a new credential.
++6. Hash and seal the parent private manifest with all submanifest hashes. Release
++   the DB fence using `ROLLBACK;` only after all relevant CB source components have
++   completed. Recheck holds/inodes/source digests. Restart **the same incumbent ID**
++   using `docker start 766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6`;
++   verify its exact configuration, health and existing authenticated monitoring.
++   This does not recreate it or resume processing. Record release before the Mac
++   mutex is freed. Planned API maintenance ceiling:10minutes; if exceeded, abandon
++   the incomplete capture and restore the incumbent under the same locks.
++7. Stream completed bundles over existing SSH to the fresh PBS directory, with no
++   Mac disk intermediate. A transport tar contains only bundle metadata and regular
++   content-addressed blobs. The receiver rejects absolute/parent paths, duplicate
++   entries, links, devices and an unexpected exact member set before acceptance;
++   never invoke unrestricted `tar.extractall`. Verify parent/submanifest/object
++   hashes on PBS before recording off-host completion. Keep incomplete receiver
++   directories and read back them after connection loss; do not resend blindly.
++8. Restore **from the PBS copy** into the new VM108 enclave using the pinned parent
++   manifest and `recovery.restore(..., expected_scope='authorized-private-preservation')`.
++   A new network-none PostgreSQL18.6 container runs `pg_restore -U <fresh-local-role>
++   -d <fresh-database> --exit-on-error --no-owner --no-acl` against the copied dump.
++   Source numeric ownership is preserved in the original restoration; any runtime
++   ownership remap must happen only in a separate clone and be recorded. Compare
++   durable records, schema/sequences, unknown outcomes, outbox/artifact/source links,
++   exact files and vector/FTS observations. Run SQLite read-only integrity/relationship
++   checks and pinned Chroma/LanceDB read-only queries. Never start the application
++   to make migrations or indexing "fix" a mismatch.
++
++The production wrapper, reviewed binding of the tested `transport.py` receiver,
++and bounded maintenance/readback sequence must receive their final exact source/hash review and interruption test
++before a transfer authorization is executable. Request030 validates the underlying
++file/DB/session mechanics, not a deployed production orchestration wrapper. This
++is an explicit remaining implementation gate, not an invented completed receipt.
++
++## Failure, rollback and retention
++
++Operator and rollback owner: home.servers acting for Patrick; Patrick owns release
++and retention decisions. On uncertainty, retain intent and source holds, discover
++actual state and read the same attempt. Never resume a partial capture under a new
++snapshot, replace a partial restore, clear attention/checkpoints, or restart VM101.
++A lost DB fence invalidates the attempt even if files look complete. On uncertain
++API restart, inspect its exact ID before doing anything else. No blind redispatch.
++
++Source originals and existing Request026–029/Forge fixtures are retained without
++expiration. Proposed new private originals/off-host recovery/failed attempts:
++minimum30days and through explicit replacement acceptance, whichever is later;
++no automatic deletion. Restored enclave remains stopped and private. Any later
++replacement writes are retained separately; serving rollback never overwrites
++those writes, reverses migrations or merges divergence automatically.
++
++Current service-identity expiry is2026-09-22T20:53:07Z. Proposed latest start for a
++new two-hour bounded phase is18:53:07Z that day, subject to a fresh shorter service
++certificate/authority deadline if found. Approval does not extend any identity.
++If enough time or any evidence is missing, defer transfer and report the blocked
++phase. No production renewal is part of this proposal.
+diff --git a/platform-services/community-brain-prod/protected-restore-030/README.md b/platform-services/community-brain-prod/protected-restore-030/README.md
+new file mode 100644
+index 0000000..94581e0
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/README.md
+@@ -0,0 +1,81 @@
++# Request030 protected restoration preparation
++
++This directory prepares recovery mechanics and a bounded next phase. It does not
++install a production runtime, enable production compilation, transfer private
++production state, rotate identities, admit traffic or resume processing.
++
++`recovery.py` provides capture, verification and independent restoration with
++explicit scope. Its CLI accepts only the fresh Request030 VM108 workspace and
++synthetic-development scope. The library's separate
++`authorized-private-preservation` scope is a prepared interface for a later
++explicitly authorized operator invocation; it is not an authorization source.
++The production activation compiler/controller remain unchanged and disabled.
++
++- Capture creates a new directory exclusively and writes intent before content.
++  It records exact component roots, empty directories, file bytes/hashes,
++  uid/gid/mode/mtime, and contained relative links. Original paths remain private.
++- Files with multiple hard links, special files, privileged modes, escaping,
++  absolute or dangling links, overlapping components and linked destination
++  ancestors are refused. Supported links must resolve to a manifest member;
++  links through another linked directory are conservatively refused.
++- Each file is observed through a non-following descriptor; identity/stat drift
++  and a changed complete tree fail the attempt. This is a drift detector, not a
++  substitute for excluding writers throughout the capture interval.
++- `quiet()` opens existing locks without creating or replacing them. The caller
++  supplies the reviewed order. Holds retain their bytes, uid/gid/mode/inode/device.
++  No process, worker, boot, checkpoint or restart action exists in the primitive.
++- Restore requires an externally pinned manifest hash, exact bundle/blob sets,
++  scope agreement and a fresh destination. It verifies every component after
++  restoring numeric ownership and modes. Failed/partial targets are retained;
++  never repeat a mutation against them. Completion files and directory entries
++  are fsynced. Readback/verification is the only retry against the same attempt.
++- Private manifests and blobs remain behind a mode0700 outer directory; blobs and
++  journals are0600. Restored inner permissions match the original, including0755
++  public subtrees. They never override the private outer boundary. ACLs/xattrs,
++  sparse allocation and original hard-link identity are outside this version;
++  preflight must reject sources requiring those features, not silently discard
++  them. File reads currently buffer one file in memory; a later private operation
++  must bound the largest file against available memory before using this version.
++
++`pg_fence.py` tests an exported PostgreSQL snapshot under SHARE locks on the
++complete reviewed table set. The synthetic attempted concurrent write must time
++out. The fence stays alive through dump and file capture and rolls back on exit.
++It refuses hosts/container names outside Request030 development. The future
++operator procedure uses the equivalent native PostgreSQL commands under the
++existing database administrator, without copying a database password.
++
++`rehearse.py` uses fresh, network-none PostgreSQL containers and a synthetic state
++pair. It restores into a different PostgreSQL server and compares canonical table
++row digests, unknown attempts, outbox state, relationships and FTS behavior. Its
++small fixture is not the production schema, actual LanceDB/Chroma acceptance, or
++a full workload capacity result. `webui_session.py` tests the pinned real WebUI
++image through its HTTP API using new synthetic accounts, signing material and
++chat data. It explicitly reports that no rendered browser or real user session
++was tested. Containers stop in cleanup; volumes, data and attempts remain.
++
++`contract.py` maps the actual new receipt to Request029's requirements without
++filling slots. The older compiler expects `packet_manifest`, `restored_files`,
++`database.sql`, tar files and legacy observations. The new schema cannot be
++renamed into that schema. A production validator remains separate reviewed work.
++`private-manifest.schema.json` describes the actual private manifest. Database,
++application, off-host, browser, capacity and provider results are separate pinned
++receipts, never inferred from the tree comparison.
++
++`indexing_budget.py` is an unchanged copy of the inherited production helper,
++SHA256 `932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7`.
++Its tests use synthetic transports. No external allowance query or paid model call
++runs here. Its fixed US$5 weekly allowance is a production contract, not a grant
++to spend development funds.
++
++Mac unit fixtures stub the Linux extended-metadata observation because Apple
++provenance metadata is outside this Linux restore contract. VM108 tests exercise
++the real extended-metadata check. Native Mac preservation needs a separately
++reviewed metadata-preserving archive; it is not certified by those unit tests.
++
++Run local boundaries with `python3 -B -m unittest discover -p 'test_*.py' -v`.
++VM fixtures are single-use entry points, not idempotent setup commands. Inspect
++retained outcomes instead of rerunning them. Consult the delivered provenance and
++verification receipts for the exact source revision used by each attempt.
++
++See `OPERATOR-PROPOSAL.md` for private bindings, commands, gates and retention;
++`ACCEPTANCE-PLAN.md` separates synthetic results from later acceptance.
+diff --git a/platform-services/community-brain-prod/protected-restore-030/contract.py b/platform-services/community-brain-prod/protected-restore-030/contract.py
+new file mode 100644
+index 0000000..e358fb3
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/contract.py
+@@ -0,0 +1,30 @@
++"""Evidence mapping only; never fills a production slot from development data."""
++import json
++from pathlib import Path
++
++PROOFS={
++'protected_database_restore_and_durable_state_comparison':'Pinned dump plus canonical schema/table/sequence/relationship observations from an independent restored database; holds and unknown outcomes unchanged.',
++'protected_corpus_vectors_uploads_and_artifact_hash_comparison':'Pinned exact file and empty-directory manifests, LanceDB/FTS schema/count/query and DB-to-file referential checks without regeneration.',
++'restored_external_webui_volume_identity_and_sqlite_integrity':'Pinned restored volume identity and SQLite integrity/relationships plus upload and Chroma observations.',
++'external_signing_material_preservation_and_session_continuity':'Private original signing digest and authorized staged deployment using that key; existing real session accepted and wrong key rejected.',
++'paired_off_host_recovery_copy_and_verified_restore_receipt':'Receiver-verified off-host component hashes and an actual independent restore from that off-host copy.',
++'login_existing_sessions_and_disabled_signup_browser_acceptance':'Rendered browser sign-in, retained content and disabled signup using intended real identity on the staged replacement.',
++'intended_workload_capacity_acceptance':'Measured concurrent API, WebUI, worker and restore workload with approved headroom and latency.',
++'real_provider_and_spending_budget_acceptance':'Scoped dev provider identities, bounded allowance, real request/response and unknown-outcome receipts; production keys excluded.'}
++
++
++def reconcile(template, receipt):
++    if template.get('deployable') is not False or template.get('production_execution_enabled') is not False:
++        raise ValueError('production template must remain disabled')
++    if any(v is not None for v in template['required_evidence'].values()):
++        raise ValueError('preparation must not prefill production evidence')
++    if receipt.get('schema')!='cbm.restore-receipt/1' or receipt.get('scope')!='synthetic-development' or receipt.get('production_qualified') is not False:
++        raise ValueError('unexpected preparation receipt')
++    return {'schema':'cbm.preparation-reconciliation/1','production_compilation_enabled':False,
++            'legacy_schema_compatible':False,'adapter_installed':False,
++            'reason':'Request029 evidence_files expects flat restored_files, packet_manifest, database.sql, state.tar, private-runtime.tar, webui.tar and legacy database observations. Request030 binds content-addressed components and separate observations. No automatic conversion or true-flag substitution is valid.',
++            'missing_slots':list(template['required_evidence']),
++            'recovery_slot_requirements':PROOFS,
++            'development_receipt_capture_id':receipt['capture_id'],
++            'development_receipt_manifest_sha256':receipt['manifest_sha256'],
++            'remaining_compiler_work':'A separately reviewed production-only validator must verify immutable private component manifests, exact sets and reference hashes, independent observations, scope/authorization/expiry, current holds and volume identities. Keep compile_plan and controller production refusals until all 21 slots pass.'}
+diff --git a/platform-services/community-brain-prod/protected-restore-030/indexing_budget.py b/platform-services/community-brain-prod/protected-restore-030/indexing_budget.py
+new file mode 100644
+index 0000000..b06eb49
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/indexing_budget.py
+@@ -0,0 +1,101 @@
++"""Private durable request journal for the approved US$5 weekly production key."""
++
++import hashlib
++import json
++import math
++import os
++from contextlib import contextmanager
++from pathlib import Path
++
++import httpx
++from community_brain import llm
++
++
++def allowance(key):
++    try:
++        response = httpx.get(
++            "https://openrouter.ai/api/v1/key",
++            headers={"Authorization": "Bearer " + key},
++            timeout=20,
++        )
++        response.raise_for_status()
++        value = response.json()["data"]
++        if not (
++            value["limit"] == 5
++            and value["limit_reset"] == "weekly"
++            and type(value["limit_remaining"]) in (int, float)
++            and math.isfinite(value["limit_remaining"])
++            and 0 < value["limit_remaining"] <= 5
++            and value["is_management_key"] is False
++            and value["include_byok_in_limit"] is True
++        ):
++            raise ValueError("unexpected allowance")
++        return {k: value[k] for k in ("limit", "limit_remaining", "limit_reset")}
++    except Exception as exc:
++        raise llm.LLMOutcomeUnknown(
++            "production allowance uncertain or exhausted"
++        ) from exc
++
++
++@contextmanager
++def audited_indexing(store, key, journal_path, ceiling=32):
++    """Reopening a previous exercise is forbidden, even after a clean response."""
++    if not 1 <= ceiling <= 32:
++        raise ValueError("invalid request ceiling")
++    original = llm.httpx.post
++    count = 0
++    journal = Path(journal_path)
++    with journal.open("x") as stream:
++        os.chmod(journal, 0o600)
++
++        def record(value):
++            stream.write(json.dumps(value, sort_keys=True) + "\n")
++            stream.flush()
++            os.fsync(stream.fileno())
++
++        record({"state": "exercise", "ceiling": ceiling, "limit_usd": 5, "limit_reset": "weekly"})
++
++        def post(url, **kwargs):
++            nonlocal count
++            if url != llm.OPENROUTER_URL or count >= ceiling:
++                raise llm.LLMOutcomeUnknown(
++                    "unexpected endpoint or request ceiling reached"
++                )
++            remaining = allowance(key)
++            count += 1
++            record(
++                {
++                    "state": "intent",
++                    "request": count,
++                    "allowance": remaining,
++                    "model": kwargs["json"]["model"],
++                    "request_sha256": hashlib.sha256(
++                        json.dumps(kwargs["json"], sort_keys=True).encode()
++                    ).hexdigest(),
++                }
++            )
++            try:
++                response = original(url, **kwargs)
++                response.raise_for_status()
++                body = response.json()
++                path, sha, _ = store.storage.put(json.dumps(body).encode())
++                record(
++                    {
++                        "state": "response",
++                        "request": count,
++                        "path": path,
++                        "sha256": sha,
++                        "usage": body.get("usage"),
++                    }
++                )
++                return response
++            except Exception as exc:
++                raise llm.LLMOutcomeUnknown(
++                    "indexing outcome requires reconciliation"
++                ) from exc
++
++        llm.httpx.post = post
++        try:
++            yield
++        finally:
++            llm.httpx.post = original
+diff --git a/platform-services/community-brain-prod/protected-restore-030/pg_fence.py b/platform-services/community-brain-prod/protected-restore-030/pg_fence.py
+new file mode 100644
+index 0000000..b591024
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/pg_fence.py
+@@ -0,0 +1,29 @@
++"""Synthetic-only exported snapshot and table write fence; no worker effects."""
++from contextlib import contextmanager
++import re
++import select
++import socket
++import subprocess
++
++
++@contextmanager
++def fence(container, tables):
++    if socket.gethostname()!='community-brain-dev' or not re.fullmatch('cbm-r030-pg-source-a[0-9]+',container):
++        raise ValueError('only fresh Request030 synthetic database allowed')
++    if not tables or any(not re.fullmatch('[a-z_]+',t) for t in tables):
++        raise ValueError('invalid table allowlist')
++    p=subprocess.Popen(['docker','exec','-i',container,'psql','-X','-qAt','-U','fixture','-d','fixture','-v','ON_ERROR_STOP=1'],
++                       stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,bufsize=1)
++    try:
++        p.stdin.write("BEGIN ISOLATION LEVEL REPEATABLE READ; SET LOCAL lock_timeout='5s'; LOCK TABLE "+','.join('public.'+t for t in tables)+" IN SHARE MODE; SELECT pg_export_snapshot();\n")
++        p.stdin.flush()
++        ready,_,_=select.select([p.stdout],[],[],10)
++        if not ready:raise ValueError('snapshot fence timed out')
++        snapshot=p.stdout.readline().strip()
++        if not re.fullmatch('[0-9A-Fa-f]+-[0-9A-Fa-f]+-[0-9]+',snapshot):
++            raise ValueError('snapshot fence not acquired')
++        yield snapshot
++    finally:
++        if p.poll() is None:
++            try:p.stdin.write('ROLLBACK;\n');p.stdin.flush();p.stdin.close();p.wait(timeout=10)
++            except (BrokenPipeError,subprocess.TimeoutExpired):p.kill();p.wait()
+diff --git a/platform-services/community-brain-prod/protected-restore-030/private-manifest.schema.json b/platform-services/community-brain-prod/protected-restore-030/private-manifest.schema.json
+new file mode 100644
+index 0000000..b9478c9
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/private-manifest.schema.json
+@@ -0,0 +1,177 @@
++{
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "urn:cbm:private-recovery:1",
++  "title": "Private preservation manifest; scope must match explicit authorization",
++  "type": "object",
++  "properties": {
++    "schema": {
++      "const": "cbm.private-recovery/1"
++    },
++    "scope": {
++      "enum": [
++        "synthetic-development",
++        "authorized-private-preservation"
++      ]
++    },
++    "capture_id": {
++      "type": "string",
++      "pattern": "^[a-z0-9][a-z0-9-]{7,100}$"
++    },
++    "created_at": {
++      "type": "number"
++    },
++    "sources": {
++      "type": "object",
++      "additionalProperties": {
++        "type": "string"
++      }
++    },
++    "components": {
++      "type": "object",
++      "minProperties": 1,
++      "additionalProperties": {
++        "type": "array",
++        "minItems": 1,
++        "items": {
++          "oneOf": [
++            {
++              "type": "object",
++              "properties": {
++                "path": {
++                  "type": "string"
++                },
++                "uid": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "gid": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "mode": {
++                  "type": "integer",
++                  "minimum": 0,
++                  "maximum": 511
++                },
++                "mtime_ns": {
++                  "type": "integer"
++                },
++                "kind": {
++                  "const": "directory"
++                }
++              },
++              "required": [
++                "path",
++                "uid",
++                "gid",
++                "mode",
++                "mtime_ns",
++                "kind"
++              ],
++              "additionalProperties": false
++            },
++            {
++              "type": "object",
++              "properties": {
++                "path": {
++                  "type": "string"
++                },
++                "uid": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "gid": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "mode": {
++                  "type": "integer",
++                  "minimum": 0,
++                  "maximum": 511
++                },
++                "mtime_ns": {
++                  "type": "integer"
++                },
++                "kind": {
++                  "const": "file"
++                },
++                "bytes": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "sha256": {
++                  "type": "string",
++                  "pattern": "^[0-9a-f]{64}$"
++                }
++              },
++              "required": [
++                "path",
++                "uid",
++                "gid",
++                "mode",
++                "mtime_ns",
++                "kind",
++                "bytes",
++                "sha256"
++              ],
++              "additionalProperties": false
++            },
++            {
++              "type": "object",
++              "properties": {
++                "path": {
++                  "type": "string"
++                },
++                "uid": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "gid": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "mode": {
++                  "type": "integer",
++                  "minimum": 0,
++                  "maximum": 511
++                },
++                "mtime_ns": {
++                  "type": "integer"
++                },
++                "kind": {
++                  "const": "symlink"
++                },
++                "target": {
++                  "type": "string"
++                }
++              },
++              "required": [
++                "path",
++                "uid",
++                "gid",
++                "mode",
++                "mtime_ns",
++                "kind",
++                "target"
++              ],
++              "additionalProperties": false
++            }
++          ]
++        }
++      }
++    },
++    "writer_exclusion": {
++      "type": "object"
++    }
++  },
++  "required": [
++    "schema",
++    "scope",
++    "capture_id",
++    "created_at",
++    "sources",
++    "components",
++    "writer_exclusion"
++  ],
++  "additionalProperties": false
++}
+diff --git a/platform-services/community-brain-prod/protected-restore-030/recovery.py b/platform-services/community-brain-prod/protected-restore-030/recovery.py
+new file mode 100644
+index 0000000..16d7d5e
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/recovery.py
+@@ -0,0 +1,301 @@
++"""Side-effect-bounded recovery mechanics. CLI is VM108 synthetic-only.
++
++No daemon, worker, boot reconciliation, checkpoint acknowledgement or restart.
++Callers must exclude ALL writers; cooperative locks alone do not exclude an API.
++"""
++import argparse
++import contextlib
++import fcntl
++import hashlib
++import json
++import os
++from pathlib import Path, PurePosixPath
++import re
++import socket
++import stat
++import subprocess
++import sys
++import time
++
++SCHEMA = 'cbm.private-recovery/1'
++DEV_ROOT = Path('/srv/dev-data/workspaces/cbm-protected-restore-20260921-030')
++
++
++def sha(data):
++    return hashlib.sha256(data).hexdigest()
++
++
++def encode(value):
++    return (json.dumps(value, sort_keys=True, indent=2) + '\n').encode()
++
++
++def write_new(path, data, mode=0o600):
++    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, mode)
++    with os.fdopen(fd, 'wb') as f:
++        f.write(data)
++        f.flush()
++        os.fsync(f.fileno())
++    directory = os.open(Path(path).parent, os.O_RDONLY)
++    try: os.fsync(directory)
++    finally: os.close(directory)
++
++
++def no_links(path):
++    path = Path(path).absolute()
++    for p in [path, *path.parents]:
++        if p.is_symlink():
++            raise ValueError('linked path refused')
++    return path
++
++
++def stable_bytes(path):
++    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
++    with os.fdopen(fd, 'rb') as f:
++        before = os.fstat(f.fileno())
++        if not stat.S_ISREG(before.st_mode) or before.st_nlink != 1:
++            raise ValueError('special or hard-linked file refused')
++        data = f.read()
++        after = os.fstat(f.fileno())
++    fields = lambda s: (s.st_dev, s.st_ino, s.st_mode, s.st_uid, s.st_gid, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
++    if fields(before) != fields(after) or fields(after) != fields(path.lstat()):
++        raise ValueError('file changed during observation')
++    return data
++
++
++def extended_names(path):
++    if hasattr(os, 'listxattr'):
++        return os.listxattr(path, follow_symlinks=False)
++    if sys.platform == 'darwin':
++        result = subprocess.run(['/usr/bin/xattr','-s',str(path)], capture_output=True, timeout=10)
++        if result.returncode: raise ValueError('extended metadata inspection failed')
++        return result.stdout.splitlines()
++    raise ValueError('extended metadata inspection unsupported')
++
++
++def tree(root, sink=None):
++    """Include roots/empty directories. Links must resolve within their component."""
++    root = no_links(root)
++    if not root.is_dir():
++        raise ValueError('component must be a real directory')
++    entries = []
++    def visit(p):
++        s = p.lstat()
++        if extended_names(p):
++            raise ValueError('extended metadata unsupported; retain source')
++        item = dict(path=str(p.relative_to(root)), uid=s.st_uid, gid=s.st_gid,
++                    mode=stat.S_IMODE(s.st_mode), mtime_ns=s.st_mtime_ns)
++        if stat.S_ISLNK(s.st_mode):
++            target = os.readlink(p)
++            if os.path.isabs(target) or not p.resolve(strict=True).is_relative_to(root):
++                raise ValueError('escaping or absolute link refused')
++            item.update(kind='symlink', target=target)
++        elif stat.S_ISDIR(s.st_mode):
++            item['kind'] = 'directory'
++        elif stat.S_ISREG(s.st_mode):
++            data = stable_bytes(p)
++            item.update(kind='file', bytes=len(data), sha256=sha(data))
++            if sink is not None:
++                dest = sink / item['sha256']
++                if not dest.exists():
++                    write_new(dest, data)
++        else:
++            raise ValueError('special file refused')
++        if s.st_mode & (stat.S_ISUID | stat.S_ISGID):
++            raise ValueError('privileged mode refused')
++        entries.append(item)
++        if item['kind'] == 'directory':
++            for child in sorted(p.iterdir()):
++                visit(child)
++    visit(root)
++    return entries
++
++
++def hold_state(paths):
++    result = {}
++    for name in paths:
++        p = no_links(name)
++        s = p.stat()
++        result[str(p)] = dict(sha256=sha(stable_bytes(p)), inode=s.st_ino,
++                             device=s.st_dev, mode=stat.S_IMODE(s.st_mode), uid=s.st_uid, gid=s.st_gid)
++    return result
++
++
++@contextlib.contextmanager
++def quiet(locks, holds):
++    """Open EXISTING locks; never create/replace a lock or mutate a hold."""
++    before = hold_state(holds)
++    descriptors = []
++    try:
++        for name in locks:
++            p = no_links(name)
++            fd = os.open(p, os.O_RDWR | os.O_NOFOLLOW)
++            descriptors.append(fd)
++            if not stat.S_ISREG(os.fstat(fd).st_mode):
++                raise ValueError('nonregular lock')
++            fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
++            if (os.fstat(fd).st_dev, os.fstat(fd).st_ino) != (p.stat().st_dev, p.stat().st_ino):
++                raise ValueError('lock replaced')
++        yield before
++        if hold_state(holds) != before:
++            raise ValueError('processing hold changed')
++        for name, fd in zip(locks, descriptors):
++            s = Path(name).stat()
++            if (s.st_dev, s.st_ino) != (os.fstat(fd).st_dev, os.fstat(fd).st_ino):
++                raise ValueError('lock replaced during operation')
++    finally:
++        for fd in reversed(descriptors):
++            os.close(fd)
++
++
++def capture(components, destination, capture_id, evidence, scope='synthetic-development'):
++    if scope not in ('synthetic-development','authorized-private-preservation'):
++        raise ValueError('unknown preservation scope')
++    if not re.fullmatch(r'[a-z0-9][a-z0-9-]{7,100}', capture_id):
++        raise ValueError('invalid capture id')
++    if not components or any(not re.fullmatch(r'[a-z][a-z0-9_-]*', k) for k in components):
++        raise ValueError('invalid components')
++    destination = no_links(destination)
++    roots = {k: no_links(v) for k, v in components.items()}
++    if any(a != b and (a.is_relative_to(b) or b.is_relative_to(a)) for a in roots.values() for b in roots.values()) or len(set(roots.values())) != len(roots):
++        raise ValueError('overlapping source components')
++    if any(destination.is_relative_to(v) or v.is_relative_to(destination) for v in roots.values()):
++        raise ValueError('capture overlaps source')
++    destination.mkdir(mode=0o700)
++    write_new(destination/'intent.json', encode(dict(capture_id=capture_id, state='capture_started', evidence=evidence)))
++    blobs = destination/'blobs'
++    blobs.mkdir(mode=0o700)
++    entries = {k: tree(v, blobs) for k, v in roots.items()}
++    if entries != {k: tree(v) for k, v in roots.items()}:
++        raise ValueError('source drift; retain incomplete attempt')
++    manifest = dict(schema=SCHEMA, scope=scope, capture_id=capture_id,
++                    created_at=time.time(), sources={k:str(v) for k,v in roots.items()},
++                    components=entries, writer_exclusion=evidence)
++    data = encode(manifest)
++    write_new(destination/'manifest.json', data)
++    write_new(destination/'capture-complete.json', encode(dict(manifest_sha256=sha(data))))
++    return sha(data)
++
++
++def validate_bundle(bundle, expected, expected_scope='synthetic-development'):
++    bundle = no_links(bundle)
++    if {p.name for p in bundle.iterdir()} != {'intent.json','blobs','manifest.json','capture-complete.json'}:
++        raise ValueError('bundle member set mismatch')
++    no_links(bundle/'blobs')
++    raw = stable_bytes(bundle/'manifest.json')
++    if sha(raw) != expected:
++        raise ValueError('untrusted manifest digest')
++    value = json.loads(raw)
++    if expected_scope not in ('synthetic-development','authorized-private-preservation') or value['schema'] != SCHEMA or value['scope'] != expected_scope:
++        raise ValueError('production/private execution disabled')
++    if json.loads(stable_bytes(bundle/'capture-complete.json'))['manifest_sha256'] != expected:
++        raise ValueError('capture incomplete')
++    blobs = set()
++    for name, rows in value['components'].items():
++        if not re.fullmatch(r'[a-z][a-z0-9_-]*', name):
++            raise ValueError('invalid component')
++        paths = {}
++        for row in rows:
++            path = PurePosixPath(row['path'])
++            if path.is_absolute() or '..' in path.parts or str(path) != row['path'] or row['path'] in paths:
++                raise ValueError('unsafe or duplicate member')
++            if row['kind'] not in ('file', 'directory', 'symlink') or row['mode'] & ~0o777:
++                raise ValueError('unsafe member type/mode')
++            paths[row['path']] = row
++            if row['kind'] == 'file':
++                digest = row['sha256']
++                if not re.fullmatch('[0-9a-f]{64}', digest):
++                    raise ValueError('invalid blob identity')
++                content = stable_bytes(bundle/'blobs'/digest)
++                if sha(content) != digest or len(content) != row['bytes']:
++                    raise ValueError('corrupt blob')
++                blobs.add(digest)
++        if paths.get('.', {}).get('kind') != 'directory':
++            raise ValueError('missing component root')
++        for path, row in paths.items():
++            if path != '.' and paths.get(str(PurePosixPath(path).parent), {}).get('kind') != 'directory':
++                raise ValueError('member through link or absent parent')
++            if row['kind'] == 'symlink':
++                # Normalize lexically, then resolve chains against manifest only.
++                seen = set()
++                target = str(PurePosixPath(path).parent/row['target'])
++                while True:
++                    if target in seen or len(seen)>len(paths):
++                        raise ValueError('cyclic link')
++                    seen.add(target)
++                    parts = []
++                    if target.startswith('/'):
++                        raise ValueError('absolute link')
++                    for part in PurePosixPath(target).parts:
++                        if part == '..':
++                            if not parts: raise ValueError('escaping link')
++                            parts.pop()
++                        elif part != '.': parts.append(part)
++                    target = '/'.join(parts) or '.'
++                    if target not in paths: raise ValueError('dangling or traversing link')
++                    t = paths[target]
++                    if t['kind'] != 'symlink': break
++                    target = str(PurePosixPath(target).parent/t['target'])
++    if {p.name for p in (bundle/'blobs').iterdir()} != blobs:
++        raise ValueError('blob set mismatch')
++    return value
++
++
++def restore(bundle, expected, destination, expected_scope='synthetic-development'):
++    value = validate_bundle(bundle, expected, expected_scope)
++    destination = no_links(destination)
++    if destination == Path(bundle) or destination.is_relative_to(Path(bundle)):
++        raise ValueError('restore overlaps bundle')
++    if any(destination.is_relative_to(Path(p)) or Path(p).is_relative_to(destination) for p in value['sources'].values()):
++        raise ValueError('restore overlaps original')
++    destination.mkdir(mode=0o700)  # exclusive, partial destination never reused
++    write_new(destination/'restore-intent.json', encode(dict(capture_id=value['capture_id'], manifest_sha256=expected)))
++    for name, rows in value['components'].items():
++        root = destination/name
++        for row in sorted(rows, key=lambda r: (len(PurePosixPath(r['path']).parts), r['path'])):
++            p = root/row['path']
++            if row['kind'] == 'directory': p.mkdir(mode=0o700)
++            elif row['kind'] == 'file': write_new(p, stable_bytes(Path(bundle)/'blobs'/row['sha256']))
++            else: p.symlink_to(row['target'])
++        for row in sorted(rows, key=lambda r:len(PurePosixPath(r['path']).parts), reverse=True):
++            p = root/row['path']
++            if os.geteuid() == 0: os.chown(p, row['uid'], row['gid'], follow_symlinks=False)
++            elif (p.lstat().st_uid,p.lstat().st_gid)!=(row['uid'],row['gid']):
++                raise ValueError('ownership restoration requires privileged isolated target')
++            if row['kind'] != 'symlink': os.chmod(p, row['mode'])
++            os.utime(p, ns=(row['mtime_ns'],row['mtime_ns']), follow_symlinks=False)
++        if tree(root) != rows:
++            raise ValueError('restored tree differs')
++    result = dict(schema='cbm.restore-receipt/1', scope=value['scope'], capture_id=value['capture_id'],
++                  manifest_sha256=expected, destination=str(destination),
++                  tree_comparison='exact', components={k:sha(encode(v)) for k,v in value['components'].items()},
++                  database_acceptance=None, application_acceptance=None,
++                  production_qualified=False)
++    write_new(destination/'restore-receipt.json', encode(result))
++    return result
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('operation', choices=['capture','restore','verify'])
++    parser.add_argument('spec')
++    args = parser.parse_args()
++    spec = json.loads(stable_bytes(no_links(args.spec)))
++    if socket.gethostname() != 'community-brain-dev' or spec.get('scope') != 'synthetic-development':
++        raise ValueError('Request030 CLI is VM108 synthetic-only')
++    for key in ('bundle','destination'):
++        if key in spec and not no_links(spec[key]).is_relative_to(DEV_ROOT):
++            raise ValueError('outside fresh Request030 workspace')
++    if args.operation == 'capture':
++        for p in [*spec['components'].values(),*spec['locks'],*spec['holds']]:
++            if not no_links(p).is_relative_to(DEV_ROOT): raise ValueError('foreign source')
++        with quiet(spec['locks'],spec['holds']) as before:
++            digest=capture(spec['components'],spec['destination'],spec['capture_id'],dict(holds=before,writer_policy='fresh synthetic stopped state'))
++        print(json.dumps({'manifest_sha256':digest}))
++    elif args.operation == 'restore':
++        print(json.dumps(restore(spec['bundle'],spec['manifest_sha256'],spec['destination'])))
++    else:
++        value=validate_bundle(spec['bundle'],spec['manifest_sha256'])
++        print(json.dumps({'capture_id':value['capture_id'],'verified':True,'scope':value['scope']}))
++
++if __name__ == '__main__':
++    main()
+diff --git a/platform-services/community-brain-prod/protected-restore-030/rehearse.py b/platform-services/community-brain-prod/protected-restore-030/rehearse.py
+new file mode 100644
+index 0000000..0c1e60d
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/rehearse.py
+@@ -0,0 +1,136 @@
++"""Fresh VM108 synthetic PostgreSQL and file preservation rehearsal, no providers."""
++import json
++import os
++from pathlib import Path
++import resource
++import shutil
++import socket
++import sqlite3
++import subprocess
++import time
++import recovery as r
++from pg_fence import fence
++
++ROOT = r.DEV_ROOT/'attempt04'
++PG_IMAGE = 'postgres:18.6'
++NAMES = ['cbm-r030-pg-source-a04','cbm-r030-pg-restore-a04']
++
++
++def command(args, data=None):
++    result = subprocess.run(args, input=data, capture_output=True, timeout=120)
++    if result.returncode:
++        r.write_new(ROOT/('failure-'+str(time.time_ns())+'.log'), result.stderr)
++        raise RuntimeError('command failed; private diagnostic retained')
++    return result.stdout
++
++
++def sql(name, query):
++    return command(['docker','exec','-i',name,'psql','-X','-U','fixture','-d','fixture','-v','ON_ERROR_STOP=1','-At'],query.encode())
++
++
++def db_observation(name):
++    out={}
++    for table in ['jobs','stages','attempts','sources','artifacts','outbox','vectors']:
++        raw=sql(name,'COPY (SELECT row_to_json(t)::text FROM '+table+' t ORDER BY id) TO STDOUT;')
++        out[table]={'rows':len(raw.splitlines()),'sha256':r.sha(raw)}
++    out['foreign_key_violations']=int(sql(name,"select count(*) from artifacts a left join sources s on a.source_id=s.id where s.id is null;").strip())
++    out['unknown_attempts']=int(sql(name,"select count(*) from attempts where outcome='outcome_unknown';").strip())
++    return out
++
++
++def start_pg(name):
++    data=ROOT/name;data.mkdir(mode=0o700);os.chown(data,999,999)
++    image=json.loads(command(['docker','image','inspect',PG_IMAGE]))[0]['Id']
++    command(['docker','run','-d','--name',name,'--network','none','--restart','no','--memory','256m','--cpus','0.5',
++             '--security-opt','no-new-privileges:true','-e','POSTGRES_HOST_AUTH_METHOD=trust','-e','POSTGRES_USER=fixture',
++             '-e','POSTGRES_DB=fixture','--mount','type=bind,source='+str(data)+',target=/var/lib/postgresql',image])
++    for _ in range(60):
++        x=subprocess.run(['docker','exec',name,'pg_isready','-U','fixture'],capture_output=True)
++        if x.returncode==0:return
++        time.sleep(0.5)
++    raise RuntimeError('fresh postgres readiness timeout')
++
++
++def main():
++    assert socket.gethostname()=='community-brain-dev'
++    ROOT.mkdir(mode=0o700)
++    intent=ROOT/'rehearsal-intent.json'
++    r.write_new(intent,r.encode({'scope':'synthetic-development','started_at':time.time(),'names':NAMES}))
++    start=time.monotonic();before_disk=shutil.disk_usage(ROOT).free
++    source=ROOT/'synthetic-source';source.mkdir(mode=0o700)
++    for name in ['files','config','corpus','meeting_archive','controls','webui','private_runtime','database']:
++        (source/name).mkdir(mode=0o700)
++    for name in ['paused','attention.json','boot-state.json','checkpoint-needed.json']:
++        (source/'controls'/name).write_text('synthetic held '+name)
++    locks=[source/'controls'/n for n in ['runner.lock','manual.lock','submission.lock']]
++    for p in locks:p.touch(mode=0o600)
++    holds=[source/'controls'/n for n in ['paused','attention.json','boot-state.json','checkpoint-needed.json']]
++    (source/'corpus'/'empty-required-tree').mkdir()
++    (source/'files'/'upload.bin').write_bytes(b'synthetic upload\0'*4096)
++    (source/'corpus'/'vectors.bin').write_bytes(bytes(range(256))*4096)
++    (source/'webui'/'cache').mkdir();(source/'webui'/'cache'/'link').symlink_to('../../files/upload.bin')
++    # Cross-component links are intentionally refused; valid cache links remain within webui.
++    (source/'webui'/'cache'/'link').unlink();(source/'webui'/'upload.bin').write_bytes(b'synthetic webui upload')
++    (source/'webui'/'cache'/'link').symlink_to('../upload.bin')
++    c=sqlite3.connect(source/'webui'/'webui.db')
++    c.executescript("create table users(id text primary key);create table chats(id text primary key,user_id text references users(id),body text);insert into users values('synthetic');insert into chats values('chat','synthetic','synthetic retained chat');")
++    c.close()
++    (source/'private_runtime'/'synthetic-signing').write_bytes(os.urandom(32));(source/'private_runtime'/'synthetic-signing').chmod(0o600)
++    (source/'config'/'runtime.json').write_text(json.dumps({'automatic_processing':False,'network_publication':False,'model_calls':False,'endpoint':'http://synthetic.invalid','credential':'synthetic-only'}))
++    before=r.hold_state(holds);attempts=[]
++    try:
++        start_pg(NAMES[0]);start_pg(NAMES[1])
++        sql(NAMES[0],"""CREATE TABLE jobs(id int primary key,state text);
++CREATE TABLE stages(id int primary key,job_id int references jobs(id),state text);
++CREATE TABLE attempts(id int primary key,stage_id int references stages(id),outcome text);
++CREATE TABLE sources(id int primary key,sha256 text);
++CREATE TABLE artifacts(id int primary key,source_id int references sources(id),path text);
++CREATE TABLE outbox(id int primary key,state text);
++CREATE TABLE vectors(id int primary key,embedding real[],body tsvector);
++INSERT INTO jobs VALUES(1,'held');INSERT INTO stages VALUES(1,1,'outcome_unknown');INSERT INTO attempts VALUES(1,1,'outcome_unknown');
++INSERT INTO sources VALUES(1,'synthetic');INSERT INTO artifacts VALUES(1,1,'upload.bin');INSERT INTO outbox VALUES(1,'sent'),(2,'pending');
++INSERT INTO vectors VALUES(1,ARRAY[0.1,0.2,0.3],to_tsvector('simple','synthetic retrieval provenance'));
++CREATE INDEX vectors_fts ON vectors USING gin(body);
++""")
++        original=db_observation(NAMES[0])
++        with r.quiet(locks,holds), fence(NAMES[0], ['jobs','stages','attempts','sources','artifacts','outbox','vectors']) as snapshot:
++            blocked=subprocess.run(['docker','exec','-i',NAMES[0],'psql','-X','-U','fixture','-d','fixture','-v','ON_ERROR_STOP=1'],input=b"SET lock_timeout='100ms'; INSERT INTO jobs VALUES(2,'should-not-write');",capture_output=True)
++            assert blocked.returncode!=0 and b'lock timeout' in blocked.stderr
++            dump=command(['docker','exec',NAMES[0],'pg_dump','-U','fixture','-d','fixture','-Fc','--no-owner','--no-acl','--snapshot',snapshot])
++            r.write_new(source/'database'/'database.dump',dump)
++            r.write_new(source/'database'/'observation.json',r.encode(original))
++            components={p.name:p for p in source.iterdir()}
++            digest=r.capture(components,ROOT/'capture','cbm-r030-synthetic-pair-a04',{'holds':before,'writer_inventory':'only rehearsal process; no network or workers'})
++            receipt=r.restore(ROOT/'capture',digest,ROOT/'independent-restore')
++            assert r.hold_state(holds)==before
++        with (ROOT/'independent-restore/database/database.dump').open('rb') as f:
++            command(['docker','exec','-i',NAMES[1],'pg_restore','-U','fixture','-d','fixture','--exit-on-error','--no-owner','--no-acl'],f.read())
++        restored=db_observation(NAMES[1]);assert restored==original
++        assert sql(NAMES[1],"select count(*) from vectors where body @@ plainto_tsquery('simple','provenance');").strip()==b'1'
++        db=ROOT/'independent-restore/webui/webui.db';c=sqlite3.connect('file:'+str(db)+'?mode=ro&immutable=1',uri=True)
++        assert c.execute('pragma integrity_check').fetchone()[0]=='ok';assert c.execute('select count(*) from chats c join users u on c.user_id=u.id').fetchone()[0]==1;c.close()
++        # Retained new writes must not be overwritten by retrying restore.
++        (ROOT/'independent-restore/webui/new-write').write_text('synthetic post-restore write')
++        try:r.restore(ROOT/'capture',digest,ROOT/'independent-restore')
++        except FileExistsError:pass
++        else:raise AssertionError('overwrite accepted')
++        assert (ROOT/'independent-restore/webui/new-write').read_text()=='synthetic post-restore write'
++        output=dict(scope='synthetic-development',manifest_sha256=digest,tree_receipt=receipt,database_before=original,database_after=restored,
++                    database_equal=True,fts_matches=1,sqlite_integrity='ok',sqlite_relationships=1,held_markers_unchanged=r.hold_state(holds)==before,
++                    retained_new_writes=True,worker_effects=0,concurrent_writer_refused=True,exported_snapshot=True,off_host_restore=False,production_qualified=False,
++                    duration_seconds=round(time.monotonic()-start,3),disk_growth_bytes=before_disk-shutil.disk_usage(ROOT).free,
++                    peak_controller_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
++        r.write_new(ROOT/'synthetic-acceptance.json',r.encode(output))
++    finally:
++        state={}
++        for name in NAMES:
++            row=subprocess.run(['docker','inspect','--type','container',name],capture_output=True)
++            if row.returncode==0:
++                v=json.loads(row.stdout)[0]
++                if v['State']['Running']:command(['docker','stop',name])
++                v=json.loads(command(['docker','inspect','--type','container',name]))[0]
++                state[name]={'id':v['Id'],'image':v['Image'],'running':v['State']['Running'],'oom_killed':v['State']['OOMKilled'],'network':v['HostConfig']['NetworkMode'],'ports':v['HostConfig']['PortBindings']}
++        r.write_new(ROOT/'rehearsal-cleanup.json',r.encode(state))
++    print(json.dumps(output))
++
++if __name__=='__main__':main()
+diff --git a/platform-services/community-brain-prod/protected-restore-030/test_budget.py b/platform-services/community-brain-prod/protected-restore-030/test_budget.py
+new file mode 100644
+index 0000000..4e55884
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/test_budget.py
+@@ -0,0 +1,65 @@
++"""Actual inherited budget helper with synthetic transports, zero provider calls."""
++import importlib.util
++import json
++from pathlib import Path
++import sys
++import tempfile
++import types
++import unittest
++from unittest.mock import patch
++
++class Unknown(Exception):pass
++class Response:
++    def __init__(self,body):self.body=body
++    def raise_for_status(self):pass
++    def json(self):return self.body
++
++class BudgetTests(unittest.TestCase):
++    def setUp(self):
++        self.allow={'limit':5,'limit_reset':'weekly','limit_remaining':5,'is_management_key':False,'include_byok_in_limit':True}
++        self.http=types.ModuleType('httpx');self.calls=0
++        self.http.get=lambda *a,**k:Response({'data':self.allow})
++        def post(*a,**k):self.calls+=1;return Response({'usage':{'synthetic':True}})
++        self.http.post=post
++        llm=types.SimpleNamespace(httpx=self.http,LLMOutcomeUnknown=Unknown,OPENROUTER_URL='https://openrouter.ai/api/v1/chat/completions')
++        cb=types.ModuleType('community_brain');cb.llm=llm
++        self.patch=patch.dict(sys.modules,{'httpx':self.http,'community_brain':cb});self.patch.start();self.addCleanup(self.patch.stop)
++        spec=importlib.util.spec_from_file_location('subject',Path(__file__).with_name('indexing_budget.py'));self.m=importlib.util.module_from_spec(spec);spec.loader.exec_module(self.m)
++        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.journal=Path(self.tmp.name)/'journal.jsonl'
++        self.store=types.SimpleNamespace(storage=types.SimpleNamespace(put=lambda data:('synthetic-response','synthetic-sha',len(data))))
++    def test_invalid_allowances_fail_closed(self):
++        for field,value in [('limit',10),('limit_remaining',0),('limit_remaining',float('nan')),('limit_reset','monthly'),('is_management_key',True),('include_byok_in_limit',False)]:
++            old=self.allow[field];self.allow[field]=value
++            with self.assertRaises(Unknown):self.m.allowance('synthetic')
++            self.allow[field]=old
++        self.assertEqual(self.calls,0)
++    def test_allowance_transport_failure_is_unknown(self):
++        self.http.get=lambda *a,**k:(_ for _ in ()).throw(TimeoutError())
++        with self.assertRaises(Unknown):self.m.allowance('synthetic')
++        self.assertEqual(self.calls,0)
++    def test_ceiling_prevents_second_request_and_restores_transport(self):
++        original=self.http.post
++        with self.m.audited_indexing(self.store,'synthetic',self.journal,ceiling=1):
++            self.http.post(self.m.llm.OPENROUTER_URL,json={'model':'synthetic'})
++            with self.assertRaises(Unknown):self.http.post(self.m.llm.OPENROUTER_URL,json={'model':'synthetic'})
++        self.assertEqual(self.calls,1);self.assertIs(self.http.post,original)
++        self.assertEqual([json.loads(x)['state'] for x in self.journal.read_text().splitlines()],['exercise','intent','response'])
++    def test_wrong_endpoint_has_no_request(self):
++        with self.m.audited_indexing(self.store,'synthetic',self.journal):
++            with self.assertRaises(Unknown):self.http.post('https://unexpected.invalid',json={'model':'synthetic'})
++        self.assertEqual(self.calls,0)
++    def test_unknown_response_retains_intent_and_refuses_reopening(self):
++        self.http.post=lambda *a,**k:(_ for _ in ()).throw(TimeoutError())
++        with self.m.audited_indexing(self.store,'synthetic',self.journal):
++            with self.assertRaises(Unknown):self.http.post(self.m.llm.OPENROUTER_URL,json={'model':'synthetic'})
++        self.assertEqual([json.loads(x)['state'] for x in self.journal.read_text().splitlines()],['exercise','intent'])
++        with self.assertRaises(FileExistsError):
++            with self.m.audited_indexing(self.store,'synthetic',self.journal):pass
++    def test_allowance_rechecked_before_each_call(self):
++        with self.m.audited_indexing(self.store,'synthetic',self.journal):
++            self.http.post(self.m.llm.OPENROUTER_URL,json={'model':'synthetic'})
++            self.allow['limit_remaining']=0
++            with self.assertRaises(Unknown):self.http.post(self.m.llm.OPENROUTER_URL,json={'model':'synthetic'})
++        self.assertEqual(self.calls,1)
++
++if __name__=='__main__':unittest.main()
+diff --git a/platform-services/community-brain-prod/protected-restore-030/test_contract.py b/platform-services/community-brain-prod/protected-restore-030/test_contract.py
+new file mode 100644
+index 0000000..eb55285
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/test_contract.py
+@@ -0,0 +1,24 @@
++import copy
++from pathlib import Path
++import sys
++import unittest
++from contract import reconcile
++
++class ContractTests(unittest.TestCase):
++    def setUp(self):
++        self.template={'deployable':False,'production_execution_enabled':False,'required_evidence':{'protected_restore':None}}
++        self.receipt={'schema':'cbm.restore-receipt/1','scope':'synthetic-development','production_qualified':False,'capture_id':'synthetic-030','manifest_sha256':'0'*64}
++    def test_development_never_completes_production_slot(self):
++        t=copy.deepcopy(self.template);result=reconcile(t,self.receipt)
++        self.assertEqual(t,self.template);self.assertFalse(result['production_compilation_enabled']);self.assertEqual(result['missing_slots'],['protected_restore'])
++    def test_relabelled_receipt_rejected(self):
++        self.receipt['scope']='production'
++        with self.assertRaises(ValueError):reconcile(self.template,self.receipt)
++    def test_enabled_template_rejected(self):
++        self.template['production_execution_enabled']=True
++        with self.assertRaises(ValueError):reconcile(self.template,self.receipt)
++    def test_prefilled_flag_rejected(self):
++        self.template['required_evidence']['protected_restore']=True
++        with self.assertRaises(ValueError):reconcile(self.template,self.receipt)
++
++if __name__=='__main__':unittest.main()
+diff --git a/platform-services/community-brain-prod/protected-restore-030/test_recovery.py b/platform-services/community-brain-prod/protected-restore-030/test_recovery.py
+new file mode 100644
+index 0000000..42edd14
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/test_recovery.py
+@@ -0,0 +1,130 @@
++import sys
++from unittest.mock import patch
++import copy
++import fcntl
++import json
++import os
++from pathlib import Path
++import tempfile
++import unittest
++from unittest.mock import patch
++import recovery as r
++
++
++class RecoveryTests(unittest.TestCase):
++    def setUp(self):
++        # Unit fixtures model Linux metadata. Real VM108 tests use os.listxattr.
++        if sys.platform == 'darwin':
++            metadata_patch=patch.object(r,'extended_names',return_value=[])
++            metadata_patch.start();self.addCleanup(metadata_patch.stop)
++        self.temp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temp.cleanup)
++        self.root = Path(self.temp.name).resolve()
++        self.source = self.root/'original'
++        self.source.mkdir()
++        (self.source/'empty').mkdir()
++        (self.source/'data').write_bytes(b'private synthetic bytes')
++        (self.source/'data').chmod(0o640)
++        (self.source/'link').symlink_to('data')
++        self.bundle = self.root/'bundle'
++        self.dest = self.root/'restored'
++    def capture(self):
++        return r.capture({'state':self.source},self.bundle,'synthetic-request030',{})
++    def mutate_manifest(self, function):
++        v=json.loads((self.bundle/'manifest.json').read_text());function(v)
++        b=r.encode(v);(self.bundle/'manifest.json').write_bytes(b)
++        h=r.sha(b);(self.bundle/'capture-complete.json').write_bytes(r.encode({'manifest_sha256':h}))
++        return h
++    def test_round_trip_preserves_empty_directories_links_and_original(self):
++        before=r.tree(self.source);h=self.capture()
++        result=r.restore(self.bundle,h,self.dest)
++        self.assertEqual(before,r.tree(self.dest/'state'))
++        self.assertEqual(before,r.tree(self.source))
++        self.assertFalse(result['production_qualified'])
++        self.assertIsNone(result['database_acceptance'])
++    def test_capture_never_overwrites_uncertain_attempt(self):
++        self.capture()
++        with self.assertRaises(FileExistsError):self.capture()
++    def test_restore_never_overwrites_uncertain_destination(self):
++        h=self.capture();self.dest.mkdir()
++        with self.assertRaises(FileExistsError):r.restore(self.bundle,h,self.dest)
++    def test_escape_source_link_refused(self):
++        (self.source/'escape').symlink_to('../outside');(self.root/'outside').touch()
++        with self.assertRaises(ValueError):self.capture()
++    def test_hardlink_refused(self):
++        os.link(self.source/'data',self.source/'hard')
++        with self.assertRaises(ValueError):self.capture()
++    def test_special_file_refused(self):
++        os.mkfifo(self.source/'fifo')
++        with self.assertRaises(ValueError):self.capture()
++    def test_corrupt_blob_refused_before_destination_creation(self):
++        h=self.capture();next((self.bundle/'blobs').iterdir()).write_bytes(b'corrupt')
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.dest)
++        self.assertFalse(self.dest.exists())
++    def test_blob_directory_symlink_refused(self):
++        h=self.capture();(self.bundle/'blobs').rename(self.root/'elsewhere');(self.bundle/'blobs').symlink_to(self.root/'elsewhere')
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.dest)
++    def test_duplicate_component_source_refused(self):
++        with self.assertRaises(ValueError):r.capture({'one':self.source,'two':self.source},self.bundle,'synthetic-request030',{})
++    def test_extended_metadata_refused(self):
++        with patch.object(r,'extended_names',return_value=['user.synthetic']):
++            with self.assertRaises(ValueError):self.capture()
++
++    def test_unpinned_manifest_refused(self):
++        self.capture()
++        with self.assertRaises(ValueError):r.restore(self.bundle,'0'*64,self.dest)
++    def test_missing_completion_refused(self):
++        h=self.capture();(self.bundle/'capture-complete.json').unlink()
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.dest)
++    def test_traversal_manifest_refused(self):
++        self.capture();h=self.mutate_manifest(lambda v:v['components']['state'][1].update(path='../escape'))
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.dest)
++    def test_link_escape_manifest_refused(self):
++        self.capture();h=self.mutate_manifest(lambda v:next(x for x in v['components']['state'] if x['kind']=='symlink').update(target='../../outside'))
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.dest)
++    def test_foreign_scope_refused(self):
++        self.capture();h=self.mutate_manifest(lambda v:v.update(scope='production'))
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.dest)
++    def test_extra_blob_refused(self):
++        h=self.capture();(self.bundle/'blobs'/'unlisted').touch()
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.dest)
++    def test_restore_over_original_refused(self):
++        h=self.capture()
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.source/'replacement')
++    def test_linked_destination_ancestor_refused(self):
++        h=self.capture();(self.root/'alias').symlink_to(self.root,target_is_directory=True)
++        with self.assertRaises(ValueError):r.restore(self.bundle,h,self.root/'alias'/'x')
++    def test_busy_lock_refuses_before_capture_and_preserves_holds(self):
++        lock=self.root/'lock';lock.touch();hold=self.root/'paused';hold.write_text('paused')
++        before=r.hold_state([hold])
++        with lock.open('r+') as f:
++            fcntl.flock(f,fcntl.LOCK_EX|fcntl.LOCK_NB)
++            with self.assertRaises(BlockingIOError):
++                with r.quiet([lock],[hold]):self.capture()
++        self.assertEqual(before,r.hold_state([hold]));self.assertFalse(self.bundle.exists())
++    def test_missing_lock_not_created(self):
++        with self.assertRaises(FileNotFoundError):
++            with r.quiet([self.root/'absent'],[]):pass
++        self.assertFalse((self.root/'absent').exists())
++    def test_hold_drift_detected_without_repair(self):
++        hold=self.root/'paused';hold.write_text('before')
++        with self.assertRaises(ValueError):
++            with r.quiet([],[hold]):hold.write_text('changed')
++        self.assertEqual(hold.read_text(),'changed')
++    def test_changed_lock_identity_detected(self):
++        lock=self.root/'lock';lock.touch()
++        with self.assertRaises(ValueError):
++            with r.quiet([lock],[]):lock.rename(self.root/'retained');lock.touch()
++    def test_source_drift_retains_incomplete_attempt(self):
++        real=r.tree;calls=0
++        def changing(*a,**kw):
++            nonlocal calls
++            calls+=1
++            if calls==2:(self.source/'data').write_text('changed')
++            return real(*a,**kw)
++        with patch.object(r,'tree',changing):
++            with self.assertRaises(ValueError):self.capture()
++        self.assertTrue((self.bundle/'intent.json').exists())
++        self.assertFalse((self.bundle/'capture-complete.json').exists())
++
++if __name__=='__main__':unittest.main()
+diff --git a/platform-services/community-brain-prod/protected-restore-030/test_transport.py b/platform-services/community-brain-prod/protected-restore-030/test_transport.py
+new file mode 100644
+index 0000000..9e609e9
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/test_transport.py
+@@ -0,0 +1,51 @@
++import sys
++from unittest.mock import patch
++import io
++from pathlib import Path
++import tarfile
++import tempfile
++import unittest
++import recovery as r
++import transport as t
++
++class TransportTests(unittest.TestCase):
++    def setUp(self):
++        # Unit fixtures model Linux metadata. Real VM108 tests use os.listxattr.
++        if sys.platform == 'darwin':
++            metadata_patch=patch.object(r,'extended_names',return_value=[])
++            metadata_patch.start();self.addCleanup(metadata_patch.stop)
++        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
++        self.root=Path(self.tmp.name).resolve();self.source=self.root/'source';self.source.mkdir();(self.source/'private').write_bytes(b'synthetic')
++        self.bundle=self.root/'bundle';self.h=r.capture({'state':self.source},self.bundle,'synthetic-transport',{})
++        self.stream=io.BytesIO();t.pack(self.bundle,self.h,self.stream);self.stream.seek(0)
++    def test_verified_round_trip_and_refused_replay(self):
++        target=self.root/'receiver';v=t.receive(self.stream,target,self.h,1024*1024)
++        self.assertEqual(v['capture_id'],'synthetic-transport')
++        r.restore(target,self.h,self.root/'restored')
++        self.assertEqual(r.tree(self.source),r.tree(self.root/'restored/state'))
++        self.stream.seek(0)
++        with self.assertRaises(FileExistsError):t.receive(self.stream,target,self.h,1024*1024)
++    def test_budget_failure_retains_partial_destination(self):
++        with self.assertRaises(ValueError):t.receive(self.stream,self.root/'receiver',self.h,1)
++        self.assertTrue((self.root/'receiver').exists())
++    def test_malicious_link_refused(self):
++        s=io.BytesIO()
++        with tarfile.open(fileobj=s,mode='w') as tar:
++            m=tarfile.TarInfo('manifest.json');m.type=tarfile.SYMTYPE;m.linkname='/etc/passwd';tar.addfile(m)
++        s.seek(0)
++        with self.assertRaises(ValueError):t.receive(s,self.root/'receiver',self.h,100000)
++        self.assertFalse((self.root/'receiver/manifest.json').exists())
++    def test_traversal_refused(self):
++        s=io.BytesIO()
++        with tarfile.open(fileobj=s,mode='w') as tar:
++            m=tarfile.TarInfo('../escaped');m.size=1;tar.addfile(m,io.BytesIO(b'x'))
++        s.seek(0)
++        with self.assertRaises(ValueError):t.receive(s,self.root/'receiver',self.h,100000)
++        self.assertFalse((self.root/'escaped').exists())
++    def test_wrong_external_digest_refused(self):
++        with self.assertRaises(ValueError):t.receive(self.stream,self.root/'receiver','0'*64,100000)
++    def test_incomplete_stream_refused(self):
++        with self.assertRaises((ValueError,tarfile.TarError)):
++            t.receive(io.BytesIO(self.stream.getvalue()[:900]),self.root/'receiver',self.h,100000)
++
++if __name__=='__main__':unittest.main()
+diff --git a/platform-services/community-brain-prod/protected-restore-030/transport.py b/platform-services/community-brain-prod/protected-restore-030/transport.py
+new file mode 100644
+index 0000000..01eeebe
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/transport.py
+@@ -0,0 +1,50 @@
++"""Private stream framing; no SSH launch, remote command or unrestricted extraction."""
++import os
++from pathlib import Path
++import re
++import tarfile
++import recovery as r
++
++
++def pack(bundle, expected, output, scope='synthetic-development'):
++    bundle=Path(bundle)
++    r.validate_bundle(bundle,expected,scope)
++    with tarfile.open(fileobj=output,mode='w|') as tar:
++        for p in sorted(bundle.rglob('*')):
++            if p.is_file():
++                info=tar.gettarinfo(str(p),arcname=str(p.relative_to(bundle)))
++                if not info.isfile():raise ValueError('nonregular transport member')
++                info.mode=0o600;info.uid=0;info.gid=0;info.uname='';info.gname=''
++                with p.open('rb') as f:tar.addfile(info,f)
++
++
++def receive(stream,destination,expected,byte_ceiling,scope='synthetic-development'):
++    if not isinstance(byte_ceiling,int) or not 1<=byte_ceiling<=20*1024**3:
++        raise ValueError('invalid transport byte ceiling')
++    destination=r.no_links(destination)
++    destination.mkdir(mode=0o700)
++    (destination/'blobs').mkdir(mode=0o700)
++    seen=set();total=0
++    with tarfile.open(fileobj=stream,mode='r|') as tar:
++        for m in tar:
++            if not m.isfile() or not (m.name in {'intent.json','manifest.json','capture-complete.json'} or re.fullmatch('blobs/[0-9a-f]{64}',m.name)):
++                raise ValueError('unsafe transport member')
++            if m.name in seen:raise ValueError('duplicate transport member')
++            seen.add(m.name);total+=m.size
++            if total>byte_ceiling:raise ValueError('transport byte ceiling exceeded')
++            p=destination/m.name
++            fd=os.open(p,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600)
++            with os.fdopen(fd,'wb') as out:
++                incoming=tar.extractfile(m);left=m.size
++                while left:
++                    b=incoming.read(min(1024*1024,left))
++                    if not b:raise ValueError('truncated transport member')
++                    out.write(b);left-=len(b)
++                out.flush();os.fsync(out.fileno())
++    for p in [destination/'blobs',destination]:
++        fd=os.open(p,os.O_RDONLY)
++        try:os.fsync(fd)
++        finally:os.close(fd)
++    value=r.validate_bundle(destination,expected,scope)
++    return {'capture_id':value['capture_id'],'manifest_sha256':expected,'bytes':total,
++            'members':len(seen),'destination':str(destination),'scope':scope}
+diff --git a/platform-services/community-brain-prod/protected-restore-030/webui_session.py b/platform-services/community-brain-prod/protected-restore-030/webui_session.py
+new file mode 100644
+index 0000000..835b44e
+--- /dev/null
++++ b/platform-services/community-brain-prod/protected-restore-030/webui_session.py
+@@ -0,0 +1,110 @@
++"""Actual isolated WebUI HTTP/session mechanics; no rendered-browser claim."""
++import json
++import os
++import secrets
++import socket
++import sqlite3
++import subprocess
++import time
++from pathlib import Path
++import recovery as r
++
++ROOT=r.DEV_ROOT/'webui-session-a02'
++IMAGE='sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b'
++NAMES=['cbm-r030-webui-source-a02','cbm-r030-webui-restored-a02','cbm-r030-webui-wrong-key-a02']
++
++
++def cmd(args,data=None):
++    p=subprocess.run(args,input=data,capture_output=True,timeout=120)
++    if p.returncode:
++        r.write_new(ROOT/('failure-'+str(time.time_ns())+'.log'),p.stderr)
++        raise RuntimeError('private diagnostic retained')
++    return p.stdout
++
++
++def api(name,path,method='GET',body=None,token=None):
++    spec=json.dumps(dict(path=path,method=method,body=body,token=token))
++    code="""import json,sys,urllib.request,urllib.error
++s=json.load(sys.stdin);headers={'Content-Type':'application/json'}
++if s['token']:headers['Authorization']='Bearer '+s['token']
++r=urllib.request.Request('http://127.0.0.1:8080'+s['path'],method=s['method'],headers=headers,data=None if s['body'] is None else json.dumps(s['body']).encode())
++try:
++ with urllib.request.urlopen(r,timeout=15) as f:print(json.dumps({'status':f.status,'body':json.load(f)}))
++except urllib.error.HTTPError as e:print(json.dumps({'status':e.code,'body':None}))
++except Exception:print(json.dumps({'status':0,'body':None}))
++"""
++    return json.loads(cmd(['docker','exec','-i',name,'python','-B','-c',code],spec.encode()))
++
++
++def start(name,data,envfile):
++    cmd(['docker','run','-d','--name',name,'--network','none','--restart','no','--memory','1536m','--cpus','1.5',
++         '--security-opt','no-new-privileges:true','--env-file',str(envfile),'--mount','type=bind,source='+str(data)+',target=/app/backend/data',IMAGE])
++    for _ in range(300):
++        if api(name,'/health')['status']==200:return
++        time.sleep(1)
++    raise RuntimeError('isolated WebUI readiness timeout')
++
++
++def main():
++    assert socket.gethostname()=='community-brain-dev'
++    ROOT.mkdir(mode=0o700);r.write_new(ROOT/'intent.json',r.encode({'scope':'synthetic-development','names':NAMES}))
++    original=ROOT/'original';original.mkdir(mode=0o700)
++    web=original/'webui';web.mkdir();private=original/'signing';private.mkdir(mode=0o700)
++    secret=secrets.token_urlsafe(48);password=secrets.token_urlsafe(32)
++    env={'WEBUI_SECRET_KEY':secret,'WEBUI_AUTH':'true','ENABLE_SIGNUP':'true','OFFLINE_MODE':'true','HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1',
++         'ENABLE_OLLAMA_API':'false','ENABLE_OPENAI_API':'false','RAG_EMBEDDING_ENGINE':'ollama','OLLAMA_BASE_URL':'http://127.0.0.1:9',
++         'OPENAI_API_BASE_URL':'http://127.0.0.1:9/v1','OPENAI_API_KEY':'synthetic-disabled','ANONYMIZED_TELEMETRY':'false','DO_NOT_TRACK':'true','SCARF_NO_ANALYTICS':'true'}
++    r.write_new(private/'webui.env',''.join(k+'='+v+'\n' for k,v in env.items()).encode())
++    login={'email':'request030@example.invalid','password':password}
++    r.write_new(private/'login.json',r.encode(login))
++    start_time=time.monotonic()
++    try:
++        start(NAMES[0],web,private/'webui.env')
++        response=api(NAMES[0],'/api/v1/auths/signup','POST',dict(login,name='Synthetic Request030'))
++        assert response['status']==200, 'synthetic account setup failed'
++        token=response['body']['token'];r.write_new(private/'session.json',r.encode({'token':token}))
++        config=api(NAMES[0],'/api/v1/auths/admin/config',token=token)['body'];config['ENABLE_SIGNUP']=False
++        assert api(NAMES[0],'/api/v1/auths/admin/config','POST',config,token)['status']==200
++        created=api(NAMES[0],'/api/v1/chats/new','POST',{'chat':{'title':'Synthetic preserved conversation','messages':[]}},token)
++        assert created['status']==200;chat_id=created['body']['id']
++        assert api(NAMES[0],'/api/v1/auths/',token=token)['status']==200
++        cmd(['docker','stop',NAMES[0]])
++        # Stopped synthetic source only. Original remains stopped for the rest of the test.
++        before=r.tree(web)
++        digest=r.capture({'webui':web,'signing':private},ROOT/'capture','cbm-r030-webui-session-a02',{'writer_exclusion':'exact synthetic source container stopped'})
++        restored=r.restore(ROOT/'capture',digest,ROOT/'restored')
++        start(NAMES[1],ROOT/'restored/webui',ROOT/'restored/signing/webui.env')
++        old_session=api(NAMES[1],'/api/v1/auths/',token=token)['status']
++        signin=api(NAMES[1],'/api/v1/auths/signin','POST',login)['status']
++        anonymous=api(NAMES[1],'/api/v1/chats/')['status']
++        disabled=api(NAMES[1],'/api/v1/auths/admin/config',token=token)['body']['ENABLE_SIGNUP'] is False
++        signup=api(NAMES[1],'/api/v1/auths/signup','POST',{'name':'Refused','email':'refused@example.invalid','password':password})['status']
++        retained=api(NAMES[1],'/api/v1/chats/'+chat_id,token=token)['status']
++        assert old_session==200 and signin==200 and anonymous in [401,403] and disabled and signup in [400,401,403] and retained==200
++        cmd(['docker','stop',NAMES[1]])
++        # Independent restore from original bundle, not a mutable copy of the first restore.
++        r.restore(ROOT/'capture',digest,ROOT/'wrong-key-copy')
++        wrong=ROOT/'wrong-key.env';env['WEBUI_SECRET_KEY']=secrets.token_urlsafe(48);env['ENABLE_SIGNUP']='false'
++        r.write_new(wrong,''.join(k+'='+v+'\n' for k,v in env.items()).encode())
++        start(NAMES[2],ROOT/'wrong-key-copy/webui',wrong)
++        denied=api(NAMES[2],'/api/v1/auths/',token=token)['status'];assert denied in [401,403]
++        assert r.tree(web)==before
++        receipt=dict(scope='synthetic-development',image=IMAGE,capture_manifest_sha256=digest,old_session_status=old_session,
++                     new_login_status=signin,anonymous_status=anonymous,effective_persisted_signup_disabled=disabled,signup_refusal_status=signup,
++                     retained_chat_status=retained,wrong_key_status=denied,source_unchanged=True,network='none',published_ports=[],
++                     duration_seconds=round(time.monotonic()-start_time,3),rendered_browser_test=False,real_identity_session_test=False,
++                     real_provider_calls=0,production_qualified=False)
++        r.write_new(ROOT/'webui-session-acceptance.json',r.encode(receipt))
++    finally:
++        state={}
++        for name in NAMES:
++            x=subprocess.run(['docker','inspect','--type','container',name],capture_output=True)
++            if x.returncode==0:
++                v=json.loads(x.stdout)[0]
++                if v['State']['Running']:cmd(['docker','stop',name])
++                v=json.loads(cmd(['docker','inspect','--type','container',name]))[0]
++                state[name]={'id':v['Id'],'image':v['Image'],'running':v['State']['Running'],'oom_killed':v['State']['OOMKilled'],'network':v['HostConfig']['NetworkMode'],'ports':v['HostConfig']['PortBindings']}
++        r.write_new(ROOT/'cleanup.json',r.encode(state))
++    print(json.dumps(receipt))
++
++if __name__=='__main__':main()

@@ -1,0 +1,1193 @@
+{
+  "container": {
+    "Status": "exited",
+    "Running": false,
+    "ExitCode": 0,
+    "StartedAt": "2026-09-15T23:40:38.763591026Z",
+    "FinishedAt": "2026-09-19T04:20:05.394478381Z",
+    "id": "83358b76e0544437bd8947ba9a7be94d9fba59559a6dc56bd3c1c0110fb8a33c"
+  },
+  "image": {
+    "configured": "ghcr.io/open-webui/open-webui@sha256:b8095f79a6a8ffad8f830bdacc9b5b0aef805689b31bca0b065cc2424d3cfaeb",
+    "id": "sha256:ea51ab128ef7f7e1e5d9a6e2cd8bbea2336e6ad408ad185c1e796525c97d9c52",
+    "digests": [
+      "ghcr.io/open-webui/open-webui@sha256:b8095f79a6a8ffad8f830bdacc9b5b0aef805689b31bca0b065cc2424d3cfaeb"
+    ],
+    "size": 4740950728,
+    "architecture": "amd64",
+    "version": "main"
+  },
+  "mounts": [
+    {
+      "Type": "volume",
+      "Name": "open-webui-data",
+      "Source": "/var/lib/docker/volumes/open-webui-data/_data",
+      "Destination": "/app/backend/data",
+      "RW": true
+    }
+  ],
+  "ports": {
+    "8080/tcp": [
+      {
+        "HostIp": "",
+        "HostPort": "3000"
+      }
+    ]
+  },
+  "restart_policy": {
+    "Name": "no",
+    "MaximumRetryCount": 0
+  },
+  "env_names": [
+    "ANONYMIZED_TELEMETRY",
+    "AUXILIARY_EMBEDDING_MODEL",
+    "DOCKER",
+    "DO_NOT_TRACK",
+    "ENV",
+    "GPG_KEY",
+    "HF_HOME",
+    "HOME",
+    "LANG",
+    "OLLAMA_BASE_URL",
+    "OPENAI_API_BASE_URL",
+    "OPENAI_API_KEY",
+    "PATH",
+    "PORT",
+    "PYTHONUNBUFFERED",
+    "PYTHON_SHA256",
+    "PYTHON_VERSION",
+    "RAG_EMBEDDING_MODEL",
+    "RAG_RERANKING_MODEL",
+    "SCARF_NO_ANALYTICS",
+    "SENTENCE_TRANSFORMERS_HOME",
+    "TIKTOKEN_CACHE_DIR",
+    "TIKTOKEN_ENCODING_NAME",
+    "USE_AUXILIARY_EMBEDDING_MODEL_DOCKER",
+    "USE_CUDA_DOCKER",
+    "USE_CUDA_DOCKER_VER",
+    "USE_EMBEDDING_MODEL_DOCKER",
+    "USE_OLLAMA_DOCKER",
+    "USE_RERANKING_MODEL_DOCKER",
+    "USE_SLIM_DOCKER",
+    "WEBUI_AUTH",
+    "WEBUI_BUILD_VERSION",
+    "WEBUI_SECRET_KEY",
+    "WHISPER_MODEL",
+    "WHISPER_MODEL_DIR"
+  ],
+  "auth_configuration": {
+    "WEBUI_AUTH": {
+      "present": true,
+      "boolean": "true"
+    },
+    "WEBUI_SECRET_KEY": {
+      "present": false,
+      "boolean": null
+    }
+  },
+  "integration_endpoints": {
+    "OLLAMA_BASE_URL": "http://10.1.50.219:11434"
+  },
+  "database": {
+    "path": "/var/lib/docker/volumes/open-webui-data/_data/webui.db",
+    "sha256": "c4d3953ee249c642be9e0ffb7e7ed8e48adb14ad22531761f038b7ebd71b2b54",
+    "bytes": 4829184,
+    "wal_exists": false,
+    "tables": {
+      "access_grant": {
+        "count": 0,
+        "columns": [
+          "id",
+          "resource_type",
+          "resource_id",
+          "principal_type",
+          "principal_id",
+          "permission",
+          "created_at"
+        ]
+      },
+      "alembic_version": {
+        "count": 1,
+        "columns": [
+          "version_num"
+        ]
+      },
+      "api_key": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "key",
+          "data",
+          "expires_at",
+          "last_used_at",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "auth": {
+        "count": 1,
+        "columns": [
+          "id",
+          "email",
+          "password",
+          "active"
+        ]
+      },
+      "channel": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "name",
+          "description",
+          "data",
+          "meta",
+          "created_at",
+          "updated_at",
+          "type",
+          "is_private",
+          "archived_at",
+          "archived_by",
+          "deleted_at",
+          "deleted_by",
+          "updated_by"
+        ]
+      },
+      "channel_file": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "channel_id",
+          "file_id",
+          "created_at",
+          "updated_at",
+          "message_id"
+        ]
+      },
+      "channel_member": {
+        "count": 0,
+        "columns": [
+          "id",
+          "channel_id",
+          "user_id",
+          "created_at",
+          "status",
+          "is_active",
+          "is_channel_muted",
+          "is_channel_pinned",
+          "data",
+          "meta",
+          "joined_at",
+          "left_at",
+          "last_read_at",
+          "updated_at",
+          "role",
+          "invited_by",
+          "invited_at"
+        ]
+      },
+      "channel_webhook": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "channel_id",
+          "name",
+          "profile_image_url",
+          "token",
+          "last_used_at",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "chat": {
+        "count": 60,
+        "columns": [
+          "id",
+          "user_id",
+          "title",
+          "share_id",
+          "archived",
+          "created_at",
+          "updated_at",
+          "chat",
+          "pinned",
+          "meta",
+          "folder_id"
+        ]
+      },
+      "chat_file": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "chat_id",
+          "file_id",
+          "message_id",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "chat_message": {
+        "count": 131,
+        "columns": [
+          "id",
+          "chat_id",
+          "user_id",
+          "role",
+          "parent_id",
+          "content",
+          "output",
+          "model_id",
+          "files",
+          "sources",
+          "embeds",
+          "done",
+          "status_history",
+          "error",
+          "usage",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "chatidtag": {
+        "count": 0,
+        "columns": [
+          "id",
+          "tag_name",
+          "chat_id",
+          "user_id",
+          "timestamp"
+        ]
+      },
+      "config": {
+        "count": 1,
+        "columns": [
+          "id",
+          "data",
+          "version",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "document": {
+        "count": 0,
+        "columns": [
+          "id",
+          "collection_name",
+          "name",
+          "title",
+          "filename",
+          "content",
+          "user_id",
+          "timestamp"
+        ]
+      },
+      "feedback": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "version",
+          "type",
+          "data",
+          "meta",
+          "snapshot",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "file": {
+        "count": 111,
+        "columns": [
+          "id",
+          "user_id",
+          "filename",
+          "meta",
+          "created_at",
+          "hash",
+          "data",
+          "updated_at",
+          "path"
+        ]
+      },
+      "folder": {
+        "count": 0,
+        "columns": [
+          "id",
+          "parent_id",
+          "user_id",
+          "name",
+          "items",
+          "meta",
+          "is_expanded",
+          "created_at",
+          "updated_at",
+          "data"
+        ]
+      },
+      "function": {
+        "count": 1,
+        "columns": [
+          "id",
+          "user_id",
+          "name",
+          "type",
+          "content",
+          "meta",
+          "created_at",
+          "updated_at",
+          "valves",
+          "is_active",
+          "is_global"
+        ]
+      },
+      "group": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "name",
+          "description",
+          "data",
+          "meta",
+          "permissions",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "group_member": {
+        "count": 0,
+        "columns": [
+          "id",
+          "group_id",
+          "user_id",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "knowledge": {
+        "count": 1,
+        "columns": [
+          "id",
+          "user_id",
+          "name",
+          "description",
+          "meta",
+          "created_at",
+          "updated_at",
+          "data"
+        ]
+      },
+      "knowledge_file": {
+        "count": 111,
+        "columns": [
+          "id",
+          "user_id",
+          "knowledge_id",
+          "file_id",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "memory": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "content",
+          "updated_at",
+          "created_at"
+        ]
+      },
+      "message": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "channel_id",
+          "content",
+          "data",
+          "meta",
+          "created_at",
+          "updated_at",
+          "parent_id",
+          "reply_to_id",
+          "is_pinned",
+          "pinned_at",
+          "pinned_by"
+        ]
+      },
+      "message_reaction": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "message_id",
+          "name",
+          "created_at"
+        ]
+      },
+      "migratehistory": {
+        "count": 18,
+        "columns": [
+          "id",
+          "name",
+          "migrated_at"
+        ]
+      },
+      "model": {
+        "count": 5,
+        "columns": [
+          "id",
+          "user_id",
+          "base_model_id",
+          "name",
+          "meta",
+          "params",
+          "created_at",
+          "updated_at",
+          "is_active"
+        ]
+      },
+      "note": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "title",
+          "data",
+          "meta",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "oauth_session": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "provider",
+          "token",
+          "expires_at",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "prompt": {
+        "count": 10,
+        "columns": [
+          "id",
+          "command",
+          "user_id",
+          "name",
+          "content",
+          "data",
+          "meta",
+          "is_active",
+          "version_id",
+          "tags",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "prompt_history": {
+        "count": 10,
+        "columns": [
+          "id",
+          "prompt_id",
+          "parent_id",
+          "snapshot",
+          "user_id",
+          "commit_message",
+          "created_at"
+        ]
+      },
+      "skill": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "name",
+          "description",
+          "content",
+          "meta",
+          "is_active",
+          "updated_at",
+          "created_at"
+        ]
+      },
+      "tag": {
+        "count": 57,
+        "columns": [
+          "id",
+          "name",
+          "user_id",
+          "meta"
+        ]
+      },
+      "tool": {
+        "count": 0,
+        "columns": [
+          "id",
+          "user_id",
+          "name",
+          "content",
+          "specs",
+          "meta",
+          "created_at",
+          "updated_at",
+          "valves"
+        ]
+      },
+      "user": {
+        "count": 1,
+        "columns": [
+          "id",
+          "name",
+          "email",
+          "role",
+          "profile_image_url",
+          "created_at",
+          "updated_at",
+          "last_active_at",
+          "username",
+          "bio",
+          "gender",
+          "date_of_birth",
+          "profile_banner_image_url",
+          "timezone",
+          "presence_state",
+          "status_emoji",
+          "status_message",
+          "status_expires_at",
+          "oauth",
+          "info",
+          "settings",
+          "scim"
+        ]
+      }
+    },
+    "schema_sha256": "4f116ac58b8ceb975202b71d8905ee2beddafc6f5a40a7122d6726a976a6cee5"
+  },
+  "filter": {
+    "id": "community_brain_filter",
+    "sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "active": true,
+    "global": true,
+    "valve_names": [
+      "api_key",
+      "enabled",
+      "min_score",
+      "retrieval_url",
+      "timeout_seconds",
+      "top_k"
+    ],
+    "retrieval_url": "https://community-brain.patchoutech.lab/retrieval/query",
+    "api_key_present": true
+  },
+  "function_sources": [
+    {
+      "id_sha256": "e44d9f9cbf5e01c04f57eaaa28ae675418b507698828b0dfa07521d172361736",
+      "content_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16"
+    }
+  ],
+  "persisted_config_shapes": [
+    {
+      "version": {
+        "type": "int",
+        "present": false
+      },
+      "ui": {
+        "enable_signup": {
+          "type": "bool",
+          "present": false
+        }
+      },
+      "rag": {
+        "embedding_engine": {
+          "type": "str",
+          "present": true
+        },
+        "embedding_model": {
+          "type": "str",
+          "present": true
+        },
+        "embedding_batch_size": {
+          "type": "int",
+          "present": true
+        },
+        "enable_async_embedding": {
+          "type": "bool",
+          "present": true
+        },
+        "embedding_concurrent_requests": {
+          "type": "int",
+          "present": false
+        },
+        "openai_api_base_url": {
+          "type": "str",
+          "present": true
+        },
+        "openai_api_key": {
+          "type": "str",
+          "present": false
+        },
+        "ollama": {
+          "url": {
+            "type": "str",
+            "present": true
+          },
+          "key": {
+            "type": "str",
+            "present": false
+          }
+        },
+        "azure_openai": {
+          "base_url": {
+            "type": "str",
+            "present": false
+          },
+          "api_key": {
+            "type": "str",
+            "present": false
+          },
+          "api_version": {
+            "type": "str",
+            "present": false
+          }
+        },
+        "template": {
+          "type": "str",
+          "present": true
+        },
+        "top_k": {
+          "type": "int",
+          "present": true
+        },
+        "bypass_embedding_and_retrieval": {
+          "type": "bool",
+          "present": false
+        },
+        "full_context": {
+          "type": "bool",
+          "present": false
+        },
+        "enable_hybrid_search": {
+          "type": "bool",
+          "present": false
+        },
+        "enable_hybrid_search_enriched_texts": {
+          "type": "bool",
+          "present": false
+        },
+        "top_k_reranker": {
+          "type": "int",
+          "present": true
+        },
+        "relevance_threshold": {
+          "type": "float",
+          "present": false
+        },
+        "hybrid_bm25_weight": {
+          "type": "float",
+          "present": true
+        },
+        "CONTENT_EXTRACTION_ENGINE": {
+          "type": "str",
+          "present": false
+        },
+        "pdf_extract_images": {
+          "type": "bool",
+          "present": false
+        },
+        "pdf_loader_mode": {
+          "type": "str",
+          "present": true
+        },
+        "datalab_marker_api_key": {
+          "type": "str",
+          "present": false
+        },
+        "datalab_marker_api_base_url": {
+          "type": "str",
+          "present": false
+        },
+        "datalab_marker_additional_config": {
+          "type": "str",
+          "present": false
+        },
+        "datalab_marker_skip_cache": {
+          "type": "bool",
+          "present": false
+        },
+        "datalab_marker_force_ocr": {
+          "type": "bool",
+          "present": false
+        },
+        "datalab_marker_paginate": {
+          "type": "bool",
+          "present": false
+        },
+        "datalab_marker_strip_existing_ocr": {
+          "type": "bool",
+          "present": false
+        },
+        "datalab_marker_disable_image_extraction": {
+          "type": "bool",
+          "present": false
+        },
+        "datalab_marker_format_lines": {
+          "type": "bool",
+          "present": false
+        },
+        "datalab_marker_output_format": {
+          "type": "str",
+          "present": true
+        },
+        "DATALAB_MARKER_USE_LLM": {
+          "type": "bool",
+          "present": false
+        },
+        "external_document_loader_url": {
+          "type": "str",
+          "present": false
+        },
+        "external_document_loader_api_key": {
+          "type": "str",
+          "present": false
+        },
+        "tika_server_url": {
+          "type": "str",
+          "present": true
+        },
+        "docling_server_url": {
+          "type": "str",
+          "present": true
+        },
+        "docling_api_key": {
+          "type": "str",
+          "present": false
+        },
+        "docling_params": {},
+        "document_intelligence_endpoint": {
+          "type": "str",
+          "present": false
+        },
+        "document_intelligence_key": {
+          "type": "str",
+          "present": false
+        },
+        "document_intelligence_model": {
+          "type": "str",
+          "present": true
+        },
+        "MISTRAL_OCR_API_BASE_URL": {
+          "type": "str",
+          "present": true
+        },
+        "mistral_ocr_api_key": {
+          "type": "str",
+          "present": false
+        },
+        "mineru_api_mode": {
+          "type": "str",
+          "present": true
+        },
+        "mineru_api_url": {
+          "type": "str",
+          "present": true
+        },
+        "mineru_api_key": {
+          "type": "str",
+          "present": false
+        },
+        "mineru_api_timeout": {
+          "type": "str",
+          "present": true
+        },
+        "mineru_params": {},
+        "reranking_engine": {
+          "type": "str",
+          "present": false
+        },
+        "external_reranker_url": {
+          "type": "str",
+          "present": false
+        },
+        "external_reranker_api_key": {
+          "type": "str",
+          "present": false
+        },
+        "external_reranker_timeout": {
+          "type": "str",
+          "present": false
+        },
+        "reranking_model": {
+          "type": "str",
+          "present": false
+        },
+        "text_splitter": {
+          "type": "str",
+          "present": false
+        },
+        "enable_markdown_header_text_splitter": {
+          "type": "bool",
+          "present": true
+        },
+        "chunk_size": {
+          "type": "int",
+          "present": true
+        },
+        "chunk_min_size_target": {
+          "type": "int",
+          "present": false
+        },
+        "chunk_overlap": {
+          "type": "int",
+          "present": true
+        },
+        "file": {
+          "max_size": {
+            "type": "NoneType",
+            "present": false
+          },
+          "max_count": {
+            "type": "NoneType",
+            "present": false
+          },
+          "allowed_extensions": {
+            "type": "list",
+            "length": 0
+          }
+        },
+        "web": {
+          "search": {
+            "enable": {
+              "type": "bool",
+              "present": false
+            },
+            "engine": {
+              "type": "str",
+              "present": false
+            },
+            "trust_env": {
+              "type": "bool",
+              "present": false
+            },
+            "result_count": {
+              "type": "int",
+              "present": true
+            },
+            "concurrent_requests": {
+              "type": "int",
+              "present": false
+            },
+            "fetch_url_max_content_length": {
+              "type": "NoneType",
+              "present": false
+            },
+            "domain": {
+              "filter_list": {
+                "type": "list",
+                "length": 0
+              }
+            },
+            "bypass_embedding_and_retrieval": {
+              "type": "bool",
+              "present": false
+            },
+            "bypass_web_loader": {
+              "type": "bool",
+              "present": false
+            },
+            "ollama_cloud_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "searxng_query_url": {
+              "type": "str",
+              "present": false
+            },
+            "searxng_language": {
+              "type": "str",
+              "present": true
+            },
+            "yacy_query_url": {
+              "type": "str",
+              "present": false
+            },
+            "yacy_username": {
+              "type": "str",
+              "present": false
+            },
+            "yacy_password": {
+              "type": "str",
+              "present": false
+            },
+            "google_pse_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "google_pse_engine_id": {
+              "type": "str",
+              "present": false
+            },
+            "brave_search_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "kagi_search_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "mojeek_search_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "bocha_search_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "serpstack_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "serpstack_https": {
+              "type": "bool",
+              "present": true
+            },
+            "serper_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "serply_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "ddgs_backend": {
+              "type": "str",
+              "present": true
+            },
+            "tavily_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "searchapi_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "searchapi_engine": {
+              "type": "str",
+              "present": false
+            },
+            "serpapi_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "serpapi_engine": {
+              "type": "str",
+              "present": false
+            },
+            "jina_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "jina_api_base_url": {
+              "type": "str",
+              "present": false
+            },
+            "bing_search_v7_endpoint": {
+              "type": "str",
+              "present": true
+            },
+            "bing_search_v7_subscription_key": {
+              "type": "str",
+              "present": false
+            },
+            "exa_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "perplexity_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "perplexity_model": {
+              "type": "str",
+              "present": true
+            },
+            "perplexity_search_context_usage": {
+              "type": "str",
+              "present": true
+            },
+            "perplexity_search_api_url": {
+              "type": "str",
+              "present": true
+            },
+            "sougou_api_sid": {
+              "type": "str",
+              "present": false
+            },
+            "sougou_api_sk": {
+              "type": "str",
+              "present": false
+            },
+            "external_web_search_url": {
+              "type": "str",
+              "present": false
+            },
+            "external_web_search_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "tavily_extract_depth": {
+              "type": "str",
+              "present": true
+            },
+            "yandex_web_search_url": {
+              "type": "str",
+              "present": false
+            },
+            "yandex_web_search_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "yandex_web_search_config": {
+              "type": "str",
+              "present": false
+            },
+            "youcom_api_key": {
+              "type": "str",
+              "present": false
+            }
+          },
+          "loader": {
+            "concurrent_requests": {
+              "type": "int",
+              "present": true
+            },
+            "engine": {
+              "type": "str",
+              "present": false
+            },
+            "timeout": {
+              "type": "str",
+              "present": false
+            },
+            "ssl_verification": {
+              "type": "bool",
+              "present": true
+            },
+            "playwright_ws_url": {
+              "type": "str",
+              "present": false
+            },
+            "playwright_timeout": {
+              "type": "int",
+              "present": true
+            },
+            "firecrawl_api_key": {
+              "type": "str",
+              "present": false
+            },
+            "firecrawl_api_url": {
+              "type": "str",
+              "present": true
+            },
+            "firecrawl_timeout": {
+              "type": "str",
+              "present": false
+            },
+            "external_web_loader_url": {
+              "type": "str",
+              "present": false
+            },
+            "external_web_loader_api_key": {
+              "type": "str",
+              "present": false
+            }
+          }
+        },
+        "youtube_loader_language": {
+          "type": "list",
+          "length": 1
+        },
+        "youtube_loader_proxy_url": {
+          "type": "str",
+          "present": false
+        }
+      },
+      "file": {
+        "image_compression_width": {
+          "type": "NoneType",
+          "present": false
+        },
+        "image_compression_height": {
+          "type": "NoneType",
+          "present": false
+        }
+      },
+      "google_drive": {
+        "enable": {
+          "type": "bool",
+          "present": false
+        }
+      },
+      "onedrive": {
+        "enable": {
+          "type": "bool",
+          "present": false
+        }
+      }
+    }
+  ],
+  "storage": {
+    "community-brain-trust": {
+      "files": 2,
+      "bytes": 545558
+    },
+    "webui.db": {
+      "bytes": 4829184,
+      "sha256": "c4d3953ee249c642be9e0ffb7e7ed8e48adb14ad22531761f038b7ebd71b2b54"
+    },
+    "vector_db": {
+      "files": 469,
+      "bytes": 56038132
+    },
+    "uploads": {
+      "files": 111,
+      "bytes": 801190
+    },
+    "cache": {
+      "files": 100,
+      "bytes": 2277218048
+    }
+  },
+  "preservation_copies": [
+    {
+      "path": "/var/backups/community-brain-retrieval-preflight/20260910T034646Z/filter.py",
+      "bytes": 12600,
+      "sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16"
+    },
+    {
+      "path": "/var/backups/community-brain-retrieval-preflight/20260910T034646Z/container-inspect.json",
+      "bytes": 14946,
+      "sha256": "d386613830f66822035ac7b8bba8b660f1857da795533e78c3f6f5be0e2974d0"
+    },
+    {
+      "path": "/var/backups/community-brain-retrieval-preflight/20260910T034646Z/webui.db",
+      "bytes": 4829184,
+      "sha256": "771711e25423dab0fcefead88ab33228e1bf7844c5d776a4b8dc18359f288116"
+    },
+    {
+      "path": "/var/backups/community-brain-retrieval-preflight/20260910T034646Z/function.json",
+      "bytes": 13833,
+      "sha256": "e03ca025f2591edf3e425b0684945b30e38ff2a79fb64bb6c3e78231d7c7afb2"
+    }
+  ],
+  "checked_at": "2026-09-21T12:08:34.363045+00:00",
+  "filesystem_free_bytes": 472691929088
+}

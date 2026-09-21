@@ -64,6 +64,16 @@ sanitized development copies, private evidence and browser/recovery acceptance.
 Request030 resolves exact operator bindings and validates any new recovery mechanics
 on VM108 before a protected capture/transfer proposal. No real data was moved.
 
+## Request030 accepted — September21
+
+[Preparation results](cbm-protected-restore-preparation-results.md) provide exact
+private source/destination bindings and synthetic session/restore evidence. The
+strict WebUI inventory is about1.18GB of regular-file bytes; the historical2.34GB
+count followed cache links. Data/signing originals were not transferred. Finish
+capture-wrapper interruption/deadline handling and component-receipt validation
+before requesting the bounded protected phase. Capacity/provider and browser/real
+staged-session gates remain open; production compilation stays disabled.
+
 ## Accepted source and evidence
 
 The exact seven-file rehearsal source from agent-ops commit

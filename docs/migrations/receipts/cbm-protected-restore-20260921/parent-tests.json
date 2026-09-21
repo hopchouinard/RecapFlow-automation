@@ -1,0 +1,6 @@
+{
+  "checked_at": "2026-09-21T12:35:35.687048+00:00",
+  "returncode": 0,
+  "stdout": "wrote docs/reference/README.md\nwrote docs/reference/hosts.md\nwrote docs/reference/services.md\nwrote docs/reference/network.md\nwrote docs/reference/issues.md\nwrote docs/reference/future.md\nwrote docs/reference/service-catalog.md\nwrote docs/reference/dns.md\n",
+  "stderr": ".....................................................................................................................................................................................................................................................................................................\n----------------------------------------------------------------------\nRan 293 tests in 2.562s\n\nOK\n"
+}

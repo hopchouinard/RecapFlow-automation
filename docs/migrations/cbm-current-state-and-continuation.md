@@ -144,6 +144,21 @@ commands, with synthetic VM108 testing of any new mechanics. It returns a concre
 bounded transfer proposal before the separately required capture/transfer decision.
 No production data, signing material, configuration or runtime was changed.
 
+## Request030 consumed — September21
+
+[Protected restoration preparation results](cbm-protected-restore-preparation-results.md)
+resolve private source/destination metadata and validate fresh synthetic component,
+PostgreSQL/fence and WebUI-session mechanics. Forge verified 52 listed artifacts,
+all 15 live VM108 source files and 39 local tests, imported exact source and
+acknowledged the response. No protected transfer occurred.
+
+The next implementation is the exact capture wrapper with pending-operation,
+deadline and interruption/readback handling, plus component-receipt validator
+reconciliation. Complete that before seeking the bounded private capture/off-host/
+offline-restore phase. Production compiler remains disabled. Proposed 8GiB dev
+capacity and capped paid-provider tests are not authorized or executed. Whole
+production automation-tree equality is not certified; protected holds match.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

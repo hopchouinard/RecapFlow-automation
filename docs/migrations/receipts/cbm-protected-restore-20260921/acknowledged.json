@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-PROTECTED-RESTORE-PREP-20260921-030",
+  "actor": "Forge",
+  "state": "consumed",
+  "acknowledged_at": "2026-09-21T13:03:27.958762+00:00",
+  "verified_manifest_artifacts": 52,
+  "independently_verified_vm108_source_files": 15,
+  "local_boundary_tests": 39,
+  "source_commit": "4c16f84ef8e5d77dcb01953ee5635ceb27c646d9",
+  "source_archive_sha256": "205dc9237d6666a1c7530a0a9f498992c232694906b09254e200d0ba07f12ee3",
+  "receipt_sha256": "cdcf9065d5a380083bf6bad6de1691e15a9a72107900eb1db2fd1df83956321d",
+  "protected_transfer_performed": false,
+  "production_promotion_ready": false
+}

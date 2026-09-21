@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-PROTECTED-RESTORE-PREP-20260921-030",
+  "target": "home.servers",
+  "deadline": "2026-09-21T20:00:00Z",
+  "verified_at": "2026-09-21T12:42:43.465532+00:00",
+  "documents": {
+    "cbm-activation-integration-results.md": true,
+    "cbm-protected-restore-packet.json": true,
+    "cbm-protected-restore-packet.md": true,
+    "cbm-protected-restore-preparation-request.md": true,
+    "old-installation-inventory.json": true,
+    "production-serving-plan.template.json": true
+  }
+}

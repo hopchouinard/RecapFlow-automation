@@ -1,0 +1,38 @@
+{
+  "code_bindings": {
+    "/Users/pchouinard/.local/lib/community-brain-management/maintain.py": "87425de887176d0371bcc0a2d5dda35c59d692c8aa5602560eec3aabdc1428bc",
+    "/Users/pchouinard/.local/lib/community-brain-management/mac-intake.py": "50bdfd78990cc77a6b3f5becb5fb8b4073229f57e4f15ebba22d395e243ee60d",
+    "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/boot_guard.py": "70d93cdde9d2360294b5e960dfd4586ec20184bc2bdae69be1dbb148d347f7ac",
+    "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/quiet_window.py": "8347e32d04d1ecd22ce97b104e836b94f923f9951c442fa23e67f01da008fa50",
+    "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/manual_api_runtime.py": "a89416f5a6bf0d10eebf83e26d16113bc9c155fa3ac81780674b14aac6515641"
+  },
+  "writers": [
+    {
+      "kind": "serving_api",
+      "host": "VM109",
+      "container_id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+      "live_rw_mount": "/srv/community-brain/files",
+      "database_role": "cbm_prod_runtime",
+      "exclusion_proposed": "separately approved stop of exact incumbent during capture"
+    },
+    {
+      "kind": "automatic_manual_submission",
+      "exclusion": "existing runner/manual/submission locks plus Mac scheduler mutex; holds retained"
+    },
+    {
+      "kind": "paused_heartbeat",
+      "evidence": "boot_guard.py lines35-36 states paused tick uses runner lock; status.json was only automation file with mtime during request",
+      "exclusion": "runner lock"
+    },
+    {
+      "kind": "dormant_webui",
+      "container_id": "83358b76e0544437bd8947ba9a7be94d9fba59559a6dc56bd3c1c0110fb8a33c",
+      "state": "stopped, unchanged",
+      "exclusion": "keep stopped"
+    }
+  ],
+  "production_systemd_timers": "NEXT                           LEFT LAST                              PASSED UNIT                                             ACTIVATES\nMon 2026-09-21 12:40:00 UTC     51s Mon 2026-09-21 12:30:00 UTC     9min ago sysstat-collect.timer                            sysstat-collect.service\nMon 2026-09-21 12:51:37 UTC   12min Mon 2026-09-21 12:36:37 UTC 2min 30s ago prometheus-node-exporter-apt.timer               prometheus-node-exporter-apt.service\nMon 2026-09-21 12:51:37 UTC   12min Mon 2026-09-21 12:36:37 UTC 2min 30s ago prometheus-node-exporter-nvme.timer              prometheus-node-exporter-nvme.service\nMon 2026-09-21 12:51:37 UTC   12min Mon 2026-09-21 12:36:37 UTC 2min 30s ago prometheus-node-exporter-smartmon.timer          prometheus-node-exporter-smartmon.service\nMon 2026-09-21 13:37:45 UTC   58min Mon 2026-09-21 12:22:39 UTC    16min ago fwupd-refresh.timer                              fwupd-refresh.service\nMon 2026-09-21 17:39:55 UTC 5h 0min Mon 2026-09-21 09:19:49 UTC 3h 19min ago motd-news.timer                                  motd-news.service\nMon 2026-09-21 21:26:32 UTC      8h Sun 2026-09-20 21:26:32 UTC      15h ago update-notifier-download.timer                   update-notifier-download.service\nMon 2026-09-21 21:36:28 UTC      8h Sun 2026-09-20 21:36:28 UTC      15h ago systemd-tmpfiles-clean.timer                     systemd-tmpfiles-clean.service\nMon 2026-09-21 23:46:01 UTC     11h Mon 2026-09-14 09:11:46 UTC            - update-notifier-motd.timer                       update-notifier-motd.service\nTue 2026-09-22 00:00:00 UTC     11h Mon 2026-09-21 00:00:00 UTC      12h ago dpkg-db-backup.timer                             dpkg-db-backup.service\nTue 2026-09-22 00:00:00 UTC     11h Mon 2026-09-21 00:00:00 UTC      12h ago sysstat-rotate.timer                             sysstat-rotate.service\nTue 2026-09-22 00:07:00 UTC     11h Mon 2026-09-21 00:07:00 UTC      12h ago sysstat-summary.timer                            sysstat-summary.service\nTue 2026-09-22 00:32:35 UTC     11h Mon 2026-09-21 00:48:38 UTC      11h ago logrotate.timer                                  logrotate.service\nTue 2026-09-22 01:24:48 UTC     12h Mon 2026-09-21 09:07:16 UTC 3h 31min ago apt-daily.timer                                  apt-daily.service\nTue 2026-09-22 06:59:01 UTC     18h Mon 2026-09-21 06:41:05 UTC 5h 58min ago apt-daily-upgrade.timer                          apt-daily-upgrade.service\nTue 2026-09-22 09:14:28 UTC     20h Mon 2026-09-21 06:02:48 UTC       6h ago man-db.timer                                     man-db.service\nSun 2026-09-27 03:10:20 UTC  5 days Sun 2026-09-20 03:10:15 UTC 1 day 9h ago xfs_scrub_all.timer                              xfs_scrub_all.service\nSun 2026-09-27 03:10:52 UTC  5 days Sun 2026-09-20 03:10:13 UTC 1 day 9h ago e2scrub_all.timer                                e2scrub_all.service\nMon 2026-09-28 00:35:42 UTC  6 days Mon 2026-09-21 00:46:01 UTC      11h ago fstrim.timer                                     fstrim.service\n-                                 - -                                      - apport-autoreport.timer                          apport-autoreport.service\n-                                 - -                                      - prometheus-node-exporter-ipmitool-sensor.timer   prometheus-node-exporter-ipmitool-sensor.service\n-                                 - -                                      - prometheus-node-exporter-mellanox-hca-temp.timer prometheus-node-exporter-mellanox-hca-temp.service\n-                                 - -                                      - snapd.snap-repair.timer                          snapd.snap-repair.service\n-                                 - -                                      - ua-timer.timer                                   ua-timer.service\n\n24 timers listed.\n",
+  "current_db_sessions": "three idle cbm_prod_runtime sessions from10.1.30.21; refresh under fence before capture",
+  "production_capture_exclusion_verified": false,
+  "reason": "Request030 did not acquire production locks or stop the API; this is read-only inventory and a proposed exclusion procedure"
+}

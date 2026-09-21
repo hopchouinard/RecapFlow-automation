@@ -1,0 +1,16 @@
+{
+  "request_id": "CBM-PROTECTED-RESTORE-PREP-20260921-030",
+  "target": "home.servers",
+  "created_at": "2026-09-21T03:07:51.646887+00:00",
+  "deadline": "2026-09-21T20:00:00Z",
+  "authorization": "Patrick instructed proceeding with the next preparation task. Existing read-only administration, VM108 development and shared relay. No protected transfer or production phase authorized here.",
+  "scope": "resolve private metadata and exact recovery procedure; test new mechanics on synthetic VM108 state; prepare bounded transfer/acceptance proposal",
+  "documents": {
+    "cbm-activation-integration-results.md": "85f5d0b71aa91a2f2e36413a1bbab1f8c99e2fb29d5568f9924656c628c869b3",
+    "cbm-protected-restore-packet.json": "c6b22048b35eaea72a75fc41e892b142705cb1c01cc251474df4ab6dc8266b8c",
+    "cbm-protected-restore-packet.md": "a6e7d1c237f79cabbe03303d7a05ad94a8e189c8e0282a6e4bc505be03a741dd",
+    "cbm-protected-restore-preparation-request.md": "3eed87ec545d24e8a5c87fba5259eaa5f65a80a52353955b442fa7311cd69a96",
+    "old-installation-inventory.json": "68ca5ca7c03ad1b1f6dcb23cd037ed1dc41fc9e06b773d86cf6620c6c4c21733",
+    "production-serving-plan.template.json": "3813710de19baec833b3021925230a3d004ca4095c8089e810766c7b0034ceea"
+  }
+}

@@ -823,3 +823,14 @@ with the 21-slot production template; posted and hash-verified all six Request03
 documents. Home.servers will resolve exact private bindings/commands and validate
 new mechanics on synthetic VM108 state. This was preparation only; no runtime or
 real-data transfer occurred. See [packet](cbm-protected-restore-packet.md).
+
+## September21 — Request030 accepted; capture-wrapper gap explicit
+
+Verified 52 manifest artifacts, 15 live VM108 source files and 39 local tests;
+imported source and acknowledged. Fresh synthetic DB/fence, component transfer/
+restore, WebUI session and budget-negative evidence passed within recorded limits.
+Source/destination bindings and bounded private phase proposal are concrete, but
+capture-wrapper interruption/deadline handling and new receipt validation remain.
+No protected transfer, resizing or paid test occurred. See
+[results](cbm-protected-restore-preparation-results.md), including heartbeat-drift,
+capacity, counting and browser/session evidence limits.
