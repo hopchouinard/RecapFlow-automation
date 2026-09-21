@@ -1,0 +1,45 @@
+{
+  "label": "mackill1",
+  "mode": "mackill",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003433.1616888, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-mackill1-1790003411\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"capture_deadline\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003432.1676588, \"spec_sha256\": \"023627cf19148c237b9438b7af01be9bd690e3ca1700bd808280c9df36e4d514\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "SIGKILL",
+      "target": "mackill",
+      "pid": 27103,
+      "at": 1790003419.38305
+    },
+    {
+      "test": "durable_pending_after_caller_death",
+      "rejected": true,
+      "reason": "ValueError: unresolved pending operation; reconcile only"
+    }
+  ],
+  "spec_sha256": "023627cf19148c237b9438b7af01be9bd690e3ca1700bd808280c9df36e4d514",
+  "operation_id": "r031-mackill1-1790003411",
+  "readback": {
+    "at": 1790003433.1616888,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-mackill1-1790003411",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "capture_deadline",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003432.1676588,
+    "spec_sha256": "023627cf19148c237b9438b7af01be9bd690e3ca1700bd808280c9df36e4d514",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

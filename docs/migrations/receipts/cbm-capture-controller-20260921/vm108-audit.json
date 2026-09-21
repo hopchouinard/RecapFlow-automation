@@ -1,0 +1,2467 @@
+{
+  "checked_at_epoch": 1790004283.9131615,
+  "operations": [
+    {
+      "operation_id": "r031-expiry1-1790003554",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-expiry1-1790003554",
+      "spec_sha256": "7e0d1d20185ac30cb9e8a6ec273e499c9c590db378972795cacb85cd04414130",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "bf4eac6b1749cdcb788c51400ab02144c03f73dc34c56eded291fc4ebfeadc4a",
+      "incumbent_name": "cbm-r031-inc-expiry1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003572.3791196,
+        "prepare_by": 1790003566.3791196,
+        "serving_by": 1790003609.3791196,
+        "validate_by": 1790003629.3791196
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "07392c45e6c3a700525ac28d1b20b5d911cbdadca2f3b2a18392db4c4b876377",
+          "value": {
+            "at": 1790003554.739621,
+            "operation_id": "r031-expiry1-1790003554",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "7e0d1d20185ac30cb9e8a6ec273e499c9c590db378972795cacb85cd04414130"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "19fef9688314533232de1f82c110cd07fac184c8fc38187994ac8c69e747c81d",
+          "value": {
+            "at": 1790003556.0263612,
+            "container_id": "bf4eac6b1749cdcb788c51400ab02144c03f73dc34c56eded291fc4ebfeadc4a",
+            "fingerprint": "dc63cc07aded5c6f744dbe5809b9b6138435f0d732b0acba0108db9b9fafca60"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "0bef400138c1d0f93c2628352707bf815a5516262894271d6399d0f176c93241",
+          "value": {
+            "at": 1790003578.219593,
+            "container_id": "bf4eac6b1749cdcb788c51400ab02144c03f73dc34c56eded291fc4ebfeadc4a",
+            "fingerprint": "dc63cc07aded5c6f744dbe5809b9b6138435f0d732b0acba0108db9b9fafca60",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "e8e9f83a18e4aa254fc301d6d5ae7ffd9a8c618d24da065f3e2b0c47d783f9a2",
+          "value": {
+            "at": 1790003576.2953928,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-expiry1-1790003554",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003575.30585,
+            "spec_sha256": "7e0d1d20185ac30cb9e8a6ec273e499c9c590db378972795cacb85cd04414130",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "b2fb9848a706616c6d708d105cca47edea29b2b247b998a57b27e2b97c646acc",
+          "value": {
+            "at": 1790003578.3207347,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-expiry4-1790003871",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-expiry4-1790003871",
+      "spec_sha256": "e6dc03d957007f23815fa235c406096c5535a0b3fb661049a97717c5088a69cd",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "7c1672d8deede18fad9d468ef39bff8ef65b8e5f8f9d99970d1aa5bf5b033a25",
+      "incumbent_name": "cbm-r031-inc-expiry4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003889.6923864,
+        "prepare_by": 1790003883.6923864,
+        "serving_by": 1790003926.6923864,
+        "validate_by": 1790003946.6923864
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "c7fd2045c39a8421eb920f08e0c20db2a0c9b3626dc1b74ec8193cae70f34cb6",
+          "value": {
+            "at": 1790003872.122659,
+            "operation_id": "r031-expiry4-1790003871",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "e6dc03d957007f23815fa235c406096c5535a0b3fb661049a97717c5088a69cd"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "b92193b2a8893facbc30191511d4a24f1f2a983ea2db9fbb2161325148b3572b",
+          "value": {
+            "at": 1790003873.3394122,
+            "container_id": "7c1672d8deede18fad9d468ef39bff8ef65b8e5f8f9d99970d1aa5bf5b033a25",
+            "fingerprint": "b5a5a99f18b9b1653fcf6d6432a273aa825d333f26e018eb636d491346ae1a76"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "09f824fc764dae69deb9c9eeddcad69b5fa7a5cdef5885b129f5dfa4135fd172",
+          "value": {
+            "at": 1790003895.685336,
+            "container_id": "7c1672d8deede18fad9d468ef39bff8ef65b8e5f8f9d99970d1aa5bf5b033a25",
+            "fingerprint": "b5a5a99f18b9b1653fcf6d6432a273aa825d333f26e018eb636d491346ae1a76",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "1a89a1b5bf60306bcbcb8adbba5a9272cbbbbfcecdb2d332bef4ada77ebe8b6d",
+          "value": {
+            "at": 1790003893.498602,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-expiry4-1790003871",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003892.5016093,
+            "spec_sha256": "e6dc03d957007f23815fa235c406096c5535a0b3fb661049a97717c5088a69cd",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "9f2424b51291039af448b713b0e30f05a1893814bbb4703a7331a4b98416c395",
+          "value": {
+            "at": 1790003895.728831,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-expiry6-1790004236",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-expiry6-1790004236",
+      "spec_sha256": "9d9056d3f11ed77a8d57616f9f2398d1fda2ccbd978350b8f8863bb0131ec7f8",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "a34a3685e5748d91f2b475713f90c0e87c2ecc5469ef1dae53a01ff013848d24",
+      "incumbent_name": "cbm-r031-inc-expiry6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004254.5019808,
+        "prepare_by": 1790004248.5019808,
+        "serving_by": 1790004291.5019808,
+        "validate_by": 1790004311.5019808
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "2ec93d583727f4907af81a4d121703e940600d53fb51a7b2881f917269461335",
+          "value": {
+            "at": 1790004237.0784266,
+            "operation_id": "r031-expiry6-1790004236",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "9d9056d3f11ed77a8d57616f9f2398d1fda2ccbd978350b8f8863bb0131ec7f8"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "0a317e0e7c2046f5c8cab2970e9cbf58c89591f6f42e222c9a2f14d8e8ca9cca",
+          "value": {
+            "at": 1790004238.3961499,
+            "container_id": "a34a3685e5748d91f2b475713f90c0e87c2ecc5469ef1dae53a01ff013848d24",
+            "fingerprint": "27fe0f9b3485211b270de22bfd870e9cca4fff8688e93dcd614c271fd80baf7b"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "13eeb5dc063e486a486e8d37fd4ed11f15e35162e018c4dd75b9590b2f5e57b3",
+          "value": {
+            "at": 1790004260.544329,
+            "container_id": "a34a3685e5748d91f2b475713f90c0e87c2ecc5469ef1dae53a01ff013848d24",
+            "fingerprint": "27fe0f9b3485211b270de22bfd870e9cca4fff8688e93dcd614c271fd80baf7b",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "02d70b928b299adb264fb401fc7a81706dde802b236ca6ee3a320085f67ae62b",
+          "value": {
+            "at": 1790004258.545852,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-expiry6-1790004236",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004257.5300503,
+            "spec_sha256": "9d9056d3f11ed77a8d57616f9f2398d1fda2ccbd978350b8f8863bb0131ec7f8",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "f9e9257ca008c5c03fb1f2d55abf86a16d18e61b427d4787e1d39ae0f8431e46",
+          "value": {
+            "at": 1790004260.697051,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-fenceloss1-1790003444",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-fenceloss1-1790003444",
+      "spec_sha256": "1ccdf0a80e9de3fafb4d2d39bd529c2bea516cd914efd04fb5ffdeee0d7e2a0d",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "5068475d619329b3012b78e2e25c45140bd6cc5a63b2125556f27088cc26ca68",
+      "incumbent_name": "cbm-r031-inc-fenceloss1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003462.9174082,
+        "prepare_by": 1790003456.9174082,
+        "serving_by": 1790003499.9174082,
+        "validate_by": 1790003519.9174082
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "50c047238e1acdaf73aaa12cc6624b58617e6fb6696dcf8db74218fbc07e8a32",
+          "value": {
+            "at": 1790003445.486383,
+            "operation_id": "r031-fenceloss1-1790003444",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "1ccdf0a80e9de3fafb4d2d39bd529c2bea516cd914efd04fb5ffdeee0d7e2a0d"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "932cb114ba78271b75aaf3d4b6b3063cf6bc87198b84be71e3145a5daaa954d5",
+          "value": {
+            "at": 1790003446.7334316,
+            "container_id": "5068475d619329b3012b78e2e25c45140bd6cc5a63b2125556f27088cc26ca68",
+            "fingerprint": "fba854431dc4c70e70bb0be7056e40a078c5853c60d7b870e40862ec19762545"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "31daa7b58c98574d71b90ce192195bef8ddec334074aa680afe95a9944933605",
+          "value": {
+            "at": 1790003459.556565,
+            "container_id": "5068475d619329b3012b78e2e25c45140bd6cc5a63b2125556f27088cc26ca68",
+            "fingerprint": "fba854431dc4c70e70bb0be7056e40a078c5853c60d7b870e40862ec19762545",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "0c4905f2b200dac0909eaa3ec448dd8ddcf2e74319ccc9e962f6998832b9d2ea",
+          "value": {
+            "at": 1790003457.4762907,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-fenceloss1-1790003444",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "database_fence_lost",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003456.5602756,
+            "spec_sha256": "1ccdf0a80e9de3fafb4d2d39bd529c2bea516cd914efd04fb5ffdeee0d7e2a0d",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "5ac9c1770e814446ed73b1577a0941a5863d2d3e7b2dd0b9a94eaeaa9de68232",
+          "value": {
+            "at": 1790003459.580125,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-fenceloss4-1790003758",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-fenceloss4-1790003758",
+      "spec_sha256": "a5a7b77fb4be627481eb44604cc82342bdfd46d634ba9bbe1553fb4fa42c84f8",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "dc9505351b89f14e88e323e26f49344ed5a43e4b956ea979f61d756435603987",
+      "incumbent_name": "cbm-r031-inc-fenceloss4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003776.075049,
+        "prepare_by": 1790003770.075049,
+        "serving_by": 1790003813.075049,
+        "validate_by": 1790003833.075049
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "01fed64558a6ff1a8a4925d769f4e007d2f17b7c24de1ce2cbc3b4ea4b9ccc8e",
+          "value": {
+            "at": 1790003758.531272,
+            "operation_id": "r031-fenceloss4-1790003758",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "a5a7b77fb4be627481eb44604cc82342bdfd46d634ba9bbe1553fb4fa42c84f8"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "33ebdfe9b09c549de1ca0dc3234db99fa62286745955cc68020e73490a741d61",
+          "value": {
+            "at": 1790003759.847155,
+            "container_id": "dc9505351b89f14e88e323e26f49344ed5a43e4b956ea979f61d756435603987",
+            "fingerprint": "c0307baa082cb1f95d4702e6a359cecf079e4c112b7682a12920683692b1e491"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "2d0c2322014fa08bffac9fdbeed9f2383734aea5420213e485202bea2596aa4f",
+          "value": {
+            "at": 1790003773.687599,
+            "container_id": "dc9505351b89f14e88e323e26f49344ed5a43e4b956ea979f61d756435603987",
+            "fingerprint": "c0307baa082cb1f95d4702e6a359cecf079e4c112b7682a12920683692b1e491",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "09d3eda3948f2e5dda2b5ed4e788c3b67f4673c03af5d791bda7897aaad636b9",
+          "value": {
+            "at": 1790003771.795806,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-fenceloss4-1790003758",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "database_fence_lost",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003770.8000457,
+            "spec_sha256": "a5a7b77fb4be627481eb44604cc82342bdfd46d634ba9bbe1553fb4fa42c84f8",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "4717a2d870446d2ab3fcdce17366705669faa51901622e4592ea8e292b3bb002",
+          "value": {
+            "at": 1790003773.832616,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-fenceloss6-1790004123",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-fenceloss6-1790004123",
+      "spec_sha256": "8c809828d16651fb23fb0486a1be5f415be4c67bf364b325bf3d2ccb9fa17491",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "1c2d7241b73a9c8eec15768ebda421816b42e9f4e3cb4cccc7f51f99aa8ed0e3",
+      "incumbent_name": "cbm-r031-inc-fenceloss6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004141.7143764,
+        "prepare_by": 1790004135.7143764,
+        "serving_by": 1790004178.7143764,
+        "validate_by": 1790004198.7143764
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "d945cec9a4c3fdb34c438936ca6a38583ef77eebc6b6864d6dd5789cef1aa112",
+          "value": {
+            "at": 1790004124.1663568,
+            "operation_id": "r031-fenceloss6-1790004123",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "8c809828d16651fb23fb0486a1be5f415be4c67bf364b325bf3d2ccb9fa17491"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "b4a89072b7cee79f6522275ef6520aaae5ea2df30463bcd815cc56b8ce0d9004",
+          "value": {
+            "at": 1790004125.4785028,
+            "container_id": "1c2d7241b73a9c8eec15768ebda421816b42e9f4e3cb4cccc7f51f99aa8ed0e3",
+            "fingerprint": "60310f3d01e0c13f14af91f7876a71e80e1cdc9bd93d6141eb9c6e58d90a36da"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "8449433e45ddde4aa4ec83a8e41d53b60e3e7ca8ee1b82577a4159ef93977c24",
+          "value": {
+            "at": 1790004139.374023,
+            "container_id": "1c2d7241b73a9c8eec15768ebda421816b42e9f4e3cb4cccc7f51f99aa8ed0e3",
+            "fingerprint": "60310f3d01e0c13f14af91f7876a71e80e1cdc9bd93d6141eb9c6e58d90a36da",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "0857a7855447f47807ddc5dc990ec389aeb934880b8caad4f009a31c5a1f0183",
+          "value": {
+            "at": 1790004137.4871492,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-fenceloss6-1790004123",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "database_fence_lost",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004136.5005705,
+            "spec_sha256": "8c809828d16651fb23fb0486a1be5f415be4c67bf364b325bf3d2ccb9fa17491",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "4b681fbb57e368bfd063ff26a0a83c7befa624694e2dde965318954c6bea2d40",
+          "value": {
+            "at": 1790004139.4467294,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-guardiankill1-1790003489",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardiankill1-1790003489",
+      "spec_sha256": "f38c0dd059cc80f7236bc47981029c77c2e9bf7c5490ed6394cd2c3389bc6dba",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "8f9033fba7c363f49c1300098b1c4b715da14c501cd1030f60ea32d62cdcc59c",
+      "incumbent_name": "cbm-r031-inc-guardiankill1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "34.431985s",
+        "MainPID": "0",
+        "Result": "signal",
+        "ExecMainStatus": "9",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003507.920072,
+        "prepare_by": 1790003501.920072,
+        "serving_by": 1790003544.920072,
+        "validate_by": 1790003564.920072
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "a07e3890ff5f817599bc5c3144f79096469bc6c5143c0cec08d3c97684ce6c6e",
+          "value": {
+            "at": 1790003490.3813357,
+            "operation_id": "r031-guardiankill1-1790003489",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "f38c0dd059cc80f7236bc47981029c77c2e9bf7c5490ed6394cd2c3389bc6dba"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "461e3a81d815e43472e813e0bcbd8083e608ff4341a59c0700c03ab2f140c758",
+          "value": {
+            "at": 1790003491.5811338,
+            "container_id": "8f9033fba7c363f49c1300098b1c4b715da14c501cd1030f60ea32d62cdcc59c",
+            "fingerprint": "6601735e6253fa59cbf658c0334a6b96af3a7d2aa381ea3e9f640f32ce0097b7"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "c60f76873e92b422dd6e0c9042f1ab18c302ce6d16f52d19c2dac485c981bc69",
+          "value": {
+            "at": 1790003501.4680085,
+            "container_id": "8f9033fba7c363f49c1300098b1c4b715da14c501cd1030f60ea32d62cdcc59c",
+            "fingerprint": "6601735e6253fa59cbf658c0334a6b96af3a7d2aa381ea3e9f640f32ce0097b7",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "f8fa84dfca02bdd472e41c47bd4675e4209ed144d4c6f9e67403a993bf39c8db",
+          "value": {
+            "at": 1790003502.3653996,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-guardiankill1-1790003489",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "detached_service_recovery",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003501.4680085,
+            "spec_sha256": "f38c0dd059cc80f7236bc47981029c77c2e9bf7c5490ed6394cd2c3389bc6dba",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "dc1227690ee0bf4f8654ebf2051cb66fb902a6cca6b0f4337bc6da793edcd575",
+          "value": {
+            "at": 1790003502.5259943,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-guardiankill4-1790003804",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardiankill4-1790003804",
+      "spec_sha256": "5aba119a6e01831a9df194a4d2d0bb2df626db8aea1af4d53482fef078884648",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "c5ad5ff4787b86a06c7fadff40c088f922985cc85b07d7bb93e801c8eec7a83e",
+      "incumbent_name": "cbm-r031-inc-guardiankill4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "34.436161s",
+        "MainPID": "0",
+        "Result": "signal",
+        "ExecMainStatus": "9",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003822.8557627,
+        "prepare_by": 1790003816.8557627,
+        "serving_by": 1790003859.8557627,
+        "validate_by": 1790003879.8557627
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "b01670a70218ea1e5ad998e64b1b15cb55e32777162b4d2c940bbce7f63189e1",
+          "value": {
+            "at": 1790003805.321776,
+            "operation_id": "r031-guardiankill4-1790003804",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "5aba119a6e01831a9df194a4d2d0bb2df626db8aea1af4d53482fef078884648"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "92914cffce600ee1c5cc497c6ad806ec275ff8d430f7a41b7e5d0d8a8af63816",
+          "value": {
+            "at": 1790003806.7159145,
+            "container_id": "c5ad5ff4787b86a06c7fadff40c088f922985cc85b07d7bb93e801c8eec7a83e",
+            "fingerprint": "fdfeaeebd185fe200b36153b2679dc56aae9d1bda68f8aa1c815376977aaeb74"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "c792371e29ab0c6d5a9e3d82984b5f41ac1b39b8d91bf862f9f332fddf74af24",
+          "value": {
+            "at": 1790003817.6476052,
+            "container_id": "c5ad5ff4787b86a06c7fadff40c088f922985cc85b07d7bb93e801c8eec7a83e",
+            "fingerprint": "fdfeaeebd185fe200b36153b2679dc56aae9d1bda68f8aa1c815376977aaeb74",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "d594feb199cbaa341867688b3cf715d0342bda3723a3b24e54d442d71a6ff0b0",
+          "value": {
+            "at": 1790003818.5502136,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-guardiankill4-1790003804",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "detached_service_recovery",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003817.6476052,
+            "spec_sha256": "5aba119a6e01831a9df194a4d2d0bb2df626db8aea1af4d53482fef078884648",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "f6906c9a599d172569e0df2c6627a94a2a6fbef0d32948e55eea83a351e2308c",
+          "value": {
+            "at": 1790003818.747626,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-guardiankill6-1790004171",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardiankill6-1790004171",
+      "spec_sha256": "115cb72a8d6d9eb59e01ce7b06b06282323b027fc445f226312320064d9336ad",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "05a631511da7311b14d722f28e2353ebc5dec88fe5b3fc4480175e8ee511a97e",
+      "incumbent_name": "cbm-r031-inc-guardiankill6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "34.441972s",
+        "MainPID": "0",
+        "Result": "signal",
+        "ExecMainStatus": "9",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004189.1342163,
+        "prepare_by": 1790004183.1342163,
+        "serving_by": 1790004226.1342163,
+        "validate_by": 1790004246.1342163
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "cb13e2480b0ddf1860447273387f515355fdfab99e130a6dcc8d7052eb0539fe",
+          "value": {
+            "at": 1790004171.5598493,
+            "operation_id": "r031-guardiankill6-1790004171",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "115cb72a8d6d9eb59e01ce7b06b06282323b027fc445f226312320064d9336ad"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "92be8610f682958f9bfa13d82408cba068d05808a2edce04ad953ccc33e89b88",
+          "value": {
+            "at": 1790004172.879117,
+            "container_id": "05a631511da7311b14d722f28e2353ebc5dec88fe5b3fc4480175e8ee511a97e",
+            "fingerprint": "22b1fb4d95de99c3fbbe40f259c01800be466bd2af3e009eebb86d08fcd773aa"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "71421ead1c607b4dbe0bef5795be9a8399ab19f2ea6bcac066e45db3e63d9f52",
+          "value": {
+            "at": 1790004184.3461497,
+            "container_id": "05a631511da7311b14d722f28e2353ebc5dec88fe5b3fc4480175e8ee511a97e",
+            "fingerprint": "22b1fb4d95de99c3fbbe40f259c01800be466bd2af3e009eebb86d08fcd773aa",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "b10677f9971a9ba4c83045624cb9c1c171a3122f7d607ee5806c62d0bee85fbb",
+          "value": {
+            "at": 1790004185.2505836,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-guardiankill6-1790004171",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "detached_service_recovery",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004184.3461497,
+            "spec_sha256": "115cb72a8d6d9eb59e01ce7b06b06282323b027fc445f226312320064d9336ad",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "45862b60a889e2b36d5fc934c861993676ea7a932a341849a9b492e6c623e77b",
+          "value": {
+            "at": 1790004185.3556914,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-guardianstop1-1790003509",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardianstop1-1790003509",
+      "spec_sha256": "37c26d0727b4ecee6b510859cb69dccbd951be85a11da3ab3447ca957503d562",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "d74af9aed0148e33a776b205619b95334ada25e2ac1f79bed23f6815ea8c3d64",
+      "incumbent_name": "cbm-r031-inc-guardianstop1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "34.530065s",
+        "MainPID": "0",
+        "Result": "timeout",
+        "ExecMainStatus": "15",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003527.7788408,
+        "prepare_by": 1790003521.7788408,
+        "serving_by": 1790003564.7788408,
+        "validate_by": 1790003584.7788408
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "4fbc99524724e03a705f96ad06b8b7f69ab2b25164644682b4b5818056a07c24",
+          "value": {
+            "at": 1790003510.205248,
+            "operation_id": "r031-guardianstop1-1790003509",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "37c26d0727b4ecee6b510859cb69dccbd951be85a11da3ab3447ca957503d562"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "dfb40a70e2273e517b01281f057ae2cca1ff27285db01e4efee516fda6aa2cae",
+          "value": {
+            "at": 1790003511.444791,
+            "container_id": "d74af9aed0148e33a776b205619b95334ada25e2ac1f79bed23f6815ea8c3d64",
+            "fingerprint": "cf6525373b0ff5b512af957eec1d1edb24aaf5f67268211c93e0917930fe8b50"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "c5d5ef7193a38e104d0a98603225717dfbcb42164f8d1d3d6b665d252774b2be",
+          "value": {
+            "at": 1790003547.3880541,
+            "container_id": "d74af9aed0148e33a776b205619b95334ada25e2ac1f79bed23f6815ea8c3d64",
+            "fingerprint": "cf6525373b0ff5b512af957eec1d1edb24aaf5f67268211c93e0917930fe8b50",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "95b83487a62075aa3730e8965798d447e70be2c64a9e4306f59fa845923ed18d",
+          "value": {
+            "at": 1790003548.2846963,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-guardianstop1-1790003509",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "detached_service_recovery",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003547.3880541,
+            "spec_sha256": "37c26d0727b4ecee6b510859cb69dccbd951be85a11da3ab3447ca957503d562",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "10f963e61f06dc3770217d4eaf27749a55943c68fb7a440a445060e44b22711e",
+          "value": {
+            "at": 1790003548.4576466,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        },
+        "capture-ready.json": {
+          "sha256": "ca56ff093a3130bdcd3594ceafb0f2ab32fe532937effa7b14c194b25b1d6a6b",
+          "value": {
+            "at": 1790003534.14077,
+            "manifest_sha256": "5e07e6dc443d97ecdce615a848448b8c819214f22ec4e632f8c4916ea222a3e9"
+          }
+        },
+        "fence-released.json": {
+          "sha256": "71aa70c826b11d3a2a8b0e1ef7788f36a6a61d396631d9ccd54258ada25d47ca",
+          "value": {
+            "at": 1790003534.0561373
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-guardianstop4-1790003825",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardianstop4-1790003825",
+      "spec_sha256": "ec3b2727c382515b2d18fd35b365561af995e5cec525e4f536b0aa5abe6a77eb",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "25bc4d243841ad1a4f22841b499d2d11a7efac44c9532837cf2f701e99946770",
+      "incumbent_name": "cbm-r031-inc-guardianstop4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "34.514939s",
+        "MainPID": "0",
+        "Result": "timeout",
+        "ExecMainStatus": "15",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003843.551538,
+        "prepare_by": 1790003837.551538,
+        "serving_by": 1790003880.551538,
+        "validate_by": 1790003900.551538
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "bd740b5c7177acee688a5680c73625cca059aaeeaa952d848124f4b722aafd5c",
+          "value": {
+            "at": 1790003826.004752,
+            "operation_id": "r031-guardianstop4-1790003825",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "ec3b2727c382515b2d18fd35b365561af995e5cec525e4f536b0aa5abe6a77eb"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "fd6dfc204e6949166983e4729df81766893a149886e3d63011bd72041d84d6d9",
+          "value": {
+            "at": 1790003827.1973958,
+            "container_id": "25bc4d243841ad1a4f22841b499d2d11a7efac44c9532837cf2f701e99946770",
+            "fingerprint": "499ce13525ed65308c3fe86a1526c0fe4949c56bf7a9024af001c6cf1220bdca"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "6d077ef6f7df0943f7abb59a658f04a39566339bb1e416af204c2e7818f8c575",
+          "value": {
+            "at": 1790003863.1713073,
+            "container_id": "25bc4d243841ad1a4f22841b499d2d11a7efac44c9532837cf2f701e99946770",
+            "fingerprint": "499ce13525ed65308c3fe86a1526c0fe4949c56bf7a9024af001c6cf1220bdca",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "f54a14ca5ce42d7f3371199fe8ac7884478debc5b122499482a67cd4ed209e03",
+          "value": {
+            "at": 1790003864.272544,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-guardianstop4-1790003825",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "detached_service_recovery",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003863.1713073,
+            "spec_sha256": "ec3b2727c382515b2d18fd35b365561af995e5cec525e4f536b0aa5abe6a77eb",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "c915a51c783ed1b1de72b34b45014a91d9087f9c882bc85f5bd0829d9005fce5",
+          "value": {
+            "at": 1790003864.5285165,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-guardianstop6-1790004191",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardianstop6-1790004191",
+      "spec_sha256": "2f519f2586034aedfba1ef7f9a6ccb3759d714498b83ce9c809d6a75fc990a95",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "8f223ff9fb18974ef86b1a4abe124926c9d17151d3103d4d6e5494f5b169b247",
+      "incumbent_name": "cbm-r031-inc-guardianstop6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "34.430096s",
+        "MainPID": "0",
+        "Result": "timeout",
+        "ExecMainStatus": "15",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004209.4702253,
+        "prepare_by": 1790004203.4702253,
+        "serving_by": 1790004246.4702253,
+        "validate_by": 1790004266.4702253
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "b7401e554b0fda3a964b72ee3baf6f21f353983fd45442a85aca2ee96de14296",
+          "value": {
+            "at": 1790004191.932303,
+            "operation_id": "r031-guardianstop6-1790004191",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "2f519f2586034aedfba1ef7f9a6ccb3759d714498b83ce9c809d6a75fc990a95"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "206aebf75782037804ab94ea6d812bd821255791c2b3833365ed11896cbb7b18",
+          "value": {
+            "at": 1790004193.2041292,
+            "container_id": "8f223ff9fb18974ef86b1a4abe124926c9d17151d3103d4d6e5494f5b169b247",
+            "fingerprint": "0573bc69f7f1738c2d51b525acf199f2254dc23d472f4a03d08f1a95210388ae"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "48d0b6da6e6f7f45acf7fa272b73a08ff492238bdfd1bf96782b69a37684a679",
+          "value": {
+            "at": 1790004229.277312,
+            "container_id": "8f223ff9fb18974ef86b1a4abe124926c9d17151d3103d4d6e5494f5b169b247",
+            "fingerprint": "0573bc69f7f1738c2d51b525acf199f2254dc23d472f4a03d08f1a95210388ae",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "df902337fe5515ee10a65405fa0cabcc2b73f365f3ade3698878e077c310ce0c",
+          "value": {
+            "at": 1790004230.18516,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-guardianstop6-1790004191",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "detached_service_recovery",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004229.277312,
+            "spec_sha256": "2f519f2586034aedfba1ef7f9a6ccb3759d714498b83ce9c809d6a75fc990a95",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "b893cb56353387469a51f9779d3dd4cded4cfe09b9cb348f90b34fec7360a102",
+          "value": {
+            "at": 1790004230.3238053,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-mackill1-1790003411",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-mackill1-1790003411",
+      "spec_sha256": "023627cf19148c237b9438b7af01be9bd690e3ca1700bd808280c9df36e4d514",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "0f5f5ff244ad3a25a0f08857703f7e65410586e19d5878f6baa0f75c3bba04b4",
+      "incumbent_name": "cbm-r031-inc-mackill1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003429.3596284,
+        "prepare_by": 1790003423.3596284,
+        "serving_by": 1790003466.3596284,
+        "validate_by": 1790003486.3596284
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "eaf4eaff994f4f55ab30ce91caf4fb5234912814bc9cbfc759b3dc72c7fadcf1",
+          "value": {
+            "at": 1790003411.781091,
+            "operation_id": "r031-mackill1-1790003411",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "023627cf19148c237b9438b7af01be9bd690e3ca1700bd808280c9df36e4d514"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "fb5c3cb731f9e66a78744cb9a3e1a24dc619a7a355f50b6719d9fc30fb5a338c",
+          "value": {
+            "at": 1790003413.0198925,
+            "container_id": "0f5f5ff244ad3a25a0f08857703f7e65410586e19d5878f6baa0f75c3bba04b4",
+            "fingerprint": "32631e1f860a8c091a5a3d2142328e785be8311931c962da9ea790761245d137"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "dfd18a1c494d312508b341e0e2b78e290b3976ed78b3e4c438bdfec735b315da",
+          "value": {
+            "at": 1790003436.358929,
+            "container_id": "0f5f5ff244ad3a25a0f08857703f7e65410586e19d5878f6baa0f75c3bba04b4",
+            "fingerprint": "32631e1f860a8c091a5a3d2142328e785be8311931c962da9ea790761245d137",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "ea39a502c293fd75d844a06b0efa42aa952cf0e50e5e9283f141e84808b79170",
+          "value": {
+            "at": 1790003433.1616888,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-mackill1-1790003411",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003432.1676588,
+            "spec_sha256": "023627cf19148c237b9438b7af01be9bd690e3ca1700bd808280c9df36e4d514",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "561bd2a4f21eb55f8e15078019e9e5719911c5b5a9e43fcb27e23dbfbd9f39ba",
+          "value": {
+            "at": 1790003436.4527073,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-mackill4-1790003724",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-mackill4-1790003724",
+      "spec_sha256": "3ffb39e6d61e52e700ea78f9c0b9b2b9110115773ba9c4cd97337a0aed772cbd",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "4c16aa0d9dbf1db67f1a4c087c1e92d50ae22031a2059c107c1e0c586c0bc732",
+      "incumbent_name": "cbm-r031-inc-mackill4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003742.4480436,
+        "prepare_by": 1790003736.4480436,
+        "serving_by": 1790003779.4480436,
+        "validate_by": 1790003799.4480436
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "ccb404f76449342d82fd97eb72e1210391b0f905656b1c294e4b0dbc64eb3af3",
+          "value": {
+            "at": 1790003724.9189594,
+            "operation_id": "r031-mackill4-1790003724",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "3ffb39e6d61e52e700ea78f9c0b9b2b9110115773ba9c4cd97337a0aed772cbd"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "4a574af2cf53b320e1a29840d6ce21331f334ad210ecc49ef08ea63b77c2e4be",
+          "value": {
+            "at": 1790003726.1266973,
+            "container_id": "4c16aa0d9dbf1db67f1a4c087c1e92d50ae22031a2059c107c1e0c586c0bc732",
+            "fingerprint": "f53dd9415f38d2c42bbc7e3573efaf176e061ac10d7e6e4afc53e0aa0636ba2a"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "6b7bacc181d12d55540a3364417d4dfa6dff42f39a1b908aadea4f1ce494fc62",
+          "value": {
+            "at": 1790003749.268599,
+            "container_id": "4c16aa0d9dbf1db67f1a4c087c1e92d50ae22031a2059c107c1e0c586c0bc732",
+            "fingerprint": "f53dd9415f38d2c42bbc7e3573efaf176e061ac10d7e6e4afc53e0aa0636ba2a",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "8764e74205c5d5fdcba2cceea275739195f02c7435f4db873212ebaa99093d83",
+          "value": {
+            "at": 1790003746.9826791,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-mackill4-1790003724",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003745.98265,
+            "spec_sha256": "3ffb39e6d61e52e700ea78f9c0b9b2b9110115773ba9c4cd97337a0aed772cbd",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "df213b9cce0a0dc9bbc77c222f3d61d36c5fdf6c2d5b99a8e73db4113c0d868d",
+          "value": {
+            "at": 1790003749.3838544,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-mackill6-1790004089",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-mackill6-1790004089",
+      "spec_sha256": "26b35102ee95874f6f9aed2813510f52e6a53aaf14a5ece6d1b1631dcb734e23",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "21ae55fc9bcf1df93e247a0fc22881f69a382eacc60306580eb0c97af548ccc3",
+      "incumbent_name": "cbm-r031-inc-mackill6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004107.4291492,
+        "prepare_by": 1790004101.4291492,
+        "serving_by": 1790004144.4291492,
+        "validate_by": 1790004164.4291492
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "6abf1881976f180957059c74c44f943e9a068d8ad90705bd9837f59137c3da0c",
+          "value": {
+            "at": 1790004089.9330342,
+            "operation_id": "r031-mackill6-1790004089",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "26b35102ee95874f6f9aed2813510f52e6a53aaf14a5ece6d1b1631dcb734e23"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "575898046b1965d7b504ec3b41e8d2b50e566a7a5c2717c7bee3c73202517a24",
+          "value": {
+            "at": 1790004091.1645677,
+            "container_id": "21ae55fc9bcf1df93e247a0fc22881f69a382eacc60306580eb0c97af548ccc3",
+            "fingerprint": "2fc582e8b579de1c59a8fd50a1ecdf4e02d49449aba5e4f23ad0e75af9ca7c57"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "57a991cc189b1366c4d698b95589ef5165ab3c7f065f79228c333bb350fced4d",
+          "value": {
+            "at": 1790004114.6755762,
+            "container_id": "21ae55fc9bcf1df93e247a0fc22881f69a382eacc60306580eb0c97af548ccc3",
+            "fingerprint": "2fc582e8b579de1c59a8fd50a1ecdf4e02d49449aba5e4f23ad0e75af9ca7c57",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "e3465a91ddfc475d47d2100d857c669f159bfb712a583e9b91f8fbf9193e81af",
+          "value": {
+            "at": 1790004111.8772268,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-mackill6-1790004089",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004110.7753215,
+            "spec_sha256": "26b35102ee95874f6f9aed2813510f52e6a53aaf14a5ece6d1b1631dcb734e23",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "a48b966c962dd7787efcad16f85826db1b18f1e6ce0136164c993cc33b880577",
+          "value": {
+            "at": 1790004114.805815,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-mackill6-1790004089-compete",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-mackill6-1790004089-compete",
+      "spec_sha256": "c5b5666a0632f4635724fa3cc0957e61fa47d4d7d776e882aab77b5fe56d5ee3",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "21ae55fc9bcf1df93e247a0fc22881f69a382eacc60306580eb0c97af548ccc3",
+      "incumbent_name": "cbm-r031-inc-mackill6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "19.721896s",
+        "MainPID": "0",
+        "Result": "exit-code",
+        "ExecMainStatus": "1",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004118.5190852,
+        "prepare_by": 1790004108.5190852,
+        "serving_by": 1790004138.5190852,
+        "validate_by": 1790004158.5190852
+      },
+      "stop_intent_present": false,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "c56c190a969c0399803ca30f965ca14a6e4d9b4152a72bd9a8fdfc8166050999",
+          "value": {
+            "at": 1790004098.7514007,
+            "operation_id": "r031-mackill6-1790004089-compete",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "c5b5666a0632f4635724fa3cc0957e61fa47d4d7d776e882aab77b5fe56d5ee3"
+          }
+        },
+        "recovery-unresolved.json": {
+          "sha256": "7840495944c62792cffbf4040535f682e475c508a6c45ba4c58e669c08d11470",
+          "value": {
+            "at": 1790004099.3237932,
+            "error_type": "BlockingIOError",
+            "replay_allowed": false,
+            "spec_sha256": "c5b5666a0632f4635724fa3cc0957e61fa47d4d7d776e882aab77b5fe56d5ee3"
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "uncertain_pre_stop_competitor_retained_no_replay"
+    },
+    {
+      "operation_id": "r031-normal1-1790003198",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-normal1-1790003198",
+      "spec_sha256": "f2834a535080efe1258676bcff201c3ef2a2ef1783118b1a7e4e7781431e33ea",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v1",
+      "packet_sha256": "20a8b2c82dadd7377526f7a00770c226e8a609cd1c334de4bcc9bf5fbb32ba05",
+      "incumbent_id": "51b2bcf97c2caf9f84e0954913aa0490aaaf3b076f2ffbc0bf5226c83eea9f7b",
+      "incumbent_name": "cbm-r031-inc-normal1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "failed",
+        "Restart": "no",
+        "TimeoutStopUSec": "8s",
+        "RuntimeMaxUSec": "1min 19.391134s",
+        "MainPID": "0",
+        "Result": "exit-code",
+        "ExecMainStatus": "1",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003263.4900692,
+        "prepare_by": 1790003223.4900692,
+        "serving_by": 1790003298.4900692,
+        "validate_by": 1790003323.4900692
+      },
+      "stop_intent_present": false,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "5bd196a982a86fc3c4fb9f1ee8653903c24c52cb43da94eb736a040a9b0558a4",
+          "value": {
+            "at": 1790003199.0152786,
+            "operation_id": "r031-normal1-1790003198",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "f2834a535080efe1258676bcff201c3ef2a2ef1783118b1a7e4e7781431e33ea"
+          }
+        },
+        "terminal.json": {
+          "sha256": "c569fc0fcd3f35ba3f2c8a1dbc590f67e514d418acae811a24b2d027768f69c3",
+          "value": {
+            "at": 1790003293.6570377,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-normal1-1790003198",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "pre_stop_refusal",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "spec_sha256": "f2834a535080efe1258676bcff201c3ef2a2ef1783118b1a7e4e7781431e33ea",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "fa707f92c711e14c4ff951c232bb74601fd2d717b0e0e63a358114044ba51482",
+          "value": {
+            "at": 1790003293.9459705,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        },
+        "refusal.json": {
+          "sha256": "a7b63b0234ff9e61b4262d3e2694bfef3bf6210980ea3c3f80fc1bc274e5f604",
+          "value": {
+            "reason": "no_stop_intent",
+            "spec_sha256": "f2834a535080efe1258676bcff201c3ef2a2ef1783118b1a7e4e7781431e33ea",
+            "state": "refused"
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-normal2-1790003305",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-normal2-1790003305",
+      "spec_sha256": "b43ff873d5890931f088a1edd08f9ebf50a91cbb594fed00a05105b52101bf70",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "2757fc2c345abed7bcc31f1cd5ce6952c7ff48ac13b181bc051c5233c30ccab3",
+      "incumbent_name": "cbm-r031-inc-normal2",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003370.2030065,
+        "prepare_by": 1790003317.2030065,
+        "serving_by": 1790003405.2030065,
+        "validate_by": 1790003430.2030065
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "32f246ccddbce9c2c69e7eb4e5280abd439910d310d620f9a29b0d6ae609dcba",
+          "value": {
+            "at": 1790003305.682777,
+            "operation_id": "r031-normal2-1790003305",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "b43ff873d5890931f088a1edd08f9ebf50a91cbb594fed00a05105b52101bf70"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "48d6d7f846f82062a44aeb7dc25501c43ea372afb0efe65cb041de777f74ad01",
+          "value": {
+            "at": 1790003306.762024,
+            "container_id": "2757fc2c345abed7bcc31f1cd5ce6952c7ff48ac13b181bc051c5233c30ccab3",
+            "fingerprint": "a1ee94b6006eef21d1ec5a30a0db3dc601e743c9177d9873ec95656919d35b45"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "d979184e057f837911598d8fe18cdaa102f71a6bc6aa60d7f6c6dc5f0a49fc9b",
+          "value": {
+            "at": 1790003326.325431,
+            "container_id": "2757fc2c345abed7bcc31f1cd5ce6952c7ff48ac13b181bc051c5233c30ccab3",
+            "fingerprint": "a1ee94b6006eef21d1ec5a30a0db3dc601e743c9177d9873ec95656919d35b45",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "4112e378edc9bfb831a009f57b2b0911ad9cb4376e44d00d89ee88eae2764499",
+          "value": {
+            "at": 1790003324.4282107,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-normal2-1790003305",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "verified_capture_and_database_restore",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003323.5298293,
+            "spec_sha256": "b43ff873d5890931f088a1edd08f9ebf50a91cbb594fed00a05105b52101bf70",
+            "state": "completed"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "0d4d2dfb33c520bebcbda700f426e1e21b81b1c63745288c76c6b68e9fa6544f",
+          "value": {
+            "at": 1790003326.3957791,
+            "incumbent_healthy": true,
+            "terminal_state": "completed",
+            "verified": true
+          }
+        },
+        "worker-result.json": {
+          "sha256": "96d53c195434259c9db12789c19bd1993bed3355daad053715acfc73f6e0d7ba",
+          "value": {
+            "canonical_observations_equal": true,
+            "capture_id": "capture-r031-normal2-1790003305",
+            "database_receipt_sha256": "a05b8b8584443a46cfb9f40741a610d3604028d034b278f87f14aa877594a10b",
+            "independent_servers": true,
+            "manifest_sha256": "5e1ebdff3f38df13aa53ee736960f174c17f7ef165547760f263d3df0a3cd8c9",
+            "operation_id": "r031-normal2-1790003305",
+            "production_qualified": false,
+            "schema": "cbm.database-verification/1"
+          }
+        },
+        "capture-ready.json": {
+          "sha256": "8245a69bc02a0403e35d55c98f0a3ee2cc7490703f79f4362cd1eb4eb056a901",
+          "value": {
+            "at": 1790003313.8044329,
+            "manifest_sha256": "5e1ebdff3f38df13aa53ee736960f174c17f7ef165547760f263d3df0a3cd8c9"
+          }
+        },
+        "fence-released.json": {
+          "sha256": "5a242ceb4f26951a30e98ac39665ccc4e6f19c5bbe5b1785e2059e5d57098395",
+          "value": {
+            "at": 1790003313.7385106
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "completed",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-normal4-1790003650",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-normal4-1790003650",
+      "spec_sha256": "43e7b9e568795f00ee1458e5501e1838d64a007a40e0691fdaa1b0e4a99a83e0",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "788eb7228c7e831c70070834f0ec15a095a701e31aa588bc43f599a766cd3a5d",
+      "incumbent_name": "cbm-r031-inc-normal4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003715.450054,
+        "prepare_by": 1790003662.450054,
+        "serving_by": 1790003750.450054,
+        "validate_by": 1790003775.450054
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "49b95d181f40cf1748a762aaddd47f6bc60b3385075a824c065beb18c6f4eee9",
+          "value": {
+            "at": 1790003650.917122,
+            "operation_id": "r031-normal4-1790003650",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "43e7b9e568795f00ee1458e5501e1838d64a007a40e0691fdaa1b0e4a99a83e0"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "e5bff0f3efeea55c3e2ef02fc7c712e7e3a401252c6bc66dedbbb5c1591c0df2",
+          "value": {
+            "at": 1790003652.05178,
+            "container_id": "788eb7228c7e831c70070834f0ec15a095a701e31aa588bc43f599a766cd3a5d",
+            "fingerprint": "483711acbdd07d5115819d441bf81ac5bb55b9bd38e20c4a1b9b2c12a232c689"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "6b7315eb496de6c80fb944390025f62359727bbcfd18d043912370968f92e828",
+          "value": {
+            "at": 1790003676.4386203,
+            "container_id": "788eb7228c7e831c70070834f0ec15a095a701e31aa588bc43f599a766cd3a5d",
+            "fingerprint": "483711acbdd07d5115819d441bf81ac5bb55b9bd38e20c4a1b9b2c12a232c689",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "6dd09a0e21dc19ee0999ca61930d1c4fdbdffa055d0925ee844702bd010f4d8c",
+          "value": {
+            "at": 1790003674.7289822,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-normal4-1790003650",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "verified_capture_and_database_restore",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003673.8363914,
+            "spec_sha256": "43e7b9e568795f00ee1458e5501e1838d64a007a40e0691fdaa1b0e4a99a83e0",
+            "state": "completed"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "daba4ff1ef7606b8b5e8952017376ea0738f2e74f0f247a26d81d6f592c6330f",
+          "value": {
+            "at": 1790003676.487987,
+            "incumbent_healthy": true,
+            "terminal_state": "completed",
+            "verified": true
+          }
+        },
+        "worker-result.json": {
+          "sha256": "aa85eebcdb55469200edeec6aa06aa8f5d33798a7d346b87b1d8fa668f6d0ef5",
+          "value": {
+            "canonical_observations_equal": true,
+            "capture_id": "capture-r031-normal4-1790003650",
+            "database_receipt_sha256": "29b917d3f39d21bd264e86278d532dad311a3ed9ae14cdb7aff8ecc16ede7870",
+            "independent_servers": true,
+            "manifest_sha256": "aa07cc91ac9efcee2bc0e2aa25436395a8c0ea72d4cf04ab71c837a7ef41708f",
+            "operation_id": "r031-normal4-1790003650",
+            "production_qualified": false,
+            "schema": "cbm.database-verification/1"
+          }
+        },
+        "capture-ready.json": {
+          "sha256": "8ebf796a8b8e71f879adbf1ef0e2111b6bb96c0fd25e6d7d685493609591841f",
+          "value": {
+            "at": 1790003663.871946,
+            "manifest_sha256": "aa07cc91ac9efcee2bc0e2aa25436395a8c0ea72d4cf04ab71c837a7ef41708f"
+          }
+        },
+        "fence-released.json": {
+          "sha256": "5de222a017bdce458252d34ef97aad1b67aabdaf19facbe43ef9ae3145f2a683",
+          "value": {
+            "at": 1790003663.7460783
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "completed",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-normal5-1790003926",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-normal5-1790003926",
+      "spec_sha256": "bb1df6f11baedf661b590e94e15b8e660007fb41938163acb5b5df38f87e8bf3",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v5",
+      "packet_sha256": "9a14eea1245fe8473e8a8225861f487f3d3cb71302313ba8008be00edcaa119b",
+      "incumbent_id": "7d8f5b5a81b0590edb8419993c7144e6fc850742125edfa35852e5022860226c",
+      "incumbent_name": "cbm-r031-inc-normal5",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003991.7963784,
+        "prepare_by": 1790003938.7963784,
+        "serving_by": 1790004026.7963784,
+        "validate_by": 1790004051.7963784
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "7429ba454bcadd82aab61b88bc93c9a700e95bfedf54300009da93dec4ffaf15",
+          "value": {
+            "at": 1790003927.5173063,
+            "operation_id": "r031-normal5-1790003926",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "bb1df6f11baedf661b590e94e15b8e660007fb41938163acb5b5df38f87e8bf3"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "5849461abf99e39a661e137713125ca9b0a92fae3e9994a885ae29b1f95581b3",
+          "value": {
+            "at": 1790003928.7772927,
+            "container_id": "7d8f5b5a81b0590edb8419993c7144e6fc850742125edfa35852e5022860226c",
+            "fingerprint": "542a4209f732e5d0ee04fd83eaf7a97373a70445294153c285a3faa6ec024232"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "862eb4701225c59f7936cbb9452ffe7612dc293efd22dfadbe43c2cbfb4e028e",
+          "value": {
+            "at": 1790003952.3302636,
+            "container_id": "7d8f5b5a81b0590edb8419993c7144e6fc850742125edfa35852e5022860226c",
+            "fingerprint": "542a4209f732e5d0ee04fd83eaf7a97373a70445294153c285a3faa6ec024232",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "a50fa24b72336bf0bc67d8947f6bc0cdbc0f8fa75c2cac3ace97e47ec4fc08f8",
+          "value": {
+            "at": 1790003950.235327,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-normal5-1790003926",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "verified_capture_and_database_restore",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003949.3360975,
+            "spec_sha256": "bb1df6f11baedf661b590e94e15b8e660007fb41938163acb5b5df38f87e8bf3",
+            "state": "completed"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "7e0fd2d6a7bd78c2923c7ac44ff38db96fb8b8eedbc8c08540ab79c7ee45eea4",
+          "value": {
+            "at": 1790003952.3592596,
+            "incumbent_healthy": true,
+            "terminal_state": "completed",
+            "verified": true
+          }
+        },
+        "worker-result.json": {
+          "sha256": "f56f2381c587fe92299a6d93e78f158d2d221217c0f9d3edce15934ef387c42c",
+          "value": {
+            "canonical_observations_equal": true,
+            "capture_id": "capture-r031-normal5-1790003926",
+            "database_receipt_sha256": "0a7820bf57cec9001b915d4fc9186ec8470099da45d81e784384fc9e0843f78a",
+            "independent_servers": true,
+            "manifest_sha256": "671524d312fd8bdedf128a707e2516edd45427561259ee6737dd363d91a23103",
+            "operation_id": "r031-normal5-1790003926",
+            "production_qualified": false,
+            "schema": "cbm.database-verification/1"
+          }
+        },
+        "capture-ready.json": {
+          "sha256": "8419b5ebc431f4d348778b571b68229fb01eaa7fbdcf7be97c99b1107c815a38",
+          "value": {
+            "at": 1790003940.277538,
+            "manifest_sha256": "671524d312fd8bdedf128a707e2516edd45427561259ee6737dd363d91a23103"
+          }
+        },
+        "fence-released.json": {
+          "sha256": "3360192bd8c7eb860efecb69372fbdb5c2be2fc9ab49ff485d8012744ac76691",
+          "value": {
+            "at": 1790003940.2527273
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "completed",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-normal6-1790004018",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-normal6-1790004018",
+      "spec_sha256": "62dda738b2797949b4e84baa58db8159db093278150ebeb20303b7ff0ac62989",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "45ea5e2d16b502d4962ae54464aa2df38a44a3c1c9063d45589227cfd041aa14",
+      "incumbent_name": "cbm-r031-inc-normal6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004083.052409,
+        "prepare_by": 1790004030.052409,
+        "serving_by": 1790004118.052409,
+        "validate_by": 1790004143.052409
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "0b605e1395fa9368ac578176a1adda80d848fe0cabc6a3c16453311aa24b9150",
+          "value": {
+            "at": 1790004018.5019312,
+            "operation_id": "r031-normal6-1790004018",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "62dda738b2797949b4e84baa58db8159db093278150ebeb20303b7ff0ac62989"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "23fa6313c23dc7e994da61637ce5ccaec579c79ae90294da0f350bde7babdb7e",
+          "value": {
+            "at": 1790004019.720078,
+            "container_id": "45ea5e2d16b502d4962ae54464aa2df38a44a3c1c9063d45589227cfd041aa14",
+            "fingerprint": "da8a64cc9df0f875e663d873cffa608bb5c9f1ad07eed565b62948450a0959b3"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "2d00dae18d8480ea2decc1dbfe8b3bd7bfb5e9aa72be282c9af66348e26daecf",
+          "value": {
+            "at": 1790004042.8016422,
+            "container_id": "45ea5e2d16b502d4962ae54464aa2df38a44a3c1c9063d45589227cfd041aa14",
+            "fingerprint": "da8a64cc9df0f875e663d873cffa608bb5c9f1ad07eed565b62948450a0959b3",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "172fa1f0e5ef715eb302dc26fb401192e4eefb88d3cea32b5d931ad8f18c31eb",
+          "value": {
+            "at": 1790004040.812717,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-normal6-1790004018",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "verified_capture_and_database_restore",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004039.904669,
+            "spec_sha256": "62dda738b2797949b4e84baa58db8159db093278150ebeb20303b7ff0ac62989",
+            "state": "completed"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "c4ff69a52800183147bb8daf7a3fac0662b941f164b1d0591b000e8cb13336bd",
+          "value": {
+            "at": 1790004042.912735,
+            "incumbent_healthy": true,
+            "terminal_state": "completed",
+            "verified": true
+          }
+        },
+        "worker-result.json": {
+          "sha256": "cc48dd1624b9dc874fc5698d92b5fe3b708aad74d088b9baf0789621831da431",
+          "value": {
+            "canonical_observations_equal": true,
+            "capture_id": "capture-r031-normal6-1790004018",
+            "database_receipt_sha256": "b135eaaefc30a022f1cde1dd846524c4611008cf7710529fd7d30cd96dc283f8",
+            "independent_servers": true,
+            "manifest_sha256": "e8287ae52ec5c659e669eca3a150ddb4acdf7af12cbe0d477dad42833217bf89",
+            "operation_id": "r031-normal6-1790004018",
+            "production_qualified": false,
+            "schema": "cbm.database-verification/1"
+          }
+        },
+        "capture-ready.json": {
+          "sha256": "b926579690f24dada7e248a21d5c3d2f0ba8aa64860f5de78d498899c3513959",
+          "value": {
+            "at": 1790004031.2207813,
+            "manifest_sha256": "e8287ae52ec5c659e669eca3a150ddb4acdf7af12cbe0d477dad42833217bf89"
+          }
+        },
+        "fence-released.json": {
+          "sha256": "b4cf963187896ebf5622239d191b41bcb7d0595a5b1c2769606c128aeab54116",
+          "value": {
+            "at": 1790004031.165534
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "completed",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-sshkill1-1790003378",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-sshkill1-1790003378",
+      "spec_sha256": "559491f0bee8b462fc66ff617d693d963671103025c77e2735383054b664d4b5",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "92d1e8fc044eecc77e354cea57515a279dc368d411c0f37d07507aa856616abc",
+      "incumbent_name": "cbm-r031-inc-sshkill1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003396.2642934,
+        "prepare_by": 1790003390.2642934,
+        "serving_by": 1790003433.2642934,
+        "validate_by": 1790003453.2642934
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "2988c4d41f393108235eb131127f34b1ddf489c28bb6c433ed2dab533e8601b4",
+          "value": {
+            "at": 1790003378.7774804,
+            "operation_id": "r031-sshkill1-1790003378",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "559491f0bee8b462fc66ff617d693d963671103025c77e2735383054b664d4b5"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "a89956610c4fbcdffa220e35515b225d176f05117d7940c267f0ec87a4848dbe",
+          "value": {
+            "at": 1790003379.989184,
+            "container_id": "92d1e8fc044eecc77e354cea57515a279dc368d411c0f37d07507aa856616abc",
+            "fingerprint": "538f6eeed1709358d0aa66ebb064df7d1c0fa3f95a92550e3af38496e35cc67a"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "8b65e649834c44338a45cc78bcdcc27b1454da23515ebbddfb244ffd82bcc943",
+          "value": {
+            "at": 1790003403.3213193,
+            "container_id": "92d1e8fc044eecc77e354cea57515a279dc368d411c0f37d07507aa856616abc",
+            "fingerprint": "538f6eeed1709358d0aa66ebb064df7d1c0fa3f95a92550e3af38496e35cc67a",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "dcbc907272970c4b1f9be650f93c8b223cdd1bbccfc6a899abf82da6a0f0ba6c",
+          "value": {
+            "at": 1790003400.2110937,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-sshkill1-1790003378",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003399.2278314,
+            "spec_sha256": "559491f0bee8b462fc66ff617d693d963671103025c77e2735383054b664d4b5",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "f8a2ac92fcdfd70872f4a902d9cbb39c8ccc65c3f239c76da9b2f0cd56459214",
+          "value": {
+            "at": 1790003403.3507118,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-sshkill4-1790003690",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-sshkill4-1790003690",
+      "spec_sha256": "d79923b3f78984087421e59067e26d060951c8adc39d69b925199abb8a3ceabc",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "1ca4472abacc06c63252c4f170cf8f307cea2614d67b32d6fca6ba4595d51c8f",
+      "incumbent_name": "cbm-r031-inc-sshkill4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003708.8120074,
+        "prepare_by": 1790003702.8120074,
+        "serving_by": 1790003745.8120074,
+        "validate_by": 1790003765.8120074
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "ece225785ed1f145a8fd4ad79de643b21408ddbbc7d4a6ab37f8bb404b58586a",
+          "value": {
+            "at": 1790003691.2547512,
+            "operation_id": "r031-sshkill4-1790003690",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "d79923b3f78984087421e59067e26d060951c8adc39d69b925199abb8a3ceabc"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "8860e7c5e09ccd8e7c1350c0d20d8cb2c788ec98e5f14b1d035a54317955b131",
+          "value": {
+            "at": 1790003692.468642,
+            "container_id": "1ca4472abacc06c63252c4f170cf8f307cea2614d67b32d6fca6ba4595d51c8f",
+            "fingerprint": "3787417deaa0762cb2705bd4205825a8b69a6e435ee01b2e006199018d6fa804"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "028d171fedf9ed2c388a1cbb27b1c07637994b23f74d712be5bd5ea059c40ede",
+          "value": {
+            "at": 1790003715.3124518,
+            "container_id": "1ca4472abacc06c63252c4f170cf8f307cea2614d67b32d6fca6ba4595d51c8f",
+            "fingerprint": "3787417deaa0762cb2705bd4205825a8b69a6e435ee01b2e006199018d6fa804",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "b0e1b04f5679e19bb1def84ab816273872f458b61888648f4bfd0c9c8e67677e",
+          "value": {
+            "at": 1790003712.9128985,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-sshkill4-1790003690",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003711.9286027,
+            "spec_sha256": "d79923b3f78984087421e59067e26d060951c8adc39d69b925199abb8a3ceabc",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "9599a7d6c389fa9786a95f26caca6d17062c6a598bebf64c03664265a91ea6d0",
+          "value": {
+            "at": 1790003715.370301,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-sshkill6-1790004055",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-sshkill6-1790004055",
+      "spec_sha256": "922df1abc57436d84401e39272da1960d3d086ab2701784349028eaed5b085f7",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "0976dc07bea1f3e7c08bb5d85356dd1b04c6d49c0b18060feb5d02c66227950c",
+      "incumbent_name": "cbm-r031-inc-sshkill6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004073.8255455,
+        "prepare_by": 1790004067.8255455,
+        "serving_by": 1790004110.8255455,
+        "validate_by": 1790004130.8255455
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "ee335461c56778ae5cd512ab0731a4a7a8f80f2f60a2c8e40c4bd1e5245a5560",
+          "value": {
+            "at": 1790004056.2976673,
+            "operation_id": "r031-sshkill6-1790004055",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "922df1abc57436d84401e39272da1960d3d086ab2701784349028eaed5b085f7"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "9e7370158cb759c4819f6e54dedfa64b57643ba4cab02502cb6974c0b517d81b",
+          "value": {
+            "at": 1790004057.6954389,
+            "container_id": "0976dc07bea1f3e7c08bb5d85356dd1b04c6d49c0b18060feb5d02c66227950c",
+            "fingerprint": "ce1bc5f5b553ca61e7d9723561c26d76df76a20312ac9416dec924962800b993"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "f4ab577261e2818dfd85546bc06fa599f6d0017e2229aadafbb90f72da89100c",
+          "value": {
+            "at": 1790004080.9399369,
+            "container_id": "0976dc07bea1f3e7c08bb5d85356dd1b04c6d49c0b18060feb5d02c66227950c",
+            "fingerprint": "ce1bc5f5b553ca61e7d9723561c26d76df76a20312ac9416dec924962800b993",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "75f061e50ace2bbf9597aa0e1ae6d1a1b7d333e966e6532bf9c59a700d4a0ee5",
+          "value": {
+            "at": 1790004077.8465014,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-sshkill6-1790004055",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "capture_deadline",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004076.8445187,
+            "spec_sha256": "922df1abc57436d84401e39272da1960d3d086ab2701784349028eaed5b085f7",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "bbcc9cdbe0953c2166c0857c62a2e0ddf618408f3957a61af65566062cdca0a2",
+          "value": {
+            "at": 1790004080.9909568,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-workerkill1-1790003467",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-workerkill1-1790003467",
+      "spec_sha256": "63aaa06bb19bfe1e6598da76bab4ee3242f1b4a4b93661a916118a3f9dc88467",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+      "packet_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "incumbent_id": "d488d20fb77235c5dd76f5228cbdc11a34df599c1b3d87abd3b72896bf5cd830",
+      "incumbent_name": "cbm-r031-inc-workerkill1",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003485.3520243,
+        "prepare_by": 1790003479.3520243,
+        "serving_by": 1790003522.3520243,
+        "validate_by": 1790003542.3520243
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "e6d74163213b6feaaf7962dcca9f5ade32d0ffb8ad7b80fdd76231515af43c66",
+          "value": {
+            "at": 1790003467.840971,
+            "operation_id": "r031-workerkill1-1790003467",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "63aaa06bb19bfe1e6598da76bab4ee3242f1b4a4b93661a916118a3f9dc88467"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "6487319ab81c6e00d8b08d7ddc73737938532fe08983fdb1335445972e1a46ff",
+          "value": {
+            "at": 1790003469.1867507,
+            "container_id": "d488d20fb77235c5dd76f5228cbdc11a34df599c1b3d87abd3b72896bf5cd830",
+            "fingerprint": "a32fbb0b428d8383919213738651797f2f4baf5555e16ddd40974f1fbfdb72e4"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "bdd1f49b1057c53226d2a11e3a802e63bdd4257570b68aad72f6d58cd1c52896",
+          "value": {
+            "at": 1790003481.389472,
+            "container_id": "d488d20fb77235c5dd76f5228cbdc11a34df599c1b3d87abd3b72896bf5cd830",
+            "fingerprint": "a32fbb0b428d8383919213738651797f2f4baf5555e16ddd40974f1fbfdb72e4",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "e0a5ab2710c97eb8ede830f99f0284871efddb309e0728ea0e5f36a9c06cacd8",
+          "value": {
+            "at": 1790003479.4918413,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-workerkill1-1790003467",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "worker_failure",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003478.587425,
+            "spec_sha256": "63aaa06bb19bfe1e6598da76bab4ee3242f1b4a4b93661a916118a3f9dc88467",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "cb3b671258fe10e98f73a3e230a44cee6fb7b79a921c8af6d423f3693bfdfaa1",
+          "value": {
+            "at": 1790003481.459189,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-workerkill4-1790003781",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-workerkill4-1790003781",
+      "spec_sha256": "24b619f38b26d901a193c172a521ffd8dbe51c1f880d86ee843c506b9a38fad7",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v4",
+      "packet_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "incumbent_id": "700606241ac75298b134d657fc59fc761b873153d23eb90f794a07b83b8f9148",
+      "incumbent_name": "cbm-r031-inc-workerkill4",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790003799.4892867,
+        "prepare_by": 1790003793.4892867,
+        "serving_by": 1790003836.4892867,
+        "validate_by": 1790003856.4892867
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "7a241abc51008e47802a95f7081acf43ce39f8db4f162837042d8aad8d8c3a66",
+          "value": {
+            "at": 1790003781.89962,
+            "operation_id": "r031-workerkill4-1790003781",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "24b619f38b26d901a193c172a521ffd8dbe51c1f880d86ee843c506b9a38fad7"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "200b5d2c07df6cda0e3ed02fdfe969cfc4cb4b02695aa962445ff82e049d6530",
+          "value": {
+            "at": 1790003783.1639035,
+            "container_id": "700606241ac75298b134d657fc59fc761b873153d23eb90f794a07b83b8f9148",
+            "fingerprint": "c8b146bfe2fc35424ddcb8b99d238b86ba97715a4f52ce392b74ffc236ff91d1"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "5960291be0de63577a4c45766fa8085588cd61995fd989dac43889dd8ab949a3",
+          "value": {
+            "at": 1790003796.6813517,
+            "container_id": "700606241ac75298b134d657fc59fc761b873153d23eb90f794a07b83b8f9148",
+            "fingerprint": "c8b146bfe2fc35424ddcb8b99d238b86ba97715a4f52ce392b74ffc236ff91d1",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "c3d93980de14830da282b15827808cfd00cee8060f00ef74b4c205d31b25eafd",
+          "value": {
+            "at": 1790003794.68635,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-workerkill4-1790003781",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "worker_failure",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790003793.7835445,
+            "spec_sha256": "24b619f38b26d901a193c172a521ffd8dbe51c1f880d86ee843c506b9a38fad7",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "73e875628c490171dc04ede63f3b89a2be9aaa2aa110d8a2ac3d2285931d329a",
+          "value": {
+            "at": 1790003796.7697268,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    },
+    {
+      "operation_id": "r031-workerkill6-1790004147",
+      "owner_id": "home-servers-request031",
+      "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-workerkill6-1790004147",
+      "spec_sha256": "e83a0a57d52508925a16cdf558b694a12b65bfadc0e97280d9945d72d09c076b",
+      "packet": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v6",
+      "packet_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "incumbent_id": "5e37185c6d117a5f5e703ddb4119d1c02a5a578c48cb6cf477a890782fa4da88",
+      "incumbent_name": "cbm-r031-inc-workerkill6",
+      "incumbent_running_before_teardown": true,
+      "incumbent_configuration_equal": true,
+      "holds_equal": true,
+      "unit": {
+        "ActiveState": "inactive",
+        "Restart": "no",
+        "TimeoutStopUSec": "1min 30s",
+        "RuntimeMaxUSec": "infinity",
+        "MainPID": "0",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "KillMode": "control-group"
+      },
+      "deadlines": {
+        "capture_by": 1790004165.1653569,
+        "prepare_by": 1790004159.1653569,
+        "serving_by": 1790004202.1653569,
+        "validate_by": 1790004222.1653569
+      },
+      "stop_intent_present": true,
+      "retained_files": {
+        "dispatch-intent.json": {
+          "sha256": "ff443d615d5d34343ef1ec6728830289073faa9511d33f6d3f412f9f696ddd9a",
+          "value": {
+            "at": 1790004147.659983,
+            "operation_id": "r031-workerkill6-1790004147",
+            "owner_id": "home-servers-request031",
+            "spec_sha256": "e83a0a57d52508925a16cdf558b694a12b65bfadc0e97280d9945d72d09c076b"
+          }
+        },
+        "stop-intent.json": {
+          "sha256": "1c94dab8d117a7681608a16d581ed159bfb0e3ade18b870ac4a16a899b70e4c4",
+          "value": {
+            "at": 1790004148.9482818,
+            "container_id": "5e37185c6d117a5f5e703ddb4119d1c02a5a578c48cb6cf477a890782fa4da88",
+            "fingerprint": "7927e0bc5b747d9c7e5c0bf8aaaabf3b02ba7bd16021010575436269f2f84c85"
+          }
+        },
+        "serving-restored.json": {
+          "sha256": "99f63865283914833f6347bf1901134b942254f2f0aa9bd50cd52eeec59e7b48",
+          "value": {
+            "at": 1790004162.3074346,
+            "container_id": "5e37185c6d117a5f5e703ddb4119d1c02a5a578c48cb6cf477a890782fa4da88",
+            "fingerprint": "7927e0bc5b747d9c7e5c0bf8aaaabf3b02ba7bd16021010575436269f2f84c85",
+            "healthy": true
+          }
+        },
+        "terminal.json": {
+          "sha256": "b95ed4422e230ef909e6a2ffee369fdf3d3d9190123a247ebf5333f9e0334aeb",
+          "value": {
+            "at": 1790004160.3876693,
+            "holds_equal": true,
+            "incumbent_healthy": true,
+            "operation_id": "r031-workerkill6-1790004147",
+            "owner_id": "home-servers-request031",
+            "production_qualified": false,
+            "reason": "worker_failure",
+            "replay_allowed": false,
+            "schema": "cbm.capture-terminal/1",
+            "serving_restored_at": 1790004159.3899662,
+            "spec_sha256": "e83a0a57d52508925a16cdf558b694a12b65bfadc0e97280d9945d72d09c076b",
+            "state": "aborted_restored"
+          }
+        },
+        "finalizer.json": {
+          "sha256": "65d9938fa80331f4699a04b6c80f7c716f3d3ae27ebca0db42b68862d97ff86e",
+          "value": {
+            "at": 1790004162.3758981,
+            "incumbent_healthy": true,
+            "terminal_state": "aborted_restored",
+            "verified": true
+          }
+        }
+      },
+      "private_data_retained_on_vm108": true,
+      "terminal_state": "aborted_restored",
+      "within_serving_deadline": true
+    }
+  ],
+  "packets": {
+    "packet-v1": {
+      "manifest_sha256": "20a8b2c82dadd7377526f7a00770c226e8a609cd1c334de4bcc9bf5fbb32ba05",
+      "files": 25,
+      "exact_bytes_and_members": true,
+      "all_files_root_owned_readonly": true
+    },
+    "packet-v2": {
+      "manifest_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+      "files": 25,
+      "exact_bytes_and_members": true,
+      "all_files_root_owned_readonly": true
+    },
+    "packet-v3": {
+      "manifest_sha256": "1603d8430ad2ee11d1c43c8a68dd852688a7c9867bc52333ab850e4b4b278523",
+      "files": 27,
+      "exact_bytes_and_members": true,
+      "all_files_root_owned_readonly": true
+    },
+    "packet-v4": {
+      "manifest_sha256": "d5a4a28584410f6cb516964817e7e927b3c3ff4a14d8bd44d263618618024771",
+      "files": 28,
+      "exact_bytes_and_members": true,
+      "all_files_root_owned_readonly": true
+    },
+    "packet-v5": {
+      "manifest_sha256": "9a14eea1245fe8473e8a8225861f487f3d3cb71302313ba8008be00edcaa119b",
+      "files": 32,
+      "exact_bytes_and_members": true,
+      "all_files_root_owned_readonly": true
+    },
+    "packet-v6": {
+      "manifest_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+      "files": 32,
+      "exact_bytes_and_members": true,
+      "all_files_root_owned_readonly": true
+    }
+  },
+  "production_effects": false,
+  "operation_count": 27,
+  "no_active_operations": true
+}

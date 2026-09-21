@@ -1,0 +1,34 @@
+{
+  "label": "expiry1",
+  "mode": "expiry",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003576.2953928, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-expiry1-1790003554\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"capture_deadline\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003575.30585, \"spec_sha256\": \"7e0d1d20185ac30cb9e8a6ec273e499c9c590db378972795cacb85cd04414130\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    }
+  ],
+  "spec_sha256": "7e0d1d20185ac30cb9e8a6ec273e499c9c590db378972795cacb85cd04414130",
+  "operation_id": "r031-expiry1-1790003554",
+  "readback": {
+    "at": 1790003576.2953928,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-expiry1-1790003554",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "capture_deadline",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003575.30585,
+    "spec_sha256": "7e0d1d20185ac30cb9e8a6ec273e499c9c590db378972795cacb85cd04414130",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

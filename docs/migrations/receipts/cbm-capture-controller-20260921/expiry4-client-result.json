@@ -1,0 +1,47 @@
+{
+  "label": "expiry4",
+  "mode": "expiry",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003893.498602, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-expiry4-1790003871\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"capture_deadline\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003892.5016093, \"spec_sha256\": \"e6dc03d957007f23815fa235c406096c5535a0b3fb661049a97717c5088a69cd\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "duplicate_target_dispatch",
+      "rejected": true,
+      "exception": "FileExistsError: [Errno 17] File exists: '/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-expiry4-1790003871'"
+    },
+    {
+      "test": "existing_vm_locks_held",
+      "blocked": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    }
+  ],
+  "spec_sha256": "e6dc03d957007f23815fa235c406096c5535a0b3fb661049a97717c5088a69cd",
+  "operation_id": "r031-expiry4-1790003871",
+  "readback": {
+    "at": 1790003893.498602,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-expiry4-1790003871",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "capture_deadline",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003892.5016093,
+    "spec_sha256": "e6dc03d957007f23815fa235c406096c5535a0b3fb661049a97717c5088a69cd",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

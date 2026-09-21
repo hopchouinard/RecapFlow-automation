@@ -402,3 +402,12 @@ browser login, live queue consumer run, token rotation, Mac permission action,
 off-host restore, production deployment or service retirement was performed.
 No messages or new action requests were sent to home.servers. Remaining repair
 and implementation phases are left for Patrick's decision.
+
+## Request031 consumed — September21
+
+[Verified integration results](cbm-capture-controller-integration-results.md):32 final
+source files independently match VM108; eight recovery scenarios and51 negative
+checks passed. Source imported unchanged; Forge49 tests pass. Native Mac fixtures
+have five metadata errors. Next is shared scheduler/manual/capture admission and a
+production-shaped synthetic database validator, including unresolved recovery.
+Production remains disabled; protected transfer is not yet ready for authorization.

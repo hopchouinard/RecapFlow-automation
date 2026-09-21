@@ -1,0 +1,54 @@
+{
+  "label": "guardiankill4",
+  "mode": "guardiankill",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003818.5502136, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-guardiankill4-1790003804\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"detached_service_recovery\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003817.6476052, \"spec_sha256\": \"5aba119a6e01831a9df194a4d2d0bb2df626db8aea1af4d53482fef078884648\", \"state\": \"aborted_restored\", \"service_state\": \"failed\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "duplicate_target_dispatch",
+      "rejected": true,
+      "exception": "FileExistsError: [Errno 17] File exists: '/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardiankill4-1790003804'"
+    },
+    {
+      "test": "existing_vm_locks_held",
+      "blocked": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "KILL",
+      "target": "guardian",
+      "pid": 2136135,
+      "returncode": 0,
+      "at": 1790003814.727871
+    }
+  ],
+  "spec_sha256": "5aba119a6e01831a9df194a4d2d0bb2df626db8aea1af4d53482fef078884648",
+  "operation_id": "r031-guardiankill4-1790003804",
+  "readback": {
+    "at": 1790003818.5502136,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-guardiankill4-1790003804",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "detached_service_recovery",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003817.6476052,
+    "spec_sha256": "5aba119a6e01831a9df194a4d2d0bb2df626db8aea1af4d53482fef078884648",
+    "state": "aborted_restored",
+    "service_state": "failed",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

@@ -1,0 +1,54 @@
+{
+  "label": "workerkill4",
+  "mode": "workerkill",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003794.68635, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-workerkill4-1790003781\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"worker_failure\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003793.7835445, \"spec_sha256\": \"24b619f38b26d901a193c172a521ffd8dbe51c1f880d86ee843c506b9a38fad7\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "duplicate_target_dispatch",
+      "rejected": true,
+      "exception": "FileExistsError: [Errno 17] File exists: '/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-workerkill4-1790003781'"
+    },
+    {
+      "test": "existing_vm_locks_held",
+      "blocked": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "KILL",
+      "target": "worker",
+      "pid": 2132512,
+      "returncode": 0,
+      "at": 1790003791.221405
+    }
+  ],
+  "spec_sha256": "24b619f38b26d901a193c172a521ffd8dbe51c1f880d86ee843c506b9a38fad7",
+  "operation_id": "r031-workerkill4-1790003781",
+  "readback": {
+    "at": 1790003794.68635,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-workerkill4-1790003781",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "worker_failure",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003793.7835445,
+    "spec_sha256": "24b619f38b26d901a193c172a521ffd8dbe51c1f880d86ee843c506b9a38fad7",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

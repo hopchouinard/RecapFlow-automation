@@ -1,0 +1,205 @@
+{
+  "at": 1790004387.3879898,
+  "containers": [
+    {
+      "id": "d488d20fb77235c5dd76f5228cbdc11a34df599c1b3d87abd3b72896bf5cd830",
+      "name": "cbm-r031-inc-workerkill1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "4c16aa0d9dbf1db67f1a4c087c1e92d50ae22031a2059c107c1e0c586c0bc732",
+      "name": "cbm-r031-inc-mackill4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "21ae55fc9bcf1df93e247a0fc22881f69a382eacc60306580eb0c97af548ccc3",
+      "name": "cbm-r031-inc-mackill6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "7d8f5b5a81b0590edb8419993c7144e6fc850742125edfa35852e5022860226c",
+      "name": "cbm-r031-inc-normal5",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "788eb7228c7e831c70070834f0ec15a095a701e31aa588bc43f599a766cd3a5d",
+      "name": "cbm-r031-inc-normal4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "700606241ac75298b134d657fc59fc761b873153d23eb90f794a07b83b8f9148",
+      "name": "cbm-r031-inc-workerkill4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "2757fc2c345abed7bcc31f1cd5ce6952c7ff48ac13b181bc051c5233c30ccab3",
+      "name": "cbm-r031-inc-normal2",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "51b2bcf97c2caf9f84e0954913aa0490aaaf3b076f2ffbc0bf5226c83eea9f7b",
+      "name": "cbm-r031-inc-normal1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "1c2d7241b73a9c8eec15768ebda421816b42e9f4e3cb4cccc7f51f99aa8ed0e3",
+      "name": "cbm-r031-inc-fenceloss6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "d74af9aed0148e33a776b205619b95334ada25e2ac1f79bed23f6815ea8c3d64",
+      "name": "cbm-r031-inc-guardianstop1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "45ea5e2d16b502d4962ae54464aa2df38a44a3c1c9063d45589227cfd041aa14",
+      "name": "cbm-r031-inc-normal6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "1ca4472abacc06c63252c4f170cf8f307cea2614d67b32d6fca6ba4595d51c8f",
+      "name": "cbm-r031-inc-sshkill4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "8f223ff9fb18974ef86b1a4abe124926c9d17151d3103d4d6e5494f5b169b247",
+      "name": "cbm-r031-inc-guardianstop6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "dc9505351b89f14e88e323e26f49344ed5a43e4b956ea979f61d756435603987",
+      "name": "cbm-r031-inc-fenceloss4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "0f5f5ff244ad3a25a0f08857703f7e65410586e19d5878f6baa0f75c3bba04b4",
+      "name": "cbm-r031-inc-mackill1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "25bc4d243841ad1a4f22841b499d2d11a7efac44c9532837cf2f701e99946770",
+      "name": "cbm-r031-inc-guardianstop4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "5e37185c6d117a5f5e703ddb4119d1c02a5a578c48cb6cf477a890782fa4da88",
+      "name": "cbm-r031-inc-workerkill6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "a34a3685e5748d91f2b475713f90c0e87c2ecc5469ef1dae53a01ff013848d24",
+      "name": "cbm-r031-inc-expiry6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "0976dc07bea1f3e7c08bb5d85356dd1b04c6d49c0b18060feb5d02c66227950c",
+      "name": "cbm-r031-inc-sshkill6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "5068475d619329b3012b78e2e25c45140bd6cc5a63b2125556f27088cc26ca68",
+      "name": "cbm-r031-inc-fenceloss1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "7c1672d8deede18fad9d468ef39bff8ef65b8e5f8f9d99970d1aa5bf5b033a25",
+      "name": "cbm-r031-inc-expiry4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "bf4eac6b1749cdcb788c51400ab02144c03f73dc34c56eded291fc4ebfeadc4a",
+      "name": "cbm-r031-inc-expiry1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "92d1e8fc044eecc77e354cea57515a279dc368d411c0f37d07507aa856616abc",
+      "name": "cbm-r031-inc-sshkill1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "8f9033fba7c363f49c1300098b1c4b715da14c501cd1030f60ea32d62cdcc59c",
+      "name": "cbm-r031-inc-guardiankill1",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "05a631511da7311b14d722f28e2353ebc5dec88fe5b3fc4480175e8ee511a97e",
+      "name": "cbm-r031-inc-guardiankill6",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "c5ad5ff4787b86a06c7fadff40c088f922985cc85b07d7bb93e801c8eec7a83e",
+      "name": "cbm-r031-inc-guardiankill4",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "cc9c730a6d95d4ca12c3558465cbcbc624ebe1a9c29564bafa025e99d89764c0",
+      "name": "cbm-r031-pg-restore",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    },
+    {
+      "id": "2a84aec25727880eee1214c4d1bfd99e24e48349c6a78f40c66cf390f2e72ee9",
+      "name": "cbm-r031-pg-source",
+      "running": false,
+      "removed": false,
+      "data_retained": true
+    }
+  ],
+  "count": 28,
+  "scope": "only explicitly recorded Request031 IDs",
+  "preexisting_containers_touched": false,
+  "data_deleted": false
+}

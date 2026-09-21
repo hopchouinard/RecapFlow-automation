@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-09-21T15:12:47.935399+00:00",
+  "expiry_fields": {
+    "CB_OPENWEBUI_RETRIEVAL_EXPIRES_AT": 1790110387,
+    "CB_PROD_MAC_COLLECTOR_EXPIRES_AT": 1790110387,
+    "CB_PROD_MANUAL_OPERATOR_EXPIRES_AT": 1790110387,
+    "CB_PROBE_EXPIRES_AT": 1790110387
+  },
+  "journal_phase": "completed",
+  "production_mutations": false,
+  "token_secrets_fetched": false
+}

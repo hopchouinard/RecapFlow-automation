@@ -1,0 +1,8 @@
+{
+  "compiler_refusal": "production compilation disabled pending protected evidence",
+  "controller_refusal": "Request029 production serving execution is disabled",
+  "production_slots": 21,
+  "filled": 0,
+  "controller_test": "unit host/root simulation; no production execution",
+  "production_mutations": false
+}

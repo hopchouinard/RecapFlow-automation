@@ -1,0 +1,58 @@
+{
+  "label": "mackill4",
+  "mode": "mackill",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003746.9826791, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-mackill4-1790003724\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"capture_deadline\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003745.98265, \"spec_sha256\": \"3ffb39e6d61e52e700ea78f9c0b9b2b9110115773ba9c4cd97337a0aed772cbd\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "duplicate_target_dispatch",
+      "rejected": true,
+      "exception": "FileExistsError: [Errno 17] File exists: '/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-mackill4-1790003724'"
+    },
+    {
+      "test": "existing_vm_locks_held",
+      "blocked": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "SIGKILL",
+      "target": "mackill",
+      "pid": 36064,
+      "at": 1790003733.683278
+    },
+    {
+      "test": "durable_pending_after_caller_death",
+      "rejected": true,
+      "reason": "ValueError: unresolved pending operation; reconcile only"
+    }
+  ],
+  "spec_sha256": "3ffb39e6d61e52e700ea78f9c0b9b2b9110115773ba9c4cd97337a0aed772cbd",
+  "operation_id": "r031-mackill4-1790003724",
+  "readback": {
+    "at": 1790003746.9826791,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-mackill4-1790003724",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "capture_deadline",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003745.98265,
+    "spec_sha256": "3ffb39e6d61e52e700ea78f9c0b9b2b9110115773ba9c4cd97337a0aed772cbd",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

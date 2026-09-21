@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-09-21T15:27:01.894095+00:00",
+  "comparisons": {
+    "production": {
+      "container_count": 2,
+      "equal": {
+        "containers": true,
+        "holds": true,
+        "retained_bytecode": true
+      }
+    },
+    "development": {
+      "container_count": 55,
+      "equal": {
+        "containers": true
+      }
+    }
+  },
+  "vm101_contacted": false,
+  "installed_management_code_changed": false,
+  "parent_gitlink_changed": false,
+  "candidate_pending_absent": true,
+  "source_worktree_clean": true,
+  "parent_status": " M agent-ops\n m lab-architecture\n"
+}

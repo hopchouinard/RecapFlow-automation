@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003293.6570377, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-normal1-1790003198\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"pre_stop_refusal\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"spec_sha256\": \"f2834a535080efe1258676bcff201c3ef2a2ef1783118b1a7e4e7781431e33ea\", \"state\": \"aborted_restored\", \"service_state\": \"failed\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": ""
+}

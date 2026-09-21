@@ -146,3 +146,12 @@ execute them. Weekly-cycle evidence and retirement remain outstanding afterward.
 See [Forge results](cbm-capture-controller-development-results.md):49 tests passed on
 VM108 plus retained synthetic recovery. Request031 covers remaining host orchestration
 and database evidence validation. Production execution remains disabled.
+
+## Request031 consumed — September21
+
+[Verified integration results](cbm-capture-controller-integration-results.md):32 final
+source files independently match VM108; eight recovery scenarios and51 negative
+checks passed. Source imported unchanged; Forge49 tests pass. Native Mac fixtures
+have five metadata errors. Next is shared scheduler/manual/capture admission and a
+production-shaped synthetic database validator, including unresolved recovery.
+Production remains disabled; protected transfer is not yet ready for authorization.

@@ -1,0 +1,53 @@
+{
+  "label": "sshkill4",
+  "mode": "sshkill",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003712.9128985, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-sshkill4-1790003690\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"capture_deadline\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003711.9286027, \"spec_sha256\": \"d79923b3f78984087421e59067e26d060951c8adc39d69b925199abb8a3ceabc\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "duplicate_target_dispatch",
+      "rejected": true,
+      "exception": "FileExistsError: [Errno 17] File exists: '/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-sshkill4-1790003690'"
+    },
+    {
+      "test": "existing_vm_locks_held",
+      "blocked": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "SIGKILL",
+      "target": "sshkill",
+      "pid": 35087,
+      "at": 1790003699.838923
+    }
+  ],
+  "spec_sha256": "d79923b3f78984087421e59067e26d060951c8adc39d69b925199abb8a3ceabc",
+  "operation_id": "r031-sshkill4-1790003690",
+  "readback": {
+    "at": 1790003712.9128985,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-sshkill4-1790003690",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "capture_deadline",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003711.9286027,
+    "spec_sha256": "d79923b3f78984087421e59067e26d060951c8adc39d69b925199abb8a3ceabc",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

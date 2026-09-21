@@ -1,0 +1,41 @@
+{
+  "label": "guardiankill1",
+  "mode": "guardiankill",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003502.3653996, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-guardiankill1-1790003489\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"detached_service_recovery\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003501.4680085, \"spec_sha256\": \"f38c0dd059cc80f7236bc47981029c77c2e9bf7c5490ed6394cd2c3389bc6dba\", \"state\": \"aborted_restored\", \"service_state\": \"failed\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "KILL",
+      "target": "guardian",
+      "pid": 2087421,
+      "returncode": 0,
+      "at": 1790003498.338434
+    }
+  ],
+  "spec_sha256": "f38c0dd059cc80f7236bc47981029c77c2e9bf7c5490ed6394cd2c3389bc6dba",
+  "operation_id": "r031-guardiankill1-1790003489",
+  "readback": {
+    "at": 1790003502.3653996,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-guardiankill1-1790003489",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "detached_service_recovery",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003501.4680085,
+    "spec_sha256": "f38c0dd059cc80f7236bc47981029c77c2e9bf7c5490ed6394cd2c3389bc6dba",
+    "state": "aborted_restored",
+    "service_state": "failed",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}
