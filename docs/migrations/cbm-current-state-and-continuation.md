@@ -129,6 +129,21 @@ The production compiler/controller and worker loader are disabled. Actual dev
 endpoint proof used a labelled loopback relay; Docker PortBindings alone did not
 establish a host listener. This supersedes earlier pending Request029 statements.
 
+## Protected restoration preparation — Request030
+
+Prepared the [restore and acceptance packet](cbm-protected-restore-packet.md) and
+its machine-readable requirements. It distinguishes current VM109 Community Brain
+state from dormant VM101 WebUI data/signing material, defines preservation versus
+sanitized development copies, and maps the remaining recovery/browser/workload
+checks. The existing synthetic recovery helper restarts WebUI and writes/clears
+checkpoint controls; it must not be reused directly against production.
+
+[Request030](cbm-protected-restore-preparation-request.md) is posted for home.servers
+to resolve exact private source/destination/authority/backup bindings and operator
+commands, with synthetic VM108 testing of any new mechanics. It returns a concrete
+bounded transfer proposal before the separately required capture/transfer decision.
+No production data, signing material, configuration or runtime was changed.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

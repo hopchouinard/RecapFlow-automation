@@ -56,6 +56,14 @@ The production compiler/controller remains disabled; serving success will not cl
 processing holds. The next preparation task is the protected real-data/signing
 restore packet. Retained WebUI writes are not automatically visible in the old UI.
 
+## Protected restoration packet — Request030
+
+The [prepared restore packet](cbm-protected-restore-packet.md) now specifies current
+VM109 data preservation, dormant VM101 WebUI/signing source treatment, separate
+sanitized development copies, private evidence and browser/recovery acceptance.
+Request030 resolves exact operator bindings and validates any new recovery mechanics
+on VM108 before a protected capture/transfer proposal. No real data was moved.
+
 ## Accepted source and evidence
 
 The exact seven-file rehearsal source from agent-ops commit

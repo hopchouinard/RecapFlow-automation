@@ -812,3 +812,14 @@ containers are stopped. Production template remains disabled with 21 evidence
 slots; protected restoration/acceptance preparation and workload checks are next.
 See [results](cbm-activation-integration-results.md), including the internal-network
 loopback-relay qualification and retained-write rollback limits.
+
+## September21 — protected restore packet prepared; Request030 posted
+
+Prepared authoritative source/destination treatment, phase sequence, private
+manifest/safe receipt requirements, restoration/browser/workload acceptance and
+rollback limits. Identified fixture restart/checkpoint side effects in existing
+recovery helpers and excluded their direct production use. Reconciled the packet
+with the 21-slot production template; posted and hash-verified all six Request030
+documents. Home.servers will resolve exact private bindings/commands and validate
+new mechanics on synthetic VM108 state. This was preparation only; no runtime or
+real-data transfer occurred. See [packet](cbm-protected-restore-packet.md).
