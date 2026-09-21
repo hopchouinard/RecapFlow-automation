@@ -1,0 +1,16 @@
+{
+  "forge_request032": {
+    "files": 3,
+    "all_exact": true
+  },
+  "request031_core": {
+    "files": 19,
+    "all_exact": true
+  },
+  "installed_scheduler_snapshot": {
+    "files": 2,
+    "all_exact": true
+  },
+  "only_new_candidate_directory_changed": true,
+  "changed_files": 49
+}

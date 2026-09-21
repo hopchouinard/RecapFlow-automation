@@ -1,0 +1,67 @@
+{
+  "request_id": "CBM-SHARED-ADMISSION-20260921-032",
+  "completed_at": "2026-09-21T18:35:02.344757+00:00",
+  "scope": "synthetic-development-only",
+  "commit": "dd001c2dcc9338f64e1af0c18fbb1694b183025f",
+  "branch": "codex/request032-shared-admission",
+  "pushed": false,
+  "parent_gitlink_changed": false,
+  "source_manifest_sha256": "48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7",
+  "source_archive_sha256": "81a49afae5f7de377ddfdcb71ebf0d566cdb2ee181b9b4935c3dc1a068e9fb8a",
+  "source_files": 49,
+  "vm108_source_parity": {
+    "manifest_sha256": "48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7",
+    "files": 49,
+    "exact_bytes_and_members": true,
+    "all_files_root_owned_readonly": true
+  },
+  "final_source_scenarios": [
+    "independent PostgreSQL18.6 capture and restore",
+    "actual concurrent DML/DDL/sequence clients",
+    "Mac caller SIGKILL",
+    "SSH client SIGKILL",
+    "cross-kind pending admission and competing process",
+    "failed finalizer and fail-closed ordered startup recovery",
+    "legacy pending conflicts",
+    "fresh operation after recovery; no replay",
+    "unmanaged administrative backend refusal"
+  ],
+  "database_negative_unique_count": 46,
+  "actual_catalog_mutations": 15,
+  "readback_negative_count": 22,
+  "local_source_negative_count": 3,
+  "tests": {
+    "mac_fixture": 50,
+    "mac_admission": 9,
+    "vm108_core": 49,
+    "vm108_admission": 9,
+    "activation_boundaries": 19,
+    "parent_inventory": 293
+  },
+  "mac_fixture_adaptation": "Five Linux metadata fixtures explicitly adapted; actual native xattr rejection separately passed. Imported Forge bytes unchanged.",
+  "retained_operations": 22,
+  "retained_stopped_containers": 35,
+  "unresolved_shared_intents": 0,
+  "original_legacy_pending_retained": true,
+  "production_mutations": false,
+  "production_slots": 21,
+  "production_slots_filled": 0,
+  "production_compiler_enabled": false,
+  "production_controller_enabled": false,
+  "installed": false,
+  "actual_vm_reboot": false,
+  "private_production_content_in_relay": false,
+  "ready_for_production_execution": false,
+  "remaining_gaps": [
+    "Production scheduler/manual helper effects and recovery mappings remain unimplemented in the candidate.",
+    "Production catalog compatibility is unverified; unsupported classes fail closed.",
+    "Persistent production boot/service binding is uninstalled; no actual reboot proof.",
+    "Production filesystem/signing/private off-host restore and acceptance bindings remain gated."
+  ],
+  "retained_paths": {
+    "local_state": "/Users/pchouinard/.local/state/community-brain-management/request032",
+    "source_worktree": "/Users/pchouinard/.t3/worktrees/agent-ops/request032-shared-admission",
+    "vm108_root": "/srv/dev-data/workspaces/cbm-shared-admission-20260921-032",
+    "relay": "/srv/community-brain/handoff/responses/CBM-SHARED-ADMISSION-20260921-032"
+  }
+}

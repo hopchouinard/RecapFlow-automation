@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "basic.target sysinit.target system.slice systemd-journald.socket",
+    "ExecMainExitTimestampMonotonic": "150802630355",
+    "ExecMainStartTimestampMonotonic": "150800265729",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-transport6c-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "system.slice sysinit.target systemd-journald.socket cbm-r032-start-transport6c.service basic.target",
+    "ExecMainExitTimestampMonotonic": "150804057667",
+    "ExecMainStartTimestampMonotonic": "150803853852",
+    "ExecMainStatus": "0",
+    "Requires": "sysinit.target cbm-r032-start-transport6c.service system.slice",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-transport6c-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket sysinit.target basic.target cbm-r032-start-transport6c-boot.service system.slice",
+    "ExecMainExitTimestampMonotonic": "150803851142",
+    "ExecMainStartTimestampMonotonic": "150802632468",
+    "ExecMainStatus": "0",
+    "Requires": "sysinit.target cbm-r032-start-transport6c-boot.service system.slice",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-transport6c"
+}

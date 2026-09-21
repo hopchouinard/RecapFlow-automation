@@ -1,0 +1,17 @@
+{
+  "capture_aborted_before_worker_result": true,
+  "owned_test_backend_rolled_back_explicitly": true,
+  "refusal": {
+    "at": 1790015515.3558395,
+    "observation": {
+      "login_roles": [
+        "fixture"
+      ],
+      "unexpected_backends": 1
+    },
+    "reason": "unreviewed login role or backend; no quiescence claim"
+  },
+  "serving_and_writer_controls_restored": true,
+  "unexpected_administrative_backend_rejected": true,
+  "unrelated_backend_not_blindly_terminated": true
+}

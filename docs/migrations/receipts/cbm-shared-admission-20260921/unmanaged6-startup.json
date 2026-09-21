@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "sysinit.target basic.target system.slice systemd-journald.socket",
+    "ExecMainExitTimestampMonotonic": "151064670164",
+    "ExecMainStartTimestampMonotonic": "151062286140",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-unmanaged6-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "basic.target systemd-journald.socket system.slice cbm-r032-start-unmanaged6.service sysinit.target",
+    "ExecMainExitTimestampMonotonic": "151066005073",
+    "ExecMainStartTimestampMonotonic": "151065858107",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice cbm-r032-start-unmanaged6.service sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-unmanaged6-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket sysinit.target system.slice cbm-r032-start-unmanaged6-boot.service basic.target",
+    "ExecMainExitTimestampMonotonic": "151065854849",
+    "ExecMainStartTimestampMonotonic": "151064674310",
+    "ExecMainStatus": "0",
+    "Requires": "sysinit.target system.slice cbm-r032-start-unmanaged6-boot.service",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-unmanaged6"
+}

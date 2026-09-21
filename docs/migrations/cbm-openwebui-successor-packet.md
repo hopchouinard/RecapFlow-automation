@@ -163,3 +163,11 @@ nine tests on VM108, including actual owner kill and cross-entry-point blocking.
 [Request032](cbm-shared-admission-integration-request.md) covers installation into
 candidate scheduler/manual/capture paths, authoritative recovery and the remaining
 production-shaped synthetic database validator. Production remains disabled.
+
+## Request032 consumed — September21
+
+[Reconciled results](cbm-shared-admission-integration-results.md):49 final source
+files independently match VM108. Shared candidate admission, failed-finalizer/startup
+handling and expanded PostgreSQL evidence passed. Forge reran58 tests. Mac fixture
+errors are resolved. Next is actual helper/catalog/service/private-restore mapping,
+then validation of changed bytes on VM108. Production execution remains disabled.

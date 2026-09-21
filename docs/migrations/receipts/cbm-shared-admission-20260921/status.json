@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-SHARED-ADMISSION-20260921-032",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-21T18:35:17.196485+00:00",
+  "summary": "Development shared admission and PostgreSQL evidence completed;89 safe artifacts. Final source interruption, startup, catalog and source/readback checks passed. Production execution remains disabled;21 slots null. No production runtime change or private transfer.",
+  "receipt": "receipt.md"
+}

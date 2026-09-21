@@ -1,0 +1,27 @@
+{
+  "actual_vm_reboot": false,
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "basic.target system.slice sysinit.target systemd-journald.socket cbm-r032-start-caller4c.service",
+    "ExecMainExitTimestampMonotonic": "149631732795",
+    "ExecMainStartTimestampMonotonic": "149631579342",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target cbm-r032-start-caller4c.service",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-caller4c-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "system.slice systemd-journald.socket sysinit.target basic.target",
+    "ExecMainExitTimestampMonotonic": "149631572396",
+    "ExecMainStartTimestampMonotonic": "149630506195",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-caller4c"
+}

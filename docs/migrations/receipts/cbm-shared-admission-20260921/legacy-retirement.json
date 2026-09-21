@@ -1,0 +1,63 @@
+{
+  "explicit_disposition": "Existing Request029 terminal rollback and retired synthetic containers; retained pointer is not migrated, cleared or replayed. Fresh SSH observation must equal this baseline before each candidate dispatch.",
+  "local_files": {
+    "/Users/pchouinard/.local/state/community-brain-management/request029/activation-pending.json": "bef7d679ac9e1625ec786ba382e5f5b22d37a92f854ccacba7b745b3f83bf7a9",
+    "/Users/pchouinard/.local/state/community-brain-management/request029/intent-normal-terminal-refusal.json": "2ce68ab69d912e213526ae8328c7090c935cf6544174251ea45977a19063d48b",
+    "/Users/pchouinard/.local/state/community-brain-management/request029/intent-normal-terminal-refusal.json.result.json": "1752d427f6b46dcd837feea73eefd30e31dfa345e2e583d8586f465980bb1e6c"
+  },
+  "target": {
+    "target": "community-brain-dev",
+    "machine_id": "2c7d41823c954dcea476904fe5f80f4d",
+    "phase": "rolled_back",
+    "disposition": "retired_synthetic_fixture_no_replay",
+    "files": {
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-operations/normal-terminal-refusal/request.json": "31ad693b51ddf1a77428451b310cd5ec7a3d6b6c63ec665bc34fbf0a68c5d548",
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-operations/normal-terminal-refusal/result.json": "174a7180e9b233b4ddd3eb965f5cce4e1a3d929c25da155bb7abbf3ee893d1e1",
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-journals/normal.json": "76de30e911e56bfff573bf3fdf14fa1b33b44f4fa62ff5577a4e36e7e0ea3918",
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-normal-packet-v6/plan.json": "69f0eef62aea1e29a34e3ffe2700e1b1cbb4d25ca616cbb934c47260197afeec"
+    },
+    "containers": {
+      "cbm-r029-api": {
+        "id": "4b681021615aa6f28f32fed02d772661ebe8a7a5733359c284c6ca94beed7db7",
+        "fingerprint": "684a9dd40259ebc86ce680e9f8883fc411a458ed882d9c76d476220133f46915",
+        "running": false
+      },
+      "cbm-r029-normal-api": {
+        "id": "f970ebeb0d2f43a63fb31cb752411a2f980153847b8f09e653c8c84e477c2bce",
+        "fingerprint": "cb371a53f63115784cd193ddebf079477f6043d91c09b8a07cbcde8a2ae6fb0f",
+        "running": false
+      },
+      "cbm-r029-normal-webui": {
+        "id": "7e2ac1184c85124dab9c4cbe15b7e995dab6107071d4f2ac47ceed81ca7bdbd2",
+        "fingerprint": "f0df808900a0fcaec0a04d9f05b696e0ec7be7a12e36047387d11bf800f23afb",
+        "running": false
+      }
+    },
+    "holds": {
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation/paused": {
+        "sha256": "0917d95aac7b1ef17c92893f5fadad0c79314df701c7dd8ad805f098818eb81b",
+        "inode": 695653,
+        "device": 2064,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0
+      },
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation/attention.json": {
+        "sha256": "8513af51ab890cefaaa0a6aa651b69cc9de79c717871e2a1b88accfbd05c71ef",
+        "inode": 695652,
+        "device": 2064,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0
+      },
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation/boot-state.json": {
+        "sha256": "581191e81df5f7d4f9b0a95d5756682497537eb1e0de372bec23d0eef8e13ff2",
+        "inode": 695654,
+        "device": 2064,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0
+      }
+    }
+  }
+}

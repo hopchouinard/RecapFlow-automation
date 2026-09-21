@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "sysinit.target basic.target system.slice systemd-journald.socket",
+    "ExecMainExitTimestampMonotonic": "150539276744",
+    "ExecMainStartTimestampMonotonic": "150537000338",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-database6-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "sysinit.target basic.target system.slice cbm-r032-start-database6.service systemd-journald.socket",
+    "ExecMainExitTimestampMonotonic": "150540535231",
+    "ExecMainStartTimestampMonotonic": "150540400348",
+    "ExecMainStatus": "0",
+    "Requires": "sysinit.target system.slice cbm-r032-start-database6.service",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-database6-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "cbm-r032-start-database6-boot.service system.slice basic.target systemd-journald.socket sysinit.target",
+    "ExecMainExitTimestampMonotonic": "150540398111",
+    "ExecMainStartTimestampMonotonic": "150539279239",
+    "ExecMainStatus": "0",
+    "Requires": "cbm-r032-start-database6-boot.service system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-database6"
+}

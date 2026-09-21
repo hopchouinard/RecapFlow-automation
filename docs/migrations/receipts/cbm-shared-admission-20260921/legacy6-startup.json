@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "basic.target sysinit.target systemd-journald.socket system.slice",
+    "ExecMainExitTimestampMonotonic": "151036921617",
+    "ExecMainStartTimestampMonotonic": "151034584054",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-legacy6-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "cbm-r032-start-legacy6.service sysinit.target systemd-journald.socket basic.target system.slice",
+    "ExecMainExitTimestampMonotonic": "151038249997",
+    "ExecMainStartTimestampMonotonic": "151038072593",
+    "ExecMainStatus": "0",
+    "Requires": "cbm-r032-start-legacy6.service sysinit.target system.slice",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-legacy6-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket system.slice sysinit.target cbm-r032-start-legacy6-boot.service basic.target",
+    "ExecMainExitTimestampMonotonic": "151038070576",
+    "ExecMainStartTimestampMonotonic": "151036925402",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target cbm-r032-start-legacy6-boot.service",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-legacy6"
+}

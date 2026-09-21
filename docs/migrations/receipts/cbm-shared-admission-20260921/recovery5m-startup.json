@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket basic.target sysinit.target system.slice",
+    "ExecMainExitTimestampMonotonic": "150028635204",
+    "ExecMainStartTimestampMonotonic": "150026160608",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-recovery5m-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket cbm-r032-start-recovery5m.service sysinit.target system.slice basic.target",
+    "ExecMainExitTimestampMonotonic": "150029911194",
+    "ExecMainStartTimestampMonotonic": "150029743215",
+    "ExecMainStatus": "0",
+    "Requires": "sysinit.target cbm-r032-start-recovery5m.service system.slice",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-recovery5m-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "basic.target systemd-journald.socket system.slice sysinit.target cbm-r032-start-recovery5m-boot.service",
+    "ExecMainExitTimestampMonotonic": "150029741412",
+    "ExecMainStartTimestampMonotonic": "150028641059",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target cbm-r032-start-recovery5m-boot.service",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-recovery5m"
+}

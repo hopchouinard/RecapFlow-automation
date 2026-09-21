@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "{\"spec_sha256\": \"22b9ab7bf9910fba6445966bf1ee0829f7cc74d4c92fd67c479fb3cd1d92fb95\", \"state\": \"aborted_restored\", \"incumbent_id\": \"de00bc0ee88a5876fc7afba3b2cbdc8a39af1ba7539dc3b74473a5fe8df1e5c4\", \"holds_sha256\": \"1db279cc28a288bd8a9c83628e81ccb752042da3f93018e96b031b3587f21b2e\", \"target\": \"community-brain-dev\", \"observed_epoch\": 1790015527.2746263, \"boot_id\": \"7b3d1692-81df-49e1-9b2e-49efa996d71d\", \"finalizer_seen\": true, \"service_inactive\": true, \"healthy\": true}\n"
+}

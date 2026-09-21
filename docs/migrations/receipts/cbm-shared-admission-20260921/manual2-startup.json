@@ -1,0 +1,7 @@
+{
+  "startup_unit": "cbm-r032-start-manual2",
+  "probe_unit": "cbm-r032-start-manual2-probe",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "Running as unit: cbm-r032-start-manual2-probe.service\n          Finished with result: success\nMain processes terminated with: code=exited, status=0/SUCCESS\n               Service runtime: 141ms\n             CPU time consumed: 98ms\n                   Memory peak: 18M (swap: 0B)\n"
+}

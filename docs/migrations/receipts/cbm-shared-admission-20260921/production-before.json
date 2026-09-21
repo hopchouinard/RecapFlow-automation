@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-09-21T17:39:06.001299+00:00",
+  "containers": {
+    "community-brain-production-staging-api-1": {
+      "id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+      "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+      "running": true,
+      "started_at": "2026-09-19T21:21:38.872407149Z",
+      "restart_count": 0,
+      "configuration_sha256": "7924f93f0008353a3a2a2ffc40b8da1e378f217d9ca501822dea19926d8d28c6"
+    },
+    "community-brain-alloy": {
+      "id": "c6769827278baee660fc45ba8efff98bbd5664e41168abf99e96dac7fe15f695",
+      "image": "sha256:01a63f4e032ce54ee94b22049bc27f597e74f85566478c377f4b5c7f020c1eb3",
+      "running": true,
+      "started_at": "2026-09-19T21:21:38.865740028Z",
+      "restart_count": 0,
+      "configuration_sha256": "fe35ba817e1d38b7a1b73a46e916673e772af9e31501aa74164d309a35d1fe9b"
+    }
+  },
+  "holds": {
+    "automation/paused": {
+      "sha256": "59c73479a540c23f39cdd306bac60ff7295ac4b4bd585575346600dbada67d60",
+      "mode": 384,
+      "inode": 2490382
+    },
+    "automation/attention.json": {
+      "sha256": "c12ebf3b69fc4eb099dd9686dc4789137b1306c68362d46461af8a0185a7afdb",
+      "mode": 384,
+      "inode": 2490379
+    },
+    "automation/boot-state.json": {
+      "sha256": "c291dcbd48b3d055ad806e2579ad194bf54a435660cb83d5d014d334ed8f2195",
+      "mode": 384,
+      "inode": 2490383
+    }
+  },
+  "retained_bytecode": {
+    "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/__pycache__/run.cpython-314.pyc": "084a3fb857c3499d9198dcd40201e524fa5a4c2282e22e74998bd4f4ab21853f"
+  }
+}

@@ -1,0 +1,72 @@
+Explicit adaptation: five ReceiptTests model Linux metadata; native refusal tested separately.
+test_allowance_rechecked_before_each_call (test_budget.BudgetTests.test_allowance_rechecked_before_each_call) ... ok
+test_allowance_transport_failure_is_unknown (test_budget.BudgetTests.test_allowance_transport_failure_is_unknown) ... ok
+test_ceiling_prevents_second_request_and_restores_transport (test_budget.BudgetTests.test_ceiling_prevents_second_request_and_restores_transport) ... ok
+test_invalid_allowances_fail_closed (test_budget.BudgetTests.test_invalid_allowances_fail_closed) ... ok
+test_unknown_response_retains_intent_and_refuses_reopening (test_budget.BudgetTests.test_unknown_response_retains_intent_and_refuses_reopening) ... ok
+test_wrong_endpoint_has_no_request (test_budget.BudgetTests.test_wrong_endpoint_has_no_request) ... ok
+test_development_never_completes_production_slot (test_contract.ContractTests.test_development_never_completes_production_slot) ... ok
+test_enabled_template_rejected (test_contract.ContractTests.test_enabled_template_rejected) ... ok
+test_prefilled_flag_rejected (test_contract.ContractTests.test_prefilled_flag_rejected) ... ok
+test_relabelled_receipt_rejected (test_contract.ContractTests.test_relabelled_receipt_rejected) ... ok
+test_deadline_retains_partial_and_holds (test_operation.OperationTests.test_deadline_retains_partial_and_holds) ... ok
+test_expired_and_production_refused_before_intent (test_operation.OperationTests.test_expired_and_production_refused_before_intent) ... ok
+test_hold_drift_never_repairs_or_completes (test_operation.OperationTests.test_hold_drift_never_repairs_or_completes) ... ok
+test_signal_and_kill_readback_no_replay (test_operation.OperationTests.test_signal_and_kill_readback_no_replay) ... Process ForkProcess-1:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pchouinard/.local/state/community-brain-management/request032/sealed/packet-v6/recovery-core/operation.py", line 91, in run
+    result = action()
+  File "/Users/pchouinard/.local/state/community-brain-management/request032/sealed/packet-v6/recovery-core/test_operation.py", line 44, in action
+    ready.touch(); time.sleep(20)
+                   ~~~~~~~~~~^^^^
+  File "/Users/pchouinard/.local/state/community-brain-management/request032/sealed/packet-v6/recovery-core/operation.py", line 49, in interrupt
+    raise Interrupted('deadline' if signum == signal.SIGALRM else 'signal')
+operation.Interrupted: signal
+ok
+test_success_readback_duplicate_and_binding (test_operation.OperationTests.test_success_readback_duplicate_and_binding) ... ok
+test_capture_identity_mismatch_refused (test_operation.ReceiptTests.test_capture_identity_mismatch_refused) ... ok
+test_drift_and_extra_members_refused (test_operation.ReceiptTests.test_drift_and_extra_members_refused) ... ok
+test_extra_top_level_member_refused (test_operation.ReceiptTests.test_extra_top_level_member_refused) ... ok
+test_receipt_flags_cannot_certify_restore (test_operation.ReceiptTests.test_receipt_flags_cannot_certify_restore) ... ok
+test_stream_restore_verified_without_acceptance_substitution (test_operation.ReceiptTests.test_stream_restore_verified_without_acceptance_substitution) ... ok
+test_blob_directory_symlink_refused (test_recovery.RecoveryTests.test_blob_directory_symlink_refused) ... ok
+test_busy_lock_refuses_before_capture_and_preserves_holds (test_recovery.RecoveryTests.test_busy_lock_refuses_before_capture_and_preserves_holds) ... ok
+test_capture_never_overwrites_uncertain_attempt (test_recovery.RecoveryTests.test_capture_never_overwrites_uncertain_attempt) ... ok
+test_changed_lock_identity_detected (test_recovery.RecoveryTests.test_changed_lock_identity_detected) ... ok
+test_corrupt_blob_refused_before_destination_creation (test_recovery.RecoveryTests.test_corrupt_blob_refused_before_destination_creation) ... ok
+test_duplicate_component_source_refused (test_recovery.RecoveryTests.test_duplicate_component_source_refused) ... ok
+test_escape_source_link_refused (test_recovery.RecoveryTests.test_escape_source_link_refused) ... ok
+test_extended_metadata_refused (test_recovery.RecoveryTests.test_extended_metadata_refused) ... ok
+test_extra_blob_refused (test_recovery.RecoveryTests.test_extra_blob_refused) ... ok
+test_foreign_scope_refused (test_recovery.RecoveryTests.test_foreign_scope_refused) ... ok
+test_hardlink_refused (test_recovery.RecoveryTests.test_hardlink_refused) ... ok
+test_hold_drift_detected_without_repair (test_recovery.RecoveryTests.test_hold_drift_detected_without_repair) ... ok
+test_link_escape_manifest_refused (test_recovery.RecoveryTests.test_link_escape_manifest_refused) ... ok
+test_linked_destination_ancestor_refused (test_recovery.RecoveryTests.test_linked_destination_ancestor_refused) ... ok
+test_missing_completion_refused (test_recovery.RecoveryTests.test_missing_completion_refused) ... ok
+test_missing_lock_not_created (test_recovery.RecoveryTests.test_missing_lock_not_created) ... ok
+test_restore_never_overwrites_uncertain_destination (test_recovery.RecoveryTests.test_restore_never_overwrites_uncertain_destination) ... ok
+test_restore_over_original_refused (test_recovery.RecoveryTests.test_restore_over_original_refused) ... ok
+test_round_trip_preserves_empty_directories_links_and_original (test_recovery.RecoveryTests.test_round_trip_preserves_empty_directories_links_and_original) ... ok
+test_source_drift_retains_incomplete_attempt (test_recovery.RecoveryTests.test_source_drift_retains_incomplete_attempt) ... ok
+test_special_file_refused (test_recovery.RecoveryTests.test_special_file_refused) ... ok
+test_traversal_manifest_refused (test_recovery.RecoveryTests.test_traversal_manifest_refused) ... ok
+test_unpinned_manifest_refused (test_recovery.RecoveryTests.test_unpinned_manifest_refused) ... ok
+test_budget_failure_retains_partial_destination (test_transport.TransportTests.test_budget_failure_retains_partial_destination) ... ok
+test_incomplete_stream_refused (test_transport.TransportTests.test_incomplete_stream_refused) ... ok
+test_malicious_link_refused (test_transport.TransportTests.test_malicious_link_refused) ... ok
+test_traversal_refused (test_transport.TransportTests.test_traversal_refused) ... ok
+test_verified_round_trip_and_refused_replay (test_transport.TransportTests.test_verified_round_trip_and_refused_replay) ... ok
+test_wrong_external_digest_refused (test_transport.TransportTests.test_wrong_external_digest_refused) ... ok
+test_actual_mac_extended_metadata_is_still_refused (__main__.NativeMetadataBoundary.test_actual_mac_extended_metadata_is_still_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 0.185s
+
+OK

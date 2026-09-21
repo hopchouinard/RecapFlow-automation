@@ -1,0 +1,70 @@
+{
+  "actions": [
+    {
+      "case": "existing_mutex_contention",
+      "rejected": true
+    },
+    {
+      "case": "actual_mac_caller_sigkill",
+      "pid": 40874
+    },
+    {
+      "case": "scheduler_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "manual_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "capture_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "unsafe_readback_does_not_resolve",
+      "rejected": true
+    },
+    {
+      "case": "resolved_operation_cannot_replay",
+      "rejected": true
+    },
+    {
+      "case": "fresh_scheduler_after_authoritative_recovery",
+      "operation_id": "r032-caller6nextscheduler-1790015162",
+      "passed": true
+    },
+    {
+      "case": "fresh_manual_after_authoritative_recovery",
+      "operation_id": "r032-caller6nextmanual-1790015190",
+      "passed": true
+    }
+  ],
+  "actual_vm_reboot": false,
+  "label": "caller6",
+  "mode": "mackill",
+  "operation_id": "r032-caller6c-1790015094",
+  "packet_sha256": "48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7",
+  "reconciliation": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"spec_sha256\": \"d557e60886365c4eba7492e4a9870b84da678635fb645d4fb4308b4743d73446\", \"state\": \"aborted_restored\", \"incumbent_id\": \"119569f37b5b47b57267d5f6948d98a9fa595f048071bea1adc5bf9e5962f92a\", \"holds_sha256\": \"58d6005b8059231a5e6619c7b5006c637ddde75d65b5d4071d208d15cece593a\", \"target\": \"community-brain-dev\", \"observed_epoch\": 1790015157.8058205, \"boot_id\": \"7b3d1692-81df-49e1-9b2e-49efa996d71d\", \"finalizer_seen\": true, \"service_inactive\": true, \"healthy\": true}\n"
+  },
+  "shared_journal_resolved": true,
+  "terminal": {
+    "at": 1790015144.8776143,
+    "finalizer_seen": true,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "live_verified": true,
+    "operation_id": "r032-caller6c-1790015094",
+    "owner_id": "home-servers-request032",
+    "production_qualified": false,
+    "reason": "capture_deadline",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "service_state": "inactive",
+    "serving_restored_at": 1790015143.6788757,
+    "spec_sha256": "4fd0fa40b5c387f58d03f746038f1ba963351ca9899d911b15fcb3056f50226a",
+    "state": "aborted_restored"
+  }
+}

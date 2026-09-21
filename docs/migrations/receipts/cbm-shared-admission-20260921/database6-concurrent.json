@@ -1,0 +1,35 @@
+{
+  "at": 1790014991.2622206,
+  "clients": [
+    {
+      "actual_backend_terminated": true,
+      "client_returncode": 2,
+      "connected_before_close": true,
+      "kind": "dml",
+      "ready_output": [
+        "READY"
+      ]
+    },
+    {
+      "actual_backend_terminated": true,
+      "client_returncode": 2,
+      "connected_before_close": true,
+      "kind": "ddl",
+      "ready_output": [
+        "READY"
+      ]
+    },
+    {
+      "actual_backend_terminated": true,
+      "client_returncode": 2,
+      "connected_before_close": true,
+      "kind": "sequence",
+      "ready_output": [
+        "READY"
+      ]
+    }
+  ],
+  "ddl_rolled_back": true,
+  "dml_rolled_back": true,
+  "sequence_is_nontransactional_and_captured_after_termination": true
+}

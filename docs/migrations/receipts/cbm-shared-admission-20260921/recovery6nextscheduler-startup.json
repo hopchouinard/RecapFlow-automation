@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket system.slice sysinit.target basic.target",
+    "ExecMainExitTimestampMonotonic": "150985650950",
+    "ExecMainStartTimestampMonotonic": "150983064138",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-recovery6nextscheduler-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket system.slice cbm-r032-start-recovery6nextscheduler.service sysinit.target basic.target",
+    "ExecMainExitTimestampMonotonic": "150986968262",
+    "ExecMainStartTimestampMonotonic": "150986788837",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice cbm-r032-start-recovery6nextscheduler.service sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-recovery6nextscheduler-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "cbm-r032-start-recovery6nextscheduler-boot.service sysinit.target system.slice systemd-journald.socket basic.target",
+    "ExecMainExitTimestampMonotonic": "150986786845",
+    "ExecMainStartTimestampMonotonic": "150985654482",
+    "ExecMainStatus": "0",
+    "Requires": "cbm-r032-start-recovery6nextscheduler-boot.service sysinit.target system.slice",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-recovery6nextscheduler"
+}

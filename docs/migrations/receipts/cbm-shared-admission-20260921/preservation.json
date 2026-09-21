@@ -1,0 +1,186 @@
+{
+  "production": {
+    "unchanged": true,
+    "containers": 2,
+    "compared": "IDs, images, config, running state, start timestamps, restart counts; production holds and retained bytecode"
+  },
+  "development": {
+    "unchanged": true,
+    "containers": 83,
+    "compared": "IDs, images, config, running state, start timestamps, restart counts; production holds and retained bytecode"
+  },
+  "installed_scheduler": {
+    "maintain.py": {
+      "sha256": "87425de887176d0371bcc0a2d5dda35c59d692c8aa5602560eec3aabdc1428bc",
+      "matching_installed_paths": [
+        "/Users/pchouinard/.local/lib/community-brain-management/maintain.py"
+      ]
+    },
+    "maintain-hourly.py": {
+      "sha256": "bc66e51b7e651e55303ea4b9392f52c8e8799d3a07ef1a339b361372e3b412c0",
+      "matching_installed_paths": [
+        "/Users/pchouinard/.local/lib/community-brain-management/maintain-hourly.py"
+      ]
+    }
+  },
+  "journal": [
+    {
+      "operation_id": "r032-recovery6nextscheduler-1790015426",
+      "intent_sha256": "6a5bfcda18bfa70bf9b31dadd9a815ba81a457ae1637f3774ee46d327c0ecbf1",
+      "resolution_sha256": "ef09490ea68fc68b7cccdd1aecfb8c46f84a86ff1df7f9744f298a1ca3c43a3e",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-transport6c-1790015243",
+      "intent_sha256": "19da6fdb47d6a8f1eab3c572286e8a17f1b5bef762954f27b207679f5a477758",
+      "resolution_sha256": "fc49b87deec248ed693e5f96fb2b1518e3aa91908108fdc40224172841728660",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-caller6c-1790015094",
+      "intent_sha256": "d557e60886365c4eba7492e4a9870b84da678635fb645d4fb4308b4743d73446",
+      "resolution_sha256": "16a26683ea31b2a07050558e7261043a525c7e6840edf9fa56d7797df16136e1",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-transport6nextscheduler-1790015308",
+      "intent_sha256": "f1fa3c5991e3a0e5e69bb9fe9facecf2dd38fd9c5296bb1a1b9133dfd867f341",
+      "resolution_sha256": "0a11a20f38dc56dec9a71be8a4de4239fe044b5f1e90f747afc8607cb1c515da",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-manual2-1790013354",
+      "intent_sha256": "d9ba748779add583059ce64c219a1f7ed35aa3b2e0e3adf2bc4b7a3962a2af0b",
+      "resolution_sha256": "12489a4fe27bbd2603e0badd4fb87a3e0bb3db1186999d96546263330213e43d",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-capture2-1790013394",
+      "intent_sha256": "fc1c1b508e7ba113c18f98c0b7ecbd6f83ecf3f540300ab5777767d7d1206a39",
+      "resolution_sha256": "635946117600c9a21a5177abe5d50aac72065464e3b2f321c2a17c71ecf304bd",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-scheduler3-1790013775",
+      "intent_sha256": "702c645830b54f1ee5e78fa1c9bfb89601d8c5157a00bde002e1bd98037cdb91",
+      "resolution_sha256": "40121c2118fde19a3193796fff1254085afc6a9ea2c09d4f7eb8df701b18f57e",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-caller4nextscheduler-1790014141",
+      "intent_sha256": "23cbdc236c6e30f22256ca8bcc45856930bcd1f5c3694f70b1905d879e2ab86f",
+      "resolution_sha256": "536c46bbc5aa030efabe5fa42cc7a90eab53e8ae6838ea16861dcb92730244eb",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-caller4nextmanual-1790014164",
+      "intent_sha256": "71e4b5c743756691078cf87924a6fc9d72a1476cec9bdfc1e45d17d378f5a4a9",
+      "resolution_sha256": "37ca524d085ffff449b1ffc09950f19d9f969900aad13b515b48972c1923a868",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-recovery5nextscheduler-1790014527",
+      "intent_sha256": "b7855dd5d9a492533dea6c0138ab02a62b2370dd83806c091689339f7318ca14",
+      "resolution_sha256": "8d768afb1e5936fd8e4c5e83866304921500c8769e658c47b40908b0c989b01f",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-transport6nextmanual-1790015334",
+      "intent_sha256": "e6b249075a248a332f2566dd424b5ba412a552e4ab7e3d06ff2430ea08c53da7",
+      "resolution_sha256": "c7b00786348a4a069aaf64b9d162b48b34cc31a70824118ed9c75a84f4d1ca30",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-recovery5nextmanual-1790014552",
+      "intent_sha256": "458b51982f3c57813e55fb7f0c0d2c67796b1979d65715290bc50f48cc4bb465",
+      "resolution_sha256": "65f647fb1131443494d1f3b5d7553e42d4a625b8846c81ffd2fecf229cc6b59d",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-recovery6nextmanual-1790015452",
+      "intent_sha256": "478621b3c7fae8132044b9fc85a76cbf6048acef07ed23f3f064758e3e30136a",
+      "resolution_sha256": "9ae1a07fab869cdbabd2d39cb409d4181a0151f8af93858296cf0f228f573a24",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-caller4c-1790014074",
+      "intent_sha256": "e6be6334d9af37b92ac517f4777c39cf0f16b20588d2b0e222f4ef9becec5de0",
+      "resolution_sha256": "3cf5524ad271d08214f3fba6ee2546ec154f3ad78267e0d13cf937d205dab3ac",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-capture3-1790013840",
+      "intent_sha256": "36a289f61ccb4899946a3abab1a9d5d0f5605eebd1959c7896fc049e79d28c32",
+      "resolution_sha256": "e0851b638940ba8f1fb29e53fd44f01894f3a7449fd66df17f745f97e26a5d20",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-recovery6c-1790015376",
+      "intent_sha256": "1c7ab6ef427e12313561651f45fb4c4d0b97d085cd6526e968dcf6ef3be8b3a8",
+      "resolution_sha256": "622018b03adf6835d2ee0f67ecffb0b3fdb16a18c2ed0eda9cf74f25dcd8bf3a",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-recovery5c-1790014477",
+      "intent_sha256": "85b3681eb5357423b779c77a0a9f7d250bd94ab7b10de49c7fdb1fc2edb7b0e5",
+      "resolution_sha256": "794cb6beccffa8f93f1f801c655e001c5bc5042ae4c72e5985a1d6d9e9f3cf75",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-unmanaged6-1790015505",
+      "intent_sha256": "22b9ab7bf9910fba6445966bf1ee0829f7cc74d4c92fd67c479fb3cd1d92fb95",
+      "resolution_sha256": "2fdd5674fea7779434159ee0366ff0706a0bb08a888ec5e11e39e47836a63ead",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-legacy6-1790015478",
+      "intent_sha256": "dcfc4112415291263578335c9cb95f50e7d61a99d487c950725114cf72ec9a33",
+      "resolution_sha256": "785086e2f829cda00857d4235fd606c27c33480017a128b1cf4cebdf0e80bcb6",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-caller6nextmanual-1790015190",
+      "intent_sha256": "2a92a49db5c82db6483c9b209fdc2caea84531c9c62366adfb07df999b52725e",
+      "resolution_sha256": "12fb1d4708d2497fa489beeb2c3960757012b80515c42cc7dad5eec350d432ba",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-database6-1790014980",
+      "intent_sha256": "a1b163b141da4e7f523aabcbff9ed414cf081bf9c0d87a0c4b8be6715cb23484",
+      "resolution_sha256": "23347348b142e10c91bd4ec9e0fdd6e0e4bff2fb7aca0dac4ba49c9f976b3b6b",
+      "resolved": true,
+      "retained": true
+    },
+    {
+      "operation_id": "r032-caller6nextscheduler-1790015162",
+      "intent_sha256": "e3010d5349b93f97fc385851cd0f68e7499bc02b205f7b8fb2c20b03e23dbc6e",
+      "resolution_sha256": "20404e44ac07b8c956d513505c1f4cc7ad7d0e96077dd032a59bd4b4ce314f68",
+      "resolved": true,
+      "retained": true
+    }
+  ],
+  "unresolved_shared_intents": 0,
+  "existing_mutex_identity_unchanged": true,
+  "legacy_pending_retained_and_fresh_target_disposition_verified": true,
+  "vm101_touched": false
+}

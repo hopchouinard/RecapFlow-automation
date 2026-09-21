@@ -1,0 +1,7 @@
+{
+  "startup_unit": "cbm-r032-start-capture2",
+  "probe_unit": "cbm-r032-start-capture2-probe",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "Running as unit: cbm-r032-start-capture2-probe.service\n          Finished with result: success\nMain processes terminated with: code=exited, status=0/SUCCESS\n               Service runtime: 158ms\n             CPU time consumed: 96ms\n                   Memory peak: 18.4M (swap: 0B)\n"
+}

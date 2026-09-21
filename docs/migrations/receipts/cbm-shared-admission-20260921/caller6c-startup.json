@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "system.slice basic.target sysinit.target systemd-journald.socket",
+    "ExecMainExitTimestampMonotonic": "150653551629",
+    "ExecMainStartTimestampMonotonic": "150650570339",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-caller6c-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "system.slice systemd-journald.socket sysinit.target basic.target cbm-r032-start-caller6c.service",
+    "ExecMainExitTimestampMonotonic": "150655293848",
+    "ExecMainStartTimestampMonotonic": "150655061967",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target cbm-r032-start-caller6c.service",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-caller6c-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket basic.target system.slice cbm-r032-start-caller6c-boot.service sysinit.target",
+    "ExecMainExitTimestampMonotonic": "150655058619",
+    "ExecMainStartTimestampMonotonic": "150653561354",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice cbm-r032-start-caller6c-boot.service sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-caller6c"
+}
