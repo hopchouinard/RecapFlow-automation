@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "backend": "actual Infisical",
+  "project": "homelab",
+  "project_id": "a508e594-7686-43a1-9b0f-cafa8b348ad4",
+  "environment": "prod",
+  "path": "/development/community-brain-dev/request028",
+  "subjects": 5,
+  "generated_development_identities_only": true,
+  "read_save_read_equality": true,
+  "parent_development_secrets_unchanged": true,
+  "production_keys_read_or_changed": false,
+  "actual_ssh_quiet_lease": true,
+  "scheduler_mutex": true,
+  "authority_values_exported": false,
+  "expires_at": 1790548846
+}

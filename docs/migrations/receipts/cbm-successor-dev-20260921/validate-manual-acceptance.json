@@ -1,0 +1,96 @@
+{
+  "actual_manual_inspect_execute": true,
+  "stages": [
+    {
+      "job_id": "836ee28d-bd70-4bfb-a044-49b49d9aa054",
+      "stage": "processing",
+      "generation": 1,
+      "state": "succeeded"
+    },
+    {
+      "job_id": "836ee28d-bd70-4bfb-a044-49b49d9aa054",
+      "stage": "indexing",
+      "generation": 1,
+      "state": "succeeded"
+    }
+  ],
+  "duplicate_execute_refused": true,
+  "excluded_job": "7c198449-77b3-4f96-a453-128f8c6a68a3",
+  "proof": {
+    "jobs": [
+      {
+        "id": "7c198449-77b3-4f96-a453-128f8c6a68a3",
+        "meeting_id": "request028-excluded",
+        "indexing": "pending",
+        "processing": "queued",
+        "stages": [
+          {
+            "name": "acquisition",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "processing",
+            "attempts": 0,
+            "state": "queued"
+          },
+          {
+            "name": "indexing",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "git",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "distribution",
+            "attempts": 0,
+            "state": "blocked"
+          }
+        ],
+        "outbox_sent": 0
+      },
+      {
+        "id": "836ee28d-bd70-4bfb-a044-49b49d9aa054",
+        "meeting_id": "request028-2026-09-11",
+        "indexing": "complete",
+        "processing": "succeeded",
+        "stages": [
+          {
+            "name": "acquisition",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "processing",
+            "attempts": 1,
+            "state": "succeeded"
+          },
+          {
+            "name": "indexing",
+            "attempts": 1,
+            "state": "succeeded"
+          },
+          {
+            "name": "git",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "distribution",
+            "attempts": 0,
+            "state": "blocked"
+          }
+        ],
+        "outbox_sent": 2
+      }
+    ],
+    "rows": 9,
+    "fts": {
+      "num_indexed_rows": 9,
+      "num_unindexed_rows": 0
+    }
+  }
+}

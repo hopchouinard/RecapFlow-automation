@@ -1,0 +1,46 @@
+{
+  "failures": [
+    {
+      "phase": "authority initialization",
+      "cause": "new disposable lock inodes absent",
+      "resolution": "created only the three missing disposable lock files, then acquired the actual lease; no authority effect before lease failure"
+    },
+    {
+      "phase": "queue negatives",
+      "cause": "client may return disconnected instead of raising; default trust inherited SSL_CERT_FILE",
+      "resolution": "require connected state and use explicit empty trust store; real credential and trust rejection passed"
+    },
+    {
+      "phase": "packet tests",
+      "cause": "builder module omitted from sealed packet",
+      "resolution": "new immutable revision includes builder; all eight tests pass on VM108"
+    },
+    {
+      "phase": "paired restore",
+      "cause": "safe tar extraction drops original ownership; root-owned private directories denied UID10001",
+      "resolution": "restore explicit application ownership in disposable restore tree; original source untouched"
+    },
+    {
+      "phase": "paired comparison",
+      "cause": "database row order differed after restore",
+      "resolution": "compare identical durable fields with canonical stage ordering; hashes and FTS independently checked"
+    },
+    {
+      "phase": "catalog probe",
+      "cause": "archive entries use known archive endpoint rather than processed-artifact url field",
+      "resolution": "download through the archive endpoint and check actual content hash"
+    },
+    {
+      "phase": "reproducible builder",
+      "cause": "local import cache entered recursive source copy",
+      "resolution": "builder excludes __pycache__ and pyc source artifacts; final build reproduces exact bytes; no VM108 packet gained bytecode"
+    },
+    {
+      "phase": "final production binding review",
+      "cause": "production provider command and credential-file mapping were not explicit",
+      "resolution": "added validated production provider plan and actual prior Ollama endpoint; production execution still rejected; final development launch equivalence and nine boundary tests verified"
+    }
+  ],
+  "replayed_uncertain_effects": false,
+  "sealed_revisions_modified": false
+}

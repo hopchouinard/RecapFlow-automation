@@ -1,0 +1,6 @@
+{
+  "manual_launcher_rejected_while_held": true,
+  "automatic_launcher_excluded_by_real_runner_lock": true,
+  "holds_unchanged": true,
+  "worker_execution_tested": false
+}

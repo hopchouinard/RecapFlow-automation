@@ -28,6 +28,16 @@ Request028 carries the actual source/runtime differences to home.servers for the
 complete VM108 integration. Protected real restore/browser and promotion gates
 remain unchanged.
 
+## Request028 accepted — September21
+
+[The successor results](cbm-successor-bindings-results.md) establish full synthetic
+manual/automatic host execution, scoped TLS queue, paired restore and actual
+management renewal. Source and final packet are independently reconciled. The
+production descriptor is present but the runtime loader deliberately rejects
+production execution. Controlled activation/rollback implementation with VM108
+validation is next, followed by protected real restoration, browser and capacity/
+provider gates. Earlier pending integration statements describe prior checkpoints.
+
 ## Accepted source and evidence
 
 The exact seven-file rehearsal source from agent-ops commit

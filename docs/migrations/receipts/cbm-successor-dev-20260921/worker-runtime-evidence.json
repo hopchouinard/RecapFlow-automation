@@ -1,0 +1,915 @@
+{
+  "queue": {
+    "actual_tls_authenticated": true,
+    "stream": "CBM_REQUEST028",
+    "subject": "cbm.dev.request028.jobs.stage.ready.v1",
+    "inbox": "_INBOX.cbm_request028_worker",
+    "negative_checks": [
+      "wrong_password",
+      "untrusted_tls",
+      "CB_NATS_URL",
+      "CB_NATS_STREAM",
+      "CB_NATS_SUBJECT",
+      "CB_NATS_INBOX"
+    ],
+    "external_calls": 0
+  },
+  "runtime": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/manual_worker.py",
+        "inspect",
+        "08758345-ca5b-43d9-b54f-ca454712c380",
+        "processing",
+        "1"
+      ],
+      "id": "b856896a32680b9d6d496ffd925729cf3d3d98f8e7eef0973b4adf468f1e08a0",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v10",
+          "target": "/packet"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "a36bd465e0ca39bbce534213d925b57b9566c9ab399f90ebbdd30676f9585488",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/data_check.py",
+        "inspect"
+      ],
+      "id": "ba28b1a43689d24fb57875d9e8a5f873b95025b76b7afdb26b10b7b9cd25b956",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v10",
+          "target": "/packet"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "a36bd465e0ca39bbce534213d925b57b9566c9ab399f90ebbdd30676f9585488",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/data_check.py",
+        "inspect"
+      ],
+      "id": "7aa18df26140ac16fe7f1d3675b12f6a9460b926f6e763f4dc6a0e696ad1bb74",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/data_check.py",
+        "inspect"
+      ],
+      "id": "6b0c881f8cbab504b115f35ed89297e84ef4cccfc3c0f4e865fb5f29a115edb1",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/manual_worker.py",
+        "inspect",
+        "ee2298fb-b1cc-4f1d-bf29-977556a8c2d2",
+        "acquisition",
+        "1"
+      ],
+      "id": "f99ebe3ffb967e9439c3d670dd9870cc3a7de09e5f0d6d6f79d52941331d865e",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/synthetic_worker.py",
+        "execute"
+      ],
+      "id": "db8530f5bd66dc724ecac163147f97ef3ba5e461f38753e219e65d54467d5061",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/manual-approvals/ee2298fb-b1cc-4f1d-bf29-977556a8c2d2-acquisition-1.json",
+          "target": "/approval/selection.json"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/data_check.py",
+        "inspect"
+      ],
+      "id": "03e01b1262e441e34d7ad241ae35bce1df3aad65afedea7b473fdf9eb2a8694c",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/data_check.py",
+        "inspect"
+      ],
+      "id": "79400f26d491a4cf974dae0f1d9ed767adf499c944af525867e4b5427be57e49",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/paired-recovery/restored/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/paired-recovery/restored/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/paired-recovery/restored/files",
+          "target": "/state/files"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/manual_worker.py",
+        "inspect",
+        "ee2298fb-b1cc-4f1d-bf29-977556a8c2d2",
+        "processing",
+        "1"
+      ],
+      "id": "df025d65774893d6328732e37e42f08ba5eeaf739b466c90e012f65d1028c351",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/data_check.py",
+        "inspect"
+      ],
+      "id": "f3f305fbcef23cf7375bedcbc78ad5a4a9485102c0fad21ea6e5ee9083f887f4",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v10",
+          "target": "/packet"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "a36bd465e0ca39bbce534213d925b57b9566c9ab399f90ebbdd30676f9585488",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/synthetic_worker.py",
+        "execute"
+      ],
+      "id": "76c5ff4509cf150d9c9cf8e6d48b865847e2f3aa45d54b1f2f01ab41f802a9dc",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/manual-approvals/ee2298fb-b1cc-4f1d-bf29-977556a8c2d2-indexing-1.json",
+          "target": "/approval/selection.json"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/synthetic_worker.py",
+        "execute"
+      ],
+      "id": "80be51d08c24c2e673d3b8b569a562f3a036718303adefd1432536f745e383a3",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/manual-approvals/ee2298fb-b1cc-4f1d-bf29-977556a8c2d2-processing-1.json",
+          "target": "/approval/selection.json"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/fixture/synthetic_worker.py",
+        "execute"
+      ],
+      "id": "fdf71cfed1d9d79891a2303052c41c94b236c7f669cdebc76459c37c978ffcdf",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/manual-approvals/08758345-ca5b-43d9-b54f-ca454712c380-processing-1.json",
+          "target": "/approval/selection.json"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v10",
+          "target": "/packet"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "a36bd465e0ca39bbce534213d925b57b9566c9ab399f90ebbdd30676f9585488",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/manual_worker.py",
+        "inspect",
+        "ee2298fb-b1cc-4f1d-bf29-977556a8c2d2",
+        "indexing",
+        "1"
+      ],
+      "id": "67e6c3fd4600a1da6517c7de452a4ac78213ab9844fa305a32ea580a6e2de556",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/scan.py",
+        "next"
+      ],
+      "id": "db5ed454a11210da206eaf43fb6d08b1656bb441bb3d7f82dbcb950040686e60",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/scan.py",
+        "next"
+      ],
+      "id": "2b3970405d500c86c34f68ab4a902c5cb3c8558cc6c2ab231bcc1835a7cd1efd",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/scan.py",
+        "next"
+      ],
+      "id": "d6ab844d2c23ff670f7c9d27b8328dfe41254b89cfd6bc7bf96bf68e3cd7938f",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "/packet/workers/scan.py",
+        "next"
+      ],
+      "id": "64c995ca1a09576880c98f98a60702457fe8e370e5e43e920e8fc5010b92c3b5",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "memory": 1572864000,
+      "mounts": [
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-ca.pem",
+          "target": "/run/certs/queue-ca.pem"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v9",
+          "target": "/packet"
+        },
+        {
+          "read_only": false,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus"
+        },
+        {
+          "read_only": true,
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem"
+        }
+      ],
+      "nano_cpus": 2000000000,
+      "network": "cbm-r028_default",
+      "packet_manifest": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+      "read_only_root": true,
+      "user": "10001:10001"
+    }
+  ]
+}

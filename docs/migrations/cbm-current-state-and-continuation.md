@@ -84,6 +84,21 @@ that contract and exercise the full host/management integration on VM108. It inc
 the tested source, safe evidence and exact outstanding checks. No production phase
 was executed; protected restoration, browser acceptance and rollout remain gated.
 
+## Request028 consumed — September21
+
+[Successor binding results](cbm-successor-bindings-results.md) close the recorded
+synthetic full-host integration: actual manual/automatic workers, scoped TLS queue,
+uncertainty/checkpoints, paired restore and Mac/Infisical renewal passed. Forge
+verified 42 artifacts, all 50 live packet members, byte-identical reconstruction
+and nine local tests. Source is reconciled and the handoff acknowledged.
+
+The final revision has development binding-equivalence evidence rather than a
+replayed full run. Production execution remains disabled in the actual loader.
+Next is controlled activation/rollback implementation and VM108 validation, then
+protected real restoration, browser and capacity/provider acceptance before the
+separately authorized production phase. This supersedes the pending Request028
+statements above; it does not establish production readiness or reopen processing.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

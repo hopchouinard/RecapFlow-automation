@@ -1,0 +1,30 @@
+{
+  "request_id": "CBM-SUCCESSOR-BINDINGS-20260920-028",
+  "repository": "Patchoulab/agent-ops",
+  "branch": "codex/request028-successor",
+  "worktree": "/Users/pchouinard/.t3/worktrees/agent-ops/request028-successor",
+  "base_commit": "3022cda148f9fd3b1732a687a40ba2220bcc90ef",
+  "candidate_commit": "6874753111c32bda26ea9f105dae4825ea10f9f8",
+  "worktree_clean": true,
+  "pushed": false,
+  "production_installed": false,
+  "source_paths": [
+    "platform-services/community-brain-prod/management-successor-028",
+    "platform-services/community-brain-prod/management-integration-027/build_packet.py",
+    "platform-services/community-brain-prod/management-integration-027/test_boundaries.py"
+  ],
+  "forge_input_documents": {
+    "cbm-management-integration-results.md": "58e977228bc5ac69b3b619d53e65aac70e10bc3a46653134fab995b66cc9de1f",
+    "cbm-successor-bindings-request.md": "fe728e90c3bb3df91d35b376f899a4fa75ec4db63d4dd3b6a1f859ebc2c44456",
+    "cbm-successor-validation-results.md": "493eaf06acebf211c8d255e2fb1100f9687511a74ebbe71f818b60beccfd2139",
+    "forge-successor-candidate.tar.gz": "d548d9cf8c2440af6258ddf5ae76e8831183f18e47f0484f7858d411073d3ed7",
+    "forge-validation-evidence.tar.gz": "29bb1bb5de6776a6e52a4746df923afe33e8cbedc0fd2584050c973e6c20eb34",
+    "monitor-image-equivalence.json": "39cc6149134ed02cf4e79f4da58d468e2ca1b870f56e62d941ebbf7a59512b79",
+    "stabilization-image-files.json": "da3e5385c75492c27d47efb00c18b70df0cfe4719f16f7b303ec9bf21b38c292"
+  },
+  "immutable_packet": {
+    "manifest_sha256": "c977c2a69c794141ef1c1bbf991ad7f44309ef172711e87d0806044679ad8b04",
+    "remote_path": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v14",
+    "archive_sha256": "80c4568dfaf8fece1168d94e378a2eb86c47b796b59cc43da4dc3b983efdd984"
+  }
+}

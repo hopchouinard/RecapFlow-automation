@@ -780,3 +780,13 @@ Read-only r020 bytecode and production mount/resource inspection identified the
 remaining concrete bindings. [Request028](cbm-successor-bindings-request.md) is now
 posted with source/evidence for home.servers' full VM108 host/management validation.
 See [results](cbm-successor-validation-results.md).
+
+## September21 — Request028 accepted and source reconciled
+
+Verified all 42 artifacts and 50 actual VM108 packet members. Independent Forge
+build matched the final v14 manifest; nine local boundary tests passed. Imported
+unchanged successor source and acknowledged the handoff. Full synthetic host,
+TLS queue, uncertainty/checkpoint, restore and renewal evidence passed with the
+recorded revision/equivalence limits. Production loader remains disabled. See
+[results and next implementation](cbm-successor-bindings-results.md). No production
+or legacy runtime was changed; seven request containers are stopped.

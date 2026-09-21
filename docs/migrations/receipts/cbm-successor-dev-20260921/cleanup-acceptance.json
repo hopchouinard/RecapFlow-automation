@@ -1,0 +1,522 @@
+{
+  "checked_at": "2026-09-20T23:05:09.297519+00:00",
+  "request028_only_stopped": true,
+  "serving_runtime": [
+    {
+      "name": "/cbm-r028-api",
+      "id": "c4f6c59262bb613876648dbfe065957a354aa5dd7c5535e860fbb6af1defa3bd",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "started_at": "2026-09-20T23:03:05.624736376Z",
+      "status": "running",
+      "oom_killed": false,
+      "memory": 2147483648,
+      "nano_cpus": 2000000000,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files",
+          "read_only": false
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config",
+          "read_only": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-prometheus-1",
+      "id": "cd094c2b9717a76ce3845c163c4864efa53599d6bbc326822b0aec7b57d0f8e1",
+      "image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+      "started_at": "2026-09-20T22:48:16.962273731Z",
+      "status": "running",
+      "oom_killed": false,
+      "memory": 167772160,
+      "nano_cpus": 0,
+      "command": [
+        "--config.file=/etc/prometheus/prometheus.json",
+        "--storage.tsdb.path=/prometheus"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/prometheus",
+          "target": "/etc/prometheus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/docker/volumes/238f7b9e836d17cf47c6f9c29f84234556d27a466c1dd7584016898eba7aa6b7/_data",
+          "target": "/prometheus",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-kuma-1",
+      "id": "5efd3c6050ab94816fac59c29cb5e7145b9e79c0b44b9c8c119854ddd3ae5d6d",
+      "image": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+      "started_at": "2026-09-20T22:48:16.985121709Z",
+      "status": "running",
+      "oom_killed": false,
+      "memory": 268435456,
+      "nano_cpus": 0,
+      "command": [
+        "node",
+        "server/server.js"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_kuma/_data",
+          "target": "/app/data",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-webui",
+      "id": "9ae10e5648214417003f272aa93b2e4e4c45f8288a3a65f12f315db2120eae63",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "started_at": "2026-09-20T22:53:40.579752297Z",
+      "status": "running",
+      "oom_killed": false,
+      "memory": 1610612736,
+      "nano_cpus": 1500000000,
+      "command": [
+        "bash",
+        "start.sh"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_webui/_data",
+          "target": "/app/backend/data",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-pg-1",
+      "id": "f098cfde557dfa76d31aef4b63d9608d17a4b5e02cbcba23c85f4612340b4a0d",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "started_at": "2026-09-20T22:41:13.92850418Z",
+      "status": "running",
+      "oom_killed": false,
+      "memory": 201326592,
+      "nano_cpus": 0,
+      "command": [
+        "postgres"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_pg/_data",
+          "target": "/var/lib/postgresql",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-provider-1",
+      "id": "f3cd29234ec106ae7e56e94f8d2755f01c5818e5cc00766bb9c30b951d8fea7e",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "started_at": "2026-09-20T22:41:13.857036922Z",
+      "status": "running",
+      "oom_killed": false,
+      "memory": 100663296,
+      "nano_cpus": 0,
+      "command": [
+        "python",
+        "-B",
+        "/source/provider.py"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v2/fixture",
+          "target": "/source",
+          "read_only": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-nats-1",
+      "id": "2a61bc4b568472f6c5862f70f24fe0f5446408e769d8233907e610bc7e3899c0",
+      "image": "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e",
+      "started_at": "2026-09-20T22:41:14.00381727Z",
+      "status": "running",
+      "oom_killed": false,
+      "memory": 134217728,
+      "nano_cpus": 0,
+      "command": [
+        "-c",
+        "/config/server.conf"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/nats",
+          "target": "/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_nats/_data",
+          "target": "/data",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    }
+  ],
+  "stopped_runtime": [
+    {
+      "name": "/cbm-r028-api",
+      "id": "c4f6c59262bb613876648dbfe065957a354aa5dd7c5535e860fbb6af1defa3bd",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "started_at": "2026-09-20T23:03:05.624736376Z",
+      "status": "exited",
+      "oom_killed": false,
+      "memory": 2147483648,
+      "nano_cpus": 2000000000,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-prometheus-1",
+      "id": "cd094c2b9717a76ce3845c163c4864efa53599d6bbc326822b0aec7b57d0f8e1",
+      "image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+      "started_at": "2026-09-20T22:48:16.962273731Z",
+      "status": "exited",
+      "oom_killed": false,
+      "memory": 167772160,
+      "nano_cpus": 0,
+      "command": [
+        "--config.file=/etc/prometheus/prometheus.json",
+        "--storage.tsdb.path=/prometheus"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/prometheus",
+          "target": "/etc/prometheus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/docker/volumes/238f7b9e836d17cf47c6f9c29f84234556d27a466c1dd7584016898eba7aa6b7/_data",
+          "target": "/prometheus",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-kuma-1",
+      "id": "5efd3c6050ab94816fac59c29cb5e7145b9e79c0b44b9c8c119854ddd3ae5d6d",
+      "image": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+      "started_at": "2026-09-20T22:48:16.985121709Z",
+      "status": "exited",
+      "oom_killed": false,
+      "memory": 268435456,
+      "nano_cpus": 0,
+      "command": [
+        "node",
+        "server/server.js"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_kuma/_data",
+          "target": "/app/data",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-webui",
+      "id": "9ae10e5648214417003f272aa93b2e4e4c45f8288a3a65f12f315db2120eae63",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "started_at": "2026-09-20T22:53:40.579752297Z",
+      "status": "exited",
+      "oom_killed": false,
+      "memory": 1610612736,
+      "nano_cpus": 1500000000,
+      "command": [
+        "bash",
+        "start.sh"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_webui/_data",
+          "target": "/app/backend/data",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-pg-1",
+      "id": "f098cfde557dfa76d31aef4b63d9608d17a4b5e02cbcba23c85f4612340b4a0d",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "started_at": "2026-09-20T22:41:13.92850418Z",
+      "status": "exited",
+      "oom_killed": false,
+      "memory": 201326592,
+      "nano_cpus": 0,
+      "command": [
+        "postgres"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_pg/_data",
+          "target": "/var/lib/postgresql",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-provider-1",
+      "id": "f3cd29234ec106ae7e56e94f8d2755f01c5818e5cc00766bb9c30b951d8fea7e",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "started_at": "2026-09-20T22:41:13.857036922Z",
+      "status": "exited",
+      "oom_killed": false,
+      "memory": 100663296,
+      "nano_cpus": 0,
+      "command": [
+        "python",
+        "-B",
+        "/source/provider.py"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v2/fixture",
+          "target": "/source",
+          "read_only": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "name": "/cbm-r028-nats-1",
+      "id": "2a61bc4b568472f6c5862f70f24fe0f5446408e769d8233907e610bc7e3899c0",
+      "image": "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e",
+      "started_at": "2026-09-20T22:41:14.00381727Z",
+      "status": "exited",
+      "oom_killed": false,
+      "memory": 134217728,
+      "nano_cpus": 0,
+      "command": [
+        "-c",
+        "/config/server.conf"
+      ],
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/nats",
+          "target": "/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/docker/volumes/cbm-r028_nats/_data",
+          "target": "/data",
+          "read_only": false
+        }
+      ],
+      "ports": {}
+    }
+  ],
+  "existing_running_services_unchanged": [
+    {
+      "name": "/cbm-collector-development-proxy-1",
+      "started_at": "2026-09-20T00:36:03.623525112Z"
+    },
+    {
+      "name": "/cbm-live-development-api-1",
+      "started_at": "2026-09-20T00:35:58.249267745Z"
+    },
+    {
+      "name": "/cbm-live-development-nats-1",
+      "started_at": "2026-09-20T00:35:48.404137004Z"
+    },
+    {
+      "name": "/cbm-live-development-postgres-1",
+      "started_at": "2026-09-20T00:35:46.779542855Z"
+    }
+  ],
+  "retained_fixtures_still_stopped": [
+    "cbm-integration-dev-webui-1",
+    "cbm-integration-dev-api-1",
+    "cbm-integration-dev-pg-1",
+    "cbm-integration-dev-provider-1",
+    "cbm-r026-webui",
+    "cbm-r026-fixture",
+    "cbm-r027-api",
+    "cbm-r027-prometheus-1",
+    "cbm-r027-kuma-1",
+    "cbm-r027-webui",
+    "cbm-r027-pg-1",
+    "cbm-r027-provider-1"
+  ],
+  "request027_private_artifacts_unchanged": true,
+  "internal_network": true,
+  "published_ports": false,
+  "immutable_packets_verified": {
+    "packet-v9": "b4fd817fcd4fd9d430418a93908fcb14f7034f5d56d5ccc2e9751caa8df0e852",
+    "packet-v3": "1b470eec90fe8f499a9964c6303c25b9dec7f2f27be9ed665eb0ace29c9311ed",
+    "packet-v14": "c977c2a69c794141ef1c1bbf991ad7f44309ef172711e87d0806044679ad8b04",
+    "packet-v10": "a36bd465e0ca39bbce534213d925b57b9566c9ab399f90ebbdd30676f9585488",
+    "packet-v7": "78533e56bbba56df78889154822444f931b328c5c21a247dae23d3325cfe89cc",
+    "packet-v4": "5d93fa4ad45aa61b4ee48cb24c735361788cd510033ecd686e73fb4ddd70e0db",
+    "packet-v13": "f576c8528557ba353ce043afa8be2ac7465111900d4c371ea237dc8d2462d3e3",
+    "packet-v12": "b1f616f6dd1d848d3774c95ee98b350440e9e7e4b0261e9dcd0293f58cce99e3",
+    "packet-v5": "62887eaaf23c99dbec9f2059fde029e7750586ace5311b1092426404f675431f",
+    "packet-v1": "741453a192c704be23976e9e6b7a7a5ba7e8713a1984d7b7a3e43a8cc29d10d5",
+    "packet-v6": "c0a96f2c1bd911ecaacde2fc2f00069c9a49e4b0d406c0e11e77fee504bd120a",
+    "packet-v11": "92340ba29c6ddd2ab8369844a2432ec23c5e81d8d99cecd52cab4320f5a6f9e9",
+    "packet-v2": "4b9ae4bd68ed4e3ee32ae6d70c8839ce0a66ff632adf1196121d99368d656038",
+    "packet-v8": "410a5d91a15d2ff04d0774ffe08bd60d84866e8062daf81484eca72885f7dcdc"
+  },
+  "bytecode_files": 0,
+  "private_artifacts": {
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/paired-recovery/webui.tar": {
+      "bytes": 277934080,
+      "sha256": "5fdbf92e9d335e72272acd7ec4996288190b899511a33f00b9187b5085a46d59",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/paired-recovery/private-runtime.tar": {
+      "bytes": 389120,
+      "sha256": "cf63fa67ac67b198509a48b54af285412947fa84ad8ef4abbb8fab9f4195fc21",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/paired-recovery/state.tar": {
+      "bytes": 276480,
+      "sha256": "af4c6403336022c70ef22162abde99d2872d75a5b8e4877e1ee5f939a3a88d54",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/paired-recovery/database.sql": {
+      "bytes": 25268,
+      "sha256": "731d25bbdecb016f29f2fe216eebd1cf177015a5a3c067c2521d65422bf030e6",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/worker.env": {
+      "bytes": 121,
+      "sha256": "c38e6ce9858a44e0ffb5670966c98b2ae4d92b5264df820a0a356e41f4639d7f",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/queue-admin.env": {
+      "bytes": 140,
+      "sha256": "13b26341eec36b397ff6229321db9f4299ea1edb503f90e696058aa075e0a5a8",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/api.env": {
+      "bytes": 2052,
+      "sha256": "1bdc9f795ed59987e9a9ffe322a3fbf868a51cc0e67ca38a22c5e44e3da9dc2a",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/collector-client.env": {
+      "bytes": 123,
+      "sha256": "d9579eca605587b2abbebdf42cdb05e3f3d3046d1ec729d603a871b0cd3a4e19",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/probes.env": {
+      "bytes": 210,
+      "sha256": "440c03c634bb380f56ab8f6baa0e7e7d298efd8ba7705a924422feca6ca99cd3",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/webui.env": {
+      "bytes": 448,
+      "sha256": "2400d3fd94239402d279ddcf17d6154012fa4ea59d3c01ed902879953f0abee1",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/operator-client.env": {
+      "bytes": 135,
+      "sha256": "b66e293144cd742ece5f2fa2e0659cda5c61eaf869a87e8b3f5d4d1206e12c25",
+      "mode": "0600"
+    },
+    "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/provider.env": {
+      "bytes": 95,
+      "sha256": "26b08174c1671bc9fcfef6587b1b7d1eda954baa48fcb6860706d5986ba4895a",
+      "mode": "0600"
+    }
+  },
+  "retained_workspace": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028",
+  "production_changes": false,
+  "vm101_contacted": false,
+  "final_packet_verified_after_cleanup_at": "2026-09-20T23:10:45.279891+00:00"
+}

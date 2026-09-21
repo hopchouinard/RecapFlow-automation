@@ -1,0 +1,85 @@
+{
+  "checked_at": "2026-09-20T22:47:43.752040+00:00",
+  "api": {
+    "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+    "started_at": "2026-09-19T21:21:38.872407149Z",
+    "running": true,
+    "memory": 2147483648,
+    "nano_cpus": 2000000000,
+    "mounts": [
+      {
+        "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py",
+        "target": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/api.py",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py",
+        "target": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/runtime.py",
+        "read_only": true
+      },
+      {
+        "source": "/etc/ssl/certs/ca-certificates.crt",
+        "target": "/run/certs/ca-bundle.pem",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/corpus",
+        "target": "/state/corpus",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/files",
+        "target": "/state/files",
+        "read_only": false
+      },
+      {
+        "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py",
+        "target": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/archive.py",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py",
+        "target": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py",
+        "target": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py",
+        "target": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-frontend/dist",
+        "target": "/app/web/dist",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/automation-public",
+        "target": "/state/automation-public",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/config",
+        "target": "/state/config",
+        "read_only": true
+      },
+      {
+        "source": "/srv/community-brain/meeting-archive-20260910",
+        "target": "/state/meeting-archive",
+        "read_only": true
+      }
+    ]
+  },
+  "r020_bytecode": {
+    "sha256": "084a3fb857c3499d9198dcd40201e524fa5a4c2282e22e74998bd4f4ab21853f",
+    "bytes": 5266,
+    "mtime": 1789613295.2194865,
+    "disposition": "preserve unchanged; protected recovery artifact"
+  },
+  "production_changes": false,
+  "vm101_contacted": false
+}

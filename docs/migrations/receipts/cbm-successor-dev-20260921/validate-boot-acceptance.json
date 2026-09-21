@@ -1,0 +1,19 @@
+{
+  "held_manual_refused": true,
+  "wrong_boot_rejected": true,
+  "unresolved_attention_rejected": true,
+  "boot_enforced": {
+    "boot_matches": true,
+    "reconciled": false,
+    "launcher": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v6/workers/automatic_host.py",
+    "held": true,
+    "production_changes": false
+  },
+  "disposable_only_reconciled": {
+    "boot_matches": true,
+    "reconciled": true,
+    "launcher": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v6/workers/automatic_host.py",
+    "held": false,
+    "production_changes": false
+  }
+}

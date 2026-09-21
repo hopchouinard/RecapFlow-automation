@@ -1,0 +1,16 @@
+{
+  "prometheus": {
+    "source_image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+    "development_image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+    "archive_sha256": "7a72e56e80ae2e27a8c2d1719c978f8386045045516527e2af7ed389418eaafd",
+    "archive_bytes": 143662080,
+    "config_and_layers_equal": true
+  },
+  "kuma": {
+    "source_image": "sha256:bf9ee98a46002fff7214aed1187c7d651851095e53b26bc6cb7aae871bc19b54",
+    "development_image": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+    "archive_sha256": "11381099dc4b660706017af32ace2c914980e74769b57cc6e06453d01cdf5ad3",
+    "archive_bytes": 1752820736,
+    "config_and_layers_equal": true
+  }
+}

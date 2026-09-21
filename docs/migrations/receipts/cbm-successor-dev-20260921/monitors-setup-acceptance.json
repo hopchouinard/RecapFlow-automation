@@ -1,0 +1,10 @@
+{
+  "actual_monitor_setup": true,
+  "kuma": {
+    "monitor_id": 1,
+    "credential_verified": true,
+    "active": true,
+    "heartbeat": null
+  },
+  "partial_setup_reconciled": true
+}

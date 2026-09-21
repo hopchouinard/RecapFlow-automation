@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "name": "candidate-local",
+      "tests": 9,
+      "passed": true,
+      "output_sha256": "4a597564438336ac9c95627b3b4a203d9a0071f98d84bb42f2b1737fdfbfb7e6"
+    },
+    {
+      "name": "candidate-vm108",
+      "tests": 9,
+      "passed": true,
+      "output_sha256": "2fa3f1261b11817d72c698ac16b42dabc6e8072238d96a545284227c46d8a6f1"
+    }
+  ],
+  "forge_fix_tests": 7,
+  "reproduced_exact_manifest": "c977c2a69c794141ef1c1bbf991ad7f44309ef172711e87d0806044679ad8b04",
+  "source_bytecode_excluded_from_build": true,
+  "final_provider_binding_validation": {
+    "development_worker_environment_equal_to_executed_packet": true,
+    "both_read_only_and_indexing_container_arguments_equal": true,
+    "api_webui_render_equal": true,
+    "synthetic_provider_command_and_secret_mapping_equal": true,
+    "production_real_provider_mapping_tested_without_reading_production_keys": true
+  },
+  "limits": [
+    "Full successful worker execution recorded on packet-v9; final provider-binding refactor is verified through equivalent development launch arguments, environment, command and secret mapping plus final VM108 held-launch checks.",
+    "Production provider execution remains unauthorized and untested."
+  ]
+}
