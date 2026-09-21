@@ -159,6 +159,15 @@ offline-restore phase. Production compiler remains disabled. Proposed 8GiB dev
 capacity and capped paid-provider tests are not authorized or executed. Whole
 production automation-tree equality is not certified; protected holds match.
 
+## Capture controller development increment — September21
+
+Forge added and validated durable interruption/readback and strict component-file
+receipt checks on VM108:49 tests and a retained capture/stream/restore operation.
+[Results and limits](cbm-capture-controller-development-results.md) distinguish
+local process handling from the remaining Mac/SSH/DB-fence orchestration.
+[Request031](cbm-capture-controller-integration-request.md) covers that development
+integration and semantic restore validation; no production transfer is authorized.
+
 ## Accepted development-first policy — September 20
 
 Patrick reviewed and accepted this assessment and the recommended continuation

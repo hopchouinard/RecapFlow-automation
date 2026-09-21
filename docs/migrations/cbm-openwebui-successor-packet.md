@@ -140,3 +140,9 @@ then close fresh-volume restore and concurrency acceptance and bind the coherent
 promotion packet. Protected production transfer, deployment/cutover and runner
 reconciliation follow the appropriate production phase; this preparation does not
 execute them. Weekly-cycle evidence and retirement remain outstanding afterward.
+
+## Capture controller development — September21
+
+See [Forge results](cbm-capture-controller-development-results.md):49 tests passed on
+VM108 plus retained synthetic recovery. Request031 covers remaining host orchestration
+and database evidence validation. Production execution remains disabled.

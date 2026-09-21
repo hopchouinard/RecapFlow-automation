@@ -834,3 +834,9 @@ capture-wrapper interruption/deadline handling and new receipt validation remain
 No protected transfer, resizing or paid test occurred. See
 [results](cbm-protected-restore-preparation-results.md), including heartbeat-drift,
 capacity, counting and browser/session evidence limits.
+
+## Capture controller development — September21
+
+See [Forge results](cbm-capture-controller-development-results.md):49 tests passed on
+VM108 plus retained synthetic recovery. Request031 covers remaining host orchestration
+and database evidence validation. Production execution remains disabled.
