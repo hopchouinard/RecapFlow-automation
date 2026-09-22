@@ -1,0 +1,1 @@
+{"helper_count": 9, "receipt": "/Users/pchouinard/.local/state/community-brain-management/request033/helpers-verified2/helper-receipts.json", "external_boundary_fixtures": true}

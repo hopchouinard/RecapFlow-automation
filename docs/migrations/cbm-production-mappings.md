@@ -1,5 +1,7 @@
 # Production mapping closure packet
 
+Request033 is now consumed: [candidate mappings closed and qualification limits](cbm-production-mapping-integration-results.md). The following records the initial Forge inputs, not current outstanding mapping status.
+
 September22. This is implementation/review work, not production execution authority.
 Current baseline: Request032 source manifest
 `48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7`.

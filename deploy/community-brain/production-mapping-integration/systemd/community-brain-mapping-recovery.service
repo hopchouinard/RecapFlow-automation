@@ -1,0 +1,16 @@
+[Unit]
+Description=Bound Community Brain serving reconciliation (proposal; executor remains development-only)
+Requires=docker.service community-brain-automatic-pause.service
+After=docker.service community-brain-automatic-pause.service
+RequiresMountsFor=/srv/community-brain
+Before=community-brain-mapping-admission.target
+[Service]
+Type=oneshot
+User=root
+UMask=0077
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -B /usr/local/lib/community-brain-production-mapping-033/service_recovery.py recover /srv/community-brain/maintenance-033/spec.json
+TimeoutStartSec=180
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target

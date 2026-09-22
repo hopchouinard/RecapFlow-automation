@@ -1,0 +1,254 @@
+{
+  "db/usr/local/lib/community-brain-automatic/database_adapter.py": {
+    "bytes": 8775,
+    "host": "pchouinard@10.1.10.50",
+    "original_path": "/usr/local/lib/community-brain-automatic/database_adapter.py",
+    "sha256": "cf85cd8ca13779dbc81c0c4d2936054e016435edaee7820da781544bf1c493d8"
+  },
+  "pve/usr/local/lib/community-brain-automatic/pbs_adapter.before-request017.py": {
+    "bytes": 5466,
+    "host": "root@10.1.10.4",
+    "original_path": "/usr/local/lib/community-brain-automatic/pbs_adapter.before-request017.py",
+    "sha256": "c2b7bde0f479178c061ef49da4711c8540c70786ddb5b2df29bd6c3097dc134d"
+  },
+  "pve/usr/local/lib/community-brain-automatic/pbs_adapter.py": {
+    "bytes": 6117,
+    "host": "root@10.1.10.4",
+    "original_path": "/usr/local/lib/community-brain-automatic/pbs_adapter.py",
+    "sha256": "1a443da18c050e8b77d9177010be0a48859f125c5d467bc842068e76addf4f0e"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/automatic_host.py": {
+    "bytes": 8816,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/automatic_host.py",
+    "sha256": "b4f437ea0ea58fad5d708d96b674ba28f276c022ec55e6cba72d3f081f0cdf9f"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/bounded_worker.py": {
+    "bytes": 8194,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/bounded_worker.py",
+    "sha256": "dee7265d7a316d632e621cb2557fe8802c510bf67df04a6b6f2ebc051b8d04bd"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/dist/assets/index-Bgv2fsby.js": {
+    "bytes": 321676,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/dist/assets/index-Bgv2fsby.js",
+    "sha256": "172ecd84c8ed3d0224dbaae03bbc4db829c1791ff31c94428bd270af50771824"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/indexing_budget.py": {
+    "bytes": 3409,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/indexing_budget.py",
+    "sha256": "932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/__init__.py": {
+    "bytes": 80,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/__init__.py",
+    "sha256": "bea5dc4c8d6c3c96fdfbdaac59cb7388491dffb7bb2f7af5e8915a8be56f5a76"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/acquisition.py": {
+    "bytes": 8631,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/acquisition.py",
+    "sha256": "d172978a31efc8a0e7eaf081ba5d3978104d51a500a7847c7836f743196e5f89"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py": {
+    "bytes": 19008,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py",
+    "sha256": "5bc6f91db520ec5b603d44b3252ed5cc910c4a9d066cb7dcb2be5c179b481445"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py": {
+    "bytes": 4908,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py",
+    "sha256": "12b06f75fe4fd2b2826ce517f6437f4b90eecb25b4f4ee49a750f5d3901b9297"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/auth.py": {
+    "bytes": 2001,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/auth.py",
+    "sha256": "9e7012ad5e17a4e58a5f0e29be42890b5130244d0699ebab60e099d3085d1aa4"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py": {
+    "bytes": 4260,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py",
+    "sha256": "b44cfc52d9b3c6b40d242dc587bbf40c5a26b51d470db9234f1b5feb71636a4b"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/github_release.py": {
+    "bytes": 5197,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/github_release.py",
+    "sha256": "b716dd4f8d0e6c13ebcc45fe07ef4ed5a51cf07b5e77213345a28f6f1cd1aca2"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/manual.py": {
+    "bytes": 5352,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/manual.py",
+    "sha256": "9e0cf550d0dc32acaecadcb3bec8ca9c2390467e78614afb4b35264852cf43fa"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/models.py": {
+    "bytes": 5270,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/models.py",
+    "sha256": "965b3397f54a644e966ea685b625cbf9d22467be9c2f2009dfc9a69168394714"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/publication.py": {
+    "bytes": 14645,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/publication.py",
+    "sha256": "cbd7145919fb0299a7e7f35ee15f40ca091854aedc4af19b9985a9c3492b5859"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py": {
+    "bytes": 7702,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py",
+    "sha256": "181c4fbb1dea9e6665750d94add3fd978e9ad7e10bfd00998bf0ae24b68567a2"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/storage.py": {
+    "bytes": 1896,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/storage.py",
+    "sha256": "802fac016bee72ef312842a256f3b91e557ce23a4a1f426f1d70c75f7380784a"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py": {
+    "bytes": 24052,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py",
+    "sha256": "cf8b32ce17a1eb58a1a6c70234844cf01969e0315be61d5d654fbd0f4dcfe4d2"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py": {
+    "bytes": 14620,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py",
+    "sha256": "66557de0327c3cefced2fd1844148eab96d255009955acad323dca874e2e6d0e"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/manual_host.py": {
+    "bytes": 6721,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/manual_host.py",
+    "sha256": "2ed08b947d0fef39447925e526fec78fdca09641460823e5c7febaaff63e108b"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/manual_worker.py": {
+    "bytes": 7417,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/manual_worker.py",
+    "sha256": "7bb8467e08849287486e2281e043e7223bcf415609c631a405aa1cdc15ec15f0"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/run.py": {
+    "bytes": 3528,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/run.py",
+    "sha256": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/scan.py": {
+    "bytes": 2590,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/scan.py",
+    "sha256": "a83c0200604068725929058ef08b36999ad71dfeeda38272fec9cc40d7a9f18c"
+  },
+  "vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/selected_fathom.py": {
+    "bytes": 1979,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/selected_fathom.py",
+    "sha256": "eb38d5afd638f3c65372b93193f65dc3f1d4eaa00d87a1f2140c1dfe1a5afeba"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/bounded_worker.py": {
+    "bytes": 8048,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/bounded_worker.py",
+    "sha256": "dd9d90dfde1c201ae9fbd9715f30c7ed9f63077652bbe91c73f741b2ed9a0c4b"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/disposable_index.py": {
+    "bytes": 8035,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/disposable_index.py",
+    "sha256": "69b3a8ee6ad3067e2587bd8f336cdee2fdefd35044c82a680f1cba3600301761"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/disposable_index_host.py": {
+    "bytes": 7539,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/disposable_index_host.py",
+    "sha256": "5fdb5d5a93525dd26b440740f4bfa1c274556acdde60d7c0b6bf53760f03d12e"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/indexing_budget.py": {
+    "bytes": 3265,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/indexing_budget.py",
+    "sha256": "6a88265b155f558f60cecb2534173c8443a2dae9728326e8c1beac702b28304d"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/jobs/manual.py": {
+    "bytes": 5352,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/jobs/manual.py",
+    "sha256": "9e0cf550d0dc32acaecadcb3bec8ca9c2390467e78614afb4b35264852cf43fa"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/jobs/store.py": {
+    "bytes": 20469,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/jobs/store.py",
+    "sha256": "e2bcf8d799180caf3784943b49f9bcf1c7af463c07c6e2fabf7fe6b60e5179af"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/jobs/worker.py": {
+    "bytes": 12914,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/jobs/worker.py",
+    "sha256": "f6f69884c8aa39c7a4b7746bcc97f3212a8ddd218af27914b4f0462e18cca652"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/manual_host.py": {
+    "bytes": 6319,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/manual_host.py",
+    "sha256": "1b379cd448a9dacf53c6e0ebb4f1c7d90e5d3640d9210a8e99f31846bd9ee1c3"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/manual_image_checks.py": {
+    "bytes": 6371,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/manual_image_checks.py",
+    "sha256": "a4a5045a68a11abd005ac04e94cbda458b0f8a42a586f65dabdac771d0717e15"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/manual_worker.py": {
+    "bytes": 7108,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/manual_worker.py",
+    "sha256": "06ceea4cdc404a06c4575546466de1f8e5adc6bd8942bc60dcc90fab7ba00968"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/run.py": {
+    "bytes": 3528,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/run.py",
+    "sha256": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d"
+  },
+  "vm109/srv/community-brain/workspaces/manual-20260910/production-staging/selected_fathom.py": {
+    "bytes": 1946,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/srv/community-brain/workspaces/manual-20260910/production-staging/selected_fathom.py",
+    "sha256": "6c5841fa760dc4699cd696f7d4b8f2bf7d78ce74191de0b23d01a8a7a5fa0d6d"
+  },
+  "vm109/usr/local/lib/community-brain-automatic/boot_guard.py": {
+    "bytes": 1661,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/usr/local/lib/community-brain-automatic/boot_guard.py",
+    "sha256": "70d93cdde9d2360294b5e960dfd4586ec20184bc2bdae69be1dbb148d347f7ac"
+  },
+  "vm109/usr/local/lib/community-brain-automatic/checkpoint_acceptance.py": {
+    "bytes": 6134,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/usr/local/lib/community-brain-automatic/checkpoint_acceptance.py",
+    "sha256": "b35e46de4705307f4777ba40f61071115d3918801ecb732ae51acdabf80f46c6"
+  },
+  "vm109/usr/local/lib/community-brain-automatic/files_adapter.py": {
+    "bytes": 12979,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/usr/local/lib/community-brain-automatic/files_adapter.py",
+    "sha256": "8a4546272cafaccb5e4f291161424527e3d93ac580aaea6d7755f083e6bc6168"
+  },
+  "vm109/usr/local/lib/community-brain-automatic/quiet_window.py": {
+    "bytes": 3556,
+    "host": "pchouinard@10.1.30.21",
+    "original_path": "/usr/local/lib/community-brain-automatic/quiet_window.py",
+    "sha256": "8347e32d04d1ecd22ce97b104e836b94f923f9951c442fa23e67f01da008fa50"
+  }
+}

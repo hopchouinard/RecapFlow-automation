@@ -1,0 +1,1 @@
+{"webui-volume": {"path": "/var/lib/docker/volumes/open-webui-data/_data", "counts": {"files": 637, "directories": 166, "relative_contained_links": 46, "absolute_links": 0, "escaping_or_broken_links": 0, "hardlinks": 0, "special": 0, "extended_metadata": 0, "privileged_modes": 0}, "bytes": 1178802835, "free_bytes": 472692711424}}

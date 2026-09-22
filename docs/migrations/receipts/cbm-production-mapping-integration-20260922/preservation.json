@@ -1,0 +1,91 @@
+{
+  "at": "2026-09-22T01:14:19.148491+00:00",
+  "production": {
+    "unchanged": true,
+    "baseline_containers": 2,
+    "compared": "exact IDs, images, configurations, running state, start times and restart counts; production held control bytes and retained old bytecode"
+  },
+  "development": {
+    "unchanged": true,
+    "baseline_containers": 118,
+    "compared": "exact IDs, images, configurations, running state, start times and restart counts; production held control bytes and retained old bytecode"
+  },
+  "installed_mac_source_files_unchanged": 34,
+  "remote_source_files_unchanged": 42,
+  "legacy": {
+    "legacy_retained": true,
+    "prior_shared_journal_resolved": true,
+    "fresh_authenticated_readback": true
+  },
+  "mac_common_journal": [
+    {
+      "operation": "helpers-final2-helpers",
+      "intent_sha256": "d16d7afb1382db39190db2cc3c39d8d7d90d47c0aee02c92bbf4ccc713667eb4",
+      "resolved_sha256": "1c78336cc627ff6bc9ea969b37459806442beece8b52d1d9147db2af9a0f4051"
+    },
+    {
+      "operation": "wrapper-verified-wrapper",
+      "intent_sha256": "c74835bf42f24fd7c348b55fe7087469eef5e65c530bbb51966a8ad633206f39",
+      "resolved_sha256": "7f183574261a7eee645cca1bf502d2671eefa1cfe3efb2e95fbcb325a51bf3fb"
+    },
+    {
+      "operation": "helpers-final2-scheduler",
+      "intent_sha256": "b407ce1caa23a7bdec702bc6c1405a378130f3ad0950fd117e51df6908a7292b",
+      "resolved_sha256": "41f7992c8a1a8faedf2fded1f44ce5a2fd554a15b67885ab24128e33e709eaa6"
+    },
+    {
+      "operation": "helpers-verified2-scheduler",
+      "intent_sha256": "10610509c5d6f12f5630ed53b2b1471b3d9e410167ab5177ccd0777db4c69cdd",
+      "resolved_sha256": "e4e503bacb91c2839f5c95178adb92022373918b1f7443ece641ca9151070239"
+    },
+    {
+      "operation": "helpers-release2-helpers",
+      "intent_sha256": "ab6811c43b753bc735cf65c5526b51486eecd34b05b6501de1416fb355ba8e7b",
+      "resolved_sha256": "76cc6050e4e1b04b8c7ab144564150ca01daf503c1c28d02ee2db10a18bf336b"
+    },
+    {
+      "operation": "helpers-verified2-helpers",
+      "intent_sha256": "8baa85eae4e3deb7110481e5038ff9fe04b5ba75dd8575ddf173738fac114904",
+      "resolved_sha256": "8a3194476e6a1db74d722833b2a3c62dc77ab15f693b47872241f25257689dde"
+    },
+    {
+      "operation": "helpers-final-helpers",
+      "intent_sha256": "f8294eb3d185b7260f9d8593b55c89dc81dfe0c377e8582156c563cfeba9c58f",
+      "resolved_sha256": "7da98d853c868bcbe6cb410b389290ee79fc2864353039499910f419f251f117"
+    },
+    {
+      "operation": "helpers-release2-scheduler",
+      "intent_sha256": "e11da5f77a745ec7290eb1d4873b76d9c9608df6cef933910201b12da9b0631d",
+      "resolved_sha256": "1da93d09b145253b63bf73b34bea50531838b00b26613c58af83d231ffecd5cf"
+    },
+    {
+      "operation": "wrapper-release-wrapper",
+      "intent_sha256": "505e895cf0363dc3502b418672c0a771f97c7f19f12d5171b8ea60d6d953b5fb",
+      "resolved_sha256": "162b865890bf8c5f3a4719073754e65729292fba581a19342c63dedcc5e15fbf"
+    },
+    {
+      "operation": "wrapper-final-wrapper",
+      "intent_sha256": "46bbc346733e6f1bee753255d1a795e73864d4acd535d8a8c1a900463d5c0373",
+      "resolved_sha256": "ee76a9d7c6540ae31cb0261dc8a1ac0d31ef82fc0e199378d0b0c97e28f29e3f"
+    }
+  ],
+  "vm101_webui": {
+    "container_id": "83358b76e0544437bd8947ba9a7be94d9fba59559a6dc56bd3c1c0110fb8a33c",
+    "image": "sha256:ea51ab128ef7f7e1e5d9a6e2cd8bbea2336e6ad408ad185c1e796525c97d9c52",
+    "running": false,
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "open-webui-data",
+        "Source": "/var/lib/docker/volumes/open-webui-data/_data",
+        "Destination": "/app/backend/data",
+        "Driver": "local",
+        "Mode": "rw",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "machine_id": "069a74f6fc494754932895c8f6ad0b7e"
+  },
+  "vm101_read_only_metadata_only": true
+}

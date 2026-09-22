@@ -1,0 +1,11 @@
+{
+  "state": "aborted_known_fixture",
+  "reason": "Actual pre-PBS rule refused completion with less than300 seconds before21:00 local; scheduled freshness not advanced",
+  "at": "2026-09-22T01:01:06.349336+00:00",
+  "retained_fixture_path": "/Users/pchouinard/.local/state/community-brain-management/request033/helpers-final/fixture",
+  "destination_dump_sha256": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19",
+  "private_production_data": false,
+  "production_effects": false,
+  "replay_allowed": false,
+  "explicit_owner_readback": true
+}

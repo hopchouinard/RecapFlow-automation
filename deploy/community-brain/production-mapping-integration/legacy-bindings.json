@@ -1,0 +1,95 @@
+{
+  "explicit_disposition": "Existing Request029 terminal rollback and retired synthetic containers; retained pointer is not migrated, cleared or replayed. Fresh SSH observation must equal this baseline before each candidate dispatch.",
+  "local_files": {
+    "/Users/pchouinard/.local/state/community-brain-management/request029/activation-pending.json": "bef7d679ac9e1625ec786ba382e5f5b22d37a92f854ccacba7b745b3f83bf7a9",
+    "/Users/pchouinard/.local/state/community-brain-management/request029/intent-normal-terminal-refusal.json": "2ce68ab69d912e213526ae8328c7090c935cf6544174251ea45977a19063d48b",
+    "/Users/pchouinard/.local/state/community-brain-management/request029/intent-normal-terminal-refusal.json.result.json": "1752d427f6b46dcd837feea73eefd30e31dfa345e2e583d8586f465980bb1e6c"
+  },
+  "mutex": {
+    "device": 16777232,
+    "gid": 20,
+    "inode": 160807401,
+    "mode": 384,
+    "uid": 501
+  },
+  "previous_journal": {
+    "r032-caller4c-1790014074": "3cf5524ad271d08214f3fba6ee2546ec154f3ad78267e0d13cf937d205dab3ac",
+    "r032-caller4nextmanual-1790014164": "37ca524d085ffff449b1ffc09950f19d9f969900aad13b515b48972c1923a868",
+    "r032-caller4nextscheduler-1790014141": "536c46bbc5aa030efabe5fa42cc7a90eab53e8ae6838ea16861dcb92730244eb",
+    "r032-caller6c-1790015094": "16a26683ea31b2a07050558e7261043a525c7e6840edf9fa56d7797df16136e1",
+    "r032-caller6nextmanual-1790015190": "12fb1d4708d2497fa489beeb2c3960757012b80515c42cc7dad5eec350d432ba",
+    "r032-caller6nextscheduler-1790015162": "20404e44ac07b8c956d513505c1f4cc7ad7d0e96077dd032a59bd4b4ce314f68",
+    "r032-capture2-1790013394": "635946117600c9a21a5177abe5d50aac72065464e3b2f321c2a17c71ecf304bd",
+    "r032-capture3-1790013840": "e0851b638940ba8f1fb29e53fd44f01894f3a7449fd66df17f745f97e26a5d20",
+    "r032-database6-1790014980": "23347348b142e10c91bd4ec9e0fdd6e0e4bff2fb7aca0dac4ba49c9f976b3b6b",
+    "r032-legacy6-1790015478": "785086e2f829cda00857d4235fd606c27c33480017a128b1cf4cebdf0e80bcb6",
+    "r032-manual2-1790013354": "12489a4fe27bbd2603e0badd4fb87a3e0bb3db1186999d96546263330213e43d",
+    "r032-recovery5c-1790014477": "794cb6beccffa8f93f1f801c655e001c5bc5042ae4c72e5985a1d6d9e9f3cf75",
+    "r032-recovery5nextmanual-1790014552": "65f647fb1131443494d1f3b5d7553e42d4a625b8846c81ffd2fecf229cc6b59d",
+    "r032-recovery5nextscheduler-1790014527": "8d768afb1e5936fd8e4c5e83866304921500c8769e658c47b40908b0c989b01f",
+    "r032-recovery6c-1790015376": "622018b03adf6835d2ee0f67ecffb0b3fdb16a18c2ed0eda9cf74f25dcd8bf3a",
+    "r032-recovery6nextmanual-1790015452": "9ae1a07fab869cdbabd2d39cb409d4181a0151f8af93858296cf0f228f573a24",
+    "r032-recovery6nextscheduler-1790015426": "ef09490ea68fc68b7cccdd1aecfb8c46f84a86ff1df7f9744f298a1ca3c43a3e",
+    "r032-scheduler3-1790013775": "40121c2118fde19a3193796fff1254085afc6a9ea2c09d4f7eb8df701b18f57e",
+    "r032-transport6c-1790015243": "fc49b87deec248ed693e5f96fb2b1518e3aa91908108fdc40224172841728660",
+    "r032-transport6nextmanual-1790015334": "c7b00786348a4a069aaf64b9d162b48b34cc31a70824118ed9c75a84f4d1ca30",
+    "r032-transport6nextscheduler-1790015308": "0a11a20f38dc56dec9a71be8a4de4239fe044b5f1e90f747afc8607cb1c515da",
+    "r032-unmanaged6-1790015505": "2fdd5674fea7779434159ee0366ff0706a0bb08a888ec5e11e39e47836a63ead"
+  },
+  "previous_packet_sha256": "48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7",
+  "target": {
+    "containers": {
+      "cbm-r029-api": {
+        "fingerprint": "684a9dd40259ebc86ce680e9f8883fc411a458ed882d9c76d476220133f46915",
+        "id": "4b681021615aa6f28f32fed02d772661ebe8a7a5733359c284c6ca94beed7db7",
+        "running": false
+      },
+      "cbm-r029-normal-api": {
+        "fingerprint": "cb371a53f63115784cd193ddebf079477f6043d91c09b8a07cbcde8a2ae6fb0f",
+        "id": "f970ebeb0d2f43a63fb31cb752411a2f980153847b8f09e653c8c84e477c2bce",
+        "running": false
+      },
+      "cbm-r029-normal-webui": {
+        "fingerprint": "f0df808900a0fcaec0a04d9f05b696e0ec7be7a12e36047387d11bf800f23afb",
+        "id": "7e2ac1184c85124dab9c4cbe15b7e995dab6107071d4f2ac47ceed81ca7bdbd2",
+        "running": false
+      }
+    },
+    "disposition": "retired_synthetic_fixture_no_replay",
+    "files": {
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-journals/normal.json": "76de30e911e56bfff573bf3fdf14fa1b33b44f4fa62ff5577a4e36e7e0ea3918",
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-normal-packet-v6/plan.json": "69f0eef62aea1e29a34e3ffe2700e1b1cbb4d25ca616cbb934c47260197afeec",
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-operations/normal-terminal-refusal/request.json": "31ad693b51ddf1a77428451b310cd5ec7a3d6b6c63ec665bc34fbf0a68c5d548",
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-operations/normal-terminal-refusal/result.json": "174a7180e9b233b4ddd3eb965f5cce4e1a3d929c25da155bb7abbf3ee893d1e1"
+    },
+    "holds": {
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation/attention.json": {
+        "device": 2064,
+        "gid": 0,
+        "inode": 695652,
+        "mode": 384,
+        "sha256": "8513af51ab890cefaaa0a6aa651b69cc9de79c717871e2a1b88accfbd05c71ef",
+        "uid": 0
+      },
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation/boot-state.json": {
+        "device": 2064,
+        "gid": 0,
+        "inode": 695654,
+        "mode": 384,
+        "sha256": "581191e81df5f7d4f9b0a95d5756682497537eb1e0de372bec23d0eef8e13ff2",
+        "uid": 0
+      },
+      "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation/paused": {
+        "device": 2064,
+        "gid": 0,
+        "inode": 695653,
+        "mode": 384,
+        "sha256": "0917d95aac7b1ef17c92893f5fadad0c79314df701c7dd8ad805f098818eb81b",
+        "uid": 0
+      }
+    },
+    "machine_id": "2c7d41823c954dcea476904fe5f80f4d",
+    "phase": "rolled_back",
+    "target": "community-brain-dev"
+  }
+}

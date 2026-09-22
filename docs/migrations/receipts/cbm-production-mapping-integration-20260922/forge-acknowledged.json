@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-PRODUCTION-MAPPING-20260922-033",
+  "actor": "Forge",
+  "state": "consumed",
+  "acknowledged_at": "2026-09-22T15:30:02.401223+00:00",
+  "verified_manifest_artifacts": 75,
+  "independently_verified_vm108_source_files": 152,
+  "local_tests_passed": 65,
+  "independently_verified_helper_bindings": 9,
+  "source_commit": "41eef6ed3bfcd53d4954803581dcae084a19320f",
+  "receipt_sha256": "2fcfaf7fb8beffba9b04880e7761c80fab5678db9743450fb346729f60322291",
+  "candidate_mappings_closed": true,
+  "production_promotion_ready": false,
+  "protected_transfer_performed": false
+}

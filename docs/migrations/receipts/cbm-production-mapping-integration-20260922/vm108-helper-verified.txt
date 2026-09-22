@@ -1,0 +1,1 @@
+{"helper_count": 9, "receipt": "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-verified/helper-receipts.json", "external_boundary_fixtures": true}

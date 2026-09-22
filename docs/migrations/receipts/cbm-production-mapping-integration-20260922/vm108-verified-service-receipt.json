@@ -1,0 +1,64 @@
+{
+  "actual_vm_reboot": false,
+  "docker_daemon_restarted": false,
+  "exact_incumbent_restored": true,
+  "failed_finalizer_blocked_dependent_effect": true,
+  "incumbent_id": "01ede6425244697d523ae70634ab1f8bd68553ca8012cefe4e2d5415009a418c",
+  "incumbent_name": "cbm-r033-inc-verified",
+  "initial_ordering": [
+    {
+      "ActiveState": "active",
+      "ExecMainExitTimestampMonotonic": "174903352378",
+      "ExecMainStartTimestampMonotonic": "174903011500",
+      "Result": "success",
+      "SubState": "exited"
+    },
+    {
+      "ActiveState": "active",
+      "ExecMainExitTimestampMonotonic": "174904656351",
+      "ExecMainStartTimestampMonotonic": "174903354475",
+      "Result": "success",
+      "SubState": "exited"
+    },
+    {
+      "ActiveState": "active",
+      "ExecMainExitTimestampMonotonic": "174905561613",
+      "ExecMainStartTimestampMonotonic": "174904658457",
+      "Result": "success",
+      "SubState": "exited"
+    },
+    {
+      "ActiveState": "active",
+      "ExecMainExitTimestampMonotonic": "174905636704",
+      "ExecMainStartTimestampMonotonic": "174905564124",
+      "Result": "success",
+      "SubState": "exited"
+    }
+  ],
+  "persistent_attention_checkpoint_equal": true,
+  "processing_stays_paused": true,
+  "restart_policy": "unless-stopped",
+  "spec": {
+    "fingerprint": "538054f3a8875d86c3d839f6656f192d203317bf42b769a5579b095f48086a5f",
+    "incumbent_id": "01ede6425244697d523ae70634ab1f8bd68553ca8012cefe4e2d5415009a418c",
+    "incumbent_name": "cbm-r033-inc-verified",
+    "packet_sha256": "0eec32da7770ff652a2193f87b97c858b334673eacf45820098cfc0697c980c1",
+    "persistent_holds": {
+      "attention.json": "722f9f5a7ab922c0ad710d37bc70530e720924ac9bfa499262e4e1d4ff6c1f4a",
+      "checkpoint-needed.json": "722f9f5a7ab922c0ad710d37bc70530e720924ac9bfa499262e4e1d4ff6c1f4a"
+    },
+    "root": "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/services-verified"
+  },
+  "test_scope": "actual transient unit ordering and exact container state; docker-ready explicitly models daemon availability",
+  "units": [
+    "cbm-r033-verified-pause",
+    "cbm-r033-verified-docker",
+    "cbm-r033-verified-recovery",
+    "cbm-r033-verified-cron",
+    "cbm-r033-verified-maintenance",
+    "cbm-r033-verified-failed-recovery",
+    "cbm-r033-verified-failed-cron",
+    "cbm-r033-verified-reconciled",
+    "cbm-r033-verified-reconciled-cron"
+  ]
+}

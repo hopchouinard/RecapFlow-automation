@@ -874,3 +874,12 @@ tables,19 indexes and no sequences; Request032 fixture topology is not its profi
 Five mapping checks passed on VM108. Request033 must close real helper/admin catalog/
 service/private-restore mappings and return final tested source. Production remains
 unchanged and mappings are not complete until that evidence is reconciled.
+
+## Request033 consumed — September22
+
+[Production mappings are closed at candidate level](cbm-production-mapping-integration-results.md):
+152 source files independently match VM108, all nine helper proof bindings verified,
+and65 Forge tests pass. Next is qualification of the mapped implementation and an
+executable bounded production controller. External protocol fixtures are not live
+consumer/CA acceptance. Protected transfer, session/vector/capacity acceptance and
+persistent enrollment remain unproved; production execution stays disabled.

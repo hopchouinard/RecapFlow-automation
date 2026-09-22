@@ -1,0 +1,1073 @@
+{
+  "checkpoint-consumer": {
+    "at": 1790037081.7224054,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "authority.json": "30b6eb4762d51dbc6759cf5275d5af9f63e68785fb83c9527b2fff125c1c6e14",
+        "consumer-community-brain-openwebui.json": "55550bf38d787e0f05a98728d1862b31815031dcc2936b13748636360c17c294",
+        "consumer-community-brain-prod-mac-collector.json": "da9386d0da72a080b61e7a7ac3c027e035ae15af0d30d6bc3d062eba8f7fabe7",
+        "consumer-community-brain-prod-manual-operator.json": "b504bad8d7c307d6263213b1afcf37d0fe8c0c39f35da9595b4e5539b5537d17",
+        "consumer-community-brain-prod-metrics-probe.json": "7f09448e17a337aab0dfbd9efeb920e4ae569960eed01d7ac89740c0f412aa94",
+        "consumer-community-brain-prod-read-probe.json": "87bde302acdcba3e671377debc5fc8e40c32aa4ca5eb9425d5fe8642771bbbf6",
+        "home/.local/state/community-brain-management/identity-expiry-status.json": "306efa00eb1e33627d7421139b2b819dfb97e620bd7359fe5d0361360ff93739",
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/management-status/maintenance.json": "306efa00eb1e33627d7421139b2b819dfb97e620bd7359fe5d0361360ff93739",
+        "hosts/pchouinard@10.1.30.21/var/lib/prometheus/node-exporter/community-brain-management.prom": "125ac86855fb1a26d6ba074ffd030cee603f9def88c7c07cd5fa483095b04399",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml": "c473fccbd4dd8c311c8e5c54a8605076132321bb3d61d59ebb3e0d47c3e05d6b",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/nginx.conf": "75282c3dc7f63e57de1fbb4215d72e557431b9df66b5ed0408710b805a79db7e",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-tls.yml": "0d1d3d5c40c14aae8596435e5d9896216142e7aa310ef1deb02257e5d24f1772"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "checkpoint-consumer",
+    "production_qualified": false,
+    "source_sha256": "43dc79953177bf172a986927c9723c25018e72bb2cf343b54c1cb11784d2043e"
+  },
+  "copy-backup": {
+    "at": 1790037081.2827396,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "authority.json": "30b6eb4762d51dbc6759cf5275d5af9f63e68785fb83c9527b2fff125c1c6e14",
+        "consumer-community-brain-openwebui.json": "55550bf38d787e0f05a98728d1862b31815031dcc2936b13748636360c17c294",
+        "consumer-community-brain-prod-mac-collector.json": "da9386d0da72a080b61e7a7ac3c027e035ae15af0d30d6bc3d062eba8f7fabe7",
+        "consumer-community-brain-prod-manual-operator.json": "b504bad8d7c307d6263213b1afcf37d0fe8c0c39f35da9595b4e5539b5537d17",
+        "consumer-community-brain-prod-metrics-probe.json": "7f09448e17a337aab0dfbd9efeb920e4ae569960eed01d7ac89740c0f412aa94",
+        "consumer-community-brain-prod-read-probe.json": "87bde302acdcba3e671377debc5fc8e40c32aa4ca5eb9425d5fe8642771bbbf6",
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml": "c473fccbd4dd8c311c8e5c54a8605076132321bb3d61d59ebb3e0d47c3e05d6b",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/nginx.conf": "75282c3dc7f63e57de1fbb4215d72e557431b9df66b5ed0408710b805a79db7e",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-tls.yml": "0d1d3d5c40c14aae8596435e5d9896216142e7aa310ef1deb02257e5d24f1772"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "copy-backup",
+    "production_qualified": false,
+    "source_sha256": "fb4e863a074af324bdf709b71ee21de577fcc7a7cb860796c538d8ade64a016b"
+  },
+  "legacy-intake-ownership": {
+    "at": 1790037080.4736729,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "legacy-intake-ownership",
+    "production_qualified": false,
+    "source_sha256": "50bdfd78990cc77a6b3f5becb5fb8b4073229f57e4f15ebba22d395e243ee60d"
+  },
+  "management-health": {
+    "at": 1790037081.5819876,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "authority.json": "30b6eb4762d51dbc6759cf5275d5af9f63e68785fb83c9527b2fff125c1c6e14",
+        "consumer-community-brain-openwebui.json": "55550bf38d787e0f05a98728d1862b31815031dcc2936b13748636360c17c294",
+        "consumer-community-brain-prod-mac-collector.json": "da9386d0da72a080b61e7a7ac3c027e035ae15af0d30d6bc3d062eba8f7fabe7",
+        "consumer-community-brain-prod-manual-operator.json": "b504bad8d7c307d6263213b1afcf37d0fe8c0c39f35da9595b4e5539b5537d17",
+        "consumer-community-brain-prod-metrics-probe.json": "7f09448e17a337aab0dfbd9efeb920e4ae569960eed01d7ac89740c0f412aa94",
+        "consumer-community-brain-prod-read-probe.json": "87bde302acdcba3e671377debc5fc8e40c32aa4ca5eb9425d5fe8642771bbbf6",
+        "home/.local/state/community-brain-management/identity-expiry-status.json": "306efa00eb1e33627d7421139b2b819dfb97e620bd7359fe5d0361360ff93739",
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/management-status/maintenance.json": "306efa00eb1e33627d7421139b2b819dfb97e620bd7359fe5d0361360ff93739",
+        "hosts/pchouinard@10.1.30.21/var/lib/prometheus/node-exporter/community-brain-management.prom": "125ac86855fb1a26d6ba074ffd030cee603f9def88c7c07cd5fa483095b04399",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml": "c473fccbd4dd8c311c8e5c54a8605076132321bb3d61d59ebb3e0d47c3e05d6b",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/nginx.conf": "75282c3dc7f63e57de1fbb4215d72e557431b9df66b5ed0408710b805a79db7e",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-tls.yml": "0d1d3d5c40c14aae8596435e5d9896216142e7aa310ef1deb02257e5d24f1772"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "management-health",
+    "production_qualified": false,
+    "source_sha256": "413b838265664fe522befbb21356c8434f79400123002336a20a43d80363cff7"
+  },
+  "monitor-publish": {
+    "at": 1790037082.0225885,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "authority.json": "30b6eb4762d51dbc6759cf5275d5af9f63e68785fb83c9527b2fff125c1c6e14",
+        "consumer-community-brain-openwebui.json": "55550bf38d787e0f05a98728d1862b31815031dcc2936b13748636360c17c294",
+        "consumer-community-brain-prod-mac-collector.json": "da9386d0da72a080b61e7a7ac3c027e035ae15af0d30d6bc3d062eba8f7fabe7",
+        "consumer-community-brain-prod-manual-operator.json": "b504bad8d7c307d6263213b1afcf37d0fe8c0c39f35da9595b4e5539b5537d17",
+        "consumer-community-brain-prod-metrics-probe.json": "7f09448e17a337aab0dfbd9efeb920e4ae569960eed01d7ac89740c0f412aa94",
+        "consumer-community-brain-prod-read-probe.json": "87bde302acdcba3e671377debc5fc8e40c32aa4ca5eb9425d5fe8642771bbbf6",
+        "home/.local/state/community-brain-management/identity-expiry-status.json": "306efa00eb1e33627d7421139b2b819dfb97e620bd7359fe5d0361360ff93739",
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/management-status/maintenance.json": "306efa00eb1e33627d7421139b2b819dfb97e620bd7359fe5d0361360ff93739",
+        "hosts/pchouinard@10.1.30.21/var/lib/prometheus/node-exporter/community-brain-automatic.prom": "db0f25a61e0c9e073a1bc1926cb8e44e5dfa8f43b750e9c97ad35c902f3eaea1",
+        "hosts/pchouinard@10.1.30.21/var/lib/prometheus/node-exporter/community-brain-management.prom": "125ac86855fb1a26d6ba074ffd030cee603f9def88c7c07cd5fa483095b04399",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml": "c473fccbd4dd8c311c8e5c54a8605076132321bb3d61d59ebb3e0d47c3e05d6b",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/nginx.conf": "75282c3dc7f63e57de1fbb4215d72e557431b9df66b5ed0408710b805a79db7e",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-tls.yml": "0d1d3d5c40c14aae8596435e5d9896216142e7aa310ef1deb02257e5d24f1772"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "monitor-publish",
+    "production_qualified": false,
+    "source_sha256": "b4a2f19a83923fdea6760556aaed087aefd5144b28d556f9b6a2bb2962dafd56"
+  },
+  "pre-pbs-copy": {
+    "at": 1790037080.1759863,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "pre-pbs-copy",
+    "production_qualified": false,
+    "source_sha256": "70e349ae4be4952970b4a02c715cf96b2d72857633e7f4ef2f003662796b04f7"
+  },
+  "provision-nats-tls": {
+    "at": 1790037080.8327847,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "authority.json": "30b6eb4762d51dbc6759cf5275d5af9f63e68785fb83c9527b2fff125c1c6e14",
+        "consumer-community-brain-openwebui.json": "55550bf38d787e0f05a98728d1862b31815031dcc2936b13748636360c17c294",
+        "consumer-community-brain-prod-mac-collector.json": "da9386d0da72a080b61e7a7ac3c027e035ae15af0d30d6bc3d062eba8f7fabe7",
+        "consumer-community-brain-prod-manual-operator.json": "b504bad8d7c307d6263213b1afcf37d0fe8c0c39f35da9595b4e5539b5537d17",
+        "consumer-community-brain-prod-metrics-probe.json": "7f09448e17a337aab0dfbd9efeb920e4ae569960eed01d7ac89740c0f412aa94",
+        "consumer-community-brain-prod-read-probe.json": "87bde302acdcba3e671377debc5fc8e40c32aa4ca5eb9425d5fe8642771bbbf6",
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml": "c473fccbd4dd8c311c8e5c54a8605076132321bb3d61d59ebb3e0d47c3e05d6b",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/nginx.conf": "75282c3dc7f63e57de1fbb4215d72e557431b9df66b5ed0408710b805a79db7e",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "provision-nats-tls",
+    "production_qualified": false,
+    "source_sha256": "96342a191688d69f5e3dcbb824c5d4ba980745b3fcd34d7f13797527992d45b7"
+  },
+  "renew-app-tls": {
+    "at": 1790037081.0150077,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "authority.json": "30b6eb4762d51dbc6759cf5275d5af9f63e68785fb83c9527b2fff125c1c6e14",
+        "consumer-community-brain-openwebui.json": "55550bf38d787e0f05a98728d1862b31815031dcc2936b13748636360c17c294",
+        "consumer-community-brain-prod-mac-collector.json": "da9386d0da72a080b61e7a7ac3c027e035ae15af0d30d6bc3d062eba8f7fabe7",
+        "consumer-community-brain-prod-manual-operator.json": "b504bad8d7c307d6263213b1afcf37d0fe8c0c39f35da9595b4e5539b5537d17",
+        "consumer-community-brain-prod-metrics-probe.json": "7f09448e17a337aab0dfbd9efeb920e4ae569960eed01d7ac89740c0f412aa94",
+        "consumer-community-brain-prod-read-probe.json": "87bde302acdcba3e671377debc5fc8e40c32aa4ca5eb9425d5fe8642771bbbf6",
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml": "c473fccbd4dd8c311c8e5c54a8605076132321bb3d61d59ebb3e0d47c3e05d6b",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/nginx.conf": "75282c3dc7f63e57de1fbb4215d72e557431b9df66b5ed0408710b805a79db7e",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/tls/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/fullchain.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-private/key.pem": "dce278b241492aa5cbdd5917d9b67e3e3fcd0f1fda68ad3cccdb70e84b07cc47",
+        "hosts/traefik/mnt/HDD_2TB_Main/traefik/dynamic/community-brain-tls.yml": "0d1d3d5c40c14aae8596435e5d9896216142e7aa310ef1deb02257e5d24f1772"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "renew-app-tls",
+    "production_qualified": false,
+    "source_sha256": "517cd31cda37a9f33eea2b4f308a3254aa29772389d08ffca57387cdcbe1a4e4"
+  },
+  "renew-service-tokens": {
+    "at": 1790037080.6949563,
+    "effect_readback": {
+      "external_services": "explicit scoped fixtures; not live acceptance",
+      "files": {
+        "authority.json": "30b6eb4762d51dbc6759cf5275d5af9f63e68785fb83c9527b2fff125c1c6e14",
+        "consumer-community-brain-openwebui.json": "55550bf38d787e0f05a98728d1862b31815031dcc2936b13748636360c17c294",
+        "consumer-community-brain-prod-mac-collector.json": "da9386d0da72a080b61e7a7ac3c027e035ae15af0d30d6bc3d062eba8f7fabe7",
+        "consumer-community-brain-prod-manual-operator.json": "b504bad8d7c307d6263213b1afcf37d0fe8c0c39f35da9595b4e5539b5537d17",
+        "consumer-community-brain-prod-metrics-probe.json": "7f09448e17a337aab0dfbd9efeb920e4ae569960eed01d7ac89740c0f412aa94",
+        "consumer-community-brain-prod-read-probe.json": "87bde302acdcba3e671377debc5fc8e40c32aa4ca5eb9425d5fe8642771bbbf6",
+        "home/.local/state/community-brain-management/legacy-intake-status.json": "dc221384b5fc7c723519c99fdb184afcae7225db7cde0db9b2b47ce8a9222252",
+        "home/.local/state/community-brain-management/pre-pbs-rehearsal.json": "8214bea75466f089857430b5bff3ef279509ad8015663cc9cd48e85d3d4dcda5",
+        "home/.local/state/community-brain-management/pre-pbs-state.json": "c2853fd1db9de78a2d84f93e16e219cd320e59595716eb3a8f8057b132fa5e09",
+        "home/.local/state/community-brain-management/service-renewal-status.json": "d4dc0bd86037e77835b932adc963ba9bf0dd528376acd3f4dab76730991a5382",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/attention.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/checkpoint-needed.json": "8750678c8d37b480b2b9bb29ecb8dd8fd71a1aaa0aa108191ea54175b2194b76",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/automation/paused": "1daf82f62247f3a1d148c2d88b1828c9efa2d5f087d7059e98650aafe7afdea3",
+        "hosts/pchouinard@10.1.30.21/srv/community-brain/db-backups/20260922T003119Z.dump": "f12c3fffdc6292cb59494799778f6016af53ed0e4d133ffd5b0f8a4bf6aa5d19"
+      },
+      "transport_contracts": [
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        },
+        {
+          "code_sha256": "dbc67da3e18f46dddb6f3b8531c7f187b2ee38b4e17641c5131ddac158f73c75",
+          "host": "root@10.1.10.4"
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "run",
+            "--rm",
+            "tls",
+            "-t"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "compose",
+            "-f",
+            "/srv/dev-data/workspaces/cbm-production-mapping-20260922-033/helpers-first/fixture/hosts/root@10.1.10.4/opt/platform-services/compose/community-brain-nats-tls/compose.yaml",
+            "up",
+            "-d"
+          ]
+        },
+        {
+          "fixture_command": [
+            "docker",
+            "exec",
+            "community-brain-nats-tls",
+            "nginx",
+            "-s",
+            "reload"
+          ]
+        },
+        {
+          "code_sha256": "b01766cfc584c9175161fbdb0a24916ba25ac3f7cc375f4be814a46a8efc7c66",
+          "host": "traefik"
+        },
+        {
+          "code_sha256": "aa415262acfc2ba9fcca1ebf4e540500b4e350b0747702fdc7a744fc0d69b279",
+          "host": "pchouinard@10.1.30.21"
+        }
+      ]
+    },
+    "helper": "renew-service-tokens",
+    "production_qualified": false,
+    "source_sha256": "8c60327ae679fa5f4cea905bd0c4eec95a3b6e30fc9b2fcf0279dcd6d0137716"
+  }
+}
