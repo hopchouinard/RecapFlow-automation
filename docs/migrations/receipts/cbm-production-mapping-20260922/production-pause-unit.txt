@@ -1,0 +1,15 @@
+# /etc/systemd/system/community-brain-automatic-pause.service
+[Unit]
+Description=Pause Community Brain automation on every boot or restore
+After=local-fs.target
+Before=cron.service
+RequiresMountsFor=/srv/community-brain
+
+[Service]
+Type=oneshot
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -B /usr/local/lib/community-brain-automatic/boot_guard.py boot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

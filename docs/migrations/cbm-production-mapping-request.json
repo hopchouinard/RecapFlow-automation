@@ -1,0 +1,19 @@
+{
+  "request_id": "CBM-PRODUCTION-MAPPING-20260922-033",
+  "target": "home.servers",
+  "created_at": "2026-09-22T00:06:11.554094+00:00",
+  "deadline": "2026-09-22T18:00:00Z",
+  "authorization": "Patrick: Finish production mappings. Read-only production diagnosis/source reconciliation and VM108 development validation; no production mutation or protected transfer phase.",
+  "scope": "Close actual helper, catalog, service and private-restore mappings; implement and test against real contracts in development; return final coherent proposal.",
+  "documents": {
+    "cbm-production-mapping-request.md": "c40ecdd2d788fc03a9f1ae1bf48b019bf95be4c3d24202893e612941961d56e8",
+    "cbm-production-mappings.md": "1b3e0bf4360a5c6de1bacfa2b59873ca0e4fd1f0749fa85bc69b773699505539",
+    "forge-production-mapping-source.tar.gz": "d9652013d78a227082ca18d2d39381ad269a8a7c3fc00b8054098b0b590e1892",
+    "production-boot-guard.py": "70d93cdde9d2360294b5e960dfd4586ec20184bc2bdae69be1dbb148d347f7ac",
+    "production-pause-unit.txt": "65d18f5868a7f5b8bd2571137f67e64f785262b2cc89522b7133ddc4cbcb282e",
+    "production-runtime-bindings.json": "825dd9283fd3584c436fd378ad287fa732bb29885aa14e0b7233b8251285a2be",
+    "runtime-catalog-census.json": "5923f30dc7a808ebaabc5e5abba911a4d92ea33273aae043eeaf5a5ddce2b0d3",
+    "source-manifest.json": "74e5280990a88ab66e4d30d54e5873c92b8500593fefbfd20f3f707736eaa093",
+    "vm108-tests.txt": "d03ce458f2a6cd2b4f27522f3aacad03ce1872c028853507c3ad02ca621bdcad"
+  }
+}

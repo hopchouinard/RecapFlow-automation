@@ -865,3 +865,12 @@ files independently match VM108. Shared candidate admission, failed-finalizer/st
 handling and expanded PostgreSQL evidence passed. Forge reran58 tests. Mac fixture
 errors are resolved. Next is actual helper/catalog/service/private-restore mapping,
 then validation of changed bytes on VM108. Production execution remains disabled.
+
+## Actual production mappings — September22
+
+[Mapping closure packet](cbm-production-mappings.md) now binds a fresh read-only
+production census and boot/runtime inventory. Actual DB has public/plpgsql, ten
+tables,19 indexes and no sequences; Request032 fixture topology is not its profile.
+Five mapping checks passed on VM108. Request033 must close real helper/admin catalog/
+service/private-restore mappings and return final tested source. Production remains
+unchanged and mappings are not complete until that evidence is reconciled.

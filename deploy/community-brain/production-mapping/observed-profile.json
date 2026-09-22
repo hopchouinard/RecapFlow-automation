@@ -1,0 +1,363 @@
+{
+  "complete_catalog_coverage": false,
+  "observations": {
+    "application_roles": [
+      {
+        "bypass_rls": false,
+        "create_db": false,
+        "create_role": false,
+        "login": true,
+        "name": "cbm_prod_migration",
+        "replication": false,
+        "superuser": false
+      },
+      {
+        "bypass_rls": false,
+        "create_db": false,
+        "create_role": false,
+        "login": true,
+        "name": "cbm_prod_runtime",
+        "replication": false,
+        "superuser": false
+      }
+    ],
+    "column_types": [
+      {
+        "schema": "public",
+        "type": "character varying"
+      },
+      {
+        "schema": "public",
+        "type": "character varying(32)"
+      },
+      {
+        "schema": "public",
+        "type": "integer"
+      },
+      {
+        "schema": "public",
+        "type": "jsonb"
+      },
+      {
+        "schema": "public",
+        "type": "timestamp with time zone"
+      },
+      {
+        "schema": "public",
+        "type": "uuid"
+      }
+    ],
+    "custom_routines": [],
+    "custom_types": [],
+    "database_acl": [
+      {
+        "acl": "{cbm_prod_migration=CTc/cbm_prod_migration,cbm_prod_runtime=c/cbm_prod_migration}",
+        "owner": "cbm_prod_migration"
+      }
+    ],
+    "default_acls": [
+      {
+        "acl": "{cbm_prod_runtime=rU/cbm_prod_migration}",
+        "kind": "S",
+        "owner": "cbm_prod_migration",
+        "schema": "public"
+      },
+      {
+        "acl": "{cbm_prod_runtime=arwd/cbm_prod_migration}",
+        "kind": "r",
+        "owner": "cbm_prod_migration",
+        "schema": "public"
+      }
+    ],
+    "extensions": [
+      {
+        "name": "plpgsql",
+        "schema": "pg_catalog",
+        "version": "1.0"
+      }
+    ],
+    "object_counts": [
+      {
+        "event_triggers": 0,
+        "foreign_servers": 0,
+        "large_objects": 0,
+        "policies": 0,
+        "publications": 0,
+        "statistics": 0
+      }
+    ],
+    "relations": [
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "alembic_version",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "alembic_version_pkc",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_artifacts",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_artifacts_job_id_name_key",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_artifacts_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_attempts",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_attempts_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_attempts_stage_id_fence_key",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_jobs",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_jobs_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_model_calls",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_model_calls_job_id_key_key",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_model_calls_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_operations",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_operations_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_operations_scope_principal_operation_key_key",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_outbox",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_outbox_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_outbox_stage_id_generation_key",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_rejected_events",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_rejected_events_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_sources",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_sources_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_sources_scope_meeting_id_kind_sha256_key",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "r",
+        "name": "cb_stages",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_stages_job_id_name_key",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "cb_stages_pkey",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "ix_cb_artifacts_job_id",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      },
+      {
+        "force_row_security": false,
+        "kind": "i",
+        "name": "ix_cb_stages_job_id",
+        "owner": "cbm_prod_migration",
+        "partition": false,
+        "row_security": false,
+        "schema": "public"
+      }
+    ],
+    "schemas": [
+      {
+        "name": "public",
+        "owner": "cbm_prod_migration"
+      }
+    ]
+  },
+  "production_execution_enabled": false,
+  "schema": "cbm.production-metadata-profile/1",
+  "scope": "review-only",
+  "source_census_sha256": "5923f30dc7a808ebaabc5e5abba911a4d92ea33273aae043eeaf5a5ddce2b0d3"
+}

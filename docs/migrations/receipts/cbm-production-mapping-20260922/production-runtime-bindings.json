@@ -1,0 +1,202 @@
+{
+  "observed_at": "2026-09-22T00:05:08.434634+00:00",
+  "containers": [
+    {
+      "id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+      "name": "/community-brain-production-staging-api-1",
+      "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "StartedAt": "2026-09-19T21:21:38.872407149Z",
+        "FinishedAt": "2026-09-19T21:21:14.012056602Z"
+      },
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "config_sha256": "fd681b404ab2904491846a71a01ee185690c088510731855cbaef57361e89cc3",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py",
+          "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py",
+          "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py",
+          "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-frontend/dist",
+          "Destination": "/app/web/dist",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/automation-public",
+          "Destination": "/state/automation-public",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/config",
+          "Destination": "/state/config",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/meeting-archive-20260910",
+          "Destination": "/state/meeting-archive",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py",
+          "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/api.py",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py",
+          "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/runtime.py",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/etc/ssl/certs/ca-certificates.crt",
+          "Destination": "/run/certs/ca-bundle.pem",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/corpus",
+          "Destination": "/state/corpus",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/files",
+          "Destination": "/state/files",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py",
+          "Destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/archive.py",
+          "RW": false
+        }
+      ]
+    },
+    {
+      "id": "c6769827278baee660fc45ba8efff98bbd5664e41168abf99e96dac7fe15f695",
+      "name": "/community-brain-alloy",
+      "image": "sha256:01a63f4e032ce54ee94b22049bc27f597e74f85566478c377f4b5c7f020c1eb3",
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "StartedAt": "2026-09-19T21:21:38.865740028Z",
+        "FinishedAt": "2026-09-19T21:21:13.46524267Z"
+      },
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "config_sha256": "ddc6dda7cc7e485fb4eb9e9d39cf4be9aa65112848c4ac11735a96f331f7df18",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/opt/community-brain-observability/lifecycle.river",
+          "Destination": "/etc/alloy/config.river",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/var/run/docker.sock",
+          "Destination": "/var/run/docker.sock",
+          "RW": false
+        }
+      ]
+    }
+  ],
+  "controls": {
+    "automation/paused": {
+      "exists": true,
+      "mode": 384,
+      "uid": 0,
+      "gid": 0,
+      "inode": 2490382,
+      "device": 2064,
+      "sha256": "59c73479a540c23f39cdd306bac60ff7295ac4b4bd585575346600dbada67d60"
+    },
+    "automation/attention.json": {
+      "exists": true,
+      "mode": 384,
+      "uid": 0,
+      "gid": 0,
+      "inode": 2490379,
+      "device": 2064,
+      "sha256": "c12ebf3b69fc4eb099dd9686dc4789137b1306c68362d46461af8a0185a7afdb"
+    },
+    "automation/boot-state.json": {
+      "exists": true,
+      "mode": 384,
+      "uid": 0,
+      "gid": 0,
+      "inode": 2490383,
+      "device": 2064,
+      "sha256": "c291dcbd48b3d055ad806e2579ad194bf54a435660cb83d5d014d334ed8f2195"
+    },
+    "automation/runner.lock": {
+      "exists": true,
+      "mode": 384,
+      "uid": 0,
+      "gid": 0,
+      "inode": 2490371,
+      "device": 2064,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "files/.manual-worker.lock": {
+      "exists": true,
+      "mode": 420,
+      "uid": 10001,
+      "gid": 10001,
+      "inode": 3932192,
+      "device": 2064,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "files/.submission.lock": {
+      "exists": true,
+      "mode": 384,
+      "uid": 10001,
+      "gid": 10001,
+      "inode": 3932215,
+      "device": 2064,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
