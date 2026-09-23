@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-STAGE2-QUALIFICATION-20260923-034",
+  "target": "home.servers",
+  "created_at": "2026-09-23T22:11:26.692093+00:00",
+  "deadline": "2026-09-25T18:00:00Z",
+  "authorization": "Patrick explicitly authorized full stage 2 development. VM108 first; no production execution, protected transfer, renewal, cutover, resize or paid provider action.",
+  "scope": "Complete actual scoped dev consumer/CA, bounded controller source, capacity and synthetic rendered WebUI acceptance; return one honest acceptance ledger.",
+  "documents": {
+    "cbm-production-mapping-integration-results.md": "4be8e4481195b5fa8c78dfc19454bac4184faa70ecfab54ea2eba50a18b2d157",
+    "cbm-stage2-qualification-request.md": "6c82a3cb9a30a3bb9d53484f94dc3c3cb77b3288ccaa1ff1595320fee3d11a16",
+    "forge-production-mapping-integration-source.tar.gz": "b579b15413852fa8863cd1dd5dbede1fd48d2e294adb36ccbf4a9831c245817c",
+    "source-manifest.json": "0eec32da7770ff652a2193f87b97c858b334673eacf45820098cfc0697c980c1"
+  }
+}

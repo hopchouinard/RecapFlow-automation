@@ -883,3 +883,13 @@ and65 Forge tests pass. Next is qualification of the mapped implementation and a
 executable bounded production controller. External protocol fixtures are not live
 consumer/CA acceptance. Protected transfer, session/vector/capacity acceptance and
 persistent enrollment remain unproved; production execution stays disabled.
+
+## Stage 2 opened — September23
+
+Patrick authorized the full development qualification. [Forge VM108 results](cbm-stage2-forge-results.md)
+include fresh-volume WebUI/API recovery, rendered Playwright login/retained chat,
+persisted disabled signup, a corrected dev healthcheck and350 concurrent request
+pairs. [Request034](cbm-stage2-qualification-request.md) covers actual scoped
+Infisical/CA/consumer integration, the bounded controller and intended full
+capacity. The prior production authority and admission window have expired;
+production execution remains disabled.

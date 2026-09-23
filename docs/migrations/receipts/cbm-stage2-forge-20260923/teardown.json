@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-09-23T22:34:39.979642+00:00",
+  "stage2_containers": [
+    {
+      "name": "/cbm-stage2-webui-034-api-1",
+      "id": "850cf47199adae742b619706293654f136940ed0934f20d21496865733b842d5",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "oom": false
+    },
+    {
+      "name": "/cbm-stage2-webui-034-webui-1",
+      "id": "d12e7aeb94cfbd211a3484f99d0e4a8b2659d34f60463438a76682ee8de3cde9",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "oom": false
+    },
+    {
+      "name": "/cbm-stage2-webui-034-pg-1",
+      "id": "8ca3c0742ddccc53083987e41d2ad74fce9d302b4d571acfeb7635c9246b023b",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "oom": false
+    },
+    {
+      "name": "/cbm-stage2-webui-034-provider-1",
+      "id": "9f8fef6ecaa102689497d2d7aa56494953cb19bceac2aa7d2b7c7945d79115af",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "oom": false
+    }
+  ],
+  "retained_volumes": true,
+  "baseline_dev_services_running": [
+    "cbm-collector-development-proxy-1",
+    "cbm-live-development-api-1",
+    "cbm-live-development-nats-1",
+    "cbm-live-development-postgres-1"
+  ]
+}

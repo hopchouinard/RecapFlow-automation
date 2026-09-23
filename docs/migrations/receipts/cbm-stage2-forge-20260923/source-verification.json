@@ -1,0 +1,14 @@
+{
+  "local_sha256": {
+    "check_health.py": "669ea8fb5e3c2161f6bcaeb6b662d9b8277210f3094fbc1a90079988561872e1",
+    "health-override.yml": "15622abbe2dd4b41e23c50e84ef95c24886e26bcc3ac6560005ad428d2970cf7",
+    "prepare.py": "ef0497152d3345c2f8ca742f8e5448e9908fdd607790373297b25fb6be27ae44",
+    "verify_signup.py": "81c09439eb796b75a1b720384d876640bb972f51e09a588c52efb39bb64dcd7c"
+  },
+  "vm108_sha256": {
+    "health-override.yml": "15622abbe2dd4b41e23c50e84ef95c24886e26bcc3ac6560005ad428d2970cf7",
+    "check_health.py": "669ea8fb5e3c2161f6bcaeb6b662d9b8277210f3094fbc1a90079988561872e1",
+    "verify_signup.py": "81c09439eb796b75a1b720384d876640bb972f51e09a588c52efb39bb64dcd7c"
+  },
+  "development_overlay_exact_match": true
+}
