@@ -7,8 +7,10 @@ connectable browser environment for his own QA before any further production
 handoff. The [VM108 QA record](cbm-vm108-qa-20260924.md) is the current
 development entry point: the API, automatic runner, indexed corpus and Open
 WebUI are running, and a synthetic meeting completed processing, indexing,
-retrieval and its paired development checkpoint. Patrick's browser evaluation
-is next. After acceptance, prepare one consolidated `home.servers` handoff for
+retrieval and its paired development checkpoint. Patrick confirmed the
+development Open WebUI can retrieve Community Brain information. Browser QA of
+meeting submission and processing remains. After acceptance, prepare one
+consolidated `home.servers` handoff for
 protected production restoration, complete-environment validation and the
 controlled VM109 rollout. The earlier incremental production request sequence
 below is historical evidence, not the current task order. VM101 stays
