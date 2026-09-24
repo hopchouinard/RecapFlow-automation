@@ -1,9 +1,24 @@
 # Community Brain: current state and continuation
 
+## Execution order changed — September 24
+
+Patrick directed Forge to finish the replacement on VM108 and give him a
+connectable browser environment for his own QA before any further production
+handoff. The [VM108 QA record](cbm-vm108-qa-20260924.md) is the current
+development entry point: the API, automatic runner, indexed corpus and Open
+WebUI are running, and a synthetic meeting completed processing, indexing,
+retrieval and its paired development checkpoint. Patrick's browser evaluation
+is next. After acceptance, prepare one consolidated `home.servers` handoff for
+protected production restoration, complete-environment validation and the
+controlled VM109 rollout. The earlier incremental production request sequence
+below is historical evidence, not the current task order. VM101 stays
+recovery-only, and no production mutation follows from this development work.
+
 Assessed **2026-09-20, 01:11–01:20 UTC** from the running production system,
 source comparisons, current Git remotes, and a fresh local verification run.
-This is the current continuation entry point. Earlier handoffs and receipts are
-historical evidence, not statements of current runtime health.
+This is the September 20 assessment; the September 24 execution order above
+supersedes its task order. Earlier handoffs and receipts are historical
+evidence, not statements of current runtime health.
 
 Patrick requested weekly-cycle evidence closure, source-control reconciliation,
 and a live assessment before deciding the next project phase. This assessment
