@@ -901,3 +901,12 @@ scoped Infisical/CA consumers, exact-image synthetic browser/recovery and bounde
 capacity acceptance. The controller/installer/independent finalizer and VM108 fault
 matrix were not delivered, so stage2 remains open. Production identities expired
 and their existing renewal reports failure. No production execution is authorized.
+
+## Request034 consumed; stage2 controller outstanding — September24
+
+[Reconciled Request034 results](cbm-stage2-request034-results.md) confirm actual
+development Infisical/CA/consumer, browser/recovery and bounded workload
+acceptance. The production-capable controller, installer, independent finalizer
+and VM108 fault matrix were not delivered. [Request035](cbm-stage2-controller-request.md)
+closes only that development gap. Production identities expired and existing renewal
+reports failure; all21 production slots remain null and execution disabled.

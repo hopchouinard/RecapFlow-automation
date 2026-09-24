@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-STAGE2-CONTROLLER-20260924-035",
+  "target": "home.servers",
+  "created_at": "2026-09-24T00:52:56.826301+00:00",
+  "deadline": "2026-09-26T18:00:00Z",
+  "authorization": "Patrick authorized full stage2 development on 2026-09-23. VM108 first. No production execution, renewal, protected transfer, resize or paid provider phase.",
+  "scope": "Finish the bounded controller, staged installer, VM-owned finalizer and actual VM108/Mac fault matrix left open by Request034; return final source and stage2 ledger.",
+  "documents": {
+    "cbm-stage2-controller-request.md": "0cab0337b75cd68826e02e623fcf4debafd2080ed1397fa3f928c8fbf59ebac4",
+    "cbm-stage2-request034-results.md": "08bc8a57f9eddf1acd6f488b1d1f6170deb9fecd1e486015ab2efeb2ffb6aac3",
+    "forge-source-verification.json": "4dab7e63d3fb148881186f51214ef6347d510ee3d6abc34dd76cddded6a799cc",
+    "forge-stage2-qualification-source.tar.gz": "898384a0f00d660fdc20a4b92a073749384e31ff7e2a4b2e6763d19d96552765",
+    "verification.json": "ee5e67cf70327a87d4c7a0ea7402fb19800d5e71fa87d0769f6e748a76cfb186"
+  }
+}
