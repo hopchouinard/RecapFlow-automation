@@ -25,6 +25,7 @@ from community_brain.jobs.publication import PublicationHandlers, corpus_lock
 from community_brain.jobs.runtime import make_store
 from community_brain.jobs.worker import OpenRouter, Worker
 from community_brain.processing.pipeline import OutcomeUnknown
+from indexing_replay import completed_prefix
 
 SCOPE = 'community-brain-dev'
 JOURNALS = Path('/state/files/qa-model-journals')
@@ -98,6 +99,10 @@ class SelectedFathom(Fathom):
 def audited_indexing(store, key, job_id, generation):
     JOURNALS.mkdir(mode=0o700, exist_ok=True)
     journal = JOURNALS / f'indexing-{job_id}-{generation}.jsonl'
+    replay_hash, replay = (completed_prefix(store.storage, job_id, generation - 1)
+                           if generation == 2 else (None, []))
+    if generation > 2:
+        raise ValueError('further indexing reconciliation requires separate review')
     original = llm.httpx.post
     count = 0
     with journal.open('x') as stream:
@@ -108,15 +113,23 @@ def audited_indexing(store, key, job_id, generation):
             stream.flush()
             os.fsync(stream.fileno())
 
-        record({'state': 'started', 'job_id': str(job_id), 'ceiling': 32})
+        record({'state': 'started', 'job_id': str(job_id), 'ceiling': 64,
+                'replay_sha256': replay_hash, 'replay_count': len(replay)})
 
         def post(url, **kwargs):
             nonlocal count
-            if url != llm.OPENROUTER_URL or count >= 32:
+            if url != llm.OPENROUTER_URL or count >= 64:
                 raise llm.LLMOutcomeUnknown('QA indexing request ceiling reached')
-            budget = allowance(key)
             count += 1
             request_hash = hashlib.sha256(json.dumps(kwargs['json'], sort_keys=True).encode()).hexdigest()
+            if count <= len(replay):
+                previous_hash, previous_model, body, response_hash = replay[count - 1]
+                if request_hash != previous_hash or kwargs['json']['model'] != previous_model:
+                    raise llm.LLMOutcomeUnknown('indexing replay request changed')
+                record({'state': 'replayed', 'request': count, 'request_sha256': request_hash,
+                        'response_sha256': response_hash})
+                return httpx.Response(200, json=body, request=httpx.Request('POST', url))
+            budget = allowance(key)
             record({'state': 'intent', 'request': count, 'request_sha256': request_hash,
                     'model': kwargs['json']['model'], 'allowance': budget})
             try:

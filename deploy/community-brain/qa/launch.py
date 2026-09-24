@@ -56,9 +56,10 @@ def compose(args):
                 ['up', '-d', 'webui'], ['up', '-d', '--force-recreate', '--no-deps', 'webui'],
                 ['ps']):
         return base + args, env
-    if args[:1] == ['scan'] and args[1:2] in (['next'], ['select'], ['stop'], ['project']):
+    if args[:1] == ['scan'] and args[1:2] in (['next'], ['select'], ['stop'], ['project'], ['reconcile-indexing']):
         operation = args[1]
-        expected = {'next': 2, 'select': 5, 'stop': 3, 'project': 5}[operation]
+        expected = {'next': 2, 'select': 5, 'stop': 3, 'project': 5,
+                    'reconcile-indexing': 3}[operation]
         if len(args) != expected:
             raise ValueError('invalid scan arguments')
         return base + ['run', '--rm', '-T', '--no-deps', 'qa-scan',
