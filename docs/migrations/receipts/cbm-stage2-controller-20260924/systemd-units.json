@@ -1,0 +1,17 @@
+{
+  "schema": "cbm.stage2-systemd-state/1",
+  "show_lines": [
+    "LoadState=loaded",
+    "ActiveState=inactive",
+    "UnitFileState=static",
+    "LoadState=loaded",
+    "ActiveState=inactive",
+    "UnitFileState=static",
+    "LoadState=loaded",
+    "ActiveState=inactive",
+    "UnitFileState=static",
+    "LoadState=loaded",
+    "ActiveState=inactive",
+    "UnitFileState=disabled"
+  ]
+}

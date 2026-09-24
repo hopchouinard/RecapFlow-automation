@@ -1,0 +1,70 @@
+{
+  "capture_id": "cbm-private-review-20260922-033",
+  "control_owner": {
+    "gid": 0,
+    "mode": "0700",
+    "uid": 0
+  },
+  "control_root": "/srv/community-brain/maintenance-033",
+  "deadlines_seconds_from_admitted_start": {
+    "offline_comparison": 1800,
+    "restore_unchanged_serving": 180,
+    "stop_and_capture": 120
+  },
+  "incumbent_id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+  "incumbent_image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+  "independent_restore": {
+    "host": "10.1.30.21",
+    "independent_postgresql_server": true,
+    "machine_id": "a22c8cab9edc4333a2dcc78e5b35a604",
+    "minimum_free_bytes": 21474836480,
+    "mode": "0700",
+    "mount_uuid": "d5113805-c76b-4955-b13a-6482ce6f6ac9",
+    "network": "none",
+    "owner": "root:root",
+    "path": "/srv/community-brain/private-restore/cbm-private-review-20260922-033",
+    "production_original_mounts": false,
+    "published_ports": [],
+    "source_database_host": "10.1.10.50",
+    "vm108_private_import": false
+  },
+  "mac_journal": "/Users/pchouinard/.local/state/community-brain-management/request033/journal",
+  "mac_mutex": "/Users/pchouinard/.local/state/community-brain-management/scheduler.lock",
+  "machine_id": "a22c8cab9edc4333a2dcc78e5b35a604",
+  "offhost": {
+    "encryption_claimed": false,
+    "host": "10.1.60.10",
+    "machine_id": "fc6fd84807984e81a820b9432c6832c1",
+    "minimum_free_bytes": 21474836480,
+    "mode": "0700",
+    "mount_uuid": "d169388b-00bb-4063-9116-0ef672a1ce36",
+    "outside_datastore": true,
+    "owner": "root:root",
+    "path": "/var/lib/proxmox-backup/cbm-protected-recovery/cbm-private-review-20260922-033"
+  },
+  "production_compiler_enabled": false,
+  "production_controller_enabled": false,
+  "production_evidence_slots": 21,
+  "production_evidence_values": "all null; see unchanged Request029 template",
+  "request_deadline": "2026-09-22T18:00:00Z",
+  "retention": "indefinite until explicit post-review deletion authorization; retain original, partial, failed and replacement generations",
+  "rollback_owner": "home.servers; root systemd finalizer on VM109 independent of Mac/SSH lifetime",
+  "scope": "proposal-only-disabled",
+  "signing": {
+    "bytes": 17,
+    "gid": 0,
+    "mode": "0644",
+    "preserve_bytes_exactly": true,
+    "sha256": "7638e389c27761152e8c894b9fff5b328e78964225e51c9514f3273dde931ef5",
+    "source_container": "83358b76e0544437bd8947ba9a7be94d9fba59559a6dc56bd3c1c0110fb8a33c",
+    "source_path": "/app/backend/.webui_secret_key",
+    "uid": 0
+  },
+  "source_install": "/usr/local/lib/community-brain-production-mapping-033",
+  "source_manifest_binding": "exact source-manifest.json SHA-256 in separately sealed verification-results.json; no mutable branch reference",
+  "state_mount": {
+    "filesystem": "ext4",
+    "path": "/srv/community-brain",
+    "uuid": "d5113805-c76b-4955-b13a-6482ce6f6ac9"
+  }
+}

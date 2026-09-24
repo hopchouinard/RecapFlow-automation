@@ -1,0 +1,42 @@
+{
+  "actual_hold_changed": false,
+  "actual_mount_changed": false,
+  "actual_source_changed": false,
+  "checks": {
+    "authority_expiry": {
+      "reason": "serving authority expired or denied",
+      "refused": true
+    },
+    "foreign_incumbent": {
+      "reason": "bounded command failed: docker; private output suppressed",
+      "refused": true
+    },
+    "generic_accepted_envelopes": {
+      "reason": "semantic production validator unimplemented: all_compose_environment_ca_and_signing_file_hashes",
+      "refused": true
+    },
+    "hold_drift": {
+      "reason": "host/control drift",
+      "refused": true
+    },
+    "production_null_21": {
+      "reason": "production evidence absent or incomplete: all_compose_environment_ca_and_signing_file_hashes",
+      "refused": true
+    },
+    "source_drift": {
+      "reason": "source/config drift",
+      "refused": true
+    },
+    "volume_identity_drift": {
+      "reason": "host/control drift",
+      "refused": true
+    }
+  },
+  "live_baseline_passed": true,
+  "packet": {
+    "files": 14,
+    "manifest_sha256": "35aa5cf9fe5eff8095345221c1b6f6df150679e72211fd0c7eb7b6301fd942dd"
+  },
+  "schema": "cbm.stage2-negative-matrix/1",
+  "scope": "synthetic-development"
+}

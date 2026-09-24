@@ -1,0 +1,136 @@
+{
+  "r035-v6-finalizer-fail": {
+    "created_at": 1790214206.6087694,
+    "intent_sha256": "4e5a71e45a82dfdf1c95ae2a8bc6bd4426c1d9f3eb127df7126dde46657c15ac",
+    "kind": "capture",
+    "phase_files": [
+      "phase-db.json",
+      "phase-stop.json",
+      "phase-work.json"
+    ],
+    "restore_deadline": 1790214266.6087694,
+    "result": {
+      "admission_open": false,
+      "attempt": "r035-v6-finalizer-fail",
+      "database_restored": false,
+      "errors": [
+        "RuntimeError: synthetic finalizer failure"
+      ],
+      "finalizer_at": 1790214215.916067,
+      "incumbent_restored": false,
+      "intent_sha256": "4e5a71e45a82dfdf1c95ae2a8bc6bd4426c1d9f3eb127df7126dde46657c15ac",
+      "partial_retained": true,
+      "serving_restored": false
+    }
+  },
+  "r035-v6-guardian-freeze": {
+    "created_at": 1790214001.3917835,
+    "intent_sha256": "feecda85bb38f51869f7f88f379cf71cfe48f4b3b6bb81a20994bb12bcbf7e68",
+    "kind": "manual",
+    "phase_files": [
+      "phase-db.json",
+      "phase-stop.json",
+      "phase-work.json"
+    ],
+    "restore_deadline": 1790214061.3917835,
+    "result": {
+      "admission_open": false,
+      "attempt": "r035-v6-guardian-freeze",
+      "database_restored": true,
+      "errors": [],
+      "finalizer_at": 1790214075.8990521,
+      "incumbent_restored": true,
+      "intent_sha256": "feecda85bb38f51869f7f88f379cf71cfe48f4b3b6bb81a20994bb12bcbf7e68",
+      "partial_retained": true,
+      "serving_restored": true
+    }
+  },
+  "r035-v6-mac-kill": {
+    "created_at": 1790214097.1836874,
+    "intent_sha256": "70da561160d0cc8e16e58a3583e40a00230e958b052ca0e77f6160567b789c69",
+    "kind": "scheduler",
+    "phase_files": [
+      "phase-db.json",
+      "phase-stop.json",
+      "phase-work.json"
+    ],
+    "restore_deadline": 1790214157.1836874,
+    "result": {
+      "admission_open": false,
+      "attempt": "r035-v6-mac-kill",
+      "database_restored": true,
+      "errors": [],
+      "finalizer_at": 1790214158.4600387,
+      "incumbent_restored": true,
+      "intent_sha256": "70da561160d0cc8e16e58a3583e40a00230e958b052ca0e77f6160567b789c69",
+      "partial_retained": true,
+      "serving_restored": true
+    }
+  },
+  "r035-v6-normal": {
+    "created_at": 1790213927.2531693,
+    "intent_sha256": "918609bf8720ca9d6deabaaf05a760f756d9c61021dea7e1ce8e800c725ac882",
+    "kind": "scheduler",
+    "phase_files": [
+      "phase-db.json",
+      "phase-stop.json",
+      "phase-work.json"
+    ],
+    "restore_deadline": 1790213987.2531693,
+    "result": {
+      "admission_open": false,
+      "attempt": "r035-v6-normal",
+      "database_restored": true,
+      "errors": [],
+      "finalizer_at": 1790213936.245587,
+      "incumbent_restored": true,
+      "intent_sha256": "918609bf8720ca9d6deabaaf05a760f756d9c61021dea7e1ce8e800c725ac882",
+      "partial_retained": true,
+      "serving_restored": true
+    }
+  },
+  "r035-v6-ssh-loss": {
+    "created_at": 1790213946.3393276,
+    "intent_sha256": "5e3042b524d83da54cc2aebceac660d9f363a15aced6733b21e2ae685f39474b",
+    "kind": "manual",
+    "phase_files": [
+      "phase-db.json",
+      "phase-stop.json",
+      "phase-work.json"
+    ],
+    "restore_deadline": 1790214006.3393276,
+    "result": {
+      "admission_open": false,
+      "attempt": "r035-v6-ssh-loss",
+      "database_restored": true,
+      "errors": [],
+      "finalizer_at": 1790213955.550748,
+      "incumbent_restored": true,
+      "intent_sha256": "5e3042b524d83da54cc2aebceac660d9f363a15aced6733b21e2ae685f39474b",
+      "partial_retained": true,
+      "serving_restored": true
+    }
+  },
+  "r035-v6-worker-kill": {
+    "created_at": 1790213979.0730195,
+    "intent_sha256": "f04908b1b6a7e205050f6838b50059220d53640ae9dc3ddeb4c67c38f7730503",
+    "kind": "capture",
+    "phase_files": [
+      "phase-db.json",
+      "phase-stop.json",
+      "phase-work.json"
+    ],
+    "restore_deadline": 1790214039.0730195,
+    "result": {
+      "admission_open": false,
+      "attempt": "r035-v6-worker-kill",
+      "database_restored": true,
+      "errors": [],
+      "finalizer_at": 1790213991.9044542,
+      "incumbent_restored": true,
+      "intent_sha256": "f04908b1b6a7e205050f6838b50059220d53640ae9dc3ddeb4c67c38f7730503",
+      "partial_retained": true,
+      "serving_restored": true
+    }
+  }
+}

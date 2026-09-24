@@ -1,0 +1,52 @@
+{
+  "bounds": "Serving recovery is conditional on VM108, systemd timer, mount, Docker and PostgreSQL availability; the freeze test exceeded the target while the timer was stopped.",
+  "collected_at": "2026-09-24T01:46:29.243155+00:00",
+  "development_mechanics": {
+    "authority_expiry": "altered expired authority refused",
+    "boot_ordering": "systemd-analyze verify passed; shared VM108 not rebooted",
+    "competing_scheduler_manual_capture": "refused",
+    "failed_finalizer": "closed and retained; exact synthetic DB ACL and same incumbent manually restored",
+    "guardian_frozen_past_deadline": "unbounded while timer unavailable; restored after timer resumed",
+    "installer_dry_run_install_idempotence_uninstall_reinstall": "passed",
+    "mac_process_kill": "passed",
+    "normal": "passed",
+    "source_hold_volume_drift": "altered expected identities refused against live VM108; actual protected files and mount not changed",
+    "ssh_ack_loss": "passed",
+    "stale_foreign_readback": "refused",
+    "worker_main_kill": "passed"
+  },
+  "production_admission": false,
+  "production_gates": {
+    "current_production_identity": false,
+    "evidence_slots_null": 21,
+    "evidence_slots_total": 21,
+    "paid_provider_calls": 0,
+    "processing_resume_authority": false,
+    "protected_preservation_authority": false,
+    "semantic_validators_implemented": 0,
+    "vm101_effects": false,
+    "vm109_effects": false,
+    "vm109_installed": false
+  },
+  "request_id": "CBM-STAGE2-CONTROLLER-20260924-035",
+  "schema": "cbm.stage2-acceptance-ledger/1",
+  "stage2_complete": false,
+  "vm108_final": {
+    "admission": "closed",
+    "baseline_containers_running": {
+      "cbm-collector-development-proxy-1": true,
+      "cbm-live-development-api-1": true,
+      "cbm-live-development-nats-1": true,
+      "cbm-live-development-postgres-1": true
+    },
+    "database_acl_matches_initial": true,
+    "failed_journal_retained": true,
+    "guardian_timer": "stopped after terminal failed-finalizer probe",
+    "incumbent_id": "f6abe8480e96656cff14c807fa9901950efe05ad618905c84dce232fa9702f16",
+    "incumbent_running": true,
+    "mac_pending_retained": true,
+    "postgres_running": true,
+    "protected_controls_match": true,
+    "systemd_units_installed_for_review": true
+  }
+}

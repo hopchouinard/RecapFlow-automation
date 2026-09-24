@@ -1,0 +1,12 @@
+{
+  "schema": "cbm.stage2-source-publication/1",
+  "request_id": "CBM-STAGE2-CONTROLLER-20260924-035",
+  "verified_at": "2026-09-24T02:38:06Z",
+  "repository": "https://github.com/Patchoulab/agent-ops.git",
+  "branch": "codex/request035-controller",
+  "local_commit": "aadf565486ab1112816c7f239927158c0c602642",
+  "remote_commit": "aadf565486ab1112816c7f239927158c0c602642",
+  "worktree_clean": true,
+  "merged": false,
+  "parent_gitlink_updated": false
+}
