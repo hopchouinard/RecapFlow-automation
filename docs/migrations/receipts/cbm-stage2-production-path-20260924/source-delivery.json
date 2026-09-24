@@ -1,0 +1,10 @@
+{
+  "archive": "source.tar",
+  "archive_sha256": "04a1f7b4c4531aa8fb77e75af19677a88777c23ccaf3cb02adc89d0b70176cb1",
+  "commit": "d5b013b6a9e37704516b50d31ab8f15f1950ed21",
+  "member_count": 11,
+  "member_manifest": "source-members.json",
+  "member_manifest_sha256": "80b0600bf9340acb47de1c7f1ce5c4b1e879b87e44d762d165b2a481bf4d77e1",
+  "pushed": false,
+  "schema": "cbm.request036-source-delivery/1"
+}

@@ -1,0 +1,25 @@
+{
+  "capture_id": "cbm-stage2-production-dev-036",
+  "components": [
+    "corpus"
+  ],
+  "holds_unchanged": true,
+  "manifest_sha256": "34a80b7b3708a1de5552b57bf49d5758fcae7624ecb48ebfef5c2ba546e837e0",
+  "production_qualified": false,
+  "restore_receipt": {
+    "application_acceptance": null,
+    "capture_id": "cbm-stage2-production-dev-036",
+    "components": {
+      "corpus": "c09c753136fd24999681a2d2174424618ede99110dd0d0a1a37a7b2403f29a33"
+    },
+    "database_acceptance": null,
+    "destination": "/srv/dev-data/workspaces/cbm-stage2-production-20260924-036/restored",
+    "manifest_sha256": "34a80b7b3708a1de5552b57bf49d5758fcae7624ecb48ebfef5c2ba546e837e0",
+    "production_qualified": false,
+    "schema": "cbm.restore-receipt/1",
+    "scope": "synthetic-development",
+    "tree_comparison": "exact"
+  },
+  "schema": "cbm.local-preservation/1",
+  "scope": "synthetic-development"
+}

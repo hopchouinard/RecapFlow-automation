@@ -1,0 +1,8 @@
+{
+  "actor": "home.servers",
+  "receipt": "receipt.md",
+  "request_id": "CBM-STAGE2-PRODUCTION-PATH-20260924-036",
+  "state": "completed",
+  "summary": "Partial Request036 response delivered: source commit and archive, VM109 review binding, VM108 synthetic preservation receipt; Stage 2 remains incomplete and production admission closed.",
+  "updated_at": "2026-09-24T03:30:43.656941+00:00"
+}

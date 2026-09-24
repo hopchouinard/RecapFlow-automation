@@ -472,3 +472,14 @@ acceptance. The production-capable controller, installer, independent finalizer
 and VM108 fault matrix were not delivered. [Request035](cbm-stage2-controller-request.md)
 closes only that development gap. Production identities expired and existing renewal
 reports failure; all21 production slots remain null and execution disabled.
+
+## Request035 and Request036 consumed — September24
+
+[Request035](cbm-stage2-request035-results.md) delivered and tested a synthetic
+VM108 intent/controller/guardian prototype, including caller/worker failure
+recovery. It did not provide a production execution path or any of the 21
+semantic evidence validators. [Request036](cbm-stage2-request036-results.md)
+delivered a source-pinned, read-only VM109 review plan and a one-component
+synthetic capture/restore on VM108. Its production source implementation and
+VM108 fault acceptance remain incomplete. Production admission stays closed;
+all 21 evidence slots and all three phase authorities are null.
