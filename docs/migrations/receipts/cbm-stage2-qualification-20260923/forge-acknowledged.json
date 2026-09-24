@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-STAGE2-QUALIFICATION-20260923-034",
+  "actor": "Forge",
+  "state": "consumed",
+  "acknowledged_at": "2026-09-24T00:52:22.867185+00:00",
+  "verified_named_artifacts": 8,
+  "source_archive_sha256": "1993976f8f1f06a43cf746f87725b14112b5f9619df149e3e311ea3b4b5f7dfd",
+  "vm108_manifest_sha256": "7c5cfba2187e72ea40a6955592278539f7982376abbe647819e466354b3b3825",
+  "local_tests_passed": 16,
+  "source_commit": "6bdd50086646337a6db2b103b1dd28910db33635",
+  "receipt_sha256": "3100136ae4f949a7a39feb57e0b4d47d424b93192e0a8f604d26ad545d718ea9",
+  "stage2_complete": false,
+  "production_execution_ready": false,
+  "protected_transfer_performed": false
+}

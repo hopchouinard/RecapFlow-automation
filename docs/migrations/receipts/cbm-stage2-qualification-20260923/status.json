@@ -1,0 +1,8 @@
+{
+  "actor": "home.servers",
+  "receipt": "receipt.md",
+  "request_id": "CBM-STAGE2-QUALIFICATION-20260923-034",
+  "state": "completed",
+  "summary": "Stage 2 dev qualification delivered; production execution path not qualified and remains disabled.",
+  "updated_at": "2026-09-23T23:42:48.829588+00:00"
+}

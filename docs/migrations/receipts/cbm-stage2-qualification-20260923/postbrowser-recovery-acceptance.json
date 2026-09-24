@@ -1,0 +1,14 @@
+{
+  "paired_postgresql_and_state_restore": true,
+  "database_and_durable_state_equal": true,
+  "verified_files": 114,
+  "manifest_sha256": "3148078f797e5513edf00aafc6fdbce279e4709b5bf90abf843bc574ab2652e0",
+  "private_recovery_retained": true,
+  "production_restore_certified": false,
+  "restored_chat_and_attachment": true,
+  "original_key_status": 200,
+  "wrong_key_status": 401,
+  "exact_webui_image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+  "signup_disabled_in_both_restores": true,
+  "source_state_file_hashes_verified": true
+}

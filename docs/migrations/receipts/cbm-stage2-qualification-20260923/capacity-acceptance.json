@@ -1,0 +1,42 @@
+{
+  "schema": "cbm.stage2-capacity/1",
+  "profile": {
+    "clients": 3,
+    "duration_seconds": 75,
+    "api_clients": 2,
+    "webui_clients": 1,
+    "worker": "actual synthetic processing and indexing",
+    "restore": "separate PostgreSQL database and state tar",
+    "baseline_vm_kib": 4004576,
+    "p95_limit_ms": 2000,
+    "minimum_available_kib": 524288
+  },
+  "before_available_kib": 2016004,
+  "min_available_kib": 1768036,
+  "headroom_fraction": 0.442,
+  "kernel_oom_kills_delta": 0,
+  "peak_container_cpu_percent": 52.32,
+  "request_pairs": 677,
+  "request_failures": 0,
+  "p95_latency_ms": 516.4,
+  "max_latency_ms": 767.3,
+  "worker": {
+    "started": 340491.142471172,
+    "ended": 340578.531753942,
+    "job_id": "e5d06bf0-8ad6-4bb0-990a-890a1e3ca3f3",
+    "stages": [
+      "processing",
+      "indexing"
+    ],
+    "fts_indexed_rows": 17
+  },
+  "restore": {
+    "started": 340491.142280118,
+    "ended": 340495.905137854,
+    "dump_sha256": "c813626e7fb8aac8ec64608f053612c7c44a127564a73a7523901519a9d408e9",
+    "state_files_verified": 70,
+    "separate_database": "integration_capacity_034"
+  },
+  "four_way_overlap_seconds": 4.8,
+  "actual_concurrent_acceptance": true
+}

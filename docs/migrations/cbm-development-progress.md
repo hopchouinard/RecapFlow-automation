@@ -893,3 +893,11 @@ pairs. [Request034](cbm-stage2-qualification-request.md) covers actual scoped
 Infisical/CA/consumer integration, the bounded controller and intended full
 capacity. The prior production authority and admission window have expired;
 production execution remains disabled.
+
+## Request034 consumed — September24
+
+[Verified stage2 development results](cbm-stage2-request034-results.md) close actual
+scoped Infisical/CA consumers, exact-image synthetic browser/recovery and bounded
+capacity acceptance. The controller/installer/independent finalizer and VM108 fault
+matrix were not delivered, so stage2 remains open. Production identities expired
+and their existing renewal reports failure. No production execution is authorized.

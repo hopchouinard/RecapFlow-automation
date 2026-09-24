@@ -1,0 +1,11 @@
+{
+  "real_http_api": true,
+  "exact_image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+  "positive_status": 200,
+  "expired_status": 401,
+  "wrong_status": 401,
+  "cross_scope_status": 403,
+  "expired_identity_sha256": "813648f4506b73a01f0ec731dcc5583b4a940f7616ac34f2c9d0712ca280bb00",
+  "expired_at": 1790205282,
+  "incumbent_dev_api_unchanged": true
+}
