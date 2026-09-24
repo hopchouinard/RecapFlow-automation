@@ -55,7 +55,7 @@
       "invite": "You are writing a weekly invite post for an AI community coaching call. Your job is to create a post that encourages members to submit their questions in advance.\n\nYou will be given the compressed community post from the most recent call. Use it to add unique flavor to this week's invite.\n\nThe post MUST follow this exact structure:\n\n1. Opening hook (1-3 sentences) — A playful, attention-grabbing opener that references a specific highlight, tool, insight, or unresolved question from last week's call. Make it intriguing enough that someone who missed last week wants to catch up.\n\n2. Standard section — Copy EXACTLY as written below, including the emoji:\n\n📞 HOW THE CALLS WORK\nThe calls can run 2+ hours.\nWe want to make sure we're respecting everyone's time. Especially those of you who actually show up.\n\nHere's the structure:\n👉 Reply to this post with your questions before the call\n👉 If you submit a question and you're on the call, you go first\n👉 We work through questions in the order they came in\n👉 Then we open it up for everyone else\n\nIf you can't make the call but want your question answered, drop it in the comments. We'll get to it. But priority goes to people who are there.\n\nThe goal is simple: if you're taking the time to show up, you shouldn't have to wait behind questions from people who aren't even on the call.\n\n3. Flavor bridge (1-3 sentences) — Reference 2-3 specific unresolved questions, follow-ups, or topics from last week that people might want to continue. Mention people by first name only if they had open questions. Frame it as a warm invitation, not a call-out.\n\n4. Closing section — Copy EXACTLY as written below, but replace [DATE] with the provided date:\n\n🔗 ZOOM LINK (save this)\nhttps://us06web.zoom.us/j/81995207847?pwd=Xe6u6LmIQOmCP5VTnOwWYjDBfZNKGB.1\n\n📅 WHEN\nTuesday [DATE] at 6PM ET\n\nLooking forward to seeing you on the call!\n\nRules:\n- Tone: playful, welcoming, energetic — like a community leader who genuinely enjoys these calls\n- Do NOT call out anyone negatively or use inside jokes that would confuse non-attendees\n- Do NOT invent information not present in the community post\n- Keep the opening hook and flavor bridge fresh and different each week\n- The standard section and closing section must be reproduced EXACTLY (no modifications to wording or emoji)\n- Total post length should feel like a quick, easy read — not a wall of text"
     },
     "workflow": "merged-call-summarizer.json",
-    "sha256": "5d90bb39d4692b6c35cf8dd799a5f3c0ff011bc02834826ab46ac1f5b313103c"
+    "sha256": "f73b01ba1358027e3612caf67a4bbfa340e00944426fdd3f17646d59ecc52c93"
   },
   "transcript_backfill": {
     "config": {
@@ -110,6 +110,6 @@
       }
     },
     "workflow": "transcript-only-summarizer.json",
-    "sha256": "743b4d612463b0762e027c44c26428c2b2bb99aaab4c7e66890bdb990c1b4722"
+    "sha256": "647f7b5aef8f728fca69407f61d8b4fb41879349b67be188ab5cee7840ad3a77"
   }
 }

@@ -23,7 +23,7 @@ from community_brain.processing.pipeline import (
 ROOT = Path(__file__).resolve().parents[2]
 SIGNAL = "\n\n".join("## " + s + "\n\nBody content" for s in CANON)
 PREP = (
-    "=== SESSION ===\ndate: ignored\nmain_themes: tools, agents\n\n<!--SEGMENT\ntopic: tools\nspeakers: A\nkeywords: tools\nsummary: details\n-->\n"
+    "=== SESSION ===\ndate: ignored\nduration_estimate: 1h\nmain_themes: tools, agents\n\n<!--SEGMENT\ntopic: tools\nspeakers: A\nkeywords: tools\nsummary: details\n-->\n"
     + "useful transcript content " * 10
 )
 
@@ -139,6 +139,8 @@ def test_prompts_config_requests_match_live_workflow_oracle(mode):
         ("none", "", "length"),
         ("none", "partial", "length"),
         ("prep.chunk", PREP, "stop"),
+        ("prep.chunk", "Unsegmented intro\n" + PREP, "stop"),
+        ("prep.chunk", PREP.replace("duration_estimate: 1h\n", ""), "stop"),
         ("prep.chunk", PREP.replace("keywords: tools\n", ""), "stop"),
         (
             "prep.chunk",
@@ -150,6 +152,8 @@ def test_prompts_config_requests_match_live_workflow_oracle(mode):
         ("signal.map", "## general\nbody", "stop"),
         ("signal.map", "```\n" + SIGNAL + "\n```", "stop"),
         ("signal.reduce", SIGNAL, "stop"),
+        ("signal.reduce", "Intro\n```markdown\n" + SIGNAL + "\n```", "stop"),
+        ("signal.reduce", SIGNAL.replace("## general", "# General", 1), "stop"),
         ("signal.reduce", SIGNAL.replace("##", "#"), "stop"),
         ("signal.reduce", SIGNAL + "\n## Appendix Notes\nextra", "stop"),
         ("signal.reduce", SIGNAL.replace("Body content", ""), "stop"),
@@ -215,6 +219,21 @@ def test_complete_pipeline_has_preserved_outputs(mode, count):
         "2026-09-15-weekly-invite.md" if mode == "weekly" else "community-post.md"
     )
     assert all(x.strip() for x in artifacts.values())
+
+
+@pytest.mark.parametrize("mode", ["weekly", "transcript_backfill"])
+def test_pipeline_normalizes_title_case_reducer_headings(mode):
+    title_case = "\n\n".join(
+        "# " + slug.title() + "\n\nBody content" for slug in CANON
+    )
+
+    def call(request):
+        if request["expect"] == "signal.reduce":
+            return response(title_case)
+        return fake_call(request)
+
+    artifacts = Pipeline(mode).run("source", "2026-09-08", call)
+    assert artifacts["extracted-signal.md"] == SIGNAL
 
 
 def test_component_caps_and_metadata():

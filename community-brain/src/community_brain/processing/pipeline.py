@@ -91,6 +91,21 @@ def structure_ok(expect, text):
         )
         if not marks or len(marks) != text.count("<!--SEGMENT"):
             return False
+        prefix = text[: marks[0].start()].strip()
+        if prefix:
+            lines = [line.strip() for line in re.split(r"\r?\n", prefix)]
+            lines = [line for line in lines if line]
+            keys = [line.split(":", 1)[0] for line in lines[1:]]
+            if (
+                len(lines) != 4
+                or lines[0] != "=== SESSION ==="
+                or set(keys) != {"date", "duration_estimate", "main_themes"}
+                or any(
+                    not re.match(r"^(date|duration_estimate|main_themes):\s*\S", line)
+                    for line in lines[1:]
+                )
+            ):
+                return False
         for i, mark in enumerate(marks):
             body = text[
                 mark.end() : marks[i + 1].start() if i + 1 < len(marks) else len(text)
@@ -99,6 +114,8 @@ def structure_ok(expect, text):
             if len(re.sub(r"\s", "", body).encode("utf-16-le")) // 2 < 50:
                 return False
     elif expect in ("signal.map", "signal.reduce"):
+        if expect == "signal.reduce" and "```" in text:
+            return False
         if re.fullmatch(r"```[^\n]*\n[\s\S]*```", text.strip()):
             return False
         if expect == "signal.map":
@@ -406,9 +423,14 @@ class Pipeline:
         prep = mapped("prep")
         save("prepared-transcript.md", aggregate_prep(prep, meeting_date, transcript))
         signal = require(component(self.reduce_request(mapped("signalMap"), chat)))
+        def canonical_heading(match):
+            words = match[1].strip().split()
+            slug = words[0].lower() if words else ""
+            return "## " + slug if slug in CANON else match[0]
+
         signal = re.sub(
-            r"^#{1,3}[ \t]+([a-z]+)[ \t]*$",
-            lambda m: "## " + m[1] if m[1] in CANON else m[0],
+            r"^#{1,3}[ \t]+(.+)$",
+            canonical_heading,
             signal,
             flags=re.M,
         )
