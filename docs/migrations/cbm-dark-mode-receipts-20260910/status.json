@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-DARK-MODE-20260910-008",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T16:24:44.891639+00:00",
+  "summary": "Dark-mode frontend deployed; old asset URLs retained; pinned recreation controls and private offhost recovery copies verified. Seven HTTP and fifteen auth checks passed; database/files/corpus/config and backend/auth unchanged. Visual acceptance and later phases remain separate.",
+  "receipt": "receipt.md"
+}

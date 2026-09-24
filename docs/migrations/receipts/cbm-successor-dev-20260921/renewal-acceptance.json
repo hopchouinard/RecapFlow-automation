@@ -1,0 +1,203 @@
+{
+  "state": "completed",
+  "cycle": "34a1d385-8c47-4a9c-a20d-1edcc0d19824",
+  "expires_at": 1790550132,
+  "next_due": 1790290932,
+  "subjects": [
+    "community-brain-openwebui",
+    "community-brain-prod-mac-collector",
+    "community-brain-prod-manual-operator",
+    "community-brain-prod-read-probe",
+    "community-brain-prod-metrics-probe"
+  ],
+  "passed": true,
+  "authority": "actual Infisical",
+  "same_generation_resume": true,
+  "old_and_new_overlap_verified": true,
+  "old_credentials_rejected": true,
+  "actual_monitor_consumers": true,
+  "api_recreations": [
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": null,
+        "automation/attention.json": null,
+        "automation/boot-state.json": "4063cccda4a8d48066c08a464235dfbfade0fc5dc4e80a417d589c1550d14b69"
+      },
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files",
+          "read_only": false
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        }
+      ],
+      "memory_limit": 2147483648,
+      "container_id": "3c887fee0ef993b48d263a0b7baae951a742a128f7ddadd0fba7a91d28db47db",
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ]
+    },
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": null,
+        "automation/attention.json": null,
+        "automation/boot-state.json": "4063cccda4a8d48066c08a464235dfbfade0fc5dc4e80a417d589c1550d14b69"
+      },
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files",
+          "read_only": false
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        }
+      ],
+      "memory_limit": 2147483648,
+      "container_id": "c33a2302ece61045004f7519d6abdc87d1e84cf01f0e2d5913f914d9722daea5",
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ]
+    },
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": null,
+        "automation/attention.json": null,
+        "automation/boot-state.json": "4063cccda4a8d48066c08a464235dfbfade0fc5dc4e80a417d589c1550d14b69"
+      },
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/config",
+          "target": "/state/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/files",
+          "target": "/state/files",
+          "read_only": false
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        }
+      ],
+      "memory_limit": 2147483648,
+      "container_id": "c4f6c59262bb613876648dbfe065957a354aa5dd7c5535e860fbb6af1defa3bd",
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ]
+    }
+  ],
+  "production_changes": false,
+  "limits": [
+    "Synthetic corpus and embedding/model-list fixture",
+    "Collector configuration and authenticated scope probes; no desktop intake or upload exercised"
+  ]
+}

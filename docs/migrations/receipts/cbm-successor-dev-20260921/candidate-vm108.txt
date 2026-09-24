@@ -1,0 +1,14 @@
+test_no_old_module_or_ui_overlays (__main__.Boundaries.test_no_old_module_or_ui_overlays) ... ok
+test_old_host_or_image_or_signing_path_cannot_enter_renderer (__main__.Boundaries.test_old_host_or_image_or_signing_path_cannot_enter_renderer) ... ok
+test_only_explicitly_authorized_development_folder_accepted (__main__.Boundaries.test_only_explicitly_authorized_development_folder_accepted) ... ok
+test_packet_acceptance_and_content_tampering (__main__.Boundaries.test_packet_acceptance_and_content_tampering) ... ok
+test_packet_bytes_ignore_filesystem_and_input_mapping_order (__main__.Boundaries.test_packet_bytes_ignore_filesystem_and_input_mapping_order) ... ok
+test_production_profile_review_only (__main__.Boundaries.test_production_profile_review_only) ... ok
+test_provider_profiles_cannot_select_each_others_provider (__main__.Boundaries.test_provider_profiles_cannot_select_each_others_provider) ... ok
+test_terminal_intake_never_fetches_old_host (__main__.Boundaries.test_terminal_intake_never_fetches_old_host) ... ok
+test_unmanifested_bytecode_rejected (__main__.Boundaries.test_unmanifested_bytecode_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.032s
+
+OK

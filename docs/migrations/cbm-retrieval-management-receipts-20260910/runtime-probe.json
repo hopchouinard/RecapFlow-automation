@@ -1,0 +1,38 @@
+{
+  "dns": "10.1.10.100",
+  "checks": [
+    {
+      "case": "valid",
+      "status": 200,
+      "tls_verified": true,
+      "results": [
+        {
+          "ground_truth": {
+            "chunk_id": "2026-02-18:signal:general",
+            "session_id": "2026-02-18",
+            "source_file": "/data/output/2026-02-18/extracted-signal.md"
+          },
+          "derived_metadata": {},
+          "provenance": {}
+        }
+      ]
+    },
+    {
+      "case": "missing",
+      "status": 401,
+      "tls_verified": true,
+      "expected_denial": true
+    },
+    {
+      "case": "invalid",
+      "status": 401,
+      "tls_verified": true,
+      "expected_denial": true
+    },
+    {
+      "case": "jobs-denied",
+      "status": 403
+    }
+  ],
+  "no_temporary_container_files": true
+}

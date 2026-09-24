@@ -1,0 +1,15 @@
+{
+  "installed_hashes": {
+    "ownership_control.py": "445befe4064e56d41a3be7cd09723df62842add92934120c153018f0f13a0733",
+    "window-control.py": "2f9952f84bf725cab566209d3c81971bc6fb8b0cae906e7108b4035e01288bb3"
+  },
+  "private_originals": "/var/lib/community-brain-window/CBM-RETRIEVAL-20260910-001/ownership-007-before",
+  "original_rollback_still_effective": true,
+  "terminal_not_committed": true,
+  "final_lock_revision": {
+    "sha256": "0815f77faa1abb19b763f7d8947f4c74c34695d5ef9fa18e997506cdbdb9bf1f",
+    "checked_at": "2026-09-10T07:00:11.730963+00:00",
+    "tests": 19,
+    "change": "Pre-terminal deadline invocation waits for transient lock contention; status/supersession remain fail-fast. Terminal record unchanged."
+  }
+}

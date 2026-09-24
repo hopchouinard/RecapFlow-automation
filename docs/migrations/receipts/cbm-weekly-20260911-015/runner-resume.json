@@ -1,0 +1,12 @@
+{
+  "request_id": "CBM-WEEKLY-20260911-015",
+  "resumed_at": "2026-09-11T20:15:25.431958+00:00",
+  "scan": {
+    "completed": [],
+    "next": null,
+    "attention": false
+  },
+  "root_cause": "Unreproduced transient/unknown: original launcher suppressed exception. No automatic-policy jobs, pending recovery or unacknowledged queue work found.",
+  "first_failure_preservation_installed": true,
+  "boot_identity_unchanged": true
+}

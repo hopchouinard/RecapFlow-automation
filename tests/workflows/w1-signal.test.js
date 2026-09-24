@@ -1,9 +1,10 @@
+const { repoPath } = require('./harness');
 const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('node:fs');
 const { runCodeNode } = require('./harness');
 
-const transcript = fs.readFileSync('/repo/output/2026-09-01/transcript.txt', 'utf8');
+const transcript = fs.readFileSync(repoPath('output/2026-09-01/transcript.txt'), 'utf8');
 const cfg = {
   steps: {
     signalMap:    { model: 'anthropic/claude-sonnet-5', maxTokens: 16384, chunkTargetTokens: 15000 },

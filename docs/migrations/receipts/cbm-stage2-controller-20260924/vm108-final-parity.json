@@ -1,0 +1,42 @@
+{
+  "active_attempt": "r035-v6-finalizer-fail",
+  "active_result": {
+    "admission_open": false,
+    "attempt": "r035-v6-finalizer-fail",
+    "database_restored": false,
+    "errors": [
+      "RuntimeError: synthetic finalizer failure"
+    ],
+    "finalizer_at": 1790214215.916067,
+    "incumbent_restored": false,
+    "intent_sha256": "4e5a71e45a82dfdf1c95ae2a8bc6bd4426c1d9f3eb127df7126dde46657c15ac",
+    "partial_retained": true,
+    "serving_restored": false
+  },
+  "baseline_containers_running": {
+    "cbm-collector-development-proxy-1": true,
+    "cbm-live-development-api-1": true,
+    "cbm-live-development-nats-1": true,
+    "cbm-live-development-postgres-1": true
+  },
+  "controls_match_fixture": true,
+  "controls_match_plan": true,
+  "database_acl_matches_initial": true,
+  "host_matches": true,
+  "incumbent_fingerprint_matches": true,
+  "incumbent_id_matches": true,
+  "incumbent_running": true,
+  "packet": {
+    "files": 14,
+    "manifest_sha256": "35aa5cf9fe5eff8095345221c1b6f6df150679e72211fd0c7eb7b6301fd942dd"
+  },
+  "paid_provider_requests": 0,
+  "plan_pin_matches": true,
+  "plan_sha256": "dc3f83f2e3aa5e377bf51b5cddcb45ffcba09962b33ce079200bce1fa0706d1b",
+  "postgres_id_matches": true,
+  "postgres_running": true,
+  "production_changes": false,
+  "production_slots_null": 21,
+  "schema": "cbm.stage2-vm108-parity/1",
+  "vm101_changes": false
+}

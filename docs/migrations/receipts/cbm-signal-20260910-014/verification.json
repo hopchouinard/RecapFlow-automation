@@ -1,0 +1,15 @@
+{
+  "auth_unchanged": true,
+  "api_environment_unchanged": true,
+  "image_unchanged": true,
+  "root_cron_unchanged": true,
+  "only_mount_change": "/app/web/dist",
+  "database_equal": true,
+  "managed_files_equal": true,
+  "corpus_rows": 1901,
+  "fts_indexed": 1901,
+  "fts_unindexed": 0,
+  "tests_passed": 79,
+  "javascript_identical_to_request012": true,
+  "visual_acceptance": "Patrick approved Forge dark/light previews; management verified identical staged/live asset bytes."
+}

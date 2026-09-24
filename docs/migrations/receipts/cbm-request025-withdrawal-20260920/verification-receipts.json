@@ -1,0 +1,13 @@
+{
+  "request_id": "CBM-RENEWAL-DEVELOPMENT-20260920-025",
+  "verified_at": "2026-09-20T03:19:53.710405+00:00",
+  "disposition": "withdrawal_acknowledged",
+  "withdrawal_sha256": "c1a18d86c6e4418939dd63a2ee25a7a070a8b7d88476fe1e5574114c19f13e4b",
+  "withdrawal_updated_at": "2026-09-20T03:14:24.837808+00:00",
+  "development_work_performed_by_home_servers": false,
+  "production_changes_performed": false,
+  "tests_run": false,
+  "existing_candidate_artifacts": "Preserved in Forge-owned request directory; not executed or independently certified.",
+  "completed_development_evidence_from_this_execution": [],
+  "remaining_gate": "Await migration-focused replacement request; any repair requires VM108 validation before production."
+}

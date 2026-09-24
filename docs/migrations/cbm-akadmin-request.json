@@ -1,0 +1,13 @@
+{
+  "request_id": "CBM-AKADMIN-20260917-018",
+  "sender": "Forge",
+  "target": "home.servers",
+  "created_at": "2026-09-17T01:13:41.948226+00:00",
+  "title": "Grant akadmin same human access as pchouinard in both Community Brain apps",
+  "authorization": "Patrick explicitly requested this targeted production/development Authentik human access change. Preserve existing user access and other operational gates.",
+  "entry_document": "cbm-akadmin-management-handoff.md",
+  "document_sha256": {
+    "cbm-akadmin-management-handoff.md": "34969d469770b031af909e623e7f6649f7717ad60db8aef63988a9ae975b8e72"
+  },
+  "response_directory": "responses/CBM-AKADMIN-20260917-018"
+}

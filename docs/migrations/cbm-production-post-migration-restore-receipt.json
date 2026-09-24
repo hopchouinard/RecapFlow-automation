@@ -1,0 +1,65 @@
+{
+  "dump_path": "/var/backups/community-brain/20260910T024826Z.dump",
+  "dump_sha256": "24c9ee9cd8e05b416bdb24a5c42549ff1cb774418349f1b4638253150f495bc2",
+  "table_count": 10,
+  "tables": [
+    {
+      "name": "alembic_version",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_artifacts",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_attempts",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_jobs",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_model_calls",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_operations",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_outbox",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_rejected_events",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_sources",
+      "owner": "cbm_prod_migration"
+    },
+    {
+      "name": "cb_stages",
+      "owner": "cbm_prod_migration"
+    }
+  ],
+  "schema_definitions_grants_ownership_match": true,
+  "alembic_revision": "0001_jobs",
+  "row_counts": {
+    "alembic_version": 1,
+    "cb_artifacts": 0,
+    "cb_attempts": 0,
+    "cb_jobs": 0,
+    "cb_model_calls": 0,
+    "cb_operations": 0,
+    "cb_outbox": 0,
+    "cb_rejected_events": 0,
+    "cb_sources": 0,
+    "cb_stages": 0
+  },
+  "source_schema_and_counts_unchanged": true,
+  "disposable_database_removed": true,
+  "restore_passed": true,
+  "pitr_enabled": false
+}

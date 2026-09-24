@@ -1,0 +1,14 @@
+[Unit]
+Description=Sealed synthetic Request032 boot reconciliation
+After=docker.service
+Requires=docker.service
+Before=cbm-r032-admission.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python3 -B @PACKET@/boot_reconcile.py @PACKET_SHA256@
+TimeoutStartSec=35
+
+[Install]
+WantedBy=cbm-r032-admission.target

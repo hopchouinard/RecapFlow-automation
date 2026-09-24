@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-SUCCESSOR-BINDINGS-20260920-028",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-20T23:12:56.867628+00:00",
+  "summary": "Successor profiles and scoped TLS queue implemented; VM108 manual/automatic workers, uncertainty, checkpoints, paired restore and real renewal passed. Final binding equivalence and production gates documented. Request028 fixtures stopped and retained; production unchanged.",
+  "receipt": "receipt.md"
+}

@@ -1,0 +1,9 @@
+{
+  "limit": 2,
+  "limit_remaining": 1.607892834,
+  "limit_reset": null,
+  "usage": 0.392107166,
+  "is_management_key": false,
+  "include_byok_in_limit": true,
+  "verified_at": "2026-09-10T06:02:21.816993+00:00"
+}

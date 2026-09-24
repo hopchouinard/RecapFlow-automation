@@ -1,0 +1,14 @@
+{
+  "jobs": 2,
+  "model_calls": 14,
+  "sources": 4,
+  "unsent_outbox": 2,
+  "selected": [
+    {
+      "id": "dcba207e-92be-4661-995f-c48194a8f9af",
+      "meeting_id": "181075701",
+      "kind": "chat",
+      "sha256": "5300e1d44b776254042f955493de9a88545e64b10a05cf014d0123a4224d6084"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "label": "normal6",
+  "mode": "normal",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790004040.812717, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-normal6-1790004018\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"verified_capture_and_database_restore\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790004039.904669, \"spec_sha256\": \"62dda738b2797949b4e84baa58db8159db093278150ebeb20303b7ff0ac62989\", \"state\": \"completed\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [],
+  "spec_sha256": "62dda738b2797949b4e84baa58db8159db093278150ebeb20303b7ff0ac62989",
+  "operation_id": "r031-normal6-1790004018",
+  "readback": {
+    "at": 1790004040.812717,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-normal6-1790004018",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "verified_capture_and_database_restore",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790004039.904669,
+    "spec_sha256": "62dda738b2797949b4e84baa58db8159db093278150ebeb20303b7ff0ac62989",
+    "state": "completed",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

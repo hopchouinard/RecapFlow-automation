@@ -1,0 +1,9 @@
+{
+  "request_id": "CBM-PUBLICATION-PREP-20260917-021",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-17T03:38:50.465575+00:00",
+  "summary": "Private data-only snapshot delivered to VM108: six approved artifacts, 24 existing corpus files and selected metadata. All destination/archive hashes verified; corpus88/1924/zero unindexed. Source and database fingerprints unchanged and match the acknowledged checkpoint. Git/distribution remain blocked and unattempted; no publication or credentials. Forge candidate validation and Patrick activation approval remain pending. Request016 stays stopped.",
+  "receipt": "receipt.md",
+  "receipt_sha256": "9137fd6750f37871c6374afd47d24b8767aebf32a65bb68a1ce44047b91ff171"
+}

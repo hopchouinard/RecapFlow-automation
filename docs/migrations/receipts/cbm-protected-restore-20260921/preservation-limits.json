@@ -1,0 +1,21 @@
+{
+  "request_id": "CBM-PROTECTED-RESTORE-PREP-20260921-030",
+  "durable_trees_equal": {
+    "files": true,
+    "config": true,
+    "corpus": true,
+    "meeting-archive-20260910": true,
+    "automation": false,
+    "automation-public": true,
+    "manual-approvals": true
+  },
+  "database_table_counts_equal": true,
+  "protected_hold_bindings_equal": true,
+  "automation_aggregate_changed": true,
+  "only_automation_file_with_mtime_during_request": "status.json",
+  "interpretation": "Consistent with existing periodic status writer. Per-file hashes were not captured at start for status/checkpoint/log files, so whole automation tree equality is not certified.",
+  "task_production_mutations": [
+    "owned handoff claim/status/receipts only"
+  ],
+  "runtime_changes": false
+}

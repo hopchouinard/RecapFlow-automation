@@ -1,0 +1,16 @@
+{
+  "retired": true,
+  "at": "2026-09-22T01:14:20.278417+00:00",
+  "source_manifest_sha256": "0eec32da7770ff652a2193f87b97c858b334673eacf45820098cfc0697c980c1",
+  "commit": "41eef6ed3bfcd53d4954803581dcae084a19320f",
+  "new_admission": false,
+  "originals_and_attempts_retained": true,
+  "vm108_teardown_sha256": "9719f62629fa3d876d746d7651cfee8cf05b8d2761e40d74679820f08a96f6cf",
+  "mac_admission_refused": true,
+  "vm108": {
+    "capture_refused": true,
+    "renderer_finalizer_refused": true,
+    "recorded_stopped_containers": 21,
+    "source_manifest_sha256": "0eec32da7770ff652a2193f87b97c858b334673eacf45820098cfc0697c980c1"
+  }
+}

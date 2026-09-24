@@ -1,0 +1,30 @@
+{
+  "request_id": "CBM-DARK-MODE-20260910-008",
+  "checked_at": "2026-09-10T16:23:07.308218+00:00",
+  "vm109_archive": {
+    "path": "/srv/community-brain/artifacts/cbm-dark-mode-20260910/controls-and-static.tar.gz",
+    "sha256": "22b703010d7b7f82afb302e330d79e2444d975e2bdee4921b871184d31e3e113",
+    "bytes": 307656
+  },
+  "offhost_copies": [
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/dark-mode-008/controls-and-static.tar.gz",
+      "sha256": "22b703010d7b7f82afb302e330d79e2444d975e2bdee4921b871184d31e3e113",
+      "bytes": 307656,
+      "mode": "0o600",
+      "uid": 0
+    },
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/dark-mode-008/mac-recreation-controls.tar.gz",
+      "sha256": "ff1058f76222055beae4605dfee5a8bd41016675210b54aa8822712633131872",
+      "bytes": 1729,
+      "mode": "0o600",
+      "uid": 0
+    }
+  ],
+  "mac_original": "/Users/pchouinard/.local/state/community-brain-management/dark-mode-008-before/manual_api_runtime.py",
+  "current_mac_helper_sha256": "3bbd1d052d6adb5b248ea2c3271094285913e574a1d635ab0f78dfb3e983f0ee",
+  "prior_paired_checkpoint_retained": true
+}

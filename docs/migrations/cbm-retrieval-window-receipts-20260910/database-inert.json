@@ -1,0 +1,7 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "jobs": 2,
+  "model_calls": 14,
+  "unsent_outbox": 2,
+  "new_work_started": false
+}

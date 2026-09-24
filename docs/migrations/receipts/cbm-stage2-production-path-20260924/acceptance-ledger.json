@@ -1,0 +1,67 @@
+{
+  "authorities": {
+    "processing_resume": null,
+    "protected_preservation": null,
+    "serving": null
+  },
+  "current_authority_generation": null,
+  "not_verified": [
+    "21 production semantic validator positive and negative matrix",
+    "actual Docker and PostgreSQL production-shaped final-source fault matrix",
+    "systemd installer dry-run/install/uninstall/startup ordering",
+    "Mac/SSH caller-worker-guardian fault matrix",
+    "production DB fence and off-host transfer",
+    "production finalizer and no-replay readback",
+    "real protected production capture/restore",
+    "fresh production authority and private destinations"
+  ],
+  "parent_gitlink_updated": false,
+  "production_admission": false,
+  "production_evidence_slots_null": 21,
+  "production_evidence_slots_total": 21,
+  "production_evidence_slots_validated": 0,
+  "production_execution_enabled": false,
+  "production_mutations": false,
+  "production_validator_matrix_complete": false,
+  "protected_production_gates": [
+    "separate preservation, serving and processing-resume authorizations",
+    "current nonexpired authority generation and deadline",
+    "21 independently verified production receipts",
+    "reviewed VM109 installer/controller/finalizer and VM108 acceptance",
+    "private preservation, off-host copy and independent restore",
+    "real session, API/filter/Kuma/Prometheus, capacity and spending acceptance"
+  ],
+  "receipt_sha256": {
+    "review_plan": "c6eca8a57d97e2c03781d2438c6ed1e814e75f2bc8bc8072d6a4995d15878b5d",
+    "source_archive": "04a1f7b4c4531aa8fb77e75af19677a88777c23ccaf3cb02adc89d0b70176cb1",
+    "source_member_manifest": "80b0600bf9340acb47de1c7f1ce5c4b1e879b87e44d762d165b2a481bf4d77e1",
+    "vm108_preservation": "48335360ed053f038554977bfa0dd7b006fefa04b4bb84a96afe29c53508ec92",
+    "vm109_read_only_observation": "a6e247ac7e9d0000019b87ef6c07a01ec3178b81f50a03f59cbb526fc06a8fa8"
+  },
+  "request_id": "CBM-STAGE2-PRODUCTION-PATH-20260924-036",
+  "schema": "cbm.request036-acceptance-ledger/1",
+  "source_implementation_complete": false,
+  "stage2_complete": false,
+  "verified": {
+    "live_vm109_machine_mount_incumbent_controls_match_request033": true,
+    "local_review_plan_tests": {
+      "failed": 0,
+      "passed": 4
+    },
+    "request_documents_sha256_match": true,
+    "review_plan_refuses_execution": true,
+    "vm108_fresh_synthetic_capture_and_exact_restore": true,
+    "vm108_preservation_deadline_miss_observed": false,
+    "vm108_review_plan_tests": {
+      "failed": 0,
+      "passed": 4
+    },
+    "vm108_source_archive_parity": true,
+    "vm108_source_member_parity": {
+      "matched": 11,
+      "total": 11
+    }
+  },
+  "vm101_touched": false,
+  "vm108_acceptance_complete": false
+}

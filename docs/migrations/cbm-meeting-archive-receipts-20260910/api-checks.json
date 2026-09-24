@@ -1,0 +1,96 @@
+{
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "checked_at": "2026-09-10T17:04:17.869325+00:00",
+  "checks": [
+    {
+      "check": "health",
+      "status": 200,
+      "tls_verified": true
+    },
+    {
+      "check": "missing upload denied",
+      "status": 401,
+      "tls_verified": true
+    },
+    {
+      "check": "missing jobs denied",
+      "status": 401,
+      "tls_verified": true
+    },
+    {
+      "check": "invalid upload denied",
+      "status": 401,
+      "tls_verified": true
+    },
+    {
+      "check": "invalid jobs denied",
+      "status": 401,
+      "tls_verified": true
+    },
+    {
+      "check": "collector transcript denied",
+      "status": 403,
+      "tls_verified": true
+    },
+    {
+      "check": "collector aliases denied",
+      "status": 403,
+      "tls_verified": true
+    },
+    {
+      "check": "collector job read denied",
+      "status": 403,
+      "tls_verified": true
+    },
+    {
+      "check": "collector job submit denied",
+      "status": 403,
+      "tls_verified": true
+    },
+    {
+      "check": "collector metrics denied",
+      "status": 403,
+      "tls_verified": true
+    },
+    {
+      "check": "operator job read",
+      "status": 200,
+      "tls_verified": true
+    },
+    {
+      "check": "operator metrics denied",
+      "status": 403,
+      "tls_verified": true
+    },
+    {
+      "check": "existing metrics identity",
+      "status": 200,
+      "tls_verified": true
+    },
+    {
+      "check": "existing read identity",
+      "status": 200,
+      "tls_verified": true
+    },
+    {
+      "check": "existing retrieval identity",
+      "status": 200,
+      "tls_verified": true
+    }
+  ],
+  "retrieval_hits": 5,
+  "runtime": {
+    "api_health": "healthy",
+    "cue_rules": 13,
+    "files_writable": true,
+    "corpus_config_read_only": true,
+    "no_provider_queue_keys_in_api": true,
+    "models_publication_disabled": true,
+    "running_containers": [
+      "community-brain-production-staging-api-1",
+      "community-brain-alloy"
+    ]
+  },
+  "uploads": 0,
+  "job_submission": false
+}

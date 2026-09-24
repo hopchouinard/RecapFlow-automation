@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-PREVIEW-20260910-012",
+  "updated_at": "2026-09-10T21:03:19.460700+00:00",
+  "database_unchanged": true,
+  "managed_data_unchanged": true,
+  "pins": {
+    "frontend_manifest_sha256": "59d3ade5d315ed543ac7621437ee9e9d4530209f130c2e34c00c3564abee9387",
+    "runtime_manifest_sha256": "41cefb32d5a0f88ae9882892d693934141f262a9e9d9596a29c401a01b80cfeb",
+    "compose_sha256": "64bcccb10c84527a1c47f734145fcc03b9e1627ebbfcd208d6dfa4388d9884a2",
+    "static_files": 12
+  },
+  "model_calls": 0,
+  "submissions": 0
+}

@@ -1,0 +1,13 @@
+{
+  "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+  "identity": {
+    "meeting_id": "181075701",
+    "started_at": "2026-09-08T21:54:33Z",
+    "timezone": "America/Toronto",
+    "local_date": "2026-09-08",
+    "provider": "fathom"
+  },
+  "mode": "weekly",
+  "chat_source_id": "dcba207e-92be-4661-995f-c48194a8f9af",
+  "idempotency_key": "manual-production-181075701-weekly-20260910-v1"
+}

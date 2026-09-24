@@ -1,0 +1,32 @@
+[
+  {
+    "deployed_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/service_renewal_policy.py",
+    "candidate_path": "incumbent/service_renewal_policy.py",
+    "sha256": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c"
+  },
+  {
+    "deployed_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py",
+    "candidate_path": "incumbent/lease_supervisor.py",
+    "sha256": "5c8c5dadf996ca1f3557a79de26eb0448a2b32f7c5c00c35f84b3bdc2bed3d75"
+  },
+  {
+    "deployed_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/quiet_window.py",
+    "candidate_path": "incumbent/quiet_window.py",
+    "sha256": "8347e32d04d1ecd22ce97b104e836b94f923f9951c442fa23e67f01da008fa50"
+  },
+  {
+    "deployed_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/transport.py",
+    "candidate_path": "incumbent/transport.py",
+    "sha256": "8d1c836e8cd44b1f9df228628c45015f933957286582d68f3699f62f9da473cd"
+  },
+  {
+    "deployed_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/checkpoint_journal.py",
+    "candidate_path": "incumbent/checkpoint_journal.py",
+    "sha256": "0f1058c812071e27880d567fd1d14d3015a40c09ce702bcc9d8646cef4c163ee"
+  },
+  {
+    "deployed_path": "/Users/pchouinard/.local/lib/community-brain-management/mac_intake_policy.py",
+    "candidate_path": "incumbent/mac_intake_policy.py",
+    "sha256": "7bf08d4374f6e190cb4f7f34780d802e03488aed512a7b6111103e8e87f18adf"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "automatic": {
+    "state": "idle"
+  },
+  "checked_at": "2026-09-17T00:37:53.560220+00:00",
+  "hourly": "not_due",
+  "monitoring": {
+    "attention": false,
+    "enabled": true,
+    "paused": false,
+    "pending": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "path": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/packet-v2",
+  "manifest_sha256": "e0648298b6d37775a717976dd38cf8ccd0674e96edc3989331163c3f7c27fec6",
+  "files": {
+    "common.py": "d72f0da06501cff11bdfd81d78997da2bbe44eae5b7cbc070ad176865915cae3",
+    "database.py": "85bd614fc4dddc71e401d12b56fb6adfd3b2dc729f58632dfd0cde2ba5c44a3d",
+    "fixtures.py": "edc1a32b29092166b9e11e3f9b61394677420cc0d99731dc8a9f441c2805354a",
+    "forge-core/ACCEPTANCE-PLAN.md": "e2587aca7a3a93399b5e67028d1e3972804b1cf83a7f45928d8e169760c76865",
+    "forge-core/OPERATOR-PROPOSAL.md": "5c1f35ca6832ae35c26ecdf7ee331226078c66892f82bfab950810e3b8325a12",
+    "forge-core/README.md": "961ddcc76486fa91c3ed021ad54f2b467f0ec60955706f2e90aab926fdf7e615",
+    "forge-core/contract.py": "4f5849fee5961ef0d02daf6f928811c8661a3dc7a41855bf12a34fd9fda2a335",
+    "forge-core/indexing_budget.py": "932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7",
+    "forge-core/operation.py": "02a344fbf69e7610a09675c2279d36ced6ebb9d9184cba6008d7ae506ecaea43",
+    "forge-core/pg_fence.py": "b732c54d21a1e04714ebac87911207a8e058425e9f1171f1538d3ce23b0a3101",
+    "forge-core/private-manifest.schema.json": "4eb8e03f609f51f8b22879af9dcd2f2ea310016d8d6ea67340992306e857afa2",
+    "forge-core/receipt.py": "dbb55039e08f7970b33af57051603c6799b2133e1b6f99e6a36afa7c3f7cde2a",
+    "forge-core/recovery.py": "db3358cba7a667f408d5a8728e6845e6098b2436f1f7336f362b9ee8f727f820",
+    "forge-core/rehearse.py": "3107f91901649fa5f9bfacd220f4d8aa93ac0708bb1ef26b2bc3b00da3b5c9e5",
+    "forge-core/rehearse_operation.py": "d9955bd1bd7deaf29e2fc40c857577f4657de625558c55549fb49098f7308cc7",
+    "forge-core/test_budget.py": "3efb486d0ebe769ffe774af457b68f7b4470aad6987e40938a4eb03b033dfcd4",
+    "forge-core/test_contract.py": "5400625a2578b1a1ce2d4bba3dd9f52c66528f390e12ae475efdc9dbbdf6d383",
+    "forge-core/test_operation.py": "22abc2d741ae587759f3aca77d9f9dcbd2a08a1988e5dd21dde0ab1215b7e727",
+    "forge-core/test_recovery.py": "a7370baec95571e81d94618241d59a7bd145166bbab4ac76af70e7715b79bc75",
+    "forge-core/test_transport.py": "1c50a79cd4fb74cf407ec58014059e9e5bfaa6783374641f8a11ddcf5bfc4a94",
+    "forge-core/transport.py": "ed4dd935b240b3de9d173d3b9c3889e67517dadfc9615cdbf2eeebd0069c2d0d",
+    "forge-core/webui_session.py": "d1a71a14ed860c02742053021da526cb698bf483fac131dce1b8cb58a5cc085f",
+    "mac.py": "b4936a3861ec91ec202c76fff54935b606f79613e70a1e1c5cc7379e3084125b",
+    "target.py": "47566dd13cf2e86a1b2e9925c10077d67f097c739e57b5c88611afadc70b66f2",
+    "worker.py": "6e44157eb6ee7209f6f35b7b805d666a52a5edced767ccdb3e07eebb99693dde"
+  }
+}

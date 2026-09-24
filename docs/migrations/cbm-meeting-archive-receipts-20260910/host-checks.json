@@ -1,0 +1,12 @@
+{
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "checked_at": "2026-09-10T17:03:33.970361+00:00",
+  "all_files_corpus_config_unchanged": true,
+  "backend_image_unchanged": true,
+  "only_three_reviewed_public_env_additions": true,
+  "auth_environment_unchanged": true,
+  "mount_changes": "reviewed read-only static/module/archive mounts",
+  "original_mounts_unchanged": true,
+  "only_api_alloy_running": true,
+  "healthy": true
+}

@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-MANUAL-ACTIVATE-20260910-005",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T05:47:10.995519+00:00",
+  "summary": "Manual API and scoped collector activated and verified; exact selected chat uploaded/deduplicated, source4/jobs2/ModelCalls14/outbox2. Acquisition-only Infisical credential delivered. Writer hold, rollback, corpus and publication gates unchanged.",
+  "receipt": "receipt.md"
+}

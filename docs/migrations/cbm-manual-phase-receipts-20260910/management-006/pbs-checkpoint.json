@@ -1,0 +1,20 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "completed_utc": "2026-09-10T06:28:37Z",
+  "snapshot": "pbs:backup/vm/109/2026-09-10T06:28:34Z",
+  "vmid": 109,
+  "node": "pve1",
+  "storage": "pbs",
+  "mode": "snapshot",
+  "disks": [
+    "scsi0:32GiB",
+    "scsi1:64GiB"
+  ],
+  "guest_freeze_thaw": true,
+  "backup_task": "0f1aca46-7315-45f2-8e35-9d90516d988f",
+  "status": "successful",
+  "existing_backups_pruned": false,
+  "paired_dump_archives_on_included_state_disk": true,
+  "full_guest_restore_performed": false,
+  "consistency_limit": "PBS captures later guest state including the preserved paired archives; logical DB/file equality was established separately at the pairing point."
+}

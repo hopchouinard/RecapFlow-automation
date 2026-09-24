@@ -1,0 +1,110 @@
+# VM108 QA overlay. Separate, one-shot acquisition and model workers.
+services:
+  api:
+    image: sha256:01f5e0099bfda0e3aa2b45cb2e03e00e61f2f344f8568223e6df037edb0946b5
+    command: [uvicorn, community_brain.jobs.runtime:app, --factory, --host, 0.0.0.0, --port, "8090", --no-access-log]
+    environment:
+      CB_CORPUS_ROOT: /state/corpus
+      CB_AUTOMATIC_PROCESSING: 'true'
+      CB_AUTOMATION_ROOT: /state/files/qa-automation-public
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+  webui:
+    image: sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b
+    env_file:
+    - ${CB_QA_WEBUI_ENV_FILE:?QA private environment required}
+    volumes: [qa-webui:/app/backend/data]
+    ports: [127.0.0.1:8080:8080]
+    networks: [default, oidc]
+    mem_limit: 1536m
+    cpus: 1.5
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    depends_on:
+      api: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python3, -c, "import json,urllib.request; assert json.load(urllib.request.urlopen('http://127.0.0.1:8080/health',timeout=3))['status'] is True"]
+      interval: 15s
+      timeout: 5s
+      retries: 8
+      start_period: 90s
+  qa-scan:
+    image: sha256:01f5e0099bfda0e3aa2b45cb2e03e00e61f2f344f8568223e6df037edb0946b5
+    profiles: [qa-runner]
+    command: [python, -B, /qa/scan.py, next]
+    user: '10001:10001'
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 1
+    networks: [default]
+    volumes: [files:/state/files, config:/state/config:ro, corpus:/state/corpus:ro, ./qa:/qa:ro]
+    environment:
+      CB_DATABASE_URL: ${CB_LIVE_DATABASE_URL:?}
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_ROOT: /state/corpus
+      CB_CORPUS_SCOPE: community-brain-dev
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+    restart: 'no'
+  qa-acquisition:
+    image: sha256:01f5e0099bfda0e3aa2b45cb2e03e00e61f2f344f8568223e6df037edb0946b5
+    profiles: [qa-runner]
+    command: [python, -B, /qa/worker.py, acquisition]
+    user: '10001:10001'
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 768m
+    cpus: 1
+    networks: [default, oidc]
+    volumes: [files:/state/files, config:/state/config:ro, corpus:/state/corpus:ro, ./qa:/qa:ro, /etc/ssl/certs/ca-certificates.crt:/run/certs/ca-bundle.pem:ro]
+    environment:
+      CB_DATABASE_URL: ${CB_LIVE_DATABASE_URL:?}
+      CB_NATS_URL: ${CB_LIVE_NATS_URL:?}
+      CB_NATS_STREAM: CB_DEV_JOBS
+      CB_NATS_SUBJECT: cb.dev.jobs
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_ROOT: /state/corpus
+      CB_CORPUS_SCOPE: community-brain-dev
+      CB_FATHOM_API_KEY: ${CB_QA_FATHOM_API_KEY:?}
+      CB_QA_IDENTITY_EXPIRES_AT: ${CB_QA_IDENTITY_EXPIRES_AT:?}
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      SSL_CERT_FILE: /run/certs/ca-bundle.pem
+      REQUESTS_CA_BUNDLE: /run/certs/ca-bundle.pem
+    restart: 'no'
+  qa-model:
+    image: sha256:01f5e0099bfda0e3aa2b45cb2e03e00e61f2f344f8568223e6df037edb0946b5
+    profiles: [qa-runner]
+    command: [python, -B, /qa/worker.py, model]
+    user: '10001:10001'
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1536m
+    cpus: 1.5
+    networks: [default, oidc]
+    volumes: [files:/state/files, config:/state/config:ro, corpus:/state/corpus, ./qa:/qa:ro, /etc/ssl/certs/ca-certificates.crt:/run/certs/ca-bundle.pem:ro]
+    environment:
+      CB_DATABASE_URL: ${CB_LIVE_DATABASE_URL:?}
+      CB_NATS_URL: ${CB_LIVE_NATS_URL:?}
+      CB_NATS_STREAM: CB_DEV_JOBS
+      CB_NATS_SUBJECT: cb.dev.jobs
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_ROOT: /state/corpus
+      CB_CORPUS_SCOPE: community-brain-dev
+      CB_OPENROUTER_API_KEY: ${CB_OPENROUTER_API_KEY:?}
+      CB_QA_IDENTITY_EXPIRES_AT: ${CB_QA_IDENTITY_EXPIRES_AT:?}
+      CB_ENABLE_MODEL_CALLS: 'true'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      OLLAMA_BASE_URL: http://10.1.50.219:11434
+      SSL_CERT_FILE: /run/certs/ca-bundle.pem
+      REQUESTS_CA_BUNDLE: /run/certs/ca-bundle.pem
+    restart: 'no'
+volumes:
+  qa-webui: {}

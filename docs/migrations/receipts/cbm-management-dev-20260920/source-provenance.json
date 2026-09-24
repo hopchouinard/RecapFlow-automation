@@ -1,0 +1,12 @@
+{
+  "request_id": "CBM-MANAGEMENT-INTEGRATION-20260920-027",
+  "repository": "Patchoulab/agent-ops",
+  "worktree": "/Users/pchouinard/.t3/worktrees/agent-ops/request027-management",
+  "branch": "codex/request027-management",
+  "base_commit": "f7356151a563d4d07f390872efd9265b6b9302bf",
+  "candidate_commit": "3022cda148f9fd3b1732a687a40ba2220bcc90ef",
+  "worktree_clean": true,
+  "pushed": false,
+  "installed_in_production": false,
+  "source_subtree": "platform-services/community-brain-prod/management-integration-027"
+}

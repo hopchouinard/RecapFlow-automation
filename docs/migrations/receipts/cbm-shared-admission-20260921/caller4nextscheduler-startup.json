@@ -1,0 +1,27 @@
+{
+  "actual_vm_reboot": false,
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "sysinit.target basic.target system.slice systemd-journald.socket cbm-r032-start-caller4nextscheduler.service",
+    "ExecMainExitTimestampMonotonic": "149698996935",
+    "ExecMainStartTimestampMonotonic": "149698798990",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target cbm-r032-start-caller4nextscheduler.service",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-caller4nextscheduler-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket sysinit.target system.slice basic.target",
+    "ExecMainExitTimestampMonotonic": "149698796545",
+    "ExecMainStartTimestampMonotonic": "149697467629",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-caller4nextscheduler"
+}

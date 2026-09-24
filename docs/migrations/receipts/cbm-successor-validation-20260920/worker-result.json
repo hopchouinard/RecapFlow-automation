@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "selected_worker_execute": true,
+  "production_host_and_budget_certified": false,
+  "stages": [
+    "processing",
+    "indexing",
+    "acquisition",
+    "processing",
+    "indexing"
+  ],
+  "meetings": 2,
+  "searchable_rows": 16,
+  "fts": {
+    "num_indexed_rows": 16,
+    "num_unindexed_rows": 0
+  },
+  "old_outbox_untouched": true,
+  "first_meeting_unchanged": true,
+  "external_calls": 0
+}

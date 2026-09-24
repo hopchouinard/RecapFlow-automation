@@ -1,0 +1,70 @@
+{
+  "actions": [
+    {
+      "case": "existing_mutex_contention",
+      "rejected": true
+    },
+    {
+      "case": "actual_mac_caller_sigkill",
+      "pid": 16819
+    },
+    {
+      "case": "scheduler_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "manual_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "capture_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "unsafe_readback_does_not_resolve",
+      "rejected": true
+    },
+    {
+      "case": "resolved_operation_cannot_replay",
+      "rejected": true
+    },
+    {
+      "case": "fresh_scheduler_after_authoritative_recovery",
+      "operation_id": "r032-caller4nextscheduler-1790014141",
+      "passed": true
+    },
+    {
+      "case": "fresh_manual_after_authoritative_recovery",
+      "operation_id": "r032-caller4nextmanual-1790014164",
+      "passed": true
+    }
+  ],
+  "actual_vm_reboot": false,
+  "label": "caller4",
+  "mode": "mackill",
+  "operation_id": "r032-caller4c-1790014074",
+  "packet_sha256": "40c34546c2dc765fe429e80c825fe399a7249f1d8cfd83f5a8d530a90189f85d",
+  "reconciliation": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"spec_sha256\": \"e6be6334d9af37b92ac517f4777c39cf0f16b20588d2b0e222f4ef9becec5de0\", \"state\": \"aborted_restored\", \"incumbent_id\": \"2f0d300a4a03b5da36180feefc6ec8e99b68f8e3af35feb4910c223c6cb3e459\", \"holds_sha256\": \"d23e3b483d8d1d6ea12ae150977a34b6f0e3db88af7cb51baccdc64ed68e8f62\", \"target\": \"community-brain-dev\", \"observed_epoch\": 1790014136.4073045, \"boot_id\": \"7b3d1692-81df-49e1-9b2e-49efa996d71d\", \"finalizer_seen\": true, \"service_inactive\": true, \"healthy\": true}\n"
+  },
+  "shared_journal_resolved": true,
+  "terminal": {
+    "at": 1790014123.989931,
+    "finalizer_seen": true,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "live_verified": true,
+    "operation_id": "r032-caller4c-1790014074",
+    "owner_id": "home-servers-request032",
+    "production_qualified": false,
+    "reason": "database_fence_lost",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "service_state": "inactive",
+    "serving_restored_at": 1790014122.8933818,
+    "spec_sha256": "575ccf37c1f637ed7f90f3f4231af138ec0e3f5ee5b26c0c434164bb4bae5065",
+    "state": "aborted_restored"
+  }
+}

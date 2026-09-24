@@ -1,0 +1,56 @@
+{
+  "ok": true,
+  "observed_at": "2026-09-20T01:15:28.324647+00:00",
+  "system": "pve",
+  "operation": "resources",
+  "data": [
+    {
+      "cpu": 0.0014512823160261,
+      "maxcpu": 4,
+      "status": "running",
+      "maxdisk": 549755813888,
+      "maxmem": 10737418240,
+      "mem": 4771299328,
+      "disk": 0,
+      "vmid": 101,
+      "uptime": 351342,
+      "type": "qemu",
+      "id": "qemu/101",
+      "name": "n8n-automation",
+      "template": 0,
+      "node": "pve2"
+    },
+    {
+      "status": "running",
+      "maxcpu": 2,
+      "cpu": 0.0353937713452994,
+      "maxmem": 4294967296,
+      "maxdisk": 34359738368,
+      "mem": 1542012928,
+      "disk": 0,
+      "uptime": 2529,
+      "vmid": 108,
+      "node": "pve1",
+      "type": "qemu",
+      "name": "community-brain-dev",
+      "id": "qemu/108",
+      "template": 0
+    },
+    {
+      "cpu": 0.29199861359872,
+      "maxcpu": 2,
+      "status": "running",
+      "mem": 2424336384,
+      "maxdisk": 34359738368,
+      "maxmem": 4294967296,
+      "disk": 0,
+      "uptime": 14040,
+      "vmid": 109,
+      "type": "qemu",
+      "template": 0,
+      "name": "community-brain-prod",
+      "id": "qemu/109",
+      "node": "pve1"
+    }
+  ]
+}

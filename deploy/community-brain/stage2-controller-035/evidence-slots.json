@@ -1,0 +1,23 @@
+[
+  "all_compose_environment_ca_and_signing_file_hashes",
+  "current_authority_generation_and_expiry_metadata",
+  "current_paused_attention_boot_hash_mode_inode_device",
+  "deployed_scheduler_pending_activation_interlock",
+  "exact_incumbent_api_id_image_config_fingerprint_and_health",
+  "explicit_acceptance_deadline_and_rollback_owner",
+  "external_signing_material_preservation_and_session_continuity",
+  "fresh_auth_api_filter_kuma_prometheus_acceptance",
+  "intended_workload_capacity_acceptance",
+  "legacy_webui_serving_and_volume_ownership_disposition",
+  "login_existing_sessions_and_disabled_signup_browser_acceptance",
+  "paired_mac_management_source_and_manifest_sha256",
+  "paired_off_host_recovery_copy_and_verified_restore_receipt",
+  "protected_corpus_vectors_uploads_and_artifact_hash_comparison",
+  "protected_database_restore_and_durable_state_comparison",
+  "real_provider_and_spending_budget_acceptance",
+  "restored_external_webui_volume_identity_and_sqlite_integrity",
+  "reviewed_source_commit_and_archive_sha256",
+  "runner_manual_submission_lock_inode_device",
+  "sealed_runtime_packet_path_and_exact_manifest_sha256",
+  "separate_production_phase_authorization"
+]

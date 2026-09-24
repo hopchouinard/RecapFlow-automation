@@ -1,0 +1,21 @@
+{
+  "attention.json": {
+    "reason": "automatic_execution_requires_review",
+    "checked_at": "2026-09-18T19:46:24.714428+00:00",
+    "error_class": "RuntimeError"
+  },
+  "paused": {
+    "reason": "boot_or_restore_requires_explicit_reconciliation",
+    "boot_id": "ae3dbc5a-f4f8-4cc5-a310-7da689feb410"
+  },
+  "boot-state.json": {
+    "boot_id": "ae3dbc5a-f4f8-4cc5-a310-7da689feb410",
+    "reconciled": false
+  },
+  "api_image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+  "identity_count": 5,
+  "identity_expiries": [
+    1790110387
+  ],
+  "request026_runtime_mutations": false
+}

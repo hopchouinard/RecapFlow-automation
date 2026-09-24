@@ -1,0 +1,7 @@
+{
+  "manifest_sha256": "c977c2a69c794141ef1c1bbf991ad7f44309ef172711e87d0806044679ad8b04",
+  "members": 50,
+  "exact_file_set": true,
+  "all_member_hashes_match": true,
+  "path": "/srv/dev-data/workspaces/cbm-successor-bindings-20260920-028/packet-v14"
+}

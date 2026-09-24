@@ -1,0 +1,1 @@
+{"actual_host_negative_plans": {"stale": "refused", "compiled_hold_drift": "refused", "incomplete_packet": "refused", "configuration_drift": "refused", "production_gate": "refused"}, "production_contacted": false}

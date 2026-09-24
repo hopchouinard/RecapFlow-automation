@@ -1,0 +1,13 @@
+{
+  "request_id": "CBM-DESIGN-20260910-013",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-10T21:18:41.282454+00:00",
+  "title": "Deliver Patchoutech design references from Mac for Community Brain",
+  "authorization": "Patrick requested inspection and use of the exact Mac folder as visual inspiration. Existing direct handoff coordination authorized. Reference copy only; preserve original and production.",
+  "entry_document": "cbm-design-reference-management-handoff.md",
+  "document_sha256": {
+    "cbm-design-reference-management-handoff.md": "446648c7322b98cade257f261cb349e693859dae6b4644e506b34fb53c7cffe4"
+  },
+  "response_directory": "responses/CBM-DESIGN-20260910-013"
+}

@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T17:08:17.056480+00:00",
+  "summary": "87-meeting/481-file archive deployed and verified over HTTPS. Two synthetic jobs hidden with all DB/file evidence intact. Source/static/archive/runtime pins and isolated offhost restore verified. No database/corpus writes, processing, publication or retirement; user acceptance remains separate.",
+  "receipt": "receipt.md"
+}

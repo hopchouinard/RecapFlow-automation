@@ -1,0 +1,16 @@
+{
+  "sha256": {
+    "candidate-manifest.json": "b55b07851ec91978d1f9d4e30ae0657618326429cb757d92b8c4d8bf394bc1a2",
+    "cleanup.json": "29439995e1ce8616ab2ed863acff77b42757a4f0966a2a03d38d8701236dce3a",
+    "data-recovery-acceptance.json": "4586760c5eb4ae3caf23c619def4c107b2893f9ebaf5455b62903434d2d03794",
+    "integration-candidate.tar.gz": "d6cf642a306a43229eb42da33aa7b6807e5bd99311f39d4b6be5028e335e34ff",
+    "isolation.json": "93f54f07f4b207af428f2f335813b1fc3de56d8a0c13ddcac0284b6b0d80bcf0",
+    "load-extended.json": "39da52a639dac81bd164c5f460973852ad9e315e108a31ba9b0225065b008fb2",
+    "real-retrieval.json": "538dfca8c75d65dae0e84f557e14f43a3facbf2d9816249dccb1bbf2aeb088bc",
+    "renewal.json": "cef069125dd71c68d3fad94276128d37b6b0bba0e14e0eb2d516673ad3dd6d49",
+    "restore.json": "3c7f0591df188646d664cc2af6485a2334af07d9d876780ca3a09076242f23c4",
+    "source-verification.json": "444cc2d7330efc970a6b72260f6b8b8348bd7480b34d4ead8baaf72baf75dfd9",
+    "verification.json": "4f33f22b0f700f03a169d2751e32fe854e52fdd649d0600d3d495cd417c40619",
+    "workload.json": "bc143a97e10de6ac83ad1786038dddcf65a92a1fc8dfb77a3b7a4050e954711a"
+  }
+}

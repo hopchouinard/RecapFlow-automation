@@ -1,0 +1,19 @@
+{
+  "path": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/__pycache__/run.cpython-314.pyc",
+  "bytes": 5266,
+  "sha256": "084a3fb857c3499d9198dcd40201e524fa5a4c2282e22e74998bd4f4ab21853f",
+  "flags": 0,
+  "source_sha256": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d",
+  "source_bytes": 3528,
+  "source_mtime": 1789066309,
+  "bytecode_mtime_utc": "2026-09-17T02:48:15.219486+00:00",
+  "bytecode_ctime_utc": "2026-09-17T02:48:15.219486+00:00",
+  "uid": 0,
+  "gid": 0,
+  "mode": "0o644",
+  "header_source_mtime": 1789066309,
+  "header_source_size": 3528,
+  "header_matches_source_metadata": true,
+  "creator_proven": false,
+  "production_file_changed": false
+}

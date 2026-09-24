@@ -2,7 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-const REPO = process.env.REPO_ROOT || '/repo';
+const REPO = process.env.REPO_ROOT || path.resolve(__dirname, '../..');
+const repoPath = (...parts) => path.join(REPO, ...parts);
 
 function loadWorkflow(file) {
   return JSON.parse(fs.readFileSync(path.join(REPO, 'workflows', file), 'utf8'));
@@ -48,4 +49,4 @@ function runCodeNode(workflowFile, nodeName, ctx = {}) {
   return vm.runInNewContext(wrapped, sandbox, { timeout: 5000 });
 }
 
-module.exports = { loadWorkflow, getCodeNode, runCodeNode };
+module.exports = { loadWorkflow, getCodeNode, runCodeNode, repoPath };

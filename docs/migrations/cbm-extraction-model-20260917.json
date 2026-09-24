@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-09-17T01:08:48.331910+00:00",
+  "path": "/srv/community-brain/config/extraction-config.yaml",
+  "before_sha256": "19b8dd007361cf2185c543b0d3a623cbc8cdd7e5e031ae8f29104744f4bf376d",
+  "after_sha256": "008a6b15d4dd617c2bdf170714e086574ed996ed61534cdd2bb3e8c54de09de1",
+  "effective_models": {
+    "session_themes": "z-ai/glm-5.3-flash",
+    "chunk_extraction": "z-ai/glm-5.3-flash"
+  },
+  "backup": "/srv/community-brain/artifacts/cbm-extraction-model-20260917/extraction-config.before.yaml",
+  "model_calls": 0,
+  "reindex_requested": false
+}

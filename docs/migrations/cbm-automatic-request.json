@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-AUTOMATIC-20260910-011",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-10T18:30:16.092880+00:00",
+  "title": "Activate full new-meeting loop with paired recovery automation",
+  "authorization": "Patrick explicitly: Do the full loop. New submissions only: selected acquisition, processing, new-session indexing and paired recovery; existing US$2 lifetime cap. Publication, replacement, retirement remain gated.",
+  "entry_document": "cbm-automatic-management-handoff.md",
+  "document_sha256": {
+    "cbm-automatic-management-handoff.md": "d00221a57970ddf12ef9032f6eb49d36bf60a05280572275332749aa642f1316",
+    "cbm-automatic-manifest.json": "e5ae39ce6bd7f1a5656dc97a09e97b249135bf9eeb6c4b02e0d78e3ceabb6d9b",
+    "cbm-automatic-rehearsal.json": "3a7b90f2a229de65bcb8312c3fb553747f3fb7fd85577ecfeb5d91c013495865"
+  },
+  "response_directory": "responses/CBM-AUTOMATIC-20260910-011"
+}

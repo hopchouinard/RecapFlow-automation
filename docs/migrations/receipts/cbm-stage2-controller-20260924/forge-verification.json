@@ -1,0 +1,9 @@
+{
+  "archive_members_verified": 15,
+  "manifest_sha256": "35aa5cf9fe5eff8095345221c1b6f6df150679e72211fd0c7eb7b6301fd942dd",
+  "production_admission": false,
+  "relay_artifacts_verified": 9,
+  "request_id": "CBM-STAGE2-CONTROLLER-20260924-035",
+  "stage2_complete": false,
+  "vm108_member_parity": true
+}

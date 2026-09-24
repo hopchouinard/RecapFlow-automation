@@ -1,0 +1,60 @@
+{
+  "checked_utc": "2026-09-10T06:58:45.973058+00:00",
+  "kuma": [
+    {
+      "id": 30,
+      "name": "community-brain-production-health",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 06:54:37.274",
+      "ping": 14
+    },
+    {
+      "id": 31,
+      "name": "community-brain-production-retrieval",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 06:56:09.911",
+      "ping": 238
+    }
+  ],
+  "prometheus": [
+    {
+      "scrapePool": "community-brain-prod-api",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T06:58:31.263739963Z"
+    },
+    {
+      "scrapePool": "community-brain-prod-node",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T06:58:31.509409058Z"
+    }
+  ],
+  "activation_preflight": [
+    {
+      "path": "/health",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": false
+    },
+    {
+      "path": "/metrics",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    },
+    {
+      "path": "/retrieval/query",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    }
+  ],
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "probe_expires_utc": "2026-09-17T06:22:56+00:00",
+  "cutover": false,
+  "publication": false,
+  "retirement": false
+}

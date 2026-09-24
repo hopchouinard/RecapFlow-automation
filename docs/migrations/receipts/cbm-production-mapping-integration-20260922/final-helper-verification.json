@@ -1,0 +1,71 @@
+{
+  "final_packet_sha256": "0eec32da7770ff652a2193f87b97c858b334673eacf45820098cfc0697c980c1",
+  "helpers": {
+    "checkpoint-consumer": {
+      "source_sha256": "43dc79953177bf172a986927c9723c25018e72bb2cf343b54c1cb11784d2043e",
+      "mac_receipt_sha256": "24db2aaafef27fe9f2d90dd25c57a063d53a911723f7c1526a66fe4d711bde8d",
+      "vm108_receipt_sha256": "b924f539e6fd1a4fc2532f275d4aa116e2e109efb4f3248b2ba95b7bb8194452",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "copy-backup": {
+      "source_sha256": "fb4e863a074af324bdf709b71ee21de577fcc7a7cb860796c538d8ade64a016b",
+      "mac_receipt_sha256": "74c45373f71db56deb4a18d4cb607c2163e4087eba62dd88a377a411777af72f",
+      "vm108_receipt_sha256": "d42613341df454dae874db8b6612824c424100ca724969c8fd720c44fa4c89a2",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "legacy-intake-ownership": {
+      "source_sha256": "50bdfd78990cc77a6b3f5becb5fb8b4073229f57e4f15ebba22d395e243ee60d",
+      "mac_receipt_sha256": "85851cafc0d17d6b5a81c6202a511b66488a9acbf754a3347f99cbfd4431824b",
+      "vm108_receipt_sha256": "80d54c6cbaea07316526bd46bfbb2aba2c6297766cdb24a3adb097746e13538e",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "management-health": {
+      "source_sha256": "413b838265664fe522befbb21356c8434f79400123002336a20a43d80363cff7",
+      "mac_receipt_sha256": "b3d8f469fe286ac8ef9427aa4c715f12e71feebf0335888417b5270edab9ba27",
+      "vm108_receipt_sha256": "0cdcdf4de46a366b066ab8d4df1dd55858104ac2b4074afde0a83a0f89f84231",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "monitor-publish": {
+      "source_sha256": "b4a2f19a83923fdea6760556aaed087aefd5144b28d556f9b6a2bb2962dafd56",
+      "mac_receipt_sha256": "3726c84ad165330bf314b2e8c924f5bcbccc5f042cf3c85532b6615f06caabf8",
+      "vm108_receipt_sha256": "46969b2ed3e6338837f1acdcd924ccbf6ea83fcb425591959ca13f59f9fa38f2",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "pre-pbs-copy": {
+      "source_sha256": "70e349ae4be4952970b4a02c715cf96b2d72857633e7f4ef2f003662796b04f7",
+      "mac_receipt_sha256": "59d19d7f7a94a827cd09db34cc9f169e1607e85729513b9556415862f601c138",
+      "vm108_receipt_sha256": "b13f8b8d3772d96c06c26fed8a00f7decc64df567108130ed34fa86de445ec36",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "provision-nats-tls": {
+      "source_sha256": "96342a191688d69f5e3dcbb824c5d4ba980745b3fcd34d7f13797527992d45b7",
+      "mac_receipt_sha256": "18b2e50ffa8cadf7a99f84631949760179be45e7051c7259c83ecd0730f68b48",
+      "vm108_receipt_sha256": "b3280d76996fa54183282f68d36161074bafce36604ff70eac137b61d8f2d253",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "renew-app-tls": {
+      "source_sha256": "517cd31cda37a9f33eea2b4f308a3254aa29772389d08ffca57387cdcbe1a4e4",
+      "mac_receipt_sha256": "1571c1cfc440f3ee1a66c7b4fddc4d47940763f72f5553879441d283dd2da64f",
+      "vm108_receipt_sha256": "4a2c516ab87790c5daaabe5d72b842fbeda07ee9a82fb07d0dbdcb090cb3efb7",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    },
+    "renew-service-tokens": {
+      "source_sha256": "8c60327ae679fa5f4cea905bd0c4eec95a3b6e30fc9b2fcf0279dcd6d0137716",
+      "mac_receipt_sha256": "dd8b2b15c5d82a810d4276e23347115c6028d8839cb990ee5e16f510a171066e",
+      "vm108_receipt_sha256": "25bd89c7de3780515fd57c5ff4950ee89f48cf15aefa0946f7f79150d96de285",
+      "both_actual_helper_algorithms_executed": true,
+      "external_boundary_fixtures": true
+    }
+  },
+  "actual_scheduler_on_both": true,
+  "common_journal_and_owned_mutex": true,
+  "production_qualified": false
+}

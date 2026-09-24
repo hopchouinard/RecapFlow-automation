@@ -1,0 +1,341 @@
+{
+  "observed_at": "2026-09-20T01:12:16.534571+00:00",
+  "transaction_read_only": "on",
+  "counts": {
+    "cb_jobs": 4,
+    "cb_sources": 9,
+    "cb_artifacts": 21,
+    "cb_model_calls": 42,
+    "cb_stages": 20,
+    "cb_attempts": 9,
+    "cb_outbox": 12
+  },
+  "jobs": [
+    {
+      "id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "mode": "weekly",
+      "parent_id": null,
+      "created_at": "2026-09-10 03:22:29.200473+00:00",
+      "meeting_date": "2026-09-10",
+      "automation_policy": null,
+      "processing": "succeeded",
+      "artifacts": "ready",
+      "indexing": "pending",
+      "git": "not_requested",
+      "distribution": "not_requested"
+    },
+    {
+      "id": "91d77409-afed-4625-97cb-748c8b637991",
+      "mode": "transcript_backfill",
+      "parent_id": null,
+      "created_at": "2026-09-10 03:22:29.290171+00:00",
+      "meeting_date": "2026-09-10",
+      "automation_policy": null,
+      "processing": "succeeded",
+      "artifacts": "ready",
+      "indexing": "pending",
+      "git": "not_requested",
+      "distribution": "not_requested"
+    },
+    {
+      "id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "mode": "weekly",
+      "parent_id": null,
+      "created_at": "2026-09-10 05:49:36.645070+00:00",
+      "meeting_date": "2026-09-08",
+      "automation_policy": null,
+      "processing": "succeeded",
+      "artifacts": "ready",
+      "indexing": "pending",
+      "git": "not_requested",
+      "distribution": "not_requested"
+    },
+    {
+      "id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "mode": "weekly",
+      "parent_id": null,
+      "created_at": "2026-09-15 23:27:46.529041+00:00",
+      "meeting_date": "2026-09-15",
+      "automation_policy": "new-meeting-full-loop-v1",
+      "processing": "succeeded",
+      "artifacts": "ready",
+      "indexing": "complete",
+      "git": "complete",
+      "distribution": "released"
+    }
+  ],
+  "stages": [
+    {
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "acquisition",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "distribution",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "git",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "indexing",
+      "state": "queued",
+      "generation": 1,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "acquisition",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "distribution",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "git",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "indexing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "acquisition",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "distribution",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "git",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "indexing",
+      "state": "queued",
+      "generation": 1,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "acquisition",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "distribution",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "git",
+      "state": "blocked",
+      "generation": 0,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "indexing",
+      "state": "queued",
+      "generation": 1,
+      "attempts": 0,
+      "lease_until": null,
+      "error": null
+    },
+    {
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "processing",
+      "state": "succeeded",
+      "generation": 1,
+      "attempts": 1,
+      "lease_until": null,
+      "error": null
+    }
+  ],
+  "attempts": [
+    {
+      "job_id": "f6e9abed-e862-4eb7-a231-e98467adcaba",
+      "name": "processing",
+      "state": "succeeded",
+      "started_at": "2026-09-10 03:22:38.825931+00:00",
+      "finished_at": "2026-09-10 03:23:12.406221+00:00",
+      "reason": null
+    },
+    {
+      "job_id": "91d77409-afed-4625-97cb-748c8b637991",
+      "name": "processing",
+      "state": "succeeded",
+      "started_at": "2026-09-10 03:23:12.456394+00:00",
+      "finished_at": "2026-09-10 03:23:49.147382+00:00",
+      "reason": null
+    },
+    {
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "acquisition",
+      "state": "succeeded",
+      "started_at": "2026-09-10 05:50:05.461627+00:00",
+      "finished_at": "2026-09-10 05:50:06.656149+00:00",
+      "reason": null
+    },
+    {
+      "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+      "name": "processing",
+      "state": "succeeded",
+      "started_at": "2026-09-10 05:51:40.955885+00:00",
+      "finished_at": "2026-09-10 05:58:19.385233+00:00",
+      "reason": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "acquisition",
+      "state": "failed",
+      "started_at": "2026-09-15 23:28:12.010333+00:00",
+      "finished_at": "2026-09-15 23:28:12.289193+00:00",
+      "reason": "pipeline_failed"
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "processing",
+      "state": "succeeded",
+      "started_at": "2026-09-15 23:41:12.355699+00:00",
+      "finished_at": "2026-09-15 23:47:07.684300+00:00",
+      "reason": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "indexing",
+      "state": "succeeded",
+      "started_at": "2026-09-15 23:47:19.026884+00:00",
+      "finished_at": "2026-09-15 23:48:03.957472+00:00",
+      "reason": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "git",
+      "state": "succeeded",
+      "started_at": "2026-09-17 14:55:26.906649+00:00",
+      "finished_at": "2026-09-17 14:55:29.654273+00:00",
+      "reason": null
+    },
+    {
+      "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+      "name": "distribution",
+      "state": "succeeded",
+      "started_at": "2026-09-17 14:55:42.336250+00:00",
+      "finished_at": "2026-09-17 14:55:54.655952+00:00",
+      "reason": null
+    }
+  ],
+  "file_references": {
+    "checked": 72,
+    "missing": 0,
+    "hash_mismatches": 0
+  },
+  "outbox_unsent": 3,
+  "corpus": {
+    "rows": 1924,
+    "sessions": 88,
+    "indices": [
+      {
+        "name": "bm25_text_idx",
+        "type": "FTS",
+        "stats": "IndexStatistics(num_indexed_rows=1924, num_unindexed_rows=0, index_type='FTS', distance_type=None, num_indices=1)"
+      }
+    ]
+  },
+  "publisher_token_present": false
+}

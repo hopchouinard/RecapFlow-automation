@@ -1,0 +1,15 @@
+{
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "actor": "Forge",
+  "state": "consumed",
+  "acknowledged_at": "2026-09-21T03:01:23.020061+00:00",
+  "verified_artifacts": 72,
+  "independently_verified_vm108_packet_members": 58,
+  "independently_verified_files_per_plan": 255,
+  "verified_plans": 3,
+  "packet_manifest_sha256": "c9326fd4bf149b68fcbc40fb7ab49a2ce23b4c7711a36ea9a5a99e8b41ebbb76",
+  "forge_rebuild_byte_identical": true,
+  "local_boundary_tests": 30,
+  "receipt_sha256": "3882732d4ee73d78682b6d0c4c80b0c9a5ab305f29522ec6a58ad04b4bd59597",
+  "production_promotion_ready": false
+}

@@ -1,0 +1,35 @@
+# Approved one-shot weekly corpus. Never replaces the main development corpus.
+services:
+  bounded-worker:
+    volumes:
+    - weekly-corpus:/state/corpus
+    - weekly-config:/state/config
+    environment:
+      CB_WEEKLY_ISOLATED_INDEX: 'true'
+  weekly-initialize:
+    image: community-brain:rehearsal
+    user: 0:0
+    read_only: true
+    cap_drop: [ALL]
+    cap_add: [CHOWN, DAC_OVERRIDE]
+    security_opt: [no-new-privileges:true]
+    network_mode: none
+    mem_limit: 256m
+    volumes:
+    - config:/original-config:ro
+    - weekly-config:/state/config
+    - weekly-corpus:/state/corpus
+    - ./live-development:/checks:ro
+    command: [python, /checks/initialize_weekly_index.py]
+  weekly-api:
+    extends:
+      file: compose.live-development.yml
+      service: api
+    ports: !reset []
+    depends_on: !reset {}
+    volumes:
+    - weekly-corpus:/state/corpus:ro
+    - weekly-config:/state/config:ro
+volumes:
+  weekly-corpus: {}
+  weekly-config: {}

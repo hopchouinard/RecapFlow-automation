@@ -1,0 +1,406 @@
+{
+  "status": "bounded-worker-paired-nonempty-recovery-verified",
+  "completed": [
+    "Dedicated PostgreSQL database and migration/runtime roles",
+    "Default DML/sequence grants and denied DDL checks",
+    "Live VM109 PostgreSQL verify-full TLS and negative connection checks",
+    "Production Authentik public client, read-only claims and membership denial",
+    "Isolated JetStream account, stream, durable consumer and quotas",
+    "TLS queue publish/pull/ACK and unrelated-subject denial checks",
+    "Infisical-authoritative separate private runtime bundles delivered and verified",
+    "Immutable-image read and metrics identity verification; expired identity denied",
+    "Private DNS and lab-trusted HTTPS route",
+    "Proxy source verified; direct Mac/Forge access denied; unapproved HTTPS client denied",
+    "Hourly Mac certificate renewal and backup copy job passed under launchd",
+    "Nightly scoped DB dumps and disposable restore passed",
+    "Off-host dump copy and clean VM109 PBS snapshot completed",
+    "Host metrics up; disk and host-down alert rules healthy",
+    "Authenticated Kuma/API metrics prepared and paused until API readiness",
+    "Alloy lifecycle delivery passed; synthetic private line filtered out",
+    "Mac end-to-end authenticated HTTPS monitoring preflight passed",
+    "Kuma health and retrieval monitors active and UP; Prometheus API and host targets UP",
+    "Post-migration dump restored with exact ten-table schema, grants, ownership, revision and row-count comparison",
+    "Post-migration dump copied with verified checksum and captured in PBS"
+  ],
+  "public_oidc": {
+    "group": "community-brain-operators",
+    "group_id": "69a3fcd8-fc2d-4ad2-b565-41f15c40701a",
+    "members": [
+      "pchouinard"
+    ],
+    "mapping_id": "962deddf-1792-4e27-9e01-b0c9249dae2b",
+    "provider_id": 8,
+    "application_id": "58ee191c-dddc-4f93-82a4-8147007c3111",
+    "binding_id": "6e6db818-e910-4cdf-b74f-01994b20ed25",
+    "issuer": "https://auth.patchoutech.lab/application/o/community-brain/",
+    "client_id": "community-brain",
+    "audience": "community-brain",
+    "jwks_url": "https://auth.patchoutech.lab/application/o/community-brain/jwks/",
+    "discovery_url": "https://auth.patchoutech.lab/application/o/community-brain/.well-known/openid-configuration",
+    "permissions": [
+      "jobs:read",
+      "artifacts:read",
+      "retrieval:read"
+    ],
+    "redirect_uris": [
+      {
+        "matching_mode": "strict",
+        "url": "https://community-brain.patchoutech.lab/callback",
+        "redirect_uri_type": "authorization"
+      },
+      {
+        "matching_mode": "strict",
+        "url": "https://community-brain.patchoutech.lab",
+        "redirect_uri_type": "logout"
+      }
+    ],
+    "grant_types": [
+      "authorization_code"
+    ],
+    "client_type": "public",
+    "include_claims_in_id_token": true
+  },
+  "db": {
+    "database": "community_brain_prod",
+    "migration_owner": "cbm_prod_migration",
+    "runtime": "cbm_prod_runtime",
+    "runtime_ddl_denied": true,
+    "default_dml_sequence_privileges_verified": true,
+    "source_ip": "10.1.30.21/32",
+    "other_databases_hba_rejected": true,
+    "ssl_required": true,
+    "pitr_enabled": false,
+    "migration_applied": true
+  },
+  "db_live_checks": {
+    "guest_runtime_tls_verified": true,
+    "guest_migration_tls_verified": true,
+    "unencrypted_connection_denied": true,
+    "cross_application_connection_denied": true
+  },
+  "queue_checks": {
+    "verified_tls": true,
+    "scoped_publish_pull_ack": true,
+    "unrelated_publish_denied": true,
+    "unrelated_subscribe_denied": true,
+    "probe_message_removed": true,
+    "application_worker_started": false,
+    "stream": "COMMUNITY_BRAIN_PROD",
+    "durable": "community-brain-worker"
+  },
+  "queue_tls_endpoint": "tls://platform-events.patchoutech.lab:4223",
+  "queue_tls_proxy_stopped_after_verification": false,
+  "queue_required_client_options": {
+    "tls_handshake_first": true,
+    "inbox_prefix": "_INBOX.cbm_prod_worker"
+  },
+  "legacy_nats_health": "ok",
+  "legacy_nats_listener_unchanged": true,
+  "infisical_authority": "homelab/prod /applications/community-brain",
+  "private_runtime_delivered": true,
+  "planned_private_runtime_directory": "/etc/community-brain-production",
+  "planned_files": [
+    "api.env",
+    "migration.env",
+    "worker.env",
+    "probes.env"
+  ],
+  "unfinished": [
+    "Explicit Infisical probe rotation, rerender and coordinated API/monitoring credential refresh before 2026-09-11T02:05:38Z if staging continues"
+  ],
+  "cutover": false,
+  "retirement": false,
+  "app_api_started": true,
+  "secret_delivery_decision": "Patrick approved existing Mac renderer with separate private bundles; no VM Infisical login. Enterprise custom-role/source-IP requirements replaced by this explicitly approved delivery method.",
+  "runtime": {
+    "secret_delivery": "approved existing Mac operator renderer",
+    "infisical_authority": "homelab/prod /applications/community-brain",
+    "infisical_login_delivered": false,
+    "private_runtime_delivered": true,
+    "directory": "/etc/community-brain-production",
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "owner": "root:root",
+    "files": {
+      "api.env": [
+        "CB_DATABASE_URL",
+        "CB_SERVICE_IDENTITIES",
+        "CB_OIDC_ISSUER",
+        "CB_OIDC_AUDIENCE",
+        "CB_OIDC_CLIENT_ID",
+        "CB_OIDC_JWKS_URL"
+      ],
+      "migration.env": [
+        "CB_DATABASE_URL"
+      ],
+      "worker.env": [
+        "CB_NATS_URL",
+        "CB_NATS_USER",
+        "CB_NATS_PASSWORD",
+        "CB_ENABLE_MODEL_CALLS",
+        "CB_ENABLE_NETWORK_PUBLICATION"
+      ],
+      "probes.env": [
+        "CB_READ_PROBE_TOKEN",
+        "CB_METRICS_PROBE_TOKEN",
+        "CB_PROBE_EXPIRES_AT"
+      ]
+    },
+    "authority_roundtrip_verified": true,
+    "remote_bytes_and_permissions_verified": true,
+    "probe_expires_utc": "2026-09-11T02:05:38+00:00",
+    "probe_renewal": "Explicit Infisical token rotation and expiry update, then rerender; no automatic extension",
+    "worker_bundle": "Future queue credentials only; worker stopped. Requires TLS-first and scoped inbox options before activation.",
+    "api_started": false
+  },
+  "runtime_checks": {
+    "immutable_image_authentication_passed": true,
+    "read_probe_exact_permissions": true,
+    "metrics_probe_exact_permissions": true,
+    "expired_identity_denied": true,
+    "bundle_separation_verified": true,
+    "network_disabled": true,
+    "api_started": false
+  },
+  "checked_utc": "2026-09-10T03:33:59.775239+00:00",
+  "ingress": {
+    "hostname": "community-brain.patchoutech.lab",
+    "dns": "10.1.10.100",
+    "backend": "http://10.1.30.21:8090",
+    "required_forge_bind": "10.1.30.21",
+    "allowed_clients": [
+      "10.1.50.219",
+      "10.1.10.60",
+      "10.1.10.56",
+      "10.1.10.30"
+    ],
+    "observed_backend_source": "10.1.10.100",
+    "verified_tls_probe_http": 200,
+    "direct_mac_and_forge_denied": true,
+    "unapproved_source_10_1_10_52_http": 403,
+    "probe_removed": true,
+    "access_logs_enabled": false,
+    "live_api_health_http": 200
+  },
+  "maintenance": {
+    "host": "existing Mac",
+    "launch_agent": "lab.patchoutech.community-brain-management",
+    "interval_seconds": 3600,
+    "runtime_root": "/Users/pchouinard/.local/lib/community-brain-management",
+    "status_file": "/Users/pchouinard/.local/state/community-brain-management/maintenance-status.json",
+    "tasks": [
+      "NATS leaf renewal/delivery",
+      "application leaf renewal/delivery",
+      "scoped DB backup copy"
+    ],
+    "launchd_checks": "passed",
+    "leaf_lifetime_hours": 24,
+    "renew_below_remaining_hours": 12,
+    "requires": "Mac user launchd session, mounted existing credential source, management network access",
+    "probe_rotation_scheduled": false
+  },
+  "backup": {
+    "dump_path": "/var/backups/community-brain/20260910T021457Z.dump",
+    "restore_passed": true,
+    "restored_public_tables": 0,
+    "disposable_restore_database_removed": true,
+    "schedule_utc": "00:30 daily",
+    "retention_dumps": 14,
+    "pitr_enabled": false,
+    "off_host_copy_pending": false,
+    "restore_limit": "All ten table definitions, grants, ownership, Alembic revision and empty application row counts verified; no nonempty production job history exists.",
+    "recovery_policy": "Daily logical restore points, 14 local dumps and copies; hourly Mac copy, nightly PBS. No PITR. Mac outages delay off-host copies."
+  },
+  "backup_copy": {
+    "off_host_path": "/srv/community-brain/db-backups/20260910T033129Z.dump",
+    "sha256": "9543dbb6eeb49ab7c8a6b37420e0514a2461e24f3924a6ce3f0cc7cf2bb1c60b",
+    "bytes": 52127,
+    "verified": true,
+    "pbs_capture": "Completed; contains nonempty dump, pinned managed-state archive and paired recovery manifest",
+    "retention_copies": 14,
+    "pbs_snapshot": "pbs:backup/vm/109/2026-09-10T03:32:39Z"
+  },
+  "metrics": {
+    "node_scrape_configured": true,
+    "disk_alert_below_percent": 15,
+    "node_down_alert": true,
+    "api_scrape_prepared_targets_empty": false,
+    "api_token_file": "/opt/monitoring-stack/config/prometheus/community-brain-private/metrics-token",
+    "promtool_passed": true,
+    "node_scrape_health": "up",
+    "alert_rules_health": "ok",
+    "api_scrape_health": "up"
+  },
+  "kuma": [
+    {
+      "id": 30,
+      "name": "community-brain-production-health",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 02:49:37.260",
+      "ping": 12
+    },
+    {
+      "id": 31,
+      "name": "community-brain-production-retrieval",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 02:49:37.275",
+      "ping": 183
+    }
+  ],
+  "logs": {
+    "alloy_config_valid": true,
+    "lifecycle_only": true,
+    "request_logs_shipped": false,
+    "destination": "platform-logs:3100",
+    "config_path": "/opt/community-brain-observability/lifecycle.river",
+    "api_started": false,
+    "live_ready": true,
+    "lifecycle_lines_seen": 58,
+    "private_sentinel_lines_seen": 0,
+    "probe_removed": true
+  },
+  "monitoring_activation": {
+    "checked_utc": "2026-09-10T02:53:16.288942+00:00",
+    "kuma": [
+      {
+        "id": 30,
+        "name": "community-brain-production-health",
+        "active": 1,
+        "status": 1,
+        "time": "2026-09-10 02:49:37.260",
+        "ping": 12
+      },
+      {
+        "id": 31,
+        "name": "community-brain-production-retrieval",
+        "active": 1,
+        "status": 1,
+        "time": "2026-09-10 02:49:37.275",
+        "ping": 183
+      }
+    ],
+    "prometheus": [
+      {
+        "scrapePool": "community-brain-prod-api",
+        "health": "up",
+        "lastError": "",
+        "lastScrape": "2026-09-10T02:53:01.263739963Z"
+      },
+      {
+        "scrapePool": "community-brain-prod-node",
+        "health": "up",
+        "lastError": "",
+        "lastScrape": "2026-09-10T02:53:01.509409058Z"
+      }
+    ],
+    "activation_preflight": [
+      {
+        "path": "/health",
+        "status": 200,
+        "tls_verified": true,
+        "authenticated": false
+      },
+      {
+        "path": "/metrics",
+        "status": 200,
+        "tls_verified": true,
+        "authenticated": true
+      },
+      {
+        "path": "/retrieval/query",
+        "status": 200,
+        "tls_verified": true,
+        "authenticated": true
+      }
+    ],
+    "prometheus_dns_fix": {
+      "dns": [
+        "10.1.10.1"
+      ],
+      "scope": "Prometheus service only",
+      "compose_backup": "/opt/monitoring-stack/docker-compose.yml.before-cbm-dns",
+      "brief_service_recreation": true
+    },
+    "probe_expires_utc": "2026-09-11T02:05:38Z",
+    "cutover": false,
+    "publication": false,
+    "retirement": false
+  },
+  "post_migration_restore": {
+    "dump_path": "/var/backups/community-brain/20260910T024826Z.dump",
+    "dump_sha256": "24c9ee9cd8e05b416bdb24a5c42549ff1cb774418349f1b4638253150f495bc2",
+    "table_count": 10,
+    "tables": [
+      {
+        "name": "alembic_version",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_artifacts",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_attempts",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_jobs",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_model_calls",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_operations",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_outbox",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_rejected_events",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_sources",
+        "owner": "cbm_prod_migration"
+      },
+      {
+        "name": "cb_stages",
+        "owner": "cbm_prod_migration"
+      }
+    ],
+    "schema_definitions_grants_ownership_match": true,
+    "alembic_revision": "0001_jobs",
+    "row_counts": {
+      "alembic_version": 1,
+      "cb_artifacts": 0,
+      "cb_attempts": 0,
+      "cb_jobs": 0,
+      "cb_model_calls": 0,
+      "cb_operations": 0,
+      "cb_outbox": 0,
+      "cb_rejected_events": 0,
+      "cb_sources": 0,
+      "cb_stages": 0
+    },
+    "source_schema_and_counts_unchanged": true,
+    "disposable_database_removed": true,
+    "restore_passed": true,
+    "pitr_enabled": false
+  },
+  "paired_nonempty_recovery": {
+    "database_receipt": "cbm-production-nonempty-db-restore-receipt.json",
+    "file_reference_receipt": "cbm-production-paired-file-reference-receipt.json",
+    "manifest": "cbm-production-paired-recovery-manifest.json",
+    "references_verified": 26,
+    "files_verified": 53,
+    "source_unchanged": true,
+    "pbs_snapshot": "pbs:backup/vm/109/2026-09-10T03:32:39Z",
+    "queue_delivery_started": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "request_id": "CBM-STAGE2-PRODUCTION-PATH-20260924-036",
+  "target": "home.servers",
+  "created_at": "2026-09-24T03:11:12.256484+00:00",
+  "deadline": "2026-09-27T18:00:00Z",
+  "authorization": "Patrick authorized full Stage 2 development on 2026-09-23; mandatory VM108-first validation. No VM109 change, production renewal, protected transfer, paid call, resize or cutover.",
+  "scope": "Finish 21 semantic production receipt validators and production-capable review source, then validate final bytes on fresh VM108 production-shaped fixture; do not enroll or run on VM109.",
+  "documents": {
+    "cbm-stage2-production-path-request.md": "a1564ded128c27702b0fc4564c646d8f190a4d278585a3549501938cd02a4919",
+    "cbm-stage2-request035-results.md": "a2ff9de169159b35d803b93b94e87b6a98d6659d89e98ed28ea33499b5e24ff6",
+    "acceptance-ledger.json": "1558ed15916438caa5abd0785bde2570c207255b092685b039c653aed0fe2a75",
+    "forge-verification.json": "51c9fc56105d89cb249b001b0cc004df12551fe879df3725f9740f2c55fe81ad",
+    "packet-manifest.json": "35aa5cf9fe5eff8095345221c1b6f6df150679e72211fd0c7eb7b6301fd942dd",
+    "packet-v6.tar.gz": "bd342d4c407895c9cc96a2a949a5d694e8b9e7c185517d3dd0d9cb615f6af458"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "packet_manifest_sha256": "926423440efd0439e6c1d85c966872c632c13bb3abf0bab833b1c380efffbe1a",
+  "forge_vm108_manifest_bytes_equal": true,
+  "boundary_tests_forge": 7,
+  "boundary_tests_vm108": 7,
+  "worker_run_exit_code": 0,
+  "scope": "selected worker execute with synthetic providers and development queue binding; not host/paid-budget certification",
+  "production_mutations": false
+}

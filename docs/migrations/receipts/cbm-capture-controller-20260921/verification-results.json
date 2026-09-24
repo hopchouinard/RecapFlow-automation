@@ -1,0 +1,105 @@
+{
+  "request_id": "CBM-CAPTURE-CONTROLLER-20260921-031",
+  "completed_at": "2026-09-21T15:27:03.538895+00:00",
+  "scope": "synthetic-development-only",
+  "commit": "39b9b21cc681b4bde762f30bb0193778d9b295ec",
+  "branch": "codex/request031-capture-controller",
+  "pushed": false,
+  "parent_gitlink_changed": false,
+  "source_manifest_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+  "source_archive_sha256": "04e7666bfeb5f174904593f18b66a457fcbd399a220e69b97d41934c18bc4407",
+  "source_files": 32,
+  "vm108_source_parity": {
+    "manifest_sha256": "415166b1c98cdc3e76c8678fc5954b62f2c7239ab11e01d4e0ea58c1c499a962",
+    "files": 32,
+    "exact_bytes_and_members": true,
+    "all_files_root_owned_readonly": true
+  },
+  "final_packet_scenarios": [
+    {
+      "mode": "normal",
+      "operation_id": "r031-normal6-1790004018",
+      "state": "completed",
+      "restored_within_deadline": true
+    },
+    {
+      "mode": "sshkill",
+      "operation_id": "r031-sshkill6-1790004055",
+      "state": "aborted_restored",
+      "restored_within_deadline": true
+    },
+    {
+      "mode": "mackill",
+      "operation_id": "r031-mackill6-1790004089",
+      "state": "aborted_restored",
+      "restored_within_deadline": true
+    },
+    {
+      "mode": "fenceloss",
+      "operation_id": "r031-fenceloss6-1790004123",
+      "state": "aborted_restored",
+      "restored_within_deadline": true
+    },
+    {
+      "mode": "workerkill",
+      "operation_id": "r031-workerkill6-1790004147",
+      "state": "aborted_restored",
+      "restored_within_deadline": true
+    },
+    {
+      "mode": "guardiankill",
+      "operation_id": "r031-guardiankill6-1790004171",
+      "state": "aborted_restored",
+      "restored_within_deadline": true
+    },
+    {
+      "mode": "guardianstop",
+      "operation_id": "r031-guardianstop6-1790004191",
+      "state": "aborted_restored",
+      "restored_within_deadline": true
+    },
+    {
+      "mode": "expiry",
+      "operation_id": "r031-expiry6-1790004236",
+      "state": "aborted_restored",
+      "restored_within_deadline": true
+    }
+  ],
+  "evidence_negatives": 35,
+  "spec_and_lock_negatives": 16,
+  "competing_target_refused_before_stop": true,
+  "forge_vm108": {
+    "tests": 49,
+    "passed": 49
+  },
+  "forge_mac_native": {
+    "tests": 49,
+    "passed": 44,
+    "errors": 5,
+    "reason": "Imported Forge receipt fixtures inherit Mac extended metadata; preservation library intentionally rejects it."
+  },
+  "activation_boundary_tests": 19,
+  "parent_inventory_tests": 293,
+  "retained_operations": 27,
+  "retained_stopped_containers": 28,
+  "production_mutations": false,
+  "production_evidence_slots": 21,
+  "production_evidence_slots_filled": 0,
+  "production_compiler_enabled": false,
+  "production_controller_enabled": false,
+  "installed": false,
+  "private_content_in_relay": false,
+  "limits": [
+    "Host, systemd, Docker and filesystem must remain available; no reboot/power-loss guarantee.",
+    "Changed controls/incumbent or unavailable finalizer remains unresolved and blocks replay.",
+    "Fixed synthetic public schema does not prove production roles, extensions, other schemas or arbitrary DDL/sequence-writer admission.",
+    "Candidate pending intent is not yet integrated into the deployed production scheduler.",
+    "Protected off-host recovery, production signing/session/browser, intended capacity and paid-provider proofs remain gated."
+  ],
+  "retained_paths": {
+    "local_state": "/Users/pchouinard/.local/state/community-brain-management/request031",
+    "source_worktree": "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller",
+    "vm108_root": "/srv/dev-data/workspaces/cbm-capture-controller-20260921-031",
+    "relay": "/srv/community-brain/handoff/responses/CBM-CAPTURE-CONTROLLER-20260921-031"
+  }
+}

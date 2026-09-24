@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-PREVIEW-20260910-012",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-10T20:51:38.858573+00:00",
+  "title": "Markdown rendered preview toggle and collapsed date navigation",
+  "authorization": "Patrick explicitly requested both UI changes after accepting the automatic form. Frontend-only deployment; no processing, publication, data replacement, credentials or retirement changes.",
+  "entry_document": "cbm-preview-management-handoff.md",
+  "document_sha256": {
+    "cbm-preview-management-handoff.md": "e59e607d46ebc57f6a25751c1506b4315b1a817c77db428cb26fe7aff82faf35",
+    "cbm-preview-manifest.json": "99fe91a64e9a0f70bdae83c093c5055731ec65cf214b1e9931285ab7e49aa551"
+  },
+  "response_directory": "responses/CBM-PREVIEW-20260910-012"
+}

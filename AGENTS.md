@@ -1,5 +1,64 @@
 # AGENTS.md
 
+## Legacy VM is recovery-only; OpenWebUI must migrate (2026-09-20)
+
+Patrick explicitly confirmed that OpenWebUI is included in migration off
+`n8n-automation`. That VM is retained only as a temporary functionality/recovery
+backup pending retirement; it must not remain a required production consumer,
+credential-renewal target, scheduler dependency or serving component. Preserve
+its recovery state. Validate the replacement OpenWebUI and its integrations on
+VM108, then migrate through the controlled production rollout and remove legacy
+production dependencies. Do not restart or update the dormant stack merely to
+make production renewal pass. Historical instructions to retain live OpenWebUI
+there temporarily are superseded. Retirement itself still requires its evidence.
+
+## Mandatory development-first validation (2026-09-20)
+
+Patrick accepted the [current assessment and continuation plan](docs/migrations/cbm-current-state-and-continuation.md)
+with this standing requirement for all subsequent work:
+
+- Develop in the canonical Forge checkout and validate every application or
+  operational change on **community-brain-dev, PVE1 VM108**, before production.
+  Local tests supplement this VM validation; they do not replace it.
+- This includes preprocessing, processing, pipeline mechanics, evaluations,
+  external-data acquisition/import used in tests, configuration, recovery,
+  scheduling, identity-renewal mechanics and deployment changes.
+- Reproduce production problems and test their fixes in development first.
+  Use isolated development state and scoped identities; keep external test data
+  private and preserve its provenance. Existing spending limits still apply.
+- Promote only the tested source/image/configuration version to
+  **community-brain-prod, PVE1 VM109**, with recorded development results and a
+  rollback path. Any subsequent change must pass development validation again.
+- Read-only production diagnosis and post-deployment verification are permitted;
+  production is not a test environment. Historical development receipts do not
+  validate a new change. This rule does not reopen unrelated stopped work.
+
+## Development VM authorization (2026-09-09)
+
+For development VM access, container deployment or rehearsal, read
+[the ready VM handoff](docs/migrations/cbm-development-vm-handoff.md).
+Patrick explicitly authorized Forge administration and disposable development
+workloads on PVE1 VM 108. This supersedes older preparation-only restrictions
+for that VM. Production deployment and cutover remain prohibited.
+
+
+For read-only Proxmox or network inspection, including an empty SSH agent or
+missing connector, read [Forge infrastructure access](docs/migrations/forge-infrastructure-access.md).
+Use the installed `forge-infra-read` command; it requires no developer credentials.
+
+
+## Forge development handoff (2026-09-09)
+
+For development location, migration implementation, preservation evidence, or
+production-change scope, read [the migration handoff](docs/migrations/forge-development-handoff.md)
+before acting. It supersedes older VM-only development instructions below.
+The canonical migration checkout is `/home/t3code/projects/RecapFlow-automation`
+on Forge. This phase authorizes preservation, repository reconciliation, and
+preparation only. Production deploy, cutover, secret rotation, and service
+retirement require a separately authorized phase. Use `scripts/verify-forge.sh`
+for the current credential-free development baseline.
+
+
 This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## What This Is
@@ -150,3 +209,21 @@ Key files on Mac:
 - **NEVER** change `N8N_ENCRYPTION_KEY` after credentials have been saved in n8n
 - The `data/` directory must be preserved and backed up — it contains runtime state
 - `.env` contains plaintext secrets — do not commit to public repositories
+
+<!-- BEGIN patchou-bootstrap: managed block, edits are overwritten by `patchou-bootstrap sync` -->
+
+## Technology standard
+
+This project follows the Patchou personal technology standard.
+
+- **Before introducing any** framework, library, database, host, auth provider,
+  message bus, scheduler, test tool, or dependency — load the `tech-stack` skill
+  (`.agents/skills/tech-stack/SKILL.md`).
+- **Record in [`STACK-DECISIONS.md`](STACK-DECISIONS.md)**: this project's profile,
+  every Deferred family it resolves, and every exception it takes. Nothing is
+  decided silently.
+- The standard is *preferred*, not absolute. An exception needs a concrete,
+  expressible, describable reason. "Simpler for now" and expected future growth
+  are not reasons.
+
+<!-- END patchou-bootstrap -->

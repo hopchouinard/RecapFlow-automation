@@ -1,0 +1,53 @@
+{
+  "label": "fenceloss6",
+  "mode": "fenceloss",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790004137.4871492, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-fenceloss6-1790004123\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"database_fence_lost\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790004136.5005705, \"spec_sha256\": \"8c809828d16651fb23fb0486a1be5f415be4c67bf364b325bf3d2ccb9fa17491\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "duplicate_target_dispatch",
+      "rejected": true,
+      "exception": "FileExistsError: [Errno 17] File exists: '/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-fenceloss6-1790004123'"
+    },
+    {
+      "test": "existing_vm_locks_held",
+      "blocked": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "action": "terminate_actual_database_fence",
+      "returncode": 0,
+      "result": "t",
+      "at": 1790004133.56204
+    }
+  ],
+  "spec_sha256": "8c809828d16651fb23fb0486a1be5f415be4c67bf364b325bf3d2ccb9fa17491",
+  "operation_id": "r031-fenceloss6-1790004123",
+  "readback": {
+    "at": 1790004137.4871492,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-fenceloss6-1790004123",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "database_fence_lost",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790004136.5005705,
+    "spec_sha256": "8c809828d16651fb23fb0486a1be5f415be4c67bf364b325bf3d2ccb9fa17491",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

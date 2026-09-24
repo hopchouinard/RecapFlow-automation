@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-PROTECTED-RESTORE-PREP-20260921-030",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-21T12:44:24.195311+00:00",
+  "summary": "Preparation and fresh synthetic recovery validation completed;53 safe artifacts. Production transfer/compiler remain gated; exact wrapper, protected restore, browser, capacity and real-provider acceptance still required. No protected transfer or runtime change.",
+  "receipt": "receipt.md"
+}

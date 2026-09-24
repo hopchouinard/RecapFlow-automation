@@ -1,0 +1,45 @@
+{
+  "before": {
+    "service_renewal_live.py": "6ccc4e6ef07c24a1e3357f114221772fd4cb8b267fcc789612103b5022059f5f",
+    "service_renewal_policy.py": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c",
+    "renewal_webui_control.py": "8dfcbd298e2610ad7ce8ddda86dc2943d6ae6ed0fef9930ab9c8ddbb528b6cd5"
+  },
+  "candidate_files": {
+    "README.md": {
+      "sha256": "7b892ca7b385fb1c36bfdedfcc51fbb290059e595f52100ca28977e98fc984cc",
+      "bytes": 2918
+    },
+    "check_vm108.py": {
+      "sha256": "0a5cb82e0f17acb3929a3cbf1a08101153bb37ff9ed81abe3fae8b8d5759d423",
+      "bytes": 3502
+    },
+    "renewal_webui_control.py": {
+      "sha256": "c5bd27f919e2a4288b8cc0b00b1d37ad74362fea5a80f7d70205b603a00e5802",
+      "bytes": 4716
+    },
+    "renewal_webui_host.py": {
+      "sha256": "0d9da86d634f8c9af3f615a0f0f683733259900f7612d1caab3e3cbbc868f6eb",
+      "bytes": 6144
+    },
+    "service_renewal_live.py": {
+      "sha256": "26cc909a556e5bce286ce173c8e968f344cef8860cc5e9472844153d1dd7188b",
+      "bytes": 12063
+    },
+    "service_renewal_policy.py": {
+      "sha256": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c",
+      "bytes": 4749
+    },
+    "test_renewal_webui_host.py": {
+      "sha256": "ea2434ee757c2f7197d4a6c2d4d4b8070623e8ff4ccc220c691e0de08bc16246",
+      "bytes": 8398
+    },
+    "test_service_renewal_live.py": {
+      "sha256": "7b3dff349ab18d89ec3404f6438dd3da5c37b1412afed0b9e744b50c65ab9ea5",
+      "bytes": 2497
+    },
+    "test_service_renewal_policy.py": {
+      "sha256": "2d41e196a329f14e3228bb045ece8d1801abb2a21fc7a99fe93d06baed483fd3",
+      "bytes": 4555
+    }
+  }
+}

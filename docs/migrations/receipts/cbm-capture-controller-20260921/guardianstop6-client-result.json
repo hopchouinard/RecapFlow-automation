@@ -1,0 +1,54 @@
+{
+  "label": "guardianstop6",
+  "mode": "guardianstop",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790004230.18516, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-guardianstop6-1790004191\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"detached_service_recovery\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790004229.277312, \"spec_sha256\": \"2f519f2586034aedfba1ef7f9a6ccb3759d714498b83ce9c809d6a75fc990a95\", \"state\": \"aborted_restored\", \"service_state\": \"failed\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "duplicate_target_dispatch",
+      "rejected": true,
+      "exception": "FileExistsError: [Errno 17] File exists: '/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/operations/r031-guardianstop6-1790004191'"
+    },
+    {
+      "test": "existing_vm_locks_held",
+      "blocked": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "STOP",
+      "target": "guardian",
+      "pid": 2195878,
+      "returncode": 0,
+      "at": 1790004201.605352
+    }
+  ],
+  "spec_sha256": "2f519f2586034aedfba1ef7f9a6ccb3759d714498b83ce9c809d6a75fc990a95",
+  "operation_id": "r031-guardianstop6-1790004191",
+  "readback": {
+    "at": 1790004230.18516,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-guardianstop6-1790004191",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "detached_service_recovery",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790004229.277312,
+    "spec_sha256": "2f519f2586034aedfba1ef7f9a6ccb3759d714498b83ce9c809d6a75fc990a95",
+    "state": "aborted_restored",
+    "service_state": "failed",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

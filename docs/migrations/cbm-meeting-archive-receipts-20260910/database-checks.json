@@ -1,0 +1,11 @@
+{
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "checked_at": "2026-09-10T17:06:45.976500+00:00",
+  "all_ten_table_fingerprints_unchanged": true,
+  "synthetic_evidence": [
+    {
+      "model_response_receipts": 14,
+      "pending_index_events": 2
+    }
+  ]
+}

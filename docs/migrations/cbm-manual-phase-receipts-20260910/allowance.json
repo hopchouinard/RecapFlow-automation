@@ -1,0 +1,11 @@
+{
+  "verified_on": "2026-09-10",
+  "source": "Authenticated OpenRouter /api/v1/key after nine indexing request receipts settled",
+  "limit": 2,
+  "limit_reset": null,
+  "limit_remaining": 1.9484966,
+  "usage": 0.0515034,
+  "is_management_key": false,
+  "include_byok_in_limit": true,
+  "copy_indexing_cost": 0.00768625
+}

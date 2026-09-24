@@ -1,0 +1,38 @@
+{
+  "request_id": "CBM-MANUAL-ACTIVATE-20260910-005",
+  "activated_at": "2026-09-10T05:41:38.488306+00:00",
+  "authority": "Infisical homelab/prod /applications/community-brain",
+  "previous_identity_count": 3,
+  "new_identity_count": 5,
+  "new_identities": [
+    {
+      "subject": "community-brain-prod-mac-collector",
+      "scope": "community-brain",
+      "permissions": [
+        "sources:upload:chat"
+      ],
+      "expires_at": 1789621422
+    },
+    {
+      "subject": "community-brain-prod-manual-operator",
+      "scope": "community-brain",
+      "permissions": [
+        "sources:upload",
+        "jobs:submit",
+        "jobs:read",
+        "artifacts:read"
+      ],
+      "expires_at": 1789621422
+    }
+  ],
+  "existing_values_preserved": true,
+  "fresh_api_only_render": true,
+  "rollback": {
+    "private_rollback_directory": "/etc/community-brain-production/manual-activation-005",
+    "command": "sudo python3 /etc/community-brain-production/manual-activation-005/rollback-api.py",
+    "api_snapshot_saved": true,
+    "base_compose_saved": true
+  },
+  "workers_started": false,
+  "writer_hold_and_deadline_unchanged": true
+}

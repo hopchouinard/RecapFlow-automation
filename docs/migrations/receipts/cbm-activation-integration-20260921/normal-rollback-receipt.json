@@ -1,0 +1,19 @@
+{
+  "finished_at": 1789958607.5314732,
+  "request": {
+    "journal": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-journals/normal.json",
+    "operation": "rollback",
+    "plan": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/activation-normal-packet-v6/plan.json",
+    "sha256": "69f0eef62aea1e29a34e3ffe2700e1b1cbb4d25ca616cbb934c47260197afeec"
+  },
+  "result": {
+    "phase": "rolled_back",
+    "processing_holds_preserved": true,
+    "replacement_data_retained": true
+  },
+  "state": "completed",
+  "actual_ssh_terminated": false,
+  "effect_replayed": false,
+  "started_at": 1789958561.253933,
+  "returned_at": 1789958614.273812
+}

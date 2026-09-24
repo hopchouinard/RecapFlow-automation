@@ -1,0 +1,13 @@
+{
+  "request_id": "CBM-CAPTURE-CONTROLLER-20260921-031",
+  "actor": "Forge",
+  "state": "consumed",
+  "acknowledged_at": "2026-09-21T15:53:06.686799+00:00",
+  "verified_manifest_artifacts": 56,
+  "independently_verified_vm108_source_files": 32,
+  "local_tests_passed": 49,
+  "source_commit": "39b9b21cc681b4bde762f30bb0193778d9b295ec",
+  "receipt_sha256": "5a7103eaeecb172bf172d7de18586e63bcb3b41e183ed583d06d9443449660f9",
+  "production_promotion_ready": false,
+  "protected_transfer_performed": false
+}

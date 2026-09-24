@@ -1,0 +1,66 @@
+{
+  "boundaries": {
+    "real_application": true,
+    "exact_existing_filter": true,
+    "retrieval_backend": "synthetic isolated HTTP fixture",
+    "model_list": "synthetic fixture; no inference",
+    "production_authority": false
+  },
+  "login": true,
+  "wrong_password_rejected": true,
+  "initial_cache": {
+    "live_app_process": true,
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "effective_url": "http://cbm-r026-fixture:8999/retrieval/query",
+    "effective_token_sha256": "6d8085d662571fb5adef1bd18317b021ea99f5f6b3ce514b33e7364578d39935",
+    "retrieval_status": "ok",
+    "source_count": 1,
+    "context_emitted": true,
+    "unavailable_context": false
+  },
+  "renewed_cache": {
+    "live_app_process": true,
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "effective_url": "http://cbm-r026-fixture:8999/retrieval/query",
+    "effective_token_sha256": "bb4cc23445e1dd7e48af8a29ca3fc84c1e82410aa7023b2b93e17454c9996964",
+    "retrieval_status": "ok",
+    "source_count": 1,
+    "context_emitted": true,
+    "unavailable_context": false
+  },
+  "old_credential_rejected": true,
+  "new_credential_accepted": true,
+  "unavailable_cache": {
+    "live_app_process": true,
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "effective_url": "http://cbm-r026-fixture:8999/retrieval/query",
+    "effective_token_sha256": "bb4cc23445e1dd7e48af8a29ca3fc84c1e82410aa7023b2b93e17454c9996964",
+    "retrieval_status": "error",
+    "source_count": 0,
+    "context_emitted": false,
+    "unavailable_context": true
+  },
+  "restored_cache": {
+    "live_app_process": true,
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "effective_url": "http://cbm-r026-fixture:8999/retrieval/query",
+    "effective_token_sha256": "bb4cc23445e1dd7e48af8a29ca3fc84c1e82410aa7023b2b93e17454c9996964",
+    "retrieval_status": "ok",
+    "source_count": 1,
+    "context_emitted": true,
+    "unavailable_context": false
+  },
+  "after_restart": {
+    "live_app_process": true,
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "effective_url": "http://cbm-r026-fixture:8999/retrieval/query",
+    "effective_token_sha256": "bb4cc23445e1dd7e48af8a29ca3fc84c1e82410aa7023b2b93e17454c9996964",
+    "retrieval_status": "ok",
+    "source_count": 1,
+    "context_emitted": true,
+    "unavailable_context": false
+  },
+  "restart_login_and_persistence": true,
+  "network_internal": true,
+  "ports_loopback_only": true
+}

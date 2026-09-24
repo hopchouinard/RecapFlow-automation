@@ -1,0 +1,12 @@
+{
+  "final_packet_reproduced": true,
+  "manifest_sha256": "c9326fd4bf149b68fcbc40fb7ab49a2ce23b4c7711a36ea9a5a99e8b41ebbb76",
+  "all_six_local_sealed_revisions_unchanged": {
+    "packet-v1": "ce99f1773dbf38236aefbc27728101a28902b632c242513ae19c3863e639975e",
+    "packet-v2": "7b652556a9c06a85e5777bb387004ac9fe93463b3ab6ecc8e8c425327cc64770",
+    "packet-v3": "c084f798b1d21443ef49ce1ea932a9d0714c8a5825a99c2b465b0e46a3d36753",
+    "packet-v4": "00a5bce5ec627bf502343adaa3e393124e834d2a463bcccb99b691ea1cb4fda3",
+    "packet-v5": "3a97c787083addb65578a0d41594815374f4bdd4b0a1b704571b31ec19c606f0",
+    "packet-v6": "c9326fd4bf149b68fcbc40fb7ab49a2ce23b4c7711a36ea9a5a99e8b41ebbb76"
+  }
+}

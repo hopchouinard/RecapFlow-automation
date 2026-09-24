@@ -1,0 +1,135 @@
+{
+  "request027_only_stopped": true,
+  "new_containers": [
+    {
+      "name": "/cbm-r027-api",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "status": "exited",
+      "oom_killed": false
+    },
+    {
+      "name": "/cbm-r027-prometheus-1",
+      "image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+      "status": "exited",
+      "oom_killed": false
+    },
+    {
+      "name": "/cbm-r027-kuma-1",
+      "image": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+      "status": "exited",
+      "oom_killed": false
+    },
+    {
+      "name": "/cbm-r027-webui",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "status": "exited",
+      "oom_killed": false
+    },
+    {
+      "name": "/cbm-r027-pg-1",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "status": "exited",
+      "oom_killed": false
+    },
+    {
+      "name": "/cbm-r027-provider-1",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "status": "exited",
+      "oom_killed": false
+    }
+  ],
+  "prior_running_services_start_times_unchanged": [
+    {
+      "name": "/cbm-collector-development-proxy-1",
+      "started_at": "2026-09-20T00:36:03.623525112Z"
+    },
+    {
+      "name": "/cbm-live-development-api-1",
+      "started_at": "2026-09-20T00:35:58.249267745Z"
+    },
+    {
+      "name": "/cbm-live-development-nats-1",
+      "started_at": "2026-09-20T00:35:48.404137004Z"
+    },
+    {
+      "name": "/cbm-live-development-postgres-1",
+      "started_at": "2026-09-20T00:35:46.779542855Z"
+    }
+  ],
+  "prior_fixtures_still_stopped": [
+    "cbm-integration-dev-webui-1",
+    "cbm-integration-dev-api-1",
+    "cbm-integration-dev-pg-1",
+    "cbm-integration-dev-provider-1",
+    "cbm-r026-webui",
+    "cbm-r026-fixture"
+  ],
+  "internal_network": true,
+  "published_ports": false,
+  "private_artifacts": {
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/api.env": {
+      "bytes": 1834,
+      "sha256": "c7158283811cd5df6ac33ea5e6b60133db5d449b88fa9f9d7904f1e734e9f47b",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/collector-client.env": {
+      "bytes": 123,
+      "sha256": "6817c41b6242067f09b651f87a4e85b440419b237dda2bb322e9681d272dc9f5",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/credentials.json": {
+      "bytes": 98,
+      "sha256": "ea563751b9e8358458349c97a4e22d664360a8b79ac4ec02b8f0a823e9ccd4fa",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/install-started": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/kuma-admin.json": {
+      "bytes": 85,
+      "sha256": "bbb6ff15f33e854d338b6a81f469fc3d89109a59ac23e1f7117bf8b5b99d2368",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/monitors-started": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/operator-client.env": {
+      "bytes": 135,
+      "sha256": "81d6272ade0c07d2a4813bec27704a81a3187b12d9e91f99d6a05980f25c878a",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/probes.env": {
+      "bytes": 210,
+      "sha256": "92e257d684afa829920a0bc4096057613275b2c8d352d224e007cbd6f6a65d3e",
+      "mode": "0o600"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/prometheus/metrics-token": {
+      "bytes": 64,
+      "sha256": "f6793540fa54df4190781041ea14dce0caf7216d562ad2ab836c81859f4049d0",
+      "mode": "0o640"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/prometheus/prometheus.json": {
+      "bytes": 240,
+      "sha256": "c4dbefe645eb4d4dfd2876f3cd630c1f9ac04100a8d9db07430919981ab19e83",
+      "mode": "0o640"
+    },
+    "/srv/dev-data/workspaces/cbm-management-integration-20260920-027/private/webui.env": {
+      "bytes": 448,
+      "sha256": "8321db628d9527e0d0c9b8410740d8d9f40a87b8070868b1e636867ca5ef4149",
+      "mode": "0o600"
+    }
+  },
+  "retained_volume_names": [
+    "6af884302e483ecec27bb5bc08b23912aa9c8ed7e5aaeb2df4930a46ec638719",
+    "cbm-r027_kuma",
+    "cbm-r027_pg",
+    "cbm-r027_webui"
+  ],
+  "retained_workspace": "/srv/dev-data/workspaces/cbm-management-integration-20260920-027",
+  "values_exported": false,
+  "production_changes": false
+}

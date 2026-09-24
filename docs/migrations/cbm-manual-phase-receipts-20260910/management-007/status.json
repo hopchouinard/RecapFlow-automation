@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-10T07:07:07.970795+00:00",
+  "summary": "Maintenance prerequisites verified; manual ownership terminal committed on VM101 and Mac; old deadline timer/service inactive and masked; legacy writers/intake held. Final controller 19 tests, 16 maintenance cases, 15 API checks passed. Publication, replacement and retirement gated.",
+  "receipt": "receipt.md"
+}

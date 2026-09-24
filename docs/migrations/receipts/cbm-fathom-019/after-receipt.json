@@ -1,0 +1,33 @@
+{
+  "corpus_rows": 1924,
+  "files": {
+    "database.json": {
+      "bytes": 2702,
+      "sha256": "3c62db05420ce1642f92faf21c48313ac0dea25df1db2d7a793b759517eee010"
+    },
+    "deployment-controls.tar.gz": {
+      "bytes": 2349397,
+      "sha256": "f21c97137ff3731d726a50339d888ab20816c0be6f8af3d1a36bb755aee47df7"
+    },
+    "fingerprints.json": {
+      "bytes": 256347,
+      "sha256": "a3479270be887b9fff40a37842bbe80e7747d47fda1d1a8c69d31d3358e72113"
+    },
+    "host-controls.json": {
+      "bytes": 8681,
+      "sha256": "0eaa47a9357acd85373123f4468a8b7e559259698b08ae2296c9bc55b9790930"
+    },
+    "management-controls.json": {
+      "bytes": 6965,
+      "sha256": "0d88207102773c31b8beb57cf8e6d6b97df19fdb95f18808a5d4e166f8b36eed"
+    },
+    "management-controls.tar.gz": {
+      "bytes": 49719,
+      "sha256": "5de71760b54d08a16871ca62da2fddf5c8fa5217cc52cd06f76e0a7e48811ac6"
+    }
+  },
+  "mac": "/Users/pchouinard/.local/state/community-brain-management/request019/after",
+  "offhost": "/var/backups/community-brain/fathom-019-after",
+  "phase": "after",
+  "vm": "/srv/community-brain/artifacts/cbm-fathom-20260917-019/after"
+}

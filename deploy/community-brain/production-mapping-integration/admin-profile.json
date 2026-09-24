@@ -1,0 +1,3768 @@
+{
+  "schema": "cbm.admin-metadata-census/1",
+  "observed_at": "2026-09-22T01:06:52.072807+00:00",
+  "application_rows_read": false,
+  "production_mutations": false,
+  "query_sha256": "dc0dd6347d6b4c18d132747f9b7922040635762106d48a4d77324e388729dafe",
+  "observations": {
+    "identity": [
+      {
+        "version": "18.6 (Ubuntu 18.6-0ubuntu0.26.04.1)",
+        "database": "community_brain_prod",
+        "observer": "postgres",
+        "read_only": "on"
+      }
+    ],
+    "application_roles": [
+      {
+        "name": "cbm_prod_migration",
+        "login": true,
+        "create_db": false,
+        "superuser": false,
+        "bypass_rls": false,
+        "create_role": false,
+        "replication": false
+      },
+      {
+        "name": "cbm_prod_runtime",
+        "login": true,
+        "create_db": false,
+        "superuser": false,
+        "bypass_rls": false,
+        "create_role": false,
+        "replication": false
+      }
+    ],
+    "schemas": [
+      {
+        "name": "public",
+        "owner": "cbm_prod_migration"
+      }
+    ],
+    "extensions": [
+      {
+        "name": "plpgsql",
+        "schema": "pg_catalog",
+        "version": "1.0"
+      }
+    ],
+    "relations": [
+      {
+        "kind": "r",
+        "name": "alembic_version",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "alembic_version_pkc",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_artifacts",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_artifacts_job_id_name_key",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_artifacts_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_attempts",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_attempts_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_attempts_stage_id_fence_key",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_jobs",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_jobs_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_model_calls",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_model_calls_job_id_key_key",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_model_calls_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_operations",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_operations_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_operations_scope_principal_operation_key_key",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_outbox",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_outbox_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_outbox_stage_id_generation_key",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_rejected_events",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_rejected_events_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_sources",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_sources_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_sources_scope_meeting_id_kind_sha256_key",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "r",
+        "name": "cb_stages",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_stages_job_id_name_key",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "cb_stages_pkey",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "ix_cb_artifacts_job_id",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      },
+      {
+        "kind": "i",
+        "name": "ix_cb_stages_job_id",
+        "owner": "cbm_prod_migration",
+        "schema": "public",
+        "partition": false,
+        "row_security": false,
+        "force_row_security": false
+      }
+    ],
+    "custom_routines": [],
+    "custom_types": [],
+    "column_types": [
+      {
+        "type": "character varying",
+        "schema": "public"
+      },
+      {
+        "type": "character varying(32)",
+        "schema": "public"
+      },
+      {
+        "type": "integer",
+        "schema": "public"
+      },
+      {
+        "type": "jsonb",
+        "schema": "public"
+      },
+      {
+        "type": "timestamp with time zone",
+        "schema": "public"
+      },
+      {
+        "type": "uuid",
+        "schema": "public"
+      }
+    ],
+    "database_acl": [
+      {
+        "acl": "{cbm_prod_migration=CTc/cbm_prod_migration,cbm_prod_runtime=c/cbm_prod_migration}",
+        "owner": "cbm_prod_migration"
+      }
+    ],
+    "default_acls": [
+      {
+        "acl": "{cbm_prod_runtime=rU/cbm_prod_migration}",
+        "kind": "S",
+        "owner": "cbm_prod_migration",
+        "schema": "public"
+      },
+      {
+        "acl": "{cbm_prod_runtime=arwd/cbm_prod_migration}",
+        "kind": "r",
+        "owner": "cbm_prod_migration",
+        "schema": "public"
+      }
+    ],
+    "object_counts": [
+      {
+        "policies": 0,
+        "statistics": 0,
+        "publications": 0,
+        "large_objects": 0,
+        "event_triggers": 0,
+        "foreign_servers": 0
+      }
+    ],
+    "columns": [
+      {
+        "name": "version_num",
+        "type": "character varying(32)",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "alembic_version",
+        "default_digest": null
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "job_id",
+        "type": "uuid",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "stage_id",
+        "type": "uuid",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "fence",
+        "type": "integer",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "path",
+        "type": "character varying",
+        "ordinal": 6,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "sha256",
+        "type": "character varying",
+        "ordinal": 7,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "size",
+        "type": "integer",
+        "ordinal": 8,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_artifacts",
+        "default_digest": null
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": null
+      },
+      {
+        "name": "stage_id",
+        "type": "uuid",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": null
+      },
+      {
+        "name": "fence",
+        "type": "integer",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": null
+      },
+      {
+        "name": "owner",
+        "type": "character varying",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": null
+      },
+      {
+        "name": "state",
+        "type": "character varying",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": null
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "ordinal": 6,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": "75230039beb12ce952f24927f2bfa2f2"
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "ordinal": 7,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": null
+      },
+      {
+        "name": "reason",
+        "type": "character varying",
+        "ordinal": 8,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_attempts",
+        "default_digest": null
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "scope",
+        "type": "character varying",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "principal",
+        "type": "character varying",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "key",
+        "type": "character varying",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "request_hash",
+        "type": "character varying",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "identity",
+        "type": "jsonb",
+        "ordinal": 6,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "sources",
+        "type": "jsonb",
+        "ordinal": 7,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "mode",
+        "type": "character varying",
+        "ordinal": 8,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "config",
+        "type": "jsonb",
+        "ordinal": 9,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "version",
+        "type": "character varying",
+        "ordinal": 10,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "reason",
+        "type": "character varying",
+        "ordinal": 11,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "parent_id",
+        "type": "uuid",
+        "ordinal": 12,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "processing",
+        "type": "character varying",
+        "ordinal": 13,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "artifacts",
+        "type": "character varying",
+        "ordinal": 14,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "indexing",
+        "type": "character varying",
+        "ordinal": 15,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "git",
+        "type": "character varying",
+        "ordinal": 16,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "distribution",
+        "type": "character varying",
+        "ordinal": 17,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "ordinal": 18,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_jobs",
+        "default_digest": "75230039beb12ce952f24927f2bfa2f2"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "job_id",
+        "type": "uuid",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "key",
+        "type": "character varying",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "fence",
+        "type": "integer",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "state",
+        "type": "character varying",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "request_meta",
+        "type": "jsonb",
+        "ordinal": 6,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "response_path",
+        "type": "character varying",
+        "ordinal": 7,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "response_hash",
+        "type": "character varying",
+        "ordinal": 8,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "usage",
+        "type": "jsonb",
+        "ordinal": 9,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_model_calls",
+        "default_digest": null
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_operations",
+        "default_digest": null
+      },
+      {
+        "name": "scope",
+        "type": "character varying",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_operations",
+        "default_digest": null
+      },
+      {
+        "name": "principal",
+        "type": "character varying",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_operations",
+        "default_digest": null
+      },
+      {
+        "name": "operation",
+        "type": "character varying",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_operations",
+        "default_digest": null
+      },
+      {
+        "name": "key",
+        "type": "character varying",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_operations",
+        "default_digest": null
+      },
+      {
+        "name": "request_hash",
+        "type": "character varying",
+        "ordinal": 6,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_operations",
+        "default_digest": null
+      },
+      {
+        "name": "job_id",
+        "type": "uuid",
+        "ordinal": 7,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_operations",
+        "default_digest": null
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_outbox",
+        "default_digest": null
+      },
+      {
+        "name": "stage_id",
+        "type": "uuid",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_outbox",
+        "default_digest": null
+      },
+      {
+        "name": "generation",
+        "type": "integer",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_outbox",
+        "default_digest": null
+      },
+      {
+        "name": "sent_at",
+        "type": "timestamp with time zone",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_outbox",
+        "default_digest": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_outbox",
+        "default_digest": "75230039beb12ce952f24927f2bfa2f2"
+      },
+      {
+        "name": "sha256",
+        "type": "character varying",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_rejected_events",
+        "default_digest": null
+      },
+      {
+        "name": "reason",
+        "type": "character varying",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_rejected_events",
+        "default_digest": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_rejected_events",
+        "default_digest": "75230039beb12ce952f24927f2bfa2f2"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": null
+      },
+      {
+        "name": "scope",
+        "type": "character varying",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": null
+      },
+      {
+        "name": "meeting_id",
+        "type": "character varying",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": null
+      },
+      {
+        "name": "kind",
+        "type": "character varying",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": null
+      },
+      {
+        "name": "sha256",
+        "type": "character varying",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": null
+      },
+      {
+        "name": "path",
+        "type": "character varying",
+        "ordinal": 6,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": null
+      },
+      {
+        "name": "size",
+        "type": "integer",
+        "ordinal": 7,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "ordinal": 8,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_sources",
+        "default_digest": "75230039beb12ce952f24927f2bfa2f2"
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "ordinal": 1,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "job_id",
+        "type": "uuid",
+        "ordinal": 2,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "ordinal": 3,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "state",
+        "type": "character varying",
+        "ordinal": 4,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "generation",
+        "type": "integer",
+        "ordinal": 5,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "fence",
+        "type": "integer",
+        "ordinal": 6,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "attempts",
+        "type": "integer",
+        "ordinal": 7,
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "owner",
+        "type": "character varying",
+        "ordinal": 8,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "lease_until",
+        "type": "timestamp with time zone",
+        "ordinal": 9,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "due_at",
+        "type": "timestamp with time zone",
+        "ordinal": 10,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "error",
+        "type": "character varying",
+        "ordinal": 11,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "ordinal": 12,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "table_name": "cb_stages",
+        "default_digest": null
+      }
+    ],
+    "constraints": [
+      {
+        "kind": "p",
+        "name": "alembic_version_pkc",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "alembic_version",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "alembic_version_version_num_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "alembic_version",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_fence_not_null",
+        "columns": [
+          4
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_artifacts_job_id_fkey",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_jobs",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "u",
+        "name": "cb_artifacts_job_id_name_key",
+        "columns": [
+          2,
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_job_id_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_name_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_path_not_null",
+        "columns": [
+          6
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_artifacts_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_sha256_not_null",
+        "columns": [
+          7
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_size_not_null",
+        "columns": [
+          8
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_artifacts_stage_id_fkey",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_stages",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "n",
+        "name": "cb_artifacts_stage_id_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_artifacts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_attempts_fence_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_attempts_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_attempts_owner_not_null",
+        "columns": [
+          4
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_attempts_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "u",
+        "name": "cb_attempts_stage_id_fence_key",
+        "columns": [
+          2,
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_attempts_stage_id_fkey",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_stages",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "n",
+        "name": "cb_attempts_stage_id_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_attempts_started_at_not_null",
+        "columns": [
+          6
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_attempts_state_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_attempts",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_artifacts_not_null",
+        "columns": [
+          14
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_config_not_null",
+        "columns": [
+          9
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_created_at_not_null",
+        "columns": [
+          18
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_distribution_not_null",
+        "columns": [
+          17
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_git_not_null",
+        "columns": [
+          16
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_identity_not_null",
+        "columns": [
+          6
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_indexing_not_null",
+        "columns": [
+          15
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_key_not_null",
+        "columns": [
+          4
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_mode_not_null",
+        "columns": [
+          8
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_jobs_parent_id_fkey",
+        "columns": [
+          12
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_jobs",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "p",
+        "name": "cb_jobs_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_principal_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_processing_not_null",
+        "columns": [
+          13
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_request_hash_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_scope_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_sources_not_null",
+        "columns": [
+          7
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_jobs_version_not_null",
+        "columns": [
+          10
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_jobs",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_model_calls_fence_not_null",
+        "columns": [
+          4
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_model_calls_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_model_calls_job_id_fkey",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_jobs",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "u",
+        "name": "cb_model_calls_job_id_key_key",
+        "columns": [
+          2,
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_model_calls_job_id_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_model_calls_key_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_model_calls_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_model_calls_request_meta_not_null",
+        "columns": [
+          6
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_model_calls_state_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_model_calls",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_operations_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_operations_job_id_fkey",
+        "columns": [
+          7
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_jobs",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "n",
+        "name": "cb_operations_job_id_not_null",
+        "columns": [
+          7
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_operations_key_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_operations_operation_not_null",
+        "columns": [
+          4
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_operations_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_operations_principal_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_operations_request_hash_not_null",
+        "columns": [
+          6
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_operations_scope_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "u",
+        "name": "cb_operations_scope_principal_operation_key_key",
+        "columns": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_operations",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_outbox_created_at_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_outbox",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_outbox_generation_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_outbox",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_outbox_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_outbox",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_outbox_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_outbox",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_outbox_stage_id_fkey",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_outbox",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_stages",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "u",
+        "name": "cb_outbox_stage_id_generation_key",
+        "columns": [
+          2,
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_outbox",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_outbox_stage_id_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_outbox",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_rejected_events_created_at_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_rejected_events",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_rejected_events_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_rejected_events",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_rejected_events_reason_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_rejected_events",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_rejected_events_sha256_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_rejected_events",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_created_at_not_null",
+        "columns": [
+          8
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_kind_not_null",
+        "columns": [
+          4
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_meeting_id_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_path_not_null",
+        "columns": [
+          6
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_sources_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "u",
+        "name": "cb_sources_scope_meeting_id_kind_sha256_key",
+        "columns": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_scope_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_sha256_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_sources_size_not_null",
+        "columns": [
+          7
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_sources",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_stages_attempts_not_null",
+        "columns": [
+          7
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_stages_fence_not_null",
+        "columns": [
+          6
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_stages_generation_not_null",
+        "columns": [
+          5
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_stages_id_not_null",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "f",
+        "name": "cb_stages_job_id_fkey",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": "a",
+        "update_action": "a",
+        "referenced_table": "cb_jobs",
+        "referenced_columns": [
+          1
+        ]
+      },
+      {
+        "kind": "u",
+        "name": "cb_stages_job_id_name_key",
+        "columns": [
+          2,
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_stages_job_id_not_null",
+        "columns": [
+          2
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_stages_name_not_null",
+        "columns": [
+          3
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "p",
+        "name": "cb_stages_pkey",
+        "columns": [
+          1
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      },
+      {
+        "kind": "n",
+        "name": "cb_stages_state_not_null",
+        "columns": [
+          4
+        ],
+        "deferred": false,
+        "validated": true,
+        "deferrable": false,
+        "table_name": "cb_stages",
+        "delete_action": " ",
+        "update_action": " ",
+        "referenced_table": "-",
+        "referenced_columns": null
+      }
+    ],
+    "relation_acl": [
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "alembic_version",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_artifacts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_attempts",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_jobs",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_model_calls",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_operations",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_outbox",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_rejected_events",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_sources",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "MAINTAIN"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "REFERENCES"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRIGGER"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "TRUNCATE"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "DELETE"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "INSERT"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "SELECT"
+      },
+      {
+        "name": "cb_stages",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "UPDATE"
+      }
+    ],
+    "schema_acl": [
+      {
+        "name": "public",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "CREATE"
+      },
+      {
+        "name": "public",
+        "grantee": "cbm_prod_migration",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "USAGE"
+      },
+      {
+        "name": "public",
+        "grantee": "cbm_prod_runtime",
+        "grantor": "cbm_prod_migration",
+        "is_grantable": false,
+        "privilege_type": "USAGE"
+      }
+    ],
+    "column_acls": [],
+    "application_memberships": [],
+    "writers": [
+      {
+        "role": "cbm_prod_runtime",
+        "count": 3,
+        "state": "idle",
+        "backend_type": "client backend",
+        "client_address": "10.1.30.21/32",
+        "application_name": ""
+      }
+    ],
+    "admin_unsupported_counts": [
+      {
+        "rules": 0,
+        "policies": 0,
+        "operators": 0,
+        "collations": 0,
+        "statistics": 0,
+        "publications": 0,
+        "large_objects": 0,
+        "subscriptions": 0,
+        "event_triggers": 0,
+        "custom_triggers": 0,
+        "foreign_servers": 0,
+        "security_labels": 0,
+        "operator_classes": 0,
+        "operator_families": 0,
+        "text_search_configs": 0,
+        "application_settings": 0
+      }
+    ],
+    "shared_scope": [
+      {
+        "unrelated_roles": 5,
+        "custom_tablespaces": 0,
+        "unrelated_databases": 5,
+        "application_shared_labels": 0
+      }
+    ],
+    "index_attributes": [
+      {
+        "keys": "1",
+        "name": "alembic_version_pkc",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "3126",
+        "predicate": false,
+        "collations": "100",
+        "table_name": "alembic_version",
+        "expressions": false
+      },
+      {
+        "keys": "2 5",
+        "name": "cb_artifacts_job_id_name_key",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0 0",
+        "primary": false,
+        "key_count": 2,
+        "opclasses": "10065 3126",
+        "predicate": false,
+        "collations": "0 100",
+        "table_name": "cb_artifacts",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_artifacts_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_artifacts",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_attempts_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_attempts",
+        "expressions": false
+      },
+      {
+        "keys": "2 3",
+        "name": "cb_attempts_stage_id_fence_key",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0 0",
+        "primary": false,
+        "key_count": 2,
+        "opclasses": "10065 1978",
+        "predicate": false,
+        "collations": "0 0",
+        "table_name": "cb_attempts",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_jobs_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_jobs",
+        "expressions": false
+      },
+      {
+        "keys": "2 3",
+        "name": "cb_model_calls_job_id_key_key",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0 0",
+        "primary": false,
+        "key_count": 2,
+        "opclasses": "10065 3126",
+        "predicate": false,
+        "collations": "0 100",
+        "table_name": "cb_model_calls",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_model_calls_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_model_calls",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_operations_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_operations",
+        "expressions": false
+      },
+      {
+        "keys": "2 3 4 5",
+        "name": "cb_operations_scope_principal_operation_key_key",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0 0 0 0",
+        "primary": false,
+        "key_count": 4,
+        "opclasses": "3126 3126 3126 3126",
+        "predicate": false,
+        "collations": "100 100 100 100",
+        "table_name": "cb_operations",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_outbox_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_outbox",
+        "expressions": false
+      },
+      {
+        "keys": "2 3",
+        "name": "cb_outbox_stage_id_generation_key",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0 0",
+        "primary": false,
+        "key_count": 2,
+        "opclasses": "10065 1978",
+        "predicate": false,
+        "collations": "0 0",
+        "table_name": "cb_outbox",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_rejected_events_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "3126",
+        "predicate": false,
+        "collations": "100",
+        "table_name": "cb_rejected_events",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_sources_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_sources",
+        "expressions": false
+      },
+      {
+        "keys": "2 3 4 5",
+        "name": "cb_sources_scope_meeting_id_kind_sha256_key",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0 0 0 0",
+        "primary": false,
+        "key_count": 4,
+        "opclasses": "3126 3126 3126 3126",
+        "predicate": false,
+        "collations": "100 100 100 100",
+        "table_name": "cb_sources",
+        "expressions": false
+      },
+      {
+        "keys": "2 3",
+        "name": "cb_stages_job_id_name_key",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0 0",
+        "primary": false,
+        "key_count": 2,
+        "opclasses": "10065 3126",
+        "predicate": false,
+        "collations": "0 100",
+        "table_name": "cb_stages",
+        "expressions": false
+      },
+      {
+        "keys": "1",
+        "name": "cb_stages_pkey",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": true,
+        "options": "0",
+        "primary": true,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_stages",
+        "expressions": false
+      },
+      {
+        "keys": "2",
+        "name": "ix_cb_artifacts_job_id",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": false,
+        "options": "0",
+        "primary": false,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_artifacts",
+        "expressions": false
+      },
+      {
+        "keys": "2",
+        "name": "ix_cb_stages_job_id",
+        "ready": true,
+        "valid": true,
+        "method": "btree",
+        "unique": false,
+        "options": "0",
+        "primary": false,
+        "key_count": 1,
+        "opclasses": "10065",
+        "predicate": false,
+        "collations": "0",
+        "table_name": "cb_stages",
+        "expressions": false
+      }
+    ]
+  }
+}

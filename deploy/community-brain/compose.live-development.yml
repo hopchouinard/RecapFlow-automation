@@ -1,0 +1,166 @@
+# Isolated live development. No worker or inference credential during login validation.
+name: cbm-live-development
+services:
+  postgres:
+    image: postgres:18.6
+    environment:
+      POSTGRES_USER: cbmdev
+      POSTGRES_DB: cbm_dev
+      POSTGRES_PASSWORD: ${CB_DEV_POSTGRES_PASSWORD:?}
+    volumes:
+    - database:/var/lib/postgresql
+    mem_limit: 768m
+    cpus: 1
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U cbmdev -d cbm_dev
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  initialize:
+    image: community-brain:rehearsal
+    user: 0:0
+    read_only: true
+    tmpfs: &id001
+    - /tmp
+    cap_drop:
+    - ALL
+    cap_add:
+    - CHOWN
+    - DAC_OVERRIDE
+    security_opt: &id002
+    - no-new-privileges:true
+    mem_limit: 1g
+    cpus: 1
+    network_mode: none
+    volumes:
+    - ./live-development:/checks:ro
+    - files:/state/files
+    - config:/state/config
+    - nats-config:/nats-config
+    - corpus:/state/corpus
+    environment:
+      CB_DEV_NATS_PASSWORD: ${CB_DEV_NATS_PASSWORD:?}
+    command:
+    - python
+    - /checks/setup.py
+    - initialize
+  nats:
+    image: nats:2.10.27
+    command:
+    - -c
+    - /etc/nats/server.conf
+    volumes:
+    - jetstream:/data
+    - nats-config:/etc/nats:ro
+    mem_limit: 256m
+    cpus: 0.5
+    depends_on:
+      initialize:
+        condition: service_completed_successfully
+  migrate:
+    image: community-brain:rehearsal
+    user: 10001:10001
+    read_only: true
+    tmpfs: *id001
+    cap_drop: &id003
+    - ALL
+    security_opt: *id002
+    mem_limit: 1g
+    cpus: 1
+    environment:
+      CB_DATABASE_URL: ${CB_LIVE_DATABASE_URL:?Use live-development/compose.py}
+    command:
+    - alembic
+    - upgrade
+    - head
+    depends_on:
+      postgres:
+        condition: service_healthy
+  provision:
+    image: community-brain:rehearsal
+    user: 10001:10001
+    read_only: true
+    tmpfs: *id001
+    cap_drop: *id003
+    security_opt: *id002
+    mem_limit: 1g
+    cpus: 1
+    volumes:
+    - ./live-development:/checks:ro
+    environment:
+      CB_NATS_URL: ${CB_LIVE_NATS_URL:?}
+    command:
+    - python
+    - /checks/setup.py
+    - provision
+    depends_on:
+      nats:
+        condition: service_started
+  api:
+    command: [uvicorn, oidc_audit:app, --factory, --app-dir, /checks, --host, 0.0.0.0, --port, "8090", --no-access-log]
+    image: community-brain:rehearsal
+    user: 10001:10001
+    read_only: true
+    tmpfs: *id001
+    cap_drop: *id003
+    security_opt: *id002
+    mem_limit: 1g
+    cpus: 1
+    environment:
+      CB_DATABASE_URL: ${CB_LIVE_DATABASE_URL:?Use live-development/compose.py}
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_ENABLE_RETRIEVAL: 'true'
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: 'true'
+      COMMUNITY_BRAIN_CONFIG_DIR: /state/config
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://10.1.50.219:11434
+      SSL_CERT_FILE: /run/certs/ca-bundle.pem
+      REQUESTS_CA_BUNDLE: /run/certs/ca-bundle.pem
+      CB_OIDC_ISSUER: ${CB_OIDC_ISSUER:?Private runtime required}
+      CB_OIDC_AUDIENCE: ${CB_OIDC_AUDIENCE:?Private runtime required}
+      CB_OIDC_CLIENT_ID: ${CB_OIDC_CLIENT_ID:?Private runtime required}
+      CB_OIDC_JWKS_URL: ${CB_OIDC_JWKS_URL:?Private runtime required}
+      CB_CORPUS_SCOPE: ${CB_CORPUS_SCOPE:?Private runtime required}
+      CB_SERVICE_IDENTITIES: ${CB_SERVICE_IDENTITIES:?Private runtime required}
+    volumes:
+    - files:/state/files
+    - config:/state/config:ro
+    - corpus:/state/corpus:ro
+    - ./live-development:/checks:ro
+    - /etc/ssl/certs/ca-certificates.crt:/run/certs/ca-bundle.pem:ro
+    ports:
+    - 127.0.0.1:8090:8090
+    networks:
+    - default
+    - oidc
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      initialize:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health',
+        timeout=3)
+      interval: 3s
+      timeout: 4s
+      retries: 30
+networks:
+  default:
+    internal: true
+  oidc: {}
+volumes:
+  database: {}
+  jetstream: {}
+  files: {}
+  config: {}
+  nats-config: {}
+  corpus: {}

@@ -1,0 +1,32 @@
+{
+  "command": "./scripts/verify-forge.sh",
+  "exit_code": 0,
+  "workflow_tests": 150,
+  "python_application_tests": 976,
+  "python_warnings": 74,
+  "real_postgres_jetstream_tests": 68,
+  "frontend_unit_tests": 6,
+  "browser_tests": 5,
+  "typescript_vite_build": "passed",
+  "test_log_sha256": "d5082285aa6b267bcf9dc277ced3e6a46d5a5e68231f8a1067f302686200f2ec",
+  "runtime_code_changed_by_audit": false,
+  "audit_source_changes": [
+    "ignore Python caches",
+    "strip trailing whitespace in generated 0001_jobs.sql"
+  ],
+  "historical_evidence_whitespace_preserved": [
+    "docs/migrations/cbm-publication-consumer-v1.2.0.patch",
+    "docs/migrations/receipts/cbm-sept15-recovery-017/pbs-adapter.patch",
+    "docs/migrations/receipts/cbm-publication-credentials-022/receipt.md"
+  ],
+  "reconciliation_commits": [
+    "6a8c208",
+    "67af3a3",
+    "c390b59"
+  ],
+  "remote_main": "82167b30b2d72ae8ebb9a64a557991b30be442c3",
+  "remote_main_ancestor": true,
+  "published_output_matches_remote": true,
+  "remote_push_performed": false,
+  "secret_screening": "No matches for tested private-key/provider-token/JWT/credential-URL patterns; structured sensitive-name fields reviewed as references/status rather than credential values. Not an exhaustive confidentiality proof."
+}

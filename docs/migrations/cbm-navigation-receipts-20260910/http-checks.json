@@ -1,0 +1,62 @@
+{
+  "request_id": "CBM-NAVIGATION-20260910-010",
+  "checked_at": "2026-09-10T17:51:09.720088+00:00",
+  "tls_verified": true,
+  "checks": [
+    {
+      "path": "/assets/index-B35u5jNv.js",
+      "sha256": "cfe08d1c87170971ec1c201b47d753ea73edf2137b00ca12b5e6e0fead5a3f7f",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-BMV_HJsN.css",
+      "sha256": "cd06e7199dcd2b3582cf25f97842859619573aaf55f57be235931f61918607ca",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-CFGdg5XB.css",
+      "sha256": "ef6f7c216e6ac36023945cc3135cb66c6e60d4ffe8709c1af7af67183dec587e",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-Cu5foeHo.css",
+      "sha256": "c4b49dee27483bf7ef0e638c3a70a67851dd4bbe441053b9cfcb1dc40c02ad35",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DGlm7DKD.js",
+      "sha256": "0d6f07f0f3910b52f4e2e9d2da34df11a666ea058f4753c76300b50b7cac7624",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DMxDA5pK.css",
+      "sha256": "5044106a99a94d26eb7b010929518baaba8864d58ee0511342c70202f2ffd9d0",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DpBZN2Wu.js",
+      "sha256": "8d26886a7a3ad84c84b3bc5e92ccddd8a3fc0acd024377079a39aae8d9ad2769",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-ZIhBB68-.js",
+      "sha256": "33056fd7ac0f1b2f7ad1dce31115f17ebcd2e67161a75589fc85814ab0891dfa",
+      "status": 200
+    },
+    {
+      "path": "/index.html",
+      "sha256": "ec2ef6d971d198d3fb64ac3fdf60ef2e2ee520fb92035e8b3143f329407910b0",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "spa_fallback": true,
+      "status": 200
+    },
+    {
+      "path": "/callback",
+      "spa_fallback": true,
+      "status": 200
+    }
+  ]
+}

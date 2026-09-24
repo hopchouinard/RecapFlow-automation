@@ -1,0 +1,12 @@
+{
+  "name": "COMMUNITY_BRAIN_PROD",
+  "subjects": ["cbm.prod.jobs.stage.ready.v1"],
+  "retention": "limits",
+  "storage": "file",
+  "num_replicas": 1,
+  "max_age": 604800000000000,
+  "max_bytes": 67108864,
+  "max_msg_size": 4096,
+  "discard": "new",
+  "duplicate_window": 120000000000
+}

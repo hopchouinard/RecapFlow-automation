@@ -1,0 +1,10 @@
+{
+  "cbm-r030-webui-source": {
+    "id": "00393cb402e67207530baf4ee1db1499699344e38ebf1523341cd32a9a48533c",
+    "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+    "network": "none",
+    "oom_killed": false,
+    "ports": {},
+    "running": false
+  }
+}

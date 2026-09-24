@@ -1,0 +1,20 @@
+{
+  "anonymous_status": 401,
+  "capture_manifest_sha256": "c729c6c05ea9cacd7541b1b84d108aee92a2fe474172f29917a5a255d9f8643f",
+  "duration_seconds": 302.039,
+  "effective_persisted_signup_disabled": true,
+  "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+  "network": "none",
+  "new_login_status": 200,
+  "old_session_status": 200,
+  "production_qualified": false,
+  "published_ports": [],
+  "real_identity_session_test": false,
+  "real_provider_calls": 0,
+  "rendered_browser_test": false,
+  "retained_chat_status": 200,
+  "scope": "synthetic-development",
+  "signup_refusal_status": 403,
+  "source_unchanged": true,
+  "wrong_key_status": 401
+}

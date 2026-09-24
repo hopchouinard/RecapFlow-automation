@@ -1,0 +1,18 @@
+{
+  "all_commit_source_members_equal_packet": true,
+  "archive_sha256": "bd342d4c407895c9cc96a2a949a5d694e8b9e7c185517d3dd0d9cb615f6af458",
+  "branch": "codex/request035-controller",
+  "commit": "aadf565486ab1112816c7f239927158c0c602642",
+  "external_plan_sha256": "dc3f83f2e3aa5e377bf51b5cddcb45ffcba09962b33ce079200bce1fa0706d1b",
+  "manifest_sha256": "35aa5cf9fe5eff8095345221c1b6f6df150679e72211fd0c7eb7b6301fd942dd",
+  "member_count": 14,
+  "request_id": "CBM-STAGE2-CONTROLLER-20260924-035",
+  "schema": "cbm.stage2-source-verification/1",
+  "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/request035-controller/platform-services/community-brain-prod/stage2-controller-035",
+  "vm108_packet_parity": {
+    "files": 14,
+    "manifest_sha256": "35aa5cf9fe5eff8095345221c1b6f6df150679e72211fd0c7eb7b6301fd942dd"
+  },
+  "vm108_packet_path": "/srv/dev-data/workspaces/cbm-stage2-controller-20260924-035/packet-v6",
+  "worktree_clean": true
+}

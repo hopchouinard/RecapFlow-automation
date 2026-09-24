@@ -1,0 +1,103 @@
+{
+  "concurrent_writer_refused": true,
+  "database_after": {
+    "artifacts": {
+      "rows": 1,
+      "sha256": "8417458dd41da09c84ee056a0180e7d2e17a5adffc7c74f4e433b10815a84a04"
+    },
+    "attempts": {
+      "rows": 1,
+      "sha256": "3392cf41c6473b42930d94bf3707176459f906f31794c52f2940d08891c91071"
+    },
+    "foreign_key_violations": 0,
+    "jobs": {
+      "rows": 1,
+      "sha256": "7efaa4cb75a9b04dd4d2048a96eff18ac05758a6f21c88e7aaec895b9bc52944"
+    },
+    "outbox": {
+      "rows": 2,
+      "sha256": "e10d8bd7b0ed46160b95be987d09f952476f2c7dbc03737910f42b5167ce2ca4"
+    },
+    "sources": {
+      "rows": 1,
+      "sha256": "5ff69aad1d8fc00856427ef85de31579571b363375be1724423c2c94c688254b"
+    },
+    "stages": {
+      "rows": 1,
+      "sha256": "272c2235dddfbdfae6f105cf2464d317cffd4c9eefc024d12ccbc48b8357992c"
+    },
+    "unknown_attempts": 1,
+    "vectors": {
+      "rows": 1,
+      "sha256": "ee4180329858f443426378da6ebc61a1b5cf2a684d9ac79f16a13c2ee2c6f4aa"
+    }
+  },
+  "database_before": {
+    "artifacts": {
+      "rows": 1,
+      "sha256": "8417458dd41da09c84ee056a0180e7d2e17a5adffc7c74f4e433b10815a84a04"
+    },
+    "attempts": {
+      "rows": 1,
+      "sha256": "3392cf41c6473b42930d94bf3707176459f906f31794c52f2940d08891c91071"
+    },
+    "foreign_key_violations": 0,
+    "jobs": {
+      "rows": 1,
+      "sha256": "7efaa4cb75a9b04dd4d2048a96eff18ac05758a6f21c88e7aaec895b9bc52944"
+    },
+    "outbox": {
+      "rows": 2,
+      "sha256": "e10d8bd7b0ed46160b95be987d09f952476f2c7dbc03737910f42b5167ce2ca4"
+    },
+    "sources": {
+      "rows": 1,
+      "sha256": "5ff69aad1d8fc00856427ef85de31579571b363375be1724423c2c94c688254b"
+    },
+    "stages": {
+      "rows": 1,
+      "sha256": "272c2235dddfbdfae6f105cf2464d317cffd4c9eefc024d12ccbc48b8357992c"
+    },
+    "unknown_attempts": 1,
+    "vectors": {
+      "rows": 1,
+      "sha256": "ee4180329858f443426378da6ebc61a1b5cf2a684d9ac79f16a13c2ee2c6f4aa"
+    }
+  },
+  "database_equal": true,
+  "disk_growth_bytes": 124170240,
+  "duration_seconds": 23.025,
+  "exported_snapshot": true,
+  "fts_matches": 1,
+  "held_markers_unchanged": true,
+  "manifest_sha256": "17cee34e8e36cc31116384e1c8ca0d0e20c866abbe0e55a513660a6e6dcf9c33",
+  "off_host_restore": false,
+  "peak_controller_rss_kib": 24196,
+  "production_qualified": false,
+  "retained_new_writes": true,
+  "scope": "synthetic-development",
+  "sqlite_integrity": "ok",
+  "sqlite_relationships": 1,
+  "tree_receipt": {
+    "application_acceptance": null,
+    "capture_id": "cbm-r030-synthetic-pair-a04",
+    "components": {
+      "config": "99acf433baec9a46f585b9688c1cf8d9ac3daf96272fb2ed82a8674c16bbbef7",
+      "controls": "8fdeb8a8eb7e2e6671672672501be35b5cca86ec7aad5d7609aa0ebe1cb7566b",
+      "corpus": "4e3f8dc48a20ca6ec13c267db20fd23efef7698a4560708146da5dc08cc56ac7",
+      "database": "dde259056d7e635e907174dd8864a304d00f1856c6f066296e62e7b7325f2a91",
+      "files": "a86fbefb5c994c19dfd8136da8dff803c5dd2b9843af8bbeeb5cc8c3033ca3f6",
+      "meeting_archive": "08de112fe7fb429757cb22759d558f67263e0279196751ef4e8ca73c7b8af914",
+      "private_runtime": "67f1a14944bf02e25c2481a8f6a4de23149447f63a1d6144866001058feab915",
+      "webui": "46e1f040222e35259c7aa1343c18db62b800e9f022627f67c214244d27b87e66"
+    },
+    "database_acceptance": null,
+    "destination": "/srv/dev-data/workspaces/cbm-protected-restore-20260921-030/attempt04/independent-restore",
+    "manifest_sha256": "17cee34e8e36cc31116384e1c8ca0d0e20c866abbe0e55a513660a6e6dcf9c33",
+    "production_qualified": false,
+    "schema": "cbm.restore-receipt/1",
+    "scope": "synthetic-development",
+    "tree_comparison": "exact"
+  },
+  "worker_effects": 0
+}

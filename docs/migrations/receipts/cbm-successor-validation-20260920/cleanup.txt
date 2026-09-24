@@ -1,0 +1,18 @@
+ Container cbm-successor-validation-check-1  Stopping
+ Container cbm-successor-validation-check-1  Stopped
+ Container cbm-successor-validation-check-1  Removing
+ Container cbm-successor-validation-check-1  Removed
+ Container cbm-successor-validation-postgres-1  Stopping
+ Container cbm-successor-validation-nats-1  Stopping
+ Container cbm-successor-validation-postgres-1  Stopped
+ Container cbm-successor-validation-postgres-1  Removing
+ Container cbm-successor-validation-nats-1  Stopped
+ Container cbm-successor-validation-nats-1  Removing
+ Container cbm-successor-validation-postgres-1  Removed
+ Container cbm-successor-validation-nats-1  Removed
+ Network cbm-successor-validation_default  Removing
+ Network cbm-successor-validation_default  Removed
+cbm-collector-development-proxy-1
+cbm-live-development-api-1
+cbm-live-development-nats-1
+cbm-live-development-postgres-1

@@ -1,0 +1,33 @@
+{
+  "corpus_rows": 1901,
+  "files": {
+    "database.json": {
+      "bytes": 2701,
+      "sha256": "e82d4fcdfc2f01098b42f38b41ae8fe7d6ea6989e37409e7b90fce6070f5f019"
+    },
+    "deployment-controls.tar.gz": {
+      "bytes": 1135505,
+      "sha256": "cbdae2ee2108347b9d9399f97865d7da8266d0b70a1ad9b418cd94d046876068"
+    },
+    "fingerprints.json": {
+      "bytes": 216214,
+      "sha256": "c61dcf10d1931d319e76de7b6842ece5ba25bde201c11f0e1e94a099540218ec"
+    },
+    "host-controls.json": {
+      "bytes": 3578,
+      "sha256": "ae53321dd5f589ed7c2b847816991153a20fc334b2b119fcd98a76d89d7ee03d"
+    },
+    "management-controls.json": {
+      "bytes": 6762,
+      "sha256": "8f7011eb8c9db5ec336037752cd4e1989aeb45f24d12690019c111f9fd28bff2"
+    },
+    "management-controls.tar.gz": {
+      "bytes": 47073,
+      "sha256": "9069a676cfd7abc8c020e7b0ce17419c45a8acf3e32b44c53247158ca085e84a"
+    }
+  },
+  "mac": "/Users/pchouinard/.local/state/community-brain-management/weekly-015/after",
+  "offhost": "/var/backups/community-brain/weekly-015-after",
+  "phase": "after",
+  "vm": "/srv/community-brain/artifacts/cbm-weekly-20260911-015/after"
+}

@@ -1,0 +1,175 @@
+{
+  "captured_utc": "2026-09-10T06:01:53.274210+00:00",
+  "writers_stopped": true,
+  "archive_sha256": "b8a9c65a18f52f9e9b34371f177592a89196878087db10d3e9a260152582e3ba",
+  "files": {
+    "manual-approvals/48550d00-9ad8-4b77-9f05-00ef5e929a5e-acquisition-1.json": {
+      "bytes": 754,
+      "sha256": "55dbed3398b5505d7e8fa09802b9cfbe64e85f1317528b197cd715e7003fd7b8"
+    },
+    "manual-approvals/48550d00-9ad8-4b77-9f05-00ef5e929a5e-acquisition-1.log": {
+      "bytes": 64,
+      "sha256": "44a97751dbee2722dcc7da257c367749065d51e7eb8f74106ef4c856020ed9a8"
+    },
+    "manual-approvals/48550d00-9ad8-4b77-9f05-00ef5e929a5e-acquisition-1.started": {
+      "bytes": 72,
+      "sha256": "253f5939bd224b95fb3b2800ea7dc3fe126b88903ec83039d5431425c500cb95"
+    },
+    "manual-approvals/48550d00-9ad8-4b77-9f05-00ef5e929a5e-indexing-1.log": {
+      "bytes": 401,
+      "sha256": "9a8dbf12b58dab545d7e8aea179f21c2351825d4d2daa20f6c125128476cdba1"
+    },
+    "manual-approvals/48550d00-9ad8-4b77-9f05-00ef5e929a5e-processing-1.json": {
+      "bytes": 899,
+      "sha256": "ab32d1214aa3415441feb2e3e95f642bdb3306f6e3c05c48f491dcfe15a80bb1"
+    },
+    "manual-approvals/48550d00-9ad8-4b77-9f05-00ef5e929a5e-processing-1.log": {
+      "bytes": 64,
+      "sha256": "44a97751dbee2722dcc7da257c367749065d51e7eb8f74106ef4c856020ed9a8"
+    },
+    "manual-approvals/48550d00-9ad8-4b77-9f05-00ef5e929a5e-processing-1.started": {
+      "bytes": 72,
+      "sha256": "253f5939bd224b95fb3b2800ea7dc3fe126b88903ec83039d5431425c500cb95"
+    },
+    "manual-approvals/f6e9abed-e862-4eb7-a231-e98467adcaba-indexing-1.log": {
+      "bytes": 542,
+      "sha256": "24894f3c33cea7ff7deddd07d20942b03dae35c290e32cabca2a05c001d4ec04"
+    },
+    "workspaces/manual-20260910/compose.production-manual.yml": {
+      "bytes": 403,
+      "sha256": "1fda19bc9f38b9e810fcb8d805664860505971560e76a55d524e2938f25c07dc"
+    },
+    "workspaces/manual-20260910/compose.production-staging.yml": {
+      "bytes": 2059,
+      "sha256": "c57ed8718e27ae6431ff309660e67d62fa2dba096ff37f91f16c719d474a206e"
+    },
+    "workspaces/manual-20260910/production-staging/__pycache__/run.cpython-314.pyc": {
+      "bytes": 5254,
+      "sha256": "bc7b0318b0ac82ef6691b8f61f5c7134636aa251e05432659bdc4285e8a20b57"
+    },
+    "workspaces/manual-20260910/production-staging/bounded_worker.py": {
+      "bytes": 8048,
+      "sha256": "dd9d90dfde1c201ae9fbd9715f30c7ed9f63077652bbe91c73f741b2ed9a0c4b"
+    },
+    "workspaces/manual-20260910/production-staging/disposable_index.py": {
+      "bytes": 8035,
+      "sha256": "69b3a8ee6ad3067e2587bd8f336cdee2fdefd35044c82a680f1cba3600301761"
+    },
+    "workspaces/manual-20260910/production-staging/disposable_index_host.py": {
+      "bytes": 7539,
+      "sha256": "5fdb5d5a93525dd26b440740f4bfa1c274556acdde60d7c0b6bf53760f03d12e"
+    },
+    "workspaces/manual-20260910/production-staging/indexing_budget.py": {
+      "bytes": 3265,
+      "sha256": "6a88265b155f558f60cecb2534173c8443a2dae9728326e8c1beac702b28304d"
+    },
+    "workspaces/manual-20260910/production-staging/jobs/manual.py": {
+      "bytes": 5352,
+      "sha256": "9e0cf550d0dc32acaecadcb3bec8ca9c2390467e78614afb4b35264852cf43fa"
+    },
+    "workspaces/manual-20260910/production-staging/jobs/store.py": {
+      "bytes": 20469,
+      "sha256": "e2bcf8d799180caf3784943b49f9bcf1c7af463c07c6e2fabf7fe6b60e5179af"
+    },
+    "workspaces/manual-20260910/production-staging/jobs/worker.py": {
+      "bytes": 12914,
+      "sha256": "f6f69884c8aa39c7a4b7746bcc97f3212a8ddd218af27914b4f0462e18cca652"
+    },
+    "workspaces/manual-20260910/production-staging/manual-api-up.log": {
+      "bytes": 248,
+      "sha256": "9231583cd88d3a8ed311800ff7332a36b5d827c96b0ab5a33f950851381dd609"
+    },
+    "workspaces/manual-20260910/production-staging/manual_host.py": {
+      "bytes": 6319,
+      "sha256": "1b379cd448a9dacf53c6e0ebb4f1c7d90e5d3640d9210a8e99f31846bd9ee1c3"
+    },
+    "workspaces/manual-20260910/production-staging/manual_image_checks.py": {
+      "bytes": 6371,
+      "sha256": "a4a5045a68a11abd005ac04e94cbda458b0f8a42a586f65dabdac771d0717e15"
+    },
+    "workspaces/manual-20260910/production-staging/manual_worker.py": {
+      "bytes": 7108,
+      "sha256": "06ceea4cdc404a06c4575546466de1f8e5adc6bd8942bc60dcc90fab7ba00968"
+    },
+    "workspaces/manual-20260910/production-staging/run.py": {
+      "bytes": 3528,
+      "sha256": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d"
+    },
+    "workspaces/manual-20260910/production-staging/selected_fathom.py": {
+      "bytes": 1946,
+      "sha256": "6c5841fa760dc4699cd696f7d4b8f2bf7d78ce74191de0b23d01a8a7a5fa0d6d"
+    },
+    "workspaces/manual-20260910/runtime-manifest.json": {
+      "bytes": 1520,
+      "sha256": "270fda6f14ec92fc284d428155d887df1f7a3d2f49652410c378d8027e446c7d"
+    },
+    "workspaces/manual-20260910-v2/compose.production-manual.yml": {
+      "bytes": 403,
+      "sha256": "1fda19bc9f38b9e810fcb8d805664860505971560e76a55d524e2938f25c07dc"
+    },
+    "workspaces/manual-20260910-v2/compose.production-staging.yml": {
+      "bytes": 2059,
+      "sha256": "c57ed8718e27ae6431ff309660e67d62fa2dba096ff37f91f16c719d474a206e"
+    },
+    "workspaces/manual-20260910-v2/production-staging/__pycache__/run.cpython-314.pyc": {
+      "bytes": 5257,
+      "sha256": "f24edc7207fe70af62a60fa9d57dd6bc1843d4086cbebb31425abfd8c5c7d31a"
+    },
+    "workspaces/manual-20260910-v2/production-staging/bounded_worker.py": {
+      "bytes": 8048,
+      "sha256": "dd9d90dfde1c201ae9fbd9715f30c7ed9f63077652bbe91c73f741b2ed9a0c4b"
+    },
+    "workspaces/manual-20260910-v2/production-staging/disposable_index.py": {
+      "bytes": 8035,
+      "sha256": "69b3a8ee6ad3067e2587bd8f336cdee2fdefd35044c82a680f1cba3600301761"
+    },
+    "workspaces/manual-20260910-v2/production-staging/disposable_index_host.py": {
+      "bytes": 7539,
+      "sha256": "5fdb5d5a93525dd26b440740f4bfa1c274556acdde60d7c0b6bf53760f03d12e"
+    },
+    "workspaces/manual-20260910-v2/production-staging/indexing_budget.py": {
+      "bytes": 3265,
+      "sha256": "6a88265b155f558f60cecb2534173c8443a2dae9728326e8c1beac702b28304d"
+    },
+    "workspaces/manual-20260910-v2/production-staging/jobs/manual.py": {
+      "bytes": 5352,
+      "sha256": "9e0cf550d0dc32acaecadcb3bec8ca9c2390467e78614afb4b35264852cf43fa"
+    },
+    "workspaces/manual-20260910-v2/production-staging/jobs/store.py": {
+      "bytes": 20469,
+      "sha256": "e2bcf8d799180caf3784943b49f9bcf1c7af463c07c6e2fabf7fe6b60e5179af"
+    },
+    "workspaces/manual-20260910-v2/production-staging/jobs/worker.py": {
+      "bytes": 12914,
+      "sha256": "f6f69884c8aa39c7a4b7746bcc97f3212a8ddd218af27914b4f0462e18cca652"
+    },
+    "workspaces/manual-20260910-v2/production-staging/manual_host.py": {
+      "bytes": 6319,
+      "sha256": "1b379cd448a9dacf53c6e0ebb4f1c7d90e5d3640d9210a8e99f31846bd9ee1c3"
+    },
+    "workspaces/manual-20260910-v2/production-staging/manual_image_checks.py": {
+      "bytes": 6453,
+      "sha256": "35cb209f789ece2e3cffb2d2284b127c18da6e22132e638d38b1fb96e5913efe"
+    },
+    "workspaces/manual-20260910-v2/production-staging/manual_worker.py": {
+      "bytes": 7213,
+      "sha256": "ef7d32dfcae0cced1ae1d7002460e1bd1a58cce3b3b40f9b1bacbe0a195268c6"
+    },
+    "workspaces/manual-20260910-v2/production-staging/run.py": {
+      "bytes": 3528,
+      "sha256": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d"
+    },
+    "workspaces/manual-20260910-v2/production-staging/selected_fathom.py": {
+      "bytes": 1946,
+      "sha256": "6c5841fa760dc4699cd696f7d4b8f2bf7d78ce74191de0b23d01a8a7a5fa0d6d"
+    },
+    "workspaces/manual-20260910-v2/production-staging/selected_job_client.py": {
+      "bytes": 2916,
+      "sha256": "371c47e6bf4b1d4230661bf489014ee1e017d82c10c60632910530bb5c9f3b2d"
+    },
+    "workspaces/manual-20260910-v2/runtime-manifest.json": {
+      "bytes": 1635,
+      "sha256": "1e5f72732cde747a83e81a7555fc31522c4426a30fe9836093133a6d2ecaa993"
+    }
+  }
+}

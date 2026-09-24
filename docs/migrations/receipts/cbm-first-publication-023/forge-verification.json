@@ -1,0 +1,17 @@
+{
+  "receipt_hashes_verified": 5,
+  "remote_main_commits_match": true,
+  "six_artifact_hashes_match": true,
+  "tag_commit_matches": true,
+  "release_id": 390814260,
+  "three_downloaded_asset_hashes_match": true,
+  "installer_hash_matches": true,
+  "verified_at": "2026-09-17T15:12:53.036410+00:00",
+  "live_job_git": "complete",
+  "live_job_distribution": "released",
+  "api_healthy": true,
+  "api_restart_count": 0,
+  "api_publication_disabled": true,
+  "stored_publication_disabled": true,
+  "no_publisher_token_in_api": true
+}

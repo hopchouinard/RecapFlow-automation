@@ -1,0 +1,13 @@
+wrote docs/reference/README.md
+wrote docs/reference/hosts.md
+wrote docs/reference/services.md
+wrote docs/reference/network.md
+wrote docs/reference/issues.md
+wrote docs/reference/future.md
+wrote docs/reference/service-catalog.md
+wrote docs/reference/dns.md
+.....................................................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 293 tests in 2.714s
+
+OK

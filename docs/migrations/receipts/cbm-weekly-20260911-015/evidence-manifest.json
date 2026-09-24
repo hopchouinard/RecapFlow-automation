@@ -1,0 +1,41 @@
+{
+  "request_id": "CBM-WEEKLY-20260911-015",
+  "files": {
+    "receipt.md": {
+      "bytes": 6771,
+      "sha256": "6de982554939ad13a0b6457838b48412a8224f50ba140c7a390a9668c794e9c2"
+    },
+    "api-checks.json": {
+      "bytes": 2715,
+      "sha256": "a77d861f207180c53fe2e8bf74c77cf7670b28038efa5a77ff6d8c0bf3f31d0d"
+    },
+    "content-checks.json": {
+      "bytes": 389,
+      "sha256": "71818cb73265e3a6ca9966c5ed61316503e73d992f1d9bd2bcaab11228ee2dcd"
+    },
+    "renewal-budget.json": {
+      "bytes": 2948,
+      "sha256": "4f2837a9cfdce13bb6faff4b49bb7d1db762395d4f3d3fb968f6f42f046e0760"
+    },
+    "before-controls.json": {
+      "bytes": 1143,
+      "sha256": "34112ac8ffb789fabebc18a0213f505a0cdb894c1a27b2b9891322abcd6a2d35"
+    },
+    "after-controls.json": {
+      "bytes": 1140,
+      "sha256": "4fe042527ab08485a72582487a06cbc213b67766c847afd75aa7227473492dff"
+    },
+    "deployment-pins.json": {
+      "bytes": 317,
+      "sha256": "a0c87553750426ac94851f40c5127b71fe7fddf3d25cde197e96e99c6fa04cb1"
+    },
+    "runner-resume.json": {
+      "bytes": 430,
+      "sha256": "700be53a8ebf64030083893c7e3b7225c2df8d30bb143435be8bde161e244f77"
+    },
+    "runner-ticks.json": {
+      "bytes": 465,
+      "sha256": "f9bff93a7747d0e4fe419d41fd9c9a1e688be919a1aa521fcaf20a70ed23f439"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "verified_at": "2026-09-17T13:34:21.698443+00:00",
+  "existing_private_files_unchanged": 19,
+  "container_identity_image_start_environment_mounts_unchanged": true,
+  "new_file_only": "/etc/community-brain-production/publication.env",
+  "network_publication": "false",
+  "model_calls": "false",
+  "running_containers_checked": 2,
+  "publisher_variables_or_bundle_mounts_found": false,
+  "temporary_key_absent": true,
+  "download_key_absent": true,
+  "active_signing_key_fingerprint": "SHA256:8vviABYPgwVoYmEN+ijoAHTaa0SpTUWT5JaypQ2Eyno=",
+  "github_key_count_ui": 1,
+  "obsolete_key_absent_ui": true
+}

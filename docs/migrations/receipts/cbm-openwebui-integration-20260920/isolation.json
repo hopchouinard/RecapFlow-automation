@@ -1,0 +1,7 @@
+{
+  "internal_network": true,
+  "no_published_ports": true,
+  "only_isolated_network_attached": true,
+  "api_external_route_unreachable": true,
+  "scope": "candidate network and documentation-address route probe; not packet capture"
+}

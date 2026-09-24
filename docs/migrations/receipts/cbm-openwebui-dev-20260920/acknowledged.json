@@ -1,0 +1,11 @@
+{
+  "request_id": "CBM-OPENWEBUI-MIGRATION-20260920-026",
+  "actor": "Forge",
+  "acknowledged_at": "2026-09-20T15:13:03.208435+00:00",
+  "state": "consumed",
+  "verified_artifacts": 21,
+  "verified_source_files": 7,
+  "independently_verified_vm108_python_files": 6,
+  "receipt_sha256": "c14864f239852abab4eb3af46728972d9a607f9be1235bebd1777c6044b26a79",
+  "scope": "development acceptance only; real retrieval, full renewal, restore, capacity and production rollout remain pending"
+}

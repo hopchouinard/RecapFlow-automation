@@ -1,0 +1,98 @@
+{
+  "actual_kernel_boot_id": "7b3d1692-81df-49e1-9b2e-49efa996d71d",
+  "cases": [
+    {
+      "case": "stale_challenge",
+      "rejected": true
+    },
+    {
+      "case": "foreign_target_spec",
+      "rejected": true
+    },
+    {
+      "case": "foreign_source",
+      "rejected": true
+    },
+    {
+      "case": "foreign_machine",
+      "rejected": true
+    },
+    {
+      "case": "changed_incumbent_config",
+      "rejected": true
+    },
+    {
+      "case": "unknown_acceptance_flag",
+      "rejected": true
+    },
+    {
+      "case": "missing_startup",
+      "rejected": true
+    },
+    {
+      "case": "stale_startup_boot",
+      "rejected": true
+    },
+    {
+      "case": "foreign_startup_owner",
+      "rejected": true
+    },
+    {
+      "case": "stale_finalizer_boot",
+      "rejected": true
+    },
+    {
+      "case": "missing_finalizer",
+      "rejected": true
+    },
+    {
+      "case": "unrestored_writers",
+      "rejected": true
+    },
+    {
+      "case": "stale_proof",
+      "rejected": true
+    },
+    {
+      "case": "future_proof",
+      "rejected": true
+    },
+    {
+      "case": "foreign_owner_proof",
+      "rejected": true
+    },
+    {
+      "case": "foreign_incumbent",
+      "rejected": true
+    },
+    {
+      "case": "changed_holds",
+      "rejected": true
+    },
+    {
+      "case": "production_target",
+      "rejected": true
+    },
+    {
+      "case": "unhealthy",
+      "rejected": true
+    },
+    {
+      "case": "service_active",
+      "rejected": true
+    },
+    {
+      "case": "uncertain",
+      "rejected": true
+    },
+    {
+      "actual_connection_refused": true,
+      "case": "unknown_ssh_host_key",
+      "rejected": true
+    }
+  ],
+  "negative_count": 22,
+  "observation_origin": "fresh challenged SSH with StrictHostKeyChecking=yes; no receipt-file input in entry points",
+  "positive_live_readback_verified": true,
+  "target_spec_sha256": "8b7de80ec681b816a8179cc78f024a88f9e41500ec81faf933116ba715cc588e"
+}

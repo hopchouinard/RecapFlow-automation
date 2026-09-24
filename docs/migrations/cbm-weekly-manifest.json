@@ -1,0 +1,12 @@
+{
+  "files": {
+    "bounded_worker.py": {
+      "bytes": 8194,
+      "sha256": "dee7265d7a316d632e621cb2557fe8802c510bf67df04a6b6f2ebc051b8d04bd"
+    },
+    "indexing_budget.py": {
+      "bytes": 3393,
+      "sha256": "2ae01cffd84788010adda5f2613fec61ef995c8e07d3173a42c74aee6e44a1ca"
+    }
+  }
+}

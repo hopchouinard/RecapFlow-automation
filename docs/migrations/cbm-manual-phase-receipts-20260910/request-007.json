@@ -1,0 +1,20 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-10T06:37:52.236706+00:00",
+  "title": "Close maintenance gaps and execute verified manual ownership supersession",
+  "deadline_utc": "2026-09-11T01:25:00Z",
+  "authorization": "Existing approved manual ownership phase and request to complete remaining work. Conditional hold-mechanism supersession only after verified prerequisites; no publication, existing-session replacement or retirement.",
+  "entry_document": "cbm-manual-ownership-management-handoff.md",
+  "document_sha256": {
+    "cbm-manual-ownership-management-handoff.md": "84567a99c55a4286875fa160e248af823ae530b5d8c45feebb612d2438b71c3c",
+    "cbm-manual-processing-cutover-phase.md": "910e8a58539aca1ef094dc1e66156e84f211c5d1ffb6abb0fac80107cf57e474",
+    "receipt.md": "3172c4c082c7cce4f5bba5952ec4549bb91a40f806e861c3b8f6d125ede2bd67",
+    "ownership-supersession-proposal.md": "a30cd87d6127b92526e63f723ea3c7ea42ab28485f8df02fae7a6aa8802810e0",
+    "OPERATIONS.md": "c99ae6889c23ceacb46bb1efa40036eeb0b884b175169f8918791ff804efffaf",
+    "paired-recovery-manifest.json": "58dadeb9b019b2b97ce756beda819fbd2b90c632ddc2e6b99d842a5ca680ebc1",
+    "forge-verified-manifest.json": "a86de13e41eefef3d8020519cb6c4040127f2fa12a32e2fa8af388d2ddb0fa25"
+  },
+  "response_directory": "responses/CBM-MANUAL-OWNERSHIP-20260910-007"
+}

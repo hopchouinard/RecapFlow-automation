@@ -10,11 +10,11 @@
 
 session_themes:
   prompt_file: session-themes-v1.md
-  model: google/gemini-3.1-flash-lite-preview
+  model: z-ai/glm-5.3-flash
 
 chunk_extraction:
   prompt_file: chunk-extraction-v3.md
-  model: google/gemini-3.1-flash-lite-preview
+  model: z-ai/glm-5.3-flash
 
 # NOTE: extract_signal and prep_prompt are NOT loaded by ExtractionConfig.
 # They are tracked here purely for version coordination with the n8n pipeline

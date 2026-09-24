@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "case": "changed",
+      "rejected_before_admission": true,
+      "returncode": 1
+    },
+    {
+      "case": "extra",
+      "rejected_before_admission": true,
+      "returncode": 1
+    },
+    {
+      "case": "bytecode",
+      "rejected_before_admission": true,
+      "returncode": 1
+    }
+  ],
+  "negative_count": 3,
+  "retained_path": "/Users/pchouinard/.local/state/community-brain-management/request032/source-negatives-1790015501918086000"
+}

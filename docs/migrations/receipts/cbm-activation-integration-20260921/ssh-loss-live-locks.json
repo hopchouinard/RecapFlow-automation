@@ -1,0 +1,12 @@
+{
+  "ordered_locks_held_after_ssh_loss": [
+    "automation/runner.lock",
+    "files/.manual-worker.lock",
+    "files/.submission.lock"
+  ],
+  "automatic_launcher_excluded": true,
+  "manual_launcher_held": true,
+  "detached_worker_still_running": true,
+  "outcome_retained_as_uncertain": true,
+  "mac_scheduler_mutex_retained_during_uncertainty": true
+}

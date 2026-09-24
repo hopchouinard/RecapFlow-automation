@@ -1,0 +1,120 @@
+{
+  "checkpoint-consumer": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "e1a209e189b3aba39a2203f544e22c59820bd06fe04392142a4bfa857de20167",
+    "effects": [
+      "Read actual processing pause before checkpoint effects",
+      "Nonpaused source can capture DB/files/PBS, restore and acknowledge under a quiet-window lease; those effects remain forbidden in this mapping phase"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Candidate exercises the actual paused branch and preserves attention/checkpoint bytes. Unpaused state requires its separate checkpoint owner and authorization; capture must never silently acknowledge or replay retained work.",
+    "source_path": "platform-services/community-brain-prod/automatic-recovery/consumer.py",
+    "source_sha256": "43dc79953177bf172a986927c9723c25018e72bb2cf343b54c1cb11784d2043e",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "copy-backup": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "cdd4d866eac8a03050523f3f61c085e2829c6998e89555767aac9ca1bb1a45a2",
+    "effects": [
+      "Stream latest native dump from DB10.1.10.50 through private Mac tempfile to VM109 /srv/community-brain/db-backups",
+      "Actual deployed writer stages .partial then replaces final name; ordinary policy retains14 backups"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Read source and final size/hash, plus partial identity. Preserve every Request033/protected-capture attempt. Do not reuse the deployed overwrite/prune behavior for protected capture. An unverified final object is not a successful copy.",
+    "source_path": "platform-services/community-brain-prod/integrations/copy-backup.py",
+    "source_sha256": "fb4e863a074af324bdf709b71ee21de577fcc7a7cb860796c538d8ade64a016b",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "legacy-intake-ownership": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "a2775c2f044329a3a4be23bee452b5b3b1c40a038869e79eb3c9ebed51d3ba32",
+    "effects": [
+      "Read retained terminal superseded ownership receipt and legacy LaunchAgent ownership",
+      "Keep AppleScript intake disabled; do not fetch, renew, restart or depend on VM101"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Terminal superseded state is authoritative; retain old recovery receipt. Any ownership regression blocks admission. Never restart the old writer as recovery.",
+    "source_path": "mac-intake.py",
+    "source_sha256": "50bdfd78990cc77a6b3f5becb5fb8b4073229f57e4f15ebba22d395e243ee60d",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "management-health": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "10ae782e4ab1f6bc4ccc5959e2f7344dd6e101552ae38cee838676fe9f5868db",
+    "effects": [
+      "Read expiry, TLS, renewal and recovery-copy state",
+      "Publish VM109 management JSON and node-exporter textfile health status"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Read both actual output files and freshness timestamp; report critical/stale truthfully. Retain prior output and pending journal on unknown write, do not translate health publication into application acceptance.",
+    "source_path": "platform-services/community-brain-prod/integrations/management-health.py",
+    "source_sha256": "413b838265664fe522befbb21356c8434f79400123002336a20a43d80363cff7",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "monitor-publish": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "285ff2e36421e2641fb78157a02b721c677fa741db5c61d6e20b7f093dcca3fd",
+    "effects": [
+      "Publish actual heartbeat/status metrics",
+      "Failure publication can create management-attention only when absent; existing attention/checkpoint are preserved"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Compare durable status and hold hashes, mark stale/blocked explicitly. Never clear attention or use a heartbeat to bypass the common journal.",
+    "source_path": "platform-services/community-brain-prod/automatic-recovery/monitor_status.py",
+    "source_sha256": "b4a2f19a83923fdea6760556aaed087aefd5144b28d556f9b6a2bb2962dafd56",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "pre-pbs-copy": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "a95d507379182c9b9d00470ed8d5198004e7db55e8642e0beb8d6fcd01503047",
+    "effects": [
+      "DB10.1.10.50 native dump inventory and pg_restore list; native exit status and freshness <=7200 seconds",
+      "Mac private temporary stream and VM109 /srv/community-brain/db-backups checksum-paired object; next PBS window 21:00 local"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Read native status, source size/hash before and after, final destination hash. Retain partials and uncertain journal; never infer success from SSH exit. A protected capture uses exclusive capture IDs, not the old rolling-copy prune policy.",
+    "source_path": "platform-services/community-brain-prod/integrations/pre-pbs-copy.py",
+    "source_sha256": "70e349ae4be4952970b4a02c715cf96b2d72857633e7f4ef2f003662796b04f7",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "provision-nats-tls": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "0e0f8fec0798d432a0f87101b41941d28a9f0be7ebcfffe1823567175cef8f75",
+    "effects": [
+      "Step CA 24-hour certificate; renew below 12-hour remaining lifetime; Infisical certificate/key fields",
+      "PVE1 CT304 at 10.1.10.54, Nginx TLS sidecar port4223 permits VM109; backend4222 and unrelated services unchanged"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Read authority certificate fingerprint/expiry and exact sidecar files, running container and TLS handshake. Preserve previous files and container ID; unknown issuance is reconciled by fingerprint before any reissue. Protocol tests cover the current-certificate deployment branch; actual CA issuance acceptance is not claimed.",
+    "source_path": "platform-services/community-brain-prod/integrations/provision-nats-tls.py",
+    "source_sha256": "96342a191688d69f5e3dcbb824c5d4ba980745b3fcd34d7f13797527992d45b7",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "renew-app-tls": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "38a32871507bb7fa1502a1d077e06a60f22fb755546594038f694413d409131a",
+    "effects": [
+      "Step CA application leaf certificate and Infisical certificate/key fields",
+      "Traefik /mnt/HDD_2TB_Main/traefik/certs and dynamic TLS configuration, hot reload"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Read exact source/deployed certificate fingerprint and private-CA route handshake. Restore retained previous files on failed acceptance, without restarting shared Traefik. Unknown issuance or deployment blocks replay. No live issuance was invoked.",
+    "source_path": "platform-services/community-brain-prod/integrations/renew-app-tls.py",
+    "source_sha256": "517cd31cda37a9f33eea2b4f308a3254aa29772389d08ffca57387cdcbe1a4e4",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  },
+  "renew-service-tokens": {
+    "admission": "shared-journal-before-effect",
+    "dev_receipt_sha256": "77ad69c499916eb9570f11af7e0177a70dfe1cf7a29564030493c7aa484f2138",
+    "effects": [
+      "Infisical /production/community-brain service authority; five subject identities, seven-day life and three-day lead",
+      "Successor VM109 API generation, collector, successor WebUI filter, Kuma monitor and Prometheus bearer file",
+      "Old/new overlap verified at every consumer before old authority revocation; journal stays in Infisical"
+    ],
+    "legacy_dependency": false,
+    "recovery": "Read the same generation journal and every consumer identity. Resume that generation only after explicit reconciliation, never mint on an unknown outcome. Independent finalizer restores exact incumbent if recreation is interrupted. Dormant VM101 references are replaced by successor VM109 binding; real successor acceptance remains a separate gate.",
+    "source_path": "platform-services/community-brain-prod/integrations/renew-service-tokens.py",
+    "source_sha256": "8c60327ae679fa5f4cea905bd0c4eec95a3b6e30fc9b2fcf0279dcd6d0137716",
+    "unknown_outcome": "retain-and-readback-no-replay"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "request_id": "CBM-OPENWEBUI-MIGRATION-20260920-026",
+  "target": "home.servers",
+  "created_at": "2026-09-20T03:27:56.506365+00:00",
+  "deadline": "2026-09-21T20:00:00Z",
+  "authorization": "Patrick authorized implementation, mandatory VM108-first validation, and clarified OpenWebUI migration with n8n-automation recovery-only. Existing authorized relay and disposable development administration.",
+  "scope": "read-only migration inventory; isolated VM108 rehearsal; production rollout preparation only",
+  "documents": {
+    "cbm-openwebui-migration-request.md": "0e174a5d13ec31201800fc4c3629694bbcebf040078561eff12b4d05e4f6d5d2"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-MANAGEMENT-INTEGRATION-20260920-027",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-20T21:42:46.292024+00:00",
+  "summary": "Development Infisical/lease/API/WebUI/monitor renewal validation passed; same generation resumed and old keys rejected. Source candidate and rollout gates returned; production unchanged. Request027 fixture stopped and retained.",
+  "receipt": "receipt.md"
+}

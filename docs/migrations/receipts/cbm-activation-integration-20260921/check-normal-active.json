@@ -1,0 +1,32 @@
+{
+  "case": "normal",
+  "phase": "active",
+  "authenticated_subjects": {
+    "subjects": 5,
+    "old_rejected": false,
+    "scope_denials": true
+  },
+  "anonymous_rejected": true,
+  "live_openwebui_filter": true,
+  "synthetic_source_count": 1,
+  "monitors": {
+    "bundle_permissions_and_values": true,
+    "bundles_used_for_actual_api_probes": true,
+    "collector_read_denied": true,
+    "collector_upload_tested": false,
+    "actual_kuma_fresh_up": true,
+    "actual_prometheus_fresh_up": true
+  },
+  "monitor_after": 1789958490.1228428,
+  "holds_preserved": true,
+  "api_container_id": "f970ebeb0d2f43a63fb31cb752411a2f980153847b8f09e653c8c84e477c2bce",
+  "port_binding": {
+    "8090/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "19930"
+      }
+    ]
+  },
+  "packet_sha256": "c9326fd4bf149b68fcbc40fb7ab49a2ce23b4c7711a36ea9a5a99e8b41ebbb76"
+}

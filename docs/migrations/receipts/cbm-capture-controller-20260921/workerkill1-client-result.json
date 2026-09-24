@@ -1,0 +1,41 @@
+{
+  "label": "workerkill1",
+  "mode": "workerkill",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003479.4918413, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-workerkill1-1790003467\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"worker_failure\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003478.587425, \"spec_sha256\": \"63aaa06bb19bfe1e6598da76bab4ee3242f1b4a4b93661a916118a3f9dc88467\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "signal": "KILL",
+      "target": "worker",
+      "pid": 2084010,
+      "returncode": 0,
+      "at": 1790003476.008211
+    }
+  ],
+  "spec_sha256": "63aaa06bb19bfe1e6598da76bab4ee3242f1b4a4b93661a916118a3f9dc88467",
+  "operation_id": "r031-workerkill1-1790003467",
+  "readback": {
+    "at": 1790003479.4918413,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-workerkill1-1790003467",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "worker_failure",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003478.587425,
+    "spec_sha256": "63aaa06bb19bfe1e6598da76bab4ee3242f1b4a4b93661a916118a3f9dc88467",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

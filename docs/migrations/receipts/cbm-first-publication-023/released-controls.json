@@ -1,0 +1,8 @@
+{
+  "runner_idle_after_lock_release": true,
+  "attention_markers_absent": true,
+  "api_healthy": true,
+  "publication_disabled": true,
+  "model_calls_disabled": true,
+  "restart_count": 0
+}

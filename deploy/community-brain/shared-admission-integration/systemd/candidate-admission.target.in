@@ -1,0 +1,4 @@
+[Unit]
+Description=Development candidate admission after verified boot recovery
+Requires=cbm-r032-boot.service
+After=cbm-r032-boot.service

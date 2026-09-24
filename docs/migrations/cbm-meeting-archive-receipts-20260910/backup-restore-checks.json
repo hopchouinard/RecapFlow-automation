@@ -1,0 +1,11 @@
+{
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "checked_at": "2026-09-10T17:05:43.609873+00:00",
+  "private_offhost_archive_sha256": "2e6c9fb68dfd6e2bdd73dc3e11b16d4d3b2ff97bdf23fb513f71e56b33f4e7fd",
+  "isolated_restore_files": 481,
+  "meetings": 87,
+  "restored_packet_files": 11,
+  "safe_tar_members": 522,
+  "temporary_extraction_removed": true,
+  "database_queue_provider_access": false
+}

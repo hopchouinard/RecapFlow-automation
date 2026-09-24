@@ -1,0 +1,445 @@
+{
+  "checked_at": "2026-09-21T15:27:03.347560+00:00",
+  "containers": {
+    "cbm-r030-webui-wrong-key-a02": {
+      "id": "4123cd3a7ec861b49dd0337f69209df1a9a45b19dd31284a559dcb31ba3d6787",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T12:26:35.822932819Z",
+      "restart_count": 0,
+      "configuration_sha256": "30cf6af23a927f72e27567f14ee05137c082d088fe8e0fa4fc5dc9aff9d2462c"
+    },
+    "cbm-r030-webui-restored-a02": {
+      "id": "3e35d5f8b7b6e18ed4db725e2ba752cae258684523bc9cba4376bfaf6687bd90",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T12:24:59.072607303Z",
+      "restart_count": 0,
+      "configuration_sha256": "37964c71791a704f34472ef8d248005f32761a9882616212fedd48ed6161c6d8"
+    },
+    "cbm-r030-pg-restore-a04": {
+      "id": "b13f60a171cff1ab63b4428cd19a853a1657c0ba619f63a9589d434df6675a41",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T12:23:11.383964311Z",
+      "restart_count": 0,
+      "configuration_sha256": "2334f19dfab65c9649ac18ec73b98edfa0a1a3ac1a7396c3a5d44e0c45ed8155"
+    },
+    "cbm-r030-pg-source-a04": {
+      "id": "131b72a8e99c22acf7b89ebaf3081385d87374a9d8ad7332ab43b64b7a0524d8",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T12:23:03.467023965Z",
+      "restart_count": 0,
+      "configuration_sha256": "ace96b8c368aebaad351b7f9ce29e3d983d28d70e91fd07117ae749a4c69e2ec"
+    },
+    "cbm-r030-webui-source-a02": {
+      "id": "65a51edf6b9189079b75f34f66ad266fa87c57696363169933d1896dfb41a524",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T12:23:01.596473162Z",
+      "restart_count": 0,
+      "configuration_sha256": "6af1da1d5c38fcdb42c3ecc98ceec798ab8a9b589fb5a04301009bb316f8cdce"
+    },
+    "cbm-r030-pg-restore-a03": {
+      "id": "c5b0cb47824ff5d590f9e169f4a31c3f5a850bd94671be1a75cf97828f97f74e",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T12:21:49.864808834Z",
+      "restart_count": 0,
+      "configuration_sha256": "be7c25c20aa619cd74769024000fdd012d133743409746e0c4cb100172885d39"
+    },
+    "cbm-r030-pg-source-a03": {
+      "id": "1737d4a9014e9ce06b229fdb68091169523e6d0359e893885993a5476eb02e6e",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T12:21:44.254631763Z",
+      "restart_count": 0,
+      "configuration_sha256": "f2cf34499e3016300d6ef5adc7c765d100e3d04c8f92fbce2cd933bf1c79a192"
+    },
+    "cbm-r030-webui-source": {
+      "id": "00393cb402e67207530baf4ee1db1499699344e38ebf1523341cd32a9a48533c",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T12:18:40.533630957Z",
+      "restart_count": 0,
+      "configuration_sha256": "558611e5e61e76bad9b09b6bbc9938f4b9292614cf07645f03dd2b2c5801d2ac"
+    },
+    "cbm-r030-pg-restore-a02": {
+      "id": "d40baeeb4d3590f7718074b887c5fb22f69c6eb11f978ace16850b3229163a81",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T12:17:02.45975461Z",
+      "restart_count": 0,
+      "configuration_sha256": "9764d9e8871bc9495f650bbbe1677b247797d0e5f22c4950d51d7ff17d13350f"
+    },
+    "cbm-r030-pg-source-a02": {
+      "id": "b925fb3d8f03bf980a5c690ec83462e75900db450c8d3b43caba086a67012039",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T12:16:55.844410949Z",
+      "restart_count": 0,
+      "configuration_sha256": "84a60b90f42ff95f3e7c83d5db7703be5107006e87dd31cc961b83367ea50834"
+    },
+    "cbm-r030-pg-source": {
+      "id": "27e47f1153a00632e16fb7a9923964a9fc6195b2a2e52913a0484978d2c04a2a",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T12:15:48.901272316Z",
+      "restart_count": 0,
+      "configuration_sha256": "5c09b597a4209e0d64b1b4addff98162bbf47ca181ce8b5265efd40e37ea6914"
+    },
+    "cbm-r029-normal-webui": {
+      "id": "7e2ac1184c85124dab9c4cbe15b7e995dab6107071d4f2ac47ceed81ca7bdbd2",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T02:37:49.6466574Z",
+      "restart_count": 0,
+      "configuration_sha256": "b2124c7e44f8ff106a954fb3f4f4a67827be13cae00bd8bf31071667d53d3c50"
+    },
+    "cbm-r029-normal-api": {
+      "id": "f970ebeb0d2f43a63fb31cb752411a2f980153847b8f09e653c8c84e477c2bce",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T02:37:40.40336966Z",
+      "restart_count": 0,
+      "configuration_sha256": "d9c1625f03e0160c8c61b3994b7760e00cb15d735d6e1cedb8f0c20e57d7afd5"
+    },
+    "cbm-r029-partial-webui": {
+      "id": "79eb06b345136873e3d81e872d01c89a87912c211b3829b75ad0b625ff772408",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T02:33:49.16791056Z",
+      "restart_count": 0,
+      "configuration_sha256": "4530eb8434f4c62b1d6af5262c27fdca1d241c7f15a531049b7a0c2bd675b62c"
+    },
+    "cbm-r029-partial-api": {
+      "id": "c7ecaa89c254ffd077358017d819ae7ed2620c9b0f51a61ca81e4a791063563f",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T02:33:19.772801778Z",
+      "restart_count": 0,
+      "configuration_sha256": "d6e6b7505ae2a2a078a69084be007af760e183843132bd6d5e2c4c210b733a96"
+    },
+    "cbm-r029-readiness-api": {
+      "id": "76fea055f99dcfb5b369ef1fa366500f8b90042584b8acfde99e21e4c0c0c8ce",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T02:32:00.871774241Z",
+      "restart_count": 0,
+      "configuration_sha256": "ccb02765aede02017d8a56b22a84fa6359cdf9ce86f4557dbe4a6f0427a88101"
+    },
+    "cbm-r029-api": {
+      "id": "4b681021615aa6f28f32fed02d772661ebe8a7a5733359c284c6ca94beed7db7",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T02:42:58.365905344Z",
+      "restart_count": 0,
+      "configuration_sha256": "d9a60e738443f038563729ff1ebfdcee112f1a3ee4e0b3aa41780f63c942df47"
+    },
+    "cbm-r029-provider-1": {
+      "id": "e46ae5da0d1cb1d1cd2a75ea7553e617fbad795f50dec6dd267fd0171cec2cd1",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T02:22:45.838315868Z",
+      "restart_count": 0,
+      "configuration_sha256": "c43168b570c3c69240b712cf8b0375601132d32752f7e8a2811459224de3b26a"
+    },
+    "cbm-r029-prometheus-1": {
+      "id": "ee667c9bf5158a4e21cf00d41c492e81c378c4c324c5c87382b3be5747ae4207",
+      "image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+      "running": false,
+      "started_at": "2026-09-21T02:20:45.998947488Z",
+      "restart_count": 0,
+      "configuration_sha256": "fae3ad15443ee86a167caae8817bab10c829080f6df242ec4256fa27b94b828d"
+    },
+    "cbm-r029-kuma-1": {
+      "id": "e080c6d62a8b2727caeb91f55643a33651c0159867719839f24bac87b22eda48",
+      "image": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+      "running": false,
+      "started_at": "2026-09-21T02:20:46.056342867Z",
+      "restart_count": 0,
+      "configuration_sha256": "a9e2890873b24dfff927d2867a8260e6f0c50affe264e52ee528f202a7b0824b"
+    },
+    "cbm-r029-webui": {
+      "id": "1efc4401b747cbef37f4f55e3f427dfcd5a343ccb2b21ebf07d63cccaa0224f7",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T02:26:59.317851136Z",
+      "restart_count": 0,
+      "configuration_sha256": "ce9afe62ec16d9955f7e793b4a11b998968b50420935b06b534c444bc0097a41"
+    },
+    "cbm-r029-pg-1": {
+      "id": "c4392b6b3f44663922fda2c4a57747fc4b5b0c893718b02b76e6a1c29ff90518",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T02:16:01.069389978Z",
+      "restart_count": 0,
+      "configuration_sha256": "7e03ef5e39b5cd93e2ca8ff385b338178604fc4f6203241953ccb63105a9c2f8"
+    },
+    "cbm-r029-nats-1": {
+      "id": "3a3a1f8ff07fc9037049a13926ee70ce84043d23124589c6dd6013f99f3bbb13",
+      "image": "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e",
+      "running": false,
+      "started_at": "2026-09-21T02:16:01.182677835Z",
+      "restart_count": 0,
+      "configuration_sha256": "72d2e28876441fe236088389a4293745cb0d7c4674926874011a9a655b3600d7"
+    },
+    "cbm-activation-validation-webui-v3": {
+      "id": "7c78cbfe1f4a329dc3adf3e5d09c98bf37c442436db0fe99df8eb3e916bca4c1",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T01:29:45.522948225Z",
+      "restart_count": 0,
+      "configuration_sha256": "1f7a36564f32004b3663ef2d86f29e58f5dc54a4d09e1ae2d971d07aac29807e"
+    },
+    "cbm-activation-validation-api-v3": {
+      "id": "5bd7c172752557f1650757c505f67091c4a9e8dad5bb76e6e8229bc97f383ad0",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T01:29:39.456518061Z",
+      "restart_count": 0,
+      "configuration_sha256": "6e15cf275f8edd244a83829afcb5d2d28a650373d1da48a8c54f2eeabbaae7f7"
+    },
+    "cbm-activation-validation-webui": {
+      "id": "51c36d4b02b9a1b665c799a7bd7d4aec49e6cd6901bc654af42d393cc1257f6b",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-21T01:27:04.01638455Z",
+      "restart_count": 0,
+      "configuration_sha256": "2ef05a9529ef0993468701350376f60edc8e4369fb999fc7a48c2904401a01c3"
+    },
+    "cbm-activation-validation-api": {
+      "id": "c243dac4fec9a77d34be6773b4d05b21841c7ac0d89de269b35b987223596925",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T01:26:53.811640326Z",
+      "restart_count": 0,
+      "configuration_sha256": "143c0bc0a8d92fbbcae11c14fd490589631c89573bed77c89cc7ecb5a235c08d"
+    },
+    "cbm-activation-validation-incumbent": {
+      "id": "127f1945eef421b9a66008ba9da8f0725f74f1cbd29b7f67bd4b39ec8a81f69e",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-21T01:31:44.59208282Z",
+      "restart_count": 0,
+      "configuration_sha256": "8fc5963ed11e2a99c39f2bf5d27435f10689244447c53331263f23703c6193af"
+    },
+    "cbm-activation-validation-pg": {
+      "id": "06bb6d8faac0cada6b8a48c1e2208b8dcf99f203bae2bd812418dc38d08a33ff",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-21T01:23:13.364151521Z",
+      "restart_count": 0,
+      "configuration_sha256": "b6babd09e2547768c36428947fcc0c7c4b9fded20e0ce958e0bbdb3f5c453506"
+    },
+    "cbm-r028-api": {
+      "id": "c4f6c59262bb613876648dbfe065957a354aa5dd7c5535e860fbb6af1defa3bd",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-20T23:03:05.624736376Z",
+      "restart_count": 0,
+      "configuration_sha256": "665c0b7c58f0657bc3beee1e450ae13bdaeab614894cdcfbf83e509c7b68cfac"
+    },
+    "cbm-r028-prometheus-1": {
+      "id": "cd094c2b9717a76ce3845c163c4864efa53599d6bbc326822b0aec7b57d0f8e1",
+      "image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+      "running": false,
+      "started_at": "2026-09-20T22:48:16.962273731Z",
+      "restart_count": 0,
+      "configuration_sha256": "5c205eb6cbfb104a30033b5cf1b5bd7c7a8a900144563acc944f14e183f49660"
+    },
+    "cbm-r028-kuma-1": {
+      "id": "5efd3c6050ab94816fac59c29cb5e7145b9e79c0b44b9c8c119854ddd3ae5d6d",
+      "image": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+      "running": false,
+      "started_at": "2026-09-20T22:48:16.985121709Z",
+      "restart_count": 0,
+      "configuration_sha256": "ef6f4b217666a41e271cc36c07651f7795d411795d0d94f3daa768eb2f5aa79b"
+    },
+    "cbm-r028-webui": {
+      "id": "9ae10e5648214417003f272aa93b2e4e4c45f8288a3a65f12f315db2120eae63",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-20T22:53:40.579752297Z",
+      "restart_count": 0,
+      "configuration_sha256": "5e76b3ec1eae8a96933f0e61f60bbc510fed7d9b4e35b3f55403e57f63b4be04"
+    },
+    "cbm-r028-pg-1": {
+      "id": "f098cfde557dfa76d31aef4b63d9608d17a4b5e02cbcba23c85f4612340b4a0d",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-20T22:41:13.92850418Z",
+      "restart_count": 0,
+      "configuration_sha256": "3e676f5a1fba00f6281c83c920ade79884aef5cf62f0bc3c3279abf34ad911b5"
+    },
+    "cbm-r028-provider-1": {
+      "id": "f3cd29234ec106ae7e56e94f8d2755f01c5818e5cc00766bb9c30b951d8fea7e",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-20T22:41:13.857036922Z",
+      "restart_count": 0,
+      "configuration_sha256": "8f984a64aab51ff6c19bbeb369f4b78fadd55010ec4bee8e20383688e417c8d9"
+    },
+    "cbm-r028-nats-1": {
+      "id": "2a61bc4b568472f6c5862f70f24fe0f5446408e769d8233907e610bc7e3899c0",
+      "image": "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e",
+      "running": false,
+      "started_at": "2026-09-20T22:41:14.00381727Z",
+      "restart_count": 0,
+      "configuration_sha256": "f634264cb4d32d6f1a9eee6bd08bd4caed740afe5035028279347399e05f9932"
+    },
+    "cbm-r027-api": {
+      "id": "6fb5f8c86979881611f3688b131704e1d2eab53dd604ee42e7265273b5574347",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-20T21:35:09.016430064Z",
+      "restart_count": 0,
+      "configuration_sha256": "df68c35e4a398201716f8d4623ea084b3705d7cce1362ffc4d96f41efad2ee28"
+    },
+    "cbm-r027-prometheus-1": {
+      "id": "ed9c93b2d7d8b4b7d30f63fb1f821cf4804b8da1e9b27a751725cd73b60d8776",
+      "image": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+      "running": false,
+      "started_at": "2026-09-20T21:22:54.718401912Z",
+      "restart_count": 0,
+      "configuration_sha256": "d9cb454c8c0f9ecf6187de87f1bac76c69c478eec1c64c052cece457875f76fe"
+    },
+    "cbm-r027-kuma-1": {
+      "id": "d3a618f62b6329173bbf5ec04c9d3af0d53430e4c70429f2d6972fcacb8e2e52",
+      "image": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+      "running": false,
+      "started_at": "2026-09-20T21:33:07.111839792Z",
+      "restart_count": 0,
+      "configuration_sha256": "29113305cf33ddb71cf4a2cfc085359e8680b1395c66136d505de88817eaf030"
+    },
+    "cbm-r027-webui": {
+      "id": "00983e3279160bbb7706472c1cf620b312e41d58727e347b6f2b6b9a27c64b54",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-20T21:15:08.628113027Z",
+      "restart_count": 0,
+      "configuration_sha256": "8350642aa774570487ab3139f24162998bbafa468679e1a599ddb79924298ba3"
+    },
+    "cbm-r027-pg-1": {
+      "id": "823fcb034faa12764a4951b72a33c13748d9c670819bcaf67825d40b86b44fbb",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-20T21:14:39.74617036Z",
+      "restart_count": 0,
+      "configuration_sha256": "cc7e39d8881a30436e46e0a72ee35f07105c6686882f94fb7564ced456fc854c"
+    },
+    "cbm-r027-provider-1": {
+      "id": "631166d05d55d350313e763fe3402be249b0daa259591c3c85d41d0f4e9bc3bb",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-20T21:14:39.809814926Z",
+      "restart_count": 0,
+      "configuration_sha256": "3941bda1222d5ed2fa175b8bd1c34eecdfaebdf726b0d8e51fbb2e4ee389cc7e"
+    },
+    "cbm-integration-dev-webui-1": {
+      "id": "1e6bf61e59fc73bdbf2eb8e4d7daa668cec8e56074a5eb656819dc49d62bbcea",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-20T17:56:15.489754461Z",
+      "restart_count": 0,
+      "configuration_sha256": "5d811e3d3f9f20850899ad026677d7344f48c7ebffe0052c990db3dfc7cea33a"
+    },
+    "cbm-integration-dev-api-1": {
+      "id": "70ade0b8cb23afd0b9a6e83c0dfbd3a5b7589a47df8dee164959fbb3ddd4dae6",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-20T17:50:33.371395899Z",
+      "restart_count": 0,
+      "configuration_sha256": "1252eb8c5b614d4db0f4d42e453e9d299fc2df43ececad2d525617e513ac9e01"
+    },
+    "cbm-integration-dev-pg-1": {
+      "id": "6d713a71816bafbebc65e90c79286c15ae5be3817f040a9b64cf61a4e1e6519d",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": false,
+      "started_at": "2026-09-20T17:42:13.891927431Z",
+      "restart_count": 0,
+      "configuration_sha256": "e2f0ce779cba95b524a91b51e8994849565722ee04961827cdbccba2564b0346"
+    },
+    "cbm-integration-dev-provider-1": {
+      "id": "422feb1f8315a493900aa840a37390e4aeb13f10a3cb4e96fb2724926e11a218",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "running": false,
+      "started_at": "2026-09-20T17:43:12.779591691Z",
+      "restart_count": 0,
+      "configuration_sha256": "0ab3d6e75491005f0b247baee7d0dc76d01c525b1d49f139f7efcfa41790345a"
+    },
+    "cbm-r026-webui": {
+      "id": "87c67180b8fae0a50d62724705928b48a59d86c25aeb624f7e370067d6733875",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "running": false,
+      "started_at": "2026-09-20T03:49:30.859707179Z",
+      "restart_count": 0,
+      "configuration_sha256": "c977f5f1c5179261d83b135ba81c653ee3450efa3acf269bc8c1aec096b0c8a6"
+    },
+    "cbm-r026-fixture": {
+      "id": "353b02c21accb76312e5020e27573a918fee120b91d5032987af1658cfa27fde",
+      "image": "sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534",
+      "running": false,
+      "started_at": "2026-09-20T03:41:14.144971087Z",
+      "restart_count": 0,
+      "configuration_sha256": "4c40b4d3cc3f5c4b68341b3c1b0c99c4aa0b321565530da376aae32b00225ba2"
+    },
+    "cbm-collector-development-proxy-1": {
+      "id": "47aa1fe97171afbde1b1d187931d8b7ae27782529b8a07ebfc55ea044adfaf88",
+      "image": "sha256:72ba65eb42c10344912a84ff42408db7d34f2feb642204570ab8fc5ffd29f1d3",
+      "running": true,
+      "started_at": "2026-09-20T00:36:03.623525112Z",
+      "restart_count": 0,
+      "configuration_sha256": "1cea0250609d0a79f32abb7a2a7f113644e486fd0ac627ef7ba1c33dc2e65871"
+    },
+    "cbm-live-development-api-1": {
+      "id": "b4fb505a299132e15899a5323c17f53020c1f274ac330526e7fd314398ebc958",
+      "image": "sha256:b3a1284201f42ef7cb603ff9866c999ba084350a9ae9e65a122f5a36ad95aedc",
+      "running": true,
+      "started_at": "2026-09-20T00:35:58.249267745Z",
+      "restart_count": 0,
+      "configuration_sha256": "941b069c49f40461f0b91d1624b73721b00f209e80b57952e88e718fe1f59667"
+    },
+    "cbm-live-development-initialize-1": {
+      "id": "20cf78c09eac836956eefc006433ad1ece753d8517dc3416246e407b4443f3ca",
+      "image": "sha256:b3a1284201f42ef7cb603ff9866c999ba084350a9ae9e65a122f5a36ad95aedc",
+      "running": false,
+      "started_at": "2026-09-09T20:39:07.378092754Z",
+      "restart_count": 0,
+      "configuration_sha256": "5a8e93c5ad9be03e22919a71c33b4302e14aaf158c0fce50cf2b7df4311c7de0"
+    },
+    "cbm-live-development-migrate-1": {
+      "id": "40f0e9612c583e689a8a4b2f3f56ea85d18e5fd5490a37d4c37eb489c949ab28",
+      "image": "sha256:b3a1284201f42ef7cb603ff9866c999ba084350a9ae9e65a122f5a36ad95aedc",
+      "running": false,
+      "started_at": "2026-09-09T20:39:07.883556117Z",
+      "restart_count": 0,
+      "configuration_sha256": "6fa34f0249cdbe216e603321c6d7bc5a8955063686a12122a9e523243fc88af8"
+    },
+    "cbm-live-development-provision-1": {
+      "id": "94b1483bb6f188f57c6286893f517ba30373b90c5ec5045e8fb912d6fe9c88ad",
+      "image": "sha256:5e234ec55b2bf0f8aa42d39b721fd3e0c219d674860ca0729db2e2c98c1d6259",
+      "running": false,
+      "started_at": "2026-09-09T20:02:22.421732977Z",
+      "restart_count": 0,
+      "configuration_sha256": "1a74eaaefba5e31c7204f5ead106979ac2471477ca24fafd09055b9b989b64d6"
+    },
+    "cbm-live-development-nats-1": {
+      "id": "4158b2f5fa98301a814c8953372c8e91a7e6836b23682ab619f710e9fee7c50e",
+      "image": "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e",
+      "running": true,
+      "started_at": "2026-09-20T00:35:48.404137004Z",
+      "restart_count": 0,
+      "configuration_sha256": "eb62739ac63aa9ad8b8bbda4d82650fd356515be24beb88daa570e08f14a4dd8"
+    },
+    "cbm-live-development-postgres-1": {
+      "id": "64f4cc910a8eb6770f64a43ed06a4ae6e9736e27cb5168ae2e3d39c0c156eecb",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "running": true,
+      "started_at": "2026-09-20T00:35:46.779542855Z",
+      "restart_count": 0,
+      "configuration_sha256": "976391f161e9db1a59eb091b4ad39d5088adf354ed02a5f2bada901f109a7e89"
+    }
+  }
+}

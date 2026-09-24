@@ -1,0 +1,144 @@
+{
+  "cbm-workspace-recovery-20260917-effective-r020": {
+    "matching": {
+      "scan.py": [
+        "deploy/community-brain/automatic/scan.py"
+      ],
+      "bounded_worker.py": [
+        "deploy/community-brain/automatic/bounded_worker.py"
+      ],
+      "automatic_host.py": [
+        "deploy/community-brain/automatic/automatic_host.py"
+      ],
+      "indexing_budget.py": [
+        "deploy/community-brain/automatic/indexing_budget.py"
+      ],
+      "selected_fathom.py": [
+        "deploy/community-brain/automatic/selected_fathom.py"
+      ],
+      "manual_worker.py": [
+        "deploy/community-brain/automatic/manual_worker.py"
+      ],
+      "manual_host.py": [
+        "deploy/community-brain/automatic/manual_host.py"
+      ],
+      "run.py": [
+        "deploy/community-brain/production-staging/run.py",
+        "deploy/community-brain/automatic/run.py"
+      ],
+      "jobs/storage.py": [
+        "community-brain/src/community_brain/jobs/storage.py"
+      ],
+      "jobs/acquisition.py": [
+        "community-brain/src/community_brain/jobs/acquisition.py"
+      ],
+      "jobs/store.py": [
+        "community-brain/src/community_brain/jobs/store.py"
+      ],
+      "jobs/auth.py": [
+        "community-brain/src/community_brain/jobs/auth.py"
+      ],
+      "jobs/automatic.py": [
+        "community-brain/src/community_brain/jobs/automatic.py"
+      ],
+      "jobs/worker.py": [
+        "community-brain/src/community_brain/jobs/worker.py"
+      ],
+      "jobs/runtime.py": [
+        "community-brain/src/community_brain/jobs/runtime.py"
+      ],
+      "jobs/api.py": [
+        "community-brain/src/community_brain/jobs/api.py"
+      ],
+      "jobs/archive.py": [
+        "community-brain/src/community_brain/jobs/archive.py"
+      ],
+      "jobs/__init__.py": [
+        "community-brain/src/community_brain/jobs/__init__.py"
+      ],
+      "jobs/models.py": [
+        "community-brain/src/community_brain/jobs/models.py"
+      ]
+    },
+    "no_exact_local_match": [
+      "jobs/manual.py",
+      "jobs/publication.py",
+      "jobs/github_release.py"
+    ],
+    "deployed_hashes": {
+      "scan.py": "a83c0200604068725929058ef08b36999ad71dfeeda38272fec9cc40d7a9f18c",
+      "bounded_worker.py": "dee7265d7a316d632e621cb2557fe8802c510bf67df04a6b6f2ebc051b8d04bd",
+      "automatic_host.py": "b4f437ea0ea58fad5d708d96b674ba28f276c022ec55e6cba72d3f081f0cdf9f",
+      "indexing_budget.py": "932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7",
+      "selected_fathom.py": "eb38d5afd638f3c65372b93193f65dc3f1d4eaa00d87a1f2140c1dfe1a5afeba",
+      "manual_worker.py": "7bb8467e08849287486e2281e043e7223bcf415609c631a405aa1cdc15ec15f0",
+      "manual_host.py": "2ed08b947d0fef39447925e526fec78fdca09641460823e5c7febaaff63e108b",
+      "run.py": "042920acc767180120fe8b970f77f3d79861a36e0e5d2ab9c18e87d10df6c61d",
+      "jobs/storage.py": "802fac016bee72ef312842a256f3b91e557ce23a4a1f426f1d70c75f7380784a",
+      "jobs/acquisition.py": "d172978a31efc8a0e7eaf081ba5d3978104d51a500a7847c7836f743196e5f89",
+      "jobs/store.py": "cf8b32ce17a1eb58a1a6c70234844cf01969e0315be61d5d654fbd0f4dcfe4d2",
+      "jobs/auth.py": "9e7012ad5e17a4e58a5f0e29be42890b5130244d0699ebab60e099d3085d1aa4",
+      "jobs/manual.py": "9e0cf550d0dc32acaecadcb3bec8ca9c2390467e78614afb4b35264852cf43fa",
+      "jobs/automatic.py": "b44cfc52d9b3c6b40d242dc587bbf40c5a26b51d470db9234f1b5feb71636a4b",
+      "jobs/worker.py": "66557de0327c3cefced2fd1844148eab96d255009955acad323dca874e2e6d0e",
+      "jobs/runtime.py": "181c4fbb1dea9e6665750d94add3fd978e9ad7e10bfd00998bf0ae24b68567a2",
+      "jobs/publication.py": "cbd7145919fb0299a7e7f35ee15f40ca091854aedc4af19b9985a9c3492b5859",
+      "jobs/github_release.py": "b716dd4f8d0e6c13ebcc45fe07ef4ed5a51cf07b5e77213345a28f6f1cd1aca2",
+      "jobs/api.py": "5bc6f91db520ec5b603d44b3252ed5cc910c4a9d066cb7dcb2be5c179b481445",
+      "jobs/archive.py": "12b06f75fe4fd2b2826ce517f6437f4b90eecb25b4f4ee49a750f5d3901b9297",
+      "jobs/__init__.py": "bea5dc4c8d6c3c96fdfbdaac59cb7388491dffb7bb2f7af5e8915a8be56f5a76",
+      "jobs/models.py": "965b3397f54a644e966ea685b625cbf9d22467be9c2f2009dfc9a69168394714"
+    }
+  },
+  "cbm-first-publication-20260917": {
+    "matching": {
+      "bounded_worker.py": [
+        "deploy/community-brain/production-staging/bounded_worker.py"
+      ],
+      "publisher_host.py": [
+        "deploy/community-brain/publication/publisher_host.py"
+      ],
+      "git-askpass.py": [
+        "deploy/community-brain/publication/git-askpass.py"
+      ],
+      "publisher_worker.py": [
+        "deploy/community-brain/publication/publisher_worker.py"
+      ],
+      "jobs/store.py": [
+        "community-brain/src/community_brain/jobs/store.py"
+      ],
+      "jobs/manual.py": [
+        "community-brain/src/community_brain/jobs/manual.py"
+      ],
+      "jobs/worker.py": [
+        "community-brain/src/community_brain/jobs/worker.py"
+      ],
+      "jobs/prepared_publication.py": [
+        "community-brain/src/community_brain/jobs/prepared_publication.py"
+      ],
+      "jobs/publication.py": [
+        "community-brain/src/community_brain/jobs/publication.py"
+      ],
+      "jobs/github_release.py": [
+        "community-brain/src/community_brain/jobs/github_release.py"
+      ],
+      "jobs/publication_selection.py": [
+        "community-brain/src/community_brain/jobs/publication_selection.py"
+      ]
+    },
+    "no_exact_local_match": [],
+    "deployed_hashes": {
+      "bounded_worker.py": "dd9d90dfde1c201ae9fbd9715f30c7ed9f63077652bbe91c73f741b2ed9a0c4b",
+      "publisher_host.py": "67f4992cc73e33186eb38d8b9506129688aefccf2343332634f879650e548bdf",
+      "git-askpass.py": "8b5669ba514b70cff607fc096e8a3633027fd2cdee62bf230ff281dd1d76d25e",
+      "publisher_worker.py": "44df318a0dd25dae9ec0cc54177b727475b03c3ca3a2673a940b4f174af4a7aa",
+      "jobs/store.py": "cf8b32ce17a1eb58a1a6c70234844cf01969e0315be61d5d654fbd0f4dcfe4d2",
+      "jobs/manual.py": "d8c98fc514580b315d7728c6b35fc3ea88c6d1bfd9f456467326b7b0619bafa4",
+      "jobs/worker.py": "66557de0327c3cefced2fd1844148eab96d255009955acad323dca874e2e6d0e",
+      "jobs/prepared_publication.py": "6cb2dd1c2864a71e54ecc9294b280e677b47fa3b3db658806d953c158623f7be",
+      "jobs/publication.py": "a6f7fc17b07bcdf7a342b679a49fc676c367e96213bbba958a093254ce25e7c6",
+      "jobs/github_release.py": "17bd745fc9d2b10e2cf660baa0cbf21f9d440cf2deaf846e8c88c85f0d1a6223",
+      "jobs/publication_selection.py": "7b9e0dc1f80e21e442617ab56bdfad09aadd9c138334d0a98387f00f725ad2fb"
+    }
+  }
+}

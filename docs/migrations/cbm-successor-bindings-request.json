@@ -1,0 +1,17 @@
+{
+  "request_id": "CBM-SUCCESSOR-BINDINGS-20260920-028",
+  "target": "home.servers",
+  "created_at": "2026-09-20T22:21:23.829972+00:00",
+  "deadline": "2026-09-21T20:00:00Z",
+  "authorization": "Patrick: Then keep going. Accepted VM108-first continuation; existing relay and development administration. No new production phase.",
+  "scope": "complete source/configuration bindings, isolated VM108 host/management validation, read-only production reconciliation",
+  "documents": {
+    "cbm-management-integration-results.md": "58e977228bc5ac69b3b619d53e65aac70e10bc3a46653134fab995b66cc9de1f",
+    "cbm-successor-bindings-request.md": "fe728e90c3bb3df91d35b376f899a4fa75ec4db63d4dd3b6a1f859ebc2c44456",
+    "cbm-successor-validation-results.md": "493eaf06acebf211c8d255e2fb1100f9687511a74ebbe71f818b60beccfd2139",
+    "forge-successor-candidate.tar.gz": "d548d9cf8c2440af6258ddf5ae76e8831183f18e47f0484f7858d411073d3ed7",
+    "forge-validation-evidence.tar.gz": "29bb1bb5de6776a6e52a4746df923afe33e8cbedc0fd2584050c973e6c20eb34",
+    "monitor-image-equivalence.json": "39cc6149134ed02cf4e79f4da58d468e2ca1b870f56e62d941ebbf7a59512b79",
+    "stabilization-image-files.json": "da3e5385c75492c27d47efb00c18b70df0cfe4719f16f7b303ec9bf21b38c292"
+  }
+}

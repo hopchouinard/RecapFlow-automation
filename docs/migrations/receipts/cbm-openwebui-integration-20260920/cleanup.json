@@ -1,0 +1,23 @@
+{
+  "integration_stopped_without_oom": true,
+  "retained": "synthetic volumes, private backup and generated credentials, source and evidence",
+  "baseline_pipeline_project_removed": true,
+  "existing_services_running": [
+    {
+      "name": "/cbm-collector-development-proxy-1",
+      "started_at": "2026-09-20T00:36:03.623525112Z"
+    },
+    {
+      "name": "/cbm-live-development-api-1",
+      "started_at": "2026-09-20T00:35:58.249267745Z"
+    },
+    {
+      "name": "/cbm-live-development-nats-1",
+      "started_at": "2026-09-20T00:35:48.404137004Z"
+    },
+    {
+      "name": "/cbm-live-development-postgres-1",
+      "started_at": "2026-09-20T00:35:46.779542855Z"
+    }
+  ]
+}

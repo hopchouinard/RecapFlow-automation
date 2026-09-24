@@ -1,0 +1,12 @@
+{
+  "development": {
+    "baseline_containers_unchanged": 32,
+    "ids_images_configuration_start_times_restart_counts_preserved": true,
+    "holds_and_retained_bytecode_unchanged": false
+  },
+  "production": {
+    "baseline_containers_unchanged": 2,
+    "ids_images_configuration_start_times_restart_counts_preserved": true,
+    "holds_and_retained_bytecode_unchanged": true
+  }
+}

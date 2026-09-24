@@ -1,0 +1,15 @@
+{
+  "issued_for": "nats",
+  "issuer": "existing Step CA",
+  "development_only": true,
+  "certificate_sha256": "46b0b43fdff9d0d9d3cda4213b6820aca6dc3ddb8a393b9144cb339b53ff2090",
+  "fullchain_sha256": "a07480b43b0837821d58bdae27892667e9818df608c4bd3c7880f46260ce67e0",
+  "root_sha256": "699ad9b38ad27d11483ef2c09c46b52725aac4cb91feba2c81ae9a87edaf1353",
+  "validity": [
+    "notBefore=Sep 23 22:49:50 2026 GMT",
+    "notAfter=Sep 24 22:50:50 2026 GMT"
+  ],
+  "chain_verified": true,
+  "key_pair_verified": true,
+  "production_listener_changed": false
+}

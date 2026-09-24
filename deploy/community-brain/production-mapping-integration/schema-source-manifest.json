@@ -1,0 +1,5 @@
+{
+  "/app/community-brain/migrations/versions/0001_jobs.py": "37edd944d02cd14e38b5f888fb195599ee62f2e9da9bdc739589ee9a5baa8fb6",
+  "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/models.py": "965b3397f54a644e966ea685b625cbf9d22467be9c2f2009dfc9a69168394714",
+  "/app/community-brain/migrations/versions/0001_jobs.sql": "e29b39e797571e5b8e69e5f0464d0acd7df460ae772ce908b6a0b6fefe16503d"
+}

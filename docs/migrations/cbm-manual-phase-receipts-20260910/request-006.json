@@ -1,0 +1,23 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-10T06:15:00.420775+00:00",
+  "title": "Verify selected manual run recovery and prepare steady-state ownership",
+  "deadline_utc": "2026-09-11T01:25:00Z",
+  "authorization": "Approved manual processing phase; Patrick requested remaining work. No publication, existing session replacement, retirement or deadline cancellation.",
+  "entry_document": "cbm-manual-recovery-management-handoff.md",
+  "document_sha256": {
+    "cbm-manual-recovery-management-handoff.md": "7500593e24b7ff5a40c60022619ae3b52f82a6b40fb90ab2c5b4085473be82ef",
+    "cbm-manual-production-results.md": "a340d4736ac7123e20167cbc69e5850d32038a21ade4ef86ffcc394489a6508a",
+    "cbm-manual-processing-cutover-phase.md": "910e8a58539aca1ef094dc1e66156e84f211c5d1ffb6abb0fac80107cf57e474",
+    "production-job/api-artifact-verification.json": "2df23319afdfbce732143388227b2bd52d96aacbeabfd81f5e9bd293220f3bdb",
+    "production-job/managed-state-manifest.json": "693bda0bbbd31599bb4f9f55c624f3225663b925f0330fcc297bc9c9cf39bddf",
+    "production-job/receipt-manifest.json": "e22e4320104458a123bff712415731a63c7a294980a37f3c73184b56494effc6",
+    "production-job/job.json": "b8aa07ac4a6ea0cb27bb4c84ee42150b0369c6c169388f9f5c4151734828655a",
+    "production-job/manual-runtime-state-manifest.json": "2145983767079323656b22c5ed19a4f21b51dd32a487a97a541d0f8a3cfe9c69",
+    "production-job/allowance.json": "0a89d498468c958e47ebf86dde646829ed8d1319b218a3019f92711ce9a1240c",
+    "production-job/durable-audit.json": "da2ec5c0abd14a1c0fe09d6b5fee1999e223d861245f631912db51a0b49eb9e4"
+  },
+  "response_directory": "responses/CBM-MANUAL-RECOVERY-20260910-006"
+}

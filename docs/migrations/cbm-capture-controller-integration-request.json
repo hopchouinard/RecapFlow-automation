@@ -1,0 +1,16 @@
+{
+  "request_id": "CBM-CAPTURE-CONTROLLER-20260921-031",
+  "target": "home.servers",
+  "created_at": "2026-09-21T13:11:55.238575+00:00",
+  "deadline": "2026-09-21T20:00:00Z",
+  "authorization": "Patrick instructed proceeding; existing development and relay authorization only. No production maintenance or protected data transfer.",
+  "scope": "Implement and validate synthetic VM108 host capture orchestration and component database evidence contract; return concrete reviewable production proposal.",
+  "documents": {
+    "cbm-capture-controller-development-results.md": "65a0488cd37a91c4a667419af9e13a1b4cfa71d1089c833abdc2d28d4db8d853",
+    "cbm-capture-controller-integration-request.md": "6bfc42ae9521cd3e2cbe28958ece182127ba10cfe5e21178b1450fb9af3eb415",
+    "forge-protected-restore-source.tar.gz": "21cb906c7ec5dbab409eb1800735275b2ab367f2962410731c0a8c26eecc48f9",
+    "source-manifest.json": "cd79791ea88c83eb5426ae56d2972136615c88b9d547e6354aca4bc93bed7e2e",
+    "vm108-rehearsal.json": "cdf62a5d2edcf0b6d459cbde977783b19688b9de8d11f334680f19355ddef649",
+    "vm108-tests.txt": "d9942fe573c778213a523d4c7346bf9d09c97bac86939f731ca2d4b62b738d76"
+  }
+}

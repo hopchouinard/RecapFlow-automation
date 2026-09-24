@@ -1,0 +1,41 @@
+{
+  "secret_delivery": "approved existing Mac operator renderer",
+  "infisical_authority": "homelab/prod /applications/community-brain",
+  "infisical_login_delivered": false,
+  "private_runtime_delivered": true,
+  "directory": "/etc/community-brain-production",
+  "directory_mode": "0700",
+  "file_mode": "0600",
+  "owner": "root:root",
+  "files": {
+    "api.env": [
+      "CB_DATABASE_URL",
+      "CB_SERVICE_IDENTITIES",
+      "CB_OIDC_ISSUER",
+      "CB_OIDC_AUDIENCE",
+      "CB_OIDC_CLIENT_ID",
+      "CB_OIDC_JWKS_URL"
+    ],
+    "migration.env": [
+      "CB_DATABASE_URL"
+    ],
+    "worker.env": [
+      "CB_NATS_URL",
+      "CB_NATS_USER",
+      "CB_NATS_PASSWORD",
+      "CB_ENABLE_MODEL_CALLS",
+      "CB_ENABLE_NETWORK_PUBLICATION"
+    ],
+    "probes.env": [
+      "CB_READ_PROBE_TOKEN",
+      "CB_METRICS_PROBE_TOKEN",
+      "CB_PROBE_EXPIRES_AT"
+    ]
+  },
+  "authority_roundtrip_verified": true,
+  "remote_bytes_and_permissions_verified": true,
+  "probe_expires_utc": "2026-09-11T02:05:38+00:00",
+  "probe_renewal": "Explicit Infisical token rotation and expiry update, then rerender; no automatic extension",
+  "worker_bundle": "Future queue credentials only; worker stopped. Requires TLS-first and scoped inbox options before activation.",
+  "api_started": false
+}

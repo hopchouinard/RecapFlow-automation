@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "fresh_volume": true,
+  "files_hash_matched_before_start": 73,
+  "original_volume_unchanged": true,
+  "external_signing_material_preserved": true,
+  "login_chat_upload_models_prompts_verified": true,
+  "chroma_query_verified": true,
+  "actual_filter_real_backend_after_restore": true,
+  "synthetic_data_only": true,
+  "production_changes": false
+}

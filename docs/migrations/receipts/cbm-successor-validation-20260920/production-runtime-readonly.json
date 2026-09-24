@@ -1,0 +1,96 @@
+{
+  "name": "/community-brain-production-staging-api-1",
+  "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+  "started_at": "2026-09-19T21:21:38.872407149Z",
+  "running": true,
+  "mounts": [
+    {
+      "source": "/srv/community-brain/meeting-archive-20260910",
+      "destination": "/state/meeting-archive",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/api.py",
+      "destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/api.py",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/runtime.py",
+      "destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/runtime.py",
+      "rw": false
+    },
+    {
+      "source": "/etc/ssl/certs/ca-certificates.crt",
+      "destination": "/run/certs/ca-bundle.pem",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/corpus",
+      "destination": "/state/corpus",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/files",
+      "destination": "/state/files",
+      "rw": true
+    },
+    {
+      "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/archive.py",
+      "destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/archive.py",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/automatic.py",
+      "destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/store.py",
+      "destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/jobs/worker.py",
+      "destination": "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-frontend/dist",
+      "destination": "/app/web/dist",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/automation-public",
+      "destination": "/state/automation-public",
+      "rw": false
+    },
+    {
+      "source": "/srv/community-brain/config",
+      "destination": "/state/config",
+      "rw": false
+    }
+  ],
+  "networks": [
+    "community-brain-production-staging_default"
+  ],
+  "memory": 2147483648,
+  "nano_cpus": 2000000000,
+  "ports": {
+    "8090/tcp": [
+      {
+        "HostIp": "10.1.30.21",
+        "HostPort": "8090"
+      }
+    ]
+  },
+  "command": [
+    "uvicorn",
+    "community_brain.jobs.runtime:app",
+    "--factory",
+    "--host",
+    "0.0.0.0",
+    "--port",
+    "8090",
+    "--no-access-log"
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "api_container": "cbm-r029-api",
+  "api_cpus": 2,
+  "api_environment": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private/api.env",
+  "api_image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+  "api_memory": 2147483648,
+  "api_mounts": [
+    {
+      "read_only": false,
+      "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/files",
+      "target": "/state/files"
+    },
+    {
+      "read_only": true,
+      "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/config",
+      "target": "/state/config"
+    },
+    {
+      "read_only": true,
+      "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/corpus",
+      "target": "/state/corpus"
+    },
+    {
+      "read_only": true,
+      "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/meeting-archive",
+      "target": "/state/meeting-archive"
+    },
+    {
+      "read_only": true,
+      "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation-public",
+      "target": "/state/automation-public"
+    },
+    {
+      "read_only": true,
+      "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private/ca-bundle.pem",
+      "target": "/run/certs/ca-bundle.pem"
+    }
+  ],
+  "automatic_resume": false,
+  "boot_launcher": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/packet-v6/workers/automatic_host.py",
+  "compose_project": "cbm-r029",
+  "database_authority_key": "CB_RUNTIME_DATABASE_URL",
+  "execution_allowed": true,
+  "frontend_source": "pinned-image",
+  "helper_files": {
+    "activation/README.md": {
+      "bytes": 3561,
+      "sha256": "b6222b4badf31f1d453f18a3859311c0733aa84fc03e56b5d5c55c2afad56435"
+    },
+    "activation/activate.py": {
+      "bytes": 14012,
+      "sha256": "b41c7b19b9898fb33683c1e5aea9822db57e7ea7c267a7320cb0e46340bd5baf"
+    },
+    "activation/management.py": {
+      "bytes": 4631,
+      "sha256": "c6bfccaca4e0dacdd79f82798bea5db710914fe506b3ae5c0befe04542193647"
+    },
+    "activation/plan.py": {
+      "bytes": 7673,
+      "sha256": "386cc26b5643b59b5798c5a4ea224fbc30b0fab261786227c7ef78ba3068915b"
+    },
+    "activation/rehearsal.py": {
+      "bytes": 10800,
+      "sha256": "e5358394c3bd94ce1b48a30ac2c3ea7f2b59b401542565138bbc9006cdf8eccc"
+    },
+    "activation/rehearse.py": {
+      "bytes": 13944,
+      "sha256": "379ceb7a37b8a9121f68d76139251de6c8b57f9f5cd0329f68cc64271077525b"
+    },
+    "activation/remote.py": {
+      "bytes": 3519,
+      "sha256": "644c412c86007d6a7ebdf893d53c3b2513ccfe8fb889f943f4f82f38ee9d6463"
+    },
+    "activation/test_activate.py": {
+      "bytes": 5826,
+      "sha256": "b415543bcb7786c1fbae305c27e22ae7f78ee9cecad11d2bdb8249efbee80d99"
+    },
+    "authority.py": {
+      "bytes": 2777,
+      "sha256": "060d6de9493aa2f69dc3d21e71ccbdf8e59240d970e0f6c9d9b390b298f99618"
+    },
+    "automatic_host.py": {
+      "bytes": 230,
+      "sha256": "9fbaa41d3fcfaa402d972b554fce492889daa33426199e7076a7fe05711103ad"
+    },
+    "automation.py": {
+      "bytes": 608,
+      "sha256": "0ac5a7d2fb700c3fae70a8f92acbbfe8c62b14346ec3100ffdeac50d5a06ad7d"
+    },
+    "boot_guard.py": {
+      "bytes": 1593,
+      "sha256": "8d2c4408a95bd25d7ad4a7a3e107e6063a243e0d5b324d54578f7f31b9297b26"
+    },
+    "build_packet.py": {
+      "bytes": 2564,
+      "sha256": "2f84076b14b32cb14c426887a0e7504d2e481dd6eb6fb2ac8f573d43cfec0962"
+    },
+    "consumers.py": {
+      "bytes": 6236,
+      "sha256": "863bded1592cbf97a2b15eef4346cb850209ca80ab29f2da0c9c96754614c665"
+    },
+    "fixture/community_brain_filter.py": {
+      "bytes": 12600,
+      "sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16"
+    },
+    "fixture/data_check.py": {
+      "bytes": 1653,
+      "sha256": "1cbf8308addab792548547578443321b630ec8aa9cdca48e319bdfe50cb0b3b5"
+    },
+    "fixture/forge_selected_check.py": {
+      "bytes": 9646,
+      "sha256": "faaed2a608e02f49f3a09fbe19801e62f4f405c1499587f553c01ef7b156e343"
+    },
+    "fixture/probe_action.py": {
+      "bytes": 1560,
+      "sha256": "9acbdd1ded6b6b4c6aae9503425b7816a0b63904c531fe1a5fd70d31ea68f0a5"
+    },
+    "fixture/provider.py": {
+      "bytes": 1220,
+      "sha256": "ad83d5e668607bcf29c51de25b72b188e216d9f4472e7a08de7e00bae7fb471c"
+    },
+    "fixture/queue_setup.py": {
+      "bytes": 1838,
+      "sha256": "6f714fcebf64055f11769230418eb699d80e4a66fd9e97a2a82a15785f2a44ba"
+    },
+    "fixture/rehearse.py": {
+      "bytes": 10431,
+      "sha256": "c01599db0ec1666a9954dd2fa52c93f51c6ac9cf16fffa93a9071e2d236fd1ef"
+    },
+    "fixture/seed.py": {
+      "bytes": 1997,
+      "sha256": "ee040f69fd14f07283396b85b9e4d763deb4411729481a95559c800264198e6f"
+    },
+    "fixture/synthetic_worker.py": {
+      "bytes": 1801,
+      "sha256": "f19f16230e0e71ec9a595ed18fefa0041cca45e95db87bfc080949867dfc1359"
+    },
+    "fixture/worker_support/check.py": {
+      "bytes": 8076,
+      "sha256": "0333f762ba4dc18c71d980f1c1554b5e982248e268ddf240647a704a4dc1e4ff"
+    },
+    "fixture/worker_support/fixtures.py": {
+      "bytes": 3325,
+      "sha256": "1c18133476c149d0439c193ba7279780b4d8c47f41bb5926d9112724d067cb75"
+    },
+    "host.py": {
+      "bytes": 13331,
+      "sha256": "1434fd644b1df2dcc96912fd8da686e804786280c7fd908768c194f5628a3f4a"
+    },
+    "incumbent-manifest.json": {
+      "bytes": 1753,
+      "sha256": "fb8f540ff12bd5f13b99d87476342ac029cfac9756fe455b626a7a27e895cc23"
+    },
+    "incumbent/checkpoint_journal.py": {
+      "bytes": 3524,
+      "sha256": "0f1058c812071e27880d567fd1d14d3015a40c09ce702bcc9d8646cef4c163ee"
+    },
+    "incumbent/lease_supervisor.py": {
+      "bytes": 8033,
+      "sha256": "5c8c5dadf996ca1f3557a79de26eb0448a2b32f7c5c00c35f84b3bdc2bed3d75"
+    },
+    "incumbent/mac_intake_policy.py": {
+      "bytes": 1477,
+      "sha256": "7bf08d4374f6e190cb4f7f34780d802e03488aed512a7b6111103e8e87f18adf"
+    },
+    "incumbent/quiet_window.py": {
+      "bytes": 3556,
+      "sha256": "8347e32d04d1ecd22ce97b104e836b94f923f9951c442fa23e67f01da008fa50"
+    },
+    "incumbent/service_renewal_policy.py": {
+      "bytes": 4749,
+      "sha256": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c"
+    },
+    "incumbent/transport.py": {
+      "bytes": 3969,
+      "sha256": "d115340d063131197738042599177231363c16d7698b069a9eba4d69c896135a"
+    },
+    "indexing.py": {
+      "bytes": 443,
+      "sha256": "a73afda4e473a7add003c24e1fa514f9b1e6492a45c89a98ce0fb0bb6496ae36"
+    },
+    "initialize_authority.py": {
+      "bytes": 3599,
+      "sha256": "b5bf081efd40b1e50a7dc467c38396a7fdf56f6af5e65aa8f2074141aa10cc5c"
+    },
+    "kuma.js": {
+      "bytes": 3617,
+      "sha256": "06517fe8ad79a55e9d0c652cbe4aca15941db5d12cb1bdd7e4b6e265ffe5ca86"
+    },
+    "manager.py": {
+      "bytes": 6988,
+      "sha256": "cb02f67efce67b20a8aa2f8d313965b1cc578f08cf0850dac8034911f5b82ba5"
+    },
+    "profiles.py": {
+      "bytes": 7039,
+      "sha256": "fb48d00f6e379b71fd1d974f20861a56bb4e9a56d98fc7c5b93da2ae3937d4fb"
+    },
+    "provisioning.py": {
+      "bytes": 3953,
+      "sha256": "80222ca6c07a11d7e37db7a63403b48d4f970a2cbf2bdd73954c7c26b8a1a9ae"
+    },
+    "run.py": {
+      "bytes": 4205,
+      "sha256": "bb37c5addca4ac63612bb44729c9af4c8b4a97b0123987b3806653ba18d11576"
+    },
+    "runtime_contract.py": {
+      "bytes": 1109,
+      "sha256": "a040758c1aa70331ef654704605812b5e1096e6f579db529b2756473f710fbf8"
+    },
+    "stage_packet.py": {
+      "bytes": 1982,
+      "sha256": "b0a375b3d654b9a1435624602e2f88d69b5d111899af7fd79f8c20c01ce9715e"
+    },
+    "successor.py": {
+      "bytes": 1853,
+      "sha256": "23d48c003c1630c5d1e031c90efec1e3fce0f7f5c3991aefe2e4500877f010d0"
+    },
+    "test_successor_boundaries.py": {
+      "bytes": 6951,
+      "sha256": "571243aa823d9dc626280654d85648b019e53c895b7be518ae8a8b3f3494f282"
+    },
+    "validation_host.py": {
+      "bytes": 12610,
+      "sha256": "4a8fddd8f28635f502d852a78f5506e146e6e90288e647e575ceaee4bbe1fc5c"
+    },
+    "worker-helper-provenance.json": {
+      "bytes": 1624,
+      "sha256": "1551e2746e7ebf311dd6993b6d909a54cdef0389f9a2e6500d0fe7a642efc029"
+    },
+    "workers/automatic_host.py": {
+      "bytes": 7758,
+      "sha256": "47280f1144bcb82875715fc461a29cae99e751f5f13a901bbd7e41c1dd47869b"
+    },
+    "workers/bounded_worker.py": {
+      "bytes": 7623,
+      "sha256": "186617b9d978f324233bf7ed9b0248d09be11820281841743b01b9e0b25184c5"
+    },
+    "workers/indexing_budget.py": {
+      "bytes": 3409,
+      "sha256": "932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7"
+    },
+    "workers/manual_host.py": {
+      "bytes": 2988,
+      "sha256": "10de10bc9277be5fd5efa62df7a3f2252c2ab3e9065c9ef9457bca75f834960c"
+    },
+    "workers/manual_worker.py": {
+      "bytes": 7481,
+      "sha256": "5a3b3d2af1621900dd3eae2ec121233935a8e4a2a1f8d0c723909da92954183a"
+    },
+    "workers/queue_binding.py": {
+      "bytes": 1226,
+      "sha256": "7b27d87b399627c747ccd982f8c732d6c45bb63dd3ef47ec6da24d836586bb03"
+    },
+    "workers/scan.py": {
+      "bytes": 2590,
+      "sha256": "a83c0200604068725929058ef08b36999ad71dfeeda38272fec9cc40d7a9f18c"
+    },
+    "workers/selected_fathom.py": {
+      "bytes": 1979,
+      "sha256": "eb38d5afd638f3c65372b93193f65dc3f1d4eaa00d87a1f2140c1dfe1a5afeba"
+    },
+    "workload.py": {
+      "bytes": 1842,
+      "sha256": "e7858d028e368b566187ee8d948f425ce9c55e2855a28bac3c00153586e1dd20"
+    }
+  },
+  "host": "pchouinard@10.1.30.20",
+  "host_python": [
+    "python3",
+    "-B"
+  ],
+  "hostname": "community-brain-dev",
+  "image_files": {
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/__init__.py": {
+      "bytes": 80,
+      "sha256": "bea5dc4c8d6c3c96fdfbdaac59cb7388491dffb7bb2f7af5e8915a8be56f5a76"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/acquisition.py": {
+      "bytes": 8631,
+      "sha256": "d172978a31efc8a0e7eaf081ba5d3978104d51a500a7847c7836f743196e5f89"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/api.py": {
+      "bytes": 19147,
+      "sha256": "231907ca7f46abcbe8fb2695590fe54b3bd372a0da7910ca7f07e27e1b106762"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/archive.py": {
+      "bytes": 4908,
+      "sha256": "12b06f75fe4fd2b2826ce517f6437f4b90eecb25b4f4ee49a750f5d3901b9297"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/auth.py": {
+      "bytes": 2001,
+      "sha256": "9e7012ad5e17a4e58a5f0e29be42890b5130244d0699ebab60e099d3085d1aa4"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/automatic.py": {
+      "bytes": 5799,
+      "sha256": "01f3eac96abbd62af7de30a49277ba20ce335cd166e2244e19c4f5617986cafd"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/github_release.py": {
+      "bytes": 6689,
+      "sha256": "17bd745fc9d2b10e2cf660baa0cbf21f9d440cf2deaf846e8c88c85f0d1a6223"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/manual.py": {
+      "bytes": 5395,
+      "sha256": "d8c98fc514580b315d7728c6b35fc3ea88c6d1bfd9f456467326b7b0619bafa4"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/models.py": {
+      "bytes": 5270,
+      "sha256": "965b3397f54a644e966ea685b625cbf9d22467be9c2f2009dfc9a69168394714"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/prepared_publication.py": {
+      "bytes": 9612,
+      "sha256": "6cb2dd1c2864a71e54ecc9294b280e677b47fa3b3db658806d953c158623f7be"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/publication.py": {
+      "bytes": 14877,
+      "sha256": "a6f7fc17b07bcdf7a342b679a49fc676c367e96213bbba958a093254ce25e7c6"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/publication_selection.py": {
+      "bytes": 4701,
+      "sha256": "7b9e0dc1f80e21e442617ab56bdfad09aadd9c138334d0a98387f00f725ad2fb"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/readiness.py": {
+      "bytes": 2875,
+      "sha256": "b9b5354bcfc0b2d076f7043c142344f8a360eefc7eefba27ccf7bf678fe0a003"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/runtime.py": {
+      "bytes": 7702,
+      "sha256": "181c4fbb1dea9e6665750d94add3fd978e9ad7e10bfd00998bf0ae24b68567a2"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/storage.py": {
+      "bytes": 1896,
+      "sha256": "802fac016bee72ef312842a256f3b91e557ce23a4a1f426f1d70c75f7380784a"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/store.py": {
+      "bytes": 24052,
+      "sha256": "cf8b32ce17a1eb58a1a6c70234844cf01969e0315be61d5d654fbd0f4dcfe4d2"
+    },
+    "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/worker.py": {
+      "bytes": 14620,
+      "sha256": "66557de0327c3cefced2fd1844148eab96d255009955acad323dca874e2e6d0e"
+    },
+    "/app/web/dist/assets/index-Bth0ZNgx.js": {
+      "bytes": 480274,
+      "sha256": "0459e98a887eb59fcfa19fb7c29e05de76761d9cfbade7aed2865b0ff694b157"
+    },
+    "/app/web/dist/assets/index-D-8kfH5H.css": {
+      "bytes": 28153,
+      "sha256": "df1fa7d86d340fdf4d1d661a736d2309c7d328afb6fcabfc46d42ee702b419db"
+    },
+    "/app/web/dist/index.html": {
+      "bytes": 400,
+      "sha256": "a091882f9d8b5c1528cb95383f3e47614e43302c9299de6dfd1d77f1b72b677f"
+    }
+  },
+  "module_source": "pinned-image",
+  "monitor_images": {
+    "kuma": "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+    "prometheus": "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9"
+  },
+  "nats_image": "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e",
+  "network": "cbm-r029_default",
+  "network_publication": false,
+  "packet": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/packet-v6",
+  "postgres_image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+  "private": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private",
+  "production_promotion_ready": false,
+  "profile": "development",
+  "provider": {
+    "acquisition_file": "provider.env",
+    "acquisition_key": "CB_SYNTHETIC_PROVIDER_TOKEN",
+    "command": [
+      "python",
+      "-B",
+      "/packet/fixture/synthetic_worker.py",
+      "execute"
+    ],
+    "model_file": "provider.env",
+    "model_key": "CB_SYNTHETIC_PROVIDER_TOKEN",
+    "ollama_url": "http://provider:8999"
+  },
+  "provider_mode": "synthetic",
+  "python": [
+    "python",
+    "-B"
+  ],
+  "queue": {
+    "authority_path": "/development/community-brain-dev/request029",
+    "ca_file": "/run/certs/queue-ca.pem",
+    "consumer": "community-brain-worker",
+    "credential_keys": [
+      "CB_NATS_USER",
+      "CB_NATS_PASSWORD"
+    ],
+    "inbox": "_INBOX.cbm_request029_worker",
+    "stream": "CBM_REQUEST029",
+    "subject": "cbm.dev.request029.jobs.stage.ready.v1",
+    "tls_handshake_first": true,
+    "url": "tls://nats:4222"
+  },
+  "recovery_components": [
+    "paired PostgreSQL snapshot",
+    "API/worker/WebUI images",
+    "WebUI volume",
+    "external signing key",
+    "authority journal and consumer state",
+    "management code and boot controls"
+  ],
+  "recovery_images": [
+    "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+    "sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9",
+    "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+    "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+    "sha256:d78a7408dabb0c73529038f59f821092ff976bc338173be858a7acafaec13824",
+    "sha256:ef569ceb79faf65ff225371b1ab410fe2fab0561c2b32b54fb04fa53a3d1856e"
+  ],
+  "recovery_paths": [
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/files",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/config",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/corpus",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/meeting-archive",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation-public",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/manual-approvals",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private",
+    "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/packet-v6"
+  ],
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "retrieval_url": "http://api:8090/retrieval/query",
+  "revision": "packet-v6",
+  "root": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state",
+  "runtime_evidence": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/runtime-evidence",
+  "schema": 2,
+  "signing_environment": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private/webui.env",
+  "webui_container": "cbm-r029-webui",
+  "webui_cpus": 1.5,
+  "webui_data": "cbm-r029_webui",
+  "webui_image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+  "webui_memory": 1610612736,
+  "worker_cpus": 2,
+  "worker_image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+  "worker_memory": 1572864000
+}

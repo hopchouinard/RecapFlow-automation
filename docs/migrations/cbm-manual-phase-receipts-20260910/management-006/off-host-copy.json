@@ -1,0 +1,66 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "copied_utc": "2026-09-10T06:20:06.856032+00:00",
+  "copies": [
+    {
+      "source_host": "pchouinard@10.1.10.50",
+      "source_path": "/var/backups/community-brain/20260910T061730Z.dump",
+      "destination_host": "pchouinard@10.1.30.21",
+      "destination_path": "/srv/community-brain/db-backups/20260910T061730Z.dump",
+      "sha256": "3937db5e4f88b3c508bbbac5feac84f0443071b0d7d5709fa490397b53d973cd",
+      "bytes": 56658,
+      "verified": true
+    },
+    {
+      "source_host": "pchouinard@10.1.10.50",
+      "source_path": "/var/backups/community-brain/20260910T061730Z.dump",
+      "destination_host": "pchouinard@10.1.10.50",
+      "destination_path": "/var/backups/community-brain/manual-20260910-006/20260910T061730Z.dump",
+      "sha256": "3937db5e4f88b3c508bbbac5feac84f0443071b0d7d5709fa490397b53d973cd",
+      "bytes": 56658,
+      "verified": true
+    },
+    {
+      "source_host": "pchouinard@10.1.30.21",
+      "source_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/managed-state.tar.gz",
+      "destination_host": "pchouinard@10.1.10.50",
+      "destination_path": "/var/backups/community-brain/manual-20260910-006/managed-state.tar.gz",
+      "sha256": "28c782fe46711eae3bf4132a7df37ff0e963abddefb1259438c4d7b2e39cd824",
+      "bytes": 12573531,
+      "verified": true
+    },
+    {
+      "source_host": "pchouinard@10.1.30.21",
+      "source_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/managed-state-manifest.json",
+      "destination_host": "pchouinard@10.1.10.50",
+      "destination_path": "/var/backups/community-brain/manual-20260910-006/managed-state-manifest.json",
+      "sha256": "693bda0bbbd31599bb4f9f55c624f3225663b925f0330fcc297bc9c9cf39bddf",
+      "bytes": 13376,
+      "verified": true
+    },
+    {
+      "source_host": "pchouinard@10.1.30.21",
+      "source_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/manual-runtime-state.tar.gz",
+      "destination_host": "pchouinard@10.1.10.50",
+      "destination_path": "/var/backups/community-brain/manual-20260910-006/manual-runtime-state.tar.gz",
+      "sha256": "b8a9c65a18f52f9e9b34371f177592a89196878087db10d3e9a260152582e3ba",
+      "bytes": 57284,
+      "verified": true
+    },
+    {
+      "source_host": "pchouinard@10.1.30.21",
+      "source_path": "/srv/community-brain/artifacts/cbm-manual-production-20260910/manual-runtime-state-manifest.json",
+      "destination_host": "pchouinard@10.1.10.50",
+      "destination_path": "/var/backups/community-brain/manual-20260910-006/manual-runtime-state-manifest.json",
+      "sha256": "2145983767079323656b22c5ed19a4f21b51dd32a487a97a541d0f8a3cfe9c69",
+      "bytes": 7980,
+      "verified": true
+    }
+  ],
+  "paired_manifest_sha256": "58dadeb9b019b2b97ce756beda819fbd2b90c632ddc2e6b99d842a5ca680ebc1",
+  "private_owner": "root:root",
+  "directory_mode": "0700",
+  "file_mode": "0600",
+  "previous_checkpoints_untouched": true,
+  "transfer_method": "Existing Mac SSH management path; private temporary stream, no content logging"
+}

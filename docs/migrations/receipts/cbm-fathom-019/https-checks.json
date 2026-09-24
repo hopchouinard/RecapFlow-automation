@@ -1,0 +1,103 @@
+{
+  "request_id": "CBM-FATHOM-20260917-019",
+  "tls_verified": true,
+  "static_files_verified": 15,
+  "automatic_processing": true,
+  "checks": [
+    {
+      "path": "/assets/index-B35u5jNv.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-BMV_HJsN.css",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-Bgv2fsby.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-CFGdg5XB.css",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-CImQtPOh.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-Cb5I8vd_.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-Cu5foeHo.css",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-D-8kfH5H.css",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DGlm7DKD.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DMxDA5pK.css",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DSIsVXVy.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DpBZN2Wu.js",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-GPIvHnrC.css",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-ZIhBB68-.js",
+      "status": 200
+    },
+    {
+      "path": "/index.html",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/callback",
+      "status": 200
+    },
+    {
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/jobs",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/jobs",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/jobs",
+      "status": 403
+    },
+    {
+      "path": "/api/v1/jobs",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/me",
+      "status": 200
+    }
+  ],
+  "submissions": 0,
+  "transcript_fetches": 0,
+  "model_calls": 0
+}

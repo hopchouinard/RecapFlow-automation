@@ -1,0 +1,115 @@
+{
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "kind": "review_template_only",
+  "deployable": false,
+  "production_execution_enabled": false,
+  "phase": "serving-only",
+  "target": "community-brain-prod",
+  "state_root": "/srv/community-brain",
+  "required_evidence": {
+    "separate_production_phase_authorization": null,
+    "reviewed_source_commit_and_archive_sha256": null,
+    "sealed_runtime_packet_path_and_exact_manifest_sha256": null,
+    "paired_mac_management_source_and_manifest_sha256": null,
+    "current_authority_generation_and_expiry_metadata": null,
+    "all_compose_environment_ca_and_signing_file_hashes": null,
+    "current_paused_attention_boot_hash_mode_inode_device": null,
+    "runner_manual_submission_lock_inode_device": null,
+    "exact_incumbent_api_id_image_config_fingerprint_and_health": null,
+    "legacy_webui_serving_and_volume_ownership_disposition": null,
+    "protected_database_restore_and_durable_state_comparison": null,
+    "protected_corpus_vectors_uploads_and_artifact_hash_comparison": null,
+    "restored_external_webui_volume_identity_and_sqlite_integrity": null,
+    "external_signing_material_preservation_and_session_continuity": null,
+    "paired_off_host_recovery_copy_and_verified_restore_receipt": null,
+    "login_existing_sessions_and_disabled_signup_browser_acceptance": null,
+    "intended_workload_capacity_acceptance": null,
+    "real_provider_and_spending_budget_acceptance": null,
+    "fresh_auth_api_filter_kuma_prometheus_acceptance": null,
+    "deployed_scheduler_pending_activation_interlock": null,
+    "explicit_acceptance_deadline_and_rollback_owner": null
+  },
+  "sequence": [
+    "Review protected recovery evidence and all outstanding slots before enabling production compilation.",
+    "Acquire the existing Mac scheduler mutex; refuse any unresolved prior management operation.",
+    "Compile an immutable plan against current state, with an external reviewed plan hash and expiry.",
+    "Dispatch once over existing SSH; controller owns runner/manual/submission locks in that order.",
+    "Retain the incumbent container and journal intent before every candidate effect.",
+    "On SSH loss, retain the Mac intent and mutex through bounded readback of the same operation. Never dispatch again because the reply was lost.",
+    "Validate exact candidate runtime and authenticated application/filter behavior, then require fresh monitor observations after activation.",
+    "Keep all processing holds. Serving success does not reconcile boot or enable workers.",
+    "Perform separately authorized ingress only when the replacement is ready; the existing ingress approval does not need repetition.",
+    "Return safe hashes and receipts. Keep protected content and signing material out of the relay."
+  ],
+  "rollback": {
+    "target": "the preserved exact incumbent container ID and configuration",
+    "retain": [
+      "candidate containers",
+      "candidate external WebUI volume",
+      "new application writes",
+      "all journals",
+      "failed attempts",
+      "protected recovery artifacts"
+    ],
+    "forbidden": [
+      "recreate incumbent",
+      "overwrite replacement writes with an old backup",
+      "delete an uncertain target",
+      "clear holds",
+      "restart VM101",
+      "blindly replay an uncertain effect"
+    ],
+    "limits": [
+      "Serving rollback does not undo database migrations or reconcile data divergence.",
+      "New WebUI writes remain in the replacement volume and may not appear in the legacy interface.",
+      "An absent uncertain candidate, changed incumbent, changed hold or changed bound input requires explicit reconciliation.",
+      "After a terminal rollback, a new activation requires a newly reviewed plan, candidate names and journal.",
+      "If the Mac process dies and releases its mutex, the persistent pending intent must exclude future management effects until readback resolves it."
+    ]
+  },
+  "recorded_production_identity_expiry": "2026-09-22T20:53:07Z",
+  "request_deadline": "2026-09-21T20:00:00Z",
+  "deadline_policy": "Expiry and deadlines do not extend authority or permit bypassing missing evidence.",
+  "review_inputs": {
+    "production_descriptor": "production-descriptor.json",
+    "production_descriptor_sha256": "2a647c48925afe0e19c7149897f43a4cbdaa20ca5680b79e244dc8fb65345bc9",
+    "read_only_baseline": "production-after.json",
+    "baseline_checked_at": "2026-09-21T02:47:51.344886+00:00",
+    "observed_current_containers": {
+      "community-brain-production-staging-api-1": {
+        "id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+        "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+        "running": true,
+        "started_at": "2026-09-19T21:21:38.872407149Z",
+        "restart_count": 0,
+        "configuration_sha256": "7924f93f0008353a3a2a2ffc40b8da1e378f217d9ca501822dea19926d8d28c6"
+      },
+      "community-brain-alloy": {
+        "id": "c6769827278baee660fc45ba8efff98bbd5664e41168abf99e96dac7fe15f695",
+        "image": "sha256:01a63f4e032ce54ee94b22049bc27f597e74f85566478c377f4b5c7f020c1eb3",
+        "running": true,
+        "started_at": "2026-09-19T21:21:38.865740028Z",
+        "restart_count": 0,
+        "configuration_sha256": "fe35ba817e1d38b7a1b73a46e916673e772af9e31501aa74164d309a35d1fe9b"
+      }
+    },
+    "observed_current_holds": {
+      "automation/paused": {
+        "sha256": "59c73479a540c23f39cdd306bac60ff7295ac4b4bd585575346600dbada67d60",
+        "mode": 384,
+        "inode": 2490382
+      },
+      "automation/attention.json": {
+        "sha256": "c12ebf3b69fc4eb099dd9686dc4789137b1306c68362d46461af8a0185a7afdb",
+        "mode": 384,
+        "inode": 2490379
+      },
+      "automation/boot-state.json": {
+        "sha256": "c291dcbd48b3d055ad806e2579ad194bf54a435660cb83d5d014d334ed8f2195",
+        "mode": 384,
+        "inode": 2490383
+      }
+    },
+    "not_a_fresh_activation_approval": true
+  }
+}

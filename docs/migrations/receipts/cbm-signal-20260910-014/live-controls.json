@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-09-10T23:45:25.228668+00:00",
+  "runner": {
+    "state": "idle",
+    "checked_at": "2026-09-10T23:45:05.629687+00:00"
+  },
+  "metrics": "community_brain_automatic_management_last_success_timestamp_seconds 1789083880.0509474\ncommunity_brain_automatic_host_last_tick_timestamp_seconds 1789083845.840884\ncommunity_brain_automatic_checkpoint_pending_since_timestamp_seconds 0\ncommunity_brain_automatic_attention 0\ncommunity_brain_automatic_paused 0\ncommunity_brain_automatic_enabled 1\ncommunity_brain_automatic_worker_running 0\n",
+  "protocol_sha256": "d48ed64dbca6f93b994d5e72e9ed8c540eb0a0713712c5190d15a9436318842d",
+  "handoff_sha256": "3ef13c4a2624a6f8f3239c55fad03be0b03c9d6269ad92a7cbe92f4f23da8324"
+}

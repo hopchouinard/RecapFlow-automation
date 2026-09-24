@@ -1,0 +1,12 @@
+{
+  "dump_path": "/var/backups/community-brain/20260910T021457Z.dump",
+  "restore_passed": true,
+  "restored_public_tables": 0,
+  "disposable_restore_database_removed": true,
+  "schedule_utc": "00:30 daily",
+  "retention_dumps": 14,
+  "pitr_enabled": false,
+  "off_host_copy_pending": false,
+  "restore_limit": "Database is not migrated yet; restore verified current empty application schema. Rehearse again after migration/data creation.",
+  "recovery_policy": "Daily logical restore points, 14 local dumps and copies; hourly Mac copy, nightly PBS. No PITR. Mac outages delay off-host copies."
+}

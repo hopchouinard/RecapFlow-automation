@@ -1,0 +1,16 @@
+{
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "target": "home.servers",
+  "created_at": "2026-09-21T01:35:32.090713+00:00",
+  "deadline": "2026-09-21T20:00:00Z",
+  "authorization": "Patrick instructed: Perfect then proceed with the next task. Existing VM108-first implementation, relay and development administration; no new production phase.",
+  "scope": "development integration of tested serving activation/rollback with actual Mac management and SSH transport; read-only production plan preparation",
+  "based_on_forge_commit": "a06c667415cc27bd822497fdffe197c13c6e2691",
+  "documents": {
+    "cbm-activation-development-results.md": "04b910df736c3b8ee9f9a35eab632d946b23b2f71804bd820fbf6b4d0a421c5c",
+    "cbm-activation-integration-request.md": "5905939d6706e0850a93c2dad9149dd2dbee2554ccfed2d22b078c37798ea6ad",
+    "cbm-successor-bindings-results.md": "4ad6c5a23b868ae82cf1643a0b197259259ffaf73ab958bec234787cad576ee2",
+    "forge-activation-evidence.tar.gz": "191a7b3ec03440165a4905a405d811bf97d5b79c4680a6c0d6c933de0f7311f1",
+    "forge-activation-source.tar.gz": "15803f3f7ce89a4983fcd97b3e8ca1b3f334ec58890012ba9be7c9d3754cfd07"
+  }
+}

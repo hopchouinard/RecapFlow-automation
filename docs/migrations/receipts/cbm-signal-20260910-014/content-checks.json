@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-SIGNAL-20260910-014",
+  "checked_at": "2026-09-10T23:44:05.439390+00:00",
+  "static_files_verified": 14,
+  "root_callback_verified": true,
+  "catalog_dates": 87,
+  "archive_files_verified": 481,
+  "real_job_artifacts_verified": 6,
+  "hidden_jobs_denied": 2,
+  "hidden_artifacts_denied": 9,
+  "tls_verified": true,
+  "production_submissions": 0,
+  "model_calls": 0
+}

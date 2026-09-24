@@ -1,0 +1,127 @@
+{
+  "job_id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+  "job": {
+    "id": "48550d00-9ad8-4b77-9f05-00ef5e929a5e",
+    "identity": {
+      "provider": "fathom",
+      "timezone": "America/Toronto",
+      "local_date": "2026-09-08",
+      "meeting_id": "181075701",
+      "started_at": "2026-09-08T21:54:33Z"
+    },
+    "mode": "weekly",
+    "version": "processing-v1",
+    "parent_id": null,
+    "processing": "succeeded",
+    "artifacts": "ready",
+    "indexing": "pending",
+    "git": "not_requested",
+    "distribution": "not_requested",
+    "created_at": "2026-09-10T05:49:36.645070+00:00",
+    "sources": {
+      "chat": "dcba207e-92be-4661-995f-c48194a8f9af",
+      "aliases": "5244c150-f1f0-4f1a-90b8-ac29a0119ff0",
+      "transcript": "15e29d83-4e4a-443a-ac1a-097757c30646"
+    },
+    "missing_inputs": [],
+    "stages": [
+      {
+        "id": "1a2be095-8c46-44d9-8fff-9c3c9ffdce33",
+        "name": "processing",
+        "state": "succeeded",
+        "generation": 1,
+        "attempts": 1,
+        "error": null,
+        "result": null,
+        "retryable": false
+      },
+      {
+        "id": "23408d9e-40d0-43ce-8327-dfcae9b15230",
+        "name": "indexing",
+        "state": "queued",
+        "generation": 1,
+        "attempts": 0,
+        "error": null,
+        "result": null,
+        "retryable": false
+      },
+      {
+        "id": "e1533a0e-671d-46ec-bed7-c61629e40506",
+        "name": "git",
+        "state": "blocked",
+        "generation": 0,
+        "attempts": 0,
+        "error": null,
+        "result": null,
+        "retryable": false
+      },
+      {
+        "id": "ba827ef2-e33d-472f-ad30-fa295f7e76e1",
+        "name": "distribution",
+        "state": "blocked",
+        "generation": 0,
+        "attempts": 0,
+        "error": null,
+        "result": null,
+        "retryable": false
+      },
+      {
+        "id": "55517fd6-5070-4ef2-bbcb-d803271c861e",
+        "name": "acquisition",
+        "state": "succeeded",
+        "generation": 1,
+        "attempts": 1,
+        "error": null,
+        "result": {
+          "source_id": "15e29d83-4e4a-443a-ac1a-097757c30646"
+        },
+        "retryable": false
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "8ec0d47f-cc51-48fa-8ff5-c8ecc4f4f6c5",
+      "name": "transcript.txt",
+      "sha256": "79540c3f3f08a09dee48d5784026e0f980ec8a9fb85414091fdffba61fe18f75",
+      "bytes": 112886,
+      "url": "/api/v1/artifacts/8ec0d47f-cc51-48fa-8ff5-c8ecc4f4f6c5/content"
+    },
+    {
+      "id": "36ceeb76-5c55-46aa-aaa8-40bf799591f9",
+      "name": "prepared-transcript.md",
+      "sha256": "157e19000e33f1d0ed9746188f16325b64782f4f4d7dace94b8779b279ba761b",
+      "bytes": 54244,
+      "url": "/api/v1/artifacts/36ceeb76-5c55-46aa-aaa8-40bf799591f9/content"
+    },
+    {
+      "id": "7ddda653-2a18-47d0-ba40-492d21588807",
+      "name": "extracted-signal.md",
+      "sha256": "0f3d4f210d4b3e1bed7c157021624ae94e2f162297c718e31cc8314f7a0fe330",
+      "bytes": 17026,
+      "url": "/api/v1/artifacts/7ddda653-2a18-47d0-ba40-492d21588807/content"
+    },
+    {
+      "id": "22512203-1dd1-448f-a2a2-38524449480c",
+      "name": "community-post.md",
+      "sha256": "b7acf4f18b7e2a28143c64a759043e68af3e201416c9812791a627a100e559e7",
+      "bytes": 15821,
+      "url": "/api/v1/artifacts/22512203-1dd1-448f-a2a2-38524449480c/content"
+    },
+    {
+      "id": "1125686b-9ead-430c-a9b7-e60cc63a96f5",
+      "name": "community-post-compressed.md",
+      "sha256": "1e095b5aa8de64e7c2acefee3b20cf183547e2b145d524ce765e946b33671784",
+      "bytes": 13887,
+      "url": "/api/v1/artifacts/1125686b-9ead-430c-a9b7-e60cc63a96f5/content"
+    },
+    {
+      "id": "5e86240b-70a6-439b-bec7-112860fa7c08",
+      "name": "2026-09-15-weekly-invite.md",
+      "sha256": "eeecb30e359309d49a337c50f6408e7d4dfb339291ac0d5565a8f8ade0d4a403",
+      "bytes": 1669,
+      "url": "/api/v1/artifacts/5e86240b-70a6-439b-bec7-112860fa7c08/content"
+    }
+  ],
+  "download_hashes_verified": true
+}

@@ -1,0 +1,24 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "checked_at": "2026-09-10T06:56:50.543778+00:00",
+  "terminal_noop_checks": [
+    "timer",
+    "boot",
+    "direct_force"
+  ],
+  "terminal_state_unchanged": true,
+  "mac_terminal_verified_before_mask": true,
+  "units": {
+    "cbm-retrieval-deadline.timer": {
+      "ActiveState": "inactive",
+      "UnitFileState": "masked"
+    },
+    "cbm-retrieval-deadline.service": {
+      "ActiveState": "inactive",
+      "UnitFileState": "masked"
+    }
+  },
+  "masked_start_denied": true,
+  "deadline_superseded_not_extended": true,
+  "original_units_preserved": "/var/lib/community-brain-window/CBM-RETRIEVAL-20260910-001/ownership-007-before"
+}

@@ -1,0 +1,203 @@
+{
+  "state": "completed",
+  "cycle": "c2ced832-0756-4119-890d-22c75b6f7094",
+  "expires_at": 1790562183,
+  "next_due": 1790302983,
+  "subjects": [
+    "community-brain-openwebui",
+    "community-brain-prod-mac-collector",
+    "community-brain-prod-manual-operator",
+    "community-brain-prod-read-probe",
+    "community-brain-prod-metrics-probe"
+  ],
+  "passed": true,
+  "authority": "actual Infisical",
+  "same_generation_resume": true,
+  "old_and_new_overlap_verified": true,
+  "old_credentials_rejected": true,
+  "actual_monitor_consumers": true,
+  "api_recreations": [
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": "0917d95aac7b1ef17c92893f5fadad0c79314df701c7dd8ad805f098818eb81b",
+        "automation/attention.json": "8513af51ab890cefaaa0a6aa651b69cc9de79c717871e2a1b88accfbd05c71ef",
+        "automation/boot-state.json": "581191e81df5f7d4f9b0a95d5756682497537eb1e0de372bec23d0eef8e13ff2"
+      },
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/config",
+          "target": "/state/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/files",
+          "target": "/state/files",
+          "read_only": false
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        }
+      ],
+      "memory_limit": 2147483648,
+      "container_id": "420d76b507868fb4265a0d900e6a63ee29b427694f2cacd6fe1dece88b43ff0d",
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ]
+    },
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": "0917d95aac7b1ef17c92893f5fadad0c79314df701c7dd8ad805f098818eb81b",
+        "automation/attention.json": "8513af51ab890cefaaa0a6aa651b69cc9de79c717871e2a1b88accfbd05c71ef",
+        "automation/boot-state.json": "581191e81df5f7d4f9b0a95d5756682497537eb1e0de372bec23d0eef8e13ff2"
+      },
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/config",
+          "target": "/state/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/files",
+          "target": "/state/files",
+          "read_only": false
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        }
+      ],
+      "memory_limit": 2147483648,
+      "container_id": "a4aae917c99be0462011b909d41913732523582f82e39468aadcab19ba865ebd",
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ]
+    },
+    {
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "no_old_overlays": true,
+      "verified_files": 20,
+      "holds": {
+        "automation/paused": "0917d95aac7b1ef17c92893f5fadad0c79314df701c7dd8ad805f098818eb81b",
+        "automation/attention.json": "8513af51ab890cefaaa0a6aa651b69cc9de79c717871e2a1b88accfbd05c71ef",
+        "automation/boot-state.json": "581191e81df5f7d4f9b0a95d5756682497537eb1e0de372bec23d0eef8e13ff2"
+      },
+      "mounts": [
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/private/ca-bundle.pem",
+          "target": "/run/certs/ca-bundle.pem",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/automation-public",
+          "target": "/state/automation-public",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/config",
+          "target": "/state/config",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/corpus",
+          "target": "/state/corpus",
+          "read_only": true
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/files",
+          "target": "/state/files",
+          "read_only": false
+        },
+        {
+          "source": "/srv/dev-data/workspaces/cbm-activation-integration-20260921-029/state/meeting-archive",
+          "target": "/state/meeting-archive",
+          "read_only": true
+        }
+      ],
+      "memory_limit": 2147483648,
+      "container_id": "4b681021615aa6f28f32fed02d772661ebe8a7a5733359c284c6ca94beed7db7",
+      "nano_cpus": 2000000000,
+      "read_only_root": true,
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "uvicorn",
+        "community_brain.jobs.runtime:app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ]
+    }
+  ],
+  "production_changes": false,
+  "limits": [
+    "Synthetic corpus and embedding/model-list fixture",
+    "Collector configuration and authenticated scope probes; no desktop intake or upload exercised"
+  ]
+}

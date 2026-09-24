@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "actual_api_factory": true,
+  "actual_lancedb_fts": true,
+  "actual_webui_filter_cache": true,
+  "expected_source_id_verified": true,
+  "embedding_provider": "deterministic isolated fixture",
+  "external_calls": 0,
+  "production_changes": false
+}

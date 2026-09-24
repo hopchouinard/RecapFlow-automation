@@ -1,0 +1,10 @@
+{
+  "receipt.md": "9a6c3c5e6ffb18253705fc4c37185b051f998607ca6f6f1cf5f4bfd1ef082331",
+  "identity.json": "245dc1b41ad7112644653fb6140dbba5e6fa9dea2ca2294669bcf4af164ca360",
+  "token-verification.json": "43ede698a0cd4496f6c4128c74aa25b9a43a73827bcc1a801d4e7929c9dc4b37",
+  "preservation-verification.json": "612a297a65011147a688d4ef845972c65ac2752ba6fe96451cc6ed88431f34ab",
+  "provision-before.json": "84e06facb59d1ce3e120dace51d8bc1ef4859add700d8797ec6356a78850efcb",
+  "provision-after.json": "87e09ba9f7ce7c2498cfdfba43b64b0e400cf325e9574f0b9f6043f54f205103",
+  "evidence.json": "daded500c7da36d2f1e99851353a804147bede1e0e656bdd8c2494de5f6ee8ce",
+  "authority-inventory.json": "fc1a034bafeea6bd9650f4114b0f0b9216736c7eecb664192869d42693f66518"
+}

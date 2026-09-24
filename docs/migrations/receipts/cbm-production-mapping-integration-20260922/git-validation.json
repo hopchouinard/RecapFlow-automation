@@ -1,0 +1,9 @@
+{
+  "staged_files": 152,
+  "exact_packet_members": true,
+  "whitespace_check_exit": 2,
+  "whitespace_findings_only": [
+    "platform-services/community-brain-prod/production-mapping-033/actual-schema-source/0001_jobs.sql"
+  ],
+  "disposition": "Unmodified deployed schema source retained byte-for-byte; no normalization of evidence source. All authored files pass whitespace check."
+}

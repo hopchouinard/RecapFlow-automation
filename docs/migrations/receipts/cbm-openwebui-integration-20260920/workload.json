@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "pipeline_checks": [
+    {
+      "passed": true,
+      "stages": [
+        "processing",
+        "indexing",
+        "acquisition",
+        "processing",
+        "indexing"
+      ],
+      "meetings": 2,
+      "searchable_rows": 16,
+      "fts": {
+        "num_indexed_rows": 16,
+        "num_unindexed_rows": 0
+      },
+      "old_outbox_untouched": true,
+      "first_meeting_unchanged": true,
+      "external_calls": 0
+    },
+    {
+      "stabilization_passed": true,
+      "baseline_missing_readiness_reproduced": true,
+      "independent_attention_boot_holds": true,
+      "renewal_failure_visible": true,
+      "stale_readiness_fails_closed": true,
+      "busy_heartbeat_and_concurrent_projection": true,
+      "read_only_inspection_preserves_expired_stage": true,
+      "real_database_failure_diagnostic": "OperationalError",
+      "actual_api_factory_http_auth_and_readiness": true,
+      "production_mutations": 0,
+      "external_provider_calls": 0,
+      "image_frontend_hash": "a091882f9d8b5c1528cb95383f3e47614e43302c9299de6dfd1d77f1b72b677f"
+    }
+  ],
+  "times": {
+    "load-extended-start.utc": "2026-09-20T18:02:19Z",
+    "load-extended-end.utc": "2026-09-20T18:03:52Z",
+    "pipeline-extended-start.utc": "2026-09-20T18:02:19Z",
+    "pipeline-extended-end.utc": "2026-09-20T18:03:15Z"
+  },
+  "load_covers_entire_pipeline_process": true,
+  "clients": 3,
+  "request_pairs": 316,
+  "maximum_pair_seconds": 1.5944086919989786,
+  "memory_samples": 28,
+  "minimum_available_mib": 1701.62890625,
+  "oom_killed": false,
+  "scope": "synthetic retrieval/filter and complete fixture pipeline overlap"
+}

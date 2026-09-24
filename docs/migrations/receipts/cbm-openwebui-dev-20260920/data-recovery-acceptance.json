@@ -1,0 +1,21 @@
+{
+  "synthetic_chat_restored": true,
+  "synthetic_upload_restored": true,
+  "upload_sha256": "5c08ee8fc5d12b655013a9b9a8b3eaaaf36c342372214f614ea220dbe3b1b849",
+  "custom_model_restored": true,
+  "prompt_restored": true,
+  "login_after_restart": true,
+  "live_filter_cache_after_restart": {
+    "live_app_process": true,
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "effective_url": "http://cbm-r026-fixture:8999/retrieval/query",
+    "effective_token_sha256": "bb4cc23445e1dd7e48af8a29ca3fc84c1e82410aa7023b2b93e17454c9996964",
+    "retrieval_status": "ok",
+    "source_count": 1,
+    "context_emitted": true,
+    "unavailable_context": false
+  },
+  "upload_processing": false,
+  "paid_inference": false,
+  "real_user_data_used": false
+}

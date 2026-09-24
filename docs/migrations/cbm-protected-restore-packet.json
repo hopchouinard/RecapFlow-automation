@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "protected_restore_preparation",
+  "deployable": false,
+  "transfer_authorized": false,
+  "production_changes_performed": false,
+  "packet_sha256": "a6e7d1c237f79cabbe03303d7a05ad94a8e189c8e0282a6e4bc505be03a741dd",
+  "authoritative_sources": {
+    "community_brain": "current VM109 database and /srv/community-brain state",
+    "openwebui": "dormant VM101 open-webui-data volume",
+    "webui_signing": "dormant container /app/backend/.webui_secret_key outside data volume"
+  },
+  "required_private_components": [
+    "database_snapshot",
+    "files",
+    "config",
+    "corpus",
+    "meeting_archive",
+    "control_state",
+    "runtime_and_management_source",
+    "private_runtime_configuration",
+    "webui_volume",
+    "external_signing_material",
+    "off_host_recovery_copy"
+  ],
+  "receipt_requirements": [
+    "capture_identity_and_writer_exclusion",
+    "exact_source_and_destination_identity",
+    "component_hashes_and_private_manifests",
+    "independent_database_restore_comparison",
+    "webui_sqlite_relationship_upload_vector_checks",
+    "signing_preservation_and_session_checks",
+    "sanitized_clone_transformation_manifest_if_used",
+    "independent_off_host_restore",
+    "browser_acceptance",
+    "capacity_acceptance",
+    "provider_budget_acceptance"
+  ],
+  "blocked_fixture_entrypoints": [
+    "activation-integration/validation_host.py:paired",
+    "activation-integration/validation_host.py:finish_pair"
+  ],
+  "operator_bindings_pending": [
+    "current_database_and_volume_identity",
+    "private_capture_and_off_host_paths",
+    "independent_restore_destinations",
+    "signing_authority_delivery",
+    "sanitized_test_data_scope",
+    "exact_commands_and_ownership_rules",
+    "capacity_workload_and_thresholds",
+    "provider_budget_scope",
+    "browser_operator_and_rollback_owner"
+  ],
+  "production_template_reference": "receipts/cbm-activation-integration-20260921/production-serving-plan.template.json"
+}

@@ -1,0 +1,21 @@
+{
+  "request_id": "CBM-WEEKLY-20260911-015",
+  "scheduled_ticks_observed": [
+    "2026-09-11T20:16:04.928102+00:00",
+    "2026-09-11T20:17:05.730636+00:00",
+    "2026-09-11T20:18:05.555976+00:00"
+  ],
+  "latest_status": {
+    "state": "idle",
+    "checked_at": "2026-09-11T20:18:05.555976+00:00"
+  },
+  "last_three_cron_log_states": [
+    "idle",
+    "idle",
+    "idle"
+  ],
+  "paused": false,
+  "attention": false,
+  "checkpoint_pending": false,
+  "workers": ""
+}

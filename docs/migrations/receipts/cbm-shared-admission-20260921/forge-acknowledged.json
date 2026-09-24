@@ -1,0 +1,13 @@
+{
+  "request_id": "CBM-SHARED-ADMISSION-20260921-032",
+  "actor": "Forge",
+  "state": "consumed",
+  "acknowledged_at": "2026-09-21T22:13:27.676886+00:00",
+  "verified_manifest_artifacts": 88,
+  "independently_verified_vm108_source_files": 49,
+  "local_tests_passed": 58,
+  "source_commit": "dd001c2dcc9338f64e1af0c18fbb1694b183025f",
+  "receipt_sha256": "8c9f32543853302597e5693d26bf852e8d4ae5ea11e319e539dd59ea140b444e",
+  "production_promotion_ready": false,
+  "protected_transfer_performed": false
+}

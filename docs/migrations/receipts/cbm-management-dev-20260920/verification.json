@@ -1,0 +1,43 @@
+{
+  "request_id": "CBM-MANAGEMENT-INTEGRATION-20260920-027",
+  "checked_at": "2026-09-20T21:39:04.085842+00:00",
+  "development_management_validation": "passed",
+  "production_promotion_ready": false,
+  "packet_manifest_sha256": "19c85b5cbece351f9c9c09606ab3ccaa35065fd4bcee35f65e8ab2cb502d08a9",
+  "generic_builder_byte_reproduction": true,
+  "unit_tests": {
+    "mac": 6,
+    "vm108": 6,
+    "failed": 0
+  },
+  "actual_boundaries": [
+    "Infisical read/save/read verification",
+    "Mac scheduler mutex",
+    "SSH quiet lease and lease loss",
+    "Lost-response readback without replay",
+    "API submission lock middleware",
+    "WebUI live filter cache and Community Brain retrieval",
+    "Kuma and Prometheus fresh acceptance",
+    "Same-generation interrupted renewal and old-token rejection",
+    "API recreation image and20 module/frontend hashes",
+    "Held manual and automatic launchers",
+    "Terminal superseded intake guard"
+  ],
+  "simulated_or_unexercised": [
+    "Deterministic embedding/model-list provider and synthetic corpus",
+    "Desktop intake and collector upload not run",
+    "Paid-provider and worker execution not run",
+    "Production data/signing transfer and restored browser session not run"
+  ],
+  "failures_reconciled": [
+    "Lease acquisition timeout before setup effect",
+    "Prometheus directory mode affected by strict umask",
+    "Fresh Kuma database setup and preserved empty inspection-created database",
+    "Duplicate Kuma monitor start and stat_hourly errors; overlap retained until repaired dev monitor passed"
+  ],
+  "user_authorization_overrides": [
+    "homelab prod /development/community-brain-dev/request027 authorized for generated development material only",
+    "chat.patchoutech.lab DNS/Traefik/StepCA authorized when replacement ready; does not authorize data transfer or cutover"
+  ],
+  "production_mutations": false
+}

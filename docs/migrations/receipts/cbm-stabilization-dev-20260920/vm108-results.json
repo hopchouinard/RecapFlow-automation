@@ -1,0 +1,44 @@
+{
+  "observed_at": "2026-09-20T02:18:37.545977+00:00",
+  "host": "community-brain-dev",
+  "vmid": 108,
+  "application_image_id": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+  "checks": [
+    {
+      "passed": true,
+      "stages": [
+        "processing",
+        "indexing",
+        "acquisition",
+        "processing",
+        "indexing"
+      ],
+      "meetings": 2,
+      "searchable_rows": 16,
+      "fts": {
+        "num_indexed_rows": 16,
+        "num_unindexed_rows": 0
+      },
+      "old_outbox_untouched": true,
+      "first_meeting_unchanged": true,
+      "external_calls": 0
+    },
+    {
+      "stabilization_passed": true,
+      "baseline_missing_readiness_reproduced": true,
+      "independent_attention_boot_holds": true,
+      "renewal_failure_visible": true,
+      "stale_readiness_fails_closed": true,
+      "busy_heartbeat_and_concurrent_projection": true,
+      "read_only_inspection_preserves_expired_stage": true,
+      "real_database_failure_diagnostic": "OperationalError",
+      "actual_api_factory_http_auth_and_readiness": true,
+      "production_mutations": 0,
+      "external_provider_calls": 0,
+      "image_frontend_hash": "a091882f9d8b5c1528cb95383f3e47614e43302c9299de6dfd1d77f1b72b677f"
+    }
+  ],
+  "log_sha256": "b4b273e7ddc43f6e8372ddb9d9b6c416a2b82a0dcc9077d1e266e92ab82475f3",
+  "external_data": "synthetic fixtures only",
+  "production_changes": false
+}

@@ -1,0 +1,32 @@
+# Explicit one-shot overlay. Never used by the normal login-stack launcher.
+services:
+  bounded-worker:
+    image: community-brain:rehearsal
+    user: 10001:10001
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1536m
+    cpus: 1.5
+    profiles: [bounded]
+    networks: [default, oidc]
+    volumes:
+    - files:/state/files
+    - config:/state/config
+    - corpus:/state/corpus
+    - ./live-development:/checks:ro
+    - /etc/ssl/certs/ca-certificates.crt:/run/certs/ca-bundle.pem:ro
+    environment:
+      CB_DATABASE_URL: ${CB_LIVE_DATABASE_URL:?}
+      CB_NATS_URL: ${CB_LIVE_NATS_URL:?}
+      CB_CORPUS_ROOT: /state/corpus
+      OLLAMA_BASE_URL: http://10.1.50.219:11434
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_OPENROUTER_API_KEY: ${CB_OPENROUTER_API_KEY:?}
+      CB_ENABLE_MODEL_CALLS: 'true'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      SSL_CERT_FILE: /run/certs/ca-bundle.pem
+      REQUESTS_CA_BUNDLE: /run/certs/ca-bundle.pem
+    entrypoint: [python, /checks/bounded_worker.py]

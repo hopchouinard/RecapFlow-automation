@@ -1,0 +1,12 @@
+{
+  "alloy_config_valid": true,
+  "lifecycle_only": true,
+  "request_logs_shipped": false,
+  "destination": "platform-logs:3100",
+  "config_path": "/opt/community-brain-observability/lifecycle.river",
+  "api_started": false,
+  "live_ready": true,
+  "lifecycle_lines_seen": 58,
+  "private_sentinel_lines_seen": 0,
+  "probe_removed": true
+}

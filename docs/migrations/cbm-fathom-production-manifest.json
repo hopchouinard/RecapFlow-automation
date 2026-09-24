@@ -1,0 +1,28 @@
+{
+  "files": {
+    "dist/assets/index-D-8kfH5H.css": {
+      "bytes": 28153,
+      "sha256": "df1fa7d86d340fdf4d1d661a736d2309c7d328afb6fcabfc46d42ee702b419db"
+    },
+    "dist/assets/index-DSIsVXVy.js": {
+      "bytes": 477046,
+      "sha256": "407a5cf8a80629783a5e7b5d82899e22275221d881ce91267155e90f14f17a20"
+    },
+    "dist/index.html": {
+      "bytes": 400,
+      "sha256": "8a362b71930345b26054e447ea65036b90d5a0a7ee02971d529f0764fe8d80f4"
+    },
+    "jobs/acquisition.py": {
+      "bytes": 8631,
+      "sha256": "d172978a31efc8a0e7eaf081ba5d3978104d51a500a7847c7836f743196e5f89"
+    },
+    "manual-host-mount.patch": {
+      "bytes": 222,
+      "sha256": "44e089da14883facf7a0ebaeaa6311e8486a8de34317a8977dd77d28970bc824"
+    },
+    "selected_fathom.py": {
+      "bytes": 1979,
+      "sha256": "eb38d5afd638f3c65372b93193f65dc3f1d4eaa00d87a1f2140c1dfe1a5afeba"
+    }
+  }
+}

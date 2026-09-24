@@ -1,0 +1,47 @@
+{
+  "copies_verified": {
+    "pchouinard@10.1.10.50": {
+      "directory": "/var/backups/community-brain/akadmin-018/source-controls",
+      "files": {
+        "changed-controls.json": {
+          "bytes": 1937,
+          "sha256": "69af76038f1bbbacf66bd7127c225247f06d864f19946d8d2c6a22a3f345cdca"
+        },
+        "receipt.md": {
+          "bytes": 6605,
+          "sha256": "0db6384fe964558403bfb550d6c37f718a8b663c6dc41eeacd086808258e415e"
+        },
+        "rollback.md": {
+          "bytes": 2262,
+          "sha256": "c41a00e107edccf2da3f7d5f853bf0581ca1a985fb24654f615d06ad81802871"
+        },
+        "source-renderers.tar.gz": {
+          "bytes": 6269,
+          "sha256": "6a43130f847b74ad6d9879a9df3c0736c037e3cc1d4d43960a2af2f678d7bee4"
+        }
+      }
+    },
+    "pchouinard@10.1.30.21": {
+      "directory": "/srv/community-brain/artifacts/cbm-akadmin-20260917-018/source-controls",
+      "files": {
+        "changed-controls.json": {
+          "bytes": 1937,
+          "sha256": "69af76038f1bbbacf66bd7127c225247f06d864f19946d8d2c6a22a3f345cdca"
+        },
+        "receipt.md": {
+          "bytes": 6605,
+          "sha256": "0db6384fe964558403bfb550d6c37f718a8b663c6dc41eeacd086808258e415e"
+        },
+        "rollback.md": {
+          "bytes": 2262,
+          "sha256": "c41a00e107edccf2da3f7d5f853bf0581ca1a985fb24654f615d06ad81802871"
+        },
+        "source-renderers.tar.gz": {
+          "bytes": 6269,
+          "sha256": "6a43130f847b74ad6d9879a9df3c0736c037e3cc1d4d43960a2af2f678d7bee4"
+        }
+      }
+    }
+  },
+  "request_id": "CBM-AKADMIN-20260917-018"
+}

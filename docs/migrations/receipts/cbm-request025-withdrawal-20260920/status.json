@@ -1,0 +1,8 @@
+{
+  "request_id": "CBM-RENEWAL-DEVELOPMENT-20260920-025",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-20T03:19:53.710405+00:00",
+  "summary": "Withdrawal acknowledged before execution. No development or production changes; awaiting migration-focused replacement.",
+  "receipt": "receipt.md"
+}

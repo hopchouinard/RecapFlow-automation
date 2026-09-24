@@ -1,0 +1,63 @@
+[
+  {
+    "path": "/Users/pchouinard/Library/LaunchAgents/com.patchoutech.recapflow-freshness.plist",
+    "label": "com.patchoutech.recapflow-freshness",
+    "calendar": {
+      "Hour": 9,
+      "Minute": 0
+    },
+    "interval": null,
+    "program_basename": "recapflow-freshness-check.sh"
+  },
+  {
+    "path": "/Users/pchouinard/Library/LaunchAgents/lab.patchoutech.community-brain-management.plist",
+    "label": "lab.patchoutech.community-brain-management",
+    "calendar": null,
+    "interval": 3600,
+    "program_basename": "python3"
+  },
+  {
+    "path": "/Users/pchouinard/Library/LaunchAgents/com.patchoutech.recapflow-pull.plist",
+    "label": "com.patchoutech.recapflow-pull",
+    "calendar": {
+      "Hour": 2,
+      "Minute": 30
+    },
+    "interval": null,
+    "program_basename": "recapflow-pull.sh"
+  },
+  {
+    "path": "/Users/pchouinard/Library/LaunchAgents/com.patchoutech.sync-zoom-chats.plist",
+    "label": "com.patchoutech.sync-zoom-chats",
+    "calendar": null,
+    "interval": null,
+    "program_basename": "bash"
+  },
+  {
+    "path": "/Library/LaunchDaemons/us.zoom.ZoomDaemon.plist",
+    "label": "us.zoom.ZoomDaemon",
+    "calendar": null,
+    "interval": null,
+    "program_basename": "us.zoom.ZoomDaemon"
+  },
+  {
+    "path": "/Users/pchouinard/scripts/sync-zoom-chats.sh",
+    "exists": true,
+    "mtime": 1772863139.6832604
+  },
+  {
+    "path": "/Users/pchouinard/.zoom-chat-sync.log",
+    "exists": true,
+    "mtime": 1785886069.2335117
+  },
+  {
+    "path": "/Users/pchouinard/.zoom-chat-synced",
+    "exists": true,
+    "mtime": 1785886069.219527
+  },
+  {
+    "path": "/Users/pchouinard/Library/Workflows/Applications/Folder Actions/Sync Zoom Chats.workflow",
+    "exists": true,
+    "mtime": 1772863723.770635
+  }
+]

@@ -1,0 +1,47 @@
+# Standalone API-only staging. Do not merge with compose.yml.
+name: community-brain-production-staging
+services:
+  api:
+    image: ${CB_IMAGE:?reviewed immutable image required}
+    pull_policy: never
+    user: "10001:10001"
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 2g
+    cpus: 2
+    ulimits:
+      nofile: {soft: 8192, hard: 8192}
+    command: [uvicorn, community_brain.jobs.runtime:app, --factory, --host, 0.0.0.0, --port, "8090", --no-access-log]
+    ports: ["${CB_API_BIND:-127.0.0.1}:8090:8090"]
+    environment:
+      CB_DATABASE_URL: ${CB_DATABASE_URL:?scoped production runtime credential required}
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      COMMUNITY_BRAIN_CONFIG_DIR: /state/config
+      CB_CORPUS_SCOPE: community-brain
+      CB_SERVICE_IDENTITIES: ${CB_SERVICE_IDENTITIES:?read-only staging identities required}
+      CB_OIDC_ISSUER: ${CB_OIDC_ISSUER:?production issuer required}
+      CB_OIDC_AUDIENCE: ${CB_OIDC_AUDIENCE:?production audience required}
+      CB_OIDC_CLIENT_ID: ${CB_OIDC_CLIENT_ID:?production public client required}
+      CB_OIDC_JWKS_URL: ${CB_OIDC_JWKS_URL:?production JWKS required}
+      CB_ENABLE_MODEL_CALLS: "false"
+      CB_ENABLE_NETWORK_PUBLICATION: "false"
+      CB_ENABLE_RETRIEVAL: "true"
+      COMMUNITY_BRAIN_DISTRIBUTION_MODE: "true"
+      LANCEDB_PATH: /state/corpus/lancedb/nomic-v1
+      OLLAMA_BASE_URL: http://10.1.50.219:11434
+      SSL_CERT_FILE: /run/certs/ca-bundle.pem
+      REQUESTS_CA_BUNDLE: /run/certs/ca-bundle.pem
+    volumes:
+      - /srv/community-brain/files:/state/files:ro
+      - /srv/community-brain/config:/state/config:ro
+      - /srv/community-brain/corpus:/state/corpus:ro
+      - /etc/ssl/certs/ca-certificates.crt:/run/certs/ca-bundle.pem:ro
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health', timeout=5)"]
+      interval: 30s
+      timeout: 6s
+      retries: 3

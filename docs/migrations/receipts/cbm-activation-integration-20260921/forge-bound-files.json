@@ -1,0 +1,14 @@
+{
+  "development-normal-plan.json": {
+    "bound_files": 255,
+    "all_hashes_match": true
+  },
+  "development-partial-plan.json": {
+    "bound_files": 255,
+    "all_hashes_match": true
+  },
+  "development-readiness-plan.json": {
+    "bound_files": 255,
+    "all_hashes_match": true
+  }
+}

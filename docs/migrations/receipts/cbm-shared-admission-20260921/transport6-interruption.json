@@ -1,0 +1,70 @@
+{
+  "actions": [
+    {
+      "case": "existing_mutex_contention",
+      "rejected": true
+    },
+    {
+      "case": "actual_ssh_client_sigkill",
+      "pid": 44555
+    },
+    {
+      "case": "scheduler_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "manual_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "capture_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "unsafe_readback_does_not_resolve",
+      "rejected": true
+    },
+    {
+      "case": "resolved_operation_cannot_replay",
+      "rejected": true
+    },
+    {
+      "case": "fresh_scheduler_after_authoritative_recovery",
+      "operation_id": "r032-transport6nextscheduler-1790015308",
+      "passed": true
+    },
+    {
+      "case": "fresh_manual_after_authoritative_recovery",
+      "operation_id": "r032-transport6nextmanual-1790015334",
+      "passed": true
+    }
+  ],
+  "actual_vm_reboot": false,
+  "label": "transport6",
+  "mode": "sshkill",
+  "operation_id": "r032-transport6c-1790015243",
+  "packet_sha256": "48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7",
+  "reconciliation": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"spec_sha256\": \"19da6fdb47d6a8f1eab3c572286e8a17f1b5bef762954f27b207679f5a477758\", \"state\": \"aborted_restored\", \"incumbent_id\": \"524d40fa3817e71b2eceb699e8f634db7ef84dd038b7611c06be12c92047847d\", \"holds_sha256\": \"c9812517efac1ae0c8ac4282d8d2466727648413b3f6a03130b87d9fcd90dceb\", \"target\": \"community-brain-dev\", \"observed_epoch\": 1790015304.671433, \"boot_id\": \"7b3d1692-81df-49e1-9b2e-49efa996d71d\", \"finalizer_seen\": true, \"service_inactive\": true, \"healthy\": true}\n"
+  },
+  "shared_journal_resolved": true,
+  "terminal": {
+    "at": 1790015293.9498973,
+    "finalizer_seen": true,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "live_verified": true,
+    "operation_id": "r032-transport6c-1790015243",
+    "owner_id": "home-servers-request032",
+    "production_qualified": false,
+    "reason": "capture_deadline",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "service_state": "inactive",
+    "serving_restored_at": 1790015292.9663634,
+    "spec_sha256": "81b6c6af18b7a3d9a0b56af19fd1a0253e2b8976006917da59f9e91acdfba036",
+    "state": "aborted_restored"
+  }
+}

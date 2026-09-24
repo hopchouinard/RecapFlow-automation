@@ -1,0 +1,26 @@
+{
+  "rows": 1914,
+  "sessions": 87,
+  "unique_chunk_ids": 1914,
+  "schema_versions": {
+    "1.1": 1914
+  },
+  "extraction_statuses": {
+    "success": 1901,
+    "failed": 13
+  },
+  "embedding_dimensions": 768,
+  "configured_embedding_model": "nomic-embed-text",
+  "historical_embedding_provenance": "No per-row embedding-model field; current runtime setting and nomic-v1 path corroborate preservation, not proof of every historical vector origin",
+  "indices": [
+    {
+      "name": "bm25_text_idx",
+      "type": "FTS",
+      "indexed_rows": 0,
+      "unindexed_rows": 1914
+    }
+  ],
+  "host_corpus": "/home/pchouinard/n8n/community-brain/lancedb/nomic-v1",
+  "host_config": "/home/pchouinard/n8n/community-brain/config",
+  "container_corpus": "/data/lancedb/nomic-v1"
+}

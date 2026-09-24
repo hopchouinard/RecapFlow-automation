@@ -1,0 +1,58 @@
+{
+  "request_id": "CBM-DARK-MODE-20260910-008",
+  "created_at": "2026-09-10T16:24:44.891122+00:00",
+  "files": {
+    "api-checks.json": {
+      "bytes": 2045,
+      "sha256": "8841c20d035dee9ee1e4fcac285fb43b0b03e5a591ec601fdbe11731b5a32c68"
+    },
+    "database-after.json": {
+      "bytes": 2145,
+      "sha256": "151bcff9fb06afc576ec0d06f8d90df46f104e8caf42a0165309eaad2138b0a1"
+    },
+    "database-before.json": {
+      "bytes": 2145,
+      "sha256": "151bcff9fb06afc576ec0d06f8d90df46f104e8caf42a0165309eaad2138b0a1"
+    },
+    "host-checks.json": {
+      "bytes": 365,
+      "sha256": "968be88a14848ec77bd1ef62cd261b4ec9658f8aa90ff1c59bc1b18b35e3c46d"
+    },
+    "http-checks.json": {
+      "bytes": 1099,
+      "sha256": "5301a334e32284efb5435d3ebf9e2573d1ec95ff9f3448bb752415282d37c7c8"
+    },
+    "monitoring-checks.json": {
+      "bytes": 1322,
+      "sha256": "8eae31a446997679c90a769cd0b2ed5c43899e5dcec342f2800ce7a374bd55f4"
+    },
+    "ownership-checks.json": {
+      "bytes": 332,
+      "sha256": "2cb559b42597e5023a63ec2ec000a3f6975be6cd3479b20571602b5ca4c34bd0"
+    },
+    "preparation.json": {
+      "bytes": 2259,
+      "sha256": "a6ea8c2b0410dbac7bf2c9752939039f27a88e94e642d9ee75a4a33027f24af5"
+    },
+    "prepare-host.py": {
+      "bytes": 3179,
+      "sha256": "d386d86ff1ac3fa1754c5990b1ef01e78ca8d6758533c648c0aa8590534b2663"
+    },
+    "receipt.md": {
+      "bytes": 4677,
+      "sha256": "d3896c3aa5e797f7fc50b566500f126c63ba6ac8f2a0a38a1489be45e12e59fc"
+    },
+    "recovery-copies.json": {
+      "bytes": 1166,
+      "sha256": "e9c327f0ad2a19203c34535b180e0594d4d8844f52915c918fec2a90ee2e9853"
+    },
+    "verify-host.py": {
+      "bytes": 1707,
+      "sha256": "4834bb19d24a3bc4933aed86f98e61daab8e1d68bbb40aefaf86402569c26c1a"
+    },
+    "webui-checks.json": {
+      "bytes": 319,
+      "sha256": "ddd6bda8f1b566e7da1c7492c4e316cc80f05e30ac86cf632d8706c483b65447"
+    }
+  }
+}

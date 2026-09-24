@@ -1,0 +1,52 @@
+groups:
+- name: community-brain-production
+  rules:
+  - alert: CommunityBrainDiskLow
+    expr: node_filesystem_avail_bytes{job="community-brain-prod-node",mountpoint=~"/|/srv/community-brain"}
+      / node_filesystem_size_bytes{job="community-brain-prod-node",mountpoint=~"/|/srv/community-brain"}
+      < 0.15
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: Community Brain filesystem has less than 15% free
+  - alert: CommunityBrainNodeUnavailable
+    expr: up{job="community-brain-prod-node"} == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: Community Brain production host metrics unavailable
+  - alert: CommunityBrainManagementStale
+    expr: absent(cbm_management_checked_at_seconds{job="community-brain-prod-node"})
+      or time() - cbm_management_checked_at_seconds{job="community-brain-prod-node"}
+      > 7200
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: Mac Community Brain maintenance metadata missing or older than2h
+  - alert: CommunityBrainBackupCopyUnverified
+    expr: cbm_backup_copy_failed{job="community-brain-prod-node"} == 1 or time() >
+      cbm_backup_copy_valid_until_seconds{job="community-brain-prod-node"}
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: Community Brain pre-PBS dump copy failed or freshness deadline passed
+  - alert: CommunityBrainIdentityExpiresSoon
+    expr: cbm_service_identity_expires_at_seconds{job="community-brain-prod-node"}
+      - time() < 259200
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: Community Brain service identity needs explicit renewal within72h
+  - alert: CommunityBrainIdentityExpiryCritical
+    expr: cbm_service_identity_expires_at_seconds{job="community-brain-prod-node"}
+      - time() < 86400
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: Community Brain service identity expires within24h or is expired

@@ -1,0 +1,9 @@
+{
+  "live_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+  "preserved_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+  "repository_sha256": "f21f7c976a7fe49677997545538ae3f0f337c22d94adfef360c73a68ab6b65ba",
+  "live_equals_preserved": true,
+  "live_equals_repository": false,
+  "direct_post_full_valve_url": true,
+  "source_unchanged": true
+}

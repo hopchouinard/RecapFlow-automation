@@ -1,0 +1,18 @@
+{
+  "request_id": "CBM-MANUAL-RECOVERY-20260910-006",
+  "checked_at": "2026-09-10T06:34:52.020024+00:00",
+  "mac_maintenance": {
+    "retrieval-intake-rollback": "passed",
+    "provision-nats-tls.py": "passed",
+    "renew-app-tls.py": "passed",
+    "copy-backup.py": "passed",
+    "checked_utc": "2026-09-10T06:26:01.976019+00:00"
+  },
+  "installed_api_helper": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/manual_api_runtime.py",
+  "helper_sha256": "0cfa82f24f81b3d8186b70d32fe808dd756bc4f78a2cc5c719aecc64d2e61a20",
+  "api_recreation_automatic": false,
+  "manual_collector_active": true,
+  "legacy_zoom_disabled": true,
+  "legacy_launchagent_unloaded": true,
+  "steady_state_changes_executed": false
+}

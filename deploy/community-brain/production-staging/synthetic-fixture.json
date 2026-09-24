@@ -1,0 +1,4 @@
+{
+  "transcript": "00:00:00 - Alex\nThis is a synthetic development call. Today we discussed how to preserve meeting notes during a service migration. We agreed to keep the original transcript, test restoration from a backup, and check the resulting files before switching any users.\n00:01:00 - Alex\nThe practical lesson is to test recovery while the old service still works. A successful startup alone does not prove that stored notes can be recovered. We should compare file hashes after restoration and record any missing files.\n00:02:00 - Alex\nOur next action is to run a disposable recovery exercise with made-up meeting content. No production data should enter the test. We will review the recovery result together at the next weekly call.\n",
+  "chat": "00:01:20 Alex: Keep the original transcript and verify restored file hashes.\n00:02:10 Alex: Next call: review the disposable recovery exercise.\n"
+}

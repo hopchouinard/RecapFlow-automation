@@ -1,0 +1,88 @@
+{
+  "actions": [
+    {
+      "case": "existing_mutex_contention",
+      "rejected": true
+    },
+    {
+      "case": "actual_finalizer_failed",
+      "readback": {
+        "at": 1790015394.74586,
+        "error_type": "InjectedFinalizerFailure",
+        "finalizer_seen": false,
+        "live_verified": false,
+        "replay_allowed": false,
+        "service_state": "failed",
+        "spec_sha256": "7126dc6b6c970b95a5f056a94f870f9e6c0f076394517b16eaa4dfa04134796a",
+        "state": "uncertain"
+      }
+    },
+    {
+      "case": "scheduler_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "manual_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "capture_blocked_by_shared_intent",
+      "rejected": true
+    },
+    {
+      "case": "unsafe_readback_does_not_resolve",
+      "rejected": true
+    },
+    {
+      "case": "failed_startup_blocks_dependent_effect",
+      "probe_never_started": true
+    },
+    {
+      "actual_vm_reboot": false,
+      "case": "current_boot_startup_recovers_failed_finalizer",
+      "ordered": true
+    },
+    {
+      "case": "resolved_operation_cannot_replay",
+      "rejected": true
+    },
+    {
+      "case": "fresh_scheduler_after_authoritative_recovery",
+      "operation_id": "r032-recovery6nextscheduler-1790015426",
+      "passed": true
+    },
+    {
+      "case": "fresh_manual_after_authoritative_recovery",
+      "operation_id": "r032-recovery6nextmanual-1790015452",
+      "passed": true
+    }
+  ],
+  "actual_vm_reboot": false,
+  "label": "recovery6",
+  "mode": "finalizer",
+  "operation_id": "r032-recovery6c-1790015376",
+  "packet_sha256": "48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7",
+  "reconciliation": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"spec_sha256\": \"1c7ab6ef427e12313561651f45fb4c4d0b97d085cd6526e968dcf6ef3be8b3a8\", \"state\": \"aborted_restored\", \"incumbent_id\": \"607a502da5af36a0819a02d9c0223720e73a86ff9e99427911375b346312415e\", \"holds_sha256\": \"efd69bd0324752342f246f5a96f4e3322a91819e61e0ab8d74a16e5dd830ccd0\", \"target\": \"community-brain-dev\", \"observed_epoch\": 1790015422.5172822, \"boot_id\": \"7b3d1692-81df-49e1-9b2e-49efa996d71d\", \"finalizer_seen\": true, \"service_inactive\": true, \"healthy\": true}\n"
+  },
+  "shared_journal_resolved": true,
+  "terminal": {
+    "at": 1790015410.6059408,
+    "finalizer_seen": true,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "live_verified": true,
+    "operation_id": "r032-recovery6c-1790015376",
+    "owner_id": "home-servers-request032",
+    "production_qualified": false,
+    "reason": "startup_reconciliation",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "service_state": "failed",
+    "serving_restored_at": 1790015408.6064963,
+    "spec_sha256": "7126dc6b6c970b95a5f056a94f870f9e6c0f076394517b16eaa4dfa04134796a",
+    "state": "aborted_restored"
+  }
+}

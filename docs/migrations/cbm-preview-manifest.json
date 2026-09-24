@@ -1,0 +1,16 @@
+{
+  "files": {
+    "assets/index-CImQtPOh.js": {
+      "bytes": 476719,
+      "sha256": "cae7be15e7108e731e5db0ce7d0436850a946c8c3edf50825de3218cff6ffcb6"
+    },
+    "assets/index-GPIvHnrC.css": {
+      "bytes": 24149,
+      "sha256": "64646b4f353380c891f654e6b7e7ec2b790e2c14c6c427f5ba5a73e42abca376"
+    },
+    "index.html": {
+      "bytes": 400,
+      "sha256": "2e011fedf26c06e882de9b60961356edc01c61c8689c3e624c65a20557468421"
+    }
+  }
+}

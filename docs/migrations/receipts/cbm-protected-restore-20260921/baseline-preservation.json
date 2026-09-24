@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-09-21T12:35:31.704161+00:00",
+  "results": [
+    {
+      "host": "production",
+      "unchanged": true,
+      "containers": 2
+    },
+    {
+      "host": "development",
+      "unchanged": true,
+      "containers": 44
+    }
+  ]
+}

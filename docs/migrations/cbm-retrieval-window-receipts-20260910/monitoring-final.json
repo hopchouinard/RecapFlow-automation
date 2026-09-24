@@ -1,0 +1,57 @@
+{
+  "checked_utc": "2026-09-10T04:41:44.724870+00:00",
+  "kuma": [
+    {
+      "id": 30,
+      "name": "community-brain-production-health",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 04:39:37.267",
+      "ping": 22
+    },
+    {
+      "id": 31,
+      "name": "community-brain-production-retrieval",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 04:39:37.284",
+      "ping": 232
+    }
+  ],
+  "prometheus": [
+    {
+      "scrapePool": "community-brain-prod-api",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T04:41:31.263739963Z"
+    },
+    {
+      "scrapePool": "community-brain-prod-node",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T04:41:31.509409058Z"
+    }
+  ],
+  "activation_preflight": [
+    {
+      "path": "/health",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": false
+    },
+    {
+      "path": "/metrics",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    },
+    {
+      "path": "/retrieval/query",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    }
+  ],
+  "probe_expires_utc": "2026-09-11T02:05:38Z",
+  "request_id": "CBM-RETRIEVAL-20260910-001"
+}

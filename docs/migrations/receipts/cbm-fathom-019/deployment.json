@@ -1,0 +1,13 @@
+{
+  "api_recreated": true,
+  "at": "2026-09-17T02:08:17.196453+00:00",
+  "resumed": true,
+  "validation": {
+    "automatic_enabled": true,
+    "frontend_mount_verified": true,
+    "healthy": true,
+    "new_packet_mounts": 5,
+    "no_eligible_jobs": true,
+    "provider_keys_absent_from_api": true
+  }
+}

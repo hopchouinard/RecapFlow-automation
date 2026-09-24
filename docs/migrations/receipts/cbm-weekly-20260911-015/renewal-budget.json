@@ -1,0 +1,107 @@
+{
+  "request_id": "CBM-WEEKLY-20260911-015",
+  "checked_at": "2026-09-11T20:18:38.654033+00:00",
+  "provider": {
+    "limit": 5,
+    "limit_reset": "weekly",
+    "limit_remaining": 4.607892834,
+    "usage": 0.392107166,
+    "include_byok_in_limit": true,
+    "is_management_key": false
+  },
+  "renewal": {
+    "state": "completed",
+    "cycle": "c3638dc4-66a0-45c7-b6d9-6a802079b6b9",
+    "expires_at": 1789762230,
+    "next_due": 1789503030,
+    "subjects": [
+      "community-brain-openwebui",
+      "community-brain-prod-mac-collector",
+      "community-brain-prod-manual-operator",
+      "community-brain-prod-read-probe",
+      "community-brain-prod-metrics-probe"
+    ],
+    "phase": "completed"
+  },
+  "expiry_utc": "2026-09-18T20:10:30+00:00",
+  "next_renewal_due_utc": "2026-09-15T20:10:30+00:00",
+  "identities": [
+    {
+      "subject": "community-brain-openwebui",
+      "scope": "community-brain",
+      "permissions": [
+        "retrieval:read"
+      ],
+      "expires_at": 1789762230
+    },
+    {
+      "subject": "community-brain-prod-mac-collector",
+      "scope": "community-brain",
+      "permissions": [
+        "sources:upload:chat"
+      ],
+      "expires_at": 1789762230
+    },
+    {
+      "subject": "community-brain-prod-manual-operator",
+      "scope": "community-brain",
+      "permissions": [
+        "sources:upload",
+        "jobs:submit",
+        "jobs:read",
+        "artifacts:read"
+      ],
+      "expires_at": 1789762230
+    },
+    {
+      "subject": "community-brain-prod-read-probe",
+      "scope": "community-brain",
+      "permissions": [
+        "jobs:read",
+        "artifacts:read",
+        "retrieval:read"
+      ],
+      "expires_at": 1789762230
+    },
+    {
+      "subject": "community-brain-prod-metrics-probe",
+      "scope": "community-brain",
+      "permissions": [
+        "metrics:read"
+      ],
+      "expires_at": 1789762230
+    }
+  ],
+  "scheduled_check": {
+    "checked_at": 1789157715.7319412,
+    "next_due": 1789503030,
+    "state": "not_due"
+  },
+  "scheduled_maintenance": {
+    "pre-pbs-copy": "passed",
+    "legacy-intake-ownership": "failed: inspect private management status",
+    "renew-service-tokens.py": "passed",
+    "provision-nats-tls.py": "passed",
+    "renew-app-tls.py": "passed",
+    "copy-backup.py": "passed",
+    "management-health.py": "passed",
+    "checked_utc": "2026-09-11T20:15:26.823591+00:00"
+  },
+  "validation": {
+    "renewal_policy_tests": 7,
+    "crash_boundaries_exercised": true,
+    "kuma_readiness_regression": true,
+    "existing_recovery_tests": 79,
+    "first_failure_marker_tests": 3,
+    "controlled_live_rotation": true,
+    "old_tokens_rejected": true,
+    "cross_scope_denials": true,
+    "fresh_kuma_prometheus_acceptance": true,
+    "live_webui_filter_acceptance": true,
+    "database_and_managed_file_fingerprints_unchanged": true
+  },
+  "paid_calls": 0,
+  "jobs_created": 0,
+  "publication_enabled": false,
+  "retirement_performed": false
+}

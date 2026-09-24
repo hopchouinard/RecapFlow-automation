@@ -1,0 +1,42 @@
+{
+  "request_id": "CBM-DARK-MODE-20260910-008",
+  "checked_at": "2026-09-10T16:21:45.255355+00:00",
+  "tls_verified": true,
+  "checks": [
+    {
+      "path": "/assets/index-BMV_HJsN.css",
+      "sha256": "cd06e7199dcd2b3582cf25f97842859619573aaf55f57be235931f61918607ca",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DMxDA5pK.css",
+      "sha256": "5044106a99a94d26eb7b010929518baaba8864d58ee0511342c70202f2ffd9d0",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DpBZN2Wu.js",
+      "sha256": "8d26886a7a3ad84c84b3bc5e92ccddd8a3fc0acd024377079a39aae8d9ad2769",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-ZIhBB68-.js",
+      "sha256": "33056fd7ac0f1b2f7ad1dce31115f17ebcd2e67161a75589fc85814ab0891dfa",
+      "status": 200
+    },
+    {
+      "path": "/index.html",
+      "sha256": "2324d91145e4b3b46a3f1275c9b913b97c30e5cbb841b19ba5ebee56c22ed34d",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "spa_fallback": true,
+      "status": 200
+    },
+    {
+      "path": "/callback",
+      "spa_fallback": true,
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "request_id": "CBM-ACTIVATION-INTEGRATION-20260921-029",
+  "failures": [
+    {
+      "stage": "management bootstrap login",
+      "outcome": "Python CA verification refused TLS before authority access",
+      "resolution": "used system curl trust with credential body on stdin; no TLS bypass"
+    },
+    {
+      "stage": "renewal dispatch during provider alignment",
+      "outcome": "Mac scheduler mutex busy before renewal marker or authority effect",
+      "resolution": "waited for alignment completion, then invoked renewal"
+    },
+    {
+      "stage": "successor unit test",
+      "outcome": "old no-published-port assertion rejected intended loopback-only rehearsal port",
+      "resolution": "assert exact 127.0.0.1:19930 binding; no external listener added"
+    },
+    {
+      "stage": "candidate WebUI restore on packet-v4",
+      "outcome": "refused relative cache symlinks; partial volume retained; no activation",
+      "resolution": "packet-v5 validates symlink destinations within new volume; failed state retained"
+    },
+    {
+      "stage": "first packet-v5 activation preflight",
+      "outcome": "Docker generic inspection saw retained volume with candidate name; no journal or serving effect",
+      "resolution": "packet-v6 explicitly uses docker inspect --type container with regression test; prior plans and operation result retained"
+    },
+    {
+      "stage": "cleanup launcher serialization",
+      "outcome": "local subprocess rejected an embedded NUL before SSH was created; no remote cleanup effect",
+      "resolution": "replaced escaped NUL separator with bytes([0]); then dispatched cleanup once"
+    }
+  ]
+}

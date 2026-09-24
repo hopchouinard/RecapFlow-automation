@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-09-20T01:18:42.737764+00:00",
+  "release_id": 390814260,
+  "tag": "v1.2.0",
+  "draft": false,
+  "prerelease": false,
+  "assets": [
+    {
+      "name": "corpus-manifest.json",
+      "size": 4153,
+      "digest": "sha256:f2073718e83eacb27f455cf1151aacb99572311206883bf0d1d8a2f94b259127"
+    },
+    {
+      "name": "corpus-v1.2.0.tar.gz",
+      "size": 13313291,
+      "digest": "sha256:783466593d3077b227d715c0efe8ac9266db7e28a745251d24c0dd2148d0b109"
+    },
+    {
+      "name": "sha256sum.txt",
+      "size": 87,
+      "digest": "sha256:f9e2b2a7431d261a1cd0fbae84952601c0ea8093d06595efc051179b84044420"
+    }
+  ],
+  "scope": "Public release metadata; assets not downloaded again"
+}

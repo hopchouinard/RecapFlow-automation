@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stdout": "{\"dispatch\": {\"dispatched\": true, \"operation_id\": \"r031-mackill6-1790004089-compete\", \"spec_sha256\": \"c5b5666a0632f4635724fa3cc0957e61fa47d4d7d776e882aab77b5fe56d5ee3\", \"unit\": \"cbm-r031-r031-mackill6-1790004089-compete\", \"runtime_max_seconds\": 19.72189688682556, \"replay_allowed\": false}, \"readback\": {\"at\": 1790004099.3237932, \"error_type\": \"BlockingIOError\", \"replay_allowed\": false, \"spec_sha256\": \"c5b5666a0632f4635724fa3cc0957e61fa47d4d7d776e882aab77b5fe56d5ee3\", \"state\": \"uncertain\", \"service_state\": \"failed\", \"finalizer_seen\": false, \"live_verified\": false}, \"stop_intent_absent\": true, \"original_active\": \"r031-mackill6-1790004089\", \"competing_spec\": \"/srv/dev-data/workspaces/cbm-capture-controller-20260921-031/specs/r031-mackill6-1790004089-compete.json\", \"spec_sha256\": \"c5b5666a0632f4635724fa3cc0957e61fa47d4d7d776e882aab77b5fe56d5ee3\"}\n",
+  "stderr": ""
+}

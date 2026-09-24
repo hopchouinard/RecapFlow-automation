@@ -1,0 +1,96 @@
+{
+  "attention.json": {
+    "reason": "automatic_execution_requires_review",
+    "checked_at": "2026-09-18T19:46:24.714428+00:00",
+    "error_class": "RuntimeError"
+  },
+  "boot-state.json": {
+    "boot_id": "ae3dbc5a-f4f8-4cc5-a310-7da689feb410",
+    "reconciled": false
+  },
+  "paused": {
+    "reason": "boot_or_restore_requires_explicit_reconciliation",
+    "boot_id": "ae3dbc5a-f4f8-4cc5-a310-7da689feb410"
+  },
+  "status.json": {
+    "checked_at": "2026-09-20T02:49:01.528493+00:00",
+    "state": "attention_required"
+  },
+  "current_boot_id": "ae3dbc5a-f4f8-4cc5-a310-7da689feb410",
+  "checkpoint_needed": false,
+  "management_attention": false,
+  "logs": [
+    {
+      "path": "/var/log/community-brain-automatic.log.3.gz",
+      "bytes": 135,
+      "mtime": 1789690325.3741982,
+      "state_counts": {
+        "idle": 1389,
+        "paused": 2
+      },
+      "non_json_lines": 0,
+      "traceback_present": false,
+      "runtimeerror_present": false
+    },
+    {
+      "path": "/var/log/community-brain-automatic.log.1.gz",
+      "bytes": 182,
+      "mtime": 1789864561.4206402,
+      "state_counts": {
+        "attention_required": 1448
+      },
+      "non_json_lines": 0,
+      "traceback_present": false,
+      "runtimeerror_present": false
+    },
+    {
+      "path": "/var/log/community-brain-automatic.log",
+      "bytes": 4256,
+      "mtime": 1789872541.657103,
+      "state_counts": {
+        "attention_required": 133
+      },
+      "non_json_lines": 0,
+      "traceback_present": false,
+      "runtimeerror_present": false
+    },
+    {
+      "path": "/var/log/community-brain-automatic.log.2.gz",
+      "bytes": 147,
+      "mtime": 1789777681.648367,
+      "state_counts": {
+        "idle": 1173,
+        "attention_required": 283
+      },
+      "non_json_lines": 0,
+      "traceback_present": false,
+      "runtimeerror_present": false
+    },
+    {
+      "path": "/srv/community-brain/automation/execution.log",
+      "bytes": 0,
+      "mtime": 1789518106.5872033,
+      "state_counts": {},
+      "non_json_lines": 0,
+      "traceback_present": false,
+      "runtimeerror_present": false
+    },
+    {
+      "path": "/srv/community-brain/automation/execution.log.1.gz",
+      "bytes": 384,
+      "mtime": 1789516084.3855054,
+      "state_counts": {
+        "succeeded": 2
+      },
+      "non_json_lines": 14,
+      "traceback_present": true,
+      "runtimeerror_present": true
+    }
+  ],
+  "journal": {
+    "returncode": 0,
+    "entries": 684,
+    "community_brain_entries": 40,
+    "exception_classes": {}
+  }
+}

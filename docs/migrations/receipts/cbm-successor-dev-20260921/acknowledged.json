@@ -1,0 +1,13 @@
+{
+  "request_id": "CBM-SUCCESSOR-BINDINGS-20260920-028",
+  "actor": "Forge",
+  "state": "consumed",
+  "acknowledged_at": "2026-09-21T01:00:59.116135+00:00",
+  "verified_artifacts": 42,
+  "independently_verified_vm108_packet_members": 50,
+  "packet_manifest_sha256": "c977c2a69c794141ef1c1bbf991ad7f44309ef172711e87d0806044679ad8b04",
+  "forge_rebuild_byte_identical": true,
+  "local_boundary_tests": 9,
+  "receipt_sha256": "9596acd741da00b731b9dfa5d55edc95d2b5e57414ba8ea95ec9d8856ae55fe4",
+  "production_promotion_ready": false
+}

@@ -1,0 +1,121 @@
+# Disposable image boot rehearsal only. No host ports or production dependencies.
+name: cbm-rehearsal
+services:
+  postgres:
+    image: postgres:18.6
+    environment:
+      POSTGRES_USER: fixture
+      POSTGRES_PASSWORD: fixture
+      POSTGRES_DB: cbm_rehearsal
+    volumes:
+    - database:/var/lib/postgresql
+    mem_limit: 768m
+    cpus: 1
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U fixture -d cbm_rehearsal
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  nats:
+    image: nats:2.10.27
+    command:
+    - -js
+    - -sd
+    - /data
+    volumes:
+    - jetstream:/data
+    mem_limit: 256m
+    cpus: 0.5
+  migrate:
+    image: community-brain:rehearsal
+    build: &id001
+      context: ../..
+      dockerfile: deploy/community-brain/Dockerfile
+    user: 10001:10001
+    read_only: true
+    tmpfs: &id002
+    - /tmp
+    - /state:uid=10001,gid=10001,mode=0700
+    cap_drop: &id003
+    - ALL
+    security_opt: &id004
+    - no-new-privileges:true
+    mem_limit: 1536m
+    cpus: 1.5
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+    command:
+    - alembic
+    - upgrade
+    - head
+    depends_on:
+      postgres:
+        condition: service_healthy
+  api:
+    image: community-brain:rehearsal
+    build: *id001
+    user: 10001:10001
+    read_only: true
+    tmpfs: *id002
+    cap_drop: *id003
+    security_opt: *id004
+    mem_limit: 1536m
+    cpus: 1.5
+    environment:
+      CB_DATABASE_URL: postgresql+psycopg://fixture:fixture@postgres:5432/cbm_rehearsal
+      CB_STORAGE_ROOT: /state/files
+      CB_PIPELINE_CONFIG_DIR: /state/config
+      CB_CORPUS_SCOPE: cbm-rehearsal
+      CB_ENABLE_RETRIEVAL: 'false'
+      CB_ENABLE_MODEL_CALLS: 'false'
+      CB_ENABLE_NETWORK_PUBLICATION: 'false'
+      CB_OIDC_ISSUER: https://fixture.invalid
+      CB_OIDC_JWKS_URL: https://fixture.invalid/jwks
+      CB_OIDC_AUDIENCE: cbm-rehearsal
+      CB_OIDC_CLIENT_ID: cbm-rehearsal
+      CB_SERVICE_IDENTITIES: '[{"sha256": "5ebd255380f57d52bec17794603b291fb494b30b4f221c0567b499a6ddb7a09e",
+        "subject": "fixture", "scope": "cbm-rehearsal", "permissions": ["jobs:read"],
+        "expires_at": 4102444800}]'
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health',
+        timeout=3)
+      interval: 3s
+      timeout: 4s
+      retries: 30
+  smoke:
+    image: community-brain:rehearsal
+    build: *id001
+    user: 10001:10001
+    read_only: true
+    tmpfs: *id002
+    cap_drop: *id003
+    security_opt: *id004
+    mem_limit: 1536m
+    cpus: 1.5
+    profiles:
+    - check
+    command:
+    - python
+    - /checks/smoke.py
+    volumes:
+    - ./rehearsal/smoke.py:/checks/smoke.py:ro
+    depends_on:
+      api:
+        condition: service_healthy
+      nats:
+        condition: service_started
+networks:
+  default:
+    internal: true
+volumes:
+  database: {}
+  jetstream: {}

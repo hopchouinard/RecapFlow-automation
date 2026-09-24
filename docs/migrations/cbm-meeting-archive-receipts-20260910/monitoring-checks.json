@@ -1,0 +1,60 @@
+{
+  "checked_utc": "2026-09-10T17:02:34.217695+00:00",
+  "kuma": [
+    {
+      "id": 30,
+      "name": "community-brain-production-health",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 16:59:37.300",
+      "ping": 18
+    },
+    {
+      "id": 31,
+      "name": "community-brain-production-retrieval",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 17:01:09.939",
+      "ping": 293
+    }
+  ],
+  "prometheus": [
+    {
+      "scrapePool": "community-brain-prod-api",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T17:02:31.263739963Z"
+    },
+    {
+      "scrapePool": "community-brain-prod-node",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T17:02:31.509409058Z"
+    }
+  ],
+  "activation_preflight": [
+    {
+      "path": "/health",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": false
+    },
+    {
+      "path": "/metrics",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    },
+    {
+      "path": "/retrieval/query",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    }
+  ],
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "probe_expires_utc": "2026-09-17T06:22:56+00:00",
+  "cutover": false,
+  "publication": false,
+  "retirement": false
+}

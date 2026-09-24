@@ -1,0 +1,158 @@
+{
+  "checked_at": "2026-09-20T22:47:43.769595+00:00",
+  "management_source_root": "/Users/pchouinard/.local/lib/community-brain-management",
+  "source_root_is_git_checkout": false,
+  "files": [
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/service_renewal_live.py",
+      "sha256": "6ccc4e6ef07c24a1e3357f114221772fd4cb8b267fcc789612103b5022059f5f",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/service_renewal_policy.py",
+      "sha256": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/secret_store.py",
+      "sha256": "b9da21610640337709a719bcabce8d8d8001b9fc66c7434d18000821184af99d",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/renew-service-tokens.py",
+      "sha256": "8c60327ae679fa5f4cea905bd0c4eec95a3b6e30fc9b2fcf0279dcd6d0137716",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/manage.py",
+      "sha256": "f2056419822091e1594f6a866ef0e36df9eee572359b10d0ead6db67052420fa",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/manual_api_runtime.py",
+      "sha256": "a89416f5a6bf0d10eebf83e26d16113bc9c155fa3ac81780674b14aac6515641",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/renewal_webui_control.py",
+      "sha256": "8dfcbd298e2610ad7ce8ddda86dc2943d6ae6ed0fef9930ab9c8ddbb528b6cd5",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/renewal_kuma.js",
+      "sha256": "3b74dfb3e4754f8206851a32b159212010f3619e20b818e810818179aeb6b42a",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/boot_guard.py",
+      "sha256": "70d93cdde9d2360294b5e960dfd4586ec20184bc2bdae69be1dbb148d347f7ac",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/checkpoint_acceptance.py",
+      "sha256": "b35e46de4705307f4777ba40f61071115d3918801ecb732ae51acdabf80f46c6",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/checkpoint_journal.py",
+      "sha256": "0f1058c812071e27880d567fd1d14d3015a40c09ce702bcc9d8646cef4c163ee",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/consumer.py",
+      "sha256": "43dc79953177bf172a986927c9723c25018e72bb2cf343b54c1cb11784d2043e",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/database_adapter.py",
+      "sha256": "cf85cd8ca13779dbc81c0c4d2936054e016435edaee7820da781544bf1c493d8",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/files_adapter.py",
+      "sha256": "8a4546272cafaccb5e4f291161424527e3d93ac580aaea6d7755f083e6bc6168",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/human_access.py",
+      "sha256": "c90264128dd82d53fa8ee52c310931c12056c410cde27d7dbe4e70e1eacafbcb",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py",
+      "sha256": "5c8c5dadf996ca1f3557a79de26eb0448a2b32f7c5c00c35f84b3bdc2bed3d75",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+      "sha256": "5207dd70d5f8b3276fdbd86d9cdc80732b40538edaabb76d654633387de0bb0e",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/monitor_status.py",
+      "sha256": "b4a2f19a83923fdea6760556aaed087aefd5144b28d556f9b6a2bb2962dafd56",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/pbs_adapter.py",
+      "sha256": "1a443da18c050e8b77d9177010be0a48859f125c5d467bc842068e76addf4f0e",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/quiet_window.py",
+      "sha256": "8347e32d04d1ecd22ce97b104e836b94f923f9951c442fa23e67f01da008fa50",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/transport.py",
+      "sha256": "8d1c836e8cd44b1f9df228628c45015f933957286582d68f3699f62f9da473cd",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/maintain.py",
+      "sha256": "87425de887176d0371bcc0a2d5dda35c59d692c8aa5602560eec3aabdc1428bc",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/maintain-hourly.py",
+      "sha256": "bc66e51b7e651e55303ea4b9392f52c8e8799d3a07ef1a339b361372e3b412c0",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/run.sh",
+      "sha256": "1d0b3027a5c22c34e8554ec34558405edeb71a71738308c9b76b3bf4be1cf3e6",
+      "matches_request024": true,
+      "matches_request027": true
+    },
+    {
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/scripts/lib/infisical.sh",
+      "sha256": "168840f40397caabe00ebbee2d827f7b7983c5052b2f6c4deea9593dc88f2415",
+      "matches_request024": true,
+      "matches_request027": true
+    }
+  ],
+  "all_match_request024": true
+}

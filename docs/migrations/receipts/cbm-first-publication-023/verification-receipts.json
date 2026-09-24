@@ -1,0 +1,749 @@
+{
+  "request_id": "CBM-FIRST-PUBLICATION-20260917-023",
+  "completed_at": "2026-09-17T15:05:24.570624+00:00",
+  "input_document_hashes": {
+    "cbm-first-publication-management-handoff.md": "13bc1266da9a85d502c7afc5bd141f69d3a7f63c062004ab957bfd773fb194dc",
+    "cbm-first-publication-packet-manifest.json": "b896f297a5f83ddf34af8931b9270e10977c96043716cb2a9c9d95f448899b01",
+    "cbm-first-publication-phase-proposal.md": "01cb68bca0a09d5ce5801a892709871af140642ebbeb704bb9c019f375a1a6ef",
+    "cbm-first-publication-plan.json": "3d58625754a86557c1a60e1c6a0106f2327e929902799747a4954717cc55f409",
+    "cbm-publication-consumer-v1.2.0.patch": "8633e3fc668977eec705f571eeb919e98864e1212eace23353367b016530c216",
+    "cbm-publication-v1.2.0-manifest.json": "f2073718e83eacb27f455cf1151aacb99572311206883bf0d1d8a2f94b259127"
+  },
+  "packet_manifest": {
+    "packet": "cbm-first-publication-20260917",
+    "files": {
+      "bounded_worker.py": "dd9d90dfde1c201ae9fbd9715f30c7ed9f63077652bbe91c73f741b2ed9a0c4b",
+      "git-askpass.py": "8b5669ba514b70cff607fc096e8a3633027fd2cdee62bf230ff281dd1d76d25e",
+      "jobs/github_release.py": "17bd745fc9d2b10e2cf660baa0cbf21f9d440cf2deaf846e8c88c85f0d1a6223",
+      "jobs/manual.py": "d8c98fc514580b315d7728c6b35fc3ea88c6d1bfd9f456467326b7b0619bafa4",
+      "jobs/prepared_publication.py": "6cb2dd1c2864a71e54ecc9294b280e677b47fa3b3db658806d953c158623f7be",
+      "jobs/publication.py": "a6f7fc17b07bcdf7a342b679a49fc676c367e96213bbba958a093254ce25e7c6",
+      "jobs/publication_selection.py": "7b9e0dc1f80e21e442617ab56bdfad09aadd9c138334d0a98387f00f725ad2fb",
+      "jobs/store.py": "cf8b32ce17a1eb58a1a6c70234844cf01969e0315be61d5d654fbd0f4dcfe4d2",
+      "jobs/worker.py": "66557de0327c3cefced2fd1844148eab96d255009955acad323dca874e2e6d0e",
+      "plan.json": "3d58625754a86557c1a60e1c6a0106f2327e929902799747a4954717cc55f409",
+      "publisher_host.py": "67f4992cc73e33186eb38d8b9506129688aefccf2343332634f879650e548bdf",
+      "publisher_worker.py": "44df318a0dd25dae9ec0cc54177b727475b03c3ca3a2673a940b4f174af4a7aa"
+    }
+  },
+  "preflight": {
+    "candidate_check": {
+      "askpass_executable": true,
+      "ca_trust_verified": true,
+      "candidate_and_git_objects_validated": true,
+      "modules_imported": true,
+      "uid": 10001
+    },
+    "checkpoint_sha256": "df1ce04cd7a15e38cc21e1be5fc3ee1fd931489f7a66a351705a6e248970684e",
+    "corpus_files_sha256": "047c9dd6137466c257c435e7f8d37a1060792df4e96a69dee7ee15aaea4427a7",
+    "corpus_rows": 1924,
+    "corpus_sessions": 88,
+    "corpus_sha256": "d189c3bf5bb018dbb9d39145726ef4bb47ab89b98fec51004c745a13ff354ce9",
+    "current_files_fingerprint": "b7cd389b23db9c7fa7baa164cca0d32e15ab471bfaa00d5697145b8342d32446",
+    "packet_files_verified": 12,
+    "plan_sha256": "a7ac3cf3f0d2ee31c184f956b6c1c2fd61545d8c3d23179ca8506a53ad506759",
+    "runner_idle": true
+  },
+  "repository_preflight": {
+    "hopchouinard/RecapFlow-automation": {
+      "main_sha": "dd29e82aa21f3e52d0ea7a96561f8dec9af28055",
+      "protected": false,
+      "protection": {
+        "ok": false,
+        "data": {
+          "message": "Branch not protected",
+          "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+          "status": "404"
+        }
+      },
+      "rulesets": {
+        "ok": true,
+        "data": []
+      },
+      "rules": {
+        "ok": true,
+        "data": []
+      }
+    },
+    "hopchouinard/community-brain-distribution": {
+      "main_sha": "a192f7832e70d60a10de838aa4136b5f3432f15b",
+      "protected": false,
+      "protection": {
+        "ok": false,
+        "data": {
+          "message": "Branch not protected",
+          "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+          "status": "404"
+        }
+      },
+      "rulesets": {
+        "ok": true,
+        "data": []
+      },
+      "rules": {
+        "ok": true,
+        "data": []
+      }
+    },
+    "v1.2.0_tag_release_draft_absent": true
+  },
+  "fresh_token_metadata": {
+    "app_id": 4978270,
+    "installation_id": 162488086,
+    "permissions": {
+      "contents": "write",
+      "metadata": "read"
+    },
+    "repositories": {
+      "1176379254": "hopchouinard/RecapFlow-automation",
+      "1249770482": "hopchouinard/community-brain-distribution"
+    },
+    "expires_at": "2026-09-17T15:54:38Z",
+    "refreshed_at": "2026-09-17T14:54:38.799973+00:00",
+    "path": "/etc/community-brain-production/publication.env",
+    "owner": "root:root",
+    "mode": "0600",
+    "stored_publication_flag": "false",
+    "previous_bundle_sha256": "1989e0e6bf54a88a1ee1797107397e76ddb53d0a1a1d9511da58e800ffe5f6f3",
+    "actual_launcher_env_keys": [
+      "CB_DATABASE_URL",
+      "CB_ENABLE_MODEL_CALLS",
+      "CB_ENABLE_NETWORK_PUBLICATION",
+      "CB_NATS_PASSWORD",
+      "CB_NATS_URL",
+      "CB_NATS_USER",
+      "CB_PUBLICATION_PLAN_SHA256",
+      "CB_PUBLISHER_GITHUB_APP_ID",
+      "CB_PUBLISHER_GITHUB_INSTALLATION_ID",
+      "CB_PUBLISHER_GITHUB_REPOSITORY_IDS",
+      "CB_PUBLISHER_GITHUB_TOKEN",
+      "CB_PUBLISHER_GITHUB_TOKEN_EXPIRES_AT",
+      "PATH",
+      "REQUESTS_CA_BUNDLE",
+      "SSL_CERT_FILE"
+    ],
+    "actual_launcher_allowlist_verified": true,
+    "publisher_repository_ids_format": "JSON array",
+    "token_not_in_argv": true
+  },
+  "commands": {
+    "commands": [
+      {
+        "exit_code": 0,
+        "operation": "preflight",
+        "receipt": {
+          "exit_code": 0,
+          "operation": "preflight",
+          "stage": "git"
+        },
+        "stage": "git"
+      },
+      {
+        "exit_code": 0,
+        "operation": "enqueue",
+        "receipt": {
+          "exit_code": 0,
+          "operation": "enqueue",
+          "stage": "git"
+        },
+        "stage": "git"
+      },
+      {
+        "exit_code": 0,
+        "operation": "execute",
+        "receipt": {
+          "exit_code": 0,
+          "operation": "execute",
+          "stage": "git"
+        },
+        "stage": "git"
+      },
+      {
+        "exit_code": 0,
+        "operation": "preflight",
+        "receipt": {
+          "exit_code": 0,
+          "operation": "preflight",
+          "stage": "distribution"
+        },
+        "stage": "distribution"
+      },
+      {
+        "exit_code": 0,
+        "operation": "enqueue",
+        "receipt": {
+          "exit_code": 0,
+          "operation": "enqueue",
+          "stage": "distribution"
+        },
+        "stage": "distribution"
+      },
+      {
+        "exit_code": 0,
+        "operation": "execute",
+        "receipt": {
+          "exit_code": 0,
+          "operation": "execute",
+          "stage": "distribution"
+        },
+        "stage": "distribution"
+      }
+    ],
+    "six_commands_passed": true
+  },
+  "published_endpoints": {
+    "anonymous_verification": true,
+    "repositories": {
+      "operator": {
+        "repository": "hopchouinard/RecapFlow-automation",
+        "main_sha": "82167b30b2d72ae8ebb9a64a557991b30be442c3"
+      },
+      "consumer": {
+        "repository": "hopchouinard/community-brain-distribution",
+        "main_sha": "e2eca50575571a23657192163842c02331c85c96"
+      }
+    },
+    "artifacts": {
+      "2026-09-22-weekly-invite.md": {
+        "sha256": "d37f9b70c3dc5c89bcba2ba02f869d25598a27218ad71c24f1b848ad18444b96",
+        "bytes": 1504
+      },
+      "community-post-compressed.md": {
+        "sha256": "5edf64bc5c54a671101d8b90e70e85fef90b80a302a668d98b703358c8ec2e27",
+        "bytes": 11278
+      },
+      "community-post.md": {
+        "sha256": "f9068d793ee347b2c21f9d5eee4d8e6543b42818e04d7c5f828c9475f3536ff8",
+        "bytes": 16029
+      },
+      "extracted-signal.md": {
+        "sha256": "88500ecab862881bb5c40fbf434d055f61c30a9f2c27402fb861f36f93b4933a",
+        "bytes": 20079
+      },
+      "prepared-transcript.md": {
+        "sha256": "4685bd4027a1c6acc85b74b269fec11d68d5d069a2baf897ff9fb7ea7c0ba7f9",
+        "bytes": 35522
+      },
+      "transcript.txt": {
+        "sha256": "558c713fc4fc89d30c9c42b3355db70c0c58b7a69b9ca232fab85240775bd5dc",
+        "bytes": 73733
+      }
+    },
+    "assets": {
+      "corpus-manifest.json": {
+        "id": 570478254,
+        "sha256": "f2073718e83eacb27f455cf1151aacb99572311206883bf0d1d8a2f94b259127",
+        "bytes": 4153,
+        "url": "https://github.com/hopchouinard/community-brain-distribution/releases/download/v1.2.0/corpus-manifest.json"
+      },
+      "corpus-v1.2.0.tar.gz": {
+        "id": 570478167,
+        "sha256": "783466593d3077b227d715c0efe8ac9266db7e28a745251d24c0dd2148d0b109",
+        "bytes": 13313291,
+        "url": "https://github.com/hopchouinard/community-brain-distribution/releases/download/v1.2.0/corpus-v1.2.0.tar.gz"
+      },
+      "sha256sum.txt": {
+        "id": 570478272,
+        "sha256": "f9e2b2a7431d261a1cd0fbae84952601c0ea8093d06595efc051179b84044420",
+        "bytes": 87,
+        "url": "https://github.com/hopchouinard/community-brain-distribution/releases/download/v1.2.0/sha256sum.txt"
+      }
+    },
+    "tag_commit": "e2eca50575571a23657192163842c02331c85c96",
+    "release": {
+      "id": 390814260,
+      "html_url": "https://github.com/hopchouinard/community-brain-distribution/releases/tag/v1.2.0",
+      "tag_name": "v1.2.0",
+      "target_commitish": "e2eca50575571a23657192163842c02331c85c96",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-09-17T14:55:51Z"
+    }
+  },
+  "consumer_install": {
+    "sessions": 88,
+    "rows": 1924,
+    "health_status": 200,
+    "query_results": 3,
+    "write_routes_absent": true,
+    "corpus_unchanged": true,
+    "model_calls": 0,
+    "embedding": "fixture zero vector",
+    "network": "none",
+    "tokenizer_cache": "read-only",
+    "image": "sha256:ceb3b08de5947b3c0c9e458ce50c8d28111b4df1d818ad1fabb0add5d39765c4",
+    "scope": "Package and API compatibility; no semantic ranking or full Open WebUI certification",
+    "installed_file_hashes_match_mac_install": true,
+    "actual_published_installer_ran_on_mac": true,
+    "actual_published_asset_downloads": true
+  },
+  "durable_stages": [
+    {
+      "attempts": 1,
+      "error": null,
+      "generation": 1,
+      "id": "a17a8ff6-2e1c-4cdd-99a2-1e0af384970a",
+      "name": "distribution",
+      "result": {
+        "commit": "e2eca50575571a23657192163842c02331c85c96",
+        "plan_sha256": "a7ac3cf3f0d2ee31c184f956b6c1c2fd61545d8c3d23179ca8506a53ad506759",
+        "receipt": {
+          "assets": {
+            "corpus-manifest.json": "sha256:f2073718e83eacb27f455cf1151aacb99572311206883bf0d1d8a2f94b259127",
+            "corpus-v1.2.0.tar.gz": "sha256:783466593d3077b227d715c0efe8ac9266db7e28a745251d24c0dd2148d0b109",
+            "sha256sum.txt": "sha256:f9e2b2a7431d261a1cd0fbae84952601c0ea8093d06595efc051179b84044420"
+          },
+          "commit": "e2eca50575571a23657192163842c02331c85c96",
+          "release_id": 390814260,
+          "tag": "v1.2.0"
+        },
+        "sha256": "783466593d3077b227d715c0efe8ac9266db7e28a745251d24c0dd2148d0b109",
+        "version": "v1.2.0"
+      },
+      "state": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error": null,
+      "generation": 1,
+      "id": "70704c44-065f-410e-af98-8113d431dc77",
+      "name": "git",
+      "result": {
+        "artifact_hashes": {
+          "2026-09-22-weekly-invite.md": "d37f9b70c3dc5c89bcba2ba02f869d25598a27218ad71c24f1b848ad18444b96",
+          "community-post-compressed.md": "5edf64bc5c54a671101d8b90e70e85fef90b80a302a668d98b703358c8ec2e27",
+          "community-post.md": "f9068d793ee347b2c21f9d5eee4d8e6543b42818e04d7c5f828c9475f3536ff8",
+          "extracted-signal.md": "88500ecab862881bb5c40fbf434d055f61c30a9f2c27402fb861f36f93b4933a",
+          "prepared-transcript.md": "4685bd4027a1c6acc85b74b269fec11d68d5d069a2baf897ff9fb7ea7c0ba7f9",
+          "transcript.txt": "558c713fc4fc89d30c9c42b3355db70c0c58b7a69b9ca232fab85240775bd5dc"
+        },
+        "commit": "82167b30b2d72ae8ebb9a64a557991b30be442c3",
+        "plan_sha256": "a7ac3cf3f0d2ee31c184f956b6c1c2fd61545d8c3d23179ca8506a53ad506759"
+      },
+      "state": "succeeded"
+    }
+  ],
+  "job": {
+    "artifacts": "ready",
+    "distribution": "released",
+    "git": "complete",
+    "id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "identity": {
+      "local_date": "2026-09-15",
+      "meeting_id": "821559116",
+      "provider": "fathom",
+      "started_at": "2026-09-15T22:00:00Z",
+      "timezone": "America/Toronto"
+    },
+    "indexing": "complete",
+    "mode": "weekly",
+    "parent_id": null,
+    "processing": "succeeded",
+    "scope": "community-brain"
+  },
+  "database_changed_tables": [
+    "public.cb_attempts",
+    "public.cb_jobs",
+    "public.cb_operations",
+    "public.cb_outbox",
+    "public.cb_stages"
+  ],
+  "sources_artifacts_model_calls_exactly_unchanged": true,
+  "database_before": {
+    "schema_sha256": "7dd1ed7ce5be0ab3dbab9c7490a066e99b099c7b0fe4138fbfbda661e0cb3da9",
+    "sequences": [],
+    "table_content": {
+      "public.alembic_version": {
+        "rows": 1,
+        "sha256": "f1c78d3b93abc2933e2a388bd531ec78f6f080106e632df91726f8b7f50e7d46"
+      },
+      "public.cb_artifacts": {
+        "rows": 21,
+        "sha256": "f44af4336b2e08b8b819efd9a69a38e3657146ed8d15dac7ca9c77abe8ae249a"
+      },
+      "public.cb_attempts": {
+        "rows": 7,
+        "sha256": "cba84529313b72adb12dff7ab97ede287d44c6db9e1e0c39c337c59876991d89"
+      },
+      "public.cb_jobs": {
+        "rows": 4,
+        "sha256": "4cb51e8e27b84f8c28f1859e4aa29377cccd0c75271e7366069425eb96443644"
+      },
+      "public.cb_model_calls": {
+        "rows": 42,
+        "sha256": "2d534b19c27c143fb94e916562c4dd3399b893340139918ac1c5a999a7823dcc"
+      },
+      "public.cb_operations": {
+        "rows": 4,
+        "sha256": "fe81d616ef3a8931995cdfa75a3d1e17bdba69b118196797d32c217ae3ba277f"
+      },
+      "public.cb_outbox": {
+        "rows": 10,
+        "sha256": "9dc034b1eeaa67b39774467fdcb57fbd8dee06dc4e46a2a273801024025544a1"
+      },
+      "public.cb_rejected_events": {
+        "rows": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "public.cb_sources": {
+        "rows": 9,
+        "sha256": "0bb6ad8ae1cc45e68c584ecc911feb9aeffff8e7dd83517626d97f24c1ba2011"
+      },
+      "public.cb_stages": {
+        "rows": 20,
+        "sha256": "d1c53e22b943086bf3b059fd1560ff8d11a1aff75b89d216c0046b548915c3db"
+      }
+    },
+    "tables": [
+      {
+        "schemaname": "public",
+        "tablename": "alembic_version",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_artifacts",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_attempts",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_jobs",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_model_calls",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_operations",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_outbox",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_rejected_events",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_sources",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_stages",
+        "tableowner": "cbm_prod_migration"
+      }
+    ]
+  },
+  "database_after": {
+    "schema_sha256": "7dd1ed7ce5be0ab3dbab9c7490a066e99b099c7b0fe4138fbfbda661e0cb3da9",
+    "sequences": [],
+    "table_content": {
+      "public.alembic_version": {
+        "rows": 1,
+        "sha256": "f1c78d3b93abc2933e2a388bd531ec78f6f080106e632df91726f8b7f50e7d46"
+      },
+      "public.cb_artifacts": {
+        "rows": 21,
+        "sha256": "f44af4336b2e08b8b819efd9a69a38e3657146ed8d15dac7ca9c77abe8ae249a"
+      },
+      "public.cb_attempts": {
+        "rows": 9,
+        "sha256": "d8928181b85252170bc1802334d6b2ddf4d8b1f7e3ae36681130930cf64100c8"
+      },
+      "public.cb_jobs": {
+        "rows": 4,
+        "sha256": "59541cb6869742eb5a77ad3fa6b67c13ea0395a90abb7f6eff8fcf17baeb2bb7"
+      },
+      "public.cb_model_calls": {
+        "rows": 42,
+        "sha256": "2d534b19c27c143fb94e916562c4dd3399b893340139918ac1c5a999a7823dcc"
+      },
+      "public.cb_operations": {
+        "rows": 6,
+        "sha256": "950905dd96ae2063da078b27d27499e6456e1016744950fbb0f36b89f651d56c"
+      },
+      "public.cb_outbox": {
+        "rows": 12,
+        "sha256": "db05d6195d9fb600bc4371ee6f700f42a0de51a93abeeba417b35d338b0cfad4"
+      },
+      "public.cb_rejected_events": {
+        "rows": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "public.cb_sources": {
+        "rows": 9,
+        "sha256": "0bb6ad8ae1cc45e68c584ecc911feb9aeffff8e7dd83517626d97f24c1ba2011"
+      },
+      "public.cb_stages": {
+        "rows": 20,
+        "sha256": "010fba16268249dca1f32c977a0eed254e3e5474b16346ca1fe34df9bf95c7fc"
+      }
+    },
+    "tables": [
+      {
+        "schemaname": "public",
+        "tablename": "alembic_version",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_artifacts",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_attempts",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_jobs",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_model_calls",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_operations",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_outbox",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_rejected_events",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_sources",
+        "tableowner": "cbm_prod_migration"
+      },
+      {
+        "schemaname": "public",
+        "tablename": "cb_stages",
+        "tableowner": "cbm_prod_migration"
+      }
+    ]
+  },
+  "before_capture": {
+    "archive": {
+      "bytes": 52148425,
+      "sha256": "df2a91c7dd48ddbff939be038771b8042a086765354b9fc9dbfb04b18a5ddb90"
+    },
+    "controls": {
+      "env_sha256": "e9d512e2a981d45d273016960186533607fcceaaf516fdf683fec55f4d323880",
+      "id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+      "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+      "model_calls": "false",
+      "mounts_sha256": "c2228c0c0fe4cc2175cfdce3e06eb327c5ed9524f72e1af1f74c5092c77ce9fb",
+      "network_publication": "false",
+      "started_at": "2026-09-17T02:40:55.561635167Z"
+    },
+    "directory": "/srv/community-brain/artifacts/request023-before",
+    "files_capture_sha256": "fa51b1176227adaad21bb21737b468ef17ae2404a8142468e7faff030e43ebc4",
+    "files_count": 1144
+  },
+  "after_capture": {
+    "archive": {
+      "bytes": 52149868,
+      "sha256": "1a50105aa130e081b30e2ca44245bff2790d374c7e6b2f931d05b60ccee62138"
+    },
+    "content_sha256": "b7cd389b23db9c7fa7baa164cca0d32e15ab471bfaa00d5697145b8342d32446",
+    "controls": {
+      "env_sha256": "e9d512e2a981d45d273016960186533607fcceaaf516fdf683fec55f4d323880",
+      "id": "766a37a09d4ce16a4c69a8d3dd0634bc155de70085efb0eb6aad7d7281c528f6",
+      "image": "sha256:be0e7d818334bcd08b494d71b3582cd51a12e2e246c03c2414e01d9cb9b10449",
+      "model_calls": "false",
+      "mounts_sha256": "c2228c0c0fe4cc2175cfdce3e06eb327c5ed9524f72e1af1f74c5092c77ce9fb",
+      "network_publication": "false",
+      "started_at": "2026-09-17T02:40:55.561635167Z"
+    },
+    "corpus_sha256": "d189c3bf5bb018dbb9d39145726ef4bb47ab89b98fec51004c745a13ff354ce9",
+    "directory": "/srv/community-brain/artifacts/request023-after",
+    "files_capture_sha256": "800670078951549e18bbd33c9e6c66047ba30cbe8917adaa6850df9ebb85c6ce",
+    "files_count": 1150
+  },
+  "database_restore": {
+    "capture_sha256": "999556d4025308f2bf9ee91e076fa7c98c548c78d686fc2c1a933b7ab1d24e00",
+    "connection_limit": 0,
+    "disposable_database_removed": true,
+    "dump_sha256": "448a2322747c266636ec7b47f4f626e36fe6d001ee2c9b684aa03081498bebcb",
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "public_connect_revoked": true,
+    "queue_or_application_started": false,
+    "references_verified": 72,
+    "schema_owners_grants_rows_sequences_match": true
+  },
+  "files_restore": {
+    "archive_sha256": "1a50105aa130e081b30e2ca44245bff2790d374c7e6b2f931d05b60ccee62138",
+    "capture_sha256": "800670078951549e18bbd33c9e6c66047ba30cbe8917adaa6850df9ebb85c6ce",
+    "corpus": {
+      "rows": 1924,
+      "sessions": 88
+    },
+    "files_verified": 1150,
+    "job_id": "744d0f3f-8da7-4c12-bc15-5ec0a046518d",
+    "network_disabled": true,
+    "references_verified": 72,
+    "temporary_restore_removed": true
+  },
+  "paired_recovery": {
+    "added_journal_file_paths": [
+      "srv/community-brain/artifacts/first-publication-20260917/journal/distribution-execution.started",
+      "srv/community-brain/artifacts/first-publication-20260917/journal/distribution-selection.json",
+      "srv/community-brain/artifacts/first-publication-20260917/journal/git-execution.started",
+      "srv/community-brain/artifacts/first-publication-20260917/journal/git-selection.json",
+      "srv/community-brain/artifacts/first-publication-20260917/journal/operations.jsonl",
+      "srv/community-brain/artifacts/first-publication-20260917/launcher.log"
+    ],
+    "changed_existing_file_paths": [
+      "etc/community-brain-production/publication.env"
+    ],
+    "directory": "/srv/community-brain/artifacts/request023-after",
+    "files": {
+      "corpus-before.json": {
+        "bytes": 7673,
+        "sha256": "81735036c84a10cca5412b1aaafaad158fe31b6cec1b933acac3d05174c303c9"
+      },
+      "database-capture.json": {
+        "bytes": 21454,
+        "sha256": "999556d4025308f2bf9ee91e076fa7c98c548c78d686fc2c1a933b7ab1d24e00"
+      },
+      "database-restore.json": {
+        "bytes": 449,
+        "sha256": "46cfda761ed4ba29188a9ea4f22280b0fdcda35d89075b447c8b8f5b6a240f8b"
+      },
+      "database.dump": {
+        "bytes": 62548,
+        "sha256": "448a2322747c266636ec7b47f4f626e36fe6d001ee2c9b684aa03081498bebcb"
+      },
+      "files-capture.json": {
+        "bytes": 323491,
+        "sha256": "800670078951549e18bbd33c9e6c66047ba30cbe8917adaa6850df9ebb85c6ce"
+      },
+      "files-restore.json": {
+        "bytes": 8227,
+        "sha256": "a0cc60615cb3cc52ddb40a9f24597743ccba4a271fce5d29377a1372b4f8fdae"
+      },
+      "managed-state.tar.gz": {
+        "bytes": 52149868,
+        "sha256": "1a50105aa130e081b30e2ca44245bff2790d374c7e6b2f931d05b60ccee62138"
+      },
+      "paired-manifest.json": {
+        "bytes": 1491,
+        "sha256": "983977e506238d7ec93805faf86cb4d6f86fedf23418b820cb77349542c0ce14"
+      },
+      "publication-verification.json": {
+        "bytes": 14516,
+        "sha256": "800b8b839ffbd68bf5fca0ae7d1d99772245a65071892684f72f07469c88eccb"
+      }
+    },
+    "old_checkpoint_preserved": true,
+    "runner_idle": true
+  },
+  "offhost_verification": {
+    "directory": "/var/backups/community-brain/request023-after/paired",
+    "files": {
+      "corpus-before.json": {
+        "bytes": 7673,
+        "sha256": "81735036c84a10cca5412b1aaafaad158fe31b6cec1b933acac3d05174c303c9"
+      },
+      "database-capture.json": {
+        "bytes": 21454,
+        "sha256": "999556d4025308f2bf9ee91e076fa7c98c548c78d686fc2c1a933b7ab1d24e00"
+      },
+      "database-restore.json": {
+        "bytes": 449,
+        "sha256": "46cfda761ed4ba29188a9ea4f22280b0fdcda35d89075b447c8b8f5b6a240f8b"
+      },
+      "database.dump": {
+        "bytes": 62548,
+        "sha256": "448a2322747c266636ec7b47f4f626e36fe6d001ee2c9b684aa03081498bebcb"
+      },
+      "files-capture.json": {
+        "bytes": 323491,
+        "sha256": "800670078951549e18bbd33c9e6c66047ba30cbe8917adaa6850df9ebb85c6ce"
+      },
+      "files-restore.json": {
+        "bytes": 8227,
+        "sha256": "a0cc60615cb3cc52ddb40a9f24597743ccba4a271fce5d29377a1372b4f8fdae"
+      },
+      "managed-state.tar.gz": {
+        "bytes": 52149868,
+        "sha256": "1a50105aa130e081b30e2ca44245bff2790d374c7e6b2f931d05b60ccee62138"
+      },
+      "paired-manifest.json": {
+        "bytes": 1491,
+        "sha256": "983977e506238d7ec93805faf86cb4d6f86fedf23418b820cb77349542c0ce14"
+      },
+      "publication-verification.json": {
+        "bytes": 14516,
+        "sha256": "800b8b839ffbd68bf5fca0ae7d1d99772245a65071892684f72f07469c88eccb"
+      }
+    },
+    "mode": "root:root directory0700 files0600",
+    "verified": true
+  },
+  "final_runtime": {
+    "containers": [
+      {
+        "health": "healthy",
+        "name": "/community-brain-production-staging-api-1",
+        "restart_count": 0,
+        "running": true
+      },
+      {
+        "health": null,
+        "name": "/community-brain-alloy",
+        "restart_count": 0,
+        "running": true
+      }
+    ],
+    "controls_unchanged": true,
+    "current_capture_match": true,
+    "no_publisher_credentials_in_running_containers": true,
+    "pair_verified": true,
+    "post_pair_sha256": "983977e506238d7ec93805faf86cb4d6f86fedf23418b820cb77349542c0ce14",
+    "runner_idle": true
+  },
+  "after_lock_release": {
+    "runner_idle_after_lock_release": true,
+    "attention_markers_absent": true,
+    "api_healthy": true,
+    "publication_disabled": true,
+    "model_calls_disabled": true,
+    "restart_count": 0
+  },
+  "prior_release_preserved": {
+    "id": 380201443,
+    "tag_name": "v1.1.0",
+    "draft": false,
+    "html_url": "https://github.com/hopchouinard/community-brain-distribution/releases/tag/v1.1.0"
+  },
+  "token_disposition": "Allow selected token to expire at 2026-09-17T15:54:38Z. No scheduled renewal or running publisher. Stored flag false.",
+  "limits": [
+    "Fixture embeddings verify package/API compatibility, not semantic ranking.",
+    "Full Open WebUI recipient installation not certified.",
+    "Logical paired recovery and isolated restores verified; no new PBS snapshot requested or created. Prior PBS/checkpoint history preserved."
+  ]
+}

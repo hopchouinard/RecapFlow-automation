@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "failed",
+    "After": "sysinit.target systemd-journald.socket basic.target system.slice",
+    "ExecMainExitTimestampMonotonic": "150055737256",
+    "ExecMainStartTimestampMonotonic": "150054787518",
+    "ExecMainStatus": "1",
+    "Requires": "system.slice sysinit.target",
+    "Result": "exit-code",
+    "SubState": "failed"
+  },
+  "boot_unit": "cbm-r032-start-recovery5failed-boot",
+  "dependency_order_verified": false,
+  "passed": false,
+  "probe": {
+    "ActiveState": "inactive",
+    "After": "",
+    "ExecMainExitTimestampMonotonic": "0",
+    "ExecMainStartTimestampMonotonic": "0",
+    "ExecMainStatus": "0",
+    "Requires": "",
+    "Result": "success",
+    "SubState": "dead"
+  },
+  "probe_unit": "cbm-r032-start-recovery5failed-probe",
+  "startup": {
+    "ActiveState": "inactive",
+    "After": "",
+    "ExecMainExitTimestampMonotonic": "0",
+    "ExecMainStartTimestampMonotonic": "0",
+    "ExecMainStatus": "0",
+    "Requires": "",
+    "Result": "success",
+    "SubState": "dead"
+  },
+  "startup_unit": "cbm-r032-start-recovery5failed"
+}

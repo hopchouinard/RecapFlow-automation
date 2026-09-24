@@ -1,0 +1,11 @@
+{
+  "sha256": {
+    "candidate-source-manifest.json": "82645126218cfb35c582363e7296867f5873f120d4adf5fe57018fcdafa85200",
+    "image-source-parity.json": "7d0d211934cdf3c58c37a6018fbe33e776f31bcce63da38413b705b2dba13e42",
+    "production-inspection.json": "d37f964bb79ca461c1bea8d6e004fe528786e3cbcb32bf53c469fc9b2ef222bc",
+    "receipt.md": "37ef64514d5270e3b788e561e1b7e5ad89015cb5d0c361e14524f7cce2ebd441",
+    "verification.json": "d280e3c58a3914f627067cf7e889f2784bc6413deed1843b822570a2410eee65",
+    "vm108-results.json": "be6124e0c419ba3e75b8a5e03fb8a0b1b95089b9d90a9803b3d8e8737fc4601f",
+    "workspace-parity.json": "2cfbb51b94abcb6dad32ec0702e9b15ff3240750aa2623c5b30b821d5a9c0d6a"
+  }
+}

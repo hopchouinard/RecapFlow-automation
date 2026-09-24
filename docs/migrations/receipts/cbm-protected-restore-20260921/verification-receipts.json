@@ -1,0 +1,38 @@
+{
+  "request_id": "CBM-PROTECTED-RESTORE-PREP-20260921-030",
+  "processed_at": "2026-09-21T12:41:10.649221+00:00",
+  "outcome": "preparation and synthetic mechanics completed; protected transfer not executed or ready for blind dispatch",
+  "source_commit": "4c16f84ef8e5d77dcb01953ee5635ceb27c646d9",
+  "tests": {
+    "mac_boundary": 39,
+    "vm108_boundary": 39,
+    "parent": 293,
+    "mac_extended_metadata_observation_stub": true
+  },
+  "actual_postgresql_independent_restore": true,
+  "actual_exported_snapshot_writer_refusal": true,
+  "final_component_capture_transport_restore": true,
+  "actual_webui_preserved_session_and_wrong_key_checks": true,
+  "rendered_browser_acceptance": false,
+  "real_session_acceptance": false,
+  "capacity_acceptance": false,
+  "real_provider_calls": 0,
+  "off_host_restore_performed": false,
+  "production_compiler_disabled": true,
+  "empty_production_slots": 21,
+  "production_containers_unchanged": 2,
+  "preexisting_dev_containers_unchanged": 44,
+  "request030_containers_stopped_retained": 11,
+  "processing_holds_unchanged": true,
+  "automation_status_heartbeat_delta_disclosed": true,
+  "production_expiry_utc": "2026-09-22T20:53:07Z",
+  "remaining_execution_gates": [
+    "review and interrupt-test exact production capture wrapper with bounded maintenance/readback and pending-operation exclusion",
+    "explicit protected capture/transfer authorization naming PBS and VM108 private enclave",
+    "actual protected off-host copy and independent full data/vector/relationship restore acceptance",
+    "rendered browser and real staged identity/session acceptance",
+    "agreed full workload capacity configuration and thresholds",
+    "scoped paid dev identities, named model cost bounds and explicit spend authorization",
+    "all21 production evidence slots and separately reviewed production validator; no production compiler enablement here"
+  ]
+}

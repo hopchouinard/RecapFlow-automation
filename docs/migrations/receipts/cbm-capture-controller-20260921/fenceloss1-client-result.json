@@ -1,0 +1,40 @@
+{
+  "label": "fenceloss1",
+  "mode": "fenceloss",
+  "returncode": 0,
+  "stdout": "{\"at\": 1790003457.4762907, \"holds_equal\": true, \"incumbent_healthy\": true, \"operation_id\": \"r031-fenceloss1-1790003444\", \"owner_id\": \"home-servers-request031\", \"production_qualified\": false, \"reason\": \"database_fence_lost\", \"replay_allowed\": false, \"schema\": \"cbm.capture-terminal/1\", \"serving_restored_at\": 1790003456.5602756, \"spec_sha256\": \"1ccdf0a80e9de3fafb4d2d39bd529c2bea516cd914efd04fb5ffdeee0d7e2a0d\", \"state\": \"aborted_restored\", \"service_state\": \"inactive\", \"finalizer_seen\": true, \"live_verified\": true}\n",
+  "stderr": "",
+  "actions": [
+    {
+      "test": "competing_mac_dispatch",
+      "returncode": 1,
+      "rejected": true
+    },
+    {
+      "action": "terminate_actual_database_fence",
+      "returncode": 0,
+      "result": "t",
+      "at": 1790003453.947499
+    }
+  ],
+  "spec_sha256": "1ccdf0a80e9de3fafb4d2d39bd529c2bea516cd914efd04fb5ffdeee0d7e2a0d",
+  "operation_id": "r031-fenceloss1-1790003444",
+  "readback": {
+    "at": 1790003457.4762907,
+    "holds_equal": true,
+    "incumbent_healthy": true,
+    "operation_id": "r031-fenceloss1-1790003444",
+    "owner_id": "home-servers-request031",
+    "production_qualified": false,
+    "reason": "database_fence_lost",
+    "replay_allowed": false,
+    "schema": "cbm.capture-terminal/1",
+    "serving_restored_at": 1790003456.5602756,
+    "spec_sha256": "1ccdf0a80e9de3fafb4d2d39bd529c2bea516cd914efd04fb5ffdeee0d7e2a0d",
+    "state": "aborted_restored",
+    "service_state": "inactive",
+    "finalizer_seen": true,
+    "live_verified": true
+  },
+  "restored_within_deadline": true
+}

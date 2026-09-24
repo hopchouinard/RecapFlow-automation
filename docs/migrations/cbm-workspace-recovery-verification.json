@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-17",
+  "feature": "workspace-recovery",
+  "production_deployed": false,
+  "packet_manifest_sha256": "e15aeb753d309a9af73064dd271b6c7dbd83c2f2feacc7837802eb764f022ddf",
+  "validation": {
+    "application_python": 963,
+    "postgres_jetstream_final": 60,
+    "focused_recovery_host_overlapping": 25,
+    "frontend_unit": 6,
+    "browser": 5,
+    "typescript_build": true,
+    "vm108_pinned_image_imports": true,
+    "vm108_uid": 10001,
+    "vm108_network": "none"
+  },
+  "real_model_calls": 0,
+  "production_data_changed": false
+}

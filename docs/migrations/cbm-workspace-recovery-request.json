@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-RECOVERY-20260917-020",
+  "actor": "Forge",
+  "target": "home.servers",
+  "created_at": "2026-09-17T02:34:39.153296+00:00",
+  "deadline": null,
+  "authorization": "Patrick explicitly approved production rollout through home.servers. No processing, publication, replacement, retirement or request016 permission work.",
+  "documents": {
+    "cbm-workspace-recovery-manifest.json": "e15aeb753d309a9af73064dd271b6c7dbd83c2f2feacc7837802eb764f022ddf",
+    "cbm-workspace-recovery-production-handoff.md": "2dfa86ac88160639760126a30f15742b4ad10c6723ccade9b5a6b9aef4c26d76",
+    "cbm-workspace-recovery-ready.md": "2188dd42c6734eb329042384145dbe1627b4c579768e7f15d0ebbde126f9277f",
+    "cbm-workspace-recovery-verification.json": "4df8ecd6cf44f4c127174b630f547e678ac32a1bd61543e32f3ab3d91350a19a"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "actual_clients_terminated": 2,
+  "after_sha256": "77aabb204557f4e96471482a2e62771f86e1df03dc3f8d14fbdcfeb49fed22db",
+  "all_mutations_reverted": true,
+  "application_schema_matches_admin_profile": true,
+  "before_sha256": "77aabb204557f4e96471482a2e62771f86e1df03dc3f8d14fbdcfeb49fed22db",
+  "dump_sha256": "8f5023d0fc7df95f2a4452625bb6826a745bfa1e7cccc19b29c25c212296409c",
+  "global_role_login_changed": false,
+  "independent_servers": true,
+  "indexes": 19,
+  "negative_cases": [
+    {
+      "actual_postgresql_mutation": true,
+      "case": "index_keys",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "sequence",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "acl",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "extra_acl",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "default_acl",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "role_membership",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "view",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "function",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "model_unknown",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "attempt_unknown",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "alembic",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "operation",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "rejected_event",
+      "rejected": true
+    },
+    {
+      "actual_postgresql_mutation": true,
+      "case": "model_file",
+      "rejected": true
+    }
+  ],
+  "new_application_connect_denied": [
+    "cbm_prod_runtime",
+    "cbm_prod_migration"
+  ],
+  "production_qualified": false,
+  "production_rows_used": false,
+  "restored_system_id": "7688160233666973745",
+  "scope": "synthetic-actual-schema",
+  "sequences": 0,
+  "source_system_id": "7688160208058650673",
+  "tables": 10,
+  "unknown_admin_refused_not_terminated": true,
+  "unknown_outcomes": {
+    "cb_attempts": 1,
+    "cb_model_calls": 1
+  },
+  "unrelated_database_client_unchanged": true
+}

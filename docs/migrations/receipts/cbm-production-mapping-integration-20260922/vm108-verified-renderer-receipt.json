@@ -1,0 +1,10 @@
+{
+  "actual_docker_generation_and_environment_readback": true,
+  "incumbent_id": "135c9323f674b40d6d941619d40b2356be53d90ba61704ae32116e2427e0ce1b",
+  "original_and_replacement_retained": true,
+  "original_configuration_equal": true,
+  "original_exact_container_restored": true,
+  "production_invoked": false,
+  "replacement_id": "b71a658904148acf56819232ff6172caf72b55de151adf07dc3b33d1389d1af2",
+  "scope": "synthetic renderer; real production browser/session acceptance remains separate"
+}

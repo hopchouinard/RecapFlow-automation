@@ -1,0 +1,49 @@
+name: cbm-integration-dev
+services:
+  pg:
+    image: postgres:18.6
+    environment:
+      POSTGRES_USER: fixture
+      POSTGRES_DB: integration
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes: [pg:/var/lib/postgresql]
+    mem_limit: 192m
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U fixture -d integration']
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  provider:
+    image: sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b
+    read_only: true
+    volumes: [./source:/source:ro]
+    command: [python, -B, /source/provider.py]
+    mem_limit: 96m
+  api:
+    image: sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b
+    read_only: true
+    user: '10001:10001'
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: [/tmp]
+    env_file: [./private/api.env]
+    volumes: [state:/state, ./source:/source:ro]
+    mem_limit: 900m
+    cpus: 1.5
+    command: [uvicorn, community_brain.jobs.runtime:app, --factory, --host, 0.0.0.0, --port, '8090', --no-access-log]
+    depends_on:
+      pg: {condition: service_healthy}
+  webui:
+    image: sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b
+    env_file: [./private/webui.env]
+    volumes: [webui:/app/backend/data]
+    mem_limit: 1536m
+    cpus: 1.5
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+networks:
+  default: {internal: true}
+volumes:
+  pg:
+  state:
+  webui:

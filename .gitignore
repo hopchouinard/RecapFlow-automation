@@ -18,6 +18,11 @@ docker-compose.override.yml
 # Logs
 *.log
 
+# Python caches from deployment helpers and receipt verification
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -46,6 +51,13 @@ backups/
 
 # Bytecode from importlib-loaded scripts (tests/test_eval_fabrication_refusal.py)
 scripts/__pycache__/
+tests/cbm/__pycache__/
+web/node_modules/
+web/dist/
+web/playwright-report/
+web/test-results/
+community-brain/migrations/__pycache__/
+community-brain/migrations/versions/__pycache__/
 
 # LanceDB pre-deploy snapshots — local rollback artifacts, not repo content
 # (19M+ binaries; the VM is canonical and keeps them on disk)

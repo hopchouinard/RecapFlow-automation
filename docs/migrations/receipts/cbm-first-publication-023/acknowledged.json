@@ -1,0 +1,9 @@
+{
+  "request_id": "CBM-FIRST-PUBLICATION-20260917-023",
+  "actor": "Forge",
+  "state": "verified",
+  "acknowledged_at": "2026-09-17T15:12:53.036410+00:00",
+  "receipt_sha256": "7d58a9845bbb7aa75e685c7db1a0ebddc42c51b47ea20c211c38599ff5c62992",
+  "receipt_files_verified": 5,
+  "summary": "Independent anonymous Git refs, six file hashes, three downloaded release asset hashes and installer hash match approved plan. Authenticated live job is git complete/distribution released. API healthy with zero restarts; routine publication disabled. Management recovery and preservation evidence reviewed."
+}

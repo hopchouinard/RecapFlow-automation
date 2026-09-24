@@ -1,0 +1,12 @@
+{
+  "pinned_consumer_image": "sha256:ceb3b08de5947b3c0c9e458ce50c8d28111b4df1d818ad1fabb0add5d39765c4",
+  "sessions": 2,
+  "query_results": 3,
+  "ingest_reindex_absent": true,
+  "corpus_hashes_unchanged": true,
+  "embedding": "mock zero vectors",
+  "generative_calls": 0,
+  "external_network": false,
+  "tokenizer_cache_supplied_read_only": true,
+  "quality_claim": "Route/package compatibility only; not real retrieval quality"
+}

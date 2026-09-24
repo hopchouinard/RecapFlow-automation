@@ -1,0 +1,10 @@
+{
+  "descriptor_semantically_equal": true,
+  "byte_different_members": [
+    "descriptor.json"
+  ],
+  "expected_packet_manifest_sha256": "19c85b5cbece351f9c9c09606ab3ccaa35065fd4bcee35f65e8ab2cb502d08a9",
+  "rebuilt_packet_manifest_sha256": "6c7be365ca7659a1dcf17f8a83d34e7b21297ab6348a5c311fce3c308d7f8b9e",
+  "finding": "Unsorted Path.rglob helper_files insertion order changes descriptor serialization. Cross-filesystem byte reproducibility remains open; imported source unchanged.",
+  "local_boundary_tests_passed": 6
+}

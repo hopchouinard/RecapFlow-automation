@@ -1,0 +1,13 @@
+{
+  "auth_configuration_unchanged": true,
+  "api_environment_unchanged": true,
+  "image_unchanged": true,
+  "only_mount_change": "/app/web/dist",
+  "database_equal": true,
+  "managed_files_equal": true,
+  "corpus_rows": 1901,
+  "fts_indexed": 1901,
+  "fts_unindexed": 0,
+  "local_tests": 79,
+  "ui_behavior_evidence": "Forge packet reports six component tests and three Playwright scenarios; management verified live deployed bytes match that packet."
+}

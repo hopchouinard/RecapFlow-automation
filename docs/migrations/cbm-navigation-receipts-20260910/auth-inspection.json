@@ -1,0 +1,48 @@
+{
+  "user_pk": 6,
+  "username": "pchouinard",
+  "user_fields": [
+    "id",
+    "password",
+    "last_login",
+    "username",
+    "first_name",
+    "last_name",
+    "email",
+    "is_active",
+    "date_joined",
+    "attributes",
+    "uuid",
+    "name",
+    "path",
+    "type",
+    "password_change_date",
+    "last_updated"
+  ],
+  "mapping_expression": "if not request.user.groups.filter(name='community-brain-operators').exists():\n    return {}\nreturn {'cb_scope': 'community-brain', 'cb_permissions': ['jobs:read', 'artifacts:read', 'retrieval:read']}",
+  "mapping_scope": "profile",
+  "mapping_providers": [
+    [
+      8,
+      "community-brain"
+    ]
+  ],
+  "provider_mappings": [
+    "962deddf-1792-4e27-9e01-b0c9249dae2b",
+    "e91396a8-9834-42e5-9f16-53c7071fc6fe"
+  ],
+  "application_provider": 8,
+  "bindings": [
+    {
+      "pk": "6e6db818-e910-4cdf-b74f-01994b20ed25",
+      "group_id": "69a3fcd8-fc2d-4ad2-b565-41f15c40701a",
+      "user_id": null,
+      "policy_id": null,
+      "enabled": true,
+      "negate": false,
+      "failure_result": false,
+      "order": 0
+    }
+  ],
+  "evaluate_signature": "(user: authentik.core.models.User | None, request: django.http.request.HttpRequest | None, **kwargs) -> Any"
+}

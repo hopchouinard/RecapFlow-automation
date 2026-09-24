@@ -1,16 +1,17 @@
+const { repoPath } = require('./harness');
 const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('node:fs');
 const { runCodeNode, loadWorkflow } = require('./harness');
 
-const transcript = fs.readFileSync('/repo/output/2026-09-01/transcript.txt', 'utf8');
-const signalText = fs.readFileSync('/repo/output/2026-09-01/extracted-signal.md', 'utf8');
+const transcript = fs.readFileSync(repoPath('output/2026-09-01/transcript.txt'), 'utf8');
+const signalText = fs.readFileSync(repoPath('output/2026-09-01/extracted-signal.md'), 'utf8');
 // Finding D: W1's fixture above is `[HH:MM:SS] Speaker: text` (one line per utterance) --
 // W2's real historical transcripts are turn BLOCKS (`HH:MM:SS - Speaker` header line +
 // utterance lines + a blank-line separator). Use a REAL historical transcript for W2's
 // splitter tests so they exercise the actual format, not W1's.
 const historicalTranscript = fs.readFileSync(
-  '/repo/historical/2026-01-14-ai-developer-accelerator-weekly-support-call-r114039427/transcript.md',
+  repoPath('historical/2026-01-14-ai-developer-accelerator-weekly-support-call-r114039427/transcript.md'),
   'utf8',
 );
 

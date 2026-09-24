@@ -1,0 +1,30 @@
+{
+  "pchouinard": {
+    "access": {
+      "passing": true,
+      "messages": [],
+      "log_messages": []
+    },
+    "claims": {
+      "cb_scope": "community-brain",
+      "cb_permissions": [
+        "jobs:read",
+        "artifacts:read",
+        "retrieval:read"
+      ],
+      "aud": "community-brain",
+      "iss": "https://auth.patchoutech.lab/application/o/community-brain/"
+    }
+  },
+  "codex-operator": {
+    "access": {
+      "passing": false,
+      "messages": [],
+      "log_messages": []
+    },
+    "claims": {
+      "aud": "community-brain",
+      "iss": "https://auth.patchoutech.lab/application/o/community-brain/"
+    }
+  }
+}

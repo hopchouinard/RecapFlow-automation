@@ -1,0 +1,105 @@
+{
+  "checks": {
+    "actual_development_infisical": {
+      "expires_at": 1790809069,
+      "passed": true,
+      "path": "/development/community-brain-dev/request034",
+      "read_save_read_equality": true,
+      "subjects": 5
+    },
+    "capacity": {
+      "failures": 0,
+      "four_way_overlap_seconds": 4.8,
+      "min_available_kib": 1768036,
+      "oom_kills_delta": 0,
+      "p95_ms": 516.4,
+      "passed": true,
+      "peak_container_cpu_percent": 52.32,
+      "requests": 677
+    },
+    "cleanup": {
+      "preexisting_vm108_containers_unchanged": 4,
+      "request034_containers_stopped": 7
+    },
+    "final_source_tests_vm108": {
+      "no_old_overlays": true,
+      "passed": true,
+      "pinned_api_image_files": 20,
+      "tests": 16
+    },
+    "fresh_dev_ca": {
+      "fullchain_sha256": "a07480b43b0837821d58bdae27892667e9818df608c4bd3c7880f46260ce67e0",
+      "leaf_sha256": "46b0b43fdff9d0d9d3cda4213b6820aca6dc3ddb8a393b9144cb339b53ff2090",
+      "passed": true,
+      "validity": [
+        "notBefore=Sep 23 22:49:50 2026 GMT",
+        "notAfter=Sep 24 22:50:50 2026 GMT"
+      ]
+    },
+    "negative_authorization": {
+      "cross_scope": 403,
+      "current": 200,
+      "expired": 401,
+      "passed": true,
+      "wrong": 401
+    },
+    "postbrowser_recovery": {
+      "fts_indexed_rows": 17,
+      "fts_unindexed_rows": 0,
+      "manifest_sha256": "3148078f797e5513edf00aafc6fdbce279e4709b5bf90abf843bc574ab2652e0",
+      "original_key_http": 200,
+      "passed": true,
+      "vector_files": 35,
+      "vector_manifest_sha256": "54f0d860f5db50aba74b971306e4e7ed12a45999c946014077336e522403c391",
+      "verified_files": 114,
+      "wrong_key_http": 401
+    },
+    "rendered_browser": {
+      "passed": true,
+      "retained_chat_and_60_byte_upload": true,
+      "signup_absent": true,
+      "signup_http": 403
+    },
+    "same_generation_renewal": {
+      "actual_kuma_prometheus_and_filter": true,
+      "cycle": "b27dd584-0b17-4d51-9fe4-74ab26ddb58b",
+      "old_revoked_after_consumer_acceptance": true,
+      "passed": true
+    }
+  },
+  "failed_attempts_retained": [
+    "quiet-lease manual submission refused",
+    "first negative-auth readiness lookup failed",
+    "first signup-off readback timed out during cold start",
+    "first postbrowser restore database-name collision"
+  ],
+  "limits": [
+    "No bounded production controller/installer or independent finalizer; VM108 fault matrix not completed",
+    "All 21 production slots remain null and production authority expired",
+    "Concurrent four-way overlap was 4.8 seconds; no continuous restore load or paid provider budget acceptance",
+    "Mac desktop collector intake/upload and real production sessions were not exercised"
+  ],
+  "production": {
+    "controller_installer_finalizer_complete": false,
+    "execution_qualified": false,
+    "paid_provider_requests": 0,
+    "production_evidence_slots_filled": 0,
+    "production_identity_expiry_utc": "2026-09-22T20:53:07Z",
+    "production_renewal_state": "failed",
+    "protected_data_transferred": false,
+    "vm101_changed": false,
+    "vm109_mount_uuid": "d5113805-c76b-4955-b13a-6482ce6f6ac9",
+    "vm109_original_api_and_alloy_running": true,
+    "vm_resized": false
+  },
+  "request_id": "CBM-STAGE2-QUALIFICATION-20260923-034",
+  "schema": "cbm.stage2-verification/1",
+  "scope": "VM108 development only; production execution disabled",
+  "source": {
+    "commit": "6bdd50086646337a6db2b103b1dd28910db33635",
+    "source_archive_sha256": "1993976f8f1f06a43cf746f87725b14112b5f9619df149e3e311ea3b4b5f7dfd",
+    "vm108_packet_archive_sha256": "f28a4b5d2ffce18d10c56c60ec26fcad528f1d3f7a0a66f1182480a44d9b5a22",
+    "vm108_packet_manifest_sha256": "7c5cfba2187e72ea40a6955592278539f7982376abbe647819e466354b3b3825"
+  },
+  "updated_at": "2026-09-23T23:42:48.829588+00:00"
+}

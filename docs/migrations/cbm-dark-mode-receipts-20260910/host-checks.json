@@ -1,0 +1,11 @@
+{
+  "request_id": "CBM-DARK-MODE-20260910-008",
+  "checked_at": "2026-09-10T16:22:15.957911+00:00",
+  "all_files_corpus_config_unchanged": true,
+  "backend_image_unchanged": true,
+  "entire_api_environment_unchanged": true,
+  "only_mount_change": "read-only /app/web/dist",
+  "original_mounts_unchanged": true,
+  "only_api_alloy_running": true,
+  "healthy": true
+}

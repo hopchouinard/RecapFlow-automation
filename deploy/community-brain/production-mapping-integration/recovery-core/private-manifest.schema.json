@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cbm:private-recovery:1",
+  "title": "Private preservation manifest; scope must match explicit authorization",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "cbm.private-recovery/1"
+    },
+    "scope": {
+      "enum": [
+        "synthetic-development",
+        "authorized-private-preservation"
+      ]
+    },
+    "capture_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{7,100}$"
+    },
+    "created_at": {
+      "type": "number"
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "components": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "uid": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "gid": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "mode": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 511
+                },
+                "mtime_ns": {
+                  "type": "integer"
+                },
+                "kind": {
+                  "const": "directory"
+                }
+              },
+              "required": [
+                "path",
+                "uid",
+                "gid",
+                "mode",
+                "mtime_ns",
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "uid": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "gid": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "mode": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 511
+                },
+                "mtime_ns": {
+                  "type": "integer"
+                },
+                "kind": {
+                  "const": "file"
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "uid",
+                "gid",
+                "mode",
+                "mtime_ns",
+                "kind",
+                "bytes",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "uid": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "gid": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "mode": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 511
+                },
+                "mtime_ns": {
+                  "type": "integer"
+                },
+                "kind": {
+                  "const": "symlink"
+                },
+                "target": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "uid",
+                "gid",
+                "mode",
+                "mtime_ns",
+                "kind",
+                "target"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      }
+    },
+    "writer_exclusion": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "scope",
+    "capture_id",
+    "created_at",
+    "sources",
+    "components",
+    "writer_exclusion"
+  ],
+  "additionalProperties": false
+}

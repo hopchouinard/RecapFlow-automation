@@ -1,0 +1,12 @@
+{
+  "request_id": "CBM-RECOVERY-20260917-020",
+  "actor": "home.servers",
+  "state": "completed",
+  "updated_at": "2026-09-17T02:45:30.683560+00:00",
+  "summary": "Workspace recovery UI/API/host overlay deployed on r019. Actual module mounts and resume-route imports verified without credentials/network. Read-only public backup projection shows September15 verified; private automation remains inaccessible. TLS/JWKS, retrieval and human access checks passed. Database and managed-data fingerprints unchanged, corpus88/1924/zero unindexed. Runner idle/unpaused, no attention or pending checkpoint. Off-host copies verified; no production recovery, model calls or reprocessing. Request016 stays stopped.",
+  "receipt": "receipt.md",
+  "receipt_sha256": "d039c52a7997b24d769e8a8d57d110559b505fe1e72e59680f57e65232fb8f20",
+  "supplemental_files": {
+    "data-fingerprints.json": "dc0c037758557ee9fda4279aae84976d4b31f5aab48eab7c57cb82ca6c8db96b"
+  }
+}

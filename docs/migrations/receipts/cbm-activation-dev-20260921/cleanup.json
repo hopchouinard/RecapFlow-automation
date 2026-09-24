@@ -1,0 +1,60 @@
+{
+  "containers": [
+    {
+      "name": "/cbm-activation-validation-incumbent",
+      "id": "127f1945eef421b9a66008ba9da8f0725f74f1cbd29b7f67bd4b39ec8a81f69e",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "oom": false,
+      "state_before_cleanup": "running"
+    },
+    {
+      "name": "/cbm-activation-validation-pg",
+      "id": "06bb6d8faac0cada6b8a48c1e2208b8dcf99f203bae2bd812418dc38d08a33ff",
+      "image": "sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280",
+      "oom": false,
+      "state_before_cleanup": "running"
+    },
+    {
+      "name": "/cbm-activation-validation-api",
+      "id": "c243dac4fec9a77d34be6773b4d05b21841c7ac0d89de269b35b987223596925",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "oom": false,
+      "state_before_cleanup": "exited"
+    },
+    {
+      "name": "/cbm-activation-validation-webui",
+      "id": "51c36d4b02b9a1b665c799a7bd7d4aec49e6cd6901bc654af42d393cc1257f6b",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "oom": false,
+      "state_before_cleanup": "exited"
+    },
+    {
+      "name": "/cbm-activation-validation-api-v3",
+      "id": "5bd7c172752557f1650757c505f67091c4a9e8dad5bb76e6e8229bc97f383ad0",
+      "image": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+      "oom": false,
+      "state_before_cleanup": "exited"
+    },
+    {
+      "name": "/cbm-activation-validation-webui-v3",
+      "id": "7c78cbfe1f4a329dc3adf3e5d09c98bf37c442436db0fe99df8eb3e916bca4c1",
+      "image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+      "oom": false,
+      "state_before_cleanup": "exited"
+    }
+  ],
+  "all_six_fixture_containers_stopped": true,
+  "private_state_and_webui_volume_retained": true,
+  "source_hashes": {
+    "README.md": "b6222b4badf31f1d453f18a3859311c0733aa84fc03e56b5d5c55c2afad56435",
+    "activate.py": "3e78e5fbca7420fbfee2fc0fec2a6bbf318ca4ff2e6da38005437e876cfda238",
+    "rehearse.py": "379ceb7a37b8a9121f68d76139251de6c8b57f9f5cd0329f68cc64271077525b",
+    "test_activate.py": "7eafa61b1facc94496173d321c1c2b9f330b3858b99f5f2ef9eae239be0571f6"
+  },
+  "remaining_running": [
+    "cbm-collector-development-proxy-1",
+    "cbm-live-development-api-1",
+    "cbm-live-development-nats-1",
+    "cbm-live-development-postgres-1"
+  ]
+}

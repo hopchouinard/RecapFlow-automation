@@ -1,0 +1,26 @@
+{
+  "directory": "/var/backups/community-brain/signal-deployment-014-after",
+  "files": {
+    "deployment-controls.tar.gz": {
+      "bytes": 1633370,
+      "sha256": "cf80879a1fe51311352ff205c5fd13771803522bebf1825894ebb98b8df6ccc4"
+    },
+    "host-controls.json": {
+      "bytes": 3613,
+      "sha256": "e9f9948843e972ead296ad3f1d2e4fc637d9ab73b2ae790714a2273b58a56953"
+    },
+    "management-controls.json": {
+      "bytes": 5746,
+      "sha256": "6cb9b3bef9fe64eeca0eb6af85664868179e4329fa35e7f459b012456ced6610"
+    },
+    "management-controls.tar.gz": {
+      "bytes": 38203,
+      "sha256": "26462ac0f59d5862b87518a8e5c46f0ab8cbe7857f1c6a20e59f78816d2fc44a"
+    }
+  },
+  "vm_archive": {
+    "path": "/srv/community-brain/artifacts/cbm-signal-20260910-014/after/deployment-controls.tar.gz",
+    "bytes": 1633370,
+    "sha256": "cf80879a1fe51311352ff205c5fd13771803522bebf1825894ebb98b8df6ccc4"
+  }
+}

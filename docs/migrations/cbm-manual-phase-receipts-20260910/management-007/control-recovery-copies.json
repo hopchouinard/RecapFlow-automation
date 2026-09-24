@@ -1,0 +1,29 @@
+{
+  "request_id": "CBM-MANUAL-OWNERSHIP-20260910-007",
+  "private_off_host_copies": [
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/ownership-007/mac-controls.tar.gz",
+      "bytes": 5286,
+      "sha256": "ddbd9a3d57c57e5b58777290b39c31ca149ee6c487e9e09921706b7719d4c1b6"
+    },
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/ownership-007/vm101-controls.tar.gz",
+      "bytes": 251385,
+      "sha256": "b6b89da9b4e8acad552a9d520c3a4aa8b770085eba51fc3f23c287520601b5d9"
+    },
+    {
+      "host": "platform-db",
+      "path": "/var/backups/community-brain/ownership-007/maintenance-and-final-controls.tar.gz",
+      "bytes": 13692,
+      "sha256": "6878d7c2d55749275b97aca8c929efe4ac224b0735ff8bbbb5efcd51fbc3b877"
+    }
+  ],
+  "modes": "root0600 files under root0700 directory",
+  "local_mac_archive": "/Users/pchouinard/.local/state/community-brain-management/ownership-007-recovery/mac-controls.tar.gz",
+  "vm101_archive": "/var/lib/community-brain-window/CBM-RETRIEVAL-20260910-001/ownership-007-controls.tar.gz",
+  "original_restoration_material_retained": true,
+  "secret_values_printed": false,
+  "final_revision_supplement": true
+}

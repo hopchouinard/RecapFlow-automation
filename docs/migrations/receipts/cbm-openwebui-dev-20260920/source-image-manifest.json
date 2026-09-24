@@ -1,0 +1,67 @@
+{
+  "request_id": "CBM-OPENWEBUI-MIGRATION-20260920-026",
+  "repository": "https://github.com/Patchoulab/agent-ops.git",
+  "worktree": "/Users/pchouinard/.t3/worktrees/agent-ops/request026-openwebui",
+  "branch": "codex/request026-openwebui",
+  "base_commit": "a9dcf247e7aa2176f03fb7319fb1074f0e443acc",
+  "candidate_commit": "f7356151a563d4d07f390872efd9265b6b9302bf",
+  "working_tree_clean": true,
+  "pushed": false,
+  "files": [
+    {
+      "path": "platform-services/community-brain-prod/openwebui-migration-026/README.md",
+      "bytes": 11324,
+      "sha256": "a90138b1665ed7d44f4daa3e20c0d0cc34569f00c0ccabf90ab989254201cb70",
+      "vm108_source_hash_verified": false
+    },
+    {
+      "path": "platform-services/community-brain-prod/openwebui-migration-026/community_brain_filter.py",
+      "bytes": 12600,
+      "sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+      "vm108_source_hash_verified": true
+    },
+    {
+      "path": "platform-services/community-brain-prod/openwebui-migration-026/data_recovery.py",
+      "bytes": 3811,
+      "sha256": "956e627899f26280be3214350f6e4607ea465de20cc2bccefc00eddf43827738",
+      "vm108_source_hash_verified": true
+    },
+    {
+      "path": "platform-services/community-brain-prod/openwebui-migration-026/fixture.py",
+      "bytes": 2355,
+      "sha256": "0cc375f679f363911fa993ea8fe51fe6f706fdc770b2950f63ce4a40092c64e1",
+      "vm108_source_hash_verified": true
+    },
+    {
+      "path": "platform-services/community-brain-prod/openwebui-migration-026/loopback_proxy.py",
+      "bytes": 1555,
+      "sha256": "814ec0d492e178c31381609643887d8e30760ad565a9af805bc8fd55652d44d6",
+      "vm108_source_hash_verified": true
+    },
+    {
+      "path": "platform-services/community-brain-prod/openwebui-migration-026/probe_action.py",
+      "bytes": 1560,
+      "sha256": "9acbdd1ded6b6b4c6aae9503425b7816a0b63904c531fe1a5fd70d31ea68f0a5",
+      "vm108_source_hash_verified": true
+    },
+    {
+      "path": "platform-services/community-brain-prod/openwebui-migration-026/rehearse.py",
+      "bytes": 10431,
+      "sha256": "c01599db0ec1666a9954dd2fa52c93f51c6ac9cf16fffa93a9071e2d236fd1ef",
+      "vm108_source_hash_verified": true
+    }
+  ],
+  "original_image": {
+    "configured": "ghcr.io/open-webui/open-webui@sha256:b8095f79a6a8ffad8f830bdacc9b5b0aef805689b31bca0b065cc2424d3cfaeb",
+    "id": "sha256:ea51ab128ef7f7e1e5d9a6e2cd8bbea2336e6ad408ad185c1e796525c97d9c52",
+    "digests": [
+      "ghcr.io/open-webui/open-webui@sha256:b8095f79a6a8ffad8f830bdacc9b5b0aef805689b31bca0b065cc2424d3cfaeb"
+    ],
+    "size": 4740950728,
+    "architecture": "amd64",
+    "version": "main"
+  },
+  "vm108_imported_image": "sha256:08046b9748558bc2747dd20c9c77fc0e6b05216b8ad33513e7a9152cea15b87b",
+  "stabilization_image_to_preserve": "sha256:6e7f43ebd7970f89ae9f1afe5d4d77b89448e188e4a580ff9e38bac923d5bc5b",
+  "incumbent_management_provenance": "Request024 source manifest remains authoritative for modified/untracked deployed management source; no existing dirty operator work was committed or replaced."
+}

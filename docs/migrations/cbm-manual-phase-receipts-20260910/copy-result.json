@@ -1,0 +1,14 @@
+{
+  "copy": "cbm-manual-index-20260910-vm108",
+  "original_rows_unchanged": true,
+  "added_chunks": 8,
+  "total_rows": 1909,
+  "requests": 9,
+  "responses": 9,
+  "cost_usd": 0.00768625,
+  "fts_before_unindexed": 8,
+  "fts_after_indexed": 1909,
+  "fts_after_unindexed": 0,
+  "synthetic_fts_hits": 2,
+  "publication": false
+}

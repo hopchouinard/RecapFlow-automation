@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-09-21T12:27:25.158943+00:00",
+  "pbs_host": "pbs",
+  "pbs_filesystems": "Filesystem            1K-blocks      Used  Available Use% Mounted on\n/dev/sdc1            1921724676 517612976 1306419640  29% /mnt/datastore/PBS1\n/dev/mapper/pbs-root  465329840   6893876  434725040   2% /\n",
+  "pbs_datastores": [
+    {
+      "name": "PBS1",
+      "path": "/mnt/datastore/PBS1"
+    }
+  ],
+  "mac_filevault": "FileVault is On.",
+  "mac_internal_free": "Filesystem   1024-blocks      Used Available Capacity iused    ifree %iused  Mounted on\n/dev/disk3s5   482797652 445752540   3977044   100% 8281178 39770440   17%   /System/Volumes/Data\n",
+  "nvme_info": "   Device Identifier:         disk5s1\n   Device Node:               /dev/disk5s1\n   Whole:                     No\n   Part of Whole:             disk5\n\n   Volume Name:               NVMe_2TB_Work\n   Mounted:                   Yes\n   Mount Point:               /Volumes/NVMe_2TB_Work\n\n   Partition Type:            41504653-0000-11AA-AA11-00306543ECAC\n   File System Personality:   APFS\n   Type (Bundle):             apfs\n   Name (User Visible):       APFS\n   Owners:                    Disabled\n\n   OS Can Be Installed:       Yes\n   Media Type:                Generic\n   Protocol:                  PCI-Express\n   SMART Status:              Verified\n   Volume UUID:               8300D5B9-23C9-45FF-9854-5C9BB1DED2EB\n   Disk / Partition UUID:     8300D5B9-23C9-45FF-9854-5C9BB1DED2EB\n\n   Disk Size:                 2.0 TB (2000189177856 Bytes) (exactly 3906619488 512-Byte-Units)\n   Device Block Size:         4096 Bytes\n\n   Volume Used Space:         508.8 GB (508773867520 Bytes) (exactly 993698960 512-Byte-Units)\n   Container Total Space:     2.0 TB (2000189177856 Bytes) (exactly 3906619488 512-Byte-Units)\n   Container Free Space:      1.5 TB (1491115466752 Bytes) (exactly 2912334896 512-Byte-Units)\n   Allocation Block Size:     4096 Bytes\n\n   Media OS Use Only:         No\n   Media Read-Only:           No\n   Volume Read-Only:          No\n\n   Device Location:           External\n   Removable Media:           Fixed\n\n   Solid State:               Yes\n   Hardware AES Support:      No\n\n   This disk is an APFS Volume.  APFS Information:\n   APFS Container:            disk5\n   APFS Physical Store:       disk4s2\n   FileVault:                 Yes\n   Sealed:                    No\n   Locked:                    No\n\n",
+  "proposed_off_host_root": "/var/lib/proxmox-backup/cbm-protected-recovery",
+  "created": false
+}

@@ -1,0 +1,29 @@
+{
+  "request_id": "CBM-AKADMIN-20260917-018",
+  "files": {
+    "receipt.md": "0db6384fe964558403bfb550d6c37f718a8b663c6dc41eeacd086808258e415e",
+    "rollback.md": "c41a00e107edccf2da3f7d5f853bf0581ca1a985fb24654f615d06ad81802871",
+    "verification-summary.json": "643103d05aab7f09168ed3111f2517bce3554e57164447e9c90c6b336c3b4afc",
+    "changed-controls.json": "69af76038f1bbbacf66bd7127c225247f06d864f19946d8d2c6a22a3f345cdca",
+    "current-controls-receipt.json": "13ecea7cebc645630a5eb9792ac92fd6af9927b4afb80770d025e5e156ae8f5f",
+    "source-controls-receipt.json": "bffd795f15c2db436a4618ef0e867a6ffae890822d30f88d59ce478a058dc9d8"
+  },
+  "private_evidence": {
+    "before.json": {
+      "path": "/Users/pchouinard/.local/state/community-brain-management/request018/before.json",
+      "sha256": "a89aa40730c47651777d046892d6cdc5d0673ea2db94ae4d1b7cee856c6d3b47"
+    },
+    "verified.json": {
+      "path": "/Users/pchouinard/.local/state/community-brain-management/request018/verified.json",
+      "sha256": "bc900a3236f1e83e84e6f8589346acaba48602e4dea5e2ada150e409460e402a"
+    },
+    "applied.json": {
+      "path": "/Users/pchouinard/.local/state/community-brain-management/request018/applied.json",
+      "sha256": "8311cbb6194d3e691d78486fc7ddf01a003c5f694aaa6e41463e4fde6d2098dc"
+    },
+    "auth-controls-after.json": {
+      "path": "/Users/pchouinard/.local/state/community-brain-management/request018/auth-controls-after.json",
+      "sha256": "a08393c080e98cdbce8de4a1d73379252a72f8584b7ff94dcef2c90ce87dfbe3"
+    }
+  }
+}

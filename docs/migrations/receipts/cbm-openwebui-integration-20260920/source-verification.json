@@ -1,0 +1,81 @@
+{
+  "recorded_at": "2026-09-20T18:05:23.974865+00:00",
+  "source_sha256": {
+    "source/README.md": "a90138b1665ed7d44f4daa3e20c0d0cc34569f00c0ccabf90ab989254201cb70",
+    "source/community_brain_filter.py": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "source/compose.yml": "bff032f780178b932554e59a34e4aac187475b40c29771dfbabe15fa0a77a888",
+    "source/data_recovery.py": "956e627899f26280be3214350f6e4607ea465de20cc2bccefc00eddf43827738",
+    "source/fixture.py": "0cc375f679f363911fa993ea8fe51fe6f706fdc770b2950f63ce4a40092c64e1",
+    "source/isolation.py": "ba2d1d55ceb11912b1d7449ae3fea28b8003830974450710e1dbff6859959edc",
+    "source/loopback_proxy.py": "814ec0d492e178c31381609643887d8e30760ad565a9af805bc8fd55652d44d6",
+    "source/probe_action.py": "9acbdd1ded6b6b4c6aae9503425b7816a0b63904c531fe1a5fd70d31ea68f0a5",
+    "source/provider.py": "ad83d5e668607bcf29c51de25b72b188e216d9f4472e7a08de7e00bae7fb471c",
+    "source/rehearse.py": "c01599db0ec1666a9954dd2fa52c93f51c6ac9cf16fffa93a9071e2d236fd1ef",
+    "source/run.py": "f67cd6671572d161c844e8c86bb7dc3d6e32f96f8334ff5c29f1dbd97580c93c",
+    "source/seed.py": "5bfe3902cdd829d7287f5afbe6ecf47b31085f16762a680706307783daa19cae",
+    "source/service_renewal_policy.py": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c",
+    "source/test_manifest.py": "42c7a3037c9d7026c3895fa7df7fb9e73b1d75d6ba56b729b33b8f848c4b9225",
+    "compose.yml": "bff032f780178b932554e59a34e4aac187475b40c29771dfbabe15fa0a77a888",
+    "README.md": "df6442bb4f40ebd89f4264a0c558d0f51a04972b171caff75dbe30c2c680b513"
+  },
+  "log_sha256": {
+    "install.log": "bdec9957414adf2f3bc9c54392c6292f056f8a057054a1abde437581919ccf7c",
+    "renewal.log": "41ac4f9c3baab4adf369e74e1464d6535e0edb087fed83cbee596c3850479ad7",
+    "restore-volume.log": "ddfd2601a2c74952ced22fa294b3f400ae2faf6a32ae1b10072273e0b7ca5c5a",
+    "load-extended.log": "98c975975d6b0a00faa42a97567f7406f8238ea6a5c2e999a02ed5808742c07d",
+    "pipeline-extended.log": "9a7f4fc0df68ea9970a980146d621894478a36561e4a237808cf7ff534b2f005"
+  },
+  "generated_secret_matches_in_source": 0,
+  "workload_summary": {
+    "passed": true,
+    "pipeline_checks": [
+      {
+        "passed": true,
+        "stages": [
+          "processing",
+          "indexing",
+          "acquisition",
+          "processing",
+          "indexing"
+        ],
+        "meetings": 2,
+        "searchable_rows": 16,
+        "fts": {
+          "num_indexed_rows": 16,
+          "num_unindexed_rows": 0
+        },
+        "old_outbox_untouched": true,
+        "first_meeting_unchanged": true,
+        "external_calls": 0
+      },
+      {
+        "stabilization_passed": true,
+        "baseline_missing_readiness_reproduced": true,
+        "independent_attention_boot_holds": true,
+        "renewal_failure_visible": true,
+        "stale_readiness_fails_closed": true,
+        "busy_heartbeat_and_concurrent_projection": true,
+        "read_only_inspection_preserves_expired_stage": true,
+        "real_database_failure_diagnostic": "OperationalError",
+        "actual_api_factory_http_auth_and_readiness": true,
+        "production_mutations": 0,
+        "external_provider_calls": 0,
+        "image_frontend_hash": "a091882f9d8b5c1528cb95383f3e47614e43302c9299de6dfd1d77f1b72b677f"
+      }
+    ],
+    "times": {
+      "load-extended-start.utc": "2026-09-20T18:02:19Z",
+      "load-extended-end.utc": "2026-09-20T18:03:52Z",
+      "pipeline-extended-start.utc": "2026-09-20T18:02:19Z",
+      "pipeline-extended-end.utc": "2026-09-20T18:03:15Z"
+    },
+    "load_covers_entire_pipeline_process": true,
+    "clients": 3,
+    "request_pairs": 316,
+    "maximum_pair_seconds": 1.5944086919989786,
+    "memory_samples": 28,
+    "minimum_available_mib": 1701.62890625,
+    "oom_killed": false,
+    "scope": "synthetic retrieval/filter and complete fixture pipeline overlap"
+  }
+}

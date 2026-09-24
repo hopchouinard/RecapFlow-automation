@@ -1,0 +1,18 @@
+{
+  "version": "v1.2.0",
+  "archive_sha256": "783466593d3077b227d715c0efe8ac9266db7e28a745251d24c0dd2148d0b109",
+  "sessions": 88,
+  "rows": 1924,
+  "query_results": 3,
+  "six_git_files_match_artifact_records": true,
+  "consumer_image": "sha256:ceb3b08de5947b3c0c9e458ce50c8d28111b4df1d818ad1fabb0add5d39765c4",
+  "actual_candidate_installer_verified": true,
+  "corpus_hashes_unchanged": true,
+  "write_routes_absent": true,
+  "embedding": "mock zero vectors",
+  "tokenizer_cache_supplied_read_only": true,
+  "external_network": false,
+  "model_calls": 0,
+  "quality_claim": "Package and retrieval route compatibility only, not semantic ranking",
+  "published": false
+}

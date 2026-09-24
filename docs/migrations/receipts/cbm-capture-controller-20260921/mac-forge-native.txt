@@ -1,0 +1,106 @@
+.............Process ForkProcess-1:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/operation.py", line 91, in run
+    result = action()
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/test_operation.py", line 44, in action
+    ready.touch(); time.sleep(20)
+                   ~~~~~~~~~~^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/operation.py", line 49, in interrupt
+    raise Interrupted('deadline' if signum == signal.SIGALRM else 'signal')
+operation.Interrupted: signal
+..EEEEE.............................
+======================================================================
+ERROR: test_capture_identity_mismatch_refused (test_operation.ReceiptTests.test_capture_identity_mismatch_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/test_operation.py", line 76, in setUp
+    self.digest=r.capture({'state':source},self.bundle,'synthetic-request031',{})
+                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 167, in capture
+    entries = {k: tree(v, blobs) for k, v in roots.items()}
+                  ~~~~^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 109, in tree
+    visit(root)
+    ~~~~~^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 84, in visit
+    raise ValueError('extended metadata unsupported; retain source')
+ValueError: extended metadata unsupported; retain source
+
+======================================================================
+ERROR: test_drift_and_extra_members_refused (test_operation.ReceiptTests.test_drift_and_extra_members_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/test_operation.py", line 76, in setUp
+    self.digest=r.capture({'state':source},self.bundle,'synthetic-request031',{})
+                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 167, in capture
+    entries = {k: tree(v, blobs) for k, v in roots.items()}
+                  ~~~~^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 109, in tree
+    visit(root)
+    ~~~~~^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 84, in visit
+    raise ValueError('extended metadata unsupported; retain source')
+ValueError: extended metadata unsupported; retain source
+
+======================================================================
+ERROR: test_extra_top_level_member_refused (test_operation.ReceiptTests.test_extra_top_level_member_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/test_operation.py", line 76, in setUp
+    self.digest=r.capture({'state':source},self.bundle,'synthetic-request031',{})
+                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 167, in capture
+    entries = {k: tree(v, blobs) for k, v in roots.items()}
+                  ~~~~^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 109, in tree
+    visit(root)
+    ~~~~~^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 84, in visit
+    raise ValueError('extended metadata unsupported; retain source')
+ValueError: extended metadata unsupported; retain source
+
+======================================================================
+ERROR: test_receipt_flags_cannot_certify_restore (test_operation.ReceiptTests.test_receipt_flags_cannot_certify_restore)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/test_operation.py", line 76, in setUp
+    self.digest=r.capture({'state':source},self.bundle,'synthetic-request031',{})
+                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 167, in capture
+    entries = {k: tree(v, blobs) for k, v in roots.items()}
+                  ~~~~^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 109, in tree
+    visit(root)
+    ~~~~~^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 84, in visit
+    raise ValueError('extended metadata unsupported; retain source')
+ValueError: extended metadata unsupported; retain source
+
+======================================================================
+ERROR: test_stream_restore_verified_without_acceptance_substitution (test_operation.ReceiptTests.test_stream_restore_verified_without_acceptance_substitution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/test_operation.py", line 76, in setUp
+    self.digest=r.capture({'state':source},self.bundle,'synthetic-request031',{})
+                ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 167, in capture
+    entries = {k: tree(v, blobs) for k, v in roots.items()}
+                  ~~~~^^^^^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 109, in tree
+    visit(root)
+    ~~~~~^^^^^^
+  File "/Users/pchouinard/.t3/worktrees/agent-ops/request031-capture-controller/platform-services/community-brain-prod/capture-controller-031/forge-core/recovery.py", line 84, in visit
+    raise ValueError('extended metadata unsupported; retain source')
+ValueError: extended metadata unsupported; retain source
+
+----------------------------------------------------------------------
+Ran 49 tests in 0.182s
+
+FAILED (errors=5)

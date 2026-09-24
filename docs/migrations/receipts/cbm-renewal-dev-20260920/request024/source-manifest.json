@@ -1,0 +1,958 @@
+{
+  "collected_at": "2026-09-20T02:50:24.914044+00:00",
+  "deployed_root": "/Users/pchouinard/.local/lib/community-brain-management",
+  "deployed_root_is_git_checkout": false,
+  "repositories": [
+    {
+      "path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+      "origin": "https://github.com/Patchoulab/agent-ops.git",
+      "head": "a9dcf247e7aa2176f03fb7319fb1074f0e443acc",
+      "branch": "codex/forge-inspection-access",
+      "status": "M platform-services/community-brain-dev/identity/provision-auth.py\n M platform-services/community-brain-dev/identity/public-settings.json\n M platform-services/community-brain-prod/automatic-recovery/budget-check.json\n M platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py\n M platform-services/community-brain-prod/automatic-recovery/quiet_window.py\n M platform-services/community-brain-prod/automatic-recovery/test_lease_supervisor.py\n M platform-services/community-brain-prod/integrations/management-health.py\n M platform-services/community-brain-prod/integrations/manual_api_runtime.py\n M platform-services/community-brain-prod/integrations/provision-auth.py\n M platform-services/community-brain-prod/integrations/public-settings.json\n?? journal/2026-09-17-community-brain-akadmin-access.md\n?? journal/2026-09-17-community-brain-fathom-production.md\n?? journal/2026-09-17-community-brain-publication-candidate.md\n?? journal/2026-09-17-community-brain-workspace-recovery.md\n?? platform-services/community-brain-prod/automatic-recovery/README.md\n?? platform-services/community-brain-prod/automatic-recovery/activation-database-after.json\n?? platform-services/community-brain-prod/automatic-recovery/activation-database-before.json\n?? platform-services/community-brain-prod/automatic-recovery/api-checks.json\n?? platform-services/community-brain-prod/automatic-recovery/automatic-alerts-test.yml\n?? platform-services/community-brain-prod/automatic-recovery/automatic-alerts.yml\n?? platform-services/community-brain-prod/automatic-recovery/baseline-corpus.json\n?? platform-services/community-brain-prod/automatic-recovery/boot_guard.py\n?? platform-services/community-brain-prod/automatic-recovery/checkpoint_acceptance.py\n?? platform-services/community-brain-prod/automatic-recovery/consumer.py\n?? platform-services/community-brain-prod/automatic-recovery/content-checks.json\n?? platform-services/community-brain-prod/automatic-recovery/controls-before-offhost.json\n?? platform-services/community-brain-prod/automatic-recovery/database-adapter-rehearsal.json\n?? platform-services/community-brain-prod/automatic-recovery/database_adapter.py\n?? platform-services/community-brain-prod/automatic-recovery/database_rehearsal.py\n?? platform-services/community-brain-prod/automatic-recovery/deployment-prepared.json\n?? platform-services/community-brain-prod/automatic-recovery/end-to-end-rehearsal.json\n?? platform-services/community-brain-prod/automatic-recovery/end_to_end_rehearsal.py\n?? platform-services/community-brain-prod/automatic-recovery/files_adapter.py\n?? platform-services/community-brain-prod/automatic-recovery/human_access.py\n?? platform-services/community-brain-prod/automatic-recovery/installation-progress.json\n?? platform-services/community-brain-prod/automatic-recovery/linux-tests-03.json\n?? platform-services/community-brain-prod/automatic-recovery/maintain.py\n?? platform-services/community-brain-prod/automatic-recovery/management_controls.py\n?? platform-services/community-brain-prod/automatic-recovery/monitor_status.py\n?? platform-services/community-brain-prod/automatic-recovery/pbs_adapter.py\n?? platform-services/community-brain-prod/automatic-recovery/prometheus-rule-tests.json\n?? platform-services/community-brain-prod/automatic-recovery/receipt.md\n?? platform-services/community-brain-prod/automatic-recovery/test_boot_guard.py\n?? platform-services/community-brain-prod/automatic-recovery/test_checkpoint_acceptance.py\n?? platform-services/community-brain-prod/automatic-recovery/test_files_adapter.py\n?? platform-services/community-brain-prod/automatic-recovery/test_pbs_adapter.py\n?? platform-services/community-brain-prod/automatic-recovery/test_scheduler.py\n?? platform-services/community-brain-prod/automatic-recovery/transport.py\n?? platform-services/community-brain-prod/fathom-019/\n?? platform-services/community-brain-prod/integrations/check-automatic-api-011.py\n?? platform-services/community-brain-prod/integrations/check-automatic-content-011.py\n?? platform-services/community-brain-prod/integrations/check-followup-api-016.py\n?? platform-services/community-brain-prod/integrations/check-followup-content-016.py\n?? platform-services/community-brain-prod/integrations/check-followup-policy-016.py\n?? platform-services/community-brain-prod/integrations/check-preview-api-012.py\n?? platform-services/community-brain-prod/integrations/check-preview-content-012.py\n?? platform-services/community-brain-prod/integrations/check-signal-api-014.py\n?? platform-services/community-brain-prod/integrations/check-signal-content-014.py\n?? platform-services/community-brain-prod/integrations/check-weekly-api-015.py\n?? platform-services/community-brain-prod/integrations/check-weekly-content-015.py\n?? platform-services/community-brain-prod/integrations/deploy-followup-016.py\n?? platform-services/community-brain-prod/integrations/followup_controls.py\n?? platform-services/community-brain-prod/integrations/inspect-weekly-015.py\n?? platform-services/community-brain-prod/integrations/receipt-weekly-015.py\n?? platform-services/community-brain-prod/integrations/reconcile-followup-016.py\n?? platform-services/community-brain-prod/integrations/renew-service-tokens.py\n?? platform-services/community-brain-prod/integrations/renewal_kuma.js\n?? platform-services/community-brain-prod/integrations/renewal_webui_control.py\n?? platform-services/community-brain-prod/integrations/service_renewal_live.py\n?? platform-services/community-brain-prod/integrations/service_renewal_policy.py\n?? platform-services/community-brain-prod/integrations/test_renewal_kuma.cjs\n?? platform-services/community-brain-prod/integrations/test_service_renewal_policy.py\n?? platform-services/community-brain-prod/integrations/weekly_controls.py\n?? platform-services/community-brain-prod/preview/\n?? platform-services/community-brain-prod/recovery-020/\n?? platform-services/community-brain-prod/signal/\n?? platform-services/community-brain-prod/weekly/"
+    },
+    {
+      "path": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+      "origin": "https://github.com/Patchoulab/agent-ops.git",
+      "head": "0e75c3b3476ab3c2dd3869320928191ee4dfe16d",
+      "branch": "main",
+      "status": "? platform-services/monitoring\n?? journal/2026-09-15-beacon-onboarding.md\n?? platform-services/traefik/examples/dynamic/beacon.yml"
+    }
+  ],
+  "files": [
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/service_renewal_live.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/service_renewal_live.py",
+      "bytes": 12686,
+      "sha256": "6ccc4e6ef07c24a1e3357f114221772fd4cb8b267fcc789612103b5022059f5f",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/service_renewal_live.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/integrations/service_renewal_live.py",
+          "sha256": "6ccc4e6ef07c24a1e3357f114221772fd4cb8b267fcc789612103b5022059f5f",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/service_renewal_live.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/service_renewal_policy.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/service_renewal_policy.py",
+      "bytes": 4749,
+      "sha256": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/service_renewal_policy.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/integrations/service_renewal_policy.py",
+          "sha256": "8406820b5795e67f03ecc7521ab522aef7ff3aae9370ad30257ec286ce35d56c",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/service_renewal_policy.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/secret_store.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/secret_store.py",
+      "bytes": 1535,
+      "sha256": "b9da21610640337709a719bcabce8d8d8001b9fc66c7434d18000821184af99d",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/secret_store.py",
+          "exists": true,
+          "tracked": true,
+          "status": "",
+          "sha256": "b9da21610640337709a719bcabce8d8d8001b9fc66c7434d18000821184af99d",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/secret_store.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/renew-service-tokens.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/renew-service-tokens.py",
+      "bytes": 2373,
+      "sha256": "8c60327ae679fa5f4cea905bd0c4eec95a3b6e30fc9b2fcf0279dcd6d0137716",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/renew-service-tokens.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/integrations/renew-service-tokens.py",
+          "sha256": "8c60327ae679fa5f4cea905bd0c4eec95a3b6e30fc9b2fcf0279dcd6d0137716",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/renew-service-tokens.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/manage.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/manage.py",
+      "bytes": 921,
+      "sha256": "f2056419822091e1594f6a866ef0e36df9eee572359b10d0ead6db67052420fa",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/manage.py",
+          "exists": true,
+          "tracked": true,
+          "status": "",
+          "sha256": "f2056419822091e1594f6a866ef0e36df9eee572359b10d0ead6db67052420fa",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/manage.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/manual_api_runtime.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/manual_api_runtime.py",
+      "bytes": 5462,
+      "sha256": "a89416f5a6bf0d10eebf83e26d16113bc9c155fa3ac81780674b14aac6515641",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/manual_api_runtime.py",
+          "exists": true,
+          "tracked": true,
+          "status": "M platform-services/community-brain-prod/integrations/manual_api_runtime.py",
+          "sha256": "a89416f5a6bf0d10eebf83e26d16113bc9c155fa3ac81780674b14aac6515641",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/manual_api_runtime.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/renewal_webui_control.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/renewal_webui_control.py",
+      "bytes": 4549,
+      "sha256": "8dfcbd298e2610ad7ce8ddda86dc2943d6ae6ed0fef9930ab9c8ddbb528b6cd5",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/renewal_webui_control.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/integrations/renewal_webui_control.py",
+          "sha256": "8dfcbd298e2610ad7ce8ddda86dc2943d6ae6ed0fef9930ab9c8ddbb528b6cd5",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/renewal_webui_control.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/renewal_kuma.js",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/renewal_kuma.js",
+      "bytes": 2881,
+      "sha256": "3b74dfb3e4754f8206851a32b159212010f3619e20b818e810818179aeb6b42a",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/renewal_kuma.js",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/integrations/renewal_kuma.js",
+          "sha256": "3b74dfb3e4754f8206851a32b159212010f3619e20b818e810818179aeb6b42a",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/renewal_kuma.js",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/boot_guard.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/boot_guard.py",
+      "bytes": 1661,
+      "sha256": "70d93cdde9d2360294b5e960dfd4586ec20184bc2bdae69be1dbb148d347f7ac",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/boot_guard.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/boot_guard.py",
+          "sha256": "70d93cdde9d2360294b5e960dfd4586ec20184bc2bdae69be1dbb148d347f7ac",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/boot_guard.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/checkpoint_acceptance.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/checkpoint_acceptance.py",
+      "bytes": 6134,
+      "sha256": "b35e46de4705307f4777ba40f61071115d3918801ecb732ae51acdabf80f46c6",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/checkpoint_acceptance.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/checkpoint_acceptance.py",
+          "sha256": "b35e46de4705307f4777ba40f61071115d3918801ecb732ae51acdabf80f46c6",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/checkpoint_acceptance.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/checkpoint_journal.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/checkpoint_journal.py",
+      "bytes": 3524,
+      "sha256": "0f1058c812071e27880d567fd1d14d3015a40c09ce702bcc9d8646cef4c163ee",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/checkpoint_journal.py",
+          "exists": true,
+          "tracked": true,
+          "status": "",
+          "sha256": "0f1058c812071e27880d567fd1d14d3015a40c09ce702bcc9d8646cef4c163ee",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/checkpoint_journal.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/consumer.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/consumer.py",
+      "bytes": 11058,
+      "sha256": "43dc79953177bf172a986927c9723c25018e72bb2cf343b54c1cb11784d2043e",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/consumer.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/consumer.py",
+          "sha256": "43dc79953177bf172a986927c9723c25018e72bb2cf343b54c1cb11784d2043e",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/consumer.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/database_adapter.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/database_adapter.py",
+      "bytes": 8775,
+      "sha256": "cf85cd8ca13779dbc81c0c4d2936054e016435edaee7820da781544bf1c493d8",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/database_adapter.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/database_adapter.py",
+          "sha256": "cf85cd8ca13779dbc81c0c4d2936054e016435edaee7820da781544bf1c493d8",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/database_adapter.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/files_adapter.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/files_adapter.py",
+      "bytes": 12979,
+      "sha256": "8a4546272cafaccb5e4f291161424527e3d93ac580aaea6d7755f083e6bc6168",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/files_adapter.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/files_adapter.py",
+          "sha256": "8a4546272cafaccb5e4f291161424527e3d93ac580aaea6d7755f083e6bc6168",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/files_adapter.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/human_access.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/human_access.py",
+      "bytes": 1264,
+      "sha256": "c90264128dd82d53fa8ee52c310931c12056c410cde27d7dbe4e70e1eacafbcb",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/human_access.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/human_access.py",
+          "sha256": "c90264128dd82d53fa8ee52c310931c12056c410cde27d7dbe4e70e1eacafbcb",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/human_access.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py",
+      "bytes": 8033,
+      "sha256": "5c8c5dadf996ca1f3557a79de26eb0448a2b32f7c5c00c35f84b3bdc2bed3d75",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py",
+          "exists": true,
+          "tracked": true,
+          "status": "M platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py",
+          "sha256": "5c8c5dadf996ca1f3557a79de26eb0448a2b32f7c5c00c35f84b3bdc2bed3d75",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/lease_supervisor.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+      "bytes": 7348,
+      "sha256": "5207dd70d5f8b3276fdbd86d9cdc80732b40538edaabb76d654633387de0bb0e",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+          "sha256": "5207dd70d5f8b3276fdbd86d9cdc80732b40538edaabb76d654633387de0bb0e",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/management_controls.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/monitor_status.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/monitor_status.py",
+      "bytes": 2486,
+      "sha256": "b4a2f19a83923fdea6760556aaed087aefd5144b28d556f9b6a2bb2962dafd56",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/monitor_status.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/monitor_status.py",
+          "sha256": "b4a2f19a83923fdea6760556aaed087aefd5144b28d556f9b6a2bb2962dafd56",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/monitor_status.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/pbs_adapter.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/pbs_adapter.py",
+      "bytes": 6117,
+      "sha256": "1a443da18c050e8b77d9177010be0a48859f125c5d467bc842068e76addf4f0e",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/pbs_adapter.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/pbs_adapter.py",
+          "sha256": "c2b7bde0f479178c061ef49da4711c8540c70786ddb5b2df29bd6c3097dc134d",
+          "matches_deployed": false
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/pbs_adapter.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/quiet_window.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/quiet_window.py",
+      "bytes": 3556,
+      "sha256": "8347e32d04d1ecd22ce97b104e836b94f923f9951c442fa23e67f01da008fa50",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/quiet_window.py",
+          "exists": true,
+          "tracked": true,
+          "status": "M platform-services/community-brain-prod/automatic-recovery/quiet_window.py",
+          "sha256": "8347e32d04d1ecd22ce97b104e836b94f923f9951c442fa23e67f01da008fa50",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/quiet_window.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/automatic-recovery/transport.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/automatic-recovery/transport.py",
+      "bytes": 3951,
+      "sha256": "8d1c836e8cd44b1f9df228628c45015f933957286582d68f3699f62f9da473cd",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/transport.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/transport.py",
+          "sha256": "8d1c836e8cd44b1f9df228628c45015f933957286582d68f3699f62f9da473cd",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/transport.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/maintain.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/maintain.py",
+      "bytes": 3333,
+      "sha256": "87425de887176d0371bcc0a2d5dda35c59d692c8aa5602560eec3aabdc1428bc",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/maintain.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/maintain.py",
+          "sha256": "87425de887176d0371bcc0a2d5dda35c59d692c8aa5602560eec3aabdc1428bc",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/maintain.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-mac/maintain-hourly.py",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/maintain-hourly.py",
+      "bytes": 1155,
+      "sha256": "bc66e51b7e651e55303ea4b9392f52c8e8799d3a07ef1a339b361372e3b412c0",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/maintain-hourly.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/maintain-hourly.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/integrations/test_renewal_kuma.cjs",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/integrations/test_renewal_kuma.cjs",
+      "bytes": 2233,
+      "sha256": "e5d3a54a26f0b978b4f17aa161abb97a13de3b28b99d33f77372c55c5e0c7e53",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/test_renewal_kuma.cjs",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/integrations/test_renewal_kuma.cjs",
+          "sha256": "e5d3a54a26f0b978b4f17aa161abb97a13de3b28b99d33f77372c55c5e0c7e53",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/test_renewal_kuma.cjs",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/integrations/test_service_renewal_policy.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/integrations/test_service_renewal_policy.py",
+      "bytes": 4555,
+      "sha256": "2d41e196a329f14e3228bb045ece8d1801abb2a21fc7a99fe93d06baed483fd3",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/integrations/test_service_renewal_policy.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/integrations/test_service_renewal_policy.py",
+          "sha256": "2d41e196a329f14e3228bb045ece8d1801abb2a21fc7a99fe93d06baed483fd3",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/integrations/test_service_renewal_policy.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_boot_guard.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_boot_guard.py",
+      "bytes": 1395,
+      "sha256": "7ea824a457bb5f1bc7e04011ab66f65ee50c63f5febe776698bdb15eadd78d0e",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_boot_guard.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/test_boot_guard.py",
+          "sha256": "7ea824a457bb5f1bc7e04011ab66f65ee50c63f5febe776698bdb15eadd78d0e",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_boot_guard.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_checkpoint_acceptance.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_checkpoint_acceptance.py",
+      "bytes": 6194,
+      "sha256": "558e33a298849209df15e800216f470a33428b66df2fcd9c10a61466144f21d7",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_checkpoint_acceptance.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/test_checkpoint_acceptance.py",
+          "sha256": "558e33a298849209df15e800216f470a33428b66df2fcd9c10a61466144f21d7",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_checkpoint_acceptance.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_checkpoint_journal.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_checkpoint_journal.py",
+      "bytes": 4309,
+      "sha256": "d064fbd7ff272a3bfa284f6ade6004eb6b0e68fb78f56bd4a233522a76225e72",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_checkpoint_journal.py",
+          "exists": true,
+          "tracked": true,
+          "status": "",
+          "sha256": "d064fbd7ff272a3bfa284f6ade6004eb6b0e68fb78f56bd4a233522a76225e72",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_checkpoint_journal.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_effective_packet.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_effective_packet.py",
+      "bytes": 4705,
+      "sha256": "95ba0ab484b69563136a7c6ac740d6e07688ba5d8603a4ada3a7d5aa7b609d94",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_effective_packet.py",
+          "exists": true,
+          "tracked": true,
+          "status": "",
+          "sha256": "95ba0ab484b69563136a7c6ac740d6e07688ba5d8603a4ada3a7d5aa7b609d94",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_effective_packet.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_files_adapter.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_files_adapter.py",
+      "bytes": 3512,
+      "sha256": "5ac16da9cf991b7d5d4f0071120a52faa611bde7488c162688c085fc33fc47dd",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_files_adapter.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/test_files_adapter.py",
+          "sha256": "5ac16da9cf991b7d5d4f0071120a52faa611bde7488c162688c085fc33fc47dd",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_files_adapter.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_lease_supervisor.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_lease_supervisor.py",
+      "bytes": 5154,
+      "sha256": "63ebc5ec11649712c350e719badbfe0907b41855c0de4231916c827bf4305fb9",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_lease_supervisor.py",
+          "exists": true,
+          "tracked": true,
+          "status": "M platform-services/community-brain-prod/automatic-recovery/test_lease_supervisor.py",
+          "sha256": "63ebc5ec11649712c350e719badbfe0907b41855c0de4231916c827bf4305fb9",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_lease_supervisor.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_pbs_adapter.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_pbs_adapter.py",
+      "bytes": 4089,
+      "sha256": "73b53c7f754d1470aad29b525a9035d12595cc57844f2575eaacf786f6426788",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_pbs_adapter.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/test_pbs_adapter.py",
+          "sha256": "73b53c7f754d1470aad29b525a9035d12595cc57844f2575eaacf786f6426788",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_pbs_adapter.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_quiet_window.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_quiet_window.py",
+      "bytes": 4167,
+      "sha256": "006bcc05b24b6bdf216281de22ea6f0a94ee34bce5f0941b47b191298bc33106",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_quiet_window.py",
+          "exists": true,
+          "tracked": true,
+          "status": "",
+          "sha256": "006bcc05b24b6bdf216281de22ea6f0a94ee34bce5f0941b47b191298bc33106",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_quiet_window.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "repository-tests/platform-services/community-brain-prod/automatic-recovery/test_scheduler.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/test_scheduler.py",
+      "bytes": 905,
+      "sha256": "84ab6db1bc11a143c4913cc79ded6bd2d10c4f727ded5357b6a25e00104a6f14",
+      "repository_comparisons": [
+        {
+          "repository": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_scheduler.py",
+          "exists": true,
+          "tracked": false,
+          "status": "?? platform-services/community-brain-prod/automatic-recovery/test_scheduler.py",
+          "sha256": "84ab6db1bc11a143c4913cc79ded6bd2d10c4f727ded5357b6a25e00104a6f14",
+          "matches_deployed": true
+        },
+        {
+          "repository": "/Volumes/NVMe_2TB_Work/Development/AOE/act/Home.servers/agent-ops",
+          "path": "platform-services/community-brain-prod/automatic-recovery/test_scheduler.py",
+          "exists": false,
+          "tracked": false,
+          "status": "",
+          "sha256": null,
+          "matches_deployed": false
+        }
+      ]
+    },
+    {
+      "bundle_path": "deployed-vm109/usr/local/lib/community-brain-automatic/boot_guard.py",
+      "source_path": "vm109:/usr/local/lib/community-brain-automatic/boot_guard.py",
+      "bytes": 1661,
+      "sha256": "70d93cdde9d2360294b5e960dfd4586ec20184bc2bdae69be1dbb148d347f7ac"
+    },
+    {
+      "bundle_path": "deployed-vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/automatic_host.py",
+      "source_path": "vm109:/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/automatic_host.py",
+      "bytes": 8816,
+      "sha256": "b4f437ea0ea58fad5d708d96b674ba28f276c022ec55e6cba72d3f081f0cdf9f"
+    },
+    {
+      "bundle_path": "deployed-vm109/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/scan.py",
+      "source_path": "vm109:/srv/community-brain/workspaces/cbm-workspace-recovery-20260917-effective-r020/scan.py",
+      "bytes": 2590,
+      "sha256": "a83c0200604068725929058ef08b36999ad71dfeeda38272fec9cc40d7a9f18c"
+    },
+    {
+      "bundle_path": "deployed-vm109/etc/cron.d/community-brain-automatic",
+      "source_path": "vm109:/etc/cron.d/community-brain-automatic",
+      "bytes": 248,
+      "sha256": "8332f33fa4355b6c7d129d5128a86ae7cc5cb628345c48874199ac64c5ba3981"
+    },
+    {
+      "bundle_path": "deployed-vm109/etc/systemd/system/community-brain-automatic-pause.service",
+      "source_path": "vm109:/etc/systemd/system/community-brain-automatic-pause.service",
+      "bytes": 368,
+      "sha256": "1409642329abb38358cc53da7614ffe59e6eaa2c2774ffc13467dfda36896879"
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/community-brain-prod/integrations/run.sh",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/community-brain-prod/integrations/run.sh",
+      "bytes": 898,
+      "sha256": "1d0b3027a5c22c34e8554ec34558405edeb71a71738308c9b76b3bf4be1cf3e6",
+      "source_role": "code only; no env file included"
+    },
+    {
+      "bundle_path": "deployed-mac/platform-services/scripts/lib/infisical.sh",
+      "source_path": "/Users/pchouinard/.local/lib/community-brain-management/platform-services/scripts/lib/infisical.sh",
+      "bytes": 9140,
+      "sha256": "168840f40397caabe00ebbee2d827f7b7983c5052b2f6c4deea9593dc88f2415",
+      "source_role": "code only; no env file included"
+    },
+    {
+      "bundle_path": "repository-test-support/platform-services/community-brain-prod/automatic-recovery/effective_packet.py",
+      "source_path": "/Users/pchouinard/.t3/worktrees/agent-ops/forge-inspection-access/platform-services/community-brain-prod/automatic-recovery/effective_packet.py",
+      "bytes": 4947,
+      "sha256": "8daf71379400c4b12ad42aae60ad632c56c6ebd998544be9c3d6ca31045150fa",
+      "source_role": "code only; no env file included"
+    }
+  ]
+}

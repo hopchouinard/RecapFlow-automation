@@ -1,0 +1,13 @@
+{
+  "actual_migration_source_manifest": "schema-source-manifest.json",
+  "base_commit": "dd001c2dcc9338f64e1af0c18fbb1694b183025f",
+  "deployed_mac_source_manifest": "deployed-manifest.json",
+  "helper_receipt_limit": "Actual deployed algorithms and embedded file writers with external boundary fixtures. Final complete candidate execution receipts are in the separately hashed delivery.",
+  "old_runtime_extra_member": "Retained __pycache__/run.cpython-314.pyc is not deleted; a fresh exact-member candidate runtime refuses unexpected bytecode.",
+  "original_helper_receipt_packet": "6a74716e19ff0c8fd6366d643ee39cd5d5ec4adc3dfd9d9949188699063134f5",
+  "prior_request032_manifest_sha256": "48675b902dceb1d8ba4fb43e4a362dca0ee68177801431d25ba874ce0ebf01b7",
+  "production_enabled": false,
+  "remote_effect_source_manifest": "remote-source-manifest.json",
+  "request_id": "CBM-PRODUCTION-MAPPING-20260922-033",
+  "source_closure": "34 installed Mac files,42 remote operator effect files,3 actual migration/model source files; pinned third-party images/CLIs remain external dependencies. Original sources preserved verbatim; candidate adaptations are separate."
+}

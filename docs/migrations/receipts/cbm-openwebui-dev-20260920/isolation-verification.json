@@ -1,0 +1,21 @@
+{
+  "egress": {
+    "documentation_address_connect_errno": 101,
+    "default_route_present": false
+  },
+  "fixture_inference_denied": true,
+  "listeners": "State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                             \nLISTEN 0      5          127.0.0.1:18088      0.0.0.0:*    users:((\"python3\",pid=161633,fd=3))\nLISTEN 0      5          127.0.0.1:18089      0.0.0.0:*    users:((\"python3\",pid=161633,fd=4))\n",
+  "webui_stats": "647MiB / 1.5GiB|0.17%",
+  "source_hashes": {
+    "rehearse.py": "c01599db0ec1666a9954dd2fa52c93f51c6ac9cf16fffa93a9071e2d236fd1ef",
+    "data_recovery.py": "956e627899f26280be3214350f6e4607ea465de20cc2bccefc00eddf43827738",
+    "loopback_proxy.py": "814ec0d492e178c31381609643887d8e30760ad565a9af805bc8fd55652d44d6",
+    "probe_action.py": "9acbdd1ded6b6b4c6aae9503425b7816a0b63904c531fe1a5fd70d31ea68f0a5",
+    "fixture.py": "0cc375f679f363911fa993ea8fe51fe6f706fdc770b2950f63ce4a40092c64e1",
+    "community_brain_filter.py": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16"
+  },
+  "lan_ports_unreachable": {
+    "18088": true,
+    "18089": true
+  }
+}

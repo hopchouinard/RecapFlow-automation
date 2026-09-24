@@ -1,0 +1,8 @@
+{
+  "actual_bash_and_infisical_library": true,
+  "actual_copy_writer_ran": true,
+  "authority_cli": "explicit synthetic CLI fixture",
+  "no_capability_refused_before_login": true,
+  "no_folder_creation": true,
+  "production_invoked": false
+}

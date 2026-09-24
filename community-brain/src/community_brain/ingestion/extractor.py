@@ -20,7 +20,7 @@ from typing import Literal
 
 from community_brain.ingestion._llm_parse import strip_code_fence
 from community_brain.ingestion.config_loader import RetryConfig
-from community_brain.llm import call_llm
+from community_brain.llm import LLMOutcomeUnknown, call_llm
 
 logger = logging.getLogger(__name__)
 
@@ -117,6 +117,8 @@ def extract_chunk_metadata(
             )
         else:
             raw = _call_llm(model=model, prompt=prompt)
+    except LLMOutcomeUnknown:
+        raise
     except Exception as exc:
         logger.warning("LLM call failed: %s", exc)
         return _failure(f"{type(exc).__name__}: {exc}")

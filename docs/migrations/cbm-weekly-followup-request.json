@@ -1,0 +1,14 @@
+{
+  "request_id": "CBM-WEEKLY-FOLLOWUP-20260911-016",
+  "sender": "Forge / RecapFlow-automation",
+  "target": "home.servers",
+  "created_at": "2026-09-11T20:59:24.299114+00:00",
+  "title": "Resolve weekly readiness hook and journal metadata findings",
+  "authorization": "Follow-up fixes within approved weekly operation transition; no broader scope or additional authorization required.",
+  "entry_document": "cbm-weekly-followup-management-handoff.md",
+  "document_sha256": {
+    "cbm-weekly-followup-management-handoff.md": "adf4073733b72f1369f93572661f070d69ba7cacb8597e0941d2eebf46bc9c18",
+    "indexing_budget.py": "932e46c9cfb892c9b6eb51506f5948e8718795ee0f4f16a9ea6e860619bf6db7"
+  },
+  "response_directory": "responses/CBM-WEEKLY-FOLLOWUP-20260911-016"
+}

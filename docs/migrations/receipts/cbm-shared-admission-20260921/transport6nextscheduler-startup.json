@@ -1,0 +1,38 @@
+{
+  "actual_vm_reboot": false,
+  "boot": {
+    "ActiveState": "active",
+    "After": "sysinit.target system.slice basic.target systemd-journald.socket",
+    "ExecMainExitTimestampMonotonic": "150868073685",
+    "ExecMainStartTimestampMonotonic": "150865438845",
+    "ExecMainStatus": "0",
+    "Requires": "system.slice sysinit.target",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "boot_unit": "cbm-r032-start-transport6nextscheduler-boot",
+  "dependency_order_verified": true,
+  "passed": true,
+  "probe": {
+    "ActiveState": "active",
+    "After": "systemd-journald.socket cbm-r032-start-transport6nextscheduler.service sysinit.target system.slice basic.target",
+    "ExecMainExitTimestampMonotonic": "150869527676",
+    "ExecMainStartTimestampMonotonic": "150869332461",
+    "ExecMainStatus": "0",
+    "Requires": "cbm-r032-start-transport6nextscheduler.service sysinit.target system.slice",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "probe_unit": "cbm-r032-start-transport6nextscheduler-probe",
+  "startup": {
+    "ActiveState": "active",
+    "After": "basic.target cbm-r032-start-transport6nextscheduler-boot.service systemd-journald.socket sysinit.target system.slice",
+    "ExecMainExitTimestampMonotonic": "150869330130",
+    "ExecMainStartTimestampMonotonic": "150868076519",
+    "ExecMainStatus": "0",
+    "Requires": "cbm-r032-start-transport6nextscheduler-boot.service sysinit.target system.slice",
+    "Result": "success",
+    "SubState": "exited"
+  },
+  "startup_unit": "cbm-r032-start-transport6nextscheduler"
+}

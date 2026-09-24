@@ -1,3 +1,4 @@
+const { repoPath } = require('./harness');
 const { test } = require('node:test');
 const assert = require('node:assert');
 const fs = require('node:fs');
@@ -11,7 +12,7 @@ const cfg = {
   },
   retry: { callerHalvings: 2 },
 };
-const signalText = fs.readFileSync('/repo/output/2026-09-01/extracted-signal.md', 'utf8');
+const signalText = fs.readFileSync(repoPath('output/2026-09-01/extracted-signal.md'), 'utf8');
 
 test('splits the real extracted-signal into six section requests', () => {
   const out = runCodeNode('merged-call-summarizer.json', 'Code: Split Post Sections', {

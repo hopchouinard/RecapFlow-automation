@@ -7,7 +7,10 @@
       "name": "Manual Trigger",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
-      "position": [0, 300],
+      "position": [
+        0,
+        300
+      ],
       "parameters": {}
     },
     {
@@ -15,7 +18,10 @@
       "name": "Code: Read Last Poll Time",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [250, 300],
+      "position": [
+        250,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst pollFile = '/home/node/.n8n/fathom-last-poll.txt';\nlet lastPoll;\ntry {\n  lastPoll = fs.readFileSync(pollFile, 'utf8').trim();\n} catch (e) {\n  const d = new Date();\n  d.setHours(d.getHours() - 24);\n  lastPoll = d.toISOString();\n}\nreturn { json: { lastPoll } };"
       }
@@ -25,9 +31,11 @@
       "name": "HTTP Request: List Meetings",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [500, 300],
+      "position": [
+        500,
+        300
+      ],
       "parameters": {
-        "method": "GET",
         "url": "https://api.fathom.ai/external/v1/meetings",
         "sendQuery": true,
         "queryParameters": {
@@ -39,7 +47,8 @@
           ]
         },
         "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth"
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
       },
       "credentials": {
         "httpHeaderAuth": {
@@ -53,7 +62,10 @@
       "name": "Code: Check for New Recordings",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [750, 300],
+      "position": [
+        750,
+        300
+      ],
       "parameters": {
         "jsCode": "const items = $json.items || [];\nif (items.length === 0) {\n  return [];\n}\nreturn items.map(meeting => ({\n  json: {\n    recording_id: meeting.recording_id,\n    title: meeting.title,\n    recording_start_time: meeting.recording_start_time,\n    recording_end_time: meeting.recording_end_time\n  }\n}));"
       }
@@ -63,12 +75,15 @@
       "name": "HTTP Request: Fetch Transcript",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1000, 300],
+      "position": [
+        1000,
+        300
+      ],
       "parameters": {
-        "method": "GET",
         "url": "=https://api.fathom.ai/external/v1/recordings/{{ $json.recording_id }}/transcript",
         "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth"
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
       },
       "credentials": {
         "httpHeaderAuth": {
@@ -82,7 +97,10 @@
       "name": "Code: Format and Save Transcript",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1250, 300],
+      "position": [
+        1250,
+        300
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst transcript = $json.transcript || [];\nconst startTime = $('Code: Check for New Recordings').item.json.recording_start_time;\nconst datePrefix = startTime.substring(0, 10);\n\nconst formatted = transcript.map(entry => {\n  const speaker = entry.speaker?.display_name || 'Unknown';\n  const timestamp = entry.timestamp || '00:00:00';\n  return `[${timestamp}] ${speaker}: ${entry.text}`;\n}).join('\\n');\n\nconst filename = `${datePrefix}-transcript.txt`;\nconst filePath = `/home/node/watch/${filename}`;\nfs.writeFileSync(filePath, formatted, 'utf8');\n\nconst chatFile = `/home/node/watch/${datePrefix}-zoom-chat.txt`;\nconst bothPresent = fs.existsSync(chatFile);\n\nreturn {\n  json: {\n    datePrefix,\n    transcriptFile: filePath,\n    chatFile,\n    bothPresent,\n    formatted\n  }\n};"
       }
@@ -92,26 +110,32 @@
       "name": "IF: Both Files Present",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
-      "position": [1500, 300],
+      "position": [
+        1500,
+        300
+      ],
       "parameters": {
         "options": {},
         "conditions": {
           "options": {
             "caseSensitive": true,
-            "leftValue": ""
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
           },
-          "combinator": "and",
           "conditions": [
             {
               "id": "1",
               "operator": {
-                "type": "string",
-                "operation": "equals"
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
               },
               "leftValue": "={{ $json.bothPresent }}",
               "rightValue": "true"
             }
-          ]
+          ],
+          "combinator": "and"
         }
       }
     },
@@ -120,15 +144,27 @@
       "name": "Execute Workflow: Trigger Summarizer",
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
-      "position": [1750, 200],
+      "position": [
+        1750,
+        200
+      ],
       "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "5",
           "mode": "list",
+          "cachedResultUrl": "/workflow/5",
           "cachedResultName": "Merged Call Summarizer"
         },
-        "options": {}
+        "options": {},
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        }
       }
     },
     {
@@ -136,7 +172,10 @@
       "name": "Code: Update Last Poll Time",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1750, 400],
+      "position": [
+        1750,
+        400
+      ],
       "parameters": {
         "jsCode": "const fs = require('fs');\nconst pollFile = '/home/node/.n8n/fathom-last-poll.txt';\nfs.writeFileSync(pollFile, new Date().toISOString(), 'utf8');\nreturn { json: { updated: true } };"
       }
@@ -241,7 +280,8 @@
   },
   "active": false,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "binaryMode": "separate"
   },
   "pinData": {},
   "tags": []

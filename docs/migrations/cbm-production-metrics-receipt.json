@@ -1,0 +1,10 @@
+{
+  "node_scrape_configured": true,
+  "disk_alert_below_percent": 15,
+  "node_down_alert": true,
+  "api_scrape_prepared_targets_empty": true,
+  "api_token_file": "/opt/monitoring-stack/config/prometheus/community-brain-private/metrics-token",
+  "promtool_passed": true,
+  "node_scrape_health": "up",
+  "alert_rules_health": "ok"
+}

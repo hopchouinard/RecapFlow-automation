@@ -1,0 +1,25 @@
+{
+  "request_id": "CBM-NAVIGATION-20260910-010",
+  "checked_at": "2026-09-10T17:51:11.593234+00:00",
+  "tls_verified": true,
+  "catalog_equals_private_manifest": true,
+  "canonical_dates_equal": true,
+  "meetings": 87,
+  "authenticated_file_hashes": 481,
+  "all_download_headers_verified": true,
+  "denials": [
+    401,
+    403,
+    401,
+    403
+  ],
+  "only_real_job_visible_at_limits": [
+    1,
+    50,
+    100
+  ],
+  "synthetic_job_and_artifact_lists_404": true,
+  "real_job_artifact_hashes": 6,
+  "operator_archive_access": true,
+  "no_writes": true
+}

@@ -1,0 +1,18 @@
+{
+  "terminal_ownership_intact": true,
+  "timer_service_inactive_masked": true,
+  "legacy_writers_held": true,
+  "immutable_inodes": 2867,
+  "cron_held": true,
+  "webui": {
+    "live_app_process": true,
+    "effective_url": "https://community-brain.patchoutech.lab/retrieval/query",
+    "retrieval_status": "ok",
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "context_emitted": true,
+    "source_count": 10
+  },
+  "request_id": "CBM-MEETING-ARCHIVE-20260910-009",
+  "checked_at": "2026-09-10T17:06:18.258792+00:00",
+  "mac_intake_superseded": true
+}

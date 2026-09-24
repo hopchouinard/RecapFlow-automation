@@ -1,0 +1,10 @@
+{
+  "request_id": "CBM-STABILIZATION-DIAGNOSIS-20260920-024",
+  "target": "home.servers",
+  "created_at": "2026-09-20T01:54:13.153871+00:00",
+  "authorization": "Patrick accepted the stabilization plan, required VM108 validation before production, and instructed Start implementing. Existing authorized relay used for read-only management diagnosis.",
+  "scope": "read-only source and diagnosis; no runtime changes",
+  "documents": {
+    "cbm-stabilization-diagnosis-request.md": "b73f9dd50442600a8a93d06bf96057ab0436ecb84e4a3a7306465ce55d941ea7"
+  }
+}

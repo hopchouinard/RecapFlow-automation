@@ -1,0 +1,13 @@
+{
+  "artifact-api.json": "868e6a5f1e29cf439732b5d2572beb5a8e2691a80e6cbeaeef7b5e8fe131e8e9",
+  "checkpoint-integrity.json": "df8ad7bfb30bdb52c9eb6deaf290e130ff86a7e98f8b7fe4ac9507b3b370cd78",
+  "https-frontend.json": "c5d9a796890eba91613d810eee4970dee76e9026a65c51b8e6a812fcaeabea62",
+  "infrastructure.json": "deb14c8eee0937a97d70f08cf3a1417625ca01bac52395c4bc171285dfd955ea",
+  "live-data.json": "d98b8b412e796505c3407c83558ec4a7a0227cdc441b4457272653809602f42f",
+  "live-runtime.json": "fb2d5e2e721b3826113ee5a227543453f459c97907da16558a9efeaa03d042cc",
+  "public-release.json": "32f00e3922599a04d9b1a8c932855a7a368529812ecb34320aa51b221f31cf58",
+  "receipt.md": "db9d3b063c6b29ea8909913b3056878872a67871e4e7a1ccaa8070fd1c1b53ef",
+  "source-parity.json": "d320253a33aeca9616b11453c578a9fa2f43e255448b315cc8d3e147826d0583",
+  "verification.json": "b2298de14646e9e35099cf16142a7588e17b2181b17235a071c5088fc7f86aad",
+  "worker-parity.json": "16939e443032cb7078cd8fb91041708abd85edbf9082251ae3b029d39b65c8f5"
+}

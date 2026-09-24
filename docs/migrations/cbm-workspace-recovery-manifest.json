@@ -1,0 +1,26 @@
+{
+  "packet": "cbm-workspace-recovery-20260917",
+  "kind": "partial-overlay",
+  "production_applied": false,
+  "files": {
+    "automatic_host.py": "3e71613bc4b90ae64c44d6094bc9e421647b8dd11481bc3e342ccd525bf76253",
+    "dist/assets/index-CKtnCJVT.js": "ca54d8add33562e842bd92f776090189aca7f67fcab3cdf60219608f15536421",
+    "dist/assets/index-D-8kfH5H.css": "df1fa7d86d340fdf4d1d661a736d2309c7d328afb6fcabfc46d42ee702b419db",
+    "dist/index.html": "7b3fdcae6b148cf2fe3294ee2c4a04d8f1b6f3d7cc0f94e98d4a3081efc37c6e",
+    "jobs/api.py": "5bc6f91db520ec5b603d44b3252ed5cc910c4a9d066cb7dcb2be5c179b481445",
+    "jobs/automatic.py": "b44cfc52d9b3c6b40d242dc587bbf40c5a26b51d470db9234f1b5feb71636a4b",
+    "jobs/runtime.py": "181c4fbb1dea9e6665750d94add3fd978e9ad7e10bfd00998bf0ae24b68567a2",
+    "jobs/store.py": "cf8b32ce17a1eb58a1a6c70234844cf01969e0315be61d5d654fbd0f4dcfe4d2",
+    "jobs/worker.py": "66557de0327c3cefced2fd1844148eab96d255009955acad323dca874e2e6d0e",
+    "scan.py": "a83c0200604068725929058ef08b36999ad71dfeeda38272fec9cc40d7a9f18c"
+  },
+  "expected_r019_base": {
+    "jobs/api.py": "86e0a15ce3eeeb4cebb3b2c15627ed3cc9e62b93854b88ac233a30c262500ba4",
+    "jobs/automatic.py": "24999cbaa52641646e66773dd65f748c4ed3e44862c738d71ad1ed6fa034f440",
+    "jobs/runtime.py": "a1081510bad57947b3405cbdddfe5025e16e87319c9d4a02379606d371f6bdcd",
+    "jobs/store.py": "0d90809edb3244316ca99e83ebb1661b2741a45af33011ad5d9ed2764f72eed4",
+    "jobs/worker.py": "f6f69884c8aa39c7a4b7746bcc97f3212a8ddd218af27914b4f0462e18cca652",
+    "scan.py": "0a2791e646c7f7a5e19c771b8d564a780b5b24ec477ee3aa7096a76281a17d11",
+    "automatic_host.py": "d4d24baed1bf5e1a39b154a8bcc61f3eab8ddca3d4b968114fdab80655c9d2bf"
+  }
+}

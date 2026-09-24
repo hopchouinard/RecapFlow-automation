@@ -1,0 +1,57 @@
+{
+  "container": "open-webui",
+  "db_path": "/var/lib/docker/volumes/open-webui-data/_data/webui.db",
+  "rollback_directory": "/var/backups/community-brain-retrieval-preflight/20260910T034646Z",
+  "consistent_sqlite_backup": true,
+  "sqlite_integrity": "ok",
+  "filter_id": "community_brain_filter",
+  "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+  "active": true,
+  "global": true,
+  "enabled_valve": true,
+  "valve_names": [
+    "retrieval_url",
+    "api_key",
+    "top_k",
+    "timeout_seconds",
+    "min_score",
+    "enabled"
+  ],
+  "active_retrieval_url": "http://10.1.30.10:8999/query",
+  "api_key_present": true,
+  "posts_complete_retrieval_url": true,
+  "header": "X-API-Key",
+  "models": [
+    {
+      "id": "gemma-4",
+      "name": "Gemma-4",
+      "active": 1,
+      "filter_ids": []
+    },
+    {
+      "id": "gemma3:27b",
+      "name": "gemma3:27b",
+      "active": 1,
+      "filter_ids": []
+    },
+    {
+      "id": "gemma3:4b",
+      "name": "gemma3:4b",
+      "active": 1,
+      "filter_ids": []
+    },
+    {
+      "id": "qwen2.5-coder:14b",
+      "name": "qwen2.5-coder:14b",
+      "active": 1,
+      "filter_ids": []
+    },
+    {
+      "id": "community-brain-v4-gpt-oss20b",
+      "name": "Community-brain-v4-gpt-oss:20b",
+      "active": 1,
+      "filter_ids": []
+    }
+  ],
+  "no_active_setting_changed": true
+}

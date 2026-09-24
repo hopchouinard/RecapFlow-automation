@@ -1,0 +1,67 @@
+{
+  "checked_utc": "2026-09-10T02:53:16.288942+00:00",
+  "kuma": [
+    {
+      "id": 30,
+      "name": "community-brain-production-health",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 02:49:37.260",
+      "ping": 12
+    },
+    {
+      "id": 31,
+      "name": "community-brain-production-retrieval",
+      "active": 1,
+      "status": 1,
+      "time": "2026-09-10 02:49:37.275",
+      "ping": 183
+    }
+  ],
+  "prometheus": [
+    {
+      "scrapePool": "community-brain-prod-api",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T02:53:01.263739963Z"
+    },
+    {
+      "scrapePool": "community-brain-prod-node",
+      "health": "up",
+      "lastError": "",
+      "lastScrape": "2026-09-10T02:53:01.509409058Z"
+    }
+  ],
+  "activation_preflight": [
+    {
+      "path": "/health",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": false
+    },
+    {
+      "path": "/metrics",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    },
+    {
+      "path": "/retrieval/query",
+      "status": 200,
+      "tls_verified": true,
+      "authenticated": true
+    }
+  ],
+  "prometheus_dns_fix": {
+    "dns": [
+      "10.1.10.1"
+    ],
+    "scope": "Prometheus service only",
+    "compose_backup": "/opt/monitoring-stack/docker-compose.yml.before-cbm-dns",
+    "brief_service_recreation": true
+  },
+  "probe_expires_utc": "2026-09-11T02:05:38Z",
+  "cutover": false,
+  "publication": false,
+  "retirement": false
+}

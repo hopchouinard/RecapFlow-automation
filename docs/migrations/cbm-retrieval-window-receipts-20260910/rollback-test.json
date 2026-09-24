@@ -1,0 +1,75 @@
+{
+  "request_id": "CBM-RETRIEVAL-20260910-001",
+  "checked_at": "2026-09-10T04:34:51.943665+00:00",
+  "ordering": [
+    "guard",
+    "reads",
+    "valves",
+    "verify",
+    "writers"
+  ],
+  "fault_injection_stages": 4,
+  "writer_restore_skipped_on_failure": true,
+  "immutable_enforcement": true,
+  "live_old_filter": {
+    "live_app_process": true,
+    "effective_url": "http://10.1.30.10:8999/query",
+    "retrieval_status": "ok",
+    "source_sha256": "12215e67d72775e3d56baa98fc23093196cc8917d887a18a506f188f26a0dc16",
+    "context_emitted": true,
+    "source_count": 10,
+    "sources": [
+      {
+        "chunk_id": "2025-02-05:signal:general",
+        "session_id": "2025-02-05",
+        "source_file": "/data/output/2025-02-05/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-02-19:signal:general",
+        "session_id": "2025-02-19",
+        "source_file": "/data/output/2025-02-19/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-02-18:signal:general",
+        "session_id": "2026-02-18",
+        "source_file": "/data/output/2026-02-18/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-12-30:signal:qa",
+        "session_id": "2025-12-30",
+        "source_file": "/data/output/2025-12-30/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-05-26:signal:general",
+        "session_id": "2026-05-26",
+        "source_file": "/data/output/2026-05-26/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-12-30:signal:links",
+        "session_id": "2025-12-30",
+        "source_file": "/data/output/2025-12-30/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-04-14:signal:general",
+        "session_id": "2026-04-14",
+        "source_file": "/data/output/2026-04-14/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-06-11:signal:links",
+        "session_id": "2025-06-11",
+        "source_file": "/data/output/2025-06-11/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2026-04-21:signal:general",
+        "session_id": "2026-04-21",
+        "source_file": "/data/output/2026-04-21/extracted-signal.md"
+      },
+      {
+        "chunk_id": "2025-02-02:transcript:004",
+        "session_id": "2025-02-02",
+        "source_file": "/data/output/2025-02-02/prepared-transcript.md"
+      }
+    ]
+  },
+  "endpoint_changed": false
+}

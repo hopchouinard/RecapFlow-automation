@@ -1,0 +1,134 @@
+Attaching to check-1, nats-1, postgres-1
+nats-1  | [1] 2026/09/20 22:17:39.162913 [INF] Starting nats-server
+nats-1  | [1] 2026/09/20 22:17:39.163012 [INF]   Version:  2.10.27
+nats-1  | [1] 2026/09/20 22:17:39.163017 [INF]   Git:      [6b830a9]
+nats-1  | [1] 2026/09/20 22:17:39.163020 [INF]   Name:     NDJHZ562YSWJOD52EIRGNXMD5QUHFS57XCTN6AWVVNYNDMWHZ2GNOWE7
+nats-1  | [1] 2026/09/20 22:17:39.163023 [INF]   Node:     f9KWSqax
+nats-1  | [1] 2026/09/20 22:17:39.163026 [INF]   ID:       NDJHZ562YSWJOD52EIRGNXMD5QUHFS57XCTN6AWVVNYNDMWHZ2GNOWE7
+nats-1  | [1] 2026/09/20 22:17:39.163836 [INF] Starting JetStream
+nats-1  | [1] 2026/09/20 22:17:39.164145 [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+nats-1  | [1] 2026/09/20 22:17:39.164153 [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+nats-1  | [1] 2026/09/20 22:17:39.164155 [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+nats-1  | [1] 2026/09/20 22:17:39.164158 [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+nats-1  | [1] 2026/09/20 22:17:39.164160 [INF] 
+nats-1  | [1] 2026/09/20 22:17:39.164165 [INF]          https://docs.nats.io/jetstream
+nats-1  | [1] 2026/09/20 22:17:39.164167 [INF] 
+nats-1  | [1] 2026/09/20 22:17:39.164170 [INF] ---------------- JETSTREAM ----------------
+nats-1  | [1] 2026/09/20 22:17:39.164173 [INF]   Max Memory:      2.86 GB
+nats-1  | [1] 2026/09/20 22:17:39.164176 [INF]   Max Storage:     1.43 GB
+nats-1  | [1] 2026/09/20 22:17:39.164192 [INF]   Store Directory: "/data/jetstream"
+nats-1  | [1] 2026/09/20 22:17:39.164194 [INF] -------------------------------------------
+nats-1  | [1] 2026/09/20 22:17:39.164610 [INF] Listening for client connections on 0.0.0.0:4222
+nats-1  | [1] 2026/09/20 22:17:39.164786 [INF] Server is ready
+postgres-1  | ********************************************************************************
+postgres-1  | WARNING: POSTGRES_HOST_AUTH_METHOD has been set to "trust". This will allow
+postgres-1  |          anyone with access to the Postgres port to access your database without
+postgres-1  |          a password, even if POSTGRES_PASSWORD is set. See PostgreSQL
+postgres-1  |          documentation about "trust":
+postgres-1  |          https://www.postgresql.org/docs/current/auth-trust.html
+postgres-1  |          In Docker's default configuration, this is effectively any other
+postgres-1  |          container on the same system.
+postgres-1  | 
+postgres-1  |          It is not recommended to use POSTGRES_HOST_AUTH_METHOD=trust. Replace
+postgres-1  |          it with "-e POSTGRES_PASSWORD=password" instead to set a password in
+postgres-1  |          "docker run".
+postgres-1  | ********************************************************************************
+postgres-1  | The files belonging to this database system will be owned by user "postgres".
+postgres-1  | This user must also own the server process.
+postgres-1  | 
+postgres-1  | The database cluster will be initialized with locale "en_US.utf8".
+postgres-1  | The default database encoding has accordingly been set to "UTF8".
+postgres-1  | The default text search configuration will be set to "english".
+postgres-1  | 
+postgres-1  | Data page checksums are enabled.
+postgres-1  | 
+postgres-1  | fixing permissions on existing directory /var/lib/postgresql/18/docker ... ok
+postgres-1  | creating subdirectories ... ok
+postgres-1  | selecting dynamic shared memory implementation ... posix
+postgres-1  | selecting default "max_connections" ... 100
+postgres-1  | selecting default "shared_buffers" ... 128MB
+postgres-1  | selecting default time zone ... Etc/UTC
+postgres-1  | creating configuration files ... ok
+postgres-1  | running bootstrap script ... ok
+postgres-1  | performing post-bootstrap initialization ... ok
+postgres-1  | syncing data to disk ... ok
+postgres-1  | 
+postgres-1  | 
+postgres-1  | Success. You can now start the database server using:
+postgres-1  | 
+postgres-1  |     pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
+postgres-1  | 
+postgres-1  | initdb: warning: enabling "trust" authentication for local connections
+postgres-1  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+postgres-1  | waiting for server to start....2026-09-20 22:17:39.769 UTC [53] LOG:  starting PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+postgres-1  | 2026-09-20 22:17:39.784 UTC [53] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1  | 2026-09-20 22:17:39.788 UTC [59] LOG:  database system was shut down at 2026-09-20 22:17:39 UTC
+postgres-1  | 2026-09-20 22:17:39.790 UTC [53] LOG:  database system is ready to accept connections
+postgres-1  |  done
+postgres-1  | server started
+postgres-1  | CREATE DATABASE
+postgres-1  | 
+postgres-1  | 
+postgres-1  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+postgres-1  | 
+postgres-1  | 2026-09-20 22:17:39.953 UTC [53] LOG:  received fast shutdown request
+postgres-1  | waiting for server to shut down...2026-09-20 22:17:39.954 UTC [53] LOG:  aborting any active transactions
+postgres-1  | .2026-09-20 22:17:39.957 UTC [53] LOG:  background worker "logical replication launcher" (PID 62) exited with exit code 1
+postgres-1  | 2026-09-20 22:17:39.957 UTC [57] LOG:  shutting down
+postgres-1  | 2026-09-20 22:17:39.957 UTC [57] LOG:  checkpoint starting: shutdown immediate
+postgres-1  | 2026-09-20 22:17:39.965 UTC [57] LOG:  checkpoint complete: wrote 943 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.008 s, sync=0.001 s, total=0.009 s; sync files=303, longest=0.001 s, average=0.001 s; distance=4352 kB, estimate=4352 kB; lsn=0/1BA1B58, redo lsn=0/1BA1B58
+postgres-1  | 2026-09-20 22:17:39.976 UTC [53] LOG:  database system is shut down
+postgres-1  |  done
+postgres-1  | server stopped
+postgres-1  | 
+postgres-1  | PostgreSQL init process complete; ready for start up.
+postgres-1  | 
+postgres-1  | 2026-09-20 22:17:40.075 UTC [1] LOG:  starting PostgreSQL 18.6 (Debian 18.6-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+postgres-1  | 2026-09-20 22:17:40.076 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres-1  | 2026-09-20 22:17:40.076 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+postgres-1  | 2026-09-20 22:17:40.159 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1  | 2026-09-20 22:17:40.162 UTC [75] LOG:  database system was shut down at 2026-09-20 22:17:39 UTC
+postgres-1  | 2026-09-20 22:17:40.166 UTC [1] LOG:  database system is ready to accept connections
+check-1     | {"job_id": "10b02276-da53-4c06-aa45-34c051cd1cb7", "stage": "processing", "generation": 1, "state": "succeeded"}
+check-1     | Traceback (most recent call last):
+check-1     |   File "/workspace/deploy/community-brain/successor-validation/check.py", line 253, in <module>
+check-1     |     asyncio.run(main())
+check-1     |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+check-1     |     return runner.run(main)
+check-1     |            ^^^^^^^^^^^^^^^^
+check-1     |   File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+check-1     |     return self._loop.run_until_complete(task)
+check-1     |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+check-1     |   File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+check-1     |     return future.result()
+check-1     |            ^^^^^^^^^^^^^^^
+check-1     |   File "/workspace/deploy/community-brain/successor-validation/check.py", line 193, in main
+check-1     |     await manual_worker.execute(store, approval)
+check-1     |   File "/workspace/deploy/community-brain/management-development/workers/manual_worker.py", line 162, in execute
+check-1     |     result = await run_selected(
+check-1     |              ^^^^^^^^^^^^^^^^^^^
+check-1     |   File "/app/community-brain/.venv/lib/python3.11/site-packages/community_brain/jobs/manual.py", line 137, in run_selected
+check-1     |     raise RuntimeError("selected stage incomplete; review durable outcome")
+check-1     | RuntimeError: selected stage incomplete; review durable outcome
+[Kcheck-1 exited with code 1
+Aborting on container exit...
+ Container cbm-successor-validation-check-1  Stopping
+ Container cbm-successor-validation-check-1  Stopped
+ Container cbm-successor-validation-nats-1  Stopping
+ Container cbm-successor-validation-postgres-1  Stopping
+postgres-1  | 2026-09-20 22:17:48.327 UTC [1] LOG:  received fast shutdown request
+postgres-1  | 2026-09-20 22:17:48.327 UTC [1] LOG:  aborting any active transactions
+postgres-1  | 2026-09-20 22:17:48.330 UTC [1] LOG:  background worker "logical replication launcher" (PID 78) exited with exit code 1
+postgres-1  | 2026-09-20 22:17:48.331 UTC [73] LOG:  shutting down
+postgres-1  | 2026-09-20 22:17:48.331 UTC [73] LOG:  checkpoint starting: shutdown immediate
+postgres-1  | 2026-09-20 22:17:48.332 UTC [73] LOG:  checkpoint complete: wrote 131 buffers (0.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.002 s; sync files=87, longest=0.001 s, average=0.001 s; distance=638 kB, estimate=638 kB; lsn=0/1C414C0, redo lsn=0/1C414C0
+postgres-1  | 2026-09-20 22:17:48.340 UTC [1] LOG:  database system is shut down
+nats-1      | [1] 2026/09/20 22:17:48.364802 [INF] Initiating Shutdown...
+nats-1      | [1] 2026/09/20 22:17:48.364824 [INF] Initiating JetStream Shutdown...
+nats-1      | [1] 2026/09/20 22:17:48.364951 [INF] JetStream Shutdown
+nats-1      | [1] 2026/09/20 22:17:48.365013 [INF] Server Exiting..
+ Container cbm-successor-validation-postgres-1  Stopped
+[Kpostgres-1 exited with code 0
+ Container cbm-successor-validation-nats-1  Stopped
+[Knats-1 exited with code 1
+

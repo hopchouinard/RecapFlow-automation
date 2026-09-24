@@ -1,0 +1,150 @@
+{
+  "actual_uncertain_provider_outcome": true,
+  "no_duplicate_execution": true,
+  "proof": {
+    "jobs": [
+      {
+        "id": "08758345-ca5b-43d9-b54f-ca454712c380",
+        "meeting_id": "request028-2026-09-13",
+        "indexing": "pending",
+        "processing": "outcome_unknown",
+        "stages": [
+          {
+            "name": "acquisition",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "processing",
+            "attempts": 1,
+            "state": "outcome_unknown"
+          },
+          {
+            "name": "indexing",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "git",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "distribution",
+            "attempts": 0,
+            "state": "blocked"
+          }
+        ],
+        "outbox_sent": 1
+      },
+      {
+        "id": "7c198449-77b3-4f96-a453-128f8c6a68a3",
+        "meeting_id": "request028-excluded",
+        "indexing": "pending",
+        "processing": "queued",
+        "stages": [
+          {
+            "name": "acquisition",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "processing",
+            "attempts": 0,
+            "state": "queued"
+          },
+          {
+            "name": "indexing",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "git",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "distribution",
+            "attempts": 0,
+            "state": "blocked"
+          }
+        ],
+        "outbox_sent": 0
+      },
+      {
+        "id": "836ee28d-bd70-4bfb-a044-49b49d9aa054",
+        "meeting_id": "request028-2026-09-11",
+        "indexing": "complete",
+        "processing": "succeeded",
+        "stages": [
+          {
+            "name": "acquisition",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "processing",
+            "attempts": 1,
+            "state": "succeeded"
+          },
+          {
+            "name": "indexing",
+            "attempts": 1,
+            "state": "succeeded"
+          },
+          {
+            "name": "git",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "distribution",
+            "attempts": 0,
+            "state": "blocked"
+          }
+        ],
+        "outbox_sent": 2
+      },
+      {
+        "id": "ee2298fb-b1cc-4f1d-bf29-977556a8c2d2",
+        "meeting_id": "request028-2026-09-12",
+        "indexing": "complete",
+        "processing": "succeeded",
+        "stages": [
+          {
+            "name": "acquisition",
+            "attempts": 1,
+            "state": "succeeded"
+          },
+          {
+            "name": "processing",
+            "attempts": 1,
+            "state": "succeeded"
+          },
+          {
+            "name": "indexing",
+            "attempts": 1,
+            "state": "succeeded"
+          },
+          {
+            "name": "git",
+            "attempts": 0,
+            "state": "blocked"
+          },
+          {
+            "name": "distribution",
+            "attempts": 0,
+            "state": "blocked"
+          }
+        ],
+        "outbox_sent": 3
+      }
+    ],
+    "rows": 17,
+    "fts": {
+      "num_indexed_rows": 17,
+      "num_unindexed_rows": 0
+    }
+  },
+  "paid_provider_or_budget_certified": false
+}

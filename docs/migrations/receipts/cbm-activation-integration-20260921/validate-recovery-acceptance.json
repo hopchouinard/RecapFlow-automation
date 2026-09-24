@@ -1,0 +1,8 @@
+{
+  "paired_postgresql_and_state_restore": true,
+  "database_and_durable_state_equal": true,
+  "verified_files": 28,
+  "manifest_sha256": "e4db559dbda6e02d8ba0957b4e2a50f0b4ee5ba0b5816a58c898ce6fa25963fd",
+  "private_recovery_retained": true,
+  "production_restore_certified": false
+}

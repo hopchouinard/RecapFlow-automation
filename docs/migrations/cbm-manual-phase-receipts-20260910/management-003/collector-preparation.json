@@ -1,0 +1,21 @@
+{
+  "request_id": "CBM-MANUAL-PREP-20260910-003",
+  "tool_directory": "/Users/pchouinard/Library/Application Support/CommunityBrainProduction/tools",
+  "tool_hashes": {
+    "lab-root-ca.crt": "699ad9b38ad27d11483ef2c09c46b52725aac4cb91feba2c81ae9a87edaf1353",
+    "acquisition.py": "aa3b8f69e4bbf822baf188779b74d0129b38cf4d9ab1bd0e70d1e54cdff96988",
+    "manual_upload.py": "b663d58a12005b304a32238b950db8146ea5c82de606df903b19f85ddb4cf616"
+  },
+  "configuration_check": {
+    "prepared": true,
+    "enabled": false,
+    "selected_recording": null,
+    "backend": "https://community-brain.patchoutech.lab",
+    "network_used": false
+  },
+  "inactive_upload_refused": true,
+  "network_or_upload_performed": false,
+  "active_config_exists": false,
+  "selection_exists": false,
+  "development_tools_unchanged": true
+}

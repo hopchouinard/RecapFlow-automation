@@ -1,0 +1,44 @@
+{
+  "runtime_vs_admin_differences": [],
+  "independent_admin_read_only": true,
+  "runtime_and_admin_observed_metadata_equal": true,
+  "subscriptions_and_other_admin_unsupported_counts": [
+    {
+      "rules": 0,
+      "policies": 0,
+      "operators": 0,
+      "collations": 0,
+      "statistics": 0,
+      "publications": 0,
+      "large_objects": 0,
+      "subscriptions": 0,
+      "event_triggers": 0,
+      "custom_triggers": 0,
+      "foreign_servers": 0,
+      "security_labels": 0,
+      "operator_classes": 0,
+      "operator_families": 0,
+      "text_search_configs": 0,
+      "application_settings": 0
+    }
+  ],
+  "application_memberships": [],
+  "writer_census": [
+    {
+      "role": "cbm_prod_runtime",
+      "count": 3,
+      "state": "idle",
+      "backend_type": "client backend",
+      "client_address": "10.1.30.21/32",
+      "application_name": ""
+    }
+  ],
+  "unrelated_shared_resources": [
+    {
+      "unrelated_roles": 5,
+      "custom_tablespaces": 0,
+      "unrelated_databases": 5,
+      "application_shared_labels": 0
+    }
+  ]
+}
